@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "packageManager": "pnpm@6.23.6",
+  "workspaces": [
+    "packages/*",
+    "docs"
+  ],
+  "engines": {
+    "node": ">= 16"
+  },
+  "version": "0.0.1",
+  "description": "prestashop ui kit with tailwind",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrestaShopCorp/puik.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PrestaShopCorp/puik/issues"
+  },
+  "homepage": "https://github.com/PrestaShopCorp/puik#readme"
+}
