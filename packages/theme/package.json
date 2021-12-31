@@ -1,0 +1,9 @@
+{
+  "name": "@puik/theme",
+  "version": "0.0.1",
+  "description": "Puik component Theme",
+  "main": "index.css",
+  "style": "index.css",
+  "unpkg": "index.css",
+  "jsdelivr": "index.css"
+}

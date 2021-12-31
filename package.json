@@ -1,6 +1,21 @@
 {
   "private": true,
   "packageManager": "pnpm@6.23.6",
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "dependencies": {
+    "@vueuse/core": "^7.5.1",
+    "dayjs": "^1.10.7",
+    "lodash": "^4.17.21",
+    "@puik/utils": "workspace:*",
+    "@puik/components": "workspace:*"
+  },
+  "devDependencies": {
+    "@vue/runtime-core": "^3.2.26",
+    "@vue/shared": "^3.2.26",
+    "vue": "^3.2.26"
+  },
   "workspaces": [
     "packages/*",
     "docs"
@@ -11,7 +26,10 @@
   "version": "0.0.1",
   "description": "prestashop ui kit with tailwind",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "pnpm run -C docs dev",
+    "docs:serve": "pnpm run -C docs serve",
+    "docs:build": "pnpm run -C docs build"
   },
   "repository": {
     "type": "git",
