@@ -49,10 +49,7 @@ importers:
       vue-loader: 16.8.3
 
   packages/components:
-    specifiers:
-      '@puik/theme': workspace:*
-    dependencies:
-      '@puik/theme': link:../theme
+    specifiers: {}
 
   packages/hooks:
     specifiers: {}
