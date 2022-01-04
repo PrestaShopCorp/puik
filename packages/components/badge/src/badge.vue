@@ -12,6 +12,8 @@
 import { defineComponent, computed } from 'vue'
 import { badgeProps } from './badge'
 
+import './../style';
+
 export default defineComponent({
   name: 'PuikBadge',
   props: badgeProps,

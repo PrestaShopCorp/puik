@@ -9,7 +9,8 @@
     "dayjs": "^1.10.7",
     "lodash": "^4.17.21",
     "@puik/utils": "workspace:*",
-    "@puik/components": "workspace:*"
+    "@puik/components": "workspace:*",
+    "@puik/theme": "workspace:*"
   },
   "devDependencies": {
     "@vue/runtime-core": "^3.2.26",
@@ -29,7 +30,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "pnpm run -C docs dev",
     "docs:serve": "pnpm run -C docs serve",
-    "docs:build": "pnpm run -C docs build"
+    "docs:build": "pnpm run -C docs build",
+    "storybook": "pnpm run -C docs storybook"
   },
   "repository": {
     "type": "git",

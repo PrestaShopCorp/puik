@@ -5,5 +5,10 @@
   "main": "index.css",
   "style": "index.css",
   "unpkg": "index.css",
-  "jsdelivr": "index.css"
+  "jsdelivr": "index.css",
+  "devDependencies": {
+    "autoprefixer": "^10.0.2",
+    "postcss": ">=8.2.14 <9.0.0",
+    "tailwindcss": "^3.0.8"
+  }
 }
