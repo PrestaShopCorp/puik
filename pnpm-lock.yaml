@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@puik/components': workspace:*
+      '@puik/theme': workspace:*
       '@puik/utils': workspace:*
       '@vue/runtime-core': ^3.2.26
       '@vue/shared': ^3.2.26
@@ -14,6 +15,7 @@ importers:
       vue: ^3.2.26
     dependencies:
       '@puik/components': link:packages/components
+      '@puik/theme': link:packages/theme
       '@puik/utils': link:packages/utils
       '@vueuse/core': 7.5.1_vue@3.2.26
       dayjs: 1.10.7
@@ -39,15 +41,18 @@ importers:
     devDependencies:
       '@babel/core': 7.16.7
       '@storybook/addon-actions': 6.4.9
-      '@storybook/addon-essentials': 6.4.9_d797d04f5884c85d398957547b14f0e5
+      '@storybook/addon-essentials': 6.4.9_5857ec9bb5689dc9a0cb685ddb5690f4
       '@storybook/addon-links': 6.4.9
-      '@storybook/vue3': 6.4.9_99e7e291a24f08c838c40f4da3281409
+      '@storybook/vue3': 6.4.9_cfb75533240dbe1845df36af5c6cb43c
       babel-loader: 8.2.3_@babel+core@7.16.7
       vitepress: 0.20.10
       vue-loader: 16.8.3
 
   packages/components:
-    specifiers: {}
+    specifiers:
+      '@puik/theme': workspace:*
+    dependencies:
+      '@puik/theme': link:../theme
 
   packages/hooks:
     specifiers: {}
@@ -2029,7 +2034,7 @@ packages:
       - webpack-command
     dev: true
 
-  /@storybook/addon-docs/6.4.9_d76977a582788137f103a2e5280949d0:
+  /@storybook/addon-docs/6.4.9_177d1b64d27840c7f9e0b318b1b50d5e:
     resolution: {integrity: sha512-sJvnbp6Z+e7B1+vDE8gZVhCg1eNotIa7bx9LYd1Y2QwJ4PEv9hE2YxnzmWt3NZJGtrn4gdGaMCk7pmksugHi7g==}
     peerDependencies:
       '@storybook/angular': 6.4.9
@@ -2100,7 +2105,7 @@ packages:
       '@storybook/source-loader': 6.4.9
       '@storybook/store': 6.4.9
       '@storybook/theming': 6.4.9
-      '@storybook/vue3': 6.4.9_99e7e291a24f08c838c40f4da3281409
+      '@storybook/vue3': 6.4.9_cfb75533240dbe1845df36af5c6cb43c
       acorn: 7.4.1
       acorn-jsx: 5.3.2_acorn@7.4.1
       acorn-walk: 7.2.0
@@ -2123,7 +2128,6 @@ packages:
       remark-slug: 6.1.0
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
-      vue: 3.2.26
     transitivePeerDependencies:
       - '@storybook/builder-webpack5'
       - '@storybook/manager-webpack5'
@@ -2138,7 +2142,7 @@ packages:
       - webpack-command
     dev: true
 
-  /@storybook/addon-essentials/6.4.9_d797d04f5884c85d398957547b14f0e5:
+  /@storybook/addon-essentials/6.4.9_5857ec9bb5689dc9a0cb685ddb5690f4:
     resolution: {integrity: sha512-3YOtGJsmS7A4aIaclnEqTgO+fUEX63pHq2CvqIKPGLVPgLmn6MnEhkkV2j30MfAkoe3oynLqFBvkCdYwzwJxNQ==}
     peerDependencies:
       '@babel/core': ^7.9.6
@@ -2167,7 +2171,7 @@ packages:
       '@storybook/addon-actions': 6.4.9
       '@storybook/addon-backgrounds': 6.4.9
       '@storybook/addon-controls': 6.4.9_typescript@4.5.4
-      '@storybook/addon-docs': 6.4.9_d76977a582788137f103a2e5280949d0
+      '@storybook/addon-docs': 6.4.9_177d1b64d27840c7f9e0b318b1b50d5e
       '@storybook/addon-measure': 6.4.9
       '@storybook/addon-outline': 6.4.9
       '@storybook/addon-toolbars': 6.4.9
@@ -3672,7 +3676,7 @@ packages:
       - '@types/react'
     dev: true
 
-  /@storybook/vue3/6.4.9_99e7e291a24f08c838c40f4da3281409:
+  /@storybook/vue3/6.4.9_cfb75533240dbe1845df36af5c6cb43c:
     resolution: {integrity: sha512-PrmWaswrRutQYbyfALyP2twYJihgNJa1HUPKK/Kixmm0u0TH9ioYaRDf06XqzB6vh/znzD8YlzkSTJ5y184SUQ==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -3698,7 +3702,6 @@ packages:
       regenerator-runtime: 0.13.9
       ts-dedent: 2.2.0
       ts-loader: 8.3.0_typescript@4.5.4+webpack@4.46.0
-      vue: 3.2.26
       vue-docgen-api: 4.43.1
       vue-docgen-loader: 1.5.0_5a5c4e8aa25bd3287fad9ada14c587d0
       vue-loader: 16.8.3_webpack@4.46.0

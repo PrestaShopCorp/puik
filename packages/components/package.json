@@ -5,9 +5,6 @@
   "peerDependencies": {
     "vue": "^3.2.0"
   },
-  "dependencies": {
-    "@puik/theme": "workspace:*"
-  },
   "main": "index.ts",
   "module": "index.ts",
   "types": "index.d.ts",
