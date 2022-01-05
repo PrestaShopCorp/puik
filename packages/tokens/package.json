@@ -1,0 +1,13 @@
+{
+  "name": "@puik/tokens",
+  "version": "0.0.1",
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "main": "index.ts",
+  "module": "index.ts",
+  "types": "index.d.js",
+  "unpkg": "index.js",
+  "jsdelivr": "index.js"
+}

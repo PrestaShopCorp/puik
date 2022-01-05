@@ -6,10 +6,10 @@ import dartSass from 'sass'
 import autoprefixer from 'gulp-autoprefixer'
 import cleanCSS from 'gulp-clean-css'
 import rename from 'gulp-rename'
-import { epOutput } from '../../build/utils/paths'
+import { puikOutput } from '../../build/utils/paths'
 
 const distFolder = path.resolve(__dirname, 'dist')
-const distBundle = path.resolve(epOutput, 'theme')
+const distBundle = path.resolve(puikOutput, 'theme')
 
 /**
  * compile theme scss & minify
@@ -18,7 +18,7 @@ const distBundle = path.resolve(epOutput, 'theme')
  */
 function buildTheme() {
   const sass = gulpSass(dartSass)
-  const noElPrefixFile = /(index)/
+  const noElPrefixFile = /(index|base|display)/
   return src(path.resolve(__dirname, 'src/*.scss'))
     .pipe(sass.sync())
     .pipe(autoprefixer({ cascade: false }))

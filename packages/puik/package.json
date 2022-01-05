@@ -1,4 +1,30 @@
 {
   "name": "puik",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./es/index.mjs"
+    },
+    "./es": "./es/index.mjs",
+    "./lib": "./lib/index.js",
+    "./*": "./*"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "style": "dist/index.css",
+  "unpkg": "dist/index.full.js",
+  "jsdelivr": "dist/index.full.js",
+  "sideEffects": [
+    "dist/*",
+    "theme/*.css",
+    "themesrc/*.scss",
+    "es/components/*/style/*",
+    "lib/components/*/style/*",
+    "lib/components/**/*",
+    "es/components/**/*"
+  ],
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  }
 }
