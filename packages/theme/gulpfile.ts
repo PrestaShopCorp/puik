@@ -12,7 +12,7 @@ const distFolder = path.resolve(__dirname, 'dist')
 const distBundle = path.resolve(epOutput, 'theme')
 
 /**
- * compile theme-chalk scss & minify
+ * compile theme scss & minify
  * not use sass.sync().on('error', sass.logError) to throw exception
  * @returns
  */
