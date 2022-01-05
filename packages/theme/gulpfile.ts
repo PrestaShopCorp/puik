@@ -16,7 +16,7 @@ const distBundle = path.resolve(epOutput, 'theme')
  * not use sass.sync().on('error', sass.logError) to throw exception
  * @returns
  */
-function buildThemeChalk() {
+function buildTheme() {
   const sass = gulpSass(dartSass)
   const noElPrefixFile = /(index)/
   return src(path.resolve(__dirname, 'src/*.scss'))
@@ -60,7 +60,7 @@ export function copyThemeSource() {
 
 export const build = parallel(
   copyThemeSource,
-  series(buildThemeChalk, copyThemeBundle)
+  series(buildTheme, copyThemeBundle)
 )
 
 export default build
