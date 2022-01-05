@@ -2,6 +2,7 @@
 logs
 *.log
 npm-debug.log*
+.pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
@@ -40,9 +41,6 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-
-# TypeScript v1 declaration files
-typings/
 
 # TypeScript cache
 *.tsbuildinfo
@@ -102,3 +100,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# System
+.DS_Store
+
+# Bundle
+packages/puik/version.ts

@@ -7,19 +7,19 @@
   "unpkg": "index.css",
   "jsdelivr": "index.css",
   "scripts": {
+    "clean": "rimraf dist",
     "build": "gulp --require sucrase/register/ts"
   },
   "devDependencies": {
-    "autoprefixer": "^10.0.2",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^8.0.0",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-sass": "^5.1.0",
+    "@types/gulp-autoprefixer": "0.0.33",
+    "@types/gulp-clean-css": "4.3.0",
+    "@types/gulp-rename": "2.0.1",
+    "@types/gulp-sass": "5.0.0",
+    "gulp-autoprefixer": "8.0.0",
+    "gulp-clean-css": "4.3.0",
+    "gulp-rename": "2.0.0",
+    "gulp-sass": "5.1.0",
     "postcss": ">=8.2.14 <9.0.0",
     "tailwindcss": "^3.0.8"
-  },
-  "scripts": {
-    "build": ""
   }
 }
