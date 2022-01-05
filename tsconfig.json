@@ -6,7 +6,7 @@
     "target": "ES2018",
     "noImplicitAny": false,
     "declaration": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -15,5 +15,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "include": ["packages"]
+  "include": ["packages"],
+  "exclude": ["node_modules", "**/dist"]
 }
