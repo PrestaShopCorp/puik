@@ -23,8 +23,6 @@ export const useLocaleProps = buildProps({
 export const localeContextKey: InjectionKey<LocaleContext> =
   Symbol('localeContextKey')
 
-// this is meant to fix global methods like `ElMessage(opts)`, this way we can inject current locale
-// into the component as default injection value.
 let cache: LocaleContext
 
 export const provideLocale = () => {
