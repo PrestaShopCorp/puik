@@ -3,7 +3,7 @@ import chalk from 'chalk'
 import { src, dest, series, parallel } from 'gulp'
 import gulpSass from 'gulp-sass'
 import dartSass from 'sass'
-import autoprefixer from 'gulp-autoprefixer'
+import postcss from 'gulp-postcss'
 import cleanCSS from 'gulp-clean-css'
 import rename from 'gulp-rename'
 import { puikOutput } from '../../build/utils/paths'
@@ -21,7 +21,7 @@ function buildTheme() {
   const noElPrefixFile = /(index|base|display)/
   return src(path.resolve(__dirname, 'src/*.scss'))
     .pipe(sass.sync())
-    .pipe(autoprefixer({ cascade: false }))
+    .pipe(postcss())
     .pipe(
       cleanCSS({}, (details) => {
         console.log(

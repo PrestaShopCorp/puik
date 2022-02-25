@@ -1,2 +1,2 @@
-// import '@puik/components/base/style/css';
-// import '@puik/theme/src/puik-badge.css'
+import '@puik/components/base/style'
+import '@puik/theme/src/badge.scss'

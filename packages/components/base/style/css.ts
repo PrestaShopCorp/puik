@@ -1,1 +1,1 @@
-import '@puik/theme/base.css'
+import '@puik/theme/index.css'
