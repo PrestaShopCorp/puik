@@ -12,13 +12,8 @@
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-links": "^6.4.9",
-    "@storybook/preset-scss": "^1.0.3",
     "@storybook/vue3": "^6.4.9",
     "babel-loader": "^8.2.3",
-    "css-loader": "^5.2.7",
-    "sass": "^1.49.8",
-    "sass-loader": "^10.2.0",
-    "style-loader": "^2.0.0",
     "vitepress": "^0.20.4",
     "vue-loader": "^16.8.3"
   },

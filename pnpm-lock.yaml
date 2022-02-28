@@ -182,7 +182,22 @@ importers:
     specifiers: {}
 
   packages/puik:
-    specifiers: {}
+    specifiers:
+      '@popperjs/core': ^2.10.2
+      '@vueuse/core': ^7.3.0
+      async-validator: ^4.0.7
+      dayjs: ^1.10.7
+      lodash: ^4.17.21
+      memoize-one: ^6.0.0
+      normalize-wheel-es: ^1.1.1
+    dependencies:
+      '@popperjs/core': 2.11.0
+      '@vueuse/core': 7.3.0_vue@3.2.26
+      async-validator: 4.0.7
+      dayjs: 1.10.7
+      lodash: 4.17.21
+      memoize-one: 6.0.0
+      normalize-wheel-es: 1.1.1
 
   packages/theme:
     specifiers:
@@ -3152,7 +3167,6 @@ packages:
 
   /@popperjs/core/2.11.0:
     resolution: {integrity: sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ==}
-    dev: true
 
   /@rollup/plugin-commonjs/21.0.1_rollup@2.63.0:
     resolution: {integrity: sha512-EA+g22lbNJ8p5kuZJUYyhhDK7WgJckW5g4pNN7n4mAFUM96VuwUnNT3xr2Db2iCZPI1pJPbGyfT5mS9T1dHfMg==}
