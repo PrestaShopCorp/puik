@@ -1,0 +1,15 @@
+.puik-layer-base {
+  @apply border rounded-md border-border-main bg-white;
+}
+
+.puik-layer-overlay {
+  @apply border rounded-md border-border-main bg-white shadow-overlay;
+}
+
+.puik-layer-sticky-element {
+  @apply w-full fixed bg-white shadow-sticky top-0 left-0;
+}
+
+.puik-pop-modal {
+  @apply w-full h-full bg-font-100 fixed overflow-hidden;
+}

@@ -3,7 +3,8 @@
   "packageManager": "pnpm@6.24.4",
   "workspaces": [
     "packages/*",
-    "docs"
+    "docs",
+    "play"
   ],
   "engines": {
     "node": ">= 16"
@@ -21,6 +22,7 @@
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --max-warnings 0 && pretty-quick --check --branch dev",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx && pretty-quick --branch dev",
     "docs:dev": "pnpm run -C docs dev",
+    "dev": "pnpm run -C playground dev",
     "prepare": "husky install",
     "postinstall": "pnpm gen:version",
     "preinstall": "npx only-allow pnpm -y"
