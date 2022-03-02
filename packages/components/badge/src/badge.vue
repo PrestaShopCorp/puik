@@ -12,24 +12,15 @@
   </span>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
 import { badgeProps } from './badge'
+const props = defineProps(badgeProps)
 
-export default defineComponent({
-  name: 'PuikBadge',
-  props: badgeProps,
-  setup(props) {
-    const content = computed(() => {
-      if (typeof props.value === 'number') {
-        return props.max < props.value ? `${props.max}+` : `${props.value}`
-      }
-      return `${props.value}`
-    })
-
-    return {
-      content,
-    }
-  },
+const content = computed(() => {
+  if (typeof props.value === 'number') {
+    return props.max < props.value ? `${props.max}+` : `${props.value}`
+  }
+  return `${props.value}`
 })
 </script>

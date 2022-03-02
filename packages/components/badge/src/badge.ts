@@ -1,5 +1,4 @@
 import { buildProps } from '@puik/utils/props'
-
 import type { ExtractPropTypes } from 'vue'
 
 export const badgeProps = buildProps({
