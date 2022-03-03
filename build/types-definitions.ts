@@ -38,7 +38,7 @@ export const generateTypesDefinitions = async () => {
       onlyFiles: true,
     })
   )
-  const epPaths = excludeFiles(
+  const puikPaths = excludeFiles(
     await glob('**/*.{js,ts,vue}', {
       cwd: puikRoot,
       onlyFiles: true,
@@ -77,7 +77,7 @@ export const generateTypesDefinitions = async () => {
         sourceFiles.push(sourceFile)
       }
     }),
-    ...epPaths.map(async (file) => {
+    ...puikPaths.map(async (file) => {
       const content = await fs.readFile(path.resolve(puikRoot, file), 'utf-8')
       sourceFiles.push(
         project.createSourceFile(path.resolve(pkgRoot, file), content)
