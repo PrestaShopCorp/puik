@@ -12,33 +12,9 @@
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#deployment">Deployment</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-  </ol>
-</details>
-
 ## About The Project
 
 Puik is a component library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -172,6 +148,8 @@ puik/
 │   │   │   ├── style/
 │   │   │   │   ├── css.ts
 │   │   │   │   └── index.ts
+│   │   │   ├── test/
+│   │   │   │   └── my-component.spec.ts
 │   │   │   └── index.ts
 │   │   └── index.ts
 │   ├── puik/
@@ -192,16 +170,6 @@ Example:
 ```sh
 $ pnpm test
 ```
-
-_Running..._
-<br />
-<br />
-![Runs test](.github/pics/accounts_tests_running.png)
-<br />
-_Passed!_
-<br />
-<br />
-![Passed test](.github/pics/accounts_tests_ok.png)
 
 ### Storybook
 
