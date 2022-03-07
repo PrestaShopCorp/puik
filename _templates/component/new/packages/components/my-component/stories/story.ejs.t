@@ -1,7 +1,7 @@
 ---
 to: packages/components/<%= h.changeCase.param(name) %>/stories/<%= h.changeCase.param(name) %>.stories.ts
 ---
-import { Meta, Story, Args } from '@storybook/vue'
+import { Meta, Story, Args } from '@storybook/vue3'
 import <%= h.changeCase.pascal(name) %> from './../src/<%= h.changeCase.param(name) %>.vue'
 
 export default {
