@@ -8,6 +8,10 @@
     },
     "./es": "./es/index.mjs",
     "./lib": "./lib/index.js",
+    "./es/*.mjs": "./es/*.mjs",
+    "./es/*": "./es/*.mjs",
+    "./lib/*.js": "./lib/*.js",
+    "./lib/*": "./lib/*.js",
     "./*": "./*"
   },
   "main": "lib/index.js",
@@ -18,7 +22,7 @@
   "sideEffects": [
     "dist/*",
     "theme/*.css",
-    "themesrc/*.scss",
+    "theme/src/*.scss",
     "es/components/*/style/*",
     "lib/components/*/style/*",
     "lib/components/**/*",
@@ -26,5 +30,19 @@
   ],
   "peerDependencies": {
     "vue": "^3.2.0"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.10.2",
+    "@vueuse/core": "^7.3.0",
+    "async-validator": "^4.0.7",
+    "dayjs": "^1.10.7",
+    "lodash": "^4.17.21",
+    "memoize-one": "^6.0.0",
+    "normalize-wheel-es": "^1.1.1"
+  },
+  "web-types": "web-types.json",
+  "vetur": {
+    "tags": "tags.json",
+    "attributes": "attributes.json"
   }
 }
