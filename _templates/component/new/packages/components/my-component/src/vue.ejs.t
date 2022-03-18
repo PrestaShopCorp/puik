@@ -7,6 +7,9 @@ to: packages/components/<%= h.changeCase.param(name) %>/src/<%= h.changeCase.par
 
 <script setup lang="ts">
 import { <%= h.changeCase.camel(name) %>Props } from './<%= h.changeCase.param(name) %>'
+defineOptions({
+  name: '<%= h.changeCase.pascal(name) %>',
+})
 
 const props = defineProps(<%= h.changeCase.camel(name) %>Props)
 </script>

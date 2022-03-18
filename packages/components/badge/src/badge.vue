@@ -15,6 +15,10 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { badgeProps } from './badge'
+
+defineOptions({
+  name: 'PuikBadge',
+})
 const props = defineProps(badgeProps)
 
 const content = computed(() => {

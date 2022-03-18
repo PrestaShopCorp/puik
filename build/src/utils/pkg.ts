@@ -1,7 +1,8 @@
 import findWorkspacePackages from '@pnpm/find-workspace-packages'
 import { buildConfig } from '../build-info'
-import { PUIK_PREFIX } from './constants'
-import { pkgRoot, projRoot } from './paths'
+import { PUIK_PREFIX } from '../constants'
+import { projRoot } from './paths'
+
 import type { Module } from '../build-info'
 import type { ProjectManifest } from '@pnpm/types'
 
@@ -19,12 +20,19 @@ export const getPackageManifest = (pkgPath: string) => {
   return require(pkgPath) as ProjectManifest
 }
 
-export const getPackageDependencies = (pkgPath: string): string[] => {
+export const getPackageDependencies = (
+  pkgPath: string
+): Record<'dependencies' | 'peerDependencies', string[]> => {
   const manifest = getPackageManifest(pkgPath)
-  const { dependencies } = manifest
-  return Object.keys(dependencies ?? {})
+  const { dependencies = {}, peerDependencies = {} } = manifest
+
+  return {
+    dependencies: Object.keys(dependencies),
+    peerDependencies: Object.keys(peerDependencies),
+  }
 }
 
+/** used for type generator */
 export const pathRewriter = (module: Module) => {
   const config = buildConfig[module]
 
@@ -36,32 +44,8 @@ export const pathRewriter = (module: Module) => {
 }
 
 export const excludeFiles = (files: string[]) => {
-  const excludes = [
-    'node_modules',
-    'test',
-    'mock',
-    'gulpfile',
-    'tailwind.config',
-    'postcss.config',
-    'dist',
-    'stories',
-  ]
+  const excludes = ['node_modules', 'test', 'mock', 'gulpfile', 'dist']
   return files.filter(
     (path) => !excludes.some((exclude) => path.includes(exclude))
   )
 }
-
-/**
- * get package list (theme excluded)
- */
-export const getDistPackages = async () =>
-  (await getWorkspacePackages())
-    .map((pkg) => ({ name: pkg.manifest.name, dir: pkg.dir }))
-    .filter(
-      (pkg): pkg is { name: string; dir: string } =>
-        !!pkg.name &&
-        !!pkg.dir &&
-        pkg.name.startsWith(PUIK_PREFIX) &&
-        pkg.dir.startsWith(pkgRoot) &&
-        pkg.name !== `${PUIK_PREFIX}/theme`
-    )

@@ -1,14 +1,20 @@
+import process from 'process'
 import path from 'path'
 import fs from 'fs/promises'
+import consola from 'consola'
 import * as vueCompiler from 'vue/compiler-sfc'
 import { Project } from 'ts-morph'
 import glob from 'fast-glob'
-import { bold } from 'chalk'
+import chalk from 'chalk'
+import {
+  buildOutput,
+  puikRoot,
+  pkgRoot,
+  projRoot,
+  excludeFiles,
+  pathRewriter,
+} from '../utils'
 
-import { errorAndExit, green, yellow } from './utils/log'
-import { buildOutput, puikRoot, pkgRoot, projRoot } from './utils/paths'
-
-import { excludeFiles, pathRewriter } from './utils/pkg'
 import type { SourceFile } from 'ts-morph'
 
 const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.json')
@@ -26,20 +32,26 @@ export const generateTypesDefinitions = async () => {
       paths: {
         '@puik/*': ['packages/*'],
       },
+      preserveSymlinks: true,
+      types: [
+        path.resolve(projRoot, 'typings/env'),
+        'unplugin-vue-define-options',
+      ],
     },
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
   })
 
+  const globAnyFile = '**/*.{js,ts,vue}'
   const filePaths = excludeFiles(
-    await glob(['**/*.{js,ts,vue}', '!puik/**/*'], {
+    await glob([globAnyFile, '!puik/**/*'], {
       cwd: pkgRoot,
       absolute: true,
       onlyFiles: true,
     })
   )
   const puikPaths = excludeFiles(
-    await glob('**/*.{js,ts,vue}', {
+    await glob(globAnyFile, {
       cwd: puikRoot,
       onlyFiles: true,
     })
@@ -53,21 +65,18 @@ export const generateTypesDefinitions = async () => {
         const sfc = vueCompiler.parse(content)
         const { script, scriptSetup } = sfc.descriptor
         if (script || scriptSetup) {
-          let content = ''
-          let isTS = false
-          if (script && script.content) {
-            content += script.content
-            if (script.lang === 'ts') isTS = true
-          }
+          let content = script?.content ?? ''
+
           if (scriptSetup) {
             const compiled = vueCompiler.compileScript(sfc.descriptor, {
               id: 'xxx',
             })
             content += compiled.content
-            if (scriptSetup.lang === 'ts') isTS = true
           }
+
+          const lang = scriptSetup?.lang || script?.lang || 'js'
           const sourceFile = project.createSourceFile(
-            path.relative(process.cwd(), file) + (isTS ? '.ts' : '.js'),
+            `${path.relative(process.cwd(), file)}.${lang}`,
             content
           )
           sourceFiles.push(sourceFile)
@@ -85,8 +94,17 @@ export const generateTypesDefinitions = async () => {
     }),
   ])
 
-  const diagnostics = project.getPreEmitDiagnostics()
-  console.log(project.formatDiagnosticsWithColorAndContext(diagnostics))
+  const diagnostics = project.getPreEmitDiagnostics().filter((diagnostic) => {
+    const filePath = diagnostic.getSourceFile()?.getFilePath()
+    return filePath
+  })
+
+  if (diagnostics.length > 0) {
+    consola.error(project.formatDiagnosticsWithColorAndContext(diagnostics))
+    const err = new Error('Failed to generate dts.')
+    consola.error(err)
+    throw err
+  }
 
   await project.emit({
     emitOnlyDtsFiles: true,
@@ -94,12 +112,16 @@ export const generateTypesDefinitions = async () => {
 
   const tasks = sourceFiles.map(async (sourceFile) => {
     const relativePath = path.relative(pkgRoot, sourceFile.getFilePath())
-    yellow(`Generating definition for file: ${bold(relativePath)}`)
+    consola.trace(
+      chalk.yellow(
+        `Generating definition for file: ${chalk.bold(relativePath)}`
+      )
+    )
 
     const emitOutput = sourceFile.getEmitOutput()
     const emitFiles = emitOutput.getOutputFiles()
     if (emitFiles.length === 0) {
-      errorAndExit(new Error(`Emit no file: ${bold(relativePath)}`))
+      throw new Error(`Emit no file: ${chalk.bold(relativePath)}`)
     }
 
     const tasks = emitFiles.map(async (outputFile) => {
@@ -114,7 +136,11 @@ export const generateTypesDefinitions = async () => {
         'utf8'
       )
 
-      green(`Definition for file: ${bold(relativePath)} generated`)
+      consola.success(
+        chalk.green(
+          `Definition for file: ${chalk.bold(relativePath)} generated`
+        )
+      )
     })
 
     await Promise.all(tasks)

@@ -1,4 +1,4 @@
-import { withInstall } from '@puik/utils/with-install'
+import { withInstall } from '@puik/utils'
 
 import Badge from './src/badge.vue'
 

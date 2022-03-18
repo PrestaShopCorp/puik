@@ -1,6 +1,6 @@
 import path from 'path'
-import { puikOutput } from './utils/paths'
-import { PUIK_PKG } from './utils/constants'
+import { puikOutput } from './utils'
+import { PUIK_PKG } from './constants'
 import type { ModuleFormat } from 'rollup'
 
 export const modules = ['esm', 'cjs'] as const
@@ -54,3 +54,5 @@ export const buildConfigEntries = Object.entries(
 
 export type BuildConfig = typeof buildConfig
 export type BuildConfigEntries = [Module, BuildInfo][]
+
+export const target = 'es2018'

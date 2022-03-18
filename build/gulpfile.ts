@@ -2,15 +2,18 @@ import path from 'path'
 import { mkdir, copyFile } from 'fs/promises'
 import { copy } from 'fs-extra'
 import { series, parallel } from 'gulp'
-import { run } from './utils/process'
-import { withTaskName } from './utils/gulp'
-import { buildOutput, puikOutput, puikPackage, projRoot } from './utils/paths'
-import { buildConfig } from './build-info'
+import {
+  run,
+  runTask,
+  withTaskName,
+  buildOutput,
+  puikOutput,
+  puikPackage,
+  projRoot,
+  buildConfig,
+} from './src'
 import type { TaskFunction } from 'gulp'
-import type { Module } from './build-info'
-
-const runTask = (name: string) =>
-  withTaskName(name, () => run(`pnpm run build ${name}`))
+import type { Module } from './src'
 
 export const copyFiles = () =>
   Promise.all([
@@ -53,7 +56,9 @@ export default series(
     runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
     series(
-      withTaskName('buildTheme', () => run('pnpm run -C packages/theme build')),
+      withTaskName('buildTheme', () =>
+        run('pnpm run --filter ./packages/ build --parallel')
+      ),
       copyFullStyle
     )
   ),
@@ -61,7 +66,4 @@ export default series(
   parallel(copyTypesDefinitions, copyFiles)
 )
 
-export * from './types-definitions'
-export * from './modules'
-export * from './full-bundle'
-export * from './helper'
+export * from './src'

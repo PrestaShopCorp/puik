@@ -3,7 +3,7 @@ to: packages/components/<%= h.changeCase.param(name) %>/src/<%= h.changeCase.par
 ---
 import { buildProps } from '@puik/utils/props'
 import type { ExtractPropTypes } from 'vue'
-import type <%= h.changeCase.pascal(name) %> from './<%= h.changeCase.pascal(name) %>.vue'
+import type <%= h.changeCase.pascal(name) %> from './<%= h.changeCase.param(name) %>.vue'
 
 export const <%= h.changeCase.camel(name) %>Props = buildProps({} as const)
 

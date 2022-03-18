@@ -1,13 +1,13 @@
 import { warn } from 'vue'
-import { isObject } from '@vue/shared'
-import fromPairs from 'lodash/fromPairs'
-import type { ExtractPropTypes, PropType } from '@vue/runtime-core'
-import type { Mutable } from './types'
+import { fromPairs } from 'lodash-unified'
+import { isObject } from '../types'
+import { hasOwn } from '../objects'
+import type { ExtractPropTypes, PropType } from 'vue'
 
 const wrapperKey = Symbol()
 export type PropWrapper<T> = { [wrapperKey]: T }
 
-export const propKey = Symbol()
+export const propKey = '__elPropsReservedKey'
 
 type ResolveProp<T> = ExtractPropTypes<{
   key: { type: T; required: true }
@@ -76,6 +76,26 @@ export type BuildPropReturn<T, D, R, V, C> = {
   IfUnknown<R, false>
 >
 
+/**
+ * @description Build prop. It can better optimize prop types
+ * @description 生成 prop，能更好地优化类型
+ * @example
+  // limited options
+  // the type will be PropType<'light' | 'dark'>
+  buildProp({
+    type: String,
+    values: ['light', 'dark'],
+  } as const)
+  * @example
+  // limited options and other types
+  // the type will be PropType<'small' | 'large' | number>
+  buildProp({
+    type: [String, Number],
+    values: ['small', 'large'],
+    validator: (val: unknown): val is number => typeof val === 'number',
+  } as const)
+  @link see more: https://github.com/element-plus/element-plus/pull/3341
+ */
 export function buildProp<
   T = never,
   D extends BuildPropType<T, V, C> = never,
@@ -98,7 +118,10 @@ export function buildProp<
           let allowedValues: unknown[] = []
 
           if (values) {
-            allowedValues = [...values, defaultValue]
+            allowedValues = Array.from(values)
+            if (hasOwn(option, 'default')) {
+              allowedValues.push(defaultValue)
+            }
             valid ||= allowedValues.includes(val)
           }
           if (validator) valid ||= validator(val)
@@ -119,17 +142,18 @@ export function buildProp<
         }
       : undefined
 
-  return {
+  const prop: any = {
     type:
-      typeof type === 'object' &&
-      Object.getOwnPropertySymbols(type).includes(wrapperKey)
+      isObject(type) && Object.getOwnPropertySymbols(type).includes(wrapperKey)
         ? type[wrapperKey]
         : type,
     required: !!required,
-    default: defaultValue,
     validator: _validator,
     [propKey]: true,
-  } as unknown as BuildPropReturn<T, D, R, V, C>
+  }
+  if (hasOwn(option, 'default')) prop.default = defaultValue
+
+  return prop as BuildPropReturn<T, D, R, V, C>
 }
 
 type NativePropType = [
@@ -181,10 +205,3 @@ export const buildProps = <
 
 export const definePropType = <T>(val: any) =>
   ({ [wrapperKey]: val } as PropWrapper<T>)
-
-export const keyOf = <T>(arr: T) => Object.keys(arr) as Array<keyof T>
-export const mutable = <T extends readonly any[] | Record<string, unknown>>(
-  val: T
-) => val as Mutable<typeof val>
-
-export const componentSize = ['large', 'default', 'small'] as const

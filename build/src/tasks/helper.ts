@@ -1,9 +1,9 @@
 import path from 'path'
 import helper from 'components-helper'
-import { puikPackage, puikOutput, projRoot } from './utils/paths'
-import { getPackageManifest } from './utils/pkg'
+import { puikPackage, puikOutput, projRoot, getPackageManifest } from '../utils'
+
 import type { TaskFunction } from 'gulp'
-import type { InstallOptions } from 'components-helper/lib/type'
+import type { InstallOptions } from 'components-helper'
 
 const reComponentName: InstallOptions['reComponentName'] = (title: string) =>
   `puik-${title
@@ -12,7 +12,7 @@ const reComponentName: InstallOptions['reComponentName'] = (title: string) =>
     .toLowerCase()}`
 
 const reDocUrl: InstallOptions['reDocUrl'] = (fileName, header) => {
-  const docs = '' // todo add doc
+  const docs = ''
   const _header = header ? header.replaceAll(/\s+/g, '-').toLowerCase() : ''
 
   return `${docs}${fileName}.html${_header ? '#' : ''}${_header}`
