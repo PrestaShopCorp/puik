@@ -1,7 +1,7 @@
 ---
 to: packages/components/<%= h.changeCase.param(name) %>/src/<%= h.changeCase.param(name) %>.ts
 ---
-import { buildProps } from '@puik/utils/props'
+import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes } from 'vue'
 import type <%= h.changeCase.pascal(name) %> from './<%= h.changeCase.param(name) %>.vue'
 

@@ -1,7 +1,7 @@
 ---
 to: packages/components/<%= h.changeCase.param(name) %>/index.ts
 ---
-import { withInstall } from '@puik/utils/with-install'
+import { withInstall } from '@puik/utils'
 
 import <%= h.changeCase.pascal(name) %> from './src/<%= h.changeCase.param(name) %>.vue'
 
