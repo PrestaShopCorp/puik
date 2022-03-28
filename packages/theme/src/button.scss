@@ -1,5 +1,5 @@
 .puik-button {
-  @apply rounded font-primary font-semibold transition cursor-pointer;
+  @apply rounded font-primary font-semibold transition cursor-pointer py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
   &--sm {
     @apply py-1 px-4 text-xs leading-4 tracking-[0.063em] font-bold;
     .puik-button__left-icon {
@@ -10,7 +10,6 @@
     }
   }
   &--md {
-    @apply py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
     .puik-button__left-icon {
       @apply mr-2;
     }
