@@ -1,5 +1,9 @@
-import { PuikBadge } from '@puik/components/badge'
-
+import { PuikButton } from '@puik/components/button'
+import { PuikConfigProvider } from '@puik/components/config-provider'
 import type { Plugin } from 'vue'
 
-export default [PuikBadge] as Plugin[]
+// prettier-ignore
+export default [
+  PuikButton,
+  PuikConfigProvider,
+] as Plugin[]

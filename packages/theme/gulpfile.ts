@@ -6,7 +6,8 @@ import dartSass from 'sass'
 import postcss from 'gulp-postcss'
 import cleanCSS from 'gulp-clean-css'
 import rename from 'gulp-rename'
-import { puikOutput } from '../../build/utils/paths'
+import consola from 'consola'
+import { puikOutput } from '@puik/build'
 
 const distFolder = path.resolve(__dirname, 'dist')
 const distBundle = path.resolve(puikOutput, 'theme')
@@ -24,7 +25,7 @@ function buildTheme() {
     .pipe(postcss())
     .pipe(
       cleanCSS({}, (details) => {
-        console.log(
+        consola.success(
           `${chalk.cyan(details.name)}: ${chalk.yellow(
             details.stats.originalSize / 1000
           )} KB -> ${chalk.green(details.stats.minifiedSize / 1000)} KB`

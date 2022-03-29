@@ -1,0 +1,98 @@
+.puik-button {
+  @apply rounded font-primary font-semibold transition cursor-pointer py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
+  &--sm {
+    @apply py-1 px-4 text-xs leading-4 tracking-[0.063em] font-bold;
+    .puik-button__left-icon {
+      @apply mr-2 text-xs;
+    }
+    .puik-button__right-icon {
+      @apply ml-2 text-xs;
+    }
+  }
+  &--md {
+    .puik-button__left-icon {
+      @apply mr-2;
+    }
+    .puik-button__right-icon {
+      @apply ml-2;
+    }
+  }
+  &--lg {
+    @apply py-3 px-6 text-base leading-6 tracking-[0.047em] font-semibold;
+    .puik-button__left-icon {
+      @apply mr-3;
+    }
+    .puik-button__right-icon {
+      @apply ml-3;
+    }
+  }
+  &--fluid {
+    @apply w-full;
+  }
+  &:focus {
+    @apply outline-none ring ring-offset-2 ring-focus-main;
+  }
+  &:disabled,
+  &--disabled {
+    @apply pointer-events-none cursor-default;
+  }
+  &--primary {
+    @apply bg-primary-purple-500 text-white;
+    &:hover {
+      @apply bg-primary-purple-700;
+    }
+    &:active {
+      @apply bg-primary-purple-900;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply bg-purple-100;
+    }
+    &.puik-button--sm {
+      @apply py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
+    }
+  }
+  &--secondary {
+    @apply text-primary-purple-500 border border-primary-purple-500;
+    &:hover {
+      @apply bg-primary-purple-500 text-white;
+    }
+    &:active {
+      @apply bg-primary-purple-900 text-white border-primary-purple-900;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply text-purple-100 border-primary-purple-100;
+    }
+  }
+  &--tertiary {
+    @apply text-font-main border border-border-main;
+    &:hover {
+      @apply bg-font-50;
+    }
+    &:active {
+      @apply bg-font-100;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply text-font-100 border-font-100;
+    }
+  }
+  &--text {
+    @apply text-font-main;
+    &:hover {
+      @apply bg-font-50;
+    }
+    &:active {
+      @apply bg-font-100;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply text-font-100;
+    }
+  }
+  &__left-icon,
+  &__right-icon {
+    @apply font-materialIcons align-middle leading-none text-base;
+  }
+}

@@ -24,25 +24,26 @@
     "theme/*.css",
     "theme/src/*.scss",
     "es/components/*/style/*",
-    "lib/components/*/style/*",
-    "lib/components/**/*",
-    "es/components/**/*"
+    "lib/components/*/style/*"
   ],
   "peerDependencies": {
     "vue": "^3.2.0"
   },
   "dependencies": {
-    "@popperjs/core": "^2.10.2",
-    "@vueuse/core": "^7.3.0",
-    "async-validator": "^4.0.7",
-    "dayjs": "^1.10.7",
+    "@vueuse/core": "^8.0.1",
     "lodash": "^4.17.21",
-    "memoize-one": "^6.0.0",
-    "normalize-wheel-es": "^1.1.1"
+    "lodash-es": "^4.17.21",
+    "lodash-unified": "^1.0.2"
   },
-  "web-types": "web-types.json",
+  "devDependencies": {
+    "@types/lodash": "^4.14.179",
+    "@types/lodash-es": "^4.17.6",
+    "@types/node": "*",
+    "vue-router": "^4.0.14"
+  },
   "vetur": {
     "tags": "tags.json",
     "attributes": "attributes.json"
-  }
+  },
+  "web-types": "web-types.json"
 }

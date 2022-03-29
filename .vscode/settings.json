@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["Element Plus", "element-plus"],
+  "cSpell.words": ["Puik", "puik"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true

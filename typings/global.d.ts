@@ -1,7 +1,8 @@
 // GlobalComponents for Volar
 declare module 'vue' {
   export interface GlobalComponents {
-    PuikBadge: typeof import('puik')['PuikBadge']
+    PuikButton: typeof import('puik')['PuikButton']
+    PuikConfigProvider: typeof import('puik')['PuikConfigProvider']
   }
 }
 

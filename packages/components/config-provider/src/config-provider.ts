@@ -1,9 +1,12 @@
 import { defineComponent, renderSlot } from 'vue'
-import { buildProps, definePropType } from '@puik/utils/props'
-import { useLocaleProps, provideLocale, provideGlobalConfig } from '@puik/hooks'
+import { buildProps, definePropType } from '@puik/utils'
+import { provideGlobalConfig } from '@puik/hooks'
+import type { Language } from '@puik/locale'
 
 export const configProviderProps = buildProps({
-  ...useLocaleProps,
+  locale: {
+    type: definePropType<Language>(Object),
+  },
 
   size: {
     type: String,
@@ -20,7 +23,6 @@ export default defineComponent({
   props: configProviderProps,
 
   setup(props, { slots }) {
-    provideLocale()
     const config = provideGlobalConfig(props)
     return () => renderSlot(slots, 'default', { config: config?.value })
   },

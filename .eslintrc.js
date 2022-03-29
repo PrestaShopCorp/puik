@@ -109,7 +109,7 @@ module.exports = defineConfig({
             position: 'before',
           },
           {
-            pattern: '@element-plus/**',
+            pattern: '@puik/**',
             group: 'internal',
           },
         ],
