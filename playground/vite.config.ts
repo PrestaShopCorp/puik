@@ -12,9 +12,6 @@ export default defineConfig({
       plugins: [tailwindcss('../packages/theme/tailwind.config.js')],
     },
   },
-  optimizeDeps: {
-    include: ['@puik/components'],
-  },
   resolve: {
     preserveSymlinks: true,
     alias: [
