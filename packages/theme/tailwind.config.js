@@ -67,7 +67,7 @@ module.exports = {
       fontFamily: {
         primary: ['Inter', 'Verdana', 'Arial', 'sans-serif'],
         secondary: ['Roboto', 'Verdana', 'Arial', 'sans-serif'],
-        materialIcons: ['Material Icons'],
+        materialIcons: ['Material Icons Round'],
       },
       fontSize: {
         '4xl': '2rem',

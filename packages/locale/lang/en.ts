@@ -1,4 +1,9 @@
 export default {
   name: 'en',
-  puik: {},
+  puik: {
+    alert: {
+      viewMore: 'View more',
+      viewLess: 'View less',
+    },
+  },
 }
