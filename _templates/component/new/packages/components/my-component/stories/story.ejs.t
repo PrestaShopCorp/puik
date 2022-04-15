@@ -13,7 +13,9 @@ const Template: Story = (args: Args) => ({
   components: {
     <%= h.changeCase.pascal(name) %>,
   },
-  props: Object.keys(args),
+  setup() {
+    return { args }
+  },
   template: '<<%= h.changeCase.param(name) %>></<%= h.changeCase.param(name) %>>',
 })
 

@@ -64,8 +64,8 @@ const icon = computed(() => ICONS[props.variant])
 
 const viewMore = computed(() => {
   if (
-    (props.description && props?.description?.length > 50) ||
-    alertDescription.value?.textContent?.length! > 50
+    (props.description && props?.description?.length > 100) ||
+    alertDescription.value?.textContent?.length! > 100
   ) {
     return true
   }
