@@ -64,7 +64,7 @@
     "@pnpm/logger": "4.0.0",
     "@pnpm/types": "^7.10.0",
     "@puik/build": "workspace:^0.0.1",
-    "@storybook/vue3": "^6.4.9",
+    "@storybook/vue3": "^6.4.22",
     "@types/fs-extra": "^9.0.13",
     "@types/gulp": "^4.0.9",
     "@types/jest": "^26.0.24",

@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Docs/VueJs Components" />
+
+# VueJs components
+
+### Prerequisites
+
+- Node.js LTS is required.
+
+### Installation
+
+```sh
+# chose your favorite package manager
+# NPM
+$ npm install puik --save
+
+# Yarn
+$ yarn add puik
+
+# pnpm
+$ pnpm install puik
+```
+
+## Usage
+
+### On demand import (recommended)
+
+Import the vue component and the component css directly into your vue file
+
+```vue
+<script setup>
+import { PuikButton } from 'puik'
+import 'puik/theme/puik-button.css'
+</script>
+
+<template>
+  <puik-button>Example button</puik-button>
+</template>
+```
+
+### Full import
+
+If you don't care about bundle size you can full import the library by following these instructions
+
+Import the vue library and the css directly into your main.js / main.ts
+
+```typescript
+import { createApp } from 'vue'
+import Puik from 'puik'
+import 'puik/theme/index.css'
+import App from './App.vue'
+
+const app = createApp(App)
+
+app.use(Puik)
+app.mount('#app')
+```
