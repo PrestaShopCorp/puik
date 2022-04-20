@@ -1,0 +1,30 @@
+.puik-switch__group {
+  @apply flex items-center;
+  .puik-switch {
+    @apply relative inline-flex items-center h-6 rounded-full w-10 bg-font-500;
+    &:focus {
+      @apply outline-none ring ring-focus-main ring-offset-1;
+    }
+    &:disabled {
+      @apply bg-font-disabled pointer-events-none;
+    }
+    &--enabled {
+      @apply bg-accentuation-success-500;
+      &:disabled {
+        @apply bg-accentuation-success-100;
+      }
+    }
+    &__screen-readers {
+      @apply sr-only;
+    }
+    &__toggle {
+      @apply inline-block w-4 h-4 transform bg-white rounded-full translate-x-1 transition duration-200 ease-in-out;
+      &--enabled {
+        @apply translate-x-5;
+      }
+    }
+  }
+  .puik-switch__label {
+    @apply ml-2 font-secondary text-sm;
+  }
+}
