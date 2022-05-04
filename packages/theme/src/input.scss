@@ -1,0 +1,48 @@
+.puik-input {
+  @apply flex flex-col;
+  &__wrapper {
+    @apply flex flex-row border border-border-main rounded px-3 font-secondary transition-colors text-font-main;
+    &:hover {
+      @apply border-primary-purple-500;
+    }
+    &--focus {
+      @apply border-primary-purple-500 ring ring-focus-main;
+    }
+    &--success {
+      @apply border-accentuation-success-500;
+    }
+    &--error {
+      @apply border-accentuation-destructive-500;
+    }
+    &--disabled {
+      @apply bg-background-grey text-font-disabled hover:border-border-main cursor-not-allowed;
+    }
+  }
+  &__field {
+    @apply w-full py-2 outline-none placeholder:text-font-500 disabled:placeholder:text-font-500 disabled:cursor-not-allowed;
+    &[type='number'] {
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        @apply opacity-100;
+      }
+    }
+  }
+  &__help-text {
+    @apply flex text-xs text-font-500 font-secondary font-normal mt-1;
+    &__error {
+      @apply flex text-red-500;
+      &__icon {
+        @apply font-materialIcons mr-1;
+      }
+    }
+  }
+  &__reveal-password {
+    @apply flex items-center font-materialIcons text-font-500 cursor-pointer select-none;
+  }
+  &__prepend {
+    @apply flex items-center text-font-500 font-secondary pr-2;
+  }
+  &__append {
+    @apply flex items-center text-font-500 font-secondary pl-2;
+  }
+}
