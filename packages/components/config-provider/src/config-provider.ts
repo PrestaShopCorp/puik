@@ -5,7 +5,6 @@ import { provideGlobalConfig } from '@puik/hooks'
 export const configProviderProps = buildProps({
   locale: {
     type: String,
-    values: ['en', 'fr', 'es', 'it', 'de', 'nl', 'pl', 'pt'],
   },
 
   size: {
