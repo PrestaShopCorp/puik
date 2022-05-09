@@ -27,7 +27,7 @@ export const alertProps = buildProps({
     values: alertVariants,
     default: 'success',
   },
-  closable: {
+  disableBorders: {
     type: Boolean,
     default: false,
   },
@@ -41,7 +41,6 @@ export const alertProps = buildProps({
 export type AlertProps = ExtractPropTypes<typeof alertProps>
 
 export const alertEmits = {
-  close: (event: Event) => event instanceof Event,
   click: (event: Event) => event instanceof Event,
 }
 
