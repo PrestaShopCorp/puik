@@ -1,4 +1,9 @@
 export default {
   name: 'en',
-  puik: {},
+  puik: {
+    switch: {
+      enable: 'Enable',
+      disable: 'Disable',
+    },
+  },
 }

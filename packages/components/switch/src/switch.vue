@@ -7,7 +7,13 @@
         class="puik-switch"
         :disabled="disabled"
       >
-        <span class="puik-switch__screen-readers">Enable notifications</span>
+        <span v-if="screenReaderText" class="puik-switch__screen-readers">
+          {{
+            `${
+              value ? t('puik.switch.disable') : t('puik.switch.enable')
+            } ${screenReaderText}`
+          }}
+        </span>
         <span
           :class="{ 'puik-switch__toggle--enabled': value }"
           class="puik-switch__toggle"
@@ -21,8 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
+import { useLocale } from '@puik/hooks'
 import { switchEmits, switchProps } from './switch'
 defineOptions({
   name: 'Switch',
@@ -30,6 +37,7 @@ defineOptions({
 
 const props = defineProps(switchProps)
 const emit = defineEmits(switchEmits)
+const { t } = useLocale()
 
 const value = computed({
   get() {

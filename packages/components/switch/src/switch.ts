@@ -18,6 +18,11 @@ export const switchProps = buildProps({
     required: false,
     default: false,
   },
+  screenReaderText: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type SwitchProps = ExtractPropTypes<typeof switchProps>
