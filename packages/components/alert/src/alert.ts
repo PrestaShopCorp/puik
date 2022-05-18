@@ -36,6 +36,12 @@ export const alertProps = buildProps({
     required: false,
     default: undefined,
   },
+  ariaLive: {
+    type: String,
+    values: ['polite', 'assertive'],
+    required: false,
+    default: 'polite',
+  },
 } as const)
 
 export type AlertProps = ExtractPropTypes<typeof alertProps>

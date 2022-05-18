@@ -5,6 +5,7 @@
       `puik-alert--${variant}`,
       { 'puik-alert--no-borders': disableBorders },
     ]"
+    :aria-live="ariaLive"
   >
     <div class="puik-alert__content">
       <span class="puik-alert__icon">{{ icon }}</span>
@@ -32,13 +33,6 @@ defineOptions({
 
 const props = defineProps(alertProps)
 const emit = defineEmits(alertEmits)
-
-const icons = {
-  success: 'check_circle',
-  warning: 'warning',
-  danger: 'error',
-  info: 'info',
-}
 
 const icon = computed(() => ICONS[props.variant])
 
