@@ -10,18 +10,37 @@ export default {
       control: 'select',
       description: 'Set the button variant',
       options: buttonVariants,
+      table: {
+        defaultValue: {
+          summary: 'primary',
+        },
+      },
     },
     size: {
       control: 'select',
       description: 'Set the button size',
-      defaultValue: 'md',
       options: buttonSizes,
+      table: {
+        defaultValue: {
+          summary: 'md',
+        },
+      },
     },
     fluid: {
       description: 'Set the button as fluid',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
     },
     disabled: {
       description: 'Set the button as disabled',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
     },
     leftIcon: {
       description: 'Set the button left icon',
