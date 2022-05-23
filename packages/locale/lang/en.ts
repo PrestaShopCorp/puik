@@ -1,4 +1,9 @@
 export default {
   name: 'en',
-  puik: {},
+  puik: {
+    input: {
+      increase: 'Increase',
+      decrease: 'Decrease',
+    },
+  },
 }

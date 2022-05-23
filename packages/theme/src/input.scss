@@ -1,7 +1,7 @@
 .puik-input {
   @apply flex flex-col;
   &__wrapper {
-    @apply flex flex-row border border-border-main rounded px-3 font-secondary transition-colors text-font-main;
+    @apply flex flex-row border border-border-main rounded font-secondary transition-colors text-font-main;
     &:hover {
       @apply border-primary-purple-500;
     }
@@ -19,15 +19,21 @@
     }
   }
   &__field {
-    @apply w-full py-2 outline-none placeholder:text-font-500 disabled:placeholder:text-font-500 disabled:cursor-not-allowed;
+    @apply w-full py-2 outline-none placeholder:text-font-500 px-3 disabled:placeholder:text-font-500 disabled:cursor-not-allowed;
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
+    }
     &[type='number'] {
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button {
-        @apply opacity-100;
+        @apply appearance-none;
       }
     }
+    .puik-input__prepend ~ & {
+      @apply pl-0;
+    }
   }
-  &__help-text {
+  &__hint {
     @apply flex text-xs text-font-500 font-secondary font-normal mt-1;
     &__error {
       @apply flex text-red-500;
@@ -40,9 +46,18 @@
     @apply flex items-center font-materialIcons text-font-500 cursor-pointer select-none;
   }
   &__prepend {
-    @apply flex items-center text-font-500 font-secondary pr-2;
+    @apply flex items-center text-font-500 font-secondary pl-3 pr-2;
   }
   &__append {
-    @apply flex items-center text-font-500 font-secondary pl-2;
+    @apply flex items-center text-font-500 font-secondary pr-3 pl-2;
+  }
+  &__controls {
+    @apply cursor-pointer flex flex-col items-center space-y-0.5 py-0.5 select-none;
+    &__increment {
+      @apply w-6 bg-background-grey flex flex-1 items-center justify-center rounded outline-none focus:ring focus:ring-focus-main disabled:bg-white;
+      &__icon {
+        @apply text-xs font-materialIcons text-font-500 disabled:text-font-disabled;
+      }
+    }
   }
 }
