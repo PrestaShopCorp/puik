@@ -43,7 +43,7 @@
     }
   }
   &__reveal-password {
-    @apply flex items-center font-materialIcons text-font-500 cursor-pointer select-none;
+    @apply flex items-center font-materialIcons text-font-500 cursor-pointer select-none pl-3 pr-2;
   }
   &__prepend {
     @apply flex items-center text-font-500 font-secondary pl-3 pr-2;
@@ -53,7 +53,8 @@
   }
   &__controls {
     @apply cursor-pointer flex flex-col items-center space-y-0.5 py-0.5 select-none;
-    &__increment {
+    &__increment,
+    &__decrement {
       @apply w-6 bg-background-grey flex flex-1 items-center justify-center rounded outline-none focus:ring focus:ring-focus-main disabled:bg-white;
       &__icon {
         @apply text-xs font-materialIcons text-font-500 disabled:text-font-disabled;

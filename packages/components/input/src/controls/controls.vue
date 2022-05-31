@@ -11,12 +11,12 @@
     </button>
     <button
       type="button"
-      class="puik-input__controls__increment"
+      class="puik-input__controls__decrement"
       :disabled="disabled"
       :aria-label="t('puik.input.decrease')"
       @click="$emit('decrease')"
     >
-      <span class="puik-input__controls__increment__icon">arrow_drop_down</span>
+      <span class="puik-input__controls__decrement__icon">arrow_drop_down</span>
     </button>
   </div>
 </template>

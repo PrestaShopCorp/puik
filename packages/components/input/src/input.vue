@@ -36,7 +36,10 @@
       ></puik-input-controls>
     </div>
     <div v-if="$slots.hint || $slots.error || error" class="puik-input__hint">
-      <span v-show="!hideHint" v-if="$slots.hint && !error && !$slots.error"
+      <span
+        v-show="!hideHint"
+        v-if="$slots.hint && !error && !$slots.error"
+        class="puik-input__hint__text"
         ><slot name="hint"></slot
       ></span>
       <span v-if="error || $slots.error" class="puik-input__hint__error"
@@ -46,9 +49,8 @@
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, useSlots } from 'vue'
 import { isNumber } from '@vueuse/core'
 import PuikInputControls from './controls/controls.vue'
 import { inputEmits, inputProps } from './input'
@@ -57,6 +59,7 @@ defineOptions({
 })
 const props = defineProps(inputProps)
 const emit = defineEmits(inputEmits)
+const slots = useSlots()
 const isFocus = ref(false)
 const passwordIsVisible = ref(false)
 
@@ -64,7 +67,7 @@ const inputClasses = computed(() => ({
   'puik-input__wrapper--focus': isFocus.value,
   'puik-input__wrapper--disabled': props.disabled,
   'puik-input__wrapper--success': props.success,
-  'puik-input__wrapper--error': props.error,
+  'puik-input__wrapper--error': props.error || slots.error,
 }))
 
 const handleFocus = () => (isFocus.value = true)

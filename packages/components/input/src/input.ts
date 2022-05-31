@@ -74,11 +74,6 @@ export const inputProps = buildProps({
     required: false,
     default: false,
   },
-  leftIcon: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
   error: {
     type: String,
     required: false,
