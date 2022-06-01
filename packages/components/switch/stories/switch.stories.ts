@@ -52,6 +52,18 @@ export const Label: Story = () => ({
     '<puik-switch v-model="enabled" label="Switch Label"></puik-switch>',
 })
 
+export const LabelRight: Story = () => ({
+  components: {
+    PuikSwitch,
+  },
+  setup() {
+    const enabled = ref(false)
+    return { enabled }
+  },
+  template:
+    '<puik-switch v-model="enabled" labelRight="Switch Label Right"></puik-switch>',
+})
+
 export const LabelBySlot: Story = () => ({
   components: {
     PuikSwitch,
@@ -61,6 +73,18 @@ export const LabelBySlot: Story = () => ({
     return { enabled }
   },
   template: '<puik-switch v-model="enabled">Switch Label Slot</puik-switch>',
+})
+
+export const LabelRightBySlot: Story = () => ({
+  components: {
+    PuikSwitch,
+  },
+  setup() {
+    const enabled = ref(false)
+    return { enabled }
+  },
+  template:
+    '<puik-switch v-model="enabled"><template #labelRight>Switch Label Right Slot</template></puik-switch>',
 })
 
 export const Disabled: Story = () => ({

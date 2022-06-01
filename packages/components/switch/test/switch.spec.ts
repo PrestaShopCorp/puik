@@ -5,7 +5,9 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 describe('Switch tests', () => {
   let wrapper: VueWrapper<any>
-  const findLabel = () => wrapper.find('.puik-switch__label')
+  const findLeftLabel = () => wrapper.find('.puik-switch__label--left')
+  const findRightLabel = () => wrapper.find('.puik-switch__label--right')
+  const findScreenReader = () => wrapper.find('.puik-switch__screen-readers')
   const findSwitch = () => wrapper.find('.puik-switch')
   const factory = (
     propsData: Record<string, any> = {},
@@ -23,10 +25,24 @@ describe('Switch tests', () => {
     expect(wrapper).toBeTruthy()
   })
 
-  it('should have a label', () => {
+  it('should have a label on the left of the Switch', () => {
     const label = 'Switch label'
     factory({ label })
-    expect(findLabel().text()).toBe(label)
+    expect(findLeftLabel().text()).toBe(label)
+  })
+
+  it('should have a label on the right of the Switch', () => {
+    const labelRight = 'Switch label'
+    factory({ labelRight })
+    expect(findRightLabel().text()).toBe(labelRight)
+  })
+
+  it('should have a screen reader text', async () => {
+    const screenReaderText = 'Switch'
+    factory({ screenReaderText })
+    expect(findScreenReader().text()).toBe(`Enable ${screenReaderText}`)
+    await wrapper.setProps({ modelValue: true })
+    expect(findScreenReader().text()).toBe(`Disable ${screenReaderText}`)
   })
 
   it('should be disabled', () => {

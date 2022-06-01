@@ -1,7 +1,7 @@
 .puik-switch__group {
   @apply flex items-center;
   .puik-switch {
-    @apply relative inline-flex items-center h-6 rounded-full w-10 bg-font-500;
+    @apply relative inline-flex items-center h-5 rounded-full w-9 bg-font-500;
     &:focus {
       @apply outline-none ring ring-focus-main ring-offset-1;
     }
@@ -18,13 +18,19 @@
       @apply sr-only;
     }
     &__toggle {
-      @apply inline-block w-4 h-4 transform bg-white rounded-full translate-x-1 transition duration-200 ease-in-out;
+      @apply inline-block w-4 h-4 transform bg-white rounded-full translate-x-0.5 transition duration-200 ease-in-out;
       &--enabled {
-        @apply translate-x-5;
+        @apply translate-x-[18px];
       }
     }
   }
   .puik-switch__label {
-    @apply ml-2 font-secondary text-sm;
+    @apply font-secondary text-sm;
+    &--right {
+      @apply ml-2;
+    }
+    &--left {
+      @apply mr-2;
+    }
   }
 }

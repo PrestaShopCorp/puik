@@ -8,6 +8,11 @@ export const switchProps = buildProps({
     required: false,
     default: undefined,
   },
+  labelRight: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   disabled: {
     type: Boolean,
     required: false,

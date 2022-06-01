@@ -1,26 +1,31 @@
 <template>
   <SwitchGroup>
     <div class="puik-switch__group">
+      <SwitchLabel
+        v-if="$slots.default || label"
+        class="puik-switch__label puik-switch__label--left"
+        ><slot>{{ label }}</slot></SwitchLabel
+      >
       <Switch
         v-model="value"
-        :class="{ 'puik-switch--enabled': value }"
+        :class="{
+          'puik-switch--enabled': value,
+        }"
         class="puik-switch"
         :disabled="disabled"
       >
         <span v-if="screenReaderText" class="puik-switch__screen-readers">
-          {{
-            `${
-              value ? t('puik.switch.disable') : t('puik.switch.enable')
-            } ${screenReaderText}`
-          }}
+          {{ screenReader }}
         </span>
         <span
           :class="{ 'puik-switch__toggle--enabled': value }"
           class="puik-switch__toggle"
         />
       </Switch>
-      <SwitchLabel v-if="$slots.default || label" class="puik-switch__label"
-        ><slot>{{ label }}</slot></SwitchLabel
+      <SwitchLabel
+        v-if="$slots.labelRight || labelRight"
+        class="puik-switch__label puik-switch__label--right"
+        ><slot name="labelRight">{{ labelRight }}</slot></SwitchLabel
       >
     </div>
   </SwitchGroup>
@@ -38,6 +43,13 @@ defineOptions({
 const props = defineProps(switchProps)
 const emit = defineEmits(switchEmits)
 const { t } = useLocale()
+
+const screenReader = computed(
+  () =>
+    `${value.value ? t('puik.switch.disable') : t('puik.switch.enable')} ${
+      props.screenReaderText
+    }`
+)
 
 const value = computed({
   get() {
