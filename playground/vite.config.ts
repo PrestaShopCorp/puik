@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [vue(), DefineOptions()],
   css: {
     postcss: {
-      plugins: [tailwindcss('../packages/theme/tailwind.config.js')],
+      plugins: [tailwindcss()],
     },
   },
   resolve: {
