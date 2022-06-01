@@ -10,6 +10,7 @@
   <p align="center">
     The <b>P</b>restaShop <b>UI</b> <b>K</b>it
   </p>
+  <a href="https://main--6267e986619a13004a943d93.chromatic.com/">Documentation</a>
 </div>
 
 ## About The Project
