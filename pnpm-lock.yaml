@@ -6,6 +6,7 @@ importers:
     specifiers:
       '@commitlint/cli': ^16.2.1
       '@commitlint/config-conventional': ^16.2.1
+      '@headlessui/vue': ^1.5.0
       '@pnpm/find-workspace-packages': ^3.1.42
       '@pnpm/logger': 4.0.0
       '@pnpm/types': ^7.10.0
@@ -61,6 +62,7 @@ importers:
       vue-router: ^4.0.14
       vue-tsc: ^0.33.1
     dependencies:
+      '@headlessui/vue': 1.5.0_vue@3.2.31
       '@puik/components': link:packages/components
       '@puik/hooks': link:packages/hooks
       '@puik/locale': link:packages/locale
@@ -2074,6 +2076,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@headlessui/vue/1.5.0_vue@3.2.31:
+    resolution: {integrity: sha512-jAp6XYpqdEv32xhszaj5ejvjaX5qhu20sCbxu7lplePEfZL+4ffabivJBBTZAiPWczqAXmnZWNWG5DOyqjRa4w==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      vue: 3.2.31
+    dev: false
 
   /@humanwhocodes/config-array/0.9.2:
     resolution: {integrity: sha512-UXOuFCGcwciWckOpmfKDq/GyhlTf9pN/BzG//x8p8zTOFEcGuA68ANXheFS0AGvy3qgZqLBUkMs7hqzqCKOVwA==}
