@@ -7,6 +7,7 @@ describe('Tooltip tests', () => {
   let wrapper: VueWrapper<any>
   const findTitle = () => wrapper.find('.puik-tooltip__tip__title')
   const findDescription = () => wrapper.find('.puik-tooltip__tip__description')
+  const findToolTip = () => wrapper.find('.puik-tooltip__tip')
 
   const factory = (
     propsData: Record<string, any> = {},
@@ -42,8 +43,8 @@ describe('Tooltip tests', () => {
     expect(findDescription().text()).toBe(description)
   })
 
-  it('should be displayed on the right', () => {
-    factory({ position: 'right' })
-    expect(wrapper.find('.puik-tooltip--right').exists()).toBeTruthy()
+  it('should be displayed on the right', async () => {
+    await factory({ position: 'right' })
+    expect(findToolTip().attributes('data-popper-placement')).toBe('right')
   })
 })

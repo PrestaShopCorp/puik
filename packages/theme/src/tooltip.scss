@@ -1,64 +1,13 @@
 .puik-tooltip {
-  @apply relative inline-flex items-center;
+  &:focus,
   &:hover {
     .puik-tooltip__tip {
       @apply opacity-100;
     }
   }
 
-  &--top,
-  &--bottom {
-    @apply flex-col;
-    .puik-tooltip__tip__arrow {
-      @apply flex self-center;
-    }
-  }
-
-  &--left,
-  &--right {
-    .puik-tooltip__tip__arrow {
-      @apply top-[50%] bottom-[50%] -translate-y-[50%];
-    }
-  }
-
-  &--top {
-    .puik-tooltip__tip {
-      @apply bottom-0 mb-8;
-      .puik-tooltip__tip__arrow {
-        @apply -bottom-1;
-      }
-    }
-  }
-
-  &--bottom {
-    .puik-tooltip__tip {
-      @apply top-0 mt-8;
-      .puik-tooltip__tip__arrow {
-        @apply -top-1;
-      }
-    }
-  }
-
-  &--left {
-    .puik-tooltip__tip {
-      @apply right-6;
-      .puik-tooltip__tip__arrow {
-        @apply -right-1;
-      }
-    }
-  }
-
-  &--right {
-    .puik-tooltip__tip {
-      @apply left-6;
-      .puik-tooltip__tip__arrow {
-        @apply -left-1;
-      }
-    }
-  }
-
   &__tip {
-    @apply absolute bg-font-main text-white rounded px-3 py-2 font-secondary flex flex-col opacity-0 transition pointer-events-none w-[200px];
+    @apply absolute bg-font-main text-white rounded px-3 py-2 font-secondary flex flex-col opacity-0 pointer-events-none w-[200px];
     &__title {
       @apply relative font-bold mb-1;
     }
@@ -66,8 +15,30 @@
       @apply relative;
     }
 
+    &[data-popper-placement^='top'] > &__arrow {
+      bottom: -6px;
+    }
+    &[data-popper-placement^='bottom'] > &__arrow {
+      top: -6px;
+    }
+    &[data-popper-placement^='left'] > &__arrow {
+      right: -6px;
+    }
+    &[data-popper-placement^='right'] > &__arrow {
+      left: -6px;
+    }
+
     &__arrow {
-      @apply absolute w-4 h-4 rotate-45 bg-font-main rounded-sm;
+      visibility: hidden;
+    }
+    &__arrow::before {
+      @apply visible rotate-45;
+      content: '';
+    }
+
+    &__arrow,
+    &__arrow::before {
+      @apply absolute w-4 h-4 bg-inherit rounded-sm;
     }
   }
 
