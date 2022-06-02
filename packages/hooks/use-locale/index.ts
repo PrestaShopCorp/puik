@@ -1,6 +1,6 @@
-import { computed, ref, unref, isRef } from 'vue'
+import { computed, unref } from 'vue'
 import { get } from 'lodash-unified'
-import English from '@puik/locale/lang/en'
+import { locales } from '@puik/locale'
 import { useGlobalConfig } from '../use-global-config'
 import type { MaybeRef } from '@vueuse/core'
 import type { Ref } from 'vue'
@@ -29,19 +29,18 @@ export const translate = (
     (_, key) => `${option?.[key] ?? `{${key}}`}`
   )
 
-export const buildLocaleContext = (
-  locale: MaybeRef<Language>
-): LocaleContext => {
+export const buildLocaleContext = (locale: Ref<Language>): LocaleContext => {
   const lang = computed(() => unref(locale).name)
-  const localeRef = isRef(locale) ? locale : ref(locale)
   return {
     lang,
-    locale: localeRef,
+    locale,
     t: buildTranslator(locale),
   }
 }
 
 export const useLocale = () => {
   const locale = useGlobalConfig('locale')
-  return buildLocaleContext(computed(() => locale.value || English))
+  return buildLocaleContext(
+    computed(() => locales[locale.value || 'en'] ?? locales['en'])
+  )
 }

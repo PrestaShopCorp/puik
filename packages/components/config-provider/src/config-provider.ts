@@ -1,11 +1,10 @@
 import { defineComponent, renderSlot } from 'vue'
-import { buildProps, definePropType } from '@puik/utils'
+import { buildProps } from '@puik/utils'
 import { provideGlobalConfig } from '@puik/hooks'
-import type { Language } from '@puik/locale'
 
 export const configProviderProps = buildProps({
   locale: {
-    type: definePropType<Language>(Object),
+    type: String,
   },
 
   size: {
