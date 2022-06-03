@@ -1,0 +1,51 @@
+.puik-tooltip {
+  &:focus,
+  &:hover {
+    .puik-tooltip__tip {
+      @apply opacity-100;
+    }
+  }
+
+  &__tip {
+    @apply absolute bg-font-main text-white rounded px-3 py-2 font-secondary flex flex-col opacity-0 pointer-events-none w-[200px] transition-opacity;
+    &:hover {
+      @apply opacity-100;
+    }
+    &__title {
+      @apply relative font-bold mb-1;
+    }
+    &__description {
+      @apply relative;
+    }
+
+    &[data-popper-placement^='top'] > &__arrow {
+      @apply -bottom-1.5;
+    }
+    &[data-popper-placement^='bottom'] > &__arrow {
+      @apply -top-1.5;
+    }
+    &[data-popper-placement^='left'] > &__arrow {
+      @apply -right-1.5;
+    }
+    &[data-popper-placement^='right'] > &__arrow {
+      @apply -left-1.5;
+    }
+
+    &__arrow {
+      visibility: hidden;
+    }
+    &__arrow::before {
+      @apply visible rotate-45;
+      content: '';
+    }
+
+    &__arrow,
+    &__arrow::before {
+      @apply absolute w-4 h-4 bg-inherit rounded-sm;
+    }
+  }
+
+  &__icon {
+    @apply font-materialIcons text-font-500 hover:text-font-main text-base transition-colors cursor-pointer;
+  }
+}
