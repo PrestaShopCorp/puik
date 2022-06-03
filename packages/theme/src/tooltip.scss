@@ -7,7 +7,10 @@
   }
 
   &__tip {
-    @apply absolute bg-font-main text-white rounded px-3 py-2 font-secondary flex flex-col opacity-0 pointer-events-none w-[200px];
+    @apply absolute bg-font-main text-white rounded px-3 py-2 font-secondary flex flex-col opacity-0 pointer-events-none w-[200px] transition-opacity;
+    &:hover {
+      @apply opacity-100;
+    }
     &__title {
       @apply relative font-bold mb-1;
     }
@@ -16,16 +19,16 @@
     }
 
     &[data-popper-placement^='top'] > &__arrow {
-      bottom: -6px;
+      @apply -bottom-1.5;
     }
     &[data-popper-placement^='bottom'] > &__arrow {
-      top: -6px;
+      @apply -top-1.5;
     }
     &[data-popper-placement^='left'] > &__arrow {
-      right: -6px;
+      @apply -right-1.5;
     }
     &[data-popper-placement^='right'] > &__arrow {
-      left: -6px;
+      @apply -left-1.5;
     }
 
     &__arrow {

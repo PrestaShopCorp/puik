@@ -1,7 +1,12 @@
 <template>
-  <div class="puik-tooltip" tabindex="0" @mouseover="updateTooltip">
+  <div
+    class="puik-tooltip"
+    tabindex="0"
+    :aria-describedby="id"
+    @mouseover="updateTooltip"
+  >
     <span ref="icon" class="puik-tooltip__icon"> help_outline </span>
-    <div ref="tooltip" class="puik-tooltip__tip" role="tooltip">
+    <div :id="id" ref="tooltip" class="puik-tooltip__tip" role="tooltip">
       <span v-if="$slots.title || title" class="puik-tooltip__tip__title"
         ><slot name="title">{{ title }}</slot></span
       >
@@ -18,6 +23,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { createPopper } from '@popperjs/core'
+import { generateId } from '@puik/utils'
 import { tooltipProps } from './tooltip'
 import type { Instance as PopperInstance } from '@popperjs/core'
 defineOptions({
@@ -27,6 +33,7 @@ defineOptions({
 const icon = ref<HTMLElement | null>(null)
 const tooltip = ref<HTMLElement | null>(null)
 let popperInstance: PopperInstance | null = null
+const id = `puik-tooltip-${generateId()}`
 
 const props = defineProps(tooltipProps)
 
