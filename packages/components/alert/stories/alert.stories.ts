@@ -152,7 +152,7 @@ export const Warning: Story = () => ({
   template: `
     <div class="flex flex-col space-y-4">
       <puik-alert variant="warning" title="Title">This a warning alert with a title and a description.</puik-alert>
-      <puik-alert title="Title" variant="warning" disableBorders="true">This a warning alert with disabled borders</puik-alert>
+      <puik-alert title="Title" variant="warning" :disableBorders="true">This a warning alert with disabled borders</puik-alert>
       <puik-alert variant="warning">This a warning alert with only a description.</puik-alert>
       <puik-alert variant="warning" title="Title" buttonLabel="Button">This a warning alert with a title and a description and a button.</puik-alert>
       <puik-alert variant="warning" buttonLabel="Button">This a warning alert with a description and a button.</puik-alert>
@@ -199,7 +199,7 @@ export const Info: Story = () => ({
   template: `
     <div class="flex flex-col space-y-4">
      <puik-alert variant="info" title="Title">This a info alert with a title and a description.</puik-alert>
-     <puik-alert variant="info" title="Title" disableBorders="true">This a info alert with disabled borders</puik-alert>
+     <puik-alert variant="info" title="Title" :disableBorders="true">This a info alert with disabled borders</puik-alert>
      <puik-alert variant="info">This a info alert with only a description.</puik-alert>
      <puik-alert variant="info" title="Title" buttonLabel="Button">This a info alert with a title and a description and a button.</puik-alert>
      <puik-alert variant="info" buttonLabel="Button">This a info alert with a description and a button.</puik-alert>
@@ -246,7 +246,7 @@ export const Danger: Story = () => ({
   template: `
     <div class="flex flex-col space-y-4">
      <puik-alert variant="danger" title="Title">This a danger alert with a title and a description.</puik-alert>
-     <puik-alert variant="danger" title="Title" disableBorders="true">This a danger alert with disabled borders</puik-alert>
+     <puik-alert variant="danger" title="Title" :disableBorders="true">This a danger alert with disabled borders</puik-alert>
      <puik-alert variant="danger">This a danger alert with only a description.</puik-alert>
      <puik-alert variant="danger" title="Title" buttonLabel="Button">This a danger alert with a title and a description and a button.</puik-alert>
      <puik-alert variant="danger" buttonLabel="Button">This a danger alert with a description and a button.</puik-alert>
