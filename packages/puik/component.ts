@@ -1,3 +1,4 @@
+import { PuikLabel } from '@puik/components/label'
 import { PuikAlert } from '@puik/components/alert'
 import { PuikTooltip } from '@puik/components/tooltip'
 import { PuikSwitch } from '@puik/components/switch'
@@ -7,6 +8,7 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikLabel,
   PuikAlert,
   PuikTooltip,
   PuikSwitch,

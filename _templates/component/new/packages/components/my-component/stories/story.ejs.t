@@ -1,7 +1,7 @@
 ---
 to: packages/components/<%= h.changeCase.param(name) %>/stories/<%= h.changeCase.param(name) %>.stories.ts
 ---
-import <%= h.changeCase.pascal(name) %> from './../src/<%= h.changeCase.param(name) %>.vue'
+import Puik<%= h.changeCase.pascal(name) %> from './../src/<%= h.changeCase.param(name) %>.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
@@ -11,12 +11,12 @@ export default {
 
 const Template: Story = (args: Args) => ({
   components: {
-    <%= h.changeCase.pascal(name) %>,
+    Puik<%= h.changeCase.pascal(name) %>,
   },
   setup() {
     return { args }
   },
-  template: '<<%= h.changeCase.param(name) %>></<%= h.changeCase.param(name) %>>',
+  template: `<puik-<%= h.changeCase.param(name) %>></puik-<%= h.changeCase.param(name) %>>`,
 })
 
 export const Default = Template.bind({})

@@ -5,5 +5,8 @@ export default {
       enable: 'Enable',
       disable: 'Disable',
     },
+    label: {
+      optional: 'Optional',
+    },
   },
 }
