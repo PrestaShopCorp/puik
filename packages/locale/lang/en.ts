@@ -5,5 +5,9 @@ export default {
       increase: 'Increase',
       decrease: 'Decrease',
     },
+    switch: {
+      enable: 'Enable',
+      disable: 'Disable',
+    },
   },
 }
