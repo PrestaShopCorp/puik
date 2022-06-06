@@ -1,19 +1,26 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path')
 module.exports = {
   stories: [
     '../stories/**/*.stories.mdx',
     '../../packages/components/**/*.stories.@(js|jsx|ts|tsx)',
   ],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-a11y',
+  ],
   framework: '@storybook/vue3',
-  webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\.mjs$/,
-      include: /node_modules/,
-      type: 'javascript/auto',
-    })
+  core: { builder: '@storybook/builder-vite' },
+  async viteFinal(config) {
+    config.resolve.dedupe = ['@storybook/client-api']
+    config.css = {
+      postcss: {
+        plugins: [require('tailwindcss')],
+      },
+    }
     // eslint-disable-next-line
-    config.plugins.push(require('unplugin-vue-define-options/webpack')())
-
+    config.plugins.push(require('unplugin-vue-define-options/vite')())
     return config
   },
 }

@@ -10,18 +10,37 @@ export default {
       control: 'select',
       description: 'Set the button variant',
       options: buttonVariants,
+      table: {
+        defaultValue: {
+          summary: 'primary',
+        },
+      },
     },
     size: {
       control: 'select',
       description: 'Set the button size',
-      defaultValue: 'md',
       options: buttonSizes,
+      table: {
+        defaultValue: {
+          summary: 'md',
+        },
+      },
     },
     fluid: {
       description: 'Set the button as fluid',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
     },
     disabled: {
       description: 'Set the button as disabled',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
     },
     leftIcon: {
       description: 'Set the button left icon',
@@ -75,8 +94,10 @@ export const Primary: Story = () => ({
     PuikButton,
   },
   template: `
-    <puik-button size="lg">Primary Button lg</puik-button>
-    <puik-button>Primary Button md</puik-button>
+    <div class="space-x-4">
+      <puik-button size="lg">Primary Button lg</puik-button>
+      <puik-button>Primary Button md</puik-button>
+    </div>
   `,
 })
 
@@ -85,9 +106,11 @@ export const Secondary: Story = () => ({
     PuikButton,
   },
   template: `
-    <puik-button variant="secondary" size="lg">Secondary Button lg</puik-button>
-    <puik-button variant="secondary">Secondary Button md</puik-button>
-    <puik-button variant="secondary" size="sm">Secondary Button sm</puik-button>
+    <div class="space-x-4">
+      <puik-button variant="secondary" size="lg">Secondary Button lg</puik-button>
+      <puik-button variant="secondary">Secondary Button md</puik-button>
+      <puik-button variant="secondary" size="sm">Secondary Button sm</puik-button>
+    </div>
   `,
 })
 
@@ -96,9 +119,11 @@ export const Tertiary: Story = () => ({
     PuikButton,
   },
   template: `
-    <puik-button variant="tertiary" size="lg">Tertiary Button lg</puik-button>
-    <puik-button variant="tertiary">Tertiary Button md</puik-button>
-    <puik-button variant="tertiary" size="sm">Tertiary Button sm</puik-button>
+    <div class="space-x-4">
+      <puik-button variant="tertiary" size="lg">Tertiary Button lg</puik-button>
+      <puik-button variant="tertiary">Tertiary Button md</puik-button>
+      <puik-button variant="tertiary" size="sm">Tertiary Button sm</puik-button>
+    </div>
   `,
 })
 
@@ -107,9 +132,11 @@ export const Text: Story = () => ({
     PuikButton,
   },
   template: `
-    <puik-button variant="text" size="lg">Text Button lg</puik-button>
-    <puik-button variant="text">Text Button md</puik-button>
-    <puik-button variant="text" size="sm">Text Button sm</puik-button>
+    <div class="space-x-4">
+      <puik-button variant="text" size="lg">Text Button lg</puik-button>
+      <puik-button variant="text">Text Button md</puik-button>
+      <puik-button variant="text" size="sm">Text Button sm</puik-button>
+    </div>
   `,
 })
 
@@ -118,10 +145,12 @@ export const Disabled: Story = () => ({
     PuikButton,
   },
   template: `
-    <puik-button disabled>Primary Button</puik-button>
-    <puik-button variant="secondary" disabled>Secondary Button</puik-button>
-    <puik-button variant="tertiary" disabled>Tertiary Button</puik-button>
-    <puik-button variant="text" disabled>Text Button</puik-button>
+    <div class="space-x-4">
+      <puik-button disabled>Primary Button</puik-button>
+      <puik-button variant="secondary" disabled>Secondary Button</puik-button>
+      <puik-button variant="tertiary" disabled>Tertiary Button</puik-button>
+      <puik-button variant="text" disabled>Text Button</puik-button>
+    </div>
   `,
 })
 
@@ -139,8 +168,10 @@ export const WithIcon: Story = () => ({
     PuikButton,
   },
   template: `
-    <puik-button left-icon="shopping_cart">Left Icon</puik-button>
-    <puik-button right-icon="shopping_cart">Right Icon</puik-button>
+    <div class="space-x-4">
+      <puik-button left-icon="shopping_cart">Left Icon</puik-button>
+      <puik-button right-icon="shopping_cart">Right Icon</puik-button>
+    </div>
   `,
 })
 
@@ -152,9 +183,11 @@ export const Variants: Story = (args: Args) => ({
     return { args }
   },
   template: `
+    <div class="space-x-4">
       <puik-button>Primary Button</puik-button>
       <puik-button variant="secondary">Secondary Button</puik-button>
       <puik-button variant="tertiary">Tertiary Button</puik-button>
       <puik-button variant="text">Text Button</puik-button>
+    </div>
   `,
 })

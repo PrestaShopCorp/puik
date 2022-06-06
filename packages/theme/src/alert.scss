@@ -1,0 +1,66 @@
+.puik-alert {
+  @apply relative flex flex-col md:flex-row p-4 border rounded-lg text-font-main items-start;
+  &--no-borders {
+    @apply border-0;
+  }
+  &--success {
+    @apply bg-accentuation-success-50 border border-accentuation-success-500;
+    .puik-alert__icon {
+      @apply text-accentuation-success-500;
+    }
+    .puik-alert__button {
+      @apply border-accentuation-success-500;
+    }
+  }
+  &--warning {
+    @apply bg-accentuation-warning-50 border-accentuation-warning-500;
+    .puik-alert__icon {
+      @apply text-accentuation-warning-500;
+    }
+    .puik-alert__button {
+      @apply border-accentuation-warning-500;
+    }
+  }
+  &--danger {
+    @apply bg-accentuation-destructive-50 border-accentuation-destructive-500;
+    .puik-alert__icon {
+      @apply text-accentuation-destructive-500;
+    }
+    .puik-alert__button {
+      @apply border-accentuation-destructive-500;
+    }
+  }
+  &--info {
+    @apply bg-accentuation-info-50 border-accentuation-info-500;
+    .puik-alert__icon {
+      @apply text-accentuation-info-500;
+    }
+    .puik-alert__button {
+      @apply border-accentuation-info-500;
+    }
+  }
+  &__content {
+    @apply flex flex-row flex-grow;
+  }
+  &__text {
+    @apply mx-4;
+  }
+  &__title {
+    @apply font-primary font-semibold mb-1;
+  }
+  &__description {
+    @apply font-secondary text-sm;
+  }
+  &__collapse {
+    @apply font-primary font-bold text-xs float-right cursor-pointer;
+  }
+  &__button {
+    @apply font-primary font-semibold text-sm px-4 py-3 mt-2 ml-9 md:m-0 border rounded outline-none focus:ring focus:ring-focus-main focus:ring-offset-2;
+  }
+  &__icon {
+    @apply w-5 h-5 font-materialIcons text-xl flex-shrink-0 leading-none;
+  }
+  &__close {
+    @apply h-4 absolute top-3.5 right-6 font-materialIcons text-font-500 cursor-pointer;
+  }
+}
