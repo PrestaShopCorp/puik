@@ -1,4 +1,4 @@
-import { PuikLabel } from '@puik/components'
+import PuikLabel from '../src/label.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
