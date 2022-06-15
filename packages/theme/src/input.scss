@@ -1,7 +1,7 @@
 .puik-input {
   @apply flex flex-col;
   &__wrapper {
-    @apply flex flex-row border border-border-main rounded font-secondary transition-colors text-font-main;
+    @apply flex flex-row border border-border-main rounded font-secondary transition-colors text-font-main overflow-hidden;
     &:hover {
       @apply border-primary-purple-500;
     }
@@ -24,6 +24,7 @@
       -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
     }
     &[type='number'] {
+      -moz-appearance: textfield;
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button {
         @apply appearance-none;
