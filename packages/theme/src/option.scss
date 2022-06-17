@@ -1,0 +1,22 @@
+.puik-option {
+  @apply relative cursor-default select-none py-2 px-2 text-font-main transition-colors;
+  &--active,
+  &--selected {
+    @apply bg-primary-purple-50 text-primary-purple-500;
+  }
+  &:hover:not(&--disabled, &--selected) {
+    @apply bg-font-50 text-font-main;
+  }
+  &:active:not(&--disabled) {
+    @apply bg-font-100;
+  }
+  &--disabled {
+    @apply bg-white text-font-disabled;
+  }
+  &__label {
+    @apply font-normal block truncate;
+  }
+  &__selected-icon {
+    @apply font-materialIcons absolute inset-y-0 right-0 flex items-center text-primary-purple-500 w-5 mr-3;
+  }
+}
