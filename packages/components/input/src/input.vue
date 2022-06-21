@@ -31,6 +31,7 @@
       </div>
       <puik-input-controls
         v-if="type === 'number'"
+        :disabled="disabled"
         @increase="increase"
         @decrease="decrease"
       ></puik-input-controls>
