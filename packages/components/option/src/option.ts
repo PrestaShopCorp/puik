@@ -3,18 +3,20 @@ import type { ExtractPropTypes } from 'vue'
 import type Option from './option.vue'
 
 export const optionProps = buildProps({
-  label: {
-    type: String,
+  active: {
+    type: Boolean,
     required: false,
-    default: undefined,
+    default: false,
   },
-  item: {
-    type: Object,
-    required: true,
+  selected: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
-  value: {
-    type: String,
-    required: true,
+  disabled: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
 } as const)
 

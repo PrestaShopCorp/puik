@@ -4,18 +4,49 @@ import type Select from './select.vue'
 
 export interface Option {
   label?: string
-  value: string
+  value: string | number
 }
 
 export const selectProps = buildProps({
   modelValue: {
-    type: Object as PropType<Option>,
+    type: [String, Number, Object, Array] as PropType<
+      string | number | Record<string, any>
+    >,
     required: true,
+  },
+  options: {
+    type: Array as PropType<string[] | number[] | Record<string, any>[]>,
+    required: true,
+  },
+  optionValue: {
+    type: String,
+    required: false,
+    default: 'value',
+  },
+  optionLabel: {
+    type: String,
+    required: false,
+    default: 'label',
+  },
+  optionDisabled: {
+    type: String,
+    required: false,
+    default: 'disabled',
+  },
+  disabled: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
   placeholder: {
     type: String,
     required: false,
     default: '',
+  },
+  error: {
+    type: String,
+    required: false,
+    default: undefined,
   },
 } as const)
 

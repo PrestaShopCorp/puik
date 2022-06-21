@@ -3,15 +3,24 @@
     @apply relative mt-1;
   }
   &__button {
-    @apply relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left border border-border-main hover:border-primary-purple-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-border-main disabled:bg-background-grey disabled:text-font-disabled;
+    @apply relative w-full cursor-default rounded bg-white py-2 pl-3 pr-10 text-left border border-border-main hover:border-primary-purple-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-border-main disabled:bg-background-grey disabled:text-font-disabled;
+    &--error {
+      @apply border-accentuation-destructive-500;
+    }
   }
   &__selected {
     @apply block truncate select-none;
   }
   &__icon {
-    @apply font-materialIcons pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4;
+    @apply font-materialIcons pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 select-none;
   }
   &__options {
-    @apply absolute mt-1 max-h-60 w-full rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-10;
+    @apply absolute mt-1 max-h-60 w-full rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-10 overflow-y-auto overflow-x-hidden;
+  }
+  &__error {
+    @apply flex items-center text-xs text-accentuation-destructive-500 font-secondary font-normal;
+    &__icon {
+      @apply font-materialIcons text-sm mr-1;
+    }
   }
 }
