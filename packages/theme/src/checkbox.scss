@@ -1,0 +1,33 @@
+.puik-checkbox {
+  @apply flex items-center;
+  $baseClass: &;
+  &__input {
+    @apply appearance-none
+      grid place-content-center
+      h-5 w-5
+      cursor-pointer
+      rounded-sm border-2 border-font-500
+      before:font-materialIcons before:text-white
+      focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-focus-main
+      checked:bg-primary-purple-500 checked:border-none
+      indeterminate:bg-primary-purple-500 indeterminate:border-none
+      disabled:border-border-main disabled:checked:bg-border-main disabled:indeterminate:bg-border-main disabled:cursor-default;
+
+    &:indeterminate:before {
+      content: '\f108';
+    }
+
+    &:checked:before {
+      content: '\e876';
+    }
+
+    &:disabled + #{$baseClass}__label {
+      @apply text-border-main cursor-default;
+    }
+  }
+  &__label {
+    @apply text-sm -tracking-[0.015625em] font-secondary text-font-main
+      cursor-pointer
+      ml-3;
+  }
+}
