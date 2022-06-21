@@ -1,5 +1,5 @@
 .puik-label {
-  @apply font-secondary font-bold text-sm;
+  @apply font-secondary font-bold text-sm text-font-main;
   &--required {
     @apply text-accentuation-destructive-500 ml-1;
   }
