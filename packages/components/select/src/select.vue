@@ -14,30 +14,12 @@
         </ListboxButton>
 
         <transition
-          leave-active-class="transition duration-100 ease-in"
-          leave-from-class="opacity-100"
-          leave-to-class="opacity-0"
+          leave-active-class="puik-select__transition__leave--active"
+          leave-from-class="puik-select__transition__leave--from"
+          leave-to-class="puik-select__transition__leave--to"
         >
           <ListboxOptions class="puik-select__options">
-            <ListboxOption
-              v-for="(option, idx) in options"
-              :key="idx"
-              v-slot="{ active, selected, disabled }"
-              :disabled="
-                typeof option === 'object' ? option[optionDisabled] : false
-              "
-              :value="option"
-              as="template"
-            >
-              <puik-option
-                :active="active"
-                :selected="selected"
-                :disabled="disabled"
-                >{{
-                  typeof option !== 'object' ? option : option[optionLabel]
-                }}</puik-option
-              >
-            </ListboxOption>
+            <slot></slot>
           </ListboxOptions>
         </transition>
         <span v-if="error || $slots.error" class="puik-select__error"
@@ -51,13 +33,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import {
-  Listbox,
-  ListboxButton,
-  ListboxOptions,
-  ListboxOption,
-} from '@headlessui/vue'
-import { PuikOption } from '../../option'
+import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
 import { selectProps, selectEmits } from './select'
 defineOptions({
   name: 'PuikSelect',
@@ -79,6 +55,6 @@ const selectedValue = computed({
 const currentLabel = computed(() =>
   typeof selectedValue.value !== 'object'
     ? selectedValue.value
-    : selectedValue.value[props.optionLabel]
+    : selectedValue.value[props.displayProperty]
 )
 </script>

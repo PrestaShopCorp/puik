@@ -1,8 +1,14 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type Option from './option.vue'
 
 export const optionProps = buildProps({
+  option: {
+    type: [String, Number, Object] as PropType<
+      string | number | Record<string, any>
+    >,
+    required: true,
+  },
   active: {
     type: Boolean,
     required: false,

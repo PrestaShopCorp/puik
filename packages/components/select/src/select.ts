@@ -9,29 +9,15 @@ export interface Option {
 
 export const selectProps = buildProps({
   modelValue: {
-    type: [String, Number, Object, Array] as PropType<
+    type: [String, Number, Object] as PropType<
       string | number | Record<string, any>
     >,
     required: true,
   },
-  options: {
-    type: Array as PropType<string[] | number[] | Record<string, any>[]>,
-    required: true,
-  },
-  optionValue: {
-    type: String,
-    required: false,
-    default: 'value',
-  },
-  optionLabel: {
+  displayProperty: {
     type: String,
     required: false,
     default: 'label',
-  },
-  optionDisabled: {
-    type: String,
-    required: false,
-    default: 'disabled',
   },
   disabled: {
     type: Boolean,

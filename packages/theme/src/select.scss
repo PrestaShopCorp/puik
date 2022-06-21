@@ -23,4 +23,17 @@
       @apply font-materialIcons text-sm mr-1;
     }
   }
+  &__transition {
+    &__leave {
+      &--active {
+        @apply transition duration-100 ease-in;
+      }
+      &--from {
+        @apply opacity-100;
+      }
+      &--to {
+        @apply opacity-0;
+      }
+    }
+  }
 }

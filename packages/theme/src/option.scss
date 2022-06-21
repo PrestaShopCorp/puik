@@ -1,14 +1,16 @@
 .puik-option {
   @apply relative cursor-default select-none py-2 px-2 text-font-main transition-colors;
-  &--active,
   &--selected {
     @apply bg-primary-purple-50 text-primary-purple-500;
   }
-  &:hover:not(&--disabled, &--selected) {
+  &--active:hover:not(&--disabled, &--selected) {
     @apply bg-font-50 text-font-main;
   }
+  &--active:not(&--disabled, &--selected, &:hover) {
+    @apply ring ring-focus-main ring-inset rounded-lg;
+  }
   &:active:not(&--disabled) {
-    @apply bg-font-100;
+    @apply bg-primary-purple-50;
   }
   &--disabled {
     @apply bg-white text-font-disabled;
