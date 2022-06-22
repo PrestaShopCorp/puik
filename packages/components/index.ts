@@ -1,5 +1,6 @@
 export * from './config-provider'
 export * from './button'
+export * from './input'
 export * from './alert'
 export * from './tooltip'
 export * from './switch'
