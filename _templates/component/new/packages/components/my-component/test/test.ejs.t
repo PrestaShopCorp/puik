@@ -3,7 +3,7 @@ to: packages/components/<%= h.changeCase.param(name) %>/test/<%= h.changeCase.pa
 ---
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
-import <%= h.changeCase.pascal(name) %> from '../src/<%= h.changeCase.param(name) %>.vue'
+import Puik<%= h.changeCase.pascal(name) %> from '../src/<%= h.changeCase.param(name) %>.vue'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 describe('<%= h.changeCase.pascal(name) %> tests', () => {
@@ -12,7 +12,7 @@ describe('<%= h.changeCase.pascal(name) %> tests', () => {
     propsData: Record<string, any> = {},
     options: MountingOptions<any> = {}
   ) => {
-    wrapper = mount(<%= h.changeCase.pascal(name) %>, {
+    wrapper = mount(Puik<%= h.changeCase.pascal(name) %>, {
       props: {
         ...propsData,
       },
@@ -20,7 +20,7 @@ describe('<%= h.changeCase.pascal(name) %> tests', () => {
     })
   }
   it('should be a vue instance', () => {
-      factory()
-      expect(wrapper).toBeTruthy()
+    factory()
+    expect(wrapper).toBeTruthy()
   })
 })
