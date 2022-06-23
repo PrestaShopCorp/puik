@@ -1,0 +1,56 @@
+.puik-radio__group {
+  @apply flex items-center;
+  .puik-radio {
+    @apply relative inline-flex items-center h-5 rounded-full w-9 bg-font-500;
+    &:focus {
+      @apply outline-none ring ring-focus-main ring-offset-1;
+    }
+    &:disabled {
+      @apply bg-font-disabled pointer-events-none;
+    }
+    &--enabled {
+      @apply bg-accentuation-success-500;
+      &:disabled {
+        @apply bg-accentuation-success-100;
+      }
+    }
+    &__screen-readers {
+      @apply sr-only;
+    }
+    &__toggle {
+      @apply inline-block w-4 h-4 transform bg-white rounded-full translate-x-0.5 transition duration-200 ease-in-out;
+      &--enabled {
+        @apply translate-x-[18px];
+      }
+    }
+  }
+  .puik-radio__label {
+    @apply font-secondary text-sm;
+    &--right {
+      @apply ml-2;
+    }
+    &--left {
+      @apply mr-2;
+    }
+  }
+
+  input[type='radio'] {
+    /* remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    padding: 6px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 2px solid #442cc6;
+    // background-color: #e7e6e7;
+    border-radius: 50%;
+  }
+  input[type='radio']:checked {
+    background-color: #442cc6;
+  }
+}

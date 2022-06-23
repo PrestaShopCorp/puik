@@ -2,8 +2,36 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes } from 'vue'
 import type Radio from './radio.vue'
 
-export const radioProps = buildProps({} as const)
+export const radioProps = buildProps({
+  label: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  name: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  disabled: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  modelValue: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  checked: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+} as const)
 
 export type RadioProps = ExtractPropTypes<typeof radioProps>
 
 export type RadioInstance = InstanceType<typeof Radio>
+export const radioEmits = ['update:modelValue']
+export type RadioEmits = typeof radioEmits
