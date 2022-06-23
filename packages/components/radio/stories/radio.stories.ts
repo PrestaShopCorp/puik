@@ -31,13 +31,11 @@ const Template: Story = (args: Args) => ({
     PuikRadio,
   },
   setup() {
-    return { args }
+    const enabled = ref(false)
+    return { args, enabled }
   },
-  template: '<radio></radio>',
+  template: '<puik-radio v-bind="args" :disabled="args.disabled"></puik-radio>',
 })
-
-export const Default = Template.bind({})
-Default.args = {}
 
 export const WithoutLabel: Story = () => ({
   components: {
@@ -47,8 +45,18 @@ export const WithoutLabel: Story = () => ({
     const enabled = ref(false)
     return { enabled }
   },
-  template:
-    '<puik-radio v-model="enabled" :checked="false" label=""></puik-radio>',
+  template: '<puik-radio :model-value="enabled"></puik-radio>',
+})
+
+export const LabelWithSlot: Story = () => ({
+  components: {
+    PuikRadio,
+  },
+  setup() {
+    const enabled = ref(true)
+    return { enabled }
+  },
+  template: '<puik-radio :model-value="enabled">Label Slot</puik-radio>',
 })
 
 export const Selected: Story = () => ({
@@ -56,11 +64,11 @@ export const Selected: Story = () => ({
     PuikRadio,
   },
   setup() {
-    const enabled = ref(false)
+    const enabled = ref(true)
     return { enabled }
   },
   template:
-    '<puik-radio v-model="enabled" :checked="enabled">Radio Label Slot</puik-radio>',
+    '<puik-radio :model-value="enabled" v-bind="args" label="Radio Label"></puik-radio>',
 })
 
 export const Unselected: Story = () => ({
@@ -69,34 +77,10 @@ export const Unselected: Story = () => ({
   },
   setup() {
     const enabled = ref(false)
-    const checked = ref(false)
-    return { enabled, checked }
-  },
-  template:
-    '<puik-radio v-model="enabled" :checked="enabled">Radio Label Slot</puik-radio>',
-})
-export const FocusSelected: Story = () => ({
-  components: {
-    PuikRadio,
-  },
-  setup() {
-    const enabled = ref(true)
     return { enabled }
   },
   template:
-    '<puik-radio v-model="enabled" :checked="enabled">Radio Label Slot</puik-radio>',
-})
-
-export const FocusUnselected: Story = () => ({
-  components: {
-    PuikRadio,
-  },
-  setup() {
-    const enabled = ref(false)
-    return { enabled }
-  },
-  template:
-    '<puik-radio v-model="enabled" :checked="enabled">Radio Label Slot</puik-radio>',
+    '<puik-radio :model-value="enabled">Radio Label by slot</puik-radio>',
 })
 
 export const DisabledSelected: Story = () => ({
@@ -105,56 +89,43 @@ export const DisabledSelected: Story = () => ({
   },
   setup() {
     const firstRadio = ref(true)
-    const secondRadio = ref(false)
+    const secondRadio = ref(true)
     return { firstRadio, secondRadio }
   },
   template: `
-    <puik-radio v-model="enabled" :checked="firstRadio" disabled>Disabled On</puik-radio>
-    <puik-radio v-model="enabled" :checked="secondRadio" disabled>Disabled Off</puik-radio>
+    <puik-radio :model-value="firstRadio" disabled label="Disabled On"></puik-radio>
+    <puik-radio :model-value="secondRadio" disabled label="Disabled Off"></puik-radio>
   `,
 })
+DisabledSelected.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet-->
+      <puik-radio :model-value="firstRadio" disabled label="Disabled On"></puik-radio>
+      <puik-radio :model-value="secondRadio" disabled label="Disabled Off"></puik-radio>
+      
+      <!--HTML/CSS Snippet-->
+      <div class="puik-radio__group puik-radio__group--disabled">
+          <input class="puik-radio " type="radio" disabled />
+      </div>
+      `,
+      language: 'html',
+    },
+  },
+}
 
 export const DisabledUnselected: Story = () => ({
   components: {
     PuikRadio,
   },
   setup() {
-    const firstRadio = ref(true)
+    const firstRadio = ref(false)
     const secondRadio = ref(false)
     return { firstRadio, secondRadio }
   },
   template: `
-    <puik-radio v-model="enabled" :checked="firstRadio" disabled>Disabled On</puik-radio>
-    <puik-radio v-model="enabled" :checked="secondRadio" disabled>Disabled Off</puik-radio>
-  `,
-})
-
-export const Active: Story = () => ({
-  components: {
-    PuikRadio,
-  },
-  setup() {
-    const enabled = ref(true)
-    return { enabled }
-  },
-  template: '<puik-radio v-model="enabled" checked="enabled">On</puik-radio>',
-})
-
-export const AllStates: Story = () => ({
-  components: {
-    PuikRadio,
-  },
-  setup() {
-    const firstRadio = ref(true)
-    const secondRadio = ref(false)
-    const thirdRadio = ref(true)
-    const lastRadio = ref(false)
-    return { firstRadio, secondRadio, thirdRadio, lastRadio }
-  },
-  template: `
-    <puik-radio v-model="enabled" :checked="firstRadio" label="On"></puik-radio>
-    <puik-radio v-model="enabled" :checked="secondRadio">Off</puik-radio>
-    <puik-radio v-model="enabled" :checked="thirdRadio" disabled>Disabled On</puik-radio>
-    <puik-radio v-model="enabled" :checked="lastRadio" disabled>Disabled Off</puik-radio>
+    <puik-radio :model-value="firstRadio" disabled label="Disabled On"></puik-radio>
+    <puik-radio :model-value="secondRadio" disabled label="Disabled Off"></puik-radio>
   `,
 })
