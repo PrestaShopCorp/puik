@@ -1,27 +1,29 @@
-.puik-radio__group {
-  @apply flex items-center;
-  .puik-radio {
+.puik-radio {
+  @apply flex items-center text-sm;
+  $baseClass: &;
+  &__input {
     @apply appearance-none
-    bg-transparent bg-clip-content
-    inline-block w-4 h-4 
-    border-2 border-solid rounded-full;
+     bg-transparent bg-clip-content
+     w-4 h-4 
+     mr-2
+     border-2 border-solid rounded-full border-font-500;
+
+    &:checked {
+      @apply bg-primary-purple-500 
+     p-0.5	
+     border-2 border-solid border-primary-purple-500;
+    }
 
     &:focus {
       @apply outline-none ring-2 ring-focus-main ring-offset-1;
     }
 
-    &:checked {
-      @apply bg-primary-purple-500 
-    p-0.5	
-    border-2 border-solid border-primary-purple-500;
-      &:disabled {
-        @apply bg-font-disabled
-      p-0.5
-      border-2 border-solid border-font-disabled;
-      }
+    &:disabled + #{$baseClass}__label {
+      @apply text-border-main cursor-default;
     }
   }
-  .puik-radio__label {
-    @apply font-secondary text-sm ml-2;
+  &__label {
+    @apply font-secondary
+      cursor-pointer;
   }
 }

@@ -23,11 +23,6 @@ export const radioProps = buildProps({
     required: false,
     default: false,
   },
-  checked: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
 } as const)
 
 export type RadioProps = ExtractPropTypes<typeof radioProps>
