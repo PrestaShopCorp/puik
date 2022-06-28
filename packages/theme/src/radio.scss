@@ -12,12 +12,18 @@
       @apply bg-primary-purple-500 
      p-0.5	
      border-2 border-solid border-primary-purple-500;
+      &:disabled {
+        @apply border-2 border-solid rounded-full border-font-disabled bg-font-disabled;
+      }
     }
 
     &:focus {
       @apply outline-none ring-2 ring-focus-main ring-offset-1;
     }
 
+    &:disabled {
+      @apply border-2 border-solid rounded-full border-font-disabled bg-transparent;
+    }
     &:disabled + #{$baseClass}__label {
       @apply text-border-main cursor-default;
     }

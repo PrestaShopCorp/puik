@@ -22,7 +22,7 @@ export default {
   args: {
     label: '',
     disabled: false,
-    default: null,
+    default: 'Slot by default',
   },
 } as Meta
 
@@ -31,10 +31,9 @@ const Template: Story = (args: Args) => ({
     PuikRadio,
   },
   setup() {
-    const enabled = ref(true)
-    return { args, enabled }
+    return { args }
   },
-  template: '<puik-radio v-model="enabled" v-bind="args"></puik-radio>',
+  template: '<puik-radio model-value v-bind="args"></puik-radio>',
 })
 
 export const Default = Template.bind({})
@@ -56,7 +55,7 @@ WithoutLabel.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-radio :model-value="enabled"></puik-radio>
+      <puik-radio model-value></puik-radio>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-radio__group">
@@ -68,22 +67,21 @@ WithoutLabel.parameters = {
   },
 }
 
-export const LabelWithSlot: Story = () => ({
+export const LabelWithSlot: Story = (args) => ({
   components: {
     PuikRadio,
   },
   setup() {
-    const enabled = ref(true)
-    return { enabled }
+    return { args }
   },
-  template: '<puik-radio :model-value="enabled">Label Slot</puik-radio>',
+  template: '<puik-radio model-value>{{ args.default }}</puik-radio>',
 })
 LabelWithSlot.parameters = {
   docs: {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-radio :model-value="enabled">Radio Label by slot</puik-radio>
+      <puik-radio model-value>Radio Label by slot</puik-radio>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-radio__group">
@@ -99,12 +97,8 @@ export const Selected: Story = () => ({
   components: {
     PuikRadio,
   },
-  setup() {
-    const enabled = ref(true)
-    return { enabled }
-  },
   template:
-    '<puik-radio :model-value="enabled" v-bind="args" label="Radio Label"></puik-radio>',
+    '<puik-radio model-value v-bind="args" label="Radio Label"></puik-radio>',
 })
 
 Selected.parameters = {
@@ -112,7 +106,7 @@ Selected.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-radio :model-value="enabled">Radio Label by slot</puik-radio>
+      <puik-radio model-value v-bind="args" label="Radio Label"></puik-radio>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-radio__group">
@@ -141,7 +135,7 @@ Unselected.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-radio :model-value="enabled">Radio Label by slot</puik-radio>
+      <puik-radio model-value>Radio Label by slot</puik-radio>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-radio__group">
