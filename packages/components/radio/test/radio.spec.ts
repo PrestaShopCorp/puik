@@ -25,12 +25,12 @@ describe('Radio tests', () => {
   it('should emit update:modelValue with true as payload when the input is clicked', async () => {
     factory()
     await findInput().setValue(true)
-    expect(wrapper.emitted('update:modelValue')).toStrictEqual([[true]])
+    expect(wrapper.emitted('update:modelValue')).toStrictEqual([['on']])
   })
   it('should emit update:modelValue with true as payload when the label is clicked', async () => {
     factory({ label: 'Label', modelValue: false }, { attachTo: document.body })
     await findLabel().trigger('click')
-    expect(wrapper.emitted('update:modelValue')).toStrictEqual([[true]])
+    expect(wrapper.emitted('update:modelValue')).toStrictEqual([['on']])
   })
   it('should not emit update:modelValue when the input is clicked AND the radio is disabled', async () => {
     factory({ disabled: true, modelValue: false })

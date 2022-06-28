@@ -4,9 +4,10 @@
       :id="id"
       ref="radioInputRef"
       v-model="checked"
+      :checked="checked"
       :disabled="disabled"
       class="puik-radio__input"
-      type="checkbox"
+      type="radio"
       :name="name"
       @focus="handleFocus"
     />
