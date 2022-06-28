@@ -33,7 +33,8 @@ const Template: Story = (args: Args) => ({
   setup() {
     return { args }
   },
-  template: '<puik-radio model-value v-bind="args"></puik-radio>',
+  template:
+    '<puik-radio v-model="enabled" v-bind="args"><template v-if="args.default">{{ args.default }}</template></puik-radio>',
 })
 
 export const Default = Template.bind({})
