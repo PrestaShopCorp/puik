@@ -1,5 +1,6 @@
 .puik-radio {
-  $baseClass: & @apply flex items-center text-sm;
+  $baseClass: &;
+  @apply flex items-center text-sm;
   &__input {
     $baseClass: &;
     @apply appearance-none
