@@ -17,4 +17,4 @@ packages/puik/version.ts
 *.local
 
 # playground test file
-playground
+playground/src/App.vue
