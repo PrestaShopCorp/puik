@@ -16,7 +16,7 @@ module.exports = {
     config.resolve.dedupe = ['@storybook/client-api']
     config.css = {
       postcss: {
-        plugins: [require('tailwindcss')],
+        plugins: [require('tailwindcss'), require('autoprefixer')],
       },
     }
     // eslint-disable-next-line
