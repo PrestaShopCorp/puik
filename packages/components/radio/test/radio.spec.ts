@@ -23,11 +23,12 @@ describe('Radio tests', () => {
       ...options,
     })
   }
-  // it('should emit update:modelValue with true as payload when the input is clicked', async () => {
-  //   factory({modelValue: false})
-  //   await findInput().setValue(true)
-  //   expect(wrapper.emitted('update:modelValue')).toStrictEqual([['on']])
-  // })
+  it('should emit update:modelValue with true as payload when the input is clicked', async () => {
+    factory({ modelValue: false })
+    await findInput().setValue(true)
+    expect(wrapper.emitted('update:modelValue')).toBeTruthy()
+  })
+
   // it('should emit update:modelValue with true as payload when the label is clicked', async () => {
   //   factory({ label: 'Label', modelValue: false, value: false }, { attachTo: document.body })
   //   await findLabel().trigger('click')

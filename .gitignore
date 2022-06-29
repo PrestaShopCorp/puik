@@ -16,5 +16,4 @@ packages/puik/version.ts
 # local env files
 *.local
 
-# playground test file
-playground/src/App.vue
+

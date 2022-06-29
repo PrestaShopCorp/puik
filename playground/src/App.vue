@@ -5,9 +5,6 @@ import Radio from '../../packages/components/radio/src/radio.vue'
 const picked = ref('hello')
 
 const radios = [{ value: 'hello' }, { value: 'coucou' }, { value: 'hola' }]
-const updateCheckbox = (event) => {
-  picked.value = event
-}
 </script>
 
 <template>
@@ -16,10 +13,9 @@ const updateCheckbox = (event) => {
     <Radio
       v-for="(oneRadio, index) in radios"
       :key="index"
+      v-model="picked"
       :label="oneRadio.value"
       :value="oneRadio.value"
-      :model-value="picked"
-      @update:modelValue="updateCheckbox"
     />
   </div>
 </template>
