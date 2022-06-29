@@ -1,10 +1,11 @@
 <template>
-  <div class="puik-radio" :class="radioClasses">
+  <div class="puik-radio">
     <input
       :id="id"
       ref="radioInputRef"
-      v-model="checked"
-      :checked="checked"
+      v-model="valueModel"
+      :value="value"
+      :checked="valueModel === value"
       :disabled="disabled"
       class="puik-radio__input"
       type="radio"
@@ -19,7 +20,6 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useVModel } from '@vueuse/core'
 import { generateId } from '@puik/utils'
 import { radioProps, radioEmits } from './radio'
 defineOptions({
@@ -31,13 +31,14 @@ const isFocus = ref(false)
 const id = `puik-radio-${generateId()}`
 const radioInputRef = ref(document.createElement('input'))
 
-const checked = useVModel(props, 'modelValue', emit)
-
 const handleFocus = () => (isFocus.value = true)
 
-const radioClasses = computed(() => ({
-  'puik-radio--focus': isFocus.value,
-  'puik-radio--disabled': props.disabled,
-  'puik-radio__label': props.disabled,
-}))
+const valueModel = computed({
+  get() {
+    return props.modelValue
+  },
+  set(value) {
+    emit('update:modelValue', value)
+  },
+})
 </script>

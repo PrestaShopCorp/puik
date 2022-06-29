@@ -19,7 +19,12 @@ export const radioProps = buildProps({
     default: false,
   },
   modelValue: {
-    type: Boolean,
+    type: [Boolean, String, Number],
+    required: false,
+    default: false,
+  },
+  value: {
+    type: [Boolean, String, Number],
     required: false,
     default: false,
   },

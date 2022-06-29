@@ -31,10 +31,11 @@ const Template: Story = (args: Args) => ({
     PuikRadio,
   },
   setup() {
-    return { args }
+    const firstValue = ref('firstValue')
+    return { firstValue, args }
   },
   template:
-    '<puik-radio v-model="enabled" v-bind="args"><template v-if="args.default">{{ args.default }}</template></puik-radio>',
+    '<puik-radio v-model="firstValue" :value="firstValue" v-bind="args"><template v-if="args.default">{{ args.default }}</template></puik-radio>',
 })
 
 export const Default = Template.bind({})
@@ -45,10 +46,11 @@ export const WithoutLabel: Story = () => ({
     PuikRadio,
   },
   setup() {
-    const enabled = ref(false)
-    return { enabled }
+    const firstValue = ref('firstValue')
+    return { firstValue }
   },
-  template: '<puik-radio :model-value="enabled"></puik-radio>',
+  template:
+    '<puik-radio v-model="firstValue" :value="firstValue"></puik-radio>',
 })
 
 WithoutLabel.parameters = {
@@ -56,7 +58,7 @@ WithoutLabel.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-radio model-value></puik-radio>
+      <puik-radio v-model="firstValue"></puik-radio>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-radio__group">
@@ -73,16 +75,18 @@ export const LabelWithSlot: Story = (args) => ({
     PuikRadio,
   },
   setup() {
-    return { args }
+    const firstValue = ref('firstValue')
+    return { firstValue, args }
   },
-  template: '<puik-radio model-value>{{ args.default }}</puik-radio>',
+  template:
+    '<puik-radio v-model="firstValue" :value="firstValue" >{{ args.default }}</puik-radio>',
 })
 LabelWithSlot.parameters = {
   docs: {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-radio model-value>Radio Label by slot</puik-radio>
+      <puik-radio v-model="firstValue" :value="firstValue" >Radio Label by slot</puik-radio>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-radio__group">
@@ -98,8 +102,12 @@ export const Selected: Story = () => ({
   components: {
     PuikRadio,
   },
+  setup() {
+    const firstValue = ref('firstValue')
+    return { firstValue }
+  },
   template:
-    '<puik-radio model-value v-bind="args" label="Radio Label"></puik-radio>',
+    '<puik-radio v-model="firstValue" :value="firstValue" label="Radio Label"></puik-radio>',
 })
 
 Selected.parameters = {
@@ -107,7 +115,7 @@ Selected.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-radio model-value v-bind="args" label="Radio Label"></puik-radio>
+      <puik-radio v-model="firstValue" :value="firstValue" label="Radio Label"></puik-radio>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-radio__group">
@@ -124,11 +132,12 @@ export const Unselected: Story = () => ({
     PuikRadio,
   },
   setup() {
-    const enabled = ref(false)
-    return { enabled }
+    const firstValue = ref('firstValue')
+    const secondValue = ref('secondValue')
+    return { firstValue, secondValue }
   },
   template:
-    '<puik-radio :model-value="enabled">Radio Label by slot</puik-radio>',
+    '<puik-radio v-model="firstValue" :value="secondValue">Radio Label by slot</puik-radio>',
 })
 
 Unselected.parameters = {
@@ -136,7 +145,7 @@ Unselected.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-radio model-value>Radio Label by slot</puik-radio>
+      <puik-radio v-model="firstValue" :value="secondValue" >Radio Label by slot</puik-radio>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-radio__group">
@@ -153,13 +162,12 @@ export const DisabledSelected: Story = () => ({
     PuikRadio,
   },
   setup() {
-    const firstRadio = ref(true)
-    const secondRadio = ref(true)
-    return { firstRadio, secondRadio }
+    const firstValue = ref('firstValue')
+    return { firstValue }
   },
   template: `
-    <puik-radio :model-value="firstRadio" disabled label="Disabled On"></puik-radio>
-    <puik-radio :model-value="secondRadio" label="Disabled Off"></puik-radio>
+    <puik-radio v-model="firstValue" disabled label="Disabled On" :value="firstValue"></puik-radio>
+    <puik-radio v-model="firstValue" label="Disabled Off" :value="firstValue"></puik-radio>
   `,
 })
 DisabledSelected.parameters = {
@@ -167,8 +175,8 @@ DisabledSelected.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-radio :model-value="firstRadio" disabled label="Disabled On"></puik-radio>
-      <puik-radio :model-value="secondRadio" label="Disabled Off"></puik-radio>
+      <puik-radio v-model="firstValue" disabled label="Disabled On" :value="firstValue"></puik-radio>
+      <puik-radio v-model="firstValue" label="Disabled Off" :value="firstValue"></puik-radio>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-radio__group puik-radio__group--disabled">
@@ -185,13 +193,13 @@ export const DisabledUnselected: Story = () => ({
     PuikRadio,
   },
   setup() {
-    const firstRadio = ref(false)
-    const secondRadio = ref(false)
-    return { firstRadio, secondRadio }
+    const firstValue = ref('firstValue')
+    const secondValue = ref('secondValue')
+    return { firstValue, secondValue }
   },
   template: `
-  <puik-radio :model-value="firstRadio" disabled label="Disabled On"></puik-radio>
-  <puik-radio :model-value="secondRadio" label="Disabled Off"></puik-radio>
+  <puik-radio v-model="firstValue" disabled label="Disabled On" :value="secondValue"></puik-radio>
+  <puik-radio v-model="firstValue" label="Disabled Off" :value="secondValue"></puik-radio>
   `,
 })
 
@@ -200,8 +208,8 @@ DisabledUnselected.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-radio :model-value="firstRadio" disabled label="Disabled On"></puik-radio>
-      <puik-radio :model-value="secondRadio" label="Disabled Off"></puik-radio>
+      <puik-radio v-model="firstValue" disabled label="Disabled On" :value="secondValue"></puik-radio>
+      <puik-radio v-model="firstValue" label="Disabled Off" :value="secondValue"></puik-radio>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-radio__group puik-radio__group--disabled">
