@@ -1,23 +1,10 @@
-<script setup>
-import { ref } from 'vue'
-import Radio from '../../packages/components/radio/src/radio.vue'
-
-const picked = ref('hello')
-
-const radios = [{ value: 'hello' }, { value: 'coucou' }, { value: 'hola' }]
+<script setup lang="ts">
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 </script>
 
 <template>
-  <div class="app-container">
-    {{ picked }}
-    <Radio
-      v-for="(oneRadio, index) in radios"
-      :key="index"
-      v-model="picked"
-      :label="oneRadio.value"
-      :value="oneRadio.value"
-    />
-  </div>
+  <div class="app-container"></div>
 </template>
 
 <style lang="scss">
