@@ -3,7 +3,7 @@
   &--selected {
     @apply bg-primary-purple-50 text-primary-purple-500;
   }
-  &--active:hover:not(&--disabled, &--selected) {
+  &:hover:not(&--disabled, &--selected) {
     @apply bg-font-50 text-font-main;
   }
   &--active:not(&--disabled, &--selected, &:hover) {

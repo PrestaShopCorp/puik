@@ -1,17 +1,11 @@
 import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Select from './select.vue'
-
-export interface Option {
-  label?: string
-  value: string | number
-}
+import type { Option } from './option'
 
 export const selectProps = buildProps({
   modelValue: {
-    type: [String, Number, Object] as PropType<
-      string | number | Record<string, any>
-    >,
+    type: [String, Number, Object] as PropType<Option>,
     required: true,
   },
   displayProperty: {

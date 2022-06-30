@@ -1,6 +1,6 @@
 <template>
   <div class="puik-select">
-    <Listbox v-model="selectedValue" multiple>
+    <Listbox v-model="selectedValue">
       <div class="puik-select__wrapper">
         <ListboxButton
           :disabled="disabled"
@@ -35,6 +35,7 @@
 import { computed } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
 import { selectProps, selectEmits } from './select'
+import type { Option } from './option'
 defineOptions({
   name: 'PuikSelect',
 })
@@ -47,7 +48,7 @@ const selectedValue = computed({
   get() {
     return props.modelValue
   },
-  set(selectedItem: string | number | Record<string, any>) {
+  set(selectedItem: Option) {
     emit('update:modelValue', selectedItem)
   },
 })
