@@ -53,16 +53,16 @@
     }
   }
   &--secondary {
-    @apply text-primary-purple-500 border border-primary-purple-500;
+    @apply bg-primary-purple-50 text-primary-purple-500;
     &:hover {
-      @apply bg-primary-purple-500 text-white;
+      @apply bg-primary-purple-100;
     }
     &:active {
-      @apply bg-primary-purple-900 text-white border-primary-purple-900;
+      @apply bg-primary-purple-200;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply text-purple-100 border-primary-purple-100;
+      @apply bg-primary-purple-50 text-primary-purple-100;
     }
   }
   &--tertiary {
