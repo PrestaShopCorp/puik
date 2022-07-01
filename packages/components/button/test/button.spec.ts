@@ -36,10 +36,21 @@ describe('Button tests', () => {
     expect(findButton().classes()).toContain('puik-button--secondary')
   })
 
+  it('should display the button variant as tertiary', () => {
+    factory({ variant: 'tertiary' })
+    expect(findButton().classes()).toContain('puik-button--tertiary')
+  })
+
+  it('should display the button variant as text', () => {
+    factory({ variant: 'text' })
+    expect(findButton().classes()).toContain('puik-button--text')
+  })
+
   it('should display a left icon', () => {
     factory({ leftIcon: 'close' })
     expect(findButtonLeftIcon().exists()).toBeTruthy()
   })
+
   it('should display a right icon', () => {
     factory({ rightIcon: 'close' })
     expect(findButtonRightIcon().exists()).toBeTruthy()
