@@ -114,7 +114,7 @@ export function buildProp<
   const _validator =
     values || validator
       ? (val: unknown) => {
-          const valid = false
+          let valid = false
           let allowedValues: unknown[] = []
 
           if (values) {
@@ -122,9 +122,9 @@ export function buildProp<
             if (hasOwn(option, 'default')) {
               allowedValues.push(defaultValue)
             }
-            valid || allowedValues.includes(val)
+            valid ||= allowedValues.includes(val)
           }
-          if (validator) valid || validator(val)
+          if (validator) valid ||= validator(val)
 
           if (!valid && allowedValues.length > 0) {
             const allowValuesText = [...new Set(allowedValues)]
