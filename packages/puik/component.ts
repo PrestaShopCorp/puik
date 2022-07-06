@@ -1,4 +1,5 @@
 import { PuikLink } from '@puik/components/link'
+import { PuikCard } from '@puik/components/card'
 import { PuikLabel } from '@puik/components/label'
 import { PuikCheckbox } from '@puik/components/checkbox'
 import { PuikRadio } from '@puik/components/radio'
@@ -13,6 +14,7 @@ import type { Plugin } from 'vue'
 // prettier-ignore
 export default [
   PuikLink,
+  PuikCard,
   PuikLabel,
   PuikRadio,
   PuikInput,
