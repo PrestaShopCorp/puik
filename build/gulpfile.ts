@@ -56,9 +56,7 @@ export default series(
     runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
     series(
-      withTaskName('buildTheme', () =>
-        run('pnpm run --filter ./packages/ build --parallel')
-      ),
+      withTaskName('buildTheme', () => run('pnpm run -C packages/theme build')),
       copyFullStyle
     )
   ),

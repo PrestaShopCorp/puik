@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "pnpm@6.24.4",
+  "packageManager": "pnpm@7.0.0",
   "workspaces": [
     "packages/*",
     "docs",
@@ -14,10 +14,10 @@
     "test": "vitest",
     "gen": "bash ./scripts/gc.sh",
     "gen:version": "sucrase-node scripts/gen-version.ts",
-    "clean": "pnpm run clean:dist && pnpm run clean -r --stream",
+    "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
     "clean:dist": "rimraf dist",
-    "build": "pnpm run start -C build",
-    "build:theme": "pnpm run build -C packages/theme",
+    "build": "pnpm run -C build start",
+    "build:theme": "pnpm run -C packages/theme build",
     "format": "prettier --write .",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx && pretty-quick --check --branch main",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx && pretty-quick --branch main",
