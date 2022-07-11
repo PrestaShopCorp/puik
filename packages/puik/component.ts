@@ -4,6 +4,7 @@ import { PuikProgressBar } from '@puik/components/progress-bar'
 import { PuikIcon } from '@puik/components/icon'
 import { PuikLink } from '@puik/components/link'
 import { PuikCard } from '@puik/components/card'
+import { PuikSnackBar } from '@puik/components/snack-bar'
 import { PuikLabel } from '@puik/components/label'
 import { PuikCheckbox } from '@puik/components/checkbox'
 import { PuikRadio } from '@puik/components/radio'
@@ -24,6 +25,7 @@ export default [
   PuikIcon,
   PuikLink,
   PuikCard,
+  PuikSnackBar,
   PuikLabel,
   PuikRadio,
   PuikInput,

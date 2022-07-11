@@ -1,0 +1,21 @@
+.puik-snack-bar {
+  @apply text-white py-5 px-4 rounded-lg;
+
+  &--default {
+    @apply bg-font-main;
+  }
+
+  &--danger {
+    @apply bg-accentuation-destructive-500;
+  }
+
+  &__right {
+    @apply float-right;
+    &__action {
+      @apply font-semibold mr-7 hover:cursor-pointer;
+    }
+    svg {
+      @apply inline hover:cursor-pointer;
+    }
+  }
+}
