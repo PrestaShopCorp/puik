@@ -56,7 +56,7 @@ describe('Checkbox tests', () => {
     expect(findLabel().text()).toContain('The label')
   })
   it('should not render the label if there is no label prop or slot', () => {
-    factory({ label: undefined })
+    factory({ label: undefined, modelValue: false })
     expect(findLabel().exists()).toBeFalsy()
   })
   it('should fill the custom label slot when no label is provided', () => {

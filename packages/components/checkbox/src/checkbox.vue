@@ -35,14 +35,14 @@ const emit = defineEmits<{
 }>()
 
 const id = `puik-checkbox-${generateId()}`
-const checkboxInputRef = ref(document.createElement('input'))
+const checkboxInputRef = ref<HTMLInputElement>()
 const checked = useVModel(props, 'modelValue', emit)
 
 watch(
   () => props.indeterminate,
   (value: boolean) => {
     if (value && checked.value === true) {
-      checkboxInputRef.value.click() // Set the checkbox state at false. Like this when we click on indeterminate checkbox it will be checked
+      checkboxInputRef.value?.click() // Set the checkbox state at false. Like this when we click on indeterminate checkbox it will be checked
     }
   }
 )
