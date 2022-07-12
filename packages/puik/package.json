@@ -1,5 +1,5 @@
 {
-  "name": "puik",
+  "name": "@prestashopcorp/puik",
   "version": "0.0.1",
   "exports": {
     ".": {

@@ -25,16 +25,27 @@ Puik is a component library that aims to provide a complete set of reusable comp
 
 ### Installation
 
+For the moment this package is only available through Github packages  
+To install it you must configure a .npmrc file in your project
+
+```
+@prestashopcorp:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+```
+
+You can create a github token by going in the [Github Developer settings](https://github.com/settings/tokens)  
+Your token must have the read:packages rights
+
 ```sh
 # chose your favorite package manager
 # NPM
-$ npm install puik --save
+$ npm install @prestashopcorp/puik --save
 
 # Yarn
-$ yarn add puik
+$ yarn add @prestashopcorp/puik
 
 # pnpm
-$ pnpm install puik
+$ pnpm install @prestashopcorp/puik
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -47,8 +58,8 @@ Import the vue component and the component css directly into your vue file
 
 ```vue
 <script setup>
-import { PuikButton } from 'puik'
-import 'puik/theme/puik-button.css'
+import { PuikButton } from '@prestashopcorp/puik'
+import '@prestashopcorp/puik/theme/puik-button.css'
 </script>
 
 <template>
@@ -66,8 +77,8 @@ Import the vue library and the css directly into your main.js / main.ts
 
 ```typescript
 import { createApp } from 'vue'
-import Puik from 'puik'
-import 'puik/theme/index.css'
+import Puik from '@prestashopcorp/puik'
+import '@prestashopcorp/puik/theme/index.css'
 import App from './App.vue'
 
 const app = createApp(App)

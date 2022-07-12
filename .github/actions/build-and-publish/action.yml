@@ -1,0 +1,81 @@
+name: 'Build and publish to Github Packages'
+description: 'Publish package to Github Packages'
+
+inputs:
+  git_author_email:
+    description: 'Git Author Email'
+    required: true
+  node_version:
+    description: 'Node version'
+    required: true
+  github_token:
+    description: 'Github token'
+    required: true
+  version:
+    required: true
+    description: 'Version to publish'
+  git_head:
+    required: true
+    description: 'Git Head'
+
+runs:
+  using: 'composite'
+
+  steps:
+    - name: Set version
+      shell: bash
+      run: |
+        git config user.email "${{ inputs.git_author_email }}"
+        git config user.name "Github action"
+        npm version ${{ inputs.version }} --allow-same-version
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+
+    - name: Setup node env 🏗
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node_version }}
+        cache: 'pnpm'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@prestashopcorp'
+
+    - name: Gen npmrc
+      shell: bash
+      run: |
+        echo @prestashopcorp:registry=https://npm.pkg.github.com/ >> ./.npmrc
+        echo '//npm.pkg.github.com/:_authToken=${{ inputs.github_token }}' >> ./.npmrc
+    - name: Install dependencies 👨🏻‍💻
+      shell: bash
+      run: pnpm i --frozen-lockfile
+
+    - name: Update version
+      shell: bash
+      run: pnpm update:version
+      env:
+        GIT_HEAD: ${{inputs.git_head}}
+        TAG_VERSION: ${{inputs.version}}
+
+    - name: Build 🛠
+      shell: bash
+      run: pnpm build
+
+    - name: Publish
+      shell: bash
+      working-directory: 'dist/puik'
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.github_token }}
+
+    # - name: Publish
+    #   shell: bash
+    #   run: |
+    #     echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+    #     if [ "$NPM_TOKEN" != "" ]; then
+    #       npm publish --tag $ENVIRONMENT
+    #     else
+    #       echo "Skip Publish. NPM_TOKEN not exists."
+    #       exit 1
+    #     fi
+    #   env:
+    #     ENVIRONMENT: ${{ inputs.environment }}
+    #     NPM_TOKEN: ${{ inputs.registry-token }}

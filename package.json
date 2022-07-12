@@ -14,6 +14,7 @@
     "test": "vitest",
     "gen": "bash ./scripts/gc.sh",
     "gen:version": "sucrase-node scripts/gen-version.ts",
+    "update:version": "sucrase-node scripts/update-version.ts",
     "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
     "clean:dist": "rimraf dist",
     "build": "pnpm run -C build start",
