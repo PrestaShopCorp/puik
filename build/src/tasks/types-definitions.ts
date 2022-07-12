@@ -33,10 +33,7 @@ export const generateTypesDefinitions = async () => {
         '@puik/*': ['packages/*'],
       },
       preserveSymlinks: true,
-      types: [
-        path.resolve(projRoot, 'typings/env'),
-        'unplugin-vue-define-options',
-      ],
+      types: ['unplugin-vue-define-options'],
     },
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
