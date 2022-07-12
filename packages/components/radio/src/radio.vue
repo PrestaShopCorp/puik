@@ -20,6 +20,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useVModel } from '@vueuse/core'
 import { generateId } from '@puik/utils'
 import { radioProps, radioEmits } from './radio'
 defineOptions({
@@ -29,7 +30,6 @@ const props = defineProps(radioProps)
 const emit = defineEmits(radioEmits)
 const isFocus = ref(false)
 const id = `puik-radio-${generateId()}`
-const radioInputRef = ref(document.createElement('input'))
 
 const handleFocus = () => (isFocus.value = true)
 
