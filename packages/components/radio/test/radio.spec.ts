@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
+import { faker } from '@faker-js/faker'
 import Radio from '../src/radio.vue'
 import type { RadioProps } from '../src/radio'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
@@ -9,12 +10,13 @@ describe('Radio tests', () => {
   const findInput = () => wrapper.find('.puik-radio__input')
   const findLabel = () => wrapper.find('.puik-radio__label')
 
+  const fakeValue = faker.word.adjective()
   const factory = (
     props: Partial<RadioProps> = {
       disabled: false,
       label: 'Label',
       modelValue: false,
-      value: 'tutu',
+      value: fakeValue,
     },
     options: MountingOptions<any> = {}
   ) => {
@@ -26,16 +28,16 @@ describe('Radio tests', () => {
   it('should emit update:modelValue with the right value as payload when the input is clicked', async () => {
     factory()
     await findInput().setValue(true)
-    expect(wrapper.emitted('update:modelValue')).toStrictEqual([['tutu']])
+    expect(wrapper.emitted('update:modelValue')).toStrictEqual([[fakeValue]])
   })
 
   it('should emit update:modelValue with the right value as payload when the label is clicked', async () => {
     factory(
-      { label: 'Label', modelValue: false, value: 'toto' },
+      { label: 'Label', modelValue: false, value: fakeValue },
       { attachTo: document.body }
     )
     await findInput().setValue(true)
-    expect(wrapper.emitted('update:modelValue')).toStrictEqual([['toto']])
+    expect(wrapper.emitted('update:modelValue')).toStrictEqual([[fakeValue]])
   })
   it('should not emit update:modelValue when the input is clicked AND the radio is disabled', async () => {
     factory({ disabled: true, modelValue: false })
