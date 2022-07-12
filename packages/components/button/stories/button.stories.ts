@@ -127,6 +127,19 @@ export const Tertiary: Story = () => ({
   `,
 })
 
+export const Destructive: Story = () => ({
+  components: {
+    PuikButton,
+  },
+  template: `
+    <div class="space-x-4">
+    <puik-button variant="destructive" size="lg">Destructive Button lg</puik-button>
+    <puik-button variant="destructive">Destructive Button md</puik-button>
+    <puik-button variant="destructive" size="sm">Destructive Button sm</puik-button>
+    </div>
+  `,
+})
+
 export const Text: Story = () => ({
   components: {
     PuikButton,
@@ -149,6 +162,7 @@ export const Disabled: Story = () => ({
       <puik-button disabled>Primary Button</puik-button>
       <puik-button variant="secondary" disabled>Secondary Button</puik-button>
       <puik-button variant="tertiary" disabled>Tertiary Button</puik-button>
+      <puik-button variant="destructive" disabled>Destructive Button</puik-button>
       <puik-button variant="text" disabled>Text Button</puik-button>
     </div>
   `,
@@ -187,6 +201,7 @@ export const Variants: Story = (args: Args) => ({
       <puik-button>Primary Button</puik-button>
       <puik-button variant="secondary">Secondary Button</puik-button>
       <puik-button variant="tertiary">Tertiary Button</puik-button>
+      <puik-button variant="destructive">Destructive Button</puik-button>
       <puik-button variant="text">Text Button</puik-button>
     </div>
   `,

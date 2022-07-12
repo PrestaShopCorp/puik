@@ -31,6 +31,11 @@ describe('Button tests', () => {
     expect(findButton().classes()).toContain('puik-button--lg')
   })
 
+  it('should display the button variant as destructive', () => {
+    factory({ variant: 'destructive' })
+    expect(findButton().classes()).toContain('puik-button--destructive')
+  })
+
   it('should display the button variant as secondary', () => {
     factory({ variant: 'secondary' })
     expect(findButton().classes()).toContain('puik-button--secondary')

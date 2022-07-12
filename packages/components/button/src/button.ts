@@ -2,7 +2,13 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes } from 'vue'
 import type Button from './button.vue'
 
-export const buttonVariants = ['primary', 'secondary', 'tertiary', 'text']
+export const buttonVariants = [
+  'primary',
+  'destructive',
+  'secondary',
+  'tertiary',
+  'text',
+]
 
 export const buttonSizes = ['sm', 'md', 'lg']
 

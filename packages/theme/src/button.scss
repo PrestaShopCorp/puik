@@ -52,6 +52,22 @@
       @apply py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
     }
   }
+  &--destructive {
+    @apply bg-accentuation-destructive-500 text-white;
+    &:hover {
+      @apply bg-accentuation-destructive-700;
+    }
+    &:active {
+      @apply bg-accentuation-destructive-900;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply bg-accentuation-destructive-100;
+    }
+    &.puik-button--sm {
+      @apply py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
+    }
+  }
   &--secondary {
     @apply bg-primary-purple-50 text-primary-purple-500;
     &:hover {
