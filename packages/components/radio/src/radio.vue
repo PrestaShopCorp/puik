@@ -33,12 +33,5 @@ const radioInputRef = ref(document.createElement('input'))
 
 const handleFocus = () => (isFocus.value = true)
 
-const valueModel = computed({
-  get() {
-    return props.modelValue
-  },
-  set(value) {
-    emit('update:modelValue', value)
-  },
-})
+const valueModel = useVModel(props, 'modelValue', emit)
 </script>
