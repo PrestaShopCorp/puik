@@ -17,6 +17,7 @@ module.exports = {
           destructive: {
             50: '#FAE7E8',
             100: '#F2C2C5',
+            200: '#EA9A9E',
             500: '#D5343C',
             700: '#CA272E',
             900: '#BA151A',
@@ -24,6 +25,7 @@ module.exports = {
           success: {
             50: '#E4F0EA',
             100: '#BCDACA',
+            200: '#90C1A6',
             500: '#21834D',
             700: '#18703D',
             900: '#0B5325',
@@ -31,12 +33,14 @@ module.exports = {
           warning: {
             50: '#FFF4E0',
             100: '#FFE3B3',
+            200: '#FFD080',
             500: '#FFA000',
             700: '#FF8E00',
             900: '#FF7300',
           },
           info: {
             50: '#E3EAFD',
+            200: '#8BA7F7',
             100: '#B9CAFA',
             500: '#174EEF',
             700: '#113DEB',

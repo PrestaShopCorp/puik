@@ -1,5 +1,6 @@
 .puik-button {
   @apply rounded font-primary font-semibold transition cursor-pointer py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
+
   &--sm {
     @apply py-1 px-4 text-xs leading-4 tracking-[0.063em] font-bold;
     .puik-button__left-icon {
@@ -9,6 +10,7 @@
       @apply ml-2 text-xs;
     }
   }
+
   &--md {
     .puik-button__left-icon {
       @apply mr-2;
@@ -17,6 +19,7 @@
       @apply ml-2;
     }
   }
+
   &--lg {
     @apply py-3 px-6 text-base leading-6 tracking-[0.047em] font-semibold;
     .puik-button__left-icon {
@@ -26,16 +29,20 @@
       @apply ml-3;
     }
   }
+
   &--fluid {
     @apply w-full;
   }
+
   &:focus {
     @apply outline-none ring ring-offset-2 ring-focus-main;
   }
+
   &:disabled,
   &--disabled {
     @apply pointer-events-none cursor-default;
   }
+
   &--primary {
     @apply bg-primary-purple-500 text-white;
     &:hover {
@@ -52,6 +59,7 @@
       @apply py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
     }
   }
+
   &--destructive {
     @apply bg-accentuation-destructive-500 text-white;
     &:hover {
@@ -68,6 +76,7 @@
       @apply py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
     }
   }
+
   &--secondary {
     @apply bg-primary-purple-50 text-primary-purple-500;
     &:hover {
@@ -81,6 +90,7 @@
       @apply bg-primary-purple-50 text-primary-purple-100;
     }
   }
+
   &--tertiary {
     @apply text-font-main border border-border-main;
     &:hover {
@@ -94,6 +104,7 @@
       @apply text-font-100 border-font-100;
     }
   }
+
   &--text {
     @apply text-font-main;
     &:hover {
@@ -107,6 +118,63 @@
       @apply text-font-100;
     }
   }
+
+  &--info {
+    @apply bg-accentuation-info-50 text-gray-900 border border-accentuation-info-500;
+    &:hover {
+      @apply bg-accentuation-info-100;
+    }
+    &:active {
+      @apply bg-accentuation-info-200;
+    }
+    &:disabled,
+    &--disabled {
+      @apply text-white border-accentuation-info-200;
+    }
+  }
+
+  &--success {
+    @apply bg-accentuation-success-50 text-gray-900 border border-accentuation-success-500;
+    &:hover {
+      @apply bg-accentuation-success-100;
+    }
+    &:active {
+      @apply bg-accentuation-success-200;
+    }
+    &:disabled,
+    &--disabled {
+      @apply text-white border-accentuation-success-200;
+    }
+  }
+
+  &--warning {
+    @apply bg-accentuation-warning-50 text-gray-900 border border-accentuation-warning-500;
+    &:hover {
+      @apply bg-accentuation-warning-100;
+    }
+    &:active {
+      @apply bg-accentuation-warning-200;
+    }
+    &:disabled,
+    &--disabled {
+      @apply text-white border-accentuation-warning-200;
+    }
+  }
+
+  &--error {
+    @apply bg-accentuation-destructive-50 text-gray-900 border border-accentuation-destructive-500;
+    &:hover {
+      @apply bg-accentuation-destructive-100;
+    }
+    &:active {
+      @apply bg-accentuation-destructive-200;
+    }
+    &:disabled,
+    &--disabled {
+      @apply text-white border-accentuation-destructive-200;
+    }
+  }
+
   &__left-icon,
   &__right-icon {
     @apply font-materialIcons align-middle leading-none text-base;

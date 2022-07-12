@@ -8,6 +8,10 @@ export const buttonVariants = [
   'secondary',
   'tertiary',
   'text',
+  'info',
+  'success',
+  'warning',
+  'error',
 ]
 
 export const buttonSizes = ['sm', 'md', 'lg']

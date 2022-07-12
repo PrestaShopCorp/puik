@@ -153,6 +153,58 @@ export const Text: Story = () => ({
   `,
 })
 
+export const Info: Story = () => ({
+  components: {
+    PuikButton,
+  },
+  template: `
+    <div class="space-x-4">
+      <puik-button variant="info" size="lg">Info Button lg</puik-button>
+      <puik-button variant="info">Info Button md</puik-button>
+      <puik-button variant="info" size="sm">Info Button sm</puik-button>
+    </div>
+  `,
+})
+
+export const Success: Story = () => ({
+  components: {
+    PuikButton,
+  },
+  template: `
+    <div class="space-x-4">
+      <puik-button variant="success" size="lg">Success Button lg</puik-button>
+      <puik-button variant="success">Success Button md</puik-button>
+      <puik-button variant="success" size="sm">Success Button sm</puik-button>
+    </div>
+  `,
+})
+
+export const Warning: Story = () => ({
+  components: {
+    PuikButton,
+  },
+  template: `
+    <div class="space-x-4">
+      <puik-button variant="warning" size="lg">Warning Button lg</puik-button>
+      <puik-button variant="warning">Warning Button md</puik-button>
+      <puik-button variant="warning" size="sm">Warning Button sm</puik-button>
+    </div>
+  `,
+})
+
+export const Error: Story = () => ({
+  components: {
+    PuikButton,
+  },
+  template: `
+    <div class="space-x-4">
+      <puik-button variant="error" size="lg">Error Button lg</puik-button>
+      <puik-button variant="error">Error Button md</puik-button>
+      <puik-button variant="error" size="sm">Error Button sm</puik-button>
+    </div>
+  `,
+})
+
 export const Disabled: Story = () => ({
   components: {
     PuikButton,
@@ -164,6 +216,12 @@ export const Disabled: Story = () => ({
       <puik-button variant="tertiary" disabled>Tertiary Button</puik-button>
       <puik-button variant="destructive" disabled>Destructive Button</puik-button>
       <puik-button variant="text" disabled>Text Button</puik-button>
+    </div>
+    <div class="space-x-4 mt-4">
+      <puik-button variant="info" disabled>Info Button</puik-button>
+      <puik-button variant="success" disabled>Success Button</puik-button>
+      <puik-button variant="warning" disabled>Warning Button</puik-button>
+      <puik-button variant="error" disabled>Error Button</puik-button>
     </div>
   `,
 })
@@ -204,5 +262,11 @@ export const Variants: Story = (args: Args) => ({
       <puik-button variant="destructive">Destructive Button</puik-button>
       <puik-button variant="text">Text Button</puik-button>
     </div>
+    <div class="space-x-4 mt-4">
+    <puik-button variant="info">Info Button</puik-button>
+    <puik-button variant="success">Success Button</puik-button>
+    <puik-button variant="warning">Warning Button</puik-button>
+    <puik-button variant="error">Error Button</puik-button>
+  </div>
   `,
 })

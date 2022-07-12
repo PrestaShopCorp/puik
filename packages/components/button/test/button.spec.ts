@@ -51,6 +51,26 @@ describe('Button tests', () => {
     expect(findButton().classes()).toContain('puik-button--text')
   })
 
+  it('should display the button variant as info', () => {
+    factory({ variant: 'info' })
+    expect(findButton().classes()).toContain('puik-button--info')
+  })
+
+  it('should display the button variant as success', () => {
+    factory({ variant: 'success' })
+    expect(findButton().classes()).toContain('puik-button--success')
+  })
+
+  it('should display the button variant as warning', () => {
+    factory({ variant: 'warning' })
+    expect(findButton().classes()).toContain('puik-button--warning')
+  })
+
+  it('should display the button variant as error', () => {
+    factory({ variant: 'error' })
+    expect(findButton().classes()).toContain('puik-button--error')
+  })
+
   it('should display a left icon', () => {
     factory({ leftIcon: 'close' })
     expect(findButtonLeftIcon().exists()).toBeTruthy()
