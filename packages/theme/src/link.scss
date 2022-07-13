@@ -1,0 +1,18 @@
+.puik-link {
+  @apply rounded font-secondary text-sm font-normal text-primary-purple-500 m-[2px] p-[2px];
+  &:hover {
+    @apply underline bg-font-50;
+  }
+  &:active {
+    @apply underline bg-font-100;
+  }
+  &:focus {
+    @apply underline outline outline-2 outline-color-primary;
+  }
+  &:visited {
+    @apply text-[#0A057B];
+  }
+  &--icon {
+    // @apply material-open-in-new
+  }
+}
