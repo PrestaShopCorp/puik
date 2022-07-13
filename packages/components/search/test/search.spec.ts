@@ -5,7 +5,7 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 describe('Search tests', () => {
   let wrapper: VueWrapper<any>
-
+  const findField = () => wrapper.find('.puik-search__field')
   const findWrapper = () => wrapper.find('.puik-search__wrapper')
   const findCancelButtonIcon = () => wrapper.find('.puik-search__cancel-icon')
   const findConfirmButton = () => wrapper.find('.puik-search__confirm-icon')
@@ -41,6 +41,7 @@ describe('Search tests', () => {
 
   it('should add a focus class when input is focused', async () => {
     factory()
+    await findField().trigger('focus')
     expect(findWrapper().classes()).toContain('puik-search__wrapper--focus')
   })
 

@@ -26,6 +26,7 @@
           class="puik-search__confirm-icon"
           size="sm"
           variant="primary"
+          @click="sendContent"
           >{{ 'east' }}</puik-button
         >
       </div>
@@ -54,6 +55,10 @@ const handleBlur = () => (isFocus.value = false)
 
 const deleteContent = () => {
   emit('update:modelValue', null)
+}
+
+const sendContent = () => {
+  emit('update:modelValue', value)
 }
 
 const value = computed<string | number>({
