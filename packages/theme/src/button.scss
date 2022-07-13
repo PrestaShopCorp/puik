@@ -1,9 +1,12 @@
+@use './common/typography.scss';
+
 .puik-button {
-  @apply puik-text-button-default;
+  @extend .puik-text-button-default;
   @apply rounded transition cursor-pointer py-3 px-4;
 
   &--sm {
-    @apply puik-text-button-small py-1 px-4;
+    @extend .puik-text-button-small;
+    @apply py-1 px-4;
     .puik-button__left-icon {
       @apply mr-2 text-xs;
     }
@@ -22,7 +25,8 @@
   }
 
   &--lg {
-    @apply puik-text-button-large py-3 px-6;
+    @extend .puik-text-button-large;
+    @apply py-3 px-6;
     .puik-button__left-icon {
       @apply mr-3;
     }
