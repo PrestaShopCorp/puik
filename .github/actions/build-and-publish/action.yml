@@ -39,32 +39,13 @@ runs:
         registry-url: 'https://npm.pkg.github.com'
         scope: '@prestashopcorp'
 
-    - name: Gen npmrc
-      shell: bash
-      run: |
-        echo @prestashopcorp:registry=https://npm.pkg.github.com/ >> ./.npmrc
-        echo '//npm.pkg.github.com/:_authToken=${{ inputs.github_token }}' >> ./.npmrc
-    - name: Install dependencies 👨🏻‍💻
-      shell: bash
-      run: pnpm i --frozen-lockfile
-
-    - name: Update version
-      shell: bash
-      run: pnpm update:version
-      env:
-        GIT_HEAD: ${{inputs.git_head}}
-        TAG_VERSION: ${{inputs.version}}
-
-    - name: Build 🛠
-      shell: bash
-      run: pnpm build
-
-    - name: Publish
-      shell: bash
-      working-directory: 'dist/puik'
-      run: npm publish
+    - name: Build & publish
+      shell: sh
+      run: sh ./scripts/publish.sh
       env:
         NODE_AUTH_TOKEN: ${{ inputs.github_token }}
+        GIT_HEAD: ${{inputs.git_head}}
+        TAG_VERSION: ${{inputs.version}}
 
     # - name: Publish
     #   shell: bash
