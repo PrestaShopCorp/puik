@@ -1,3 +1,5 @@
+@import '../src/common/typography.scss';
+
 .puik-search {
   @apply flex flex-col;
 
@@ -37,7 +39,7 @@
 
   &__button {
     &__icon {
-      @apply font-materialIcons puik-h2;
+      @apply font-materialIcons puik-h2 m-1;
     }
   }
 

@@ -31,7 +31,7 @@ export const searchProps = buildProps({
   autocomplete: {
     type: String,
     required: false,
-    default: 'couou',
+    default: '',
   },
   required: {
     type: Boolean,

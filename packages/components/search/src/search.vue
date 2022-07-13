@@ -14,21 +14,20 @@
         @focus="handleFocus"
         @blur="handleBlur"
       />
-      <span
+      <button
         v-if="!disabled"
         class="puik-search__cancel-icon puik-h2"
         @click="deleteContent"
-        >{{ 'cancel' }}
-      </span>
-      <div v-if="autocomplete && !disabled">
-        <slot>
-          <puik-button
-            class="puik-search__button__icon"
-            size="sm"
-            variant="primary"
-            >{{ 'east' }}</puik-button
-          >
-        </slot>
+      >
+        {{ 'cancel' }}
+      </button>
+      <div v-if="autocomplete && !disabled" class="flex">
+        <puik-button
+          class="puik-search__button__icon"
+          size="sm"
+          variant="primary"
+          >{{ 'east' }}</puik-button
+        >
       </div>
     </div>
   </div>
@@ -69,3 +68,13 @@ const value = computed<string | number>({
   },
 })
 </script>
+
+<style scoped>
+.puik-search :deep(.puik-button) {
+  @apply p-2 w-12;
+}
+
+.puik-search__wrapper--rounded-input :deep(.puik-button) {
+  @apply rounded-full;
+}
+</style>
