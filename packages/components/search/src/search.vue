@@ -33,8 +33,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, ref, useSlots } from 'vue'
-import { isNumber } from '@vueuse/core'
+import { computed, ref } from 'vue'
 import PuikButton from '../../button/src/button.vue'
 import { searchEmits, searchProps } from './search'
 defineOptions({
