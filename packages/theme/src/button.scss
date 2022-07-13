@@ -114,60 +114,38 @@
     }
   }
 
-  &--info {
-    @apply bg-accentuation-info-50 text-gray-900 border border-accentuation-info-500;
+  @mixin alert-banner-button-variant($color) {
+    @apply bg-accentuation-#{$color}-50 border-accentuation-#{$color}-500;
+    @apply text-gray-900 border;
+
     &:hover {
-      @apply bg-accentuation-info-100;
+      @apply bg-accentuation-#{$color}-100;
     }
+
     &:active {
-      @apply bg-accentuation-info-200;
+      @apply bg-accentuation-#{$color}-200;
     }
+
     &:disabled,
     &--disabled {
-      @apply text-white border-accentuation-info-200;
+      @apply border-accentuation-#{$color}-200 text-white;
     }
+  }
+
+  &--info {
+    @include alert-banner-button-variant('info');
   }
 
   &--success {
-    @apply bg-accentuation-success-50 text-gray-900 border border-accentuation-success-500;
-    &:hover {
-      @apply bg-accentuation-success-100;
-    }
-    &:active {
-      @apply bg-accentuation-success-200;
-    }
-    &:disabled,
-    &--disabled {
-      @apply text-white border-accentuation-success-200;
-    }
+    @include alert-banner-button-variant('success');
   }
 
   &--warning {
-    @apply bg-accentuation-warning-50 text-gray-900 border border-accentuation-warning-500;
-    &:hover {
-      @apply bg-accentuation-warning-100;
-    }
-    &:active {
-      @apply bg-accentuation-warning-200;
-    }
-    &:disabled,
-    &--disabled {
-      @apply text-white border-accentuation-warning-200;
-    }
+    @include alert-banner-button-variant('warning');
   }
 
   &--error {
-    @apply bg-accentuation-destructive-50 text-gray-900 border border-accentuation-destructive-500;
-    &:hover {
-      @apply bg-accentuation-destructive-100;
-    }
-    &:active {
-      @apply bg-accentuation-destructive-200;
-    }
-    &:disabled,
-    &--disabled {
-      @apply text-white border-accentuation-destructive-200;
-    }
+    @include alert-banner-button-variant('destructive');
   }
 
   &__left-icon,
