@@ -1,8 +1,9 @@
 .puik-button {
-  @apply rounded font-primary font-semibold transition cursor-pointer py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
+  @apply puik-text-button-default;
+  @apply rounded transition cursor-pointer py-3 px-4;
 
   &--sm {
-    @apply py-1 px-4 text-xs leading-4 tracking-[0.063em] font-bold;
+    @apply puik-text-button-small py-1 px-4;
     .puik-button__left-icon {
       @apply mr-2 text-xs;
     }
@@ -21,7 +22,7 @@
   }
 
   &--lg {
-    @apply py-3 px-6 text-base leading-6 tracking-[0.047em] font-semibold;
+    @apply puik-text-button-large py-3 px-6;
     .puik-button__left-icon {
       @apply mr-3;
     }
@@ -55,9 +56,6 @@
     &.puik-button--disabled {
       @apply bg-purple-100;
     }
-    &.puik-button--sm {
-      @apply py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
-    }
   }
 
   &--destructive {
@@ -71,9 +69,6 @@
     &:disabled,
     &.puik-button--disabled {
       @apply bg-accentuation-destructive-100;
-    }
-    &.puik-button--sm {
-      @apply py-3 px-4 text-sm leading-4 tracking-[0.063em] font-semibold;
     }
   }
 

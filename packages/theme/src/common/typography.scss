@@ -62,14 +62,14 @@
 
 // Buttons
 
-.puik-text-button-small {
-  @apply text-xs leading-4 -tracking-[0.0625em] font-bold;
+.puik-text-button-default {
+  @apply font-primary font-semibold text-sm leading-4;
 }
 
-.puik-text-button-default {
-  @apply text-sm leading-5 -tracking-[0.0625em] font-semibold;
+.puik-text-button-small {
+  @apply font-primary text-xs leading-4 font-bold;
 }
 
 .puik-text-button-large {
-  @apply text-base leading-6 -tracking-[0.046875em] font-semibold;
+  @apply font-primary text-base leading-6 font-semibold;
 }
