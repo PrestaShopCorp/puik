@@ -1,0 +1,47 @@
+.puik-search {
+  @apply flex flex-col;
+
+  &__wrapper {
+    @apply h-12 md:h-10 lg:h-10 flex flex-row border border-border-main rounded font-secondary transition-colors text-font-main overflow-hidden text-base md:text-sm;
+
+    &:hover {
+      @apply border-primary-purple-500;
+    }
+
+    &--focus {
+      @apply border-primary-purple-500 ring ring-focus-main;
+    }
+
+    &--disabled {
+      @apply bg-background-grey text-font-disabled hover:border-border-main cursor-not-allowed;
+    }
+
+    &--rounded-input {
+      @apply rounded-full;
+    }
+  }
+
+  &__prepend {
+    &__icon {
+      @apply flex items-center font-materialIcons text-font-500 select-none pl-3 pr-2;
+    }
+  }
+
+  &__field {
+    @apply w-full py-2 outline-none placeholder:text-font-500 disabled:placeholder:text-font-500 disabled:cursor-not-allowed;
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
+    }
+  }
+
+  &__button {
+    &__icon {
+      @apply font-materialIcons puik-h2;
+    }
+  }
+
+  &__cancel-icon {
+    @apply flex items-center font-materialIcons text-font-500 cursor-pointer select-none pl-3 pr-2;
+  }
+}
