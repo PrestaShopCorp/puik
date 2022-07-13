@@ -37,10 +37,8 @@
     }
   }
 
-  &__button {
-    &__icon {
-      @apply font-materialIcons puik-h2 m-1;
-    }
+  &__confirm-icon {
+    @apply font-materialIcons puik-h2 m-1;
   }
 
   &__cancel-icon {

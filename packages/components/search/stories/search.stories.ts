@@ -45,7 +45,7 @@ const Template: Story = (args: Args) => ({
   setup() {
     return { args }
   },
-  template: `<puik-search></puik-search>`,
+  template: `<puik-search v-bind="args">{{ args.default }}</puik-search>`,
 })
 
 export const Default = Template.bind({})
@@ -68,6 +68,36 @@ Default.parameters = {
       <div class="puik-search">
         <div class="puik-search__wrapper">
           <input class="puik-search__field" type="text" />
+        </div>
+      </div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const DefaultWithAutocomplete: Story = () => ({
+  components: {
+    PuikSearch,
+  },
+  setup() {
+    const myValue = ref('')
+    return { myValue }
+  },
+  template: `<puik-search v-model="myValue" :autocomplete="'test'"></puik-search>`,
+})
+
+DefaultWithAutocomplete.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet-->
+      <puik-search v-model="myValue" :autocomplete="'test'" />
+      
+      <!--HTML/CSS Snippet-->
+      <div class="puik-search">
+        <div class="puik-search__wrapper >
+          <input class="puik-search__field" type="text" :autocomplete="'test'" />
         </div>
       </div>
       `,
@@ -106,7 +136,7 @@ Disabled.parameters = {
   },
 }
 
-export const Autocomplete: Story = () => ({
+export const DefaultWithoutAutocomplete: Story = () => ({
   components: {
     PuikSearch,
   },
@@ -114,20 +144,20 @@ export const Autocomplete: Story = () => ({
     const myValue = ref('')
     return { myValue }
   },
-  template: `<puik-search v-model="myValue" :autocomplete="'test'"></puik-search>`,
+  template: `<puik-search v-model="myValue"></puik-search>`,
 })
 
-Autocomplete.parameters = {
+DefaultWithoutAutocomplete.parameters = {
   docs: {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-search v-model="myValue" :autocomplete="'test'" />
+      <puik-search v-model="myValue" />
       
       <!--HTML/CSS Snippet-->
       <div class="puik-search">
         <div class="puik-search__wrapper ">
-          <input class="puik-search__field" type="text" :autocomplete="'test'" />
+          <input class="puik-search__field" type="text" />
         </div>
       </div>
       `,
@@ -136,7 +166,7 @@ Autocomplete.parameters = {
   },
 }
 
-export const Rounded: Story = () => ({
+export const RoundedWithAutocomplete: Story = () => ({
   components: {
     PuikSearch,
   },
@@ -144,20 +174,20 @@ export const Rounded: Story = () => ({
     const myValue = ref('')
     return { myValue }
   },
-  template: `<puik-search v-model="myValue" isMainFeature></puik-search>`,
+  template: `<puik-search v-model="myValue" isMainFeature :autocomplete="'test'"></puik-search>`,
 })
 
-Rounded.parameters = {
+RoundedWithAutocomplete.parameters = {
   docs: {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-search v-model="myValue" isMainFeature />
+      <puik-search v-model="myValue" isMainFeature :autocomplete="'test'"/>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-search">
         <div class="puik-search__wrapper puik-search__wrapper--rounded-input">
-          <input class="puik-search__field" type="text" isMainFeature />
+          <input class="puik-search__field" type="text" isMainFeature :autocomplete="'test'"/>
         </div>
       </div>
       `,
@@ -195,7 +225,7 @@ RoundedDisabled.parameters = {
   },
 }
 
-export const RoundedAndAutocomplete: Story = () => ({
+export const RoundedWithoutAutocomplete: Story = () => ({
   components: {
     PuikSearch,
   },
@@ -203,20 +233,20 @@ export const RoundedAndAutocomplete: Story = () => ({
     const myValue = ref('')
     return { myValue }
   },
-  template: `<puik-search v-model="myValue" isMainFeature :autocomplete="'test'"></puik-search>`,
+  template: `<puik-search v-model="myValue" isMainFeature></puik-search>`,
 })
 
-RoundedAndAutocomplete.parameters = {
+RoundedWithoutAutocomplete.parameters = {
   docs: {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-search v-model="myValue" isMainFeature :autocomplete="'test'"/>
+      <puik-search v-model="myValue" isMainFeature/>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-search">
         <div class="puik-search__wrapper puik-search__wrapper--rounded-input">
-          <input class="puik-search__field" type="text" isMainFeature :autocomplete="'test'"/>
+          <input class="puik-search__field" type="text" isMainFeature/>
         </div>
       </div>
       `,

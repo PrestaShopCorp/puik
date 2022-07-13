@@ -21,9 +21,9 @@
       >
         {{ 'cancel' }}
       </button>
-      <div v-if="autocomplete && !disabled" class="flex">
+      <div v-if="!autocomplete && !disabled" class="flex">
         <puik-button
-          class="puik-search__button__icon"
+          class="puik-search__confirm-icon"
           size="sm"
           variant="primary"
           >{{ 'east' }}</puik-button
@@ -42,9 +42,7 @@ defineOptions({
 })
 const props = defineProps(searchProps)
 const emit = defineEmits(searchEmits)
-const slots = useSlots()
 const isFocus = ref(false)
-const passwordIsVisible = ref(false)
 
 const searchClasses = computed(() => ({
   'puik-search__wrapper--focus': isFocus.value,
