@@ -22,7 +22,9 @@ export default {
   args: {
     label: '',
     disabled: false,
-    default: 'Slot by default',
+    name: 'Slot by default',
+    value: '',
+    modelValue: '',
   },
 } as Meta
 
