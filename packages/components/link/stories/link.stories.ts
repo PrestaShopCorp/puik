@@ -13,7 +13,7 @@ export default {
     to: {
       control: 'text',
       description:
-        'Set a vue router link (changes link to "router-link" or "nuxt-link" (depend on context) html tag)',
+        'Set a vue router link (changes link to "router-link" or html tag)',
     },
     target: {
       control: 'select',

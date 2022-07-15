@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance } from 'vue'
+import { computed } from 'vue'
 import { linkProps } from './link'
 defineOptions({
   name: 'PuikLink',
@@ -20,15 +20,9 @@ defineOptions({
 
 const props = defineProps(linkProps)
 
-const instance = getCurrentInstance()
-
-const isNuxtInstance = computed(() => {
-  return !!instance?.appContext.app.$nuxt
-})
-
 const componentType = computed(() => {
   if (props.to) {
-    return isNuxtInstance.value ? 'nuxt-link' : 'router-link'
+    return 'router-link'
   }
   return 'a'
 })

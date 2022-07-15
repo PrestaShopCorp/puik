@@ -6,7 +6,7 @@ import { PuikLink } from '@puik/components'
 
 <template>
   <div class="app-container">
-    <puik-link
+    <puik-link to="#"
       >The struggle itself towards the heights is enough to fill a man's
       heart.</puik-link
     >
