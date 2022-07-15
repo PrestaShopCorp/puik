@@ -2,25 +2,29 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes } from 'vue'
 import type Link from './link.vue'
 
+export const targetVariants = ['_blank', '_self', '_parent', '_top']
+
 export const linkProps = buildProps({
   href: {
     type: String,
     required: false,
-    default: '#',
+    default: undefined,
+  },
+  to: {
+    type: String,
+    required: false,
+    default: undefined,
   },
   target: {
     type: String,
+    values: targetVariants,
     required: false,
-    default: '_parent',
+    default: '_self',
   },
   title: {
     type: String,
     required: false,
-  },
-  icon: {
-    type: Boolean,
-    required: false,
-    default: false,
+    default: undefined,
   },
 } as const)
 
