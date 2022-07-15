@@ -72,11 +72,11 @@ const value = computed<string | number>({
 </script>
 
 <style scoped>
-.puik-search :deep(.puik-button) {
+.puik-search .puik-button {
   @apply p-2 w-12;
 }
 
-.puik-search__wrapper--rounded-input :deep(.puik-button) {
+.puik-search__wrapper--rounded-input .puik-button {
   @apply rounded-full;
 }
 </style>
