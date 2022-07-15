@@ -43,3 +43,11 @@
     @apply flex items-center font-materialIcons text-font-500 cursor-pointer select-none pl-3 pr-2;
   }
 }
+
+.puik-search .puik-button {
+  @apply p-2 w-12;
+}
+
+.puik-search__wrapper--rounded-input .puik-button {
+  @apply rounded-full;
+}
