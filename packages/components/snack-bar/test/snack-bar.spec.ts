@@ -26,4 +26,47 @@ describe('SnackBar tests', () => {
     factory()
     expect(wrapper).toBeTruthy()
   })
+
+  it('should be a default snackbar without action', () => {
+    factory({ text: 'Hello world' })
+    expect(findText().text()).toEqual('Hello world')
+    expect(findVariant().classes()).toContain('puik-snack-bar--default')
+    expect(findAction().exists()).toBeFalsy()
+  })
+
+  it('should be a default snackbar with action', () => {
+    factory({ text: 'Hello world', action: 'Cancel' })
+    expect(findText().text()).toEqual('Hello world')
+    expect(findAction().exists()).toBeTruthy()
+    expect(findVariant().classes()).toContain('puik-snack-bar--default')
+    expect(findAction().text()).toEqual('Cancel')
+  })
+
+  it('should be a dangerous snackbar without action', () => {
+    factory({ text: 'This is dangerous', variant: 'danger' })
+    expect(findText().text()).toEqual('This is dangerous')
+    expect(findVariant().classes()).toContain('puik-snack-bar--danger')
+    expect(findAction().exists()).toBeFalsy()
+  })
+
+  it('should be a dangerous snackbar with action', () => {
+    factory({ text: 'This is dangerous', action: 'Retry', variant: 'danger' })
+    expect(findAction().exists()).toBeTruthy()
+    expect(findText().text()).toEqual('This is dangerous')
+    expect(findVariant().classes()).toContain('puik-snack-bar--danger')
+    expect(findAction().text()).toEqual('Retry')
+  })
+
+  it('should trigger action click', async () => {
+    factory({ text: 'Hello world', action: 'Cancel' })
+    await findAction().trigger('click')
+    expect(wrapper.emitted()).toHaveProperty('on-action')
+  })
+
+  it('should close the snackbar when clicking on the Close button', async () => {
+    factory({ text: 'Hello world', action: 'Cancel' })
+    expect(wrapper.vm.shown).toBeTruthy()
+    await findCloseButton().trigger('click')
+    expect(wrapper.vm.shown).toBeFalsy()
+  })
 })
