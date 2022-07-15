@@ -5,6 +5,7 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 describe('Link tests', () => {
   let wrapper: VueWrapper<any>
+  const findLink = () => wrapper.find('.puik-link')
   const factory = (
     propsData: Record<string, any> = {},
     options: MountingOptions<any> = {}
@@ -19,5 +20,15 @@ describe('Link tests', () => {
   it('should be a vue instance', () => {
     factory()
     expect(wrapper).toBeTruthy()
+  })
+
+  it('should be a router-link if to prop is defined', () => {
+    factory({ to: '/test' })
+    expect(findLink().element.tagName).toBe('ROUTER-LINK')
+  })
+
+  it('should be a link if href prop is defined', () => {
+    factory({ href: '/test' })
+    expect(findLink().element.tagName).toBe('A')
   })
 })
