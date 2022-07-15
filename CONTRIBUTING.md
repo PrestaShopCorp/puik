@@ -15,7 +15,7 @@ If you want to contribute to this project, make your PR from a feature branch to
 ### Prerequisites
 
 - NodeJS >= 16
-- [PNPM 6](https://pnpm.io/)
+- [PNPM 6 or higher](https://pnpm.io/)
 
 ### Local development
 
