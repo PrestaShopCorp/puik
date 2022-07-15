@@ -68,5 +68,6 @@ describe('SnackBar tests', () => {
     expect(wrapper.vm.shown).toBeTruthy()
     await findCloseButton().trigger('click')
     expect(wrapper.vm.shown).toBeFalsy()
+    expect(wrapper.emitted()).toHaveProperty('close')
   })
 })

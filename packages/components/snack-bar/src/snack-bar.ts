@@ -21,10 +21,7 @@ export const snackBarProps = buildProps({
     default: 'default',
   },
 } as const)
-export const snackBarEmits = {
-  close: (event: Event) => event instanceof Event,
-  actionClick: (event: Event) => event instanceof Event,
-}
+export const snackBarEmits = ['close', 'on-action']
 export type SnackBarProps = ExtractPropTypes<typeof snackBarProps>
 
 export type SnackBarInstance = InstanceType<typeof SnackBar>

@@ -45,6 +45,7 @@ const emits = defineEmits(snackBarEmits)
 
 const onClose = () => {
   shown.value = false
+  emits('close')
 }
 
 const onAction = () => {
