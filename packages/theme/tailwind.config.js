@@ -72,9 +72,6 @@ module.exports = {
       fontSize: {
         '4xl': '2rem',
       },
-      outlineColor: {
-        primary: '#458FFD',
-      },
       screens: {
         xs: '320px',
       },
