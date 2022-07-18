@@ -55,10 +55,45 @@ const Template: Story = (args: Args) => ({
 })
 
 export const Default = Template.bind({})
-
 Default.args = {}
+Default.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet-->
+      <puik-link href="#" target="_self" title="I'm a tooltip for your link">
+      I'm a cool link
+      </puik-link>
+
+      <!--HTML/CSS Snippet-->
+      <a class="puik-link" href="#" target="_self" title="I'm a tooltip for your link">
+        I'm a cool link
+      </a>
+      `,
+      language: 'html',
+    },
+  },
+}
 
 export const Blank = Template.bind({})
 Blank.args = {
   target: '_blank',
+}
+Blank.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet-->
+      <puik-link href="#" target="_blank" title="I'm a tooltip for your link">
+      I'm a cool link
+      </puik-link>
+
+      <!--HTML/CSS Snippet-->
+      <a class="puik-link" href="#" target="_blank" title="I'm a tooltip for your link">
+        I'm a cool link
+      </a>
+      `,
+      language: 'html',
+    },
+  },
 }
