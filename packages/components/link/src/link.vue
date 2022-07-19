@@ -1,5 +1,11 @@
 <template>
-  <component :is="componentType" v-bind="componentProps" class="puik-link">
+  <component
+    :is="componentType"
+    v-bind="pathProp"
+    :target="target"
+    :title="title"
+    class="puik-link"
+  >
     <slot></slot>
   </component>
 </template>
@@ -20,14 +26,7 @@ const componentType = computed(() => {
   return 'a'
 })
 
-const componentProps = computed(() => {
-  const componentProps = {}
-  Object.keys(props).forEach((key) => {
-    if (key === 'href' && props.to) {
-      return
-    }
-    componentProps[key] = props[key]
-  })
-  return componentProps
-})
+const pathProp = computed(() =>
+  props.to ? { to: props.to } : { href: props.href }
+)
 </script>
