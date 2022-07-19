@@ -15,6 +15,11 @@ export default {
   args: {
     default: 'Card content',
   },
+  decorators: [
+    () => ({
+      template: '<div class="w-96"><story/></div>',
+    }),
+  ],
 } as Meta
 
 const Template: Story = (args: Args) => ({
