@@ -1,5 +1,6 @@
 <template>
   <div class="puik-search">
+    {{ modelValue }} coucoucoucou
     <div class="puik-search__wrapper" :class="searchClasses">
       <span class="puik-search__prepend__icon puik-h2">{{ 'search' }} </span>
       <input
@@ -15,7 +16,7 @@
         @blur="handleBlur"
       />
       <button
-        v-if="!disabled"
+        v-if="!disabled && value"
         class="puik-search__cancel-icon puik-h2"
         @click="deleteContent"
       >
@@ -47,7 +48,7 @@ const isFocus = ref(false)
 const searchClasses = computed(() => ({
   'puik-search__wrapper--focus': isFocus.value,
   'puik-search__wrapper--disabled': props.disabled,
-  'puik-search__wrapper--rounded-input': props.isMainFeature,
+  'puik-search__wrapper--rounded-input': props.rounded,
 }))
 
 const handleFocus = () => (isFocus.value = true)

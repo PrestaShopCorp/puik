@@ -45,8 +45,18 @@ describe('Search tests', () => {
     expect(findWrapper().classes()).toContain('puik-search__wrapper--focus')
   })
 
+  it('should display cancel icon if input has value and is enabled', async () => {
+    factory({ modelValue: 'test' })
+    expect(findCancelButtonIcon()).toBeTruthy()
+  })
+
+  it('should not display cancel icon if input is empty and is enabled', async () => {
+    factory({ modelValue: null })
+    expect(findCancelButtonIcon().exists()).toBeFalsy()
+  })
+
   it('should delete the content on click of the cancel icon', async () => {
-    factory()
+    factory({ modelValue: 'test' })
     await findCancelButtonIcon().trigger('click')
     expect(wrapper.emitted('update:modelValue')?.[0]).toStrictEqual([null])
   })

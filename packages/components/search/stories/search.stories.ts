@@ -76,6 +76,35 @@ Default.parameters = {
   },
 }
 
+export const DefaultWithValue: Story = () => ({
+  components: {
+    PuikSearch,
+  },
+  setup() {
+    const myValue = ref('Input is not empty')
+    return { myValue }
+  },
+  template: `<puik-search v-model="myValue" :autocomplete="'test'"></puik-search>`,
+})
+
+DefaultWithValue.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet-->
+      <puik-search v-model="myValue" />
+      
+      <!--HTML/CSS Snippet-->
+      <div class="puik-search">
+        <div class="puik-search__wrapper >
+          <input class="puik-search__field" type="text" />
+        </div>
+      </div>
+      `,
+      language: 'html',
+    },
+  },
+}
 export const DefaultWithAutocomplete: Story = () => ({
   components: {
     PuikSearch,
@@ -166,7 +195,7 @@ DefaultWithoutAutocomplete.parameters = {
   },
 }
 
-export const RoundedWithAutocomplete: Story = () => ({
+export const roundedWithAutocomplete: Story = () => ({
   components: {
     PuikSearch,
   },
@@ -177,7 +206,7 @@ export const RoundedWithAutocomplete: Story = () => ({
   template: `<puik-search v-model="myValue" isMainFeature :autocomplete="'test'"></puik-search>`,
 })
 
-RoundedWithAutocomplete.parameters = {
+roundedWithAutocomplete.parameters = {
   docs: {
     source: {
       code: `
@@ -195,7 +224,7 @@ RoundedWithAutocomplete.parameters = {
     },
   },
 }
-export const RoundedDisabled: Story = () => ({
+export const roundedDisabled: Story = () => ({
   components: {
     PuikSearch,
   },
@@ -206,7 +235,7 @@ export const RoundedDisabled: Story = () => ({
   template: `<puik-search v-model="myValue" isMainFeature disabled></puik-search>`,
 })
 
-RoundedDisabled.parameters = {
+roundedDisabled.parameters = {
   docs: {
     source: {
       code: `
@@ -225,7 +254,7 @@ RoundedDisabled.parameters = {
   },
 }
 
-export const RoundedWithoutAutocomplete: Story = () => ({
+export const roundedWithoutAutocomplete: Story = () => ({
   components: {
     PuikSearch,
   },
@@ -236,7 +265,7 @@ export const RoundedWithoutAutocomplete: Story = () => ({
   template: `<puik-search v-model="myValue" isMainFeature></puik-search>`,
 })
 
-RoundedWithoutAutocomplete.parameters = {
+roundedWithoutAutocomplete.parameters = {
   docs: {
     source: {
       code: `

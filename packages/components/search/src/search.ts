@@ -38,7 +38,7 @@ export const searchProps = buildProps({
     required: false,
     default: false,
   },
-  isMainFeature: {
+  rounded: {
     type: Boolean,
     required: false,
     default: false,
