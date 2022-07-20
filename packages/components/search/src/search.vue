@@ -1,6 +1,5 @@
 <template>
   <div class="puik-search">
-    {{ modelValue }} coucoucoucou
     <div class="puik-search__wrapper" :class="searchClasses">
       <span class="puik-search__prepend__icon puik-h2">{{ 'search' }} </span>
       <input
