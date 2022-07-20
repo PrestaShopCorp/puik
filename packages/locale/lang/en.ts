@@ -12,5 +12,9 @@ export default {
     label: {
       optional: 'Optional',
     },
+    select: {
+      searchPlaceholder: 'Search',
+      noResults: 'No results matched',
+    },
   },
 }

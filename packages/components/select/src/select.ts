@@ -28,6 +28,21 @@ export const selectProps = buildProps({
     required: false,
     default: undefined,
   },
+  options: {
+    type: [Array, Object],
+    required: false,
+    default: undefined,
+  },
+  customFilterMethod: {
+    type: Function,
+    required: false,
+    default: undefined,
+  },
+  noMatchText: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type SelectProps = ExtractPropTypes<typeof selectProps>
