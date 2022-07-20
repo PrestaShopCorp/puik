@@ -2,6 +2,7 @@
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     PuikLink: typeof import('puik')['PuikLink']
+    PuikCard: typeof import('puik')['PuikCard']
     PuikCheckbox: typeof import('puik')['PuikCheckbox']
     PuikLabel: typeof import('puik')['PuikLabel']
     PuikRadio: typeof import('puik')['PuikRadio']
