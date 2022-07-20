@@ -203,7 +203,7 @@ export const roundedWithAutocomplete: Story = () => ({
     const myValue = ref('')
     return { myValue }
   },
-  template: `<puik-search v-model="myValue" isMainFeature :autocomplete="'test'"></puik-search>`,
+  template: `<puik-search v-model="myValue" rounded :autocomplete="'test'"></puik-search>`,
 })
 
 roundedWithAutocomplete.parameters = {
@@ -211,12 +211,12 @@ roundedWithAutocomplete.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-search v-model="myValue" isMainFeature :autocomplete="'test'"/>
+      <puik-search v-model="myValue" rounded :autocomplete="'test'"/>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-search">
         <div class="puik-search__wrapper puik-search__wrapper--rounded-input">
-          <input class="puik-search__field" type="text" isMainFeature :autocomplete="'test'"/>
+          <input class="puik-search__field" type="text" rounded :autocomplete="'test'"/>
         </div>
       </div>
       `,
@@ -232,7 +232,7 @@ export const roundedDisabled: Story = () => ({
     const myValue = ref('')
     return { myValue }
   },
-  template: `<puik-search v-model="myValue" isMainFeature disabled></puik-search>`,
+  template: `<puik-search v-model="myValue" rounded disabled></puik-search>`,
 })
 
 roundedDisabled.parameters = {
@@ -240,12 +240,12 @@ roundedDisabled.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-search v-model="myValue" isMainFeature disabled/>
+      <puik-search v-model="myValue" rounded disabled/>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-search">
         <div class="puik-search__wrapper puik-search__wrapper--rounded-input">
-          <input class="puik-search__field" type="text" isMainFeature disabled/>
+          <input class="puik-search__field" type="text" rounded disabled/>
         </div>
       </div>
       `,
@@ -262,7 +262,7 @@ export const roundedWithoutAutocomplete: Story = () => ({
     const myValue = ref('')
     return { myValue }
   },
-  template: `<puik-search v-model="myValue" isMainFeature></puik-search>`,
+  template: `<puik-search v-model="myValue" rounded></puik-search>`,
 })
 
 roundedWithoutAutocomplete.parameters = {
@@ -270,12 +270,12 @@ roundedWithoutAutocomplete.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-search v-model="myValue" isMainFeature/>
+      <puik-search v-model="myValue" rounded/>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-search">
         <div class="puik-search__wrapper puik-search__wrapper--rounded-input">
-          <input class="puik-search__field" type="text" isMainFeature/>
+          <input class="puik-search__field" type="text" rounded/>
         </div>
       </div>
       `,
