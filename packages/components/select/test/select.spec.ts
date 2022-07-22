@@ -1,9 +1,10 @@
 import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { faker } from '@faker-js/faker'
 import PuikSelect from '../src/select.vue'
 import PuikOption from '../src/option.vue'
+import PuikInput from '../../input/src/input.vue'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 describe('Select tests', () => {
@@ -11,6 +12,7 @@ describe('Select tests', () => {
 
   const findSelect = () => wrapper.find('.puik-select__button')
   const findSelectComponent = () => wrapper.findComponent(PuikSelect)
+  const findInputComponent = () => wrapper.findComponent(PuikInput)
   const findList = () => wrapper.find('.puik-select__options')
   const findSelected = () => wrapper.find('.puik-select__selected')
   const findAllOptions = () => wrapper.findAllComponents(PuikOption)
@@ -21,48 +23,50 @@ describe('Select tests', () => {
     data: Record<string, any> = () => ({}),
     options: MountingOptions<any> = {}
   ) => {
-    wrapper = mount(
-      {
-        components: {
-          'puik-select': PuikSelect,
-          'puik-option': PuikOption,
-        },
-        template,
-        data,
-        ...options,
+    wrapper = mount({
+      components: {
+        'puik-select': PuikSelect,
+        'puik-option': PuikOption,
       },
-      {
-        attachTo: 'body',
-      }
-    )
+      template,
+      data,
+      ...options,
+    })
   }
 
   it('should be a vue instance', () => {
     factory(
-      `<puik-select>
-        <puik-option option="test">test</puik-option>
-      </puik-select>`
+      `<puik-select v-model="value">
+        <puik-option value="test" label="test" />
+      </puik-select>`,
+      () => ({
+        value: '',
+      })
     )
     expect(wrapper).toBeTruthy()
   })
 
   it('should be in a disabled state', async () => {
     factory(
-      `<puik-select disabled>
-        <puik-option option="test">test</puik-option>
-      </puik-select>`
+      `<puik-select v-model="value" disabled>
+        <puik-option value="test" label="test" />
+      </puik-select>`,
+      () => ({
+        value: '',
+      })
     )
     await findSelect().trigger('click')
-    expect(findList().exists()).toBeFalsy()
+    expect(findList().isVisible()).toBeFalsy()
   })
 
   it('should display a placeholder', () => {
     const placeholder = faker.random.word()
     factory(
-      `<puik-select :placeholder="placeholder">
-        <puik-option option="test">test</puik-option>
+      `<puik-select v-model="value" :placeholder="placeholder">
+        <puik-option value="test" label="test" />
       </puik-select>`,
       () => ({
+        value: '',
         placeholder,
       })
     )
@@ -72,10 +76,11 @@ describe('Select tests', () => {
   it('should be in an error state', () => {
     const error = faker.lorem.sentence()
     factory(
-      `<puik-select :error="error">
-        <puik-option option="test">test</puik-option>
+      `<puik-select v-model="value" :error="error">
+        <puik-option value="test" label="test" />
       </puik-select>`,
       () => ({
+        value: '',
         error,
       })
     )
@@ -86,9 +91,9 @@ describe('Select tests', () => {
   it('should return the selected option string', async () => {
     factory(
       `<puik-select v-model="value">
-        <puik-option option="test">test</puik-option>
-        <puik-option option="test2">test2</puik-option>
-        <puik-option option="test3">test3</puik-option>
+        <puik-option value="test" label="test" />
+        <puik-option value="test2" label="test2" />
+        <puik-option value="test3" label="test3" />
       </puik-select>`,
       () => ({
         value: '',
@@ -120,7 +125,7 @@ describe('Select tests', () => {
     ]
     factory(
       `<puik-select v-model="value">
-        <puik-option v-for="option in options" :option="option">option.label</puik-option>
+        <puik-option v-for="option in options" :value="option" :label="option.label" />
       </puik-select>`,
       () => ({
         options,
@@ -137,21 +142,22 @@ describe('Select tests', () => {
     expect(findSelected().text()).toBe(options[2].label)
   })
 
-  it('should set a default string value', () => {
+  it('should set a default string value', async () => {
     const options = ['test', 'test2', 'test3']
     factory(
       `<puik-select v-model="value">
-        <puik-option v-for="option in options" :option="option">option</puik-option>
+        <puik-option v-for="option in options" :value="option" :label="option" />
       </puik-select>`,
       () => ({
         options,
         value: options[2],
       })
     )
+    await nextTick()
     expect(findSelected().text()).toBe(options[2])
   })
 
-  it('should set a default object value', () => {
+  it('should set a default object value', async () => {
     const options = [
       {
         label: 'Test',
@@ -168,13 +174,14 @@ describe('Select tests', () => {
     ]
     factory(
       `<puik-select v-model="value">
-        <puik-option v-for="option in options" :option="option">option.label</puik-option>
+        <puik-option v-for="option in options" :value="option" :label="option.label" />
       </puik-select>`,
       () => ({
         options,
         value: options[2],
       })
     )
+    await nextTick()
     expect(findSelected().text()).toBe(options[2].label)
   })
 
@@ -195,7 +202,7 @@ describe('Select tests', () => {
     ]
     factory(
       `<puik-select displayProperty="name" v-model="value">
-        <puik-option v-for="option in options" :option="option">option.name</puik-option>
+        <puik-option v-for="option in options" :value="option" :label="option.name" />
       </puik-select>`,
       () => ({
         options,
@@ -209,16 +216,84 @@ describe('Select tests', () => {
   })
 
   it('should disable the option', async () => {
-    factory(`
-    <puik-select>
-      <puik-option option="test" disabled>test</puik-option>
-      <puik-option option="test2">test2</puik-option>
-    </puik-select>`)
+    factory(
+      `
+    <puik-select v-model="value">
+      <puik-option value="test" label="test" disabled />
+      <puik-option value="test2" label="test2" />
+    </puik-select>`,
+      () => ({
+        value: '',
+      })
+    )
     await findSelect().trigger('click')
     expect(findAllOptions().at(0)?.find('.puik-option').classes()).toContain(
       'puik-option--disabled'
     )
     await findAllOptions().at(0)?.trigger('click')
     expect(findSelected().text()).toBe('')
+  })
+
+  it('should filter through the options by using the search', async () => {
+    const items = [
+      {
+        label: 'Test',
+        value: 'test',
+      },
+      {
+        label: 'Test2',
+        value: 'test2',
+      },
+      {
+        label: 'Test3',
+        value: 'test3',
+      },
+    ]
+    const query = 'Test3'
+    factory(
+      `<puik-select v-slot="{ options }"  v-model="value" :options="items">
+        <puik-option v-for="option in options" :value="option" :label="option.label" />
+      </puik-select>`,
+      () => ({
+        items,
+        value: {},
+      })
+    )
+    await findSelect().trigger('click')
+    await findInputComponent().setValue(query)
+    expect(findAllOptions().length).toBe(1)
+    expect(findAllOptions().at(0)?.text()).toBe(query)
+  })
+
+  it('should call the custom filter method when filtering the options by using the search', async () => {
+    const items = [
+      {
+        label: 'Test',
+        value: 'test',
+      },
+      {
+        label: 'Test2',
+        value: 'test2',
+      },
+      {
+        label: 'Test3',
+        value: 'test3',
+      },
+    ]
+    const customFilterMethod = vi.fn()
+    const query = 'Test3'
+    factory(
+      `<puik-select v-slot="{ options }" v-model="value" :options="items" :custom-filter-method="customFilterMethod">
+        <puik-option v-for="option in options" :value="option" :label="option.label" />
+      </puik-select>`,
+      () => ({
+        items,
+        value: {},
+        customFilterMethod,
+      })
+    )
+    await findSelect().trigger('click')
+    await findInputComponent().setValue(query)
+    expect(customFilterMethod).toHaveBeenCalledOnce()
   })
 })

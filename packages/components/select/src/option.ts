@@ -10,9 +10,13 @@ export interface DefaultOption {
 export type Option = string | number | Record<string, any> | DefaultOption
 
 export const optionProps = buildProps({
-  option: {
+  value: {
     type: [String, Number, Object] as PropType<Option>,
     required: true,
+  },
+  label: {
+    type: String,
+    required: false,
   },
   disabled: {
     type: Boolean,

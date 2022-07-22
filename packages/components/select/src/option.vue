@@ -1,8 +1,8 @@
 <template>
   <ListboxOption
-    v-slot="{ active, selected, disabled }"
+    v-slot="{ active, selected }"
     :disabled="disabled"
-    :value="option"
+    :value="value"
     as="template"
   >
     <li
@@ -13,18 +13,42 @@
         'puik-option--disabled': disabled,
       }"
     >
-      <span class="puik-option__label"><slot></slot></span>
+      <span class="puik-option__label">{{ label || value }}</span>
       <span v-if="selected" class="puik-option__selected-icon"> checked </span>
     </li>
   </ListboxOption>
 </template>
 
 <script setup lang="ts">
+import { inject, watch } from 'vue'
 import { ListboxOption } from '@headlessui/vue'
+import { isObject } from '@puik/utils'
 import { optionProps } from './option'
+import { selectKey } from './select'
 defineOptions({
   name: 'PuikOption',
 })
 
 const props = defineProps(optionProps)
+
+const { setCurrentLabel, selectedValue } = inject(selectKey)!
+
+const sendLabel = () => {
+  if (!props.disabled) {
+    if (props.label) {
+      return setCurrentLabel(props.label)
+    }
+    return setCurrentLabel(!isObject(props.value) ? props.value : '')
+  }
+}
+
+watch(
+  selectedValue,
+  (newValue) => {
+    if (props.value === newValue) {
+      sendLabel()
+    }
+  },
+  { immediate: true }
+)
 </script>

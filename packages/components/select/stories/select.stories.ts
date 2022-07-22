@@ -51,9 +51,9 @@ const Template: Story = (args: Args) => ({
   },
   template: `
   <puik-select v-model="myValue" v-bind="args">
-    <puik-option option="test">Test</puik-option>
-    <puik-option option="test2">Test2</puik-option>
-    <puik-option option="test3">Test3</puik-option>
+    <puik-option value="test">Test</puik-option>
+    <puik-option value="test2">Test2</puik-option>
+    <puik-option value="test3">Test3</puik-option>
   </puik-select>`,
 })
 
@@ -65,9 +65,9 @@ Default.parameters = {
       code: `
       <!--VueJS Snippet-->
       <puik-select v-model="myValue" v-bind="args">
-        <puik-option option="test">Test</puik-option>
-        <puik-option option="test2">Test2</puik-option>
-        <puik-option option="test3">Test3</puik-option>
+        <puik-option value="test">Test</puik-option>
+        <puik-option value="test2">Test2</puik-option>
+        <puik-option value="test3">Test3</puik-option>
       </puik-select>
       <!--HTML/CSS Snippet-->
       <div class="puik-select">
@@ -80,7 +80,6 @@ Default.parameters = {
           class="puik-select__button"
           aria-haspopup="listbox"
           aria-expanded="false"
-          @click="showList = !showList"
         >
           <span class="puik-select__selected">
             <!-- Placeholder or selected value -->
@@ -96,7 +95,6 @@ Default.parameters = {
           To: "puik-select__transition__leave--to"
         -->
         <ul
-          v-show="showList"
           class="puik-select__options"
           tabindex="-1"
           role="listbox"
@@ -145,9 +143,9 @@ export const DisabledOption: Story = () => ({
     return { myValue }
   },
   template: `<puik-select v-model="myValue" placeholder="Select a value">
-      <puik-option option="test" disabled>Test</puik-option>
-      <puik-option option="test2">Test2</puik-option>
-      <puik-option option="test3">Test3</puik-option>
+      <puik-option value="test" label="Test" disabled/>
+      <puik-option value="test2" label="Test2"/>
+      <puik-option value="test3" label="Test3"/>
     </puik-select>`,
 })
 
@@ -161,8 +159,98 @@ export const Error: Story = () => ({
     return { myValue }
   },
   template: `<puik-select error="This is an error message" v-model="myValue" placeholder="Select a value">
-      <puik-option option="test" disabled>Test</puik-option>
-      <puik-option option="test2">Test2</puik-option>
-      <puik-option option="test3">Test3</puik-option>
+      <puik-option value="test" label="Test"/>
+      <puik-option value="test2" label="Test2"/>
+      <puik-option value="test3" label="Test3"/>
     </puik-select>`,
 })
+
+export const Searchable: Story = () => ({
+  components: {
+    PuikSelect,
+    PuikOption,
+  },
+  setup() {
+    const myValue = ref('')
+    const myOptions = ref([
+      { value: 'test', label: 'Test' },
+      { value: 'test2', label: 'Test2' },
+      { value: 'test3', label: 'Test3' },
+    ])
+    return { myValue, myOptions }
+  },
+  template: `
+    <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value">
+      <puik-option v-for="option in options" :value="option.value" :label="option.label"/>
+    </puik-select>`,
+})
+Searchable.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet-->
+      <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value">
+        <puik-option v-for="option in options" option="option.value">{{ option.label }}</puik-option>
+      </puik-select>
+      <!--HTML/CSS Snippet-->
+      <div class="puik-select">
+      <div class="puik-select__wrapper">
+        <!-- 
+          State classes
+          Error: "puik-select__button--error"
+         -->
+        <button
+          class="puik-select__button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+        >
+          <span class="puik-select__selected">
+            <!-- Placeholder or selected value -->
+            Select a value
+          </span>
+          <span class="puik-select__icon"> unfold_more </span>
+        </button>
+        <!--
+          Select list, show/hide base on select state
+
+          Leaving: "puik-select__transition__leave--active"
+          From: "puik-select__transition__leave--from"
+          To: "puik-select__transition__leave--to"
+        -->
+        <ul
+          class="puik-select__options"
+          tabindex="-1"
+          role="listbox"
+        >
+        <div class="puik-input">
+          <div class="puik-input__wrapper>
+            <div class="puik-input__prepend">
+              <span class="puik-select__search__icon">search</span>
+            </div>
+            <input class="puik-input__field" type="text" />
+          </div>
+        </div>
+          <!-- 
+              State classes
+              Active: "puik-option--active"
+              Selected: "puik-option--selected"
+              Disabled: "puik-option--disabled"
+            -->
+          <li class="puik-option" role="option">
+            <span class="puik-option__label">Test 1</span>
+            <!-- Checkmark, only display for selected option. -->
+            <span class="puik-option__selected-icon"> checked </span>
+          </li>
+          <!-- More items... -->
+        </ul>
+        <!-- Error message, only displayed when there is an error. -->
+        <span class="puik-select__error"
+          ><span class="puik-select__error__icon">error</span>My error</span
+        >
+      </div>
+    </div>
+      `,
+      language: 'html',
+    },
+  },
+}

@@ -1,5 +1,5 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
+import type { ExtractPropTypes, InjectionKey, PropType, Ref } from 'vue'
 import type Select from './select.vue'
 import type { Option } from './option'
 
@@ -12,6 +12,11 @@ export const selectProps = buildProps({
     type: String,
     required: false,
     default: 'label',
+  },
+  id: {
+    type: String,
+    required: false,
+    default: undefined,
   },
   disabled: {
     type: Boolean,
@@ -51,3 +56,10 @@ export const selectEmits = ['update:modelValue']
 export type SelectEmits = typeof selectEmits
 
 export type SelectInstance = InstanceType<typeof Select>
+
+export type SelectContext = {
+  setCurrentLabel: (label: string | number) => string | number
+  selectedValue: Ref<string | number | object>
+}
+
+export const selectKey: InjectionKey<SelectContext> = Symbol('select')
