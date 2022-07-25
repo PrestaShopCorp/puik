@@ -1,6 +1,8 @@
 import { buildProps } from '@puik/utils'
+import { useLocale } from '@puik/hooks'
 import type { ExtractPropTypes } from 'vue'
 import type Search from './search.vue'
+const { t } = useLocale()
 
 export const searchProps = buildProps({
   modelValue: {
@@ -16,7 +18,7 @@ export const searchProps = buildProps({
   placeholder: {
     type: String,
     required: false,
-    default: 'Search',
+    default: t('puik.search.placeholder'),
   },
   disabled: {
     type: Boolean,
