@@ -37,7 +37,7 @@ import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
 import { useLocale } from '@puik/hooks'
 import { switchEmits, switchProps } from './switch'
 defineOptions({
-  name: 'Switch',
+  name: 'PuikSwitch',
 })
 
 const props = defineProps(switchProps)
