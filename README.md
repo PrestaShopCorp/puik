@@ -52,7 +52,38 @@ $ pnpm install @prestashopcorp/puik
 
 ### Usage
 
-#### On demand import (recommended)
+#### Auto import (recommended)
+
+First you need to install `unplugin-vue-components`
+
+```sh
+$ npm install -D unplugin-vue-components
+
+# Yarn
+$ yarn add unplugin-vue-components -D
+
+# pnpm
+$ pnpm install unplugin-vue-components -D
+```
+
+Then add the code below in your vite.config file
+
+```typescript
+import { defineConfig } from 'vite'
+import Components from 'unplugin-vue-components/vite'
+import { PuikResolver } from '@prestashopcorp/puik'
+
+export default defineConfig({
+  plugins: [
+    // ...
+    Components({
+      resolvers: [PuikResolver()],
+    }),
+  ],
+})
+```
+
+#### On demand import
 
 Import the vue component and the component css directly into your vue file
 
