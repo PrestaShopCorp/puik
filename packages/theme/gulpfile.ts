@@ -19,7 +19,7 @@ const distBundle = path.resolve(puikOutput, 'theme')
  */
 function buildTheme() {
   const sass = gulpSass(dartSass)
-  const noElPrefixFile = /(index|base|display)/
+  const noPuikPrefixFile = /(index|base|display)/
   return src(path.resolve(__dirname, 'src/*.scss'))
     .pipe(sass.sync())
     .pipe(postcss())
@@ -34,7 +34,7 @@ function buildTheme() {
     )
     .pipe(
       rename((path) => {
-        if (!noElPrefixFile.test(path.basename)) {
+        if (!noPuikPrefixFile.test(path.basename)) {
           path.basename = `puik-${path.basename}`
         }
       })

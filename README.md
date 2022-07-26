@@ -58,8 +58,8 @@ Import the vue component and the component css directly into your vue file
 
 ```vue
 <script setup>
+import '@prestashopcorp/puik/es/components/button/style/css'
 import { PuikButton } from '@prestashopcorp/puik'
-import '@prestashopcorp/puik/theme/puik-button.css'
 </script>
 
 <template>
@@ -78,7 +78,7 @@ Import the vue library and the css directly into your main.js / main.ts
 ```typescript
 import { createApp } from 'vue'
 import Puik from '@prestashopcorp/puik'
-import '@prestashopcorp/puik/theme/index.css'
+import '@prestashopcorp/puik/dist/index.css'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -99,7 +99,10 @@ styles used in the VueJs component library.
 1. Include the CSS in your HTML by using the CDN
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/puik/theme/index.css" />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@prestashopcorp/puik/dist/index.css"
+/>
 ```
 
 2. Add the classes in your HTML

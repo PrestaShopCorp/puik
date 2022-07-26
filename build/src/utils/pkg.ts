@@ -50,6 +50,8 @@ export const excludeFiles = (files: string[]) => {
     'test',
     'mock',
     'gulpfile',
+    'tailwind.config',
+    'postcss.config',
     'dist',
   ]
   return files.filter(
