@@ -1,0 +1,36 @@
+name: Publish package for Production
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish-github-packages:
+    name: Publish on registry
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Get tag
+        id: get_tag
+        run: echo ::set-output name=TAG::$(echo $GITHUB_REF | cut -d / -f 3)
+
+      - name: Get git head
+        id: get_head
+        run: echo ::set-output name=GIT_HEAD::$(echo $GITHUB_SHA)
+
+      - name: Build and Publish
+        uses: ./.github/actions/build-and-publish
+        with:
+          git_author_email: squad-engagement@prestashop.com
+          node_version: 16
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          version: ${{ steps.get_tag.outputs.TAG }}
+          git_head: ${{ steps.get_head.outputs.GIT_HEAD }}

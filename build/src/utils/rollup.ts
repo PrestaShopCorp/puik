@@ -4,14 +4,12 @@ import { getPackageDependencies } from './pkg'
 import type { OutputOptions, RollupBuild } from 'rollup'
 
 export const generateExternal = async (options: { full: boolean }) => {
-  const { dependencies, peerDependencies } = await getPackageDependencies(
-    puikPackage
-  )
+  const { dependencies, peerDependencies } = getPackageDependencies(puikPackage)
 
   return (id: string) => {
     const packages: string[] = peerDependencies
     if (!options.full) {
-      packages.push('puik/theme', '@vue', ...dependencies)
+      packages.push('@vue', ...dependencies)
     }
 
     return [...new Set(packages)].some(

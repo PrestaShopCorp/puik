@@ -1,7 +1,6 @@
 import { rollup } from 'rollup'
 import vue from '@vitejs/plugin-vue'
 import DefineOptions from 'unplugin-vue-define-options/rollup'
-import css from 'rollup-plugin-css-only'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import esbuild from 'rollup-plugin-esbuild'
@@ -30,7 +29,6 @@ export const buildModules = async () => {
     input,
     plugins: [
       PuikAlias(),
-      css(),
       DefineOptions(),
       vue({
         isProduction: false,

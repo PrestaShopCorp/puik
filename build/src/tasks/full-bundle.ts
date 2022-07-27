@@ -21,8 +21,6 @@ import {
 } from '../utils'
 import { target } from '../build-info'
 
-import type { Plugin } from 'rollup'
-
 const banner = `/*! Puik v${version} */\n`
 
 async function buildFullEntry(minify: boolean) {
@@ -33,7 +31,7 @@ async function buildFullEntry(minify: boolean) {
       DefineOptions(),
       vue({
         isProduction: true,
-      }) as Plugin,
+      }),
       nodeResolve({
         extensions: ['.mjs', '.js', '.json', '.ts'],
       }),
