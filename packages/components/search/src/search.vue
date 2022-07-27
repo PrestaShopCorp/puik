@@ -1,25 +1,25 @@
 <template>
   <div class="puik-search">
     <div class="puik-search__wrapper" :class="searchClasses">
-      <span class="puik-search__prepend__icon puik-h2">{{ 'search' }} </span>
+      <span class="puik-search__icon puik-h2">search</span>
       <input
         :id="id"
         v-model="value"
         class="puik-search__field"
         :placeholder="placeholder"
         :disabled="disabled"
-        :required="required"
         :autocomplete="autocomplete"
         :name="name"
         @focus="handleFocus"
         @blur="handleBlur"
+        @keyup.enter="sendContent"
       />
       <button
         v-if="!disabled && value"
         class="puik-search__cancel-icon puik-h2"
         @click="deleteContent"
       >
-        {{ 'cancel' }}
+        cancel
       </button>
       <div v-if="!autocomplete && !disabled" class="flex">
         <puik-button
@@ -27,7 +27,7 @@
           size="sm"
           variant="primary"
           @click="sendContent"
-          >{{ 'east' }}</puik-button
+          >east</puik-button
         >
       </div>
     </div>
@@ -58,15 +58,15 @@ const deleteContent = () => {
 }
 
 const sendContent = () => {
-  emit('update:modelValue', value)
+  emit('update:modelValue', value.value)
 }
 
 const value = computed<string | number>({
   get() {
     return props.modelValue
   },
-  set(value) {
-    emit('update:modelValue', value)
+  set(item) {
+    emit('update:modelValue', item)
   },
 })
 </script>

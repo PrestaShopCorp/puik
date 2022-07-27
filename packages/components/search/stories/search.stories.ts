@@ -27,14 +27,6 @@ export default {
     autocomplete: {
       description: 'Set the autocomplete mode of the input',
     },
-    required: {
-      description: 'Set the input as required',
-      table: {
-        defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
   },
 } as Meta
 
@@ -43,9 +35,10 @@ const Template: Story = (args: Args) => ({
     PuikSearch,
   },
   setup() {
-    return { args }
+    const myValue = ref('')
+    return { args, myValue }
   },
-  template: `<puik-search v-bind="args">{{ args.default }}</puik-search>`,
+  template: `<puik-search v-model="myValue" v-bind="args">{{ args.default }}</puik-search>`,
 })
 
 export const Default = Template.bind({})
@@ -54,7 +47,6 @@ Default.args = {
   placeholder: '',
   name: '',
   autocomplete: true,
-  required: false,
   disabled: false,
 }
 Default.parameters = {
@@ -187,6 +179,15 @@ DefaultWithoutAutocomplete.parameters = {
       <div class="puik-search">
         <div class="puik-search__wrapper ">
           <input class="puik-search__field" type="text" />
+          <div class="flex">
+          <puik-button
+            class="puik-search__confirm-icon"
+            size="sm"
+            variant="primary"
+            @click="sendContent"
+            >east</puik-button
+          >
+        </div>
         </div>
       </div>
       `,
@@ -276,6 +277,15 @@ roundedWithoutAutocomplete.parameters = {
       <div class="puik-search">
         <div class="puik-search__wrapper puik-search__wrapper--rounded-input">
           <input class="puik-search__field" type="text" rounded/>
+          <div class="flex">
+          <puik-button
+            class="puik-search__confirm-icon"
+            size="sm"
+            variant="primary"
+            @click="sendContent"
+            >east</puik-button
+          >
+        </div>
         </div>
       </div>
       `,

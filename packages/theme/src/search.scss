@@ -21,10 +21,8 @@
     }
   }
 
-  &__prepend {
-    &__icon {
-      @apply flex items-center font-materialIcons text-font-500 select-none pl-3 pr-2;
-    }
+  &__icon {
+    @apply flex items-center font-materialIcons text-font-500 select-none pl-3 pr-2;
   }
 
   &__field {

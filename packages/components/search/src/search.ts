@@ -35,11 +35,6 @@ export const searchProps = buildProps({
     required: false,
     default: '',
   },
-  required: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
   rounded: {
     type: Boolean,
     required: false,
