@@ -1,3 +1,4 @@
+import { capitalize } from 'lodash-unified'
 import PuikButton from './../src/button.vue'
 import { buttonVariants, buttonSizes } from './../src/button'
 import type { Meta, Story, Args } from '@storybook/vue3'
@@ -89,70 +90,266 @@ export const Default = Template.bind({})
 
 Default.args = {}
 
-export const Primary: Story = () => ({
-  components: {
-    PuikButton,
+Default.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <!--
+      $sizes: sm|md|lg
+      $variants: primary|secondary|tertiary|text|destructive|info|success|warning|error
+      -->
+      <puik-button size="$sizes" variant="$variants">My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <!--
+      $sizes: sm|md|lg (defaults to md)
+      $variants: primary|secondary|tertiary|text|destructive|info|success|warning|error
+      -->
+      <button class="puik-button puik-button--{$variants} puik-button--{$sizes}">My button</button>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+const ButtonTemplate = (args: Args) => ({
+  components: { PuikButton },
+  setup() {
+    return {
+      args,
+      capitalize,
+    }
   },
   template: `
-    <div class="space-x-4">
-      <puik-button size="lg">Primary Button lg</puik-button>
-      <puik-button>Primary Button md</puik-button>
+  <div class="space-x-4">
+    <puik-button :variant="args.variant" size="lg">{{ capitalize(args.variant) }} Button lg</puik-button>
+    <puik-button :variant="args.variant">{{ capitalize(args.variant) }} Button md</puik-button>
+    <puik-button :variant="args.variant" size="sm">{{ capitalize(args.variant) }} Button sm</puik-button>
+  </div>
+  `,
+})
+
+const AllVariantTemplate = (args: Args, storyContext) => ({
+  components: { PuikButton },
+  setup() {
+    const variants = storyContext.argTypes.variant.options
+    return {
+      args,
+      capitalize,
+      variants,
+    }
+  },
+  template: `
+    <div class="flex flex-row flex-wrap items-center gap-4">
+      <template v-for="(variant, i) in variants" :key="i">
+        <puik-button v-bind="args" :variant="variant">
+          {{ capitalize(variant) }} Button
+        </puik-button>
+      </template>
     </div>
   `,
 })
 
-export const Secondary: Story = () => ({
-  components: {
-    PuikButton,
-  },
-  template: `
-    <div class="space-x-4">
-      <puik-button variant="secondary" size="lg">Secondary Button lg</puik-button>
-      <puik-button variant="secondary">Secondary Button md</puik-button>
-      <puik-button variant="secondary" size="sm">Secondary Button sm</puik-button>
-    </div>
-  `,
-})
+export const Primary: Story = ButtonTemplate.bind({})
+Primary.args = {
+  variant: 'primary',
+}
 
-export const Tertiary: Story = () => ({
-  components: {
-    PuikButton,
+Primary.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button>My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--primary">My button</button>
+      `,
+      language: 'html',
+    },
   },
-  template: `
-    <div class="space-x-4">
-      <puik-button variant="tertiary" size="lg">Tertiary Button lg</puik-button>
-      <puik-button variant="tertiary">Tertiary Button md</puik-button>
-      <puik-button variant="tertiary" size="sm">Tertiary Button sm</puik-button>
-    </div>
-  `,
-})
+}
 
-export const Text: Story = () => ({
-  components: {
-    PuikButton,
-  },
-  template: `
-    <div class="space-x-4">
-      <puik-button variant="text" size="lg">Text Button lg</puik-button>
-      <puik-button variant="text">Text Button md</puik-button>
-      <puik-button variant="text" size="sm">Text Button sm</puik-button>
-    </div>
-  `,
-})
+export const Secondary: Story = ButtonTemplate.bind({})
+Secondary.args = {
+  variant: 'secondary',
+}
 
-export const Disabled: Story = () => ({
-  components: {
-    PuikButton,
+Secondary.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button variant="secondary">My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--secondary">My button</button>
+      `,
+      language: 'html',
+    },
   },
-  template: `
-    <div class="space-x-4">
-      <puik-button disabled>Primary Button</puik-button>
-      <puik-button variant="secondary" disabled>Secondary Button</puik-button>
-      <puik-button variant="tertiary" disabled>Tertiary Button</puik-button>
-      <puik-button variant="text" disabled>Text Button</puik-button>
-    </div>
-  `,
-})
+}
+
+export const Tertiary: Story = ButtonTemplate.bind({})
+Tertiary.args = {
+  variant: 'tertiary',
+}
+
+Tertiary.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button variant="tertiary">My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--tertiary">My button</button>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Destructive: Story = ButtonTemplate.bind({})
+Destructive.args = {
+  variant: 'destructive',
+}
+
+Destructive.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button variant="destructive">My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--destructive">My button</button>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Text: Story = ButtonTemplate.bind({})
+Text.args = {
+  variant: 'text',
+}
+
+Text.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button variant="text">My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--text">My button</button>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Info: Story = ButtonTemplate.bind({})
+Info.args = {
+  variant: 'info',
+}
+
+Info.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button variant="info">My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--info">My button</button>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Success: Story = ButtonTemplate.bind({})
+Success.args = {
+  variant: 'success',
+}
+
+Success.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button variant="success">My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--success">My button</button>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Warning: Story = ButtonTemplate.bind({})
+Warning.args = {
+  variant: 'warning',
+}
+
+Warning.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button variant="warning">My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--warning">My button</button>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Error: Story = ButtonTemplate.bind({})
+Error.args = {
+  variant: 'error',
+}
+
+Error.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button variant="error">My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--error">My button</button>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Disabled: Story = AllVariantTemplate.bind({})
+Disabled.args = {
+  disabled: true,
+}
+
+Error.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button disabled>My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--primary" disabled>My button</button>
+      `,
+      language: 'html',
+    },
+  },
+}
 
 export const Fluid: Story = () => ({
   components: {
@@ -162,6 +359,21 @@ export const Fluid: Story = () => ({
     <puik-button fluid>Primary Button lg</puik-button>
   `,
 })
+
+Fluid.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button fluid>My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--primary puik-button--fluid">My button</button>
+      `,
+      language: 'html',
+    },
+  },
+}
 
 export const WithIcon: Story = () => ({
   components: {
@@ -175,19 +387,27 @@ export const WithIcon: Story = () => ({
   `,
 })
 
-export const Variants: Story = (args: Args) => ({
-  components: {
-    PuikButton,
+WithIcon.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet -->
+      <puik-button left-icon="shopping_cart">My button</puik-button>
+      <puik-button right-icon="shopping_cart">My button</puik-button>
+      
+      <!--HTML/CSS Snippet-->
+      <button class="puik-button puik-button--primary">
+        <span class="puik-button__left-icon">shopping_cart</span>
+        My button
+      </button>
+      <button class="puik-button puik-button--primary">
+        My button
+        <span class="puik-button__right-icon">shopping_cart</span>
+      </button>
+      `,
+      language: 'html',
+    },
   },
-  setup() {
-    return { args }
-  },
-  template: `
-    <div class="space-x-4">
-      <puik-button>Primary Button</puik-button>
-      <puik-button variant="secondary">Secondary Button</puik-button>
-      <puik-button variant="tertiary">Tertiary Button</puik-button>
-      <puik-button variant="text">Text Button</puik-button>
-    </div>
-  `,
-})
+}
+
+export const Variants: Story = AllVariantTemplate.bind({})

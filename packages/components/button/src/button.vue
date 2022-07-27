@@ -1,8 +1,7 @@
 <template>
   <component
     :is="componentType"
-    :to="to"
-    :href="href"
+    v-bind="pathProp"
     class="puik-button"
     :class="[
       `puik-button--${variant}`,
@@ -37,4 +36,8 @@ const componentType = computed(() => {
   }
   return 'button'
 })
+
+const pathProp = computed(() =>
+  props.to ? { to: props.to } : { href: props.href }
+)
 </script>
