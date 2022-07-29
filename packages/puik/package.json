@@ -30,17 +30,18 @@
     "vue": "^3.2.0"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.5.0",
+    "@popperjs/core": "^2.11.5",
     "@vueuse/core": "^8.0.1",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
-    "lodash-unified": "^1.0.2",
-    "@headlessui/vue": "^1.5.0",
-    "@popperjs/core": "^2.11.5"
+    "lodash-unified": "^1.0.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.179",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "*",
+    "unplugin-vue-components": "^0.21.2",
     "vue-router": "^4.0.14"
   },
   "vetur": {
