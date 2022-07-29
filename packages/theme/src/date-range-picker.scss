@@ -1,0 +1,187 @@
+.puik-date-range-picker {
+  &__calendars-container {
+    @apply top-full translate-y-4 puik-layer-overlay w-fit;
+    &:before {
+      content: '';
+      @apply absolute left-[72px] bg-white translate-y-[50%] bottom-full border-solid w-2.5 h-2.5 border border-transparent border-l-border-main border-t-border-main rotate-45;
+    }
+  }
+  &__transition {
+    &__enter {
+      &--active {
+        @apply transition duration-100 ease-out;
+      }
+      &--from {
+        @apply transform translate-y-0 opacity-0;
+      }
+      &--to {
+        @apply transform translate-y-4 opacity-100;
+      }
+    }
+    &__leave {
+      &--active {
+        @apply transition duration-75 ease-out;
+      }
+      &--from {
+        @apply transform translate-y-4 opacity-100;
+      }
+      &--to {
+        @apply transform translate-y-0 opacity-0;
+      }
+    }
+  }
+}
+
+.puik-date-range-button {
+  @apply bg-white puik-body-default flex gap-[15px] justify-center items-center border border-light-blue-default-border py-2 pr-5 pl-2.5 rounded-[5px] text-font-secondary transition;
+  &:hover,
+  &:focus {
+    @apply border-primary-purple-100;
+  }
+  &:focus {
+    @apply border-primary-purple-500 ring ring-focus-main outline-none;
+  }
+  &--active {
+    @apply border-primary-purple-500;
+    &:hover,
+    &:focus {
+      @apply border-primary-purple-500;
+    }
+  }
+  &--error {
+    @apply border-accentuation-destructive-500;
+    &:hover,
+    &:focus {
+      @apply border-accentuation-destructive-500;
+    }
+  }
+  &--disabled {
+    @apply border-light-blue-default-border text-font-disabled bg-transparent cursor-not-allowed;
+    &:hover,
+    &:focus {
+      @apply border-light-blue-default-border;
+    }
+    .puik-date-range-button__date {
+      &:not(&--default) {
+        @apply text-font-secondary;
+      }
+    }
+    .puik-date-range-button__separator {
+      @apply text-font-disabled;
+    }
+  }
+  &__icon {
+    @apply font-materialIcons text-xl flex-shrink-0 leading-none;
+  }
+  &__date {
+    @apply w-[5.625rem];
+  }
+  &__separator {
+    @apply text-font-900;
+  }
+}
+
+.puik-calendars-container {
+  &--divider {
+    @apply w-px bg-light-blue-decorative-border;
+  }
+  &__body {
+    @apply puik-body-small p-12 flex gap-10;
+  }
+  &__actions {
+    @apply py-6 px-9 flex justify-end gap-2.5 bg-light-blue-background;
+  }
+}
+
+.puik-calendar-options-list {
+  &__option {
+    &:not(:last-child) {
+      @apply mb-3;
+    }
+    &__button {
+      @apply text-font-secondary transition;
+      &:hover,
+      &:focus,
+      &--active {
+        @apply text-primary-purple-500;
+      }
+      &--active {
+        @apply font-bold;
+      }
+    }
+  }
+}
+
+.puik-calendar {
+  @apply text-font-secondary flex flex-col gap-4 h-[340px];
+  &--divider {
+    @apply h-px bg-light-blue-decorative-border;
+  }
+  &__month-year-selector {
+    @apply text-center flex justify-between text-font-900 puik-body-default h-5;
+    &__navigation-prev,
+    &__navigation-next {
+      @apply w-10;
+      .puik-calendar__month-year-selector__button {
+        @apply font-materialIcons w-5 h-5 text-xl flex-shrink-0 leading-none;
+      }
+    }
+  }
+  &__table {
+    &__header,
+    &__body {
+      &__cell {
+        @apply h-6 w-10 p-0;
+        &:first-child,
+        &:last-child {
+          @apply w-8;
+        }
+      }
+    }
+    &__header {
+      &__cell {
+        @apply font-normal;
+      }
+    }
+    &__body {
+      @apply border-separate my-[-1.25rem];
+      border-spacing: 0 1.25rem;
+      &__cell {
+        @apply text-center my-6;
+        &--start,
+        &--end {
+          .puik-calendar-cell-button {
+            @apply bg-primary-purple-500 text-white;
+          }
+        }
+        &--disabled {
+          @apply text-font-disabled pointer-events-none;
+        }
+        &:first-child {
+          @apply text-left;
+        }
+        &:last-child {
+          @apply text-right;
+        }
+      }
+    }
+  }
+}
+
+.puik-calendar__table__body__cell--active {
+  @apply bg-primary-purple-50;
+  &.puik-calendar__table__body__cell--start {
+    background-image: linear-gradient(to right, #ffffff 50%, #e9e6f8 50%);
+  }
+  &.puik-calendar__table__body__cell--end {
+    background-image: linear-gradient(to left, #ffffff 50%, #e9e6f8 50%);
+  }
+  &.puik-calendar__table__body__cell--start.puik-calendar__table__body__cell--end,
+  &.puik-calendar__table__body__cell--disabled {
+    @apply bg-transparent bg-none;
+  }
+}
+
+.puik-calendar-cell-button {
+  @apply h-6 w-6 rounded-full;
+}

@@ -3,21 +3,9 @@ import type { ExtractPropTypes } from 'vue'
 import type CalendarCell from './calendar-cell.vue'
 
 export const calendarCellProps = buildProps({
-  disabled: {
+  date: {
     required: true,
-    type: Boolean,
-  },
-  active: {
-    required: true,
-    type: Boolean,
-  },
-  start: {
-    required: true,
-    type: Boolean,
-  },
-  end: {
-    required: true,
-    type: Boolean,
+    type: Date,
   },
 } as const)
 

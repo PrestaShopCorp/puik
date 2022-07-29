@@ -50,9 +50,20 @@ module.exports = {
         font: {
           main: '#363A41',
           disabled: '#D7D8D9',
+          secondary: '#505969',
           50: '#EDEEF0',
           100: '#D2D4D9',
           500: '#697180',
+          900: '#131A26',
+        },
+        'light-blue': {
+          background: '#F8FAFC',
+          'decorative-border': '#D9E3EC',
+          'default-border': '#C8D7E4',
+          100: '#EDEEF0',
+          200: '#E4EBF2',
+          700: '#BBCDDD',
+          900: '#A7BED1',
         },
         background: {
           grey: '#FAFAFB',

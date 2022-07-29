@@ -17,12 +17,22 @@ import { useLocale } from '@puik/hooks'
 
 const { t } = useLocale()
 
-const today: Date = startOfToday()
+export type RangeOption = {
+  startDate: Date
+  endDate: Date
+  label: string
+}
+
+interface RangeOptionsList {
+  [index: string]: RangeOption
+}
+
+export const today: Date = startOfToday()
 const yesterday: Date = startOfYesterday()
 const previousMonth: Date = subMonths(today, 1)
 const previousYear: Date = subYears(today, 1)
 
-export default {
+export default <RangeOptionsList>{
   today: {
     startDate: today,
     endDate: today,
@@ -68,14 +78,14 @@ export default {
     endDate: endOfMonth(today),
     label: t('puik.dates.monthToDate'),
   },
-  QuarterToDate: {
+  quarterToDate: {
     startDate: startOfQuarter(today),
     endDate: endOfQuarter(today),
-    label: t('puik.dates.QuarterToDate'),
+    label: t('puik.dates.quarterToDate'),
   },
-  YearToDate: {
+  yearToDate: {
     startDate: startOfYear(today),
     endDate: endOfYear(today),
-    label: t('puik.dates.YearToDate'),
+    label: t('puik.dates.yearToDate'),
   },
 }

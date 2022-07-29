@@ -1,15 +1,27 @@
 import { buildProps } from '@puik/utils'
 import { columnsVariants } from './date-range-picker'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type CalendarsContainer from './calendars-container.vue'
+import type { DateRangeDateValue, DisableDates } from './date-range-picker'
+
+export interface CalendarView {
+  month: number
+  year: number
+}
+export type CalendarsView = [CalendarView, CalendarView, CalendarView]
+export type ChangeView = {
+  sign: number
+  index: number
+  type: string
+}
 
 export const calendarsContainerProps = buildProps({
   modelValue: {
     required: true,
-    type: Array,
+    type: Object as PropType<DateRangeDateValue>,
   },
   columns: {
-    type: [Number, String],
+    type: Number,
     values: columnsVariants,
     default: 2,
   },
@@ -24,6 +36,13 @@ export const calendarsContainerProps = buildProps({
   autoApply: {
     required: true,
     type: Boolean,
+  },
+  close: {
+    required: true,
+    type: Function,
+  },
+  disabledDates: {
+    type: [Function, Array, Date, Object, undefined] as PropType<DisableDates>,
   },
 } as const)
 
