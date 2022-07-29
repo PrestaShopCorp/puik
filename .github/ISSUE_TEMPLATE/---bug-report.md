@@ -1,15 +1,15 @@
 ---
-name: \U0001F41E Bug report
+name: "\U0001F41E Bug report"
 about: Create a report to help us improve
-title: '[BUG]' <title>'
+title: "[BUG] "
 labels: bug
 assignees: ''
+
 ---
 
 # Context
 
 <!-- Please provide any relevant information about your setup. This is important in case the issue is not reproducible except for under certain conditions.
-
 * Browser:
 * Vue version:
 * Package version:
@@ -24,7 +24,6 @@ assignees: ''
 # Steps to Reproduce
 
 <!-- Please provide detailed steps for reproducing the issue.
-
 1. step 1
 2. step 2
 3. and so on ... -->

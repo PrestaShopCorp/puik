@@ -1,9 +1,10 @@
 ---
-name: \U0001F4E6 Component request
+name: "\U0001F4E6 Component request"
 about: Suggest an component for this project
-title: '[COMPONENT]' <component name>'
+title: "[Component] "
 labels: Feature
 assignees: ''
+
 ---
 
 # Quick description

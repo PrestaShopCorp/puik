@@ -1,9 +1,10 @@
 ---
-name: \U0001F4E6 Feature request
-about: Suggest an idea for this project (other than component)
-title: '[FEATURE]' <title>'
+name: "\U0001F4E6 Feature request"
+about: Suggest an idea for this project (other than a component)
+title: "[Feature] "
 labels: Feature
 assignees: ''
+
 ---
 
 <!-- Please check the feature has not already been proposed before send your request. -->
