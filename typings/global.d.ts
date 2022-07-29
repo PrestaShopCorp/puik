@@ -1,6 +1,8 @@
 // GlobalComponents for Volar
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    PuikOption: typeof import('@prestashopcorp/puik')['PuikOption']
+    PuikSelect: typeof import('@prestashopcorp/puik')['PuikSelect']
     PuikLink: typeof import('@prestashopcorp/puik')['PuikLink']
     PuikCard: typeof import('@prestashopcorp/puik')['PuikCard']
     PuikCheckbox: typeof import('@prestashopcorp/puik')['PuikCheckbox']

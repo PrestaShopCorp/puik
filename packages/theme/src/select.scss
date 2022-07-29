@@ -1,0 +1,60 @@
+.puik-select {
+  @apply relative mt-1;
+  &__button {
+    @apply relative w-full cursor-default rounded bg-white min-h-[38px] py-2 pl-3 pr-10 text-left border border-border-main hover:border-primary-purple-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-border-main disabled:bg-background-grey disabled:text-font-disabled;
+    &--error {
+      @apply border-accentuation-destructive-500;
+    }
+  }
+  &__selected {
+    @apply block truncate select-none font-secondary;
+  }
+  &__icon {
+    @apply font-materialIcons pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 select-none;
+  }
+  &__search {
+    @apply px-2 mb-1;
+    &__icon {
+      @apply font-materialIcons text-base;
+    }
+  }
+  &__no-results {
+    @apply p-2 truncate;
+  }
+  &__options {
+    @apply absolute mt-1 w-full rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-10 overflow-x-hidden;
+  }
+  &__options-list {
+    @apply max-h-60 overflow-y-auto overflow-x-hidden;
+  }
+  &__error {
+    @apply flex items-center text-xs text-accentuation-destructive-500 font-secondary font-normal;
+    &__icon {
+      @apply font-materialIcons text-sm mr-1;
+    }
+  }
+  &__transition {
+    &__enter {
+      &--active {
+        @apply transition duration-100 ease-out;
+      }
+      &--from {
+        @apply transform scale-95 opacity-0;
+      }
+      &--to {
+        @apply transform scale-100 opacity-100;
+      }
+    }
+    &__leave {
+      &--active {
+        @apply transition duration-75 ease-out;
+      }
+      &--from {
+        @apply transform scale-100 opacity-100;
+      }
+      &--to {
+        @apply transform scale-95 opacity-0;
+      }
+    }
+  }
+}
