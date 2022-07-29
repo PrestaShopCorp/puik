@@ -19,12 +19,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { generateId } from '@puik/utils'
 import { radioProps, radioEmits } from './radio'
 defineOptions({
-  name: 'Radio',
+  name: 'PuikRadio',
 })
 const props = defineProps(radioProps)
 const emit = defineEmits(radioEmits)
