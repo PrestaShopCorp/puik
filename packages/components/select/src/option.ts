@@ -15,7 +15,7 @@ export const optionProps = buildProps({
     required: true,
   },
   label: {
-    type: String,
+    type: [String, Number],
     required: false,
   },
   disabled: {

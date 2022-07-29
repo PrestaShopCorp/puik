@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, watch } from 'vue'
+import { inject, watch, toRaw } from 'vue'
 import { ListboxOption } from '@headlessui/vue'
 import { isObject } from '@puik/utils'
 import { optionProps } from './option'
@@ -34,18 +34,18 @@ const props = defineProps(optionProps)
 const { setCurrentLabel, selectedValue } = inject(selectKey)!
 
 const sendLabel = () => {
-  if (!props.disabled) {
-    if (props.label) {
-      return setCurrentLabel(props.label)
-    }
-    return setCurrentLabel(!isObject(props.value) ? props.value : '')
+  if (props.disabled) return
+
+  if (props.label) {
+    return setCurrentLabel(props.label)
   }
+  return setCurrentLabel(!isObject(props.value) ? props.value : '')
 }
 
 watch(
   selectedValue,
   (newValue) => {
-    if (props.value === newValue) {
+    if (toRaw(props.value) === toRaw(newValue)) {
       sendLabel()
     }
   },

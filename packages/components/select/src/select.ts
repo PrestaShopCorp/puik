@@ -8,10 +8,15 @@ export const selectProps = buildProps({
     type: [String, Number, Object] as PropType<Option>,
     required: true,
   },
-  displayProperty: {
+  labelKey: {
     type: String,
     required: false,
     default: 'label',
+  },
+  valueKey: {
+    type: String,
+    required: false,
+    default: 'value',
   },
   id: {
     type: String,

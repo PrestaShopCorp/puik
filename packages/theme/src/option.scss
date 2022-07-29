@@ -13,7 +13,7 @@
     @apply bg-primary-purple-50;
   }
   &--disabled {
-    @apply bg-white text-font-disabled;
+    @apply bg-white text-font-disabled pointer-events-none;
   }
   &__label {
     @apply font-secondary font-normal block truncate;

@@ -29,9 +29,10 @@
           v-show="isOpen(open)"
           static
           class="puik-select__options"
+          as="div"
         >
           <puik-input
-            v-if="options"
+            v-if="isArray(options) || (isObject(options) && customFilterMethod)"
             v-model="query"
             class="puik-select__search"
             :placeholder="t('puik.select.searchPlaceholder')"
@@ -41,14 +42,28 @@
             >
           </puik-input>
           <p
-            v-if="options && !filteredItems?.length"
+            v-if="
+              options &&
+              (isObject(filteredItems)
+                ? !Object.keys(filteredItems).length
+                : !filteredItems?.length)
+            "
             class="puik-select__no-results"
           >
             {{ noMatchText || `${t('puik.select.noResults')} ${query}` }}
           </p>
-          <div class="puik-select__options-list">
-            <slot :options="filteredItems"></slot>
-          </div>
+          <ul class="puik-select__options-list">
+            <slot :options="filteredItems">
+              <template v-if="options">
+                <puik-option
+                  v-for="option in filteredItems"
+                  :key="option"
+                  :label="option[labelKey]"
+                  :value="isObject(option) ? option[valueKey] : option"
+                />
+              </template>
+            </slot>
+          </ul>
         </ListboxOptions>
       </transition>
       <span v-if="error || $slots.error" class="puik-select__error"
@@ -63,10 +78,11 @@
 import { computed, provide, ref } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
 import { useVModel } from '@vueuse/core'
-import { isObject, isFunction } from '@puik/utils'
+import { isObject, isFunction, isArray } from '@puik/utils'
 import { useLocale } from '@puik/hooks'
 import { PuikInput } from '../../input'
 import { selectProps, selectEmits, selectKey } from './select'
+import PuikOption from './option.vue'
 
 defineOptions({
   name: 'PuikSelect',
@@ -90,7 +106,8 @@ const filteredItems = computed(() => {
         return props.customFilterMethod(query.value)
       }
       return props.options.filter((option) =>
-        (isObject(option) ? option[props.displayProperty] : option)
+        (isObject(option) ? option[props.labelKey] : option)
+          .toString()
           .toLowerCase()
           .includes(query.value.toLowerCase())
       )
