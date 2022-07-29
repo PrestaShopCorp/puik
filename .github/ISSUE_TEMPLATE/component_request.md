@@ -8,12 +8,11 @@ assignees: ''
 
 # Quick description
 
-<!-- Please check the component has not already been proposed then check the box. -->
+<!-- Please check the component has not already been proposed before send any request for it. -->
 
-- [ ] **This component does not already exist**  
-      **Component name:** <!-- Give a simple and concise name that most accurately defines the component. -->  
-      **Preview link:** <!-- Provide a figma or any other interface to explain the UX/UI part of the component. -->  
-      **Component included (optionnal):** <!-- If the requested component can include other already existing components (without modifications of these) thank you to indicate it. -->
+<!--  **Component name:** <!-- Give a simple and concise name that most accurately defines the component. -->
+<!--  **Preview link:** <!-- Provide a figma or any other interface to explain the UX/UI part of the component. -->
+<!--  **Component included (optionnal):** <!-- If the requested component can include other already existing components (without modifications of these) thank you to indicate it. -->
 
 # Technicals specifications
 

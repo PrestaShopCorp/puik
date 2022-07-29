@@ -6,9 +6,7 @@ labels: Feature
 assignees: ''
 ---
 
-<!-- Please check the feature has not already been proposed then check the box. -->
-
-- [ ] **This feature has not already been proposed**
+<!-- Please check the feature has not already been proposed before send your request. -->
 
 # What problem does this feature solve?
 
