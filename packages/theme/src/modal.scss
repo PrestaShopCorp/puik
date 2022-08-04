@@ -1,0 +1,21 @@
+.puik-modal {
+  position: relative;
+  margin: auto;
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 5px;
+
+  &_header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_title {
+    font-size: 1.5rem;
+  }
+
+  &_close {
+    cursor: pointer;
+    font-size: 1rem;
+  }
+}
