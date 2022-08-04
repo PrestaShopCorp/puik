@@ -7,6 +7,11 @@ export const modalProps = buildProps({
     type: Boolean,
     default: false,
   },
+  appendToBody: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   title: {
     type: String,
     required: false,
@@ -32,12 +37,15 @@ export const modalProps = buildProps({
     required: false,
     default: '',
   },
+  showClose: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
 } as const)
 
 export type ModalProps = ExtractPropTypes<typeof modalProps>
 
-export const modalEmits = {
-  'update:modelValue': (value: boolean) => value as boolean,
-}
+export const modalEmits = ['update:modelValue']
 
 export type ModalInstance = InstanceType<typeof Modal>

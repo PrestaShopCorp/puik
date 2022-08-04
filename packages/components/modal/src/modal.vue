@@ -1,20 +1,28 @@
 <template>
-  visible: {{ visible }}
-  <div v-if="visible" class="puik-modal" :style="customStyle">
-    <div class="puik-modal_header">
-      <slot name="header">
-        <h3 class="puik-modal_title">{{ props.title }}</h3>
-      </slot>
-      <span class="puik-modal_close" @click="closeSelf">X</span>
-    </div>
+  <Teleport to="body" :disabled="!appendToBody">
+    <template v-if="visible">
+      <puik-overlay>
+        <div class="puik-modal" :class="customClass" :style="customStyle">
+          <div class="puik-modal_header">
+            <slot name="header">
+              <h3 class="puik-modal_title">{{ props.title }}</h3>
+            </slot>
+            <span v-if="showClose" class="puik-modal_close" @click="closeSelf">
+              X
+            </span>
+          </div>
 
-    <slot name="content" />
-    <slot name="footer" />
-  </div>
+          <slot name="content" />
+          <slot name="footer" />
+        </div>
+      </puik-overlay>
+    </template>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
+import PuikOverlay from '../../overlay/index'
 import { modalEmits, modalProps } from './modal'
 import type { CSSProperties } from '@vue/runtime-dom'
 
