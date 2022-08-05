@@ -12,7 +12,13 @@
             </span>
           </div>
 
-          <slot name="content" />
+          <div
+            :style="[
+              props.center ? { textAlign: 'center' } : { textAlign: 'left' },
+            ]"
+          >
+            <slot name="default" />
+          </div>
           <slot name="footer" />
         </div>
       </puik-overlay>
@@ -36,7 +42,6 @@ const visible = ref(false)
 const customStyle = computed<CSSProperties>(() => ({
   top: props.top,
   width: props.width,
-  textAlign: props.center ? 'center' : 'left',
 }))
 
 onMounted(() => {
