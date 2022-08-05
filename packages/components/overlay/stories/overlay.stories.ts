@@ -13,7 +13,7 @@ const Template: Story = (args: Args) => ({
   setup() {
     return { args }
   },
-  template: `<puik-overlay></puik-overlay>`,
+  template: `<puik-overlay background-color="rgba(0, 0, 0, 0.2)" />`,
 })
 
 export const Default = Template.bind({})
@@ -23,8 +23,7 @@ Default.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-
-      <!--HTML/CSS Snippet-->
+      <puik-overlay background-color="rgba(0, 0, 0, 0.2)" />
       `,
       language: 'html',
     },
