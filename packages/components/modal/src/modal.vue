@@ -13,6 +13,7 @@
           </div>
 
           <div
+            class="puik-modal_content"
             :style="[
               props.center ? { textAlign: 'center' } : { textAlign: 'left' },
             ]"

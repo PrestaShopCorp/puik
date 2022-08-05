@@ -7,6 +7,7 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 describe('Modal tests', () => {
   let wrapper: VueWrapper<any>
   const findModal = () => wrapper.find('.puik-modal')
+  const findModalContent = () => wrapper.find('.puik-modal_content')
   const findModalTitle = () => wrapper.find('.puik-modal_title')
   const findModalCloseButton = () => wrapper.find('.puik-modal_close')
 
@@ -62,7 +63,7 @@ describe('Modal tests', () => {
   it('should set all internal node in center', async () => {
     await factory({ modelValue: true, center: true })
 
-    expect(findModal().element.style.textAlign).toBe('center')
+    expect(findModalContent().element.style.textAlign).toBe('center')
   })
 
   it('should set a custom class', async () => {

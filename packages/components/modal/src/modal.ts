@@ -6,6 +6,7 @@ export const modalProps = buildProps({
   modelValue: {
     type: Boolean,
     default: false,
+    required: false,
   },
   appendToBody: {
     type: Boolean,

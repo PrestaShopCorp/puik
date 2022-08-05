@@ -1,5 +1,5 @@
 <template>
-  <div class="puik-overlay">
+  <div class="puik-overlay" :style="{ backgroundColor }">
     <slot></slot>
   </div>
 </template>
