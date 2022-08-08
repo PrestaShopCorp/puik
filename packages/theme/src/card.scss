@@ -1,7 +1,7 @@
 .puik-card {
   $this: &;
 
-  @apply flex flex-col gap-6 p-4 bg-white border border-border-decorative rounded-lg
+  @apply flex flex-col gap-6 p-4 bg-white border border-light-blue-decorative-border rounded-lg
     font-secondary font-normal text-sm;
 
   img {

@@ -1,9 +1,9 @@
 .puik-layer-base {
-  @apply border rounded-md border-border-main bg-white;
+  @apply border rounded-md border-light-blue-default-border bg-white;
 }
 
 .puik-layer-overlay {
-  @apply border rounded-md border-border-main bg-white shadow-overlay;
+  @apply border rounded-md border-light-blue-default-border bg-white shadow-overlay;
 }
 
 .puik-layer-sticky-element {

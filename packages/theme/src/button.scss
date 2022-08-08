@@ -91,7 +91,7 @@
   }
 
   &--tertiary {
-    @apply text-font-main border border-border-main;
+    @apply text-font border border-light-blue-default-border;
     &:hover {
       @apply bg-font-50;
     }
@@ -105,7 +105,7 @@
   }
 
   &--text {
-    @apply text-font-main;
+    @apply text-font;
     &:hover {
       @apply bg-font-50;
     }
