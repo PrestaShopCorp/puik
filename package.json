@@ -58,6 +58,7 @@
     "@puik/tokens": "workspace:*",
     "@puik/utils": "workspace:*",
     "@vueuse/core": "^8.0.1",
+    "date-fns": "^2.29.1",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.2"
