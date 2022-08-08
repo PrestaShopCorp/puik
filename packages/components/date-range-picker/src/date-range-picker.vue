@@ -63,7 +63,7 @@ const dateRange = computed({
         : undefined,
     }
   },
-  set(range): void {
+  set(range: DateRangeDateValue): void {
     emit('update:modelValue', {
       startDate: range.startDate ? formatISO(range.startDate) : undefined,
       endDate: range.endDate ? formatISO(range.endDate) : undefined,

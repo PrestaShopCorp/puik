@@ -23,7 +23,7 @@ export type RangeOption = {
   label: string
 }
 
-interface RangeOptionsList {
+type RangeOptionsList = {
   [index: string]: RangeOption
 }
 
