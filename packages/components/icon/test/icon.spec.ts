@@ -59,4 +59,13 @@ describe('Icon tests', () => {
 
     expect(findIcon().element.style.fontSize).toBe('26px')
   })
+
+  it('should set the node type into HTML DOM', async () => {
+    factory({
+      icon: 'check',
+      nodeType: 'span',
+    })
+
+    expect(findIcon().element.nodeName).toBe('SPAN')
+  })
 })

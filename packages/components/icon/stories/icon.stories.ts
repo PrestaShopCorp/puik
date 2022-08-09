@@ -27,7 +27,7 @@ export default {
       description: 'Set the HTML node type',
       default: 'div',
       control: {
-        type: 'select',
+        type: 'radio',
         options: ['div', 'span'],
       },
     },
