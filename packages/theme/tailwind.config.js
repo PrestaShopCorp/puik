@@ -103,7 +103,7 @@ module.exports = {
         },
         brand: {
           pink: '#E6006B',
-          darkBlue: '#011638',
+          'dark-blue': '#011638',
         },
       },
       fontFamily: {
@@ -120,6 +120,7 @@ module.exports = {
       boxShadow: {
         overlay: '0px 4px 8px rgba(0, 0, 0, 0.1)',
         sticky: '0px 6px 12px rgba(0, 0, 0, 0.1)',
+        'pop-modal': '0px 12px 24px rgba(0, 0, 0, 0.1)',
       },
     },
   },
