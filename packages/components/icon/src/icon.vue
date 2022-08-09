@@ -1,7 +1,12 @@
 <template>
-  <div class="puik-icon" :class="`material-icons-round`" :style="style">
+  <component
+    :is="nodeType"
+    class="puik-icon"
+    :class="`material-icons-round`"
+    :style="style"
+  >
     {{ icon }}
-  </div>
+  </component>
 </template>
 
 <script setup lang="ts">

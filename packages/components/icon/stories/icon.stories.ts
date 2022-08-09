@@ -40,7 +40,7 @@ export const Default = Template.bind({})
 Default.args = {
   icon: 'check',
   color: 'green',
-  fontSize: 2,
+  fontSize: 20,
 }
 Default.parameters = {
   docs: {
@@ -50,6 +50,7 @@ Default.parameters = {
       <puik-icon icon="check" font-size="70px" color="green" />
 
       <!--HTML/CSS Snippet-->
+      <div class="puik-icon material-icons-round" style="font-size: 20px;">check</div>
       `,
       language: 'html',
     },

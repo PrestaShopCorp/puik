@@ -42,12 +42,21 @@ describe('Icon tests', () => {
     expect(findIcon().element.style.color).toBe('red')
   })
 
-  it('should set the font size', async () => {
+  it('should set the font size when value is not number', async () => {
     factory({
       icon: 'check',
       fontSize: '56px',
     })
 
     expect(findIcon().element.style.fontSize).toBe('56px')
+  })
+
+  it('should set the font size when value is number', async () => {
+    factory({
+      icon: 'check',
+      fontSize: 26,
+    })
+
+    expect(findIcon().element.style.fontSize).toBe('26px')
   })
 })

@@ -7,6 +7,10 @@ export const iconProps = buildProps({
     type: String,
     required: true,
   },
+  nodeType: {
+    type: String,
+    default: 'div',
+  },
   fontSize: {
     type: [Number, String],
     default: '1rem',
