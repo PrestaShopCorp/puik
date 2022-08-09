@@ -10,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { iconProps } from './icon'
 defineOptions({
   name: 'PuikIcon',
@@ -17,11 +18,16 @@ defineOptions({
 
 const props = defineProps(iconProps)
 
-const style = `
-  font-size: ${
-    !Number.isNaN(Number(props.fontSize))
-      ? `${props.fontSize}px`
-      : props.fontSize
-  };
-  color: ${props.color};`
+const fontSize = computed(() => {
+  if (!Number.isNaN(Number(props.fontSize))) {
+    return `${props.fontSize}px`
+  }
+
+  return props.fontSize
+})
+
+const style = {
+  fontSize: fontSize.value,
+  color: props.color,
+}
 </script>

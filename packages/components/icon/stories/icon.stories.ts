@@ -23,6 +23,14 @@ export default {
         type: 'color',
       },
     },
+    nodeType: {
+      description: 'Set the HTML node type',
+      default: 'div',
+      control: {
+        type: 'select',
+        options: ['div', 'span'],
+      },
+    },
   },
 } as Meta
 
@@ -41,16 +49,17 @@ Default.args = {
   icon: 'check',
   color: 'green',
   fontSize: 20,
+  nodeType: 'span',
 }
 Default.parameters = {
   docs: {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-icon icon="check" font-size="70px" color="green" />
+      <puik-icon icon="check" font-size="70px" color="green" node-type="span" />
 
       <!--HTML/CSS Snippet-->
-      <div class="puik-icon material-icons-round" style="font-size: 20px;">check</div>
+      <span class="puik-icon material-icons-round" style="font-size: 20px;">check</span>
       `,
       language: 'html',
     },
