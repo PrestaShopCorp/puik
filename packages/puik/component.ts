@@ -1,3 +1,4 @@
+import { PuikIcon } from '@puik/components/icon'
 import { PuikLink } from '@puik/components/link'
 import { PuikCard } from '@puik/components/card'
 import { PuikLabel } from '@puik/components/label'
@@ -14,6 +15,7 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikIcon,
   PuikLink,
   PuikCard,
   PuikLabel,
