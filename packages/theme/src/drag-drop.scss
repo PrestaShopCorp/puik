@@ -1,0 +1,25 @@
+@use './common/typography.scss';
+
+.puik-drag-drop {
+  @extend .puik-body-default;
+  @apply max-w-[566px];
+
+  &__dropzone {
+    @apply relative border border-border-main border-dashed rounded cursor-pointer hover:border-primary-purple-500;
+  }
+  label {
+    @apply flex items-center justify-center w-full h-16 font-bold text-font-main;
+  }
+
+  &--download {
+    @apply mr-2;
+  }
+
+  &--select {
+    @apply text-primary-purple-500 focus:outline-focus-main rounded;
+  }
+
+  input {
+    @apply absolute w-full h-full top-0 pointer-events-auto opacity-0 cursor-pointer;
+  }
+}

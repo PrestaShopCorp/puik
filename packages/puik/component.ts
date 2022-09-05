@@ -1,3 +1,4 @@
+import { PuikDragDrop } from '@puik/components/drag-drop'
 import { PuikIcon } from '@puik/components/icon'
 import { PuikLink } from '@puik/components/link'
 import { PuikCard } from '@puik/components/card'
@@ -15,6 +16,7 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikDragDrop,
   PuikIcon,
   PuikLink,
   PuikCard,

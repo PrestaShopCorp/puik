@@ -52,7 +52,7 @@ module.exports = {
           disabled: '#D7D8D9',
           50: '#EDEEF0',
           100: '#D2D4D9',
-          500: '#697180',
+          500: '#505969',
         },
         background: {
           grey: '#FAFAFB',
