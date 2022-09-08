@@ -49,11 +49,12 @@
     "vue": "^3.2.0"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.5.0",
+    "@headlessui/vue": "^1.6.7",
     "@popperjs/core": "^2.11.5",
     "@puik/components": "workspace:*",
     "@puik/hooks": "workspace:*",
     "@puik/locale": "workspace:*",
+    "@puik/tailwind-preset": "workspace:*",
     "@puik/theme": "workspace:*",
     "@puik/tokens": "workspace:*",
     "@puik/utils": "workspace:*",
