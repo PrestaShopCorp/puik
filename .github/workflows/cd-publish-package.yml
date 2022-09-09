@@ -32,5 +32,6 @@ jobs:
           git_author_email: squad-engagement@prestashop.com
           node_version: 16
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          npm_token: ${{ secrets.NPM_TOKEN }}
           version: ${{ steps.get_tag.outputs.TAG }}
           git_head: ${{ steps.get_head.outputs.GIT_HEAD }}

@@ -11,6 +11,9 @@ inputs:
   github_token:
     description: 'Github token'
     required: true
+  npm_token:
+    description: 'NPM token'
+    required: true
   version:
     required: true
     description: 'Version to publish'
@@ -47,6 +50,21 @@ runs:
         GIT_HEAD: ${{inputs.git_head}}
         TAG_VERSION: ${{inputs.version}}
 
+    - name: Setup node env 🏗
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node_version }}
+        cache: 'pnpm'
+        registry-url: 'https://registry.npmjs.org'
+        scope: '@prestashopcorp'
+
+    - name: Build & publish
+      shell: sh
+      run: sh ./scripts/publish.sh
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.npm_token }}
+        GIT_HEAD: ${{inputs.git_head}}
+        TAG_VERSION: ${{inputs.version}}
     # - name: Publish
     #   shell: bash
     #   run: |

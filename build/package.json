@@ -11,6 +11,9 @@
     "dev": "pnpm run stub",
     "stub": "unbuild --stub"
   },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
   "dependencies": {
     "@pnpm/find-workspace-packages": "^4.0.0",
     "@rollup/plugin-commonjs": "^22.0.0",
@@ -27,12 +30,12 @@
     "rollup": "^2.70.2",
     "rollup-plugin-esbuild": "^4.9.1",
     "ts-morph": "^14.0.0",
-    "unplugin-vue-define-options": "^0.4.0",
-    "vue": "^3.2.31"
+    "unplugin-vue-define-options": "^0.4.0"
   },
   "devDependencies": {
     "@pnpm/types": "^7.10.0",
     "@types/rollup-plugin-css-only": "^3.1.0",
-    "unbuild": "^0.7.4"
+    "unbuild": "^0.7.4",
+    "vue": "^3.2.31"
   }
 }
