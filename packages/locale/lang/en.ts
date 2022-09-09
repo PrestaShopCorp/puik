@@ -22,6 +22,7 @@ export default {
       errorSize: 'Your file is too heavy. It must be 2 Mo or less.',
       errorTotalSize: 'The total files weight cannot exceed 10 Mo.',
       errorFormat: 'Your file must be a .pdf, .jpg, .png, or .doc.',
+      deleteFile: 'Delete image',
     },
   },
 }

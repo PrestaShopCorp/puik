@@ -8,6 +8,7 @@ export default {
       errorTotalSize: 'Le poids total des fichiers ne peut pas dépasser 10 Mo.',
       errorFormat:
         'Votre fichier doit être au format .pdf, .jpg, .png ou .doc.',
+      deleteFile: "Supprimer l'image",
     },
   },
 }

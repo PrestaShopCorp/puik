@@ -32,18 +32,18 @@
         @dragleave="onDragLeave"
         @mouseleave="onDragLeave"
       />
-      <!-- <div
+      <div
         class="flex gap-4 flex-wrap justify-center sm:justify-start"
         :class="{ 'mt-3 px-4 pb-5': state.displayedFiles.length }"
       >
-        <attachment-item
+        <DragDropFile
           v-for="f in state.displayedFiles"
           :key="f.frontId"
           :attachment="getAttachment(f.frontId)"
           :closing="state.closing"
           @removed="onAttachmentRemoved"
-        ></attachment-item>
-      </div> -->
+        ></DragDropFile>
+      </div>
     </div>
   </div>
 </template>
@@ -52,6 +52,7 @@
 import { computed, reactive, ref, watch } from 'vue'
 import { useLocale } from '@puik/hooks'
 import Icon from '../../icon/src/icon.vue'
+import DragDropFile from '../../drag-drop-file/src/drag-drop-file.vue'
 import { dragDropProps } from './drag-drop'
 import { slowDownProgress } from './progress'
 
@@ -64,22 +65,23 @@ const maxFileSizeB = 2 * 1024 * 1024 // 2 MB
 const maxTotalSizeB = 10 * 1024 * 1024 // 10 MB
 
 const dropzone = ref<null | HTMLElement>(null)
-// const { app, $api } = useNuxtApp()
 const displayTooltip = ref(false)
+let frontIdSeq = -1
 const textAlert = ref('')
 const attachments = new Map()
 const { t } = useLocale()
 
 const state = reactive({
   closing: false,
-  apiTicketId: null as string | null,
+  ticketId: null as string | null,
   files: [] as { frontId: number }[],
   displayedFiles: computed((): { frontId: number }[] =>
-    state.apiTicketId === null ? [] : state.files
+    state.ticketId === null ? [] : state.files
   ),
   totalSizeOfFiles: 0,
 })
 
+// setTimeout alert
 watch(
   () => displayTooltip.value,
   () => {
@@ -100,7 +102,7 @@ const handleDrop = async (e: Event) => {
   if (state.closing) return
   const element = e.currentTarget as HTMLInputElement
 
-  dropzone.value?.classList.remove('border-purple500')
+  dropzone.value?.classList.remove('border-primary-purple-500')
 
   for (const file of element.files ?? []) {
     const errorMessage = isValidFile(file)
@@ -116,8 +118,8 @@ const handleDrop = async (e: Event) => {
 
 const onDragOver = () => {
   if (state.closing) return
-  const selectElement = dropzone.value?.querySelector('.dropzone__select')
-  dropzone.value?.classList.add('border-purple500')
+  const selectElement = dropzone.value?.querySelector('.puik-drag-drop--select')
+  dropzone.value?.classList.add('border-primary-purple-500')
   if (selectElement) selectElement.classList.add('underline')
 }
 
@@ -154,79 +156,76 @@ function isValidFile(file: File): string | undefined {
 }
 
 async function addAttachment(file: File) {
-  if (state.apiTicketId === null) {
-    state.apiTicketId = await props.getApiTicketId()
-  }
-  const attachment = startUploadingItem(state.apiTicketId, file)
+  const attachment = startUploadingItem(state.ticketId, file)
 
   attachments.set(attachment.frontId, attachment)
   state.files.push({ frontId: attachment.frontId })
 }
 
-// function startUploadingItem(apiTicketId: string, file: File) {
-//   const minDurationMs = 1000
+function startUploadingItem(ticketId: string, file: File) {
+  const minDurationMs = 1000
 
-//   const status = reactive({
-//     hasError: false,
-//     ended: false,
-//     progress: {
-//       max: 100,
-//       value: 0,
-//     },
-//   })
+  const status = reactive({
+    hasError: false,
+    ended: false,
+    progress: {
+      max: 100,
+      value: 0,
+    },
+  })
 
-//   const onUploadProgress = slowDownProgress((progress: number) => {
-//     if (status.ended) return
-//     status.progress.max = 100
-//     status.progress.value = progress * 100
-//   }, minDurationMs)
+  const onUploadProgress = slowDownProgress((progress: number) => {
+    if (status.ended) return
+    status.progress.max = 100
+    status.progress.value = progress * 100
+  }, minDurationMs)
 
-//   const uploadPromise = uploadFile({
-//     minDurationMs,
-//     apiTicketId,
-//     file,
-//     onUploadProgress,
-//   }).then(
-//     (val) => {
-//       status.ended = true
-//       return val
-//     },
-//     (error) => {
-//       status.ended = true
-//       status.hasError = true
-//       throw error
-//     }
-//   )
+  const uploadPromise = uploadFile({
+    minDurationMs,
+    ticketId,
+    file,
+    onUploadProgress,
+  }).then(
+    (val) => {
+      status.ended = true
+      return val
+    },
+    (error) => {
+      status.ended = true
+      status.hasError = true
+      throw error
+    }
+  )
 
-//   return {
-//     frontId: ++frontIdSeq,
-//     apiTicketId,
-//     file,
-//     status,
-//     uploadPromise,
-//   }
-// }
+  return {
+    frontId: ++frontIdSeq,
+    ticketId,
+    file,
+    status,
+    uploadPromise,
+  }
+}
 
-// const uploadFile = async (options: {
-//   minDurationMs: number
-//   apiTicketId: string
-//   file: File
-//   onUploadProgress: (progress: number) => void
-// }) => {
-//   const { apiTicketId, file, minDurationMs, onUploadProgress } = options
-//   const startTime = Date.now()
+const uploadFile = async (options: {
+  minDurationMs: number
+  apiTicketId: string
+  file: File
+  onUploadProgress: (progress: number) => void
+}) => {
+  const { apiTicketId, file, minDurationMs, onUploadProgress } = options
+  const startTime = Date.now()
 
-//   const resp = await $api.addAttachment(file, apiTicketId, { onUploadProgress })
+  const resp = await $api.addAttachment(file, apiTicketId, { onUploadProgress })
 
-//   const remainingTime = startTime + minDurationMs - Date.now()
-//   if (remainingTime > 0) {
-//     await new Promise<void>((resolve) => setTimeout(resolve, remainingTime))
-//   }
+  const remainingTime = startTime + minDurationMs - Date.now()
+  if (remainingTime > 0) {
+    await new Promise<void>((resolve) => setTimeout(resolve, remainingTime))
+  }
 
-//   return {
-//     fileRelId: resp.fileRelId,
-//   }
-// }
+  return {
+    fileRelId: resp.fileRelId,
+  }
+}
 
 /**
  * Used by the parent component.
