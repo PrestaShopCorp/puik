@@ -279,18 +279,15 @@ roundedWithoutAutocomplete.parameters = {
       <puik-search v-model="myValue" rounded/>
       
       <!--HTML/CSS Snippet-->
-      <div class="puik-search">
+<div class="puik-search">
         <div class="puik-search__wrapper puik-search__wrapper--rounded-input">
-          <input class="puik-search__field" type="text" rounded/>
-          <div class="flex">
-          <puik-button
-            class="puik-search__confirm-icon"
-            size="sm"
-            variant="primary"
-            @click="sendContent"
-            >east</puik-button
+          <span class="puik-search__icon puik-h2">search</span>
+          <input class="puik-search__field" type="text" rounded />
+          <button
+            class="puik-button puik-button--sm puik-button--primary puik-search__confirm-icon"
           >
-        </div>
+            east
+          </button>
         </div>
       </div>
       `,
