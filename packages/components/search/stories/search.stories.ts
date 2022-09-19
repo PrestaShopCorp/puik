@@ -114,12 +114,13 @@ DefaultWithAutocomplete.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-search v-model="myValue" :autocomplete="'test'" />
+      <puik-search v-model="myValue" autocomplete="search" />
       
       <!--HTML/CSS Snippet-->
       <div class="puik-search">
-        <div class="puik-search__wrapper >
-          <input class="puik-search__field" type="text" :autocomplete="'test'" />
+        <div class="puik-search__wrapper">
+          <span class="puik-search__icon puik-h2">search</span>
+          <input class="puik-search__field" type="text" autocomplete="search" />
         </div>
       </div>
       `,
