@@ -12,6 +12,15 @@ export default {
     placeholder: {
       description: 'Set the placeholder of the input',
     },
+    rounded: {
+      control: 'boolean',
+      description: 'Set the shape of the input',
+      table: {
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
     disabled: {
       control: 'boolean',
       description: 'Set the input as disabled',
