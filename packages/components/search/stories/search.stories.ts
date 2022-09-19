@@ -178,18 +178,15 @@ DefaultWithoutAutocomplete.parameters = {
       <puik-search v-model="myValue" />
       
       <!--HTML/CSS Snippet-->
-      <div class="puik-search">
-        <div class="puik-search__wrapper ">
+<div class="puik-search">
+        <div class="puik-search__wrapper">
+          <span class="puik-search__icon puik-h2">search</span>
           <input class="puik-search__field" type="text" />
-          <div class="flex">
-          <puik-button
-            class="puik-search__confirm-icon"
-            size="sm"
-            variant="primary"
-            @click="sendContent"
-            >east</puik-button
+          <button
+          class="puik-button puik-button--sm puik-button--primary puik-search__confirm-icon"
           >
-        </div>
+            east
+          </button>
         </div>
       </div>
       `,
