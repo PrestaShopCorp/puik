@@ -59,6 +59,7 @@ Default.parameters = {
       <!--HTML/CSS Snippet-->
       <div class="puik-search">
         <div class="puik-search__wrapper">
+          <span class="puik-search__icon puik-h2">search</span>
           <input class="puik-search__field" type="text" />
         </div>
       </div>
