@@ -246,9 +246,12 @@ roundedDisabled.parameters = {
       <puik-search v-model="myValue" rounded disabled/>
       
       <!--HTML/CSS Snippet-->
-      <div class="puik-search">
-        <div class="puik-search__wrapper puik-search__wrapper--rounded-input">
-          <input class="puik-search__field" type="text" rounded disabled/>
+<div class="puik-search">
+        <div
+          class="puik-search__wrapper puik-search__wrapper--disabled puik-search__wrapper--rounded-input"
+        >
+          <span class="puik-search__icon puik-h2">search</span>
+          <input class="puik-search__field" type="text" disabled />
         </div>
       </div>
       `,
