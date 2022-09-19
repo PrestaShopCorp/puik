@@ -212,13 +212,14 @@ roundedWithAutocomplete.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-search v-model="myValue" rounded :autocomplete="'test'"/>
+<!--VueJS Snippet-->
+      <puik-search v-model="myValue" rounded autocomplete="search"/>
       
       <!--HTML/CSS Snippet-->
       <div class="puik-search">
         <div class="puik-search__wrapper puik-search__wrapper--rounded-input">
-          <input class="puik-search__field" type="text" rounded :autocomplete="'test'"/>
+          <span class="puik-search__icon puik-h2">search</span>
+          <input class="puik-search__field" type="text" autocomplete="search" />
         </div>
       </div>
       `,
