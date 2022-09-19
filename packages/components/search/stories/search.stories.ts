@@ -148,11 +148,12 @@ Disabled.parameters = {
       <puik-search v-model="myValue" disabled />
       
       <!--HTML/CSS Snippet-->
-      <div class="puik-search">
+ <div class="puik-search">
         <div class="puik-search__wrapper puik-search__wrapper--disabled">
+          <span class="puik-search__icon puik-h2">search</span>
           <input class="puik-search__field" type="text" disabled />
         </div>
-      </div>
+      </div>    
       `,
       language: 'html',
     },
