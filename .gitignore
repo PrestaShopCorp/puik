@@ -18,3 +18,8 @@ packages/puik/version.ts
 
 # playground test file
 /playground/src/App.vue
+
+storybook-static
+build-storybook.log
+
+docs/.env

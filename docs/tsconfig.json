@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
+    "outDir": "dist",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
     "strict": true,
-    "noImplicitAny": false,
-    "skipLibCheck": true
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "types": ["vitepress/client"]
   },
-  "include": ["**/*", ".vitepress/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["./src/**/*", "./.vitepress/**/*"]
 }

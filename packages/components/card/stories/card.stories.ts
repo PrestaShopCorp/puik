@@ -1,4 +1,4 @@
-import PrestaShopSloganBg from '../../../../docs/assets/img/prestashop-slogan-bg.jpg'
+import PrestaShopSloganBg from '../../../../storybook/assets/img/prestashop-slogan-bg.jpg'
 import PuikCard from './../src/card.vue'
 import PuikButton from './../../button/src/button.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'

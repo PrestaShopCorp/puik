@@ -11,7 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "types": ["unplugin-vue-define-options"],
     "paths": {
-      "react": ["./docs/stub/types__react"]
+      "react": ["./storybook/stub/types__react"]
     }
   },
   "include": ["packages", "typings"],

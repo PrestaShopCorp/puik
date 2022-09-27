@@ -81,7 +81,7 @@ export const buildHelper: TaskFunction = (done) => {
     version: _version,
     entry: `${path.resolve(
       projRoot,
-      'docs/en-US/component'
+      'docs/src/components'
     )}/!(datetime-picker|message-box|message).md`,
     outDir: puikOutput,
     reComponentName,

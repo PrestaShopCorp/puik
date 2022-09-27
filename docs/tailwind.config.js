@@ -1,8 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 module.exports = {
+  darkMode: 'class',
   presets: [require('@puik/theme/tailwind.config')],
   content: [
-    '../packages/components/**/*.stories.@(js|jsx|ts|tsx)',
-    './stories/**/*.stories.mdx',
+    './**/*.{html,js,vue,ts,md}',
+    './.vitepress/**/*.{html,js,vue,ts,md}',
   ],
 }

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.VPDoc.has-aside .content-container {
+  max-width: none !important;
+}
+
+:root {
+  --vp-c-brand: #442cc7;
+  --vp-c-brand-light: #a296e3;
+  --vp-c-brand-lighter: #c7c0ee;
+  --vp-c-brand-dark: #3521ba;
+  --vp-c-brand-darker: #1f10a6;
+}
+
+.code-container div[class*='language-'] {
+  @apply m-0 rounded-none rounded-b-xl;
+}

@@ -1,23 +1,21 @@
 {
   "name": "@puik/docs",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "description": "",
   "main": "index.js",
-  "license": "MIT",
   "scripts": {
-    "dev": "start-storybook -p 6006",
-    "build": "build-storybook"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "serve": "vitepress serve"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.16.7",
-    "@storybook/addon-a11y": "^6.5.7",
-    "@storybook/addon-actions": "^6.5.7",
-    "@storybook/addon-essentials": "^6.5.7",
-    "@storybook/addon-links": "^6.5.7",
-    "@storybook/builder-vite": "^0.1.29",
-    "babel-loader": "^8.2.3",
-    "vue-loader": "^16.8.3"
+    "vitepress": "1.0.0-alpha.5",
+    "vue": "^3.2.39"
   },
   "dependencies": {
-    "typescript": "^4.5.4"
+    "@prestashopcorp/puik": "npm:@prestashopcorp/puik@latest"
   }
 }
