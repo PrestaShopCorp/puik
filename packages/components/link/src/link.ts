@@ -3,7 +3,12 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Link from './link.vue'
 
-export const targetVariants = ['_blank', '_self', '_parent', '_top']
+export enum TargetVariants {
+  BLANK = '_blank',
+  SELF = '_self',
+  PARENT = '_parent',
+  TOP = '_top',
+}
 
 export const linkProps = buildProps({
   href: {
@@ -18,9 +23,9 @@ export const linkProps = buildProps({
   },
   target: {
     type: String,
-    values: targetVariants,
+    values: TargetVariants,
     required: false,
-    default: '_self',
+    default: TargetVariants.SELF,
   },
   title: {
     type: String,

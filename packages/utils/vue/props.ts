@@ -25,7 +25,7 @@ type IfUnknown<T, V> = [unknown] extends [T] ? V : T
 
 export type BuildPropOption<T, D extends BuildPropType<T, V, C>, R, V, C> = {
   type?: T
-  values?: readonly V[]
+  values?: readonly V[] | Record<string, string>
   required?: R
   default?: R extends true
     ? never
@@ -118,7 +118,9 @@ export function buildProp<
           let allowedValues: unknown[] = []
 
           if (values) {
-            allowedValues = Array.from(values)
+            allowedValues = Array.from(
+              isObject(values) ? Object.values(values) : values
+            )
             if (hasOwn(option, 'default')) {
               allowedValues.push(defaultValue)
             }

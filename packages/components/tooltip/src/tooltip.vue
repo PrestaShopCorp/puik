@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { createPopper } from '@popperjs/core'
+import { createPopper, type Placement } from '@popperjs/core'
 import { generateId } from '@puik/utils'
 import { tooltipProps } from './tooltip'
 import type { Instance as PopperInstance } from '@popperjs/core'
@@ -44,7 +44,7 @@ const updateTooltip = () => {
 onMounted(() => {
   if (icon.value && tooltip.value) {
     popperInstance = createPopper(icon.value, tooltip.value, {
-      placement: props.position,
+      placement: props.position as Placement,
       modifiers: [
         {
           name: 'offset',
