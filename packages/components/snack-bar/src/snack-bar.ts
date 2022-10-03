@@ -1,8 +1,24 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type SnackBar from './snack-bar.vue'
 
-export const snackBarVariants = ['default', 'danger']
+export type SnackbarVariants = 'default' | 'danger'
+
+export const snackBarVariants: SnackbarVariants[] = ['default', 'danger']
+
+export interface SnackBarAction {
+  label: string
+  callback: () => void
+}
+
+export interface SnackBarOptions {
+  text: string
+  variant?: SnackbarVariants
+  action?: SnackBarAction
+  duration?: number
+  offset?: number
+  onClose?: () => void
+}
 
 export const snackBarProps = buildProps({
   text: {
@@ -10,8 +26,12 @@ export const snackBarProps = buildProps({
     required: false,
     default: undefined,
   },
-  action: {
+  id: {
     type: String,
+    required: false,
+  },
+  action: {
+    type: Object as PropType<SnackBarAction>,
     required: false,
     default: undefined,
   },
@@ -20,8 +40,27 @@ export const snackBarProps = buildProps({
     values: snackBarVariants,
     default: 'default',
   },
+  duration: {
+    type: Number,
+    required: false,
+    default: 3000,
+  },
+  offset: {
+    type: Number,
+    required: false,
+    default: 0,
+  },
+  onClose: {
+    type: Function,
+    required: false,
+  },
 } as const)
-export const snackBarEmits = ['close', 'on-action']
+
+export const snackBarEmits = {
+  destroy: () => true,
+}
 export type SnackBarProps = ExtractPropTypes<typeof snackBarProps>
+
+export type SnackBarEmits = typeof snackBarEmits
 
 export type SnackBarInstance = InstanceType<typeof SnackBar>

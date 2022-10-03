@@ -4,7 +4,8 @@
   "exports": {
     ".": {
       "require": "./lib/index.js",
-      "import": "./es/index.mjs"
+      "import": "./es/index.mjs",
+      "types": "./es/index.d.ts"
     },
     "./es": "./es/index.mjs",
     "./lib": "./lib/index.js",
@@ -16,6 +17,7 @@
   },
   "main": "lib/index.js",
   "module": "es/index.mjs",
+  "types": "es/index.d.ts",
   "style": "dist/index.css",
   "unpkg": "dist/index.full.js",
   "jsdelivr": "dist/index.full.js",

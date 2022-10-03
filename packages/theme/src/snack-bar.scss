@@ -1,5 +1,5 @@
 .puik-snack-bar {
-  @apply text-white py-5 px-4 rounded-lg;
+  @apply w-full md:w-auto fixed flex text-white p-4 rounded-lg transition-all duration-300 z-50 shadow-md left-[50%] translate-x-[-50%] text-sm;
 
   &--default {
     @apply bg-font-main;
@@ -9,13 +9,24 @@
     @apply bg-accentuation-destructive-500;
   }
 
-  &__right {
-    @apply float-right;
-    &__action {
-      @apply font-semibold mr-7 hover:cursor-pointer;
+  &__text {
+    @apply font-secondary flex-grow;
+  }
+
+  &__action {
+    @apply font-primary font-semibold hover:cursor-pointer ml-6;
+  }
+
+  &__close-button {
+    @apply font-materialIcons ml-6 cursor-pointer;
+  }
+
+  &__transition {
+    &--enter-from {
+      @apply translate-y-full;
     }
-    svg {
-      @apply inline hover:cursor-pointer;
+    &--leave-to {
+      @apply opacity-0;
     }
   }
 }

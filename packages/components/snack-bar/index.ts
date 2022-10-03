@@ -1,8 +1,8 @@
-import { withInstall } from '@puik/utils'
+import { withInstallFunction } from '@puik/utils'
 
-import SnackBar from './src/snack-bar.vue'
+import Notify from './src/notify'
 
-export const PuikSnackBar = withInstall(SnackBar)
+export const PuikSnackBar = withInstallFunction(Notify, '$notify')
 export default PuikSnackBar
 
 export * from './src/snack-bar'

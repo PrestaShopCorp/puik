@@ -20,6 +20,15 @@ module.exports = {
     }
     // eslint-disable-next-line
     config.plugins.push(require('unplugin-vue-define-options/vite')())
-    return config
+    return {
+      ...config,
+      optimizeDeps: {
+        ...config.optimizeDeps,
+        entries: [
+          '../stories/**/*.stories.mdx',
+          '../../packages/components/**/*.stories.@(js|jsx|ts|tsx)',
+        ],
+      },
+    }
   },
 }

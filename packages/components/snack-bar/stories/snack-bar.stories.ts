@@ -1,5 +1,7 @@
-import { snackBarVariants } from '../src/snack-bar'
-import PuikSnackBar from './../src/snack-bar.vue'
+import { action } from '@storybook/addon-actions'
+import { PuikSnackBar } from '../'
+import { snackBarVariants, type SnackBarOptions } from '../src/snack-bar'
+import { PuikButton } from './../../button/index'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
@@ -9,43 +11,122 @@ export default {
     text: {
       description: 'The text of the snackbar',
     },
+    variant: {
+      description: 'The color variant of the snackbar',
+      control: 'select',
+      options: snackBarVariants,
+    },
     action: {
       description: 'The action label of the snackbar',
+      control: 'object',
     },
-    variant: {
-      description: 'Set the snack bar variant',
-      options: snackBarVariants,
+    duration: {
+      description:
+        'Duration in ms before the snackbar closes. Can be disabled if set to 0',
+      control: 'number',
+    },
+    offset: {
+      description:
+        'Offset from the bottom edge of the screen. Every Snackbar must have the same offset',
+      control: 'number',
+    },
+    onClose: {
+      description: 'Set the function to call when the snackbar has been closed',
     },
   },
 } as Meta
 
-const DefaultTemplateWithoutAction: Story = (args: Args) => ({
+const Template: Story = (args: Args) => ({
   components: {
-    PuikSnackBar,
+    PuikButton,
   },
   setup() {
-    return { args }
+    const open = () => PuikSnackBar(args as SnackBarOptions)
+    return { args, open }
   },
-  template: `<puik-snack-bar :text="'${args.text}'"></puik-snack-bar>`,
+  template: `
+    <puik-button @click="open">Display Snackbar</puik-button>
+  `,
 })
 
-export const DefaultWithoutAction = DefaultTemplateWithoutAction.bind({})
-DefaultWithoutAction.args = {
-  text: 'Hello world',
+export const Default = Template.bind({})
+
+Default.args = {
+  text: 'New category added.',
 }
-DefaultWithoutAction.parameters = {
+
+export const WithoutAction: Story = () => ({
+  components: {
+    PuikButton,
+  },
+  setup() {
+    const displaySnackBar = () =>
+      PuikSnackBar({
+        text: 'New category added.',
+      })
+    const displayErrorSnackBar = () =>
+      PuikSnackBar({
+        text: 'Unable to update settings.',
+        variant: 'danger',
+      })
+    return { displaySnackBar, displayErrorSnackBar }
+  },
+  template: `
+    <div class="space-x-4">
+      <puik-button @click="displaySnackBar">Display Snackbar</puik-button>
+      <puik-button @click="displayErrorSnackBar">Display Error Snackbar</puik-button>
+    </div>
+  `,
+})
+
+WithoutAction.parameters = {
   docs: {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-snack-bar text="Hello world" />
+      <!--VueJS Snippet-->
+      <template>
+        <puik-button @click="displaySnackBar">Display Snackbar</puik-button>
+        <puik-button @click="displayErrorSnackBar">Display Error Snackbar</puik-button>
+      </template>
+      
+      <script lang="ts" setup>
+      const displaySnackBar = () =>
+        PuikSnackBar({
+          text: 'New category added.',
+        })
+      const displayErrorSnackBar = () =>
+        PuikSnackBar({
+          text: 'Unable to update settings.',
+          variant: 'danger',
+        })
+      </script>
 
       <!--HTML/CSS Snippet-->
-      <div class="puik-snack-bar puik-snack-bar--default">
-        <span class="puik-snack-bar__text">Hello world</span>
-        <span class="puik-snack-bar__right">
-          <svg class="puik-snack-bar__close-button" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2496 0.758297C11.0939 0.602253 10.8825 0.514559 10.6621 0.514559C10.4417 0.514559 10.2303 0.602253 10.0746 0.758297L5.99961 4.82496L1.92461 0.749964C1.76892 0.59392 1.55754 0.506226 1.33711 0.506226C1.11668 0.506226 0.905302 0.59392 0.749609 0.749964C0.424609 1.07496 0.424609 1.59996 0.749609 1.92496L4.82461 5.99996L0.749609 10.075C0.424609 10.4 0.424609 10.925 0.749609 11.25C1.07461 11.575 1.59961 11.575 1.92461 11.25L5.99961 7.17496L10.0746 11.25C10.3996 11.575 10.9246 11.575 11.2496 11.25C11.5746 10.925 11.5746 10.4 11.2496 10.075L7.17461 5.99996L11.2496 1.92496C11.5663 1.6083 11.5663 1.07496 11.2496 0.758297Z" fill="white"></path></svg>
-        </span>
+      <!--
+          Snackbar, show/hide base on snackbar state
+
+          Enter From: "puik-snack-bar__transition--enter-from"
+          Leave To: "puik-snack-bar__transition--leave-to"
+
+          Style bottom calculation:
+          If there is only one snack bar displayed the default value will be the offset (32px)
+          But if you want to stack the snackbar you may need to do the following computation
+          Offset (32px) + First Snackbar offsetHeight + Gap (16px)
+          Example: 32 + 52 + 16 = 100px
+        -->
+      <div class="puik-snack-bar puik-snack-bar--default" style="bottom: 32px">
+        <span class="puik-snack-bar__text">New category added.</span>
+        <button class="puik-snack-bar__close-button">
+          close
+        </button>
+      </div>
+
+      <div class="puik-snack-bar puik-snack-bar--danger" style="bottom: 100px">
+        <span class="puik-snack-bar__text">Unable to update settings.</span>
+        <button class="puik-snack-bar__close-button">
+          close
+        </button>
       </div>
       `,
       language: 'html',
@@ -53,110 +134,95 @@ DefaultWithoutAction.parameters = {
   },
 }
 
-const DefaultTemplateWithAction: Story = (args: Args) => ({
+export const WithAction: Story = () => ({
   components: {
-    PuikSnackBar,
+    PuikButton,
   },
   setup() {
-    const onAction = () => {
-      console.log('onAction')
-    }
-    return { args, onAction }
+    const displaySnackBar = () =>
+      PuikSnackBar({
+        text: 'New attribute “Size” added.',
+        action: {
+          label: 'Cancel',
+          callback: action('Default snackbar action callback function'),
+        },
+      })
+    const displayErrorSnackBar = () =>
+      PuikSnackBar({
+        text: 'Unable to update settings.',
+        variant: 'danger',
+        action: {
+          label: 'Cancel',
+          callback: action('Error snackbar action callback function'),
+        },
+      })
+    return { displaySnackBar, displayErrorSnackBar }
   },
-  template: `<puik-snack-bar :text="'${args.text}'" :action="'${args.action}'" @on-action="onAction"></puik-snack-bar>`,
+  template: `
+    <div class="space-x-4">
+      <puik-button @click="displaySnackBar">Display Snackbar</puik-button>
+      <puik-button @click="displayErrorSnackBar">Display Error Snackbar</puik-button>
+    </div>
+  `,
 })
-export const DefaultWithAction = DefaultTemplateWithAction.bind({})
-DefaultWithAction.args = {
-  text: 'Hello world',
-  action: 'Cancel',
-}
-DefaultWithAction.parameters = {
+
+WithAction.parameters = {
   docs: {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-snack-bar text="Hello world" action="Cancel" />
+      <template>
+        <puik-button @click="displaySnackBar">Display Snackbar</puik-button>
+        <puik-button @click="displayErrorSnackBar">Display Error Snackbar</puik-button>
+      </template>
+
+      <script lang="ts" setup>
+      const displaySnackBar = () =>
+        PuikSnackBar({
+          text: 'New attribute “Size” added.',
+          action: {
+            label: 'Cancel',
+            callback: action('Default snackbar action callback function'),
+          },
+        })
+      const displayErrorSnackBar = () =>
+        PuikSnackBar({
+          text: 'Unable to update settings.',
+          variant: 'danger',
+          action: {
+            label: 'Cancel',
+            callback: action('Error snackbar action callback function'),
+          },
+        })
+      </script>
 
       <!--HTML/CSS Snippet-->
-      <div class="puik-snack-bar puik-snack-bar--default">
-        <span class="puik-snack-bar__text">Hello world</span>
-        <span class="puik-snack-bar__right">
-          <span class="puik-snack-bar__right__action">Cancel</span>
-          <svg class="puik-snack-bar__close-button" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2496 0.758297C11.0939 0.602253 10.8825 0.514559 10.6621 0.514559C10.4417 0.514559 10.2303 0.602253 10.0746 0.758297L5.99961 4.82496L1.92461 0.749964C1.76892 0.59392 1.55754 0.506226 1.33711 0.506226C1.11668 0.506226 0.905302 0.59392 0.749609 0.749964C0.424609 1.07496 0.424609 1.59996 0.749609 1.92496L4.82461 5.99996L0.749609 10.075C0.424609 10.4 0.424609 10.925 0.749609 11.25C1.07461 11.575 1.59961 11.575 1.92461 11.25L5.99961 7.17496L10.0746 11.25C10.3996 11.575 10.9246 11.575 11.2496 11.25C11.5746 10.925 11.5746 10.4 11.2496 10.075L7.17461 5.99996L11.2496 1.92496C11.5663 1.6083 11.5663 1.07496 11.2496 0.758297Z" fill="white"></path></svg>
-        </span>
+      <!--
+          Snackbar, show/hide base on snackbar state
+
+          Enter From: "puik-snack-bar__transition--enter-from"
+          Leave To: "puik-snack-bar__transition--leave-to"
+
+          Style bottom calculation:
+          If there is only one snack bar displayed the default value will be the offset (32px)
+          But if you want to stack the snackbar you may need to do the following computation
+          Offset (32px) + First Snackbar offsetHeight + Gap (16px)
+          Example: 32 + 52 + 16 = 100px
+        -->
+      <div class="puik-snack-bar puik-snack-bar--default" style="bottom: 32px">
+        <span class="puik-snack-bar__text">New category added.</span>
+        <button class="puik-snack-bar__action">Cancel</button>
+        <button class="puik-snack-bar__close-button">
+          close
+        </button>
       </div>
-      `,
-      language: 'html',
-    },
-  },
-}
 
-const DangerTemplateWithoutAction: Story = (args: Args) => ({
-  components: {
-    PuikSnackBar,
-  },
-  setup() {
-    return { args }
-  },
-  template: `<puik-snack-bar :text="'${args.text}'" :variant="'danger'"></puik-snack-bar>`,
-})
-
-export const DangerWithoutAction = DangerTemplateWithoutAction.bind({})
-DangerWithoutAction.args = {
-  text: 'This is dangerous',
-}
-DangerWithoutAction.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet-->
-      <puik-snack-bar text="This is dangerous" variant="danger" />
-
-      <!--HTML/CSS Snippet-->
-      <div class="puik-snack-bar puik-snack-bar--danger">
-        <span class="puik-snack-bar__text">This is dangerous</span>
-        <span class="puik-snack-bar__right">
-          <svg class="puik-snack-bar__close-button" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2496 0.758297C11.0939 0.602253 10.8825 0.514559 10.6621 0.514559C10.4417 0.514559 10.2303 0.602253 10.0746 0.758297L5.99961 4.82496L1.92461 0.749964C1.76892 0.59392 1.55754 0.506226 1.33711 0.506226C1.11668 0.506226 0.905302 0.59392 0.749609 0.749964C0.424609 1.07496 0.424609 1.59996 0.749609 1.92496L4.82461 5.99996L0.749609 10.075C0.424609 10.4 0.424609 10.925 0.749609 11.25C1.07461 11.575 1.59961 11.575 1.92461 11.25L5.99961 7.17496L10.0746 11.25C10.3996 11.575 10.9246 11.575 11.2496 11.25C11.5746 10.925 11.5746 10.4 11.2496 10.075L7.17461 5.99996L11.2496 1.92496C11.5663 1.6083 11.5663 1.07496 11.2496 0.758297Z" fill="white"></path></svg>
-        </span>
-      </div>
-      `,
-      language: 'html',
-    },
-  },
-}
-
-const DangerTemplateWithAction: Story = (args: Args) => ({
-  components: {
-    PuikSnackBar,
-  },
-  setup() {
-    const onAction = () => {
-      console.log('onAction')
-    }
-    return { args, onAction }
-  },
-  template: `<puik-snack-bar :text="'${args.text}'" :action="'${args.action}'" :variant="'danger'" @on-action="onAction"></puik-snack-bar>`,
-})
-
-export const DangerWithAction = DangerTemplateWithAction.bind({})
-DangerWithAction.args = {
-  text: 'This is dangerous',
-  action: 'Retry',
-}
-DangerWithAction.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet-->
-      <puik-snack-bar text="This is dangerous" action="Retry" variant="danger" />
-
-      <!--HTML/CSS Snippet-->
-      <div class="puik-snack-bar puik-snack-bar--danger">
-        <span class="puik-snack-bar__text"This is dangerous</span>
-        <span class="puik-snack-bar__right">
-          <span class="puik-snack-bar__right__action">Retry</span>
-          <svg class="puik-snack-bar__close-button" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2496 0.758297C11.0939 0.602253 10.8825 0.514559 10.6621 0.514559C10.4417 0.514559 10.2303 0.602253 10.0746 0.758297L5.99961 4.82496L1.92461 0.749964C1.76892 0.59392 1.55754 0.506226 1.33711 0.506226C1.11668 0.506226 0.905302 0.59392 0.749609 0.749964C0.424609 1.07496 0.424609 1.59996 0.749609 1.92496L4.82461 5.99996L0.749609 10.075C0.424609 10.4 0.424609 10.925 0.749609 11.25C1.07461 11.575 1.59961 11.575 1.92461 11.25L5.99961 7.17496L10.0746 11.25C10.3996 11.575 10.9246 11.575 11.2496 11.25C11.5746 10.925 11.5746 10.4 11.2496 10.075L7.17461 5.99996L11.2496 1.92496C11.5663 1.6083 11.5663 1.07496 11.2496 0.758297Z" fill="white"></path></svg>
-        </span>
+      <div class="puik-snack-bar puik-snack-bar--danger" style="bottom: 100px">
+        <span class="puik-snack-bar__text">Unable to update settings.</span>
+        <button class="puik-snack-bar__action">Retry</button>
+        <button class="puik-snack-bar__close-button">
+          close
+        </button>
       </div>
       `,
       language: 'html',

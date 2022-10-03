@@ -28,6 +28,10 @@ declare module '@vue/runtime-core' {
     PuikButton: typeof import('puik')['PuikButton']
     PuikConfigProvider: typeof import('puik')['PuikConfigProvider']
   }
+
+  interface ComponentCustomProperties {
+    $notify: typeof import('@prestashopcorp/puik')['PuikSnackBar']
+  }
 }
 
 export {}
