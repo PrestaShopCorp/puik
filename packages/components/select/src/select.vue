@@ -9,7 +9,7 @@
       <ListboxButton
         :disabled="disabled"
         class="puik-select__button"
-        :class="{ 'puik-select__button--error': error || $slots.error }"
+        :class="{ 'puik-select__button--error': hasError }"
       >
         <span class="puik-select__selected">{{
           currentLabel || placeholder
@@ -32,7 +32,7 @@
           as="div"
         >
           <puik-input
-            v-if="isArray(options) || (isObject(options) && customFilterMethod)"
+            v-if="isArray(options) || isObject(options)"
             v-model="query"
             class="puik-select__search"
             :placeholder="t('puik.select.searchPlaceholder')"
@@ -66,7 +66,7 @@
           </ul>
         </ListboxOptions>
       </transition>
-      <span v-if="error || $slots.error" class="puik-select__error"
+      <span v-if="hasError" class="puik-select__error"
         ><span class="puik-select__error__icon">error</span
         ><slot name="error">{{ error }}</slot></span
       >
@@ -75,7 +75,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide, ref } from 'vue'
+import { computed, provide, ref, useSlots } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
 import { useVModel } from '@vueuse/core'
 import { isObject, isFunction, isArray } from '@puik/utils'
@@ -89,6 +89,8 @@ defineOptions({
 })
 
 const props = defineProps(selectProps)
+
+const slots = useSlots()
 
 const emit = defineEmits(selectEmits)
 
@@ -116,6 +118,12 @@ const filteredItems = computed(() => {
   }
   return null
 })
+
+const hasError = computed(
+  () =>
+    props.error ||
+    (slots.error && slots.error()[0] && slots.error()[0].children)
+)
 
 const setCurrentLabel = (label: string | number) => (currentLabel.value = label)
 

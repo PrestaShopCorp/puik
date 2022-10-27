@@ -36,14 +36,14 @@
         @decrease="decrease"
       ></puik-input-controls>
     </div>
-    <div v-if="$slots.hint || $slots.error || error" class="puik-input__hint">
+    <div v-if="$slots.hint || hasError" class="puik-input__hint">
       <span
         v-show="!hideHint"
-        v-if="$slots.hint && !error && !$slots.error"
+        v-if="$slots.hint && !hasError"
         class="puik-input__hint__text"
         ><slot name="hint"></slot
       ></span>
-      <span v-if="error || $slots.error" class="puik-input__hint__error"
+      <span v-if="hasError" class="puik-input__hint__error"
         ><span class="puik-input__hint__error__icon">error</span
         ><slot name="error">{{ error }}</slot></span
       >
@@ -68,7 +68,7 @@ const inputClasses = computed(() => ({
   'puik-input__wrapper--focus': isFocus.value,
   'puik-input__wrapper--disabled': props.disabled,
   'puik-input__wrapper--success': props.success,
-  'puik-input__wrapper--error': props.error || slots.error,
+  'puik-input__wrapper--error': hasError.value,
 }))
 
 const handleFocus = () => (isFocus.value = true)
@@ -87,6 +87,12 @@ const decrease = () => {
     value.value -= props.step
   }
 }
+
+const hasError = computed(
+  () =>
+    props.error ||
+    (slots.error && slots.error()[0] && slots.error()[0].children)
+)
 
 const value = computed<string | number>({
   get() {
