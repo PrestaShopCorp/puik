@@ -2,7 +2,7 @@
 
 .puik-button {
   @extend .puik-text-button-default;
-  @apply rounded transition cursor-pointer py-3 px-4;
+  @apply rounded transition cursor-pointer py-2.5 px-4;
 
   &--sm {
     @extend .puik-text-button-small;
@@ -26,7 +26,7 @@
 
   &--lg {
     @extend .puik-text-button-large;
-    @apply py-3 px-6;
+    @apply py-3 px-5;
     .puik-button__left-icon {
       @apply mr-3;
     }
@@ -154,6 +154,6 @@
 
   &__left-icon,
   &__right-icon {
-    @apply font-materialIcons align-middle leading-none text-base;
+    @apply font-materialIcons align-middle leading-none text-xl;
   }
 }
