@@ -25,7 +25,7 @@
       @apply border-2 border-solid rounded-full border-font-disabled bg-transparent;
     }
     &:disabled + #{$baseClass}__label {
-      @apply text-border-main cursor-default;
+      @apply text-light-blue-default-border cursor-default;
     }
   }
   &__label {

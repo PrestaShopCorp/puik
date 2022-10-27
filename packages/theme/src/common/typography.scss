@@ -1,49 +1,62 @@
 // Titles
 
 .puik-jumbotron {
-  @apply text-5xl leading-[3.625rem] -tracking-[0.066875em] font-extrabold;
+  @apply text-5xl leading-[3.625rem] -tracking-[0.066875rem] font-extrabold;
 }
 
 .puik-h1 {
-  @apply text-4xl leading-[2.625rem] -tracking-[0.043125em] font-bold;
+  @apply text-4xl leading-[2.625rem] -tracking-[0.043125rem] font-bold;
 }
 
 .puik-h2 {
-  @apply text-2xl leading-8 -tracking-[0.029375em] font-bold;
+  @apply text-2xl leading-8 -tracking-[0.029375rem] font-bold;
 }
 
 .puik-h3 {
-  @apply text-xl leading-[1.875rem] -tracking-[0.020625em] font-bold;
+  @apply text-xl leading-[1.875rem] -tracking-[0.020625rem] font-bold;
 }
 
 .puik-h4 {
-  @apply text-lg leading-[1.625rem] -tracking-[0.01625em] font-medium;
+  @apply text-lg leading-[1.625rem] -tracking-[0.01625rem] font-medium;
 }
 
 .puik-h5 {
-  @apply text-base leading-[1.375rem] -tracking-[0.01125em] font-semibold;
+  @apply text-base leading-[1.375rem] -tracking-[0.01125rem] font-semibold;
 }
 
 .puik-h6 {
-  @apply text-sm leading-5 -tracking-[0.005625em] font-bold;
+  @apply text-sm leading-5 -tracking-[0.005625rem] font-bold;
 }
 
 // Body
 
 .puik-body-small {
-  @apply text-xs leading-5 tracking-tight font-secondary;
+  @apply text-xs leading-5 font-secondary;
+}
+
+.puik-body-small-bold {
+  @apply text-xs leading-5 font-secondary font-bold;
 }
 
 .puik-body-default {
-  @apply text-sm leading-5 -tracking-[0.015625em] font-secondary;
+  @apply text-sm leading-5 font-secondary;
 }
 
-.puik-body-bold {
-  @apply text-lg leading-[1.625rem] -tracking-[0.015625em] font-secondary font-bold;
+.puik-body-default-bold {
+  @apply text-sm leading-5 font-secondary font-bold;
 }
 
 .puik-body-large {
-  @apply text-base leading-[1.375rem] -tracking-[0.03125em] font-secondary;
+  @apply text-base leading-[1.375rem] font-secondary;
+}
+
+.puik-body-large-bold {
+  @apply text-base leading-[1.375rem] font-secondary font-bold;
+}
+
+.puik-body-default-link {
+  @extend .puik-body-default;
+  @apply underline text-primary-purple;
 }
 
 // Numbers
@@ -53,11 +66,11 @@
 }
 
 .puik-monospace-default {
-  @apply text-sm leading-5 -tracking-[0.005625em];
+  @apply text-sm leading-5 -tracking-[0.005625rem];
 }
 
 .puik-monospace-large {
-  @apply text-base leading-[1.375rem] -tracking-[0.03125em] font-bold;
+  @apply text-base leading-[1.375rem] tracking-[0.03125rem] font-bold;
 }
 
 // Buttons

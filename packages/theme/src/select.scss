@@ -1,7 +1,7 @@
 .puik-select {
   @apply relative mt-1;
   &__button {
-    @apply relative w-full cursor-default rounded bg-white min-h-[38px] py-2 pl-3 pr-10 text-left border border-border-main hover:border-primary-purple-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-border-main disabled:bg-background-grey disabled:text-font-disabled;
+    @apply relative w-full cursor-default rounded bg-white min-h-[38px] py-2 pl-3 pr-10 text-left border border-light-blue-default-border hover:border-primary-purple-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-light-blue-default-border disabled:bg-light-blue-background disabled:text-font-disabled;
     &--error {
       @apply border-accentuation-destructive-500;
     }

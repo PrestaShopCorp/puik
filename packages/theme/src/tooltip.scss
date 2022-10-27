@@ -7,7 +7,7 @@
   }
 
   &__tip {
-    @apply absolute bg-font-main text-white rounded px-3 py-2 font-secondary flex flex-col opacity-0 pointer-events-none w-[200px] transition-opacity;
+    @apply absolute bg-font text-white rounded px-3 py-2 font-secondary flex flex-col opacity-0 pointer-events-none w-[200px] transition-opacity;
     &:hover {
       @apply opacity-100;
     }
@@ -46,6 +46,6 @@
   }
 
   &__icon {
-    @apply font-materialIcons text-font-500 hover:text-font-main text-base transition-colors cursor-pointer;
+    @apply font-materialIcons text-font-500 hover:text-font text-base transition-colors cursor-pointer;
   }
 }
