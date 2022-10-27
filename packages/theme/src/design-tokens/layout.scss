@@ -1,0 +1,11 @@
+:root {
+  // GUTTERS
+  --puik-layout-gutter-mobile: theme('spacing.4');
+  --puik-layout-gutter-tablet: theme('spacing.4');
+  --puik-layout-gutter-desktop: theme('spacing.6');
+
+  // LAYOUT MARGINS
+  --puik-layout-margin-mobile: theme('spacing.4');
+  --puik-layout-margin-tablet: theme('spacing.4');
+  --puik-layout-margin-desktop: theme('spacing.6');
+}

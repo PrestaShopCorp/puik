@@ -1,0 +1,97 @@
+:root {
+  // Primary Purple Colors
+  --puik-color-primary-purple-50: theme('colors.primary.purple.50');
+  --puik-primary-purple-100: theme('colors.primary.purple.100');
+  --puik-primary-purple-200: theme('colors.primary.purple.200');
+  --puik-primary-purple-500: theme('colors.primary.purple.500');
+  --puik-primary-purple-700: theme('colors.primary.purple.700');
+  --puik-primary-purple-900: theme('colors.primary.purple.900');
+
+  // Accentuation destructive
+  --puik-color-accentuation-destructive-50: theme(
+    'colors.accentuation.destructive.50'
+  );
+  --puik-color-accentuation-destructive-100: theme(
+    'colors.accentuation.destructive.100'
+  );
+  --puik-color-accentuation-destructive-200: theme(
+    'colors.accentuation.destructive.200'
+  );
+  --puik-color-accentuation-destructive-500: theme(
+    'colors.accentuation.destructive.500'
+  );
+  --puik-color-accentuation-destructive-700: theme(
+    'colors.accentuation.destructive.700'
+  );
+  --puik-color-accentuation-destructive-900: theme(
+    'colors.accentuation.destructive.900'
+  );
+
+  // Accentuation success
+  --puik-color-accentuation-success-50: theme('colors.accentuation.success.50');
+  --puik-color-accentuation-success-100: theme(
+    'colors.accentuation.success.100'
+  );
+  --puik-color-accentuation-success-200: theme(
+    'colors.accentuation.success.200'
+  );
+  --puik-color-accentuation-success-500: theme(
+    'colors.accentuation.success.500'
+  );
+  --puik-color-accentuation-success-700: theme(
+    'colors.accentuation.success.700'
+  );
+  --puik-color-accentuation-success-900: theme(
+    'colors.accentuation.success.900'
+  );
+
+  // Accentuation warning
+  --puik-color-accentuation-warning-50: theme('colors.accentuation.warning.50');
+  --puik-color-accentuation-warning-100: theme(
+    'colors.accentuation.warning.100'
+  );
+  --puik-color-accentuation-warning-200: theme(
+    'colors.accentuation.warning.200'
+  );
+  --puik-color-accentuation-warning-500: theme(
+    'colors.accentuation.warning.500'
+  );
+  --puik-color-accentuation-warning-700: theme(
+    'colors.accentuation.warning.700'
+  );
+  --puik-color-accentuation-warning-900: theme(
+    'colors.accentuation.warning.900'
+  );
+
+  // Accentuation info
+  --puik-color-accentuation-info-50: theme('colors.accentuation.info.50');
+  --puik-color-accentuation-info-100: theme('colors.accentuation.info.100');
+  --puik-color-accentuation-info-200: theme('colors.accentuation.info.200');
+  --puik-color-accentuation-info-500: theme('colors.accentuation.info.500');
+  --puik-color-accentuation-info-700: theme('colors.accentuation.info.700');
+  --puik-color-accentuation-info-900: theme('colors.accentuation.info.900');
+
+  // Font
+  --puik-color-font-50: theme('colors.font.50');
+  --puik-color-font-100: theme('colors.font.100');
+  --puik-color-font-200: theme('colors.font.200');
+  --puik-color-font-500: theme('colors.font.500');
+  --puik-color-font-700: theme('colors.font.700');
+  --puik-color-font-900: theme('colors.font.900');
+
+  // Light blue
+  --puik-color-light-blue-50: theme('colors.light-blue.50');
+  --puik-color-light-blue-100: theme('colors.light-blue.100');
+  --puik-color-light-blue-200: theme('colors.light-blue.200');
+  --puik-color-light-blue-300: theme('colors.light-blue.300');
+  --puik-color-light-blue-500: theme('colors.light-blue.500');
+  --puik-color-light-blue-700: theme('colors.light-blue.700');
+  --puik-color-light-blue-900: theme('colors.light-blue.900');
+
+  // Focus
+  --puik-color-focus-main: theme('colors.focus.main');
+
+  // Brand
+  --puik-color-brand-pink: theme('colors.brand.pink');
+  --puik-color-brand-dark-blue: theme('colors.brand.dark-blue');
+}

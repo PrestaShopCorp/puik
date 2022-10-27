@@ -1,0 +1,21 @@
+:root {
+  // FONT FAMILY
+  --puik-font-family-primary: theme('fontFamily.primary');
+  --puik-font-family-secondary: theme('fontFamily.secondary');
+  --puik-font-family-icons: theme('fontFamily.materialIcons');
+
+  // FONT SIZES
+  // BODY
+  --puik-font-size-body-small: theme('fontSize.xs');
+  --puik-font-size-default: theme('fontSize.sm');
+  --puik-font-size-large: theme('fontSize.base');
+
+  // TITLES
+  --puik-font-size-h6: theme('fontSize.sm');
+  --puik-font-size-h5: theme('fontSize.base');
+  --puik-font-size-h4: theme('fontSize.lg');
+  --puik-font-size-h3: theme('fontSize.xl');
+  --puik-font-size-h2: theme('fontSize.2xl');
+  --puik-font-size-h1: theme('fontSize.4xl');
+  --puik-font-size-jumbotron: theme('fontSize.5xl');
+}

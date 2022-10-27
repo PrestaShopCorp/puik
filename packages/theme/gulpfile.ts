@@ -19,8 +19,14 @@ const distBundle = path.resolve(puikOutput, 'theme')
  */
 function buildTheme() {
   const sass = gulpSass(dartSass)
-  const noPuikPrefixFile = /(index|base|display)/
-  return src(path.resolve(__dirname, 'src/*.scss'))
+  const noPuikPrefixFile = /(index|base)/
+  return src(
+    [
+      path.resolve(__dirname, 'src/*.scss'),
+      path.resolve(__dirname, 'src/design-tokens/*.scss'),
+    ],
+    { base: 'src' }
+  )
     .pipe(sass.sync())
     .pipe(postcss())
     .pipe(
