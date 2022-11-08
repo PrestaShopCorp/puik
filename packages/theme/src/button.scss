@@ -148,7 +148,7 @@
     @include alert-banner-button-variant('warning');
   }
 
-  &--error {
+  &--danger {
     @include alert-banner-button-variant('destructive');
   }
 
