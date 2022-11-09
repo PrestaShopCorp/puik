@@ -11,16 +11,25 @@
     ]"
     :disabled="disabled"
   >
-    <span v-if="leftIcon" class="puik-button__left-icon">{{ leftIcon }}</span>
+    <puik-icon
+      v-if="leftIcon"
+      :icon="leftIcon"
+      :font-size="size !== 'sm' ? '1.25rem' : '1rem'"
+      class="puik-button__left-icon"
+    />
     <slot></slot>
-    <span v-if="rightIcon" class="puik-button__right-icon">{{
-      rightIcon
-    }}</span>
+    <puik-icon
+      v-if="rightIcon"
+      :icon="rightIcon"
+      :font-size="size !== 'sm' ? '1.25rem' : '1rem'"
+      class="puik-button__right-icon"
+    />
   </component>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { PuikIcon } from '@puik/components/icon'
 import { buttonProps } from './button'
 defineOptions({
   name: 'PuikButton',

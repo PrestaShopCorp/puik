@@ -8,7 +8,7 @@
     :aria-live="ariaLive"
   >
     <div class="puik-alert__content">
-      <span class="puik-alert__icon">{{ icon }}</span>
+      <puik-icon :icon="icon" font-size="1.25rem" class="puik-alert__icon" />
       <div class="puik-alert__text">
         <p v-if="title" class="puik-alert__title">{{ title }}</p>
         <span
@@ -18,14 +18,21 @@
         >
       </div>
     </div>
-    <button v-if="buttonLabel" class="puik-alert__button" @click="click">
+    <puik-button
+      v-if="buttonLabel"
+      :variant="variant"
+      class="puik-alert__button"
+      @click="click"
+    >
       {{ buttonLabel }}
-    </button>
+    </puik-button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { PuikButton } from '@puik/components/button'
+import { PuikIcon } from '@puik/components/icon'
 import { alertEmits, alertProps, ICONS } from './alert'
 defineOptions({
   name: 'PuikAlert',

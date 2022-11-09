@@ -5,7 +5,9 @@
     :aria-describedby="id"
     @mouseover="updateTooltip"
   >
-    <span ref="icon" class="puik-tooltip__icon"> help_outline </span>
+    <div ref="tooltipWrapper">
+      <slot></slot>
+    </div>
     <div :id="id" ref="tooltip" class="puik-tooltip__tip" role="tooltip">
       <span v-if="$slots.title || title" class="puik-tooltip__tip__title"
         ><slot name="title">{{ title }}</slot></span
@@ -30,7 +32,7 @@ defineOptions({
   name: 'PuikTooltip',
 })
 
-const icon = ref<HTMLElement | null>(null)
+const tooltipWrapper = ref<HTMLElement | null>(null)
 const tooltip = ref<HTMLElement | null>(null)
 let popperInstance: PopperInstance | null = null
 const id = `puik-tooltip-${generateId()}`
@@ -42,8 +44,8 @@ const updateTooltip = () => {
 }
 
 onMounted(() => {
-  if (icon.value && tooltip.value) {
-    popperInstance = createPopper(icon.value, tooltip.value, {
+  if (tooltipWrapper.value && tooltip.value) {
+    popperInstance = createPopper(tooltipWrapper.value, tooltip.value, {
       placement: props.position,
       modifiers: [
         {

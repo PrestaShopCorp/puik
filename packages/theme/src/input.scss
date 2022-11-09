@@ -37,9 +37,9 @@
   &__hint {
     @apply flex text-xs text-font-500 font-secondary font-normal mt-1;
     &__error {
-      @apply flex text-red-500;
+      @apply flex items-center text-xs text-accentuation-destructive-500 font-secondary font-normal;
       &__icon {
-        @apply font-materialIcons mr-1;
+        @apply mr-1;
       }
     }
   }

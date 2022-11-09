@@ -397,12 +397,12 @@ WithIcon.parameters = {
       
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--primary">
-        <span class="puik-button__left-icon">shopping_cart</span>
+        <span class="puik-icon puik-button__left-icon">shopping_cart</span>
         My button
       </button>
       <button class="puik-button puik-button--primary">
         My button
-        <span class="puik-button__right-icon">shopping_cart</span>
+        <span class="puik-icon puik-button__right-icon">shopping_cart</span>
       </button>
       `,
       language: 'html',

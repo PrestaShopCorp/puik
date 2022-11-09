@@ -25,7 +25,7 @@ function getSideEffects(
   const esComponentsFolder = '@prestashopcorp/puik/es/components'
 
   return ssr
-    ? `${themeFolder}/puik-${dirName}.css`
+    ? [`${themeFolder}/base.css`, `${themeFolder}/puik-${dirName}.css`]
     : `${esComponentsFolder}/${dirName}/style/css`
 }
 

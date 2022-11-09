@@ -9,12 +9,16 @@
       <ListboxButton
         :disabled="disabled"
         class="puik-select__button"
-        :class="{ 'puik-select__button--error': error || $slots.error }"
+        :class="{ 'puik-select__button--error': hasError }"
       >
         <span class="puik-select__selected">{{
           currentLabel || placeholder
         }}</span>
-        <span class="puik-select__icon"> unfold_more </span>
+        <puik-icon
+          font-size="1.25rem"
+          icon="unfold_more"
+          class="puik-select__icon"
+        />
       </ListboxButton>
 
       <transition
@@ -32,14 +36,17 @@
           as="div"
         >
           <puik-input
-            v-if="isArray(options) || (isObject(options) && customFilterMethod)"
+            v-if="isArray(options) || isObject(options)"
             v-model="query"
             class="puik-select__search"
             :placeholder="t('puik.select.searchPlaceholder')"
           >
             <template #prepend
-              ><span class="puik-select__search__icon">search</span></template
-            >
+              ><puik-icon
+                font-size="1.25rem"
+                icon="search"
+                class="puik-select__search__icon"
+            /></template>
           </puik-input>
           <p
             v-if="
@@ -66,21 +73,26 @@
           </ul>
         </ListboxOptions>
       </transition>
-      <span v-if="error || $slots.error" class="puik-select__error"
-        ><span class="puik-select__error__icon">error</span
-        ><slot name="error">{{ error }}</slot></span
+      <span v-if="hasError" class="puik-select__error"
+        ><puik-icon
+          icon="error"
+          font-size="1.25rem"
+          class="puik-select__error__icon"
+        />
+        <slot name="error">{{ error }}</slot></span
       >
     </div>
   </Listbox>
 </template>
 
 <script setup lang="ts">
-import { computed, provide, ref } from 'vue'
+import { computed, provide, ref, useSlots } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
 import { useVModel } from '@vueuse/core'
 import { isObject, isFunction, isArray } from '@puik/utils'
 import { useLocale } from '@puik/hooks'
-import { PuikInput } from '../../input'
+import { PuikInput } from '@puik/components/input'
+import { PuikIcon } from '@puik/components/icon'
 import { selectProps, selectEmits, selectKey } from './select'
 import PuikOption from './option.vue'
 
@@ -89,6 +101,8 @@ defineOptions({
 })
 
 const props = defineProps(selectProps)
+
+const slots = useSlots()
 
 const emit = defineEmits(selectEmits)
 
@@ -116,6 +130,12 @@ const filteredItems = computed(() => {
   }
   return null
 })
+
+const hasError = computed(
+  () =>
+    props.error ||
+    (slots.error && slots.error()[0] && slots.error()[0].children)
+)
 
 const setCurrentLabel = (label: string | number) => (currentLabel.value = label)
 

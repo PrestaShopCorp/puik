@@ -433,6 +433,12 @@ Error.parameters = {
         <div class="puik-input__wrapper puik-input__wrapper--error">
           <input class="puik-input__field" type="text" />
         </div>
+        <div class="puik-input__hint">
+          <span class="puik-input__hint__error">
+            <span class="puik-icon puik-input__hint__error__icon">error</span>
+            This is an error
+          </span>
+        </div>
       </div>
       `,
       language: 'html',
@@ -471,6 +477,11 @@ Hint.parameters = {
       <div class="puik-input">
         <div class="puik-input__wrapper">
           <input class="puik-input__field" type="text" />
+        </div>
+        <div class="puik-input__hint">
+          <span class="puik-input__hint__text">
+            This is an hint
+          </span>
         </div>
       </div>
       `,

@@ -1,4 +1,5 @@
 .puik-tooltip {
+  @apply inline-flex;
   &:focus,
   &:hover {
     .puik-tooltip__tip {

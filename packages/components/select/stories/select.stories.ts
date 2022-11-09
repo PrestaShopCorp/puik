@@ -137,7 +137,7 @@ Default.parameters = {
             <!-- Placeholder or selected value -->
             Select a value
           </span>
-          <span class="puik-select__icon"> unfold_more </span>
+          <span class="puik-icon puik-select__icon"> unfold_more </span>
         </button>
         <!--
           Select list, show/hide base on select state
@@ -161,14 +161,14 @@ Default.parameters = {
             <li class="puik-option" role="option">
               <span class="puik-option__label">Test 1</span>
               <!-- Checkmark, only display for selected option. -->
-              <span class="puik-option__selected-icon"> checked </span>
+              <span class="puik-icon puik-option__selected-icon"> checked </span>
             </li>
             <!-- More items... -->
           </ul>
         </div>
         <!-- Error message, only displayed when there is an error. -->
         <span class="puik-select__error"
-          ><span class="puik-select__error__icon">error</span>My error</span
+          ><span class="puik-icon puik-select__error__icon">error</span>My error</span
         >
       </div>
     </div>
@@ -209,7 +209,7 @@ Disabled.parameters = {
             <!-- Placeholder or selected value -->
             Select a value
           </span>
-          <span class="puik-select__icon"> unfold_more </span>
+          <span class="puik-icon puik-select__icon"> unfold_more </span>
         </button>
         <!--
           Select list, show/hide base on select state
@@ -227,7 +227,7 @@ Disabled.parameters = {
             <li class="puik-option" role="option">
               <span class="puik-option__label">Test 1</span>
               <!-- Checkmark, only display for selected option. -->
-              <span class="puik-option__selected-icon"> checked </span>
+              <span class="puik-icon puik-option__selected-icon"> checked </span>
             </li>
             <!-- More items... -->
           </ul>
@@ -278,7 +278,7 @@ DisabledOption.parameters = {
             <!-- Placeholder or selected value -->
             Select a value
           </span>
-          <span class="puik-select__icon"> unfold_more </span>
+          <span class="puik-icon puik-select__icon"> unfold_more </span>
         </button>
         <!--
           Select list, show/hide base on select state
@@ -296,7 +296,7 @@ DisabledOption.parameters = {
             <li class="puik-option puik-option--disabled" role="option">
               <span class="puik-option__label">Test 1</span>
               <!-- Checkmark, only display for selected option. -->
-              <span class="puik-option__selected-icon"> checked </span>
+              <span class="puik-icon puik-option__selected-icon"> checked </span>
             </li>
             <!-- More items... -->
           </ul>
@@ -351,7 +351,7 @@ Error.parameters = {
             <!-- Placeholder or selected value -->
             Select a value
           </span>
-          <span class="puik-select__icon"> unfold_more </span>
+          <span class="puik-icon puik-select__icon"> unfold_more </span>
         </button>
         <!--
           Select list, show/hide base on select state
@@ -369,13 +369,13 @@ Error.parameters = {
             <li class="puik-option" role="option">
               <span class="puik-option__label">Test 1</span>
               <!-- Checkmark, only display for selected option. -->
-              <span class="puik-option__selected-icon"> checked </span>
+              <span class="puik-icon puik-option__selected-icon"> checked </span>
             </li>
             <!-- More items... -->
           </ul>
         </div>
         <span class="puik-select__error"
-          ><span class="puik-select__error__icon">error</span>My error</span
+          ><span class="puik-icon puik-select__error__icon">error</span>My error</span
         >
       </div>
     </div>
@@ -424,7 +424,7 @@ Searchable.parameters = {
             <!-- Placeholder or selected value -->
             Select a value
           </span>
-          <span class="puik-select__icon"> unfold_more </span>
+          <span class="puik-icon puik-select__icon"> unfold_more </span>
         </button>
         <!--
           Select list, show/hide base on select state
@@ -441,7 +441,7 @@ Searchable.parameters = {
           <div class="puik-input">
             <div class="puik-input__wrapper>
               <div class="puik-input__prepend">
-                <span class="puik-select__search__icon">search</span>
+                <span class="puik-icon puik-select__search__icon">search</span>
               </div>
               <input class="puik-input__field" type="text" />
             </div>
@@ -459,7 +459,7 @@ Searchable.parameters = {
             <li class="puik-option" role="option">
               <span class="puik-option__label">Test 1</span>
               <!-- Checkmark, only display for selected option. -->
-              <span class="puik-option__selected-icon"> checked </span>
+              <span class="puik-icon puik-option__selected-icon"> checked </span>
             </li>
             <!-- More items... -->
           </ul>
@@ -516,7 +516,7 @@ NoMatchCustomText.parameters = {
             <!-- Placeholder or selected value -->
             Select a value
           </span>
-          <span class="puik-select__icon"> unfold_more </span>
+          <span class="puik-icon puik-select__icon"> unfold_more </span>
         </button>
         <!--
           Select list, show/hide base on select state
@@ -533,7 +533,7 @@ NoMatchCustomText.parameters = {
           <div class="puik-input">
             <div class="puik-input__wrapper>
               <div class="puik-input__prepend">
-                <span class="puik-select__search__icon">search</span>
+                <span class="puik-icon puik-select__search__icon">search</span>
               </div>
               <input class="puik-input__field" type="text" />
             </div>
@@ -551,7 +551,7 @@ NoMatchCustomText.parameters = {
             <li class="puik-option" role="option">
               <span class="puik-option__label">Test 1</span>
               <!-- Checkmark, only display for selected option. -->
-              <span class="puik-option__selected-icon"> checked </span>
+              <span class="puik-icon puik-option__selected-icon"> checked </span>
             </li>
             <!-- More items... -->
           </ul>

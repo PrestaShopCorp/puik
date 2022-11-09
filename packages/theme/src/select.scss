@@ -1,7 +1,7 @@
 .puik-select {
   @apply relative mt-1;
   &__button {
-    @apply relative w-full cursor-default rounded bg-white min-h-[38px] py-2 pl-3 pr-10 text-left border border-light-blue-default-border hover:border-primary-purple-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-light-blue-default-border disabled:bg-light-blue-background disabled:text-font-disabled;
+    @apply relative w-full cursor-default rounded bg-white min-h-[38px] py-2 pl-3 pr-9 text-left border border-light-blue-default-border hover:border-primary-purple-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-light-blue-default-border disabled:bg-light-blue-background disabled:text-font-disabled;
     &--error {
       @apply border-accentuation-destructive-500;
     }
@@ -10,13 +10,10 @@
     @apply block truncate select-none font-secondary;
   }
   &__icon {
-    @apply font-materialIcons pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 select-none;
+    @apply pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 select-none;
   }
   &__search {
     @apply px-2 mb-1;
-    &__icon {
-      @apply font-materialIcons text-base;
-    }
   }
   &__no-results {
     @apply p-2 truncate;
@@ -28,9 +25,9 @@
     @apply max-h-60 overflow-y-auto overflow-x-hidden;
   }
   &__error {
-    @apply flex items-center text-xs text-accentuation-destructive-500 font-secondary font-normal;
+    @apply flex items-center text-xs text-accentuation-destructive-500 font-secondary font-normal mt-1;
     &__icon {
-      @apply font-materialIcons text-sm mr-1;
+      @apply mr-1;
     }
   }
   &__transition {
