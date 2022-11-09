@@ -44,7 +44,11 @@
         ><slot name="hint"></slot
       ></span>
       <span v-if="hasError" class="puik-input__hint__error"
-        ><span class="puik-input__hint__error__icon">error</span
+        ><puik-icon
+          icon="error"
+          class="puik-input__hint__error__icon"
+          font-size="1.25rem"
+        ></puik-icon
         ><slot name="error">{{ error }}</slot></span
       >
     </div>
@@ -53,6 +57,7 @@
 <script setup lang="ts">
 import { computed, ref, useSlots } from 'vue'
 import { isNumber } from '@vueuse/core'
+import { PuikIcon } from '@puik/components/icon'
 import PuikInputControls from './controls/controls.vue'
 import { inputEmits, inputProps } from './input'
 defineOptions({

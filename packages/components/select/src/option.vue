@@ -14,7 +14,12 @@
       }"
     >
       <span class="puik-option__label">{{ label || value }}</span>
-      <span v-if="selected" class="puik-option__selected-icon"> checked </span>
+      <puik-icon
+        v-if="selected"
+        icon="checked"
+        font-size="1.25rem"
+        class="puik-option__selected-icon"
+      />
     </li>
   </ListboxOption>
 </template>
@@ -23,6 +28,7 @@
 import { inject, watch, toRaw } from 'vue'
 import { ListboxOption } from '@headlessui/vue'
 import { isObject } from '@puik/utils'
+import { PuikIcon } from '@puik/components/icon'
 import { optionProps } from './option'
 import { selectKey } from './select'
 defineOptions({

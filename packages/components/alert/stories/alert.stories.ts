@@ -86,7 +86,7 @@ Default.parameters = {
       <!--HTML/CSS Snippet-->
       <div class="puik-alert puik-alert--{success|warning|danger|info}" aria-live="{polite|assertive}">
         <div class="puik-alert__content">
-          <span class="puik-alert__icon">check_circle|warning|error|info</span>
+          <span class="puik-icon puik-alert__icon">check_circle|warning|error|info</span>
           <div class="puik-alert__text">
             <p class="puik-alert__title">Title</p>
             <span class="puik-alert__description">This is the description of the success alert.</span>
@@ -131,7 +131,7 @@ Success.parameters = {
       <!--HTML/CSS Snippet-->
       <div class="puik-alert puik-alert--success" aria-live="polite">
         <div class="puik-alert__content">
-          <span class="puik-alert__icon">check_circle</span>
+          <span class="puik-icon puik-alert__icon">check_circle</span>
           <div class="puik-alert__text">
             <p class="puik-alert__title">Title</p>
             <span class="puik-alert__description">This a success alert with a title and a description.</span>
@@ -178,7 +178,7 @@ Warning.parameters = {
       <!--HTML/CSS Snippet-->
       <div class="puik-alert puik-alert--warning puik-alert--no-borders" aria-live="polite">
         <div class="puik-alert__content">
-          <span class="puik-alert__icon">warning</span>
+          <span class="puik-icon puik-alert__icon">warning</span>
           <div class="puik-alert__text">
             <p class="puik-alert__title">Title</p>
             <span class="puik-alert__description">This a warning alert with a title and a description.</span>
@@ -225,7 +225,7 @@ Info.parameters = {
       <!--HTML/CSS Snippet-->
       <div class="puik-alert puik-alert--info puik-alert--no-borders" aria-live="polite">
         <div class="puik-alert__content">
-          <span class="puik-alert__icon">info</span>
+          <span class="puik-icon puik-alert__icon">info</span>
           <div class="puik-alert__text">
             <p class="puik-alert__title">Title</p>
             <span class="puik-alert__description">This a info alert with a title and a description.</span>
@@ -272,7 +272,7 @@ Danger.parameters = {
       <!--HTML/CSS Snippet-->
       <div class="puik-alert puik-alert--danger puik-alert--no-borders" aria-live="polite">
         <div class="puik-alert__content">
-          <span class="puik-alert__icon">danger</span>
+          <span class="puik-icon puik-alert__icon">danger</span>
           <div class="puik-alert__text">
             <p class="puik-alert__title">Title</p>
             <span class="puik-alert__description">This a danger alert with a title and a description.</span>

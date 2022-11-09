@@ -39,7 +39,7 @@
     &__error {
       @apply flex items-center text-xs text-accentuation-destructive-500 font-secondary font-normal;
       &__icon {
-        @apply font-materialIcons text-xl mr-1 leading-none;
+        @apply mr-1;
       }
     }
   }

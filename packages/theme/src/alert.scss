@@ -46,7 +46,7 @@
     @apply font-primary font-semibold text-sm px-4 py-3 mt-2 ml-9 md:m-0 border rounded outline-none focus:ring focus:ring-focus-main focus:ring-offset-2;
   }
   &__icon {
-    @apply w-5 h-5 font-materialIcons text-xl flex-shrink-0 leading-none;
+    @apply flex-shrink-0;
   }
   &__close {
     @apply h-4 absolute top-3.5 right-6 font-materialIcons text-font-500 cursor-pointer;

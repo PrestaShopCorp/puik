@@ -14,7 +14,11 @@
         <span class="puik-select__selected">{{
           currentLabel || placeholder
         }}</span>
-        <span class="puik-select__icon"> unfold_more </span>
+        <puik-icon
+          font-size="1.25rem"
+          icon="unfold_more"
+          class="puik-select__icon"
+        />
       </ListboxButton>
 
       <transition
@@ -38,8 +42,11 @@
             :placeholder="t('puik.select.searchPlaceholder')"
           >
             <template #prepend
-              ><span class="puik-select__search__icon">search</span></template
-            >
+              ><puik-icon
+                font-size="1.25rem"
+                icon="search"
+                class="puik-select__search__icon"
+            /></template>
           </puik-input>
           <p
             v-if="
@@ -67,8 +74,12 @@
         </ListboxOptions>
       </transition>
       <span v-if="hasError" class="puik-select__error"
-        ><span class="puik-select__error__icon">error</span
-        ><slot name="error">{{ error }}</slot></span
+        ><puik-icon
+          icon="error"
+          font-size="1.25rem"
+          class="puik-select__error__icon"
+        />
+        <slot name="error">{{ error }}</slot></span
       >
     </div>
   </Listbox>
@@ -80,7 +91,8 @@ import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
 import { useVModel } from '@vueuse/core'
 import { isObject, isFunction, isArray } from '@puik/utils'
 import { useLocale } from '@puik/hooks'
-import { PuikInput } from '../../input'
+import { PuikInput } from '@puik/components/input'
+import { PuikIcon } from '@puik/components/icon'
 import { selectProps, selectEmits, selectKey } from './select'
 import PuikOption from './option.vue'
 

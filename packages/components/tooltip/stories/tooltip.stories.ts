@@ -1,10 +1,12 @@
-import Tooltip from './../src/tooltip.vue'
+import { PuikButton } from '@puik/components/button'
+import { PuikIcon } from '@puik/components/icon'
+import PuikTooltip from './../src/tooltip.vue'
 import { tooltipPosition } from './../src/tooltip'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
   title: 'Components/Tooltip',
-  component: Tooltip,
+  component: PuikTooltip,
   argTypes: {
     title: {
       description: 'Set the tooltip title (also available as a prop)',
@@ -27,86 +29,114 @@ export default {
 
 const Template: Story = (args: Args) => ({
   components: {
-    Tooltip,
+    PuikTooltip,
+    PuikIcon,
   },
   setup() {
     return { args }
   },
   template: `
     <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
-      <tooltip :position="args.position">
+      <puik-tooltip :position="args.position">
+        <puik-icon icon="help_outline" />
         <template #title>{{ args.title }}</template>
         <template #description>{{ args.description }}</template>
-      </tooltip>
+      </puik-tooltip>
     </div>`,
 })
 
 export const Default = Template.bind({})
 Default.args = {}
 
-export const Bottom = () => ({
+export const UsingAComponent = () => ({
   components: {
-    Tooltip,
+    PuikTooltip,
+    PuikButton,
   },
   template: `
     <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
-      <tooltip position="bottom">
+      <puik-tooltip position="top">
+        <puik-button>Button</puik-button>
+        <template #title>Title</template>
+        <template #description>This tooltip is on a button</template>
+      </puik-tooltip>
+    </div>`,
+})
+
+export const Bottom = () => ({
+  components: {
+    PuikTooltip,
+    PuikIcon,
+  },
+  template: `
+    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
+      <puik-tooltip position="bottom">
+        <puik-icon icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a bottom tooltip</template>
-      </tooltip>
+      </puik-tooltip>
     </div>`,
 })
 
 export const Left = () => ({
   components: {
-    Tooltip,
+    PuikTooltip,
+    PuikIcon,
   },
   template: `
     <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
-      <tooltip position="left">
+      <puik-tooltip position="left">
+        <puik-icon icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a left tooltip</template>
-      </tooltip>
+      </puik-tooltip>
     </div>`,
 })
 
 export const Right = () => ({
   components: {
-    Tooltip,
+    PuikTooltip,
+    PuikIcon,
   },
   template: `
     <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
-      <tooltip position="right">
+      <puik-tooltip position="right">
+        <puik-icon icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a right tooltip</template>
-      </tooltip>
+      </puik-tooltip>
     </div>`,
 })
 
 export const Positions = (args: Args) => ({
   components: {
-    Tooltip,
+    PuikTooltip,
+    PuikIcon,
   },
   setup() {
     return { args }
   },
   template: `
     <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
-      <tooltip position="top">
+      <puik-tooltip position="top">
+        <puik-icon icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a top tooltip</template>
-      </tooltip>
-      <tooltip position="bottom">
+      </puik-tooltip>
+      <puik-tooltip position="bottom">
+        <puik-icon icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a bottom tooltip</template>
-      </tooltip>
-      <tooltip position="left">
+      </puik-tooltip>
+      <puik-tooltip position="left">
+        <puik-icon icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a left tooltip</template>
-      </tooltip>
-      <tooltip position="right">
+      </puik-tooltip>
+      <puik-tooltip position="right">
+        <puik-icon icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a right tooltip</template>
-      </tooltip>
+      </puik-tooltip>
     </div>`,
 })

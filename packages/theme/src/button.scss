@@ -8,10 +8,10 @@
     @extend .puik-text-button-small;
     @apply py-1 px-4;
     .puik-button__left-icon {
-      @apply mr-2 text-xs;
+      @apply mr-2;
     }
     .puik-button__right-icon {
-      @apply ml-2 text-xs;
+      @apply ml-2;
     }
   }
 
@@ -154,6 +154,6 @@
 
   &__left-icon,
   &__right-icon {
-    @apply font-materialIcons align-middle leading-none text-xl;
+    @apply font-materialIcons align-middle leading-none;
   }
 }
