@@ -15,32 +15,32 @@ const colors = [
     colors: [
       {
         name: '50',
-        hex: '#e9e6f8',
+        hex: '#E9E6F8',
         class: 'bg-primary-purple-50',
       },
       {
         name: '100',
-        hex: '#c7c0ee',
+        hex: '#C7C0EE',
         class: 'bg-primary-purple-100',
       },
       {
         name: '200',
-        hex: '#a296e3',
+        hex: '#A296E3',
         class: 'bg-primary-purple-200',
       },
       {
         name: '500',
-        hex: '#442cc7',
+        hex: '#442CC7',
         class: 'bg-primary-purple-500',
       },
       {
         name: '700',
-        hex: '#3521ba',
+        hex: '#3521BA',
         class: 'bg-primary-purple-700',
       },
       {
         name: '900',
-        hex: '#1f10a6',
+        hex: '#1F10A6',
         class: 'bg-primary-purple-900',
       },
     ],
@@ -50,32 +50,32 @@ const colors = [
     colors: [
       {
         name: '50',
-        hex: '#fae7e8',
+        hex: '#FAE7E8',
         class: 'bg-accentuation-destructive-50',
       },
       {
         name: '100',
-        hex: '#f2c2c5',
+        hex: '#F2C2C5',
         class: 'bg-accentuation-destructive-100',
       },
       {
         name: '200',
-        hex: '#ea9a9e',
+        hex: '#EA9A9E',
         class: 'bg-accentuation-destructive-200',
       },
       {
         name: '500',
-        hex: '#d5343c',
+        hex: '#D5343C',
         class: 'bg-accentuation-destructive-500',
       },
       {
         name: '700',
-        hex: '#ca272e',
+        hex: '#CA272E',
         class: 'bg-accentuation-destructive-700',
       },
       {
         name: '900',
-        hex: '#ba151a',
+        hex: '#BA151A',
         class: 'bg-accentuation-destructive-900',
       },
     ],
@@ -85,32 +85,32 @@ const colors = [
     colors: [
       {
         name: '50',
-        hex: '#e4f0ea',
+        hex: '#E4F0EA',
         class: 'bg-accentuation-success-50',
       },
       {
         name: '100',
-        hex: '#bcdaca',
+        hex: '#BCDACA',
         class: 'bg-accentuation-success-100',
       },
       {
         name: '200',
-        hex: '#90c1a6',
+        hex: '#90C1A6',
         class: 'bg-accentuation-success-200',
       },
       {
         name: '500',
-        hex: '#21834d',
+        hex: '#21834D',
         class: 'bg-accentuation-success-500',
       },
       {
         name: '700',
-        hex: '#18703d',
+        hex: '#18703D',
         class: 'bg-accentuation-success-700',
       },
       {
         name: '900',
-        hex: '#0b5325',
+        hex: '#0B5325',
         class: 'bg-accentuation-success-900',
       },
     ],
@@ -120,32 +120,32 @@ const colors = [
     colors: [
       {
         name: '50',
-        hex: '#fff4e0',
+        hex: '#FFF4E0',
         class: 'bg-accentuation-warning-50',
       },
       {
         name: '100',
-        hex: '#ffe3b3',
+        hex: '#FFE3B3',
         class: 'bg-accentuation-warning-100',
       },
       {
         name: '200',
-        hex: '#ffd080',
+        hex: '#FFD080',
         class: 'bg-accentuation-warning-200',
       },
       {
         name: '500',
-        hex: '#ffa000',
+        hex: '#FFA000',
         class: 'bg-accentuation-warning-500',
       },
       {
         name: '700',
-        hex: '#ff8e00',
+        hex: '#FF8E00',
         class: 'bg-accentuation-warning-700',
       },
       {
         name: '900',
-        hex: '#ff7300',
+        hex: '#FF7300',
         class: 'bg-accentuation-warning-900',
       },
     ],
@@ -155,32 +155,32 @@ const colors = [
     colors: [
       {
         name: '50',
-        hex: '#e3eafd',
+        hex: '#E3EAFD',
         class: 'bg-accentuation-info-50',
       },
       {
         name: '100',
-        hex: '#8ba7f7',
+        hex: '#B9CAFA',
         class: 'bg-accentuation-info-100',
       },
       {
         name: '200',
-        hex: '#b9cafa',
+        hex: '#8BA7F7',
         class: 'bg-accentuation-info-200',
       },
       {
         name: '500',
-        hex: '#174eef',
+        hex: '#174EEF',
         class: 'bg-accentuation-info-500',
       },
       {
         name: '700',
-        hex: '#113deb',
+        hex: '#113DEB',
         class: 'bg-accentuation-info-700',
       },
       {
         name: '900',
-        hex: '#0725e4',
+        hex: '#0725E4',
         class: 'bg-accentuation-info-900',
       },
     ],
@@ -189,54 +189,74 @@ const colors = [
     name: 'Font',
     colors: [
       {
-        name: 'main',
-        hex: '#363a41',
-        class: 'bg-font-main',
-      },
-      {
-        name: 'disabled',
-        hex: '#d7d8d9',
-        class: 'bg-font-disabled',
-      },
-      {
         name: '50',
-        hex: '#edeef0',
+        hex: '#E6E8EA',
         class: 'bg-font-50',
       },
       {
         name: '100',
-        hex: '#d2d4d9',
+        hex: '#C1C5CA',
         class: 'bg-font-100',
       },
       {
+        name: '200',
+        hex: '#989EA7',
+        class: 'bg-font-200',
+      },
+      {
         name: '500',
-        hex: '#697180',
+        hex: '#505969',
         class: 'bg-font-500',
       },
-    ],
-  },
-  {
-    name: 'Background',
-    colors: [
       {
-        name: 'grey',
-        hex: '#fafafb',
-        class: 'bg-background-grey',
+        name: '700',
+        hex: '#272E3E',
+        class: 'bg-font-700',
+      },
+      {
+        name: '900',
+        hex: '#131A26',
+        class: 'bg-font-900',
       },
     ],
   },
   {
-    name: 'Border',
+    name: 'Light blue',
     colors: [
       {
-        name: 'main',
-        hex: '#c8d7e4',
-        class: 'bg-border-main',
+        name: '50',
+        hex: '#F8FAFC',
+        class: 'bg-light-blue-50',
       },
       {
-        name: 'decorative',
-        hex: '#e1e0eb',
-        class: 'bg-border-decorative',
+        name: '100',
+        hex: '#EFF3F7',
+        class: 'bg-light-blue-100',
+      },
+      {
+        name: '200',
+        hex: '#E4EBF2',
+        class: 'bg-light-blue-200',
+      },
+      {
+        name: '300',
+        hex: '#D9E3EC',
+        class: 'bg-light-blue-300',
+      },
+      {
+        name: '500',
+        hex: '#C8D7E4',
+        class: 'bg-light-blue-500',
+      },
+      {
+        name: '700',
+        hex: '#BBCDDD',
+        class: 'bg-light-blue-700',
+      },
+      {
+        name: '900',
+        hex: '#A7BED1',
+        class: 'bg-light-blue-900',
       },
     ],
   },
@@ -245,7 +265,7 @@ const colors = [
     colors: [
       {
         name: 'main',
-        hex: '#458fff',
+        hex: '#458FFF',
         class: 'bg-focus-main',
       },
     ],
@@ -255,13 +275,13 @@ const colors = [
     colors: [
       {
         name: 'pink',
-        hex: '#c8d7e4',
+        hex: '#E6006B',
         class: 'bg-brand-pink',
       },
       {
-        name: 'darkBlue',
-        hex: '#e1e0eb',
-        class: 'bg-brand-darkBlue',
+        name: 'dark-blue',
+        hex: '#011638',
+        class: 'bg-brand-dark-blue',
       },
     ],
   },

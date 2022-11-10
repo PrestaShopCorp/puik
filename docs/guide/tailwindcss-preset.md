@@ -12,7 +12,7 @@ const { puikTailwindPreset } = require('@prestashopcorp/puik')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   presets: [puikTailwindPreset],
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
 }
 ```
 
