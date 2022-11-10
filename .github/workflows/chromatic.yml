@@ -29,6 +29,8 @@ jobs:
 
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_RO_TOKEN }}
 
       - name: Build Library
         run: pnpm build
