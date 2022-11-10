@@ -24,7 +24,7 @@
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx && pretty-quick --check --branch main",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx && pretty-quick --branch main",
     "storybook:dev": "pnpm run -C storybook dev",
-    "storybook:build": "pnpm run -C storybook build",
+    "build-storybook": "pnpm run -C storybook build",
     "chromatic": "chromatic",
     "dev": "pnpm run -C playground dev",
     "docs:dev": "pnpm run -C docs dev",

@@ -5,12 +5,8 @@ import { PuikResolver } from '@prestashopcorp/puik'
 export default defineConfig({
   plugins: [
     Components({
-      include: [/\.vue$/, /\.md$/],
-      resolvers: [
-        PuikResolver({
-          ssr: false,
-        }),
-      ],
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+      resolvers: [PuikResolver()],
     }),
   ],
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
