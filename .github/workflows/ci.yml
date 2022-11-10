@@ -21,9 +21,12 @@ jobs:
           version: latest
 
       - name: Setup node env 🏗
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+          registry-url: https://registry.npmjs.org/
+          scope: '@prestashopcorp'
+          always-auth: true
 
       - name: Cache ~/.pnpm-store 📦
         uses: actions/cache@v2

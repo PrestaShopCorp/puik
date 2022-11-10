@@ -27,6 +27,14 @@ jobs:
         with:
           version: 7
 
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          registry-url: https://registry.npmjs.org/
+          scope: '@prestashopcorp'
+          always-auth: true
+
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
         env:
