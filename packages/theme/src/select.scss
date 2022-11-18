@@ -19,7 +19,7 @@
     @apply p-2 truncate;
   }
   &__options {
-    @apply absolute mt-1 w-full rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-10 overflow-x-hidden;
+    @apply absolute mt-2 w-full rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-10 overflow-x-hidden;
   }
   &__options-list {
     @apply max-h-60 overflow-y-auto overflow-x-hidden;
