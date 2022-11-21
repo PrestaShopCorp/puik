@@ -67,7 +67,7 @@ export const WithPictureTitleTextAndAction: Story = (args: Args) => ({
   },
   template: `
   <puik-card>
-    <img :src="PrestaShopSloganBg" />
+    <img class="rounded-lg" :src="PrestaShopSloganBg" />
     <h3 class="puik-h3">Card title</h3>
     {{ args.default }}
     <div>
