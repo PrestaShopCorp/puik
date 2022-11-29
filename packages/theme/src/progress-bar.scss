@@ -1,0 +1,11 @@
+.progress-bar {
+  &__container {
+    @apply bg-font-50 h-2 rounded-3xl;
+  }
+
+  &__content {
+    @apply bg-primary-purple transition-all
+    h-2 rounded-3xl
+    max-w-full min-w-0;
+  }
+}

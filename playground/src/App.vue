@@ -14,7 +14,7 @@ body {
   #app {
     @apply w-full h-full;
     .app-container {
-      @apply w-full h-full;
+      @apply w-full h-full p-12;
     }
   }
 }
