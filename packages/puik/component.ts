@@ -1,3 +1,4 @@
+import { PuikTimeline } from '@puik/components/timeline'
 import { PuikProgressBar } from '@puik/components/progress-bar'
 import { PuikIcon } from '@puik/components/icon'
 import { PuikLink } from '@puik/components/link'
@@ -16,6 +17,7 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikTimeline,
   PuikProgressBar,
   PuikIcon,
   PuikLink,
