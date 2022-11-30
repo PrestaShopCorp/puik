@@ -311,12 +311,12 @@ Warning.parameters = {
   },
 }
 
-export const Error: Story = ButtonTemplate.bind({})
-Error.args = {
-  variant: 'error',
+export const Danger: Story = ButtonTemplate.bind({})
+Danger.args = {
+  variant: 'danger',
 }
 
-Error.parameters = {
+Danger.parameters = {
   docs: {
     source: {
       code: `
@@ -336,7 +336,7 @@ Disabled.args = {
   disabled: true,
 }
 
-Error.parameters = {
+Disabled.parameters = {
   docs: {
     source: {
       code: `

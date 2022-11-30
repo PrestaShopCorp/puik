@@ -38,7 +38,7 @@ const Template: Story = (args: Args) => ({
   template: `
     <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
       <puik-tooltip :position="args.position">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>{{ args.title }}</template>
         <template #description>{{ args.description }}</template>
       </puik-tooltip>
@@ -71,7 +71,7 @@ export const Bottom = () => ({
   template: `
     <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
       <puik-tooltip position="bottom">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a bottom tooltip</template>
       </puik-tooltip>
@@ -86,7 +86,7 @@ export const Left = () => ({
   template: `
     <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
       <puik-tooltip position="left">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a left tooltip</template>
       </puik-tooltip>
@@ -101,7 +101,7 @@ export const Right = () => ({
   template: `
     <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
       <puik-tooltip position="right">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a right tooltip</template>
       </puik-tooltip>
@@ -119,22 +119,22 @@ export const Positions = (args: Args) => ({
   template: `
     <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
       <puik-tooltip position="top">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a top tooltip</template>
       </puik-tooltip>
       <puik-tooltip position="bottom">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a bottom tooltip</template>
       </puik-tooltip>
       <puik-tooltip position="left">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a left tooltip</template>
       </puik-tooltip>
       <puik-tooltip position="right">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a right tooltip</template>
       </puik-tooltip>
