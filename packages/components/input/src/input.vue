@@ -43,14 +43,16 @@
         class="puik-input__hint__text"
         ><slot name="hint"></slot
       ></span>
-      <span v-if="hasError" class="puik-input__hint__error"
-        ><puik-icon
+      <div v-if="hasError" class="puik-input__hint__error">
+        <puik-icon
           icon="error"
           class="puik-input__hint__error__icon"
           font-size="1.25rem"
-        ></puik-icon
-        ><slot name="error">{{ error }}</slot></span
-      >
+        ></puik-icon>
+        <span class="puik-input__hint__error__text">
+          <slot name="error">{{ error }}</slot>
+        </span>
+      </div>
     </div>
   </div>
 </template>

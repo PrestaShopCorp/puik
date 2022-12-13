@@ -81,14 +81,16 @@
           </ul>
         </ListboxOptions>
       </transition>
-      <span v-if="hasError" class="puik-select__error"
-        ><puik-icon
+      <div v-if="hasError" class="puik-select__error">
+        <puik-icon
           icon="error"
           font-size="1.25rem"
           class="puik-select__error__icon"
         />
-        <slot name="error">{{ error }}</slot></span
-      >
+        <span class="puik-select__error__text">
+          <slot name="error">{{ error }}</slot>
+        </span>
+      </div>
     </div>
   </Listbox>
 </template>

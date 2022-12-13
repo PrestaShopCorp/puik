@@ -28,7 +28,10 @@
     @apply max-h-60 overflow-y-auto overflow-x-hidden;
   }
   &__error {
-    @apply flex items-center text-xs text-accentuation-destructive-500 font-secondary font-normal mt-1;
+    @apply flex text-xs text-accentuation-destructive-500 font-secondary font-normal mt-1;
+    &__text {
+      @apply mt-0.5;
+    }
     &__icon {
       @apply mr-1;
     }

@@ -181,9 +181,11 @@ Default.parameters = {
           </ul>
         </div>
         <!-- Error message, only displayed when there is an error. -->
-        <span class="puik-select__error"
-          ><span class="puik-icon puik-select__error__icon">error</span>My error</span
-        >
+        <div class="puik-select__error"
+          >
+          <span class="puik-icon puik-select__error__icon">error</span>
+          <span class="puik-select__error__text">My error</span>
+        </div>
       </div>
     </div>
       `,
