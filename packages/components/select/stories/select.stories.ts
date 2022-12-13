@@ -47,6 +47,20 @@ export default {
         category: 'Common',
       },
     },
+    name: {
+      control: 'text',
+      description: 'Defines a name for the select',
+      table: {
+        category: 'Common',
+      },
+    },
+    autocomplete: {
+      control: 'text',
+      description: 'Enables browser autocompletion for the select',
+      table: {
+        category: 'Common',
+      },
+    },
     error: {
       control: 'text',
       description:

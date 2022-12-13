@@ -70,7 +70,7 @@ describe('Select tests', () => {
         placeholder,
       })
     )
-    expect(findSelected().text()).toBe(placeholder)
+    expect(findSelected().attributes('placeholder')).toBe(placeholder)
   })
 
   it('should be in an error state', () => {
@@ -139,7 +139,7 @@ describe('Select tests', () => {
     expect(
       findSelectComponent().emitted('update:modelValue')?.[0]
     ).toStrictEqual([options[2]])
-    expect(findSelected().text()).toBe(options[2].label)
+    expect(findSelected().element.value).toBe(options[2].label)
   })
 
   it('should set a default string value', async () => {
@@ -154,7 +154,7 @@ describe('Select tests', () => {
       })
     )
     await nextTick()
-    expect(findSelected().text()).toBe(options[2])
+    expect(findSelected().element.value).toBe(options[2])
   })
 
   it('should set a default object value', async () => {
@@ -182,7 +182,7 @@ describe('Select tests', () => {
       })
     )
     await nextTick()
-    expect(findSelected().text()).toBe(options[2].label)
+    expect(findSelected().element.value).toBe(options[2].label)
   })
 
   it('should display the chosen displayProperty', async () => {
@@ -212,7 +212,7 @@ describe('Select tests', () => {
     await findSelect().trigger('click')
     expect(findList().exists()).toBeTruthy()
     await findAllOptions().at(0)?.trigger('click')
-    expect(findSelected().text()).toBe(options[0].name)
+    expect(findSelected().element.value).toBe(options[0].name)
   })
 
   it('should disable the option', async () => {
