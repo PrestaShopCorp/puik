@@ -42,6 +42,7 @@
           static
           class="puik-select__options"
           as="div"
+          :style="{ 'z-index': zindex }"
         >
           <puik-input
             v-if="isArray(options) || isObject(options)"

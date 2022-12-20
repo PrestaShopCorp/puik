@@ -63,6 +63,11 @@ export const selectProps = buildProps({
     required: false,
     default: undefined,
   },
+  zindex: {
+    type: Number,
+    required: false,
+    default: 1000,
+  },
 } as const)
 
 export type SelectProps = ExtractPropTypes<typeof selectProps>
