@@ -1,0 +1,32 @@
+.puik-attached-files {
+  &__dropzone {
+    @apply relative border border-dashed rounded cursor-pointer dropzone border-light-blue-default-border hover:border-purple-500;
+    label {
+      @apply flex items-center justify-center w-full h-16 font-bold;
+      .puik-attached-files__dropzone-icon {
+        @apply h-6 mr-2 text-font-secondary;
+      }
+    }
+    input {
+      @apply absolute top-0 w-full h-full opacity-0 cursor-pointer pointer-events-auto;
+    }
+    &-items {
+      @apply flex flex-wrap justify-center gap-4 sm:justify-start;
+    }
+  }
+  &__infos {
+    @apply mt-1 text-font-secondary text-bodySmall;
+  }
+}
+
+.dropzone {
+  &:hover .dropzone__select {
+    @apply underline;
+  }
+  &__select {
+    @apply rounded text-purple-500 focus:outline-focus-main;
+  }
+  &__format-files {
+    @apply mt-1 text-font-secondary text-bodySmall;
+  }
+}
