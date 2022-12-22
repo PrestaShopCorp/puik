@@ -63,6 +63,11 @@ export const selectProps = buildProps({
     required: false,
     default: undefined,
   },
+  filterable: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   zindex: {
     type: Number,
     required: false,
@@ -82,6 +87,7 @@ export type SelectContext = {
   selectedValue: Ref<string | number | Record<string, any>>
   optionsList: Ref<DefaultOption[]>
   labelKey: string
+  query: Ref<string>
 }
 
 export const selectKey: InjectionKey<SelectContext> = Symbol('select')

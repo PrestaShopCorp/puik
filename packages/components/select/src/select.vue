@@ -48,10 +48,12 @@
           :style="{ 'z-index': zindex }"
         >
           <puik-input
-            v-if="isArray(options) || isObject(options)"
+            v-if="filterable"
             v-model="query"
+            tabindex="1"
             class="puik-select__search"
             :placeholder="t('puik.select.searchPlaceholder')"
+            @keydown.stop
           >
             <template #prepend
               ><puik-icon
@@ -61,21 +63,16 @@
             /></template>
           </puik-input>
           <p
-            v-if="
-              options &&
-              (isObject(filteredItems)
-                ? !Object.keys(filteredItems).length
-                : !filteredItems?.length)
-            "
+            v-if="filterable && !filteredOptionsCount"
             class="puik-select__no-results"
           >
             {{ noMatchText || `${t('puik.select.noResults')} ${query}` }}
           </p>
           <ul class="puik-select__options-list">
-            <slot :options="filteredItems">
+            <slot>
               <template v-if="options">
                 <puik-option
-                  v-for="option in filteredItems"
+                  v-for="option in options"
                   :key="option"
                   :label="option[labelKey]"
                   :value="isObject(option) ? option[valueKey] : option"
@@ -97,12 +94,13 @@
       </div>
     </div>
   </Listbox>
+  {{ filteredOptionsCount }}
 </template>
 
 <script setup lang="ts">
 import { computed, provide, ref, useSlots } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
-import { isObject, isFunction, isArray, slotIsEmpty } from '@puik/utils'
+import { isObject, slotIsEmpty } from '@puik/utils'
 import { useLocale } from '@puik/hooks'
 import { PuikInput } from '@puik/components/input'
 import { PuikIcon } from '@puik/components/icon'
@@ -137,20 +135,13 @@ const selectedValue = computed({
     return emit('update:modelValue', option.value)
   },
 })
-const filteredItems = computed(() => {
-  if (props.options) {
-    if (query.value) {
-      if (isFunction(props.customFilterMethod)) {
-        return props.customFilterMethod(query.value)
-      }
-      return props.options.filter((option) =>
-        (isObject(option) ? option[props.labelKey] : option)
-          .toString()
-          .toLowerCase()
-          .includes(query.value.toLowerCase())
-      )
-    }
-    return props.options
+
+const filteredOptionsCount = computed(() => {
+  if (props.filterable) {
+    return optionsList.value.reduce(
+      (acc, option) => (option.visible === true ? ++acc : acc),
+      0
+    )
   }
   return null
 })
@@ -173,7 +164,7 @@ const handleAutoComplete = (label: string | number) => {
 }
 
 const isOpen = (open: boolean) => {
-  if (open && props.options) {
+  if (open && props.filterable) {
     query.value = ''
   }
   return open
@@ -184,5 +175,6 @@ provide(selectKey, {
   optionsList,
   handleAutoComplete,
   labelKey: props.labelKey,
+  query,
 })
 </script>

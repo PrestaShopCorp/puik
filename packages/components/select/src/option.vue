@@ -1,5 +1,6 @@
 <template>
   <ListboxOption
+    v-show="option.visible"
     v-slot="{ active }"
     :disabled="disabled"
     :value="option"
@@ -25,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject, toRaw, watch } from 'vue'
+import { computed, inject, reactive, toRaw, watch } from 'vue'
 import { ListboxOption } from '@headlessui/vue'
 import { PuikIcon } from '@puik/components/icon'
 import { isObject } from '@puik/utils'
@@ -37,7 +38,7 @@ defineOptions({
 
 const props = defineProps(optionProps)
 
-const { optionsList, selectedValue, handleAutoComplete, labelKey } =
+const { optionsList, selectedValue, handleAutoComplete, labelKey, query } =
   inject(selectKey)!
 
 const label = computed(
@@ -45,10 +46,11 @@ const label = computed(
     props.label ?? (isObject(props.value) ? props.value[labelKey] : props.value)
 )
 
-const option = {
+const option = reactive({
   value: props.value,
   label: label.value,
-}
+  visible: true,
+})
 
 const sendLabel = () => {
   if (props.disabled) return
@@ -67,4 +69,8 @@ watch(
   },
   { immediate: true }
 )
+
+watch(query, (value) => {
+  option.visible = label.value.toLowerCase().includes(value)
+})
 </script>

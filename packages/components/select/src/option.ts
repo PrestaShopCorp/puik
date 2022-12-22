@@ -5,6 +5,7 @@ import type Option from './option.vue'
 export interface DefaultOption {
   label: string | number
   value: string | number | Record<string, any>
+  visible: boolean
 }
 
 export type Option = string | number | Record<string, any>
