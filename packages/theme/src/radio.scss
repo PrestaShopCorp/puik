@@ -4,13 +4,13 @@
   &__input {
     @apply appearance-none
      bg-transparent bg-clip-content
-     w-4 h-4 
+     w-5 h-5 
      mr-2
      border-2 border-solid rounded-full border-font-500;
 
     &:checked {
       @apply bg-primary-purple-500 
-     p-0.5	
+     p-[3px]
      border-2 border-solid border-primary-purple-500;
       &:disabled {
         @apply border-2 border-solid rounded-full border-font-disabled bg-font-disabled;
@@ -29,7 +29,6 @@
     }
   }
   &__label {
-    @apply font-secondary
-      cursor-pointer;
+    @apply text-base lg:text-sm font-secondary cursor-pointer;
   }
 }

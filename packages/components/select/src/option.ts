@@ -3,11 +3,11 @@ import type { ExtractPropTypes, PropType } from 'vue'
 import type Option from './option.vue'
 
 export interface DefaultOption {
-  label?: string
-  value: string | number
+  label: string | number
+  value: string | number | Record<string, any>
 }
 
-export type Option = string | number | Record<string, any> | DefaultOption
+export type Option = string | number | Record<string, any>
 
 export const optionProps = buildProps({
   value: {
