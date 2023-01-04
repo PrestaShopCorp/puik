@@ -18,6 +18,7 @@
           class="puik-select__selected"
           :autocomplete="autocomplete"
           :placeholder="placeholder"
+          :disabled="disabled"
           tabindex="-1"
           :readonly="open"
           type="text"
