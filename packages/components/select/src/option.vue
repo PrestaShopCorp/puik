@@ -38,7 +38,7 @@ defineOptions({
 
 const props = defineProps(optionProps)
 
-const { optionsList, selectedValue, handleAutoComplete, labelKey, query } =
+const { options, selectedValue, handleAutoComplete, labelKey, query } =
   inject(selectKey)!
 
 const label = computed(
@@ -58,7 +58,7 @@ const sendLabel = () => {
   return handleAutoComplete(label.value)
 }
 
-optionsList.value.push(option)
+options.value.push(option)
 
 watch(
   selectedValue,

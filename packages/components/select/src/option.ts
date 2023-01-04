@@ -1,8 +1,8 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
+import type { ExtractPropTypes } from 'vue'
 import type Option from './option.vue'
 
-export interface DefaultOption {
+export interface OptionState {
   label: string | number
   value: string | number | Record<string, any>
   visible: boolean
@@ -12,7 +12,7 @@ export type Option = string | number | Record<string, any>
 
 export const optionProps = buildProps({
   value: {
-    type: [String, Number, Object] as PropType<Option>,
+    type: [String, Number, Object],
     required: true,
   },
   label: {

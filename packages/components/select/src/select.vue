@@ -70,16 +70,7 @@
             {{ noMatchText || `${t('puik.select.noResults')} ${query}` }}
           </p>
           <ul class="puik-select__options-list">
-            <slot>
-              <template v-if="options">
-                <puik-option
-                  v-for="option in options"
-                  :key="option"
-                  :label="option[labelKey]"
-                  :value="isObject(option) ? option[valueKey] : option"
-                />
-              </template>
-            </slot>
+            <slot></slot>
           </ul>
         </ListboxOptions>
       </transition>
@@ -100,19 +91,18 @@
 <script setup lang="ts">
 import { computed, provide, ref, useSlots } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
-import { isObject, slotIsEmpty } from '@puik/utils'
+import { slotIsEmpty } from '@puik/utils'
 import { useLocale } from '@puik/hooks'
 import { PuikInput } from '@puik/components/input'
 import { PuikIcon } from '@puik/components/icon'
 import { selectProps, selectEmits, selectKey } from './select'
-import PuikOption from './option.vue'
-import type { DefaultOption } from './option'
+import type { OptionState } from './option'
 
 defineOptions({
   name: 'PuikSelect',
 })
 
-const optionsList = ref<DefaultOption[]>([])
+const options = ref<OptionState[]>([])
 const labelInput = ref<HTMLInputElement>()
 
 const props = defineProps(selectProps)
@@ -138,7 +128,7 @@ const selectedValue = computed({
 
 const filteredOptionsCount = computed(() => {
   if (props.searchable) {
-    return optionsList.value.reduce(
+    return options.value.reduce(
       (acc, option) => (option.visible === true ? ++acc : acc),
       0
     )
@@ -153,7 +143,7 @@ const handleAutoComplete = (label: string | number) => {
   if (labelInput.value) {
     labelInput.value.value = ''
   }
-  optionsList.value.filter((option) => {
+  options.value.filter((option) => {
     if (
       String(option.label).toLowerCase() === label.toString().toLowerCase() ||
       String(option.value).toLowerCase() === label.toString().toLowerCase()
@@ -172,7 +162,7 @@ const isOpen = (open: boolean) => {
 
 provide(selectKey, {
   selectedValue,
-  optionsList,
+  options,
   handleAutoComplete,
   labelKey: props.labelKey,
   query,

@@ -16,15 +16,6 @@ export default {
         category: 'Searchable',
       },
     },
-    valueKey: {
-      control: 'text',
-      description:
-        'In the case of using objects as a options prop you can set which property of the object is the value',
-      table: {
-        defaultValue: { summary: 'value' },
-        category: 'Searchable',
-      },
-    },
     id: {
       control: 'text',
       description: 'Sets the id attribute of the select',
@@ -77,14 +68,6 @@ export default {
         defaultValue: { summary: 1000 },
       },
     },
-    options: {
-      control: 'none',
-      description:
-        'Pass options to the component to enable the option filtering (⚠️ Default filtering only works for arrays of string, number, object. Use `customFilterMethod` for specific needs) (Returns also an `options` value through the v-slot directive',
-      table: {
-        category: 'Searchable',
-      },
-    },
     searchable: {
       control: 'boolean',
       description: 'Enables the search',
@@ -103,12 +86,10 @@ export default {
   },
   args: {
     labelKey: '',
-    valueKey: '',
     id: '',
     disabled: false,
     placeholder: 'Select a value',
     error: '',
-    options: undefined,
     searchable: false,
     noMatchText: '',
     zindex: 1000,
