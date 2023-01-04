@@ -69,6 +69,14 @@ export default {
         category: 'Common',
       },
     },
+    zindex: {
+      control: 'number',
+      description: 'Sets the z-index of the select list',
+      table: {
+        category: 'Common',
+        defaultValue: { summary: 1000 },
+      },
+    },
     options: {
       control: 'none',
       description:
@@ -77,11 +85,11 @@ export default {
         category: 'Searchable',
       },
     },
-    customFilterMethod: {
-      control: 'none',
-      description:
-        'Use your own method to filter the options when using the search',
+    searchable: {
+      control: 'boolean',
+      description: 'Enables the search',
       table: {
+        defaultValue: { summary: false },
         category: 'Searchable',
       },
     },
@@ -101,8 +109,9 @@ export default {
     placeholder: 'Select a value',
     error: '',
     options: undefined,
-    customFilterMethod: undefined,
+    searchable: false,
     noMatchText: '',
+    zindex: 1000,
   },
 } as Meta
 
@@ -416,8 +425,8 @@ export const Searchable: Story = () => ({
     return { myValue, myOptions }
   },
   template: `
-    <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value">
-      <puik-option v-for="option in options" :value="option.value" :label="option.label"/>
+    <puik-select v-model="myValue" placeholder="Select a value" searchable>
+      <puik-option v-for="option in myOptions" :value="option.value" :label="option.label"/>
     </puik-select>`,
 })
 Searchable.parameters = {
@@ -425,7 +434,7 @@ Searchable.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value">
+      <puik-select v-model="myValue" placeholder="Select a value" searchable>
         <puik-option v-for="option in options" option="option.value">{{ option.label }}</puik-option>
       </puik-select>
       <!--HTML/CSS Snippet-->
@@ -503,8 +512,8 @@ export const NoMatchCustomText: Story = (args: Args) => ({
     return { myValue, myOptions, args }
   },
   template: `
-    <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value" :no-match-text="args.noMatchText">
-      <puik-option v-for="option in options" :value="option.value" :label="option.label"/>
+    <puik-select v-model="myValue" placeholder="Select a value" :no-match-text="args.noMatchText" searchable>
+      <puik-option v-for="option in myOptions" :value="option.value" :label="option.label"/>
     </puik-select>`,
 })
 
@@ -517,7 +526,7 @@ NoMatchCustomText.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value" no-match-text="No results found custom text">
+      <puik-select v-model="myValue" placeholder="Select a value" no-match-text="No results found custom text" searchable>
         <puik-option v-for="option in options" option="option.value">{{ option.label }}</puik-option>
       </puik-select>
       <!--HTML/CSS Snippet-->

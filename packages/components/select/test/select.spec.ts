@@ -1,6 +1,6 @@
 import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { faker } from '@faker-js/faker'
 import PuikSelect from '../src/select.vue'
 import PuikOption from '../src/option.vue'
@@ -251,8 +251,8 @@ describe('Select tests', () => {
     ]
     const query = 'Test3'
     factory(
-      `<puik-select v-slot="{ options }"  v-model="value" :options="items">
-        <puik-option v-for="option in options" :value="option" :label="option.label" />
+      `<puik-select v-model="value" searchable label-key="label">
+        <puik-option v-for="option in items" :key="option.value" :value="option" :label="option.label" />
       </puik-select>`,
       () => ({
         items,
@@ -261,39 +261,12 @@ describe('Select tests', () => {
     )
     await findSelect().trigger('click')
     await findInputComponent().setValue(query)
-    expect(findAllOptions().length).toBe(1)
-    expect(findAllOptions().at(0)?.text()).toBe(query)
-  })
-
-  it('should call the custom filter method when filtering the options by using the search', async () => {
-    const items = [
-      {
-        label: 'Test',
-        value: 'test',
-      },
-      {
-        label: 'Test2',
-        value: 'test2',
-      },
-      {
-        label: 'Test3',
-        value: 'test3',
-      },
-    ]
-    const customFilterMethod = vi.fn()
-    const query = 'Test3'
-    factory(
-      `<puik-select v-slot="{ options }" v-model="value" :options="items" :custom-filter-method="customFilterMethod">
-        <puik-option v-for="option in options" :value="option" :label="option.label" />
-      </puik-select>`,
-      () => ({
-        items,
-        value: {},
-        customFilterMethod,
-      })
-    )
-    await findSelect().trigger('click')
-    await findInputComponent().setValue(query)
-    expect(customFilterMethod).toHaveBeenCalledOnce()
+    expect(
+      findAllOptions().reduce((count, option) => {
+        return getComputedStyle(option.element).display === 'none'
+          ? ++count
+          : count
+      }, 0)
+    ).toBe(2)
   })
 })

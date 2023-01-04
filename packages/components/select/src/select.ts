@@ -53,17 +53,12 @@ export const selectProps = buildProps({
     required: false,
     default: undefined,
   },
-  customFilterMethod: {
-    type: Function,
-    required: false,
-    default: undefined,
-  },
   noMatchText: {
     type: String,
     required: false,
     default: undefined,
   },
-  filterable: {
+  searchable: {
     type: Boolean,
     required: false,
     default: false,

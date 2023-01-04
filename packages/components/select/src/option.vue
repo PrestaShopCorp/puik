@@ -71,6 +71,6 @@ watch(
 )
 
 watch(query, (value) => {
-  option.visible = label.value.toLowerCase().includes(value)
+  option.visible = label.value.toLowerCase().includes(value.toLowerCase())
 })
 </script>

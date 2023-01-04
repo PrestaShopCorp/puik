@@ -16,6 +16,7 @@
           ref="labelInput"
           :value="currentLabel"
           class="puik-select__selected"
+          :disabled="disabled"
           :autocomplete="autocomplete"
           :placeholder="placeholder"
           :disabled="disabled"
@@ -48,7 +49,7 @@
           :style="{ 'z-index': zindex }"
         >
           <puik-input
-            v-if="filterable"
+            v-if="searchable"
             v-model="query"
             tabindex="1"
             class="puik-select__search"
@@ -63,7 +64,7 @@
             /></template>
           </puik-input>
           <p
-            v-if="filterable && !filteredOptionsCount"
+            v-if="searchable && !filteredOptionsCount"
             class="puik-select__no-results"
           >
             {{ noMatchText || `${t('puik.select.noResults')} ${query}` }}
@@ -94,7 +95,6 @@
       </div>
     </div>
   </Listbox>
-  {{ filteredOptionsCount }}
 </template>
 
 <script setup lang="ts">
@@ -137,7 +137,7 @@ const selectedValue = computed({
 })
 
 const filteredOptionsCount = computed(() => {
-  if (props.filterable) {
+  if (props.searchable) {
     return optionsList.value.reduce(
       (acc, option) => (option.visible === true ? ++acc : acc),
       0
@@ -164,7 +164,7 @@ const handleAutoComplete = (label: string | number) => {
 }
 
 const isOpen = (open: boolean) => {
-  if (open && props.filterable) {
+  if (open && props.searchable) {
     query.value = ''
   }
   return open
