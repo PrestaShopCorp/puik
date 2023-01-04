@@ -1,11 +1,11 @@
 :root {
   // Primary Purple Colors
   --puik-color-primary-purple-50: theme('colors.primary.purple.50');
-  --puik-primary-purple-100: theme('colors.primary.purple.100');
-  --puik-primary-purple-200: theme('colors.primary.purple.200');
-  --puik-primary-purple-500: theme('colors.primary.purple.500');
-  --puik-primary-purple-700: theme('colors.primary.purple.700');
-  --puik-primary-purple-900: theme('colors.primary.purple.900');
+  --puik-color-primary-purple-100: theme('colors.primary.purple.100');
+  --puik-color-primary-purple-200: theme('colors.primary.purple.200');
+  --puik-color-primary-purple-500: theme('colors.primary.purple.500');
+  --puik-color-primary-purple-700: theme('colors.primary.purple.700');
+  --puik-color-primary-purple-900: theme('colors.primary.purple.900');
 
   // Accentuation destructive
   --puik-color-accentuation-destructive-50: theme(
@@ -78,6 +78,9 @@
   --puik-color-font-500: theme('colors.font.500');
   --puik-color-font-700: theme('colors.font.700');
   --puik-color-font-900: theme('colors.font.900');
+
+  // White
+  --puik-color-white: theme('colors.white');
 
   // Light blue
   --puik-color-light-blue-50: theme('colors.light-blue.50');
