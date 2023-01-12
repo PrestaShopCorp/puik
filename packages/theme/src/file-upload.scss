@@ -1,9 +1,9 @@
-.puik-attached-files {
+.puik-file-upload {
   &__dropzone {
     @apply relative border border-dashed rounded cursor-pointer dropzone border-light-blue-default-border hover:border-purple-500;
     label {
       @apply flex items-center justify-center w-full h-16 font-bold;
-      .puik-attached-files__dropzone-icon {
+      .puik-file-upload__dropzone-icon {
         @apply h-6 mr-2 text-font-secondary;
       }
     }

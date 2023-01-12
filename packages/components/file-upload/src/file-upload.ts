@@ -1,7 +1,7 @@
 import { buildProps } from '@puik/utils'
 import type { PropType } from 'vue'
 
-export const attachedFilesProps = buildProps({
+export const fileUploadProps = buildProps({
   id: {
     type: String,
     required: true,

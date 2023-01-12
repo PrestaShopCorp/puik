@@ -16,7 +16,7 @@ export default {
       searchPlaceholder: 'Search',
       noResults: 'No results matched',
     },
-    attachedFiles: {
+    fileUpload: {
       label:
         "<span class='dropzone__select' tabindex='0'>Select</span> files or drop them right here",
       infos:

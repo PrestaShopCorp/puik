@@ -1,7 +1,7 @@
 export default {
   name: 'fr',
   puik: {
-    attachedFiles: {
+    fileUpload: {
       label:
         "<span class='dropzone__select' tabindex='0'>Sélectionnez</span> des fichiers ou glissez-les ici",
       infos:

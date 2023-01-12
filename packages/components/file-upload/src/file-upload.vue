@@ -1,14 +1,14 @@
 <template>
-  <div class="puik-attached-files">
-    <div ref="dropzone" class="puik-attached-files__dropzone">
+  <div class="puik-file-upload">
+    <div ref="dropzone" class="puik-file-upload__dropzone">
       <label for="field_attachment">
         <span
-          class="puik-attached-files__dropzone-icon material-icons-round"
+          class="puik-file-upload__dropzone-icon material-icons-round"
           aria-hidden="true"
           role="img"
           >upload</span
         >
-        <span v-html="t('puik.attachedFiles.label')"></span>
+        <span v-html="t('puik.fileUpload.label')"></span>
       </label>
       <input
         id="field_attachment"
@@ -21,7 +21,7 @@
         @mouseleave="onDragLeave"
       />
       <div
-        class="puik-attached-files__dropzone-items"
+        class="puik-file-upload__dropzone-items"
         :class="{ 'mt-3 px-4 pb-5': state?.displayedFiles.length }"
       >
         <attachment-item
@@ -43,10 +43,7 @@
       >{{ textAlert }}</puik-alert
     >
 
-    <p
-      class="puik-attached-files__infos"
-      v-html="t('puik.attachedFiles.infos')"
-    ></p>
+    <p class="puik-file-upload__infos" v-html="t('puik.fileUpload.infos')"></p>
   </div>
 </template>
 
@@ -54,15 +51,15 @@
 import { onUnmounted, ref, watch } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikAlert from '../../alert'
-// import { attachedFilesProps } from './attached-files'
+// import { fileUploadProps } from './file-upload'
 
 const { t } = useLocale()
 
 defineOptions({
-  name: 'PuikAttachedFiles',
+  name: 'PuikFileUpload',
 })
 
-// const props = defineProps(attachedFilesProps)
+// const props = defineProps(fileUploadProps)
 const dropzone = ref<null | HTMLElement>(null)
 const displayError = ref(false)
 const textAlert = ref(null)
@@ -83,14 +80,14 @@ onUnmounted(() => {
 const onDragOver = () => {
   // if (state.closing) return;
   const selectElement = dropzone.value?.querySelector(
-    '.puik-attached-files__dropzone'
+    '.puik-file-upload__dropzone'
   )
   dropzone.value?.classList.add('border-purple-500')
   if (selectElement) selectElement.classList.add('underline')
 }
 const onDragLeave = () => {
   const selectElement = dropzone.value?.querySelector(
-    '.puik-attached-files__dropzone'
+    '.puik-file-upload__dropzone'
   )
   dropzone.value?.classList.remove('border-purple-500')
   if (selectElement) selectElement.classList.remove('underline')
