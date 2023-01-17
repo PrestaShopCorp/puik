@@ -144,6 +144,30 @@ styles used in the VueJs component library.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## How to use Puik in your CI
+
+### In your Github repo
+
+In your secrets (Settings > Secrets and variables > Actions > New repository secret) you have to add a `REGISTRY_NPM_TOKEN` with your `squad's npm token`.
+
+### In your project
+
+In the job where you are setting up your node env (`actions/setup-node`), you need to add this nearby `node-version`:
+
+```
+  registry-url: 'https://registry.npmjs.org'
+  scope: '@prestashopcorp'
+```
+
+Check the [documentation](https://github.com/actions/setup-node/blob/main/action.yml) if you want more info.
+
+Then in your `Install dependencies` job, you have to add:
+
+```
+  env:
+    NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_NPM_TOKEN }}
+```
+
 ## Contributing
 
 Please make sure to read the [Contributing Guide](CONTRIBUTING.md) before making a pull request
