@@ -18,12 +18,36 @@ export default {
       control: 'select',
       description: 'Set the tooltip position',
       options: tooltipPosition,
+      table: {
+        defaultValue: {
+          summary: 'top',
+        },
+      },
+    },
+    isDisabled: {
+      control: 'boolean',
+      description: 'Enable or disable the tooltip',
+      table: {
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
+    zindex: {
+      control: 'number',
+      description: 'Set the z-index level',
+      table: {
+        defaultValue: {
+          summary: '1000',
+        },
+      },
     },
   },
   args: {
     title: 'Title',
     description: 'This is a tooltip',
     position: 'top',
+    isActive: true,
   },
 } as Meta
 
@@ -47,6 +71,21 @@ const Template: Story = (args: Args) => ({
 
 export const Default = Template.bind({})
 Default.args = {}
+
+export const DisabledTooltip = () => ({
+  components: {
+    PuikTooltip,
+    PuikButton,
+  },
+  template: `
+    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
+      <puik-tooltip :is-disabled="true" position="top">
+        <puik-button>There is no tooltip</puik-button>
+        <template #title>Title</template>
+        <template #description>This tooltip is on a button</template>
+      </puik-tooltip>
+    </div>`,
+})
 
 export const UsingAComponent = () => ({
   components: {
