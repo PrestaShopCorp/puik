@@ -33,6 +33,10 @@ export default {
         },
       },
     },
+    maxWidth: {
+      control: 'text',
+      description: 'Set a max-width for the tooltip',
+    },
     zindex: {
       control: 'number',
       description: 'Set the z-index level',
@@ -60,8 +64,8 @@ const Template: Story = (args: Args) => ({
     return { args }
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
-      <puik-tooltip :position="args.position">
+    <div class="flex items-center justify-center h-[320px]">
+      <puik-tooltip :position="args.position" :is-disabled="args.isDisabled" :max-width="args.maxWidth">
         <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>{{ args.title }}</template>
         <template #description>{{ args.description }}</template>
@@ -78,7 +82,7 @@ export const DisabledTooltip = () => ({
     PuikButton,
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
+    <div class="flex items-center justify-center h-[320px]">
       <puik-tooltip :is-disabled="true" position="top">
         <puik-button>There is no tooltip</puik-button>
         <template #title>Title</template>
@@ -93,7 +97,7 @@ export const UsingAComponent = () => ({
     PuikButton,
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
+    <div class="flex items-center justify-center h-[320px]">
       <puik-tooltip position="top">
         <puik-button>Button</puik-button>
         <template #title>Title</template>
@@ -108,7 +112,7 @@ export const Bottom = () => ({
     PuikIcon,
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
+    <div class="flex items-center justify-center h-[320px]">
       <puik-tooltip position="bottom">
         <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
@@ -123,7 +127,7 @@ export const Left = () => ({
     PuikIcon,
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
+    <div class="flex items-center justify-center h-[320px]">
       <puik-tooltip position="left">
         <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
@@ -138,7 +142,7 @@ export const Right = () => ({
     PuikIcon,
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
+    <div class="flex items-center justify-center h-[320px]">
       <puik-tooltip position="right">
         <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
@@ -156,7 +160,7 @@ export const Positions = (args: Args) => ({
     return { args }
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div class="flex items-center justify-center h-screen">
       <puik-tooltip position="top">
         <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>

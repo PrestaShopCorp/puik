@@ -47,4 +47,29 @@ describe('Tooltip tests', () => {
     await factory({ position: 'right' })
     expect(findToolTip().attributes('data-popper-placement')).toBe('right')
   })
+
+  it('should be disabled', async () => {
+    await factory(
+      { isDisabled: true },
+      {
+        slots: {
+          default: '<button>Hover me</button>',
+        },
+      }
+    )
+    await expect(wrapper.find('button').trigger('mouseover'))
+    expect(findToolTip().isVisible()).toBe(false)
+  })
+
+  it('should have a custom z-index', async () => {
+    await factory({ zindex: 5000 })
+    expect(findToolTip().element.style.getPropertyValue('z-index')).toBe('5000')
+  })
+
+  it('should have a custom max-width', async () => {
+    await factory({ maxWidth: '200px' })
+    expect(findToolTip().element.style.getPropertyValue('max-width')).toBe(
+      '200px'
+    )
+  })
 })
