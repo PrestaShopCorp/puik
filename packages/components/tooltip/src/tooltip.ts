@@ -27,6 +27,11 @@ export const tooltipProps = buildProps({
     required: false,
     default: false,
   },
+  maxWidth: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   zindex: {
     type: Number,
     required: false,
