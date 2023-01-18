@@ -25,16 +25,15 @@ Puik is a component library that aims to provide a complete set of reusable comp
 
 ### Installation
 
-For the moment this package is only available through Github packages  
+For the moment this package is private  
 To install it you must configure a .npmrc file in your project
 
 ```
-@prestashopcorp:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+//registry.npmjs.org/:_authToken=YOUR_NPM_RO_SQUAD_TOKEN
+@prestashopcorp:registry=https://registry.npmjs.org/
 ```
 
-You can create a github token by going in the [Github Developer settings](https://github.com/settings/tokens)  
-Your token must have the read:packages rights
+You can ask the IT for a NPM read only token for your squad if you don't have a NPM Token
 
 ```sh
 # chose your favorite package manager
@@ -167,6 +166,8 @@ Then in your `Install dependencies` job, you have to add:
   env:
     NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_NPM_TOKEN }}
 ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Contributing
 
