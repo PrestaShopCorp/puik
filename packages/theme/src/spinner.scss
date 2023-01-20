@@ -1,0 +1,79 @@
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+
+  &--primary {
+    div {
+      @apply border-t-primary-purple border-r-transparent border-b-transparent border-l-transparent border-8;
+    }
+  }
+
+  &--danger {
+    div {
+      @apply border-t-accentuation-destructive border-r-transparent border-b-transparent border-l-transparent border-8;
+    }
+  }
+
+  &--success {
+    div {
+      @apply border-t-accentuation-success border-r-transparent border-b-transparent border-l-transparent border-8;
+    }
+  }
+
+  &--warning {
+    div {
+      @apply border-t-accentuation-warning border-r-transparent border-b-transparent border-l-transparent border-8;
+    }
+  }
+
+  &--info {
+    div {
+      @apply border-t-accentuation-info border-r-transparent border-b-transparent border-l-transparent border-8;
+    }
+  }
+}
+
+.zoom {
+  &--normal {
+    zoom: 1;
+  }
+  &--small {
+    zoom: 0.5;
+  }
+  &--big {
+    zoom: 1.5;
+  }
+}
