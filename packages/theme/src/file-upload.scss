@@ -68,7 +68,6 @@
 
   &__close-btn {
     @apply text-font-500 hover:text-font-700 focus-visible:text-font-700 text-2xl absolute top-0 -translate-y-1/2 translate-x-1/2 right-0 leading-[0px] rounded focus-visible:outline-focus-main focus-visible:ring-offset-[-1px] focus-visible:rounded;
-    //  form__fieldAttachment--remove
   }
 
   &__close-icon {

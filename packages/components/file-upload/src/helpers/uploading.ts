@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
-import { slowDownProgress } from '../helpers/progress'
-import type { UploadFileHandler } from './file-upload'
-import type { UploadingFileProps } from './file-upload-types'
+import { slowDownProgress } from './progress'
+import type { UploadFileHandler } from '../file-upload'
+import type { UploadingFileProps } from '../file-upload-types'
 
 let frontIdSeq = 0
 

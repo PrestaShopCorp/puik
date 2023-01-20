@@ -2,9 +2,9 @@
 import { onUnmounted, ref, reactive } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikAlert from '../../alert'
-import FileUploadItem from './item/file-upload-item.vue'
+import FileUploadItem from './file-upload-item.vue'
 import { fileUploadProps } from './file-upload'
-import { startUploadingItem } from './helpers'
+import { startUploadingItem } from './helpers/uploading'
 import type { UploadingFileProps } from './file-upload-types'
 
 const { t } = useLocale()
@@ -67,6 +67,8 @@ const handleDrop = async (e: Event) => {
     state.totalSizeB += file.size
     await addUploadingFile(file)
   }
+
+  element.value = ''
 }
 
 function showAlert(errorMessage: string) {
