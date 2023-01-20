@@ -47,6 +47,20 @@ export default {
         category: 'Common',
       },
     },
+    name: {
+      control: 'text',
+      description: 'Defines a name for the select',
+      table: {
+        category: 'Common',
+      },
+    },
+    autocomplete: {
+      control: 'text',
+      description: 'Enables browser autocompletion for the select',
+      table: {
+        category: 'Common',
+      },
+    },
     error: {
       control: 'text',
       description:
@@ -167,9 +181,11 @@ Default.parameters = {
           </ul>
         </div>
         <!-- Error message, only displayed when there is an error. -->
-        <span class="puik-select__error"
-          ><span class="puik-icon puik-select__error__icon">error</span>My error</span
-        >
+        <div class="puik-select__error"
+          >
+          <span class="puik-icon puik-select__error__icon">error</span>
+          <span class="puik-select__error__text">My error</span>
+        </div>
       </div>
     </div>
       `,

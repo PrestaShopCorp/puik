@@ -8,7 +8,7 @@
   }
 
   &__tip {
-    @apply absolute bg-font text-white rounded px-3 py-2 font-secondary flex flex-col opacity-0 pointer-events-none w-[200px] transition-opacity;
+    @apply absolute bg-font text-white rounded px-3 py-2 font-secondary flex flex-col opacity-0 pointer-events-none transition-opacity;
     &:hover {
       @apply opacity-100;
     }

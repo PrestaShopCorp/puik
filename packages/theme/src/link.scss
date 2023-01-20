@@ -4,13 +4,13 @@
   @extend .puik-body-default;
   @apply rounded transition text-primary-purple-500 m-0.5 p-0.5 decoration-1;
   &:hover {
-    @apply underline bg-font-50;
+    @apply underline bg-light-blue-100;
   }
   &:focus {
     @apply underline outline-none ring-2 ring-focus-main;
   }
   &:active {
-    @apply underline bg-font-100;
+    @apply underline bg-light-blue-200;
   }
   &:visited {
     @apply text-[#0A057B];

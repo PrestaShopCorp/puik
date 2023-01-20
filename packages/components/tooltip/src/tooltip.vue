@@ -8,7 +8,14 @@
     <div ref="tooltipWrapper">
       <slot></slot>
     </div>
-    <div :id="id" ref="tooltip" class="puik-tooltip__tip" role="tooltip">
+    <div
+      v-show="!isDisabled"
+      :id="id"
+      ref="tooltip"
+      class="puik-tooltip__tip"
+      role="tooltip"
+      :style="{ 'z-index': zindex, 'max-width': maxWidth }"
+    >
       <span v-if="$slots.title || title" class="puik-tooltip__tip__title"
         ><slot name="title">{{ title }}</slot></span
       >

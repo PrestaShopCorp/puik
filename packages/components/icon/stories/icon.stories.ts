@@ -48,7 +48,7 @@ export const Default = Template.bind({})
 Default.args = {
   icon: 'check',
   color: 'green',
-  fontSize: 20,
+  fontSize: 24,
   nodeType: 'span',
 }
 Default.parameters = {

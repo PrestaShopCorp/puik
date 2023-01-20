@@ -22,6 +22,21 @@ export const tooltipProps = buildProps({
     required: false,
     default: 'top',
   },
+  isDisabled: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  maxWidth: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  zindex: {
+    type: Number,
+    required: false,
+    default: 1000,
+  },
 } as const)
 
 export type TooltipProps = ExtractPropTypes<typeof tooltipProps>

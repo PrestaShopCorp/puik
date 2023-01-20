@@ -18,12 +18,40 @@ export default {
       control: 'select',
       description: 'Set the tooltip position',
       options: tooltipPosition,
+      table: {
+        defaultValue: {
+          summary: 'top',
+        },
+      },
+    },
+    isDisabled: {
+      control: 'boolean',
+      description: 'Enable or disable the tooltip',
+      table: {
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
+    maxWidth: {
+      control: 'text',
+      description: 'Set a max-width for the tooltip',
+    },
+    zindex: {
+      control: 'number',
+      description: 'Set the z-index level',
+      table: {
+        defaultValue: {
+          summary: '1000',
+        },
+      },
     },
   },
   args: {
     title: 'Title',
     description: 'This is a tooltip',
     position: 'top',
+    isActive: true,
   },
 } as Meta
 
@@ -36,9 +64,9 @@ const Template: Story = (args: Args) => ({
     return { args }
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
-      <puik-tooltip :position="args.position">
-        <puik-icon icon="help_outline" />
+    <div class="flex items-center justify-center h-[320px]">
+      <puik-tooltip :position="args.position" :is-disabled="args.isDisabled" :max-width="args.maxWidth">
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>{{ args.title }}</template>
         <template #description>{{ args.description }}</template>
       </puik-tooltip>
@@ -48,13 +76,28 @@ const Template: Story = (args: Args) => ({
 export const Default = Template.bind({})
 Default.args = {}
 
+export const DisabledTooltip = () => ({
+  components: {
+    PuikTooltip,
+    PuikButton,
+  },
+  template: `
+    <div class="flex items-center justify-center h-[320px]">
+      <puik-tooltip :is-disabled="true" position="top">
+        <puik-button>There is no tooltip</puik-button>
+        <template #title>Title</template>
+        <template #description>This tooltip is on a button</template>
+      </puik-tooltip>
+    </div>`,
+})
+
 export const UsingAComponent = () => ({
   components: {
     PuikTooltip,
     PuikButton,
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
+    <div class="flex items-center justify-center h-[320px]">
       <puik-tooltip position="top">
         <puik-button>Button</puik-button>
         <template #title>Title</template>
@@ -69,9 +112,9 @@ export const Bottom = () => ({
     PuikIcon,
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
+    <div class="flex items-center justify-center h-[320px]">
       <puik-tooltip position="bottom">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a bottom tooltip</template>
       </puik-tooltip>
@@ -84,9 +127,9 @@ export const Left = () => ({
     PuikIcon,
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
+    <div class="flex items-center justify-center h-[320px]">
       <puik-tooltip position="left">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a left tooltip</template>
       </puik-tooltip>
@@ -99,9 +142,9 @@ export const Right = () => ({
     PuikIcon,
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 320px;">
+    <div class="flex items-center justify-center h-[320px]">
       <puik-tooltip position="right">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a right tooltip</template>
       </puik-tooltip>
@@ -117,24 +160,24 @@ export const Positions = (args: Args) => ({
     return { args }
   },
   template: `
-    <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div class="flex items-center justify-center h-screen">
       <puik-tooltip position="top">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a top tooltip</template>
       </puik-tooltip>
       <puik-tooltip position="bottom">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a bottom tooltip</template>
       </puik-tooltip>
       <puik-tooltip position="left">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a left tooltip</template>
       </puik-tooltip>
       <puik-tooltip position="right">
-        <puik-icon icon="help_outline" />
+        <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #title>Title</template>
         <template #description>This is a right tooltip</template>
       </puik-tooltip>

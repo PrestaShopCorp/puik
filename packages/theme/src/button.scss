@@ -154,6 +154,6 @@
 
   &__left-icon,
   &__right-icon {
-    @apply font-materialIcons align-middle leading-none;
+    @apply font-materialIcons align-middle leading-[0];
   }
 }

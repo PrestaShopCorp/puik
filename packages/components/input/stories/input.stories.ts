@@ -434,10 +434,12 @@ Error.parameters = {
           <input class="puik-input__field" type="text" />
         </div>
         <div class="puik-input__hint">
-          <span class="puik-input__hint__error">
+          <div class="puik-input__hint__error">
             <span class="puik-icon puik-input__hint__error__icon">error</span>
-            This is an error
-          </span>
+            <span class="puik-input__hint__error__text">
+              This is an error
+            </span>
+          </div>
         </div>
       </div>
       `,
