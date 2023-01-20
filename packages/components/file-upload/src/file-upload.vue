@@ -1,57 +1,5 @@
-<template>
-  <div class="puik-file-upload">
-    <div ref="dropzone" class="puik-file-upload__dropzone">
-      <label>
-        <span>
-          <span
-            class="puik-file-upload__dropzone-icon material-icons-round"
-            aria-hidden="true"
-            role="img"
-            >upload</span
-          >
-          <span v-html="t('puik.fileUpload.label')"></span>
-        </span>
-        <input
-          type="file"
-          multiple
-          accept=".jpg,.jpeg,.png,.doc,.docx,.pdf"
-          @change="handleDrop"
-          @dragover="onDragOver"
-          @dragleave="onDragLeave"
-          @mouseleave="onDragLeave"
-        />
-      </label>
-      <div
-        class="puik-file-upload__dropzone-items"
-        :class="{ 'mt-3 px-4 pb-5': state?.files.length }"
-      >
-        <file-upload-item
-          v-for="file in state.files"
-          :key="file.frontId"
-          :uploading="getUploadingFileProps(file)"
-          :closing="state.closing"
-          accessibility-remove-label="Delete image"
-          :delete-file-cb="deleteFile"
-          @removed="onAttachmentRemoved"
-        ></file-upload-item>
-      </div>
-    </div>
-
-    <puik-alert
-      v-if="displayError"
-      title="Erreur"
-      variant="danger"
-      button-label="Close"
-      @click="displayError = false"
-      >{{ textAlert }}</puik-alert
-    >
-
-    <p class="puik-file-upload__infos" v-html="t('puik.fileUpload.infos')"></p>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { onUnmounted, ref, watch, reactive, computed } from 'vue'
+import { onUnmounted, ref, reactive } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikAlert from '../../alert'
 import FileUploadItem from './item/file-upload-item.vue'
@@ -71,7 +19,7 @@ const dropzone = ref<null | HTMLElement>(null)
 const displayError = ref(false)
 const textAlert = ref<string>()
 const uploadingMap = new Map<number, UploadingFileProps>()
-let timeout: undefined | ReturnType<typeof setTimeout>
+let timeoutId: undefined | ReturnType<typeof setTimeout>
 
 interface FileItem {
   frontId: number
@@ -79,25 +27,11 @@ interface FileItem {
 
 const state = reactive({
   closing: false,
-  // apiTicketId: null as string | null,
   files: [] as FileItem[],
-  // displayedFiles: computed((): { frontId: number }[] =>
-  //   state.apiTicketId === null ? [] : state.files
-  // ),
-  totalSizeOfFiles: 0,
+  totalSizeB: 0,
 })
 
-watch(
-  () => displayError.value,
-  () => {
-    if (displayError.value)
-      timeout = setTimeout(() => (displayError.value = false), 7000)
-  }
-)
-
-onUnmounted(() => {
-  if (timeout !== undefined) clearTimeout(timeout)
-})
+onUnmounted(closeAlert)
 
 const onDragOver = () => {
   // if (state.closing) return;
@@ -123,14 +57,34 @@ const handleDrop = async (e: Event) => {
   dropzone.value?.classList.remove('border-purple500')
 
   for (const file of element.files ?? []) {
-    const validation = props.validateFile(file)
+    const validation = props.validateFile(file, {
+      totalSizeB: state.totalSizeB,
+    })
     if (!validation.valid) {
-      displayError.value = true
-      textAlert.value = validation.errorMessage
+      showAlert(validation.errorMessage)
       continue
     }
-    state.totalSizeOfFiles += file.size
+    state.totalSizeB += file.size
     await addUploadingFile(file)
+  }
+}
+
+function showAlert(errorMessage: string) {
+  textAlert.value = errorMessage
+  displayError.value = true
+  if (timeoutId) clearTimeout(timeoutId)
+  timeoutId = setTimeout(() => {
+    timeoutId = undefined
+    closeAlert()
+  }, 7000)
+}
+
+function closeAlert() {
+  textAlert.value = ''
+  displayError.value = false
+  if (timeoutId !== undefined) {
+    clearTimeout(timeoutId)
+    timeoutId = undefined
   }
 }
 
@@ -144,7 +98,7 @@ async function addUploadingFile(file: File) {
 const onAttachmentRemoved = (frontId: number) => {
   const item = uploadingMap.get(frontId)
   if (item) {
-    state.totalSizeOfFiles -= item.file.size
+    state.totalSizeB -= item.file.size
   }
   uploadingMap.delete(frontId)
   const index = state.files.findIndex((item) => item.frontId === frontId)
@@ -174,3 +128,54 @@ async function closeAll() {
   )
 }
 </script>
+
+<template>
+  <div class="puik-file-upload">
+    <div ref="dropzone" class="puik-file-upload__dropzone">
+      <label>
+        <span>
+          <span
+            class="puik-file-upload__dropzone-icon material-icons-round"
+            aria-hidden="true"
+            role="img"
+            >upload</span
+          >
+          <span v-html="t('puik.fileUpload.label')"></span>
+        </span>
+        <input
+          type="file"
+          multiple
+          :accept="props.inputAccept"
+          @change="handleDrop"
+          @dragover="onDragOver"
+          @dragleave="onDragLeave"
+          @mouseleave="onDragLeave"
+        />
+      </label>
+
+      <div
+        class="puik-file-upload__items"
+        :class="{ 'puik-file-upload__items--full': state?.files.length }"
+      >
+        <file-upload-item
+          v-for="file in state.files"
+          :key="file.frontId"
+          :uploading="getUploadingFileProps(file)"
+          :closing="state.closing"
+          accessibility-remove-label="Delete image"
+          :delete-file-cb="deleteFile"
+          @removed="onAttachmentRemoved"
+        ></file-upload-item>
+      </div>
+    </div>
+
+    <puik-alert
+      v-if="displayError"
+      title="Erreur"
+      variant="warning"
+      button-label="Close"
+      @click="closeAlert"
+      >{{ textAlert }}</puik-alert
+    >
+  </div>
+</template>

@@ -18,9 +18,7 @@ export default {
     },
     fileUpload: {
       label:
-        "<span class='dropzone__select' tabindex='0'>Select</span> files or drop them right here",
-      infos:
-        'Accepted formats: .pdf, .jpg, .png, .doc.<br>File must be 2 Mo or less.',
+        '<span class="puik-file-upload-dropzone__select" tabindex="0">Select</span> files or drop them right here',
     },
   },
 }

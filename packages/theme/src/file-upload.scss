@@ -1,6 +1,6 @@
 .puik-file-upload {
   &__dropzone {
-    @apply relative border border-dashed rounded cursor-pointer dropzone border-light-blue-default-border hover:border-purple-500;
+    @apply relative border border-dashed rounded cursor-pointer border-light-blue-default-border hover:border-purple-500;
     label {
       @apply flex items-center justify-center w-full h-16 font-bold;
       .puik-file-upload__dropzone-icon {
@@ -10,8 +10,12 @@
     input {
       @apply absolute top-0 w-full h-full opacity-0 cursor-pointer pointer-events-auto;
     }
-    &-items {
-      @apply flex flex-wrap justify-center gap-4 sm:justify-start;
+  }
+  &__items {
+    @apply flex flex-wrap justify-center gap-4 sm:justify-start;
+
+    &--full {
+      @apply mt-3 px-4 pb-5;
     }
   }
   &__infos {
@@ -19,14 +23,55 @@
   }
 }
 
-.dropzone {
-  &:hover .dropzone__select {
+.puik-file-upload-dropzone {
+  &:hover &__select {
     @apply underline;
   }
+
   &__select {
     @apply rounded text-purple-500 focus:outline-focus-main;
   }
-  &__format-files {
-    @apply mt-1 text-font-secondary text-bodySmall;
+}
+
+.puik-file-upload-item {
+  @apply relative w-[166px] h-[158px] border border-light-blue-default-border rounded text-center flex justify-between flex-col items-center pointer-events-none;
+
+  &__loading-icon {
+    @apply text-font-100 mt-1 text-8xl;
+  }
+
+  &__img {
+    @apply w-full h-[120px] object-cover;
+  }
+
+  &__doc-icon {
+    @apply text-font-500 mt-1 text-8xl;
+  }
+
+  &__footer {
+    @apply flex justify-between flex-col w-full px-2;
+  }
+}
+
+.puik-file-upload-item-footer {
+  &__progress {
+    @apply w-full h-1 rounded-full bg-font-50 overflow-hidden;
+  }
+
+  &__name {
+    @apply py-2 text-center whitespace-nowrap text-ellipsis overflow-hidden w-full;
+  }
+
+  &__close-wrapper {
+    @apply pointer-events-auto;
+  }
+
+  &__close-btn {
+    @apply text-font-500 hover:text-font-700 focus-visible:text-font-700 text-2xl absolute top-0 -translate-y-1/2 translate-x-1/2 right-0 leading-[0px] rounded focus-visible:outline-focus-main focus-visible:ring-offset-[-1px] focus-visible:rounded;
+    //  form__fieldAttachment--remove
+  }
+
+  &__close-icon {
+    @apply bg-white border border-white rounded-full;
   }
 }

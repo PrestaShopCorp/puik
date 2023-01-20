@@ -2,19 +2,33 @@ import { buildProps } from '@puik/utils'
 import type { PropType } from 'vue'
 
 export const fileUploadProps = buildProps({
-  validateFile: {
-    type: Function as PropType<(file: File) => FileValidation>,
+  inputAccept: {
+    type: String,
     required: true,
+    description: '',
   },
-  deleteFile: {
-    type: Function as PropType<(fileRefId: number) => Promise<boolean>>,
+  validateFile: {
+    type: Function as PropType<
+      (
+        file: File,
+        additionalProperties: ValidateFileAdditionalProperties
+      ) => FileValidation
+    >,
     required: true,
   },
   uploadFile: {
     type: Function as PropType<UploadFileHandler>,
     required: true,
   },
+  deleteFile: {
+    type: Function as PropType<(fileRefId: number) => Promise<boolean>>,
+    required: true,
+  },
 } as const)
+
+export interface ValidateFileAdditionalProperties {
+  totalSizeB: number
+}
 
 export type UploadFileHandler = (
   file: File,

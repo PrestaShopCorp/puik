@@ -1,52 +1,3 @@
-<template>
-  <div
-    class="relative w-[166px] h-[158px] border border-lightBlue500 rounded text-center flex justify-between flex-col items-center pointer-events-none form__filedAttachment&#45;&#45;card"
-  >
-    <span
-      v-if="state.loadingIconName"
-      class="material-icons-round text-mainFont100 mt-1 text-8xl"
-      >{{ state.loadingIconName }}</span
-    >
-    <img
-      v-else-if="state.image"
-      class="w-full h-[120px] object-cover"
-      :src="state.image.src"
-    />
-    <span
-      v-else-if="state.documentIconName"
-      class="material-icons-round text-mainFont500 mt-1 text-8xl"
-      aria-hidden="true"
-      role="img"
-      >{{ state.documentIconName }}</span
-    >
-    <div class="flex justify-between flex-col w-full px-2">
-      <progress
-        v-if="!props.uploading.status.ended"
-        class="dropzone__progress w-full h-1 rounded-full bg-mainFont50 overflow-hidden"
-        :value="props.uploading.status.progress * 100"
-        max="100"
-      ></progress>
-      <span
-        class="py-2 text-center whitespace-nowrap text-ellipsis overflow-hidden w-full"
-        >{{ props.uploading.file.name }}</span
-      >
-      <div class="pointer-events-auto" @click="removeItem">
-        <button
-          v-if="props.uploading.status.ended && !props.closing"
-          class="text-mainFont500 hover:text-mainFont700 focus-visible:text-mainFont700 text-2xl absolute top-0 -translate-y-1/2 translate-x-1/2 right-0 leading-[0px] rounded form__fieldAttachment&#45;&#45;remove focus-visible:outline-mainFocus focus-visible:ring-offset-[-1px] focus-visible:rounded"
-          :aria-label="props.accessibilityRemoveLabel"
-          @click="$event.preventDefault()"
-        >
-          <span
-            class="material-icons-round bg-white border border-white rounded-full"
-            >cancel</span
-          >
-        </button>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue'
 import type { PropType } from 'vue'
@@ -126,3 +77,52 @@ const removeItem = async () => {
   emit('removed', props.uploading.frontId)
 }
 </script>
+
+<template>
+  <div class="puik-file-upload-item">
+    <span
+      v-if="state.loadingIconName"
+      class="puik-file-upload-item__loading-icon material-icons-round"
+      >{{ state.loadingIconName }}</span
+    >
+    <img
+      v-else-if="state.image"
+      class="puik-file-upload-item__img"
+      :src="state.image.src"
+    />
+    <span
+      v-else-if="state.documentIconName"
+      class="puik-file-upload-item__doc-icon material-icons-round"
+      aria-hidden="true"
+      role="img"
+      >{{ state.documentIconName }}</span
+    >
+    <div class="puik-file-upload-item__footer puik-file-upload-item-footer">
+      <progress
+        v-if="!props.uploading.status.ended"
+        class="puik-file-upload-item-footer__progress"
+        :value="props.uploading.status.progress * 100"
+        max="100"
+      ></progress>
+      <span class="puik-file-upload-item-footer__name">{{
+        props.uploading.file.name
+      }}</span>
+      <div
+        class="puik-file-upload-item-footer__close-wrapper"
+        @click="removeItem"
+      >
+        <button
+          v-if="props.uploading.status.ended && !props.closing"
+          class="puik-file-upload-item-footer__close-btn"
+          :aria-label="props.accessibilityRemoveLabel"
+          @click="$event.preventDefault()"
+        >
+          <span
+            class="puik-file-upload-item-footer__close-icon material-icons-round"
+            >cancel</span
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
