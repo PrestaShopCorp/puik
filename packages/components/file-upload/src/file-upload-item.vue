@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue'
 import type { PropType } from 'vue'
-import type { UploadingFileProps } from './file-upload-types'
+import type { UploadingFileProps } from './helpers/internal-types'
 
 const props = defineProps({
   uploading: {

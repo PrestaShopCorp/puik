@@ -5,7 +5,7 @@ import PuikAlert from '../../alert'
 import FileUploadItem from './file-upload-item.vue'
 import { fileUploadProps } from './file-upload'
 import { startUploadingItem } from './helpers/uploading'
-import type { UploadingFileProps } from './file-upload-types'
+import type { UploadingFileProps } from './helpers/internal-types'
 
 const { t } = useLocale()
 
