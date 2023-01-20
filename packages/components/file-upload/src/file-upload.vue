@@ -34,7 +34,7 @@ const state = reactive({
 onUnmounted(closeAlert)
 
 const onDragOver = () => {
-  // if (state.closing) return;
+  if (state.closing) return
   const selectElement = dropzone.value?.querySelector(
     '.puik-file-upload__dropzone'
   )
