@@ -113,6 +113,10 @@ module.exports = {
     },
     screens: {
       xs: '320px',
+      sm: '1024px',
+      md: '1280px',
+      lg: '1440px',
+      xl: '1680px',
     },
     boxShadow: {
       overlay: '0px 4px 8px rgba(0, 0, 0, 0.1)',
