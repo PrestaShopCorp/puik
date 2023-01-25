@@ -2,10 +2,18 @@ import { buildProps } from '@puik/utils'
 import type { PropType } from 'vue'
 
 export const fileUploadProps = buildProps({
+  initialFiles: {
+    type: Array as PropType<UploadedFile[]>,
+    required: false,
+  },
   inputAccept: {
     type: String,
     required: true,
-    description: '',
+  },
+  slowDownMs: {
+    type: Number,
+    required: false,
+    default: 1000,
   },
   validateFile: {
     type: Function as PropType<
@@ -25,6 +33,11 @@ export const fileUploadProps = buildProps({
     required: true,
   },
 } as const)
+
+export interface UploadedFile {
+  fileRelId: number
+  file: File
+}
 
 export interface ValidateFileAdditionalProperties {
   totalSizeB: number

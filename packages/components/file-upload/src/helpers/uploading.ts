@@ -1,16 +1,32 @@
 import { reactive } from 'vue'
-import { slowDownProgress } from './progress'
-import type { UploadFileHandler } from '../file-upload'
+import { slowDownProgress } from './slow-down-progress'
+import type { UploadedFile, UploadFileHandler } from '../file-upload'
 import type { UploadingFileProps } from './internal-types'
 
 let frontIdSeq = 0
 
+export function createUploadedItem(
+  uploadedFile: UploadedFile
+): UploadingFileProps {
+  return {
+    frontId: ++frontIdSeq,
+    file: uploadedFile.file,
+    status: {
+      ended: true,
+      hasError: false,
+      progress: 1,
+    },
+    uploadPromise: Promise.resolve({
+      fileRelId: uploadedFile.fileRelId,
+    }),
+  }
+}
+
 export function startUploadingItem(
   uploadFileCb: UploadFileHandler,
-  file: File
+  file: File,
+  slowDownMs: number
 ): UploadingFileProps {
-  const minDurationMs = 1000
-
   const status = reactive({
     hasError: false,
     ended: false,
@@ -20,10 +36,10 @@ export function startUploadingItem(
   const onUploadProgress = slowDownProgress((progress: number) => {
     if (status.ended) return
     status.progress = progress
-  }, minDurationMs)
+  }, slowDownMs)
 
   const uploadPromise = uploadFile({
-    minDurationMs,
+    minDurationMs: slowDownMs,
     file,
     onUploadProgress,
     uploadFileCb,

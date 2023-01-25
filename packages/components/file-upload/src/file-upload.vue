@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { onUnmounted, ref, reactive } from 'vue'
+import { onUnmounted, ref, reactive, onMounted } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikAlert from '../../alert'
 import FileUploadItem from './file-upload-item.vue'
 import { fileUploadProps } from './file-upload'
-import { startUploadingItem } from './helpers/uploading'
+import { startUploadingItem, createUploadedItem } from './helpers/uploading'
 import type { UploadingFileProps } from './helpers/internal-types'
 
 const { t } = useLocale()
@@ -31,6 +31,19 @@ const state = reactive({
   totalSizeB: 0,
 })
 
+onMounted(() => {
+  for (const uploadedFile of props.initialFiles ?? []) {
+    const validation = props.validateFile(uploadedFile.file, {
+      totalSizeB: state.totalSizeB,
+    })
+    if (!validation.valid) continue
+    state.totalSizeB += uploadedFile.file.size
+    const item = createUploadedItem(uploadedFile)
+    uploadingMap.set(item.frontId, item)
+    state.files.push({ frontId: item.frontId })
+  }
+})
+
 onUnmounted(closeAlert)
 
 const onDragOver = () => {
@@ -52,7 +65,7 @@ const onDragLeave = () => {
 
 const handleDrop = async (e: Event) => {
   if (state.closing) return
-  const element = e.currentTarget as HTMLInputElement
+  const element = e.target as HTMLInputElement
 
   dropzone.value?.classList.remove('border-purple500')
 
@@ -91,13 +104,12 @@ function closeAlert() {
 }
 
 async function addUploadingFile(file: File) {
-  const item = startUploadingItem(props.uploadFile, file)
-
+  const item = startUploadingItem(props.uploadFile, file, props.slowDownMs)
   uploadingMap.set(item.frontId, item)
   state.files.push({ frontId: item.frontId })
 }
 
-const onAttachmentRemoved = (frontId: number) => {
+const onItemRemoved = (frontId: number) => {
   const item = uploadingMap.get(frontId)
   if (item) {
     state.totalSizeB -= item.file.size
@@ -106,10 +118,6 @@ const onAttachmentRemoved = (frontId: number) => {
   const index = state.files.findIndex((item) => item.frontId === frontId)
   if (index === -1) return
   state.files.splice(index, 1)
-}
-
-async function deleteFile(fileRelId: number): Promise<boolean> {
-  return await props.deleteFile(fileRelId)
 }
 
 function getUploadingFileProps({ frontId }: FileItem): UploadingFileProps {
@@ -165,8 +173,8 @@ async function closeAll() {
           :uploading="getUploadingFileProps(file)"
           :closing="state.closing"
           accessibility-remove-label="Delete image"
-          :delete-file-cb="deleteFile"
-          @removed="onAttachmentRemoved"
+          :delete-file-cb="props.deleteFile"
+          @removed="onItemRemoved"
         ></file-upload-item>
       </div>
     </div>

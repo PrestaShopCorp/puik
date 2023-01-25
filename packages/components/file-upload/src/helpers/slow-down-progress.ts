@@ -2,6 +2,10 @@ export function slowDownProgress(
   cb: (progress: number) => void,
   minDurationMs: number
 ): (progress: number) => void {
+  if (minDurationMs === 0) {
+    return cb
+  }
+
   const startTime = Date.now()
 
   let maxProgress = 0

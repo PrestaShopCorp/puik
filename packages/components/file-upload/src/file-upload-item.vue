@@ -31,7 +31,7 @@ const state = reactive({
 })
 
 onMounted(() => {
-  if (/\.(jpe?g|png)$/i.test(props.uploading.file.name)) {
+  if (props.uploading.file.type.startsWith('image/')) {
     const reader = new FileReader()
     reader.addEventListener(
       'load',
@@ -64,7 +64,7 @@ async function waitForUpload() {
     state.fileRelId = resp.fileRelId
     state.loadingIconName = null
   } catch (error) {
-    // on error, remove this item
+    // On error, the file is not on the server. So it is considered as removed.
     emit('removed', props.uploading.frontId)
   }
 }
@@ -79,7 +79,7 @@ const removeItem = async () => {
 </script>
 
 <template>
-  <div class="puik-file-upload-item">
+  <article class="puik-file-upload-item">
     <span
       v-if="state.loadingIconName"
       class="puik-file-upload-item__loading-icon material-icons-round"
@@ -124,5 +124,5 @@ const removeItem = async () => {
         </button>
       </div>
     </div>
-  </div>
+  </article>
 </template>
