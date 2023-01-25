@@ -47,5 +47,6 @@ describe('Badge tests', () => {
       }
     )
     expect(wrapper.text()).toEqual(slotDefault)
+    expect(findBadge().text()).toBe(slotDefault)
   })
 })

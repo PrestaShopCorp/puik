@@ -57,111 +57,48 @@ Default.parameters = {
   },
 }
 
-export const Success: Story = () => ({
+export const BadgeVariants: Story = () => ({
   components: {
     PuikBadge,
   },
   template: `
-    <puik-badge>Lorem ipsum</puik-badge>
+    <puik-badge variant="info">Status</puik-badge>
+    <puik-badge>Status</puik-badge>
+    <puik-badge variant="danger">Status</puik-badge>
+    <puik-badge variant="warning">Status</puik-badge>
   `,
 })
 
-Success.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet-->
-      <puik-badge variant="success">
-        The text of the badge
-      </puik-badge>
-
-      <!--HTML/CSS Snippet-->
-      <div class="puik-badge" class="puik-badge--success">
-        The text of the badge
-      </div>
-      `,
-      language: 'html',
-    },
-  },
-}
-
-export const Warning: Story = () => ({
-  components: {
-    PuikBadge,
-  },
-  template: `
-    <puik-badge variant="warning">Lorem ipsum</puik-badge>
-  `,
-})
-
-Warning.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet-->
-      <puik-badge variant="warning">
-        The text of the badge
-      </puik-badge>
-
-      <!--HTML/CSS Snippet-->
-      <div class="puik-badge" class="puik-badge--warning">
-        The text of the badge
-      </div>
-      `,
-      language: 'html',
-    },
-  },
-}
-
-export const Info: Story = () => ({
-  components: {
-    PuikBadge,
-  },
-  template: `
-    <puik-badge variant="info">Lorem ipsum</puik-badge>
-  `,
-})
-
-Info.parameters = {
+BadgeVariants.parameters = {
   docs: {
     source: {
       code: `
       <!--VueJS Snippet-->
       <puik-badge variant="info">
-        The text of the badge
+        Status
+      </puik-badge>
+      <puik-badge variant="success">
+        Status
+      </puik-badge>
+      <puik-badge variant="danger">
+        Status
+      </puik-badge>
+      <puik-badge variant="warning">
+        Status
       </puik-badge>
 
       <!--HTML/CSS Snippet-->
       <div class="puik-badge" class="puik-badge--info">
-        The text of the badge
+        Status
       </div>
-      `,
-      language: 'html',
-    },
-  },
-}
-
-export const Danger: Story = () => ({
-  components: {
-    PuikBadge,
-  },
-  template: `
-    <puik-badge variant="danger">Lorem ipsum</puik-badge>
-  `,
-})
-
-Danger.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet-->
-      <puik-badge variant="danger">
-        The text of the badge
-      </puik-badge>
-
-      <!--HTML/CSS Snippet-->
+      <div class="puik-badge" class="puik-badge--success">
+        Status
+      </div>
       <div class="puik-badge" class="puik-badge--danger">
-        The text of the badge
+        Status
+      </div>
+      <div class="puik-badge" class="puik-badge--warning">
+        Status
       </div>
       `,
       language: 'html',
