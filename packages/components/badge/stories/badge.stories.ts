@@ -62,10 +62,12 @@ export const BadgeVariants: Story = () => ({
     PuikBadge,
   },
   template: `
+  <div class="flex flex-row space-x-1">
     <puik-badge variant="info">Status</puik-badge>
     <puik-badge>Status</puik-badge>
     <puik-badge variant="danger">Status</puik-badge>
     <puik-badge variant="warning">Status</puik-badge>
+  </div>
   `,
 })
 
