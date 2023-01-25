@@ -22,7 +22,7 @@ export default {
     },
   },
   args: {
-    default: 'Lorem ipsum',
+    default: 'Status',
   },
 } as Meta
 
@@ -57,16 +57,22 @@ Default.parameters = {
   },
 }
 
-export const BadgeVariants: Story = () => ({
+export const BadgeVariants: Story = (args: Args, storyContext) => ({
   components: {
     PuikBadge,
   },
+  setup() {
+    const variants = storyContext.argTypes.variant.options
+    return {
+      args,
+      variants,
+    }
+  },
   template: `
   <div class="flex flex-row space-x-1">
-    <puik-badge variant="info">Status</puik-badge>
-    <puik-badge>Status</puik-badge>
-    <puik-badge variant="danger">Status</puik-badge>
-    <puik-badge variant="warning">Status</puik-badge>
+    <template v-for="(variant, i) in variants" :key="i">
+        <puik-badge :variant="variant">{{ args.default }}</puik-badge>
+      </template>
   </div>
   `,
 })
