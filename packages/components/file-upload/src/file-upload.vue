@@ -5,7 +5,7 @@ import PuikAlert from '../../alert'
 import PuikFileUploadItem from './file-upload-item.vue'
 import { fileUploadProps } from './file-upload'
 import { startUploadingItem, createUploadedItem } from './helpers/uploading'
-import type { UploadingFileProps } from './helpers/internal-types'
+import type { UploadingFileProps, FrontItem } from './helpers/internal-types'
 
 const { t } = useLocale()
 
@@ -20,10 +20,6 @@ const displayError = ref(false)
 const textAlert = ref<string>()
 const uploadingMap = new Map<number, UploadingFileProps>()
 let timeoutId: undefined | ReturnType<typeof setTimeout>
-
-interface FrontItem {
-  frontId: number
-}
 
 const state = reactive({
   closing: false,

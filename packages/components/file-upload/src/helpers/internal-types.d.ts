@@ -11,3 +11,7 @@ export interface UploadingFileProps {
     hasError: boolean
   }
 }
+
+export interface FrontItem {
+  frontId: number
+}
