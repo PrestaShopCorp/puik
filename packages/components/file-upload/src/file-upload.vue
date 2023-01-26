@@ -21,13 +21,13 @@ const textAlert = ref<string>()
 const uploadingMap = new Map<number, UploadingFileProps>()
 let timeoutId: undefined | ReturnType<typeof setTimeout>
 
-interface FileItem {
+interface FrontItem {
   frontId: number
 }
 
 const state = reactive({
   closing: false,
-  files: [] as FileItem[],
+  files: [] as FrontItem[],
   totalSizeB: 0,
 })
 
@@ -120,7 +120,7 @@ const onItemRemoved = (frontId: number) => {
   state.files.splice(index, 1)
 }
 
-function getUploadingFileProps({ frontId }: FileItem): UploadingFileProps {
+function getUploadingFileProps({ frontId }: FrontItem): UploadingFileProps {
   const item = uploadingMap.get(frontId)
   if (item === undefined) {
     throw new Error(`Missing uploading item '${frontId}'`)
