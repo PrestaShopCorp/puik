@@ -1,29 +1,11 @@
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue'
-import type { PropType } from 'vue'
-import type { UploadingFileProps } from './helpers/internal-types'
-import type { DeleteFileHandler } from './file-upload'
+import { fileUploadItemProps } from './file-upload'
 
 defineOptions({
   name: 'PuikFileUploadItem',
 })
-const props = defineProps({
-  uploading: {
-    type: Object as PropType<UploadingFileProps>,
-    required: true,
-  },
-  closing: {
-    type: Boolean,
-  },
-  deleteFileCb: {
-    type: Function as PropType<DeleteFileHandler>,
-    required: true,
-  },
-  accessibilityRemoveLabel: {
-    type: String,
-    required: true,
-  },
-})
+const props = defineProps(fileUploadItemProps)
 
 const emit = defineEmits(['removed'])
 

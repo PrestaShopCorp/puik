@@ -1,5 +1,6 @@
 import { buildProps } from '@puik/utils'
 import type { PropType } from 'vue'
+import type { UploadingFileProps } from './helpers/internal-types'
 
 export const fileUploadProps = buildProps({
   initialFiles: {
@@ -30,6 +31,24 @@ export const fileUploadProps = buildProps({
   },
   deleteFile: {
     type: Function as PropType<DeleteFileHandler>,
+    required: true,
+  },
+} as const)
+
+export const fileUploadItemProps = buildProps({
+  uploading: {
+    type: Object as PropType<UploadingFileProps>,
+    required: true,
+  },
+  closing: {
+    type: Boolean,
+  },
+  deleteFileCb: {
+    type: Function as PropType<DeleteFileHandler>,
+    required: true,
+  },
+  accessibilityRemoveLabel: {
+    type: String,
     required: true,
   },
 } as const)
