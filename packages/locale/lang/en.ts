@@ -17,8 +17,9 @@ export default {
       noResults: 'No results matched',
     },
     fileUpload: {
-      label:
+      dropzoneLabel:
         '<span class="puik-file-upload-dropzone__select" tabindex="0">Select</span> files or drop them right here',
+      errorTitle: 'Error',
     },
   },
 }

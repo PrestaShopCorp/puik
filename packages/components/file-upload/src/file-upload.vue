@@ -150,7 +150,7 @@ async function closeAll() {
             role="img"
             >upload</span
           >
-          <span v-html="t('puik.fileUpload.label')"></span>
+          <span v-html="t('puik.fileUpload.dropzoneLabel')"></span>
         </span>
         <input
           type="file"
@@ -181,7 +181,7 @@ async function closeAll() {
 
     <puik-alert
       v-if="displayError"
-      title="Erreur"
+      :title="t('puik.fileUpload.errorTitle')"
       variant="warning"
       button-label="Close"
       @click="closeAlert"
