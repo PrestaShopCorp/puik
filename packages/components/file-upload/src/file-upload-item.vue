@@ -106,22 +106,19 @@ const removeItem = async () => {
       <span class="puik-file-upload-item-footer__name">{{
         props.uploading.file.name
       }}</span>
-      <div
+      <button
+        v-if="props.uploading.status.ended && !props.closing"
         class="puik-file-upload-item-footer__close-wrapper"
+        :aria-label="props.accessibilityRemoveLabel"
         @click="removeItem"
       >
-        <button
-          v-if="props.uploading.status.ended && !props.closing"
-          class="puik-file-upload-item-footer__close-btn"
-          :aria-label="props.accessibilityRemoveLabel"
-          @click="$event.preventDefault()"
-        >
+        <span class="puik-file-upload-item-footer__close-btn">
           <span
             class="puik-file-upload-item-footer__close-icon material-icons-round"
             >cancel</span
           >
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
   </article>
 </template>
