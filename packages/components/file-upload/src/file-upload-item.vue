@@ -2,6 +2,7 @@
 import { reactive, onMounted } from 'vue'
 import type { PropType } from 'vue'
 import type { UploadingFileProps } from './helpers/internal-types'
+import type { DeleteFileHandler } from './file-upload'
 
 const props = defineProps({
   uploading: {
@@ -12,7 +13,7 @@ const props = defineProps({
     type: Boolean,
   },
   deleteFileCb: {
-    type: Function as PropType<(fileRelId: number) => Promise<boolean>>,
+    type: Function as PropType<DeleteFileHandler>,
     required: true,
   },
   accessibilityRemoveLabel: {
@@ -24,7 +25,7 @@ const props = defineProps({
 const emit = defineEmits(['removed'])
 
 const state = reactive({
-  fileRelId: null as number | null,
+  fileId: null as string | null,
   loadingIconName: null as string | null,
   image: null as { src: string } | null,
   documentIconName: null as string | null,
@@ -61,7 +62,7 @@ onMounted(() => {
 async function waitForUpload() {
   try {
     const resp = await props.uploading.uploadPromise
-    state.fileRelId = resp.fileRelId
+    state.fileId = resp.fileId
     state.loadingIconName = null
   } catch (error) {
     // On error, the file is not on the server. So it is considered as removed.
@@ -70,10 +71,8 @@ async function waitForUpload() {
 }
 
 const removeItem = async () => {
-  if (state.fileRelId === null) return
-  const deleted = await props.deleteFileCb(state.fileRelId)
-  if (!deleted)
-    throw new Error(`file: '${props.uploading.file.name}' cannot be deleted`)
+  if (state.fileId === null) return
+  await props.deleteFileCb(state.fileId)
   emit('removed', props.uploading.frontId)
 }
 </script>

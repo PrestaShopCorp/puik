@@ -10,17 +10,16 @@ function validateFileImpl(): FileValidation {
   return { valid: true }
 }
 
-function uploadFileImpl(): Promise<{ fileRelId: number }> {
-  return Promise.resolve({ fileRelId: ++seq })
+function uploadFileImpl(): Promise<{ fileId: string }> {
+  return Promise.resolve({ fileId: String(++seq) })
 }
 
-function deleteFileImpl(): Promise<boolean> {
-  return Promise.resolve(true)
+function deleteFileImpl(): Promise<void> {
+  return Promise.resolve()
 }
 
 describe('File Upload tests', () => {
   let wrapper: VueWrapper<any>
-  // const findInstance = () => wrapper.find('.puik-file-upload')
 
   const validateFile = vi.fn(validateFileImpl)
   const uploadFile = vi.fn(uploadFileImpl)
@@ -87,11 +86,11 @@ describe('File Upload tests', () => {
     factory({
       initialFiles: [
         {
-          fileRelId: ++seq,
+          fileId: String(++seq),
           file: new File(['file content'], 'file.txt', { type: 'text/plain' }),
         },
         {
-          fileRelId: ++seq,
+          fileId: String(++seq),
           file: makeImageFile(),
         },
       ],
@@ -111,7 +110,7 @@ describe('File Upload tests', () => {
     factory({
       initialFiles: [
         {
-          fileRelId: ++seq,
+          fileId: String(++seq),
           file: new File(['file content'], 'file.pdf', {
             type: 'application/pdf',
           }),

@@ -29,13 +29,13 @@ export const fileUploadProps = buildProps({
     required: true,
   },
   deleteFile: {
-    type: Function as PropType<(fileRefId: number) => Promise<boolean>>,
+    type: Function as PropType<DeleteFileHandler>,
     required: true,
   },
 } as const)
 
 export interface UploadedFile {
-  fileRelId: number
+  fileId: string
   file: File
 }
 
@@ -43,14 +43,21 @@ export interface ValidateFileAdditionalProperties {
   totalSizeB: number
 }
 
-export type UploadFileHandler = (
-  file: File,
-  options: { onUploadProgress: (progress: number) => void }
-) => Promise<{ fileRelId: number }>
-
 export type FileValidation =
   | { valid: true }
   | {
       valid: false
       errorMessage: string
     }
+
+export type UploadFileHandler = (
+  file: File,
+  options: { onUploadProgress: UploadProgressHandler }
+) => Promise<{ fileId: string }>
+
+/**
+ * @param progress is a number between 0 and 1.
+ */
+export type UploadProgressHandler = (progress: number) => void
+
+export type DeleteFileHandler = (fileId: string) => Promise<void>

@@ -1,7 +1,7 @@
 export interface UploadingFileProps {
   frontId: number
   file: File
-  uploadPromise: Promise<{ fileRelId: number }>
+  uploadPromise: Promise<{ fileId: string }>
   status: {
     /**
      * A value between 0 and 1.

@@ -15,6 +15,12 @@ export function validateFile(
   file: File,
   { totalSizeB }: ValidateFileAdditionalProperties
 ): FileValidation {
+  if (!file.type.startsWith('image/') && file.type !== 'application/pdf') {
+    return {
+      valid: false,
+      errorMessage: 'invalid file type: only images and PDF files are allowed',
+    }
+  }
   const maxFileSizeB = 1_000_000
   const maxTotalSizeB = 2_000_000
   if (file.size > maxFileSizeB) {
@@ -36,28 +42,26 @@ export function validateFile(
 export async function uploadFile(
   file: File,
   options: { onUploadProgress: (progress: number) => void }
-): Promise<{ fileRelId: number }> {
+): Promise<{ fileId: string }> {
   const stepMs = (Math.random() * 2800 + 200) / 100 // total will be between 200ms and 3 seconds
   for (let i = 1; i <= 100; ++i) {
     await wait(stepMs)
     options.onUploadProgress(i / 100)
   }
-  const fileRelId = ++seq
+  const fileId = String(++seq)
   uploadedFiles.push({
-    fileRelId,
+    fileId,
     file,
   })
   return {
-    fileRelId,
+    fileId,
   }
 }
 
-export async function deleteFile(fileRelId: number): Promise<boolean> {
-  await wait(500)
-  const index = uploadedFiles.findIndex((item) => item.fileRelId === fileRelId)
-  if (index === -1) return false
-  uploadedFiles.splice(index, 1)
-  return true
+export async function deleteFile(fileId: string): Promise<void> {
+  await wait(200)
+  const index = uploadedFiles.findIndex((item) => item.fileId === fileId)
+  if (index !== -1) uploadedFiles.splice(index, 1)
 }
 
 function wait(delayMs: number) {

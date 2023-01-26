@@ -17,7 +17,7 @@ export function createUploadedItem(
       progress: 1,
     },
     uploadPromise: Promise.resolve({
-      fileRelId: uploadedFile.fileRelId,
+      fileId: uploadedFile.fileId,
     }),
   }
 }
@@ -79,6 +79,6 @@ const uploadFile = async (options: {
   }
 
   return {
-    fileRelId: resp.fileRelId,
+    fileId: resp.fileId,
   }
 }
