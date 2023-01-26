@@ -13,7 +13,7 @@ defineOptions({
   name: 'PuikFileUpload',
 })
 const props = defineProps(fileUploadProps)
-defineExpose([closeAll])
+defineExpose({ closeAll })
 
 const dropzone = ref<null | HTMLElement>(null)
 const displayError = ref(false)
