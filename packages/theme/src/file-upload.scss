@@ -1,15 +1,30 @@
 .puik-file-upload {
   &__dropzone {
     @apply relative border border-dashed rounded cursor-pointer border-light-blue-default-border hover:border-purple-500;
-    label {
-      @apply flex items-center justify-center w-full h-16 font-bold;
-      .puik-file-upload__dropzone-icon {
-        @apply h-6 mr-2 text-font-secondary;
-      }
-    }
     input {
       @apply absolute top-0 w-full h-full opacity-0 cursor-pointer pointer-events-auto;
     }
+  }
+  &__dropzone--drag-over {
+    @apply border-purple-500;
+  }
+  &__select {
+    @apply rounded text-purple-500; // focus:outline-focus-main
+  }
+  &__dropzone:hover &__select,
+  &__dropzone:focus &__select,
+  &__dropzone--drag-over &__select {
+    @apply underline;
+  }
+  &__dropzone-btn {
+    @apply flex items-center justify-center w-full h-16 font-bold;
+    .puik-file-upload__dropzone-icon {
+      @apply h-6 mr-2 text-font-secondary;
+    }
+  }
+  &__dropzone-btn:hover,
+  &__dropzone-btn:focus {
+    outline: none;
   }
   &__items {
     @apply flex flex-wrap justify-center gap-4 sm:justify-start;
@@ -17,16 +32,6 @@
     &--full {
       @apply mt-3 px-4 pb-5;
     }
-  }
-}
-
-.puik-file-upload-dropzone {
-  &:hover &__select {
-    @apply underline;
-  }
-
-  &__select {
-    @apply rounded text-purple-500 focus:outline-focus-main;
   }
 }
 
@@ -59,12 +64,8 @@
     @apply py-2 text-center whitespace-nowrap text-ellipsis overflow-hidden w-full;
   }
 
-  &__close-wrapper {
-    @apply pointer-events-auto;
-  }
-
   &__close-btn {
-    @apply text-font-500 hover:text-font-700 focus-visible:text-font-700 text-2xl absolute top-0 -translate-y-1/2 translate-x-1/2 right-0 leading-[0px] rounded focus-visible:outline-focus-main focus-visible:ring-offset-[-1px] focus-visible:rounded;
+    @apply text-font-500 pointer-events-auto hover:text-font-700 focus-visible:text-font-700 text-2xl absolute top-0 -translate-y-1/2 translate-x-1/2 right-0 leading-[0px] rounded focus-visible:outline-focus-main focus-visible:ring-offset-[-1px] focus-visible:rounded;
   }
 
   &__close-icon {

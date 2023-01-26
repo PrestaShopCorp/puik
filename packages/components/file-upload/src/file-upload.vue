@@ -15,9 +15,11 @@ defineOptions({
 const props = defineProps(fileUploadProps)
 defineExpose({ closeAll })
 
-const dropzone = ref<null | HTMLElement>(null)
+const fileInputEl = ref<HTMLInputElement>()
 const displayError = ref(false)
 const textAlert = ref<string>()
+const isDragOver = ref(false)
+
 const uploadingMap = new Map<number, UploadingFileProps>()
 let timeoutId: undefined | ReturnType<typeof setTimeout>
 
@@ -44,26 +46,18 @@ onUnmounted(closeAlert)
 
 const onDragOver = () => {
   if (state.closing) return
-  const selectElement = dropzone.value?.querySelector(
-    '.puik-file-upload__dropzone'
-  )
-  dropzone.value?.classList.add('border-purple-500')
-  if (selectElement) selectElement.classList.add('underline')
+  isDragOver.value = true
 }
 
 const onDragLeave = () => {
-  const selectElement = dropzone.value?.querySelector(
-    '.puik-file-upload__dropzone'
-  )
-  dropzone.value?.classList.remove('border-purple-500')
-  if (selectElement) selectElement.classList.remove('underline')
+  isDragOver.value = false
 }
 
 const handleDrop = (e: Event) => {
   if (state.closing) return
   const element = e.target as HTMLInputElement
 
-  dropzone.value?.classList.remove('border-purple500')
+  isDragOver.value = false
 
   for (const file of element.files ?? []) {
     const validation = props.validateFile(file, {
@@ -124,6 +118,10 @@ function getUploadingFileProps({ frontId }: FrontItem): UploadingFileProps {
   return item
 }
 
+function openUploadDialog() {
+  fileInputEl.value?.click()
+}
+
 /**
  * Used by the parent component.
  */
@@ -137,27 +135,30 @@ async function closeAll() {
 
 <template>
   <div class="puik-file-upload">
-    <div ref="dropzone" class="puik-file-upload__dropzone">
-      <label>
-        <span>
-          <span
-            class="puik-file-upload__dropzone-icon material-icons-round"
-            aria-hidden="true"
-            role="img"
-            >upload</span
-          >
-          <span v-html="t('puik.fileUpload.dropzoneLabel')"></span>
-        </span>
-        <input
-          type="file"
-          multiple
-          :accept="props.inputAccept"
-          @change="handleDrop"
-          @dragover="onDragOver"
-          @dragleave="onDragLeave"
-          @mouseleave="onDragLeave"
-        />
-      </label>
+    <div
+      class="puik-file-upload__dropzone"
+      :class="{ 'puik-file-upload__dropzone--drag-over': isDragOver }"
+    >
+      <button class="puik-file-upload__dropzone-btn" @click="openUploadDialog">
+        <span
+          class="puik-file-upload__dropzone-icon material-icons-round"
+          aria-hidden="true"
+          role="img"
+          >upload</span
+        >
+        <span class="" v-html="t('puik.fileUpload.dropzoneLabel')"></span>
+      </button>
+      <input
+        ref="fileInputEl"
+        type="file"
+        multiple
+        :accept="props.inputAccept"
+        tabindex="-1"
+        @change="handleDrop"
+        @dragover="onDragOver"
+        @dragleave="onDragLeave"
+        @mouseleave="onDragLeave"
+      />
 
       <div
         class="puik-file-upload__items"

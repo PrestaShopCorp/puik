@@ -18,7 +18,7 @@ export default {
     },
     fileUpload: {
       dropzoneLabel:
-        '<span class="puik-file-upload-dropzone__select" tabindex="0">Select</span> files or drop them right here',
+        '<span class="puik-file-upload__select" tabindex="0">Select</span> files or drop them right here',
       errorTitle: 'Error',
     },
   },

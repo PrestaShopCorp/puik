@@ -10,10 +10,10 @@ const props = defineProps(fileUploadItemProps)
 const emit = defineEmits(['removed'])
 
 const state = reactive({
-  fileId: null as string | null,
-  loadingIconName: null as string | null,
-  image: null as { src: string } | null,
-  documentIconName: null as string | null,
+  fileId: undefined as string | undefined,
+  loadingIconName: undefined as string | undefined,
+  image: undefined as { src: string } | undefined,
+  documentIconName: undefined as string | undefined,
 })
 
 onMounted(() => {
@@ -29,7 +29,7 @@ onMounted(() => {
       false
     )
     reader.addEventListener('error', () => {
-      state.image = null
+      state.image = undefined
       state.documentIconName = 'image'
     })
     reader.readAsDataURL(props.uploading.file)
@@ -48,7 +48,7 @@ async function waitForUpload() {
   try {
     const resp = await props.uploading.uploadPromise
     state.fileId = resp.fileId
-    state.loadingIconName = null
+    state.loadingIconName = undefined
   } catch (error) {
     // On error, the file is not on the server. So it is considered as removed.
     emit('removed', props.uploading.frontId)
@@ -56,7 +56,7 @@ async function waitForUpload() {
 }
 
 const deleteItem = async () => {
-  if (state.fileId === null) return
+  if (state.fileId === undefined) return
   await props.deleteFileCb(state.fileId)
   emit('removed', props.uploading.frontId)
 }
@@ -93,16 +93,14 @@ const deleteItem = async () => {
       }}</span>
       <button
         v-if="props.uploading.status.ended && !props.closing"
-        class="puik-file-upload-item-footer__close-wrapper"
+        class="puik-file-upload-item-footer__close-btn"
         :aria-label="props.accessibilityRemoveLabel"
         @click="deleteItem"
       >
-        <span class="puik-file-upload-item-footer__close-btn">
-          <span
-            class="puik-file-upload-item-footer__close-icon material-icons-round"
-            >cancel</span
-          >
-        </span>
+        <span
+          class="puik-file-upload-item-footer__close-icon material-icons-round"
+          >cancel</span
+        >
       </button>
     </div>
   </article>
