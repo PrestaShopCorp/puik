@@ -143,6 +143,6 @@ function makeImageFile() {
 }
 
 async function waitUntilUploaded() {
-  // 'await' of uploadFile take time
+  // 'await' of uploadFile takes time
   await new Promise((resolve) => setTimeout(resolve, 50))
 }

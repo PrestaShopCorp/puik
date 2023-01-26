@@ -110,7 +110,6 @@ module.exports = {
     },
     fontSize: {
       '4xl': '2rem',
-      bodySmall: ['12px', { lineHeight: '20px' }],
     },
     screens: {
       xs: '320px',
