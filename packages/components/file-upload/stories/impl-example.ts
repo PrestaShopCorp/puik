@@ -59,7 +59,7 @@ export async function uploadFile(
 }
 
 export async function deleteFile(fileId: string): Promise<void> {
-  await wait(200)
+  await wait(350)
   const index = uploadedFiles.findIndex((item) => item.fileId === fileId)
   if (index !== -1) uploadedFiles.splice(index, 1)
 }

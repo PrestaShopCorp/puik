@@ -59,7 +59,7 @@ const onDragLeave = () => {
   if (selectElement) selectElement.classList.remove('underline')
 }
 
-const handleDrop = async (e: Event) => {
+const handleDrop = (e: Event) => {
   if (state.closing) return
   const element = e.target as HTMLInputElement
 
@@ -74,7 +74,7 @@ const handleDrop = async (e: Event) => {
       continue
     }
     state.totalSizeB += file.size
-    await addUploadingFile(file)
+    addUploadingFile(file)
   }
 
   element.value = ''
@@ -99,7 +99,7 @@ function closeAlert() {
   }
 }
 
-async function addUploadingFile(file: File) {
+function addUploadingFile(file: File) {
   const item = startUploadingItem(props.uploadFile, file, props.slowDownMs)
   uploadingMap.set(item.frontId, item)
   state.files.push({ frontId: item.frontId })
