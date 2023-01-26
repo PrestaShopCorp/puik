@@ -4,6 +4,9 @@ import type { PropType } from 'vue'
 import type { UploadingFileProps } from './helpers/internal-types'
 import type { DeleteFileHandler } from './file-upload'
 
+defineOptions({
+  name: 'PuikFileUploadItem',
+})
 const props = defineProps({
   uploading: {
     type: Object as PropType<UploadingFileProps>,
