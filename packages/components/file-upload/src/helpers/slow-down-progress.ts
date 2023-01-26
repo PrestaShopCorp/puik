@@ -1,33 +1,37 @@
+/**
+ * This function takes a `progressHandler` and provides a wrapper with the same
+ * signature. During the minimal duration, if the real progress is faster than
+ * the minimal duration, the wrapper calls the `progressHandler` each 100ms
+ * with a slowed down computed value.
+ */
 export function slowDownProgress(
-  cb: (progress: number) => void,
-  minDurationMs: number
+  progressHandler: (progress: number) => void,
+  slowDownMs: number
 ): (progress: number) => void {
-  if (minDurationMs === 0) {
-    return cb
-  }
+  if (slowDownMs === 0) return progressHandler
 
   const startTime = Date.now()
 
-  let maxProgress = 0
+  let realProgress = 0
+  let slowDownEnded = false
   const intervalId = setInterval(() => {
-    maxProgress = getMaxProgress()
+    const maxProgress = getMaxProgress()
     if (maxProgress >= 1) {
+      slowDownEnded = true
       clearInterval(intervalId)
-    }
-    if (maxProgress < realProgress) {
-      cb(Math.min(maxProgress, 1))
+    } else if (maxProgress < realProgress) {
+      progressHandler(Math.min(maxProgress, 1))
     }
   }, 100)
 
-  let realProgress = 0
   return (progress: number) => {
     realProgress = progress
-    if (realProgress < getMaxProgress()) {
-      cb(realProgress)
+    if (slowDownEnded || realProgress < getMaxProgress()) {
+      progressHandler(realProgress)
     }
   }
 
   function getMaxProgress() {
-    return (Date.now() - startTime) / minDurationMs
+    return (Date.now() - startTime) / slowDownMs
   }
 }

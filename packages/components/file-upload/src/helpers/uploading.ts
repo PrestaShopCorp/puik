@@ -39,7 +39,7 @@ export function startUploadingItem(
   }, slowDownMs)
 
   const uploadPromise = uploadFile({
-    minDurationMs: slowDownMs,
+    slowDownMs,
     file,
     onUploadProgress,
     uploadFileCb,
@@ -64,16 +64,16 @@ export function startUploadingItem(
 }
 
 const uploadFile = async (options: {
-  minDurationMs: number
+  slowDownMs: number
   file: File
   onUploadProgress: (progress: number) => void
   uploadFileCb: UploadFileHandler
 }) => {
-  const { file, minDurationMs, onUploadProgress, uploadFileCb } = options
+  const { file, slowDownMs, onUploadProgress, uploadFileCb } = options
   const startTime = Date.now()
   const resp = await uploadFileCb(file, { onUploadProgress })
 
-  const remainingTime = startTime + minDurationMs - Date.now()
+  const remainingTime = startTime + slowDownMs - Date.now()
   if (remainingTime > 0) {
     await new Promise<void>((resolve) => setTimeout(resolve, remainingTime))
   }
