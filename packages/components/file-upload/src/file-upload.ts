@@ -17,12 +17,7 @@ export const fileUploadProps = buildProps({
     default: 1000,
   },
   validateFile: {
-    type: Function as PropType<
-      (
-        file: File,
-        additionalProperties: ValidateFileAdditionalProperties
-      ) => FileValidation
-    >,
+    type: Function as PropType<ValidateFileHandler>,
     required: true,
   },
   uploadFile: {
@@ -57,6 +52,11 @@ export interface UploadedFile {
   fileId: string
   file: File
 }
+
+export type ValidateFileHandler = (
+  file: File,
+  additionalProperties: ValidateFileAdditionalProperties
+) => FileValidation
 
 export interface ValidateFileAdditionalProperties {
   totalSizeB: number

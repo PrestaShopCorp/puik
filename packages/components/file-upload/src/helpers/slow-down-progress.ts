@@ -1,7 +1,7 @@
 /**
  * This function takes a `progressHandler` and provides a wrapper with the same
  * signature. During the minimal duration, if the real progress is faster than
- * the minimal duration, the wrapper calls the `progressHandler` each 100ms
+ * the minimal duration, then the wrapper calls `progressHandler` each 100 ms
  * with a slowed down computed value.
  */
 export function slowDownProgress(
