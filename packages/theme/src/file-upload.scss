@@ -9,7 +9,7 @@
     @apply border-purple-500;
   }
   &__select {
-    @apply rounded text-purple-500; // focus:outline-focus-main
+    @apply rounded text-purple-500;
   }
   &__dropzone:hover &__select,
   &__dropzone:focus &__select,
