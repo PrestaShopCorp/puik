@@ -2,7 +2,7 @@
 import { onUnmounted, ref, reactive, onMounted } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikAlert from '../../alert'
-import FileUploadItem from './file-upload-item.vue'
+import PuikFileUploadItem from './file-upload-item.vue'
 import { fileUploadProps } from './file-upload'
 import { startUploadingItem, createUploadedItem } from './helpers/uploading'
 import type { UploadingFileProps } from './helpers/internal-types'
@@ -167,7 +167,7 @@ async function closeAll() {
         class="puik-file-upload__items"
         :class="{ 'puik-file-upload__items--full': state?.files.length }"
       >
-        <file-upload-item
+        <puik-file-upload-item
           v-for="file in state.files"
           :key="file.frontId"
           :uploading="getUploadingFileProps(file)"
@@ -175,7 +175,7 @@ async function closeAll() {
           accessibility-remove-label="Delete image"
           :delete-file-cb="props.deleteFile"
           @removed="onItemRemoved"
-        ></file-upload-item>
+        ></puik-file-upload-item>
       </div>
     </div>
 
