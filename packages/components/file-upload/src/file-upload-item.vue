@@ -55,7 +55,7 @@ async function waitForUpload() {
   }
 }
 
-const removeItem = async () => {
+const deleteItem = async () => {
   if (state.fileId === null) return
   await props.deleteFileCb(state.fileId)
   emit('removed', props.uploading.frontId)
@@ -95,7 +95,7 @@ const removeItem = async () => {
         v-if="props.uploading.status.ended && !props.closing"
         class="puik-file-upload-item-footer__close-wrapper"
         :aria-label="props.accessibilityRemoveLabel"
-        @click="removeItem"
+        @click="deleteItem"
       >
         <span class="puik-file-upload-item-footer__close-btn">
           <span

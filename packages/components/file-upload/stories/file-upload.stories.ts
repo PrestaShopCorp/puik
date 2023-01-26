@@ -48,7 +48,7 @@ Default.args = {
   inputAccept: 'image/*, application/pdf',
   initialFiles: [
     {
-      fileId: -1,
+      fileId: '-1',
       file: new File(
         [
           `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
