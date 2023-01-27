@@ -152,7 +152,7 @@ async function closeAll() {
             role="img"
             >upload</span
           >
-          <span class="" v-html="t('puik.fileUpload.dropzoneLabel')"></span>
+          <span v-html="t('puik.fileUpload.dropzoneLabel')"></span>
         </span>
       </label>
 
