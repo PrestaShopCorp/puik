@@ -26,6 +26,10 @@
   &__dropzone-btn:focus {
     outline: none;
   }
+  &__dropzone-btn:hover &__select,
+  &__dropzone-btn:focus &__select {
+    outline: 2px solid;
+  }
   &__items {
     @apply flex flex-wrap justify-center gap-4 sm:justify-start;
 
