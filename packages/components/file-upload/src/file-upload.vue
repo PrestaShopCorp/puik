@@ -15,7 +15,6 @@ defineOptions({
 const props = defineProps(fileUploadProps)
 defineExpose({ closeAll })
 
-const fileInputEl = ref<HTMLInputElement>()
 const displayError = ref(false)
 const textAlert = ref<string>()
 const isDragOver = ref(false)
@@ -118,10 +117,6 @@ function getUploadingFileProps({ frontId }: FrontItem): UploadingFileProps {
   return item
 }
 
-function openUploadDialog() {
-  fileInputEl.value?.click()
-}
-
 /**
  * Used by the parent component.
  */
@@ -139,26 +134,28 @@ async function closeAll() {
       class="puik-file-upload__dropzone"
       :class="{ 'puik-file-upload__dropzone--drag-over': isDragOver }"
     >
-      <button class="puik-file-upload__dropzone-btn" @click="openUploadDialog">
-        <span
-          class="puik-file-upload__dropzone-icon material-icons-round"
+      <label>
+        <input
+          type="file"
+          class="puik-file-upload__input"
+          multiple
+          :accept="props.inputAccept"
           aria-hidden="true"
-          role="img"
-          >upload</span
-        >
-        <span class="" v-html="t('puik.fileUpload.dropzoneLabel')"></span>
-      </button>
-      <input
-        ref="fileInputEl"
-        type="file"
-        multiple
-        :accept="props.inputAccept"
-        tabindex="-1"
-        @change="handleDrop"
-        @dragover="onDragOver"
-        @dragleave="onDragLeave"
-        @mouseleave="onDragLeave"
-      />
+          @change="handleDrop"
+          @dragover="onDragOver"
+          @dragleave="onDragLeave"
+          @mouseleave="onDragLeave"
+        />
+        <span class="puik-file-upload__label">
+          <span
+            class="puik-file-upload__icon material-icons-round"
+            aria-hidden="true"
+            role="img"
+            >upload</span
+          >
+          <span class="" v-html="t('puik.fileUpload.dropzoneLabel')"></span>
+        </span>
+      </label>
 
       <div
         class="puik-file-upload__items"
@@ -169,7 +166,7 @@ async function closeAll() {
           :key="file.frontId"
           :uploading="getUploadingFileProps(file)"
           :closing="state.closing"
-          accessibility-remove-label="Delete image"
+          :accessibility-remove-label="t('puik.fileUpload.removeLabel')"
           :delete-file-cb="props.deleteFile"
           @removed="onItemRemoved"
         ></puik-file-upload-item>
@@ -177,7 +174,7 @@ async function closeAll() {
     </div>
 
     <puik-alert
-      v-if="displayError"
+      v-show="displayError"
       :title="t('puik.fileUpload.errorTitle')"
       variant="warning"
       button-label="Close"

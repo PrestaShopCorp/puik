@@ -20,6 +20,7 @@ export default {
       dropzoneLabel:
         '<span class="puik-file-upload__select">Select</span> files or drop them right here',
       errorTitle: 'Error',
+      removeLabel: 'Delete image',
     },
   },
 }
