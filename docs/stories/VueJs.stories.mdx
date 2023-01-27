@@ -37,16 +37,16 @@ $ pnpm install @prestashopcorp/puik
 
 #### Auto import (recommended)
 
-First you need to install `unplugin-vue-components`
+First you need to install `unplugin-vue-components` & `unplugin-auto-import`
 
 ```sh
-$ npm install -D unplugin-vue-components
+$ npm install -D unplugin-vue-components unplugin-auto-import
 
 # Yarn
-$ yarn add unplugin-vue-components -D
+$ yarn add unplugin-vue-components unplugin-auto-import -D
 
 # pnpm
-$ pnpm install unplugin-vue-components -D
+$ pnpm install unplugin-vue-components unplugin-auto-import -D
 ```
 
 Then add the code below in your vite.config file
@@ -54,12 +54,16 @@ Then add the code below in your vite.config file
 ```typescript
 import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 import { PuikResolver } from '@prestashopcorp/puik'
 
 export default defineConfig({
   plugins: [
     // ...
     Components({
+      resolvers: [PuikResolver()],
+    }),
+    AutoImport({
       resolvers: [PuikResolver()],
     }),
   ],
