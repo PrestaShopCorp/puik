@@ -19,14 +19,14 @@ const displayError = ref(false)
 const textAlert = ref<string>()
 const isDragOver = ref(false)
 
-const uploadingMap = new Map<number, UploadingFileProps>()
-let timeoutId: undefined | ReturnType<typeof setTimeout>
-
 const state = reactive({
   closing: false,
   files: [] as FrontItem[],
   totalSizeB: 0,
 })
+
+const uploadingMap = new Map<number, UploadingFileProps>()
+let timeoutId: undefined | ReturnType<typeof setTimeout>
 
 onMounted(() => {
   for (const uploadedFile of props.initialFiles ?? []) {
@@ -158,7 +158,7 @@ async function closeAll() {
 
       <div
         class="puik-file-upload__items"
-        :class="{ 'puik-file-upload__items--full': state?.files.length }"
+        :class="{ 'puik-file-upload__items--full': state.files.length }"
       >
         <puik-file-upload-item
           v-for="file in state.files"
