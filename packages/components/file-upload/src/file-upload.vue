@@ -140,7 +140,6 @@ async function closeAll() {
           class="puik-file-upload__input"
           multiple
           :accept="props.inputAccept"
-          aria-hidden="true"
           @change="handleDrop"
           @dragover="onDragOver"
           @dragleave="onDragLeave"
