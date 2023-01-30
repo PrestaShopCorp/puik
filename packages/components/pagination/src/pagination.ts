@@ -11,18 +11,11 @@ export enum PaginationVariantEnum {
 
 const paginationVariants = Object.values(PaginationVariantEnum) as string[]
 
-const itemsPerPage = [5, 10, 15]
-
-export interface PaginationModel {
-  page: number
-  itemPerPage: number
-}
-
 export const paginationProps = buildProps({
   modelValue: {
-    type: Object as PropType<PaginationModel>,
+    type: Number,
     required: false,
-    default: () => ({ page: 1, itemPerPage: itemsPerPage[0] }),
+    default: 1,
   },
   variant: {
     type: String as PropType<PaginationVariantEnum>,
@@ -30,18 +23,19 @@ export const paginationProps = buildProps({
     values: paginationVariants,
     default: PaginationVariantEnum.medium,
   },
-  maxPage: {
-    type: Number,
-    required: true,
-  },
-  itemsPerPage: {
-    type: Array as PropType<number[]>,
-    required: false,
-    default: () => itemsPerPage,
-  },
   totalItem: {
     type: Number,
     required: true,
+  },
+  maxPage: {
+    type: Number,
+    required: false,
+    default: undefined,
+  },
+  itemCount: {
+    type: Number,
+    required: false,
+    default: undefined,
   },
 } as const)
 
