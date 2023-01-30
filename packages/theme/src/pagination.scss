@@ -1,0 +1,21 @@
+.puik-pagination {
+  @apply px-2;
+
+  &__description {
+    @apply font-secondary text-sm;
+  }
+
+  .puik-pagination__button {
+    @apply px-3;
+
+    &--previous {
+      @apply mr-2;
+    }
+  }
+
+  &--small {
+    .puik-pagination__description {
+      @apply mr-4;
+    }
+  }
+}

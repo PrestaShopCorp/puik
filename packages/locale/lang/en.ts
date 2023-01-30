@@ -16,5 +16,12 @@ export default {
       searchPlaceholder: 'Search',
       noResults: 'No results matched',
     },
+    pagination: {
+      ariaLabel: 'Pagination navigation',
+      goTo: 'Go to page {page}',
+      small: {
+        label: 'Page {page} to {maxPage}',
+      },
+    },
   },
 }
