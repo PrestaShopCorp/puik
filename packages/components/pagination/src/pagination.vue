@@ -6,38 +6,66 @@
     :aria-label="t('puik.pagination.ariaLabel')"
   >
     <span class="puik-pagination__description">
-      {{ t(labelTranslationPath, { page: currentPagination.page, maxPage }) }}
+      {{ description }}
     </span>
 
     <PuikButton
-      class="puik-pagination__button puik-pagination__button--previous"
-      variant="tertiary"
-      :disabled="currentPagination.page === 1"
       :aria-label="
         t('puik.pagination.goTo', { page: currentPagination.page - 1 })
       "
+      :disabled="currentPagination.page === 1"
+      class="puik-pagination__button puik-pagination__button--previous"
+      left-icon="keyboard_arrow_left"
+      variant="tertiary"
       @click="currentPagination.page -= 1"
     >
-      <PuikIcon icon="keyboard_arrow_left" />
+      <span v-if="variant === PaginationVariantEnum.large">
+        {{ t('puik.pagination.previous') }}
+      </span>
     </PuikButton>
 
+    <div
+      v-if="variant === PaginationVariantEnum.large"
+      class="puik-pagination--large__container"
+    >
+      <PuikSelect
+        v-model="currentPagination.itemPerPage"
+        class="puik-pagination--large__select"
+      >
+        <PuikOption
+          v-for="(item, index) in itemsPerPage"
+          :key="`puik-pagination-large-item-${index}`"
+          :value="item"
+        >
+          {{ item }}
+        </PuikOption>
+      </PuikSelect>
+
+      <span class="puik-pagination--large__label">
+        {{ t('puik.pagination.large.label', { maxPage }) }}
+      </span>
+    </div>
+
     <PuikButton
-      class="puik-pagination__button puik-pagination__button--next"
-      variant="tertiary"
-      :disabled="currentPagination.page === maxPage"
       :aria-label="
         t('puik.pagination.nextPage', { page: currentPagination.page + 1 })
       "
+      :disabled="currentPagination.page === maxPage"
+      class="puik-pagination__button puik-pagination__button--next"
+      right-icon="keyboard_arrow_right"
+      variant="tertiary"
       @click="currentPagination.page += 1"
     >
-      <PuikIcon icon="keyboard_arrow_right" />
+      <span v-if="variant === PaginationVariantEnum.large">
+        {{ t('puik.pagination.next') }}
+      </span>
     </PuikButton>
   </nav>
 </template>
 
 <script setup lang="ts">
 import { computed, watch, reactive } from 'vue'
-import { PuikButton, PuikIcon } from '@puik/components'
+import { PuikButton, PuikIcon, PuikSelect, PuikOption } from '@puik/components'
 import { useLocale } from '@puik/hooks'
 import { paginationProps, PaginationVariantEnum } from './pagination'
 import type { PaginationModel } from './pagination'
@@ -66,9 +94,18 @@ watch(currentPagination, () => {
   emit('update:modelValue', currentPagination)
 })
 
-const labelTranslationPath = computed(() => {
+const description = computed(() => {
   if (props.variant === PaginationVariantEnum.small)
-    return 'puik.pagination.small.label'
+    return t('puik.pagination.small.description', {
+      page: currentPagination.page,
+      maxPage: props.maxPage,
+    })
+
+  if (props.variant === PaginationVariantEnum.large)
+    return t('puik.pagination.large.description', {
+      totalItem: props.totalItem,
+    })
+
   return ''
 })
 </script>

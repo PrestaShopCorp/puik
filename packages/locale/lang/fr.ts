@@ -2,10 +2,14 @@ export default {
   name: 'fr',
   puik: {
     pagination: {
-      ariaLabel: 'Pagination',
-      goTo: 'Aller à la Page {page}',
+      ariaLabel: 'Pagination navigation',
+      goTo: 'Go to page {page}',
       small: {
-        label: 'Page {page} to {maxPage}',
+        description: 'Page {page} to {maxPage}',
+      },
+      large: {
+        description: '{totalItem} results',
+        label: 'To {maxPage} pages',
       },
     },
   },

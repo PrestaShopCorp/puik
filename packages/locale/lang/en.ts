@@ -19,8 +19,14 @@ export default {
     pagination: {
       ariaLabel: 'Pagination navigation',
       goTo: 'Go to page {page}',
+      previous: 'Previous',
+      next: 'Next',
       small: {
-        label: 'Page {page} to {maxPage}',
+        description: 'Page {page} to {maxPage}',
+      },
+      large: {
+        description: '{totalItem} results',
+        label: 'To {maxPage} pages',
       },
     },
   },

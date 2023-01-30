@@ -1,8 +1,8 @@
 .puik-pagination {
-  @apply px-2;
+  @apply px-2 w-max;
 
   &__description {
-    @apply font-secondary text-sm;
+    @apply font-secondary text-sm mr-4;
   }
 
   .puik-pagination__button {
@@ -16,6 +16,28 @@
   &--small {
     .puik-pagination__description {
       @apply mr-4;
+    }
+    .puik-button__right-icon {
+      @apply ml-0;
+    }
+    .puik-button__left-icon {
+      @apply mr-0;
+    }
+  }
+
+  &--large {
+    @apply flex flex-row items-center;
+
+    &__container {
+      @apply flex flex-row items-center mr-2;
+    }
+
+    &__label {
+      @apply font-secondary text-sm;
+    }
+
+    &__select {
+      @apply mt-0 mr-2 w-[71px];
     }
   }
 }
