@@ -358,7 +358,7 @@ Large.parameters = {
   },
 }
 
-export const Large: Story = () => ({
+export const Mobile: Story = () => ({
   components: {
     PuikPagination,
   },
@@ -366,10 +366,10 @@ export const Large: Story = () => ({
     const page = ref(1)
     return { args, page }
   },
-  template: `<puik-pagination v-model="page" variant="large" v-bind="args"></puik-pagination>`,
+  template: `<puik-pagination v-model="page" variant="mobile" v-bind="args"></puik-pagination>`,
 })
 
-Large.parameters = {
+Mobile.parameters = {
   docs: {
     source: {
       code: `
