@@ -30,7 +30,7 @@
       >
         <span
           v-if="variant === PaginationVariantEnum.large"
-          class="puik-pagination__button-label"
+          class="puik-pagination__previous-button-text"
         >
           {{ t('puik.pagination.previous') }}
         </span>
@@ -48,8 +48,8 @@
             :class="{
               'puik-pagination__button--active': page === 1,
             }"
-            variant="tertiary"
             class="puik-pagination__button puik-pagination__pager-button"
+            variant="tertiary"
             @click="page = 1"
           >
             1
@@ -121,7 +121,7 @@
         >
           <PuikOption
             v-for="index in maxPage"
-            :key="`puik-pagination-large-item-${index}`"
+            :key="`puik-pagination-large-option-${index}`"
             :value="index"
           >
             {{ index }}
@@ -144,7 +144,7 @@
       >
         <span
           v-if="variant === PaginationVariantEnum.large"
-          class="puik-pagination__button-label"
+          class="puik-pagination__next-button-text"
         >
           {{ t('puik.pagination.next') }}
         </span>
