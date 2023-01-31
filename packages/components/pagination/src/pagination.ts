@@ -29,13 +29,12 @@ export const paginationProps = buildProps({
   },
   maxPage: {
     type: Number,
-    required: false,
-    default: undefined,
+    required: true,
   },
   itemCount: {
     type: Number,
     required: false,
-    default: undefined,
+    default: 0,
   },
 } as const)
 

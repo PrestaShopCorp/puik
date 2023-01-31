@@ -2,21 +2,25 @@ export default {
   name: 'fr',
   puik: {
     pagination: {
-      ariaLabel: 'Pagination navigation',
-      goTo: 'Go to page {page}',
-      previous: 'Previous',
-      next: 'Next',
+      ariaLabel: 'Pagination',
+      goTo: 'Aller à la page {page}',
+      previous: 'Précédent',
+      next: 'Suivante',
       small: {
-        label: 'Page {page} to {maxPage}',
+        label: 'Page {page} à {maxPage}',
+      },
+      medium: {
+        label: '{totalItem} résultats',
       },
       large: {
-        label: '{totalItem} results',
-        choosePage: 'Select page',
-        maxPage: 'To {maxPage} pages',
+        label: '{totalItem} résultats',
+        choosePage: 'Selectionner page',
+        maxPage: 'Sur {maxPage} pages',
       },
       mobile: {
-        label: 'You saw {itemCount} products out of {totalItem}.',
-        button: 'Load more',
+        label:
+          'Vous visualisez {itemCount} produits sur un total de {totalItem}.',
+        button: 'Charger plus',
       },
     },
   },

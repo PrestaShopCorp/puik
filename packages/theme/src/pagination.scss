@@ -1,55 +1,82 @@
 .puik-pagination {
-  @apply px-2 w-max;
+  @apply px-2 flex flex-row items-center w-max;
 
-  &__label {
-    @apply font-secondary text-sm mr-4;
+  &__previous-button,
+  &__next-button {
+    @apply mx-1;
   }
 
-  .puik-pagination__button {
-    @apply px-3;
+  .puik-button__left-icon {
+    @apply ml-0;
+  }
 
-    &--previous {
-      @apply mr-2;
-    }
+  .puik-button__right-icon {
+    @apply mr-0;
+  }
+
+  &__label {
+    @apply mr-2 font-secondary text-sm;
   }
 
   &--small {
-    .puik-pagination__label {
-      @apply mr-4;
+    .puik-pagination__previous-button {
+      @apply pl-2 pr-1;
     }
-    .puik-button__right-icon {
-      @apply ml-0;
+
+    .puik-pagination__next-button {
+      @apply pl-1 pr-2;
     }
-    .puik-button__left-icon {
-      @apply mr-0;
+  }
+
+  &--medium {
+    .puik-pagination__previous-button {
+      @apply pl-3 pr-1;
+    }
+
+    .puik-pagination__next-button {
+      @apply pl-1 pr-3;
+    }
+
+    &__container {
+      @apply flex flex-row;
+
+      .puik-pagination__pager {
+        @apply flex flex-row items-baseline;
+
+        &-item {
+          @apply mx-1;
+        }
+      }
     }
   }
 
   &--large {
-    @apply flex flex-row items-center;
-
     &__container {
-      @apply flex flex-row items-center mr-2;
-    }
+      @apply flex flex-row items-center;
 
-    &__max-page {
-      @apply font-secondary text-sm;
-    }
+      .puik-pagination--large__select {
+        @apply w-[100px];
+      }
 
-    &__label {
-      @apply font-secondary text-sm;
+      .puik-select__wrapper {
+        @apply mt-0;
+      }
     }
 
     &__select {
-      @apply mt-0 mr-2 w-[71px];
+      @apply mr-2;
+    }
+
+    &__max-page {
+      @apply mr-2 font-secondary text-sm;
     }
   }
 
   &--mobile {
-    @apply flex flex-col items-center;
+    @apply flex flex-col;
 
     .puik-pagination__label {
-      @apply mr-0 mb-2;
+      @apply mb-2 font-secondary text-sm;
     }
   }
 }
