@@ -18,13 +18,17 @@
     @apply mr-2 font-secondary text-sm;
   }
 
+  &__button--active {
+    @apply border-2 border-primary-purple;
+  }
+
   &--small {
     .puik-pagination__previous-button {
-      @apply pl-2 pr-1;
+      @apply pl-3 pr-1;
     }
 
     .puik-pagination__next-button {
-      @apply pl-1 pr-2;
+      @apply pl-1 pr-3;
     }
   }
 

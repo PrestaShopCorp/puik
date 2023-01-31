@@ -36,9 +36,17 @@ export const paginationProps = buildProps({
     required: false,
     default: 0,
   },
+  label: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  mobileButtonLabel: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
-
-export const paginationEmits = ['update:modelValue']
 
 export type PaginationProps = ExtractPropTypes<typeof paginationProps>
 

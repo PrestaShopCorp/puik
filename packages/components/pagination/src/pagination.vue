@@ -5,20 +5,18 @@
     role="navigation"
     :aria-label="t('puik.pagination.ariaLabel')"
   >
-    <slot name="label">
-      <span v-if="totalItem !== 0" class="puik-pagination__label">
-        {{ label }}
-      </span>
-    </slot>
+    <span v-if="totalItem !== 0" class="puik-pagination__label">
+      {{ computedLabel }}
+    </span>
 
     <PuikButton
       v-if="variant === PaginationVariantEnum.mobile"
       variant="tertiary"
-      class="puik-pagination__load-more-button puik-pagination__button"
+      class="puik-pagination--mobile__load-more-button puik-pagination__button"
       fluid
       @click="page += 1"
     >
-      {{ t('puik.pagination.mobile.button') }}
+      {{ mobileButtonLabelComputed }}
     </PuikButton>
 
     <div v-else class="puik-pagination--medium__container">
@@ -160,14 +158,14 @@ defineOptions({
 const props = defineProps(paginationProps)
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number): void
-  (e: 'load-more', page): void
 }>()
 
 const { t } = useLocale()
 
 const page = useVModel(props, 'modelValue', emit)
 
-const label = computed(() => {
+const computedLabel = computed(() => {
+  if (props.label) return props.label
   const path = `puik.pagination.${props.variant}.label`
 
   switch (props.variant) {
@@ -191,6 +189,10 @@ const label = computed(() => {
       })
   }
 })
+
+const mobileButtonLabelComputed = computed(
+  () => props.mobileButtonLabel ?? t('puik.pagination.mobile.button')
+)
 
 const pager = computed(() => {
   const maxPagesDisplayed = 5
