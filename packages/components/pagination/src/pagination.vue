@@ -42,8 +42,12 @@
       >
         <li class="puik-pagination__pager-item">
           <PuikButton
+            :aria-current="page === 1"
             :aria-label="t('puik.pagination.goTo', { page: 1 })"
             :disabled="totalItem === 0"
+            :class="{
+              'puik-pagination__button--active': page === 1,
+            }"
             variant="tertiary"
             class="puik-pagination__button puik-pagination__pager-button"
             @click="page = 1"
@@ -90,10 +94,14 @@
 
         <li class="puik-pagination__pager-item">
           <PuikButton
+            :aria-current="page === maxPage"
             :aria-label="t('puik.pagination.goTo', { page: maxPage })"
             :disabled="totalItem === 0"
-            variant="tertiary"
+            :class="{
+              'puik-pagination__button--active': page === maxPage,
+            }"
             class="puik-pagination__button puik-pagination__pager-button"
+            variant="tertiary"
             @click="page = maxPage"
           >
             {{ maxPage }}
@@ -148,7 +156,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useVModel } from '@vueuse/core'
-import { PuikButton, PuikSelect, PuikOption } from '@puik/components'
+import { PuikSelect, PuikOption } from '@puik/components/select'
+import { PuikButton } from '@puik/components/button'
 import { useLocale } from '@puik/hooks'
 import { paginationProps, PaginationVariantEnum } from './pagination'
 defineOptions({

@@ -9,7 +9,9 @@ export enum PaginationVariantEnum {
   large = 'large',
 }
 
-const paginationVariants = Object.values(PaginationVariantEnum) as string[]
+export const paginationVariants = Object.values(
+  PaginationVariantEnum
+) as string[]
 
 export const paginationProps = buildProps({
   modelValue: {
