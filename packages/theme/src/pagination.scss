@@ -55,10 +55,10 @@
   }
 
   &--large {
-    &__container {
+    .puik-pagination__select-container {
       @apply flex flex-row items-center;
 
-      .puik-pagination--large__select {
+      .puik-pagination__select {
         @apply w-[100px];
       }
 

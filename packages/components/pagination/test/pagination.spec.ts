@@ -251,7 +251,7 @@ describe('Pagination tests', () => {
   it('should click page change active class and aria-current', async () => {
     factory({ ...propsData, variant: PaginationVariantEnum.large })
 
-    const findSelect = () => wrapper.find('.puik-pagination--large__select')
+    const findSelect = () => wrapper.find('.puik-pagination__select')
     const findAllOptions = () => wrapper.findAllComponents(PuikOption)
 
     // Click first pager button
