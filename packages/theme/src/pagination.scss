@@ -1,6 +1,10 @@
 .puik-pagination {
   @apply px-2 flex flex-row items-center w-max;
 
+  &__content {
+    @apply flex flex-row;
+  }
+
   &__previous-button,
   &__next-button {
     @apply mx-1;
@@ -41,15 +45,11 @@
       @apply pl-1 pr-3;
     }
 
-    &__container {
-      @apply flex flex-row;
+    .puik-pagination__pager {
+      @apply flex flex-row items-baseline;
 
-      .puik-pagination__pager {
-        @apply flex flex-row items-baseline;
-
-        &-item {
-          @apply mx-1;
-        }
+      &-item {
+        @apply mx-1;
       }
     }
   }
@@ -67,11 +67,11 @@
       }
     }
 
-    &__select {
+    .puik-pagination__select {
       @apply mr-2;
     }
 
-    &__max-page {
+    .puik-pagination__select-max-page {
       @apply mr-2 font-secondary text-sm;
     }
   }

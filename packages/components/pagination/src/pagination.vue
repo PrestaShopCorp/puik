@@ -19,7 +19,7 @@
       {{ mobileButtonLabelComputed }}
     </puik-button>
 
-    <div v-else class="puik-pagination--medium__container">
+    <div v-else class="puik-pagination__content">
       <puik-button
         :aria-label="t('puik.pagination.previous', { page: page - 1 })"
         :disabled="page === 1 || totalItem === 0"

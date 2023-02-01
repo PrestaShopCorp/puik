@@ -84,7 +84,7 @@ Default.parameters = {
       <!--HTML/CSS Snippet-->
       <nav class="puik-pagination puik-pagination--medium" role="navigation" aria-label="Pagination navigation">
         <span class="puik-pagination__label">100 results</span>
-        <div class="puik-pagination--medium__container">
+        <div class="puik-pagination__content">
           <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__previous-button puik-pagination__button" aria-label="Previous page">
             <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
           </button>
@@ -172,7 +172,7 @@ Small.parameters = {
       <!--HTML/CSS Snippet-->
       <nav class="puik-pagination puik-pagination--small" role="navigation" aria-label="Pagination navigation">
         <span class="puik-pagination__label">Page 2 to 100</span>
-        <div class="puik-pagination--medium__container">
+        <div class="puik-pagination__content">
           <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__previous-button puik-pagination__button" aria-label="Previous page">
             <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
           </button>
@@ -214,7 +214,7 @@ Medium.parameters = {
       <!--HTML/CSS Snippet-->
       <nav class="puik-pagination puik-pagination--medium" role="navigation" aria-label="Pagination navigation">
         <span class="puik-pagination__label">100 results</span>
-        <div class="puik-pagination--medium__container">
+        <div class="puik-pagination__content">
           <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__previous-button puik-pagination__button" aria-label="Previous page">
             <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
           </button>
@@ -300,7 +300,7 @@ Large.parameters = {
       <!--HTML/CSS Snippet-->
       <nav class="puik-pagination puik-pagination--large" role="navigation" aria-label="Pagination navigation">
         <span class="puik-pagination__label">500 results</span>
-        <div class="puik-pagination--medium__container">
+        <div class="puik-pagination__content">
           <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__previous-button puik-pagination__button" aria-label="Previous page">
             <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
             <span class="puik-pagination__previous-button-text">Previous page</span>
