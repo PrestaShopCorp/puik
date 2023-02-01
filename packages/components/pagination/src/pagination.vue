@@ -9,7 +9,7 @@
       {{ computedLabel }}
     </span>
 
-    <PuikButton
+    <puik-button
       v-if="variant === PaginationVariantEnum.mobile"
       variant="tertiary"
       class="puik-pagination--mobile__load-more-button puik-pagination__button"
@@ -17,10 +17,10 @@
       @click="page += 1"
     >
       {{ mobileButtonLabelComputed }}
-    </PuikButton>
+    </puik-button>
 
     <div v-else class="puik-pagination--medium__container">
-      <PuikButton
+      <puik-button
         :aria-label="t('puik.pagination.previous', { page: page - 1 })"
         :disabled="page === 1 || totalItem === 0"
         class="puik-pagination__previous-button puik-pagination__button"
@@ -34,14 +34,14 @@
         >
           {{ t('puik.pagination.previous') }}
         </span>
-      </PuikButton>
+      </puik-button>
 
       <ul
         v-if="variant === PaginationVariantEnum.medium"
         class="puik-pagination__pager"
       >
         <li class="puik-pagination__pager-item">
-          <PuikButton
+          <puik-button
             :aria-current="page === 1"
             :aria-label="t('puik.pagination.goTo', { page: 1 })"
             :disabled="totalItem === 0"
@@ -53,7 +53,7 @@
             @click="page = 1"
           >
             1
-          </PuikButton>
+          </puik-button>
         </li>
 
         <li
@@ -69,7 +69,7 @@
           :key="index"
           class="puik-pagination__pager-item"
         >
-          <PuikButton
+          <puik-button
             :disabled="totalItem === 0"
             :aria-label="t('puik.pagination.goTo', { page: item })"
             :class="{
@@ -81,7 +81,7 @@
             @click="page = item"
           >
             {{ item }}
-          </PuikButton>
+          </puik-button>
         </li>
 
         <li
@@ -93,7 +93,7 @@
         </li>
 
         <li class="puik-pagination__pager-item">
-          <PuikButton
+          <puik-button
             :aria-current="page === maxPage"
             :aria-label="t('puik.pagination.goTo', { page: maxPage })"
             :disabled="totalItem === 0"
@@ -105,7 +105,7 @@
             @click="page = maxPage"
           >
             {{ maxPage }}
-          </PuikButton>
+          </puik-button>
         </li>
       </ul>
 
@@ -113,27 +113,27 @@
         v-if="variant === PaginationVariantEnum.large"
         class="puik-pagination__select-container"
       >
-        <PuikSelect
+        <puik-select
           v-model="page"
           :disabled="totalItem === 0"
           :aria-label="t('puik.pagination.large.choosePage')"
           class="puik-pagination__select"
         >
-          <PuikOption
+          <puik-option
             v-for="index in maxPage"
             :key="`puik-pagination-large-option-${index}`"
             :value="index"
           >
             {{ index }}
-          </PuikOption>
-        </PuikSelect>
+          </puik-option>
+        </puik-select>
 
         <span class="puik-pagination__select-max-page">
           {{ t('puik.pagination.large.maxPage', { maxPage }) }}
         </span>
       </div>
 
-      <PuikButton
+      <puik-button
         v-if="variant !== PaginationVariantEnum.mobile"
         :aria-label="t('puik.pagination.next', { page: page + 1 })"
         :disabled="page === maxPage || totalItem === 0"
@@ -148,7 +148,7 @@
         >
           {{ t('puik.pagination.next') }}
         </span>
-      </PuikButton>
+      </puik-button>
     </div>
   </nav>
 </template>
