@@ -39,11 +39,11 @@
 .puik-file-upload-item {
   @apply relative w-[166px] h-[158px] border border-light-blue-default-border rounded text-center flex justify-between flex-col items-center pointer-events-none;
 
-  &__doc-icon {
+  &__big-icon {
     @apply text-font-500;
   }
 
-  &__loading-icon {
+  &__big-icon--light {
     @apply text-font-100;
   }
 

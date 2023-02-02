@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue'
+import { reactive, onMounted, computed } from 'vue'
 import PuikIcon from '@puik/components/icon'
 import PuikProgressBar from '@puik/components/progress-bar'
 import { fileUploadItemProps } from './file-upload-item'
+import type { ComputedRef } from 'vue'
 
 defineOptions({
   name: 'PuikFileUploadItem',
@@ -13,13 +14,17 @@ const emit = defineEmits(['removed'])
 
 const state = reactive<{
   fileId?: string
-  loadingIconName?: string
+  bigIconName?: string
   image?: { src: string }
-  documentIconName?: string
-}>({})
+  isImage: ComputedRef<boolean>
+  inProgress: ComputedRef<boolean>
+}>({
+  isImage: computed(() => props.uploading.file.type.startsWith('image/')),
+  inProgress: computed(() => state.fileId === undefined),
+})
 
 onMounted(() => {
-  if (props.uploading.file.type.startsWith('image/')) {
+  if (state.isImage) {
     const reader = new FileReader()
     reader.addEventListener(
       'load',
@@ -32,16 +37,14 @@ onMounted(() => {
     )
     reader.addEventListener('error', () => {
       state.image = undefined
-      state.documentIconName = 'image'
+      state.bigIconName = 'image'
     })
     reader.readAsDataURL(props.uploading.file)
-    state.loadingIconName = 'image'
+    state.bigIconName = 'image'
   } else if (/\.(pdf)$/i.test(props.uploading.file.name)) {
-    state.loadingIconName = 'picture_as_pdf'
-    state.documentIconName = 'picture_as_pdf'
+    state.bigIconName = 'picture_as_pdf'
   } else if (/\.(doc|docx)$/i.test(props.uploading.file.name)) {
-    state.loadingIconName = 'insert_drive_file'
-    state.documentIconName = 'insert_drive_file'
+    state.bigIconName = 'insert_drive_file'
   }
   waitForUpload() // do not await
 })
@@ -50,7 +53,9 @@ async function waitForUpload() {
   try {
     const resp = await props.uploading.uploadPromise
     state.fileId = resp.fileId
-    state.loadingIconName = undefined
+    if (state.isImage) {
+      state.bigIconName = undefined
+    }
   } catch (error) {
     // On error, the file is not on the server. So it is considered as removed.
     emit('removed', props.uploading.frontId)
@@ -67,26 +72,19 @@ const deleteItem = async () => {
 <template>
   <article class="puik-file-upload-item">
     <PuikIcon
-      v-if="state.loadingIconName"
-      :icon="state.loadingIconName"
+      v-if="state.bigIconName"
+      :icon="state.bigIconName"
       font-size="96"
       node-type="span"
-      class="puik-file-upload-item__loading-icon"
+      aria-hidden="true"
+      role="img"
+      class="puik-file-upload-item__big-icon"
+      :class="{ 'puik-file-upload-item__big-icon--light': state.inProgress }"
     />
     <img
       v-else-if="state.image"
       class="puik-file-upload-item__img"
       :src="state.image.src"
-    />
-
-    <PuikIcon
-      v-else-if="state.documentIconName"
-      :icon="state.documentIconName"
-      font-size="96"
-      node-type="span"
-      aria-hidden="true"
-      role="img"
-      class="puik-file-upload-item__doc-icon"
     />
     <div class="puik-file-upload-item__footer puik-file-upload-item-footer">
       <PuikProgressBar
