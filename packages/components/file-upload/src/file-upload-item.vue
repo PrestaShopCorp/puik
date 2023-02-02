@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive, onMounted, computed } from 'vue'
+import { useEventListener } from '@vueuse/core'
 import PuikIcon from '@puik/components/icon'
 import PuikProgressBar from '@puik/components/progress-bar'
 import { fileUploadItemProps } from './file-upload-item'
@@ -26,16 +27,17 @@ const state = reactive<{
 onMounted(() => {
   if (state.isImage) {
     const reader = new FileReader()
-    reader.addEventListener(
+    useEventListener(
+      reader,
       'load',
-      function () {
+      function (this: { result: string }) {
         state.image = {
-          src: this.result as string,
+          src: this.result,
         }
       },
       false
     )
-    reader.addEventListener('error', () => {
+    useEventListener(reader, 'error', () => {
       state.image = undefined
       state.bigIconName = 'image'
     })
