@@ -13,7 +13,7 @@ defineOptions({
   name: 'PuikFileUpload',
 })
 const props = defineProps(fileUploadProps)
-defineExpose({ closeAll })
+defineExpose({ finishUploading })
 
 const displayError = ref(false)
 const textAlert = ref<string>()
@@ -120,7 +120,7 @@ function getUploadingFileProps({ frontId }: FrontItem): UploadingFileProps {
 /**
  * Used by the parent component.
  */
-async function closeAll() {
+async function finishUploading() {
   state.closing = true
   await Promise.all(
     Array.from(uploadingMap.values()).map((item) => item.uploadPromise)
