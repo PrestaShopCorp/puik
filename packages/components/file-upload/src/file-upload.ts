@@ -4,7 +4,6 @@ import {
   defaultValidateFile,
 } from './helpers/default-validation'
 import type { PropType } from 'vue'
-import type { UploadingFileProps } from './helpers/internal-types'
 
 export const fileUploadProps = buildProps({
   initialFiles: {
@@ -31,24 +30,6 @@ export const fileUploadProps = buildProps({
     type: Number,
     required: false,
     default: 1000,
-  },
-} as const)
-
-export const fileUploadItemProps = buildProps({
-  uploading: {
-    type: Object as PropType<UploadingFileProps>,
-    required: true,
-  },
-  closing: {
-    type: Boolean,
-  },
-  deleteFileCb: {
-    type: Function as PropType<DeleteFileHandler>,
-    required: true,
-  },
-  accessibilityRemoveLabel: {
-    type: String,
-    required: true,
   },
 } as const)
 

@@ -2,7 +2,7 @@
 import { reactive, onMounted } from 'vue'
 import PuikIcon from '@puik/components/icon'
 import PuikProgressBar from '@puik/components/progress-bar'
-import { fileUploadItemProps } from './file-upload'
+import { fileUploadItemProps } from './file-upload-item'
 
 defineOptions({
   name: 'PuikFileUploadItem',

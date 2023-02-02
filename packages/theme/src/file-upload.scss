@@ -59,11 +59,6 @@
 .puik-file-upload-item-footer {
   &__name {
     @apply py-2 text-center whitespace-nowrap text-ellipsis overflow-hidden w-full pointer-events-auto;
-    &:hover {
-      background-color: red;
-      text-overflow: initial;
-      overflow: visible;
-    }
   }
 
   &__close-btn {
