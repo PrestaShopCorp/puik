@@ -139,7 +139,7 @@ async function finishUploading() {
           type="file"
           class="puik-file-upload__input"
           multiple
-          :accept="props.inputAccept"
+          :accept="inputAccept"
           @change="handleDrop"
           @dragover="onDragOver"
           @dragleave="onDragLeave"
@@ -166,7 +166,7 @@ async function finishUploading() {
           :uploading="getUploadingFileProps(file)"
           :closing="state.closing"
           :accessibility-remove-label="t('puik.fileUpload.removeLabel')"
-          :delete-file-cb="props.deleteFile"
+          :delete-file-cb="deleteFile"
           @removed="onItemRemoved"
         ></puik-file-upload-item>
       </div>

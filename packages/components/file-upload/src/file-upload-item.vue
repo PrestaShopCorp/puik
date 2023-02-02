@@ -88,17 +88,17 @@ const deleteItem = async () => {
     />
     <div class="puik-file-upload-item__footer puik-file-upload-item-footer">
       <PuikProgressBar
-        v-if="!props.uploading.status.ended"
+        v-if="!uploading.status.ended"
         class="puik-file-upload-item-footer__progress"
-        :percentage="props.uploading.status.progress * 100"
+        :percentage="uploading.status.progress * 100"
       />
       <span class="puik-file-upload-item-footer__name">{{
-        props.uploading.file.name
+        uploading.file.name
       }}</span>
       <button
-        v-if="props.uploading.status.ended && !props.closing"
+        v-if="uploading.status.ended && !closing"
         class="puik-file-upload-item-footer__close-btn"
-        :aria-label="props.accessibilityRemoveLabel"
+        :aria-label="accessibilityRemoveLabel"
         @click="deleteItem"
       >
         <PuikIcon
