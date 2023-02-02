@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue'
+import PuikIcon from '@puik/components/icon'
+import PuikProgressBar from '@puik/components/progress-bar'
 import { fileUploadItemProps } from './file-upload'
 
 defineOptions({
@@ -9,12 +11,12 @@ const props = defineProps(fileUploadItemProps)
 
 const emit = defineEmits(['removed'])
 
-const state = reactive({
-  fileId: undefined as string | undefined,
-  loadingIconName: undefined as string | undefined,
-  image: undefined as { src: string } | undefined,
-  documentIconName: undefined as string | undefined,
-})
+const state = reactive<{
+  fileId?: string
+  loadingIconName?: string
+  image?: { src: string }
+  documentIconName?: string
+}>({})
 
 onMounted(() => {
   if (props.uploading.file.type.startsWith('image/')) {
@@ -64,30 +66,34 @@ const deleteItem = async () => {
 
 <template>
   <article class="puik-file-upload-item">
-    <span
+    <PuikIcon
       v-if="state.loadingIconName"
-      class="puik-file-upload-item__loading-icon material-icons-round"
-      >{{ state.loadingIconName }}</span
-    >
+      :icon="state.loadingIconName"
+      font-size="96"
+      node-type="span"
+      class="puik-file-upload-item__loading-icon"
+    />
     <img
       v-else-if="state.image"
       class="puik-file-upload-item__img"
       :src="state.image.src"
     />
-    <span
+
+    <PuikIcon
       v-else-if="state.documentIconName"
-      class="puik-file-upload-item__doc-icon material-icons-round"
+      :icon="state.documentIconName"
+      font-size="96"
+      node-type="span"
       aria-hidden="true"
       role="img"
-      >{{ state.documentIconName }}</span
-    >
+      class="puik-file-upload-item__doc-icon"
+    />
     <div class="puik-file-upload-item__footer puik-file-upload-item-footer">
-      <progress
+      <PuikProgressBar
         v-if="!props.uploading.status.ended"
         class="puik-file-upload-item-footer__progress"
-        :value="props.uploading.status.progress * 100"
-        max="100"
-      ></progress>
+        :percentage="props.uploading.status.progress * 100"
+      />
       <span class="puik-file-upload-item-footer__name">{{
         props.uploading.file.name
       }}</span>
@@ -97,10 +103,12 @@ const deleteItem = async () => {
         :aria-label="props.accessibilityRemoveLabel"
         @click="deleteItem"
       >
-        <span
-          class="puik-file-upload-item-footer__close-icon material-icons-round"
-          >cancel</span
-        >
+        <PuikIcon
+          icon="cancel"
+          font-size="24"
+          node-type="span"
+          class="puik-file-upload-item-footer__close-icon"
+        />
       </button>
     </div>
   </article>

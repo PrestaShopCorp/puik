@@ -1,10 +1,12 @@
 .puik-file-upload {
+  @apply text-sm text-gray-900;
+
   &__dropzone {
     @apply relative border border-dashed rounded cursor-pointer border-light-blue-default-border;
   }
   &__dropzone--drag-over,
   &__dropzone:hover {
-    @apply border-purple-500;
+    @apply border-primary-purple-500;
   }
   &__label {
     @apply flex items-center justify-center w-full h-16 font-bold;
@@ -13,7 +15,7 @@
     @apply h-6 mr-2 text-font-secondary;
   }
   &__select {
-    @apply rounded text-purple-500;
+    @apply rounded text-primary-purple-500;
   }
   &__input {
     @apply absolute top-0 w-full h-full opacity-0 cursor-pointer pointer-events-auto;
@@ -37,16 +39,16 @@
 .puik-file-upload-item {
   @apply relative w-[166px] h-[158px] border border-light-blue-default-border rounded text-center flex justify-between flex-col items-center pointer-events-none;
 
+  &__doc-icon {
+    @apply text-font-500;
+  }
+
   &__loading-icon {
-    @apply text-font-100 mt-1 text-8xl;
+    @apply text-font-100;
   }
 
   &__img {
     @apply w-full h-[120px] object-cover;
-  }
-
-  &__doc-icon {
-    @apply text-font-500 mt-1 text-8xl;
   }
 
   &__footer {
@@ -55,19 +57,16 @@
 }
 
 .puik-file-upload-item-footer {
-  &__progress {
-    @apply w-full h-1 rounded-full bg-font-50 overflow-hidden;
-  }
-
   &__name {
-    @apply py-2 text-center whitespace-nowrap text-ellipsis overflow-hidden w-full;
+    @apply py-2 text-center whitespace-nowrap text-ellipsis overflow-hidden w-full pointer-events-auto;
+    &:hover {
+      background-color: red;
+      text-overflow: initial;
+      overflow: visible;
+    }
   }
 
   &__close-btn {
-    @apply text-font-500 pointer-events-auto hover:text-font-700 focus-visible:text-font-700 text-2xl absolute top-0 -translate-y-1/2 translate-x-1/2 right-0 leading-[0px] rounded focus-visible:outline-focus-main focus-visible:ring-offset-[-1px] focus-visible:rounded;
-  }
-
-  &__close-icon {
-    @apply bg-white border border-white rounded-full;
+    @apply pointer-events-auto absolute top-0 -translate-y-1/2 translate-x-1/2 right-0 leading-[0px] rounded focus-visible:outline-focus-main focus-visible:ring-offset-[-1px] focus-visible:rounded bg-white border border-white text-font-500 hover:text-font-700;
   }
 }

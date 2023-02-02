@@ -1,5 +1,5 @@
 import PuikFileUpload from '../src/file-upload.vue'
-import { deleteFile, uploadFile, validateFile } from './impl-example'
+import { fakeDeleteFile, fakeUploadFile } from './impl-example'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
@@ -13,14 +13,25 @@ export default {
     inputAccept: {
       description:
         'A string value that would be transmitted to the <code>&lt;input&gt;</code> of type <code>file</code>.',
+      table: {
+        defaultValue: { summary: 'images, PDF and Word files' },
+      },
     },
     slowDownMs: {
       description:
         'A delay in milliseconds, each uploading progress bar will take this minimal amount of time before ending.',
+      table: {
+        defaultValue: { summary: 1000 },
+      },
     },
     validateFile: {
       description:
         "A function for validating the files. It is required to check the file type here because the attribute <code>accept</code> of the <code>&lt;input&gt;</code> type <code>file</code> doesn't apply on dropped files.",
+      table: {
+        defaultValue: {
+          summary: 'a function that validates the file types, and that checks',
+        },
+      },
     },
     uploadFile: {
       description:
@@ -45,7 +56,6 @@ const Template: Story = (args: Args) => ({
 export const Default = Template.bind({})
 
 Default.args = {
-  inputAccept: 'image/*, application/pdf',
   initialFiles: [
     {
       fileId: '-1',
@@ -62,8 +72,7 @@ Default.args = {
       ),
     },
   ],
-  validateFile,
-  uploadFile,
-  deleteFile,
+  uploadFile: fakeUploadFile,
+  deleteFile: fakeDeleteFile,
 }
 Default.parameters = {}

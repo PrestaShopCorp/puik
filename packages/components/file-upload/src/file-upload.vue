@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onUnmounted, ref, reactive, onMounted } from 'vue'
 import { useLocale } from '@puik/hooks'
-import PuikAlert from '../../alert'
+import PuikAlert from '@puik/components/alert'
 import PuikFileUploadItem from './file-upload-item.vue'
 import { fileUploadProps } from './file-upload'
 import { startUploadingItem, createUploadedItem } from './helpers/uploading'

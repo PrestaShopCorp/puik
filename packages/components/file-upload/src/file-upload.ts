@@ -1,4 +1,8 @@
 import { buildProps } from '@puik/utils'
+import {
+  defaultInputAccept,
+  defaultValidateFile,
+} from './helpers/default-validation'
 import type { PropType } from 'vue'
 import type { UploadingFileProps } from './helpers/internal-types'
 
@@ -9,16 +13,11 @@ export const fileUploadProps = buildProps({
   },
   inputAccept: {
     type: String,
-    required: true,
-  },
-  slowDownMs: {
-    type: Number,
-    required: false,
-    default: 1000,
+    default: defaultInputAccept,
   },
   validateFile: {
     type: Function as PropType<ValidateFileHandler>,
-    required: true,
+    default: defaultValidateFile,
   },
   uploadFile: {
     type: Function as PropType<UploadFileHandler>,
@@ -27,6 +26,11 @@ export const fileUploadProps = buildProps({
   deleteFile: {
     type: Function as PropType<DeleteFileHandler>,
     required: true,
+  },
+  slowDownMs: {
+    type: Number,
+    required: false,
+    default: 1000,
   },
 } as const)
 
