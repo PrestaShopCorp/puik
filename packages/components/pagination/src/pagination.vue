@@ -5,12 +5,13 @@
     role="navigation"
     :aria-label="t('puik.pagination.ariaLabel')"
   >
-    <span v-if="totalItem !== 0" class="puik-pagination__label">
+    <span class="puik-pagination__label">
       {{ computedLabel }}
     </span>
 
     <puik-button
       v-if="variant === PaginationVariantEnum.mobile"
+      :disabled="disabled"
       variant="tertiary"
       class="puik-pagination--mobile__load-more-button puik-pagination__button"
       fluid
@@ -22,7 +23,7 @@
     <div v-else class="puik-pagination__content">
       <puik-button
         :aria-label="t('puik.pagination.previous', { page: page - 1 })"
-        :disabled="page === 1 || totalItem === 0"
+        :disabled="page <= 1 || disabled"
         class="puik-pagination__previous-button puik-pagination__button"
         left-icon="keyboard_arrow_left"
         variant="tertiary"
@@ -37,14 +38,13 @@
       </puik-button>
 
       <ul
-        v-if="variant === PaginationVariantEnum.medium"
+        v-if="variant === PaginationVariantEnum.medium && !disabled"
         class="puik-pagination__pager"
       >
         <li class="puik-pagination__pager-item">
           <puik-button
             :aria-current="page === 1"
             :aria-label="t('puik.pagination.goTo', { page: 1 })"
-            :disabled="totalItem === 0"
             :class="{
               'puik-pagination__button--active': page === 1,
             }"
@@ -70,7 +70,6 @@
           class="puik-pagination__pager-item"
         >
           <puik-button
-            :disabled="totalItem === 0"
             :aria-label="t('puik.pagination.goTo', { page: item })"
             :class="{
               'puik-pagination__button--active': page === item,
@@ -85,18 +84,17 @@
         </li>
 
         <li
-          v-if="pager[pager.length - 1] !== maxPage - 1"
+          v-if="pager[pager.length - 1] !== maxPage - 1 && pager.length > 0"
           class="puik-pagination__pager-item"
           aria-hidden="true"
         >
           <span class="puik-pagination__pager-separator"> &hellip; </span>
         </li>
 
-        <li class="puik-pagination__pager-item">
+        <li v-if="maxPage >= 2" class="puik-pagination__pager-item">
           <puik-button
             :aria-current="page === maxPage"
             :aria-label="t('puik.pagination.goTo', { page: maxPage })"
-            :disabled="totalItem === 0"
             :class="{
               'puik-pagination__button--active': page === maxPage,
             }"
@@ -116,6 +114,7 @@
         <puik-select
           v-model="page"
           :aria-label="t('puik.pagination.large.choosePage')"
+          :disabled="disabled"
           class="puik-pagination__select"
         >
           <puik-option
@@ -135,7 +134,7 @@
       <puik-button
         v-if="variant !== PaginationVariantEnum.mobile"
         :aria-label="t('puik.pagination.next', { page: page + 1 })"
-        :disabled="page === maxPage || totalItem === 0"
+        :disabled="page >= maxPage || disabled"
         class="puik-pagination__button puik-pagination__next-button"
         right-icon="keyboard_arrow_right"
         variant="tertiary"
@@ -202,7 +201,11 @@ const mobileButtonLabelComputed = computed(
   () => props.mobileButtonLabel ?? t('puik.pagination.mobile.button')
 )
 
+const disabled = computed(() => !props.totalItem || !props.maxPage)
+
 const pager = computed(() => {
+  if (props.maxPage <= 2) return []
+
   const maxPagesDisplayed = 5
   const halfPagesDisplayed = 2
   const pages: number[] = []
@@ -210,7 +213,8 @@ const pager = computed(() => {
 
   if (page.value - halfPagesDisplayed <= 1) startPage = 2
   else if (page.value + halfPagesDisplayed > props.maxPage)
-    startPage = props.maxPage - maxPagesDisplayed
+    if (props.maxPage - maxPagesDisplayed <= 1) startPage = 2
+    else startPage = props.maxPage - maxPagesDisplayed
   else startPage = page.value - halfPagesDisplayed
 
   pages.push(startPage)
@@ -222,9 +226,6 @@ const pager = computed(() => {
   ) {
     pages.push(i)
   }
-
-  if (pages[pages.length - 1] + 1 === props.maxPage - 1)
-    pages.push(pages[pages.length - 1] + 1)
 
   return pages
 })
