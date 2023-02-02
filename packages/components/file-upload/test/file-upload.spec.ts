@@ -73,7 +73,9 @@ describe('File Upload tests', () => {
     await waitUntilUploaded()
 
     const loadingWrapper: DOMWrapper<HTMLElement, HTMLElement> =
-      itemsWrapper.find('.puik-file-upload-item__loading-icon')
+      itemsWrapper.find(
+        '.puik-file-upload-item__big-icon.puik-file-upload-item__big-icon--light'
+      )
     expect(loadingWrapper.exists()).toBe(false)
 
     const imgWrapper: DOMWrapper<HTMLElement, HTMLElement> = itemsWrapper.find(
@@ -123,8 +125,12 @@ describe('File Upload tests', () => {
 
     await waitUntilUploaded()
     const loadingWrapper: DOMWrapper<HTMLElement, HTMLElement> =
-      itemsWrapper.find('.puik-file-upload-item__doc-icon')
+      itemsWrapper.find('.puik-file-upload-item__big-icon')
     expect(loadingWrapper.exists()).toBe(true)
+
+    const loadingWrapper2: DOMWrapper<HTMLElement, HTMLElement> =
+      itemsWrapper.find('.puik-file-upload-item__big-icon--light')
+    expect(loadingWrapper2.exists()).toBe(false)
   })
 })
 
