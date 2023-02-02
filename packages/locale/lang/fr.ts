@@ -15,7 +15,7 @@ export default {
       large: {
         label: '{totalItem} résultats',
         choosePage: 'Selectionner page',
-        maxPage: 'Sur {maxPage} pages',
+        jumperDescription: 'Sur {maxPage} pages',
       },
       mobile: {
         label:

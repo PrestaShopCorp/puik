@@ -111,25 +111,24 @@
 
       <div
         v-if="variant === PaginationVariantEnum.large"
-        class="puik-pagination__select-container"
+        class="puik-pagination__jumper"
       >
         <puik-select
           v-model="page"
-          :disabled="totalItem === 0"
           :aria-label="t('puik.pagination.large.choosePage')"
           class="puik-pagination__select"
         >
           <puik-option
             v-for="index in maxPage"
-            :key="`puik-pagination-large-option-${index}`"
+            :key="`puik-pagination-option-${index}`"
             :value="index"
           >
             {{ index }}
           </puik-option>
         </puik-select>
 
-        <span class="puik-pagination__select-max-page">
-          {{ t('puik.pagination.large.maxPage', { maxPage }) }}
+        <span class="puik-pagination__jumper-description">
+          {{ t('puik.pagination.large.jumperDescription', { maxPage }) }}
         </span>
       </div>
 

@@ -30,7 +30,7 @@ export default {
       large: {
         label: '{totalItem} results',
         choosePage: 'Select page',
-        maxPage: 'To {maxPage} pages',
+        jumperDescription: 'To {maxPage} pages',
       },
       mobile: {
         label: 'You saw {itemCount} products out of {totalItem}.',

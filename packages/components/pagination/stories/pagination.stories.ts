@@ -305,7 +305,7 @@ Large.parameters = {
             <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
             <span class="puik-pagination__previous-button-text">Previous page</span>
           </button>
-          <div class="puik-pagination__select-container">
+          <div class="puik-pagination__jumper">
             <input type="hidden" hidden="" readonly="" name="" value="5" style="position: absolute; padding: 0px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px; display: none;">
             <div class="puik-select__wrapper puik-select puik-pagination__select" aria-label="Select page">
               <button id="headlessui-listbox-button-1" type="button" aria-haspopup="true" aria-expanded="false" class="puik-select__button" aria-controls="headlessui-listbox-options-2">
@@ -348,7 +348,7 @@ Large.parameters = {
                 </ul>
               </div>
             </div>
-            <span class="puik-pagination__select-max-page">To 10 pages</span>
+            <span class="puik-pagination__jumper-description">To 10 pages</span>
           </div>
           <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__next-button" aria-label="Next page">
             <span class="puik-pagination__next-button-text">Next page</span>
