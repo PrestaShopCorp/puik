@@ -9,17 +9,167 @@ styles used in the VueJs component library.
 
 ## Usage
 
-1. Include the CSS in your HTML
+1. Import the full css bundle or the css for a specific component
 
-```html
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/@prestashopcorp/puik/dist/index.css"
-/>
+```css
+/* Full bundle */
+@import '@prestashopcorp/puik/dist/index.css';
+/* Specific component */
+@import '@prestashopcorp/puik/theme/base.css';
+@import '@prestashopcorp/puik/theme/puik-button.css';
 ```
 
 2. Add the classes in your HTML
 
 ```html
 <button class="puik-button puik-button--primary">Example button</button>
+```
+
+<h1 id="design-tokens">Css Design Tokens</h1>
+
+If you want to use the design tokens used in this library you can import the full design tokens bundle
+
+```css
+@import '@prestashopcorp/puik/theme/design-tokens';
+```
+
+Or if you need specific design tokens like the colors for example you can import the specific file (specifc files are prefixed by `puik-`)
+
+```css
+@import '@prestashopcorp/puik/theme/design-tokens/puik-colors';
+```
+
+## List of available design tokens
+
+### Breakpoints
+
+```css
+:root {
+  --puik-breakpoint-xs: 320px;
+  --puik-breakpoint-sm: 640px;
+  --puik-breakpoint-md: 768px;
+  --puik-breakpoint-lg: 1024px;
+  --puik-breakpoint-xl: 1280px;
+  --puik-breakpoint-2xl: 1536px;
+}
+```
+
+### Colors
+
+```css
+:root {
+  --puik-color-primary-purple-50: #e9e6f8;
+  --puik-color-primary-purple-100: #c7c0ee;
+  --puik-color-primary-purple-200: #a296e3;
+  --puik-color-primary-purple-500: #442cc7;
+  --puik-color-primary-purple-700: #3521ba;
+  --puik-color-primary-purple-900: #1f10a6;
+
+  --puik-color-accentuation-destructive-50: #fae7e8;
+  --puik-color-accentuation-destructive-100: #f2c2c5;
+  --puik-color-accentuation-destructive-200: #ea9a9e;
+  --puik-color-accentuation-destructive-500: #d5343c;
+  --puik-color-accentuation-destructive-700: #ca272e;
+  --puik-color-accentuation-destructive-900: #ba151a;
+
+  --puik-color-accentuation-success-50: #e4f0ea;
+  --puik-color-accentuation-success-100: #bcdaca;
+  --puik-color-accentuation-success-200: #90c1a6;
+  --puik-color-accentuation-success-500: #21834d;
+  --puik-color-accentuation-success-700: #18703d;
+  --puik-color-accentuation-success-900: #0b5325;
+
+  --puik-color-accentuation-warning-50: #fff4e0;
+  --puik-color-accentuation-warning-100: #ffe3b3;
+  --puik-color-accentuation-warning-200: #ffd080;
+  --puik-color-accentuation-warning-500: #ffa000;
+  --puik-color-accentuation-warning-700: #ff8e00;
+  --puik-color-accentuation-warning-900: #ff7300;
+
+  --puik-color-accentuation-info-50: #e3eafd;
+  --puik-color-accentuation-info-100: #b9cafa;
+  --puik-color-accentuation-info-200: #8ba7f7;
+  --puik-color-accentuation-info-500: #174eef;
+  --puik-color-accentuation-info-700: #113deb;
+  --puik-color-accentuation-info-900: #0725e4;
+
+  --puik-color-font-50: #e6e8ea;
+  --puik-color-font-100: #c1c5ca;
+  --puik-color-font-200: #989ea7;
+  --puik-color-font-500: #505969;
+  --puik-color-font-700: #272e3e;
+  --puik-color-font-900: #131a26;
+
+  --puik-color-white: #fff;
+
+  --puik-color-light-blue-50: #f8fafc;
+  --puik-color-light-blue-100: #eff3f7;
+  --puik-color-light-blue-200: #e4ebf2;
+  --puik-color-light-blue-300: #d9e3ec;
+  --puik-color-light-blue-500: #c8d7e4;
+  --puik-color-light-blue-700: #bbcddd;
+  --puik-color-light-blue-900: #a7bed1;
+
+  --puik-color-focus-main: #458fff;
+  --puik-color-brand-pink: #e6006b;
+  --puik-color-brand-dark-blue: #011638;
+}
+```
+
+### Layout
+
+```css
+:root {
+  --puik-layout-gutter-mobile: 1rem;
+  --puik-layout-gutter-tablet: 1rem;
+  --puik-layout-gutter-desktop: 1.5rem;
+  --puik-layout-margin-mobile: 1rem;
+  --puik-layout-margin-tablet: 1rem;
+  --puik-layout-margin-desktop: 1.5rem;
+}
+```
+
+### Shadows
+
+```css
+:root {
+  --puik-shadow-overlay: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  --puik-shadow-sticky: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  --puik-shadow-pop-modal: 0px 12px 24px rgba(0, 0, 0, 0.1);
+}
+```
+
+### Spacing
+
+```css
+:root {
+  --puik-spacing-1: 0.25rem;
+  --puik-spacing-2: 0.5rem;
+  --puik-spacing-3: 1rem;
+  --puik-spacing-4: 1.5rem;
+  --puik-spacing-5: 2rem;
+  --puik-spacing-6: 4rem;
+  --puik-spacing-7: 6rem;
+  --puik-spacing-8: 8rem;
+}
+```
+
+### Typography
+
+```css
+:root {
+  --puik-font-family-primary: Inter, Verdana, Arial, sans-serif;
+  --puik-font-family-secondary: Roboto, Verdana, Arial, sans-serif;
+  --puik-font-family-icons: Material Icons Round;
+  --puik-font-size-body-small: 0.75rem;
+  --puik-font-size-default: 0.875rem;
+  --puik-font-size-large: 1rem;
+  --puik-font-size-h6: 0.875rem;
+  --puik-font-size-h5: 1rem;
+  --puik-font-size-h4: 1.125rem;
+  --puik-font-size-h3: 1.25rem;
+  --puik-font-size-h2: 1.5rem;
+  --puik-font-size-h1: 2rem;
+  --puik-font-size-jumbotron: 3rem;
+}
 ```
