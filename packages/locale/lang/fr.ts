@@ -17,10 +17,13 @@ export default {
         choosePage: 'Selectionner page',
         jumperDescription: 'Sur {maxPage} pages',
       },
-      mobile: {
+      loader: {
         label:
           'Vous visualisez {itemCount} produits sur un total de {totalItem}.',
         button: 'Charger plus',
+      },
+      mobile: {
+        label: 'Page {page} à {maxPage}',
       },
     },
   },

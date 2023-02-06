@@ -3,6 +3,7 @@ import type { ExtractPropTypes, PropType } from 'vue'
 import type Pagination from './pagination.vue'
 
 export enum PaginationVariantEnum {
+  loader = 'loader',
   mobile = 'mobile',
   small = 'small',
   medium = 'medium',
@@ -43,7 +44,7 @@ export const paginationProps = buildProps({
     required: false,
     default: undefined,
   },
-  mobileButtonLabel: {
+  loaderButtonLabel: {
     type: String,
     required: false,
     default: undefined,

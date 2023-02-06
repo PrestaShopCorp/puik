@@ -32,9 +32,12 @@ export default {
         choosePage: 'Select page',
         jumperDescription: 'To {maxPage} pages',
       },
-      mobile: {
+      loader: {
         label: 'You saw {itemCount} products out of {totalItem}.',
         button: 'Load more',
+      },
+      mobile: {
+        label: 'Page {page} to {maxPage}',
       },
     },
   },

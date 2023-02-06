@@ -1,11 +1,13 @@
 .puik-pagination {
   @apply px-2 flex flex-row items-center w-max;
-  &__content {
-    @apply flex flex-row;
+  &__label {
+    @apply mx-4 font-secondary text-sm;
   }
-  &__previous-button,
-  &__next-button {
-    @apply mx-1;
+  &__content {
+    @apply flex flex-row items-center;
+  }
+  &__button {
+    @apply mx-2;
   }
   .puik-button__left-icon {
     @apply ml-0;
@@ -13,13 +15,9 @@
   .puik-button__right-icon {
     @apply mr-0;
   }
-  &__label {
-    @apply mr-2 font-secondary text-sm;
-  }
-  &__button--active {
-    @apply border-2 border-primary-purple;
-  }
-  &--small {
+  &--mobile,
+  &--small,
+  &--medium {
     .puik-pagination__previous-button {
       @apply pl-3 pr-1;
     }
@@ -28,27 +26,24 @@
     }
   }
   &--medium {
-    .puik-pagination__previous-button {
-      @apply pl-3 pr-1;
+    .puik-pagination__pager-button--active {
+      @apply border-solid border-2 border-primary-purple text-primary-purple;
     }
-    .puik-pagination__next-button {
-      @apply pl-1 pr-3;
+    .puik-pagination__pager-separator {
+      @apply text-gray-500;
     }
     .puik-pagination__pager {
       @apply flex flex-row items-baseline;
-      &-item {
-        @apply mx-1;
-      }
     }
   }
   &--large {
     .puik-pagination__jumper {
-      @apply flex flex-row items-center;
+      @apply flex flex-row items-center mx-2;
       &-description {
-        @apply mr-2 font-secondary text-sm;
+        @apply mx-2 font-secondary text-sm;
       }
       .puik-pagination__select {
-        @apply w-[100px];
+        @apply mx-2 w-[100px];
       }
       .puik-select__wrapper {
         @apply mt-0;
@@ -58,10 +53,10 @@
       @apply mr-2;
     }
   }
-  &--mobile {
+  &--loader {
     @apply flex flex-col;
     .puik-pagination__label {
-      @apply mb-2 font-secondary text-sm;
+      @apply mx-0 mb-2 font-secondary text-sm;
     }
   }
 }

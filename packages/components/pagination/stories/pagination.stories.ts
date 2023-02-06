@@ -38,9 +38,9 @@ export default {
         },
       },
     },
-    mobileButtonLabel: {
+    loaderButtonLabel: {
       control: 'text',
-      description: 'Set the text used in button on mobile variant',
+      description: 'Set the text used in button on loader variant',
       table: {
         defaultValue: {
           summary: undefined,
@@ -171,7 +171,7 @@ Small.parameters = {
 
       <!--HTML/CSS Snippet-->
       <nav class="puik-pagination puik-pagination--small" role="navigation" aria-label="Pagination navigation">
-        <span class="puik-pagination__label">Page 2 to 100</span>
+        <span class="puik-pagination__label">Page 5 to 10</span>
         <div class="puik-pagination__content">
           <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__previous-button puik-pagination__button" aria-label="Previous page">
             <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
@@ -213,52 +213,55 @@ Medium.parameters = {
 
       <!--HTML/CSS Snippet-->
       <nav class="puik-pagination puik-pagination--medium" role="navigation" aria-label="Pagination navigation">
-        <span class="puik-pagination__label">100 results</span>
+        <span class="puik-pagination__label">500 results</span>
         <div class="puik-pagination__content">
           <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__previous-button puik-pagination__button" aria-label="Previous page">
             <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
           </button>
           <ul class="puik-pagination__pager">
             <li class="puik-pagination__pager-item">
-              <!--
-                State classes
-                Active: "puik-pagination__button--active"
-              -->
-              <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__pager-button" aria-current="false" aria-label="Go to page 1">
-                1
-              </button>
-            </li>
-            <li class="puik-pagination__pager-item">
-              <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button--active puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 2" aria-current="true">
-                2
-              </button>
-            </li>
-            <li class="puik-pagination__pager-item">
-              <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 3" aria-current="false">
-                3
-              </button>
-            </li>
-            <li class="puik-pagination__pager-item">
-              <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 4" aria-current="false">
-                4
-              </button>
-            </li>
-            <li class="puik-pagination__pager-item">
-              <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 5" aria-current="false">
-                5
-              </button>
-            </li>
-            <li class="puik-pagination__pager-item">
-              <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 6" aria-current="false">
-                6
+              <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-current="false" aria-label="Go to page 1">
+                 1
               </button>
             </li>
             <li class="puik-pagination__pager-item" aria-hidden="true">
               <span class="puik-pagination__pager-separator"> … </span>
             </li>
             <li class="puik-pagination__pager-item">
-              <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__pager-button" aria-current="false" aria-label="Go to page 100">
-                100
+              <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 3" aria-current="false">
+                3
+              </button>
+            </li>
+            <li class="puik-pagination__pager-item">
+              <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 4" aria-current="false">
+                4
+              </button>
+            </li>
+            <li class="puik-pagination__pager-item">
+              <!--
+                State classes
+                Active: "puik-pagination__pager-button--active"
+              -->
+              <button class="puik-button puik-button--text puik-button--md puik-pagination__pager-button--active puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 5" aria-current="true">
+                5
+              </button>
+            </li>
+            <li class="puik-pagination__pager-item">
+              <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 6" aria-current="false">
+                6
+              </button>
+            </li>
+            <li class="puik-pagination__pager-item">
+              <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 7" aria-current="false">
+                7
+              </button>
+            </li>
+            <li class="puik-pagination__pager-item" aria-hidden="true">
+              <span class="puik-pagination__pager-separator"> … </span>
+            </li>
+            <li class="puik-pagination__pager-item">
+              <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-current="false" aria-label="Go to page 10">
+                10
               </button>
             </li>
           </ul>
@@ -362,7 +365,7 @@ Large.parameters = {
   },
 }
 
-export const Mobile: Story = () => ({
+export const Loader: Story = () => ({
   components: {
     PuikPagination,
   },
@@ -370,10 +373,51 @@ export const Mobile: Story = () => ({
     const page = ref(1)
     return { args, page }
   },
-  template: `<puik-pagination v-model="page" variant="mobile" v-bind="args"></puik-pagination>`,
+  template: `<puik-pagination v-model="page" variant="loader" v-bind="args"></puik-pagination>`,
 })
 
-Mobile.parameters = {
+Loader.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet-->
+      <PuikPagination
+        v-model="page"
+        variant="loader"
+        :total-item="500"
+        :item-count="100"
+        :max-page="10"
+      ></PuikPagination>
+
+      <!--HTML/CSS Snippet-->
+      <nav class="puik-pagination puik-pagination--mobile" role="navigation" aria-label="Pagination navigation">
+        <div class="puik-pagination__content">
+          <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__previous-button puik-pagination__button" aria-label="Previous page">
+            <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
+          </button>
+          <span class="puik-pagination__label">Page 5 to 10</span>
+          <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__next-button" aria-label="Next page">
+            <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">keyboard_arrow_right</div>
+          </button>
+        </div>
+      </nav>
+      `,
+      language: 'html',
+    },
+  },
+}
+export const Loader: Story = () => ({
+  components: {
+    PuikPagination,
+  },
+  setup() {
+    const page = ref(1)
+    return { args, page }
+  },
+  template: `<puik-pagination v-model="page" variant="loader" v-bind="args"></puik-pagination>`,
+})
+
+Loader.parameters = {
   docs: {
     source: {
       code: `
@@ -387,9 +431,9 @@ Mobile.parameters = {
       ></PuikPagination>
 
       <!--HTML/CSS Snippet-->
-      <nav class="puik-pagination puik-pagination--mobile" role="navigation" aria-label="Pagination navigation">
+      <nav class="puik-pagination puik-pagination--loader" role="navigation" aria-label="Pagination navigation">
         <span class="puik-pagination__label">You saw 100 products out of 500.</span>
-        <button class="puik-button puik-button--tertiary puik-button--md puik-button--fluid puik-pagination--mobile__load-more-button puik-pagination__button">
+        <button class="puik-button puik-button--tertiary puik-button--md puik-button--fluid puik-pagination__button puik-pagination__load-more-button">
           Load more
         </button>
       </nav>

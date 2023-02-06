@@ -24,13 +24,13 @@ describe('Pagination tests', () => {
 
   const findLabel = () => wrapper.find('.puik-pagination__label')
 
-  const findMobileButton = () =>
-    wrapper.find('.puik-pagination--mobile__load-more-button')
+  const findLoaderButton = () =>
+    wrapper.find('.puik-pagination__load-more-button')
 
   const findSeparators = () =>
     wrapper.findAll('.puik-pagination__pager-separator')
 
-  const findButtons = () => wrapper.findAll('.puik-pagination__button')
+  const findButtons = () => wrapper.findAll('.puik-pagination__pager-button')
 
   const factory = (
     propsData: Record<string, any> = {},
@@ -93,6 +93,14 @@ describe('Pagination tests', () => {
     expect(findPagination().classes()).toContain('puik-pagination--mobile')
   })
 
+  it('should display a loader pagination', () => {
+    factory({
+      ...propsData,
+      variant: PaginationVariantEnum.loader,
+    })
+    expect(findPagination().classes()).toContain('puik-pagination--loader')
+  })
+
   // Generic tests
   it('should emit event when clicking on previous button', async () => {
     factory(propsData)
@@ -118,23 +126,23 @@ describe('Pagination tests', () => {
     expect(findLabel().text()).toBe(label)
   })
 
-  // Mobile tests
-  it('should render with custom button label on mobile', async () => {
-    const mobileButtonLabel = 'Custom label given to pagination'
+  // Loader tests
+  it('should render with custom button label on loader', async () => {
+    const loaderButtonLabel = 'Custom label given to pagination'
     factory({
       ...propsData,
-      variant: PaginationVariantEnum.mobile,
-      mobileButtonLabel,
+      variant: PaginationVariantEnum.loader,
+      loaderButtonLabel,
     })
-    expect(findMobileButton().text()).toBe(mobileButtonLabel)
+    expect(findLoaderButton().text()).toBe(loaderButtonLabel)
   })
 
   it('should emit event when clicking on load more button', async () => {
     factory({
       ...propsData,
-      variant: PaginationVariantEnum.mobile,
+      variant: PaginationVariantEnum.loader,
     })
-    await findMobileButton().trigger('click')
+    await findLoaderButton().trigger('click')
     await nextTick()
     expect(
       findPaginationComponent().emitted('update:modelValue')?.[0]
@@ -184,7 +192,7 @@ describe('Pagination tests', () => {
 
   it('should click page emit event', async () => {
     factory(propsData)
-    const buttonPage1 = findButtons()[1]
+    const buttonPage1 = findButtons()[0]
     await buttonPage1.trigger('click')
     await nextTick()
     expect(
@@ -210,27 +218,24 @@ describe('Pagination tests', () => {
     })
 
     const buttons = findButtons()
-    const firstPagerButton = buttons[1]
-    const middlePagerButton = buttons[4]
-    const lastPagerButton = buttons[buttons.length - 2]
-
-    const activeClass = 'puik-pagination__button--active'
-
+    const activeClass = 'puik-pagination__pager-button--active'
     const getAriaCurrent = (button) => button.attributes('aria-current')
 
     // Click first pager button
-    await buttons[1].trigger('click')
+    const firstPagerButton = buttons[0]
+    await firstPagerButton.trigger('click')
     await nextTick()
     expect(firstPagerButton.classes()).toContain(activeClass)
     expect(getAriaCurrent(firstPagerButton)).toBe('true')
 
     // Click middle pager button
-    await middlePagerButton.trigger('click')
+    await buttons[4].trigger('click')
     await nextTick()
-    expect(middlePagerButton.classes()).toContain(activeClass)
-    expect(getAriaCurrent(middlePagerButton)).toBe('true')
+    expect(buttons[3].classes()).toContain(activeClass)
+    expect(getAriaCurrent(buttons[3])).toBe('true')
 
     // Click last pager button
+    const lastPagerButton = buttons[buttons.length - 1]
     await lastPagerButton.trigger('click')
     await nextTick()
     expect(lastPagerButton.classes()).toContain(activeClass)

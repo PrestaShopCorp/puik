@@ -5,19 +5,22 @@
     role="navigation"
     :aria-label="t('puik.pagination.ariaLabel')"
   >
-    <span class="puik-pagination__label">
+    <span
+      v-if="variant !== PaginationVariantEnum.mobile"
+      class="puik-pagination__label"
+    >
       {{ computedLabel }}
     </span>
 
     <puik-button
-      v-if="variant === PaginationVariantEnum.mobile"
-      :disabled="disabled"
+      v-if="variant === PaginationVariantEnum.loader"
+      :disabled="page >= maxPage || disabled"
       variant="tertiary"
-      class="puik-pagination--mobile__load-more-button puik-pagination__button"
+      class="puik-pagination__button puik-pagination__load-more-button"
       fluid
       @click="page += 1"
     >
-      {{ mobileButtonLabelComputed }}
+      {{ loaderButtonLabelComputed }}
     </puik-button>
 
     <div v-else class="puik-pagination__content">
@@ -37,6 +40,13 @@
         </span>
       </puik-button>
 
+      <span
+        v-if="variant === PaginationVariantEnum.mobile"
+        class="puik-pagination__label"
+      >
+        {{ computedLabel }}
+      </span>
+
       <ul
         v-if="variant === PaginationVariantEnum.medium && !disabled"
         class="puik-pagination__pager"
@@ -46,10 +56,10 @@
             :aria-current="page === 1"
             :aria-label="t('puik.pagination.goTo', { page: 1 })"
             :class="{
-              'puik-pagination__button--active': page === 1,
+              'puik-pagination__pager-button--active': page === 1,
             }"
             class="puik-pagination__button puik-pagination__pager-button"
-            variant="tertiary"
+            variant="text"
             @click="page = 1"
           >
             1
@@ -72,9 +82,9 @@
           <puik-button
             :aria-label="t('puik.pagination.goTo', { page: item })"
             :class="{
-              'puik-pagination__button--active': page === item,
+              'puik-pagination__pager-button--active': page === item,
             }"
-            variant="tertiary"
+            variant="text"
             class="puik-pagination__button puik-pagination__pager-button"
             :aria-current="page === item"
             @click="page = item"
@@ -96,10 +106,10 @@
             :aria-current="page === maxPage"
             :aria-label="t('puik.pagination.goTo', { page: maxPage })"
             :class="{
-              'puik-pagination__button--active': page === maxPage,
+              'puik-pagination__pager-button--active': page === maxPage,
             }"
             class="puik-pagination__button puik-pagination__pager-button"
-            variant="tertiary"
+            variant="text"
             @click="page = maxPage"
           >
             {{ maxPage }}
@@ -132,7 +142,7 @@
       </div>
 
       <puik-button
-        v-if="variant !== PaginationVariantEnum.mobile"
+        v-if="variant !== PaginationVariantEnum.loader"
         :aria-label="t('puik.pagination.next', { page: page + 1 })"
         :disabled="page >= maxPage || disabled"
         class="puik-pagination__button puik-pagination__next-button"
@@ -176,29 +186,27 @@ const computedLabel = computed(() => {
   const path = `puik.pagination.${props.variant}.label`
 
   switch (props.variant) {
+    case PaginationVariantEnum.mobile:
     case PaginationVariantEnum.small:
       return t(path, {
         page: page.value,
         maxPage: props.maxPage,
       })
     case PaginationVariantEnum.medium:
-      return t(path, {
-        totalItem: props.totalItem,
-      })
     case PaginationVariantEnum.large:
       return t(path, {
         totalItem: props.totalItem,
       })
     default:
       return t(path, {
-        itemCount: props?.itemCount,
+        itemCount: props.itemCount,
         totalItem: props.totalItem,
       })
   }
 })
 
-const mobileButtonLabelComputed = computed(
-  () => props.mobileButtonLabel ?? t('puik.pagination.mobile.button')
+const loaderButtonLabelComputed = computed(
+  () => props.loaderButtonLabel ?? t('puik.pagination.loader.button')
 )
 
 const disabled = computed(() => !props.totalItem || !props.maxPage)
@@ -206,7 +214,7 @@ const disabled = computed(() => !props.totalItem || !props.maxPage)
 const pager = computed(() => {
   if (props.maxPage <= 2) return []
 
-  const maxPagesDisplayed = 5
+  const maxPagesDisplayed = page.value <= 3 ? 4 : 5
   const halfPagesDisplayed = 2
   const pages: number[] = []
   let startPage: number
@@ -214,7 +222,7 @@ const pager = computed(() => {
   if (page.value - halfPagesDisplayed <= 1) startPage = 2
   else if (page.value + halfPagesDisplayed > props.maxPage)
     if (props.maxPage - maxPagesDisplayed <= 1) startPage = 2
-    else startPage = props.maxPage - maxPagesDisplayed
+    else startPage = props.maxPage - maxPagesDisplayed + 1
   else startPage = page.value - halfPagesDisplayed
 
   pages.push(startPage)
