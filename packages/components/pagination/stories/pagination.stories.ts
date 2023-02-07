@@ -221,7 +221,7 @@ Medium.parameters = {
           <ul class="puik-pagination__pager">
             <li class="puik-pagination__pager-item">
               <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-current="false" aria-label="Go to page 1">
-                 1
+                1
               </button>
             </li>
             <li class="puik-pagination__pager-item" aria-hidden="true">
@@ -238,10 +238,10 @@ Medium.parameters = {
               </button>
             </li>
             <li class="puik-pagination__pager-item">
-              <!--
-                State classes
-                Active: "puik-pagination__pager-button--active"
-              -->
+            <!--
+              State classes
+              Active: "puik-pagination__pager-button--active"
+            -->
               <button class="puik-button puik-button--text puik-button--md puik-pagination__pager-button--active puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 5" aria-current="true">
                 5
               </button>
@@ -365,7 +365,7 @@ Large.parameters = {
   },
 }
 
-export const Loader: Story = () => ({
+export const Mobile: Story = () => ({
   components: {
     PuikPagination,
   },
@@ -376,14 +376,14 @@ export const Loader: Story = () => ({
   template: `<puik-pagination v-model="page" variant="loader" v-bind="args"></puik-pagination>`,
 })
 
-Loader.parameters = {
+Mobile.parameters = {
   docs: {
     source: {
       code: `
       <!--VueJS Snippet-->
       <PuikPagination
         v-model="page"
-        variant="loader"
+        variant="mobile"
         :total-item="500"
         :item-count="100"
         :max-page="10"
