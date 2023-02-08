@@ -14,7 +14,7 @@ export default {
       description:
         'A string value that would be transmitted to the <code>&lt;input&gt;</code> of type <code>file</code>.',
       table: {
-        defaultValue: { summary: 'images, PDF and Word files' },
+        defaultValue: { summary: 'image/*, application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document' },
       },
     },
     slowDownMs: {
