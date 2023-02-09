@@ -19,7 +19,6 @@
           :disabled="disabled"
           :autocomplete="autocomplete"
           :placeholder="placeholder"
-          :disabled="disabled"
           tabindex="-1"
           :readonly="open"
           type="text"
