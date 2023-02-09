@@ -54,7 +54,6 @@
             tabindex="1"
             class="puik-select__search"
             :placeholder="t('puik.select.searchPlaceholder')"
-            @keydown.stop
           >
             <template #prepend
               ><puik-icon

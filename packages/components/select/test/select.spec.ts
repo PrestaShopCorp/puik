@@ -263,10 +263,8 @@ describe('Select tests', () => {
     await findInputComponent().setValue(query)
     expect(
       findAllOptions().reduce((count, option) => {
-        return getComputedStyle(option.element).display === 'none'
-          ? ++count
-          : count
+        return option.isVisible() ? ++count : count
       }, 0)
-    ).toBe(2)
+    ).toBe(1)
   })
 })

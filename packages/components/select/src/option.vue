@@ -1,6 +1,6 @@
 <template>
   <ListboxOption
-    v-show="option.visible"
+    v-if="option.visible"
     v-slot="{ active }"
     :disabled="disabled"
     :value="option"
