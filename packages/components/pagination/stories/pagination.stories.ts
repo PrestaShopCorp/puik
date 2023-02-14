@@ -373,7 +373,7 @@ export const Mobile: Story = () => ({
     const page = ref(1)
     return { args, page }
   },
-  template: `<puik-pagination v-model="page" variant="loader" v-bind="args"></puik-pagination>`,
+  template: `<puik-pagination v-model="page" variant="mobile" v-bind="args"></puik-pagination>`,
 })
 
 Mobile.parameters = {
