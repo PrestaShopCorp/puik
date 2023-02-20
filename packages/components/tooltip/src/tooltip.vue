@@ -4,34 +4,46 @@
     tabindex="0"
     :aria-describedby="id"
     @mouseover="updateTooltip"
+    @mouseleave="start"
   >
-    <div ref="tooltipWrapper">
+    <div ref="tooltipWrapper" class="puik-tooltip__wrapper">
       <slot></slot>
     </div>
-    <div
-      v-show="!isDisabled"
-      :id="id"
-      ref="tooltip"
-      class="puik-tooltip__tip"
-      role="tooltip"
-      :style="{ 'z-index': zindex, 'max-width': maxWidth }"
+    <Transition
+      enter-from-class="puik-tooltip__transition__enter-from"
+      leave-to-class="puik-tooltip__transition__leave-to"
     >
-      <span v-if="$slots.title || title" class="puik-tooltip__tip__title"
-        ><slot name="title">{{ title }}</slot></span
+      <div
+        v-show="!isDisabled && isVisible"
+        :id="id"
+        ref="tooltip"
+        class="puik-tooltip__tip"
+        role="tooltip"
+        :style="{ 'z-index': zindex, 'max-width': maxWidth }"
       >
-      <span
-        v-if="$slots.description || description"
-        class="puik-tooltip__tip__description"
-        ><slot name="description">{{ description }}</slot></span
-      >
-      <div class="puik-tooltip__tip__arrow" data-popper-arrow></div>
-    </div>
+        <div class="puik-tooltip__tip__content">
+          <span
+            v-if="$slots.title || title"
+            class="puik-tooltip__tip__content__title"
+            ><slot name="title">{{ title }}</slot></span
+          >
+          <span
+            v-if="$slots.description || description"
+            class="puik-tooltip__tip__content__description"
+            ><slot name="description">{{ description }}</slot></span
+          >
+        </div>
+
+        <div class="puik-tooltip__tip__arrow" data-popper-arrow></div>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { createPopper } from '@popperjs/core'
+import { useTimeoutFn } from '@vueuse/core'
 import { generateId } from '@puik/utils'
 import { tooltipProps } from './tooltip'
 import type { Instance as PopperInstance } from '@popperjs/core'
@@ -41,12 +53,21 @@ defineOptions({
 
 const tooltipWrapper = ref<HTMLElement | null>(null)
 const tooltip = ref<HTMLElement | null>(null)
+const isVisible = ref(false)
 let popperInstance: PopperInstance | null = null
 const id = `puik-tooltip-${generateId()}`
 
 const props = defineProps(tooltipProps)
 
+const { start, stop, isPending } = useTimeoutFn(() => {
+  isVisible.value = false
+}, props.disappearDelay)
+
 const updateTooltip = () => {
+  if (isPending) {
+    stop()
+  }
+  isVisible.value = true
   popperInstance?.update()
 }
 

@@ -5,8 +5,9 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 describe('Tooltip tests', () => {
   let wrapper: VueWrapper<any>
-  const findTitle = () => wrapper.find('.puik-tooltip__tip__title')
-  const findDescription = () => wrapper.find('.puik-tooltip__tip__description')
+  const findTitle = () => wrapper.find('.puik-tooltip__tip__content__title')
+  const findDescription = () =>
+    wrapper.find('.puik-tooltip__tip__content__description')
   const findToolTip = () => wrapper.find('.puik-tooltip__tip')
 
   const factory = (

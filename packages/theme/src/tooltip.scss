@@ -1,22 +1,19 @@
 .puik-tooltip {
   @apply inline-flex;
-  &:focus,
-  &:hover {
-    .puik-tooltip__tip {
-      @apply opacity-100;
-    }
+
+  &__wrapper {
+    @apply w-full min-w-0;
   }
 
   &__tip {
-    @apply absolute bg-font text-white rounded px-3 py-2 font-secondary flex flex-col opacity-0 pointer-events-none transition-opacity;
-    &:hover {
-      @apply opacity-100;
-    }
-    &__title {
-      @apply relative font-bold mb-1;
-    }
-    &__description {
-      @apply relative;
+    @apply absolute bg-font text-white rounded px-3 py-2 font-secondary transition-opacity duration-300;
+
+    &__content {
+      @apply flex flex-col relative z-10;
+
+      &__title {
+        @apply font-bold mb-1;
+      }
     }
 
     &[data-popper-placement^='top'] > &__arrow {
@@ -35,6 +32,7 @@
     &__arrow {
       visibility: hidden;
     }
+
     &__arrow::before {
       @apply visible rotate-45;
       content: '';
@@ -48,5 +46,15 @@
 
   &__icon {
     @apply font-materialIcons text-font-500 hover:text-font text-base transition-colors cursor-pointer;
+  }
+
+  &__transition {
+    &__enter-from {
+      @apply opacity-0;
+    }
+
+    &__leave-to {
+      @apply opacity-0;
+    }
   }
 }

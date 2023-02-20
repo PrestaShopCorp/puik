@@ -37,6 +37,11 @@ export const tooltipProps = buildProps({
     required: false,
     default: 1000,
   },
+  disappearDelay: {
+    type: Number,
+    required: false,
+    default: 500,
+  },
 } as const)
 
 export type TooltipProps = ExtractPropTypes<typeof tooltipProps>

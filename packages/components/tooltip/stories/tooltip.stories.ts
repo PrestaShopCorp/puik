@@ -46,6 +46,15 @@ export default {
         },
       },
     },
+    disappearDelay: {
+      control: 'number',
+      description: 'Set the timer to make the tooltip disappear (in ms)',
+      table: {
+        defaultValue: {
+          summary: '500',
+        },
+      },
+    },
   },
   args: {
     title: 'Title',
