@@ -1,13 +1,14 @@
 .puik-select {
   @apply relative mt-1;
-  &__button {
-    @apply relative w-full cursor-default rounded bg-white min-h-[38px] text-left border border-light-blue-default-border hover:border-primary-purple-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-light-blue-default-border disabled:text-font-disabled;
+  &__button,
+  button {
+    @apply bg-white relative w-full cursor-default rounded min-h-[38px] text-left border border-light-blue-default-border hover:border-primary-purple-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-light-blue-default-border disabled:text-font-disabled;
     &--error {
       @apply border-accentuation-destructive-500;
     }
   }
   &__selected {
-    @apply block truncate w-full py-2 pl-3 pr-9 select-none font-secondary outline-none pointer-events-none text-font-900 placeholder:text-font-900 disabled:bg-light-blue-background disabled:placeholder:text-font-disabled;
+    @apply block truncate w-full py-2 pl-3 pr-9 bg-transparent rounded select-none font-secondary outline-none pointer-events-none text-font-900 placeholder:text-font-900 disabled:bg-light-blue-background disabled:placeholder:text-font-disabled;
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
     }

@@ -53,6 +53,7 @@
             tabindex="1"
             class="puik-select__search"
             :placeholder="t('puik.select.searchPlaceholder')"
+            :aria-label="t('puik.select.searchPlaceholder')"
           >
             <template #prepend
               ><puik-icon
