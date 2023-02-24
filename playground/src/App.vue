@@ -21,16 +21,19 @@ const buttonsList = [
     label: 'Damian',
   },
 ]
+
+const test = () => {
+  console.log('bob')
+}
 </script>
 
 <template>
   <div class="app-container">
-    <puik-button-group :selected-index="0" :buttons_list="buttonsList">
-      <!-- <puik-button :variant="'tertiary'">Button 1</puik-button>
-      <puik-button :variant="'tertiary'">Button 2</puik-button>
-      <puik-button :variant="'tertiary'">Button 3</puik-button>
-      <puik-button :variant="'tertiary'">Button 4</puik-button>
-      <puik-button :variant="'tertiary'">Button 5</puik-button> -->
+    <puik-button-group
+      :selected-index="0"
+      :buttons_list="buttonsList"
+      @puikButtonGroupClicked="test"
+    >
     </puik-button-group>
   </div>
 </template>

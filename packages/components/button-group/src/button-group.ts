@@ -17,3 +17,6 @@ export const buttonGroupProps = buildProps({
 export type ButtonGroupProps = ExtractPropTypes<typeof buttonGroupProps>
 
 export type ButtonGroupInstance = InstanceType<typeof ButtonGroup>
+
+export const buttonGroupEmits = ['puikButtonGroupClicked']
+export type ButtonGroupEmits = typeof buttonGroupEmits
