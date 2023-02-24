@@ -3,7 +3,7 @@ import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
   title: 'Components/ButtonGroup',
-  component: ButtonGroup,
+  component: PuikButtonGroup,
 } as Meta
 
 const Template: Story = (args: Args) => ({
