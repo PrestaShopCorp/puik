@@ -30,7 +30,7 @@ export const paginationProps = buildProps({
     type: Number,
     required: true,
   },
-  maxPage: {
+  itemsPerPage: {
     type: Number,
     required: true,
   },
