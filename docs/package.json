@@ -8,16 +8,16 @@
     "build": "build-storybook"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.7",
-    "@storybook/addon-a11y": "^6.5.7",
-    "@storybook/addon-actions": "^6.5.7",
-    "@storybook/addon-essentials": "^6.5.7",
-    "@storybook/addon-links": "^6.5.7",
-    "@storybook/builder-vite": "^0.1.29",
-    "babel-loader": "^8.2.3",
-    "vue-loader": "^16.8.3"
+    "@babel/core": "^7.21.0",
+    "@storybook/addon-a11y": "^6.5.16",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-vite": "^0.4.2",
+    "babel-loader": "^9.1.2",
+    "vue-loader": "^17.0.1"
   },
   "dependencies": {
-    "typescript": "^4.5.4"
+    "typescript": "^4.9.5"
   }
 }
