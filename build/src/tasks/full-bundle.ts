@@ -7,7 +7,7 @@ import DefineOptions from 'unplugin-vue-define-options/rollup'
 import esbuild from 'rollup-plugin-esbuild'
 import { parallel } from 'gulp'
 import glob from 'fast-glob'
-import { camelCase, upperFirst } from 'lodash'
+import { camelCase, upperFirst } from 'lodash-unified'
 import { version } from '../../../packages/puik/version'
 import { PuikAlias } from '../plugins/puik-alias'
 import {
