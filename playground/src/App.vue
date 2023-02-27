@@ -2,8 +2,9 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import { PuikButtonGroup } from '@puik/components'
+import type { ButtonGroupType } from '@puik/components'
 
-const buttonsList = [
+const buttonsList: Array<ButtonGroupType> = [
   {
     variant: 'primary',
     label: 'Button 1',

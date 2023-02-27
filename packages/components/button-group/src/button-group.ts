@@ -2,6 +2,10 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes } from 'vue'
 import type ButtonGroup from './button-group.vue'
 
+export type ButtonGroupType = ButtonProps &{
+  label: String
+}
+
 export const buttonGroupProps = buildProps({
   selectedIndex: {
     type: Number,
@@ -9,7 +13,7 @@ export const buttonGroupProps = buildProps({
     default: false,
   },
   buttons_list: {
-    type: Array,
+    type: Array<ButtonGroupType>,
     required: true,
   },
 } as const)
