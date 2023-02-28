@@ -22,6 +22,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Setup node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
