@@ -1,12 +1,13 @@
 <template>
   <div class="puik-button-group">
     <puik-button
-      v-for="(button_item, key) in buttons_list"
+      v-for="(button, key) in buttonListRef"
       :key="key"
-      :variant="button_item.variant"
+      :variant="button.variant"
+      :size="button.size"
       @click="puikButtonGroupClicked(key)"
     >
-      {{ button_item.label }}
+      {{ button.label }}
     </puik-button>
   </div>
 </template>
@@ -22,11 +23,31 @@ defineOptions({
 
 const props = defineProps(buttonGroupProps)
 const emit = defineEmits(buttonGroupEmits)
-const buttons_list = ref(props.buttons_list)
 
+const buttonListRef = ref(props.buttonList)
 const puikButtonGroupClicked = (key) => {
-  buttons_list.value.forEach( (btn, index) => btn.variant = (index == key) ? "primary" : "tertiary" )
+  buttonListRef.value.map(
+    (btn, index) => (btn.variant = index == key ? 'primary' : 'tertiary')
+  )
   emit('puikButtonGroupClicked')
 }
 
+// const buttonListRef = toRef(props, 'buttonList');
+// const buttonComputed = computed({
+//   get: () => buttonListRef.value,
+//   set: (value) => buttonListRef.value = value
+// });
+// const puikButtonGroupClicked = (key) => {
+//   // buttons_list.value.forEach( (btn, index) => btn.variant = (index == key) ? "primary" : "tertiary" )
+//   // buttons_list.value.map((btn, index) => btn.variant = )
+//   // for(const index in buttonList.value) {
+//     //   buttonList.value[index]['variant'] = (index == key) ? "primary" : "tertiary";
+//     //   console.log('OSKOUR DAMIAN:', buttonList.value[index]);
+//     // }
+
+//     // buttonListRef.value = buttonListRef.value.map((btn, index) => ({ ...btn, variant: (index == key) ? "primary" : "tertiary" }));
+//     // buttonListRef.value.map((btn, index) => ({ ...btn, variant: (index == key) ? "primary" : "tertiary" }));
+//     buttonComputed.value = buttonListRef.value.map((btn, index) => btn.variant = (index == key) ? "primary" : "tertiary" );
+//   emit('puikButtonGroupClicked')
+// };
 </script>

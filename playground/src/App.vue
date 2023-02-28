@@ -8,14 +8,17 @@ const buttonsList: Array<ButtonGroupType> = [
   {
     variant: 'primary',
     label: 'Button 1',
+    size: 'lg',
   },
   {
     variant: 'tertiary',
     label: 'Button 2',
+    size: 'md',
   },
   {
     variant: 'tertiary',
     label: 'Button 3',
+    size: 'sm',
   },
   {
     variant: 'primary',
@@ -32,10 +35,9 @@ const test = () => {
   <div class="app-container">
     <puik-button-group
       :selected-index="0"
-      :buttons_list="buttonsList"
+      :button-list="buttonsList"
       @puikButtonGroupClicked="test"
-    >
-    </puik-button-group>
+    />
   </div>
 </template>
 

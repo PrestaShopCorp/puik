@@ -1,19 +1,27 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type ButtonGroup from './button-group.vue'
+import type { ButtonProps } from '@puik/components'
 
-export type ButtonGroupType = ButtonProps &{
-  label: String
+export type ButtonGroupType = ButtonProps & {
+  label: string
 }
+
+// ExtractPropTypes<typeof buttonProps>
+
+// export type ButtonGroupType = {
+//   label: String,
+//   variant: String
+// }
 
 export const buttonGroupProps = buildProps({
   selectedIndex: {
     type: Number,
     required: false,
-    default: false,
+    default: 0,
   },
-  buttons_list: {
-    type: Array<ButtonGroupType>,
+  buttonList: {
+    type: [] as PropType<ButtonGroupType[]>,
     required: true,
   },
 } as const)
