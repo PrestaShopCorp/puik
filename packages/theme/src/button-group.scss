@@ -1,13 +1,16 @@
 .puik-button-group {
   .puik-button {
     @apply border border-light-blue-default-border;
-    &:first-child {
+    .puik-button__left-icon {
+      margin-right: 0;
+    }
+    &:first-of-type {
       border-top-left-radius: 0.25rem;
       border-bottom-left-radius: 0.25rem;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
-    &:last-child {
+    &:last-of-type {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       border-top-right-radius: 0.25rem;

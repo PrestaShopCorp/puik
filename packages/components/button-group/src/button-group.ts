@@ -20,6 +20,11 @@ export const buttonGroupProps = buildProps({
     required: false,
     default: 0,
   },
+  size: {
+    type: String,
+    required: false,
+    default: 'md',
+  },
   buttonList: {
     type: [] as PropType<ButtonGroupType[]>,
     required: true,

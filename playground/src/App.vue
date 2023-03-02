@@ -6,22 +6,19 @@ import type { ButtonGroupType } from '@puik/components'
 
 const buttonsList: Array<ButtonGroupType> = [
   {
-    variant: 'primary',
+    variant: 'tertiary',
     label: 'Button 1',
-    size: 'lg',
   },
   {
     variant: 'tertiary',
     label: 'Button 2',
-    size: 'md',
   },
   {
     variant: 'tertiary',
     label: 'Button 3',
-    size: 'sm',
   },
   {
-    variant: 'primary',
+    variant: 'tertiary',
     label: 'Damian',
   },
 ]
@@ -34,8 +31,8 @@ const test = () => {
 <template>
   <div class="app-container">
     <puik-button-group
-      :selected-index="0"
       :button-list="buttonsList"
+      :size="'md'"
       @puikButtonGroupClicked="test"
     />
   </div>
