@@ -27,14 +27,14 @@ const emit = defineEmits(buttonGroupEmits)
 
 const buttonListRef = ref(props.buttonList)
 const puikButtonGroupClicked = (key) => {
-  buttonListRef.value.map(
+  buttonListRef?.value?.map(
     (btn, index) => (btn.variant = index == key ? 'primary' : 'tertiary')
   )
   emit('puikButtonGroupClicked')
 }
 
 onMounted(() => {
-  buttonListRef.value.map(
+  buttonListRef?.value?.map(
     (btn, index) =>
       (btn.variant = index == props.selectedIndex ? 'primary' : 'tertiary')
   )

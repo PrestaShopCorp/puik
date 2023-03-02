@@ -7,13 +7,6 @@ export type ButtonGroupType = ButtonProps & {
   label: string
 }
 
-// ExtractPropTypes<typeof buttonProps>
-
-// export type ButtonGroupType = {
-//   label: String,
-//   variant: String
-// }
-
 export const buttonGroupProps = buildProps({
   selectedIndex: {
     type: Number,
