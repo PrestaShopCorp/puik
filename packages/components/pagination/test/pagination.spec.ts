@@ -46,7 +46,7 @@ describe('Pagination tests', () => {
 
   const propsData = {
     modelValue: 5,
-    maxPage: 10,
+    itemsPerPage: 10,
     totalItem: 500,
     itemCount: 50,
   }
@@ -153,7 +153,7 @@ describe('Pagination tests', () => {
   it('should both separators be visible', () => {
     factory({
       modelValue: 10,
-      maxPage: 20,
+      itemsPerPage: 20,
       totalItem: 500,
       itemCount: 50,
     })
@@ -162,8 +162,8 @@ describe('Pagination tests', () => {
 
   it('should first separator be visible', () => {
     factory({
-      modelValue: 20,
-      maxPage: 20,
+      modelValue: 10,
+      itemsPerPage: 50,
       totalItem: 500,
       itemCount: 50,
     })
@@ -173,7 +173,7 @@ describe('Pagination tests', () => {
   it('should last separator be visible', () => {
     factory({
       modelValue: 2,
-      maxPage: 20,
+      itemsPerPage: 20,
       totalItem: 500,
       itemCount: 50,
     })
@@ -183,7 +183,7 @@ describe('Pagination tests', () => {
   it('should separators be invisible', () => {
     factory({
       modelValue: 3,
-      maxPage: 5,
+      itemsPerPage: 100,
       totalItem: 500,
       itemCount: 50,
     })
@@ -206,7 +206,7 @@ describe('Pagination tests', () => {
         v-model="page"
         :item-count="50"
         :total-item="500"
-        :max-page="20"
+        :items-per-page="20"
       />`,
       components: {
         'puik-pagination': PuikPagination,
