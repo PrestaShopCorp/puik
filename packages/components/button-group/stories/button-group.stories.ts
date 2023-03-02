@@ -62,17 +62,6 @@ Default.parameters = {
   },
 }
 
-const ButtonGroupTemplate = (args: Args) => ({
-  components: { PuikButtonGroup, PuikButton },
-  setup() {
-    return {
-      args,
-      capitalize,
-    }
-  },
-  template: `<puik-button-group :button-list="args.buttonList" :size="args.size" :selected-index="args.selectedIndex"></puik-button-group>`,
-})
-
 export const WithIcons: Story = Template.bind({})
 WithIcons.args = {
   buttonList: [
