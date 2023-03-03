@@ -22,7 +22,9 @@
           tabindex="-1"
           :readonly="open"
           type="text"
-          @input="handleAutoComplete(($event.target as HTMLInputElement)?.value)"
+          @input="
+            handleAutoComplete(($event.target as HTMLInputElement)?.value)
+          "
         />
         <puik-icon
           font-size="1.25rem"
