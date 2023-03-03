@@ -1,6 +1,6 @@
 import path from 'path'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
-import { rollup, type Plugin } from 'rollup'
+import { rollup } from 'rollup'
 import commonjs from '@rollup/plugin-commonjs'
 import vue from '@vitejs/plugin-vue'
 import DefineOptions from 'unplugin-vue-define-options/rollup'
