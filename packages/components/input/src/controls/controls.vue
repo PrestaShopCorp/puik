@@ -23,9 +23,7 @@
 <script setup lang="ts">
 import { useLocale } from '@puik/hooks'
 import { controlsEmits, controlsProps } from './controls'
-defineOptions({
-  name: 'PuikInputControls',
-})
+
 const { t } = useLocale()
 const props = defineProps(controlsProps)
 const emit = defineEmits(controlsEmits)

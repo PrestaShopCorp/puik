@@ -31,9 +31,6 @@ import { PuikIcon } from '@puik/components/icon'
 import { isObject } from '@puik/utils'
 import { optionProps } from './option'
 import { selectKey } from './select'
-defineOptions({
-  name: 'PuikOption',
-})
 
 const props = defineProps(optionProps)
 

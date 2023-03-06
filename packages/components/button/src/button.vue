@@ -31,9 +31,6 @@
 import { computed } from 'vue'
 import { PuikIcon } from '@puik/components/icon'
 import { buttonProps } from './button'
-defineOptions({
-  name: 'PuikButton',
-})
 
 const props = defineProps(buttonProps)
 

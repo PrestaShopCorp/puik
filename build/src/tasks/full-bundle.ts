@@ -3,7 +3,6 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { rollup } from 'rollup'
 import commonjs from '@rollup/plugin-commonjs'
 import vue from '@vitejs/plugin-vue'
-import DefineOptions from 'unplugin-vue-define-options/rollup'
 import esbuild from 'rollup-plugin-esbuild'
 import { parallel } from 'gulp'
 import glob from 'fast-glob'
@@ -31,7 +30,6 @@ async function buildFullEntry(minify: boolean) {
       vue({
         isProduction: true,
       }),
-      DefineOptions(),
       nodeResolve({
         extensions: ['.mjs', '.js', '.json', '.ts'],
       }),

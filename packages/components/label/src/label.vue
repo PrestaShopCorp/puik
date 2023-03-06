@@ -11,9 +11,6 @@
 <script setup lang="ts">
 import { useLocale } from '@puik/hooks'
 import { labelProps } from './label'
-defineOptions({
-  name: 'PuikLabel',
-})
 
 const props = defineProps(labelProps)
 const { t } = useLocale()

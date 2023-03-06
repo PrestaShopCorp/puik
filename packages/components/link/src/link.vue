@@ -13,9 +13,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { linkProps } from './link'
-defineOptions({
-  name: 'PuikLink',
-})
 
 const props = defineProps(linkProps)
 

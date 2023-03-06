@@ -110,10 +110,6 @@ import { selectProps, selectEmits, selectKey } from './select'
 import PuikOption from './option.vue'
 import type { DefaultOption } from './option'
 
-defineOptions({
-  name: 'PuikSelect',
-})
-
 const optionsList = ref<DefaultOption[]>([])
 const labelInput = ref<HTMLInputElement>()
 

@@ -36,9 +36,6 @@ import { computed } from 'vue'
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
 import { useLocale } from '@puik/hooks'
 import { switchEmits, switchProps } from './switch'
-defineOptions({
-  name: 'PuikSwitch',
-})
 
 const props = defineProps(switchProps)
 const emit = defineEmits(switchEmits)

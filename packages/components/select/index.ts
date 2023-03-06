@@ -3,7 +3,10 @@ import { withInstall, withNoopInstall } from '@puik/utils'
 import Select from './src/select.vue'
 import Option from './src/option.vue'
 
-export const PuikSelect = withInstall(Select, { Option })
+export const PuikSelect = withInstall(
+  { ...Select, name: 'PuikSelect' },
+  { Option: { ...Option, name: 'PuikOption' } }
+)
 export default PuikSelect
 
 export const PuikOption = withNoopInstall(Option)
