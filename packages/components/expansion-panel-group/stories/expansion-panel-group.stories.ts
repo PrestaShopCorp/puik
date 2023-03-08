@@ -89,7 +89,7 @@ Default.parameters = {
         <div class="puik-expansion-panel">
           <button aria-expanded="false" aria-controls="puik-expansion-panel-6664" class="puik-expansion-panel__title">Title 1 <div class="puik-icon material-icons-round" style="font-size: 20px;">keyboard_arrow_up</div>
           </button>
-          <div id="puik-expansion-panel-6664" class="puik-expansion-panel__content" style="display: none;"> Content expansion panel 1 </div>
+          <div id="puik-expansion-panel-6664" class="puik-expansion-panel__content"> Content expansion panel 1 </div>
         </div>
         <!--
           State classes
@@ -103,7 +103,7 @@ Default.parameters = {
         <div class="puik-expansion-panel">
           <button aria-expanded="false" aria-controls="puik-expansion-panel-7108" class="puik-expansion-panel__title">Title 3 <div class="puik-icon material-icons-round" style="font-size: 20px;">keyboard_arrow_up</div>
           </button>
-          <div id="puik-expansion-panel-7108" class="puik-expansion-panel__content" style="display: none;"> Content expansion panel 3 </div>
+          <div id="puik-expansion-panel-7108" class="puik-expansion-panel__content"> Content expansion panel 3 </div>
         </div>
       </div>
       `,
