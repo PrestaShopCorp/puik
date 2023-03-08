@@ -30,14 +30,10 @@ watch(props, () => {
 
 const panelsList = ref<ExpansionPanelState[]>([])
 
-function handleChange(name: string) {
+const handleChange = (name: string) => {
   if (!props.multiple) {
     panelsList.value.forEach((panel) => {
-      if (panel.name === name) {
-        panel.expanded = !panel.expanded
-      } else {
-        panel.expanded = false
-      }
+      panel.expanded = panel.name === name ? !panel.expanded : false
     })
   } else {
     const panelIndex = panelsList.value.findIndex(
