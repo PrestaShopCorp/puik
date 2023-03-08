@@ -4,7 +4,7 @@ import PuikExpansionPanel from './../src/expansion-panel.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
-  title: 'Components/ExpansionPanel',
+  title: 'Components/ExpansionPanelGroup',
   component: PuikExpansionPanelGroup,
   argTypes: {
     multiple: {
@@ -73,7 +73,7 @@ Default.parameters = {
         <puik-expansion-panel title="Title 1" name="panel-1">
           Content expansion panel 1
         </puik-expansion-panel>
-        <puik-expansion-panel title="Title 2" name="panel-2">
+        <puik-expansion-panel name="panel-2">
           <template #title>
             Title 2
           </template>
