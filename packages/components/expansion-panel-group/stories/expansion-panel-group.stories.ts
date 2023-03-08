@@ -91,11 +91,10 @@ Default.parameters = {
           </button>
           <div id="puik-expansion-panel-6664" class="puik-expansion-panel__content" style="display: none;"> Content expansion panel 1 </div>
         </div>
-        <div class="puik-expansion-panel-group">
-          <!--
-            State classes
-            Active: "puik-expansion-panel--expanded"
-          -->
+        <!--
+          State classes
+          Active: "puik-expansion-panel--expanded"
+        -->
         <div class="puik-expansion-panel puik-expansion-panel--expanded">
           <button aria-expanded="true" aria-controls="puik-expansion-panel-3261" class="puik-expansion-panel__title"> Title 2 <div class="puik-icon material-icons-round" style="font-size: 20px;">keyboard_arrow_down</div>
           </button>
