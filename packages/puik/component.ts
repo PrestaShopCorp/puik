@@ -1,6 +1,6 @@
 import {
-  PuikExpansionPanelGroup,
   PuikExpansionPanel,
+  PuikExpansionPanelGroup,
 } from '@puik/components/expansion-panel-group'
 import { PuikProgressBar } from '@puik/components/progress-bar'
 import { PuikIcon } from '@puik/components/icon'
@@ -20,8 +20,8 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
-  PuikExpansionPanelGroup,
   PuikExpansionPanel,
+  PuikExpansionPanelGroup,
   PuikProgressBar,
   PuikIcon,
   PuikLink,
