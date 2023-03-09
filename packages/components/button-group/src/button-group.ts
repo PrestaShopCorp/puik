@@ -20,7 +20,7 @@ export type ButtonGroupProps = ExtractPropTypes<typeof buttonGroupProps>
 export type ButtonGroupInstance = InstanceType<typeof ButtonGroup>
 
 export type ButtonGroupContext = {
-  selected: Ref<string, number, Record<string, any>, []>
+  selected: Ref<string | number | Record<string, any>>
 }
 export const ButtonGroupKey: InjectionKey<ButtonGroupContext> =
   Symbol('ButtonGroup')
