@@ -16,6 +16,10 @@ export default {
         },
       },
     },
+    default: {
+      control: 'none',
+      description: 'Use puik buttons in the puik button group',
+    },
   },
   args: {
     selected: 'btn1',
@@ -59,38 +63,3 @@ Default.parameters = {
     },
   },
 }
-
-// export const WithIcons: Story = Template.bind({})
-// WithIcons.args = {
-//   buttonList: [
-//     {
-//       variant: 'tertiary',
-//       label: '',
-//       leftIcon: 'shopping_cart',
-//     },
-//     {
-//       variant: 'tertiary',
-//       label: '',
-//       leftIcon: 'shopping_cart',
-//     },
-//     {
-//       variant: 'tertiary',
-//       label: '',
-//       leftIcon: 'shopping_cart',
-//     },
-//   ],
-//   size: 'md',
-//   selectedIndex: 0,
-// }
-
-// export const SmallButton: Story = Template.bind({})
-// SmallButton.args = {
-//   size: 'sm',
-//   selectedIndex: 0,
-// }
-
-// export const LargeButtons: Story = Template.bind({})
-// LargeButtons.args = {
-//   size: 'lg',
-//   selectedIndex: 0,
-// }
