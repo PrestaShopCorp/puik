@@ -30,7 +30,7 @@ watch(props, () => {
 
 const panelsList = ref<ExpansionPanelState[]>([])
 
-const handleChange = (name: string) => {
+function handleChange(name: string) {
   if (!props.multiple) {
     panelsList.value.forEach((panel) => {
       panel.expanded = panel.name === name ? !panel.expanded : false
@@ -48,16 +48,8 @@ const handleChange = (name: string) => {
     .filter((panel) => panel.expanded)
     .map((panel) => panel.name)
 
-  if (props.multiple) {
-    selection.value = newSelection
-    emit('update:modelValue', selection.value)
-  } else {
-    selection.value = newSelection.length === 0 ? null : newSelection[0]
-    emit(
-      'update:modelValue',
-      newSelection.length === 0 ? null : selection.value
-    )
-  }
+  selection.value = props.multiple ? newSelection : newSelection[0] ?? null
+  emit('update:modelValue', selection.value)
 }
 
 provide(expansionPanelGroupKey, {
