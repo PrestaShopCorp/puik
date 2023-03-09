@@ -2,22 +2,16 @@
   .puik-button {
     @apply border border-light-blue-default-border;
     .puik-button__left-icon {
-      margin-right: 0;
+      @apply mr-0;
     }
     &:first-of-type {
-      border-top-left-radius: 0.25rem;
-      border-bottom-left-radius: 0.25rem;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      @apply rounded-l;
     }
     &:last-of-type {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      border-top-right-radius: 0.25rem;
-      border-bottom-right-radius: 0.25rem;
+      @apply rounded-r;
     }
     & {
-      border-radius: 0;
+      @apply rounded-none;
     }
   }
 }

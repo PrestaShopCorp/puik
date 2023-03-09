@@ -1,5 +1,5 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
+import type { ExtractPropTypes, PropType, InjectionKey, Ref } from 'vue'
 import type ButtonGroup from './button-group.vue'
 import type { ButtonProps } from '@puik/components'
 
@@ -8,19 +8,10 @@ export type ButtonGroupType = ButtonProps & {
 }
 
 export const buttonGroupProps = buildProps({
-  selectedIndex: {
-    type: Number,
+  modelValue: {
+    type: [String, Number, Object, Array],
     required: false,
-    default: 0,
-  },
-  size: {
-    type: String,
-    required: false,
-    default: 'md',
-  },
-  buttonList: {
-    type: [] as PropType<ButtonGroupType[]>,
-    required: true,
+    default: undefined,
   },
 } as const)
 
@@ -28,5 +19,8 @@ export type ButtonGroupProps = ExtractPropTypes<typeof buttonGroupProps>
 
 export type ButtonGroupInstance = InstanceType<typeof ButtonGroup>
 
-export const buttonGroupEmits = ['puikButtonGroupClicked']
-export type ButtonGroupEmits = typeof buttonGroupEmits
+export type ButtonGroupContext = {
+  selected: Ref<string, number, Record<string, any>, []>
+}
+export const ButtonGroupKey: InjectionKey<ButtonGroupContext> =
+  Symbol('ButtonGroup')
