@@ -16,5 +16,8 @@ export default {
       searchPlaceholder: 'Search',
       noResults: 'No results matched',
     },
+    search: {
+      placeholder: 'Search',
+    },
   },
 }

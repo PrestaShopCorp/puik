@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     PuikSwitch: typeof import('@prestashopcorp/puik')['PuikSwitch']
     PuikButton: typeof import('@prestashopcorp/puik')['PuikButton']
     PuikConfigProvider: typeof import('@prestashopcorp/puik')['PuikConfigProvider']
+    PuikSearch: typeof import('@prestashopcorp/puik')['PuikSearch']
   }
 }
 
