@@ -37,14 +37,16 @@ const emit = defineEmits(['click'])
 const id = `puik-expansion-panel-${generateId()}`
 
 const props = defineProps(expansionPanelProps)
-const { panelsList, handleChange, selection } = inject(expansionPanelGroupKey)!
+const { panelsList, handleChange, expandedPanels } = inject(
+  expansionPanelGroupKey
+)!
 
 const isExpanded = computed(() => {
-  if (Array.isArray(selection.value)) {
-    return selection.value.some((name) => props.name === name)
+  if (Array.isArray(expandedPanels.value)) {
+    return expandedPanels.value.some((name) => props.name === name)
   }
 
-  return props.name === selection.value
+  return props.name === expandedPanels.value
 })
 
 panelsList.value.push({ name: props.name, expanded: isExpanded.value })

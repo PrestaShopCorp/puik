@@ -31,7 +31,7 @@ export type ExpansionPanelState = {
 export type ExpansionPanelGroupContext = {
   panelsList: Ref<ExpansionPanelState[]>
   handleChange: (name: string) => void
-  selection: Ref<string | string[]>
+  expandedPanels: Ref<string | string[]>
 }
 
 export const expansionPanelGroupKey: InjectionKey<ExpansionPanelGroupContext> =

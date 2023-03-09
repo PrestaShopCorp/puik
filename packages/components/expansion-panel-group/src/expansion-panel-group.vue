@@ -17,14 +17,14 @@ defineOptions({
 
 const props = defineProps(expansionPanelGroupProps)
 const emit = defineEmits(['update:modelValue'])
-const selection = ref<string | string[] | null>(props.modelValue)
+const expandedPanels = ref<string | string[] | null>(props.modelValue)
 
 watch(props, () => {
-  selection.value = props.modelValue
+  expandedPanels.value = props.modelValue
   panelsList.value.forEach((panel) => {
-    panel.expanded = Array.isArray(selection.value)
-      ? selection.value.some((name) => name === panel.name)
-      : panel.name === selection.value
+    panel.expanded = Array.isArray(expandedPanels.value)
+      ? expandedPanels.value.some((name) => name === panel.name)
+      : panel.name === expandedPanels.value
   })
 })
 
@@ -48,13 +48,13 @@ function handleChange(name: string) {
     .filter((panel) => panel.expanded)
     .map((panel) => panel.name)
 
-  selection.value = props.multiple ? newSelection : newSelection[0] ?? null
-  emit('update:modelValue', selection.value)
+  expandedPanels.value = props.multiple ? newSelection : newSelection[0] ?? null
+  emit('update:modelValue', expandedPanels.value)
 }
 
 provide(expansionPanelGroupKey, {
   panelsList,
   handleChange,
-  selection,
+  expandedPanels,
 })
 </script>
