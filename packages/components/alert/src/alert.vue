@@ -35,6 +35,10 @@ import { PuikButton } from '@puik/components/button'
 import { PuikIcon } from '@puik/components/icon'
 import { alertEmits, alertProps, ICONS } from './alert'
 
+defineOptions({
+  name: 'PuikAlert',
+})
+
 const props = defineProps(alertProps)
 const emit = defineEmits(alertEmits)
 

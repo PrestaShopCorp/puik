@@ -1,13 +1,10 @@
 import { inject, ref, computed, unref, provide, getCurrentInstance } from 'vue'
-import { configProviderContextKey } from '@puik/tokens'
 import { debugWarn, keysOf } from '@puik/utils'
+import { configProviderContextKey } from '../config-provider-keys'
 import type { MaybeRef } from '@vueuse/core'
 import type { Ref, App } from 'vue'
-import type { ConfigProviderContext } from '@puik/tokens'
+import type { ConfigProviderContext } from '../config-provider-keys'
 
-// this is meant to fix global methods like `ElMessage(opts)`, this way we can inject current locale
-// into the component as default injection value.
-// refer to: https://github.com/element-plus/element-plus/issues/2610#issuecomment-887965266
 const globalConfig = ref<ConfigProviderContext>()
 
 export function useGlobalConfig<
@@ -55,6 +52,11 @@ export const provideGlobalConfig = (
     return mergeConfig(oldConfig.value, cfg)
   })
   provideFn(configProviderContextKey, context)
+
+  provideFn(
+    '',
+    computed(() => context.value.locale)
+  )
   if (global || !globalConfig.value) {
     globalConfig.value = context.value
   }

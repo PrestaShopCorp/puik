@@ -29,8 +29,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { PuikIcon } from '@puik/components/icon'
+import { PuikIcon } from '../../icon'
 import { buttonProps } from './button'
+
+defineOptions({
+  name: 'PuikButton',
+})
 
 const props = defineProps(buttonProps)
 

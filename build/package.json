@@ -30,12 +30,14 @@
     "lodash-unified": "^1.0.3",
     "rollup": "^3.17.3",
     "rollup-plugin-esbuild": "^5.0.0",
+    "rollup-plugin-typescript2": "^0.34.1",
     "ts-morph": "^14.0.0",
     "unplugin-vue-define-options": "^1.2.3"
   },
   "devDependencies": {
     "@esbuild-kit/cjs-loader": "^2.4.2",
     "@pnpm/types": "^8.10.0",
+    "@types/fs-extra": "^11.0.1",
     "@types/rollup-plugin-css-only": "^3.1.0",
     "unbuild": "^1.1.2",
     "vue": "^3.2.47"

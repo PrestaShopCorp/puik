@@ -9,8 +9,12 @@
 </template>
 
 <script setup lang="ts">
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { labelProps } from './label'
+
+defineOptions({
+  name: 'PuikLabel',
+})
 
 const props = defineProps(labelProps)
 const { t } = useLocale()

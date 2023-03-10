@@ -17,3 +17,5 @@ export type Language = {
 }
 
 export const locales = { de, en, fr, es, it, nl, pl, pt }
+
+export * from './hooks/use-locale'

@@ -30,9 +30,7 @@
     "vue": "^3.2.0"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.11",
-    "@popperjs/core": "^2.11.6",
-    "@vueuse/core": "^9.13.0",
+    "@puik/components": "workspace:*",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3"
@@ -42,8 +40,7 @@
     "@types/lodash-es": "^4.17.6",
     "@types/node": "*",
     "unplugin-vue-components": "^0.24.0",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue": "^3.2.47"
   },
   "vetur": {
     "tags": "tags.json",

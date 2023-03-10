@@ -13,6 +13,10 @@
 import { computed } from 'vue'
 import { iconProps } from './icon'
 
+defineOptions({
+  name: 'PuikIcon',
+})
+
 const props = defineProps(iconProps)
 
 const fontSize = computed(() => {

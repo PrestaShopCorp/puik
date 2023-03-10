@@ -103,12 +103,16 @@
 import { computed, provide, ref, useSlots } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
 import { isObject, isFunction, isArray } from '@puik/utils'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { PuikInput } from '@puik/components/input'
 import { PuikIcon } from '@puik/components/icon'
 import { selectProps, selectEmits, selectKey } from './select'
 import PuikOption from './option.vue'
 import type { DefaultOption } from './option'
+
+defineOptions({
+  name: 'PuikSelect',
+})
 
 const optionsList = ref<DefaultOption[]>([])
 const labelInput = ref<HTMLInputElement>()

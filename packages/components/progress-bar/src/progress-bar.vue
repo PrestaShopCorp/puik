@@ -11,5 +11,9 @@
 <script setup lang="ts">
 import { progressBarProps } from './progress-bar'
 
+defineOptions({
+  name: 'PuikProgressBar',
+})
+
 defineProps(progressBarProps)
 </script>

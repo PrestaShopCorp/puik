@@ -59,6 +59,11 @@ export function copyThemeSource() {
   )
 }
 
+/* export function copyPackageFile() {
+  return src(path.resolve(__dirname, 'package.json')).pipe(
+    dest(path.resolve(__dirname, 'dist'))
+  )
+} */
 export const build = parallel(
   copyThemeSource,
   series(buildTheme, copyThemeBundle)

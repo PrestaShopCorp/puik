@@ -145,7 +145,9 @@ export function buildProp<
   const prop: any = {
     type:
       isObject(type) && Object.getOwnPropertySymbols(type).includes(wrapperKey)
-        ? type[wrapperKey]
+        ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
+          type[wrapperKey]
         : type,
     required: !!required,
     validator: _validator,

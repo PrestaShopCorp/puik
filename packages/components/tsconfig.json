@@ -1,0 +1,25 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "module": "ESNext",
+    "target": "ES2018",
+    "noImplicitAny": false,
+    "declaration": false,
+    "sourceMap": true,
+    "lib": ["ES2018", "DOM", "DOM.Iterable"],
+    "allowSyntheticDefaultImports": true,
+    "types": ["unplugin-vue-define-options/macros-global", "node"],
+    "paths": {
+      "react": ["../docs/stub/types__react"]
+    }
+  },
+  "include": ["./**/*", "./global.d.ts"],
+  "exclude": [
+    "node_modules",
+    "**/test",
+    "**/stories",
+    "dist/**",
+    "rollup.config.mjs"
+  ]
+}

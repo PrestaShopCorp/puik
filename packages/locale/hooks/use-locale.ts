@@ -1,10 +1,9 @@
-import { computed, unref } from 'vue'
+import { computed, inject, isRef, ref, unref } from 'vue'
 import { get } from 'lodash-unified'
-import { locales } from '@puik/locale'
-import { useGlobalConfig } from '../use-global-config'
+import { locales } from '../'
+import type { Ref, InjectionKey } from 'vue'
 import type { MaybeRef } from '@vueuse/core'
-import type { Ref } from 'vue'
-import type { Language } from '@puik/locale'
+import type { Language } from '../'
 
 export type TranslatorOption = Record<string, string | number>
 export type Translator = (path: string, option?: TranslatorOption) => string
@@ -29,18 +28,22 @@ export const translate = (
     (_, key) => `${option?.[key] ?? `{${key}}`}`
   )
 
-export const buildLocaleContext = (locale: Ref<Language>): LocaleContext => {
+export const buildLocaleContext = (
+  locale: MaybeRef<Language>
+): LocaleContext => {
   const lang = computed(() => unref(locale).name)
+  const localeRef = isRef(locale) ? locale : ref(locale)
   return {
     lang,
-    locale,
+    locale: localeRef,
     t: buildTranslator(locale),
   }
 }
 
+export const localeContextKey: InjectionKey<Ref<string | undefined>> =
+  Symbol('localeContextKey')
+
 export const useLocale = () => {
-  const locale = useGlobalConfig('locale')
-  return buildLocaleContext(
-    computed(() => locales[locale.value || 'en'] ?? locales['en'])
-  )
+  const locale = inject(localeContextKey, ref())
+  return buildLocaleContext(computed(() => locales[locale.value || 'en']))
 }

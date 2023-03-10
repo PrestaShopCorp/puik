@@ -32,6 +32,10 @@ import { isObject } from '@puik/utils'
 import { optionProps } from './option'
 import { selectKey } from './select'
 
+defineOptions({
+  name: 'PuikOption',
+})
+
 const props = defineProps(optionProps)
 
 const { optionsList, selectedValue, handleAutoComplete, labelKey } =

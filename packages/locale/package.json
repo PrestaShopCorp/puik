@@ -2,10 +2,14 @@
   "name": "@puik/locale",
   "description": "puiklocale",
   "version": "0.0.1",
-  "main": "index.ts",
-  "module": "index.ts",
-  "unpkg": "index.js",
-  "jsdelivr": "index.js",
-  "types": "index.d.ts",
-  "license": "MIT"
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf dist && rollup -c"
+  }
 }

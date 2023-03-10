@@ -14,6 +14,10 @@
 import { computed } from 'vue'
 import { linkProps } from './link'
 
+defineOptions({
+  name: 'PuikLink',
+})
+
 const props = defineProps(linkProps)
 
 const componentType = computed(() => {

@@ -25,6 +25,10 @@ import { useVModel } from '@vueuse/core'
 import { generateId } from '@puik/utils'
 import { checkboxProps } from './checkbox'
 
+defineOptions({
+  name: 'PuikCheckbox',
+})
+
 const props = defineProps(checkboxProps)
 const emit = defineEmits<{
   (e: 'update:modelValue', value: boolean): void

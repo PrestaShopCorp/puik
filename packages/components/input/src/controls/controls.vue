@@ -21,7 +21,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { controlsEmits, controlsProps } from './controls'
 
 const { t } = useLocale()

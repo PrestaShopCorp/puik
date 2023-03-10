@@ -48,6 +48,10 @@ import { generateId } from '@puik/utils'
 import { tooltipProps } from './tooltip'
 import type { Instance as PopperInstance } from '@popperjs/core'
 
+defineOptions({
+  name: 'PuikTooltip',
+})
+
 const tooltipWrapper = ref<HTMLElement | null>(null)
 const tooltip = ref<HTMLElement | null>(null)
 const isVisible = ref(false)

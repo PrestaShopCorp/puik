@@ -63,6 +63,10 @@ import { PuikIcon } from '@puik/components/icon'
 import PuikInputControls from './controls/controls.vue'
 import { inputEmits, inputProps } from './input'
 
+defineOptions({
+  name: 'PuikInput',
+})
+
 const props = defineProps(inputProps)
 const emit = defineEmits(inputEmits)
 const slots = useSlots()
