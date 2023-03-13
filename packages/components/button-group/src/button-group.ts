@@ -1,5 +1,5 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType, InjectionKey, Ref } from 'vue'
+import type { ExtractPropTypes, InjectionKey, Ref } from 'vue'
 import type ButtonGroup from './button-group.vue'
 import type { ButtonProps } from '@puik/components'
 

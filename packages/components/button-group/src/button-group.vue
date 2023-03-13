@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, provide, ref } from 'vue'
+import { provide } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { buttonGroupProps, ButtonGroupKey } from './button-group'
 
