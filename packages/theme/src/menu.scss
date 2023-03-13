@@ -1,0 +1,50 @@
+.puik-menu {
+  @apply relative w-max;
+
+  &__content {
+    @apply absolute bg-white border border-light-blue-500 shadow rounded p-4 w-full;
+
+    &__align {
+      &--left {
+        @apply left-0;
+      }
+      &--right {
+        @apply right-0;
+      }
+    }
+    &__position {
+      &--top {
+        @apply bottom-full mb-2;
+      }
+      &--bottom {
+        @apply top-full mt-2;
+      }
+    }
+  }
+
+  &__transition {
+    &__enter {
+      &--active {
+        @apply transition duration-200 ease-out;
+      }
+      &--from {
+        @apply translate-y-1 opacity-0;
+      }
+      &--to {
+        @apply translate-y-0 opacity-100;
+      }
+    }
+
+    &__leave {
+      &--active {
+        @apply transition duration-150 ease-in;
+      }
+      &--from {
+        @apply translate-y-0 opacity-100;
+      }
+      &--to {
+        @apply translate-y-1 opacity-0;
+      }
+    }
+  }
+}
