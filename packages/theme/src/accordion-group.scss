@@ -1,14 +1,14 @@
-.puik-expansion-panel-group {
-  .puik-expansion-panel {
+.puik-accordion-group {
+  .puik-accordion {
     @apply mb-4 border rounded-lg;
     &__title {
       @apply p-4 flex flex-row w-full justify-between items-center rounded-lg hover:bg-light-blue-50 focus:bg-light-blue-50 focus:outline-none focus:ring focus:ring-focus-main;
     }
     &--expanded {
-      .puik-expansion-panel__title {
+      .puik-accordion__title {
         @apply border-b rounded-b-none;
       }
-      .puik-expansion-panel__content {
+      .puik-accordion__content {
         @apply p-4 visible;
       }
     }

@@ -1,14 +1,14 @@
 <template>
   <div
-    class="puik-expansion-panel"
+    class="puik-accordion"
     :class="{
-      'puik-expansion-panel--expanded': isExpanded,
+      'puik-accordion--expanded': isExpanded,
     }"
   >
     <button
       :aria-expanded="isExpanded"
       :aria-controls="id"
-      class="puik-expansion-panel__title"
+      class="puik-accordion__title"
       @click="onClick"
     >
       <slot name="title">
@@ -17,7 +17,7 @@
 
       <puik-icon :icon="icon" :font-size="20"></puik-icon>
     </button>
-    <div v-show="isExpanded" :id="id" class="puik-expansion-panel__content">
+    <div v-show="isExpanded" :id="id" class="puik-accordion__content">
       <slot></slot>
     </div>
   </div>
@@ -27,29 +27,28 @@
 import { computed, inject } from 'vue'
 import { generateId } from '@puik/utils'
 import { PuikIcon } from '@puik/components/icon'
-import { expansionPanelGroupKey } from './expansion-panel-group'
-import { expansionPanelProps } from './expansion-panel'
+import { accordionGroupKey } from './accordion-group'
+import { accordionProps } from './accordion'
 defineOptions({
-  name: 'PuikExpansionPanel',
+  name: 'PuikAccordion',
 })
 const emit = defineEmits(['click'])
 
-const id = `puik-expansion-panel-${generateId()}`
+const id = `puik-accordion-${generateId()}`
 
-const props = defineProps(expansionPanelProps)
-const { panelsList, handleChange, expandedPanels } = inject(
-  expansionPanelGroupKey
-)!
+const props = defineProps(accordionProps)
+const { accordionsList, handleChange, expandedAccordions } =
+  inject(accordionGroupKey)!
 
 const isExpanded = computed(() => {
-  if (Array.isArray(expandedPanels.value)) {
-    return expandedPanels.value.some((name) => props.name === name)
+  if (Array.isArray(expandedAccordions.value)) {
+    return expandedAccordions.value.some((name) => props.name === name)
   }
 
-  return props.name === expandedPanels.value
+  return props.name === expandedAccordions.value
 })
 
-panelsList.value.push({ name: props.name, expanded: isExpanded.value })
+accordionsList.value.push({ name: props.name, expanded: isExpanded.value })
 
 const icon = computed(() =>
   isExpanded.value ? 'keyboard_arrow_down' : 'keyboard_arrow_up'
