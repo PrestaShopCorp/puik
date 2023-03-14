@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "declaration": false
+  },
+  "include": ["./**/*", "./global.d.ts"],
+  "exclude": [
+    "node_modules",
+    "**/test",
+    "**/stories",
+    "dist/**",
+    "rollup.config.mjs"
+  ]
+}

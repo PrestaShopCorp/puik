@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "isolatedModules": true
+  },
+  "include": ["./"],
+  "exclude": ["node_modules", "dist/**", "rollup.config.mjs"]
+}

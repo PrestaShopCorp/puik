@@ -21,22 +21,19 @@ export default async () =>
           onlyFiles: true,
         })
       ),
-      external: [
-        ...Object.keys(pkg.dependencies),
-        ...Object.keys(pkg.peerDependencies),
-        '@vue/shared',
-      ],
+      external: [...Object.keys(pkg.peerDependencies)],
       output: [
         {
-          dir: './dist/',
+          dir: './dist/es',
           format: 'esm',
           preserveModules: true,
+          entryFileNames: '[name].mjs',
         },
-        // {
-        //   dir: '/packages/components/dist/cjs',
-        //   format: 'cjs',
-        //   preserveModules: true,
-        // },
+        {
+          dir: './dist/lib',
+          format: 'cjs',
+          preserveModules: true,
+        },
       ],
       plugins: [
         typescript({

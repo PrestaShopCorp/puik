@@ -1,5 +1,6 @@
 import { inject, ref, computed, unref, provide, getCurrentInstance } from 'vue'
 import { debugWarn, keysOf } from '@puik/utils'
+import { localeContextKey } from '@puik/locale'
 import { configProviderContextKey } from '../config-provider-keys'
 import type { MaybeRef } from '@vueuse/core'
 import type { Ref, App } from 'vue'
@@ -54,7 +55,7 @@ export const provideGlobalConfig = (
   provideFn(configProviderContextKey, context)
 
   provideFn(
-    '',
+    localeContextKey,
     computed(() => context.value.locale)
   )
   if (global || !globalConfig.value) {

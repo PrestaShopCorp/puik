@@ -50,6 +50,7 @@ export default async () =>
         DefineOptions(),
         typescript({
           check: false,
+          tsconfig: './tsconfig.build.json',
         }),
         vue(),
       ],

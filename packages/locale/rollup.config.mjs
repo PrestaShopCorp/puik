@@ -2,6 +2,7 @@
 import typescript from 'rollup-plugin-typescript2'
 import { defineConfig } from 'rollup'
 import glob from 'fast-glob'
+import pkg from './package.json' assert { type: 'json' }
 
 const excludeFiles = (files) => {
   const excludes = ['node_modules', 'dist', 'rollup.config.mjs']
@@ -20,6 +21,10 @@ export default async () =>
           onlyFiles: true,
         })
       ),
+      external: [
+        ...Object.keys(pkg.dependencies),
+        ...Object.keys(pkg.peerDependencies),
+      ],
       output: [
         {
           dir: './dist/',
@@ -32,6 +37,10 @@ export default async () =>
         //   preserveModules: true,
         // },
       ],
-      plugins: [typescript()],
+      plugins: [
+        typescript({
+          tsconfig: './tsconfig.build.json',
+        }),
+      ],
     },
   ])

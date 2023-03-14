@@ -9,6 +9,12 @@
   "files": [
     "dist"
   ],
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "dependencies": {
+    "lodash-unified": "^1.0.3"
+  },
   "scripts": {
     "build": "rimraf dist && rollup -c"
   }

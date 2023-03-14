@@ -28,9 +28,9 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.11",
     "@popperjs/core": "^2.11.6",
-    "@puik/locale": "workspace:*",
-    "@puik/theme": "workspace:*",
-    "@puik/utils": "workspace:*",
+    "@puik/locale": "file:/home/aamorim/Documents/puik/packages/locale",
+    "@puik/theme": "file:/home/aamorim/Documents/puik/packages/theme",
+    "@puik/utils": "file:/home/aamorim/Documents/puik/packages/utils",
     "@vueuse/core": "^9.13.0"
   },
   "devDependencies": {

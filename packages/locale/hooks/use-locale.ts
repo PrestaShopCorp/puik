@@ -1,9 +1,9 @@
 import { computed, inject, isRef, ref, unref } from 'vue'
 import { get } from 'lodash-unified'
-import { locales } from '../'
+import { locales } from '../lang'
 import type { Ref, InjectionKey } from 'vue'
 import type { MaybeRef } from '@vueuse/core'
-import type { Language } from '../'
+import type { Language } from '../lang'
 
 export type TranslatorOption = Record<string, string | number>
 export type Translator = (path: string, option?: TranslatorOption) => string
