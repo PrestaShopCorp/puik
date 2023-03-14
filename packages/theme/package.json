@@ -17,7 +17,7 @@
     "@types/gulp-clean-css": "4.3.0",
     "@types/gulp-rename": "2.0.1",
     "@types/gulp-sass": "5.0.0",
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^10.4.14",
     "gulp-autoprefixer": "8.0.0",
     "gulp-clean-css": "4.3.0",
     "gulp-postcss": "^9.0.1",
