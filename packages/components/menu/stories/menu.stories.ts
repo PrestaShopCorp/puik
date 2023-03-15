@@ -5,6 +5,7 @@ import {
   menuPositionValues,
 } from '../src/menu'
 import PuikMenu from '../src/menu.vue'
+import PuikButton from '../../button/src/button.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
@@ -53,6 +54,7 @@ const Template: Story = (args: Args) => ({
   args: {},
   components: {
     PuikMenu,
+    PuikButton,
   },
   setup() {
     return { args }
@@ -61,7 +63,7 @@ const Template: Story = (args: Args) => ({
     <puik-menu v-bind="args">
       <template #activator="{ open }">
         <puik-button>
-        {{ open ? 'Hide menu' : 'Show menu' }}
+          {{ open ? 'Hide menu' : 'Show menu' }}
         </puik-button>
       </template>
 
