@@ -7,7 +7,6 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 describe('Menu tests', () => {
   let wrapper: VueWrapper<any>
-  const getPuikButton = () => wrapper.findComponent(PuikButton)
   const getActivator = () => wrapper.find('.puik-menu__activator')
   const getContent = () => wrapper.find('.puik-menu__content')
   const factory = (template: string, options: MountingOptions<any> = {}) => {
@@ -22,61 +21,45 @@ describe('Menu tests', () => {
   }
   it('should be a vue instance', () => {
     factory(`
-      <puik-menu as="button" activatorLabel="Show menu">
+      <puik-menu activatorAs="button" activatorLabel="Show menu">
+        <template #activator>
+          <puik-button>Show menu</puik-button>
+        </template>
         Menu content
       </puik-menu>
     `)
     expect(wrapper).toBeTruthy()
   })
-  it('should render puik-button as activator', () => {
-    factory(`
-      <puik-menu activatorLabel="Show menu">
-        Menu content
-      </puik-menu>
-    `)
-    expect(getPuikButton()).toBeTruthy()
-  })
-  it('should render button as activator', () => {
-    factory(`
-      <puik-menu activatorLabel="Show menu" as="button">
-        Menu content
-      </puik-menu>
-    `)
-    expect(getActivator().element.tagName).toBe('BUTTON')
-  })
-  it('should render custom activator label using props', () => {
-    const label = 'Show menu'
-    factory(`
-      <puik-menu activatorLabel="${label}">
-        Menu content
-      </puik-menu>
-    `)
-    expect(getActivator().text()).toBe(label)
-    expect(getActivator().classes()).toContain('puik-menu__activator')
-  })
-  it('should render custom activator label using slot', () => {
-    const label = 'Show menu'
+  it('should have puik button in activator slot', () => {
     factory(`
       <puik-menu>
-        <template #activator>${label}</template>
+        <template #activator>
+          <puik-button>Show menu</puik-button>
+        </template>
         Menu content
       </puik-menu>
     `)
-    expect(getActivator().text()).toBe(label)
+    expect(getActivator().classes()).toContain('puik-button')
   })
   it('menu should appear on click', async () => {
     factory(`
       <puik-menu activatorLabel="Show menu">
+        <template #activator>
+          <puik-button>Show menu</puik-button>
+        </template>
         Menu content
       </puik-menu>
     `)
     getActivator().trigger('click')
     await nextTick()
-    expect(getContent()).toBeTruthy()
+    expect(getContent().classes()).toContain('puik-menu__content--visible')
   })
   it('content should have top position', async () => {
     factory(`
       <puik-menu position="top">
+        <template #activator>
+          <puik-button>Show menu</puik-button>
+        </template>
         Menu content
       </puik-menu>
     `)
@@ -89,6 +72,9 @@ describe('Menu tests', () => {
   it('content should have left align', async () => {
     factory(`
       <puik-menu align="left">
+        <template #activator>
+          <puik-button>Show menu</puik-button>
+        </template>
         Menu content
       </puik-menu>
     `)

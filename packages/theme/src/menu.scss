@@ -2,7 +2,11 @@
   @apply relative w-max;
 
   &__content {
-    @apply absolute bg-white border border-light-blue-500 shadow rounded p-4 w-full;
+    @apply absolute bg-white border border-light-blue-500 shadow rounded p-4 w-full invisible;
+
+    &--visible {
+      @apply visible;
+    }
 
     &__align {
       &--left {

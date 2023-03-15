@@ -1,4 +1,3 @@
-import PuikButton from '../../button/src/button.vue'
 import {
   MenuAlignEnum,
   menuAlignValues,
@@ -12,15 +11,6 @@ export default {
   title: 'Components/Menu',
   component: PuikMenu,
   argTypes: {
-    as: {
-      control: 'none',
-      description: 'Component or tag used for menu activator',
-      table: {
-        defaultValue: {
-          summary: 'PuikButton',
-        },
-      },
-    },
     position: {
       control: 'select',
       options: menuPositionValues,
@@ -39,19 +29,6 @@ export default {
         },
       },
     },
-    activatorLabel: {
-      control: 'text',
-      description: 'Activator label',
-      table: {
-        defaultValue: {
-          summary: 'undefined',
-        },
-      },
-    },
-    activator: {
-      control: 'none',
-      description: 'Activator content',
-    },
     width: {
       control: 'text',
       description: 'Menu width',
@@ -61,9 +38,9 @@ export default {
         },
       },
     },
-    '... other props': {
+    activator: {
       control: 'none',
-      description: 'Other props will be user on activator',
+      description: 'Activator used to show or hide menu',
     },
     default: {
       control: 'none',
@@ -82,7 +59,13 @@ const Template: Story = (args: Args) => ({
   },
   template: `<div class="w-full h-[300px] flex flex-row justify-center items-center">
     <puik-menu v-bind="args">
-      <template #default="{ close, open }">
+      <template #activator="{ open }">
+        <puik-button>
+        {{ open ? 'Hide menu' : 'Show menu' }}
+        </puik-button>
+      </template>
+
+      <template #default="{ close }">
         <div>
           This is an example of menu content !
         </div>
@@ -103,25 +86,41 @@ Default.parameters = {
       code: `
       <!--VueJS Snippet-->
       <puik-menu v-bind="args">
-        <template #activator> Show menu </template>
-        <template #default="{ close }">
+        <template #activator="{ open }">
+          <puik-button>
+            Show menu
+          </puik-button>
+        </template>
+        <template #default="{ close, open }">
           <div>
             This is an example of menu content !
           </div>
           <puik-button class="mt-4" @click="close">Close menu</puik-button>
         </template>
-
       </puik-menu>
+
       <!--HTML/CSS Snippet-->
-      <div data-headlessui-state="open" class="puik-menu" style="width:300px;">
-        <button class="puik-button puik-button--primary puik-button--md" id="headlessui-popover-button-1" aria-expanded="true" data-headlessui-state="open" aria-controls="headlessui-popover-panel-3">
+      <div class="puik-menu">
+        <button
+          class="puik-button puik-button--primary puik-button--md puik-menu__activator"
+          aria-expanded="true"
+          type="button"
+          aria-controls="menu-id"
+        >
           Show menu
         </button>
-        <div class="puik-menu__content puik-menu__content--left" id="headlessui-popover-panel-3" tabindex="-1" data-headlessui-state="open">
-          <div> This is an example of menu content ! </div>
-          <button class="puik-button puik-button--primary puik-button--md mt-4">
-            Close menu
-          </button>
+        <!--
+          State classes
+          Visible: "puik-menu__content--visible"
+         -->
+        <div
+          class="puik-menu__content puik-menu__content__position--bottom puik-menu__content__align--left puik-menu__content--visible"
+          id="menu-id"
+          tabindex="-1"
+          data-headlessui-state="open"
+          style="width: 300px;"
+        >
+          Menu content
         </div>
       </div>
       `,

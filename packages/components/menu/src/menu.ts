@@ -1,6 +1,5 @@
 import { buildProps } from '@puik/utils'
-import PuikButton from '../../button'
-import type { Component, ExtractPropTypes, PropType } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type Menu from './menu.vue'
 
 export enum MenuAlignEnum {
@@ -16,16 +15,6 @@ export enum MenuPositionEnum {
 export const menuPositionValues = Object.values(MenuPositionEnum) as string[]
 
 export const menuProps = buildProps({
-  as: {
-    type: [Object, String] as PropType<Component | string>,
-    required: false,
-    default: PuikButton,
-  },
-  activatorLabel: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
   width: {
     type: String,
     required: false,

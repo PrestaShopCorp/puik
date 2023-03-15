@@ -1,7 +1,7 @@
 <template>
   <Popover v-slot="{ open, close }" class="puik-menu">
-    <PopoverButton v-bind="attrs" :as="as" class="puik-menu__activator">
-      <slot name="activator">{{ activatorLabel }}</slot>
+    <PopoverButton ref="button" class="puik-menu__activator" as="template">
+      <slot name="activator" :open="open" :close="close"></slot>
     </PopoverButton>
 
     <transition
@@ -13,11 +13,12 @@
       leave-to-class="puik-menu__transition__leave--to"
     >
       <PopoverPanel
-        :class="[
-          'puik-menu__content',
-          `puik-menu__content__position--${position}`,
-          `puik-menu__content__align--${align}`,
-        ]"
+        :class="{
+          'puik-menu__content': true,
+          'puik-menu__content--visible': open,
+          [`puik-menu__content__position--${position}`]: true,
+          [`puik-menu__content__align--${align}`]: true,
+        }"
         :style="{ width }"
       >
         <slot :open="open" :close="close"></slot>
@@ -27,13 +28,10 @@
 </template>
 
 <script setup lang="ts">
-import { useAttrs } from 'vue'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { menuProps } from './menu'
 defineOptions({
   name: 'PuikMenu',
 })
-
-const props = defineProps(menuProps)
-const attrs = useAttrs()
+defineProps(menuProps)
 </script>
