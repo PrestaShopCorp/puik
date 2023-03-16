@@ -32,19 +32,21 @@ export default async () =>
       external: [
         ...Object.keys(pkg.dependencies),
         ...Object.keys(pkg.peerDependencies),
-        /^@puik\/theme\/.*/,
+        /^@prestashopcorp\/puik-theme\/.*/,
       ],
       output: [
         {
-          dir: './dist/',
+          dir: './dist/es',
           format: 'esm',
           preserveModules: true,
+          entryFileNames: '[name].mjs',
         },
-        // {
-        //   dir: '/packages/components/dist/cjs',
-        //   format: 'cjs',
-        //   preserveModules: true,
-        // },
+        {
+          dir: './dist/lib',
+          format: 'cjs',
+          preserveModules: true,
+          exports: 'named',
+        },
       ],
       plugins: [
         DefineOptions(),

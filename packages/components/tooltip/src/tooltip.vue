@@ -44,7 +44,7 @@
 import { onMounted, ref } from 'vue'
 import { createPopper } from '@popperjs/core'
 import { useTimeoutFn } from '@vueuse/core'
-import { generateId } from '@puik/utils'
+import { generateId } from '@prestashopcorp/puik-utils'
 import { tooltipProps } from './tooltip'
 import type { Instance as PopperInstance } from '@popperjs/core'
 

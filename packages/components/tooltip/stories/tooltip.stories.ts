@@ -1,5 +1,5 @@
-import { PuikButton } from '@puik/components/button'
-import { PuikIcon } from '@puik/components/icon'
+import { PuikButton } from '@prestashopcorp/puik-components/button'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
 import PuikTooltip from './../src/tooltip.vue'
 import { tooltipPosition } from './../src/tooltip'
 import type { Meta, Story, Args } from '@storybook/vue3'

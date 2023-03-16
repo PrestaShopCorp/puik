@@ -50,11 +50,11 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.11",
     "@popperjs/core": "^2.11.6",
-    "@puik/components": "workspace:*",
-    "@puik/locale": "workspace:*",
-    "@puik/tailwind-preset": "workspace:*",
-    "@puik/theme": "workspace:*",
-    "@puik/utils": "workspace:*",
+    "@prestashopcorp/puik-components": "workspace:*",
+    "@prestashopcorp/puik-locale": "workspace:*",
+    "@prestashopcorp/puik-tailwind-preset": "workspace:*",
+    "@prestashopcorp/puik-theme": "workspace:*",
+    "@prestashopcorp/puik-utils": "workspace:*",
     "@vueuse/core": "^9.13.0",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3"

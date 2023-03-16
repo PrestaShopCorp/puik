@@ -1,14 +1,11 @@
 {
-  "name": "@puik/tailwind-preset",
+  "name": "@prestashopcorp/puik-tailwind-preset",
   "description": "Puik tailwind preset",
   "version": "0.0.1",
   "main": "dist/es/index.js",
   "module": "dist/es/index.mjs",
   "types": "dist/es/index.d.ts",
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
   "exports": {
     ".": {
       "require": {
@@ -21,6 +18,9 @@
       }
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rimraf dist && rollup -c"
   },

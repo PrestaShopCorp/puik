@@ -1,11 +1,23 @@
 {
-  "name": "@puik/utils",
+  "name": "@prestashopcorp/puik-utils",
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "typings": "./dist/index.d.ts",
+  "main": "./dist/lib/index.js",
+  "module": "./dist/es/index.mjs",
+  "types": "./dist/es/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/es/index.mjs",
+        "types": "./dist/es/index.d.ts"
+      },
+      "require": {
+        "default": "./dist/lib/index.js",
+        "types": "./dist/lib/index.d.ts"
+      }
+    }
+  },
   "files": [
     "dist"
   ],

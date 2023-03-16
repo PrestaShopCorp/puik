@@ -11,12 +11,12 @@ importers:
       '@pnpm/find-workspace-packages': ^5.0.36
       '@pnpm/logger': 5.0.0
       '@popperjs/core': ^2.11.6
+      '@prestashopcorp/puik-components': workspace:*
+      '@prestashopcorp/puik-locale': workspace:*
+      '@prestashopcorp/puik-tailwind-preset': workspace:*
+      '@prestashopcorp/puik-theme': workspace:*
+      '@prestashopcorp/puik-utils': workspace:*
       '@puik/build': workspace:^0.0.1
-      '@puik/components': workspace:*
-      '@puik/locale': workspace:*
-      '@puik/tailwind-preset': workspace:*
-      '@puik/theme': workspace:*
-      '@puik/utils': workspace:*
       '@types/lodash': ^4.14.191
       '@types/lodash-es': ^4.17.6
       '@types/node': ^18.14.2
@@ -55,11 +55,11 @@ importers:
     dependencies:
       '@headlessui/vue': 1.7.11_vue@3.2.47
       '@popperjs/core': 2.11.6
-      '@puik/components': link:packages/components
-      '@puik/locale': link:packages/locale
-      '@puik/tailwind-preset': link:packages/tailwind-preset
-      '@puik/theme': link:packages/theme
-      '@puik/utils': link:packages/utils
+      '@prestashopcorp/puik-components': link:packages/components
+      '@prestashopcorp/puik-locale': link:packages/locale
+      '@prestashopcorp/puik-tailwind-preset': link:packages/tailwind-preset
+      '@prestashopcorp/puik-theme': link:packages/theme
+      '@prestashopcorp/puik-utils': link:packages/utils
       '@vueuse/core': 9.13.0_vue@3.2.47
       lodash-es: 4.17.21
       lodash-unified: 1.0.3_6vt5du6ay2thm2pqhl32dksnvu
@@ -187,9 +187,9 @@ importers:
     specifiers:
       '@headlessui/vue': ^1.7.11
       '@popperjs/core': ^2.11.6
-      '@puik/locale': file:/home/aamorim/Documents/puik/packages/locale
-      '@puik/theme': file:/home/aamorim/Documents/puik/packages/theme
-      '@puik/utils': file:/home/aamorim/Documents/puik/packages/utils
+      '@prestashopcorp/puik-locale': workspace:*
+      '@prestashopcorp/puik-theme': workspace:*
+      '@prestashopcorp/puik-utils': workspace:*
       '@vueuse/core': ^9.13.0
       unplugin-vue-components: ^0.24.0
       unplugin-vue-define-options: ^1.2.3
@@ -199,9 +199,9 @@ importers:
     dependencies:
       '@headlessui/vue': 1.7.11_vue@3.2.47
       '@popperjs/core': 2.11.6
-      '@puik/locale': file:packages/locale_vue@3.2.47
-      '@puik/theme': file:packages/theme
-      '@puik/utils': file:packages/utils_vue@3.2.47
+      '@prestashopcorp/puik-locale': link:../locale
+      '@prestashopcorp/puik-theme': link:../theme
+      '@prestashopcorp/puik-utils': link:../utils
       '@vueuse/core': 9.13.0_vue@3.2.47
     devDependencies:
       unplugin-vue-components: 0.24.0_vue@3.2.47
@@ -218,7 +218,6 @@ importers:
 
   packages/puik:
     specifiers:
-      '@puik/components': workspace:*
       '@types/lodash': ^4.14.191
       '@types/lodash-es': ^4.17.6
       '@types/node': '*'
@@ -228,7 +227,6 @@ importers:
       unplugin-vue-components: ^0.24.0
       vue: ^3.2.47
     dependencies:
-      '@puik/components': link:../components
       lodash: 4.17.21
       lodash-es: 4.17.21
       lodash-unified: 1.0.3_3ib2ivapxullxkx3xftsimdk7u
@@ -19852,41 +19850,3 @@ packages:
   /zwitch/1.0.5:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
     dev: true
-
-  file:packages/locale_vue@3.2.47:
-    resolution: {directory: packages/locale, type: directory}
-    id: file:packages/locale
-    name: '@puik/locale'
-    version: 0.0.1
-    peerDependencies:
-      vue: ^3.2.0
-    dependencies:
-      lodash-unified: 1.0.3
-      vue: 3.2.47
-    transitivePeerDependencies:
-      - '@types/lodash-es'
-      - lodash
-      - lodash-es
-    dev: false
-
-  file:packages/theme:
-    resolution: {directory: packages/theme, type: directory}
-    name: '@puik/theme'
-    version: 0.0.1
-    dev: false
-
-  file:packages/utils_vue@3.2.47:
-    resolution: {directory: packages/utils, type: directory}
-    id: file:packages/utils
-    name: '@puik/utils'
-    version: 0.0.1
-    peerDependencies:
-      vue: ^3.2.0
-    dependencies:
-      lodash-unified: 1.0.3
-      vue: 3.2.47
-    transitivePeerDependencies:
-      - '@types/lodash-es'
-      - lodash
-      - lodash-es
-    dev: false

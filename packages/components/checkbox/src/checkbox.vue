@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useVModel } from '@vueuse/core'
-import { generateId } from '@puik/utils'
+import { generateId } from '@prestashopcorp/puik-utils'
 import { checkboxProps } from './checkbox'
 
 defineOptions({

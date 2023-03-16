@@ -34,7 +34,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
-import { useLocale } from '@puik/locale'
+import { useLocale } from '@prestashopcorp/puik-locale'
 import { switchEmits, switchProps } from './switch'
 
 defineOptions({

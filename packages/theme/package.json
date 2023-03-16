@@ -1,5 +1,5 @@
 {
-  "name": "@puik/theme",
+  "name": "@prestashopcorp/puik-theme",
   "version": "0.0.1",
   "description": "Puik component Theme",
   "main": "dist/index.css",

@@ -1,4 +1,4 @@
-import { buildProps } from '@puik/utils'
+import { buildProps } from '@prestashopcorp/puik-utils'
 import type { ExtractPropTypes, InjectionKey, PropType, Ref } from 'vue'
 import type Select from './select.vue'
 import type { Option, DefaultOption } from './option'

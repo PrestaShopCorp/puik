@@ -1,4 +1,4 @@
-import { buildProps } from '@puik/utils'
+import { buildProps } from '@prestashopcorp/puik-utils'
 import type { RouteLocationRaw } from 'vue-router'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Link from './link.vue'

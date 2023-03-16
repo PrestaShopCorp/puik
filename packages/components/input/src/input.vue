@@ -59,7 +59,7 @@
 <script setup lang="ts">
 import { computed, ref, useSlots } from 'vue'
 import { isNumber } from '@vueuse/core'
-import { PuikIcon } from '@puik/components/icon'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
 import PuikInputControls from './controls/controls.vue'
 import { inputEmits, inputProps } from './input'
 

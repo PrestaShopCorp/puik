@@ -28,15 +28,17 @@ export default async () =>
       ],
       output: [
         {
-          dir: './dist/',
+          dir: './dist/es',
           format: 'esm',
           preserveModules: true,
+          entryFileNames: '[name].mjs',
         },
-        // {
-        //   dir: '/packages/components/dist/cjs',
-        //   format: 'cjs',
-        //   preserveModules: true,
-        // },
+        {
+          dir: './dist/lib',
+          format: 'cjs',
+          preserveModules: true,
+          exports: 'named',
+        },
       ],
       plugins: [
         typescript({

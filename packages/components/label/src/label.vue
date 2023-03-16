@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { useLocale } from '@puik/locale'
+import { useLocale } from '@prestashopcorp/puik-locale'
 import { labelProps } from './label'
 
 defineOptions({

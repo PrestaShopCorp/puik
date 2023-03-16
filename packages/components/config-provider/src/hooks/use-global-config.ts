@@ -1,6 +1,6 @@
 import { inject, ref, computed, unref, provide, getCurrentInstance } from 'vue'
-import { debugWarn, keysOf } from '@puik/utils'
-import { localeContextKey } from '@puik/locale'
+import { localeContextKey } from '@prestashopcorp/puik-locale'
+import { debugWarn, keysOf } from '@prestashopcorp/puik-utils'
 import { configProviderContextKey } from '../config-provider-keys'
 import type { MaybeRef } from '@vueuse/core'
 import type { Ref, App } from 'vue'

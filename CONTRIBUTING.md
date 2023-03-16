@@ -35,7 +35,7 @@ $ pnpm dev
 
 ```vue
 <script setup lang="ts">
-import { PuikComponent } from '@puik/components'
+import { PuikComponent } from '@prestashopcorp/puik-components'
 </script>
 
 <template>
@@ -119,4 +119,19 @@ $ pnpm docs:dev
 │    On your network:  http://192.168.1.11:6006/    │
 │                                                   │
 ╰───────────────────────────────────────────────────╯
+```
+
+### Installing a library on a local project
+
+If you want to try to install a puik package in another local project without having to release you can use [pnpm link](https://pnpm.io/cli/link)  
+In the folder of the package you want to use run this command to link the package to the global node_modules
+
+```sh
+$ pnpm link --global
+```
+
+Then go to your project and link to the package you want to install by using the following command
+
+```sh
+$ pnpm link --global @prestashopcorp/puik-package-name
 ```

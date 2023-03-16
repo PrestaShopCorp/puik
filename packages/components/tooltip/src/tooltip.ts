@@ -1,4 +1,4 @@
-import { buildProps } from '@puik/utils'
+import { buildProps } from '@prestashopcorp/puik-utils'
 import type { Placement } from '@popperjs/core'
 import type { ExtractPropTypes } from 'vue'
 import type Tooltip from './tooltip.vue'

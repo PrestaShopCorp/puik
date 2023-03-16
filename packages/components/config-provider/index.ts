@@ -1,4 +1,4 @@
-import { withInstall } from '@puik/utils'
+import { withInstall } from '@prestashopcorp/puik-utils'
 
 import ConfigProvider from './src/config-provider'
 

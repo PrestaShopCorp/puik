@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useVModel } from '@vueuse/core'
-import { generateId } from '@puik/utils'
+import { generateId } from '@prestashopcorp/puik-utils'
 import { radioProps, radioEmits } from './radio'
 
 defineOptions({

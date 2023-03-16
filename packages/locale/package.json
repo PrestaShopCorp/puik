@@ -1,11 +1,22 @@
 {
-  "name": "@puik/locale",
+  "name": "@prestashopcorp/puik-locale",
   "description": "puiklocale",
   "version": "0.0.1",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "typings": "./dist/index.d.ts",
+  "main": "./dist/es/index.mjs",
+  "types": "./dist/es/index.d.ts",
+  "exports": {
+    ".": {
+      "require": {
+        "default": "./dist/lib/index.js",
+        "types": "./dist/lib/index.d.ts"
+      },
+      "import": {
+        "default": "./dist/es/index.mjs",
+        "types": "./dist/es/index.d.ts"
+      }
+    }
+  },
   "files": [
     "dist"
   ],

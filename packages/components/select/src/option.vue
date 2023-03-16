@@ -27,8 +27,8 @@
 <script setup lang="ts">
 import { computed, inject, toRaw, watch } from 'vue'
 import { ListboxOption } from '@headlessui/vue'
-import { PuikIcon } from '@puik/components/icon'
-import { isObject } from '@puik/utils'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
+import { isObject } from '@prestashopcorp/puik-utils'
 import { optionProps } from './option'
 import { selectKey } from './select'
 

@@ -33,6 +33,7 @@ export default async () =>
           dir: './dist/lib',
           format: 'cjs',
           preserveModules: true,
+          exports: 'named',
         },
       ],
       plugins: [

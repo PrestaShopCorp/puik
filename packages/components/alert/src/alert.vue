@@ -31,8 +31,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { PuikButton } from '@puik/components/button'
-import { PuikIcon } from '@puik/components/icon'
+import { PuikButton } from '@prestashopcorp/puik-components/button'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
 import { alertEmits, alertProps, ICONS } from './alert'
 
 defineOptions({
