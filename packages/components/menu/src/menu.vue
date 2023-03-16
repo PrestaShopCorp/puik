@@ -1,9 +1,8 @@
 <template>
-  <Popover v-slot="{ open, close }" class="puik-menu">
-    <PopoverButton ref="button" class="puik-menu__activator" as="template">
+  <Menu v-slot="{ open, close }" class="puik-menu" as="div">
+    <MenuButton ref="button" class="puik-menu__activator" as="template">
       <slot name="activator" :open="open" :close="close"></slot>
-    </PopoverButton>
-
+    </MenuButton>
     <transition
       enter-active-class="puik-menu__transition__enter--active"
       enter-from-class="puik-menu__transition__enter--from"
@@ -12,23 +11,24 @@
       leave-from-class="puik-menu__transition__leave--from"
       leave-to-class="puik-menu__transition__leave--to"
     >
-      <PopoverPanel
+      <div
+        v-if="open"
         :class="{
           'puik-menu__content': true,
           'puik-menu__content--visible': open,
           [`puik-menu__content__position--${position}`]: true,
           [`puik-menu__content__align--${align}`]: true,
         }"
-        :style="{ width }"
+        :style="{ width, maxHeight }"
       >
         <slot :open="open" :close="close"></slot>
-      </PopoverPanel>
+      </div>
     </transition>
-  </Popover>
+  </Menu>
 </template>
 
 <script setup lang="ts">
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
+import { Menu, MenuButton } from '@headlessui/vue'
 import { menuProps } from './menu'
 defineOptions({
   name: 'PuikMenu',

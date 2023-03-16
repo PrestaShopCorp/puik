@@ -1,0 +1,11 @@
+@use './common/typography.scss';
+.puik-menu-item-group {
+  @apply flex flex-col outline-none;
+  &__items {
+    @apply outline-none;
+  }
+  &__title {
+    @extend .puik-h4;
+    @apply mb-2 uppercase text-font-500;
+  }
+}

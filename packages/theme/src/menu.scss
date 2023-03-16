@@ -1,13 +1,10 @@
 .puik-menu {
   @apply relative w-max;
-
   &__content {
-    @apply absolute bg-white border border-light-blue-500 shadow rounded p-4 w-full invisible;
-
+    @apply absolute bg-white border border-light-blue-500 shadow rounded p-4 w-full invisible focus:outline-none flex flex-col overflow-y-auto;
     &--visible {
       @apply visible;
     }
-
     &__align {
       &--left {
         @apply left-0;
@@ -25,7 +22,6 @@
       }
     }
   }
-
   &__transition {
     &__enter {
       &--active {
@@ -38,7 +34,6 @@
         @apply translate-y-0 opacity-100;
       }
     }
-
     &__leave {
       &--active {
         @apply transition duration-150 ease-in;

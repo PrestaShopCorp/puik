@@ -1,0 +1,12 @@
+.puik-menu-item {
+  @apply block mb-2;
+  &--destructive {
+    @apply text-accentuation-destructive;
+  }
+  &--active {
+    @apply outline-none ring ring-focus-main;
+  }
+  .puik-button {
+    @apply text-left block;
+  }
+}
