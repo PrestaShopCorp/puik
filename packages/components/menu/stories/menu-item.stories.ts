@@ -43,9 +43,9 @@ export default {
       },
       description: 'Set the item disabled',
     },
-    activator: {
+    item: {
       control: 'none',
-      description: 'Slot used to replace whole activator',
+      description: 'Slot used to replace whole item',
     },
     default: {
       control: 'text',

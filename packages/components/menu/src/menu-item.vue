@@ -2,6 +2,10 @@
   <MenuItem
     v-slot="{ active }"
     class="puik-menu-item"
+    :class="{
+      'puik-menu-item--disabled': disabled,
+      'puik-menu-item--destructive': destructive,
+    }"
     :disabled="disabled"
     as="div"
   >
@@ -10,8 +14,7 @@
         class="puik-menu-item__button"
         :disabled="disabled"
         :class="{
-          'puik-menu-item--destructive': destructive,
-          'puik-menu-item--active': active,
+          'puik-menu-item__button--active': active,
         }"
         :left-icon="leftIcon"
         :right-icon="rightIcon"

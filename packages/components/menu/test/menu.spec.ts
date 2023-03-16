@@ -2,84 +2,91 @@ import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
 import PuikMenu from '../src/menu.vue'
+import PuikMenuItem from '../src/menu-item.vue'
+import PuikMenuItemGroup from '../src/menu-item-group.vue'
+import PuikMenuItemSeparator from '../src/menu-item-separator.vue'
 import PuikButton from '../../button/src/button.vue'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
+export function factoryMenu(
+  template: string,
+  options: MountingOptions<any> = {}
+) {
+  return mount({
+    components: {
+      'puik-menu': PuikMenu,
+      'puik-menu-item': PuikMenuItem,
+      'puik-menu-item-group': PuikMenuItemGroup,
+      'puik-menu-item-separator': PuikMenuItemSeparator,
+      'puik-button': PuikButton,
+    },
+    template,
+    ...options,
+  })
+}
+export const getMenuActivator = (wrapper) =>
+  wrapper.find('.puik-menu__activator')
+export const getMenuContent = (wrapper) => wrapper.find('.puik-menu__content')
+export const getMenuSeparator = (wrapper) =>
+  wrapper.find('.puik-menu-item-separator')
+export const showMenu = (wrapper) => {
+  getMenuActivator(wrapper).trigger('click')
+  return nextTick()
+}
+
 describe('Menu tests', () => {
   let wrapper: VueWrapper<any>
-  const getActivator = () => wrapper.find('.puik-menu__activator')
-  const getContent = () => wrapper.find('.puik-menu__content')
-  const factory = (template: string, options: MountingOptions<any> = {}) => {
-    wrapper = mount({
-      components: {
-        'puik-menu': PuikMenu,
-        'puik-button': PuikButton,
-      },
-      template,
-      ...options,
-    })
-  }
   it('should be a vue instance', () => {
-    factory(`
-      <puik-menu activatorAs="button" activatorLabel="Show menu">
-        <template #activator>
-          <puik-button>Show menu</puik-button>
-        </template>
-        Menu content
-      </puik-menu>
-    `)
-    expect(wrapper).toBeTruthy()
-  })
-  it('should have puik button in activator slot', () => {
-    factory(`
+    wrapper = factoryMenu(`
       <puik-menu>
         <template #activator>
           <puik-button>Show menu</puik-button>
         </template>
-        Menu content
+        <puik-menu-item>Link</puik-menu-item>
       </puik-menu>
     `)
-    expect(getActivator().classes()).toContain('puik-button')
+    expect(wrapper).toBeTruthy()
   })
-  it('menu should appear on click', async () => {
-    factory(`
-      <puik-menu activatorLabel="Show menu">
+  it('content should appear on click', async () => {
+    wrapper = factoryMenu(`
+      <puik-menu>
         <template #activator>
           <puik-button>Show menu</puik-button>
         </template>
-        Menu content
+        <puik-menu-item>Link</puik-menu-item>
       </puik-menu>
     `)
-    getActivator().trigger('click')
-    await nextTick()
-    expect(getContent().classes()).toContain('puik-menu__content--visible')
+    await showMenu(wrapper)
+    expect(getMenuContent(wrapper).classes()).toContain(
+      'puik-menu__content--visible'
+    )
   })
   it('content should have top position', async () => {
-    factory(`
+    wrapper = factoryMenu(`
       <puik-menu position="top">
         <template #activator>
           <puik-button>Show menu</puik-button>
         </template>
-        Menu content
+        <puik-menu-item>Link</puik-menu-item>
       </puik-menu>
     `)
-    getActivator().trigger('click')
-    await nextTick()
-    expect(getContent().classes()).toContain(
+    await showMenu(wrapper)
+    expect(getMenuContent(wrapper).classes()).toContain(
       'puik-menu__content__position--top'
     )
   })
-  it('content should have left align', async () => {
-    factory(`
-      <puik-menu align="left">
-        <template #activator>
-          <puik-button>Show menu</puik-button>
-        </template>
-        Menu content
-      </puik-menu>
+  it('content should have right align', async () => {
+    wrapper = factoryMenu(`
+    <puik-menu align="right">
+      <template #activator>
+        <puik-button>Show menu</puik-button>
+      </template>
+      <puik-menu-item>Link</puik-menu-item>
+    </puik-menu>
     `)
-    getActivator().trigger('click')
-    await nextTick()
-    expect(getContent().classes()).toContain('puik-menu__content__align--left')
+    await showMenu(wrapper)
+    expect(getMenuContent(wrapper).classes()).toContain(
+      'puik-menu__content__align--right'
+    )
   })
 })

@@ -12,7 +12,7 @@ import PuikButton from '../../button/src/button.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
-  title: 'Components/Menu',
+  title: 'Components/Menu/Menu',
   component: PuikMenu,
   argTypes: {
     position: {
