@@ -99,18 +99,37 @@ Default.parameters = {
 
       <!--HTML/CSS Snippet-->
       <div class="puik-menu">
-        <button class="puik-button puik-button--primary puik-button--md puik-menu__activator" aria-haspopup="menu" aria-expanded="true" type="button">
+        <button class="puik-button puik-button--primary puik-button--md puik-menu__activator" id="button-id" aria-haspopup="menu" aria-expanded="true" type="button" aria-controls="menu-id">
           Show menu
+
         </button>
-        <div class="puik-menu__content puik-menu__content--visible puik-menu__content__position--bottom puik-menu__content__align--left" style="width: 300px; max-height: none;">
+        <div aria-labelledby="button-id" id="menu-id" role="menu" class="puik-menu__content puik-menu__content--visible puik-menu__content__position--bottom puik-menu__content__align--left" style="width: 300px; max-height: none;">
           <!--
             State classes
-            Active: "puik-menu-item--active"
+              Disabled: puik-menu-item--disabled"
+              Active: puik-menu-item--active"
+              Destructive: puik-menu-item--destructive"
+              Right-icon: puik-menu-item--right-icon"
           -->
-          <div class="puik-menu-item" righicon="check" default="Item label" role="menuitem">
-            <button href="" class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button">
-              <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">check</div>
+          <div class="puik-menu-item" role="menuitem">
+            <a href="/" class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button" disabled="false">
+              <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">check</div>Item label
+            </a>
+          </div>
+          <div class="puik-menu-item puik-menu-item--right-icon" role="menuitem">
+            <a href="/" class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button" disabled="false">
               Item label
+              <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">check</div>
+            </a>
+          </div>
+          <div class="puik-menu-item puik-menu-item--disabled" role="menuitem" aria-disabled="true">
+            <a href="/" class="puik-button puik-button--text puik-button--md puik-button--disabled puik-button--fluid puik-menu-item__button" disabled="true">
+              <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">check</div>Item label
+            </a>
+          </div>
+          <div class="puik-menu-item puik-menu-item--destructive" default="Item label" role="menuitem">
+            <button class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button">
+              <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">delete</div>Item label
             </button>
           </div>
         </div>

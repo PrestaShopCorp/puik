@@ -11,8 +11,7 @@
       leave-from-class="puik-menu__transition__leave--from"
       leave-to-class="puik-menu__transition__leave--to"
     >
-      <div
-        v-if="open"
+      <MenuItems
         :class="{
           'puik-menu__content': true,
           'puik-menu__content--visible': open,
@@ -22,13 +21,13 @@
         :style="{ width, maxHeight }"
       >
         <slot :open="open" :close="close"></slot>
-      </div>
+      </MenuItems>
     </transition>
   </Menu>
 </template>
 
 <script setup lang="ts">
-import { Menu, MenuButton } from '@headlessui/vue'
+import { Menu, MenuItems, MenuButton } from '@headlessui/vue'
 import { menuProps } from './menu'
 defineOptions({
   name: 'PuikMenu',

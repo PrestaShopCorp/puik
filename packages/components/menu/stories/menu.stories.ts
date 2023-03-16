@@ -79,24 +79,21 @@ const Template: Story = (args: Args) => ({
       <template #activator>
         <PuikButton>Show menu</PuikButton>
       </template>
-      <puik-menu-item-group title="Group title">
-        <puik-menu-item>First item</puik-menu-item>
-        <puik-menu-item>Second item</puik-menu-item>
-        <puik-menu-item>Third item</puik-menu-item>
+      <puik-menu-item-group title="Section title">
+        <puik-menu-item href="/">href link</puik-menu-item>
+        <puik-menu-item to="home">to link</puik-menu-item>
+        <puik-menu-item href="/" disabled>Disabled item</puik-menu-item>
       </puik-menu-item-group>
-
       <puik-menu-item-separator />
-
-      <puik-menu-item>Item without group</puik-menu-item>
-
+      <puik-menu-item-group title="Icon section">
+        <puik-menu-item href="/" left-icon="check">Item with left icon</puik-menu-item>
+        <puik-menu-item href="/" right-icon="check">Item with right icon</puik-menu-item>
+      </puik-menu-item-group>
       <puik-menu-item-separator />
-
-      <puik-menu-item icon="check">Item with icon</puik-menu-item>
-
+      <puik-menu-item href="/">Item without group</puik-menu-item>
       <puik-menu-item-separator />
-
-      <puik-menu-item icon="delete" destructive>Destructive item</puik-menu-item>
-      </puik-menu>
+      <puik-menu-item href="/" left-icon="delete" destructive>Destructive item</puik-menu-item>
+    </puik-menu>
   </div>`,
 })
 
@@ -116,74 +113,93 @@ Default.parameters = {
         <template #activator>
           <PuikButton>Show menu</PuikButton>
         </template>
-        <puik-menu-item-group title="Group title">
-          <puik-menu-item>First item</puik-menu-item>
-          <puik-menu-item>Second item</puik-menu-item>
-          <puik-menu-item>Third item</puik-menu-item>
+        <puik-menu-item-group title="Section title">
+          <puik-menu-item href="/">href link</puik-menu-item>
+          <puik-menu-item to="home">to link</puik-menu-item>
+          <puik-menu-item href="/" disabled>Disabled item</puik-menu-item>
         </puik-menu-item-group>
-
         <puik-menu-item-separator />
-
-        <puik-menu-item>Item without group</puik-menu-item>
-
+        <puik-menu-item-group title="Icon section">
+          <puik-menu-item href="/" left-icon="check">Item with left icon</puik-menu-item>
+          <puik-menu-item href="/" right-icon="check">Item with right icon</puik-menu-item>
+        </puik-menu-item-group>
         <puik-menu-item-separator />
-
-        <puik-menu-item icon="check">Item with icon</puik-menu-item>
-
+        <puik-menu-item href="/">Item without group</puik-menu-item>
         <puik-menu-item-separator />
-
-        <puik-menu-item icon="delete" destructive>Destructive item</puik-menu-item>
+        <puik-menu-item left-icon="delete" destructive>Destructive item</puik-menu-item>
       </puik-menu>
 
       <!--HTML/CSS Snippet-->
+      <!--
+        State classes
+          Align left: puik-menu__align--left"
+          Align right: puik-menu__align--right"
+          Position top: puik-menu__position--top"
+          Position bottom: puik-menu__position--bottom"
+      -->
       <div class="puik-menu">
-        <button class="puik-button puik-button--primary puik-button--md puik-menu__activator" aria-haspopup="menu" aria-expanded="true" type="button" aria-controls="menu-id">
-          Show menu
-        </button>
-        <div class="puik-menu__content puik-menu__content--visible puik-menu__content__position--bottom puik-menu__content__align--left" style="width: 300px; max-height: none;">
-          <div class="puik-menu-item-group">
-            <h4 class="puik-menu-item-group__title">First group</h4>
-            <div aria-labelledby="menu-id" role="menu" class="puik-menu-item-group__items">
+      <button class="puik-button puik-button--primary puik-button--md puik-menu__activator" id="button-id" aria-haspopup="menu" aria-expanded="true" type="button" aria-controls="menu-id">
+        Show menu
+      </button>
+      <!--
+        State classes
+        Visible: puik-menu__content--visible"
+      -->
+      <div aria-labelledby="button-id" role="menu" class="puik-menu__content puik-menu__content--visible puik-menu__content__position--bottom puik-menu__content__align--left" style="width: 300px; max-height: none;">
+        <section class="puik-menu-item-group">
+          <h4 class="puik-menu-item-group__title">Section title</h4>
+            <div class="puik-menu-item-group__items">
               <!--
                 State classes
-                Active: "puik-menu-item--active"
+                  Disabled: puik-menu-item--disabled"
+                  Active: puik-menu-item--active"
+                  Destructive: puik-menu-item--destructive"
+                  Right-icon: puik-menu-item--right-icon"
               -->
               <div class="puik-menu-item" role="menuitem">
-                <button class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button">
-                  First item
-                </button>
+                <a href="/" class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button" disabled="false">
+                  href link
+                </a>
               </div>
               <div class="puik-menu-item" role="menuitem">
-                <button class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button">
-                  Second item
-                </button>
+                <router-link to="home" class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button" disabled="false">
+                  to link
+                </router-link>
               </div>
-              <div class="puik-menu-item" role="menuitem">
-                <button class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button">
-                  Third item
-                </button>
+              <div class="puik-menu-item puik-menu-item--disabled" role="menuitem" aria-disabled="true">
+                <a href="/" class="puik-button puik-button--text puik-button--md puik-button--disabled puik-button--fluid puik-menu-item__button" disabled="true">
+                  Disabled item
+                </a>
               </div>
             </div>
-          </div>
+          </section>
+          <hr class="puik-menu-item-separator">
+          <section class="puik-menu-item-group">
+            <h4 class="puik-menu-item-group__title">Icon section</h4>
+            <div class="puik-menu-item-group__items">
+              <div class="puik-menu-item" role="menuitem">
+                <a href="/" class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button" disabled="false">
+                  <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">check</div>Item with left icon
+                </a>
+              </div>
+              <div class="puik-menu-item puik-menu-item--right-icon" role="menuitem">
+                <a href="/" class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button" disabled="false">
+                  Item with right icon <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">check</div>
+                </a>
+              </div>
+            </div>
+          </section>
           <hr class="puik-menu-item-separator">
           <div class="puik-menu-item" role="menuitem">
-            <button class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button">
+            <a href="/" class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button" disabled="false">
               Item without group
-            </button>
+            </a>
           </div>
           <hr class="puik-menu-item-separator">
-          <div class="puik-menu-item" role="menuitem">
-            <button class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button">
-              <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">check</div>
-              Item with icon
-            </button>
-          </div>
-          <hr class="puik-menu-item-separator">
-          <div class="puik-menu-item" role="menuitem">
-            <button class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button puik-menu-item--destructive">
-              <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">delete</div>
-              Destructive item
-            </button>
+          <div class="puik-menu-item puik-menu-item--destructive" role="menuitem">
+            <a href="/" class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button" disabled="false">
+              <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">delete</div>Destructive item
+            </a>
           </div>
         </div>
       </div>

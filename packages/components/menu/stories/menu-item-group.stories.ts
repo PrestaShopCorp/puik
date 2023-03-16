@@ -38,7 +38,6 @@ const Template: Story = (args: Args) => ({
       <puik-menu-item-group v-bind="args">
         <puik-menu-item>First item</puik-menu-item>
         <puik-menu-item>Second item</puik-menu-item>
-        <puik-menu-item>Third item</puik-menu-item>
       </puik-menu-item-group>
     </puik-menu>
   </div>`,
@@ -57,10 +56,9 @@ Default.parameters = {
         <template #activator>
           <PuikButton>Show menu</PuikButton>
         </template>
-        <puik-menu-item-group v-bind="args">
+        <puik-menu-item-group>
           <puik-menu-item>First item</puik-menu-item>
           <puik-menu-item>Second item</puik-menu-item>
-          <puik-menu-item>Third item</puik-menu-item>
         </puik-menu-item-group>
       </puik-menu>
 
@@ -69,10 +67,10 @@ Default.parameters = {
         <button class="puik-button puik-button--primary puik-button--md puik-menu__activator" id="button-id" aria-haspopup="menu" aria-expanded="true" type="button" aria-controls="menu-id">
           Show menu
         </button>
-        <div id="menu-id" class="puik-menu__content puik-menu__content--visible puik-menu__content__position--bottom puik-menu__content__align--left" style="width: 300px; max-height: none;">
-          <div class="puik-menu-item-group">
+        <div aria-labelledby="button-id" id="menu-id" role="menu" class="puik-menu__content puik-menu__content--visible puik-menu__content__position--bottom puik-menu__content__align--left" style="width: 300px; max-height: none;">
+          <section class="puik-menu-item-group">
             <h4 class="puik-menu-item-group__title">Group title</h4>
-            <div aria-labelledby="button-id" role="menu" class="puik-menu-item-group__items">
+            <div class="puik-menu-item-group__items">
               <div class="puik-menu-item" role="menuitem">
                 <button class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button">
                   First item
@@ -80,16 +78,12 @@ Default.parameters = {
               </div>
               <div class="puik-menu-item" role="menuitem">
                 <button class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button">
-                 Second item
-                </button>
-              </div>
-              <div class="puik-menu-item" role="menuitem">
-                <button class="puik-button puik-button--text puik-button--md puik-button--fluid puik-menu-item__button">
-                  Third item
+                  Second item
+
                 </button>
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </div>
       `,

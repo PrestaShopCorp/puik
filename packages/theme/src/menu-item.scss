@@ -1,12 +1,24 @@
 .puik-menu-item {
-  @apply block mb-2;
+  @apply mb-2;
+  .puik-button {
+    @apply block text-left;
+  }
   &--destructive {
-    @apply text-accentuation-destructive;
+    .puik-button {
+      @apply text-accentuation-destructive;
+    }
   }
   &--active {
-    @apply outline-none ring ring-focus-main;
+    .puik-button {
+      @apply outline-none ring ring-focus-main;
+    }
   }
-  .puik-button {
-    @apply text-left block;
+  &--right-icon {
+    .puik-button {
+      @apply flex flex-row justify-between items-center;
+      &__right-icon {
+        @apply justify-self-end;
+      }
+    }
   }
 }
