@@ -2,9 +2,9 @@
   "name": "@prestashopcorp/puik-components",
   "version": "0.0.1",
   "description": "all components are settled here",
-  "main": "./dist/lib/index.js",
-  "module": "./dist/es/index.mjs",
-  "types": "./dist/es/index.d.ts",
+  "main": "./lib/index.js",
+  "module": "./es/index.mjs",
+  "types": "./es/index.d.ts",
   "exports": {
     ".": {
       "import": {
@@ -15,7 +15,14 @@
         "default": "./dist/lib/index.js",
         "types": "./dist/lib/index.d.ts"
       }
-    }
+    },
+    "./es": "./dist/es/index.mjs",
+    "./lib": "./dist/lib/index.js",
+    "./es/*.mjs": "./dist/es/*.mjs",
+    "./es/*": "./dist/es/*.mjs",
+    "./lib/*.js": "./dist/lib/*.js",
+    "./lib/*": "./dist/lib/*.js",
+    "./*": "./dist/*"
   },
   "files": [
     "dist"

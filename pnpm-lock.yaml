@@ -13,6 +13,7 @@ importers:
       '@popperjs/core': ^2.11.6
       '@prestashopcorp/puik-components': workspace:*
       '@prestashopcorp/puik-locale': workspace:*
+      '@prestashopcorp/puik-provider': workspace:*
       '@prestashopcorp/puik-tailwind-preset': workspace:*
       '@prestashopcorp/puik-theme': workspace:*
       '@prestashopcorp/puik-utils': workspace:*
@@ -57,6 +58,7 @@ importers:
       '@popperjs/core': 2.11.6
       '@prestashopcorp/puik-components': link:packages/components
       '@prestashopcorp/puik-locale': link:packages/locale
+      '@prestashopcorp/puik-provider': link:packages/provider
       '@prestashopcorp/puik-tailwind-preset': link:packages/tailwind-preset
       '@prestashopcorp/puik-theme': link:packages/theme
       '@prestashopcorp/puik-utils': link:packages/utils
@@ -200,7 +202,7 @@ importers:
       '@headlessui/vue': 1.7.11_vue@3.2.47
       '@popperjs/core': 2.11.6
       '@prestashopcorp/puik-locale': link:../locale
-      '@prestashopcorp/puik-theme': link:../theme
+      '@prestashopcorp/puik-theme': file:packages/theme
       '@prestashopcorp/puik-utils': link:../utils
       '@vueuse/core': 9.13.0_vue@3.2.47
     devDependencies:
@@ -209,12 +211,26 @@ importers:
       vue: 3.2.47
       vue-router: 4.1.6_vue@3.2.47
       vue-tsc: 1.2.0
+    dependenciesMeta:
+      '@prestashopcorp/puik-theme':
+        injected: true
 
   packages/locale:
     specifiers:
       lodash-unified: ^1.0.3
     dependencies:
       lodash-unified: 1.0.3
+
+  packages/provider:
+    specifiers:
+      lodash-unified: ^1.0.3
+      unplugin-vue-components: ^0.24.0
+      vue: ^3.2.47
+    dependencies:
+      lodash-unified: 1.0.3
+    devDependencies:
+      unplugin-vue-components: 0.24.0_vue@3.2.47
+      vue: 3.2.47
 
   packages/puik:
     specifiers:
@@ -280,6 +296,44 @@ importers:
       postcss: 8.4.21
       sass: 1.58.3
       tailwindcss: 3.2.7
+
+  packages/theme/dist:
+    specifiers:
+      '@esbuild-kit/cjs-loader': ^2.4.2
+      '@types/gulp': ^4.0.10
+      '@types/gulp-autoprefixer': 0.0.33
+      '@types/gulp-clean-css': 4.3.0
+      '@types/gulp-rename': 2.0.1
+      '@types/gulp-sass': 5.0.0
+      '@types/sass': ^1.43.1
+      autoprefixer: ^10.4.13
+      chalk: ^5.2.0
+      gulp-autoprefixer: 8.0.0
+      gulp-clean-css: 4.3.0
+      gulp-postcss: ^9.0.1
+      gulp-rename: 2.0.0
+      gulp-sass: 5.1.0
+      postcss: ^8.4.21
+      sass: ^1.58.3
+      tailwindcss: ^3.2.7
+    devDependencies:
+      '@esbuild-kit/cjs-loader': 2.4.2
+      '@types/gulp': 4.0.10
+      '@types/gulp-autoprefixer': 0.0.33
+      '@types/gulp-clean-css': 4.3.0
+      '@types/gulp-rename': 2.0.1
+      '@types/gulp-sass': 5.0.0
+      '@types/sass': 1.43.1
+      autoprefixer: 10.4.13_postcss@8.4.21
+      chalk: 5.2.0
+      gulp-autoprefixer: 8.0.0
+      gulp-clean-css: 4.3.0
+      gulp-postcss: 9.0.1_postcss@8.4.21
+      gulp-rename: 2.0.0
+      gulp-sass: 5.1.0
+      postcss: 8.4.21
+      sass: 1.58.3
+      tailwindcss: 3.2.7_postcss@8.4.21
 
   packages/utils:
     specifiers:
@@ -6334,27 +6388,27 @@ packages:
   /@types/gulp-autoprefixer/0.0.33:
     resolution: {integrity: sha512-FgunPm1uMroC/w9FCxtQhPPskR/WvnT+sNPxnyldwNXjq8K5ktzZAOqATyrYk0jTgae793uc+k5vsGV6Q+G7xA==}
     dependencies:
-      '@types/node': 16.11.6
+      '@types/node': 18.14.2
     dev: true
 
   /@types/gulp-clean-css/4.3.0:
     resolution: {integrity: sha512-aRV2BvZA+X/SdgONQW4OkIzInYhvSqeUCiLfwc3VCD0/pxQT9xAadwHmtYGF2kc66cD4uSPmE+s4JYFvhHLaUA==}
     dependencies:
       '@types/clean-css': 4.2.5
-      '@types/node': 16.11.6
+      '@types/node': 18.14.2
     dev: true
 
   /@types/gulp-rename/2.0.1:
     resolution: {integrity: sha512-9ZjeS2RHEnmBmTcyi2+oeye3BgCsWhvi4uv3qCnAg8i6plOuRdaeNxjOves0ELysEXYLBl7bCl5fbVs7AZtgTA==}
     dependencies:
-      '@types/node': 16.11.6
+      '@types/node': 18.14.2
       '@types/vinyl': 2.0.6
     dev: true
 
   /@types/gulp-sass/5.0.0:
     resolution: {integrity: sha512-7p7nT+IKDREyJzTH13/FC/j3fobDBZTclSJFrgAJA+qzNZgzCENAx3HeiO4N7QlraLRqx44u3OR0Aq0Jw4wz8Q==}
     dependencies:
-      '@types/node': 16.11.6
+      '@types/node': 18.14.2
       '@types/node-sass': 4.11.2
     dev: true
 
@@ -6459,10 +6513,6 @@ packages:
 
   /@types/node/13.13.52:
     resolution: {integrity: sha512-s3nugnZumCC//n4moGGe6tkNMyYEdaDBitVjwPxXmR5lnMG5dHePinH2EdxkG3Rh1ghFHHixAG4NJhpJW1rthQ==}
-
-  /@types/node/16.11.6:
-    resolution: {integrity: sha512-ua7PgUoeQFjmWPcoo9khiPum3Pd60k4/2ZGXt18sm2Slk0W0xZTqt5Y0Ny1NyBiN1EVQ/+FaF9NcY4Qe6rwk5w==}
-    dev: true
 
   /@types/node/16.18.13:
     resolution: {integrity: sha512-l0/3XZ153UTlNOnZK8xSNoJlQda9/WnYgiTdcKKPJSZjdjI9MU+A9oMXOesAWLSnqAaaJhj3qfQsU07Dr8OUwg==}
@@ -7703,7 +7753,7 @@ packages:
     dev: true
 
   /ansi-gray/0.1.1:
-    resolution: {integrity: sha1-KWLPVOyXksSFEKPetSRDaGHvclE=}
+    resolution: {integrity: sha512-HrgGIZUl8h2EHuZaU9hTR/cU5nhKxpVE1V6kdGsQ8e4zirElJ5fvtfc8N7Q1oq1aatO275i8pUFUCpNWCAnVWw==}
     engines: {node: '>=0.10.0'}
     dependencies:
       ansi-wrap: 0.1.0
@@ -12018,7 +12068,7 @@ packages:
       fancy-log: 1.3.3
       plugin-error: 1.0.1
       postcss: 8.4.21
-      postcss-load-config: 3.1.1
+      postcss-load-config: 3.1.4_postcss@8.4.21
       vinyl-sourcemaps-apply: 0.2.1
     transitivePeerDependencies:
       - ts-node
@@ -15694,19 +15744,6 @@ packages:
       postcss: 8.4.21
     dev: true
 
-  /postcss-load-config/3.1.1:
-    resolution: {integrity: sha512-c/9XYboIbSEUZpiD1UQD0IKiUe8n9WHYV7YFe7X7J+ZwCsEKkUJSFWjS9hBU1RR9THR7jMXst8sxiqP0jjo2mg==}
-    engines: {node: '>= 10'}
-    peerDependencies:
-      ts-node: '>=9.0.0'
-    peerDependenciesMeta:
-      ts-node:
-        optional: true
-    dependencies:
-      lilconfig: 2.0.6
-      yaml: 1.10.2
-    dev: true
-
   /postcss-load-config/3.1.4_postcss@8.4.21:
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
@@ -17875,6 +17912,40 @@ packages:
       - ts-node
     dev: true
 
+  /tailwindcss/3.2.7_postcss@8.4.21:
+    resolution: {integrity: sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ==}
+    engines: {node: '>=12.13.0'}
+    hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
+    dependencies:
+      arg: 5.0.2
+      chokidar: 3.5.3
+      color-name: 1.1.4
+      detective: 5.2.1
+      didyoumean: 1.2.2
+      dlv: 1.1.3
+      fast-glob: 3.2.12
+      glob-parent: 6.0.2
+      is-glob: 4.0.3
+      lilconfig: 2.0.6
+      micromatch: 4.0.5
+      normalize-path: 3.0.0
+      object-hash: 3.0.0
+      picocolors: 1.0.0
+      postcss: 8.4.21
+      postcss-import: 14.1.0_postcss@8.4.21
+      postcss-js: 4.0.0_postcss@8.4.21
+      postcss-load-config: 3.1.4_postcss@8.4.21
+      postcss-nested: 6.0.0_postcss@8.4.21
+      postcss-selector-parser: 6.0.11
+      postcss-value-parser: 4.2.0
+      quick-lru: 5.1.1
+      resolve: 1.22.1
+    transitivePeerDependencies:
+      - ts-node
+    dev: true
+
   /tapable/1.1.3:
     resolution: {integrity: sha512-4WK/bYZmj8xLr+HUCODHGF1ZFzsYffasLUgEiMBY4fgtltdO6B4WJtlSbPaDTLpYTcGVwM2qLnFTICEcNxs3kA==}
     engines: {node: '>=6'}
@@ -18061,7 +18132,7 @@ packages:
       readable-stream: 3.6.1
 
   /time-stamp/1.1.0:
-    resolution: {integrity: sha1-dkpaEa9QVhkhsTPztE5hhofg9cM=}
+    resolution: {integrity: sha512-gLCeArryy2yNTRzTGKbZbloctj64jkZ57hj5zdraXue6aFgd6PmvVtEyiUU+hvU0v7q08oVv8r8ev0tRo6bvgw==}
     engines: {node: '>=0.10.0'}
 
   /timers-browserify/2.0.12:
@@ -19011,7 +19082,7 @@ packages:
     dev: false
 
   /vinyl-sourcemaps-apply/0.2.1:
-    resolution: {integrity: sha1-q2VJ1h0XLCsbh75cUI0jnI74dwU=}
+    resolution: {integrity: sha512-+oDh3KYZBoZC8hfocrbrxbLUeaYtQK7J5WU5Br9VqWqmCll3tFJqKp97GC9GmMsVIL0qnx2DgEDVxdo5EZ5sSw==}
     dependencies:
       source-map: 0.5.7
     dev: true
@@ -19850,3 +19921,9 @@ packages:
   /zwitch/1.0.5:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
     dev: true
+
+  file:packages/theme:
+    resolution: {directory: packages/theme, type: directory}
+    name: '@prestashopcorp/puik-theme'
+    version: 0.0.1
+    dev: false

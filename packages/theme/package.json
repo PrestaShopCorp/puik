@@ -2,13 +2,16 @@
   "name": "@prestashopcorp/puik-theme",
   "version": "0.0.1",
   "description": "Puik component Theme",
-  "main": "dist/index.css",
-  "style": "dist/index.css",
-  "unpkg": "dist/index.css",
-  "jsdelivr": "dist/index.css",
+  "main": "./dist/index.css",
+  "style": "./dist/index.css",
+  "unpkg": "./dist/index.css",
+  "jsdelivr": "./dist/index.css",
   "scripts": {
     "clean": "rimraf dist",
     "build": "gulp --require @esbuild-kit/cjs-loader"
+  },
+  "exports": {
+    "./*.css": "./dist/*.css"
   },
   "devDependencies": {
     "@esbuild-kit/cjs-loader": "^2.4.2",

@@ -1,0 +1,38 @@
+{
+  "name": "@prestashopcorp/puik-provider",
+  "description": "Puik Component Provider for unplugin-vue-components",
+  "version": "0.0.1",
+  "main": "dist/es/index.js",
+  "module": "dist/es/index.mjs",
+  "types": "dist/es/index.d.ts",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "require": {
+        "default": "./dist/lib/index.js",
+        "types": "./dist/lib/index.d.ts"
+      },
+      "import": {
+        "default": "./dist/es/index.mjs",
+        "types": "./dist/es/index.d.ts"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf dist && rollup -c"
+  },
+  "peerDependencies": {
+    "unplugin-vue-components": "^0.24.0",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "unplugin-vue-components": "^0.24.0",
+    "vue": "^3.2.47"
+  },
+  "dependencies": {
+    "lodash-unified": "^1.0.3"
+  }
+}

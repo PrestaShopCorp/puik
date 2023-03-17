@@ -7,7 +7,7 @@
     "playground"
   ],
   "engines": {
-    "node": ">= 16"
+    "node": ">= 18"
   },
   "scripts": {
     "cz": "git-cz",
@@ -52,6 +52,7 @@
     "@popperjs/core": "^2.11.6",
     "@prestashopcorp/puik-components": "workspace:*",
     "@prestashopcorp/puik-locale": "workspace:*",
+    "@prestashopcorp/puik-provider": "workspace:*",
     "@prestashopcorp/puik-tailwind-preset": "workspace:*",
     "@prestashopcorp/puik-theme": "workspace:*",
     "@prestashopcorp/puik-utils": "workspace:*",
