@@ -8,27 +8,18 @@
   "jsdelivr": "./dist/index.css",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "gulp --require @esbuild-kit/cjs-loader"
+    "build": "pnpm clean && pnpm sass && pnpm postcss",
+    "sass": "sass --style expanded --no-source-map src/:dist/",
+    "postcss": "postcss ./dist/*.css --dir ./dist"
   },
   "exports": {
     "./*.css": "./dist/*.css"
   },
   "devDependencies": {
-    "@esbuild-kit/cjs-loader": "^2.4.2",
-    "@types/gulp": "^4.0.10",
-    "@types/gulp-autoprefixer": "0.0.33",
-    "@types/gulp-clean-css": "4.3.0",
-    "@types/gulp-rename": "2.0.1",
-    "@types/gulp-sass": "5.0.0",
-    "@types/sass": "^1.43.1",
     "autoprefixer": "^10.4.13",
-    "chalk": "^5.2.0",
-    "gulp-autoprefixer": "8.0.0",
-    "gulp-clean-css": "4.3.0",
-    "gulp-postcss": "^9.0.1",
-    "gulp-rename": "2.0.0",
-    "gulp-sass": "5.1.0",
+    "cssnano": "^5.1.15",
     "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
     "sass": "^1.58.3",
     "tailwindcss": "^3.2.7"
   }

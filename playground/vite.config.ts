@@ -15,7 +15,7 @@ export default defineConfig({
     preserveSymlinks: true,
     alias: [
       {
-        find: /^@puik\/(.*)$/,
+        find: /^@prestashopcorp\/puik-(.*)$/,
         replacement: `${path.resolve('../packages')}/$1`,
       },
     ],
