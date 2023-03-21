@@ -1,5 +1,5 @@
 import PuikLink from './../src/link.vue'
-import { linkVariants, targetVariants } from './../src/link'
+import { linkSizes, targetVariants } from './../src/link'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
@@ -26,10 +26,10 @@ export default {
         },
       },
     },
-    variant: {
+    size: {
       control: 'select',
       description: 'Set the link font size',
-      options: linkVariants,
+      options: linkSizes,
       table: {
         defaultValue: {
           summary: 'md',
@@ -51,7 +51,7 @@ export default {
     target: '_self',
     default: "I'm a cool link",
     title: "I'm a tooltip for your link",
-    variant: 'md',
+    size: 'md',
   },
 } as Meta
 
@@ -72,12 +72,18 @@ Default.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-link href="#" target="_self" title="I'm a tooltip for your link">
+      <!--
+      $sizes: sm|md|lg
+      -->
+      <puik-link size="$sizes" href="#" target="_self" title="I'm a tooltip for your link">
       I'm a cool link
       </puik-link>
 
       <!--HTML/CSS Snippet-->
-      <a class="puik-link" href="#" target="_self" title="I'm a tooltip for your link">
+      <!--
+      $sizes: sm|md|lg
+      -->
+      <a class="puik-link puik-link--{$sizes}" href="#" target="_self" title="I'm a tooltip for your link">
         I'm a cool link
       </a>
       `,

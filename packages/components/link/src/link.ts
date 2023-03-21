@@ -4,12 +4,12 @@ import type { ExtractPropTypes, PropType } from 'vue'
 import type Link from './link.vue'
 
 export const targetVariants = ['_blank', '_self', '_parent', '_top']
-export const linkVariants = ['sm', 'md', 'lg']
+export const linkSizes = ['sm', 'md', 'lg']
 
 export const linkProps = buildProps({
-  variant: {
+  size: {
     type: String,
-    values: linkVariants,
+    values: linkSizes,
     required: false,
     default: 'md',
   },
