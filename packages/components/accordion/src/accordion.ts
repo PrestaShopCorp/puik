@@ -10,7 +10,7 @@ export const accordionProps = buildProps({
   title: {
     type: String,
     required: false,
-    default: '',
+    default: undefined,
   },
 } as const)
 

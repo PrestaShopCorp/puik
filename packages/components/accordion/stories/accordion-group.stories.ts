@@ -4,12 +4,21 @@ import PuikAccordion from '../src/accordion.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
-  title: 'Components/AccordionGroup',
+  title: 'Components/Accordion/AccordionGroup',
   component: PuikAccordionGroup,
   argTypes: {
     multiple: {
       control: 'boolean',
       description: 'Allow multiple accordions to be expanded',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
+    dense: {
+      control: 'boolean',
+      description: 'Remove space between accordion',
       table: {
         defaultValue: {
           summary: false,
@@ -67,6 +76,7 @@ const Template: Story = (args: Args) => ({
 export const Default = Template.bind({})
 Default.args = {
   multiple: false,
+  dense: false,
 }
 Default.parameters = {
   docs: {

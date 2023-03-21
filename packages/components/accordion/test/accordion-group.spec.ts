@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
 import PuikAccordionGroup from '../src/accordion-group.vue'
 import PuikAccordion from '../src/accordion.vue'
+import { getAccordion, getAccordionTitle } from './accordion.spec'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 let wrapper: VueWrapper<any>
@@ -16,14 +17,10 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
   })
 }
 
-const getAccordion = () => wrapper.findComponent(PuikAccordion)
-const getAccordions = () => wrapper.findAllComponents(PuikAccordion)
-const getAccordionContent = (component) =>
-  component.find('.puik-accordion__content')
-const getAccordionTitle = (component) =>
-  component.find('.puik-accordion__title')
+const getAccordionGroup = () => wrapper.find('.puik-accordion-group')
+const getAccordions = () => wrapper.findAll('.puik-accordion')
 
-describe('AccordionGroup props tests', () => {
+describe('AccordionGroup collapse/expand tests', () => {
   it('should be a vue instance', () => {
     const template = `
       <puik-accordion-group>
@@ -42,87 +39,6 @@ describe('AccordionGroup props tests', () => {
     expect(wrapper).toBeTruthy()
   })
 
-  it('should accordion emit event', () => {
-    const template = `
-      <puik-accordion-group>
-        <puik-accordion name="accordion-1" title="title-1">
-          Content 1
-        </puik-accordion>
-      </puik-accordion-group>
-    `
-    factory(template)
-
-    const accordion = getAccordion()
-    getAccordionTitle(accordion).trigger('click')
-    expect(accordion.emitted('click')).toBeTruthy()
-  })
-
-  it('should accordion display title using prop', () => {
-    const title = 'title 1'
-    const template = `
-      <puik-accordion-group modelValue="accordion-1">
-        <puik-accordion name="accordion-1" title="${title}">
-          Content 1
-        </puik-accordion>
-      </puik-accordion-group>
-    `
-    factory(template)
-
-    const accordion = getAccordion()
-    expect(getAccordionTitle(accordion).text()).toContain(title)
-  })
-
-  it('should accordion display title using prop', () => {
-    const title = 'title 1'
-    const template = `
-      <puik-accordion-group modelValue="accordion-1">
-        <puik-accordion name="accordion-1">
-          <template #title>${title}</template>
-          Content 1
-        </puik-accordion>
-      </puik-accordion-group>
-    `
-    factory(template)
-
-    const accordion = getAccordion()
-    expect(getAccordionTitle(accordion).text()).toContain(title)
-  })
-
-  it('should accordion title have aria-controls', () => {
-    const title = 'title 1'
-    const template = `
-      <puik-accordion-group modelValue="accordion-1">
-        <puik-accordion name="accordion-1">
-          <template #title>${title}</template>
-          Content 1
-        </puik-accordion>
-      </puik-accordion-group>
-    `
-    factory(template)
-
-    const accordion = getAccordion()
-    const contentId = getAccordionContent(accordion).attributes('id')
-    const accordionTitle = getAccordionTitle(accordion)
-    expect(accordionTitle.attributes('aria-controls')).toBe(contentId)
-  })
-
-  it('should default slot render correctly', () => {
-    const content = 'Content 1'
-    const template = `
-      <puik-accordion-group modelValue="accordion-1">
-        <puik-accordion name="accordion-1" title="title 1">
-          ${content}
-        </puik-accordion>
-      </puik-accordion-group>
-    `
-    factory(template)
-
-    const accordion = getAccordion()
-    expect(getAccordionContent(accordion).text()).toBe(content)
-  })
-})
-
-describe('AccordionGroup expand/collapse tests', () => {
   it('should accordion be expanded', () => {
     const template = `
       <puik-accordion-group modelValue="accordion-1">
@@ -175,5 +91,26 @@ describe('AccordionGroup expand/collapse tests', () => {
 
     const accordionsExpanded = wrapper.findAll('.puik-accordion--expanded')
     expect(accordionsExpanded.length).toBe(2)
+  })
+})
+describe('AccordionGroup props tests', () => {
+  it('should have dense class', () => {
+    const template = `
+      <puik-accordion-group dense>
+        <puik-accordion name="accordion-1" title="title 1">
+          Content 1
+        </puik-accordion>
+        <puik-accordion name="accordion-2" title="title 2">
+          Content 2
+        </puik-accordion>
+        <puik-accordion name="accordion-3" title="title 3">
+          Content 3
+        </puik-accordion>
+      </puik-accordion-group>
+    `
+    factory(template)
+
+    const group = getAccordionGroup()
+    expect(group.classes()).toContain('puik-accordion-group--dense')
   })
 })

@@ -13,6 +13,11 @@ export const accordionGroupProps = buildProps({
     required: false,
     default: false,
   },
+  dense: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 } as const)
 
 export type AccordionGroupProps = ExtractPropTypes<typeof accordionGroupProps>

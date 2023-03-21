@@ -1,0 +1,47 @@
+.puik-accordion {
+  @apply border border-light-blue-500 rounded-lg mb-4;
+
+  &__title {
+    @apply p-4 flex flex-row w-full justify-between items-center rounded-[inherit] hover:bg-light-blue-50 focus:bg-light-blue-50 focus:outline-none focus:ring focus:ring-focus-main;
+  }
+  &__content {
+    @apply p-4 invisible;
+  }
+  &--expanded {
+    .puik-accordion__title {
+      @apply rounded-b-none;
+    }
+    .puik-accordion__content {
+      @apply visible;
+    }
+  }
+
+  &__divider {
+    @apply border-b border-t-0 border-light-blue-500;
+  }
+
+  &__transition {
+    &__enter {
+      &--active {
+        @apply transition duration-1000 ease-out;
+      }
+      &--from {
+        @apply transform scale-y-0;
+      }
+      &--to {
+        @apply transform scale-y-100;
+      }
+    }
+    &__leave {
+      &--active {
+        @apply transition duration-1000 ease-out;
+      }
+      &--from {
+        @apply transform origin-top scale-y-100;
+      }
+      &--to {
+        @apply transform origin-top scale-y-0;
+      }
+    }
+  }
+}

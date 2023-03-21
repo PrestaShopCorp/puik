@@ -1,7 +1,4 @@
-import {
-  PuikAccordion,
-  PuikAccordionGroup,
-} from '@puik/components/accordion-group'
+import { PuikAccordion, PuikAccordionGroup } from '@puik/components/accordion'
 import { PuikProgressBar } from '@puik/components/progress-bar'
 import { PuikIcon } from '@puik/components/icon'
 import { PuikLink } from '@puik/components/link'

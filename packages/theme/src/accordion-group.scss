@@ -1,19 +1,36 @@
 .puik-accordion-group {
   .puik-accordion {
-    @apply mb-4 border rounded-lg;
-    &__title {
-      @apply p-4 flex flex-row w-full justify-between items-center rounded-lg hover:bg-light-blue-50 focus:bg-light-blue-50 focus:outline-none focus:ring focus:ring-focus-main;
-    }
+    @apply mb-4 rounded-lg;
+
     &--expanded {
       .puik-accordion__title {
-        @apply border-b rounded-b-none;
-      }
-      .puik-accordion__content {
-        @apply p-4 visible;
+        @apply rounded-b-none;
       }
     }
-    &__content {
-      @apply p-4 invisible;
+  }
+
+  &--dense {
+    .puik-accordion {
+      @apply mb-0 rounded-none;
+      &--expanded {
+        .puik-accordion__divider {
+          @apply mx-4;
+        }
+      }
+    }
+
+    & > :first-child {
+      @apply border-b-0 rounded-t-lg;
+    }
+
+    & > :last-child {
+      @apply border-t-0 rounded-b-lg;
+
+      &.puik-accordion--expanded {
+        .puik-accordion__title {
+          @apply rounded-b-none;
+        }
+      }
     }
   }
 }

@@ -1,5 +1,10 @@
 <template>
-  <div class="puik-accordion-group">
+  <div
+    class="puik-accordion-group"
+    :class="{
+      'puik-accordion-group--dense': dense,
+    }"
+  >
     <slot></slot>
   </div>
 </template>

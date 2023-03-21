@@ -17,6 +17,9 @@
 
       <puik-icon :icon="icon" :font-size="20"></puik-icon>
     </button>
+
+    <hr v-if="isExpanded" class="puik-accordion__divider" />
+
     <div v-show="isExpanded" :id="id" class="puik-accordion__content">
       <slot></slot>
     </div>
