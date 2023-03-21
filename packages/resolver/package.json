@@ -1,6 +1,6 @@
 {
-  "name": "@prestashopcorp/puik-provider",
-  "description": "Puik Component Provider for unplugin-vue-components",
+  "name": "@prestashopcorp/puik-resolver",
+  "description": "Puik Component Resolver for unplugin-vue-components",
   "version": "0.0.1",
   "main": "dist/es/index.js",
   "module": "dist/es/index.mjs",
