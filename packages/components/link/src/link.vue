@@ -4,7 +4,7 @@
     v-bind="pathProp"
     :target="target"
     :title="title"
-    class="puik-link"
+    :class="['puik-link', `puik-link--${variant}`]"
   >
     <slot></slot>
   </component>

@@ -4,8 +4,15 @@ import type { ExtractPropTypes, PropType } from 'vue'
 import type Link from './link.vue'
 
 export const targetVariants = ['_blank', '_self', '_parent', '_top']
+export const linkVariants = ['sm', 'md', 'lg']
 
 export const linkProps = buildProps({
+  variant: {
+    type: String,
+    values: linkVariants,
+    required: false,
+    default: 'md',
+  },
   href: {
     type: String,
     required: false,

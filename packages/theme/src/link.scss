@@ -21,4 +21,13 @@
       @apply font-materialIcons text-base ml-1.5 inline-block align-text-top leading-[1em];
     }
   }
+  &--sm {
+    @apply text-xs;
+  }
+  &--md {
+    @apply text-sm;
+  }
+  &--lg {
+    @apply text-base;
+  }
 }
