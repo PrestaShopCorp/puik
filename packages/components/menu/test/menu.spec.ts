@@ -89,4 +89,32 @@ describe('Menu tests', () => {
       'puik-menu__content__align--right'
     )
   })
+  it('menu should have maxHeight', async () => {
+    const maxHeight = '100px'
+    wrapper = factoryMenu(`
+    <puik-menu max-height="${maxHeight}">
+      <template #activator>
+        <puik-button>Show menu</puik-button>
+      </template>
+      <puik-menu-item>Link</puik-menu-item>
+    </puik-menu>
+    `)
+    await showMenu(wrapper)
+    const content = getMenuContent(wrapper)
+    expect(content.element.style.maxHeight).toBe(maxHeight)
+  })
+  it('menu should have width', async () => {
+    const width = '100px'
+    wrapper = factoryMenu(`
+    <puik-menu width="${width}">
+      <template #activator>
+        <puik-button>Show menu</puik-button>
+      </template>
+      <puik-menu-item>Link</puik-menu-item>
+    </puik-menu>
+    `)
+    await showMenu(wrapper)
+    const content = getMenuContent(wrapper)
+    expect(content.element.style.width).toBe(width)
+  })
 })
