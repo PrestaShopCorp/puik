@@ -1,45 +1,52 @@
 {
   "name": "@prestashopcorp/puik",
   "version": "0.0.1",
+  "main": "./dist/lib/index.js",
+  "module": "./dist/es/index.mjs",
+  "types": "./dist/es/index.d.ts",
   "exports": {
     ".": {
-      "require": "./lib/index.js",
-      "import": "./es/index.mjs"
+      "import": {
+        "default": "./dist/es/index.mjs",
+        "types": "./dist/es/index.d.ts"
+      },
+      "require": {
+        "default": "./dist/lib/index.js",
+        "types": "./dist/lib/index.d.ts"
+      }
     },
-    "./es": "./es/index.mjs",
-    "./lib": "./lib/index.js",
-    "./es/*.mjs": "./es/*.mjs",
-    "./es/*": "./es/*.mjs",
-    "./lib/*.js": "./lib/*.js",
-    "./lib/*": "./lib/*.js",
-    "./*": "./*"
+    "./es": "./dist/es/index.mjs",
+    "./lib": "./dist/lib/index.js",
+    "./es/*.mjs": "./dist/es/*.mjs",
+    "./es/*": "./dist/es/*.mjs",
+    "./lib/*.js": "./dist/lib/*.js",
+    "./lib/*": "./dist/lib/*.js",
+    "./*": "./dist/*"
   },
-  "main": "lib/index.js",
-  "module": "es/index.mjs",
-  "style": "dist/index.css",
-  "unpkg": "dist/index.full.js",
-  "jsdelivr": "dist/index.full.js",
-  "sideEffects": [
-    "dist/*",
-    "theme/*.css",
-    "theme/src/*.scss",
-    "es/components/*/style/*",
-    "lib/components/*/style/*"
+  "files": [
+    "dist",
+    "global.d.ts"
   ],
+  "scripts": {
+    "build:lib": "rimraf dist && rollup -c",
+    "gen:esm-dts": "vue-tsc --p tsconfig.build.json --declaration --emitDeclarationOnly --outDir ./dist/es",
+    "gen:cjs-dts": "vue-tsc --p tsconfig.build.json --declaration --emitDeclarationOnly --outDir ./dist/lib",
+    "build": "pnpm build:lib && pnpm gen:esm-dts && pnpm gen:cjs-dts"
+  },
   "peerDependencies": {
     "vue": "^3.2.0"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21",
-    "lodash-unified": "^1.0.3"
+    "@prestashopcorp/puik-components": "workspace:*",
+    "@prestashopcorp/puik-locale": "workspace:*",
+    "@prestashopcorp/puik-resolver": "workspace:*",
+    "@prestashopcorp/puik-tailwind-preset": "workspace:*",
+    "@prestashopcorp/puik-theme": "workspace:*",
+    "@prestashopcorp/puik-utils": "workspace:*"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.191",
-    "@types/lodash-es": "^4.17.6",
-    "@types/node": "*",
-    "unplugin-vue-components": "^0.24.0",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   },
   "vetur": {
     "tags": "tags.json",

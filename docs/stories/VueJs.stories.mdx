@@ -98,3 +98,13 @@ const app = createApp(App)
 app.use(Puik)
 app.mount('#app')
 ```
+
+If you are using typescript you need to add the global components types to your `compilerOptions.types` in your `tsconfig.json`
+
+```json
+{
+  "compilerOptions": {
+    "types": ["@prestashopcorp/puik/global"]
+  }
+}
+```

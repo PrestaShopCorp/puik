@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "paths": {
+      "@prestashopcorp/*": ["./node_modules/@prestashopcorp/*"]
+    }
+  },
+  "include": ["./"],
+  "exclude": ["node_modules", "dist/**", "rollup.config.mjs"]
+}
