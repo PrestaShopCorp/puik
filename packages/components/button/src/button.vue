@@ -38,7 +38,7 @@ defineOptions({
 })
 
 const props = defineProps(buttonProps)
-const buttonGroup = inject(ButtonGroupKey)
+const buttonGroup = inject(ButtonGroupKey, undefined)
 
 const componentType = computed(() => {
   if (props.to) {
