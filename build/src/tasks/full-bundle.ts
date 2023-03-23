@@ -7,7 +7,7 @@ import DefineOptions from 'unplugin-vue-define-options/rollup'
 import esbuild from 'rollup-plugin-esbuild'
 import { parallel } from 'gulp'
 import glob from 'fast-glob'
-import { camelCase, upperFirst } from 'lodash'
+import { camelCase, upperFirst } from 'lodash-unified'
 import { version } from '../../../packages/puik/version'
 import { PuikAlias } from '../plugins/puik-alias'
 import {
@@ -28,10 +28,10 @@ async function buildFullEntry(minify: boolean) {
     input: path.resolve(puikRoot, 'index.ts'),
     plugins: [
       PuikAlias(),
-      DefineOptions(),
       vue({
         isProduction: true,
       }),
+      DefineOptions(),
       nodeResolve({
         extensions: ['.mjs', '.js', '.json', '.ts'],
       }),

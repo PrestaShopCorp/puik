@@ -1,4 +1,5 @@
 import { PuikBadge } from '@puik/components/badge'
+import { PuikButtonGroup } from '@puik/components/button-group'
 import { PuikProgressBar } from '@puik/components/progress-bar'
 import { PuikIcon } from '@puik/components/icon'
 import { PuikLink } from '@puik/components/link'
@@ -18,6 +19,7 @@ import type { Plugin } from 'vue'
 // prettier-ignore
 export default [
   PuikBadge,
+  PuikButtonGroup,
   PuikProgressBar,
   PuikIcon,
   PuikLink,

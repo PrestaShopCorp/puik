@@ -33,7 +33,7 @@ export const generateTypesDefinitions = async () => {
         '@puik/*': ['packages/*'],
       },
       preserveSymlinks: true,
-      types: ['unplugin-vue-define-options'],
+      types: ['unplugin-vue-define-options/macros-global'],
     },
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
