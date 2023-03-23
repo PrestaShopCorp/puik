@@ -1,6 +1,6 @@
-import { Comment, type Slot } from 'vue'
+import { Comment } from 'vue'
 import { isArray, isObject } from '@vue/shared'
-import type { VNode } from 'vue'
+import type { VNode, Slot } from 'vue'
 
 export {
   isArray,
