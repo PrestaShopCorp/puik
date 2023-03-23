@@ -4,7 +4,7 @@
   @extend .puik-body-default;
   @apply rounded transition text-primary-purple-500 m-0.5 p-0.5 decoration-1;
   &:hover {
-    @apply underline bg-light-blue-100;
+    @apply underline bg-light-blue-100 cursor-pointer;
   }
   &:focus {
     @apply underline outline-none ring-2 ring-focus-main;
