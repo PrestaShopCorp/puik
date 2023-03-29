@@ -20,6 +20,11 @@ export const breadcrumbProps = buildProps({
     required: false,
     default: 'keyboard_arrow_right',
   },
+  icon: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type BreadcrumbProps = ExtractPropTypes<typeof breadcrumbProps>

@@ -1,5 +1,12 @@
 <template>
   <nav v-if="items.length" class="puik-breadcrumb">
+    <PuikIcon
+      v-if="icon"
+      class="puik-breadcrumb__home-icon"
+      :icon="icon"
+      font-size="16px"
+    ></PuikIcon>
+
     <div
       v-for="(item, index) in items"
       :key="`puik-breadcrumb-item-${index}`"
@@ -19,7 +26,7 @@
         v-if="index < items.length - 1"
         class="puik-breadcrumb__item-icon"
         :icon="separatorIcon"
-        font-size="24px"
+        font-size="20px"
       ></PuikIcon>
     </div>
   </nav>

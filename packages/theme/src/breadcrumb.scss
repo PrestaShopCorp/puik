@@ -2,14 +2,19 @@
 .puik-breadcrumb {
   @apply flex flex-row items-center;
 
+  &__home-icon {
+    @apply mr-1;
+  }
+
   &__item {
+    @extend .puik-body-small;
     @apply flex flex-row items-center;
     &-button {
       @apply p-0;
     }
 
     &-icon {
-      @apply text-font-secondary;
+      @apply text-font-200;
     }
   }
 }

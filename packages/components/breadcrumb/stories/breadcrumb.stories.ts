@@ -32,6 +32,16 @@ export default {
         },
       },
     },
+    icon: {
+      control: 'text',
+      description: 'Set icon used before first link ',
+      type: 'string',
+      table: {
+        defaultValue: {
+          summary: 'undefined',
+        },
+      },
+    },
   },
   args: {
     items: [
@@ -49,6 +59,7 @@ export default {
       },
     ],
     separatorIcon: 'keyboard_arrow_right',
+    icon: 'home',
   },
 } as Meta
 
@@ -78,10 +89,11 @@ Default.parameters = {
           target: string,
         }[]
       -->
-      <puik-breadcrumb :items="items"></puik-breadcrumb>
+      <puik-breadcrumb :items="items" icon="home"></puik-breadcrumb>
 
       <!--HTML/CSS Snippet-->
       <nav class="puik-breadcrumb">
+        <div class="puik-icon material-icons-round puik-breadcrumb__home-icon" style="font-size: 16px;">home</div>
         <div class="puik-breadcrumb__item">
           <a href="#" target="_self" class="puik-link puik-link--md puik-breadcrumb__item-link" variant="text">First link</a>
           <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 24px;">keyboard_arrow_right</div>

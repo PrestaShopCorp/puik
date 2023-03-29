@@ -22,6 +22,8 @@ describe('Breadcrumb tests', () => {
     wrapper.findAll('.puik-breadcrumb__item-link')
   const getBreadcrumbSeparatorIcons = () =>
     wrapper.findAll('.puik-breadcrumb__item-icon')
+  const getBreadcrumbHomeIcon = () =>
+    wrapper.find('.puik-breadcrumb__home-icon')
 
   const items: BreadcrumbItem[] = [
     {
@@ -70,5 +72,10 @@ describe('Breadcrumb tests', () => {
     factory({ items, separatorIcon })
     const icons = getBreadcrumbSeparatorIcons()
     expect(icons[0].text()).toBe(separatorIcon)
+  })
+  it('should display home icon', () => {
+    const icon = 'home'
+    factory({ items, icon })
+    expect(getBreadcrumbHomeIcon().text()).toBe(icon)
   })
 })
