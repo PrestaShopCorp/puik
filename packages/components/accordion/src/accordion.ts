@@ -12,9 +12,29 @@ export const accordionProps = buildProps({
     required: false,
     default: undefined,
   },
+  subTitle: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  icon: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  expandIcon: {
+    type: String,
+    required: false,
+    default: 'keyboard_arrow_down',
+  },
+  collapseIcon: {
+    type: String,
+    required: false,
+    default: 'keyboard_arrow_up',
+  },
 } as const)
 
-export const accordionEmitEmits = ['update:modelValue']
+export const accordionEmits = ['click']
 
 export type AccordionProps = ExtractPropTypes<typeof accordionProps>
 

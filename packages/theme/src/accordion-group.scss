@@ -3,7 +3,7 @@
     @apply mb-4 rounded-lg;
 
     &--expanded {
-      .puik-accordion__title {
+      .puik-accordion__header {
         @apply rounded-b-none;
       }
     }
@@ -11,7 +11,7 @@
 
   &--dense {
     .puik-accordion {
-      @apply mb-0 rounded-none;
+      @apply mb-0 rounded-none border-t-0 border-b;
       &--expanded {
         .puik-accordion__divider {
           @apply mx-4;
@@ -20,17 +20,11 @@
     }
 
     & > :first-child {
-      @apply border-b-0 rounded-t-lg;
+      @apply rounded-t-lg border-t;
     }
 
     & > :last-child {
-      @apply border-t-0 rounded-b-lg;
-
-      &.puik-accordion--expanded {
-        .puik-accordion__title {
-          @apply rounded-b-none;
-        }
-      }
+      @apply border-t-0 border-b rounded-b-lg;
     }
   }
 }

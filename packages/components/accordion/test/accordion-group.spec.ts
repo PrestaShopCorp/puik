@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
 import PuikAccordionGroup from '../src/accordion-group.vue'
 import PuikAccordion from '../src/accordion.vue'
-import { getAccordion, getAccordionTitle } from './accordion.spec'
+import { getAccordion, getAccordionHeader } from './accordion.spec'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 let wrapper: VueWrapper<any>
@@ -66,11 +66,11 @@ describe('AccordionGroup collapse/expand tests', () => {
     `
     factory(template)
 
-    const accordionsTitles = getAccordions().map((accordion) =>
-      getAccordionTitle(accordion)
+    const accordionsHeaders = getAccordions().map((accordion) =>
+      getAccordionHeader(accordion)
     )
-    expect(accordionsTitles[0].attributes('aria-expanded')).toBe('true')
-    expect(accordionsTitles[1].attributes('aria-expanded')).toBe('false')
+    expect(accordionsHeaders[0].attributes('aria-expanded')).toBe('true')
+    expect(accordionsHeaders[1].attributes('aria-expanded')).toBe('false')
   })
 
   it('should have multiple accordions expanded', () => {

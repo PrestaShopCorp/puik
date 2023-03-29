@@ -60,10 +60,7 @@ const Template: Story = (args: Args) => ({
       <puik-accordion title="Title 1" name="accordion-1">
         Content 1
       </puik-accordion>
-      <puik-accordion name="accordion-2">
-        <template #title>
-          Title 2
-        </template>
+      <puik-accordion name="accordion-2" title="Title 2">
         Content 2
       </puik-accordion>
       <puik-accordion title="Title 3" name="accordion-3">
@@ -87,10 +84,7 @@ Default.parameters = {
         <puik-accordion title="Title 1" name="accordion-1">
           Content 1
         </puik-accordion>
-        <puik-accordion name="accordion-2">
-          <template #title>
-            Title 2
-          </template>
+        <puik-accordion name="accordion-2" title="Title 2">
           Content 2
         </puik-accordion>
         <puik-accordion title="Title 3" name="accordion-3">

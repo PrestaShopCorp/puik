@@ -14,7 +14,23 @@ export default {
     },
     title: {
       control: 'text',
-      description: 'title displayed',
+      description: 'Title displayed in the header',
+    },
+    subTitle: {
+      control: 'text',
+      description: 'Sub title displayed in the header',
+    },
+    icon: {
+      control: 'text',
+      description: 'Icon used in the header',
+    },
+    expandIcon: {
+      control: 'text',
+      description: 'Expand icon used in the header',
+    },
+    collapseIcon: {
+      control: 'text',
+      description: 'Collapse icon used in the header',
     },
     default: {
       control: 'none',
@@ -37,12 +53,6 @@ const Template: Story = (args: Args) => ({
       <puik-accordion v-bind="args">
         Content 1
       </puik-accordion>
-      <puik-accordion name="accordion-2">
-        <template #title>
-          {{ args.title }}
-        </template>
-        Content 2
-      </puik-accordion>
     </puik-accordion-group>
   `,
 })
@@ -51,6 +61,8 @@ export const Default = Template.bind({})
 Default.args = {
   name: 'accordion-1',
   title: 'Accordion title',
+  subTitle: 'Accordion title',
+  icon: 'home',
 }
 Default.parameters = {
   docs: {
@@ -61,10 +73,7 @@ Default.parameters = {
         <puik-accordion title="Title 1" name="accordion-1">
           Content 1
         </puik-accordion>
-        <puik-accordion name="accordion-2">
-          <template #title>
-            Title 2
-          </template>
+        <puik-accordion name="accordion-2" title="Title 2">
           Content 2
         </puik-accordion>
         <puik-accordion title="Title 3" name="accordion-3">

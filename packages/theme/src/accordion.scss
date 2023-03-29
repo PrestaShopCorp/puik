@@ -1,8 +1,34 @@
+@use './common/typography.scss';
+
 .puik-accordion {
   @apply border border-light-blue-500 rounded-lg mb-4;
 
-  &__title {
-    @apply p-4 flex flex-row w-full justify-between items-center rounded-[inherit] hover:bg-light-blue-50 focus:bg-light-blue-50 focus:outline-none focus:ring focus:ring-focus-main;
+  &__header {
+    @apply p-4 flex w-full items-center rounded-[inherit] hover:bg-light-blue-50;
+
+    &:focus-visible {
+      @apply bg-light-blue-50 outline-none ring ring-focus-main;
+    }
+
+    &__icon {
+      @apply mr-4;
+    }
+
+    &__content {
+      &__title {
+        @extend .puik-h5;
+        @apply text-left;
+      }
+
+      &__sub-title {
+        @extend .puik-body-small;
+        @apply text-left text-primary-purple;
+      }
+    }
+
+    &__expand__icon {
+      @apply ml-auto;
+    }
   }
   &__content {
     @apply p-4 invisible;
@@ -17,31 +43,6 @@
   }
 
   &__divider {
-    @apply border-b border-t-0 border-light-blue-500;
-  }
-
-  &__transition {
-    &__enter {
-      &--active {
-        @apply transition duration-1000 ease-out;
-      }
-      &--from {
-        @apply transform scale-y-0;
-      }
-      &--to {
-        @apply transform scale-y-100;
-      }
-    }
-    &__leave {
-      &--active {
-        @apply transition duration-1000 ease-out;
-      }
-      &--from {
-        @apply transform origin-top scale-y-100;
-      }
-      &--to {
-        @apply transform origin-top scale-y-0;
-      }
-    }
+    @apply border-light-blue-500;
   }
 }

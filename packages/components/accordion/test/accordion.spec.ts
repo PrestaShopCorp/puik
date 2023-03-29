@@ -19,8 +19,14 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
 export const getAccordion = () => wrapper.findComponent(PuikAccordion)
 export const getAccordionContent = (component) =>
   component.find('.puik-accordion__content')
+export const getAccordionHeader = (component) =>
+  component.find('.puik-accordion__header')
 export const getAccordionTitle = (component) =>
-  component.find('.puik-accordion__title')
+  component.find('.puik-accordion__header__content__title')
+export const getAccordionSubTitle = (component) =>
+  component.find('.puik-accordion__header__content__sub-title')
+export const getAccordionExpandIcon = (component) =>
+  component.find('.puik-accordion__header__expand__icon')
 
 describe('Accordion tests', () => {
   it('should be a vue instance', () => {
@@ -49,11 +55,11 @@ describe('Accordion tests', () => {
     factory(template)
 
     const accordion = getAccordion()
-    getAccordionTitle(accordion).trigger('click')
+    getAccordionHeader(accordion).trigger('click')
     expect(accordion.emitted('click')).toBeTruthy()
   })
 
-  it('should accordion display title using prop', () => {
+  it('should accordion display title', () => {
     const title = 'title 1'
     const template = `
       <puik-accordion-group modelValue="accordion-1">
@@ -68,12 +74,11 @@ describe('Accordion tests', () => {
     expect(getAccordionTitle(accordion).text()).toContain(title)
   })
 
-  it('should accordion display title using slot', () => {
-    const title = 'title 1'
+  it('should accordion display sub-title', () => {
+    const subTitle = 'sub-title 1'
     const template = `
       <puik-accordion-group modelValue="accordion-1">
-        <puik-accordion name="accordion-1">
-          <template #title>${title}</template>
+        <puik-accordion name="accordion-1" sub-title="${subTitle}">
           Content 1
         </puik-accordion>
       </puik-accordion-group>
@@ -81,7 +86,7 @@ describe('Accordion tests', () => {
     factory(template)
 
     const accordion = getAccordion()
-    expect(getAccordionTitle(accordion).text()).toContain(title)
+    expect(getAccordionSubTitle(accordion).text()).toContain(subTitle)
   })
 
   it('should accordion title have aria-controls', () => {
@@ -98,7 +103,7 @@ describe('Accordion tests', () => {
 
     const accordion = getAccordion()
     const contentId = getAccordionContent(accordion).attributes('id')
-    const accordionTitle = getAccordionTitle(accordion)
+    const accordionTitle = getAccordionHeader(accordion)
     expect(accordionTitle.attributes('aria-controls')).toBe(contentId)
   })
 
@@ -115,5 +120,35 @@ describe('Accordion tests', () => {
 
     const accordion = getAccordion()
     expect(getAccordionContent(accordion).text()).toBe(content)
+  })
+
+  it('should have custom expand icon', () => {
+    const expandIcon = 'home'
+    const template = `
+      <puik-accordion-group>
+        <puik-accordion name="accordion-1" expand-icon="${expandIcon}">
+          Content
+        </puik-accordion>
+      </puik-accordion-group>
+    `
+    factory(template)
+
+    const accordion = getAccordion()
+    expect(getAccordionExpandIcon(accordion).text()).toBe(expandIcon)
+  })
+
+  it('should have custom collapse icon', () => {
+    const collapseIcon = 'home'
+    const template = `
+      <puik-accordion-group model-value="accordion-1">
+        <puik-accordion name="accordion-1" collapse-icon="${collapseIcon}">
+          Content
+        </puik-accordion>
+      </puik-accordion-group>
+    `
+    factory(template)
+
+    const accordion = getAccordion()
+    expect(getAccordionExpandIcon(accordion).text()).toBe(collapseIcon)
   })
 })
