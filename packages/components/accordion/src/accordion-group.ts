@@ -33,6 +33,7 @@ export type AccordionGroupContext = {
   accordionsList: Ref<AccordionState[]>
   handleChange: (name: string) => void
   expandedAccordions: Ref<string | string[]>
+  dense: boolean
 }
 
 export const accordionGroupKey: InjectionKey<AccordionGroupContext> =

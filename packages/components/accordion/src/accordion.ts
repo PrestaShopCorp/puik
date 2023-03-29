@@ -32,6 +32,11 @@ export const accordionProps = buildProps({
     required: false,
     default: 'keyboard_arrow_up',
   },
+  disabled: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 } as const)
 
 export const accordionEmits = ['click']

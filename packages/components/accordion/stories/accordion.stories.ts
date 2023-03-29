@@ -27,10 +27,24 @@ export default {
     expandIcon: {
       control: 'text',
       description: 'Expand icon used in the header',
+      table: {
+        defaultValue: {
+          summary: 'keyboard_arrow_down',
+        },
+      },
     },
     collapseIcon: {
       control: 'text',
       description: 'Collapse icon used in the header',
+      table: {
+        defaultValue: {
+          summary: 'keyboard_arrow_up',
+        },
+      },
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Set accordion disabled',
     },
     default: {
       control: 'none',
@@ -61,8 +75,9 @@ export const Default = Template.bind({})
 Default.args = {
   name: 'accordion-1',
   title: 'Accordion title',
-  subTitle: 'Accordion title',
+  subTitle: 'Accordion subtitle',
   icon: 'home',
+  disabled: false,
 }
 Default.parameters = {
   docs: {
@@ -76,7 +91,7 @@ Default.parameters = {
         <puik-accordion name="accordion-2" title="Title 2">
           Content 2
         </puik-accordion>
-        <puik-accordion title="Title 3" name="accordion-3">
+        <puik-accordion title="Title 3" sub-title="Sub Title" name="accordion-3" disabled>
           Content 3
         </puik-accordion>
       </puik-accordion-group>
@@ -90,7 +105,8 @@ Default.parameters = {
         </div>
         <!--
           State classes
-          Active: "puik-accordion--expanded"
+          Disabled: "puik-accordion--disabled"
+          Expanded: "puik-accordion--expanded"
         -->
         <div class="puik-accordion puik-accordion--expanded">
           <button aria-expanded="true" aria-controls="puik-accordion-3261" class="puik-accordion__title"> Title 2 <div class="puik-icon material-icons-round" style="font-size: 20px;">keyboard_arrow_down</div>

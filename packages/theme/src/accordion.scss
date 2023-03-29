@@ -25,10 +25,12 @@
         @apply text-left text-primary-purple;
       }
     }
-
     &__expand__icon {
       @apply ml-auto;
     }
+  }
+  &__divider {
+    @apply border-light-blue-500;
   }
   &__content {
     @apply p-4 invisible;
@@ -41,8 +43,10 @@
       @apply visible;
     }
   }
-
-  &__divider {
-    @apply border-light-blue-500;
+  &--disabled {
+    @apply bg-light-blue-background text-font-disabled hover:border-light-blue-default-border cursor-not-allowed;
+    .puik-accordion__header__content__sub-title {
+      @apply text-primary-purple-100;
+    }
   }
 }

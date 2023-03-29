@@ -59,5 +59,6 @@ provide(accordionGroupKey, {
   accordionsList,
   handleChange,
   expandedAccordions,
+  dense: props.dense,
 })
 </script>

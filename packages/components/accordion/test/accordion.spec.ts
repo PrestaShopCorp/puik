@@ -151,4 +151,19 @@ describe('Accordion tests', () => {
     const accordion = getAccordion()
     expect(getAccordionExpandIcon(accordion).text()).toBe(collapseIcon)
   })
+
+  it('should be disabled', () => {
+    const template = `
+      <puik-accordion-group>
+        <puik-accordion name="accordion-1" disabled>
+          Content
+        </puik-accordion>
+      </puik-accordion-group>
+    `
+    factory(template)
+
+    const accordion = getAccordion()
+    expect(accordion.classes()).toContain('puik-accordion--disabled')
+    expect(getAccordionHeader(accordion).attributes('disabled')).toBeDefined()
+  })
 })
