@@ -1,7 +1,7 @@
 .puik-select {
   @apply relative mt-1;
   &__button {
-    @apply relative w-full cursor-default rounded bg-white min-h-[38px] text-left border border-light-blue-default-border hover:border-primary-purple-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-light-blue-default-border disabled:text-font-disabled;
+    @apply relative w-full cursor-default bg-white min-h-[38px] text-left border border-light-blue-default-border hover:border-primary-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-light-blue-default-border disabled:text-font-disabled;
     &--error {
       @apply border-accentuation-destructive-500;
     }

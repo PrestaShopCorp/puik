@@ -1,5 +1,5 @@
 .puik-alert {
-  @apply relative flex flex-col md:flex-row p-4 border rounded-lg text-font items-start;
+  @apply relative flex flex-col md:flex-row p-4 border text-font items-start;
   &--no-borders {
     @apply border-0;
   }

@@ -2,7 +2,7 @@
 
 .puik-button {
   @extend .puik-text-button-default;
-  @apply rounded transition cursor-pointer py-2.5 px-4;
+  @apply transition cursor-pointer py-2.5 px-4;
 
   &--sm {
     @extend .puik-text-button-small;
@@ -49,16 +49,16 @@
   }
 
   &--primary {
-    @apply bg-primary-purple-500 text-white;
+    @apply bg-primary-500 text-white;
     &:hover {
-      @apply bg-primary-purple-700;
+      @apply bg-primary-700;
     }
     &:active {
-      @apply bg-primary-purple-900;
+      @apply bg-primary-900;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply bg-purple-100;
+      @apply bg-primary-300;
     }
   }
 
@@ -77,16 +77,16 @@
   }
 
   &--secondary {
-    @apply bg-primary-purple-50 text-primary-purple-500;
+    @apply bg-primary-50 text-primary-500 border border-primary-500;
     &:hover {
-      @apply bg-primary-purple-100;
+      @apply bg-primary-100;
     }
     &:active {
-      @apply bg-primary-purple-200;
+      @apply bg-primary-200;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply bg-primary-purple-50 text-primary-purple-100;
+      @apply bg-primary-100 text-primary-400 border border-primary-400;
     }
   }
 

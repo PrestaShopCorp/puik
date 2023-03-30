@@ -2,17 +2,17 @@ module.exports = {
   extend: {
     colors: {
       primary: {
-        purple: {
-          get DEFAULT() {
-            return this['500']
-          },
-          50: '#E9E6F8',
-          100: '#C7C0EE',
-          200: '#A296E3',
-          500: '#442CC7',
-          700: '#3521BA',
-          900: '#1F10A6',
+        get DEFAULT() {
+          return this['500']
         },
+        50: '#FFFFFF',
+        100: '#F7F7F7',
+        200: '#EEEEEE',
+        300: '#BBBBBB',
+        400: '#DDDDDD',
+        500: '#1D1D1B',
+        700: '#1D1D1B',
+        900: '#1D1D1B',
       },
       accentuation: {
         destructive: {

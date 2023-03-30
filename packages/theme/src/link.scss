@@ -2,7 +2,7 @@
 
 .puik-link {
   @extend .puik-body-default;
-  @apply rounded transition text-primary-purple-500 m-0.5 p-0.5 decoration-1;
+  @apply rounded transition text-primary-500 m-0.5 p-0.5 decoration-1;
   &:hover {
     @apply underline bg-light-blue-100;
   }

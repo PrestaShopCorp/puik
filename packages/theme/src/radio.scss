@@ -9,9 +9,9 @@
      border-2 border-solid rounded-full border-font-500;
 
     &:checked {
-      @apply bg-primary-purple-500 
+      @apply bg-primary-500 
      p-[3px]
-     border-2 border-solid border-primary-purple-500;
+     border-2 border-solid border-primary-500;
       &:disabled {
         @apply border-2 border-solid rounded-full border-font-disabled bg-font-disabled;
       }

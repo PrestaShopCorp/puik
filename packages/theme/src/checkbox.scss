@@ -9,8 +9,8 @@
       rounded-sm border-2 border-font-500
       before:font-materialIcons before:text-white before:text-xl
       focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-focus-main
-      checked:bg-primary-purple-500 checked:border-none
-      indeterminate:bg-primary-purple-500 indeterminate:border-none
+      checked:bg-primary-500 checked:border-none
+      indeterminate:bg-primary-500 indeterminate:border-none
       disabled:border-light-blue-default-border disabled:checked:bg-light-blue-default-border disabled:indeterminate:bg-light-blue-default-border disabled:cursor-default;
 
     &:indeterminate:before {

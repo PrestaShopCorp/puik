@@ -1,18 +1,26 @@
 .puik-input {
   @apply flex flex-col;
   &__wrapper {
-    @apply flex flex-row border border-light-blue-default-border rounded font-secondary transition-colors text-font overflow-hidden;
+    @apply flex flex-row border border-light-blue-default-border font-secondary transition-colors text-font overflow-hidden;
     &:hover {
-      @apply border-primary-purple-500;
+      @apply border-primary-500;
     }
     &--focus {
-      @apply border-primary-purple-500 ring ring-focus-main;
+      @apply border-primary-500 ring ring-focus-main;
     }
     &--success {
       @apply border-accentuation-success-500;
+
+      .puik-input__field {
+        @apply bg-accentuation-success-50;
+      }
     }
     &--error {
       @apply border-accentuation-destructive-500;
+
+      .puik-input__field {
+        @apply bg-accentuation-destructive-50;
+      }
     }
     &--disabled {
       @apply bg-light-blue-background text-font-disabled hover:border-light-blue-default-border cursor-not-allowed;
