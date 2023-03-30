@@ -1,0 +1,91 @@
+.puik-modal {
+  @apply relative z-50;
+
+  &__backdrop {
+    @apply fixed inset-0 bg-black/30;
+  }
+
+  &__dialogPanelContainer {
+    @apply fixed max-h-full inset-0 flex justify-center items-end sm:items-center;
+
+    &__dialogPanel {
+      @apply w-full 
+                h-[90%] 
+                rounded-t-lg 
+                flex 
+                flex-col 
+                bg-white 
+                p-6 
+                gap-6 
+                sm:rounded-lg;
+
+      &--large {
+        @apply sm:max-w-[904px];
+      }
+      &--medium {
+        @apply sm:max-w-[680px];
+      }
+      &--small {
+        @apply sm:max-w-[508px];
+      }
+
+      &__header {
+        @apply flex items-center gap-4;
+
+        &__icon {
+          @apply rounded-full p-2;
+
+          &--destructive {
+            @apply text-accentuation-destructive-500 bg-accentuation-destructive-50;
+          }
+
+          &--dialog {
+            @apply text-font-secondary bg-font-50;
+          }
+
+          &--feedback {
+            @apply text-primary-purple-500 bg-primary-purple-50;
+          }
+        }
+
+        &__title {
+          @apply min-w-0 flex-1;
+
+          .title {
+            @apply text-2xl font-bold flex-1 overflow-hidden text-ellipsis whitespace-nowrap;
+          }
+        }
+
+        &__close-button {
+          @apply p-0;
+        }
+      }
+
+      &__content {
+        @apply overflow-hidden overflow-y-auto flex flex-1 text-font-900;
+      }
+
+      &__footer {
+        @apply flex flex-col gap-4 sm:flex-row;
+
+        &__button {
+          &--main {
+            @apply sm:order-4;
+          }
+
+          &--second {
+            @apply sm:order-3;
+          }
+
+          &--side {
+            @apply sm:order-1;
+          }
+        }
+
+        &__spacer {
+          @apply hidden sm:visible sm:flex sm:flex-1 sm:order-2;
+        }
+      }
+    }
+  }
+}

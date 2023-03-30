@@ -47,14 +47,4 @@
   &__icon {
     @apply font-materialIcons text-font-500 hover:text-font text-base transition-colors cursor-pointer;
   }
-
-  &__transition {
-    &__enter-from {
-      @apply opacity-0;
-    }
-
-    &__leave-to {
-      @apply opacity-0;
-    }
-  }
 }
