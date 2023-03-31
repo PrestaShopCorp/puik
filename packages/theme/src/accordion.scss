@@ -26,7 +26,7 @@
       }
     }
     &__expand__icon {
-      @apply ml-auto;
+      @apply ml-auto transform transition-transform duration-100 ease-in-out;
     }
   }
   &__divider {
@@ -41,6 +41,9 @@
     }
     .puik-accordion__content {
       @apply visible;
+    }
+    .puik-accordion__header__expand__icon {
+      @apply rotate-180;
     }
   }
   &--disabled {

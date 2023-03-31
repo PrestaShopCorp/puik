@@ -27,7 +27,7 @@
       </div>
       <puik-icon
         class="puik-accordion__header__expand__icon"
-        :icon="expandIcon"
+        icon="keyboard_arrow_down"
         :font-size="24"
       ></puik-icon>
     </button>
@@ -66,10 +66,6 @@ const isExpanded = computed(() => {
 })
 
 accordionsList.value.push({ name: props.name, expanded: isExpanded.value })
-
-const expandIcon = computed(() =>
-  isExpanded.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
-)
 
 function onClick() {
   handleChange(props.name)
