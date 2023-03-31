@@ -60,6 +60,7 @@
 import { computed, ref, useSlots } from 'vue'
 import { isNumber } from '@vueuse/core'
 import { PuikIcon } from '@puik/components/icon'
+import { slotIsEmpty } from '@puik/utils'
 import PuikInputControls from './controls/controls.vue'
 import { inputEmits, inputProps } from './input'
 defineOptions({
@@ -95,11 +96,7 @@ const decrease = () => {
   }
 }
 
-const hasError = computed(
-  () =>
-    props.error ||
-    (slots.error && slots.error()[0] && slots.error()[0].children)
-)
+const hasError = computed(() => props.error || slotIsEmpty(slots.error))
 
 const value = computed<string | number>({
   get() {

@@ -1,4 +1,5 @@
 import { PuikAccordion, PuikAccordionGroup } from '@puik/components/accordion'
+import { PuikButtonGroup } from '@puik/components/button-group'
 import { PuikProgressBar } from '@puik/components/progress-bar'
 import { PuikIcon } from '@puik/components/icon'
 import { PuikLink } from '@puik/components/link'
@@ -19,6 +20,7 @@ import type { Plugin } from 'vue'
 export default [
   PuikAccordion,
   PuikAccordionGroup,
+  PuikButtonGroup,
   PuikProgressBar,
   PuikIcon,
   PuikLink,
