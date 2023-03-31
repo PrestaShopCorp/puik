@@ -16,7 +16,7 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
   })
 }
 
-export const getAccordion = () => wrapper.findComponent(PuikAccordion)
+export const getAccordion = (wrapper) => wrapper.findComponent(PuikAccordion)
 export const getAccordionContent = (component) =>
   component.find('.puik-accordion__content')
 export const getAccordionHeader = (component) =>
@@ -54,7 +54,7 @@ describe('Accordion tests', () => {
     `
     factory(template)
 
-    const accordion = getAccordion()
+    const accordion = getAccordion(wrapper)
     getAccordionHeader(accordion).trigger('click')
     expect(accordion.emitted('click')).toBeTruthy()
   })
@@ -70,7 +70,7 @@ describe('Accordion tests', () => {
     `
     factory(template)
 
-    const accordion = getAccordion()
+    const accordion = getAccordion(wrapper)
     expect(getAccordionTitle(accordion).text()).toContain(title)
   })
 
@@ -85,7 +85,7 @@ describe('Accordion tests', () => {
     `
     factory(template)
 
-    const accordion = getAccordion()
+    const accordion = getAccordion(wrapper)
     expect(getAccordionSubTitle(accordion).text()).toContain(subTitle)
   })
 
@@ -101,7 +101,7 @@ describe('Accordion tests', () => {
     `
     factory(template)
 
-    const accordion = getAccordion()
+    const accordion = getAccordion(wrapper)
     const contentId = getAccordionContent(accordion).attributes('id')
     const accordionTitle = getAccordionHeader(accordion)
     expect(accordionTitle.attributes('aria-controls')).toBe(contentId)
@@ -118,7 +118,7 @@ describe('Accordion tests', () => {
     `
     factory(template)
 
-    const accordion = getAccordion()
+    const accordion = getAccordion(wrapper)
     expect(getAccordionContent(accordion).text()).toBe(content)
   })
 
@@ -132,7 +132,7 @@ describe('Accordion tests', () => {
     `
     factory(template)
 
-    const accordion = getAccordion()
+    const accordion = getAccordion(wrapper)
     expect(accordion.classes()).toContain('puik-accordion--disabled')
     expect(getAccordionHeader(accordion).attributes('disabled')).toBeDefined()
   })

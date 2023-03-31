@@ -41,7 +41,7 @@ describe('AccordionGroup collapse/expand tests', () => {
 
   it('should accordion be expanded', () => {
     const template = `
-      <puik-accordion-group modelValue="accordion-1">
+      <puik-accordion-group model-value="accordion-1">
         <puik-accordion name="accordion-1" title="title-1">
           Content 1
         </puik-accordion>
@@ -49,7 +49,7 @@ describe('AccordionGroup collapse/expand tests', () => {
     `
     factory(template)
 
-    const accordion = getAccordion()
+    const accordion = getAccordion(wrapper)
     expect(accordion.classes()).toContain('puik-accordion--expanded')
   })
 
