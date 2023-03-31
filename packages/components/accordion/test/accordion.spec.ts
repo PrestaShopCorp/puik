@@ -122,36 +122,6 @@ describe('Accordion tests', () => {
     expect(getAccordionContent(accordion).text()).toBe(content)
   })
 
-  it('should have custom expand icon', () => {
-    const expandIcon = 'home'
-    const template = `
-      <puik-accordion-group>
-        <puik-accordion name="accordion-1" expand-icon="${expandIcon}">
-          Content
-        </puik-accordion>
-      </puik-accordion-group>
-    `
-    factory(template)
-
-    const accordion = getAccordion()
-    expect(getAccordionExpandIcon(accordion).text()).toBe(expandIcon)
-  })
-
-  it('should have custom collapse icon', () => {
-    const collapseIcon = 'home'
-    const template = `
-      <puik-accordion-group model-value="accordion-1">
-        <puik-accordion name="accordion-1" collapse-icon="${collapseIcon}">
-          Content
-        </puik-accordion>
-      </puik-accordion-group>
-    `
-    factory(template)
-
-    const accordion = getAccordion()
-    expect(getAccordionExpandIcon(accordion).text()).toBe(collapseIcon)
-  })
-
   it('should be disabled', () => {
     const template = `
       <puik-accordion-group>

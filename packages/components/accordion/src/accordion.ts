@@ -22,16 +22,6 @@ export const accordionProps = buildProps({
     required: false,
     default: undefined,
   },
-  expandIcon: {
-    type: String,
-    required: false,
-    default: 'keyboard_arrow_down',
-  },
-  collapseIcon: {
-    type: String,
-    required: false,
-    default: 'keyboard_arrow_up',
-  },
   disabled: {
     type: Boolean,
     required: false,

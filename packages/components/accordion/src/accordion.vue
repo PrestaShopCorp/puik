@@ -68,7 +68,7 @@ const isExpanded = computed(() => {
 accordionsList.value.push({ name: props.name, expanded: isExpanded.value })
 
 const expandIcon = computed(() =>
-  isExpanded.value ? props.collapseIcon : props.expandIcon
+  isExpanded.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
 )
 
 function onClick() {

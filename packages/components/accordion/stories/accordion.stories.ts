@@ -1,4 +1,3 @@
-import { ref } from 'vue'
 import PuikAccordionGroup from '../src/accordion-group.vue'
 import PuikAccordion from '../src/accordion.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
@@ -23,24 +22,6 @@ export default {
     icon: {
       control: 'text',
       description: 'Icon used in the header',
-    },
-    expandIcon: {
-      control: 'text',
-      description: 'Expand icon used in the header',
-      table: {
-        defaultValue: {
-          summary: 'keyboard_arrow_down',
-        },
-      },
-    },
-    collapseIcon: {
-      control: 'text',
-      description: 'Collapse icon used in the header',
-      table: {
-        defaultValue: {
-          summary: 'keyboard_arrow_up',
-        },
-      },
     },
     disabled: {
       control: 'boolean',
@@ -98,25 +79,22 @@ Default.parameters = {
 
       <!--HTML/CSS Snippet-->
       <div class="puik-accordion-group">
-        <div class="puik-accordion">
-          <button aria-expanded="false" aria-controls="puik-accordion-6664" class="puik-accordion__title">Title 1 <div class="puik-icon material-icons-round" style="font-size: 20px;">keyboard_arrow_up</div>
-          </button>
-          <div id="puik-accordion-6664" class="puik-accordion__content"> Content 1 </div>
-        </div>
         <!--
           State classes
           Disabled: "puik-accordion--disabled"
           Expanded: "puik-accordion--expanded"
         -->
         <div class="puik-accordion puik-accordion--expanded">
-          <button aria-expanded="true" aria-controls="puik-accordion-3261" class="puik-accordion__title"> Title 2 <div class="puik-icon material-icons-round" style="font-size: 20px;">keyboard_arrow_down</div>
+          <button aria-expanded="true" aria-controls="accordion-id" class="puik-accordion__header">
+            <div class="puik-icon material-icons-round puik-accordion__header__icon" style="font-size: 24px;">home</div>
+            <div class="puik-accordion__header__content">
+              <div class="puik-accordion__header__content__title">Accordion title</div>
+              <div class="puik-accordion__header__content__sub-title">Accordion subtitle</div>
+            </div>
+            <div class="puik-icon material-icons-round puik-accordion__header__expand__icon" style="font-size: 24px;">keyboard_arrow_up</div>
           </button>
-          <div id="puik-accordion-3261" class="puik-accordion__content"> Content 2 </div>
-        </div>
-        <div class="puik-accordion">
-          <button aria-expanded="false" aria-controls="puik-accordion-7108" class="puik-accordion__title">Title 3 <div class="puik-icon material-icons-round" style="font-size: 20px;">keyboard_arrow_up</div>
-          </button>
-          <div id="puik-accordion-7108" class="puik-accordion__content"> Content 3 </div>
+          <hr class="puik-accordion__divider">
+          <div id="accordion-id" class="puik-accordion__content" style=""> Content 1 </div>
         </div>
       </div>
       `,
