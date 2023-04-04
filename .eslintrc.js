@@ -76,6 +76,7 @@ module.exports = defineConfig({
     'vue/require-default-prop': 'off',
     'vue/require-explicit-emits': 'off',
     'vue/multi-word-component-names': 'off',
+    'vue/prefer-import-from-vue': 'off',
 
     // prettier
     'prettier/prettier': 'error',

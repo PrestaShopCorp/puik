@@ -32,7 +32,7 @@ export const copyTypesDefinitions: TaskFunction = (done) => {
   const src = path.resolve(buildOutput, 'types')
   const copyTypes = (module: Module) =>
     withTaskName(`copyTypes:${module}`, () =>
-      copy(src, buildConfig[module].output.path, { recursive: true })
+      copy(src, buildConfig[module].output.path)
     )
 
   return parallel(copyTypes('esm'), copyTypes('cjs'))(done)
@@ -56,7 +56,7 @@ export default series(
     runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
     series(
-      withTaskName('buildTheme', () => run('pnpm run -C packages/theme build')),
+      withTaskName('buildTheme', () => run('pnpm --filter @puik/theme build')),
       copyFullStyle
     )
   ),

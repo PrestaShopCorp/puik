@@ -22,7 +22,9 @@
           tabindex="-1"
           :readonly="open"
           type="text"
-          @input="handleAutoComplete(($event.target as HTMLInputElement)?.value)"
+          @input="
+            handleAutoComplete(($event.target as HTMLInputElement)?.value)
+          "
         />
         <puik-icon
           font-size="1.25rem"
@@ -100,7 +102,7 @@
 <script setup lang="ts">
 import { computed, provide, ref, useSlots } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
-import { isObject, isFunction, isArray } from '@puik/utils'
+import { isObject, isFunction, isArray, slotIsEmpty } from '@puik/utils'
 import { useLocale } from '@puik/hooks'
 import { PuikInput } from '@puik/components/input'
 import { PuikIcon } from '@puik/components/icon'
@@ -153,11 +155,7 @@ const filteredItems = computed(() => {
   return null
 })
 
-const hasError = computed(
-  () =>
-    props.error ||
-    (slots.error && slots.error()[0] && slots.error()[0].children)
-)
+const hasError = computed(() => props.error || slotIsEmpty(slots.error))
 
 const handleAutoComplete = (label: string | number) => {
   if (label === currentLabel.value) return

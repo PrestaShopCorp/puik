@@ -1,4 +1,4 @@
-import findWorkspacePackages from '@pnpm/find-workspace-packages'
+import { findWorkspacePackages } from '@pnpm/find-workspace-packages'
 import { buildConfig } from '../build-info'
 import { PUIK_PREFIX } from '../constants'
 import { projRoot } from './paths'
