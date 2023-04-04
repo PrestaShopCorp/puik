@@ -1,0 +1,63 @@
+.puik-skeleton-loader {
+  @apply bg-font-50 rounded w-full animate-pulse;
+  &--h1 {
+    @apply h-[42px];
+  }
+  &--h2 {
+    @apply h-[32px];
+  }
+  &--h3 {
+    @apply h-[30px];
+  }
+  &--h4 {
+    @apply h-[26px];
+  }
+  &--h5 {
+    @apply h-[22px];
+  }
+  &--h6 {
+    @apply h-[20px];
+  }
+  &--text-small {
+    @apply h-[18px];
+  }
+  &--text-medium {
+    @apply h-[20px];
+  }
+  &--text-large {
+    @apply h-[22px];
+  }
+  &--badge {
+    @apply h-[24px] w-[64px] rounded-full;
+  }
+  &--tag {
+    @apply h-[22px] w-[64px];
+  }
+  &--mega-jumbotron {
+    @apply h-[116px];
+  }
+  &--jumbotron {
+    @apply h-[58px];
+  }
+  &--image {
+    @apply h-[168px] w-[248px] flex justify-center items-center;
+    &::before {
+      @apply text-font-200 text-2xl;
+      content: '\e410';
+    }
+  }
+  &--video {
+    @apply h-[168px] w-[248px] flex justify-center items-center;
+    &::before {
+      @apply text-font-200 text-2xl;
+      content: '\e04b';
+    }
+  }
+  &--graph {
+    @apply h-[168px] w-[248px] flex justify-center items-center;
+    &::before {
+      @apply text-font-200 text-2xl;
+      content: '\e01d';
+    }
+  }
+}
