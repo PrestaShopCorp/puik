@@ -63,7 +63,10 @@ async function finishUploading() {
             role="img"
             >upload</span
           >
-          <span v-html="t('puik.fileUpload.dropzoneLabel')"></span>
+          <span
+            class="puik-file-upload__text"
+            v-html="t('puik.fileUpload.dropzoneLabel')"
+          ></span>
         </span>
       </label>
 

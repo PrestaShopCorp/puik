@@ -14,17 +14,17 @@
   &__icon {
     @apply h-6 mr-2 text-font-secondary;
   }
-  &__select {
-    @apply rounded text-primary-purple-500;
+  &__text > i {
+    @apply rounded text-primary-purple-500 not-italic;
   }
   &__input {
     @apply absolute top-0 w-full h-full opacity-0 cursor-pointer pointer-events-auto;
   }
-  &__input:focus + &__label &__select,
-  &__input:hover + &__label &__select {
+  &__input:focus + &__label &__text > i,
+  &__input:hover + &__label &__text > i {
     @apply underline;
   }
-  &__input:focus + &__label &__select {
+  &__input:focus + &__label &__text > i {
     @apply outline;
   }
   &__medias {

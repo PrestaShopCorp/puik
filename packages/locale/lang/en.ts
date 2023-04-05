@@ -17,10 +17,9 @@ export default {
       noResults: 'No results matched',
     },
     fileUpload: {
-      dropzoneLabel:
-        '<span class="puik-file-upload__select">Select</span> files or drop them right here',
+      dropzoneLabel: '<i>Select</i> files or drop them right here',
       errorTitle: 'Error',
-      removeLabel: 'Delete image',
+      removeLabel: 'Delete file',
     },
   },
 }
