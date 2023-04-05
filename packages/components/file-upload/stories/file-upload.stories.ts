@@ -43,6 +43,20 @@ export default {
     deleteFile: {
       description: 'A function that deletes a file.',
     },
+    maxFileSizeB: {
+      description:
+        'This value is passed as a parameter to "validateFile". It represents the maximum file size in bytes.',
+      table: {
+        defaultValue: { summary: 1_000_000 },
+      },
+    },
+    maxTotalSizeB: {
+      description:
+        'This value is passed as a parameter to "validateFile". It represents the maximum size of all files in bytes.',
+      table: {
+        defaultValue: { summary: 2_000_000 },
+      },
+    },
   },
 } as Meta
 

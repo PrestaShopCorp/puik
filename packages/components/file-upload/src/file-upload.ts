@@ -4,6 +4,7 @@ import {
   defaultValidateFile,
 } from './helpers/default-validation'
 import type { PropType } from 'vue'
+import type { Translator } from '@puik/hooks'
 
 export const fileUploadProps = buildProps({
   initialFiles: {
@@ -28,8 +29,15 @@ export const fileUploadProps = buildProps({
   },
   slowDownMs: {
     type: Number,
-    required: false,
     default: 1000,
+  },
+  maxFileSizeB: {
+    type: Number,
+    default: 1_000_000,
+  },
+  maxTotalSizeB: {
+    type: Number,
+    default: 2_000_000,
   },
 } as const)
 
@@ -45,13 +53,17 @@ export type ValidateFileHandler = (
 
 export interface ValidateFileAdditionalProperties {
   totalSizeB: number
+  accept: string
+  maxFileSizeB: number
+  maxTotalSizeB: number
+  t: Translator
 }
 
 export type FileValidation =
   | { valid: true }
   | {
       valid: false
-      errorMessage: string
+      message: string
     }
 
 export type UploadFileHandler = (

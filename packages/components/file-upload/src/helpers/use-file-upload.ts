@@ -1,4 +1,5 @@
 import { onUnmounted, reactive, ref, type ExtractPropTypes } from 'vue'
+import { useLocale } from '@puik/hooks'
 import { startUploadingMedia, createUploadedMedia } from './uploading'
 import type { fileUploadProps } from '../file-upload'
 import type { UploadingFileProps, FrontMedia } from './internal-types'
@@ -11,6 +12,7 @@ export function useFileUpload(
   let timeoutId: undefined | ReturnType<typeof setTimeout>
   const displayError = ref(false)
   const textAlert = ref<string>()
+  const { t } = useLocale()
 
   const state = reactive({
     closing: false,
@@ -25,6 +27,10 @@ export function useFileUpload(
     for (const uploadedFile of props.initialFiles ?? []) {
       const validation = props.validateFile(uploadedFile.file, {
         totalSizeB: state.totalSizeB,
+        accept: props.accept,
+        maxFileSizeB: props.maxFileSizeB,
+        maxTotalSizeB: props.maxTotalSizeB,
+        t,
       })
       if (!validation.valid) continue
       state.totalSizeB += uploadedFile.file.size
@@ -52,9 +58,13 @@ export function useFileUpload(
     for (const file of element.files ?? []) {
       const validation = props.validateFile(file, {
         totalSizeB: state.totalSizeB,
+        accept: props.accept,
+        maxFileSizeB: props.maxFileSizeB,
+        maxTotalSizeB: props.maxTotalSizeB,
+        t,
       })
       if (!validation.valid) {
-        showAlert(validation.errorMessage)
+        showAlert(validation.message)
         continue
       }
       state.totalSizeB += file.size
@@ -120,5 +130,6 @@ export function useFileUpload(
     displayError,
     closeAlert,
     textAlert,
+    t,
   }
 }

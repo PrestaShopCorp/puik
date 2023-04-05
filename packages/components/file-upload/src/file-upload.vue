@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import { useLocale } from '@puik/hooks'
 import PuikAlert from '@puik/components/alert'
 import PuikFileUploadMedia from './file-upload-media.vue'
 import { fileUploadProps } from './file-upload'
 import { useFileUpload } from './helpers/use-file-upload'
 
-const { t } = useLocale()
-
 const props = defineProps(fileUploadProps)
 
 const {
+  t,
   state,
   onDragOver,
   onDragLeave,

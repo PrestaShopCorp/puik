@@ -98,7 +98,7 @@ describe('File Upload tests', () => {
       ],
       validateFile(file: File): FileValidation {
         if (file.type === 'text/plain')
-          return { valid: false, errorMessage: 'rejected' }
+          return { valid: false, message: 'rejected' }
         return { valid: true }
       },
     })

@@ -1,40 +1,67 @@
 import type {
   FileValidation,
   ValidateFileAdditionalProperties,
+  ValidateFileHandler,
 } from '../file-upload'
-
-const maxFileSizeB = 1_000_000
-const maxTotalSizeB = 2_000_000
 
 const acceptedTypes = [
   'application/pdf',
   'application/msword',
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 ]
-const acceptedTypesSet = new Set(acceptedTypes)
 
 export const defaultAccept = `image/*, ${acceptedTypes.join(',')}`
 
-export function defaultValidateFile(
+export const defaultValidateFile: ValidateFileHandler = (
   file: File,
-  { totalSizeB }: ValidateFileAdditionalProperties
-): FileValidation {
-  if (!file.type.startsWith('image/') && !acceptedTypesSet.has(file.type)) {
+  {
+    totalSizeB,
+    t,
+    accept,
+    maxFileSizeB,
+    maxTotalSizeB,
+  }: ValidateFileAdditionalProperties
+): FileValidation => {
+  const baseType = file.type.replace(/\/.*$/, '')
+  const extension = file.name.includes('.')
+    ? `.${file.name.split('.').pop()}`
+    : ''
+  const acceptedType = accept
+    .split(',')
+    .map((type) => type.trim())
+    .some((acceptedType) => {
+      if (acceptedType.startsWith('.')) {
+        return extension === acceptedType
+      }
+      if (/\/\*$/.test(acceptedType)) {
+        return baseType === acceptedType.replace(/\/\*$/, '')
+      }
+      if (/^[^/]+\/[^/]+$/.test(acceptedType)) {
+        return file.type === acceptedType
+      }
+      return false
+    })
+  if (!acceptedType) {
     return {
       valid: false,
-      errorMessage: `invalid file type "${file.type}", only image files, PDF and Word documents are allowed`,
+      message: t('puik.fileUpload.errors.invalidType', {
+        fileType: file.type,
+        allowedTypes: accept,
+      }),
     }
   }
   if (file.size > maxFileSizeB) {
     return {
       valid: false,
-      errorMessage: `file "${file.name}" is too big`,
+      message: t('puik.fileUpload.errors.fileSizeTooBig', {
+        fileName: file.name,
+      }),
     }
   }
   if (totalSizeB + file.size > maxTotalSizeB) {
     return {
       valid: false,
-      errorMessage: 'maximum size is reached',
+      message: t('puik.fileUpload.errors.uploadSizeLimit'),
     }
   }
   return { valid: true }
