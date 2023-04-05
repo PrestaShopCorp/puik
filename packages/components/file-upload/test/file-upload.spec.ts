@@ -31,7 +31,7 @@ describe('File Upload tests', () => {
         validateFile,
         uploadFile,
         deleteFile,
-        inputAccept: 'image/*, application/pdf',
+        accept: 'image/*, application/pdf',
         slowDownMs: 0,
         ...propsData,
       },
@@ -45,8 +45,8 @@ describe('File Upload tests', () => {
 
   it('simulates file input change', async () => {
     factory()
-    const itemsWrapper = wrapper.find('.puik-file-upload__items')
-    expect(itemsWrapper.wrapperElement.children.length).toBe(0)
+    const mediasWrapper = wrapper.find('.puik-file-upload__medias')
+    expect(mediasWrapper.wrapperElement.children.length).toBe(0)
 
     const file = makeImageFile()
 
@@ -66,20 +66,20 @@ describe('File Upload tests', () => {
     // wait for next tick to allow the component to update
     await wrapper.vm.$nextTick()
 
-    expect(itemsWrapper.wrapperElement.children.length).toBe(1)
+    expect(mediasWrapper.wrapperElement.children.length).toBe(1)
     expect(validateFile).toHaveBeenCalledOnce()
     expect(uploadFile).toHaveBeenCalledOnce()
 
     await waitUntilUploaded()
 
     const loadingWrapper: DOMWrapper<HTMLElement, HTMLElement> =
-      itemsWrapper.find(
-        '.puik-file-upload-item__big-icon.puik-file-upload-item__big-icon--light'
+      mediasWrapper.find(
+        '.puik-file-upload-media__big-icon.puik-file-upload-media__big-icon--light'
       )
     expect(loadingWrapper.exists()).toBe(false)
 
-    const imgWrapper: DOMWrapper<HTMLElement, HTMLElement> = itemsWrapper.find(
-      '.puik-file-upload-item__img'
+    const imgWrapper: DOMWrapper<HTMLElement, HTMLElement> = mediasWrapper.find(
+      '.puik-file-upload-media__img'
     )
     expect(imgWrapper.exists()).toBe(true)
   })
@@ -102,10 +102,10 @@ describe('File Upload tests', () => {
         return { valid: true }
       },
     })
-    const itemsWrapper = wrapper.find('.puik-file-upload__items')
+    const mediasWrapper = wrapper.find('.puik-file-upload__medias')
     await wrapper.vm.$nextTick()
     // Only the image file should have been accepted
-    expect(itemsWrapper.wrapperElement.children.length).toBe(1)
+    expect(mediasWrapper.wrapperElement.children.length).toBe(1)
   })
 
   it('should display the PDF icon', async () => {
@@ -119,17 +119,17 @@ describe('File Upload tests', () => {
         },
       ],
     })
-    const itemsWrapper = wrapper.find('.puik-file-upload__items')
+    const mediasWrapper = wrapper.find('.puik-file-upload__medias')
     await wrapper.vm.$nextTick()
-    expect(itemsWrapper.wrapperElement.children.length).toBe(1)
+    expect(mediasWrapper.wrapperElement.children.length).toBe(1)
 
     await waitUntilUploaded()
     const loadingWrapper: DOMWrapper<HTMLElement, HTMLElement> =
-      itemsWrapper.find('.puik-file-upload-item__big-icon')
+      mediasWrapper.find('.puik-file-upload-media__big-icon')
     expect(loadingWrapper.exists()).toBe(true)
 
     const loadingWrapper2: DOMWrapper<HTMLElement, HTMLElement> =
-      itemsWrapper.find('.puik-file-upload-item__big-icon--light')
+      mediasWrapper.find('.puik-file-upload-media__big-icon--light')
     expect(loadingWrapper2.exists()).toBe(false)
   })
 })

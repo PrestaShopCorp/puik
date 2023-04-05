@@ -1,121 +1,32 @@
 <script setup lang="ts">
-import { onUnmounted, ref, reactive, onMounted } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikAlert from '@puik/components/alert'
-import PuikFileUploadItem from './file-upload-item.vue'
+import PuikFileUploadMedia from './file-upload-media.vue'
 import { fileUploadProps } from './file-upload'
-import { startUploadingItem, createUploadedItem } from './helpers/uploading'
-import type { UploadingFileProps, FrontItem } from './helpers/internal-types'
+import { useFileUpload } from './helpers/use-file-upload'
 
 const { t } = useLocale()
+
+const props = defineProps(fileUploadProps)
+
+const {
+  state,
+  onDragOver,
+  onDragLeave,
+  handleDrop,
+  onMediaRemoved,
+  getUploadingFileProps,
+  isDragOver,
+  uploadingMap,
+  displayError,
+  closeAlert,
+  textAlert,
+} = useFileUpload(props)
 
 defineOptions({
   name: 'PuikFileUpload',
 })
-const props = defineProps(fileUploadProps)
 defineExpose({ finishUploading })
-
-const displayError = ref(false)
-const textAlert = ref<string>()
-const isDragOver = ref(false)
-
-const state = reactive({
-  closing: false,
-  files: [] as FrontItem[],
-  totalSizeB: 0,
-})
-
-const uploadingMap = new Map<number, UploadingFileProps>()
-let timeoutId: undefined | ReturnType<typeof setTimeout>
-
-onMounted(() => {
-  for (const uploadedFile of props.initialFiles ?? []) {
-    const validation = props.validateFile(uploadedFile.file, {
-      totalSizeB: state.totalSizeB,
-    })
-    if (!validation.valid) continue
-    state.totalSizeB += uploadedFile.file.size
-    const item = createUploadedItem(uploadedFile)
-    uploadingMap.set(item.frontId, item)
-    state.files.push({ frontId: item.frontId })
-  }
-})
-
-onUnmounted(closeAlert)
-
-const onDragOver = () => {
-  if (state.closing) return
-  isDragOver.value = true
-}
-
-const onDragLeave = () => {
-  isDragOver.value = false
-}
-
-const handleDrop = (e: Event) => {
-  if (state.closing) return
-  const element = e.target as HTMLInputElement
-
-  isDragOver.value = false
-
-  for (const file of element.files ?? []) {
-    const validation = props.validateFile(file, {
-      totalSizeB: state.totalSizeB,
-    })
-    if (!validation.valid) {
-      showAlert(validation.errorMessage)
-      continue
-    }
-    state.totalSizeB += file.size
-    addUploadingFile(file)
-  }
-
-  element.value = ''
-}
-
-function showAlert(errorMessage: string) {
-  textAlert.value = errorMessage
-  displayError.value = true
-  if (timeoutId) clearTimeout(timeoutId)
-  timeoutId = setTimeout(() => {
-    timeoutId = undefined
-    closeAlert()
-  }, 7000)
-}
-
-function closeAlert() {
-  textAlert.value = ''
-  displayError.value = false
-  if (timeoutId !== undefined) {
-    clearTimeout(timeoutId)
-    timeoutId = undefined
-  }
-}
-
-function addUploadingFile(file: File) {
-  const item = startUploadingItem(props.uploadFile, file, props.slowDownMs)
-  uploadingMap.set(item.frontId, item)
-  state.files.push({ frontId: item.frontId })
-}
-
-const onItemRemoved = (frontId: number) => {
-  const item = uploadingMap.get(frontId)
-  if (item) {
-    state.totalSizeB -= item.file.size
-  }
-  uploadingMap.delete(frontId)
-  const index = state.files.findIndex((item) => item.frontId === frontId)
-  if (index === -1) return
-  state.files.splice(index, 1)
-}
-
-function getUploadingFileProps({ frontId }: FrontItem): UploadingFileProps {
-  const item = uploadingMap.get(frontId)
-  if (item === undefined) {
-    throw new Error(`Missing uploading item '${frontId}'`)
-  }
-  return item
-}
 
 /**
  * Used by the parent component.
@@ -123,7 +34,7 @@ function getUploadingFileProps({ frontId }: FrontItem): UploadingFileProps {
 async function finishUploading() {
   state.closing = true
   await Promise.all(
-    Array.from(uploadingMap.values()).map((item) => item.uploadPromise)
+    Array.from(uploadingMap.values()).map((media) => media.uploadPromise)
   )
 }
 </script>
@@ -139,7 +50,7 @@ async function finishUploading() {
           type="file"
           class="puik-file-upload__input"
           multiple
-          :accept="inputAccept"
+          :accept="accept"
           @change="handleDrop"
           @dragover="onDragOver"
           @dragleave="onDragLeave"
@@ -157,18 +68,18 @@ async function finishUploading() {
       </label>
 
       <div
-        class="puik-file-upload__items"
-        :class="{ 'puik-file-upload__items--full': state.files.length }"
+        class="puik-file-upload__medias"
+        :class="{ 'puik-file-upload__medias--full': state.files.length }"
       >
-        <puik-file-upload-item
+        <puik-file-upload-media
           v-for="file in state.files"
           :key="file.frontId"
           :uploading="getUploadingFileProps(file)"
           :closing="state.closing"
           :accessibility-remove-label="t('puik.fileUpload.removeLabel')"
           :delete-file-cb="deleteFile"
-          @removed="onItemRemoved"
-        ></puik-file-upload-item>
+          @removed="onMediaRemoved"
+        ></puik-file-upload-media>
       </div>
     </div>
 

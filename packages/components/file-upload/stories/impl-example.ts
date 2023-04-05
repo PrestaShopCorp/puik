@@ -1,4 +1,8 @@
-import type { UploadedFile } from '../src/file-upload'
+import type {
+  DeleteFileHandler,
+  UploadFileHandler,
+  UploadedFile,
+} from '../src/file-upload'
 
 /*
  * Example of user code for the File Upload component
@@ -7,14 +11,11 @@ import type { UploadedFile } from '../src/file-upload'
 let seq = 0
 const uploadedFiles: UploadedFile[] = []
 
-export async function fakeUploadFile(
-  file: File,
-  options: { onUploadProgress: (progress: number) => void }
-): Promise<{ fileId: string }> {
+export const fakeUploadFile: UploadFileHandler = async (file, options = {}) => {
   const stepMs = (Math.random() * 2800 + 200) / 100 // total will be between 200ms and 3 seconds
   for (let i = 1; i <= 100; ++i) {
     await wait(stepMs)
-    options.onUploadProgress(i / 100)
+    options.onUploadProgress?.(i / 100)
   }
   const fileId = String(++seq)
   uploadedFiles.push({
@@ -26,9 +27,9 @@ export async function fakeUploadFile(
   }
 }
 
-export async function fakeDeleteFile(fileId: string): Promise<void> {
+export const fakeDeleteFile: DeleteFileHandler = async (fileId) => {
   await wait(350)
-  const index = uploadedFiles.findIndex((item) => item.fileId === fileId)
+  const index = uploadedFiles.findIndex((media) => media.fileId === fileId)
   if (index !== -1) uploadedFiles.splice(index, 1)
 }
 

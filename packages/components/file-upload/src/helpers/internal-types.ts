@@ -12,6 +12,6 @@ export interface UploadingFileProps {
   }
 }
 
-export interface FrontItem {
+export interface FrontMedia {
   frontId: number
 }

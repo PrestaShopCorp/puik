@@ -10,11 +10,14 @@ export default {
       description:
         'Provides an optional list of files to display as already uploaded. The format is of type: <code>{ fileId: string; file: File }</code>.',
     },
-    inputAccept: {
+    accept: {
       description:
-        'A string value that would be transmitted to the <code>&lt;input&gt;</code> of type <code>file</code>.',
+        'A string value that would be transmitted to the <code>&lt;input&gt;</code> of type <code>file</code>. See also: [documentation on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept).',
       table: {
-        defaultValue: { summary: 'image/*, application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document' },
+        defaultValue: {
+          summary:
+            'image/*, application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        },
       },
     },
     slowDownMs: {

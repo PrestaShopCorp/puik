@@ -27,7 +27,7 @@
   &__input:focus + &__label &__select {
     @apply outline;
   }
-  &__items {
+  &__medias {
     @apply flex flex-wrap justify-center gap-4 sm:justify-start;
 
     &--full {
@@ -36,7 +36,7 @@
   }
 }
 
-.puik-file-upload-item {
+.puik-file-upload-media {
   @apply relative w-[166px] h-[158px] border border-light-blue-default-border rounded text-center flex justify-between flex-col items-center pointer-events-none;
 
   &__big-icon {
@@ -56,7 +56,7 @@
   }
 }
 
-.puik-file-upload-item-footer {
+.puik-file-upload-media-footer {
   &__name {
     @apply py-2 text-center whitespace-nowrap text-ellipsis overflow-hidden w-full pointer-events-auto;
   }

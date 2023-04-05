@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { reactive, onMounted, computed } from 'vue'
+import { reactive, computed } from 'vue'
 import { useEventListener } from '@vueuse/core'
 import PuikIcon from '@puik/components/icon'
 import PuikProgressBar from '@puik/components/progress-bar'
-import { fileUploadItemProps } from './file-upload-item'
+import { fileUploadMediaProps } from './file-upload-media'
 import type { ComputedRef } from 'vue'
 
 defineOptions({
-  name: 'PuikFileUploadItem',
+  name: 'PuikFileUploadMedia',
 })
-const props = defineProps(fileUploadItemProps)
+const props = defineProps(fileUploadMediaProps)
 
 const emit = defineEmits(['removed'])
 
 const state = reactive<{
   fileId?: string
-  bigIconName?: string
-  image?: { src: string }
+  thumbnailIcon?: string
+  imageSrc?: string
   isImage: ComputedRef<boolean>
   inProgress: ComputedRef<boolean>
 }>({
@@ -24,39 +24,39 @@ const state = reactive<{
   inProgress: computed(() => state.fileId === undefined),
 })
 
-onMounted(() => {
+readImage()
+waitForUpload() // do not await
+
+function readImage() {
   if (state.isImage) {
     const reader = new FileReader()
     useEventListener(
       reader,
       'load',
       function (this: { result: string }) {
-        state.image = {
-          src: this.result,
-        }
+        state.imageSrc = this.result
       },
       false
     )
     useEventListener(reader, 'error', () => {
-      state.image = undefined
-      state.bigIconName = 'image'
+      state.imageSrc = undefined
+      state.thumbnailIcon = 'image'
     })
     reader.readAsDataURL(props.uploading.file)
-    state.bigIconName = 'image'
+    state.thumbnailIcon = 'image'
   } else if (/\.(pdf)$/i.test(props.uploading.file.name)) {
-    state.bigIconName = 'picture_as_pdf'
+    state.thumbnailIcon = 'picture_as_pdf'
   } else if (/\.(doc|docx)$/i.test(props.uploading.file.name)) {
-    state.bigIconName = 'insert_drive_file'
+    state.thumbnailIcon = 'insert_drive_file'
   }
-  waitForUpload() // do not await
-})
+}
 
 async function waitForUpload() {
   try {
     const resp = await props.uploading.uploadPromise
     state.fileId = resp.fileId
     if (state.isImage) {
-      state.bigIconName = undefined
+      state.thumbnailIcon = undefined
     }
   } catch (error) {
     // On error, the file is not on the server. So it is considered as removed.
@@ -64,7 +64,7 @@ async function waitForUpload() {
   }
 }
 
-const deleteItem = async () => {
+const deleteMedia = async () => {
   if (state.fileId === undefined) return
   await props.deleteFileCb(state.fileId)
   emit('removed', props.uploading.frontId)
@@ -72,42 +72,42 @@ const deleteItem = async () => {
 </script>
 
 <template>
-  <article class="puik-file-upload-item">
+  <article class="puik-file-upload-media">
     <PuikIcon
-      v-if="state.bigIconName"
-      :icon="state.bigIconName"
-      font-size="96"
+      v-if="state.thumbnailIcon"
+      :icon="state.thumbnailIcon"
+      font-size="6rem"
       node-type="span"
       aria-hidden="true"
       role="img"
-      class="puik-file-upload-item__big-icon"
-      :class="{ 'puik-file-upload-item__big-icon--light': state.inProgress }"
+      class="puik-file-upload-media__big-icon"
+      :class="{ 'puik-file-upload-media__big-icon--light': state.inProgress }"
     />
     <img
-      v-else-if="state.image"
-      class="puik-file-upload-item__img"
-      :src="state.image.src"
+      v-else-if="state.imageSrc"
+      class="puik-file-upload-media__img"
+      :src="state.imageSrc"
     />
-    <div class="puik-file-upload-item__footer puik-file-upload-item-footer">
+    <div class="puik-file-upload-media__footer puik-file-upload-media-footer">
       <PuikProgressBar
         v-if="!uploading.status.ended"
-        class="puik-file-upload-item-footer__progress"
+        class="puik-file-upload-media-footer__progress"
         :percentage="uploading.status.progress * 100"
       />
-      <span class="puik-file-upload-item-footer__name">{{
+      <span class="puik-file-upload-media-footer__name">{{
         uploading.file.name
       }}</span>
       <button
         v-if="uploading.status.ended && !closing"
-        class="puik-file-upload-item-footer__close-btn"
+        class="puik-file-upload-media-footer__close-btn"
         :aria-label="accessibilityRemoveLabel"
-        @click="deleteItem"
+        @click="deleteMedia"
       >
         <PuikIcon
           icon="cancel"
-          font-size="24"
+          font-size="1.5rem"
           node-type="span"
-          class="puik-file-upload-item-footer__close-icon"
+          class="puik-file-upload-media-footer__close-icon"
         />
       </button>
     </div>

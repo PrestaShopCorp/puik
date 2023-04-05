@@ -10,7 +10,7 @@ export const fileUploadProps = buildProps({
     type: Array as PropType<UploadedFile[]>,
     required: false,
   },
-  inputAccept: {
+  accept: {
     type: String,
     default: defaultInputAccept,
   },
@@ -56,7 +56,7 @@ export type FileValidation =
 
 export type UploadFileHandler = (
   file: File,
-  options: { onUploadProgress: UploadProgressHandler }
+  options?: { onUploadProgress?: UploadProgressHandler }
 ) => Promise<{ fileId: string }>
 
 /**

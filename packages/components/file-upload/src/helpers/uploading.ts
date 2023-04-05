@@ -5,7 +5,7 @@ import type { UploadingFileProps } from './internal-types'
 
 let frontIdSeq = 0
 
-export function createUploadedItem(
+export function createUploadedMedia(
   uploadedFile: UploadedFile
 ): UploadingFileProps {
   return {
@@ -22,7 +22,7 @@ export function createUploadedItem(
   }
 }
 
-export function startUploadingItem(
+export function startUploadingMedia(
   uploadFileCb: UploadFileHandler,
   file: File,
   slowDownMs: number
