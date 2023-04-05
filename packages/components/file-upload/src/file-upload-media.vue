@@ -46,7 +46,7 @@ function readImage() {
     state.thumbnailIcon = 'image'
   } else if (/\.(pdf)$/i.test(props.uploading.file.name)) {
     state.thumbnailIcon = 'picture_as_pdf'
-  } else if (/\.(doc|docx)$/i.test(props.uploading.file.name)) {
+  } else {
     state.thumbnailIcon = 'insert_drive_file'
   }
 }
