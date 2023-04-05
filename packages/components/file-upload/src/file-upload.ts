@@ -1,6 +1,6 @@
 import { buildProps } from '@puik/utils'
 import {
-  defaultInputAccept,
+  defaultAccept,
   defaultValidateFile,
 } from './helpers/default-validation'
 import type { PropType } from 'vue'
@@ -12,7 +12,7 @@ export const fileUploadProps = buildProps({
   },
   accept: {
     type: String,
-    default: defaultInputAccept,
+    default: defaultAccept,
   },
   validateFile: {
     type: Function as PropType<ValidateFileHandler>,

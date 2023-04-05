@@ -13,7 +13,7 @@ const acceptedTypes = [
 ]
 const acceptedTypesSet = new Set(acceptedTypes)
 
-export const defaultInputAccept = `image/*, ${acceptedTypes.join(',')}`
+export const defaultAccept = `image/*, ${acceptedTypes.join(',')}`
 
 export function defaultValidateFile(
   file: File,
