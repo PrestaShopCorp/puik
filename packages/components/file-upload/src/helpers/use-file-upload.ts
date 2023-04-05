@@ -1,4 +1,5 @@
 import { onUnmounted, reactive, ref, type ExtractPropTypes } from 'vue'
+import { useTimeoutFn } from '@vueuse/core'
 import { useLocale } from '@puik/hooks'
 import { startUploadingMedia, createUploadedMedia } from './uploading'
 import type { fileUploadProps } from '../file-upload'
@@ -9,10 +10,13 @@ export function useFileUpload(
 ) {
   const uploadingMap = new Map<number, UploadingFileProps>()
   const isDragOver = ref(false)
-  let timeoutId: undefined | ReturnType<typeof setTimeout>
   const displayError = ref(false)
   const textAlert = ref<string>()
   const { t } = useLocale()
+
+  const delayedClose = useTimeoutFn(closeAlert, 7000, {
+    immediate: false,
+  })
 
   const state = reactive({
     closing: false,
@@ -77,20 +81,14 @@ export function useFileUpload(
   function showAlert(errorMessage: string) {
     textAlert.value = errorMessage
     displayError.value = true
-    if (timeoutId) clearTimeout(timeoutId)
-    timeoutId = setTimeout(() => {
-      timeoutId = undefined
-      closeAlert()
-    }, 7000)
+    if (delayedClose.isPending) delayedClose.stop()
+    delayedClose.start()
   }
 
   function closeAlert() {
     textAlert.value = ''
     displayError.value = false
-    if (timeoutId !== undefined) {
-      clearTimeout(timeoutId)
-      timeoutId = undefined
-    }
+    delayedClose.stop()
   }
 
   function addUploadingFile(file: File) {
