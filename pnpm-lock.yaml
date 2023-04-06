@@ -60,8 +60,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0
       '@pnpm/types':
-        specifier: ^8.10.0
-        version: 8.10.0
+        specifier: ^9.0.0
+        version: 9.0.0
       '@puik/build':
         specifier: workspace:^0.0.1
         version: link:build
@@ -241,8 +241,8 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2
       '@pnpm/types':
-        specifier: ^8.10.0
-        version: 8.10.0
+        specifier: ^9.0.0
+        version: 9.0.0
       '@types/rollup-plugin-css-only':
         specifier: ^3.1.0
         version: 3.1.0
@@ -3780,6 +3780,11 @@ packages:
   /@pnpm/types@9.0.0:
     resolution: {integrity: sha512-+nNqpNvqb1u3WW/cHDo7tGjqJBWWe4GAHEdELrz4QMQwGAtG/1GF6NMc0cewdwgU2k67CI3JHGu4quZJnMEUJg==}
     engines: {node: '>=16.14'}
+
+  /@pnpm/types@9.0.0:
+    resolution: {integrity: sha512-+nNqpNvqb1u3WW/cHDo7tGjqJBWWe4GAHEdELrz4QMQwGAtG/1GF6NMc0cewdwgU2k67CI3JHGu4quZJnMEUJg==}
+    engines: {node: '>=16.14'}
+    dev: true
 
   /@pnpm/util.lex-comparator@1.0.0:
     resolution: {integrity: sha512-3aBQPHntVgk5AweBWZn+1I/fqZ9krK/w01197aYVkAJQGftb+BVWgEepxY5GChjSW12j52XX+CmfynYZ/p0DFQ==}
