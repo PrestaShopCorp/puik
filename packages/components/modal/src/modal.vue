@@ -1,19 +1,16 @@
 <template>
-  <Dialog :open="isOpenRef" class="puik-modal" @close="sendCloseModalEvent()">
-    <div class="puik-modal__backdrop" aria-hidden="true" />
-
+  <Dialog
+    :open="isOpenRef"
+    class="puik-modal"
+    :class="[`puik-modal--${variant}`, `puik-modal--${size}`]"
+    @close="sendCloseModalEvent()"
+  >
     <div class="puik-modal__dialogPanelContainer">
-      <DialogPanel
-        class="puik-modal__dialogPanelContainer__dialogPanel"
-        :class="[`puik-modal__dialogPanelContainer__dialogPanel--${size}`]"
-      >
+      <DialogPanel class="puik-modal__dialogPanelContainer__dialogPanel">
         <header class="puik-modal__dialogPanelContainer__dialogPanel__header">
           <puik-icon
             v-if="titleIcon || ModalVariant.DESTRUCTIVE === variant"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__icon"
-            :class="[
-              `puik-modal__dialogPanelContainer__dialogPanel__header__icon--${variant}`,
-            ]"
             :icon="getTitleIconName"
           />
 

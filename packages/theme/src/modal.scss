@@ -1,51 +1,61 @@
 .puik-modal {
   @apply relative z-50;
 
-  &__backdrop {
-    @apply fixed inset-0 bg-black/30;
+  &--invisible {
+    @apply invisible;
+  }
+
+  &--destructive {
+    .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
+      @apply text-accentuation-destructive-500 bg-accentuation-destructive-50;
+    }
+  }
+  &--dialog {
+    .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
+      @apply text-font-secondary bg-font-50;
+    }
+  }
+  &--feedback {
+    .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
+      @apply text-primary-purple-500 bg-primary-purple-50;
+    }
+  }
+
+  &--large {
+    .puik-modal__dialogPanelContainer__dialogPanel {
+      @apply sm:max-w-[904px];
+    }
+  }
+  &--medium {
+    .puik-modal__dialogPanelContainer__dialogPanel {
+      @apply sm:max-w-[680px];
+    }
+  }
+  &--small {
+    .puik-modal__dialogPanelContainer__dialogPanel {
+      @apply sm:max-w-[508px];
+    }
   }
 
   &__dialogPanelContainer {
-    @apply fixed max-h-full inset-0 flex justify-center items-end sm:items-center;
+    @apply fixed max-h-full bg-font-secondary/50 inset-0 flex justify-center items-end sm:items-center;
 
     &__dialogPanel {
-      @apply w-full 
-                h-[90%] 
-                rounded-t-lg 
-                flex 
-                flex-col 
-                bg-white 
-                p-6 
-                gap-6 
-                sm:rounded-lg;
-
-      &--large {
-        @apply sm:max-w-[904px];
-      }
-      &--medium {
-        @apply sm:max-w-[680px];
-      }
-      &--small {
-        @apply sm:max-w-[508px];
-      }
+      @apply w-full
+                sm:h-[90%]
+                max-h-full
+                sm:rounded-lg
+                flex
+                flex-col
+                bg-white
+                p-6
+                gap-6;
 
       &__header {
         @apply flex items-center gap-4;
 
         &__icon {
           @apply rounded-full p-2;
-
-          &--destructive {
-            @apply text-accentuation-destructive-500 bg-accentuation-destructive-50;
-          }
-
-          &--dialog {
-            @apply text-font-secondary bg-font-50;
-          }
-
-          &--feedback {
-            @apply text-primary-purple-500 bg-primary-purple-50;
-          }
         }
 
         &__title {
