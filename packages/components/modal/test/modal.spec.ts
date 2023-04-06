@@ -18,6 +18,7 @@ global.ResizeObserver = class FakeResizeObserver {
 describe('Modal tests', () => {
   let wrapper: VueWrapper<any>
 
+  const findModal = () => wrapper.find('.puik-modal')
   const findDialogPanel = () =>
     wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel')
   const findIcon = () =>
@@ -69,9 +70,7 @@ describe('Modal tests', () => {
     expect(wrapper).toBeTruthy()
     expect(findIcon().exists()).toBeFalsy()
     expect(findCloseButton().exists()).toBeTruthy()
-    expect(findDialogPanel().classes()).toContain(
-      'puik-modal__dialogPanelContainer__dialogPanel--small'
-    )
+    expect(findModal().classes()).toContain('puik-modal--small')
     expect(findMainButton().classes()).toContain('puik-button--primary')
     expect(findSecondaryButton().classes()).toContain('puik-button--secondary')
   })
@@ -87,9 +86,7 @@ describe('Modal tests', () => {
     })
 
     expect(findIcon().text()).toBe(DESTRUCTIVE_ICON_NAME)
-    expect(findIcon().classes()).toContain(
-      'puik-modal__dialogPanelContainer__dialogPanel__header__icon--destructive'
-    )
+    expect(findModal().classes()).toContain('puik-modal--destructive')
     expect(findMainButton().classes()).toContain('puik-button--destructive')
     expect(findSecondaryButton().classes()).toContain('puik-button--tertiary')
   })
@@ -105,9 +102,7 @@ describe('Modal tests', () => {
     })
 
     expect(findIcon().text()).toBe(homeTitleIcon)
-    expect(findIcon().classes()).toContain(
-      'puik-modal__dialogPanelContainer__dialogPanel__header__icon--feedback'
-    )
+    expect(findModal().classes()).toContain('puik-modal--feedback')
     expect(findMainButton().classes()).toContain('puik-button--primary')
     expect(findSecondaryButton().classes()).toContain('puik-button--secondary')
   })
@@ -126,9 +121,7 @@ describe('Modal tests', () => {
     })
 
     expect(findIcon().text()).toBe(homeTitleIcon)
-    expect(findIcon().classes()).toContain(
-      'puik-modal__dialogPanelContainer__dialogPanel__header__icon--dialog'
-    )
+    expect(findModal().classes()).toContain('puik-modal--dialog')
     expect(findMainButton().classes()).toContain('puik-button--primary')
     expect(findSecondaryButton().classes()).toContain('puik-button--secondary')
     expect(findSideButton().exists()).toBeTruthy()
@@ -144,9 +137,7 @@ describe('Modal tests', () => {
       size: ModalSize.LARGE,
     })
 
-    expect(findDialogPanel().classes()).toContain(
-      'puik-modal__dialogPanelContainer__dialogPanel--large'
-    )
+    expect(findModal().classes()).toContain('puik-modal--large')
   })
 
   it('should display with the medium size', async () => {
@@ -158,9 +149,7 @@ describe('Modal tests', () => {
       size: ModalSize.MEDIUM,
     })
 
-    expect(findDialogPanel().classes()).toContain(
-      'puik-modal__dialogPanelContainer__dialogPanel--medium'
-    )
+    expect(findModal().classes()).toContain('puik-modal--medium')
   })
 
   it('should display with the small size', async () => {
@@ -172,9 +161,7 @@ describe('Modal tests', () => {
       size: ModalSize.SMALL,
     })
 
-    expect(findDialogPanel().classes()).toContain(
-      'puik-modal__dialogPanelContainer__dialogPanel--small'
-    )
+    expect(findModal().classes()).toContain('puik-modal--small')
   })
 
   it('should display the close button and send close event when clicked', async () => {
