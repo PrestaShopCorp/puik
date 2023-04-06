@@ -29,10 +29,10 @@ export const makeUpload = (url: string) => {
     try {
       data = JSON.parse(response)
     } catch (err: any) {
-      throw new Error(`Invalid response from API: ${err.message}`)
+      throw new Error(`Invalid response from API: ${response}`)
     }
     if (!data?.fileId || typeof data.fileId !== 'string') {
-      throw new Error('Invalid response from API')
+      throw new Error(`Invalid response from API: ${response}`)
     }
     return {
       fileId: data.fileId,
