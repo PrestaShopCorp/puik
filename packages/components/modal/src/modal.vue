@@ -24,12 +24,12 @@
 
           <puik-button
             v-if="ModalVariant.DIALOG !== variant"
-            aria-label="closeButton"
+            aria-label="t('puik.modal.closeButtonLabel')"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__close-button"
-            variant="error"
+            variant="text"
             @click="sendCloseModalEvent()"
           >
-            <puik-icon icon="close" />
+            <puik-icon icon="close" font-size="24" />
           </puik-button>
         </header>
         <div class="puik-modal__dialogPanelContainer__dialogPanel__content">
@@ -75,6 +75,7 @@ import { PuikButton } from '@puik/components/button'
 import { PuikIcon } from '@puik/components/icon'
 import { PuikTooltip } from '@puik/components/tooltip'
 import { isEllipsisActive } from '@puik/utils'
+import { useLocale } from '@puik/hooks'
 import {
   modalProps,
   ModalVariant,
@@ -85,6 +86,8 @@ import {
 defineOptions({
   name: 'PuikModal',
 })
+
+const { t } = useLocale()
 
 const props = defineProps(modalProps)
 const emit = defineEmits(modalEmits)
