@@ -5,7 +5,7 @@ export const makeUpload = (url: string) => {
     file: File,
     options: { onUploadProgress?: UploadProgressHandler } = {}
   ): Promise<{ fileId: string }> => {
-    const response = await new Promise<any>((resolve, reject) => {
+    const response = await new Promise<string>((resolve, reject) => {
       const xhr = new XMLHttpRequest()
       xhr.onerror = (error) => reject(error)
       xhr.onreadystatechange = () => {
@@ -24,11 +24,18 @@ export const makeUpload = (url: string) => {
       xhr.send(formData)
     })
 
-    if (!response) throw new Error(`Error ${response} from API`)
-    if (typeof response?.fileId !== 'string')
+    if (!response) throw new Error('Missing response from API')
+    let data: any
+    try {
+      data = JSON.parse(response)
+    } catch (err: any) {
+      throw new Error(`Invalid response from API: ${err.message}`)
+    }
+    if (!data?.fileId || typeof data.fileId !== 'string') {
       throw new Error('Invalid response from API')
+    }
     return {
-      fileId: response.fileId,
+      fileId: data.fileId,
     }
   }
   return upload
