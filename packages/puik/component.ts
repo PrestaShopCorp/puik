@@ -1,3 +1,4 @@
+import { PuikModal } from '@puik/components/modal'
 import { PuikButtonGroup } from '@puik/components/button-group'
 import { PuikProgressBar } from '@puik/components/progress-bar'
 import { PuikIcon } from '@puik/components/icon'
@@ -17,6 +18,7 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikModal,
   PuikButtonGroup,
   PuikProgressBar,
   PuikIcon,
