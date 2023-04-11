@@ -16,4 +16,8 @@
   &--info {
     @apply bg-accentuation-info-50 text-accentuation-info-900;
   }
+
+  &--neutral {
+    @apply bg-light-blue-100 text-font-900;
+  }
 }
