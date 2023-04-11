@@ -1,13 +1,13 @@
 {
   "private": true,
-  "packageManager": "pnpm@7.29.2",
+  "packageManager": "pnpm@8.1.1",
   "workspaces": [
     "packages/*",
     "docs",
     "play"
   ],
   "engines": {
-    "node": ">= v16.19.1"
+    "node": ">= v18.15.0"
   },
   "scripts": {
     "cz": "git-cz",
@@ -66,9 +66,9 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@esbuild-kit/cjs-loader": "^2.4.2",
     "@faker-js/faker": "^7.6.0",
-    "@pnpm/find-workspace-packages": "^5.0.40",
+    "@pnpm/find-workspace-packages": "^6.0.4",
     "@pnpm/logger": "5.0.0",
-    "@pnpm/types": "^8.10.0",
+    "@pnpm/types": "^9.0.0",
     "@puik/build": "workspace:^0.0.1",
     "@types/fs-extra": "^11.0.1",
     "@types/gulp": "^4.0.10",

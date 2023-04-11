@@ -2,6 +2,7 @@
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     PuikBadge: typeof import('@prestashopcorp/puik')['PuikBadge']
+    PuikModal: typeof import('@prestashopcorp/puik')['PuikModal']
     PuikButtonGroup: typeof import('@prestashopcorp/puik')['PuikButtonGroup']
     PuikProgressBar: typeof import('@prestashopcorp/puik')['PuikProgressBar']
     PuikIcon: typeof import('@prestashopcorp/puik')['PuikIcon']
