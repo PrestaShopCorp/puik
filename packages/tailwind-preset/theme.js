@@ -60,7 +60,7 @@ module.exports = {
         50: '#FFF5E5',
         100: '#FFECCC',
         300: '#FFD999',
-        500: '#ffa000',
+        500: '#ffA000',
       },
       amber: {
         get DEFAULT() {
@@ -78,7 +78,7 @@ module.exports = {
         },
         50: '#E9F3ED',
         100: '#98D9A9',
-        300: '#a6CBD8',
+        300: '#A6CBD8',
         500: '#21834D',
       },
     },
