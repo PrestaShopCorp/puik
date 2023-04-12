@@ -1,13 +1,13 @@
 .puik-select {
   @apply relative mt-1;
   &__button {
-    @apply relative w-full cursor-default bg-white min-h-[38px] text-left border border-light-blue-default-border hover:border-primary-500 focus:outline-none focus:ring focus:ring-focus-main sm:text-sm disabled:border-light-blue-default-border disabled:text-font-disabled;
+    @apply relative w-full cursor-default bg-white min-h-[38px] text-left border border-primary-400 hover:border-primary-500 focus:outline-none focus:ring focus:ring-blue sm:text-sm disabled:border-primary-400 disabled:text-primary-300;
     &--error {
-      @apply border-accentuation-destructive-500;
+      @apply border-red;
     }
   }
   &__selected {
-    @apply block truncate w-full py-2 pl-3 pr-9 select-none font-secondary outline-none pointer-events-none text-font-900 placeholder:text-font-900 disabled:bg-light-blue-background disabled:placeholder:text-font-disabled;
+    @apply block truncate w-full py-2 pl-3 pr-9 select-none font-secondary outline-none pointer-events-none text-primary-800 placeholder:text-primary-800 disabled:bg-white disabled:placeholder:text-primary-300;
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
     }
@@ -28,7 +28,7 @@
     @apply max-h-60 overflow-y-auto overflow-x-hidden;
   }
   &__error {
-    @apply flex text-xs text-accentuation-destructive-500 font-secondary font-normal mt-1;
+    @apply flex text-xs text-red font-secondary font-normal mt-1;
     &__text {
       @apply mt-0.5;
     }

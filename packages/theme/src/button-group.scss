@@ -1,10 +1,10 @@
 .puik-button-group {
   .puik-button {
     &--primary {
-      @apply border border-primary-500;
+      @apply border border-primary;
     }
     &--tertiary {
-      @apply border border-light-blue-default-border;
+      @apply border border-primary-400;
     }
     .puik-button__left-icon {
       @apply mr-0;

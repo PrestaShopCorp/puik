@@ -40,7 +40,7 @@
   }
 
   &:focus {
-    @apply outline-none ring ring-offset-2 ring-focus-main;
+    @apply outline-none ring ring-offset-2 ring-blue;
   }
 
   &:disabled,
@@ -49,107 +49,123 @@
   }
 
   &--primary {
-    @apply bg-primary-500 text-white;
+    @apply bg-primary text-white;
     &:hover {
       @apply bg-primary-700;
     }
     &:active {
-      @apply bg-primary-900;
+      @apply bg-primary-800;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply bg-primary-300;
+      @apply bg-primary-200;
     }
   }
 
   &--destructive {
-    @apply bg-accentuation-destructive-500 text-white;
-    &:hover {
-      @apply bg-accentuation-destructive-700;
-    }
+    @apply bg-red text-white;
+    &:hover,
     &:active {
-      @apply bg-accentuation-destructive-900;
+      @apply bg-red-700;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply bg-accentuation-destructive-100;
+      @apply bg-red-100;
     }
   }
 
   &--secondary {
-    @apply bg-primary-50 text-primary-500 border border-primary-500;
-    &:hover {
-      @apply bg-primary-100;
-    }
+    @apply bg-white text-primary;
+    &:hover,
     &:active {
       @apply bg-primary-200;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply bg-primary-100 text-primary-400 border border-primary-400;
+      @apply bg-white text-primary-200;
     }
   }
 
   &--tertiary {
-    @apply text-font border border-light-blue-default-border;
+    @apply text-primary-800 border border-primary-400;
     &:hover {
-      @apply bg-font-50;
+      @apply bg-primary-200;
     }
     &:active {
-      @apply bg-font-100;
+      @apply bg-primary-300;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply text-font-100 border-font-100;
+      @apply text-primary-300 border-primary-300;
     }
   }
 
   &--text {
-    @apply text-font;
+    @apply text-primary-800;
     &:hover {
-      @apply bg-font-50;
+      @apply bg-primary-200;
     }
     &:active {
-      @apply bg-font-100;
+      @apply bg-primary-300;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply text-font-100;
-    }
-  }
-
-  @mixin alert-banner-button-variant($color) {
-    @apply bg-accentuation-#{$color}-50 border-accentuation-#{$color}-500;
-    @apply text-gray-900 border;
-
-    &:hover {
-      @apply bg-accentuation-#{$color}-100;
-    }
-
-    &:active {
-      @apply bg-accentuation-#{$color}-200;
-    }
-
-    &:disabled,
-    &--disabled {
-      @apply border-accentuation-#{$color}-200 text-white;
+      @apply text-primary-300;
     }
   }
 
   &--info {
-    @include alert-banner-button-variant('info');
+    @apply bg-blue-50 border-blue;
+    @apply text-primary-800 border;
+
+    &:hover {
+      @apply bg-blue-100;
+    }
+
+    &:active {
+      @apply bg-blue-300;
+    }
+
+    &:disabled,
+    &--disabled {
+      @apply border-blue-300 text-white;
+    }
   }
 
   &--success {
-    @include alert-banner-button-variant('success');
+    @apply bg-green-50 border-green;
+    @apply text-primary-800 border;
+
+    &:hover {
+      @apply bg-green-100;
+    }
+
+    &:active {
+      @apply bg-green-300;
+    }
+
+    &:disabled,
+    &--disabled {
+      @apply border-green-100 text-white;
+    }
   }
 
   &--warning {
-    @include alert-banner-button-variant('warning');
-  }
+    @apply bg-yellow-50 border-yellow;
+    @apply text-primary-800 border;
 
-  &--danger {
-    @include alert-banner-button-variant('destructive');
+    &:hover {
+      @apply bg-yellow-50;
+    }
+
+    &:active {
+      @apply bg-yellow-100;
+    }
+
+    &:disabled,
+    &--disabled {
+      @apply border-yellow-100 text-white;
+    }
   }
 
   &__left-icon,

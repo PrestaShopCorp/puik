@@ -6,12 +6,12 @@
       grid place-content-center
       h-5 w-5
       cursor-pointer
-      rounded-sm border-2 border-font-500
+      rounded-sm border-2 border-primary
       before:font-materialIcons before:text-white before:text-xl
-      focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-focus-main
-      checked:bg-primary-500 checked:border-none
-      indeterminate:bg-primary-500 indeterminate:border-none
-      disabled:border-light-blue-default-border disabled:checked:bg-light-blue-default-border disabled:indeterminate:bg-light-blue-default-border disabled:cursor-default;
+      focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-blue
+      checked:bg-primary checked:border-none
+      indeterminate:bg-primary indeterminate:border-none
+      disabled:border-primary-400 disabled:checked:bg-primary-400 disabled:indeterminate:bg-primary-400 disabled:cursor-default;
 
     &:indeterminate:before {
       content: '\f108';
@@ -22,11 +22,11 @@
     }
 
     &:disabled + #{$baseClass}__label {
-      @apply text-light-blue-default-border cursor-default;
+      @apply text-primary-400 cursor-default;
     }
   }
   &__label {
-    @apply text-base lg:text-sm -tracking-[0.015625em] font-secondary text-font
+    @apply text-base lg:text-sm -tracking-[0.015625em] font-secondary text-primary-800
       cursor-pointer
       ml-3;
   }

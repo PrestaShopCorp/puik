@@ -1,17 +1,17 @@
 .puik-switch__group {
   @apply flex items-center;
   .puik-switch {
-    @apply relative inline-flex items-center h-6 rounded-full w-10 bg-font-500;
+    @apply relative inline-flex items-center h-6 rounded-full w-10 bg-primary;
     &:focus {
-      @apply outline-none ring ring-focus-main ring-offset-1;
+      @apply outline-none ring ring-blue ring-offset-1;
     }
     &:disabled {
-      @apply bg-font-disabled pointer-events-none;
+      @apply bg-primary-300 pointer-events-none;
     }
     &--enabled {
-      @apply bg-accentuation-success-500;
+      @apply bg-green;
       &:disabled {
-        @apply bg-accentuation-success-100;
+        @apply bg-green-100;
       }
     }
     &__screen-readers {

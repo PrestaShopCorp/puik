@@ -1,19 +1,19 @@
 .puik-option {
-  @apply relative cursor-default select-none py-2 px-2 text-font transition-colors;
+  @apply relative cursor-default select-none py-2 px-2 text-primary-800 transition-colors;
   &--selected {
-    @apply bg-primary-50 text-primary-500;
+    @apply bg-white text-primary-500;
   }
   &:hover:not(&--disabled, &--selected) {
-    @apply bg-font-50 text-font;
+    @apply bg-primary-200 text-primary-800;
   }
   &--active:not(&--disabled, &--selected, &:hover) {
-    @apply ring ring-focus-main ring-inset rounded-lg;
+    @apply ring ring-blue ring-inset rounded-lg;
   }
   &:active:not(&--disabled) {
-    @apply bg-primary-50;
+    @apply bg-white;
   }
   &--disabled {
-    @apply bg-white text-font-disabled pointer-events-none;
+    @apply bg-white text-primary-300 pointer-events-none;
   }
   &__label {
     @apply font-secondary font-normal block truncate;

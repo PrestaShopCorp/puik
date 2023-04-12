@@ -6,7 +6,7 @@
   }
 
   &__tip {
-    @apply absolute bg-font text-white rounded px-3 py-2 font-secondary transition-opacity duration-300;
+    @apply absolute bg-primary-800 text-white rounded px-3 py-2 font-secondary transition-opacity duration-300;
 
     &__content {
       @apply flex flex-col relative z-10;
@@ -45,7 +45,7 @@
   }
 
   &__icon {
-    @apply font-materialIcons text-font-500 hover:text-font text-base transition-colors cursor-pointer;
+    @apply font-materialIcons text-primary hover:text-primary-800 text-base transition-colors cursor-pointer;
   }
 
   &__transition {

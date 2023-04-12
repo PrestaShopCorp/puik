@@ -1,9 +1,9 @@
 .puik-label {
-  @apply font-secondary font-bold text-sm text-font;
+  @apply font-secondary font-bold text-sm text-primary-800;
   &--required {
-    @apply text-accentuation-destructive-500 ml-1;
+    @apply text-red ml-1;
   }
   &--optional {
-    @apply text-font-500 font-normal text-xs ml-1;
+    @apply text-primary font-normal text-xs ml-1;
   }
 }
