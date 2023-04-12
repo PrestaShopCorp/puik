@@ -1,7 +1,7 @@
 import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, InjectionKey, PropType, Ref } from 'vue'
 import type Select from './select.vue'
-import type { Option, DefaultOption } from './option'
+import type { Option, OptionState } from './option'
 
 export const selectProps = buildProps({
   modelValue: {
@@ -12,11 +12,6 @@ export const selectProps = buildProps({
     type: String,
     required: false,
     default: 'label',
-  },
-  valueKey: {
-    type: String,
-    required: false,
-    default: 'value',
   },
   id: {
     type: String,
@@ -48,20 +43,15 @@ export const selectProps = buildProps({
     required: false,
     default: undefined,
   },
-  options: {
-    type: [Array, Object],
-    required: false,
-    default: undefined,
-  },
-  customFilterMethod: {
-    type: Function,
-    required: false,
-    default: undefined,
-  },
   noMatchText: {
     type: String,
     required: false,
     default: undefined,
+  },
+  searchable: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
   zindex: {
     type: Number,
@@ -80,8 +70,9 @@ export type SelectInstance = InstanceType<typeof Select>
 export type SelectContext = {
   handleAutoComplete: (label: string | number) => void
   selectedValue: Ref<string | number | Record<string, any>>
-  optionsList: Ref<DefaultOption[]>
+  options: Ref<OptionState[]>
   labelKey: string
+  query: Ref<string>
 }
 
 export const selectKey: InjectionKey<SelectContext> = Symbol('select')

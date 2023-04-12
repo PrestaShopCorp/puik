@@ -16,9 +16,9 @@
           ref="labelInput"
           :value="currentLabel"
           class="puik-select__selected"
+          :disabled="disabled"
           :autocomplete="autocomplete"
           :placeholder="placeholder"
-          :disabled="disabled"
           tabindex="-1"
           :readonly="open"
           type="text"
@@ -48,10 +48,12 @@
           :style="{ 'z-index': zindex }"
         >
           <puik-input
-            v-if="isArray(options) || isObject(options)"
+            v-if="searchable"
             v-model="query"
+            tabindex="1"
             class="puik-select__search"
             :placeholder="t('puik.select.searchPlaceholder')"
+            :aria-label="t('puik.select.searchPlaceholder')"
           >
             <template #prepend
               ><puik-icon
@@ -61,27 +63,13 @@
             /></template>
           </puik-input>
           <p
-            v-if="
-              options &&
-              (isObject(filteredItems)
-                ? !Object.keys(filteredItems).length
-                : !filteredItems?.length)
-            "
+            v-if="searchable && !filteredOptionsCount"
             class="puik-select__no-results"
           >
             {{ noMatchText || `${t('puik.select.noResults')} ${query}` }}
           </p>
           <ul class="puik-select__options-list">
-            <slot :options="filteredItems">
-              <template v-if="options">
-                <puik-option
-                  v-for="option in filteredItems"
-                  :key="option"
-                  :label="option[labelKey]"
-                  :value="isObject(option) ? option[valueKey] : option"
-                />
-              </template>
-            </slot>
+            <slot></slot>
           </ul>
         </ListboxOptions>
       </transition>
@@ -102,19 +90,18 @@
 <script setup lang="ts">
 import { computed, provide, ref, useSlots } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
-import { isObject, isFunction, isArray, slotIsEmpty } from '@puik/utils'
+import { slotIsEmpty } from '@puik/utils'
 import { useLocale } from '@puik/hooks'
 import { PuikInput } from '@puik/components/input'
 import { PuikIcon } from '@puik/components/icon'
 import { selectProps, selectEmits, selectKey } from './select'
-import PuikOption from './option.vue'
-import type { DefaultOption } from './option'
+import type { OptionState } from './option'
 
 defineOptions({
   name: 'PuikSelect',
 })
 
-const optionsList = ref<DefaultOption[]>([])
+const options = ref<OptionState[]>([])
 const labelInput = ref<HTMLInputElement>()
 
 const props = defineProps(selectProps)
@@ -137,20 +124,13 @@ const selectedValue = computed({
     return emit('update:modelValue', option.value)
   },
 })
-const filteredItems = computed(() => {
-  if (props.options) {
-    if (query.value) {
-      if (isFunction(props.customFilterMethod)) {
-        return props.customFilterMethod(query.value)
-      }
-      return props.options.filter((option) =>
-        (isObject(option) ? option[props.labelKey] : option)
-          .toString()
-          .toLowerCase()
-          .includes(query.value.toLowerCase())
-      )
-    }
-    return props.options
+
+const filteredOptionsCount = computed(() => {
+  if (props.searchable) {
+    return options.value.reduce(
+      (acc, option) => (option.visible === true ? ++acc : acc),
+      0
+    )
   }
   return null
 })
@@ -162,7 +142,7 @@ const handleAutoComplete = (label: string | number) => {
   if (labelInput.value) {
     labelInput.value.value = ''
   }
-  optionsList.value.filter((option) => {
+  options.value.filter((option) => {
     if (
       String(option.label).toLowerCase() === label.toString().toLowerCase() ||
       String(option.value).toLowerCase() === label.toString().toLowerCase()
@@ -173,7 +153,7 @@ const handleAutoComplete = (label: string | number) => {
 }
 
 const isOpen = (open: boolean) => {
-  if (open && props.options) {
+  if (open && props.searchable) {
     query.value = ''
   }
   return open
@@ -181,8 +161,9 @@ const isOpen = (open: boolean) => {
 
 provide(selectKey, {
   selectedValue,
-  optionsList,
+  options,
   handleAutoComplete,
   labelKey: props.labelKey,
+  query,
 })
 </script>

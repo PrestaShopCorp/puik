@@ -10,19 +10,10 @@ export default {
     labelKey: {
       control: 'text',
       description:
-        'In the case of using objects as a options prop you can set which property of the object is the label',
+        'In the case of using objects as a value prop you can set which property of the object is the label',
       table: {
+        category: 'Common',
         defaultValue: { summary: 'label' },
-        category: 'Searchable',
-      },
-    },
-    valueKey: {
-      control: 'text',
-      description:
-        'In the case of using objects as a options prop you can set which property of the object is the value',
-      table: {
-        defaultValue: { summary: 'value' },
-        category: 'Searchable',
       },
     },
     id: {
@@ -69,19 +60,19 @@ export default {
         category: 'Common',
       },
     },
-    options: {
-      control: 'none',
-      description:
-        'Pass options to the component to enable the option filtering (⚠️ Default filtering only works for arrays of string, number, object. Use `customFilterMethod` for specific needs) (Returns also an `options` value through the v-slot directive',
+    zindex: {
+      control: 'number',
+      description: 'Sets the z-index of the select list',
       table: {
-        category: 'Searchable',
+        category: 'Common',
+        defaultValue: { summary: 1000 },
       },
     },
-    customFilterMethod: {
-      control: 'none',
-      description:
-        'Use your own method to filter the options when using the search',
+    searchable: {
+      control: 'boolean',
+      description: 'Enables the search',
       table: {
+        defaultValue: { summary: false },
         category: 'Searchable',
       },
     },
@@ -95,14 +86,13 @@ export default {
   },
   args: {
     labelKey: '',
-    valueKey: '',
     id: '',
     disabled: false,
     placeholder: 'Select a value',
     error: '',
-    options: undefined,
-    customFilterMethod: undefined,
+    searchable: false,
     noMatchText: '',
+    zindex: 1000,
   },
 } as Meta
 
@@ -117,9 +107,9 @@ const Template: Story = (args: Args) => ({
   },
   template: `
   <puik-select v-model="myValue" v-bind="args">
-    <puik-option value="test">Test</puik-option>
-    <puik-option value="test2">Test2</puik-option>
-    <puik-option value="test3">Test3</puik-option>
+    <puik-option value="test" label="Test"/>
+    <puik-option value="test2" label="Test2"/>
+    <puik-option value="test3" label="Test3"/>
   </puik-select>`,
 })
 
@@ -131,9 +121,9 @@ Default.parameters = {
       code: `
       <!--VueJS Snippet-->
       <puik-select v-model="myValue" v-bind="args">
-        <puik-option value="test">Test</puik-option>
-        <puik-option value="test2">Test2</puik-option>
-        <puik-option value="test3">Test3</puik-option>
+        <puik-option value="test" label="Test1"/>
+        <puik-option value="test2" label="Test2"/>
+        <puik-option value="test3" label="Test3"/>
       </puik-select>
       <!--HTML/CSS Snippet-->
       <div class="puik-select">
@@ -207,10 +197,10 @@ Disabled.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-select v-model="myValue" v-bind="args" disabled>
-        <puik-option value="test">Test</puik-option>
-        <puik-option value="test2">Test2</puik-option>
-        <puik-option value="test3">Test3</puik-option>
+      <puik-select v-model="myValue" placeholder="Disabled Select" disabled>
+        <puik-option value="test" label="Test"/>
+        <puik-option value="test2" label="Test2"/>
+        <puik-option value="test3" label="Test3"/>
       </puik-select>
       <!--HTML/CSS Snippet-->
       <div class="puik-select">
@@ -277,10 +267,10 @@ DisabledOption.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-select v-model="myValue" v-bind="args">
-        <puik-option value="test">Test</puik-option>
-        <puik-option value="test2">Test2</puik-option>
-        <puik-option value="test3">Test3</puik-option>
+      <puik-select v-model="myValue" placeholder="Select a value">
+        <puik-option value="test" label="Test" disabled/>
+        <puik-option value="test2" label="Test2" />
+        <puik-option value="test3" label="Test3" />
       </puik-select>
       <!--HTML/CSS Snippet-->
       <div class="puik-select">
@@ -334,7 +324,7 @@ export const Error: Story = () => ({
     const myValue = ref('')
     return { myValue }
   },
-  template: `<puik-select error="This is an error message" v-model="myValue" placeholder="Select a value">
+  template: `<puik-select v-model="myValue" error="This is an error message" placeholder="Select a value">
       <puik-option value="test" label="Test"/>
       <puik-option value="test2" label="Test2"/>
       <puik-option value="test3" label="Test3"/>
@@ -347,9 +337,9 @@ Error.parameters = {
       code: `
       <!--VueJS Snippet-->
       <puik-select v-model="myValue">
-        <puik-option value="test">Test</puik-option>
-        <puik-option value="test2">Test2</puik-option>
-        <puik-option value="test3">Test3</puik-option>
+        <puik-option value="test" label="Test"/>
+        <puik-option value="test2" label="Test2"/>
+        <puik-option value="test3" label="Test3"/>
         <template #error>
         <!-- Also available through the error prop -->
           This is an error message
@@ -416,8 +406,8 @@ export const Searchable: Story = () => ({
     return { myValue, myOptions }
   },
   template: `
-    <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value">
-      <puik-option v-for="option in options" :value="option.value" :label="option.label"/>
+    <puik-select v-model="myValue" placeholder="Select a value" searchable>
+      <puik-option v-for="option in myOptions" :value="option.value" :label="option.label"/>
     </puik-select>`,
 })
 Searchable.parameters = {
@@ -425,8 +415,8 @@ Searchable.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value">
-        <puik-option v-for="option in options" option="option.value">{{ option.label }}</puik-option>
+      <puik-select v-model="myValue" placeholder="Select a value" searchable>
+        <puik-option v-for="option in options" :value="option.value" :label="option.label"></puik-option>
       </puik-select>
       <!--HTML/CSS Snippet-->
       <div class="puik-select">
@@ -503,8 +493,8 @@ export const NoMatchCustomText: Story = (args: Args) => ({
     return { myValue, myOptions, args }
   },
   template: `
-    <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value" :no-match-text="args.noMatchText">
-      <puik-option v-for="option in options" :value="option.value" :label="option.label"/>
+    <puik-select v-model="myValue" placeholder="Select a value" :no-match-text="args.noMatchText" searchable>
+      <puik-option v-for="option in myOptions" :value="option.value" :label="option.label"/>
     </puik-select>`,
 })
 
@@ -517,8 +507,8 @@ NoMatchCustomText.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value" no-match-text="No results found custom text">
-        <puik-option v-for="option in options" option="option.value">{{ option.label }}</puik-option>
+      <puik-select v-model="myValue" placeholder="Select a value" no-match-text="No results found custom text" searchable>
+        <puik-option v-for="option in options" :value="option.value" :label="option.label" />
       </puik-select>
       <!--HTML/CSS Snippet-->
       <div class="puik-select">
