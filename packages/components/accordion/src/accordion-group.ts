@@ -13,7 +13,7 @@ export const accordionGroupProps = buildProps({
     required: false,
     default: false,
   },
-  dense: {
+  contained: {
     type: Boolean,
     required: false,
     default: false,
@@ -33,7 +33,6 @@ export type AccordionGroupContext = {
   accordionsList: Ref<AccordionState[]>
   handleChange: (name: string) => void
   expandedAccordions: Ref<string | string[]>
-  dense: boolean
 }
 
 export const accordionGroupKey: InjectionKey<AccordionGroupContext> =

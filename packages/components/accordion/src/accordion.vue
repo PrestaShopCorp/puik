@@ -32,8 +32,6 @@
       ></puik-icon>
     </button>
 
-    <hr v-if="isExpanded && !dense" class="puik-accordion__divider" />
-
     <div v-show="isExpanded" :id="id" class="puik-accordion__content">
       <slot></slot>
     </div>
@@ -54,7 +52,7 @@ const emit = defineEmits(accordionEmits)
 const id = `puik-accordion-${generateId()}`
 
 const props = defineProps(accordionProps)
-const { accordionsList, handleChange, expandedAccordions, dense } =
+const { accordionsList, handleChange, expandedAccordions } =
   inject(accordionGroupKey)!
 
 const isExpanded = computed(() => {

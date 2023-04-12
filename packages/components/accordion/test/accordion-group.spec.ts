@@ -94,9 +94,9 @@ describe('AccordionGroup collapse/expand tests', () => {
   })
 })
 describe('AccordionGroup props tests', () => {
-  it('should have dense class', () => {
+  it('should have contained class', () => {
     const template = `
-      <puik-accordion-group dense>
+      <puik-accordion-group contained>
         <puik-accordion name="accordion-1" title="title 1">
           Content 1
         </puik-accordion>
@@ -111,6 +111,6 @@ describe('AccordionGroup props tests', () => {
     factory(template)
 
     const group = getAccordionGroup()
-    expect(group.classes()).toContain('puik-accordion-group--dense')
+    expect(group.classes()).toContain('puik-accordion-group--contained')
   })
 })

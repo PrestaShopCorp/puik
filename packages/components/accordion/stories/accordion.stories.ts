@@ -93,7 +93,50 @@ Default.parameters = {
             </div>
             <div class="puik-icon material-icons-round puik-accordion__header__expand__icon" style="font-size: 24px;">keyboard_arrow_up</div>
           </button>
-          <hr class="puik-accordion__divider">
+          <div id="accordion-id" class="puik-accordion__content" style=""> Content 1 </div>
+        </div>
+      </div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+  name: 'accordion-1',
+  title: 'Disabled accordion sub-title',
+  subTitle: 'Disabled accordion title',
+  icon: 'home',
+}
+Disabled.parameters = {
+  docs: {
+    source: {
+      code: `
+      <!--VueJS Snippet-->
+      <puik-accordion-group>
+        <puik-accordion name="accordion-1" disabled>
+          Content 1
+        </puik-accordion>
+      </puik-accordion-group>
+
+      <!--HTML/CSS Snippet-->
+      <div class="puik-accordion-group">
+        <!--
+          State classes
+          Disabled: "puik-accordion--disabled"
+          Expanded: "puik-accordion--expanded"
+        -->
+        <div class="puik-accordion puik-accordion--disabled">
+          <button aria-expanded="true" aria-controls="accordion-id" class="puik-accordion__header" disabled>
+            <div class="puik-icon material-icons-round puik-accordion__header__icon" style="font-size: 24px;">home</div>
+            <div class="puik-accordion__header__content">
+              <div class="puik-accordion__header__content__title">Accordion title</div>
+              <div class="puik-accordion__header__content__sub-title">Accordion subtitle</div>
+            </div>
+            <div class="puik-icon material-icons-round puik-accordion__header__expand__icon" style="font-size: 24px;">keyboard_arrow_up</div>
+          </button>
           <div id="accordion-id" class="puik-accordion__content" style=""> Content 1 </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
   <div
     class="puik-accordion-group"
     :class="{
-      'puik-accordion-group--dense': dense,
+      'puik-accordion-group--contained': contained,
     }"
   >
     <slot></slot>
@@ -59,6 +59,5 @@ provide(accordionGroupKey, {
   accordionsList,
   handleChange,
   expandedAccordions,
-  dense: props.dense,
 })
 </script>

@@ -9,14 +9,9 @@
     }
   }
 
-  &--dense {
+  &--contained {
     .puik-accordion {
       @apply mb-0 rounded-none border-t-0 border-b;
-      &--expanded {
-        .puik-accordion__divider {
-          @apply mx-4;
-        }
-      }
     }
 
     & > :first-child {
