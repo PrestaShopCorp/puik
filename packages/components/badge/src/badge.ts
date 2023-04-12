@@ -8,7 +8,7 @@ export const badgeProps = buildProps({
   variant: {
     type: String,
     values: badgeVariants,
-    default: 'success',
+    default: 'neutral',
   },
 } as const)
 

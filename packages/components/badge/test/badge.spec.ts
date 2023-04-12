@@ -25,9 +25,9 @@ describe('Badge tests', () => {
     expect(wrapper).toBeTruthy()
   })
 
-  it('should display an success badge by default', () => {
+  it('should display a neutral badge by default', () => {
     factory()
-    expect(findBadge().classes()).toContain('puik-badge--success')
+    expect(findBadge().classes()).toContain('puik-badge--neutral')
   })
 
   it('should display an info badge', () => {
