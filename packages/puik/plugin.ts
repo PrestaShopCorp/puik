@@ -1,4 +1,4 @@
-import { PuikSnackBar } from '@puik/components/snack-bar'
+import { PuikSnackbar } from '@puik/components/snackbar'
 import type { Plugin } from 'vue'
 
-export default [PuikSnackBar] as Plugin[]
+export default [PuikSnackbar] as Plugin[]

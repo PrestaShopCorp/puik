@@ -18,7 +18,7 @@ declare module '@vue/runtime-core' {
     PuikSwitch: typeof import('@prestashopcorp/puik')['PuikSwitch']
     PuikButton: typeof import('@prestashopcorp/puik')['PuikButton']
     PuikConfigProvider: typeof import('@prestashopcorp/puik')['PuikConfigProvider']
-    PuikSnackBar: typeof import('puik')['PuikSnackBar']
+    PuikSnackbar: typeof import('puik')['PuikSnackbar']
     PuikCheckbox: typeof import('puik')['PuikCheckbox']
     PuikLabel: typeof import('puik')['PuikLabel']
     PuikInput: typeof import('puik')['PuikInput']
@@ -30,7 +30,7 @@ declare module '@vue/runtime-core' {
   }
 
   interface ComponentCustomProperties {
-    $notify: typeof import('@prestashopcorp/puik')['PuikSnackBar']
+    $notify: typeof import('@prestashopcorp/puik')['PuikSnackbar']
   }
 }
 

@@ -1,6 +1,6 @@
 import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
-import type SnackBar from './snack-bar.vue'
+import type SnackBar from './snackbar.vue'
 
 export type SnackbarVariants = 'default' | 'danger'
 

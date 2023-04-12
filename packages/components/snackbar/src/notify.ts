@@ -1,6 +1,6 @@
 import { createVNode, render, type AppContext, type VNode } from 'vue'
-import SnackBar from './snack-bar.vue'
-import type { SnackBarOptions } from './snack-bar'
+import SnackBar from './snackbar.vue'
+import type { SnackBarOptions } from './snackbar'
 
 const notifications: VNode[] = []
 

@@ -1,2 +1,2 @@
 import '@puik/components/base/style/css'
-import '@puik/theme/puik-snack-bar.css'
+import '@puik/theme/puik-snackbar.css'

@@ -8,8 +8,10 @@
     <div
       v-show="visible"
       class="puik-snack-bar"
-      :class="variant ? `puik-snack-bar--${variant}` : ''"
+      :class="`puik-snack-bar--${variant}`"
       :style="position"
+      role="status"
+      aria-live="polite"
       @mouseenter="resetTimer"
       @mouseleave="startTimer"
     >
@@ -29,10 +31,10 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { useTimeoutFn, useEventListener } from '@vueuse/core'
-import { snackBarProps } from './snack-bar'
+import { snackBarProps } from './snackbar'
 import type { CSSProperties } from 'vue'
 defineOptions({
-  name: 'PuikSnackBar',
+  name: 'PuikSnackbar',
 })
 let timer: (() => void) | undefined
 

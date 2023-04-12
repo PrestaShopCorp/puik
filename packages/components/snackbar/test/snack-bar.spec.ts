@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect, vi } from 'vitest'
 import { faker } from '@faker-js/faker'
-import PuikSnackBar from '../src/snack-bar.vue'
-import type { SnackBarOptions } from './../src/snack-bar'
+import PuikSnackbar from '../src/snack-bar.vue'
+import type { SnackBarOptions } from '../src/snackbar'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 describe('SnackBar tests', () => {
   let wrapper: VueWrapper<any>
@@ -16,7 +16,7 @@ describe('SnackBar tests', () => {
     propsData: SnackBarOptions,
     options: MountingOptions<any> = {}
   ) => {
-    wrapper = mount(PuikSnackBar, {
+    wrapper = mount(PuikSnackbar, {
       props: {
         ...propsData,
       },

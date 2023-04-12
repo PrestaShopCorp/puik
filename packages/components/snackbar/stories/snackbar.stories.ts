@@ -1,12 +1,12 @@
 import { action } from '@storybook/addon-actions'
-import { PuikSnackBar } from '../'
-import { snackBarVariants, type SnackBarOptions } from '../src/snack-bar'
-import { PuikButton } from './../../button/index'
+import { PuikSnackbar } from '..'
+import { snackBarVariants, type SnackBarOptions } from '../src/snackbar'
+import { PuikButton } from '../../button/index'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
-  title: 'Components/SnackBar',
-  component: PuikSnackBar,
+  title: 'Components/Snackbar',
+  component: PuikSnackbar,
   argTypes: {
     text: {
       description: 'The text of the snackbar',
@@ -41,7 +41,7 @@ const Template: Story = (args: Args) => ({
     PuikButton,
   },
   setup() {
-    const open = () => PuikSnackBar(args as SnackBarOptions)
+    const open = () => PuikSnackbar(args as SnackBarOptions)
     return { args, open }
   },
   template: `
@@ -61,11 +61,11 @@ export const WithoutAction: Story = () => ({
   },
   setup() {
     const displaySnackBar = () =>
-      PuikSnackBar({
+      PuikSnackbar({
         text: 'New category added.',
       })
     const displayErrorSnackBar = () =>
-      PuikSnackBar({
+      PuikSnackbar({
         text: 'Unable to update settings.',
         variant: 'danger',
       })
@@ -92,11 +92,11 @@ WithoutAction.parameters = {
       
       <script lang="ts" setup>
       const displaySnackBar = () =>
-        PuikSnackBar({
+        PuikSnackbar({
           text: 'New category added.',
         })
       const displayErrorSnackBar = () =>
-        PuikSnackBar({
+        PuikSnackbar({
           text: 'Unable to update settings.',
           variant: 'danger',
         })
@@ -140,7 +140,7 @@ export const WithAction: Story = () => ({
   },
   setup() {
     const displaySnackBar = () =>
-      PuikSnackBar({
+      PuikSnackbar({
         text: 'New attribute “Size” added.',
         action: {
           label: 'Cancel',
@@ -148,7 +148,7 @@ export const WithAction: Story = () => ({
         },
       })
     const displayErrorSnackBar = () =>
-      PuikSnackBar({
+      PuikSnackbar({
         text: 'Unable to update settings.',
         variant: 'danger',
         action: {
@@ -178,7 +178,7 @@ WithAction.parameters = {
 
       <script lang="ts" setup>
       const displaySnackBar = () =>
-        PuikSnackBar({
+        PuikSnackbar({
           text: 'New attribute “Size” added.',
           action: {
             label: 'Cancel',
@@ -186,7 +186,7 @@ WithAction.parameters = {
           },
         })
       const displayErrorSnackBar = () =>
-        PuikSnackBar({
+        PuikSnackbar({
           text: 'Unable to update settings.',
           variant: 'danger',
           action: {
