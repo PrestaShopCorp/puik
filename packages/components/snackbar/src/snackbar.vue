@@ -1,29 +1,29 @@
 <template>
   <transition
-    enter-from-class="puik-snack-bar__transition--enter-from"
-    leave-to-class="puik-snack-bar__transition--leave-to"
+    enter-from-class="puik-snackbar__transition--enter-from"
+    leave-to-class="puik-snackbar__transition--leave-to"
     @before-leave="onClose"
     @after-leave="$emit('destroy')"
   >
     <div
       v-show="visible"
-      class="puik-snack-bar"
-      :class="`puik-snack-bar--${variant}`"
+      class="puik-snackbar"
+      :class="`puik-snackbar--${variant}`"
       :style="position"
       role="status"
       aria-live="polite"
       @mouseenter="resetTimer"
       @mouseleave="startTimer"
     >
-      <span class="puik-snack-bar__text">{{ text }}</span>
+      <span class="puik-snackbar__text">{{ text }}</span>
       <button
         v-if="action"
-        class="puik-snack-bar__action"
+        class="puik-snackbar__action"
         @click="action?.callback"
       >
         {{ action.label }}
       </button>
-      <button class="puik-snack-bar__close-button" @click="close">close</button>
+      <button class="puik-snackbar__close-button" @click="close">close</button>
     </div>
   </transition>
 </template>

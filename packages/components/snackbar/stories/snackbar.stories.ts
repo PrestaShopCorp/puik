@@ -106,8 +106,8 @@ WithoutAction.parameters = {
       <!--
           Snackbar, show/hide base on snackbar state
 
-          Enter From: "puik-snack-bar__transition--enter-from"
-          Leave To: "puik-snack-bar__transition--leave-to"
+          Enter From: "puik-snackbar__transition--enter-from"
+          Leave To: "puik-snackbar__transition--leave-to"
 
           Style bottom calculation:
           If there is only one snack bar displayed the default value will be the offset (32px)
@@ -115,16 +115,16 @@ WithoutAction.parameters = {
           Offset (32px) + First Snackbar offsetHeight + Gap (16px)
           Example: 32 + 52 + 16 = 100px
         -->
-      <div class="puik-snack-bar puik-snack-bar--default" style="bottom: 32px">
-        <span class="puik-snack-bar__text">New category added.</span>
-        <button class="puik-snack-bar__close-button">
+      <div class="puik-snackbar puik-snackbar--default" style="bottom: 32px">
+        <span class="puik-snackbar__text">New category added.</span>
+        <button class="puik-snackbar__close-button">
           close
         </button>
       </div>
 
-      <div class="puik-snack-bar puik-snack-bar--danger" style="bottom: 100px">
-        <span class="puik-snack-bar__text">Unable to update settings.</span>
-        <button class="puik-snack-bar__close-button">
+      <div class="puik-snackbar puik-snackbar--danger" style="bottom: 100px">
+        <span class="puik-snackbar__text">Unable to update settings.</span>
+        <button class="puik-snackbar__close-button">
           close
         </button>
       </div>
@@ -200,8 +200,8 @@ WithAction.parameters = {
       <!--
           Snackbar, show/hide base on snackbar state
 
-          Enter From: "puik-snack-bar__transition--enter-from"
-          Leave To: "puik-snack-bar__transition--leave-to"
+          Enter From: "puik-snackbar__transition--enter-from"
+          Leave To: "puik-snackbar__transition--leave-to"
 
           Style bottom calculation:
           If there is only one snack bar displayed the default value will be the offset (32px)
@@ -209,18 +209,18 @@ WithAction.parameters = {
           Offset (32px) + First Snackbar offsetHeight + Gap (16px)
           Example: 32 + 52 + 16 = 100px
         -->
-      <div class="puik-snack-bar puik-snack-bar--default" style="bottom: 32px">
-        <span class="puik-snack-bar__text">New category added.</span>
-        <button class="puik-snack-bar__action">Cancel</button>
-        <button class="puik-snack-bar__close-button">
+      <div class="puik-snackbar puik-snackbar--default" style="bottom: 32px">
+        <span class="puik-snackbar__text">New category added.</span>
+        <button class="puik-snackbar__action">Cancel</button>
+        <button class="puik-snackbar__close-button">
           close
         </button>
       </div>
 
-      <div class="puik-snack-bar puik-snack-bar--danger" style="bottom: 100px">
-        <span class="puik-snack-bar__text">Unable to update settings.</span>
-        <button class="puik-snack-bar__action">Retry</button>
-        <button class="puik-snack-bar__close-button">
+      <div class="puik-snackbar puik-snackbar--danger" style="bottom: 100px">
+        <span class="puik-snackbar__text">Unable to update settings.</span>
+        <button class="puik-snackbar__action">Retry</button>
+        <button class="puik-snackbar__close-button">
           close
         </button>
       </div>

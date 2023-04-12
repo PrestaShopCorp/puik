@@ -1,16 +1,16 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect, vi } from 'vitest'
 import { faker } from '@faker-js/faker'
-import PuikSnackbar from '../src/snack-bar.vue'
+import PuikSnackbar from '../src/snackbar.vue'
 import type { SnackBarOptions } from '../src/snackbar'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 describe('SnackBar tests', () => {
   let wrapper: VueWrapper<any>
 
-  const findText = () => wrapper.find('.puik-snack-bar__text')
-  const findAction = () => wrapper.find('.puik-snack-bar__action')
-  const findSnackBar = () => wrapper.find('.puik-snack-bar')
-  const findCloseButton = () => wrapper.find('.puik-snack-bar__close-button')
+  const findText = () => wrapper.find('.puik-snackbar__text')
+  const findAction = () => wrapper.find('.puik-snackbar__action')
+  const findSnackBar = () => wrapper.find('.puik-snackbar')
+  const findCloseButton = () => wrapper.find('.puik-snackbar__close-button')
 
   const factory = (
     propsData: SnackBarOptions,
@@ -20,6 +20,7 @@ describe('SnackBar tests', () => {
       props: {
         ...propsData,
       },
+      attachTo: document.body,
       ...options,
     })
   }
@@ -34,7 +35,7 @@ describe('SnackBar tests', () => {
     const text = faker.lorem.sentence()
     factory({ text })
     expect(findText().text()).toEqual(text)
-    expect(findSnackBar().classes()).toContain('puik-snack-bar--default')
+    expect(findSnackBar().classes()).toContain('puik-snackbar--default')
     expect(findAction().exists()).toBeFalsy()
   })
 
@@ -51,7 +52,7 @@ describe('SnackBar tests', () => {
     })
     expect(findText().text()).toEqual(text)
     expect(findAction().exists()).toBeTruthy()
-    expect(findSnackBar().classes()).toContain('puik-snack-bar--default')
+    expect(findSnackBar().classes()).toContain('puik-snackbar--default')
     expect(findAction().text()).toEqual(label)
     await findAction().trigger('click')
     expect(callback).toBeCalled()
@@ -61,7 +62,7 @@ describe('SnackBar tests', () => {
     const text = faker.lorem.sentence()
     factory({ text, variant: 'danger' })
     expect(findText().text()).toEqual(text)
-    expect(findSnackBar().classes()).toContain('puik-snack-bar--danger')
+    expect(findSnackBar().classes()).toContain('puik-snackbar--danger')
     expect(findAction().exists()).toBeFalsy()
   })
 
@@ -79,7 +80,7 @@ describe('SnackBar tests', () => {
     })
     expect(findAction().exists()).toBeTruthy()
     expect(findText().text()).toEqual(text)
-    expect(findSnackBar().classes()).toContain('puik-snack-bar--danger')
+    expect(findSnackBar().classes()).toContain('puik-snackbar--danger')
     expect(findAction().text()).toEqual(label)
     await findAction().trigger('click')
     expect(callback).toBeCalled()
