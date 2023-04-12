@@ -95,3 +95,53 @@ Default.parameters = {
     },
   },
 }
+
+function generateStory(variant: string) {
+  const story = Template.bind({})
+  story.args = {
+    variant,
+  }
+  story.parameters = {
+    docs: {
+      source: {
+        code: `
+        <!--VueJS Snippet-->
+        <puik-skeleton-loader-group>
+          <!--
+            $variants: h1|h2|h3||h4|h5|h6||jumbotron|mega-jumbotron|text-small|text-medium|text-large|badge|tag|image|graph|video
+          ->
+          <puik-skeleton-loader variant="${variant}"></puik-skeleton-loader>
+        <puik-skeleton-loader-group>
+
+        <!--HTML/CSS Snippet-->
+        <div class="puik-skeleton-loader-group" role="status" aria-label="Loading" aria-live="polite">
+          <!--
+            $variants: h1|h2|h3||h4|h5|h6||jumbotron|mega-jumbotron|text-small|text-medium|text-large|badge|tag|image|graph|video
+          ->
+          <div class="puik-skeleton material-icons-round puik-skeleton--${variant}"></div>
+        </div>
+        `,
+        language: 'html',
+      },
+    },
+  }
+
+  return story
+}
+
+export const h1 = generateStory('h1')
+export const h2 = generateStory('h2')
+export const h3 = generateStory('h3')
+export const h4 = generateStory('h4')
+export const h5 = generateStory('h5')
+export const h6 = generateStory('h6')
+export const Jumbotron = generateStory('jumbotron')
+export const MegaJumbotron = generateStory('mega-jumbotron')
+export const TextSmall = generateStory('text-small')
+export const TextMedium = generateStory('text-medium')
+export const TextLarge = generateStory('text-large')
+export const Badge = generateStory('badge')
+export const Tag = generateStory('tag')
+export const Image = generateStory('image')
+export const Graph = generateStory('graph')
+export const Video = generateStory('video')
