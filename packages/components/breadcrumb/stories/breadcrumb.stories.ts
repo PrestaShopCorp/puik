@@ -56,6 +56,7 @@ export default {
       {
         label: 'Third link',
         to: 'name',
+        target: '_blank',
       },
     ],
     separatorIcon: 'keyboard_arrow_right',
@@ -99,7 +100,7 @@ Default.parameters = {
           <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 24px;">keyboard_arrow_right</div>
         </div>
         <div class="puik-breadcrumb__item">
-          <a href="#" target="_self" class="puik-link puik-link--md puik-breadcrumb__item-link" variant="text">Second link</a>
+          <a href="#" target="_blank" class="puik-link puik-link--md puik-breadcrumb__item-link" variant="text">Second link</a>
           <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 24px;">keyboard_arrow_right</div>
         </div>
       </nav>

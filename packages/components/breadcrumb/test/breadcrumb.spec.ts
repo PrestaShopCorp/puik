@@ -78,4 +78,17 @@ describe('Breadcrumb tests', () => {
     factory({ items, icon })
     expect(getBreadcrumbHomeIcon().text()).toBe(icon)
   })
+  it('should have target', () => {
+    const target = '_top'
+    const items = [
+      {
+        label: 'Link',
+        href: '#',
+        target,
+      },
+    ]
+    items[0].target = target
+    factory({ items })
+    expect(getBreadcrumbItems()[0].element.getAttribute('target')).toBe(target)
+  })
 })
