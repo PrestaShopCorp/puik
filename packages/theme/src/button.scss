@@ -39,7 +39,7 @@
     @apply w-full;
   }
 
-  &:focus {
+  &:focus-visible {
     @apply outline-none ring ring-offset-2 ring-blue;
   }
 
@@ -49,122 +49,128 @@
   }
 
   &--primary {
-    @apply bg-primary text-white;
+    @apply bg-primary-800 text-white;
     &:hover {
       @apply bg-primary-700;
     }
     &:active {
-      @apply bg-primary-800;
+      @apply bg-primary-600;
     }
     &:disabled,
     &.puik-button--disabled {
+      @apply bg-primary-500;
+    }
+  }
+
+  &--secondary {
+    @apply bg-white text-primary border border-primary;
+    &:hover {
       @apply bg-primary-200;
+    }
+    &:active {
+      @apply bg-primary-300;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply bg-primary-200 text-primary-500 border-primary-400;
+    }
+  }
+
+  &--tertiary {
+    @apply bg-primary-400 text-primary;
+    &:hover {
+      @apply bg-primary-200;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply bg-primary-200 text-primary-500;
+    }
+    &:active {
+      @apply bg-primary-300;
+    }
+  }
+
+  &--text {
+    @apply text-primary;
+    &:hover {
+      @apply bg-primary-200;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply text-primary-500;
+    }
+    &:active {
+      @apply bg-primary-300;
     }
   }
 
   &--destructive {
     @apply bg-red text-white;
-    &:hover,
-    &:active {
-      @apply bg-red-700;
+    &:hover {
+      @apply bg-red-300;
     }
     &:disabled,
     &.puik-button--disabled {
       @apply bg-red-100;
     }
-  }
-
-  &--secondary {
-    @apply bg-white text-primary;
-    &:hover,
     &:active {
-      @apply bg-primary-200;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply bg-white text-primary-200;
-    }
-  }
-
-  &--tertiary {
-    @apply text-primary-800 border border-primary-400;
-    &:hover {
-      @apply bg-primary-200;
-    }
-    &:active {
-      @apply bg-primary-300;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply text-primary-300 border-primary-300;
-    }
-  }
-
-  &--text {
-    @apply text-primary-800;
-    &:hover {
-      @apply bg-primary-200;
-    }
-    &:active {
-      @apply bg-primary-300;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply text-primary-300;
+      @apply bg-red-700;
     }
   }
 
   &--info {
-    @apply bg-blue-50 border-blue;
-    @apply text-primary-800 border;
-
+    @apply text-primary-800 bg-blue-50 border border-blue;
     &:hover {
       @apply bg-blue-100;
     }
-
-    &:active {
-      @apply bg-blue-300;
-    }
-
     &:disabled,
     &--disabled {
       @apply border-blue-300 text-white;
     }
+    &:active {
+      @apply bg-blue-300;
+    }
+  }
+
+  &--danger {
+    @apply text-primary-800 bg-red-50 border border-red;
+    &:hover {
+      @apply bg-red-100;
+    }
+    &:disabled,
+    &--disabled {
+      @apply border-red-300 text-white;
+    }
+    &:active {
+      @apply bg-red-300;
+    }
   }
 
   &--success {
-    @apply bg-green-50 border-green;
-    @apply text-primary-800 border;
-
+    @apply text-primary-800 bg-green-50 border border-green;
     &:hover {
       @apply bg-green-100;
     }
-
-    &:active {
-      @apply bg-green-300;
-    }
-
     &:disabled,
     &--disabled {
       @apply border-green-100 text-white;
     }
+    &:active {
+      @apply bg-green-300;
+    }
   }
 
   &--warning {
-    @apply bg-yellow-50 border-yellow;
-    @apply text-primary-800 border;
-
+    @apply text-primary-800 bg-yellow-50 border border-yellow;
     &:hover {
-      @apply bg-yellow-50;
-    }
-
-    &:active {
       @apply bg-yellow-100;
     }
-
     &:disabled,
     &--disabled {
       @apply border-yellow-100 text-white;
+    }
+    &:active {
+      @apply bg-yellow-300;
     }
   }
 

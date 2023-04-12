@@ -3,7 +3,7 @@ module.exports = {
     colors: {
       primary: {
         get DEFAULT() {
-          return this['500']
+          return this['800']
         },
         100: '#FFFFFF',
         200: '#F7F7F7',
@@ -29,8 +29,8 @@ module.exports = {
           return this['500']
         },
         50: '#F8F0F7',
-        500: '#D7AED3', // TODO HERE same as below
-        700: '#D7AED3',
+        500: '#D7AED3',
+        700: '#7B4FAC',
       },
       blue: {
         get DEFAULT() {

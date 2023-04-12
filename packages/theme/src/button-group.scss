@@ -1,7 +1,7 @@
 .puik-button-group {
   .puik-button {
     &--primary {
-      @apply border border-primary;
+      @apply border border-primary-500;
     }
     &--tertiary {
       @apply border border-primary-400;
