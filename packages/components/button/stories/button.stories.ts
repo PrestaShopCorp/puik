@@ -100,7 +100,7 @@ Default.parameters = {
       $variants: primary|secondary|tertiary|text|destructive|info|success|warning|error
       -->
       <puik-button size="$sizes" variant="$variants">My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <!--
       $sizes: sm|md|lg (defaults to md)
@@ -123,9 +123,9 @@ const ButtonTemplate = (args: Args) => ({
   },
   template: `
   <div class="space-x-4">
-    <puik-button :variant="args.variant" size="lg">{{ capitalize(args.variant) }} Button lg</puik-button>
-    <puik-button :variant="args.variant">{{ capitalize(args.variant) }} Button md</puik-button>
-    <puik-button :variant="args.variant" size="sm">{{ capitalize(args.variant) }} Button sm</puik-button>
+    <puik-button v-bind="args" :variant="args.variant" size="lg">{{ capitalize(args.variant) }} Button lg</puik-button>
+    <puik-button v-bind="args" :variant="args.variant">{{ capitalize(args.variant) }} Button md</puik-button>
+    <puik-button v-bind="args" :variant="args.variant" size="sm">{{ capitalize(args.variant) }} Button sm</puik-button>
   </div>
   `,
 })
@@ -162,7 +162,7 @@ Primary.parameters = {
       code: `
       <!--VueJS Snippet -->
       <puik-button>My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--primary">My button</button>
       `,
@@ -182,7 +182,7 @@ Secondary.parameters = {
       code: `
       <!--VueJS Snippet -->
       <puik-button variant="secondary">My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--secondary">My button</button>
       `,
@@ -202,7 +202,7 @@ Tertiary.parameters = {
       code: `
       <!--VueJS Snippet -->
       <puik-button variant="tertiary">My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--tertiary">My button</button>
       `,
@@ -222,7 +222,7 @@ Destructive.parameters = {
       code: `
       <!--VueJS Snippet -->
       <puik-button variant="destructive">My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--destructive">My button</button>
       `,
@@ -242,7 +242,7 @@ Text.parameters = {
       code: `
       <!--VueJS Snippet -->
       <puik-button variant="text">My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--text">My button</button>
       `,
@@ -262,7 +262,7 @@ Info.parameters = {
       code: `
       <!--VueJS Snippet -->
       <puik-button variant="info">My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--info">My button</button>
       `,
@@ -282,7 +282,7 @@ Success.parameters = {
       code: `
       <!--VueJS Snippet -->
       <puik-button variant="success">My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--success">My button</button>
       `,
@@ -302,7 +302,7 @@ Warning.parameters = {
       code: `
       <!--VueJS Snippet -->
       <puik-button variant="warning">My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--warning">My button</button>
       `,
@@ -322,7 +322,7 @@ Danger.parameters = {
       code: `
       <!--VueJS Snippet -->
       <puik-button variant="error">My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--error">My button</button>
       `,
@@ -342,7 +342,7 @@ Disabled.parameters = {
       code: `
       <!--VueJS Snippet -->
       <puik-button disabled>My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--primary" disabled>My button</button>
       `,
@@ -366,7 +366,7 @@ Fluid.parameters = {
       code: `
       <!--VueJS Snippet -->
       <puik-button fluid>My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--primary puik-button--fluid">My button</button>
       `,
@@ -394,7 +394,7 @@ WithIcon.parameters = {
       <!--VueJS Snippet -->
       <puik-button left-icon="shopping_cart">My button</puik-button>
       <puik-button right-icon="shopping_cart">My button</puik-button>
-      
+
       <!--HTML/CSS Snippet-->
       <button class="puik-button puik-button--primary">
         <span class="puik-icon puik-button__left-icon">shopping_cart</span>
