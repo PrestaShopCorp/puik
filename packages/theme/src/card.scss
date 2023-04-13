@@ -1,4 +1,19 @@
+@use './common/typography.scss';
 .puik-card {
-  @apply flex flex-col gap-6 p-4 bg-white border border-primary-300
-    font-secondary font-normal text-sm;
+  @extend .puik-body-default;
+  @apply flex flex-col gap-6 p-4 bg-white border border-primary-400
+    font-normal;
+
+  &--highlight {
+    @apply bg-primary-200;
+  }
+  &--blue {
+    @apply bg-ocean-blue-50;
+  }
+  &--purple {
+    @apply bg-purple-50;
+  }
+  &--amber {
+    @apply bg-amber-50;
+  }
 }
