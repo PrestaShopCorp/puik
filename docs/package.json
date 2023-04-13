@@ -8,12 +8,12 @@
     "build": "build-storybook"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.5.16",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
+    "@storybook/addon-a11y": "^7.0.4",
+    "@storybook/addon-actions": "^7.0.4",
+    "@storybook/addon-essentials": "^7.0.4",
+    "@storybook/addon-links": "^7.0.4",
     "@storybook/builder-vite": "0.3.0",
-    "@storybook/vue3": "^6.5.16",
+    "@storybook/vue3": "^7.0.4",
     "@vitejs/plugin-vue": "^4.1.0",
     "vite": "^4.2.1"
   },
