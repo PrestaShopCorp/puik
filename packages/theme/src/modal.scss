@@ -7,17 +7,17 @@
 
   &--destructive {
     .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-      @apply text-accentuation-destructive-500 bg-accentuation-destructive-50;
+      @apply text-red-500 bg-red-50;
     }
   }
   &--dialog {
     .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-      @apply text-font-secondary bg-font-50;
+      @apply text-primary-500 bg-primary-300;
     }
   }
   &--feedback {
     .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-      @apply text-primary-purple-500 bg-primary-purple-50;
+      @apply text-primary-800 bg-white;
     }
   }
 
@@ -38,7 +38,7 @@
   }
 
   &__dialogPanelContainer {
-    @apply fixed max-h-full bg-font-secondary/50 inset-0 flex justify-center items-end sm:items-center;
+    @apply fixed max-h-full bg-primary-500/50 inset-0 flex justify-center items-end sm:items-center;
 
     &__dialogPanel {
       @apply w-full
@@ -72,7 +72,7 @@
       }
 
       &__content {
-        @apply overflow-hidden overflow-y-auto flex flex-1 text-font-900;
+        @apply overflow-hidden overflow-y-auto flex flex-1 text-primary-800;
       }
 
       &__footer {
