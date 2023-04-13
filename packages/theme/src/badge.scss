@@ -1,0 +1,23 @@
+.puik-badge {
+  @apply font-secondary text-sm rounded-2xl inline-block py-1 px-3 leading-5 font-normal;
+
+  &--success {
+    @apply bg-accentuation-success-50 text-accentuation-success-900;
+  }
+
+  &--warning {
+    @apply bg-accentuation-warning-50 text-font-900;
+  }
+
+  &--danger {
+    @apply bg-accentuation-destructive-50 text-accentuation-destructive-900;
+  }
+
+  &--info {
+    @apply bg-accentuation-info-50 text-accentuation-info-900;
+  }
+
+  &--neutral {
+    @apply bg-light-blue-100 text-font-900;
+  }
+}

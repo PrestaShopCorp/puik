@@ -4,13 +4,13 @@ import type Modal from './modal.vue'
 
 export const DESTRUCTIVE_ICON_NAME = 'warning'
 
-export enum ModalVariant {
+export enum PuikModalVariant {
   DESTRUCTIVE = 'destructive',
   FEEDBACK = 'feedback',
   DIALOG = 'dialog',
 }
 
-export enum ModalSize {
+export enum PuikModalSize {
   SMALL = 'small',
   MEDIUM = 'medium',
   LARGE = 'large',
@@ -23,25 +23,33 @@ export const modalProps = buildProps({
   },
   mainButtonText: {
     type: String,
-    required: true,
+    required: false,
+    default: undefined,
+  },
+  isMainButtonDisabled: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
   secondButtonText: {
     type: String,
-    required: true,
+    required: false,
+    default: undefined,
   },
   sideButtonText: {
     type: String,
     required: false,
+    default: undefined,
   },
   variant: {
-    type: String as PropType<ModalVariant>,
+    type: String as PropType<PuikModalVariant>,
     required: false,
-    default: ModalVariant.FEEDBACK,
+    default: PuikModalVariant.FEEDBACK,
   },
   size: {
-    type: String as PropType<ModalSize>,
+    type: String as PropType<PuikModalSize>,
     required: false,
-    default: ModalSize.SMALL,
+    default: PuikModalSize.SMALL,
   },
   isOpen: {
     type: Boolean,
