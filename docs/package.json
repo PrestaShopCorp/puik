@@ -18,7 +18,7 @@
     "vite": "^4.2.1"
   },
   "dependencies": {
-    "typescript": "^4.9.5",
+    "typescript": "^5.0.4",
     "vue": "^3.2.47"
   }
 }
