@@ -41,15 +41,14 @@
     @apply fixed max-h-full bg-font-secondary/50 inset-0 flex justify-center items-end sm:items-center;
 
     &__dialogPanel {
-      @apply w-full
-                sm:h-[90%]
-                max-h-full
-                sm:rounded-lg
-                flex
-                flex-col
-                bg-white
-                p-6
-                gap-6;
+      @apply max-h-full
+      flex
+      flex-col
+      bg-white
+      p-6
+      gap-6
+      sm:rounded-lg
+      sm:max-h-[90%];
 
       &__header {
         @apply flex items-center gap-4;
