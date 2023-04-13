@@ -1,3 +1,4 @@
+import { PuikAccordion, PuikAccordionGroup } from '@puik/components/accordion'
 import { PuikBadge } from '@puik/components/badge'
 import { PuikModal } from '@puik/components/modal'
 import { PuikButtonGroup } from '@puik/components/button-group'
@@ -19,6 +20,8 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikAccordion,
+  PuikAccordionGroup,
   PuikBadge,
   PuikModal,
   PuikButtonGroup,
