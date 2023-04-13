@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions'
 import { useArgs } from '@storybook/client-api'
 import { PuikButton } from '@puik/components/button'
-import { ModalSize, ModalVariant } from '../src/modal'
+import { PuikModalVariant, PuikModalSize } from '../index'
 import PuikModal from './../src/modal.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
@@ -71,28 +71,28 @@ export default {
       control: 'text',
     },
     variant: {
-      description: 'Set the style of the modal (use the ModalVariant enum)',
+      description: 'Set the style of the modal (use the PuikModalVariant enum)',
       control: 'select',
-      options: Object.values(ModalVariant),
+      options: Object.values(PuikModalVariant),
       table: {
         defaultValue: {
-          summary: ModalVariant.DIALOG,
+          summary: PuikModalVariant.DIALOG,
         },
         type: {
-          summary: Object.values(ModalVariant).join('|'),
+          summary: Object.values(PuikModalVariant).join('|'),
         },
       },
     },
     size: {
-      description: 'Set the size of the modal (use the ModalSize enum)',
+      description: 'Set the size of the modal (use the PuikModalSize enum)',
       control: 'select',
-      options: Object.values(ModalSize),
+      options: Object.values(PuikModalSize),
       table: {
         defaultValue: {
-          summary: ModalSize.SMALL,
+          summary: PuikModalSize.SMALL,
         },
         type: {
-          summary: Object.values(ModalSize).join('|'),
+          summary: Object.values(PuikModalSize).join('|'),
         },
       },
     },
@@ -222,7 +222,7 @@ Destructive.args = {
   title: 'The awesome title',
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
-  variant: ModalVariant.DESTRUCTIVE,
+  variant: PuikModalVariant.DESTRUCTIVE,
 }
 Destructive.parameters = {
   docs: {
@@ -238,7 +238,7 @@ Destructive.parameters = {
   :main-button-text="args.mainButtonText"
   :second-button-text="args.secondButtonText"
   :is-open="args.isOpen"
-  :variant="ModalVariant.DESTRUCTIVE" <---- HERE
+  :variant="PuikModalVariant.DESTRUCTIVE" <---- HERE
   @close="closeModal"
   @buttonMain="mainAction"
   @buttonSecond="secondAction"
@@ -293,7 +293,7 @@ Feedback.args = {
   title: 'The awesome title',
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
-  variant: ModalVariant.FEEDBACK,
+  variant: PuikModalVariant.FEEDBACK,
 }
 Feedback.parameters = {
   docs: {
@@ -308,7 +308,7 @@ Feedback.parameters = {
   :main-button-text="args.mainButtonText"
   :second-button-text="args.secondButtonText"
   :side-button-text="args.sideButtonText"
-  :variant="ModalVariant.FEEDBACK" <---- HERE
+  :variant="PuikModalVariant.FEEDBACK" <---- HERE
   :size="args.size"
   :is-open="args.isOpen"
   :title-icon="args.titleIcon"
@@ -367,7 +367,7 @@ Dialog.args = {
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
   sideButtonText: 'Awesome side button',
-  variant: ModalVariant.DIALOG,
+  variant: PuikModalVariant.DIALOG,
 }
 Dialog.parameters = {
   docs: {
@@ -382,7 +382,7 @@ Dialog.parameters = {
   :main-button-text="args.mainButtonText"
   :second-button-text="args.secondButtonText"
   :side-button-text="Awesome side button" <---- HERE
-  :variant="ModalVariant.DIALOG" <---- HERE
+  :variant="PuikModalVariant.DIALOG" <---- HERE
   :size="args.size"
   :is-open="args.isOpen"
   :title-icon="args.titleIcon"
@@ -441,7 +441,7 @@ Large.args = {
   title: 'The awesome title',
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
-  size: ModalSize.LARGE,
+  size: PuikModalSize.LARGE,
 }
 Large.parameters = {
   docs: {
@@ -457,7 +457,7 @@ Large.parameters = {
   :second-button-text="args.secondButtonText"
   :side-button-text="args.sideButtonText"
   :variant="args.variant" 
-  :size="ModalSize.LARGE" <---- HERE
+  :size="PuikModalSize.LARGE" <---- HERE
   :is-open="args.isOpen"
   :title-icon="args.titleIcon"
   @close="closeModal"
@@ -514,7 +514,7 @@ Medium.args = {
   title: 'The awesome title',
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
-  size: ModalSize.MEDIUM,
+  size: PuikModalSize.MEDIUM,
 }
 Medium.parameters = {
   docs: {
@@ -530,7 +530,7 @@ Medium.parameters = {
   :second-button-text="args.secondButtonText"
   :side-button-text="args.sideButtonText"
   :variant="args.variant" 
-  :size="ModalSize.MEDIUM" <---- HERE
+  :size="PuikModalSize.MEDIUM" <---- HERE
   :is-open="args.isOpen"
   :title-icon="args.titleIcon"
   @close="closeModal"
@@ -587,7 +587,7 @@ Small.args = {
   title: 'The awesome title',
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
-  size: ModalSize.SMALL,
+  size: PuikModalSize.SMALL,
 }
 Small.parameters = {
   docs: {
@@ -603,7 +603,7 @@ Small.parameters = {
   :second-button-text="args.secondButtonText"
   :side-button-text="args.sideButtonText"
   :variant="args.variant" 
-  :size="ModalSize.SMALL" <---- HERE
+  :size="PuikModalSize.SMALL" <---- HERE
   :is-open="args.isOpen"
   :title-icon="args.titleIcon"
   @close="closeModal"

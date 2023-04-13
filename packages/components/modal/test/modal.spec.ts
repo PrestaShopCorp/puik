@@ -1,7 +1,11 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
 import PuikModal from '../src/modal.vue'
-import { ModalVariant, DESTRUCTIVE_ICON_NAME, ModalSize } from '../src/modal'
+import {
+  PuikModalVariant,
+  DESTRUCTIVE_ICON_NAME,
+  PuikModalSize,
+} from '../src/modal'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 // @ts-expect-error Find on the Tailwindlabs/headlessui repo
@@ -82,7 +86,7 @@ describe('Modal tests', () => {
       secondButtonText: 'Awesome second',
       isOpen: true,
       titleIcon: homeTitleIcon,
-      variant: ModalVariant.DESTRUCTIVE,
+      variant: PuikModalVariant.DESTRUCTIVE,
     })
 
     expect(findIcon().text()).toBe(DESTRUCTIVE_ICON_NAME)
@@ -98,7 +102,7 @@ describe('Modal tests', () => {
       secondButtonText: 'Awesome second',
       isOpen: true,
       titleIcon: homeTitleIcon,
-      variant: ModalVariant.FEEDBACK,
+      variant: PuikModalVariant.FEEDBACK,
     })
 
     expect(findIcon().text()).toBe(homeTitleIcon)
@@ -116,7 +120,7 @@ describe('Modal tests', () => {
       secondButtonText: 'Awesome second',
       isOpen: true,
       titleIcon: homeTitleIcon,
-      variant: ModalVariant.DIALOG,
+      variant: PuikModalVariant.DIALOG,
       sideButtonText,
     })
 
@@ -134,7 +138,7 @@ describe('Modal tests', () => {
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
       isOpen: true,
-      size: ModalSize.LARGE,
+      size: PuikModalSize.LARGE,
     })
 
     expect(findModal().classes()).toContain('puik-modal--large')
@@ -146,7 +150,7 @@ describe('Modal tests', () => {
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
       isOpen: true,
-      size: ModalSize.MEDIUM,
+      size: PuikModalSize.MEDIUM,
     })
 
     expect(findModal().classes()).toContain('puik-modal--medium')
@@ -158,7 +162,7 @@ describe('Modal tests', () => {
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
       isOpen: true,
-      size: ModalSize.SMALL,
+      size: PuikModalSize.SMALL,
     })
 
     expect(findModal().classes()).toContain('puik-modal--small')
