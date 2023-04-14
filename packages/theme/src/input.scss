@@ -10,10 +10,10 @@
       @apply border-primary ring ring-blue;
     }
     &--success {
-      @apply border-green;
+      @apply border-green bg-green-50;
     }
     &--error {
-      @apply border-red;
+      @apply border-red bg-red-50;
     }
     &--disabled {
       @apply bg-white text-primary-300 hover:border-primary-400 cursor-not-allowed;
@@ -21,7 +21,8 @@
   }
   &__field {
     @extend .puik-body-default;
-    @apply w-full py-2 outline-none placeholder:text-primary px-3 disabled:placeholder:text-primary disabled:cursor-not-allowed;
+    @apply bg-transparent w-full py-2 outline-none placeholder:text-primary px-3
+      disabled:placeholder:text-primary disabled:cursor-not-allowed;
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
     }
@@ -62,7 +63,7 @@
     @apply cursor-pointer flex flex-col items-center space-y-0.5 py-0.5 select-none;
     &__increment,
     &__decrement {
-      @apply w-6 bg-white flex flex-1 items-center justify-center rounded outline-none focus:ring focus:ring-blue disabled:bg-white disabled:cursor-not-allowed hover:bg-primary-200 active:bg-primary-300;
+      @apply w-6 flex flex-1 items-center justify-center rounded outline-none focus:ring focus:ring-blue disabled:bg-white disabled:cursor-not-allowed hover:bg-primary-200 active:bg-primary-300;
       &__icon {
         @apply text-xs font-materialIcons text-primary disabled:text-primary-300;
       }
