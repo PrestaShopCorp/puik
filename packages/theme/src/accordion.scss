@@ -1,0 +1,59 @@
+@use './common/typography.scss';
+
+.puik-accordion {
+  @apply border border-light-blue-500 rounded-lg mb-4;
+
+  &__header {
+    @apply p-4 flex w-full items-center rounded-[inherit] hover:bg-light-blue-50;
+
+    &:focus-visible {
+      @apply bg-light-blue-50 outline-none ring ring-focus-main;
+    }
+
+    &__icon {
+      @apply ml-2 mr-4 text-font-secondary;
+    }
+
+    &__content {
+      @apply ml-2;
+      &__title {
+        @extend .puik-h5;
+        @apply text-left;
+      }
+
+      &__sub-title {
+        @extend .puik-body-small;
+        @apply text-left text-font-secondary mt-1;
+      }
+    }
+    &__expand__icon {
+      @apply ml-auto mr-2 text-font-secondary transform transition-transform duration-100 ease-in-out;
+    }
+  }
+  &__content {
+    @extend .puik-body-default;
+    @apply p-4 ml-4 text-font-secondary invisible;
+  }
+  &--expanded {
+    .puik-accordion__title {
+      @apply rounded-b-none;
+    }
+    .puik-accordion__content {
+      @apply visible;
+    }
+    .puik-accordion__header__expand__icon {
+      @apply rotate-180;
+    }
+  }
+  &--disabled {
+    @apply bg-light-blue-background text-font-disabled hover:border-light-blue-default-border cursor-not-allowed;
+    .puik-accordion__header__content__sub-title {
+      @apply text-font-disabled;
+    }
+
+    .puik-accordion__header__icon,
+    .puik-accordion__header__expand__icon {
+      @apply text-font-disabled;
+    }
+  }
+}
