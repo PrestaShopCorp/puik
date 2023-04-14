@@ -41,17 +41,15 @@
   &__dialogPanelContainer {
     @apply fixed max-h-full bg-primary-700/50 inset-0 flex justify-center items-end sm:items-center;
     &__dialogPanel {
-      @apply w-full
-                sm:h-[90%]
-                max-h-full
-                drop-shadow-xl
-                flex
-                flex-col
-                bg-white
-                border
-                border-primary-400
-                p-6
-                gap-6;
+      @apply max-h-full
+        flex
+        flex-col
+        bg-white
+        border
+        drop-shadow-xl
+        border-primary-400
+        p-6
+        gap-6;
 
       &__header {
         @apply flex items-center gap-4;

@@ -4,7 +4,7 @@
   @extend .puik-body-default-bold;
   @apply text-blue transition m-0.5 p-0.5 decoration-1;
   &:hover {
-    @apply underline text-blue-700;
+    @apply underline text-blue-700 cursor-pointer;
   }
   &:focus-visible {
     @apply underline outline-none ring-2 ring-blue;
