@@ -29,6 +29,7 @@ describe('Breadcrumb tests', () => {
     {
       label: 'First link',
       href: '#',
+      target: '_blank',
     },
     {
       label: 'Second link',
@@ -37,6 +38,9 @@ describe('Breadcrumb tests', () => {
     {
       label: 'Third link',
       to: 'name',
+    },
+    {
+      label: 'Last link',
     },
   ]
   it('should be a vue instance', () => {
@@ -59,9 +63,9 @@ describe('Breadcrumb tests', () => {
     expect(localItems[2].element.tagName).toBe('ROUTER-LINK')
     expect(localItems[2].element.getAttribute('to')).toBe(items[2].to)
   })
-  it('should display only two separator icon', () => {
+  it('should display only three separator icon', () => {
     factory({ items })
-    expect(getBreadcrumbSeparatorIcons().length).toBe(2)
+    expect(getBreadcrumbSeparatorIcons().length).toBe(3)
   })
   it('should not display separator icon', () => {
     factory({ items: [items[0]] })
@@ -79,16 +83,14 @@ describe('Breadcrumb tests', () => {
     expect(getBreadcrumbHomeIcon().text()).toBe(icon)
   })
   it('should have target', () => {
-    const target = '_top'
-    const items = [
-      {
-        label: 'Link',
-        href: '#',
-        target,
-      },
-    ]
-    items[0].target = target
     factory({ items })
-    expect(getBreadcrumbItems()[0].element.getAttribute('target')).toBe(target)
+    expect(getBreadcrumbItems()[0].element.getAttribute('target')).toBe(
+      '_blank'
+    )
+  })
+  it('should last item be div', () => {
+    factory({ items })
+    const lastItem = getBreadcrumbItems().pop()
+    expect(lastItem.element.tagName).toBe('DIV')
   })
 })

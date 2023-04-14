@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="items.length" class="puik-breadcrumb">
+  <nav v-if="items.length" class="puik-breadcrumb" role="navigation">
     <PuikIcon
       v-if="icon"
       class="puik-breadcrumb__home-icon"
