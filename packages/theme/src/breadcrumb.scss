@@ -1,35 +1,32 @@
-// @use './common/typography.scss';
-// .puik-breadcrumb {
-//   @apply flex flex-row items-center;
+@use './common/typography.scss';
+.puik-breadcrumb {
+  @apply flex flex-row items-center;
 
-//   &__home-icon {
-//     @apply mr-1;
-//   }
+  &__home-icon {
+    @apply text-primary mr-1;
+  }
 
-//   &__item {
-//     @apply flex flex-row items-center;
-//     &-button {
-//       @apply p-0;
-//     }
+  &__item {
+    @apply flex flex-row items-center;
+    &-button {
+      @apply p-0;
+    }
 
-//     &-icon {
-//       // Here
-//       @apply text-font-200;
-//     }
+    &-icon {
+      @apply text-primary-500;
+    }
 
-//     &-link {
-//       // Here
-//       @apply text-font;
-//       &:hover {
-//         // Here
-//         @apply text-primary-purple;
-//       }
-//     }
+    &-link {
+      @extend .puik-body-small;
+      @apply text-primary font-normal;
+      &:hover {
+        @apply text-blue bg-primary-300;
+      }
+    }
 
-//     &--last {
-//       @extend .puik-body-small;
-//       // Here
-//       @apply text-font-secondary;
-//     }
-//   }
-// }
+    &--last {
+      @extend .puik-body-small;
+      @apply text-primary-600;
+    }
+  }
+}
