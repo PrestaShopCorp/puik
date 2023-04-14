@@ -1,3 +1,4 @@
+@use './common/typography.scss';
 .puik-input {
   @apply flex flex-col;
   &__wrapper {
@@ -19,6 +20,7 @@
     }
   }
   &__field {
+    @extend .puik-body-default;
     @apply w-full py-2 outline-none placeholder:text-primary px-3 disabled:placeholder:text-primary disabled:cursor-not-allowed;
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
@@ -35,9 +37,10 @@
     }
   }
   &__hint {
-    @apply flex text-xs text-primary font-secondary font-normal mt-1;
+    @extend .puik-body-small;
+    @apply flex text-primary font-normal mt-1 leading-4;
     &__error {
-      @apply flex text-xs text-red font-secondary font-normal;
+      @apply flex text-red font-secondary font-normal;
       &__text {
         @apply mt-0.5;
       }

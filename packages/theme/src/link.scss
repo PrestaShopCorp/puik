@@ -1,33 +1,33 @@
 @use './common/typography.scss';
 
 .puik-link {
-  @extend .puik-body-default;
-  @apply rounded transition text-primary-500 m-0.5 p-0.5 decoration-1;
+  @extend .puik-body-default-bold;
+  @apply text-blue transition m-0.5 p-0.5 decoration-1;
   &:hover {
-    @apply underline bg-white;
+    @apply underline text-blue-700;
   }
-  &:focus {
+  &:focus-visible {
     @apply underline outline-none ring-2 ring-blue;
   }
   &:active {
-    @apply underline bg-primary-200;
+    @apply underline;
   }
   &:visited {
-    @apply text-[#0A057B];
+    @apply text-purple-700;
   }
   &[target='_blank'] {
     &:after {
       content: 'open_in_new';
-      @apply font-materialIcons text-base ml-1.5 inline-block align-text-top leading-[1em];
+      @apply font-materialIcons ml-1.5 inline-block align-text-top leading-[1em];
     }
   }
   &--sm {
-    @apply text-xs;
+    @extend .puik-body-small-bold;
   }
   &--md {
-    @apply text-sm;
+    @extend .puik-body-default-bold;
   }
   &--lg {
-    @apply text-base;
+    @extend .puik-body-large-bold;
   }
 }
