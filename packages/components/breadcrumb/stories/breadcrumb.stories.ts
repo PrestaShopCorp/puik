@@ -93,16 +93,17 @@ Default.parameters = {
       <puik-breadcrumb :items="items" icon="home"></puik-breadcrumb>
 
       <!--HTML/CSS Snippet-->
-      <nav class="puik-breadcrumb">
+      <nav class="puik-breadcrumb" role="navigation">
         <div class="puik-icon material-icons-round puik-breadcrumb__home-icon" style="font-size: 16px;">home</div>
         <div class="puik-breadcrumb__item">
-          <a href="#" target="_self" class="puik-link puik-link--md puik-breadcrumb__item-link" variant="text">First link</a>
-          <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 24px;">keyboard_arrow_right</div>
+          <a href="#" target="_self" class="puik-link puik-link--sm puik-breadcrumb__item-link">First link</a>
+          <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 16px;">keyboard_arrow_right</div>
         </div>
         <div class="puik-breadcrumb__item">
-          <a href="#" target="_blank" class="puik-link puik-link--md puik-breadcrumb__item-link" variant="text">Second link</a>
-          <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 24px;">keyboard_arrow_right</div>
+          <a href="#" target="_self" class="puik-link puik-link--sm puik-breadcrumb__item-link">Second link</a>
+          <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 16px;">keyboard_arrow_right</div>
         </div>
+        <div class="puik-breadcrumb__item--last">Third link</div>
       </nav>
       `,
       language: 'html',
