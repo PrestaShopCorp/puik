@@ -63,7 +63,11 @@
     @apply cursor-pointer flex flex-col items-center space-y-0.5 py-0.5 select-none;
     &__increment,
     &__decrement {
-      @apply w-6 flex flex-1 items-center justify-center rounded outline-none focus:ring focus:ring-blue disabled:bg-white disabled:cursor-not-allowed hover:bg-primary-200 active:bg-primary-300;
+      @apply w-6 flex flex-1 items-center justify-center rounded outline-none
+        focus-visible:ring focus-visible:ring-blue
+        disabled:bg-white disabled:cursor-not-allowed
+        hover:bg-primary-200
+        active:bg-primary-300;
       &__icon {
         @apply text-xs font-materialIcons text-primary disabled:text-primary-300;
       }

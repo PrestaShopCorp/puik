@@ -1,7 +1,6 @@
 @use './common/typography.scss';
 
 .puik-link {
-  @extend .puik-body-default-bold;
   @apply text-blue transition m-0.5 p-0.5 decoration-1;
   &:hover {
     @apply underline text-blue-700 cursor-pointer;
