@@ -1,12 +1,13 @@
+@use './common/typography.scss';
 .puik-switch__group {
   @apply flex items-center;
   .puik-switch {
-    @apply relative inline-flex items-center h-6 rounded-full w-10 bg-primary;
-    &:focus {
+    @apply relative inline-flex items-center h-6 rounded-full w-10 bg-primary cursor-pointer;
+    &:focus-visible {
       @apply outline-none ring ring-blue ring-offset-1;
     }
     &:disabled {
-      @apply bg-primary-300 pointer-events-none;
+      @apply bg-primary-400 pointer-events-none;
     }
     &--enabled {
       @apply bg-green;
@@ -25,7 +26,8 @@
     }
   }
   .puik-switch__label {
-    @apply font-secondary text-sm;
+    @extend .puik-body-default;
+    @apply cursor-pointer;
     &--right {
       @apply ml-2;
     }

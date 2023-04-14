@@ -8,12 +8,12 @@
      bg-transparent bg-clip-content
      w-5 h-5
      mr-2
-     border-2 border-solid rounded-full border-primary;
+     border-2 border-solid rounded-full border-primary cursor-pointer;
 
     &:checked {
-      @apply bg-primary-500
+      @apply bg-primary
       p-[3px]
-      border-2 border-solid border-primary-500;
+      border-2 border-solid border-primary;
       &:disabled {
         @apply border-2 border-solid rounded-full border-primary-500 bg-primary-500;
       }
@@ -31,6 +31,7 @@
     }
   }
   &__label {
-    @apply text-base lg:text-sm font-secondary cursor-pointer;
+    @extend .puik-body-default;
+    @apply font-secondary cursor-pointer;
   }
 }
