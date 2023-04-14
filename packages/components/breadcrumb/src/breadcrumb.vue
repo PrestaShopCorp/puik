@@ -4,11 +4,11 @@
       v-if="icon"
       class="puik-breadcrumb__home-icon"
       :icon="icon"
-      font-size="16px"
+      :font-size="16"
     ></PuikIcon>
 
     <div
-      v-for="(item, index) in items"
+      v-for="(item, index) in items.slice(0, items.length - 1)"
       :key="`puik-breadcrumb-item-${index}`"
       class="puik-breadcrumb__item"
     >
@@ -17,17 +17,20 @@
         :to="item.to"
         :href="item.href"
         :target="item.target"
-        variant="text"
+        size="sm"
       >
         {{ item.label }}
       </PuikLink>
 
       <PuikIcon
-        v-if="index < items.length - 1"
         class="puik-breadcrumb__item-icon"
         :icon="separatorIcon"
-        font-size="20px"
+        :font-size="16"
       ></PuikIcon>
+    </div>
+
+    <div class="puik-breadcrumb__item--last">
+      {{ items[items.length - 1].label }}
     </div>
   </nav>
 </template>
