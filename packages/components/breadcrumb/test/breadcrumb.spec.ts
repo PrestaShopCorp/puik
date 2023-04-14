@@ -19,7 +19,7 @@ describe('Breadcrumb tests', () => {
   }
 
   const getBreadcrumbItems = () =>
-    wrapper.findAll('.puik-breadcrumb__item-link')
+    wrapper.findAll('.puik-breadcrumb__item-link, .puik-breadcrumb__item--last')
   const getBreadcrumbSeparatorIcons = () =>
     wrapper.findAll('.puik-breadcrumb__item-icon')
   const getBreadcrumbHomeIcon = () =>
