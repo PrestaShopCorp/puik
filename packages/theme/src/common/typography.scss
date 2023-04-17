@@ -56,7 +56,7 @@
 
 .puik-body-default-link {
   @extend .puik-body-default;
-  @apply underline text-primary-purple;
+  @apply underline text-primary;
 }
 
 // Numbers
@@ -80,7 +80,7 @@
 }
 
 .puik-text-button-small {
-  @apply font-primary text-xs leading-4 font-bold;
+  @apply font-primary text-xs leading-4 font-semibold;
 }
 
 .puik-text-button-large {

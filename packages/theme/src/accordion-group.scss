@@ -1,25 +1,19 @@
 .puik-accordion-group {
   .puik-accordion {
-    @apply mb-4 rounded-lg;
-
-    &--expanded {
-      .puik-accordion__header {
-        @apply rounded-b-none;
-      }
-    }
+    @apply mb-4;
   }
 
   &--contained {
     .puik-accordion {
-      @apply mb-0 rounded-none border-t-0 border-b;
+      @apply mb-0 border-t-0 border-b;
     }
 
     & > :first-child {
-      @apply rounded-t-lg border-t;
+      @apply border-t;
     }
 
     & > :last-child {
-      @apply border-t-0 border-b rounded-b-lg;
+      @apply border-t-0 border-b;
     }
   }
 }

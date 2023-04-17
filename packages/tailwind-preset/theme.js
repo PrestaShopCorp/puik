@@ -2,105 +2,84 @@ module.exports = {
   extend: {
     colors: {
       primary: {
-        purple: {
-          get DEFAULT() {
-            return this['500']
-          },
-          50: '#E9E6F8',
-          100: '#C7C0EE',
-          200: '#A296E3',
-          500: '#442CC7',
-          700: '#3521BA',
-          900: '#1F10A6',
-        },
-      },
-      accentuation: {
-        destructive: {
-          get DEFAULT() {
-            return this['500']
-          },
-          50: '#FAE7E8',
-          100: '#F2C2C5',
-          200: '#EA9A9E',
-          500: '#D5343C',
-          700: '#CA272E',
-          900: '#BA151A',
-        },
-        success: {
-          get DEFAULT() {
-            return this['500']
-          },
-          50: '#E4F0EA',
-          100: '#BCDACA',
-          200: '#90C1A6',
-          500: '#21834D',
-          700: '#18703D',
-          900: '#0B5325',
-        },
-        warning: {
-          get DEFAULT() {
-            return this['500']
-          },
-          50: '#FFF4E0',
-          100: '#FFE3B3',
-          200: '#FFD080',
-          500: '#FFA000',
-          700: '#FF8E00',
-          900: '#FF7300',
-        },
-        info: {
-          get DEFAULT() {
-            return this['500']
-          },
-          50: '#E3EAFD',
-          100: '#B9CAFA',
-          200: '#8BA7F7',
-          500: '#174EEF',
-          700: '#113DEB',
-          900: '#0725E4',
-        },
-      },
-      font: {
         get DEFAULT() {
-          return this['900']
+          return this['800']
         },
-        get disabled() {
+        100: '#FFFFFF',
+        200: '#F7F7F7',
+        300: '#EEEEEE',
+        400: '#DDDDDD',
+        500: '#BBBBBB',
+        600: '#5E5E5E',
+        700: '#3F3F3D',
+        800: '#1D1D1B',
+      },
+      red: {
+        get DEFAULT() {
+          return this['500']
+        },
+        50: '#FFE4E6',
+        100: '#FDBFBF',
+        300: '#D63F3C',
+        500: '#BA151A',
+        700: '#A41913',
+      },
+      purple: {
+        get DEFAULT() {
+          return this['500']
+        },
+        50: '#F8F0F7',
+        500: '#D7AED3',
+        700: '#7B4FAC',
+      },
+      blue: {
+        get DEFAULT() {
+          return this['500']
+        },
+        get pressed() {
+          return this['700']
+        },
+        50: '#E8EDFD',
+        100: '#D1DCFC',
+        300: '#A2B8F9',
+        500: '#174EEF',
+        700: '#0725E4',
+      },
+      'ocean-blue': {
+        get DEFAULT() {
+          return this['500']
+        },
+        50: '#E4F4F8',
+        500: '#78C4D8',
+        700: '#5C92AA',
+      },
+      yellow: {
+        get DEFAULT() {
+          return this['500']
+        },
+        50: '#FFF5E5',
+        100: '#FFECCC',
+        300: '#FFD999',
+        500: '#ffA000',
+      },
+      amber: {
+        get DEFAULT() {
+          return this['500']
+        },
+        100: '#FDF6DD',
+        500: '#F3CB5F',
+      },
+      green: {
+        get DEFAULT() {
+          return this['500']
+        },
+        get marketing() {
           return this['100']
         },
-        get secondary() {
-          return this['500']
-        },
-        50: '#E6E8EA',
-        100: '#C1C5CA',
-        200: '#989EA7',
-        500: '#505969',
-        700: '#272E3E',
-        900: '#131A26',
-      },
-      'light-blue': {
-        get background() {
-          return this['50']
-        },
-        get 'decorative-border'() {
-          return this['300']
-        },
-        get 'default-border'() {
-          return this['500']
-        },
-        50: '#F8FAFC',
-        100: '#EFF3F7',
-        200: '#E4EBF2',
-        300: '#D9E3EC',
-        500: '#C8D7E4',
-        700: '#BBCDDD',
-        900: '#A7BED1',
-      },
-      focus: {
-        main: '#458FFF',
-      },
-      brand: {
-        pink: '#E6006B',
-        'dark-blue': '#011638',
+        50: '#E9F3ED',
+        100: '#98D9A9',
+        300: '#A6CBD8',
+        500: '#21834D',
       },
     },
     fontFamily: {

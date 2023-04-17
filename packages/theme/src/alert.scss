@@ -1,31 +1,33 @@
+@use './common/typography.scss';
+
 .puik-alert {
-  @apply relative flex flex-col md:flex-row p-4 border rounded-lg text-font items-start;
-  &--no-borders {
-    @apply border-0;
-  }
+  @apply relative flex flex-col md:flex-row p-4 border text-primary-800 items-start;
   &--success {
-    @apply bg-accentuation-success-50 border border-accentuation-success-500;
+    @apply bg-green-50 border border-green;
     .puik-alert__icon {
-      @apply text-accentuation-success-500;
+      @apply text-green;
     }
   }
   &--warning {
-    @apply bg-accentuation-warning-50 border-accentuation-warning-500;
+    @apply bg-yellow-50 border-yellow;
     .puik-alert__icon {
-      @apply text-accentuation-warning-500;
+      @apply text-yellow;
     }
   }
   &--danger {
-    @apply bg-accentuation-destructive-50 border-accentuation-destructive-500;
+    @apply bg-red-50 border-red;
     .puik-alert__icon {
-      @apply text-accentuation-destructive-500;
+      @apply text-red;
     }
   }
   &--info {
-    @apply bg-accentuation-info-50 border-accentuation-info-500;
+    @apply bg-blue-50 border-blue;
     .puik-alert__icon {
-      @apply text-accentuation-info-500;
+      @apply text-blue;
     }
+  }
+  &--no-borders {
+    @apply border-0;
   }
   &__content {
     @apply flex flex-row flex-grow;
@@ -34,21 +36,16 @@
     @apply mx-4;
   }
   &__title {
-    @apply font-primary font-semibold mb-1;
+    @extend .puik-h3;
+    @apply font-semibold mb-1;
   }
   &__description {
-    @apply font-secondary text-sm;
-  }
-  &__collapse {
-    @apply font-primary font-bold text-xs float-right cursor-pointer;
+    @extend .puik-body-default;
   }
   &__button {
-    @apply font-primary font-semibold text-sm px-4 py-3 mt-2 ml-9 md:m-0 border rounded outline-none focus:ring focus:ring-focus-main focus:ring-offset-2;
+    @apply text-sm px-4 py-3 mt-2 ml-9 md:m-0;
   }
   &__icon {
     @apply mt-0.5 flex-shrink-0;
-  }
-  &__close {
-    @apply h-4 absolute top-3.5 right-6 font-materialIcons text-font-500 cursor-pointer;
   }
 }

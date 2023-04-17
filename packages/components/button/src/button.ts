@@ -11,7 +11,7 @@ export const buttonVariants = [
   'info',
   'success',
   'warning',
-  'error',
+  'danger',
 ]
 
 export const buttonSizes = ['sm', 'md', 'lg']

@@ -66,9 +66,9 @@ describe('Button tests', () => {
     expect(findButton().classes()).toContain('puik-button--warning')
   })
 
-  it('should display the button variant as error', () => {
-    factory({ variant: 'error' })
-    expect(findButton().classes()).toContain('puik-button--error')
+  it('should display the button variant as danger', () => {
+    factory({ variant: 'danger' })
+    expect(findButton().classes()).toContain('puik-button--danger')
   })
 
   it('should display a left icon', () => {

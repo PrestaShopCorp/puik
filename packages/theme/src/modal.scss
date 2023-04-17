@@ -1,3 +1,4 @@
+@use './common/typography.scss';
 .puik-modal {
   @apply relative z-50;
 
@@ -7,17 +8,17 @@
 
   &--destructive {
     .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-      @apply text-accentuation-destructive-500 bg-accentuation-destructive-50;
+      @apply text-red-500 bg-red-50;
     }
   }
   &--dialog {
     .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-      @apply text-font-secondary bg-font-50;
+      @apply text-primary-500 bg-primary-300;
     }
   }
   &--feedback {
     .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-      @apply text-primary-purple-500 bg-primary-purple-50;
+      @apply text-primary-800 bg-ocean-blue-50;
     }
   }
 
@@ -38,17 +39,17 @@
   }
 
   &__dialogPanelContainer {
-    @apply fixed max-h-full bg-font-secondary/50 inset-0 flex justify-center items-end sm:items-center;
-
+    @apply fixed max-h-full bg-primary-700/50 inset-0 flex justify-center items-end sm:items-center;
     &__dialogPanel {
       @apply max-h-full
-      flex
-      flex-col
-      bg-white
-      p-6
-      gap-6
-      sm:rounded-lg
-      sm:max-h-[90%];
+        flex
+        flex-col
+        bg-white
+        border
+        drop-shadow-xl
+        border-primary-400
+        p-6
+        gap-6;
 
       &__header {
         @apply flex items-center gap-4;
@@ -58,10 +59,11 @@
         }
 
         &__title {
+          @extend .puik-h2;
           @apply min-w-0 flex-1;
 
           .title {
-            @apply text-2xl font-bold flex-1 overflow-hidden text-ellipsis whitespace-nowrap;
+            @apply font-bold flex-1 overflow-hidden text-ellipsis whitespace-nowrap;
           }
         }
 
@@ -71,7 +73,7 @@
       }
 
       &__content {
-        @apply overflow-hidden overflow-y-auto flex flex-1 text-font-900;
+        @apply overflow-hidden overflow-y-auto flex flex-1 text-primary-800;
       }
 
       &__footer {

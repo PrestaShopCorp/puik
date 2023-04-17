@@ -3,7 +3,7 @@
   @apply flex flex-row items-center;
 
   &__home-icon {
-    @apply mr-1;
+    @apply text-primary mr-1;
   }
 
   &__item {
@@ -13,19 +13,20 @@
     }
 
     &-icon {
-      @apply text-font-200;
+      @apply text-primary-500;
     }
 
     &-link {
-      @apply text-font;
+      @extend .puik-body-small;
+      @apply text-primary font-normal;
       &:hover {
-        @apply text-primary-purple;
+        @apply text-blue;
       }
     }
 
     &--last {
       @extend .puik-body-small;
-      @apply text-font-secondary;
+      @apply text-primary-600;
     }
   }
 }
