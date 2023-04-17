@@ -16,13 +16,15 @@
       @apply border-red bg-red-50;
     }
     &--disabled {
-      @apply bg-white text-primary-300 hover:border-primary-400 cursor-not-allowed;
+      @apply bg-white hover:border-primary-400 cursor-not-allowed;
     }
   }
   &__field {
     @extend .puik-body-default;
-    @apply bg-transparent w-full py-2 outline-none placeholder:text-primary px-3
-      disabled:placeholder:text-primary disabled:cursor-not-allowed;
+    @apply bg-transparent w-full py-2 outline-none px-3
+      text-primary
+      disabled:text-primary-500 disabled:cursor-not-allowed
+      placeholder:text-primary-700 placeholder:disabled:text-primary-500;
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
     }

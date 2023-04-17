@@ -1,10 +1,12 @@
 @use './common/typography.scss';
 .puik-select {
-  @apply relative mt-1;
+  @apply relative;
+  @extend .puik-body-default;
   &__button {
-    @apply relative w-full cursor-default bg-white min-h-[38px] text-left
+    @apply relative w-full cursor-default bg-white min-h-[36px] text-left
       border border-primary-400
       hover:border-primary
+      text-primary
       focus-visible:outline-none focus-visible:ring focus-visible:ring-blue
       disabled:border-primary-400 disabled:text-primary-500;
     &--error {
@@ -13,9 +15,10 @@
   }
   &__selected {
     @apply block truncate w-full
-      py-2 pl-3 pr-9 select-none font-secondary outline-none pointer-events-none
-      text-primary-800
+      py-1 pl-3 pr-9 select-none font-secondary outline-none pointer-events-none
+      text-primary
       disabled:bg-white
+      placeholder:text-primary
       disabled:placeholder:text-primary-500;
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
