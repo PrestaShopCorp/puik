@@ -1,0 +1,31 @@
+@use './common/typography.scss';
+.puik-breadcrumb {
+  @apply flex flex-row items-center;
+
+  &__home-icon {
+    @apply mr-1;
+  }
+
+  &__item {
+    @apply flex flex-row items-center;
+    &-button {
+      @apply p-0;
+    }
+
+    &-icon {
+      @apply text-font-200;
+    }
+
+    &-link {
+      @apply text-font;
+      &:hover {
+        @apply text-primary-purple;
+      }
+    }
+
+    &--last {
+      @extend .puik-body-small;
+      @apply text-font-secondary;
+    }
+  }
+}
