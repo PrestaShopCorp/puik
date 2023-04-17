@@ -20,7 +20,7 @@
       @extend .puik-body-small;
       @apply text-primary font-normal;
       &:hover {
-        @apply text-blue bg-primary-300;
+        @apply text-blue;
       }
     }
 
