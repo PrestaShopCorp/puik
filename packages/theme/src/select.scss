@@ -12,7 +12,11 @@
     }
   }
   &__selected {
-    @apply block truncate w-full py-2 pl-3 pr-9 select-none font-secondary outline-none pointer-events-none text-primary-800 placeholder:text-primary-800 disabled:bg-white disabled:placeholder:text-primary-300;
+    @apply block truncate w-full
+      py-2 pl-3 pr-9 select-none font-secondary outline-none pointer-events-none
+      text-primary-800
+      disabled:bg-white
+      disabled:placeholder:text-primary-500;
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
     }

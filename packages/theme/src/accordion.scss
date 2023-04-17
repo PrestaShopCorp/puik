@@ -4,7 +4,7 @@
   @apply border border-primary-400 mb-4;
 
   &__header {
-    @apply px-6 py-4 flex w-full items-center rounded-[inherit];
+    @apply px-6 py-4 flex w-full items-center;
 
     &:hover {
       @apply bg-primary-200;
