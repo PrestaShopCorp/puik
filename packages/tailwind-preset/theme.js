@@ -43,7 +43,7 @@ module.exports = {
         100: '#D1DCFC',
         300: '#A2B8F9',
         500: '#174EEF',
-        700: '#0725E4',
+        700: '#2942CC',
       },
       'ocean-blue': {
         get DEFAULT() {
@@ -76,10 +76,10 @@ module.exports = {
         get marketing() {
           return this['100']
         },
-        50: '#E9F3ED',
+        50: '#EAF8EF',
         100: '#98D9A9',
-        300: '#A6CBD8',
-        500: '#21834D',
+        300: '#59AF70',
+        500: '#207F4B',
       },
     },
     fontFamily: {
