@@ -4,5 +4,6 @@ module.exports = {
   content: [
     '../packages/components/**/*.stories.@(js|jsx|ts|tsx)',
     './stories/**/*.stories.mdx',
+    './stories/**/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
 }
