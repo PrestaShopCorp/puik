@@ -38,7 +38,7 @@
   }
   &__label {
     @extend .puik-body-default;
-    @apply -tracking-[0.015625em] font-secondary text-primary
+    @apply -tracking-[0.015625em] font-primary text-primary
       cursor-pointer
       ml-3;
   }
