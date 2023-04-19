@@ -1,31 +1,48 @@
 // Titles
 
 .puik-jumbotron {
-  @apply text-5xl leading-[3.625rem] -tracking-[0.066875rem] font-extrabold font-secondary;
+  @apply text-5xl leading-[3.625rem] -tracking-[0.066875rem] font-extrabold font-secondary font-primary;
 }
 
 .puik-h1 {
-  @apply text-4xl leading-[2.625rem] -tracking-[0.043125rem] font-bold;
+  @apply text-4xl leading-[2.625rem] -tracking-[0.043125rem] font-bold font-primary;
 }
 
 .puik-h2 {
-  @apply text-2xl leading-8 -tracking-[0.029375rem] font-bold;
+  @apply text-2xl leading-8 -tracking-[0.029375rem] font-bold font-primary;
 }
 
 .puik-h3 {
-  @apply text-xl leading-[1.875rem] -tracking-[0.020625rem] font-bold;
+  @apply text-xl leading-[1.875rem] -tracking-[0.020625rem] font-bold font-primary;
 }
 
 .puik-h4 {
-  @apply text-lg leading-[1.625rem] -tracking-[0.01625rem] font-medium;
+  @apply text-lg leading-[1.625rem] -tracking-[0.01625rem] font-medium font-primary;
 }
 
 .puik-h5 {
-  @apply text-base leading-[1.375rem] -tracking-[0.01125rem] font-semibold;
+  @apply text-base leading-[1.375rem] -tracking-[0.01125rem] font-semibold font-primary;
 }
 
 .puik-h6 {
-  @apply text-sm leading-5 -tracking-[0.005625rem] font-bold;
+  @apply text-sm leading-5 -tracking-[0.005625rem] font-bold font-primary;
+}
+
+// Brand title
+
+.puik-brand-h1 {
+  @extend .puik-h1;
+  @apply -tracking-[0] font-secondary;
+}
+
+.puik-brand-h2 {
+  @extend .puik-h2;
+  @apply -tracking-[0] font-secondary;
+}
+
+.puik-brand-jumbotron {
+  @extend .puik-jumbotron;
+  @apply -tracking-[0] font-secondary;
 }
 
 // Body
