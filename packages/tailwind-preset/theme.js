@@ -43,7 +43,7 @@ module.exports = {
         100: '#D1DCFC',
         300: '#A2B8F9',
         500: '#174EEF',
-        700: '#0725E4',
+        700: '#2942CC',
       },
       'ocean-blue': {
         get DEFAULT() {
