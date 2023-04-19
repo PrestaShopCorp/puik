@@ -17,7 +17,7 @@
   &[target='_blank'] {
     &:after {
       content: 'open_in_new';
-      @apply font-materialIcons ml-1.5 inline-block align-text-top leading-[1em];
+      @apply font-materialIcons ml-1.5 inline-block align-middle leading-[1em];
     }
   }
   &--sm {

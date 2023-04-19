@@ -83,8 +83,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      primary: ['Inter', 'Verdana', 'Arial', 'sans-serif'],
-      secondary: ['Roboto', 'Verdana', 'Arial', 'sans-serif'],
+      primary: ['IBM Plex Sans', 'Verdana', 'Arial', 'sans-serif'],
+      secondary: ['Prestafont', 'Verdana', 'Arial', 'sans-serif'],
       materialIcons: ['Material Icons Round'],
     },
     fontSize: {
