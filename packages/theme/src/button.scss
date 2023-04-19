@@ -6,7 +6,7 @@
 
   &--sm {
     @extend .puik-text-button-small;
-    @apply py-1 px-4;
+    @apply py-1 px-2;
     .puik-button__left-icon {
       @apply mr-2;
     }
@@ -26,7 +26,7 @@
 
   &--lg {
     @extend .puik-text-button-large;
-    @apply py-3 px-5;
+    @apply py-3.5 px-4;
     .puik-button__left-icon {
       @apply mr-3;
     }
@@ -79,28 +79,14 @@
   &--tertiary {
     @apply bg-primary-400 text-primary;
     &:hover {
+      @apply bg-primary-300;
+    }
+    &:active {
       @apply bg-primary-200;
     }
     &:disabled,
     &.puik-button--disabled {
       @apply bg-primary-200 text-primary-500;
-    }
-    &:active {
-      @apply bg-primary-300;
-    }
-  }
-
-  &--text {
-    @apply text-primary;
-    &:hover {
-      @apply bg-primary-200;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply text-primary-500;
-    }
-    &:active {
-      @apply bg-primary-300;
     }
   }
 
@@ -109,17 +95,31 @@
     &:hover {
       @apply bg-red-300;
     }
+    &:active {
+      @apply bg-red-700;
+    }
     &:disabled,
     &.puik-button--disabled {
       @apply bg-red-100;
     }
+  }
+
+  &--text {
+    @apply text-primary;
+    &:hover {
+      @apply bg-primary-200;
+    }
     &:active {
-      @apply bg-red-700;
+      @apply bg-primary-300;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply text-primary-500;
     }
   }
 
   &--info {
-    @apply text-primary-800 bg-blue-50 border border-blue;
+    @apply text-primary bg-blue-50 border border-blue;
     &:hover {
       @apply bg-blue-100;
     }
@@ -133,7 +133,7 @@
   }
 
   &--danger {
-    @apply text-primary-800 bg-red-50 border border-red;
+    @apply text-primary bg-red-50 border border-red;
     &:hover {
       @apply bg-red-100;
     }
@@ -147,7 +147,7 @@
   }
 
   &--success {
-    @apply text-primary-800 bg-green-50 border border-green;
+    @apply text-primary bg-green-50 border border-green;
     &:hover {
       @apply bg-green-100;
     }
@@ -161,7 +161,7 @@
   }
 
   &--warning {
-    @apply text-primary-800 bg-yellow-50 border border-yellow;
+    @apply text-primary bg-yellow-50 border border-yellow;
     &:hover {
       @apply bg-yellow-100;
     }

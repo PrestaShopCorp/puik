@@ -1,13 +1,25 @@
+@use './common/typography.scss';
 .puik-select {
-  @apply relative mt-1;
+  @apply relative;
+  @extend .puik-body-default;
   &__button {
-    @apply relative w-full cursor-default bg-white min-h-[38px] text-left border border-primary-400 hover:border-primary-500 focus:outline-none focus:ring focus:ring-blue sm:text-sm disabled:border-primary-400 disabled:text-primary-300;
+    @apply relative w-full cursor-default bg-white min-h-[36px] text-left
+      border border-primary-400
+      hover:border-primary
+      text-primary
+      focus-visible:outline-none focus-visible:ring focus-visible:ring-blue
+      disabled:border-primary-400 disabled:text-primary-500;
     &--error {
       @apply border-red;
     }
   }
   &__selected {
-    @apply block truncate w-full py-2 pl-3 pr-9 select-none font-secondary outline-none pointer-events-none text-primary-800 placeholder:text-primary-800 disabled:bg-white disabled:placeholder:text-primary-300;
+    @apply block truncate w-full
+      py-1 pl-3 pr-9 select-none font-secondary outline-none pointer-events-none
+      text-primary
+      disabled:bg-white
+      placeholder:text-primary
+      disabled:placeholder:text-primary-500;
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
     }
@@ -22,7 +34,8 @@
     @apply p-2 truncate;
   }
   &__options {
-    @apply absolute mt-2 w-full rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm overflow-x-hidden;
+    @apply absolute mt-2 w-full rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5
+    focus-visible:outline-none sm:text-sm overflow-x-hidden;
   }
   &__options-list {
     @apply max-h-60 overflow-y-auto overflow-x-hidden;
@@ -30,6 +43,7 @@
   &__error {
     @apply flex text-xs text-red font-secondary font-normal mt-1;
     &__text {
+      @extend .puik-body-small;
       @apply mt-0.5;
     }
     &__icon {

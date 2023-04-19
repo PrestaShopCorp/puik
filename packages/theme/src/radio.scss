@@ -1,19 +1,21 @@
+@use './common/typography.scss';
 .puik-radio {
   $baseClass: &;
-  @apply appearance-none flex items-center  md:text-sm;
+  @extend .puik-body-default;
+  @apply appearance-none flex items-center;
   &__input {
     @apply appearance-none
      bg-transparent bg-clip-content
      w-5 h-5
      mr-2
-     border-2 border-solid rounded-full border-primary;
+     border-2 border-solid rounded-full border-primary cursor-pointer;
 
     &:checked {
-      @apply bg-primary-500
+      @apply bg-primary
       p-[3px]
-      border-2 border-solid border-primary-500;
+      border-2 border-solid border-primary;
       &:disabled {
-        @apply border-2 border-solid rounded-full border-primary-300 bg-primary-300;
+        @apply border-2 border-solid rounded-full border-primary-500 bg-primary-500;
       }
     }
 
@@ -22,13 +24,14 @@
     }
 
     &:disabled {
-      @apply border-2 border-solid rounded-full border-primary-300 bg-transparent;
+      @apply border-2 border-solid rounded-full border-primary-500 bg-transparent;
     }
     &:disabled + #{$baseClass}__label {
-      @apply text-primary-400 cursor-default;
+      @apply text-primary-500 cursor-default;
     }
   }
   &__label {
-    @apply text-base lg:text-sm font-secondary cursor-pointer;
+    @extend .puik-body-default;
+    @apply font-secondary cursor-pointer;
   }
 }

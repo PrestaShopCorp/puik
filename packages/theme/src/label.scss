@@ -1,9 +1,12 @@
+@use './common/typography.scss';
 .puik-label {
-  @apply font-secondary font-bold text-sm text-primary-800;
+  @extend .puik-body-default-bold;
+  @apply text-primary-800;
   &--required {
     @apply text-red ml-1;
   }
   &--optional {
-    @apply text-primary font-normal text-xs ml-1;
+    @extend .puik-body-small;
+    @apply text-primary-700 font-normal ml-1;
   }
 }

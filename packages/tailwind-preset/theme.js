@@ -45,7 +45,7 @@ module.exports = {
         500: '#174EEF',
         700: '#0725E4',
       },
-      oceanBlue: {
+      'ocean-blue': {
         get DEFAULT() {
           return this['500']
         },

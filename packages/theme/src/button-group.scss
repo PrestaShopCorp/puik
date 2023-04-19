@@ -1,5 +1,6 @@
 .puik-button-group {
   .puik-button {
+    @apply relative z-0 focus:z-[1];
     &--primary {
       @apply border border-primary-500;
     }

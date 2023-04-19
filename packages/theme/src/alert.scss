@@ -1,3 +1,5 @@
+@use './common/typography.scss';
+
 .puik-alert {
   @apply relative flex flex-col md:flex-row p-4 border text-primary-800 items-start;
   &--success {
@@ -9,7 +11,7 @@
   &--warning {
     @apply bg-yellow-50 border-yellow;
     .puik-alert__icon {
-      @apply text-amber;
+      @apply text-yellow;
     }
   }
   &--danger {
@@ -34,21 +36,16 @@
     @apply mx-4;
   }
   &__title {
-    @apply font-primary font-semibold mb-1;
+    @extend .puik-h3;
+    @apply font-semibold mb-1;
   }
   &__description {
-    @apply font-secondary text-sm;
-  }
-  &__collapse {
-    @apply font-primary font-bold text-xs float-right cursor-pointer;
+    @extend .puik-body-default;
   }
   &__button {
-    @apply font-primary font-semibold text-sm px-4 py-3 mt-2 ml-9 md:m-0 border rounded outline-none focus:ring focus:ring-blue focus:ring-offset-2;
+    @apply text-sm px-4 py-3 mt-2 ml-9 md:m-0;
   }
   &__icon {
     @apply mt-0.5 flex-shrink-0;
-  }
-  &__close {
-    @apply h-4 absolute top-3.5 right-6 font-materialIcons text-primary-500 cursor-pointer;
   }
 }

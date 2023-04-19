@@ -1,3 +1,4 @@
+@use './common/typography.scss';
 .puik-modal {
   @apply relative z-50;
 
@@ -17,7 +18,7 @@
   }
   &--feedback {
     .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-      @apply text-primary-800 bg-white;
+      @apply text-primary-800 bg-ocean-blue-50;
     }
   }
 
@@ -38,18 +39,17 @@
   }
 
   &__dialogPanelContainer {
-    @apply fixed max-h-full bg-primary-500/50 inset-0 flex justify-center items-end sm:items-center;
-
+    @apply fixed max-h-full bg-primary-700/50 inset-0 flex justify-center items-end sm:items-center;
     &__dialogPanel {
-      @apply w-full
-                sm:h-[90%]
-                max-h-full
-                sm:rounded-lg
-                flex
-                flex-col
-                bg-white
-                p-6
-                gap-6;
+      @apply max-h-full
+        flex
+        flex-col
+        bg-white
+        border
+        drop-shadow-xl
+        border-primary-400
+        p-6
+        gap-6;
 
       &__header {
         @apply flex items-center gap-4;
@@ -59,10 +59,11 @@
         }
 
         &__title {
+          @extend .puik-h2;
           @apply min-w-0 flex-1;
 
           .title {
-            @apply text-2xl font-bold flex-1 overflow-hidden text-ellipsis whitespace-nowrap;
+            @apply font-bold flex-1 overflow-hidden text-ellipsis whitespace-nowrap;
           }
         }
 
