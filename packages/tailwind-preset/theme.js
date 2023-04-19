@@ -76,10 +76,10 @@ module.exports = {
         get marketing() {
           return this['100']
         },
-        50: '#E9F3ED',
+        50: '#EAF8EF',
         100: '#98D9A9',
         300: '#A6CDB8',
-        500: '#21834D',
+        500: '#207F4B',
       },
     },
     fontFamily: {
