@@ -5,15 +5,15 @@
     font-normal;
 
   &--highlight {
-    @apply bg-primary-200;
+    @apply bg-primary-200 border-none;
   }
   &--blue {
-    @apply bg-ocean-blue-50;
+    @apply bg-ocean-blue-50 border-none;
   }
   &--purple {
-    @apply bg-purple-50;
+    @apply bg-purple-50 border-none;
   }
   &--amber {
-    @apply bg-amber-50;
+    @apply bg-amber-50 border-none;
   }
 }
