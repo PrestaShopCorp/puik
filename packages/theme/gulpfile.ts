@@ -78,5 +78,3 @@ export const build = parallel(
 )
 
 export default build
-// Thead TCol TROW
-// TCOL size
