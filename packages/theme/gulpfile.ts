@@ -57,9 +57,9 @@ export function copyThemeBundle() {
  */
 
 export function copyThemeSource() {
-  return src(path.resolve(__dirname, 'src/**')).pipe(
-    dest(path.resolve(distBundle, 'src'))
-  )
+  return src(path.resolve(__dirname, 'src/**'))
+    .pipe(replace(THEME, `${PUIK_PKG}/theme`))
+    .pipe(dest(path.resolve(distBundle, 'src')))
 }
 /**
  * copy assets file to packages
