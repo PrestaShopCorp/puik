@@ -5,12 +5,14 @@ import type {
 } from '../file-upload'
 
 const acceptedTypes = [
+  'image/jpeg',
+  'image/png',
   'application/pdf',
   'application/msword',
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 ]
 
-export const defaultAccept = `image/*, ${acceptedTypes.join(',')}`
+export const defaultAccept = `${acceptedTypes.join(',')}`
 
 export const defaultValidateFile: ValidateFileHandler = (
   file: File,

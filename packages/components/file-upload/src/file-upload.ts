@@ -33,7 +33,7 @@ export const fileUploadProps = buildProps({
   },
   maxFileSizeB: {
     type: Number,
-    default: 1_000_000,
+    default: 1_000,
   },
   maxTotalSizeB: {
     type: Number,
@@ -59,12 +59,7 @@ export interface ValidateFileAdditionalProperties {
   t: Translator
 }
 
-export type FileValidation =
-  | { valid: true }
-  | {
-      valid: false
-      message: string
-    }
+export type FileValidation = { valid: true } | { valid: false; message: string }
 
 export type UploadFileHandler = (
   file: File,

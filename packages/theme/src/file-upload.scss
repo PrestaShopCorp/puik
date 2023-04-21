@@ -34,6 +34,9 @@
       @apply mt-3 px-4 pb-5;
     }
   }
+  &__help-text {
+    @apply mt-1 text-mainFont500 text-bodySmall;
+  }
 }
 
 .puik-file-upload-media {
@@ -64,4 +67,15 @@
   &__close-btn {
     @apply pointer-events-auto absolute top-0 -translate-y-1/2 translate-x-1/2 right-0 leading-[0px] rounded focus-visible:outline-focus-main focus-visible:ring-offset-[-1px] focus-visible:rounded bg-white border border-white text-font-500 hover:text-font-700;
   }
+}
+
+// Custom classes
+.text-mainFont500 {
+  --tw-text-opacity: 1;
+  color: rgb(80 89 105 / var(--tw-text-opacity));
+}
+
+.text-bodySmall {
+  font-size: 12px;
+  line-height: 20px;
 }

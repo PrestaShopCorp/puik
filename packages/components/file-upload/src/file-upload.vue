@@ -39,6 +39,14 @@ async function finishUploading() {
 
 <template>
   <div class="puik-file-upload">
+    <puik-alert
+      v-show="displayError"
+      :title="t('puik.fileUpload.errorTitle')"
+      variant="warning"
+      button-label="Close"
+      @click="closeAlert"
+      >{{ textAlert }}
+    </puik-alert>
     <div
       class="puik-file-upload__dropzone"
       :class="{ 'puik-file-upload__dropzone--drag-over': isDragOver }"
@@ -83,14 +91,9 @@ async function finishUploading() {
         ></puik-file-upload-media>
       </div>
     </div>
-
-    <puik-alert
-      v-show="displayError"
-      :title="t('puik.fileUpload.errorTitle')"
-      variant="warning"
-      button-label="Close"
-      @click="closeAlert"
-      >{{ textAlert }}</puik-alert
-    >
+    <p class="puik-file-upload__help-text">
+      Formats acceptés : .pdf, .jpg, .png, .doc.<br />Le fichier doit faire 2 Mo
+      ou moins.
+    </p>
   </div>
 </template>

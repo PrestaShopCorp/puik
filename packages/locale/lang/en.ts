@@ -21,10 +21,10 @@ export default {
       errorTitle: 'Error',
       removeLabel: 'Delete file',
       errors: {
-        fileSizeTooBig: 'file "{fileName}" is too big',
-        uploadSizeLimit: 'maximum size is reached',
-        invalidType:
-          'invalid file type "{fileType}", allowed types are: {allowedTypes}',
+        fileSizeTooBig:
+          'Your file "{fileName}" is too heavy. It must be 2 MB or less.',
+        uploadSizeLimit: 'The total files weight cannot exceed 10 MB.',
+        invalidType: 'Your file must be a .pdf, .jpg, .png, or .doc.',
       },
     },
   },
