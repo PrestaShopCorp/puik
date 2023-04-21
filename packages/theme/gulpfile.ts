@@ -58,9 +58,19 @@ export function copyThemeSource() {
     dest(path.resolve(distBundle, 'src'))
   )
 }
+/**
+ * copy assets file to packages
+ */
+
+export function copyThemeAssets() {
+  return src(path.resolve(__dirname, 'assets/**')).pipe(
+    dest(path.resolve(distBundle, 'assets'))
+  )
+}
 
 export const build = parallel(
   copyThemeSource,
+  copyThemeAssets,
   series(buildTheme, copyThemeBundle)
 )
 
