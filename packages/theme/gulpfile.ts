@@ -6,11 +6,13 @@ import dartSass from 'sass'
 import postcss from 'gulp-postcss'
 import cleanCSS from 'gulp-clean-css'
 import rename from 'gulp-rename'
+import replace from 'gulp-replace'
 import consola from 'consola'
-import { puikOutput } from '@puik/build'
+import { PUIK_PREFIX, puikOutput, PUIK_PKG } from '@puik/build'
 
 const distFolder = path.resolve(__dirname, 'dist')
 const distBundle = path.resolve(puikOutput, 'theme')
+const THEME = `${PUIK_PREFIX}/theme`
 
 /**
  * compile theme scss & minify
@@ -39,6 +41,7 @@ function buildTheme() {
         }
       })
     )
+    .pipe(replace(THEME, `${PUIK_PKG}/theme`))
     .pipe(dest(distFolder))
 }
 
@@ -75,3 +78,5 @@ export const build = parallel(
 )
 
 export default build
+// Thead TCol TROW
+// TCOL size
