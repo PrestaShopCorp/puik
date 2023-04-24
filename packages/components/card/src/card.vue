@@ -1,13 +1,13 @@
 <template>
-  <div class="puik-card">
+  <div :class="['puik-card', `puik-card--${variant}`]">
     <slot></slot>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useSlots } from 'vue'
+import { cardProps } from './card'
 defineOptions({
   name: 'PuikCard',
 })
-const slots = useSlots()
+defineProps(cardProps)
 </script>
