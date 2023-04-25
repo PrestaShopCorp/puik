@@ -26,6 +26,10 @@ export default {
         uploadSizeLimit: 'The total files weight cannot exceed 10 MB.',
         invalidType: 'Your file must be a .pdf, .jpg, .png, or .doc.',
       },
+      helpText: {
+        acceptedFormat: 'Accepted formats: .pdf, .jpg, .png, .doc.',
+        uploadSizeLimit: 'File must be 2 MB or less.',
+      },
     },
   },
 }

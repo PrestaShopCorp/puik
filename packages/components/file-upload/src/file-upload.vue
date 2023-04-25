@@ -92,8 +92,9 @@ async function finishUploading() {
       </div>
     </div>
     <p class="puik-file-upload__help-text">
-      Formats acceptés : .pdf, .jpg, .png, .doc.<br />Le fichier doit faire 2 Mo
-      ou moins.
+      {{ t('puik.fileUpload.helpText.acceptedFormat') }}<br />{{
+        t('puik.fileUpload.helpText.uploadSizeLimit')
+      }}
     </p>
   </div>
 </template>

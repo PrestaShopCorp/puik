@@ -6,10 +6,16 @@ export default {
       errorTitle: 'Erreur',
       removeLabel: 'Supprimer le fichier',
       errors: {
-        fileSizeTooBig: 'le fichier "{fileName}" est trop volumineux',
-        uploadSizeLimit: 'la taille maximum est atteinte',
+        fileSizeTooBig:
+          'Le fichier "{fileName}" est très volumineux. Il doit avoir une taille maximale de 2 Mo ou moins.',
+        uploadSizeLimit:
+          'Limite de 10 Mo pour la totalité des fichiers uploadés',
         invalidType:
-          'le type de fichier "{fileType}" est invalide, les types acceptés sont : {allowedTypes}',
+          'Le type de fichier "{fileType}" est invalide, les types acceptés sont : {allowedTypes}',
+      },
+      helpText: {
+        acceptedFormat: 'Formats acceptés : .pdf, .jpg, .png, .doc.',
+        uploadSizeLimit: 'Le fichier doit faire 2 Mo ou moins.',
       },
     },
   },
