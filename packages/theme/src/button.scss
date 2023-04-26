@@ -65,10 +65,10 @@
   &--secondary {
     @apply bg-white text-primary border border-primary;
     &:hover {
-      @apply bg-primary-200;
+      @apply bg-primary-300;
     }
     &:active {
-      @apply bg-primary-300;
+      @apply bg-primary-400;
     }
     &:disabled,
     &.puik-button--disabled {
