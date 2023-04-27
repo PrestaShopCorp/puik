@@ -12,6 +12,7 @@
   "scripts": {
     "cz": "git-cz",
     "test": "vitest --no-threads",
+    "coverage": "vitest run --coverage",
     "gen:version": "tsx scripts/gen-version.ts",
     "update:version": "tsx scripts/update-version.ts",
     "clean": "pnpm clean:dist && pnpm -r --parallel clean",
@@ -78,6 +79,7 @@
     "@types/sass": "^1.43.1",
     "@typescript-eslint/eslint-plugin": "5.58.0",
     "@typescript-eslint/parser": "5.58.0",
+    "@vitest/coverage-istanbul": "^0.30.1",
     "@vitejs/plugin-vue": "^4.1.0",
     "@vue/test-utils": "^2.3.2",
     "@vue/tsconfig": "^0.1.3",
