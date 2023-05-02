@@ -85,8 +85,8 @@ puik/
 
 ### Unit tests
 
-This project uses [Vitest](https://vitest.dev/) & [Vue Test Utils](https://vue-test-utils.vuejs.org/) for unit testing.  
-Every new component or feature should have unit tests (if possible).  
+This project uses [Vitest](https://vitest.dev/) & [Vue Test Utils](https://vue-test-utils.vuejs.org/) for unit testing.
+Every new component or feature should have unit tests (if possible).
 Before creating a PR or marking it ready-to-review be sure that all tests pass by running the following command
 
 Example:
@@ -95,14 +95,22 @@ Example:
 $ pnpm test
 ```
 
+This project uses [istanbul](https://istanbul.js.org/) as test coverage provider. Run the following command to check the current coverage. Min coverage rate is at 70%
+
+Example:
+
+```sh
+$ pnpm coverage
+```
+
 ### Storybook
 
 If you are adding a new feature, refactoring or changing the behavior of a component
-or feature in any other manner, you'll likely want to document the changes.  
+or feature in any other manner, you'll likely want to document the changes.
 Please include any changes to the docs in the same PR. You don't have to write documentation on the first commit
 but as soon as the PR is mature enough do it.
 
-All components and documentation are available on our storybook  
+All components and documentation are available on our storybook
 Example:
 
 ```sh
