@@ -18,9 +18,11 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
   })
 }
 
-const getAccordionGroup = () => wrapper.find('.puik-accordion-group')
-const getAccordions = () => wrapper.findAll('.puik-accordion')
+const rootClass = 'puik-accordion'
 const expandedClass = 'puik-accordion--expanded'
+
+const getAccordionGroup = () => wrapper.find('.puik-accordion-group')
+const getAccordions = () => wrapper.findAll(`.${rootClass}`)
 
 describe('AccordionGroup collapse/expand tests', () => {
   it('should be a vue instance', () => {
@@ -140,17 +142,15 @@ describe('AccordionGroup props tests', () => {
     await nextTick()
 
     const accordions = getAccordions()
-    expect(accordions[0].classes().length).toBe(1)
-    expect(accordions[1].classes()).toContain(expandedClass)
-    expect(accordions[2].classes().length).toBe(1)
+    expect(accordions[1].classes()).toEqual([rootClass, expandedClass])
+    expect(accordions[2].classes()).toEqual([rootClass])
 
     wrapper.setData({ expandedAccordions: ['accordion-3'] })
     await nextTick()
-    expect(accordions[0].classes().length).toBe(1)
-    expect(accordions[1].classes().length).toBe(1)
-    expect(accordions[2].classes()).toContain(expandedClass)
+    expect(accordions[1].classes()).toEqual([rootClass])
+    expect(accordions[2].classes()).toEqual([rootClass, expandedClass])
   })
-  it('should change expanded accordion on click', async () => {
+  it('should change expanded accordion on click on multiple mode', async () => {
     const template = `
       <puik-accordion-group multiple>
         <puik-accordion name="accordion-1" title="title 1">
@@ -174,8 +174,8 @@ describe('AccordionGroup props tests', () => {
     accordionButtons[1].trigger('click')
     await nextTick()
 
-    expect(accordions[0].classes()).toContain(expandedClass)
-    expect(accordions[1].classes()).toContain(expandedClass)
-    expect(accordions[2].classes().length).toBe(1)
+    expect(accordions[0].classes()).toEqual([rootClass, expandedClass])
+    expect(accordions[1].classes()).toEqual([rootClass, expandedClass])
+    expect(accordions[2].classes()).toEqual([rootClass])
   })
 })
