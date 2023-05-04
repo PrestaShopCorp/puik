@@ -45,3 +45,19 @@ body:
         required: true
       - label: All interactive states accounted for
         required: true
+
+- type: checkboxes
+  attributes:
+    label: Supported variant options included
+    description: Relevant variants like sizing, styles, icons, error states, etc are included in components. Please note in review request if any currently supported variants are intentionally excluded or removed.
+    options:
+    - label: Supported variant options included
+      required: true
+      
+- type: checkboxes
+  attributes:
+    label: Component description included
+    description: Adding or updating information about the component in the properties panel. Include link to any documentation if it currently exists.
+    options:
+    - label: Component description included
+      required: true 
