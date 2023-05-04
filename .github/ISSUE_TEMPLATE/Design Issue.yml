@@ -45,13 +45,15 @@ body:
         required: true
       - label: All interactive states accounted for
         required: true
+      - label: Supported variant options included
+      required: true
 
 - type: checkboxes
   attributes:
+  label: Design Checklist
     description: Relevant variants like sizing, styles, icons, error states, etc are included in components. Please note in review request if any currently supported variants are intentionally excluded or removed.
     options:
-    - label: Supported variant options included
-      required: true
+
       
 - type: checkboxes
   attributes:
