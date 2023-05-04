@@ -38,10 +38,10 @@ body:
 - type: checkboxes
   attributes:
     label: Design Checklist
-      options:
-    - label: Layers named in alignment with component guidelines
-      required: true
-    - label: Accessible use of color and sufficient touch target area
-      required: true
-    - label: All interactive states accounted for
-      required: true
+    options:
+      - label: Layers named in alignment with component guidelines
+        required: true
+      - label: Accessible use of color and sufficient touch target area
+        required: true
+      - label: All interactive states accounted for
+        required: true
