@@ -83,10 +83,16 @@ puik/
     └── global.d.ts
 ```
 
+### Style
+
+Classes created in scss files must be prefixed with `puik-` followed by the name of the component. Class naming must follow BEM convention.
+
+Example : `.puik-my-component`
+
 ### Unit tests
 
-This project uses [Vitest](https://vitest.dev/) & [Vue Test Utils](https://vue-test-utils.vuejs.org/) for unit testing.  
-Every new component or feature should have unit tests (if possible).  
+This project uses [Vitest](https://vitest.dev/) & [Vue Test Utils](https://vue-test-utils.vuejs.org/) for unit testing.
+Every new component or feature should have unit tests (if possible).
 Before creating a PR or marking it ready-to-review be sure that all tests pass by running the following command
 
 Example:
@@ -98,11 +104,11 @@ $ pnpm test
 ### Storybook
 
 If you are adding a new feature, refactoring or changing the behavior of a component
-or feature in any other manner, you'll likely want to document the changes.  
+or feature in any other manner, you'll likely want to document the changes.
 Please include any changes to the docs in the same PR. You don't have to write documentation on the first commit
 but as soon as the PR is mature enough do it.
 
-All components and documentation are available on our storybook  
+All components and documentation are available on our storybook
 Example:
 
 ```sh
