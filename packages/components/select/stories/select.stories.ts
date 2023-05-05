@@ -4,7 +4,7 @@ import PuikOption from './../src/option.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
-  title: 'Components/Select/Select',
+  title: 'Components/Select',
   components: PuikSelect,
   argTypes: {
     labelKey: {
