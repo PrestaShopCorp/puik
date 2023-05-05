@@ -21,8 +21,17 @@ export default {
         },
       },
     },
+    modelValue: {
+      description: 'v-model of the checkbox',
+      control: 'none',
+      table: {
+        type: {
+          summary: 'true|false',
+        },
+      },
+    },
     disabled: {
-      description: 'Set the button as disabled',
+      description: 'Set the checkbox as disabled',
       table: {
         defaultValue: {
           summary: false,
@@ -35,6 +44,7 @@ export default {
     default: undefined,
     indeterminate: false,
     disabled: false,
+    modelValue: false,
   },
 } as Meta
 
@@ -51,49 +61,80 @@ const Template: Story = (args: Args) => ({
 
 export const Default = Template.bind({})
 Default.args = {}
+Default.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-checkbox v-model="value" label="Label" />
 
-export const Checked: Story = () => ({
-  components: {
-    PuikCheckbox,
+<!--HTML/CSS Snippet-->
+<div class="puik-checkbox">
+  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox">
+  <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
+</div>
+      `,
+      language: 'html',
+    },
   },
-  template: `
-    <div class="space-x-4">
-      <puik-checkbox model-value label="Label"/>
-    </div>
-  `,
+}
+
+export const Checked: Story = Template.bind({})
+Checked.args = {
+  modelValue: true,
+}
+Checked.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-checkbox v-model="value" label="Label" />
+
+<!--HTML/CSS Snippet-->
+<div class="puik-checkbox">
+  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox">
+  <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+const defaultCode = `
+<!--VueJS Snippet-->
+<puik-checkbox v-model="value" label="Label" />
+
+<!--HTML/CSS Snippet-->
+<div class="puik-checkbox">
+  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox">
+  <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
+</div>
+`
+
+function generateStory(args = {}, code = defaultCode) {
+  const story: Story = Template.bind({})
+  story.args = args
+  story.parameters = {
+    docs: {
+      source: {
+        code,
+        language: 'html',
+      },
+    },
+  }
+  return story
+}
+
+export const Unchecked = generateStory({})
+
+export const Indeterminate = generateStory({
+  indeterminate: true,
+  modelValue: false,
 })
 
-export const Unchecked: Story = () => ({
-  components: {
-    PuikCheckbox,
-  },
-  template: `
-    <div class="space-x-4">
-      <puik-checkbox :model-value="false" label="Label"  />
-    </div>
-  `,
-})
-
-export const Indeterminate: Story = () => ({
-  components: {
-    PuikCheckbox,
-  },
-  template: `
-    <div class="space-x-4">
-      <puik-checkbox :model-value="false" label="Label" indeterminate  />
-    </div>
-  `,
-})
-
-export const WithoutLabel: Story = () => ({
-  components: {
-    PuikCheckbox,
-  },
-  template: `
-    <div class="space-x-4">
-      <puik-checkbox :model-value="false"  />
-    </div>
-  `,
+export const WithoutLabel = generateStory({
+  label: undefined,
 })
 
 export const CustomLabel: Story = (args) => ({
@@ -114,36 +155,74 @@ export const CustomLabel: Story = (args) => ({
 CustomLabel.args = {
   default: 'Custom label',
 }
+CustomLabel.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-checkbox v-model="value">
+  <span style="background: blue; color: white; padding: 5px">Custome label</span>
+</puik-checkbox>
 
-export const DisabledUnchecked: Story = () => ({
-  components: {
-    PuikCheckbox,
+<!--HTML/CSS Snippet-->
+<div class="puik-checkbox">
+  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox">
+  <label for="puik-checkbox-id" class="puik-checkbox__label">
+    <span style="background: blue; color: white; padding: 5px;">Custom label</span>
+  </label>
+</div>
+      `,
+      language: 'html',
+    },
   },
-  template: `
-    <div class="space-x-4">
-      <puik-checkbox :model-value="false" label="Label" disabled  />
-    </div>
-  `,
-})
+}
 
-export const DisabledChecked: Story = () => ({
-  components: {
-    PuikCheckbox,
+export const DisabledUnchecked = generateStory(
+  {
+    disabled: true,
   },
-  template: `
-    <div class="space-x-4">
-      <puik-checkbox model-value label="Label" disabled  />
-    </div>
-  `,
-})
+  `
+<!--VueJS Snippet-->
+<puik-checkbox :model-value="false" label="Label" disabled />
 
-export const DisabledIndeterminate: Story = () => ({
-  components: {
-    PuikCheckbox,
+<!--HTML/CSS Snippet-->
+<div class="puik-checkbox">
+  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox" disabled>
+  <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
+</div>
+  `
+)
+
+export const DisabledChecked = generateStory(
+  {
+    disabled: true,
+    modelValue: true,
   },
-  template: `
-    <div class="space-x-4">
-      <puik-checkbox model-value label="Label" disabled indeterminate />
-    </div>
-  `,
-})
+  `
+<!--VueJS Snippet-->
+<puik-checkbox :model-value="true" label="Label" disabled />
+
+<!--HTML/CSS Snippet-->
+<div class="puik-checkbox">
+  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox" disabled>
+  <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
+</div>
+  `
+)
+
+export const DisabledIndeterminate = generateStory(
+  {
+    disabled: true,
+    indeterminate: true,
+  },
+  `
+<!--VueJS Snippet-->
+<puik-checkbox :model-value="true" label="Label" disabled />
+
+<!--HTML/CSS Snippet-->
+<div class="puik-checkbox">
+  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox" disabled>
+  <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
+</div>
+  `
+)

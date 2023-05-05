@@ -18,6 +18,24 @@ export default {
       control: 'text',
       description: 'Label of the radio button using the slot',
     },
+    value: {
+      control: 'text',
+      description: 'Value of the radio button',
+      table: {
+        type: {
+          summary: 'boolean | string | number',
+        },
+      },
+    },
+    modelValue: {
+      control: 'none',
+      description: 'v-model of the radio button',
+      table: {
+        type: {
+          summary: 'boolean | string | number',
+        },
+      },
+    },
   },
   args: {
     label: '',
@@ -42,6 +60,28 @@ const Template: Story = (args: Args) => ({
 
 export const Default = Template.bind({})
 Default.args = {}
+Default.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-radio
+  v-model="value"
+  :label="label"
+  :name="name"
+  :disabled="true|false"
+  :value="value"
+></puik-radio>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-radio__group">
+    <input class="puik-radio__input" type="radio" />
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
 
 export const WithoutLabel: Story = () => ({
   components: {
@@ -58,13 +98,13 @@ WithoutLabel.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-radio v-model="firstValue"></puik-radio>
-      
-      <!--HTML/CSS Snippet-->
-      <div class="puik-radio__group">
-          <input class="puik-radio__input" type="radio" />
-      </div>
+<!--VueJS Snippet-->
+<puik-radio v-model="firstValue"></puik-radio>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-radio__group">
+    <input class="puik-radio__input" type="radio" />
+</div>
       `,
       language: 'html',
     },
@@ -86,14 +126,19 @@ LabelWithSlot.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-radio v-model="firstValue" value="firstValue" >Radio Label by slot</puik-radio>
-      
-      <!--HTML/CSS Snippet-->
-      <div class="puik-radio__group">
-          <input class="puik-radio__input" type="radio" />
-      </div>
-      `,
+<!--VueJS Snippet-->
+<puik-radio
+  v-model="firstValue"
+  value="firstValue"
+>
+  Radio Label by slot
+</puik-radio>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-radio__group">
+    <input class="puik-radio__input" type="radio" />
+</div>
+`,
       language: 'html',
     },
   },
@@ -115,13 +160,13 @@ Selected.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-radio v-model="firstValue" value="firstValue" label="Radio Label"></puik-radio>
-      
-      <!--HTML/CSS Snippet-->
-      <div class="puik-radio__group">
-          <input class="puik-radio__input" type="radio" />
-      </div>
+<!--VueJS Snippet-->
+<puik-radio v-model="firstValue" value="firstValue" label="Radio Label"></puik-radio>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-radio__group">
+    <input class="puik-radio__input" type="radio" />
+</div>
       `,
       language: 'html',
     },
@@ -145,13 +190,13 @@ Unselected.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-radio v-model="firstValue" value="secondValue" >Radio Label by slot</puik-radio>
-      
-      <!--HTML/CSS Snippet-->
-      <div class="puik-radio__group">
-          <input class="puik-radio__input" type="radio" />
-      </div>
+<!--VueJS Snippet-->
+<puik-radio v-model="firstValue" value="secondValue" >Radio Label by slot</puik-radio>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-radio__group">
+    <input class="puik-radio__input" type="radio" />
+</div>
       `,
       language: 'html',
     },
@@ -175,14 +220,14 @@ DisabledSelected.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-radio v-model="firstValue" disabled label="Disabled On" value="firstValue"></puik-radio>
-      <puik-radio v-model="firstValue" label="Disabled Off" value="firstValue"></puik-radio>
-      
-      <!--HTML/CSS Snippet-->
-      <div class="puik-radio__group puik-radio__group--disabled">
-          <input class="puik-radio__input" type="radio" disabled />
-      </div>
+<!--VueJS Snippet-->
+<puik-radio v-model="firstValue" disabled label="Disabled On" value="firstValue"></puik-radio>
+<puik-radio v-model="firstValue" label="Disabled Off" value="firstValue"></puik-radio>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-radio__group puik-radio__group--disabled">
+    <input class="puik-radio__input" type="radio" disabled />
+</div>
       `,
       language: 'html',
     },
@@ -208,14 +253,14 @@ DisabledUnselected.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-radio v-model="firstValue" disabled label="Disabled On" value="secondValue"></puik-radio>
-      <puik-radio v-model="firstValue" label="Disabled Off" value="secondValue"></puik-radio>
-      
-      <!--HTML/CSS Snippet-->
-      <div class="puik-radio__group puik-radio__group--disabled">
-          <input class="puik-radio__input" type="radio" disabled />
-      </div>
+<!--VueJS Snippet-->
+<puik-radio v-model="firstValue" disabled label="Disabled On" value="secondValue"></puik-radio>
+<puik-radio v-model="firstValue" label="Disabled Off" value="secondValue"></puik-radio>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-radio__group puik-radio__group--disabled">
+    <input class="puik-radio__input" type="radio" disabled />
+</div>
       `,
       language: 'html',
     },

@@ -35,9 +35,6 @@ export default {
         defaultValue: {
           summary: false,
         },
-        type: {
-          summary: 'true|false',
-        },
       },
     },
     buttonLabel: {

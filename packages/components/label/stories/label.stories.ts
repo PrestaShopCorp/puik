@@ -7,9 +7,19 @@ export default {
   argTypes: {
     optional: {
       description: 'Set label in optional mode',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
     },
     required: {
       description: 'Set label in required mode',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
     },
     for: {
       description: 'Id of the form related element',
@@ -42,10 +52,11 @@ Default.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-label for="input">My Label</puik-label>
-      <!--HTML/CSS Snippet-->
-      <label class="puik-label" for="input">My Label</label>
+<!--VueJS Snippet-->
+<puik-label for="input">My Label</puik-label>
+
+<!--HTML/CSS Snippet-->
+<label class="puik-label" for="input">My Label</label>
       `,
       language: 'html',
     },
@@ -66,13 +77,14 @@ Optional.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-label for="input" optional>My Label</puik-label>
-      <!--HTML/CSS Snippet-->
-      <label class="puik-label" for="input">
-        My Label
-        <span class="puik-label--optional">(Optional)</span>
-      </label>
+<!--VueJS Snippet-->
+<puik-label for="input" optional>My Label</puik-label>
+
+<!--HTML/CSS Snippet-->
+<label class="puik-label" for="input">
+  My Label
+  <span class="puik-label--optional">(Optional)</span>
+</label>
       `,
       language: 'html',
     },
@@ -93,13 +105,14 @@ Required.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-label for="input" required>My Label</puik-label>
-      <!--HTML/CSS Snippet-->
-      <label class="puik-label" for="input">
-        My Label
-        <span class="puik-label--required">*</span>
-      </label>
+<!--VueJS Snippet-->
+<puik-label for="input" required>My Label</puik-label>
+
+<!--HTML/CSS Snippet-->
+<label class="puik-label" for="input">
+  My Label
+  <span class="puik-label--required">*</span>
+</label>
       `,
       language: 'html',
     },

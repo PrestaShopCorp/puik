@@ -42,9 +42,6 @@ export default {
         defaultValue: {
           summary: false,
         },
-        type: {
-          summary: 'true|false',
-        },
       },
     },
     disabled: {
@@ -52,9 +49,6 @@ export default {
       table: {
         defaultValue: {
           summary: false,
-        },
-        type: {
-          summary: 'true|false',
         },
       },
     },
