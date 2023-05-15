@@ -24,11 +24,6 @@ export default {
     modelValue: {
       description: 'v-model of the checkbox',
       control: 'none',
-      table: {
-        type: {
-          summary: 'true|false',
-        },
-      },
     },
     disabled: {
       description: 'Set the checkbox as disabled',
