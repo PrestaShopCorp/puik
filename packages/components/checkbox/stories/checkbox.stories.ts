@@ -96,7 +96,11 @@ Checked.parameters = {
   },
 }
 
-const defaultCode = `
+export const Unchecked: Story = Template.bind({})
+Unchecked.parameters = {
+  docs: {
+    source: {
+      code: `
 <!--VueJS Snippet-->
 <puik-checkbox v-model="value" label="Label" />
 
@@ -105,32 +109,55 @@ const defaultCode = `
   <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox">
   <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
 </div>
-`
-
-function generateStory(args = {}, code = defaultCode) {
-  const story: Story = Template.bind({})
-  story.args = args
-  story.parameters = {
-    docs: {
-      source: {
-        code,
-        language: 'html',
-      },
+      `,
+      language: 'html',
     },
-  }
-  return story
+  },
 }
 
-export const Unchecked = generateStory({})
-
-export const Indeterminate = generateStory({
+export const Indeterminate: Story = Template.bind({})
+Indeterminate.args = {
   indeterminate: true,
   modelValue: false,
-})
+}
+Indeterminate.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-checkbox v-model="value" label="Label" indeterminate />
 
-export const WithoutLabel = generateStory({
+<!--HTML/CSS Snippet-->
+<div class="puik-checkbox">
+  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox" indeterminate>
+  <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const WithoutLabel: Story = Template.bind({})
+WithoutLabel.args = {
   label: undefined,
-})
+}
+WithoutLabel.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-checkbox v-model="value" />
+
+<!--HTML/CSS Snippet-->
+<div class="puik-checkbox">
+  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox">
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
 
 export const CustomLabel: Story = (args) => ({
   components: {
@@ -140,11 +167,9 @@ export const CustomLabel: Story = (args) => ({
     return { args }
   },
   template: `
-    <div class="space-x-4">
-      <puik-checkbox :model-value="false">
-        <span style="background: blue; color: white; padding: 5px">{{ args.default }}</span>
-      </puik-checkbox>
-    </div>
+    <puik-checkbox :model-value="false">
+      <span style="background: blue; color: white; padding: 5px">{{ args.default }}</span>
+    </puik-checkbox>
   `,
 })
 CustomLabel.args = {
@@ -172,11 +197,14 @@ CustomLabel.parameters = {
   },
 }
 
-export const DisabledUnchecked = generateStory(
-  {
-    disabled: true,
-  },
-  `
+export const DisabledUnchecked: Story = Template.bind({})
+DisabledUnchecked.args = {
+  disabled: true,
+}
+DisabledUnchecked.parameters = {
+  docs: {
+    source: {
+      code: `
 <!--VueJS Snippet-->
 <puik-checkbox :model-value="false" label="Label" disabled />
 
@@ -185,39 +213,54 @@ export const DisabledUnchecked = generateStory(
   <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox" disabled>
   <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
 </div>
-  `
-)
-
-export const DisabledChecked = generateStory(
-  {
-    disabled: true,
-    modelValue: true,
+      `,
+      language: 'html',
+    },
   },
-  `
+}
+
+export const DisabledChecked: Story = Template.bind({})
+DisabledChecked.args = {
+  disabled: true,
+  modelValue: true,
+}
+DisabledChecked.parameters = {
+  docs: {
+    source: {
+      code: `
 <!--VueJS Snippet-->
 <puik-checkbox :model-value="true" label="Label" disabled />
 
 <!--HTML/CSS Snippet-->
 <div class="puik-checkbox">
-  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox" disabled>
+  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox" checked disabled>
   <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
 </div>
-  `
-)
-
-export const DisabledIndeterminate = generateStory(
-  {
-    disabled: true,
-    indeterminate: true,
+      `,
+      language: 'html',
+    },
   },
-  `
+}
+
+export const DisabledIndeterminate: Story = Template.bind({})
+DisabledIndeterminate.args = {
+  disabled: true,
+  indeterminate: true,
+}
+DisabledIndeterminate.parameters = {
+  docs: {
+    source: {
+      code: `
 <!--VueJS Snippet-->
-<puik-checkbox :model-value="true" label="Label" disabled />
+<puik-checkbox label="Label" disabled indeterminate />
 
 <!--HTML/CSS Snippet-->
 <div class="puik-checkbox">
-  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox" disabled>
+  <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox" disabled indeterminate>
   <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
 </div>
-  `
-)
+      `,
+      language: 'html',
+    },
+  },
+}
