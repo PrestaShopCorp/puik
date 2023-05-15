@@ -1,46 +1,71 @@
 .puik-menu {
-  @apply relative w-max;
+  @apply inline-block relative;
+
   &__content {
-    @apply absolute bg-white border border-light-blue-500 shadow rounded p-4 w-full invisible focus:outline-none flex flex-col overflow-y-auto;
+    @apply absolute
+      bg-white 
+      border 
+      border-primary-400 
+      shadow 
+      w-full
+      p-2 
+      z-10 
+      invisible 
+      flex 
+      flex-col 
+      overflow-y-auto
+      lg:w-80
+      focus:outline-none;
+
     &--visible {
       @apply visible;
     }
+
     &__align {
       &--left {
         @apply left-0;
       }
+
       &--right {
         @apply right-0;
       }
     }
+
     &__position {
       &--top {
-        @apply bottom-full mb-2;
+        @apply bottom-full;
       }
-      &--bottom {
-        @apply top-full mt-2;
-      }
+
+      // &--bottom {
+      //   @apply top-full;
+      // }
     }
   }
+
   &__transition {
     &__enter {
       &--active {
         @apply transition duration-200 ease-out;
       }
+
       &--from {
         @apply translate-y-1 opacity-0;
       }
+
       &--to {
         @apply translate-y-0 opacity-100;
       }
     }
+
     &__leave {
       &--active {
         @apply transition duration-150 ease-in;
       }
+
       &--from {
         @apply translate-y-0 opacity-100;
       }
+
       &--to {
         @apply translate-y-1 opacity-0;
       }

@@ -6,7 +6,6 @@ import { PuikButtonGroup } from '@puik/components/button-group'
 import {
   PuikMenu,
   PuikMenuItem,
-  PuikMenuItemGroup,
   PuikMenuItemSeparator,
 } from '@puik/components/menu'
 import { PuikProgressBar } from '@puik/components/progress-bar'
@@ -35,7 +34,6 @@ export default [
   PuikButtonGroup,
   PuikMenu,
   PuikMenuItem,
-  PuikMenuItemGroup,
   PuikMenuItemSeparator,
   PuikProgressBar,
   PuikIcon,

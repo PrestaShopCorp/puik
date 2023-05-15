@@ -3,23 +3,18 @@ import type { ExtractPropTypes, PropType } from 'vue'
 import type Menu from './menu.vue'
 
 export enum MenuAlignEnum {
-  left = 'left',
-  right = 'right',
+  LEFT = 'left',
+  RIGHT = 'right',
 }
 export const menuAlignValues = Object.values(MenuAlignEnum) as string[]
 
 export enum MenuPositionEnum {
-  top = 'top',
-  bottom = 'bottom',
+  TOP = 'top',
+  BOTTOM = 'bottom',
 }
 export const menuPositionValues = Object.values(MenuPositionEnum) as string[]
 
 export const menuProps = buildProps({
-  width: {
-    type: String,
-    required: false,
-    default: '300px',
-  },
   maxHeight: {
     type: String,
     required: false,
@@ -29,13 +24,13 @@ export const menuProps = buildProps({
     type: String as PropType<MenuAlignEnum>,
     required: false,
     values: menuAlignValues,
-    default: MenuAlignEnum.left,
+    default: MenuAlignEnum.LEFT,
   },
   position: {
     type: String as PropType<MenuPositionEnum>,
     required: false,
     values: menuPositionValues,
-    default: MenuPositionEnum.bottom,
+    default: MenuPositionEnum.BOTTOM,
   },
 } as const)
 
