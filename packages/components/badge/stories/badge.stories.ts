@@ -60,7 +60,7 @@ $variants: ${badgeVariantsSummary}
 $variants: ${badgeVariantsSummary}
 -->
 <!--HTML/CSS Snippet-->
-<div class="puik-badge" class="puik-badge--{$variants}">
+<div class="puik-badge puik-badge--{$variants}">
   The text of the badge
 </div>
       `,
@@ -93,7 +93,7 @@ success.parameters = {
 </puik-badge>
 
 <!--HTML/CSS Snippet-->
-<div class="puik-badge" class="puik-badge--success">
+<div class="puik-badge puik-badge--success">
   Status
 </div>
       `,
@@ -126,7 +126,7 @@ warning.parameters = {
 </puik-badge>
 
 <!--HTML/CSS Snippet-->
-<div class="puik-badge" class="puik-badge--warning">
+<div class="puik-badge puik-badge--warning">
   Status
 </div>
       `,
@@ -159,7 +159,7 @@ danger.parameters = {
 </puik-badge>
 
 <!--HTML/CSS Snippet-->
-<div class="puik-badge" class="puik-badge--danger">
+<div class="puik-badge puik-badge--danger">
   Status
 </div>
       `,
@@ -192,7 +192,7 @@ info.parameters = {
 </puik-badge>
 
 <!--HTML/CSS Snippet-->
-<div class="puik-badge" class="puik-badge--info">
+<div class="puik-badge puik-badge--info">
   Status
 </div>
       `,
@@ -225,7 +225,7 @@ neutral.parameters = {
 </puik-badge>
 
 <!--HTML/CSS Snippet-->
-<div class="puik-badge" class="puik-badge--neutral">
+<div class="puik-badge puik-badge--neutral">
   Status
 </div>
       `,
