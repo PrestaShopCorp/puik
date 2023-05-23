@@ -103,12 +103,12 @@ const Template: Story = (args: Args) => ({
         First section title
       </h4>
       <puik-menu-item>
-        <puik-button variant="text" fluid>
+        <puik-button variant="text">
           Item
         </puik-button>
       </puik-menu-item>
       <puik-menu-item>
-        <puik-button variant="text" fluid left-icon="home">
+        <puik-button variant="text" left-icon="home">
           Item with icon
         </puik-button>
       </puik-menu-item>
@@ -122,8 +122,19 @@ const Template: Story = (args: Args) => ({
         Information text
       </p>
       <puik-menu-item>
-        <puik-button to="{name: 'name'}" variant="destructive" fluid left-icon="delete" @click="close">
+        <puik-button variant="destructive" left-icon="delete" @click="close">
           Destructive item
+        </puik-button>
+      </puik-menu-item>
+
+      <puik-menu-item-separator />
+
+      <h4 class="puik-h4">
+        Third section title
+      </h4>
+      <puik-menu-item>
+        <puik-button variant="text" disabled>
+          Disabled item
         </puik-button>
       </puik-menu-item>
     </template>
@@ -161,12 +172,12 @@ Default.parameters = {
       First section title
     </h4>
     <puik-menu-item>
-      <puik-button variant="text" fluid>
+      <puik-button variant="text">
         Item
       </puik-button>
     </puik-menu-item>
     <puik-menu-item>
-      <puik-button variant="text" fluid left-icon="home">
+      <puik-button variant="text" left-icon="home">
         Item with icon
       </puik-button>
     </puik-menu-item>
@@ -180,7 +191,7 @@ Default.parameters = {
       Information text
     </p>
     <puik-menu-item>
-      <puik-button variant="destructive" fluid left-icon="delete" @click="close">
+      <puik-button variant="destructive" left-icon="delete" @click="close">
         Destructive item
       </puik-button>
     </puik-menu-item>
@@ -214,12 +225,12 @@ Default.parameters = {
   <div class="puik-menu__content" id="menu-id" tabindex="-1" style="max-height: none; width: 200px;">
     <h4 class="puik-h4"> First section title </h4>
     <div class="puik-menu-item">
-      <button class="puik-button puik-button--text puik-button--md puik-button--fluid">
+      <button class="puik-button puik-button--text puik-button--md">
         Item
       </button>
     </div>
     <div class="puik-menu-item">
-      <button class="puik-button puik-button--text puik-button--md puik-button--fluid">
+      <button class="puik-button puik-button--text puik-button--md">
         <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">home</div> Item with icon
       </button>
     </div>
@@ -229,7 +240,7 @@ Default.parameters = {
     <h4 class="puik-h4"> Second section title </h4>
     <p> Information text </p>
     <div class="puik-menu-item">
-      <button class="puik-button puik-button--destructive puik-button--md puik-button--fluid">
+      <button class="puik-button puik-button--destructive puik-button--md">
         <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">delete</div> Destructive item
       </button>
     </div>
