@@ -10,25 +10,36 @@ import PuikMenuItemSeparator from '../src/menu-item-separator.vue'
 import PuikButton from '../../button/src/button.vue'
 import type { Meta, Args, Story } from '@storybook/vue3'
 
+const menuAlignsJoined = menuAlignValues.join('|')
+const menuPositionsJoined = menuPositionValues.join('|')
+
 export default {
   title: 'Components/Menu',
   component: PuikMenu,
   argTypes: {
     position: {
+      description: 'Menu position',
       control: 'select',
       options: menuPositionValues,
       table: {
         defaultValue: {
           summary: MenuPositionEnum.BOTTOM,
         },
+        type: {
+          summary: menuPositionsJoined,
+        },
       },
     },
     align: {
+      description: 'Menu alignment',
       control: 'select',
       options: menuAlignValues,
       table: {
         defaultValue: {
           summary: MenuAlignEnum.LEFT,
+        },
+        type: {
+          summary: menuAlignsJoined,
         },
       },
     },
@@ -41,6 +52,15 @@ export default {
         },
       },
     },
+    width: {
+      control: 'text',
+      description: 'Menu width',
+      table: {
+        defaultValue: {
+          summary: '200px',
+        },
+      },
+    },
     trigger: {
       control: 'none',
       description: 'Trigger used to show or hide menu',
@@ -50,13 +70,13 @@ export default {
       description: 'Menu content',
     },
   },
+  args: {
+    width: '200px',
+  },
   parameters: {
     docs: {
       inlineStories: false,
       iframeHeight: 500,
-      description: {
-        component: 'This is an EXPERIMENTAL version!',
-      },
     },
   },
 } as Meta
@@ -73,34 +93,42 @@ const Template: Story = (args: Args) => ({
     return { args }
   },
   template: `
-    <puik-menu>
-      <template #trigger>
-        <puik-button>Show menu</puik-button>
-      </template>
+  <puik-menu v-bind="args">
+    <template #trigger>
+      <puik-button>Show menu</puik-button>
+    </template>
 
-      <puik-menu-item v-slot="slotProps">
-        <p :class="{'outline outline-blue': slotProps.active}">
-          href link {{ slotProps }}
-        </p>
+    <template #default="{ close }">
+      <h4 class="puik-h4">
+        First section title
+      </h4>
+      <puik-menu-item>
+        <puik-button variant="text" fluid>
+          Item
+        </puik-button>
       </puik-menu-item>
-      <puik-menu-item v-slot="slotProps">
-        to link  {{ slotProps }}
+      <puik-menu-item>
+        <puik-button variant="text" fluid left-icon="home">
+          Item with icon
+        </puik-button>
       </puik-menu-item>
 
       <puik-menu-item-separator />
 
-      <puik-menu-item v-slot="menuProps">
-        <puik-button :variant="menuProps.active ? 'danger' : 'text'" fluid @click="test(menuProps.close)">A button (danger)</puik-button>
+      <h4 class="puik-h4">
+        Second section title
+      </h4>
+      <p>
+        Information text
+      </p>
+      <puik-menu-item>
+        <puik-button to="{name: 'name'}" variant="destructive" fluid left-icon="delete" @click="close">
+          Destructive item
+        </puik-button>
       </puik-menu-item>
-
-      <puik-menu-item v-slot="menuProps" disabled>
-        <puik-button :variant="menuProps.active ? 'danger' : 'text'" fluid @click="test">A disabled button</puik-button>
-      </puik-menu-item>
-
-      <puik-menu-item v-slot="menuProps" disabled>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem eius expedita assumenda sed. Laudantium voluptatibus natus, necessitatibus, in sit cumque et veniam repudiandae ab, hic quam magni iste deleniti. Asperiores?</p>
-      </puik-menu-item>
-    </puik-menu>`,
+    </template>
+  </puik-menu>
+    `,
 })
 
 export const Default = Template.bind({})
@@ -111,40 +139,102 @@ Default.args = {
 }
 Default.parameters = {
   docs: {
-    description: {
-      story: 'Fuck',
-    },
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-menu>
-        <template #trigger>
-          <puik-button>Show menu</puik-button>
-        </template>
+<!--VueJS Snippet-->
+<!--
+  $aligns: ${menuAlignsJoined}
+  $positions: ${menuPositionsJoined}
+-->
+<puik-menu
+  :align="$aligns"
+  :position="$position"
+  :width="width"
+  :max-height="maxHeight"
+>
+  <template #trigger>
+    <puik-button>Show menu</puik-button>
+  </template>
 
-        <puik-menu-item v-slot="slotProps">
-          <p :class="{'outline outline-blue': slotProps.active}">
-            href link {{ slotProps }}
-          </p>
-        </puik-menu-item>
-        <puik-menu-item v-slot="slotProps">
-          to link  {{ slotProps }}
-        </puik-menu-item>
+  <template #default="{ close }">
+    <h4 class="puik-h4">
+      First section title
+    </h4>
+    <puik-menu-item>
+      <puik-button variant="text" fluid>
+        Item
+      </puik-button>
+    </puik-menu-item>
+    <puik-menu-item>
+      <puik-button variant="text" fluid left-icon="home">
+        Item with icon
+      </puik-button>
+    </puik-menu-item>
 
-        <puik-menu-item-separator />
+    <puik-menu-item-separator />
 
-        <puik-menu-item v-slot="menuProps">
-          <puik-button :variant="menuProps.active ? 'danger' : 'text'" fluid @click="test(menuProps.close)">A button (danger)</puik-button>
-        </puik-menu-item>
+    <h4 class="puik-h4">
+      Second section title
+    </h4>
+    <p>
+      Information text
+    </p>
+    <puik-menu-item>
+      <puik-button variant="destructive" fluid left-icon="delete" @click="close">
+        Destructive item
+      </puik-button>
+    </puik-menu-item>
+  </template>
+</puik-menu>
 
-        <puik-menu-item v-slot="menuProps" disabled>
-          <puik-button :variant="menuProps.active ? 'danger' : 'text'" fluid @click="test">A disabled button</puik-button>
-        </puik-menu-item>
+<!--HTML/CSS Snippet-->
+<!--
+  State classes
+  Hide menu: "puik-menu--invisible"
+-->
+<!--
+  $aligns: ${menuAlignsJoined}
+  $positions: ${menuPositionsJoined}
+-->
+<div class="puik-menu puik-menu--position-bottom puik-menu--align-left">
+  <button class="puik-button puik-button--primary puik-button--md puik-menu__trigger" aria-expanded="true" type="button" aria-controls="menu-id">
+    Show menu
+  </button>
+  <!--
+    Menu content transition
 
-        <puik-menu-item v-slot="menuProps" disabled>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem eius expedita assumenda sed. Laudantium voluptatibus natus, necessitatibus, in sit cumque et veniam repudiandae ab, hic quam magni iste deleniti. Asperiores?</p>
-        </puik-menu-item>
-      </puik-menu>
+    Enter active: "puik-menu__transition__enter--active"
+    Enter from: "puik-menu__transition__enter--from"
+    Enter to: "puik-menu__transition__enter--to"
+
+    Leaving enter: puik-menu__transition__leave--active"
+    Leaving from: "puik-menu__transition__leave--from"
+    Leaving to: "puik-menu__transition__leave--to"
+  -->
+  <div class="puik-menu__content" id="menu-id" tabindex="-1" style="max-height: none; width: 200px;">
+    <h4 class="puik-h4"> First section title </h4>
+    <div class="puik-menu-item">
+      <button class="puik-button puik-button--text puik-button--md puik-button--fluid">
+        Item
+      </button>
+    </div>
+    <div class="puik-menu-item">
+      <button class="puik-button puik-button--text puik-button--md puik-button--fluid">
+        <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">home</div> Item with icon
+      </button>
+    </div>
+    <div class="puik-menu-item">
+      <hr class="puik-menu-item-separator">
+    </div>
+    <h4 class="puik-h4"> Second section title </h4>
+    <p> Information text </p>
+    <div class="puik-menu-item">
+      <button class="puik-button puik-button--destructive puik-button--md puik-button--fluid">
+        <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">delete</div> Destructive item
+      </button>
+    </div>
+  </div>
+</div>
       `,
       language: 'html',
     },

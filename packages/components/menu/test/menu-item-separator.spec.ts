@@ -6,12 +6,19 @@ describe('Menu item separator tests', () => {
   let wrapper: VueWrapper<any>
   const template = `
     <puik-menu>
-      <template #activator>
+      <template #trigger>
         <puik-button>Show menu</puik-button>
       </template>
-      <puik-menu-item>First link</puik-menu-item>
-      <puik-menu-item-separator></puik-menu-item-separator>
-      <puik-menu-item>second link</puik-menu-item>
+
+      <puik-menu-item>
+        <puik-button>First link</puik-button>
+      </puik-menu-item>
+      <puik-menu-item>
+        <puik-button>Second link</puik-button>
+      </puik-menu-item>
+      <puik-menu-item>
+        <puik-button>Third link</puik-button>
+      </puik-menu-item>
     </puik-menu>
   `
   it('should be a vue instance', () => {

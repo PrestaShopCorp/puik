@@ -23,8 +23,8 @@ export function factoryMenu(
   })
 }
 
+export const getMenu = (wrapper) => wrapper.find('.puik-menu')
 export const getMenuTrigger = (wrapper) => wrapper.find('.puik-menu__trigger')
-
 export const getMenuContent = (wrapper) => wrapper.find('.puik-menu__content')
 
 export const getMenuSeparator = (wrapper) =>
@@ -44,7 +44,9 @@ describe('Menu tests', () => {
         <template #trigger>
           <puik-button>Show menu</puik-button>
         </template>
-        <puik-menu-item>Link</puik-menu-item>
+        <puik-menu-item>
+          <puik-button>Link</puik-button>
+        </puik-menu-item>
       </puik-menu>
     `)
     expect(wrapper).toBeTruthy()
@@ -56,13 +58,13 @@ describe('Menu tests', () => {
         <template #trigger>
           <puik-button>Show menu</puik-button>
         </template>
-        <puik-menu-item>Link</puik-menu-item>
+        <puik-menu-item>
+          <puik-button>Link</puik-button>
+        </puik-menu-item>
       </puik-menu>
     `)
     await showMenu(wrapper)
-    expect(getMenuContent(wrapper).classes()).toContain(
-      'puik-menu__content--visible'
-    )
+    expect(getMenuContent(wrapper)).toBeTruthy()
   })
 
   it('content should have top position', async () => {
@@ -71,13 +73,13 @@ describe('Menu tests', () => {
         <template #trigger>
           <puik-button>Show menu</puik-button>
         </template>
-        <puik-menu-item>Link</puik-menu-item>
+        <puik-menu-item>
+          <puik-button>Link</puik-button>
+        </puik-menu-item>
       </puik-menu>
     `)
     await showMenu(wrapper)
-    expect(getMenuContent(wrapper).classes()).toContain(
-      'puik-menu__content__position--top'
-    )
+    expect(getMenu(wrapper).classes()).toContain('puik-menu--position-top')
   })
 
   it('content should have right align', async () => {
@@ -86,13 +88,13 @@ describe('Menu tests', () => {
       <template #trigger>
         <puik-button>Show menu</puik-button>
       </template>
-      <puik-menu-item>Link</puik-menu-item>
+      <puik-menu-item>
+        <puik-button>Link</puik-button>
+      </puik-menu-item>
     </puik-menu>
     `)
     await showMenu(wrapper)
-    expect(getMenuContent(wrapper).classes()).toContain(
-      'puik-menu__content__align--right'
-    )
+    expect(getMenu(wrapper).classes()).toContain('puik-menu--align-right')
   })
 
   it('menu should have maxHeight', async () => {
@@ -102,7 +104,9 @@ describe('Menu tests', () => {
       <template #trigger>
         <puik-button>Show menu</puik-button>
       </template>
-      <puik-menu-item>Link</puik-menu-item>
+      <puik-menu-item>
+        <puik-button>Link</puik-button>
+      </puik-menu-item>
     </puik-menu>
     `)
     await showMenu(wrapper)

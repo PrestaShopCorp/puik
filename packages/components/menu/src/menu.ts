@@ -20,6 +20,11 @@ export const menuProps = buildProps({
     required: false,
     default: 'none',
   },
+  width: {
+    type: String,
+    required: false,
+    default: '200px',
+  },
   align: {
     type: String as PropType<MenuAlignEnum>,
     required: false,

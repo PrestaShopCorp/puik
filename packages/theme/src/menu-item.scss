@@ -1,3 +1,17 @@
+@use './common/typography.scss';
 .puik-menu-item {
-  @apply p-2 block text-left;
+  @extend .puik-body-default;
+  @apply flex text-left;
+
+  .puik-button {
+    @extend .puik-body-default;
+    @apply text-left font-normal py-2 px-2;
+
+    &--destructive {
+      &:disabled {
+        @apply text-red-100;
+      }
+      @apply bg-white text-red-500 hover:bg-primary-200;
+    }
+  }
 }

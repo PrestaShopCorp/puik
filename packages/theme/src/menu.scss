@@ -1,44 +1,39 @@
+@use './common/typography.scss';
 .puik-menu {
-  @apply inline-block relative;
+  @extend .puik-body-default;
+  @apply relative left-0;
 
   &__content {
     @apply absolute
-      bg-white 
-      border 
-      border-primary-400 
-      shadow 
-      w-full
-      p-2 
-      z-10 
-      invisible 
-      flex 
-      flex-col 
-      overflow-y-auto
-      lg:w-80
-      focus:outline-none;
+      mt-2
+      bg-white
+      shadow-md
+      p-2
+      flex
+      flex-col
+      gap-2
+      overflow-y-auto;
+  }
 
-    &--visible {
-      @apply visible;
+  &--invisible {
+    .puik-menu__content {
+      @apply invisible;
     }
+  }
 
-    &__align {
-      &--left {
-        @apply left-0;
-      }
-
-      &--right {
+  &--align {
+    &-right {
+      .puik-menu__content {
         @apply right-0;
       }
     }
+  }
 
-    &__position {
-      &--top {
-        @apply bottom-full;
+  &--position {
+    &-top {
+      .puik-menu__content {
+        @apply bottom-full mb-2;
       }
-
-      // &--bottom {
-      //   @apply top-full;
-      // }
     }
   }
 
