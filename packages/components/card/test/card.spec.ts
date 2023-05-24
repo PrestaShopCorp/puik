@@ -34,4 +34,15 @@ describe('Card tests', () => {
     )
     expect(wrapper.text()).toEqual(slotDefault)
   })
+
+  it('should display the default variant', () => {
+    factory()
+    expect(wrapper.classes()).toContain('puik-card--default')
+  })
+
+  it('should display the blue variant', () => {
+    const variant = 'blue'
+    factory({ variant })
+    expect(wrapper.classes()).toContain(`puik-card--${variant}`)
+  })
 })

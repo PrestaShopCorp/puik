@@ -10,6 +10,7 @@
       { 'puik-button--fluid': fluid },
     ]"
     :disabled="disabled"
+    @click="setSelected"
   >
     <puik-icon
       v-if="leftIcon"
@@ -28,14 +29,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import { PuikIcon } from '@puik/components/icon'
+import { ButtonGroupKey } from '../../button-group'
 import { buttonProps } from './button'
 defineOptions({
   name: 'PuikButton',
 })
 
 const props = defineProps(buttonProps)
+const buttonGroup = inject(ButtonGroupKey, undefined)
 
 const componentType = computed(() => {
   if (props.to) {
@@ -49,4 +52,10 @@ const componentType = computed(() => {
 const pathProp = computed(() =>
   props.to ? { to: props.to } : { href: props.href }
 )
+
+const setSelected = () => {
+  if (buttonGroup && props.value) {
+    buttonGroup.selected.value = props.value
+  }
+}
 </script>

@@ -11,7 +11,7 @@ export const buttonVariants = [
   'info',
   'success',
   'warning',
-  'error',
+  'danger',
 ]
 
 export const buttonSizes = ['sm', 'md', 'lg']
@@ -58,7 +58,12 @@ export const buttonProps = buildProps({
     required: false,
     default: undefined,
   },
-} as const)
+  value: {
+    type: [String, Number, Object, Array],
+    required: false,
+    default: undefined,
+  },
+})
 
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>
 

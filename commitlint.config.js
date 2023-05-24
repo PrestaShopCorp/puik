@@ -1,12 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const {
-  default: getWorkspacePackages,
-} = require('@pnpm/find-workspace-packages')
+const { findWorkspacePackages } = require('@pnpm/find-workspace-packages')
 
 async function getPackages(context) {
   const ctx = context || {}
   const cwd = ctx.cwd || process.cwd()
-  const packages = await getWorkspacePackages(cwd)
+  const packages = await findWorkspacePackages(cwd)
   return packages
     .map((pkg) => pkg.manifest.name)
     .filter((name) => !!name)

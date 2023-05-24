@@ -6,11 +6,13 @@ import dartSass from 'sass'
 import postcss from 'gulp-postcss'
 import cleanCSS from 'gulp-clean-css'
 import rename from 'gulp-rename'
+import replace from 'gulp-replace'
 import consola from 'consola'
-import { puikOutput } from '@puik/build'
+import { PUIK_PREFIX, puikOutput, PUIK_PKG } from '@puik/build'
 
 const distFolder = path.resolve(__dirname, 'dist')
 const distBundle = path.resolve(puikOutput, 'theme')
+const THEME = `${PUIK_PREFIX}/theme`
 
 /**
  * compile theme scss & minify
@@ -39,6 +41,7 @@ function buildTheme() {
         }
       })
     )
+    .pipe(replace(THEME, `${PUIK_PKG}/theme`))
     .pipe(dest(distFolder))
 }
 
@@ -54,13 +57,23 @@ export function copyThemeBundle() {
  */
 
 export function copyThemeSource() {
-  return src(path.resolve(__dirname, 'src/**')).pipe(
-    dest(path.resolve(distBundle, 'src'))
+  return src(path.resolve(__dirname, 'src/**'))
+    .pipe(replace(THEME, `${PUIK_PKG}/theme`))
+    .pipe(dest(path.resolve(distBundle, 'src')))
+}
+/**
+ * copy assets file to packages
+ */
+
+export function copyThemeAssets() {
+  return src(path.resolve(__dirname, 'assets/**')).pipe(
+    dest(path.resolve(distBundle, 'assets'))
   )
 }
 
 export const build = parallel(
   copyThemeSource,
+  copyThemeAssets,
   series(buildTheme, copyThemeBundle)
 )
 

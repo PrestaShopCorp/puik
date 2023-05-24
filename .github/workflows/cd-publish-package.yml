@@ -30,7 +30,7 @@ jobs:
         uses: ./.github/actions/build-and-publish
         with:
           git_author_email: squad-engagement@prestashop.com
-          node_version: 16
+          node_version: 18
           github_token: ${{ secrets.GITHUB_TOKEN }}
           npm_token: ${{ secrets.NPM_TOKEN }}
           version: ${{ steps.get_tag.outputs.TAG }}

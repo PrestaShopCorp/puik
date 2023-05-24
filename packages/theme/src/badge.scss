@@ -1,0 +1,25 @@
+@use './common/typography.scss';
+.puik-badge {
+  @extend .puik-body-default;
+  @apply rounded-2xl inline-block py-1 px-3 leading-5 font-normal;
+
+  &--success {
+    @apply bg-green text-white;
+  }
+
+  &--warning {
+    @apply bg-yellow text-primary;
+  }
+
+  &--danger {
+    @apply bg-red text-white;
+  }
+
+  &--info {
+    @apply bg-blue text-white;
+  }
+
+  &--neutral {
+    @apply bg-primary-600 text-white;
+  }
+}

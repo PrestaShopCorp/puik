@@ -1,22 +1,22 @@
+@use './common/typography.scss';
 .puik-tooltip {
   @apply inline-flex;
-  &:focus,
-  &:hover {
-    .puik-tooltip__tip {
-      @apply opacity-100;
-    }
+
+  &__wrapper {
+    @apply w-full min-w-0;
   }
 
   &__tip {
-    @apply absolute bg-font text-white rounded px-3 py-2 font-secondary flex flex-col opacity-0 pointer-events-none transition-opacity;
-    &:hover {
-      @apply opacity-100;
-    }
-    &__title {
-      @apply relative font-bold mb-1;
-    }
-    &__description {
-      @apply relative;
+    @apply absolute bg-primary text-white px-3 py-2 font-primary transition-opacity duration-300;
+
+    &__content {
+      @extend .puik-body-default;
+      @apply flex flex-col relative z-10;
+
+      &__title {
+        @extend .puik-body-default-bold;
+        @apply font-bold mb-1;
+      }
     }
 
     &[data-popper-placement^='top'] > &__arrow {
@@ -35,6 +35,7 @@
     &__arrow {
       visibility: hidden;
     }
+
     &__arrow::before {
       @apply visible rotate-45;
       content: '';
@@ -47,6 +48,6 @@
   }
 
   &__icon {
-    @apply font-materialIcons text-font-500 hover:text-font text-base transition-colors cursor-pointer;
+    @apply font-materialIcons text-primary hover:text-primary-800 text-base transition-colors cursor-pointer;
   }
 }
