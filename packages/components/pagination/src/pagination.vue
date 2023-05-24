@@ -10,7 +10,7 @@
       v-model="page"
       :label="currentLabel"
       :loader-button-label="loaderButtonLabel"
-      :disabled="disabled"
+      :disabled="loaderButtonDisabled"
     />
 
     <div v-else class="puik-pagination__content">
@@ -37,6 +37,7 @@
         v-if="variant === PaginationVariantEnum.large"
         v-model="page"
         v-bind="commonPaginationProps"
+        :disabled="loaderButtonDisabled"
         :total-item="totalItem"
       />
     </div>

@@ -18,11 +18,8 @@
         <puik-button
           :aria-current="page === 1"
           :aria-label="t('puik.pagination.goTo', { page: 1 })"
-          :class="{
-            'puik-pagination__pager-button--active': page === 1,
-          }"
+          :variant="page === 1 ? 'secondary' : 'text'"
           class="puik-pagination__button puik-pagination__pager-button"
-          variant="text"
           @click="page = 1"
         >
           1
@@ -44,12 +41,9 @@
       >
         <puik-button
           :aria-label="t('puik.pagination.goTo', { page: item })"
-          :class="{
-            'puik-pagination__pager-button--active': page === item,
-          }"
-          variant="text"
-          class="puik-pagination__button puik-pagination__pager-button"
+          :variant="page === item ? 'secondary' : 'text'"
           :aria-current="page === item"
+          class="puik-pagination__button puik-pagination__pager-button"
           @click="page = item"
         >
           {{ item }}
@@ -68,11 +62,8 @@
         <puik-button
           :aria-current="page === maxPage"
           :aria-label="t('puik.pagination.goTo', { page: maxPage })"
-          :class="{
-            'puik-pagination__pager-button--active': page === maxPage,
-          }"
+          :variant="page === maxPage ? 'secondary' : 'text'"
           class="puik-pagination__button puik-pagination__pager-button"
-          variant="text"
           @click="page = maxPage"
         >
           {{ maxPage }}

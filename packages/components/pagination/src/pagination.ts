@@ -49,6 +49,11 @@ export const paginationProps = buildProps({
     required: false,
     default: undefined,
   },
+  loaderButtonDisabled: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 } as const)
 
 export type PaginationProps = ExtractPropTypes<typeof paginationProps>
