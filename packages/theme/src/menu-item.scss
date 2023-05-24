@@ -5,7 +5,7 @@
 
   .puik-button {
     @extend .puik-body-default;
-    @apply text-left font-normal py-2 px-2 w-full;
+    @apply text-left font-normal p-2 w-full;
 
     &--destructive {
       &:disabled {
