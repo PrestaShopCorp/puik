@@ -1,9 +1,12 @@
 import { describe, it, expect } from 'vitest'
-import { factoryMenu, showMenu, getMenuSeparator } from './menu.spec'
+import { factoryMenu, showMenu } from './menu.spec'
 import type { VueWrapper } from '@vue/test-utils'
 
 describe('Menu item separator tests', () => {
   let wrapper: VueWrapper<any>
+
+  const getMenuSeparator = () => wrapper.findAll('.puik-menu-item-separator')
+
   const template = `
     <puik-menu>
       <template #trigger>
@@ -13,9 +16,7 @@ describe('Menu item separator tests', () => {
       <puik-menu-item>
         <puik-button>First link</puik-button>
       </puik-menu-item>
-      <puik-menu-item>
-        <puik-button>Second link</puik-button>
-      </puik-menu-item>
+      <puik-menu-item-separator />
       <puik-menu-item>
         <puik-button>Third link</puik-button>
       </puik-menu-item>
@@ -28,6 +29,6 @@ describe('Menu item separator tests', () => {
   it('should have separator', async () => {
     wrapper = factoryMenu(template)
     await showMenu(wrapper)
-    expect(getMenuSeparator(wrapper)).toBeTruthy()
+    expect(getMenuSeparator().length).toBeTruthy()
   })
 })

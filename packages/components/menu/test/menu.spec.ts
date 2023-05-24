@@ -27,9 +27,6 @@ export const getMenu = (wrapper) => wrapper.find('.puik-menu')
 export const getMenuTrigger = (wrapper) => wrapper.find('.puik-menu__trigger')
 export const getMenuContent = (wrapper) => wrapper.find('.puik-menu__content')
 
-export const getMenuSeparator = (wrapper) =>
-  wrapper.find('.puik-menu-item-separator')
-
 export const showMenu = (wrapper) => {
   getMenuTrigger(wrapper).trigger('click')
   return nextTick()
