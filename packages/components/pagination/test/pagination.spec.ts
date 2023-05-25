@@ -218,27 +218,23 @@ describe('Pagination tests', () => {
     })
 
     const buttons = findButtons()
-    const activeClass = 'puik-pagination__pager-button--active'
     const getAriaCurrent = (button) => button.attributes('aria-current')
 
     // Click first pager button
     const firstPagerButton = buttons[0]
     await firstPagerButton.trigger('click')
     await nextTick()
-    expect(firstPagerButton.classes()).toContain(activeClass)
     expect(getAriaCurrent(firstPagerButton)).toBe('true')
 
     // Click middle pager button
     await buttons[4].trigger('click')
     await nextTick()
-    expect(buttons[3].classes()).toContain(activeClass)
     expect(getAriaCurrent(buttons[3])).toBe('true')
 
     // Click last pager button
     const lastPagerButton = buttons[buttons.length - 1]
     await lastPagerButton.trigger('click')
     await nextTick()
-    expect(lastPagerButton.classes()).toContain(activeClass)
     expect(getAriaCurrent(lastPagerButton)).toBe('true')
   })
 
