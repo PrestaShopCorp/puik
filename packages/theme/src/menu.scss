@@ -1,7 +1,7 @@
 @use './common/typography.scss';
 .puik-menu {
   @extend .puik-body-default;
-  @apply relative left-0;
+  @apply relative left-0 w-max;
 
   &__content {
     @apply absolute

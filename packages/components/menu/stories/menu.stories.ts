@@ -8,6 +8,7 @@ import PuikMenu from '../src/menu.vue'
 import PuikMenuItem from '../src/menu-item.vue'
 import PuikMenuItemSeparator from '../src/menu-item-separator.vue'
 import PuikButton from '../../button/src/button.vue'
+import PuikLink from '../../link/src/link.vue'
 import type { Meta, Args, Story } from '@storybook/vue3'
 
 const menuAlignsJoined = menuAlignValues.join('|')
@@ -85,6 +86,7 @@ const Template: Story = (args: Args) => ({
   args: {},
   components: {
     PuikButton,
+    PuikLink,
     PuikMenu,
     PuikMenuItem,
     PuikMenuItemSeparator,
@@ -99,7 +101,7 @@ const Template: Story = (args: Args) => ({
     </template>
 
     <template #default="{ close }">
-      <h4 class="puik-h4">
+      <h4 class="puik-body-default-bold uppercase">
         First section title
       </h4>
       <puik-menu-item>
@@ -112,10 +114,15 @@ const Template: Story = (args: Args) => ({
           Item with icon
         </puik-button>
       </puik-menu-item>
+      <puik-menu-item>
+        <puik-button variant="text" right-icon="home">
+          Item with icon
+        </puik-button>
+      </puik-menu-item>
 
       <puik-menu-item-separator />
 
-      <h4 class="puik-h4">
+      <h4 class="puik-body-default-bold uppercase">
         Second section title
       </h4>
       <p>
@@ -129,7 +136,7 @@ const Template: Story = (args: Args) => ({
 
       <puik-menu-item-separator />
 
-      <h4 class="puik-h4">
+      <h4 class="puik-body-default-bold uppercase">
         Third section title
       </h4>
       <puik-menu-item>
@@ -137,6 +144,11 @@ const Template: Story = (args: Args) => ({
           Disabled item
         </puik-button>
       </puik-menu-item>
+      <div class="flex justify-end">
+        <puik-link class="flex items-center">
+          View all result
+        </puik-link>
+      </div>
     </template>
   </puik-menu>
     `,

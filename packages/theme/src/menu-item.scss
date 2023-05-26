@@ -5,11 +5,18 @@
 
   .puik-button {
     @extend .puik-body-default;
-    @apply text-left font-normal p-2 w-full;
+    @apply text-left font-normal p-2 w-full flex items-center;
+
+    &__right-icon {
+      @apply ml-auto;
+    }
 
     &--destructive {
       &:disabled {
         @apply text-red-100;
+      }
+      &:hover {
+        @apply bg-red-50;
       }
       @apply bg-white text-red-500 hover:bg-primary-200;
     }
