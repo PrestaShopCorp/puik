@@ -6,7 +6,7 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 describe('SpinnerLoader tests', () => {
   let wrapper: VueWrapper<any>
   const findComponent = () => wrapper.find('.puik-spinner-loader')
-  const findLabel = () => wrapper.find('.puik-spinner-loader__text')
+  const findLabel = () => wrapper.find('.puik-spinner-loader__label')
 
   const factory = (
     propsData: Record<string, any> = {},
@@ -50,13 +50,13 @@ describe('SpinnerLoader tests', () => {
   })
 
   it('should display the spinner loader label below the spinner.', () => {
-    factory({ text: 'Loading ...' })
+    factory({ label: 'Loading ...' })
     expect(findLabel().exists()).toBeTruthy()
     expect(findLabel().text()).toBe('Loading ...')
   })
 
   it('should display the spinner loader label next to the right the spinner.', () => {
-    factory({ textRight: 'Loading ...' })
+    factory({ label: 'Loading ...', position: 'right' })
     expect(findComponent().classes()).toContain('puik-spinner-loader--right')
     expect(findLabel().exists()).toBeTruthy()
     expect(findLabel().text()).toBe('Loading ...')

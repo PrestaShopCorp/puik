@@ -3,8 +3,8 @@ import type { ExtractPropTypes } from 'vue'
 import type SpinnerLoader from './spinner-loader.vue'
 
 export const spinnerSizes = ['sm', 'md', 'lg']
-// TODO: check si c'est correct
 export const spinnerVariants = ['light', 'dark']
+export const spinnerPosition = ['bottom', 'right']
 
 export const spinnerLoaderProps = buildProps({
   size: {
@@ -19,15 +19,16 @@ export const spinnerLoaderProps = buildProps({
     values: spinnerVariants,
     default: 'dark',
   },
-  text: {
+  label: {
     type: String,
     required: false,
     default: undefined,
   },
-  textRight: {
+  position: {
     type: String,
+    values: spinnerPosition,
     required: false,
-    default: undefined,
+    default: 'bottom',
   },
 } as const)
 

@@ -4,7 +4,7 @@
       'puik-spinner-loader',
       `puik-spinner-loader--${size}`,
       `puik-spinner-loader--${variant}`,
-      { 'puik-spinner-loader--right': textRight },
+      { 'puik-spinner-loader--right': position === 'right' },
     ]"
   >
     <svg
@@ -49,26 +49,18 @@
       />
     </svg>
 
-    <span v-if="handleText" class="puik-spinner-loader__text">
-      {{ handleText }}
+    <span v-if="label" class="puik-spinner-loader__label">
+      {{ label }}
     </span>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { spinnerLoaderProps } from './spinner-loader'
 
 defineOptions({
   name: 'PuikSpinnerLoader',
 })
 
-const props = defineProps(spinnerLoaderProps)
-
-const handleText = computed(() => {
-  if (props.textRight) {
-    return props.textRight
-  }
-  return props.text
-})
+defineProps(spinnerLoaderProps)
 </script>

@@ -26,13 +26,13 @@
 
   &--right {
     @apply flex-row;
-    .puik-spinner-loader__text {
+    .puik-spinner-loader__label {
       @apply pl-2;
     }
   }
 
   &--sm {
-    .puik-spinner-loader__text {
+    .puik-spinner-loader__label {
       @extend .puik-body-small;
     }
 
@@ -42,7 +42,7 @@
   }
 
   &--lg {
-    .puik-spinner-loader__text {
+    .puik-spinner-loader__label {
       @extend .puik-body-large;
     }
 

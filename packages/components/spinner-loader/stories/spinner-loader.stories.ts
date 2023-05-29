@@ -1,9 +1,14 @@
 import PuikSpinnerLoader from './../src/spinner-loader.vue'
-import { spinnerSizes, spinnerVariants } from './../src/spinner-loader'
+import {
+  spinnerSizes,
+  spinnerVariants,
+  spinnerPosition,
+} from './../src/spinner-loader'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 const sizesSummary = spinnerSizes.join('|')
 const variantsSummary = spinnerVariants.join('|')
+const positionSummary = spinnerPosition.join('|')
 
 export default {
   title: 'Components/SpinnerLoader',
@@ -35,13 +40,22 @@ export default {
         },
       },
     },
-    text: {
+    label: {
       control: 'text',
       description: 'Set label below the spinner',
     },
-    textRight: {
-      control: 'text',
+    position: {
+      control: 'select',
       description: 'Set label beside right the spinner',
+      options: spinnerPosition,
+      table: {
+        type: {
+          summary: positionSummary,
+        },
+        defaultValue: {
+          summary: 'bottom',
+        },
+      },
     },
   },
   args: {
@@ -139,13 +153,13 @@ Light.parameters = {
   },
 }
 
-export const WithLabel: Story = SpinnerTemplate.bind({})
-WithLabel.args = {
+export const Bottom: Story = SpinnerTemplate.bind({})
+Bottom.args = {
   variant: 'dark',
-  text: 'In progress ',
+  label: 'In progress ',
 }
 
-WithLabel.parameters = {
+Bottom.parameters = {
   docs: {
     source: {
       code: `
@@ -157,13 +171,14 @@ WithLabel.parameters = {
   },
 }
 
-export const WithLabelAlignRigth: Story = SpinnerTemplate.bind({})
-WithLabelAlignRigth.args = {
+export const Rigth: Story = SpinnerTemplate.bind({})
+Rigth.args = {
   variant: 'dark',
-  textRight: 'In progress ',
+  label: 'In progress ',
+  position: 'right',
 }
 
-WithLabelAlignRigth.parameters = {
+Rigth.parameters = {
   docs: {
     source: {
       code: `
