@@ -23,19 +23,19 @@
         </linearGradient>
       </defs>
 
-      <g stroke-width="8">
+      <g stroke-width="14">
         <path
           :stroke="`url(#spinner-secondHalf--${size}--${variant})`"
-          d="M 4 100 A 32 32 0 0 1 196 100"
+          d="M 8 100 A 32 32 0 0 1 190 100"
         />
         <path
           :stroke="`url(#spinner-firstHalf--${size}--${variant})`"
-          d="M 196 100 A 32 32 0 0 1 4 100"
+          d="M 190 100 A 32 32 0 0 1 8 100"
         />
         <path
           stroke="currentColor"
           stroke-linecap="round"
-          d="M 4 100 A 32 32 0 0 1 4 98"
+          d="M 8 100 A 32 32 0 0 1 8 100"
         />
       </g>
 
