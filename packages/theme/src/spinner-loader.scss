@@ -1,38 +1,53 @@
 @use './common/typography.scss';
 
 .puik-spinner-loader {
-  &__container {
-    @apply flex flex-col;
+  @extend .puik-body-default;
+  @apply flex flex-col items-center w-max;
+
+  .puik-spinner-loader__spinner {
+    @apply w-5 h-5 fill-none;
   }
 
-  &--spinner {
-    @extend .puik-body-default;
-    @apply inline-block w-5 h-5 text-white bg-white
-    border-2 border-solid rounded-3xl border-r-primary-800 border-b-primary-800
-    border-t-primary-200 border-l-primary-200;
-    animation: spin 2s linear infinite;
+  &--light {
+    @apply text-white;
+
+    .puik-spinner-loader__spinner {
+      @apply w-5 h-5 text-white;
+    }
+  }
+
+  &--dark {
+    @apply text-primary-800;
+
+    .puik-spinner-loader__spinner {
+      @apply w-5 h-5 text-primary-800;
+    }
+  }
+
+  &--right {
+    @apply flex-row;
+    .puik-spinner-loader__text {
+      @apply pl-2;
+    }
   }
 
   &--sm {
-    @apply text-xs leading-5 w-4 h-4;
-    &-text {
-      @apply text-xs leading-5;
+    .puik-spinner-loader__text {
+      @extend .puik-body-small;
+    }
+
+    .puik-spinner-loader__spinner {
+      @apply w-4 h-4;
     }
   }
 
   &--lg {
-    @apply text-base leading-[1.375rem] w-8 h-8;
-    &-text {
-      @apply text-base leading-[1.375rem];
+    .puik-spinner-loader__text {
+      @extend .puik-body-large;
     }
-  }
-}
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+    .puik-spinner-loader__spinner {
+      @apply w-8 h-8;
+    }
   }
 }
