@@ -13,10 +13,10 @@ export function factoryMenu(
 ) {
   return mount({
     components: {
-      'puik-menu': PuikMenu,
-      'puik-menu-item': PuikMenuItem,
-      'puik-menu-item-separator': PuikMenuItemSeparator,
-      'puik-button': PuikButton,
+      PuikMenu,
+      PuikMenuItem,
+      PuikMenuItemSeparator,
+      PuikButton,
     },
     template,
     ...options,

@@ -5,7 +5,7 @@ import type { VueWrapper } from '@vue/test-utils'
 describe('Menu item separator tests', () => {
   let wrapper: VueWrapper<any>
 
-  const getMenuSeparator = () => wrapper.findAll('.puik-menu-item-separator')
+  const getMenuSeparator = () => wrapper.find('.puik-menu-item-separator')
 
   const template = `
     <puik-menu>
@@ -29,6 +29,6 @@ describe('Menu item separator tests', () => {
   it('should have separator', async () => {
     wrapper = factoryMenu(template)
     await showMenu(wrapper)
-    expect(getMenuSeparator().length).toBeTruthy()
+    expect(getMenuSeparator().exists()).toBeTruthy()
   })
 })
