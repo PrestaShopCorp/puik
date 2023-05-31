@@ -7,7 +7,7 @@
       { 'puik-spinner-loader--right': position === 'right' },
     ]"
   >
-    <div class="puik-spinner-loader__spinner bg-spinner"></div>
+    <div class="puik-spinner-loader__spinner"></div>
     <span v-if="label" class="puik-spinner-loader__label">
       {{ label }}
     </span>

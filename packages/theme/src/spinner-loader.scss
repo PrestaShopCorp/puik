@@ -5,7 +5,7 @@
   @apply flex flex-col items-center w-max;
 
   .puik-spinner-loader__spinner {
-    @apply w-5 h-5 fill-none;
+    @apply w-5 h-5 fill-none bg-spinner;
   }
 
   &--light {
