@@ -83,11 +83,28 @@ Default.parameters = {
       <!--
       $sizes: ${sizesSummary}
       $variants: ${variantsSummary}
+      $positions: ${positionSummary}
+
       -->
       <puik-spinner-loader
         size="$sizes"
         variant="$variants"
+        position="$positions"
+        :label="My Label"
       />
+
+      <!--HTML/CSS Snippet-->
+      <!--
+        State classes
+        size: "puik-spinner-loader--${sizesSummary}"
+        variants: "puik-spinner-loader--${variantsSummary}"
+        positions: "puik-spinner-loader--${positionSummary}"
+       -->
+      <div class="puik-spinner-loader">
+        <div class="puik-spinner-loader__spinner"></div>
+        <!-- Label -->
+        <span class="puik-spinner-loader__label">My Label</span>
+      </div>
       `,
       language: 'html',
     },
@@ -130,6 +147,11 @@ Dark.parameters = {
       code: `
       <!--VueJS Snippet-->
       <puik-spinner-loader />
+
+      <!--HTML/CSS Snippet-->
+      <div class="puik-spinner-loader">
+        <div class="puik-spinner-loader__spinner"></div>
+      </div>
       `,
       language: 'html',
     },
@@ -147,6 +169,11 @@ Light.parameters = {
       code: `
       <!--VueJS Snippet-->
       <puik-spinner-loader variant="light" />
+
+      <!--HTML/CSS Snippet-->
+      <div class="puik-spinner-loader puik-spinner-loader--light">
+        <div class="puik-spinner-loader__spinner"></div>
+      </div>
       `,
       language: 'html',
     },
@@ -164,7 +191,13 @@ Bottom.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-spinner-loader text="In progress" />
+      <puik-spinner-loader label="In progress" />
+
+      <!--HTML/CSS Snippet-->
+      <div class="puik-spinner-loader">
+        <div class="puik-spinner-loader__spinner"></div>
+        <span class="puik-spinner-loader__label">In progress</span>
+      </div>
       `,
       language: 'html',
     },
@@ -183,7 +216,13 @@ Rigth.parameters = {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-spinner-loader text-right="In progress" />
+      <puik-spinner-loader label="In progress" position="right"/>
+
+      <!--HTML/CSS Snippet-->
+      <div class="puik-spinner-loader puik-spinner-loader--right">
+        <div class="puik-spinner-loader__spinner"></div>
+        <span class="puik-spinner-loader__label">In progress</span>
+      </div>
       `,
       language: 'html',
     },
