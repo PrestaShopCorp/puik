@@ -13,6 +13,7 @@
 
     .puik-spinner-loader__spinner {
       @apply w-5 h-5 text-white;
+      filter: brightness(0) invert(1);
     }
   }
 
