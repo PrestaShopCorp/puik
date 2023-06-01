@@ -1,13 +1,13 @@
 import PuikSpinnerLoader from './../src/spinner-loader.vue'
 import {
   spinnerSizes,
-  spinnerVariants,
+  spinnerColors,
   spinnerPosition,
 } from './../src/spinner-loader'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 const sizesSummary = spinnerSizes.join('|')
-const variantsSummary = spinnerVariants.join('|')
+const colorsSummary = spinnerColors.join('|')
 const positionSummary = spinnerPosition.join('|')
 
 export default {
@@ -27,16 +27,16 @@ export default {
         },
       },
     },
-    variant: {
+    color: {
       control: 'select',
-      description: 'Set the spinner variant',
-      options: spinnerVariants,
+      description: 'Set the spinner color',
+      options: spinnerColors,
       table: {
         type: {
-          summary: variantsSummary,
+          summary: colorsSummary,
         },
         defaultValue: {
-          summary: 'dark',
+          summary: 'primary',
         },
       },
     },
@@ -82,13 +82,13 @@ Default.parameters = {
       <!--VueJS Snippet -->
       <!--
       $sizes: ${sizesSummary}
-      $variants: ${variantsSummary}
+      $colors: ${colorsSummary}
       $positions: ${positionSummary}
 
       -->
       <puik-spinner-loader
         size="$sizes"
-        variant="$variants"
+        color="$colors"
         position="$positions"
         :label="My Label"
       />
@@ -97,7 +97,7 @@ Default.parameters = {
       <!--
         State classes
         size: "puik-spinner-loader--${sizesSummary}"
-        variants: "puik-spinner-loader--${variantsSummary}"
+        colors: "puik-spinner-loader--${colorsSummary}"
         positions: "puik-spinner-loader--${positionSummary}"
        -->
       <div class="puik-spinner-loader">
@@ -114,8 +114,8 @@ Default.parameters = {
 const SpinnerTemplate = (args: Args, storyContext) => ({
   components: { PuikSpinnerLoader },
   setup() {
-    const variant = args.variant ?? storyContext?.args?.variant ?? ''
-    const isDark = variant !== 'dark' ? 'bg-primary-800' : ''
+    const color = args.color ?? storyContext?.args?.color ?? ''
+    const isDark = color !== 'primary' ? 'bg-primary-800' : ''
 
     return {
       args,
@@ -127,21 +127,21 @@ const SpinnerTemplate = (args: Args, storyContext) => ({
       class="flex flex-row flex-wrap items-center gap-4"
       :class="[isDark]"
     >
-      <puik-spinner-loader v-bind="args" :variant="args.variant" size="lg" />
+      <puik-spinner-loader v-bind="args" :color="args.color" size="lg" />
 
-      <puik-spinner-loader v-bind="args" :variant="args.variant" />
+      <puik-spinner-loader v-bind="args" :color="args.color" />
 
-      <puik-spinner-loader v-bind="args" :variant="args.variant" size="sm" />
+      <puik-spinner-loader v-bind="args" :color="args.color" size="sm" />
     </div>
   `,
 })
 
-export const Dark: Story = SpinnerTemplate.bind({})
-Dark.args = {
-  variant: 'dark',
+export const Primary: Story = SpinnerTemplate.bind({})
+Primary.args = {
+  color: 'primary',
 }
 
-Dark.parameters = {
+Primary.parameters = {
   docs: {
     source: {
       code: `
@@ -158,20 +158,20 @@ Dark.parameters = {
   },
 }
 
-export const Light: Story = SpinnerTemplate.bind({})
-Light.args = {
-  variant: 'light',
+export const Reverse: Story = SpinnerTemplate.bind({})
+Reverse.args = {
+  color: 'reverse',
 }
 
-Light.parameters = {
+Reverse.parameters = {
   docs: {
     source: {
       code: `
       <!--VueJS Snippet-->
-      <puik-spinner-loader variant="light" />
+      <puik-spinner-loader color="reverse" />
 
       <!--HTML/CSS Snippet-->
-      <div class="puik-spinner-loader puik-spinner-loader--light">
+      <div class="puik-spinner-loader puik-spinner-loader--reverse">
         <div class="puik-spinner-loader__spinner"></div>
       </div>
       `,
@@ -182,7 +182,7 @@ Light.parameters = {
 
 export const Bottom: Story = SpinnerTemplate.bind({})
 Bottom.args = {
-  variant: 'dark',
+  color: 'primary',
   label: 'In progress ',
 }
 
@@ -206,7 +206,7 @@ Bottom.parameters = {
 
 export const Right: Story = SpinnerTemplate.bind({})
 Right.args = {
-  variant: 'dark',
+  color: 'primary',
   label: 'In progress ',
   position: 'right',
 }

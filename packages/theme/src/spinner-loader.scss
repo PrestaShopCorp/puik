@@ -8,7 +8,7 @@
     @apply w-5 h-5 fill-none bg-spinner;
   }
 
-  &--light {
+  &--reverse {
     @apply text-white;
 
     .puik-spinner-loader__spinner {
@@ -17,11 +17,11 @@
     }
   }
 
-  &--dark {
-    @apply text-primary-800;
+  &--primary {
+    @apply text-primary;
 
     .puik-spinner-loader__spinner {
-      @apply w-5 h-5 text-primary-800;
+      @apply w-5 h-5 text-primary;
     }
   }
 

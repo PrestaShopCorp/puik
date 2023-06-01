@@ -39,14 +39,14 @@ describe('SpinnerLoader tests', () => {
     expect(findComponent().classes()).toContain('puik-spinner-loader--sm')
   })
 
-  it('should display the spinner loader variant as dark', () => {
-    factory({ variant: 'dark' })
-    expect(findComponent().classes()).toContain('puik-spinner-loader--dark')
+  it('should display the spinner loader color as primary', () => {
+    factory({ color: 'primary' })
+    expect(findComponent().classes()).toContain('puik-spinner-loader--primary')
   })
 
-  it('should display the spinner loader variant as light', () => {
-    factory({ variant: 'light' })
-    expect(findComponent().classes()).toContain('puik-spinner-loader--light')
+  it('should display the spinner loader color as reverse', () => {
+    factory({ color: 'reverse' })
+    expect(findComponent().classes()).toContain('puik-spinner-loader--reverse')
   })
 
   it('should display the spinner loader label below the spinner.', () => {

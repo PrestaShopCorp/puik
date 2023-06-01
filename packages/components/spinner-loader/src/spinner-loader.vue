@@ -3,7 +3,7 @@
     :class="[
       'puik-spinner-loader',
       `puik-spinner-loader--${size}`,
-      `puik-spinner-loader--${variant}`,
+      `puik-spinner-loader--${color}`,
       { 'puik-spinner-loader--right': position === 'right' },
     ]"
   >
