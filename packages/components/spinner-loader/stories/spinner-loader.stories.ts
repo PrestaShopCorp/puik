@@ -204,14 +204,14 @@ Bottom.parameters = {
   },
 }
 
-export const Rigth: Story = SpinnerTemplate.bind({})
-Rigth.args = {
+export const Right: Story = SpinnerTemplate.bind({})
+Right.args = {
   variant: 'dark',
   label: 'In progress ',
   position: 'right',
 }
 
-Rigth.parameters = {
+Right.parameters = {
   docs: {
     source: {
       code: `
