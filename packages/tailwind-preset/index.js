@@ -8,7 +8,7 @@ module.exports = {
       addComponents({
         '.bg-spinner': {
           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none' color='${theme(
-            'colors.primary'
+            'colors.primary.800'
           ).replace(
             '#',
             '%23'
