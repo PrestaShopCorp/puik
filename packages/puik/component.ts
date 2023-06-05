@@ -1,3 +1,4 @@
+import { PuikTable } from '@puik/components/table'
 import { PuikBreadcrumb } from '@puik/components/breadcrumb'
 import { PuikAccordion, PuikAccordionGroup } from '@puik/components/accordion'
 import { PuikBadge } from '@puik/components/badge'
@@ -21,6 +22,7 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikTable,
   PuikBreadcrumb,
   PuikAccordion,
   PuikAccordionGroup,
