@@ -43,6 +43,11 @@ export default {
     label: {
       control: 'text',
       description: 'Set label below the spinner',
+      table: {
+        defaultValue: {
+          summary: 'undefined',
+        },
+      },
     },
     position: {
       control: 'select',
@@ -60,17 +65,32 @@ export default {
   },
   args: {
     size: 'md',
+    label: '',
+    color: 'primary',
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: Story = (args: Args, storyContext) => ({
   components: {
     PuikSpinnerLoader,
   },
   setup() {
-    return { args }
+    const color = args.color ?? storyContext?.args?.color ?? ''
+    const isDark = color !== 'primary' ? 'bg-primary-800' : ''
+
+    return {
+      args,
+      isDark,
+    }
   },
-  template: `<puik-spinner-loader v-bind="args" />`,
+  template: `
+    <div
+      class="flex flex-row flex-wrap items-center gap-4"
+      :class="[isDark]"
+    >
+      <puik-spinner-loader v-bind="args" />
+    </div>
+  `,
 })
 
 export const Default = Template.bind({})
@@ -127,11 +147,11 @@ const SpinnerTemplate = (args: Args, storyContext) => ({
       class="flex flex-row flex-wrap items-center gap-4"
       :class="[isDark]"
     >
-      <puik-spinner-loader v-bind="args" :color="args.color" size="lg" />
+      <puik-spinner-loader v-bind="args" size="lg" />
 
-      <puik-spinner-loader v-bind="args" :color="args.color" />
+      <puik-spinner-loader v-bind="args" />
 
-      <puik-spinner-loader v-bind="args" :color="args.color" size="sm" />
+      <puik-spinner-loader v-bind="args" size="sm" />
     </div>
   `,
 })
@@ -182,8 +202,7 @@ Reverse.parameters = {
 
 export const Bottom: Story = SpinnerTemplate.bind({})
 Bottom.args = {
-  color: 'primary',
-  label: 'In progress ',
+  label: 'In progress',
 }
 
 Bottom.parameters = {
@@ -206,7 +225,6 @@ Bottom.parameters = {
 
 export const Right: Story = SpinnerTemplate.bind({})
 Right.args = {
-  color: 'primary',
   label: 'In progress ',
   position: 'right',
 }

@@ -50,15 +50,17 @@ describe('SpinnerLoader tests', () => {
   })
 
   it('should display the spinner loader label below the spinner.', () => {
-    factory({ label: 'Loading ...' })
+    const label = 'Loading ...'
+    factory({ label })
     expect(findLabel().exists()).toBeTruthy()
-    expect(findLabel().text()).toBe('Loading ...')
+    expect(findLabel().text()).toBe(label)
   })
 
   it('should display the spinner loader label next to the right the spinner.', () => {
-    factory({ label: 'Loading ...', position: 'right' })
+    const label = 'Loading ...'
+    factory({ label, position: 'right' })
     expect(findComponent().classes()).toContain('puik-spinner-loader--right')
     expect(findLabel().exists()).toBeTruthy()
-    expect(findLabel().text()).toBe('Loading ...')
+    expect(findLabel().text()).toBe(label)
   })
 })

@@ -17,7 +17,7 @@ export const spinnerLoaderProps = buildProps({
     type: String,
     required: false,
     values: spinnerColors,
-    default: 'dark',
+    default: 'primary',
   },
   label: {
     type: String,
