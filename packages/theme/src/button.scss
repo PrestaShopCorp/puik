@@ -6,16 +6,16 @@
 
   &--sm {
     @extend .puik-text-button-small;
-    @apply py-1 px-2 gap-2;
+    @apply py-1 px-2 gap-2 h-7;
   }
 
   &--md {
-    @apply gap-2;
+    @apply gap-2 h-9;
   }
 
   &--lg {
     @extend .puik-text-button-large;
-    @apply py-3.5 px-4 gap-3;
+    @apply py-3.5 px-4 gap-3 h-12;
   }
 
   &--fluid {
