@@ -1,7 +1,70 @@
+@use './common/typography.scss';
 .puik-table {
-  @apply w-max;
+  @extend .puik-body-default;
+  @apply overflow-x-auto border-y-[1px] bg-white font-normal min-w-full;
 
-  &__row {
-    @apply bg-white;
+  @mixin puik-table-item() {
+    @apply h-[52px] p-4;
+    &--sm {
+      @apply w-[60px];
+    }
+    &--md {
+      @apply w-[240px];
+    }
+    &--lg {
+      @apply w-[480px];
+    }
+  }
+  &__head,
+  > thead {
+    @apply font-normal;
+    &__row,
+    > tr {
+      @apply font-normal;
+      &__item,
+      > th {
+        @extend .puik-body-small;
+        @apply font-normal uppercase;
+        @include puik-table-item();
+        &--selection {
+          &__checkbox {
+            .puik-checkbox__label {
+              @apply sr-only;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__body,
+  > tbody {
+    &__row,
+    > tr {
+      @apply border-t-[1px];
+      &:hover {
+        @apply bg-primary-200;
+      }
+      &__item,
+      > td {
+        @include puik-table-item();
+        @apply overflow-hidden;
+        &--center {
+          @apply text-center;
+        }
+        &--right {
+          @apply text-right;
+        }
+        &--left {
+          @apply text-left;
+        }
+        &--selection {
+          &__checkbox {
+            .puik-checkbox__label {
+              @apply sr-only;
+            }
+          }
+        }
+      }
+    }
   }
 }

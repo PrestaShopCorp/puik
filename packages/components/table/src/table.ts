@@ -2,9 +2,13 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Table from './table.vue'
 
+export const puikTableColSizes = ['sm', 'md', 'lg']
+
 export interface PuikTableHeader {
   value: string
   text?: string
+  size?: 'sm' | 'md' | 'lg'
+  align?: 'left' | 'center' | 'right'
 }
 
 export const tableProps = buildProps({

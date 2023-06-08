@@ -1,6 +1,8 @@
 import { ref } from 'vue'
 import PuikBadge from '../../badge/src/badge.vue'
+import PuikIcon from '../../icon/src/icon.vue'
 import PuikTable from './../src/table.vue'
+import type { PuikTableHeader } from '../src/table'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
@@ -29,6 +31,8 @@ import type { PuikTableHeader } from '@prestashopcorp/puik/es/components/table/s
 interface PuikTableHeader {
   text: string | undefined
   value: string
+  size: 'sm' | 'md' | 'lg' | undefined
+  align: 'left' | 'center' | 'right' | undefined
 }
 `,
         },
@@ -72,16 +76,22 @@ const Template: Story = (args: Args) => ({
   components: {
     PuikTable,
     PuikBadge,
+    PuikIcon,
   },
   setup() {
-    const headers = [
+    const headers: PuikTableHeader[] = [
       {
         text: 'Nom',
         value: 'lastname',
+        size: 'lg',
       },
       {
         text: 'Prénom',
         value: 'firstname',
+      },
+      {
+        value: 'actions',
+        size: 'sm',
       },
     ]
     const items = [
@@ -114,6 +124,9 @@ const Template: Story = (args: Args) => ({
       <puik-badge>
         {{ item.value1 }}
       </puik-badge>
+    </template>
+    <template #item-actions>
+      <puik-icon icon="delete" aria-label="Delete item" class="ml-2"></puik-icon>
     </template>
   </puik-table>`,
 })

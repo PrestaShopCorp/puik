@@ -1,41 +1,58 @@
 <template>
-  <table class="puik-table">
-    <thead class="puik-table__headers">
-      <tr class="puik-table__headers_header">
-        <th v-if="selectable" class="puik-table__headers__item__selection">
+  <table class="puik-table" :style="{ width: '900px' }">
+    <thead class="puik-table__head">
+      <tr class="puik-table__head__row">
+        <th
+          v-if="selectable"
+          class="puik-table__head__row__item puik-table__head__row__item--selection puik-table__head__row__item--sm"
+        >
           <puik-checkbox
-            :model-value="checkedAll"
+            :model-value="selectAll"
             :indeterminate="indeterminate"
+            class="puik-table__head__row__item--selection__checkbox"
             @click="handleClickAll"
-          ></puik-checkbox>
+          >
+            {{ selectAllLabel }}
+          </puik-checkbox>
         </th>
         <th
           v-for="header in headers"
           :key="`headers${header.value}`"
-          class="puik-table__headers__item"
+          class="puik-table__head__row__item"
+          :class="{
+            [`puik-table__head__row__item--${header.size}`]:
+              header?.size && !header?.width,
+          }"
         >
           <slot :name="`header-${header.value}`" :header="header">
-            {{ header.text ?? header.value }}
+            {{ header.text }}
           </slot>
         </th>
       </tr>
     </thead>
-    <tbody class="puik-table__rows">
+    <tbody class="puik-table__body">
       <tr
         v-for="(item, rowIndex) in items"
         :key="`row-${rowIndex}`"
-        class="puik-table__row"
+        class="puik-table__body__row"
       >
-        <td v-if="selectable" class="puik-table__row__col__selection">
+        <td
+          v-if="selectable"
+          class="puik-table__body__row__item puik-table__body__row__item--selection"
+        >
           <puik-checkbox
-            :model-value="getChecked(rowIndex)"
+            :model-value="getSelected(rowIndex)"
+            class="puik-table__body__row__item--selection__checkbox"
             @click="handleClick(rowIndex)"
-          ></puik-checkbox>
+          >
+            {{ getSelectLabel(rowIndex) }}
+          </puik-checkbox>
         </td>
         <td
           v-for="(header, colIndex) in headers"
           :key="`col-${colIndex}`"
-          class="puik-table__row__col"
+          class="puik-table__body__row__item"
+          :class="[`puik-table__body__row__item--${header.align ?? 'left'}`]"
         >
           <slot :name="`item-${header.value}`" :item="item">
             {{ item[header.value] }}
@@ -48,17 +65,20 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import { useLocale } from '@puik/hooks'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
 import { tableProps, tableEmits } from './table'
+import type { PuikTableHeader } from './table'
 defineOptions({
   name: 'PuikTable',
 })
 
 const props = defineProps(tableProps)
 const emit = defineEmits(tableEmits)
+const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
 
-const checkedAll = computed(() => {
+const selectAll = computed(() => {
   if (indeterminate.value) return false
   return checked.value.length === props.items.length
 })
@@ -68,7 +88,7 @@ const indeterminate = computed(() => {
 })
 
 function handleClickAll() {
-  if (indeterminate.value || !checkedAll.value) {
+  if (indeterminate.value || !selectAll.value) {
     checked.value = props.items.map((...args) => args[1])
   } else {
     checked.value = []
@@ -76,10 +96,6 @@ function handleClickAll() {
 
   emit('click:all')
   emit('update:selection', checked.value)
-}
-
-function getChecked(index: number): boolean {
-  return checked.value.some((value) => value === index)
 }
 
 function handleClick(index: number) {
@@ -91,6 +107,24 @@ function handleClick(index: number) {
 
   emit('click', index)
   emit('update:selection', checked.value)
+}
+
+function getSelected(index: number): boolean {
+  return checked.value.some((value) => value === index)
+}
+
+const selectAllLabel = computed(() => {
+  return t(
+    `puik.table.${
+      indeterminate.value || selectAll.value
+        ? 'selectAllLabel'
+        : 'unselectAllLabel'
+    }`
+  )
+})
+
+function getSelectLabel(index: number): string {
+  return t(`puik.table.${getSelected(index) ? 'selectLabel' : 'unselectLabel'}`)
 }
 
 watch(
