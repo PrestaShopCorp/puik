@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core'
+import { computed } from 'vue'
 import { PuikButton } from '@puik/components/button'
 import { useLocale } from '@puik/hooks'
 import { paginationSmallProps } from './pagination-small'
@@ -38,5 +38,8 @@ const emit = defineEmits<{
 
 const { t } = useLocale()
 
-const page = useVModel(props, 'modelValue', emit)
+const page = computed({
+  get: () => props.modelValue,
+  set: (page: number) => emit('update:modelValue', page),
+})
 </script>

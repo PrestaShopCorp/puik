@@ -10,7 +10,7 @@
       class="puik-pagination__previous-button puik-pagination__button"
       left-icon="keyboard_arrow_left"
       variant="tertiary"
-      @click="page -= 1"
+      @click="emit('update:page', page - 1)"
     >
       <span class="puik-pagination__previous-button-text">
         {{ t('puik.pagination.previous') }}
@@ -19,14 +19,15 @@
 
     <div class="puik-pagination__jumper">
       <puik-select
-        v-model="page"
+        :model-value="page"
         :aria-label="t('puik.pagination.large.choosePage')"
         :disabled="disabled"
         class="puik-pagination__select"
+        @update:model-value="emit('update:page', $event)"
       >
         <puik-option
           v-for="index in maxPage"
-          :key="`puik-pagination-option-${index}`"
+          :key="`puik-pagination__page-selector__option-${index}`"
           :value="index"
         >
           {{ index }}
@@ -44,13 +45,27 @@
       class="puik-pagination__button puik-pagination__next-button"
       right-icon="keyboard_arrow_right"
       variant="tertiary"
-      @click="page += 1"
+      @click="emit('update:page', page + 1)"
     >
       <span class="puik-pagination__next-button-text">
         {{ t('puik.pagination.next') }}
       </span>
     </puik-button>
   </div>
+
+  <puik-select
+    v-model="currentItemsPerPage"
+    class="puik-pagination__items-per-page-select"
+  >
+    <puik-option
+      v-for="item in itemsPerPageOptions"
+      :key="`puik-pagination__items-per-page-select__option-${item}`"
+      :value="item"
+      class="puik-pagination__items-per-page-select__option"
+    >
+      {{ item }}
+    </puik-option>
+  </puik-select>
 </template>
 
 <script setup lang="ts">
@@ -62,13 +77,13 @@ import { paginationLargeProps } from './pagination-large'
 defineOptions({
   name: 'PuikPaginationLarge',
 })
-
 const props = defineProps(paginationLargeProps)
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: number): void
+  (e: 'update:page', value: number): void
+  (e: 'update:itemsPerPage', value: number): void
 }>()
 
-const { t } = useLocale()
+const currentItemsPerPage = useVModel(props, 'itemsPerPage', emit)
 
-const page = useVModel(props, 'modelValue', emit)
+const { t } = useLocale()
 </script>

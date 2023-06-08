@@ -84,7 +84,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useVModel } from '@vueuse/core'
 import { PuikButton } from '@puik/components/button'
 import { useLocale } from '@puik/hooks'
 import { paginationMediumProps } from './pagination-medium'
@@ -99,7 +98,10 @@ const emit = defineEmits<{
 
 const { t } = useLocale()
 
-const page = useVModel(props, 'modelValue', emit)
+const page = computed({
+  get: () => props.modelValue,
+  set: (page: number) => emit('update:modelValue', page),
+})
 
 const pager = computed(() => {
   if (props.maxPage <= 2) return []

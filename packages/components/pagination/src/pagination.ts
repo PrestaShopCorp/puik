@@ -2,7 +2,7 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Pagination from './pagination.vue'
 
-export enum PaginationVariantEnum {
+export enum PuikPaginationVariantEnum {
   loader = 'loader',
   mobile = 'mobile',
   small = 'small',
@@ -10,27 +10,34 @@ export enum PaginationVariantEnum {
   large = 'large',
 }
 
-export const paginationVariants = Object.values(
-  PaginationVariantEnum
+export const puikPaginationVariants = Object.values(
+  PuikPaginationVariantEnum
 ) as string[]
 
+export const puikPaginationItemsPerPageOptions = [5, 10, 15]
+
 export const paginationProps = buildProps({
-  modelValue: {
-    type: Number,
-    required: false,
-    default: 1,
-  },
   variant: {
-    type: String as PropType<PaginationVariantEnum>,
+    type: String,
     required: false,
-    values: paginationVariants,
-    default: PaginationVariantEnum.medium,
+    values: puikPaginationVariants,
+    default: PuikPaginationVariantEnum.medium,
   },
   totalItem: {
     type: Number,
     required: true,
   },
   itemsPerPage: {
+    type: Number,
+    required: false,
+    default: puikPaginationItemsPerPageOptions[0],
+  },
+  itemsPerPageOptions: {
+    type: Array as PropType<number[]>,
+    required: false,
+    default: () => puikPaginationItemsPerPageOptions,
+  },
+  page: {
     type: Number,
     required: true,
   },

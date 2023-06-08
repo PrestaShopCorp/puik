@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
 import { useLocale } from '@puik/hooks'
 import PuikPagination from '../src/pagination.vue'
-import { PaginationVariantEnum } from '../src/pagination'
+import { PuikPaginationVariantEnum } from '../src/pagination'
 import { PuikOption } from '../../select'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
@@ -32,6 +32,10 @@ describe('Pagination tests', () => {
 
   const findButtons = () => wrapper.findAll('.puik-pagination__pager-button')
 
+  const findItemsPerPageSelect = () =>
+    wrapper.find('.puik-pagination__items-per-page-select')
+  const findAllOptions = (select) => select.findAllComponents(PuikOption)
+
   const factory = (
     propsData: Record<string, any> = {},
     options: MountingOptions<any> = {}
@@ -45,7 +49,7 @@ describe('Pagination tests', () => {
   }
 
   const propsData = {
-    modelValue: 5,
+    page: 5,
     itemsPerPage: 10,
     totalItem: 500,
     itemCount: 50,
@@ -64,7 +68,7 @@ describe('Pagination tests', () => {
   it('should display a small pagination', () => {
     factory({
       ...propsData,
-      variant: PaginationVariantEnum.small,
+      variant: PuikPaginationVariantEnum.small,
     })
     expect(findPagination().classes()).toContain('puik-pagination--small')
   })
@@ -72,7 +76,7 @@ describe('Pagination tests', () => {
   it('should display a medium pagination', () => {
     factory({
       ...propsData,
-      variant: PaginationVariantEnum.medium,
+      variant: PuikPaginationVariantEnum.medium,
     })
     expect(findPagination().classes()).toContain('puik-pagination--medium')
   })
@@ -80,7 +84,7 @@ describe('Pagination tests', () => {
   it('should display a large pagination', () => {
     factory({
       ...propsData,
-      variant: PaginationVariantEnum.large,
+      variant: PuikPaginationVariantEnum.large,
     })
     expect(findPagination().classes()).toContain('puik-pagination--large')
   })
@@ -88,7 +92,7 @@ describe('Pagination tests', () => {
   it('should display a mobile pagination', () => {
     factory({
       ...propsData,
-      variant: PaginationVariantEnum.mobile,
+      variant: PuikPaginationVariantEnum.mobile,
     })
     expect(findPagination().classes()).toContain('puik-pagination--mobile')
   })
@@ -96,7 +100,7 @@ describe('Pagination tests', () => {
   it('should display a loader pagination', () => {
     factory({
       ...propsData,
-      variant: PaginationVariantEnum.loader,
+      variant: PuikPaginationVariantEnum.loader,
     })
     expect(findPagination().classes()).toContain('puik-pagination--loader')
   })
@@ -106,18 +110,18 @@ describe('Pagination tests', () => {
     factory(propsData)
     await findPreviousButton().trigger('click')
     await nextTick()
-    expect(
-      findPaginationComponent().emitted('update:modelValue')?.[0]
-    ).toStrictEqual([4])
+    expect(findPaginationComponent().emitted('update:page')?.[0]).toStrictEqual(
+      [4]
+    )
   })
 
   it('should emit event when clicking on next button', async () => {
     factory(propsData)
     await findNextButton().trigger('click')
     await nextTick()
-    expect(
-      findPaginationComponent().emitted('update:modelValue')?.[0]
-    ).toStrictEqual([6])
+    expect(findPaginationComponent().emitted('update:page')?.[0]).toStrictEqual(
+      [6]
+    )
   })
 
   it('should render with custom label', async () => {
@@ -131,7 +135,7 @@ describe('Pagination tests', () => {
     const loaderButtonLabel = 'Custom label given to pagination'
     factory({
       ...propsData,
-      variant: PaginationVariantEnum.loader,
+      variant: PuikPaginationVariantEnum.loader,
       loaderButtonLabel,
     })
     expect(findLoaderButton().text()).toBe(loaderButtonLabel)
@@ -140,19 +144,19 @@ describe('Pagination tests', () => {
   it('should emit event when clicking on load more button', async () => {
     factory({
       ...propsData,
-      variant: PaginationVariantEnum.loader,
+      variant: PuikPaginationVariantEnum.loader,
     })
     await findLoaderButton().trigger('click')
     await nextTick()
-    expect(
-      findPaginationComponent().emitted('update:modelValue')?.[0]
-    ).toStrictEqual([6])
+    expect(findPaginationComponent().emitted('update:page')?.[0]).toStrictEqual(
+      [6]
+    )
   })
 
   // Medium tests
   it('should both separators be visible', () => {
     factory({
-      modelValue: 10,
+      page: 10,
       itemsPerPage: 20,
       totalItem: 500,
       itemCount: 50,
@@ -162,7 +166,7 @@ describe('Pagination tests', () => {
 
   it('should first separator be visible', () => {
     factory({
-      modelValue: 10,
+      page: 10,
       itemsPerPage: 50,
       totalItem: 500,
       itemCount: 50,
@@ -172,7 +176,7 @@ describe('Pagination tests', () => {
 
   it('should last separator be visible', () => {
     factory({
-      modelValue: 2,
+      page: 2,
       itemsPerPage: 20,
       totalItem: 500,
       itemCount: 50,
@@ -182,7 +186,7 @@ describe('Pagination tests', () => {
 
   it('should separators be invisible', () => {
     factory({
-      modelValue: 3,
+      page: 3,
       itemsPerPage: 100,
       totalItem: 500,
       itemCount: 50,
@@ -195,15 +199,15 @@ describe('Pagination tests', () => {
     const buttonPage1 = findButtons()[0]
     await buttonPage1.trigger('click')
     await nextTick()
-    expect(
-      findPaginationComponent().emitted('update:modelValue')?.[0]
-    ).toStrictEqual([1])
+    expect(findPaginationComponent().emitted('update:page')?.[0]).toStrictEqual(
+      [1]
+    )
   })
 
   it('should click page change active class and aria-current', async () => {
     wrapper = mount({
       template: `<puik-pagination
-        v-model="page"
+        v-model:page="page"
         :item-count="50"
         :total-item="500"
         :items-per-page="20"
@@ -244,13 +248,13 @@ describe('Pagination tests', () => {
     const previousText = t('puik.pagination.previous')
     const nextText = t('puik.pagination.next')
 
-    factory({ ...propsData, variant: PaginationVariantEnum.large })
+    factory({ ...propsData, variant: PuikPaginationVariantEnum.large })
     expect(findPreviousButtonText().text()).toContain(previousText)
     expect(findNextButtonText().text()).toBe(nextText)
   })
 
   it('should click page change active class and aria-current', async () => {
-    factory({ ...propsData, variant: PaginationVariantEnum.large })
+    factory({ ...propsData, variant: PuikPaginationVariantEnum.large })
 
     const findSelect = () => wrapper.find('.puik-pagination__select')
     const findAllOptions = () => wrapper.findAllComponents(PuikOption)
@@ -259,8 +263,37 @@ describe('Pagination tests', () => {
     await findSelect().trigger('click')
     await findAllOptions()[5].trigger('click')
     await nextTick()
+    expect(findPaginationComponent().emitted('update:page')?.[0]).toStrictEqual(
+      [5]
+    )
+  })
+
+  it('should emit when selecting item per page', async () => {
+    factory({ ...propsData, variant: PuikPaginationVariantEnum.large })
+
+    const itemsPerPageSelect = findItemsPerPageSelect()
+
+    await findItemsPerPageSelect().trigger('click')
+    await findAllOptions(itemsPerPageSelect)[1].trigger('click')
+    await nextTick()
     expect(
-      findPaginationComponent().emitted('update:modelValue')?.[0]
-    ).toStrictEqual([5])
+      findPaginationComponent().emitted('update:itemsPerPage')?.[0]
+    ).toStrictEqual([10])
+  })
+
+  it('should have custom items per page options', () => {
+    factory({
+      ...propsData,
+      variant: PuikPaginationVariantEnum.large,
+      itemsPerPageOptions: [1, 2],
+    })
+
+    const itemsPerPageSelect = findItemsPerPageSelect()
+
+    findItemsPerPageSelect().trigger('click')
+    const options = findAllOptions(itemsPerPageSelect)
+    expect(options[0].text()).toBe('1')
+    expect(options[1].text()).toBe('2')
+    expect(options.length).toBe(2)
   })
 })

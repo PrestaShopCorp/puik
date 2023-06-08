@@ -8,7 +8,7 @@
     variant="tertiary"
     class="puik-pagination__button puik-pagination__load-more-button"
     fluid
-    @click="page += 1"
+    @click="$emit('update:modelValue', modelValue + 1)"
   >
     {{ currentButtonLabel }}
   </puik-button>
@@ -16,7 +16,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useVModel } from '@vueuse/core'
 import { PuikButton } from '@puik/components/button'
 import { useLocale } from '@puik/hooks'
 import { paginationLoaderProps } from './pagination-loader'
@@ -25,13 +24,11 @@ defineOptions({
 })
 
 const props = defineProps(paginationLoaderProps)
-const emit = defineEmits<{
+defineEmits<{
   (e: 'update:modelValue', value: number): void
 }>()
 
 const { t } = useLocale()
-
-const page = useVModel(props, 'modelValue', emit)
 
 const currentButtonLabel = computed(
   () => props.loaderButtonLabel ?? t('puik.pagination.loader.button')

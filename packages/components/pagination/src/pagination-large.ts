@@ -1,12 +1,19 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type PaginationLarge from './pagination-large.vue'
 
 export const paginationLargeProps = buildProps({
-  modelValue: {
+  page: {
     type: Number,
-    required: false,
-    default: 1,
+    required: true,
+  },
+  itemsPerPage: {
+    type: Number,
+    required: true,
+  },
+  itemsPerPageOptions: {
+    type: Array as PropType<number[]>,
+    required: true,
   },
   disabled: {
     type: Boolean,
