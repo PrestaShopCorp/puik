@@ -2,15 +2,15 @@
 
 .puik-button {
   @extend .puik-text-button-default;
-  @apply transition cursor-pointer py-2 px-4 inline-flex items-center justify-center align-middle;
+  @apply transition cursor-pointer py-2 px-4 gap-2 inline-flex items-center justify-center align-middle;
 
   &--sm {
     @extend .puik-text-button-small;
-    @apply py-1 px-2 gap-2 h-7;
+    @apply py-1 px-2 h-7;
   }
 
   &--md {
-    @apply gap-2 h-9;
+    @apply h-9;
   }
 
   &--lg {
