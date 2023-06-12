@@ -12,6 +12,11 @@ export const labelProps = buildProps({
     required: false,
     default: false,
   },
+  readonly: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   for: {
     type: String,
     required: true,

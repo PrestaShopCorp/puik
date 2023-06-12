@@ -5,6 +5,9 @@
     <span v-else-if="optional" class="puik-label--optional"
       >({{ t('puik.label.optional') }})</span
     >
+    <span v-else-if="readonly" class="puik-label--readonly"
+      >({{ t('puik.label.readonly') }})
+    </span>
   </label>
 </template>
 
