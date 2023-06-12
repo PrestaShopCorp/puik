@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://prestashop.com">
-    <img src="https://prestashop.com/sites/default/files/email/logo_x2_rebrand.png" alt="Logo" width="420" height="80">
+    <img src="https://prestashop.com/sites/default/files/email/logo_x2_rebrand.png" alt="Logo" width="420">
   </a>
 
 <h3 align="center">Puik</h3>
