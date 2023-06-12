@@ -1,5 +1,6 @@
 import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
 import { PuikPagination } from '@puik/components/pagination'
+import { PuikSidebar } from '@puik/components/sidebar'
 import { PuikBreadcrumb } from '@puik/components/breadcrumb'
 import { PuikAccordion, PuikAccordionGroup } from '@puik/components/accordion'
 import { PuikBadge } from '@puik/components/badge'
@@ -31,6 +32,7 @@ import type { Plugin } from 'vue'
 export default [
   PuikSpinnerLoader,
   PuikPagination,
+  PuikSidebar,
   PuikBreadcrumb,
   PuikAccordion,
   PuikAccordionGroup,

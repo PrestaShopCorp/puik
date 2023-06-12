@@ -103,3 +103,8 @@
 .puik-text-button-large {
   @apply font-primary text-base leading-5 font-semibold;
 }
+
+// Sidebar
+.puik-sidebar-default {
+  @apply text-sm font-normal;
+}
