@@ -11,7 +11,7 @@ export default {
     },
     label: {
       optional: 'Optional',
-      readonly: 'Read only',
+      readonly: 'Read\xa0only',
     },
     select: {
       searchPlaceholder: 'Search',
