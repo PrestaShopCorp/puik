@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://prestashop.com">
-    <img src="https://www.prestashop.com/sites/all/themes/prestashop/images/logos/logo-fo-prestashop-colors.svg" alt="Logo" width="420" height="80">
+    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve"  width="420" height="80" style="enable-background:new 0 0 173 19" viewBox="0 0 173 19"><path d="M4.9 13.1h2.9c1.4 0 2.6-.3 3.7-.8S13.4 11 14 10c.6-1 .9-2.1.9-3.4 0-1.3-.3-2.4-.9-3.4-.6-1-1.4-1.7-2.5-2.3C10.4.4 9.2.1 7.8.1H0v18.7h4.9v-5.7zm0-8.9h2.5c.8 0 1.4.2 1.9.7.5.4.7 1 .7 1.8S9.7 8 9.3 8.4s-1.1.7-1.9.7H4.9V4.2zM31.4 9.7c.5-.9.8-1.9.8-3 0-1.3-.3-2.4-.9-3.4-.6-1-1.5-1.7-2.5-2.3C27.7.5 26.5.2 25 .2h-8v18.7h5v-5.8h2.6l2.8 5.8h5.4l-3.4-7c.8-.6 1.5-1.3 2-2.2zm-5-1.3c-.5.4-1.1.7-1.9.7H22V4.2h2.6c.8 0 1.4.2 1.9.7.5.4.7 1 .7 1.8s-.3 1.3-.8 1.7zM40 11.4h6.4V7.5H40V4.3h8V.2H35.1v18.6h13.2v-4.1H40zM64.6 16c.7-.9 1-2 1-3.1 0-1.2-.3-2.1-.8-2.9-.5-.7-1.2-1.3-2-1.6-.8-.4-1.8-.7-3.1-.9-1.3-.3-2.2-.5-2.7-.6-.6-.2-1-.3-1.2-.5-.3-.2-.4-.5-.4-.9 0-.6.2-1 .7-1.3.4-.3 1-.4 1.7-.4.8 0 1.4.2 1.9.6.5.4.7.9.8 1.6h4.8c0-1.1-.3-2.1-1-3.1-.6-.9-1.5-1.6-2.7-2.1-1.2-.5-2.5-.8-3.9-.8s-2.6.3-3.7.8-2 1.2-2.6 2.1c-.6.9-.9 1.9-.9 3 0 1.2.3 2.2.8 3 .5.7 1.2 1.3 2 1.7.8.4 1.9.7 3.1.9 1.3.3 2.2.5 2.8.6.6.2 1 .3 1.2.5.3.2.4.5.4.9 0 .6-.2 1-.7 1.3-.5.3-1.1.5-1.9.5-1 0-1.8-.2-2.3-.7-.6-.5-.9-1-.9-1.8l-5-.1c0 1.2.3 2.3 1 3.2.7 1 1.6 1.7 2.9 2.3 1.2.6 2.6.8 4.1.8 1.4 0 2.7-.3 3.9-.8 1.2-.5 2.1-1.3 2.7-2.2zM81.7.2H66.6v4.1h5.1v14.5h4.9V4.3h5.1zM86.7.2 80 18.9h5.1l1.1-3.5h6.5l1.2 3.5h5.3L92.7.2h-6zm.9 11.2 2-6.1 2 6.1h-4zM114.4 16c.7-.9 1-2 1-3.1 0-1.2-.3-2.1-.8-2.9-.5-.7-1.2-1.3-2-1.6s-1.9-.7-3.2-.9c-1.2-.2-2.1-.4-2.7-.6-.6-.2-1-.3-1.2-.5-.3-.2-.4-.5-.4-.9 0-.6.2-1 .7-1.3.4-.3 1-.4 1.7-.4.8 0 1.4.2 1.9.6.5.4.7.9.8 1.6h4.8c0-1.1-.3-2.1-1-3.1-.6-.9-1.5-1.6-2.7-2.1-1.1-.5-2.4-.8-3.8-.8s-2.6.3-3.7.8-2 1.2-2.6 2.1c-.6.9-.9 1.9-.9 3 0 1.2.3 2.2.8 3 .5.7 1.2 1.3 2 1.7.8.4 1.9.7 3.1.9 1.3.3 2.2.5 2.8.6.6.2 1 .3 1.2.5.3.2.4.5.4.9 0 .6-.2 1-.7 1.3-.5.3-1.1.5-1.9.5-1 0-1.8-.2-2.3-.7-.6-.5-.9-1-.9-1.8l-4.8-.1c0 1.2.3 2.3 1 3.2.7 1 1.6 1.7 2.9 2.3s2.6.8 4.1.8 2.7-.3 3.9-.8c.9-.5 1.8-1.3 2.5-2.2zM129.1 7.3h-6.2V.2H118v18.6h4.9v-7.3h6.2v7.3h4.9V.2h-4.9zM154.3 14.4c.8-1.4 1.2-3.1 1.2-4.9 0-1.8-.4-3.4-1.2-4.9-.8-1.4-1.9-2.6-3.3-3.4-1.5-.8-3.1-1.2-5-1.2s-3.5.4-4.9 1.2c-1.4.8-2.5 2-3.3 3.4-.8 1.4-1.2 3.1-1.2 4.9 0 1.8.4 3.4 1.2 4.9.8 1.4 1.9 2.6 3.3 3.4 1.4.8 3.1 1.2 4.9 1.2 1.9 0 3.5-.4 4.9-1.2 1.5-.9 2.6-2 3.4-3.4zm-5-1c-.8 1-1.9 1.5-3.2 1.5-1.3 0-2.4-.5-3.2-1.5-.8-1-1.2-2.3-1.2-3.9s.4-2.9 1.2-3.9c.8-1 1.9-1.5 3.2-1.5 1.3 0 2.4.5 3.2 1.5.8 1 1.2 2.3 1.2 3.9s-.4 2.9-1.2 3.9zM169.6 1c-1.1-.5-2.3-.8-3.7-.8H158v18.7h4.9v-5.8h2.9c1.4 0 2.6-.3 3.7-.8s1.9-1.3 2.5-2.3c.6-1 .9-2.1.9-3.4 0-1.3-.3-2.4-.9-3.4s-1.3-1.7-2.4-2.2zm-2.3 7.4c-.5.4-1.1.7-1.9.7H163V4.2h2.5c.8 0 1.4.2 1.9.7.5.4.7 1 .7 1.8s-.3 1.3-.8 1.7z"/></svg>
   </a>
 
 <h3 align="center">Puik</h3>
@@ -24,16 +24,6 @@ Puik is a component library that aims to provide a complete set of reusable comp
 - Node.js LTS is required.
 
 ### Installation
-
-For the moment this package is private  
-To install it you must configure a .npmrc file in your project
-
-```
-//registry.npmjs.org/:_authToken=YOUR_NPM_RO_SQUAD_TOKEN
-@prestashopcorp:registry=https://registry.npmjs.org/
-```
-
-You can ask the IT for a NPM read only token for your squad if you don't have a NPM Token
 
 ```sh
 # chose your favorite package manager
@@ -139,32 +129,6 @@ styles used in the VueJs component library.
 
 ```html
 <button class="puik-button">Example button</button>
-```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## How to use Puik in your CI
-
-### In your Github repo
-
-In your secrets (Settings > Secrets and variables > Actions > New repository secret) you have to add a `REGISTRY_NPM_TOKEN` with your `squad's npm token`.
-
-### In your project
-
-In the job where you are setting up your node env (`actions/setup-node`), you need to add this nearby `node-version`:
-
-```
-  registry-url: 'https://registry.npmjs.org'
-  scope: '@prestashopcorp'
-```
-
-Check the [documentation](https://github.com/actions/setup-node/blob/main/action.yml) if you want more info.
-
-Then in your `Install dependencies` job, you have to add:
-
-```
-  env:
-    NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_NPM_TOKEN }}
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
