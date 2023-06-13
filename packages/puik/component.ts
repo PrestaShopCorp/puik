@@ -7,6 +7,7 @@ import {
   PuikMenu,
   PuikMenuItem,
   PuikMenuItemSeparator,
+  PuikMenuItemTitle,
 } from '@puik/components/menu'
 import { PuikProgressBar } from '@puik/components/progress-bar'
 import { PuikIcon } from '@puik/components/icon'
@@ -35,6 +36,7 @@ export default [
   PuikMenu,
   PuikMenuItem,
   PuikMenuItemSeparator,
+  PuikMenuItemTitle,
   PuikProgressBar,
   PuikIcon,
   PuikLink,

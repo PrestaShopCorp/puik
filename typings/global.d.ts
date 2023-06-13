@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     PuikMenu: typeof import('@prestashopcorp/puik')['PuikMenu']
     PuikMenuItem: typeof import('@prestashopcorp/puik')['PuikMenuItem']
     PuikMenuItemSeparator: typeof import('@prestashopcorp/puik')['PuikMenuItemSeparator']
+    PuikMenuItemTitle: typeof import('@prestashopcorp/puik')['PuikMenuItemTitle']
     PuikProgressBar: typeof import('@prestashopcorp/puik')['PuikProgressBar']
     PuikIcon: typeof import('@prestashopcorp/puik')['PuikIcon']
     PuikOption: typeof import('@prestashopcorp/puik')['PuikOption']
