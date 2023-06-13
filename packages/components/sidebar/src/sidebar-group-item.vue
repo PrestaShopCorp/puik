@@ -1,5 +1,10 @@
 <template>
-  <div class="puik-sidebar-group-item">
+  <div
+    class="puik-sidebar-group-item"
+    :class="{
+      'puik-sidebar-group-item--active': active,
+    }"
+  >
     <puik-accordion
       v-if="sidebarValues?.extended.value"
       :title="title"
@@ -8,26 +13,31 @@
     >
       <slot></slot>
     </puik-accordion>
-    <div v-else>
-      <puik-button
-        variant="text"
-        fluid
-        class="puik-sidebar-group-item__collapsed-button"
-      >
-        <puik-icon :icon="icon" font-size="1.25rem"></puik-icon>
-      </puik-button>
-      <!-- TODO: Menu goes here -->
-    </div>
+    <Menu v-else>
+      <MenuButton class="puik-sidebar-group-item__menu-button">
+        <puik-button
+          variant="text"
+          fluid
+          class="puik-sidebar-group-item__collapsed-button"
+        >
+          <puik-icon :icon="icon" font-size="1.25rem"></puik-icon>
+        </puik-button>
+      </MenuButton>
+      <MenuItems class="puik-sidebar-group-item__menu-content">
+        <slot></slot>
+      </MenuItems>
+    </Menu>
   </div>
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
+import { provide, inject } from 'vue'
+import { Menu, MenuButton, MenuItems } from '@headlessui/vue'
 import { generateId } from '@puik/utils'
 import PuikAccordion from '../../accordion'
 import PuikButton from '../../button'
 import PuikIcon from '../../icon'
-import { sidebarKey } from './sidebar'
+import { groupItemKey, sidebarKey } from './sidebar'
 import { sidebarGroupItemProps } from './sidebar-group-item'
 
 defineOptions({
@@ -37,4 +47,5 @@ const props = defineProps(sidebarGroupItemProps)
 
 const accordionName = props.name ?? `sidebar-item-${generateId()}`
 const sidebarValues = inject(sidebarKey, null)
+provide(groupItemKey, true)
 </script>

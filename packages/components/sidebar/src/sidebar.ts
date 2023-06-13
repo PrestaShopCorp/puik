@@ -41,3 +41,4 @@ export type SidebarContext = {
 }
 
 export const sidebarKey: InjectionKey<SidebarContext> = Symbol('sidebar')
+export const groupItemKey: InjectionKey<boolean> = Symbol('sidebar-group-item')

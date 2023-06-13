@@ -2,7 +2,7 @@
 
 .puik-sidebar {
   @extend .puik-sidebar-default;
-  @apply absolute top-0 left-0 z-[999] w-full max-w-[20.5rem] sm:max-w-[13.125rem] h-full overflow-scroll;
+  @apply fixed top-0 left-0 z-[999] w-full max-w-[20.5rem] sm:max-w-[13.125rem] h-full;
   transition: 0.2s max-width ease-out;
 
   &--primary {
@@ -53,8 +53,12 @@
         @apply py-0 px-0 ml-0;
 
         .puik-button {
-          @apply pl-8;
+          @apply pl-11;
         }
+      }
+
+      &--expanded {
+        @apply bg-primary-800;
       }
     }
 
@@ -77,6 +81,51 @@
     .puik-sidebar-group-item {
       &__collapsed-button {
         @apply text-white pl-4;
+      }
+
+      &__menu-content {
+        @apply bg-primary-700 left-[3.25rem] w-[13.125rem];
+
+        .puik-sidebar-item__button {
+          @apply hover:bg-primary-800 px-4 py-2;
+        }
+      }
+
+      &--active {
+        .puik-accordion {
+          &__header {
+            @apply text-primary-300;
+
+            &::before {
+              @apply h-9 w-1 bg-purple-200 absolute left-0 top-0;
+              content: '';
+            }
+
+            &__content {
+              &__title {
+                @apply text-primary-300 font-bold;
+              }
+            }
+
+            &__icon {
+              @apply text-primary-300;
+            }
+            &__expand__icon {
+              @apply text-primary-300;
+            }
+          }
+        }
+
+        .puik-sidebar-group-item__collapsed-button {
+          &::before {
+            @apply h-full w-1 bg-purple-200 absolute top-0 left-0;
+            content: '';
+          }
+        }
+
+        .puik-icon {
+          @apply text-primary-300;
+        }
       }
     }
   }
@@ -138,6 +187,57 @@
           @apply pl-4;
         }
       }
+
+      &--expanded {
+        @apply bg-primary-200;
+      }
+    }
+
+    .puik-sidebar-item {
+      &--active {
+        .puik-button--text {
+          @apply text-blue-700 font-bold;
+        }
+      }
+    }
+
+    .puik-sidebar-group-item {
+      &__menu-button {
+        @apply p-0 w-full;
+      }
+
+      &__menu-content {
+        @apply bg-primary-200 sm:w-[12.125rem];
+
+        .puik-sidebar-item__button {
+          @apply hover:bg-primary-300 px-4 py-2;
+        }
+      }
+
+      &--active {
+        .puik-accordion {
+          &__header {
+            @apply text-blue-700;
+
+            &__content {
+              &__title {
+                @apply text-blue-700 font-bold;
+              }
+            }
+
+            &__icon {
+              @apply text-blue-700;
+            }
+            &__expand__icon {
+              @apply text-blue-700;
+            }
+          }
+        }
+
+        .puik-icon {
+          @apply text-blue-700;
+        }
+      }
     }
   }
 
@@ -178,21 +278,25 @@
 
   &--active {
     .puik-button--text {
-      @apply text-blue-700 font-bold;
+      @apply font-bold;
     }
   }
 
   &__button {
-    @apply text-left font-normal flex items-center gap-2 px-2 py-4 sm:py-2;
+    @apply px-2 py-4 sm:py-2 justify-start font-normal;
   }
 }
 
 .puik-sidebar-group-item {
   @extend .puik-body-default;
-  @apply border-none;
+  @apply border-none relative;
 
   &__collapsed-button {
     @apply flex items-center justify-start pl-2 py-4 sm:py-2;
+  }
+
+  &__menu-content {
+    @apply absolute z-[999] left-11 top-0 w-[20.5rem];
   }
 }
 
