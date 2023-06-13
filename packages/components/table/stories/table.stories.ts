@@ -1,9 +1,28 @@
 import { ref } from 'vue'
+import { faker } from '@faker-js/faker'
 import PuikBadge from '../../badge/src/badge.vue'
-import PuikIcon from '../../icon/src/icon.vue'
+import PuikButton from '../../button/src/button.vue'
+import PuikSwitch from '../../switch/src/switch.vue'
 import PuikTable from './../src/table.vue'
 import type { PuikTableHeader } from '../src/table'
 import type { Meta, Story, Args } from '@storybook/vue3'
+
+function generateData(length = 10) {
+  return Array(length)
+    .fill(null)
+    .map(() => {
+      const firstname = faker.name.firstName()
+      const lastname = faker.name.lastName()
+      const email = `${lastname}.${firstname}@email.com`.toLowerCase()
+
+      return {
+        firstname,
+        lastname,
+        email,
+        age: faker.random.numeric(2),
+      }
+    })
+}
 
 export default {
   title: 'Components/Table',
@@ -26,15 +45,16 @@ export default {
         type: {
           summary: 'PuikTableHeader[]',
           detail: `
-import type { PuikTableHeader } from '@prestashopcorp/puik/es/components/table/src/table'
+  import type { PuikTableHeader } from '@prestashopcorp/puik/es/components/table/src/table'
 
-interface PuikTableHeader {
-  text: string | undefined
-  value: string
-  size: 'sm' | 'md' | 'lg' | undefined
-  align: 'left' | 'center' | 'right' | undefined
-}
-`,
+  interface PuikTableHeader {
+    text: string | undefined
+    value: string
+    size: 'sm' | 'md' | 'lg' | undefined
+    width: string | undefined
+    align: 'left' | 'center' | 'right' | undefined
+  }
+  `,
         },
       },
     },
@@ -58,6 +78,18 @@ interface PuikTableHeader {
         },
       },
     },
+    fullWidth: {
+      control: 'boolean',
+      description: 'Set the table width at 100%',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+        type: {
+          summary: 'boolean',
+        },
+      },
+    },
     '`header-${header.value}`': {
       control: 'none',
       description: 'Slot to replace header',
@@ -69,55 +101,55 @@ interface PuikTableHeader {
   },
   args: {
     selectable: false,
+    fullWidth: false,
   },
 } as Meta
 
+const headers: PuikTableHeader[] = [
+  {
+    text: 'Nom',
+    value: 'lastname',
+    size: 'md',
+  },
+  {
+    text: 'Prénom',
+    value: 'firstname',
+    size: 'md',
+  },
+  {
+    text: 'Age',
+    value: 'age',
+    size: 'sm',
+    align: 'center',
+  },
+  {
+    text: 'Status',
+    value: 'status',
+    size: 'sm',
+  },
+  {
+    text: 'Email',
+    value: 'email',
+    align: 'right',
+  },
+  {
+    value: 'actions',
+    size: 'sm',
+  },
+]
 const Template: Story = (args: Args) => ({
   components: {
     PuikTable,
     PuikBadge,
-    PuikIcon,
+    PuikButton,
+    PuikSwitch,
   },
   setup() {
-    const headers: PuikTableHeader[] = [
-      {
-        text: 'Nom',
-        value: 'lastname',
-        size: 'lg',
-      },
-      {
-        text: 'Prénom',
-        value: 'firstname',
-      },
-      {
-        value: 'actions',
-        size: 'sm',
-      },
-    ]
-    const items = [
-      {
-        lastname: 'Beauchesne',
-        firstname: 'Virginie',
-      },
-      {
-        lastname: 'Bellefeuille',
-        firstname: 'Simone',
-      },
-      {
-        lastname: 'Salois',
-        firstname: 'Étienne',
-      },
-      {
-        lastname: 'Langelier',
-        firstname: 'Bernadette',
-      },
-      {
-        lastname: 'Roy',
-        firstname: 'Agate',
-      },
-    ]
+    const itemCount = 5
+    const items = generateData(itemCount)
+    const switchState = ref(Array(itemCount).fill(false))
     const selection = ref([])
-    return { args, headers, items, selection }
+    return { args, headers, items, selection, switchState }
   },
   template: `<puik-table v-model:selection="selection" :headers="headers" :items="items" v-bind="args">
     <template #item-value1="{ item }">
@@ -125,8 +157,15 @@ const Template: Story = (args: Args) => ({
         {{ item.value1 }}
       </puik-badge>
     </template>
-    <template #item-actions>
-      <puik-icon icon="delete" aria-label="Delete item" class="ml-2"></puik-icon>
+    <template #item-actions="{ item }">
+      <puik-button
+        variant="text"
+        right-icon="delete"
+        aria-label="Delete item"
+      ></puik-button>
+    </template>
+    <template #item-status="{ index }">
+      <puik-switch v-model="switchState[index]"></puik-switch>
     </template>
   </puik-table>`,
 })
@@ -137,9 +176,9 @@ Default.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-
-      <!--HTML/CSS Snippet-->
+const headers: PuikTableHeader[] = ${headers}
+<!--VueJS Snippet-->
+<!--HTML/CSS Snippet-->
       `,
       language: 'html',
     },

@@ -1,26 +1,26 @@
 @use './common/typography.scss';
 .puik-table {
   @extend .puik-body-default;
-  @apply overflow-x-auto border-y-[1px] bg-white font-normal min-w-full;
-
+  @apply inline-table border-y-[1px] bg-white font-normal;
+  &__container {
+    @apply max-w-full overflow-x-auto;
+  }
   @mixin puik-table-item() {
-    @apply h-[52px] p-4;
+    @apply h-[52px] p-3.5;
     &--sm {
-      @apply w-[60px];
+      @apply w-[60px] min-w-[60px];
     }
     &--md {
-      @apply w-[240px];
+      @apply w-[240px] min-w-[240px];
     }
     &--lg {
-      @apply w-[480px];
+      @apply w-[480px] min-w-[480px];
     }
   }
   &__head,
   > thead {
-    @apply font-normal;
     &__row,
     > tr {
-      @apply font-normal;
       &__item,
       > th {
         @extend .puik-body-small;
@@ -47,7 +47,6 @@
       &__item,
       > td {
         @include puik-table-item();
-        @apply overflow-hidden;
         &--center {
           @apply text-center;
         }

@@ -1,66 +1,70 @@
 <template>
-  <table class="puik-table" :style="{ width: '900px' }">
-    <thead class="puik-table__head">
-      <tr class="puik-table__head__row">
-        <th
-          v-if="selectable"
-          class="puik-table__head__row__item puik-table__head__row__item--selection puik-table__head__row__item--sm"
-        >
-          <puik-checkbox
-            :model-value="selectAll"
-            :indeterminate="indeterminate"
-            class="puik-table__head__row__item--selection__checkbox"
-            @click="handleClickAll"
+  <div class="puik-table__container">
+    <table class="puik-table" :style="tableStyle">
+      <thead class="puik-table__head">
+        <tr class="puik-table__head__row">
+          <th
+            v-if="selectable"
+            class="puik-table__head__row__item puik-table__head__row__item--selection puik-table__head__row__item--sm"
           >
-            {{ selectAllLabel }}
-          </puik-checkbox>
-        </th>
-        <th
-          v-for="header in headers"
-          :key="`headers${header.value}`"
-          class="puik-table__head__row__item"
-          :class="{
-            [`puik-table__head__row__item--${header.size}`]:
-              header?.size && !header?.width,
-          }"
-        >
-          <slot :name="`header-${header.value}`" :header="header">
-            {{ header.text }}
-          </slot>
-        </th>
-      </tr>
-    </thead>
-    <tbody class="puik-table__body">
-      <tr
-        v-for="(item, rowIndex) in items"
-        :key="`row-${rowIndex}`"
-        class="puik-table__body__row"
-      >
-        <td
-          v-if="selectable"
-          class="puik-table__body__row__item puik-table__body__row__item--selection"
-        >
-          <puik-checkbox
-            :model-value="getSelected(rowIndex)"
-            class="puik-table__body__row__item--selection__checkbox"
-            @click="handleClick(rowIndex)"
+            <puik-checkbox
+              :model-value="selectAll"
+              :indeterminate="indeterminate"
+              class="puik-table__head__row__item--selection__checkbox"
+              @click="handleClickAll"
+            >
+              {{ selectAllLabel }}
+            </puik-checkbox>
+          </th>
+          <th
+            v-for="header in headers"
+            :key="`headers${header.value}`"
+            class="puik-table__head__row__item"
+            :class="{
+              [`puik-table__head__row__item--${header.size}`]:
+                header?.size && !header?.width,
+            }"
+            :style="{ width: header.width }"
           >
-            {{ getSelectLabel(rowIndex) }}
-          </puik-checkbox>
-        </td>
-        <td
-          v-for="(header, colIndex) in headers"
-          :key="`col-${colIndex}`"
-          class="puik-table__body__row__item"
-          :class="[`puik-table__body__row__item--${header.align ?? 'left'}`]"
+            <slot :name="`header-${header.value}`" :header="header">
+              {{ header.text }}
+            </slot>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="puik-table__body">
+        <tr
+          v-for="(item, rowIndex) in items"
+          :key="`row-${rowIndex}`"
+          class="puik-table__body__row"
         >
-          <slot :name="`item-${header.value}`" :item="item">
-            {{ item[header.value] }}
-          </slot>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <td
+            v-if="selectable"
+            class="puik-table__body__row__item puik-table__body__row__item--selection"
+          >
+            <puik-checkbox
+              :model-value="getSelected(rowIndex)"
+              class="puik-table__body__row__item--selection__checkbox"
+              @click="handleClick(rowIndex)"
+            >
+              {{ getSelectLabel(rowIndex) }}
+            </puik-checkbox>
+          </td>
+          <td
+            v-for="(header, colIndex) in headers"
+            :key="`col-${colIndex}`"
+            class="puik-table__body__row__item"
+            :class="[`puik-table__body__row__item--${header.align ?? 'left'}`]"
+            :style="{ width: header.width }"
+          >
+            <slot :name="`item-${header.value}`" :item="item" :index="rowIndex">
+              {{ item[header.value] }}
+            </slot>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -68,7 +72,6 @@ import { computed, ref, watch } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
 import { tableProps, tableEmits } from './table'
-import type { PuikTableHeader } from './table'
 defineOptions({
   name: 'PuikTable',
 })
@@ -126,6 +129,10 @@ const selectAllLabel = computed(() => {
 function getSelectLabel(index: number): string {
   return t(`puik.table.${getSelected(index) ? 'selectLabel' : 'unselectLabel'}`)
 }
+
+const tableStyle = computed(() =>
+  props.fullWidth ? { width: '100%' } : undefined
+)
 
 watch(
   () => props.selection,
