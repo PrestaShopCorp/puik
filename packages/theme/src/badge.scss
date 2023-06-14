@@ -1,23 +1,25 @@
+@use './common/typography.scss';
 .puik-badge {
-  @apply font-secondary text-sm rounded-2xl inline-block py-1 px-3 leading-5 font-normal;
+  @extend .puik-body-default;
+  @apply rounded-2xl inline-block py-1 px-3 leading-5 font-normal;
 
   &--success {
-    @apply bg-accentuation-success-50 text-accentuation-success-900;
+    @apply bg-green text-white;
   }
 
   &--warning {
-    @apply bg-accentuation-warning-50 text-font-900;
+    @apply bg-yellow text-primary;
   }
 
   &--danger {
-    @apply bg-accentuation-destructive-50 text-accentuation-destructive-900;
+    @apply bg-red text-white;
   }
 
   &--info {
-    @apply bg-accentuation-info-50 text-accentuation-info-900;
+    @apply bg-blue text-white;
   }
 
   &--neutral {
-    @apply bg-light-blue-100 text-font-900;
+    @apply bg-primary-600 text-white;
   }
 }

@@ -1,3 +1,4 @@
+@use './common/typography.scss';
 .puik-checkbox {
   @apply flex items-center;
   $baseClass: &;
@@ -6,27 +7,38 @@
       grid place-content-center
       h-5 w-5
       cursor-pointer
-      rounded-sm border-2 border-font-500
-      before:font-materialIcons before:text-white before:text-xl
-      focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-focus-main
-      checked:bg-primary-purple-500 checked:border-none
-      indeterminate:bg-primary-purple-500 indeterminate:border-none
-      disabled:border-light-blue-default-border disabled:checked:bg-light-blue-default-border disabled:indeterminate:bg-light-blue-default-border disabled:cursor-default;
+      rounded-sm border-2 border-primary;
 
-    &:indeterminate:before {
-      content: '\f108';
+    &:focus-visible {
+      @apply outline outline-2 outline-offset-1 outline-blue;
     }
 
-    &:checked:before {
-      content: '\e876';
+    &:disabled {
+      @apply border-primary-500 checked:bg-primary-400 indeterminate:bg-primary-400 cursor-default;
+      & + #{$baseClass}__label {
+        @apply text-primary-500 cursor-default;
+      }
     }
 
-    &:disabled + #{$baseClass}__label {
-      @apply text-light-blue-default-border cursor-default;
+    &:checked {
+      @apply bg-primary border-none;
+      &:before {
+        @apply font-materialIcons text-white text-xl;
+        content: '\e876';
+      }
+    }
+
+    &:indeterminate {
+      @apply bg-primary border-none;
+      &:before {
+        @apply font-materialIcons text-white text-xl;
+        content: '\f108';
+      }
     }
   }
   &__label {
-    @apply text-base lg:text-sm -tracking-[0.015625em] font-secondary text-font
+    @extend .puik-body-default;
+    @apply -tracking-[0.015625em] font-primary text-primary
       cursor-pointer
       ml-3;
   }

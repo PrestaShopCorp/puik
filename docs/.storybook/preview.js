@@ -14,4 +14,29 @@ export const parameters = {
       order: ['Docs', ['Introduction', 'VueJs Components', 'Css Components']],
     },
   },
+  viewport: {
+    viewports: {
+      sm: {
+        name: 'sm',
+        styles: {
+          width: '640px',
+          height: '100%',
+        },
+      },
+      md: {
+        name: 'md',
+        styles: {
+          width: '768px',
+          height: '100%',
+        },
+      },
+      lg: {
+        name: 'lg',
+        styles: {
+          width: '1024px',
+          height: '100%',
+        },
+      },
+    },
+  },
 }

@@ -12,6 +12,7 @@
             v-if="titleIcon || PuikModalVariant.DESTRUCTIVE === variant"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__icon"
             :icon="getTitleIconName"
+            :font-size="24"
           />
 
           <puik-tooltip

@@ -1,38 +1,41 @@
 @use './common/typography.scss';
 
 .puik-accordion {
-  @apply border border-light-blue-500 rounded-lg mb-4;
+  @apply border border-primary-400 mb-4;
 
   &__header {
-    @apply p-4 flex w-full items-center rounded-[inherit] hover:bg-light-blue-50;
+    @apply px-6 py-4 flex w-full items-center;
+
+    &:hover {
+      @apply bg-primary-200;
+    }
 
     &:focus-visible {
-      @apply bg-light-blue-50 outline-none ring ring-focus-main;
+      @apply outline-none ring ring-blue;
     }
 
     &__icon {
-      @apply ml-2 mr-4 text-font-secondary;
+      @apply mr-4 text-primary-600;
     }
 
     &__content {
-      @apply ml-2;
       &__title {
         @extend .puik-h5;
-        @apply text-left;
+        @apply text-left text-primary;
       }
 
       &__sub-title {
         @extend .puik-body-small;
-        @apply text-left text-font-secondary mt-1;
+        @apply text-left text-primary-600 mt-1;
       }
     }
     &__expand__icon {
-      @apply ml-auto mr-2 text-font-secondary transform transition-transform duration-100 ease-in-out;
+      @apply ml-auto text-primary-600 transform transition-transform duration-100 ease-in-out;
     }
   }
   &__content {
     @extend .puik-body-default;
-    @apply p-4 ml-4 text-font-secondary invisible;
+    @apply p-4 ml-4 text-primary-600 invisible;
   }
   &--expanded {
     .puik-accordion__title {
@@ -46,14 +49,15 @@
     }
   }
   &--disabled {
-    @apply bg-light-blue-background text-font-disabled hover:border-light-blue-default-border cursor-not-allowed;
-    .puik-accordion__header__content__sub-title {
-      @apply text-font-disabled;
+    @apply bg-white text-primary-500 cursor-not-allowed;
+    .puik-accordion__header:hover {
+      @apply bg-white text-primary-500;
     }
-
+    .puik-accordion__header__content__title,
+    .puik-accordion__header__content__sub-title,
     .puik-accordion__header__icon,
     .puik-accordion__header__expand__icon {
-      @apply text-font-disabled;
+      @apply text-primary-500;
     }
   }
 }
