@@ -1,5 +1,5 @@
 .puik-skeleton-loader {
-  @apply bg-font-50 rounded w-full animate-pulse;
+  @apply bg-primary-400 rounded w-full animate-pulse text-primary-500 text-2xl;
   &--h1 {
     @apply h-[42px];
   }
@@ -42,21 +42,18 @@
   &--image {
     @apply h-[168px] w-[248px] flex justify-center items-center;
     &::before {
-      @apply text-font-200 text-2xl;
       content: '\e410';
     }
   }
   &--video {
     @apply h-[168px] w-[248px] flex justify-center items-center;
     &::before {
-      @apply text-font-200 text-2xl;
       content: '\e04b';
     }
   }
   &--graph {
     @apply h-[168px] w-[248px] flex justify-center items-center;
     &::before {
-      @apply text-font-200 text-2xl;
       content: '\e01d';
     }
   }
