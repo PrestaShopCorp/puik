@@ -5,6 +5,9 @@
   &__container {
     @apply max-w-full overflow-x-auto;
   }
+  &--full-width {
+    @apply w-full;
+  }
   @mixin puik-table-item() {
     @apply h-[52px] p-3.5;
     &--sm {
