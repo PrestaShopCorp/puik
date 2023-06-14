@@ -1,5 +1,5 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type SkeletonLoader from './skeleton-loader.vue'
 
 export const skeletonLoaderVariants = [
@@ -19,12 +19,13 @@ export const skeletonLoaderVariants = [
   'image',
   'graph',
   'video',
-]
+] as const
+
+export type PuikSkeletonLoader = (typeof skeletonLoaderVariants)[number]
 
 export const skeletonLoaderProps = buildProps({
   variant: {
-    type: String,
-    values: skeletonLoaderVariants,
+    type: String as PropType<PuikSkeletonLoader>,
     required: false,
     default: 'text-medium',
   },

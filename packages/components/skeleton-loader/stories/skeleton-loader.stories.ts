@@ -3,6 +3,8 @@ import PuikSkeletonLoader from './../src/skeleton-loader.vue'
 import PuikSkeletonLoaderGroup from './../src/skeleton-loader-group.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
+const skeletonLoaderVariantsSummary = skeletonLoaderVariants.join('|')
+
 export default {
   title: 'Components/SkeletonLoader/SkeletonLoader',
   component: PuikSkeletonLoader,
@@ -13,7 +15,7 @@ export default {
       options: skeletonLoaderVariants,
       table: {
         type: {
-          summary: skeletonLoaderVariants.join('|'),
+          summary: skeletonLoaderVariantsSummary,
         },
         defaultValue: {
           summary: 'text-medium',
@@ -75,21 +77,21 @@ Default.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-skeleton-loader-group>
-        <!--
-          $variants: h1|h2|h3||h4|h5|h6||jumbotron|mega-jumbotron|text-small|text-medium|text-large|badge|tag|image|graph|video-
-        ->
-        <puik-skeleton-loader variant="$variants"></puik-skeleton-loader>
-      <puik-skeleton-loader-group>
+<!--VueJS Snippet-->
+<puik-skeleton-loader-group>
+  <!--
+    $variants: ${skeletonLoaderVariantsSummary}
+  ->
+  <puik-skeleton-loader variant="$variants"></puik-skeleton-loader>
+<puik-skeleton-loader-group>
 
-      <!--HTML/CSS Snippet-->
-      <div class="puik-skeleton-loader-group" role="status" aria-label="Loading" aria-live="polite">
-        <!--
-          $variants: h1|h2|h3||h4|h5|h6||jumbotron|mega-jumbotron|text-small|text-medium|text-large|badge|tag|image|graph|video-
-        ->
-        <div class="puik-skeleton material-icons-round puik-skeleton--$variants"></div>
-      </div>
+<!--HTML/CSS Snippet-->
+<div class="puik-skeleton-loader-group" role="status" aria-label="Loading" aria-live="polite">
+  <!--
+    $variants:  ${skeletonLoaderVariantsSummary}
+  ->
+  <div class="puik-skeleton material-icons-round puik-skeleton--$variants"></div>
+</div>
       `,
       language: 'html',
     },
@@ -105,21 +107,15 @@ function generateStory(variant: string) {
     docs: {
       source: {
         code: `
-        <!--VueJS Snippet-->
-        <puik-skeleton-loader-group>
-          <!--
-            $variants: h1|h2|h3||h4|h5|h6||jumbotron|mega-jumbotron|text-small|text-medium|text-large|badge|tag|image|graph|video
-          ->
-          <puik-skeleton-loader variant="${variant}"></puik-skeleton-loader>
-        <puik-skeleton-loader-group>
+<!--VueJS Snippet-->
+<puik-skeleton-loader-group>
+  <puik-skeleton-loader variant="${variant}"></puik-skeleton-loader>
+<puik-skeleton-loader-group>
 
-        <!--HTML/CSS Snippet-->
-        <div class="puik-skeleton-loader-group" role="status" aria-label="Loading" aria-live="polite">
-          <!--
-            $variants: h1|h2|h3||h4|h5|h6||jumbotron|mega-jumbotron|text-small|text-medium|text-large|badge|tag|image|graph|video
-          ->
-          <div class="puik-skeleton material-icons-round puik-skeleton--${variant}"></div>
-        </div>
+<!--HTML/CSS Snippet-->
+<div class="puik-skeleton-loader-group" role="status" aria-label="Loading" aria-live="polite">
+  <div class="puik-skeleton material-icons-round puik-skeleton--${variant}"></div>
+</div>
         `,
         language: 'html',
       },
