@@ -25,10 +25,10 @@
       fluid
       variant="text"
       class="puik-sidebar-item__button"
+      :left-icon="icon"
       :to="props.to"
       :href="props.href"
     >
-      <puik-icon v-if="icon" :icon="icon" font-size="1.25rem" />
       <span v-if="sidebarValues?.extended.value">{{ title }}</span>
     </puik-button>
   </div>
@@ -37,7 +37,6 @@
 <script setup lang="ts">
 import { inject, computed } from 'vue'
 import PuikButton from '../../button'
-import PuikIcon from '../../icon'
 import { sidebarKey, groupItemKey } from './sidebar'
 import { sidebarItemProps } from './sidebar-item'
 

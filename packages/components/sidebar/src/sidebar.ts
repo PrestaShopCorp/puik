@@ -1,20 +1,8 @@
 import { buildProps } from '@puik/utils'
-import type { Ref, ExtractPropTypes, PropType, InjectionKey } from 'vue'
+import type { Ref, ExtractPropTypes, InjectionKey } from 'vue'
 import type Sidebar from './sidebar.vue'
 
-export enum SidebarVariantsList {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-}
-
-export type SidebarVariantsType = `${SidebarVariantsList}`
-
 export const sidebarProps = buildProps({
-  variant: {
-    type: String as PropType<SidebarVariantsType>,
-    default: 'primary',
-    required: false,
-  },
   modelValue: {
     type: Boolean,
     default: false,

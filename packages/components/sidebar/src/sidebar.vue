@@ -5,7 +5,6 @@
       :class="[
         !isExpanded && temporary ? 'puik-sidebar--temporary' : '',
         !isExpanded ? 'puik-sidebar--collapsed' : '',
-        `puik-sidebar--${variant}`,
       ]"
     >
       <div
@@ -62,9 +61,6 @@ const isExpanded = ref(props.modelValue)
 const openAccordionName = ref(props.name)
 
 const expansionIcon = computed(() => {
-  if (props.variant === 'primary') {
-    return isExpanded.value ? 'chevron_left' : 'chevron_right'
-  }
   return isExpanded.value ? 'first_page' : 'last_page'
 })
 

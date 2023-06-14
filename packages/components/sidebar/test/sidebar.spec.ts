@@ -71,30 +71,6 @@ describe('Sidebar tests', () => {
     )
   })
 
-  it('should be primary variant', async () => {
-    const template = `
-      <puik-sidebar variant="primary">
-        <puik-sidebar-group-item title="group" icon="store">
-          <puik-sidebar-item title="title" />
-        </puik-sidebar-group-item>
-      </puik-sidebar>
-    `
-    await factory(template)
-    expect(getSidebar(wrapper).classes()).toContain('puik-sidebar--primary')
-  })
-
-  it('should be secondary variant', async () => {
-    const template = `
-      <puik-sidebar variant="secondary">
-        <puik-sidebar-group-item title="group" icon="store">
-          <puik-sidebar-item title="title" />
-        </puik-sidebar-group-item>
-      </puik-sidebar>
-    `
-    await factory(template)
-    expect(getSidebar(wrapper).classes()).toContain('puik-sidebar--secondary')
-  })
-
   it('should be temporary', async () => {
     const template = `
       <puik-sidebar temporary>
