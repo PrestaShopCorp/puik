@@ -1,6 +1,6 @@
 <template>
   <div class="puik-table__container">
-    <table class="puik-table" :style="tableStyle">
+    <table class="puik-table" :class="{ 'puik-table--full-width': fullWidth }">
       <thead class="puik-table__head">
         <tr class="puik-table__head__row">
           <th
@@ -17,7 +17,7 @@
             </puik-checkbox>
           </th>
           <th
-            v-for="header in headers"
+            v-for="(header, index) in headers"
             :key="`headers${header.value}`"
             class="puik-table__head__row__item"
             :class="{
@@ -26,7 +26,11 @@
             }"
             :style="{ width: header.width }"
           >
-            <slot :name="`header-${header.value}`" :header="header">
+            <slot
+              :name="`header-${header.value}`"
+              :header="header"
+              :index="index"
+            >
               {{ header.text }}
             </slot>
           </th>
@@ -54,7 +58,13 @@
             v-for="(header, colIndex) in headers"
             :key="`col-${colIndex}`"
             class="puik-table__body__row__item"
-            :class="[`puik-table__body__row__item--${header.align ?? 'left'}`]"
+            :class="[
+              `puik-table__body__row__item--${header.align ?? 'left'}`,
+              {
+                [`puik-table__body__row__item--${header.size}`]:
+                  header?.size && !header?.width,
+              },
+            ]"
             :style="{ width: header.width }"
           >
             <slot :name="`item-${header.value}`" :item="item" :index="rowIndex">
@@ -102,7 +112,7 @@ function handleClickAll() {
 }
 
 function handleClick(index: number) {
-  if (checked.value.some((value) => value === index)) {
+  if (getSelected(index)) {
     checked.value = checked.value.filter((value) => value !== index)
   } else {
     checked.value.push(index)
@@ -119,7 +129,7 @@ function getSelected(index: number): boolean {
 const selectAllLabel = computed(() => {
   return t(
     `puik.table.${
-      indeterminate.value || selectAll.value
+      indeterminate.value || !selectAll.value
         ? 'selectAllLabel'
         : 'unselectAllLabel'
     }`
@@ -127,12 +137,8 @@ const selectAllLabel = computed(() => {
 })
 
 function getSelectLabel(index: number): string {
-  return t(`puik.table.${getSelected(index) ? 'selectLabel' : 'unselectLabel'}`)
+  return t(`puik.table.${getSelected(index) ? 'unselectLabel' : 'selectLabel'}`)
 }
-
-const tableStyle = computed(() =>
-  props.fullWidth ? { width: '100%' } : undefined
-)
 
 watch(
   () => props.selection,
