@@ -12,7 +12,7 @@ export interface PuikTableHeader {
   width?: string
 }
 
-export const tablePropsValues = {
+export const tableProps = buildProps({
   headers: {
     type: Array as PropType<PuikTableHeader[]>,
     required: true,
@@ -37,8 +37,7 @@ export const tablePropsValues = {
     required: false,
     default: false,
   },
-} as const
-export const tableProps = buildProps(tablePropsValues)
+} as const)
 
 export type TableProps = ExtractPropTypes<typeof tableProps>
 
