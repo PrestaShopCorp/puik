@@ -5,7 +5,7 @@
 
   .puik-button {
     @extend .puik-body-default;
-    @apply text-left font-normal p-2 w-full flex items-center z-10;
+    @apply font-normal p-2 w-full flex items-center justify-start z-10;
 
     &__right-icon {
       @apply ml-auto;
