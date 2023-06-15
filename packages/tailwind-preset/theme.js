@@ -29,7 +29,7 @@ module.exports = {
           return this['500']
         },
         50: '#F8F0F7',
-        500: '#D7AED3',
+        500: '#DECDE7',
         700: '#7B4FAC',
       },
       blue: {
@@ -50,7 +50,7 @@ module.exports = {
           return this['500']
         },
         50: '#E4F4F8',
-        500: '#78C4D8',
+        500: '#A4DBE8',
         700: '#5C92AA',
       },
       yellow: {
@@ -67,7 +67,7 @@ module.exports = {
           return this['500']
         },
         100: '#FDF6DD',
-        500: '#F3CB5F',
+        500: '#F8E08E',
       },
       green: {
         get DEFAULT() {
@@ -77,7 +77,7 @@ module.exports = {
           return this['100']
         },
         50: '#EAF8EF',
-        100: '#98D9A9',
+        100: '#BDE9C9',
         300: '#59AF70',
         500: '#207F4B',
       },
