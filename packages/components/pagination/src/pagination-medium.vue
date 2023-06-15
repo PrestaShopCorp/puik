@@ -9,7 +9,7 @@
       :disabled="page <= 1 || disabled"
       class="puik-pagination__previous-button puik-pagination__button"
       left-icon="keyboard_arrow_left"
-      variant="tertiary"
+      variant="secondary"
       @click="page -= 1"
     ></puik-button>
 
@@ -76,7 +76,7 @@
       :disabled="page >= maxPage || disabled"
       class="puik-pagination__button puik-pagination__next-button"
       right-icon="keyboard_arrow_right"
-      variant="tertiary"
+      variant="secondary"
       @click="page += 1"
     ></puik-button>
   </div>

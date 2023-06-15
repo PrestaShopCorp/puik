@@ -3,7 +3,7 @@
   @apply px-2 flex flex-row items-center w-max;
   &__label {
     @extend .puik-body-default;
-    @apply mx-4 text-sm;
+    @apply text-primary-700 mx-6 text-sm;
   }
   &__content {
     @apply flex flex-row items-center;
@@ -21,10 +21,10 @@
   &--small,
   &--medium {
     .puik-pagination__previous-button {
-      @apply pl-2 pr-0 rounded-full;
+      @apply rounded-full p-2;
     }
     .puik-pagination__next-button {
-      @apply pl-0 pr-2 rounded-full;
+      @apply rounded-full p-2;
     }
   }
   &--medium {
@@ -35,7 +35,7 @@
       @apply flex flex-row items-baseline;
       &-item {
         .puik-button {
-          @apply rounded-full;
+          @apply rounded-full px-3.5 font-medium;
         }
       }
     }
