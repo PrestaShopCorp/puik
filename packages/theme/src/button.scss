@@ -2,37 +2,20 @@
 
 .puik-button {
   @extend .puik-text-button-default;
-  @apply transition cursor-pointer py-2.5 px-4;
+  @apply transition cursor-pointer py-2 px-4 gap-2 inline-flex items-center justify-center align-middle;
 
   &--sm {
     @extend .puik-text-button-small;
-    @apply py-1 px-2;
-    .puik-button__left-icon {
-      @apply mr-2;
-    }
-    .puik-button__right-icon {
-      @apply ml-2;
-    }
+    @apply py-1 px-2 h-7;
   }
 
   &--md {
-    .puik-button__left-icon {
-      @apply mr-2;
-    }
-    .puik-button__right-icon {
-      @apply ml-2;
-    }
+    @apply h-9;
   }
 
   &--lg {
     @extend .puik-text-button-large;
-    @apply py-3.5 px-4;
-    .puik-button__left-icon {
-      @apply mr-3;
-    }
-    .puik-button__right-icon {
-      @apply ml-3;
-    }
+    @apply py-3.5 px-4 gap-3 h-12;
   }
 
   &--fluid {
@@ -176,6 +159,6 @@
 
   &__left-icon,
   &__right-icon {
-    @apply font-materialIcons align-middle leading-[0];
+    @apply font-materialIcons align-middle;
   }
 }

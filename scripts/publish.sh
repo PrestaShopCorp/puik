@@ -8,7 +8,7 @@ pnpm update:version
 pnpm build
 
 cd dist/puik
-npm publish
+npm publish --access public
 cd -
 
-echo "✅ Publish completed" 
+echo "✅ Publish completed"
