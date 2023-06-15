@@ -18,6 +18,9 @@
       &:hover {
         @apply bg-red-50;
       }
+      &:active {
+        @apply bg-red-100;
+      }
       @apply bg-white text-red-500 hover:bg-primary-200;
     }
   }
