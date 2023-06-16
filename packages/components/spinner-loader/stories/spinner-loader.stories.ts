@@ -10,8 +10,6 @@ const sizesSummary = Object.values(spinnerSizes).join('|')
 const colorsSummary = Object.values(spinnerPosition).join('|')
 const positionSummary = Object.values(spinnerColors).join('|')
 
-console.log(sizesSummary, spinnerSizes)
-
 export default {
   title: 'Components/SpinnerLoader',
   component: PuikSpinnerLoader,

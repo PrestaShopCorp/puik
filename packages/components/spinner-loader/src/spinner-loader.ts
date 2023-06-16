@@ -25,12 +25,12 @@ export const spinnerLoaderProps = buildProps({
   size: {
     type: String as PropType<SpinnerSizeType>,
     required: false,
-    default: spinnerSizes.MD,
+    default: 'md',
   },
   color: {
     type: String as PropType<SpinnerColorsType>,
     required: false,
-    default: spinnerColors.PRIMARY,
+    default: 'primary',
   },
   label: {
     type: String,
@@ -40,7 +40,7 @@ export const spinnerLoaderProps = buildProps({
   position: {
     type: String as PropType<SpinnerPositionType>,
     required: false,
-    default: spinnerPosition.BOTTOM,
+    default: 'bottom',
   },
 } as const)
 
