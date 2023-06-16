@@ -9,8 +9,8 @@
       fluid
       variant="text"
       class="puik-sidebar-item__button"
-      :to="props.to"
-      :href="props.href"
+      :to="to"
+      :href="href"
     >
       <span>{{ title }}</span>
     </puik-button>
@@ -26,10 +26,10 @@
       variant="text"
       class="puik-sidebar-item__button"
       :left-icon="icon"
-      :to="props.to"
-      :href="props.href"
+      :to="to"
+      :href="href"
     >
-      <span v-if="sidebarValues?.extended.value">{{ title }}</span>
+      <span v-if="isExpanded">{{ title }}</span>
     </puik-button>
   </div>
 </template>
@@ -44,10 +44,11 @@ defineOptions({
   name: 'PuikSidebarItem',
 })
 
-const props = defineProps(sidebarItemProps)
+defineProps(sidebarItemProps)
 const sidebarValues = inject(sidebarKey, null)
 const groupItemValues = inject(groupItemKey, false)
 
+const isExpanded = computed(() => sidebarValues?.extended.value)
 const isMenuItem = computed(
   () => !sidebarValues?.extended.value && groupItemValues
 )

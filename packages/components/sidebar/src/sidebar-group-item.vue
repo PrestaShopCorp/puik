@@ -6,7 +6,7 @@
     }"
   >
     <puik-accordion
-      v-if="sidebarValues?.extended.value"
+      v-if="isExpanded"
       :title="title"
       :name="accordionName"
       :icon="icon"
@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { provide, inject } from 'vue'
+import { provide, inject, computed } from 'vue'
 import { Menu, MenuButton, MenuItems } from '@headlessui/vue'
 import { generateId } from '@puik/utils'
 import PuikAccordion from '../../accordion'
@@ -48,4 +48,6 @@ const props = defineProps(sidebarGroupItemProps)
 const accordionName = props.name ?? `sidebar-item-${generateId()}`
 const sidebarValues = inject(sidebarKey, null)
 provide(groupItemKey, true)
+
+const isExpanded = computed(() => sidebarValues?.extended.value)
 </script>

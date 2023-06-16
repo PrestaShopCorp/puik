@@ -1,11 +1,11 @@
 <template>
-  <h3 v-if="sidebarValues?.extended.value" class="puik-sidebar-title">
+  <h3 v-if="isExpanded" class="puik-sidebar-title">
     <slot></slot>
   </h3>
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
+import { computed, inject } from 'vue'
 import { sidebarKey } from './sidebar'
 
 defineOptions({
@@ -13,4 +13,5 @@ defineOptions({
 })
 
 const sidebarValues = inject(sidebarKey, null)
+const isExpanded = computed(() => sidebarValues?.extended.value)
 </script>

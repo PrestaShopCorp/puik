@@ -2,15 +2,12 @@
   <div>
     <nav
       class="puik-sidebar"
-      :class="[
-        !isExpanded && temporary ? 'puik-sidebar--temporary' : '',
-        !isExpanded ? 'puik-sidebar--collapsed' : '',
-      ]"
+      :class="{
+        'puik-sidebar--temporary': !isExpanded && temporary,
+        'puik-sidebar--collapsed': !isExpanded,
+      }"
     >
-      <div
-        v-if="props.temporary ? isExpanded : true"
-        class="puik-sidebar__header"
-      >
+      <div class="puik-sidebar__header">
         <puik-button variant="text" @click="setExpanded(!isExpanded)">
           <puik-icon :icon="expansionIcon" font-size="1.25rem"></puik-icon>
         </puik-button>
