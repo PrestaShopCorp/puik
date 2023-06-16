@@ -6,9 +6,11 @@ import {
 } from './../src/spinner-loader'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
-const sizesSummary = spinnerSizes.join('|')
-const colorsSummary = spinnerColors.join('|')
-const positionSummary = spinnerPosition.join('|')
+const sizesSummary = Object.values(spinnerSizes).join('|')
+const colorsSummary = Object.values(spinnerPosition).join('|')
+const positionSummary = Object.values(spinnerColors).join('|')
+
+console.log(sizesSummary, spinnerSizes)
 
 export default {
   title: 'Components/SpinnerLoader',
@@ -17,7 +19,7 @@ export default {
     size: {
       control: 'select',
       description: 'Set the spinner size',
-      options: spinnerSizes,
+      options: Object.values(spinnerSizes),
       table: {
         type: {
           summary: sizesSummary,
@@ -30,7 +32,7 @@ export default {
     color: {
       control: 'select',
       description: 'Set the spinner color',
-      options: spinnerColors,
+      options: Object.values(spinnerColors),
       table: {
         type: {
           summary: colorsSummary,
@@ -52,7 +54,7 @@ export default {
     position: {
       control: 'select',
       description: 'Set label beside right the spinner',
-      options: spinnerPosition,
+      options: Object.values(spinnerPosition),
       table: {
         type: {
           summary: positionSummary,
@@ -110,7 +112,7 @@ Default.parameters = {
         size="$sizes"
         color="$colors"
         position="$positions"
-        :label="My Label"
+        :label="label"
       />
 
       <!--HTML/CSS Snippet-->
@@ -123,7 +125,7 @@ Default.parameters = {
       <div class="puik-spinner-loader">
         <div class="puik-spinner-loader__spinner"></div>
         <!-- Label -->
-        <span class="puik-spinner-loader__label">My Label</span>
+        <span class="puik-spinner-loader__label">label</span>
       </div>
       `,
       language: 'html',
