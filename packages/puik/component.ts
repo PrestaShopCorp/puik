@@ -3,6 +3,12 @@ import { PuikAccordion, PuikAccordionGroup } from '@puik/components/accordion'
 import { PuikBadge } from '@puik/components/badge'
 import { PuikModal } from '@puik/components/modal'
 import { PuikButtonGroup } from '@puik/components/button-group'
+import {
+  PuikMenu,
+  PuikMenuItem,
+  PuikMenuItemSeparator,
+  PuikMenuItemTitle,
+} from '@puik/components/menu'
 import { PuikProgressBar } from '@puik/components/progress-bar'
 import { PuikIcon } from '@puik/components/icon'
 import { PuikLink } from '@puik/components/link'
@@ -27,6 +33,10 @@ export default [
   PuikBadge,
   PuikModal,
   PuikButtonGroup,
+  PuikMenu,
+  PuikMenuItem,
+  PuikMenuItemSeparator,
+  PuikMenuItemTitle,
   PuikProgressBar,
   PuikIcon,
   PuikLink,
