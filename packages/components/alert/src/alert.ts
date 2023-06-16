@@ -1,8 +1,15 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type Alert from './alert.vue'
 
-export const alertVariants = ['success', 'warning', 'danger', 'info']
+export enum alertVariants {
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  DANGER = 'danger',
+  INFO = 'info',
+}
+
+export type AlertVariantsType = `${alertVariants}`
 
 export const ICONS = {
   success: 'check_circle',
@@ -23,8 +30,7 @@ export const alertProps = buildProps({
     default: undefined,
   },
   variant: {
-    type: String,
-    values: alertVariants,
+    type: String as PropType<AlertVariantsType>,
     default: 'success',
   },
   disableBorders: {
@@ -37,8 +43,7 @@ export const alertProps = buildProps({
     default: undefined,
   },
   ariaLive: {
-    type: String,
-    values: ['polite', 'assertive'],
+    type: String as PropType<'polite' | 'assertive'>,
     required: false,
     default: 'polite',
   },

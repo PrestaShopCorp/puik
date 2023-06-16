@@ -1,10 +1,10 @@
+import { top, bottom, left, right } from '@popperjs/core'
 import { buildProps } from '@puik/utils'
-import type { Placement } from '@popperjs/core'
-import type { ExtractPropTypes } from 'vue'
+import type { BasePlacement } from '@popperjs/core'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type Tooltip from './tooltip.vue'
 
-export const tooltipPosition: Placement[] = ['top', 'bottom', 'left', 'right']
-
+export const tooltipPosition: BasePlacement[] = [top, bottom, left, right]
 export const tooltipProps = buildProps({
   title: {
     type: String,
@@ -17,8 +17,7 @@ export const tooltipProps = buildProps({
     default: undefined,
   },
   position: {
-    type: String,
-    values: tooltipPosition,
+    type: String as PropType<BasePlacement>,
     required: false,
     default: 'top',
   },

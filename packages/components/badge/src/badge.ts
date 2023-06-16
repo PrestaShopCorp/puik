@@ -1,13 +1,20 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type Badge from './badge.vue'
 
-export const badgeVariants = ['success', 'warning', 'danger', 'info', 'neutral']
+export enum badgeVariants {
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  DANGER = 'danger',
+  INFO = 'info',
+  NEUTRAL = 'neutral',
+}
+
+export type BadgeVariantsType = `${badgeVariants}`
 
 export const badgeProps = buildProps({
   variant: {
-    type: String,
-    values: badgeVariants,
+    type: String as PropType<BadgeVariantsType>,
     default: 'neutral',
   },
 } as const)

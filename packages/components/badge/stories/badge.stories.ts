@@ -16,7 +16,7 @@ export default {
       options: badgeVariants,
       table: {
         type: {
-          summary: badgeVariants.join('|'),
+          summary: Object.values(badgeVariants).join('|'),
         },
         defaultValue: {
           summary: 'success',

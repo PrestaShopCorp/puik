@@ -1,14 +1,21 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type Card from './card.vue'
 
-export const cardVariants = ['highlight', 'blue', 'purple', 'amber', 'default']
+export enum cardVariants {
+  HIGHLIGHT = 'highlight',
+  BLUE = 'blue',
+  PURPLE = 'purple',
+  AMBER = 'amber',
+  DEFAULT = 'default',
+}
+
+export type CardVariantsType = `${cardVariants}`
 
 export const cardProps = buildProps({
   variant: {
-    type: String,
+    type: String as PropType<CardVariantsType>,
     required: false,
-    values: cardVariants,
     default: 'default',
   },
 } as const)
