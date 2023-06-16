@@ -96,41 +96,7 @@ const Template: Story = (args: Args) => ({
 })
 
 export const Default = Template.bind({})
-
 Default.args = {}
-
-const defaultParameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet -->
-<!--
-$sizes: ${buttonSizesSummary}
-$variants: ${buttonVariantsSummary}
--->
-<puik-button
-  :size="$sizes"
-  :variant="$variants"
-  :fluid="true|false"
-  :disabled="true|false"
-  :left-icon="leftIcon"
-  :right-icon="rightIcon"
->
-  My button
-</puik-button>
-
-<!--HTML/CSS Snippet-->
-<!--
-$sizes: ${buttonSizesSummary} (defaults to md)
-$variants: ${buttonVariantsSummary}
--->
-<button class="puik-button puik-button--{$variants} puik-button--{$sizes}">My button</button>
-      `,
-      language: 'html',
-    },
-  },
-}
-
 Default.parameters = {
   docs: {
     source: {
