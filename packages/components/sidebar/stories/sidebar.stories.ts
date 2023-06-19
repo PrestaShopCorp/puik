@@ -64,7 +64,7 @@ const Template: Story = (args: Args) => ({
     return { args }
   },
   template: `
-<puik-sidebar :open-accordion=args.name" :mobile="args.mobile" v-model:expanded="args.expanded">
+<puik-sidebar :open-accordion="args.name" :mobile="args.mobile" v-model:expanded="args.expanded">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
