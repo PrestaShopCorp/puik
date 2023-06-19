@@ -26,10 +26,8 @@
         >
           <slot></slot>
         </puik-accordion-group>
-        <div v-else>
-          <div v-if="!mobile" class="puik-sidebar-item">
-            <slot></slot>
-          </div>
+        <div v-else class="puik-sidebar-item">
+          <slot></slot>
         </div>
       </div>
     </nav>
