@@ -2,17 +2,29 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Menu from './menu.vue'
 
+/**
+ * @deprecated Replace with string value
+ */
 export enum MenuAlignEnum {
   LEFT = 'left',
   RIGHT = 'right',
 }
 export const menuAlignValues = Object.values(MenuAlignEnum) as string[]
 
+/**
+ * @deprecated Replace with string value
+ */
 export enum MenuPositionEnum {
   TOP = 'top',
   BOTTOM = 'bottom',
 }
 export const menuPositionValues = Object.values(MenuPositionEnum) as string[]
+
+export const menuAlign = ['left', 'right'] as const
+export type MenuAlignType = (typeof menuAlign)[number]
+
+export const menuPosition = ['top', 'bottom'] as const
+export type MenuPositionType = (typeof menuPosition)[number]
 
 export const menuProps = buildProps({
   maxHeight: {
@@ -26,16 +38,14 @@ export const menuProps = buildProps({
     default: '200px',
   },
   align: {
-    type: String as PropType<MenuAlignEnum>,
+    type: String as PropType<MenuAlignType>,
     required: false,
-    values: menuAlignValues,
-    default: MenuAlignEnum.LEFT,
+    default: 'left',
   },
   position: {
-    type: String as PropType<MenuPositionEnum>,
+    type: String as PropType<MenuPositionType>,
     required: false,
-    values: menuPositionValues,
-    default: MenuPositionEnum.BOTTOM,
+    default: 'bottom',
   },
 } as const)
 

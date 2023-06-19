@@ -2,17 +2,17 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Input from './input.vue'
 
-export enum inputTypes {
-  TEXT = 'text',
-  PASSWORD = 'password',
-  EMAIL = 'email',
-  NUMBER = 'number',
-  SEARCH = 'search',
-  URL = 'url',
-  TEL = 'tel',
-}
+export const inputTypes = [
+  'text',
+  'password',
+  'email',
+  'number',
+  'search',
+  'url',
+  'tel',
+] as const
 
-export type InputTypes = `${inputTypes}`
+export type InputTypes = (typeof inputTypes)[number]
 
 export const inputProps = buildProps({
   modelValue: {

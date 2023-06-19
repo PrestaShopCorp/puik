@@ -4,7 +4,7 @@ import PuikCard from './../src/card.vue'
 import PuikButton from './../../button/src/button.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
-const cardVariantsJoined = Object.values(cardVariants).join('|')
+const cardVariantsJoined = cardVariants.join('|')
 
 export default {
   title: 'Components/Card',

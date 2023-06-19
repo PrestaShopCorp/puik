@@ -2,14 +2,9 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Alert from './alert.vue'
 
-export enum alertVariants {
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  DANGER = 'danger',
-  INFO = 'info',
-}
+export const alertVariants = ['success', 'warning', 'danger', 'info'] as const
 
-export type AlertVariantsType = `${alertVariants}`
+export type AlertVariantsType = (typeof alertVariants)[number]
 
 export const ICONS = {
   success: 'check_circle',

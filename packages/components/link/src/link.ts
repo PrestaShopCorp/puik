@@ -3,19 +3,10 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Link from './link.vue'
 
-export enum targetVariants {
-  BLANK = '_blank',
-  SELF = '_self',
-  PARENT = '_parent',
-  TOP = '_top',
-}
-export type TargetVariantsType = `${targetVariants}`
-export enum linkSizes {
-  SM = 'sm',
-  MD = 'md',
-  LG = 'lg',
-}
-export type LinkSizesType = `${linkSizes}`
+export const targetVariants = ['_blank', '_self', '_parent', '_top'] as const
+export type TargetVariantsType = (typeof targetVariants)[number]
+export const linkSizes = ['sm', 'md', 'lg'] as const
+export type LinkSizesType = (typeof linkSizes)[number]
 
 export const linkProps = buildProps({
   size: {

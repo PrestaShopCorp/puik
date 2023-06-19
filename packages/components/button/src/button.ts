@@ -2,26 +2,22 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Button from './button.vue'
 
-export enum buttonVariants {
-  PRIMARY = 'primary',
-  DESTRUCTIVE = 'destructive',
-  SECONDARY = 'secondary',
-  TERTIARY = 'tertiary',
-  TEXT = 'text',
-  INFO = 'info',
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  DANGER = 'danger',
-}
+export const buttonVariants = [
+  'primary',
+  'destructive',
+  'secondary',
+  'tertiary',
+  'text',
+  'info',
+  'success',
+  'warning',
+  'danger',
+] as const
 
-export type ButtonVariantsType = `${buttonVariants}`
+export type ButtonVariantsType = (typeof buttonVariants)[number]
 
-export enum buttonSizes {
-  SM = 'sm',
-  MD = 'md',
-  LG = 'lg',
-}
-export type ButtonSizesType = `${buttonSizes}`
+export const buttonSizes = ['sm', 'md', 'lg'] as const
+export type ButtonSizesType = (typeof buttonSizes)[number]
 
 export const buttonProps = buildProps({
   variant: {

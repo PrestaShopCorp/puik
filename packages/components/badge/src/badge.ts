@@ -2,15 +2,15 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Badge from './badge.vue'
 
-export enum badgeVariants {
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  DANGER = 'danger',
-  INFO = 'info',
-  NEUTRAL = 'neutral',
-}
+export const badgeVariants = [
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'neutral',
+] as const
 
-export type BadgeVariantsType = `${badgeVariants}`
+export type BadgeVariantsType = (typeof badgeVariants)[number]
 
 export const badgeProps = buildProps({
   variant: {

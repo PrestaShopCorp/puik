@@ -4,6 +4,9 @@ import type Modal from './modal.vue'
 
 export const DESTRUCTIVE_ICON_NAME = 'warning'
 
+/**
+ * @deprecated Replace with string value
+ */
 export enum PuikModalVariant {
   DESTRUCTIVE = 'destructive',
   FEEDBACK = 'feedback',
@@ -11,6 +14,9 @@ export enum PuikModalVariant {
 }
 export type ModalVariantType = `${PuikModalVariant}`
 
+/**
+ * @deprecated Replace with string value
+ */
 export enum PuikModalSize {
   SMALL = 'small',
   MEDIUM = 'medium',
