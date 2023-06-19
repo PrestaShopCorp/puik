@@ -17,7 +17,7 @@
   "dependencies": {
     "@pnpm/find-workspace-packages": "^6.0.5",
     "@pnpm/logger": "^5.0.0",
-    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-commonjs": "^25.0.2",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@vitejs/plugin-vue": "^4.1.0",
     "chalk": "^5.2.0",
