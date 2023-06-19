@@ -17,7 +17,7 @@
     .puik-button {
       &:hover {
         .puik-icon {
-          @apply text-blue-700;
+          @apply text-blue-700 text-xl;
         }
       }
     }
@@ -79,7 +79,7 @@
     }
   }
 
-  &--temporary {
+  &--mobile {
     @apply max-w-0;
   }
 

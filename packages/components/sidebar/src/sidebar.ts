@@ -13,7 +13,7 @@ export const sidebarProps = buildProps({
     default: '',
     required: false,
   },
-  temporary: {
+  mobile: {
     type: Boolean,
     default: false,
     required: false,

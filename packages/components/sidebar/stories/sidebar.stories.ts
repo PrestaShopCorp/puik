@@ -21,7 +21,7 @@ export default {
       description:
         'Name use by parent to open/close accordion (group-1 for example)',
     },
-    temporary: {
+    mobile: {
       control: 'boolean',
       description:
         'Add a backdrop for dismiss and hide the sidebar when collapsed (mobile usage), expansion is triggered by the v-model',
@@ -46,7 +46,7 @@ const Template: Story = (args: Args) => ({
     return { args }
   },
   template: `
-<puik-sidebar :name="args.name" :temporary="args.temporary" v-model="args.modelValue">
+<puik-sidebar :name="args.name" :mobile="args.mobile" v-model="args.modelValue">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
@@ -86,7 +86,7 @@ Default.parameters = {
     source: {
       code: `
 <!--VueJS Snippet-->
-<puik-sidebar :name="args.name" :temporary="args.temporary" v-model="args.modelValue">
+<puik-sidebar :name="args.name" :mobile="args.mobile" v-model="args.modelValue">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
@@ -115,7 +115,7 @@ Default.parameters = {
     title="New modules added customization"
     icon="extension"
   />
-</puik-sidebar> 
+</puik-sidebar>
 
 <!--HTML/CSS Snippet-->
 <nav class="puik-sidebar">
@@ -244,7 +244,7 @@ Default.parameters = {
   },
 }
 
-const TemporaryTemplate = (args: Args) => ({
+const MobileTemplate = (args: Args) => ({
   components: {
     PuikSidebar,
     PuikSidebarGroupItem,
@@ -261,7 +261,7 @@ const TemporaryTemplate = (args: Args) => ({
     }
   },
   template: `
-<puik-sidebar temporary v-model="expanded">
+<puik-sidebar mobile v-model="expanded">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
@@ -297,12 +297,12 @@ const TemporaryTemplate = (args: Args) => ({
   `,
 })
 
-export const Temporary: Story = TemporaryTemplate.bind({})
-Temporary.parameters = {
+export const Mobile: Story = MobileTemplate.bind({})
+MobileTemplate.parameters = {
   docs: {
     source: {
       code: `
-<puik-sidebar temporary v-model="expanded">
+<puik-sidebar mobile v-model="expanded">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>

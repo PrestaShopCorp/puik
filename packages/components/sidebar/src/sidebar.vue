@@ -1,16 +1,20 @@
 <template>
-  <div>
+  <div class="puik-sidebar__container">
     <nav
+      v-if="(mobile && isExpanded) || !mobile"
       class="puik-sidebar"
       :class="{
-        'puik-sidebar--temporary': !isExpanded && temporary,
+        'puik-sidebar--mobile': !isExpanded && mobile,
         'puik-sidebar--collapsed': !isExpanded,
       }"
     >
       <div class="puik-sidebar__header">
-        <puik-button variant="text" @click="setExpanded(!isExpanded)">
-          <puik-icon :icon="expansionIcon" font-size="1.25rem"></puik-icon>
-        </puik-button>
+        <puik-button
+          variant="text"
+          :left-icon="expansionIcon"
+          :aria-label="expandButtonAriaLabel"
+          @click="setExpanded(!isExpanded)"
+        ></puik-button>
       </div>
       <div class="puik-sidebar__content">
         <puik-accordion-group
@@ -23,14 +27,14 @@
           <slot></slot>
         </puik-accordion-group>
         <div v-else>
-          <div v-if="!temporary" class="puik-sidebar-item">
+          <div v-if="!mobile" class="puik-sidebar-item">
             <slot></slot>
           </div>
         </div>
       </div>
     </nav>
     <div
-      v-if="temporary && isExpanded"
+      v-if="mobile && isExpanded"
       class="puik-sidebar__backdrop"
       @click="setExpanded(false)"
     ></div>
@@ -39,7 +43,7 @@
 
 <script setup lang="ts">
 import { ref, watch, provide, computed } from 'vue'
-import PuikIcon from '../../icon'
+import { useLocale } from '@puik/hooks'
 import PuikButton from '../../button'
 import { PuikAccordionGroup } from '../../accordion'
 import { sidebarProps, sidebarKey } from './sidebar'
@@ -53,6 +57,7 @@ const emit = defineEmits<{
   (e: 'update:name', value: string): void
 }>()
 const props = defineProps(sidebarProps)
+const { t } = useLocale()
 
 const isExpanded = ref(props.modelValue)
 const openAccordionName = ref(props.name)
@@ -84,6 +89,14 @@ watch(
     openAccordionName.value = props.name
   }
 )
+
+const expandButtonAriaLabel = computed(() => {
+  return t(
+    `puik.sidebar.expandButtonLabel.${
+      isExpanded.value ? 'collapsed' : 'expanded'
+    }`
+  )
+})
 
 provide(sidebarKey, {
   extended: isExpanded,

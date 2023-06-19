@@ -71,9 +71,9 @@ describe('Sidebar tests', () => {
     )
   })
 
-  it('should be temporary', async () => {
+  it('should be mobile', async () => {
     const template = `
-      <puik-sidebar temporary>
+      <puik-sidebar mobile>
         <puik-sidebar-group-item title="group" icon="store">
           <puik-sidebar-item title="title" />
         </puik-sidebar-group-item>
@@ -81,7 +81,7 @@ describe('Sidebar tests', () => {
     `
 
     await factory(template)
-    expect(getSidebar(wrapper).classes()).toContain('puik-sidebar--temporary')
+    expect(getSidebar(wrapper).classes()).toContain('puik-sidebar--mobile')
 
     const items = getSidebarsItem(wrapper)
     expect(items.length).toBe(0)
