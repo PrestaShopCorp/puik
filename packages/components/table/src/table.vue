@@ -24,7 +24,7 @@
               [`puik-table__head__row__item--${header.size}`]:
                 header?.size && !header?.width,
             }"
-            :style="{ width: header.width }"
+            :style="{ minWidth: header.width, width: header.width }"
           >
             <slot
               :name="`header-${header.value}`"
@@ -58,14 +58,7 @@
             v-for="(header, colIndex) in headers"
             :key="`col-${colIndex}`"
             class="puik-table__body__row__item"
-            :class="[
-              `puik-table__body__row__item--${header.align ?? 'left'}`,
-              {
-                [`puik-table__body__row__item--${header.size}`]:
-                  header?.size && !header?.width,
-              },
-            ]"
-            :style="{ width: header.width }"
+            :class="`puik-table__body__row__item--${header.align ?? 'left'}`"
           >
             <slot :name="`item-${header.value}`" :item="item" :index="rowIndex">
               {{ item[header.value] }}

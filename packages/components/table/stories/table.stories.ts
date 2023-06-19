@@ -254,10 +254,6 @@ const headers: PuikTableHeader[] = [
       size md: "puik-table__head__row__item--md"
       size lg: "puik-table__head__row__item--lg"
     td :
-      size sm: "puik-table__body__row__item--sm"
-      size md: "puik-table__body__row__item--md"
-      size lg: "puik-table__body__row__item--lg"
-
       align left: "puik-table__body__row__item--left"
       align center: "puik-table__body__row__item--center"
       align right: "puik-table__body__row__item--right"

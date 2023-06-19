@@ -30,7 +30,8 @@
         @apply font-normal uppercase;
         @include puik-table-item();
         &--selection {
-          &__checkbox {
+          &__checkbox,
+          > .puik-checkbox {
             .puik-checkbox__label {
               @apply sr-only;
             }
@@ -60,7 +61,8 @@
           @apply text-left;
         }
         &--selection {
-          &__checkbox {
+          &__checkbox,
+          > .puik-checkbox {
             .puik-checkbox__label {
               @apply sr-only;
             }
