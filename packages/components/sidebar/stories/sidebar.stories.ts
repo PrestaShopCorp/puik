@@ -7,24 +7,42 @@ export default {
   title: 'Components/Sidebar',
   component: PuikSidebar,
   argTypes: {
-    modelValue: {
+    expanded: {
       control: 'boolean',
       description: 'Set the expansion state',
       table: {
+        type: {
+          summary: 'boolean',
+        },
         defaultValue: {
           summary: false,
         },
       },
     },
-    name: {
+    openAccordion: {
       control: 'text',
-      description:
-        'Name use by parent to open/close accordion (group-1 for example)',
+      description: 'v-model of the open accordion name',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        defaultValue: {
+          summary: 'undefined',
+        },
+      },
     },
     mobile: {
       control: 'boolean',
       description:
         'Add a backdrop for dismiss and hide the sidebar when collapsed (mobile usage), expansion is triggered by the v-model',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        defaultValue: {
+          summary: false,
+        },
+      },
     },
   },
   parameters: {
@@ -46,7 +64,7 @@ const Template: Story = (args: Args) => ({
     return { args }
   },
   template: `
-<puik-sidebar :name="args.name" :mobile="args.mobile" v-model="args.modelValue">
+<puik-sidebar :open-accordion=args.name" :mobile="args.mobile" v-model:expanded="args.expanded">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
@@ -86,7 +104,7 @@ Default.parameters = {
     source: {
       code: `
 <!--VueJS Snippet-->
-<puik-sidebar :name="args.name" :mobile="args.mobile" v-model="args.modelValue">
+<puik-sidebar :open-accordion=args.name" :mobile="args.mobile" v-model:expanded="args.expanded">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
@@ -261,7 +279,7 @@ const MobileTemplate = (args: Args) => ({
     }
   },
   template: `
-<puik-sidebar mobile v-model="expanded">
+<puik-sidebar mobile v-model:expanded="expanded">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
@@ -302,7 +320,7 @@ MobileTemplate.parameters = {
   docs: {
     source: {
       code: `
-<puik-sidebar mobile v-model="expanded">
+<puik-sidebar mobile v-model:expanded="expanded">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>

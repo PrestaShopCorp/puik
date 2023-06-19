@@ -89,7 +89,7 @@ describe('Sidebar tests', () => {
 
   it('should have group-1 open by default', async () => {
     const template = `
-      <puik-sidebar name="group-1" :model-value="true">
+      <puik-sidebar open-accordion="group-1" :expanded="true">
         <puik-sidebar-group-item title="group" icon="store" name="group-1">
           <puik-sidebar-item title="title" />
         </puik-sidebar-group-item>

@@ -1,11 +1,11 @@
 <template>
   <div class="puik-sidebar__container">
     <nav
-      v-if="(mobile && isExpanded) || !mobile"
+      v-if="!mobile || localExpanded"
       class="puik-sidebar"
       :class="{
-        'puik-sidebar--mobile': !isExpanded && mobile,
-        'puik-sidebar--collapsed': !isExpanded,
+        'puik-sidebar--mobile': !localExpanded && mobile,
+        'puik-sidebar--collapsed': !localExpanded,
       }"
     >
       <div class="puik-sidebar__header">
@@ -13,12 +13,12 @@
           variant="text"
           :left-icon="expansionIcon"
           :aria-label="expandButtonAriaLabel"
-          @click="setExpanded(!isExpanded)"
+          @click="setExpanded(!localExpanded)"
         ></puik-button>
       </div>
       <div class="puik-sidebar__content">
         <puik-accordion-group
-          v-if="isExpanded"
+          v-if="localExpanded"
           class="puik-sidebar-item"
           contained
           :model-value="openAccordionName"
@@ -32,7 +32,7 @@
       </div>
     </nav>
     <div
-      v-if="mobile && isExpanded"
+      v-if="mobile && localExpanded"
       class="puik-sidebar__backdrop"
       @click="setExpanded(false)"
     ></div>
@@ -47,56 +47,56 @@ import { PuikAccordionGroup } from '../../accordion'
 import { sidebarProps, sidebarKey } from './sidebar'
 
 defineOptions({
-  name: 'PuikSidebar',
+  openAccordion: 'PuikSidebar',
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void
-  (e: 'update:name', value: string): void
+  (e: 'update:expanded', value: boolean): void
+  (e: 'update:openAccordion', value: string): void
 }>()
 const props = defineProps(sidebarProps)
 const { t } = useLocale()
 
-const isExpanded = ref(props.modelValue)
-const openAccordionName = ref(props.name)
+const localExpanded = ref(props.expanded)
+const openAccordionName = ref(props.openAccordion)
 
 const expansionIcon = computed(() => {
-  return isExpanded.value ? 'first_page' : 'last_page'
+  return localExpanded.value ? 'first_page' : 'last_page'
 })
 
 function setExpanded(value) {
-  isExpanded.value = value
-  emit('update:modelValue', value)
+  localExpanded.value = value
+  emit('update:expanded', value)
 }
 
-function openAccordion(name) {
-  openAccordionName.value = name
-  emit('update:name', openAccordionName.value)
+function openAccordion(value) {
+  openAccordionName.value = value
+  emit('update:openAccordion', openAccordionName.value)
 }
 
 watch(
-  () => props.modelValue,
+  () => props.expanded,
   () => {
-    isExpanded.value = props.modelValue
+    localExpanded.value = props.expanded
   }
 )
 
 watch(
-  () => props.name,
+  () => props.openAccordion,
   () => {
-    openAccordionName.value = props.name
+    openAccordionName.value = props.openAccordion
   }
 )
 
 const expandButtonAriaLabel = computed(() => {
   return t(
     `puik.sidebar.expandButtonLabel.${
-      isExpanded.value ? 'collapsed' : 'expanded'
+      localExpanded.value ? 'collapsed' : 'expanded'
     }`
   )
 })
 
 provide(sidebarKey, {
-  extended: isExpanded,
+  extended: localExpanded,
 })
 </script>

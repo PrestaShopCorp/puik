@@ -3,12 +3,12 @@ import type { Ref, ExtractPropTypes, InjectionKey } from 'vue'
 import type Sidebar from './sidebar.vue'
 
 export const sidebarProps = buildProps({
-  modelValue: {
+  expanded: {
     type: Boolean,
     default: false,
     required: false,
   },
-  name: {
+  openAccordion: {
     type: String,
     default: '',
     required: false,
