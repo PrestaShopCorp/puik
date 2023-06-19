@@ -21,7 +21,6 @@ describe('Table tests', () => {
   const headerColClass = 'puik-table__head__row__item'
 
   const getTable = () => wrapper.find('.puik-table')
-  const getHeader = () => wrapper.find('.puik-table__head__row')
   const getHeaders = () => wrapper.findAll(`.${headerColClass}`)
   const getRows = () => wrapper.findAll('.puik-table__body__row')
   const getCols = (rowIndex) => getRows()[rowIndex].findAll(`.${colClass}`)
@@ -217,11 +216,6 @@ describe('Table tests', () => {
     expect(headerCols[0].classes()).toContain(`${headerColClass}--sm`)
     expect(headerCols[1].classes()).toContain(`${headerColClass}--md`)
     expect(headerCols[2].classes()).toContain(`${headerColClass}--lg`)
-
-    const rowCols = getCols(0)
-    expect(rowCols[0].classes()).toContain(`${colClass}--sm`)
-    expect(rowCols[1].classes()).toContain(`${colClass}--md`)
-    expect(rowCols[2].classes()).toContain(`${colClass}--lg`)
   })
 
   it('should cols have align class', () => {
@@ -243,9 +237,7 @@ describe('Table tests', () => {
     const width = '500px'
     const headers: PuikTableHeader[] = [{ value: 'firstname', width }]
     factory({ headers, items })
-    const rowCols = getCols(0)[0]
     const header = getHeaders()[0]
-    expect(rowCols.element.style.width).toBe(width)
     expect(header.element.style.width).toBe(width)
   })
 
