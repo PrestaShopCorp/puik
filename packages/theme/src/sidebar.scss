@@ -102,6 +102,10 @@
     @apply px-2 py-4 sm:py-2 justify-start font-normal text-left;
     height: unset;
   }
+
+  &--focus {
+    @apply bg-primary-300;
+  }
 }
 
 .puik-sidebar-group-item {

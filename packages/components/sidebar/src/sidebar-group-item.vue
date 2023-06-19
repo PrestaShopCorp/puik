@@ -14,7 +14,7 @@
       <slot></slot>
     </puik-accordion>
     <Menu v-else>
-      <MenuButton class="puik-sidebar-group-item__menu-button">
+      <MenuButton as="div" class="puik-sidebar-group-item__menu-button">
         <puik-button
           variant="text"
           fluid

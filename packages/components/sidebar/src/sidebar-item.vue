@@ -1,6 +1,7 @@
 <template>
-  <div
+  <MenuItem
     v-if="isMenuItem"
+    v-slot="{ active: focused }"
     class="puik-sidebar-item"
     :class="{ 'puik-sidebar-item--active': active }"
   >
@@ -9,12 +10,13 @@
       fluid
       variant="text"
       class="puik-sidebar-item__button"
+      :class="{ 'puik-sidebar-item--focus': focused }"
       :to="to"
       :href="href"
     >
       <span>{{ title }}</span>
     </puik-button>
-  </div>
+  </MenuItem>
   <div
     v-else
     class="puik-sidebar-item"
@@ -36,6 +38,7 @@
 
 <script setup lang="ts">
 import { inject, computed } from 'vue'
+import { MenuItem } from '@headlessui/vue'
 import PuikButton from '../../button'
 import { sidebarKey, groupItemKey } from './sidebar'
 import { sidebarItemProps } from './sidebar-item'
