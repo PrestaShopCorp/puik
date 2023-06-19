@@ -19,7 +19,6 @@
       <div class="puik-sidebar__content">
         <puik-accordion-group
           v-if="localExpanded"
-          class="puik-sidebar-item"
           contained
           :model-value="openAccordionName"
           @update:model-value="openAccordion"

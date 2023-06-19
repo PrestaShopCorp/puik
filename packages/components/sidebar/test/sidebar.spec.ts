@@ -29,6 +29,8 @@ export const getExpandButton = (component) =>
   component.find('.puik-sidebar__header .puik-button')
 export const getSidebarContent = (component) =>
   component.find('.puik-sidebar__content')
+export const getSidebarBackdrop = (component) =>
+  component.find('.puik-sidebar__backdrop')
 
 describe('Sidebar tests', () => {
   it('should be a vue instance', () => {
@@ -86,17 +88,15 @@ describe('Sidebar tests', () => {
 
   it('should be mobile', async () => {
     const template = `
-      <puik-sidebar mobile :model-value="true">
-        <puik-sidebar-item title="title" />
-      </puik-sidebar>
-    `
-
-    await factory(template)
+    <puik-sidebar mobile :expanded="true">
+      <puik-sidebar-item title="title" />
+    </puik-sidebar>
+  `
+    factory(template)
     const items = getSidebarsItem(wrapper)
     expect(items.length).toBe(1)
-    const expandButton = getExpandButton(wrapper)
-    await expandButton.trigger('click')
-    expect(getSidebar(wrapper)).not.toBeTruthy()
+    const backdrop = getSidebarBackdrop(wrapper)
+    expect(backdrop).toBeTruthy()
   })
 
   it('should have group-1 open by default', async () => {
