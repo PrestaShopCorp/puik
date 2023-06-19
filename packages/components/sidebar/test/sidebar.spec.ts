@@ -86,18 +86,17 @@ describe('Sidebar tests', () => {
 
   it('should be mobile', async () => {
     const template = `
-      <puik-sidebar mobile>
-        <puik-sidebar-group-item title="group" icon="store">
-          <puik-sidebar-item title="title" />
-        </puik-sidebar-group-item>
+      <puik-sidebar mobile :model-value="true">
+        <puik-sidebar-item title="title" />
       </puik-sidebar>
     `
 
     await factory(template)
-    expect(getSidebar(wrapper).classes()).toContain('puik-sidebar--mobile')
-
     const items = getSidebarsItem(wrapper)
-    expect(items.length).toBe(0)
+    expect(items.length).toBe(1)
+    const expandButton = getExpandButton(wrapper)
+    await expandButton.trigger('click')
+    expect(getSidebar(wrapper)).not.toBeTruthy()
   })
 
   it('should have group-1 open by default', async () => {

@@ -2,7 +2,7 @@
 
 .puik-sidebar {
   @extend .puik-sidebar-default;
-  @apply w-[20.5rem] sm:w-[13.125rem] h-full bg-white border-r border-primary-300;
+  @apply relative z-10 w-[20.5rem] sm:w-[13.125rem] h-full bg-white border-r border-primary-300;
   transition: width 0.2s ease-out;
 
   .puik-button {
@@ -84,7 +84,7 @@
   }
 
   &__backdrop {
-    @apply w-screen h-screen bg-primary-800/50 absolute top-0 left-0;
+    @apply w-screen h-screen bg-primary-800/50 absolute top-0 left-0 z-0;
   }
 }
 
