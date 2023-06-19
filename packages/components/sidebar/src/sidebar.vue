@@ -26,9 +26,7 @@
         >
           <slot></slot>
         </puik-accordion-group>
-        <div v-else class="puik-sidebar-item">
-          <slot></slot>
-        </div>
+        <slot v-else></slot>
       </div>
     </nav>
     <div

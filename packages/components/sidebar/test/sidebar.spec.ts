@@ -21,6 +21,8 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
 }
 
 export const getSidebar = (component) => component.find('.puik-sidebar')
+export const getSidebarsGroupItem = (component) =>
+  component.findAll('.puik-sidebar-group-item')
 export const getSidebarsItem = (component) =>
   component.findAll('.puik-sidebar-item')
 export const getExpandButton = (component) =>
@@ -44,13 +46,24 @@ describe('Sidebar tests', () => {
   it('should display item', () => {
     const template = `
       <puik-sidebar>
+        <puik-sidebar-item title="title" />
+      </puik-sidebar>
+    `
+    factory(template)
+    const items = getSidebarsItem(wrapper)
+    expect(items.length).toBe(1)
+  })
+
+  it('should display group-item', () => {
+    const template = `
+      <puik-sidebar>
         <puik-sidebar-group-item title="group" icon="store">
           <puik-sidebar-item title="title" />
         </puik-sidebar-group-item>
       </puik-sidebar>
     `
     factory(template)
-    const items = getSidebarsItem(wrapper)
+    const items = getSidebarsGroupItem(wrapper)
     expect(items.length).toBe(1)
   })
 
