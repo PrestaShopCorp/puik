@@ -1,5 +1,22 @@
 .puik-skeleton-loader {
-  @apply bg-primary-400 rounded w-full animate-pulse text-primary-500 text-2xl;
+  @apply rounded w-full text-primary-500 text-2xl;
+
+  background: linear-gradient(
+    90deg,
+    theme('colors.primary.400') 40%,
+    theme('colors.primary.300') 50%,
+    theme('colors.primary.400') 60%
+  );
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1200ms loading ease-in-out infinite;
+
+  @keyframes loading {
+    100% {
+      background-position-x: -20%;
+    }
+  }
+
   &--h1 {
     @apply h-[42px];
   }
