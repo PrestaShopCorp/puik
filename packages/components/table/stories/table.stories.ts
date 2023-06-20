@@ -4,7 +4,7 @@ import PuikTable from './../src/table.vue'
 import type { PuikTableHeader } from '../src/table'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
-function generateData(length = 10) {
+function generateData(length = 3) {
   return Array(length)
     .fill(null)
     .map((_, index) => {
@@ -318,7 +318,6 @@ const headers: PuikTableHeader[] = [
         <td>dubuque.earnestine@email.com</td>
         <td>
           <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
-            <!--v-if-->
             <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
           </button>
         </td>
@@ -339,6 +338,305 @@ const headers: PuikTableHeader[] = [
             <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
           </button>
         </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Selectable: Story = Template.bind({})
+Selectable.args = {
+  selectable: true,
+}
+Selectable.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+const headers: PuikTableHeader[] = [
+  {
+    text: 'Nom',
+    value: 'lastname',
+    size: 'md',
+  },
+  {
+    text: 'Prénom',
+    value: 'firstname',
+    size: 'md',
+  },
+  {
+    text: 'Age',
+    value: 'age',
+    size: 'sm',
+    align: 'center',
+  },
+  {
+    text: 'Email',
+    value: 'email',
+    align: 'right',
+  },
+  {
+    value: 'actions',
+    size: 'sm',
+  },
+]
+
+<puik-table
+  v-model:selection="selection"
+  :headers="headers"
+  :items="items"
+>
+  <template #item-actions="{ item }">
+    <puik-button
+      variant="text"
+      right-icon="delete"
+      aria-label="Delete item"
+    ></puik-button>
+  </template>
+</puik-table>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-table__container">
+  <table class="puik-table">
+    <thead>
+      <tr>
+        <th class="puik-table__head__row__item--selection puik-table__head__row__item--sm">
+          <div class="puik-checkbox puik-table__head__row__item--selection__checkbox">
+            <input id="puik-checkbox-3034" class="puik-checkbox__input" type="checkbox">
+            <label for="puik-checkbox-3034" class="puik-checkbox__label">Select all items</label>
+          </div>
+        </th>
+        <th class="puik-table__head__row__item puik-table__head__row__item--md">Nom</th>
+        <th class="puik-table__head__row__item puik-table__head__row__item--md">Prénom</th>
+        <th class="puik-table__head__row__item puik-table__head__row__item--sm">Age</th>
+        <th class="puik-table__head__row__item">Email</th>
+        <th class="puik-table__head__row__item puik-table__head__row__item--sm"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="puik-table__body__row__item--selection">
+          <div class="puik-checkbox puik-table__body__row__item--selection__checkbox">
+            <input id="puik-checkbox-5700" class="puik-checkbox__input" type="checkbox">
+            <label for="puik-checkbox-5700" class="puik-checkbox__label">Select item</label>
+          </div>
+        </td>
+        <td>lastname0</td>
+        <td>firstname0</td>
+        <td>3</td>
+        <td>lastname0.firstname0@email.com</td>
+        <td>
+          <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
+            <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td class="puik-table__body__row__item--selection">
+          <div class="puik-checkbox puik-table__body__row__item--selection__checkbox">
+            <input id="puik-checkbox-137" class="puik-checkbox__input" type="checkbox">
+            <label for="puik-checkbox-137" class="puik-checkbox__label">Select item</label>
+          </div>
+        </td>
+        <td>lastname1</td>
+        <td>firstname1</td>
+        <td>95</td>
+        <td>lastname1.firstname1@email.com</td>
+        <td>
+          <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
+            <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td class="puik-table__body__row__item--selection">
+          <div class="puik-checkbox puik-table__body__row__item--selection__checkbox">
+            <input id="puik-checkbox-872" class="puik-checkbox__input" type="checkbox">
+            <label for="puik-checkbox-872" class="puik-checkbox__label">Select item</label>
+          </div>
+        </td>
+        <td>lastname2</td>
+        <td>firstname2</td>
+        <td>64</td>
+        <td>lastname2.firstname2@email.com</td>
+        <td>
+          <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
+            <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const FullWidth: Story = Template.bind({})
+FullWidth.args = {
+  fullWidth: true,
+}
+FullWidth.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+const headers: PuikTableHeader[] = [
+  {
+    text: 'Nom',
+    value: 'lastname',
+  },
+  {
+    text: 'Prénom',
+    value: 'firstname',
+  },
+  {
+    text: 'Age',
+    value: 'age',
+  },
+]
+
+<puik-table
+  v-model:selection="selection"
+  :headers="headers"
+  :items="items"
+  full-width
+></puik-table>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-table__container">
+  <table class="puik-table">
+    <thead>
+        <th class="puik-table__head__row__item puik-table__head__row__item--md">Nom</th>
+        <th class="puik-table__head__row__item puik-table__head__row__item--md">Prénom</th>
+        <th class="puik-table__head__row__item puik-table__head__row__item--sm">Age</th>
+        <th class="puik-table__head__row__item">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>lastname0</td>
+        <td>firstname0</td>
+        <td>3</td>
+        <td>lastname0.firstname0@email.com</td>
+      </tr>
+      <tr>
+        <td>lastname1</td>
+        <td>firstname1</td>
+        <td>95</td>
+        <td>lastname1.firstname1@email.com</td>
+      </tr>
+      <tr>
+        <td>lastname2</td>
+        <td>firstname2</td>
+        <td>64</td>
+        <td>lastname2.firstname2@email.com</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+const ColSizesTemplate: Story = (args: Args) => ({
+  components: {
+    PuikTable,
+  },
+  args: {},
+  setup() {
+    const item = { sm: 'sm', md: 'md', lg: 'lg' }
+    const items = [item, item]
+    const headers: PuikTableHeader[] = [
+      {
+        text: 'sm',
+        value: 'sm',
+        size: 'sm',
+      },
+      {
+        text: 'md',
+        value: 'md',
+        size: 'md',
+      },
+      {
+        text: 'lg',
+        value: 'lg',
+        size: 'lg',
+      },
+      {
+        text: 'fluid',
+        value: 'fluid',
+      },
+    ]
+    return { args, items, headers }
+  },
+  template: `<puik-table v-bind="args" :headers="headers" :items="items"></puik-table>`,
+})
+
+export const ColSizes: Story = ColSizesTemplate.bind({})
+ColSizes.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+const headers: PuikTableHeader[] = [
+  {
+    text: 'sm',
+    value: 'sm',
+    size: 'sm',
+  },
+  {
+    text: 'md',
+    value: 'md',
+    size: 'md',
+  },
+  {
+    text: 'lg',
+    value: 'lg',
+    size: 'lg',
+  },
+  {
+    text: 'fluid',
+    value: 'fluid',
+  },
+]
+
+<puik-table
+  :headers="headers"
+  :items="items"
+></puik-table>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-table__container">
+  <table class="puik-table">
+    <thead>
+      <tr>
+        <th class="puik-table__head__row__item puik-table__head__row__item--sm">sm</th>
+        <th class="puik-table__head__row__item puik-table__head__row__item--md">md</th>
+        <th class="puik-table__head__row__item puik-table__head__row__item--lg">lg</th>
+        <th>fluid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>sm</td>
+        <td>md</td>
+        <td>lg</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>sm</td>
+        <td>md</td>
+        <td>lg</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
