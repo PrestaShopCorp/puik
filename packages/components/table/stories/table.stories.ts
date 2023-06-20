@@ -1,8 +1,7 @@
 import { ref } from 'vue'
 import { faker } from '@faker-js/faker'
-import PuikBadge from '../../badge/src/badge.vue'
+
 import PuikButton from '../../button/src/button.vue'
-import PuikSwitch from '../../switch/src/switch.vue'
 import PuikTable from './../src/table.vue'
 import type { PuikTableHeader } from '../src/table'
 import type { Meta, Story, Args } from '@storybook/vue3'
@@ -127,57 +126,45 @@ export default {
   },
 } as Meta
 
-const headers: PuikTableHeader[] = [
-  {
-    text: 'Nom',
-    value: 'lastname',
-    size: 'md',
-  },
-  {
-    text: 'Prénom',
-    value: 'firstname',
-    size: 'md',
-  },
-  {
-    text: 'Age',
-    value: 'age',
-    size: 'sm',
-    align: 'center',
-  },
-  {
-    text: 'Status',
-    value: 'status',
-    size: 'sm',
-  },
-  {
-    text: 'Email',
-    value: 'email',
-    align: 'right',
-  },
-  {
-    value: 'actions',
-    size: 'sm',
-  },
-]
 const Template: Story = (args: Args) => ({
   components: {
     PuikTable,
-    PuikBadge,
     PuikButton,
-    PuikSwitch,
   },
   setup() {
-    const itemCount = 5
-    const items = generateData(itemCount)
-    const switchState = ref(Array(itemCount).fill(false))
     const selection = ref([])
-    return { args, headers, items, selection, switchState }
+    const items = generateData()
+    const headers: PuikTableHeader[] = [
+      {
+        text: 'Nom',
+        value: 'lastname',
+        size: 'md',
+      },
+      {
+        text: 'Prénom',
+        value: 'firstname',
+        size: 'md',
+      },
+      {
+        text: 'Age',
+        value: 'age',
+        size: 'sm',
+        align: 'center',
+      },
+      {
+        text: 'Email',
+        value: 'email',
+        align: 'right',
+      },
+      {
+        value: 'actions',
+        size: 'sm',
+      },
+    ]
+    return { args, headers, items, selection }
   },
   template: `<puik-table v-model:selection="selection" :headers="headers" :items="items" v-bind="args">
     <template #item-value1="{ item }">
-      <puik-badge>
-        {{ item.value1 }}
-      </puik-badge>
     </template>
     <template #item-actions="{ item }">
       <puik-button
@@ -185,9 +172,6 @@ const Template: Story = (args: Args) => ({
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
-    </template>
-    <template #item-status="{ index }">
-      <puik-switch v-model="switchState[index]"></puik-switch>
     </template>
   </puik-table>`,
 })
@@ -239,9 +223,6 @@ const headers: PuikTableHeader[] = [
       aria-label="Delete item"
     ></puik-button>
   </template>
-  <template #item-status="{ index }">
-    <puik-switch v-model="switches[index]"></puik-switch>
-  </template>
 </puik-table>
 
 <!--HTML/CSS Snippet-->
@@ -270,7 +251,6 @@ const headers: PuikTableHeader[] = [
         <th>Nom</th>
         <th>Prénom</th>
         <th>Age</th>
-        <th>Status</th>
         <th>Email</th>
         <th></th>
       </tr>
@@ -286,13 +266,6 @@ const headers: PuikTableHeader[] = [
         <td>Robel</td>
         <td>Alberto</td>
         <td>60</td>
-        <td>
-          <div class="puik-switch__group">
-            <button class="puik-switch" id="headlessui-switch-6" role="switch" type="button" tabindex="0" aria-checked="false" data-headlessui-state="">
-              <span class="puik-switch__toggle"></span>
-            </button>
-          </div>
-        </td>
         <td>robel.alberto@email.com</td>
         <td>
           <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
@@ -310,13 +283,6 @@ const headers: PuikTableHeader[] = [
         <td>Toy</td>
         <td>Enos</td>
         <td>55</td>
-        <td>
-          <div class="puik-switch__group">
-            <button class="puik-switch" id="headlessui-switch-7" role="switch" type="button" tabindex="0" aria-checked="false" data-headlessui-state="">
-              <span class="puik-switch__toggle"></span>
-            </button>
-          </div>
-        </td>
         <td>toy.enos@email.com</td>
         <td>
           <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
@@ -334,13 +300,6 @@ const headers: PuikTableHeader[] = [
         <td>Schumm</td>
         <td>Hollie</td>
         <td>21</td>
-        <td>
-          <div class="puik-switch__group">
-            <button class="puik-switch" id="headlessui-switch-8" role="switch" type="button" tabindex="0" aria-checked="false" data-headlessui-state="">
-              <span class="puik-switch__toggle"></span>
-            </button>
-          </div>
-        </td>
         <td>schumm.hollie@email.com</td>
         <td>
           <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
@@ -358,13 +317,6 @@ const headers: PuikTableHeader[] = [
         <td>DuBuque</td>
         <td>Earnestine</td>
         <td>86</td>
-        <td>
-          <div class="puik-switch__group">
-            <button class="puik-switch" id="headlessui-switch-9" role="switch" type="button" tabindex="0" aria-checked="false" data-headlessui-state="">
-              <span class="puik-switch__toggle"></span>
-            </button>
-          </div>
-        </td>
         <td>dubuque.earnestine@email.com</td>
         <td>
           <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
@@ -383,13 +335,6 @@ const headers: PuikTableHeader[] = [
         <td>Mann</td>
         <td>Hadley</td>
         <td>41</td>
-        <td>
-          <div class="puik-switch__group">
-            <button class="puik-switch" id="headlessui-switch-10" role="switch" type="button" tabindex="0" aria-checked="false" data-headlessui-state="">
-              <span class="puik-switch__toggle"></span>
-            </button>
-          </div>
-        </td>
         <td>mann.hadley@email.com</td>
         <td>
           <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
