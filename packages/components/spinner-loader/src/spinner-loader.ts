@@ -2,24 +2,24 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type SpinnerLoader from './spinner-loader.vue'
 
-export enum spinnerSizes {
+export enum PuikspinnerSizes {
   SM = 'sm',
   MD = 'md',
   LG = 'lg',
 }
-export type SpinnerSizeType = `${spinnerSizes}`
+export type SpinnerSizeType = `${PuikspinnerSizes}`
 
-export enum spinnerColors {
+export enum PuikspinnerColors {
   PRIMARY = 'primary',
   REVERSE = 'reverse',
 }
-export type SpinnerColorsType = `${spinnerColors}`
+export type PuikspinnerColorsType = `${PuikspinnerColors}`
 
-export enum spinnerPosition {
+export enum PuikspinnerPosition {
   BOTTOM = 'bottom',
   RIGHT = 'right',
 }
-export type SpinnerPositionType = `${spinnerPosition}`
+export type PuikspinnerPositionType = `${PuikspinnerPosition}`
 
 export const spinnerLoaderProps = buildProps({
   size: {
@@ -28,7 +28,7 @@ export const spinnerLoaderProps = buildProps({
     default: 'md',
   },
   color: {
-    type: String as PropType<SpinnerColorsType>,
+    type: String as PropType<PuikspinnerColorsType>,
     required: false,
     default: 'primary',
   },
@@ -38,7 +38,7 @@ export const spinnerLoaderProps = buildProps({
     default: undefined,
   },
   position: {
-    type: String as PropType<SpinnerPositionType>,
+    type: String as PropType<PuikspinnerPositionType>,
     required: false,
     default: 'bottom',
   },
