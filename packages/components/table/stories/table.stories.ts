@@ -1,6 +1,4 @@
 import { ref } from 'vue'
-import { faker } from '@faker-js/faker'
-
 import PuikButton from '../../button/src/button.vue'
 import PuikTable from './../src/table.vue'
 import type { PuikTableHeader } from '../src/table'
@@ -9,16 +7,16 @@ import type { Meta, Story, Args } from '@storybook/vue3'
 function generateData(length = 10) {
   return Array(length)
     .fill(null)
-    .map(() => {
-      const firstname = faker.name.firstName()
-      const lastname = faker.name.lastName()
+    .map((_, index) => {
+      const firstname = `firstname${index}`
+      const lastname = `lastname${index}`
       const email = `${lastname}.${firstname}@email.com`.toLowerCase()
 
       return {
         firstname,
         lastname,
         email,
-        age: faker.random.numeric(2),
+        age: Math.floor(Math.random() * 100),
       }
     })
 }
