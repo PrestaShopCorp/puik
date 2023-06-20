@@ -10,6 +10,7 @@
     >
       <div class="puik-sidebar__header">
         <puik-button
+          class="puik-sidebar__header__button"
           variant="text"
           :left-icon="expansionIcon"
           :aria-label="expandButtonAriaLabel"

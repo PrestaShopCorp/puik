@@ -5,17 +5,12 @@
   @apply relative z-10 w-[20.5rem] sm:w-[13.125rem] h-full bg-white border-r border-primary-300;
   transition: width 0.2s ease-out;
 
-  .puik-button {
-    &:hover {
-      @apply bg-primary-300;
-    }
-  }
-
   &__header {
     @apply bg-primary-200 w-full flex justify-end;
 
-    .puik-button {
+    .puik-sidebar__header__button {
       &:hover {
+        @apply bg-primary-300;
         .puik-icon {
           @apply text-blue-700 text-xl;
         }
@@ -24,50 +19,14 @@
   }
 
   &__content {
-    @apply px-2 pt-4 flex flex-col gap-1;
-  }
-
-  .puik-accordion {
-    @apply text-primary border-none;
-    &__header {
-      @apply py-4 px-2 sm:py-2;
-
-      &__content {
-        &__title {
-          @extend .puik-body-default;
-          @apply font-normal;
-        }
-      }
-
-      &__icon {
-        @apply mr-2 leading-5 text-primary;
-        font-size: 1.25rem !important;
-      }
-      &__expand__icon {
-        @apply text-primary;
-        font-size: 1.25rem !important;
-      }
-    }
-    &__content {
-      @apply py-0 px-0 ml-0;
-
-      .puik-button {
-        @apply px-4;
-      }
-    }
-
-    &--expanded {
-      @apply bg-primary-200;
-    }
+    @apply px-2 pt-4;
   }
 
   &--collapsed {
     @apply w-[3.312rem];
 
-    .puik-sidebar__header {
-      .puik-button {
-        @apply w-full;
-      }
+    .puik-sidebar__header__button {
+      @apply w-full;
     }
 
     .puik-sidebar__content {
@@ -101,6 +60,10 @@
   &__button {
     @apply px-2 py-4 sm:py-2 justify-start font-normal text-left;
     height: unset;
+
+    &:hover {
+      @apply bg-primary-300;
+    }
   }
 
   &--focus {
@@ -111,6 +74,44 @@
 .puik-sidebar-group-item {
   @extend .puik-body-default;
   @apply border-none relative;
+
+  .puik-accordion {
+    @apply text-primary border-none;
+    &__header {
+      @apply py-4 px-2 sm:py-2;
+
+      &:hover {
+        @apply bg-primary-300;
+      }
+
+      &__content {
+        &__title {
+          @extend .puik-body-default;
+          @apply font-normal;
+        }
+      }
+
+      &__icon {
+        @apply mr-2 leading-5 text-primary;
+        font-size: 1.25rem !important;
+      }
+      &__expand__icon {
+        @apply text-primary;
+        font-size: 1.25rem !important;
+      }
+    }
+    &__content {
+      @apply py-0 px-0 ml-0;
+
+      .puik-button {
+        @apply px-4;
+      }
+    }
+
+    &--expanded {
+      @apply bg-primary-200;
+    }
+  }
 
   &__menu-button {
     @apply p-0 w-full;
@@ -124,7 +125,7 @@
     @apply absolute z-[999] left-[3.312rem] top-0 w-[20.5rem] bg-primary-200 sm:w-[13.125rem];
 
     .puik-sidebar-item__button {
-      @apply hover:bg-primary-300 px-4 py-2;
+      @apply px-4 py-2;
     }
   }
 
