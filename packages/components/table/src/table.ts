@@ -2,8 +2,6 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Table from './table.vue'
 
-export const puikTableColSizes = ['sm', 'md', 'lg']
-
 export interface PuikTableHeader {
   value: string
   text?: string
@@ -40,8 +38,5 @@ export const tableProps = buildProps({
 } as const)
 
 export type TableProps = ExtractPropTypes<typeof tableProps>
-
-export const tableEmits = ['click', 'click:all', 'update:selection']
-export type TableEmits = typeof tableEmits
 
 export type TableInstance = InstanceType<typeof Table>

@@ -74,13 +74,17 @@
 import { computed, ref, watch } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
-import { tableProps, tableEmits } from './table'
+import { tableProps } from './table'
 defineOptions({
   name: 'PuikTable',
 })
 
 const props = defineProps(tableProps)
-const emit = defineEmits(tableEmits)
+const emit = defineEmits<{
+  (e: 'select', index: number): void
+  (e: 'select:all'): void
+  (e: 'update:selection', value: number[]): void
+}>()
 const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
 
@@ -100,7 +104,7 @@ function handleClickAll() {
     checked.value = []
   }
 
-  emit('click:all')
+  emit('select:all')
   emit('update:selection', checked.value)
 }
 
@@ -111,7 +115,7 @@ function handleClick(index: number) {
     checked.value.push(index)
   }
 
-  emit('click', index)
+  emit('select', index)
   emit('update:selection', checked.value)
 }
 

@@ -135,20 +135,20 @@ describe('Table tests', () => {
     expect(isCheckboxInderminate(headerCheckbox)).toBeFalsy()
     expect(isCheckboxChecked(headerCheckbox)).toBeTruthy()
   })
-  it('should emit click event', async () => {
+  it('should emit select event', async () => {
     const headers: PuikTableHeader[] = [{ value: 'firstname' }]
     factory({ headers, selectable: true, selection: [] })
     const checkbox = getRowCheckbox(1)
     await checkbox.trigger('click')
-    expect(wrapper.emitted('click')?.[0]).toStrictEqual([1])
+    expect(wrapper.emitted('select')?.[0]).toStrictEqual([1])
     expect(wrapper.emitted('update:selection')?.[0]).toStrictEqual([[1]])
   })
-  it('should emit click all event', async () => {
+  it('should emit select all event', async () => {
     const headers: PuikTableHeader[] = [{ value: 'firstname' }]
     factory({ headers, selectable: true, selection: [] })
     const headerCheckbox = getHeaderCheckbox()
     await headerCheckbox.trigger('click')
-    expect(wrapper.emitted('click:all')).toBeTruthy()
+    expect(wrapper.emitted('select:all')).toBeTruthy()
     expect(wrapper.emitted('update:selection')?.[0]).toStrictEqual([
       [0, 1, 2, 3, 4],
     ])
