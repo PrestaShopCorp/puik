@@ -16,17 +16,14 @@
           @click="setExpanded(!localExpanded)"
         ></puik-button>
       </div>
-      <div class="puik-sidebar__content">
-        <puik-accordion-group
-          v-if="localExpanded"
-          contained
-          :model-value="openAccordionName"
-          @update:model-value="openAccordion"
-        >
-          <slot></slot>
-        </puik-accordion-group>
-        <slot v-else></slot>
-      </div>
+      <puik-accordion-group
+        contained
+        class="puik-sidebar__content"
+        :model-value="openAccordionName"
+        @update:model-value="openAccordion"
+      >
+        <slot></slot>
+      </puik-accordion-group>
     </nav>
     <div
       v-if="mobile && localExpanded"
