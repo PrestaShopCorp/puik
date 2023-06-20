@@ -279,7 +279,7 @@ const MobileTemplate = (args: Args) => ({
     }
   },
   template: `
-<puik-sidebar mobile v-model:expanded="expanded">
+<puik-sidebar mobile v-model:expanded="expanded" style="position: fixed; height: 100vh;">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
@@ -320,7 +320,7 @@ MobileTemplate.parameters = {
   docs: {
     source: {
       code: `
-<puik-sidebar mobile v-model:expanded="expanded">
+<puik-sidebar mobile v-model:expanded="expanded" style="position: fixed; height: 100vh;">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
