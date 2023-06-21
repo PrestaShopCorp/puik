@@ -45,6 +45,20 @@
   &__backdrop {
     @apply w-screen h-screen bg-primary-800/50 absolute top-0 left-0 z-0;
   }
+
+  &__transition {
+    &__enter,
+    &__leave {
+      &--active {
+        @apply transition duration-200 ease-out;
+      }
+    }
+
+    &__enter--from,
+    &__leave--to {
+      @apply -translate-x-[20.5rem] sm:-translate-x-[13.125rem] opacity-0;
+    }
+  }
 }
 
 .puik-sidebar-item {

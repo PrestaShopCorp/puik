@@ -1,31 +1,40 @@
 <template>
   <div class="puik-sidebar__container">
-    <nav
-      v-if="!mobile || localExpanded"
-      class="puik-sidebar"
-      :class="{
-        'puik-sidebar--mobile': !localExpanded && mobile,
-        'puik-sidebar--collapsed': !localExpanded,
-      }"
+    <transition
+      enter-active-class="puik-sidebar__transition__enter--active"
+      enter-from-class="puik-sidebar__transition__enter--from"
+      enter-to-class="puik-sidebar__transition__enter--to"
+      leave-active-class="puik-sidebar__transition__leave--active"
+      leave-from-class="puik-sidebar__transition__leave--from"
+      leave-to-class="puik-sidebar__transition__leave--to"
     >
-      <div class="puik-sidebar__header">
-        <puik-button
-          class="puik-sidebar__header__button"
-          variant="text"
-          :left-icon="expansionIcon"
-          :aria-label="expandButtonAriaLabel"
-          @click="setExpanded(!localExpanded)"
-        ></puik-button>
-      </div>
-      <puik-accordion-group
-        contained
-        class="puik-sidebar__content"
-        :model-value="openAccordionName"
-        @update:model-value="openAccordion"
+      <nav
+        v-if="!mobile || localExpanded"
+        class="puik-sidebar"
+        :class="{
+          'puik-sidebar--mobile': !localExpanded && mobile,
+          'puik-sidebar--collapsed': !localExpanded,
+        }"
       >
-        <slot></slot>
-      </puik-accordion-group>
-    </nav>
+        <div class="puik-sidebar__header">
+          <puik-button
+            class="puik-sidebar__header__button"
+            variant="text"
+            :left-icon="expansionIcon"
+            :aria-label="expandButtonAriaLabel"
+            @click="setExpanded(!localExpanded)"
+          ></puik-button>
+        </div>
+        <puik-accordion-group
+          contained
+          class="puik-sidebar__content"
+          :model-value="openAccordionName"
+          @update:model-value="openAccordion"
+        >
+          <slot></slot>
+        </puik-accordion-group>
+      </nav>
+    </transition>
     <div
       v-if="mobile && localExpanded"
       class="puik-sidebar__backdrop"
