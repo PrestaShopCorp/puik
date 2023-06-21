@@ -10,6 +10,7 @@ describe('Label tests', () => {
   const findLabel = () => wrapper.find('.puik-label')
   const findLabelOptional = () => wrapper.find('.puik-label--optional')
   const findLabelRequired = () => wrapper.find('.puik-label--required')
+  const findLabelReadonly = () => wrapper.find('.puik-label--readonly')
 
   const factory = (
     propsData: Record<string, any> = {},
@@ -62,5 +63,17 @@ describe('Label tests', () => {
       }
     )
     expect(findLabelRequired().exists()).toBeTruthy()
+  })
+
+  it('should set the label in readonly mode', () => {
+    factory(
+      { readonly: true },
+      {
+        slots: {
+          default: faker.lorem.words(2),
+        },
+      }
+    )
+    expect(findLabelReadonly().exists()).toBeTruthy()
   })
 })
