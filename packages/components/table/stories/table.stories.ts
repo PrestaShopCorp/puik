@@ -117,6 +117,28 @@ export default {
         },
       },
     },
+    select: {
+      control: 'none',
+      description: 'Event emitted on select row',
+      table: {
+        type: {
+          summary: 'number',
+        },
+      },
+    },
+    'select:all': {
+      control: 'none',
+      description: 'Event emitted on select all row',
+    },
+    'update:selection': {
+      control: 'none',
+      description: 'Event emitted on selection change',
+      table: {
+        type: {
+          summary: 'number[]',
+        },
+      },
+    },
   },
   args: {
     selectable: false,
@@ -553,7 +575,7 @@ const ColSizesTemplate: Story = (args: Args) => ({
   },
   args: {},
   setup() {
-    const item = { sm: 'sm', md: 'md', lg: 'lg' }
+    const item = { sm: 'sm', md: 'md', lg: 'lg', auto: 'auto' }
     const items = [item, item]
     const headers: PuikTableHeader[] = [
       {
@@ -572,8 +594,8 @@ const ColSizesTemplate: Story = (args: Args) => ({
         size: 'lg',
       },
       {
-        text: 'fluid',
-        value: 'fluid',
+        text: 'auto',
+        value: 'auto',
       },
     ]
     return { args, items, headers }
@@ -604,8 +626,8 @@ const headers: PuikTableHeader[] = [
     size: 'lg',
   },
   {
-    text: 'fluid',
-    value: 'fluid',
+    text: 'auto',
+    value: 'auto',
   },
 ]
 
@@ -622,7 +644,7 @@ const headers: PuikTableHeader[] = [
         <th class="puik-table__head__row__item puik-table__head__row__item--sm">sm</th>
         <th class="puik-table__head__row__item puik-table__head__row__item--md">md</th>
         <th class="puik-table__head__row__item puik-table__head__row__item--lg">lg</th>
-        <th>fluid</th>
+        <th>auto</th>
       </tr>
     </thead>
     <tbody>
@@ -630,13 +652,109 @@ const headers: PuikTableHeader[] = [
         <td>sm</td>
         <td>md</td>
         <td>lg</td>
-        <td></td>
+        <td>auto</td>
       </tr>
       <tr>
         <td>sm</td>
         <td>md</td>
         <td>lg</td>
-        <td></td>
+        <td>auto</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+const TextAlignTemplate: Story = (args: Args) => ({
+  components: {
+    PuikTable,
+  },
+  args: {},
+  setup() {
+    const item = { left: 'left', center: 'center', right: 'right' }
+    const items = [item, item]
+    const headers: PuikTableHeader[] = [
+      {
+        text: 'left',
+        value: 'left',
+        align: 'left',
+        size: 'md',
+      },
+      {
+        text: 'center',
+        value: 'center',
+        align: 'center',
+        size: 'md',
+      },
+      {
+        text: 'right',
+        value: 'right',
+        align: 'right',
+        size: 'md',
+      },
+    ]
+    return { args, items, headers }
+  },
+  template: `<puik-table v-bind="args" :headers="headers" :items="items"></puik-table>`,
+})
+
+export const TextAlign: Story = TextAlignTemplate.bind({})
+TextAlign.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+const headers: PuikTableHeader[] = [
+  {
+    text: 'left',
+    value: 'left',
+    align: 'left',
+    size: 'md',
+  },
+  {
+    text: 'center',
+    value: 'center',
+    align: 'center',
+    size: 'md',
+  },
+  {
+    text: 'right',
+    value: 'right',
+    align: 'right',
+    size: 'md',
+  },
+]
+
+<puik-table
+  :headers="headers"
+  :items="items"
+></puik-table>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-table__container">
+  <table class="puik-table">
+    <thead>
+      <tr>
+        <th class="puik-table__head__row__item--left">left</th>
+        <th class="puik-table__head__row__item--center">center</th>
+        <th class="puik-table__head__row__item--right">lg</th>
+        <th>fluid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="puik-table__body__row__item--left">left</td>
+        <td class="puik-table__body__row__item--center">center</td>
+        <td class="puik-table__body__row__item--right">right</td>
+      </tr>
+      <tr>
+        <td class="puik-table__body__row__item--left">left</td>
+        <td class="puik-table__body__row__item--center">center</td>
+        <td class="puik-table__body__row__item--right">right</td>
       </tr>
     </tbody>
   </table>

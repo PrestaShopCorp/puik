@@ -8,10 +8,11 @@
   &--full-width {
     @apply w-full;
   }
+
   @mixin puik-table-item() {
     @apply h-[52px] p-3.5;
     &--sm {
-      @apply w-[60px] min-w-[60px];
+      @apply w-[112px] min-w-[112px];
     }
     &--md {
       @apply w-[240px] min-w-[240px];
@@ -19,7 +20,29 @@
     &--lg {
       @apply w-[480px] min-w-[480px];
     }
+    &--selection {
+      @apply w-[48px] min-w-[48px];
+      &__checkbox,
+      > .puik-checkbox {
+        .puik-checkbox__label {
+          @apply sr-only;
+        }
+      }
+    }
   }
+
+  @mixin puik-table-text-align() {
+    &--left {
+      @apply text-left;
+    }
+    &--center {
+      @apply text-center;
+    }
+    &--right {
+      @apply text-right;
+    }
+  }
+
   &__head,
   > thead {
     &__row,
@@ -29,14 +52,7 @@
         @extend .puik-body-small;
         @apply font-normal uppercase;
         @include puik-table-item();
-        &--selection {
-          &__checkbox,
-          > .puik-checkbox {
-            .puik-checkbox__label {
-              @apply sr-only;
-            }
-          }
-        }
+        @include puik-table-text-align();
       }
     }
   }
@@ -51,23 +67,7 @@
       &__item,
       > td {
         @include puik-table-item();
-        &--center {
-          @apply text-center;
-        }
-        &--right {
-          @apply text-right;
-        }
-        &--left {
-          @apply text-left;
-        }
-        &--selection {
-          &__checkbox,
-          > .puik-checkbox {
-            .puik-checkbox__label {
-              @apply sr-only;
-            }
-          }
-        }
+        @include puik-table-text-align();
       }
     }
   }

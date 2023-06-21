@@ -5,7 +5,7 @@
         <tr class="puik-table__head__row">
           <th
             v-if="selectable"
-            class="puik-table__head__row__item puik-table__head__row__item--selection puik-table__head__row__item--sm"
+            class="puik-table__head__row__item puik-table__head__row__item--selection"
           >
             <puik-checkbox
               :model-value="selectAll"
@@ -19,11 +19,16 @@
           <th
             v-for="(header, index) in headers"
             :key="`headers${header.value}`"
-            class="puik-table__head__row__item"
-            :class="{
-              [`puik-table__head__row__item--${header.size}`]:
-                header?.size && !header?.width,
-            }"
+            :class="[
+              'puik-table__head__row__item',
+              `puik-table__head__row__item puik-table__head__row__item--${
+                header.align ?? 'left'
+              }`,
+              {
+                [`puik-table__head__row__item--${header.size}`]:
+                  header?.size && !header?.width,
+              },
+            ]"
             :style="{ minWidth: header.width, width: header.width }"
           >
             <slot
