@@ -45,7 +45,7 @@
       @apply flex flex-row items-center mx-2;
       &-description {
         @extend .puik-body-default;
-        @apply mx-2 text-sm;
+        @apply text-primary-700 mx-2 text-sm;
       }
       .puik-pagination__select {
         @apply mx-2 w-[100px];
