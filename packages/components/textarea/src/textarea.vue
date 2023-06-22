@@ -1,13 +1,13 @@
 <template>
   <div class="puik-textarea">
     <div
-      v-if="characterCount"
+      v-if="maxlength"
       class="puik-textarea__character-count"
       :class="{
-        'puik-textarea__character-count--negative': internalCharacterCount < 0,
+        'puik-textarea__character-count--error': characterLength > maxlength,
       }"
     >
-      <p>{{ internalCharacterCount }}</p>
+      <span>{{ characterLength }}/{{ maxlength }}</span>
     </div>
     <div class="puik-textarea__wrapper" :class="textareaClass">
       <textarea
@@ -77,10 +77,7 @@ const handleFocus = () => (isFocus.value = true)
 const handleBlur = () => (isFocus.value = false)
 
 const hasError = computed(() => props.error || slotIsEmpty(slots.error))
-const internalCharacterCount = computed(() => {
-  if (!props.maxlength) return internalValue.value?.length || 0
-  return props.maxlength - (internalValue.value?.length || 0) || 0
-})
+const characterLength = computed(() => internalValue.value?.length || 0)
 
 const computeHeight = () => {
   if (!props.autoGrow) return

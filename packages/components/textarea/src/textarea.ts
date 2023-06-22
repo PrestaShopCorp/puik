@@ -89,11 +89,6 @@ export const textareaProps = buildProps({
     required: false,
     default: 2,
   },
-  characterCount: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
 } as const)
 
 export type TextareaProps = ExtractPropTypes<typeof textareaProps>

@@ -81,15 +81,6 @@ export default {
         },
       },
     },
-    characterCount: {
-      control: 'boolean',
-      description: '',
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
-    },
     maxlength: {
       control: 'number',
       description: '',
@@ -160,7 +151,6 @@ Default.args = {
   rows: 2,
   maxRows: 2,
   maxlength: undefined,
-  characterCount: false,
 }
 Default.parameters = {
   docs: {
@@ -204,7 +194,6 @@ Disabled.args = {
   rows: 2,
   maxRows: 2,
   maxlength: undefined,
-  characterCount: false,
 }
 Disabled.parameters = {
   docs: {
@@ -245,7 +234,6 @@ Readonly.args = {
   rows: 2,
   maxRows: 2,
   maxlength: undefined,
-  characterCount: false,
 }
 Readonly.parameters = {
   docs: {
@@ -286,7 +274,6 @@ Success.args = {
   rows: 2,
   maxRows: 2,
   maxlength: undefined,
-  characterCount: false,
 }
 Success.parameters = {
   docs: {
@@ -327,7 +314,6 @@ Error.args = {
   rows: 2,
   maxRows: 2,
   maxlength: undefined,
-  characterCount: false,
   error: 'This is an error message',
 }
 Error.parameters = {
@@ -375,7 +361,6 @@ CharacterCount.args = {
   rows: 2,
   maxRows: 2,
   maxlength: 50,
-  characterCount: true,
 }
 CharacterCount.parameters = {
   docs: {

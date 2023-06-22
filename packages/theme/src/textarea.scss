@@ -3,9 +3,9 @@
   @apply flex flex-col relative;
   &__character-count {
     @extend .puik-body-small;
-    @apply absolute right-0 -top-5;
+    @apply absolute right-0 -bottom-5 text-primary-700;
 
-    &--negative {
+    &--error {
       @apply text-red;
     }
   }
@@ -35,7 +35,7 @@
     @apply bg-transparent w-full py-2 outline-none px-3 resize-none
       text-primary
       disabled:text-primary-500 disabled:cursor-not-allowed
-      placeholder:text-primary-700 placeholder:disabled:text-primary-500;
+      placeholder:text-primary-600 placeholder:disabled:text-primary-500;
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 50px theme('colors.ocean-blue.50') inset;
     }
