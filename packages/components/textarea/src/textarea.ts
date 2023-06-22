@@ -1,17 +1,6 @@
 import { buildProps } from '@puik/utils'
-import type { PropType, ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes } from 'vue'
 import type Textarea from './textarea.vue'
-
-export const resizeValue = [
-  'none',
-  'both',
-  'horizontal',
-  'vertical',
-  'block',
-  'inline',
-] as const
-
-export type ResizeType = (typeof resizeValue)[number]
 
 export const textareaProps = buildProps({
   id: {

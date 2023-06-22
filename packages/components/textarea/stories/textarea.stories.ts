@@ -377,8 +377,8 @@ CharacterCount.parameters = {
       
       <!--HTML/CSS Snippet-->
 <div class="puik-textarea">
-  <div class="puik-textarea__character-count puik-textarea__character-count--negative">
-    <p>50</p>
+  <div class="puik-textarea__character-count puik-textarea__character-count--error">
+    <p>0/50</p>
   </div>
   <div class="puik-textarea__wrapper">
     <textarea id="classic" class="puik-textarea__field" style="height: 76px;"></textarea>
