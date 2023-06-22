@@ -98,7 +98,10 @@ const Template: Story = (args: Args) => ({
 })
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  expanded: false,
+  mobile: false,
+}
 Default.parameters = {
   docs: {
     source: {
@@ -372,6 +375,10 @@ const MobileTemplate = (args: Args) => ({
 })
 
 export const Mobile: Story = MobileTemplate.bind({})
+Mobile.args = {
+  expanded: false,
+  mobile: true,
+}
 Mobile.parameters = {
   docs: {
     source: {
