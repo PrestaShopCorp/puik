@@ -16,13 +16,21 @@
           'puik-sidebar--collapsed': !localExpanded,
         }"
       >
-        <div class="puik-sidebar__header">
+        <div v-if="!mobile" class="puik-sidebar__header">
           <puik-button
             class="puik-sidebar__header__button"
             variant="text"
             :left-icon="expansionIcon"
             :aria-label="expandButtonAriaLabel"
             @click="setExpanded(!localExpanded)"
+          ></puik-button>
+        </div>
+        <div v-else class="puik-sidebar__header puik-sidebar__header--mobile">
+          <puik-button
+            variant="text"
+            left-icon="close"
+            :aria-label="t('puik.sidebar.expandButtonLabel.close')"
+            @click="setExpanded(false)"
           ></puik-button>
         </div>
         <puik-accordion-group

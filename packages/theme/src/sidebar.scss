@@ -16,6 +16,10 @@
         }
       }
     }
+
+    &--mobile {
+      @apply justify-start;
+    }
   }
 
   &__content {

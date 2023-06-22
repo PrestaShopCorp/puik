@@ -420,9 +420,9 @@ Mobile.parameters = {
 <!--HTML/CSS Snippet-->
 <div class="puik-sidebar__container" style="position: fixed; height: 100vh;">
   <nav class="puik-sidebar">
-    <div class="puik-sidebar__header">
-      <button class="puik-button puik-button--text puik-button--md" aria-label="Collapse navigation sidebar">
-        <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">first_page</div>
+    <div class="puik-sidebar__header puik-sidebar__header--mobile">
+      <button class="puik-button puik-button--text puik-button--md" aria-label="Close navigation sidebar">
+        <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">close</div>
       </button>
     </div>
     <div class="puik-accordion-group puik-accordion-group--contained puik-sidebar__content">

@@ -48,6 +48,7 @@ export default {
       expandButtonLabel: {
         expanded: 'Expand navigation sidebar',
         collapsed: 'Collapse navigation sidebar',
+        close: 'Close navigation sidebar',
       },
     },
   },
