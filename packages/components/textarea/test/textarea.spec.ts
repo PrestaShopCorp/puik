@@ -132,4 +132,10 @@ describe('Textarea tests', () => {
       'puik-textarea__character-count--error'
     )
   })
+
+  it('should render a placeholder', async () => {
+    const text = 'Hello World!'
+    factory({ placeholder: text })
+    expect(findField().attributes('placeholder')).toBe(text)
+  })
 })
