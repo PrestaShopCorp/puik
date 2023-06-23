@@ -19,6 +19,7 @@ export default {
     },
     skeletonLoaderGroup: {
       label: 'Loading',
+    },
     pagination: {
       ariaLabel: 'Pagination navigation',
       goTo: 'Go to page {page}',
