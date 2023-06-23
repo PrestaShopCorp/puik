@@ -364,6 +364,8 @@ CharacterCount.args = {
 }
 CharacterCount.parameters = {
   docs: {
+    inlineStories: false,
+    iframeHeight: 100,
     source: {
       code: `
       <!--VueJS Snippet-->
@@ -371,7 +373,54 @@ CharacterCount.parameters = {
   id="textarea"
   v-model="value"
   :maxlength="50"
-  character-count
+>
+</puik-textarea>
+      
+      <!--HTML/CSS Snippet-->
+<div class="puik-textarea">
+  <div class="puik-textarea__character-count puik-textarea__character-count--error">
+    <p>0/50</p>
+  </div>
+  <div class="puik-textarea__wrapper">
+    <textarea id="classic" class="puik-textarea__field" style="height: 76px;"></textarea>
+  </div>
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const AutoGrow = Template.bind({})
+AutoGrow.args = {
+  id: 'textarea-1',
+  name: '',
+  placeholder: '',
+  autofocus: false,
+  required: false,
+  success: false,
+  hideHint: false,
+  readonly: false,
+  disabled: false,
+  autoGrow: true,
+  rows: 2,
+  maxRows: 5,
+}
+AutoGrow.parameters = {
+  docs: {
+    inlineStories: false,
+    iframeHeight: 200,
+    description: {
+      story:
+        'This component will autogrow when text overflow and stop when reaching `maxRows`',
+    },
+    source: {
+      code: `
+      <!--VueJS Snippet-->
+<puik-textarea
+  id="textarea"
+  v-model="value"
+  :maxRows="5"
 >
 </puik-textarea>
       
