@@ -9,4 +9,8 @@
     @extend .puik-body-small;
     @apply text-primary-700 font-normal ml-1;
   }
+  &--readonly {
+    @extend .puik-body-small;
+    @apply text-primary-700 font-normal ml-1;
+  }
 }

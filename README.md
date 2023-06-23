@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://prestashop.com">
-    <img src="https://www.prestashop.com/sites/all/themes/prestashop/images/logos/logo-fo-prestashop-colors.svg" alt="Logo" width="420" height="80">
+    <img src="https://prestashop.com/sites/default/files/email/logo_x2_rebrand.png" alt="Logo" width="420">
   </a>
 
 <h3 align="center">Puik</h3>
@@ -24,16 +24,6 @@ Puik is a component library that aims to provide a complete set of reusable comp
 - Node.js LTS is required.
 
 ### Installation
-
-For the moment this package is private  
-To install it you must configure a .npmrc file in your project
-
-```
-//registry.npmjs.org/:_authToken=YOUR_NPM_RO_SQUAD_TOKEN
-@prestashopcorp:registry=https://registry.npmjs.org/
-```
-
-You can ask the IT for a NPM read only token for your squad if you don't have a NPM Token
 
 ```sh
 # chose your favorite package manager
@@ -139,32 +129,6 @@ styles used in the VueJs component library.
 
 ```html
 <button class="puik-button">Example button</button>
-```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## How to use Puik in your CI
-
-### In your Github repo
-
-In your secrets (Settings > Secrets and variables > Actions > New repository secret) you have to add a `REGISTRY_NPM_TOKEN` with your `squad's npm token`.
-
-### In your project
-
-In the job where you are setting up your node env (`actions/setup-node`), you need to add this nearby `node-version`:
-
-```
-  registry-url: 'https://registry.npmjs.org'
-  scope: '@prestashopcorp'
-```
-
-Check the [documentation](https://github.com/actions/setup-node/blob/main/action.yml) if you want more info.
-
-Then in your `Install dependencies` job, you have to add:
-
-```
-  env:
-    NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_NPM_TOKEN }}
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
