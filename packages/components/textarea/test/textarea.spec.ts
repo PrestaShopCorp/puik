@@ -88,11 +88,6 @@ describe('Textarea tests', () => {
     expect(findHint().isVisible()).toBeFalsy()
   })
 
-  it('should be on success state', () => {
-    factory({ success: true })
-    expect(findWrapper().classes()).toContain('puik-textarea__wrapper--success')
-  })
-
   it('should render an error', () => {
     const error = 'This is an error message'
     factory({ error })

@@ -53,11 +53,6 @@ export const textareaProps = buildProps({
     required: false,
     default: undefined,
   },
-  success: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
   hideHint: {
     type: Boolean,
     required: false,

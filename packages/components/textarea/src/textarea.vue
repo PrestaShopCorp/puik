@@ -69,7 +69,6 @@ const textareaClass = computed(() => ({
   'puik-textarea__wrapper--focus': isFocus.value,
   'puik-textarea__wrapper--disabled': props.disabled,
   'puik-textarea__wrapper--readonly': props.readonly,
-  'puik-textarea__wrapper--success': props.success,
   'puik-textarea__wrapper--error': hasError.value,
 }))
 

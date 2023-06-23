@@ -259,46 +259,6 @@ Readonly.parameters = {
   },
 }
 
-export const Success = Template.bind({})
-Success.args = {
-  id: 'textarea-1',
-  name: '',
-  placeholder: '',
-  autofocus: false,
-  required: false,
-  success: true,
-  hideHint: false,
-  readonly: false,
-  disabled: false,
-  autoGrow: true,
-  rows: 2,
-  maxRows: 2,
-  maxlength: undefined,
-}
-Success.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet-->
-<puik-textarea
-  id="textarea"
-  success
-  v-model="value"
->
-</puik-textarea>
-      
-      <!--HTML/CSS Snippet-->
-<div class="puik-textarea">
-  <div class="puik-textarea__wrapper puik-textarea__wrapper--success">
-    <textarea id="textarea-1" class="puik-textarea__field" name="" placeholder="" disabled="" style="height: 56px;"></textarea>
-  </div>
-</div>
-      `,
-      language: 'html',
-    },
-  },
-}
-
 export const Error = Template.bind({})
 Error.args = {
   id: 'textarea-1',

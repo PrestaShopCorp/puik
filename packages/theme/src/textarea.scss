@@ -17,9 +17,6 @@
     &--focus {
       @apply border-primary ring ring-blue;
     }
-    &--success {
-      @apply border-green bg-green-50;
-    }
     &--error {
       @apply border-red bg-red-50;
     }
