@@ -7,8 +7,8 @@ import {
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 const sizesSummary = Object.values(PuikspinnerSizes).join('|')
-const colorsSummary = Object.values(PuikspinnerPosition).join('|')
-const positionSummary = Object.values(PuikspinnerColors).join('|')
+const colorsSummary = Object.values(PuikspinnerColors).join('|')
+const positionSummary = Object.values(PuikspinnerPosition).join('|')
 
 export default {
   title: 'Components/SpinnerLoader',
