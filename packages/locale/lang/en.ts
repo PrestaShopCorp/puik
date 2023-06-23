@@ -17,6 +17,9 @@ export default {
       searchPlaceholder: 'Search',
       noResults: 'No results matched',
     },
+    skeletonLoaderGroup: {
+      label: 'Loading',
+    },
     pagination: {
       ariaLabel: 'Pagination navigation',
       goTo: 'Go to page {page}',
