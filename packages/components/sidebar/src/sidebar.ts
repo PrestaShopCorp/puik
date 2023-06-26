@@ -5,18 +5,18 @@ import type Sidebar from './sidebar.vue'
 export const sidebarProps = buildProps({
   expanded: {
     type: Boolean,
-    default: false,
     required: false,
+    default: false,
   },
   openAccordion: {
     type: String,
-    default: '',
     required: false,
+    default: '',
   },
   mobile: {
     type: Boolean,
-    default: false,
     required: false,
+    default: false,
   },
 } as const)
 

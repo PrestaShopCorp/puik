@@ -13,13 +13,13 @@ export const sidebarGroupItemProps = buildProps({
   },
   name: {
     type: String,
-    default: undefined,
     required: false,
+    default: undefined,
   },
   active: {
     type: Boolean,
-    default: false,
     required: false,
+    default: false,
   },
 } as const)
 
