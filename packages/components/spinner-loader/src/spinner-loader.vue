@@ -6,8 +6,10 @@
       `puik-spinner-loader--${color}`,
       { 'puik-spinner-loader--right': position === 'right' },
     ]"
+    aria-live="polite"
+    role="status"
   >
-    <div class="puik-spinner-loader__spinner"></div>
+    <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
     <span v-if="label" class="puik-spinner-loader__label">
       {{ label }}
     </span>
