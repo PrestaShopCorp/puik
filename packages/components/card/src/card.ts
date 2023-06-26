@@ -2,7 +2,13 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Card from './card.vue'
 
-export const cardVariants = ['highlight', 'blue', 'purple', 'amber', 'default']
+export const cardVariants = [
+  'highlight',
+  'blue',
+  'purple',
+  'amber',
+  'default',
+] as const
 
 export type CardVariantsType = (typeof cardVariants)[number]
 
