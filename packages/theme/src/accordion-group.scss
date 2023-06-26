@@ -8,11 +8,11 @@
       @apply mb-0 border-t-0 border-b;
     }
 
-    & > :first-child {
+    & > .puik-accordion:first-of-type {
       @apply border-t;
     }
 
-    & > :last-child {
+    & > .puik-accordion:last-of-type {
       @apply border-t-0 border-b;
     }
   }

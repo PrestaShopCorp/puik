@@ -18,8 +18,8 @@ export const sidebarGroupItemProps = buildProps({
   },
   active: {
     type: Boolean,
-    required: false,
     default: false,
+    required: false,
   },
 } as const)
 

@@ -10,6 +10,7 @@
       :title="title"
       :name="accordionName"
       :icon="icon"
+      class="puik-sidebar-group-item__accordion"
     >
       <slot></slot>
     </puik-accordion>

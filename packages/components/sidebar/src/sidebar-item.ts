@@ -3,6 +3,10 @@ import type { ExtractPropTypes } from 'vue'
 import type SidebarItem from './sidebar-item.vue'
 
 export const sidebarItemProps = buildProps({
+  title: {
+    type: String,
+    required: true,
+  },
   href: {
     type: String,
     required: false,
@@ -12,10 +16,6 @@ export const sidebarItemProps = buildProps({
     type: String,
     required: false,
     default: undefined,
-  },
-  title: {
-    type: String,
-    required: true,
   },
   icon: {
     type: String,

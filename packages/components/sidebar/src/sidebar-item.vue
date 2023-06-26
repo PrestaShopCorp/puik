@@ -7,33 +7,29 @@
   >
     <puik-button
       :aria-label="title"
-      fluid
-      variant="text"
-      class="puik-sidebar-item__button"
       :class="{ 'puik-sidebar-item--focus': focused }"
       :to="to"
       :href="href"
-    >
-      <span>{{ title }}</span>
-    </puik-button>
-  </MenuItem>
-  <div
-    v-else
-    class="puik-sidebar-item"
-    :class="{ 'puik-sidebar-item--active': active }"
-  >
-    <puik-button
-      :aria-label="title"
       fluid
       variant="text"
       class="puik-sidebar-item__button"
-      :left-icon="icon"
-      :to="to"
-      :href="href"
     >
-      <span v-if="isExpanded">{{ title }}</span>
+      {{ title }}
     </puik-button>
-  </div>
+  </MenuItem>
+  <puik-button
+    v-else
+    class="puik-sidebar-item puik-sidebar-item__button"
+    :class="{ 'puik-sidebar-item--active': active }"
+    :aria-label="title"
+    :left-icon="icon"
+    :to="to"
+    :href="href"
+    fluid
+    variant="text"
+  >
+    <span v-if="isExpanded">{{ title }}</span>
+  </puik-button>
 </template>
 
 <script setup lang="ts">
