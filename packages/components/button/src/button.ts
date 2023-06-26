@@ -14,19 +14,19 @@ export const buttonVariants = [
   'danger',
 ] as const
 
-export type ButtonVariantsType = (typeof buttonVariants)[number]
+export type PuikButtonVariants = (typeof buttonVariants)[number]
 
 export const buttonSizes = ['sm', 'md', 'lg'] as const
-export type ButtonSizesType = (typeof buttonSizes)[number]
+export type PuikButtonSizes = (typeof buttonSizes)[number]
 
 export const buttonProps = buildProps({
   variant: {
-    type: String as PropType<ButtonVariantsType>,
+    type: String as PropType<PuikButtonVariants>,
     required: false,
     default: 'primary',
   },
   size: {
-    type: String as PropType<ButtonSizesType>,
+    type: String as PropType<PuikButtonSizes>,
     required: false,
     default: 'md',
   },

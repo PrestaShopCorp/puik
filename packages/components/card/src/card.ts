@@ -10,11 +10,11 @@ export const cardVariants = [
   'default',
 ] as const
 
-export type CardVariantsType = (typeof cardVariants)[number]
+export type PuikCardVariants = (typeof cardVariants)[number]
 
 export const cardProps = buildProps({
   variant: {
-    type: String as PropType<CardVariantsType>,
+    type: String as PropType<PuikCardVariants>,
     required: false,
     default: 'default',
   },

@@ -4,13 +4,13 @@ import type { ExtractPropTypes, PropType } from 'vue'
 import type Link from './link.vue'
 
 export const targetVariants = ['_blank', '_self', '_parent', '_top'] as const
-export type TargetVariantsType = (typeof targetVariants)[number]
+export type PuikTargetVariants = (typeof targetVariants)[number]
 export const linkSizes = ['sm', 'md', 'lg'] as const
-export type LinkSizesType = (typeof linkSizes)[number]
+export type PuikLinkSizes = (typeof linkSizes)[number]
 
 export const linkProps = buildProps({
   size: {
-    type: String as PropType<LinkSizesType>,
+    type: String as PropType<PuikLinkSizes>,
     required: false,
     default: 'md',
   },
@@ -25,7 +25,7 @@ export const linkProps = buildProps({
     default: undefined,
   },
   target: {
-    type: String as PropType<TargetVariantsType>,
+    type: String as PropType<PuikTargetVariants>,
     required: false,
     default: '_self',
   },

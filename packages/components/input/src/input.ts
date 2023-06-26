@@ -12,7 +12,7 @@ export const inputTypes = [
   'tel',
 ] as const
 
-export type InputTypes = (typeof inputTypes)[number]
+export type PuikInputType = (typeof inputTypes)[number]
 
 export const inputProps = buildProps({
   modelValue: {
@@ -21,7 +21,7 @@ export const inputProps = buildProps({
     default: '',
   },
   type: {
-    type: String as PropType<InputTypes>,
+    type: String as PropType<PuikInputType>,
     required: false,
     default: 'text',
   },

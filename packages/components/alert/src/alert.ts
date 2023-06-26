@@ -4,7 +4,7 @@ import type Alert from './alert.vue'
 
 export const alertVariants = ['success', 'warning', 'danger', 'info'] as const
 
-export type AlertVariantsType = (typeof alertVariants)[number]
+export type PuikAlertVariants = (typeof alertVariants)[number]
 
 export const ICONS = {
   success: 'check_circle',
@@ -25,7 +25,7 @@ export const alertProps = buildProps({
     default: undefined,
   },
   variant: {
-    type: String as PropType<AlertVariantsType>,
+    type: String as PropType<PuikAlertVariants>,
     default: 'success',
   },
   disableBorders: {

@@ -20,11 +20,11 @@ export enum MenuPositionEnum {
 }
 export const menuPositionValues = Object.values(MenuPositionEnum) as string[]
 
-export const menuAlign = ['left', 'right'] as const
-export type MenuAlignType = (typeof menuAlign)[number]
+export const menuAligns = ['left', 'right'] as const
+export type PuikMenuAlign = (typeof menuAligns)[number]
 
-export const menuPosition = ['top', 'bottom'] as const
-export type MenuPositionType = (typeof menuPosition)[number]
+export const menuPositions = ['top', 'bottom'] as const
+export type PuikMenuPosition = (typeof menuPositions)[number]
 
 export const menuProps = buildProps({
   maxHeight: {
@@ -38,12 +38,12 @@ export const menuProps = buildProps({
     default: '200px',
   },
   align: {
-    type: String as PropType<MenuAlignType>,
+    type: String as PropType<PuikMenuAlign>,
     required: false,
     default: 'left',
   },
   position: {
-    type: String as PropType<MenuPositionType>,
+    type: String as PropType<PuikMenuPosition>,
     required: false,
     default: 'bottom',
   },
