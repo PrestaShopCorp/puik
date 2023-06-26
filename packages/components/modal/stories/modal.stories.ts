@@ -143,8 +143,7 @@ export default {
 } as Meta
 
 const Template: Story = (args: Args) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, updateArgs] = useArgs()
+  const updateArgs = useArgs()[1]
 
   return {
     components: {
