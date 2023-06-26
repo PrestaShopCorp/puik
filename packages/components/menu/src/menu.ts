@@ -9,6 +9,9 @@ export enum MenuAlignEnum {
   LEFT = 'left',
   RIGHT = 'right',
 }
+/**
+ * @deprecated Use `menuAligns` instead
+ */
 export const menuAlignValues = Object.values(MenuAlignEnum) as string[]
 
 /**
@@ -18,6 +21,9 @@ export enum MenuPositionEnum {
   TOP = 'top',
   BOTTOM = 'bottom',
 }
+/**
+ * @deprecated Use `menuPositions` instead
+ */
 export const menuPositionValues = Object.values(MenuPositionEnum) as string[]
 
 export const menuAligns = ['left', 'right'] as const
