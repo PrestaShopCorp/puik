@@ -200,12 +200,12 @@ Reverse.parameters = {
   },
 }
 
-export const Bottom: Story = SpinnerTemplate.bind({})
-Bottom.args = {
+export const LabelBottom: Story = SpinnerTemplate.bind({})
+LabelBottom.args = {
   label: 'In progress',
 }
 
-Bottom.parameters = {
+LabelBottom.parameters = {
   docs: {
     source: {
       code: `
@@ -223,13 +223,13 @@ Bottom.parameters = {
   },
 }
 
-export const Right: Story = SpinnerTemplate.bind({})
-Right.args = {
+export const LabelRight: Story = SpinnerTemplate.bind({})
+LabelRight.args = {
   label: 'In progress ',
   position: 'right',
 }
 
-Right.parameters = {
+LabelRight.parameters = {
   docs: {
     source: {
       code: `
