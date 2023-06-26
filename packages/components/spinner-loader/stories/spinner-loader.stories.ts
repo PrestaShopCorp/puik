@@ -120,8 +120,8 @@ Default.parameters = {
         colors: "puik-spinner-loader--${colorsSummary}"
         positions: "puik-spinner-loader--${positionSummary}"
        -->
-      <div class="puik-spinner-loader">
-        <div class="puik-spinner-loader__spinner"></div>
+      <div class="puik-spinner-loader" aria-live="polite" role="status">
+        <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
         <!-- Label -->
         <span class="puik-spinner-loader__label">label</span>
       </div>
@@ -169,8 +169,8 @@ Primary.parameters = {
       <puik-spinner-loader />
 
       <!--HTML/CSS Snippet-->
-      <div class="puik-spinner-loader">
-        <div class="puik-spinner-loader__spinner"></div>
+      <div class="puik-spinner-loader" aria-live="polite" role="status">
+        <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
       </div>
       `,
       language: 'html',
@@ -191,8 +191,8 @@ Reverse.parameters = {
       <puik-spinner-loader color="reverse" />
 
       <!--HTML/CSS Snippet-->
-      <div class="puik-spinner-loader puik-spinner-loader--reverse">
-        <div class="puik-spinner-loader__spinner"></div>
+      <div class="puik-spinner-loader puik-spinner-loader--reverse" aria-live="polite" role="status">
+        <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
       </div>
       `,
       language: 'html',
@@ -213,8 +213,8 @@ LabelBottom.parameters = {
       <puik-spinner-loader label="In progress" />
 
       <!--HTML/CSS Snippet-->
-      <div class="puik-spinner-loader">
-        <div class="puik-spinner-loader__spinner"></div>
+      <div class="puik-spinner-loader" aria-live="polite" role="status">
+        <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
         <span class="puik-spinner-loader__label">In progress</span>
       </div>
       `,
@@ -237,8 +237,8 @@ LabelRight.parameters = {
       <puik-spinner-loader label="In progress" position="right"/>
 
       <!--HTML/CSS Snippet-->
-      <div class="puik-spinner-loader puik-spinner-loader--right">
-        <div class="puik-spinner-loader__spinner"></div>
+      <div class="puik-spinner-loader puik-spinner-loader--right" aria-live="polite" role="status">
+        <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
         <span class="puik-spinner-loader__label">In progress</span>
       </div>
       `,
