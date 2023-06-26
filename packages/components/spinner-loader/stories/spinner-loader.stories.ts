@@ -1,14 +1,14 @@
 import PuikSpinnerLoader from './../src/spinner-loader.vue'
 import {
-  PuikspinnerSizes,
-  PuikspinnerColors,
-  PuikspinnerPosition,
+  puikSpinnerLoaderSizes,
+  puikSpinnerLoaderColors,
+  puikSpinnerLoaderPositions,
 } from './../src/spinner-loader'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
-const sizesSummary = Object.values(PuikspinnerSizes).join('|')
-const colorsSummary = Object.values(PuikspinnerColors).join('|')
-const positionSummary = Object.values(PuikspinnerPosition).join('|')
+const sizesSummary = Object.values(puikSpinnerLoaderSizes).join('|')
+const colorsSummary = Object.values(puikSpinnerLoaderColors).join('|')
+const positionSummary = Object.values(puikSpinnerLoaderPositions).join('|')
 
 export default {
   title: 'Components/SpinnerLoader',
@@ -17,7 +17,7 @@ export default {
     size: {
       control: 'select',
       description: 'Set the spinner size',
-      options: Object.values(PuikspinnerSizes),
+      options: puikSpinnerLoaderSizes,
       table: {
         type: {
           summary: sizesSummary,
@@ -30,7 +30,7 @@ export default {
     color: {
       control: 'select',
       description: 'Set the spinner color',
-      options: Object.values(PuikspinnerColors),
+      options: puikSpinnerLoaderColors,
       table: {
         type: {
           summary: colorsSummary,
@@ -52,7 +52,7 @@ export default {
     position: {
       control: 'select',
       description: 'Set label beside right the spinner',
-      options: Object.values(PuikspinnerPosition),
+      options: puikSpinnerLoaderPositions,
       table: {
         type: {
           summary: positionSummary,
