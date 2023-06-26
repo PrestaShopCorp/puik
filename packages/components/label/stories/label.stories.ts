@@ -7,12 +7,34 @@ export default {
   argTypes: {
     optional: {
       description: 'Set label in optional mode',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
     },
     required: {
       description: 'Set label in required mode',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
+    readonly: {
+      description: 'Set label in readonly mode',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
     },
     for: {
       description: 'Id of the form related element',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
     },
     default: {
       control: 'text',
@@ -35,6 +57,7 @@ export const Default = Template.bind({})
 Default.args = {
   optional: false,
   required: false,
+  readonly: false,
   for: 'input',
   default: 'My Label',
 }
@@ -42,10 +65,11 @@ Default.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-label for="input">My Label</puik-label>
-      <!--HTML/CSS Snippet-->
-      <label class="puik-label" for="input">My Label</label>
+<!--VueJS Snippet-->
+<puik-label for="input">My Label</puik-label>
+
+<!--HTML/CSS Snippet-->
+<label class="puik-label" for="input">My Label</label>
       `,
       language: 'html',
     },
@@ -66,13 +90,14 @@ Optional.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-label for="input" optional>My Label</puik-label>
-      <!--HTML/CSS Snippet-->
-      <label class="puik-label" for="input">
-        My Label
-        <span class="puik-label--optional">(Optional)</span>
-      </label>
+<!--VueJS Snippet-->
+<puik-label for="input" optional>My Label</puik-label>
+
+<!--HTML/CSS Snippet-->
+<label class="puik-label" for="input">
+  My Label
+  <span class="puik-label--optional">(Optional)</span>
+</label>
       `,
       language: 'html',
     },
@@ -93,14 +118,43 @@ Required.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-label for="input" required>My Label</puik-label>
-      <!--HTML/CSS Snippet-->
-      <label class="puik-label" for="input">
-        My Label
-        <span class="puik-label--required">*</span>
-      </label>
+<!--VueJS Snippet-->
+<puik-label for="input" required>My Label</puik-label>
+
+<!--HTML/CSS Snippet-->
+<label class="puik-label" for="input">
+  My Label
+  <span class="puik-label--required">*</span>
+</label>
       `,
+      language: 'html',
+    },
+  },
+}
+
+export const Readonly: Story = (args: Args) => ({
+  components: {
+    PuikLabel,
+  },
+  setup() {
+    return { args }
+  },
+  template: `<puik-label for="input" readonly>My Label</puik-label>`,
+})
+
+Readonly.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-label for="input" readonly>My Label</puik-label>
+
+<!--HTML/CSS Snippet-->
+<label class="puik-label" for="input">
+  My Label
+  <span class="puik-label--readonly">(Read only)</span>
+</label>
+`,
       language: 'html',
     },
   },
