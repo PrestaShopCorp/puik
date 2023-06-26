@@ -1,4 +1,4 @@
-import { menuAlign, menuPosition } from '../src/menu'
+import { menuAligns, menuPositions } from '../src/menu'
 import PuikMenu from '../src/menu.vue'
 import PuikMenuItem from '../src/menu-item.vue'
 import PuikMenuItemSeparator from '../src/menu-item-separator.vue'
@@ -7,8 +7,8 @@ import PuikButton from '../../button/src/button.vue'
 import PuikLink from '../../link/src/link.vue'
 import type { Meta, Args, Story } from '@storybook/vue3'
 
-const menuAlignsJoined = menuAlign.join('|')
-const menuPositionsJoined = menuPosition.join('|')
+const menuAlignsJoined = menuAligns.join('|')
+const menuPositionsJoined = menuPositions.join('|')
 
 export default {
   title: 'Components/Menu',
@@ -17,7 +17,7 @@ export default {
     position: {
       description: 'Menu position',
       control: 'select',
-      options: menuPosition,
+      options: menuPositions,
       table: {
         defaultValue: {
           summary: 'bottom',
@@ -30,7 +30,7 @@ export default {
     align: {
       description: 'Menu alignment',
       control: 'select',
-      options: menuAlign,
+      options: menuAligns,
       table: {
         defaultValue: {
           summary: 'left',

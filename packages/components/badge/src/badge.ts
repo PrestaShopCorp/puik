@@ -10,11 +10,11 @@ export const badgeVariants = [
   'neutral',
 ] as const
 
-export type PuikBadgeVariants = (typeof badgeVariants)[number]
+export type PuikBadgeVariant = (typeof badgeVariants)[number]
 
 export const badgeProps = buildProps({
   variant: {
-    type: String as PropType<PuikBadgeVariants>,
+    type: String as PropType<PuikBadgeVariant>,
     default: 'neutral',
   },
 } as const)
