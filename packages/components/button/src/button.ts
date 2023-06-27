@@ -38,6 +38,11 @@ export const buttonProps = buildProps({
     required: false,
     default: false,
   },
+  loading: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   leftIcon: {
     type: String,
     required: false,
