@@ -4,8 +4,9 @@
   &__character-count {
     @extend .puik-body-small;
     @apply absolute right-0 -bottom-5 text-primary-700;
-
-    &--error {
+  }
+  &--count-error {
+    .puik-textarea__character-count {
       @apply text-red;
     }
   }

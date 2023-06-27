@@ -1,12 +1,11 @@
 <template>
-  <div class="puik-textarea">
-    <div
-      v-if="maxlength"
-      class="puik-textarea__character-count"
-      :class="{
-        'puik-textarea__character-count--error': characterLength > maxlength,
-      }"
-    >
+  <div
+    class="puik-textarea"
+    :class="{
+      'puik-textarea--count-error': characterLength > maxlength,
+    }"
+  >
+    <div v-if="maxlength" class="puik-textarea__character-count">
       <span>{{ characterLength }}/{{ maxlength }}</span>
     </div>
     <div class="puik-textarea__wrapper" :class="textareaClass">
