@@ -8,19 +8,19 @@ export default {
   component: PuikTextarea,
   argTypes: {
     id: {
-      description: '',
+      description: 'Set the textarea id',
     },
     name: {
       control: 'text',
-      description: '',
+      description: 'Set the textarea name',
     },
     placeholder: {
       control: 'text',
-      description: '',
+      description: 'Set the placeholder',
     },
     autofocus: {
       control: 'boolean',
-      description: '',
+      description: 'Set the autofocus attribute',
       table: {
         defaultValue: {
           summary: false,
@@ -29,7 +29,7 @@ export default {
     },
     disabled: {
       control: 'boolean',
-      description: '',
+      description: 'Set the textarea as disabled',
       table: {
         defaultValue: {
           summary: false,
@@ -38,7 +38,7 @@ export default {
     },
     readonly: {
       control: 'boolean',
-      description: '',
+      description: 'Set the textarea as readonly',
       table: {
         defaultValue: {
           summary: false,
@@ -47,16 +47,7 @@ export default {
     },
     required: {
       control: 'boolean',
-      description: '',
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
-    },
-    success: {
-      control: 'boolean',
-      description: '',
+      description: 'Set the textarea as required',
       table: {
         defaultValue: {
           summary: false,
@@ -65,7 +56,7 @@ export default {
     },
     hideHint: {
       control: 'boolean',
-      description: '',
+      description: 'Hide the hint slot',
       table: {
         defaultValue: {
           summary: false,
@@ -74,7 +65,7 @@ export default {
     },
     autoGrow: {
       control: 'boolean',
-      description: '',
+      description: 'Set the textarea height as the text increase to maxRows',
       table: {
         defaultValue: {
           summary: false,
@@ -83,7 +74,7 @@ export default {
     },
     maxlength: {
       control: 'number',
-      description: '',
+      description: 'Set the max number of character',
       table: {
         defaultValue: {
           summary: undefined,
@@ -92,7 +83,7 @@ export default {
     },
     rows: {
       control: 'number',
-      description: '',
+      description: 'Set the default height',
       table: {
         defaultValue: {
           summary: 2,
@@ -101,7 +92,7 @@ export default {
     },
     maxRows: {
       control: 'number',
-      description: '',
+      description: 'Set the maximum height',
       table: {
         defaultValue: {
           summary: 2,
@@ -110,7 +101,7 @@ export default {
     },
     error: {
       control: 'text',
-      description: '',
+      description: 'Set an error message',
       table: {
         defaultValue: {
           summary: '',
@@ -143,7 +134,6 @@ Default.args = {
   placeholder: '',
   autofocus: false,
   required: false,
-  success: false,
   hideHint: false,
   readonly: false,
   disabled: false,
@@ -186,7 +176,6 @@ Disabled.args = {
   placeholder: '',
   autofocus: false,
   required: false,
-  success: false,
   hideHint: false,
   readonly: false,
   disabled: true,
@@ -226,7 +215,6 @@ Readonly.args = {
   placeholder: '',
   autofocus: false,
   required: false,
-  success: false,
   hideHint: false,
   readonly: true,
   disabled: false,
@@ -266,7 +254,6 @@ Error.args = {
   placeholder: '',
   autofocus: false,
   required: false,
-  success: true,
   hideHint: false,
   readonly: false,
   disabled: false,
@@ -313,7 +300,6 @@ CharacterCount.args = {
   placeholder: '',
   autofocus: false,
   required: false,
-  success: false,
   hideHint: false,
   readonly: false,
   disabled: false,
@@ -358,7 +344,6 @@ AutoGrow.args = {
   placeholder: '',
   autofocus: false,
   required: false,
-  success: false,
   hideHint: false,
   readonly: false,
   disabled: false,
