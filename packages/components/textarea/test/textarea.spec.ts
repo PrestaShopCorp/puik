@@ -118,14 +118,12 @@ describe('Textarea tests', () => {
     expect(findCharacterCount().text()).toContain('0/20')
     await wrapper.setValue(text)
     expect(findCharacterCount().text()).toContain('12/20')
-    expect(findCharacterCount().classes()).not.toContain(
+    expect(wrapper.classes()).not.toContain(
       'puik-textarea__character-count--error'
     )
     await wrapper.setValue(textTooLong)
     expect(findCharacterCount().text()).toContain('29/20')
-    expect(findCharacterCount().classes()).toContain(
-      'puik-textarea__character-count--error'
-    )
+    expect(wrapper.classes()).toContain('puik-textarea--count-error')
   })
 
   it('should render a placeholder', async () => {
