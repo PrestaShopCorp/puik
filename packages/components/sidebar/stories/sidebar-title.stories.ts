@@ -69,8 +69,6 @@ Default.parameters = {
       code: `
 <!--VueJS Snippet-->
 <puik-sidebar-title :tag="tag">Title</puik-sidebar-title>
-
-<!--HTML/CSS Snippet-->
 `,
       language: 'html',
     },
