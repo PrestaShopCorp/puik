@@ -7,6 +7,15 @@ export default {
   title: 'Components/Textarea',
   component: PuikTextarea,
   argTypes: {
+    modelValue: {
+      control: 'text',
+      description: 'v-model for textarea value',
+      table: {
+        defaultValue: {
+          summary: '',
+        },
+      },
+    },
     id: {
       description: 'Set the textarea id',
     },
@@ -117,14 +126,10 @@ const Template: Story = (args: Args) => ({
     PuikLabel,
   },
   setup() {
-    const value = ref('')
-    return { value, args }
+    return { args }
   },
   template: `
-<puik-textarea
-  v-bind="args"
-  v-model="value">
-</puik-textarea>
+<puik-textarea v-bind="args" v-model="args.modelValue"></puik-textarea>
   `,
 })
 
@@ -141,19 +146,16 @@ Default.args = {
   rows: 2,
   maxRows: 2,
   maxlength: undefined,
+  modelValue: '',
 }
 Default.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-<puik-textarea
-  id="textarea"
-  v-model="value"
->
-</puik-textarea>
+<!--VueJS Snippet-->
+<puik-textarea id="textarea" v-model="args.modelValue"></puik-textarea>
       
-      <!--HTML/CSS Snippet-->
+<!--HTML/CSS Snippet-->
 </label>
 <div class="puik-textarea">
   <div class="puik-textarea__character-count">
@@ -188,15 +190,10 @@ Disabled.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-<puik-textarea
-  id="textarea"
-  disabled
-  v-model="value"
->
-</puik-textarea>
+<!--VueJS Snippet-->
+<puik-textarea id="textarea" disabled v-model="value"></puik-textarea>
       
-      <!--HTML/CSS Snippet-->
+<!--HTML/CSS Snippet-->
 <div class="puik-textarea">
   <div class="puik-textarea__wrapper puik-textarea__wrapper--disabled">
     <textarea id="textarea-1" class="puik-textarea__field" name="" placeholder="" disabled="" style="height: 56px;"></textarea>
@@ -227,15 +224,10 @@ Readonly.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-<puik-textarea
-  id="textarea"
-  readonly
-  v-model="value"
->
-</puik-textarea>
+<!--VueJS Snippet-->
+<puik-textarea id="textarea" readonly v-model="value"></puik-textarea>
       
-      <!--HTML/CSS Snippet-->
+<!--HTML/CSS Snippet-->
 <div class="puik-textarea">
   <div class="puik-textarea__wrapper puik-textarea__wrapper--readonly">
     <textarea id="textarea-1" class="puik-textarea__field" name="" placeholder="" disabled="" style="height: 56px;"></textarea>
@@ -267,15 +259,10 @@ Error.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-<puik-textarea
-  id="textarea"
-  error="This is an error message"
-  v-model="value"
->
-</puik-textarea>
+<!--VueJS Snippet-->
+<puik-textarea id="textarea" error="This is an error message" v-model="value"></puik-textarea>
       
-      <!--HTML/CSS Snippet-->
+<!--HTML/CSS Snippet-->
 <div class="puik-textarea">
   <div class="puik-textarea__wrapper puik-textarea__wrapper--error">
     <textarea id="error" class="puik-textarea__field" style="height: 56px;"></textarea>
@@ -314,15 +301,10 @@ CharacterCount.parameters = {
     iframeHeight: 100,
     source: {
       code: `
-      <!--VueJS Snippet-->
-<puik-textarea
-  id="textarea"
-  v-model="value"
-  :maxlength="50"
->
-</puik-textarea>
+<!--VueJS Snippet-->
+<puik-textarea id="textarea" v-model="value" :maxlength="50"></puik-textarea>
       
-      <!--HTML/CSS Snippet-->
+<!--HTML/CSS Snippet-->
 <div class="puik-textarea">
   <div class="puik-textarea__character-count puik-textarea__character-count--error">
     <p>0/50</p>
@@ -361,15 +343,10 @@ AutoGrow.parameters = {
     },
     source: {
       code: `
-      <!--VueJS Snippet-->
-<puik-textarea
-  id="textarea"
-  v-model="value"
-  :maxRows="5"
->
-</puik-textarea>
+<!--VueJS Snippet-->
+<puik-textarea id="textarea" v-model="value" :maxRows="5"></puik-textarea>
       
-      <!--HTML/CSS Snippet-->
+<!--HTML/CSS Snippet-->
 <div class="puik-textarea">
   <div class="puik-textarea__character-count puik-textarea__character-count--error">
     <p>0/50</p>
