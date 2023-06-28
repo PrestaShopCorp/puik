@@ -13,9 +13,6 @@ export default {
         type: {
           summary: 'string',
         },
-        defaultValue: {
-          summary: 'title',
-        },
       },
     },
     name: {
@@ -37,9 +34,6 @@ export default {
         type: {
           summary: 'string',
         },
-        defaultValue: {
-          summary: undefined,
-        },
       },
     },
     active: {
@@ -55,16 +49,8 @@ export default {
       },
     },
     default: {
-      control: 'text',
+      control: 'none',
       description: 'Set the defaut content slot',
-      table: {
-        type: {
-          summary: 'string',
-        },
-        defaultValue: {
-          summary: undefined,
-        },
-      },
     },
   },
   args: {
@@ -96,10 +82,7 @@ const Template: Story = (args: Args) => ({
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
   <puik-sidebar-group-item
-    :title="args.title"
-    :icon="args.icon"
-    :active="args.active"
-    :name="args.name"
+    v-bind="args"
   >
     <puik-sidebar-item title="Title 1" />
     <puik-sidebar-item title="Title 2" />

@@ -1,8 +1,5 @@
-@use './common/typography.scss';
-
 .puik-sidebar {
-  @extend .puik-sidebar-default;
-  @apply relative z-10 w-[20.5rem] sm:w-[13.125rem] h-full bg-white border-r border-primary-300;
+  @apply text-sm font-normal relative z-10 w-[20.5rem] sm:w-[13.125rem] h-full bg-white border-r border-primary-300;
   transition: width 0.2s ease-out;
 
   &__header {
@@ -11,6 +8,7 @@
     .puik-sidebar__header__button {
       &:hover {
         @apply bg-primary-300;
+
         .puik-icon {
           @apply text-blue-700 text-xl;
         }

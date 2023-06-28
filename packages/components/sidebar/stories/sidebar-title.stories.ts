@@ -62,7 +62,6 @@ const Template: Story = (args: Args) => ({
 })
 
 export const Default = Template.bind({})
-// Default.args = {}
 Default.parameters = {
   docs: {
     source: {

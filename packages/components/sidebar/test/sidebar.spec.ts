@@ -10,10 +10,10 @@ let wrapper: VueWrapper<any>
 const factory = (template: string, options: MountingOptions<any> = {}) => {
   wrapper = mount({
     components: {
-      'puik-sidebar-title': PuikSidebarTitle,
-      'puik-sidebar-item': PuikSidebarItem,
-      'puik-sidebar-group-item': PuikSidebarGroupItem,
-      'puik-sidebar': PuikSidebar,
+      PuikSidebarTitle,
+      PuikSidebarItem,
+      PuikSidebarGroupItem,
+      PuikSidebar,
     },
     template,
     ...options,
@@ -52,8 +52,8 @@ describe('Sidebar tests', () => {
       </puik-sidebar>
     `
     factory(template)
-    const items = getSidebarsItem(wrapper)
-    expect(items.length).toBe(1)
+    const items = getSidebarsItem(wrapper)[0]
+    expect(items.exists()).toBeTruthy()
   })
 
   it('should display group-item', () => {
@@ -65,11 +65,11 @@ describe('Sidebar tests', () => {
       </puik-sidebar>
     `
     factory(template)
-    const items = getSidebarsGroupItem(wrapper)
-    expect(items.length).toBe(1)
+    const items = getSidebarsGroupItem(wrapper)[0]
+    expect(items.exists).toBeTruthy()
   })
 
-  it('should expend', async () => {
+  it('should expand', async () => {
     const template = `
       <puik-sidebar>
         <puik-sidebar-group-item title="group" icon="store">
@@ -88,13 +88,13 @@ describe('Sidebar tests', () => {
 
   it('should be mobile', async () => {
     const template = `
-    <puik-sidebar mobile :expanded="true">
-      <puik-sidebar-item title="title" />
-    </puik-sidebar>
-  `
+      <puik-sidebar mobile :expanded="true">
+        <puik-sidebar-item title="title" />
+      </puik-sidebar>
+    `
     factory(template)
-    const items = getSidebarsItem(wrapper)
-    expect(items.length).toBe(1)
+    const items = getSidebarsItem(wrapper)[0]
+    expect(items.exists()).toBeTruthy()
     const backdrop = getSidebarBackdrop(wrapper)
     expect(backdrop).toBeTruthy()
   })

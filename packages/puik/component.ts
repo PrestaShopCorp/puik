@@ -1,6 +1,11 @@
 import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
+import {
+  PuikSidebar,
+  PuikSidebarGroupItem,
+  PuikSidebarItem,
+  PuikSidebarTitle,
+} from '@puik/components/sidebar'
 import { PuikPagination } from '@puik/components/pagination'
-import { PuikSidebar } from '@puik/components/sidebar'
 import { PuikBreadcrumb } from '@puik/components/breadcrumb'
 import { PuikAccordion, PuikAccordionGroup } from '@puik/components/accordion'
 import { PuikBadge } from '@puik/components/badge'
@@ -31,8 +36,11 @@ import type { Plugin } from 'vue'
 // prettier-ignore
 export default [
   PuikSpinnerLoader,
-  PuikPagination,
   PuikSidebar,
+  PuikSidebarGroupItem,
+  PuikSidebarItem,
+  PuikSidebarTitle,
+  PuikPagination,
   PuikBreadcrumb,
   PuikAccordion,
   PuikAccordionGroup,

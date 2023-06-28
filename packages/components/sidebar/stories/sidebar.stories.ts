@@ -9,7 +9,7 @@ export default {
   argTypes: {
     expanded: {
       control: 'boolean',
-      description: 'Set the expansion state',
+      description: 'v-model of the expansion state',
       table: {
         type: {
           summary: 'boolean',
@@ -27,7 +27,7 @@ export default {
           summary: 'string',
         },
         defaultValue: {
-          summary: 'undefined',
+          summary: undefined,
         },
       },
     },
@@ -64,7 +64,7 @@ const Template: Story = (args: Args) => ({
     return { args }
   },
   template: `
-<puik-sidebar :open-accordion="args.name" :mobile="args.mobile" v-model:expanded="args.expanded">
+<puik-sidebar v-bind="args">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
@@ -107,7 +107,7 @@ Default.parameters = {
     source: {
       code: `
 <!--VueJS Snippet-->
-<puik-sidebar :open-accordion="args.name" :mobile="args.mobile" v-model:expanded="args.expanded">
+<puik-sidebar :open-accordion="name" :mobile="mobile" v-model:expanded="expanded">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
@@ -338,7 +338,7 @@ const MobileTemplate = (args: Args) => ({
     }
   },
   template: `
-<puik-sidebar mobile v-model:expanded="expanded" style="position: fixed; height: 100vh;">
+<puik-sidebar v-bind="args" mobile style="position: fixed; height: 100vh;">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>

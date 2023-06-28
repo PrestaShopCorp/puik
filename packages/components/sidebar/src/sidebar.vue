@@ -46,6 +46,7 @@
     <div
       v-if="mobile && localExpanded"
       class="puik-sidebar__backdrop"
+      aria-hidden="true"
       @click="setExpanded(false)"
     ></div>
   </div>
@@ -59,7 +60,7 @@ import { PuikAccordionGroup } from '../../accordion'
 import { sidebarProps, sidebarKey } from './sidebar'
 
 defineOptions({
-  openAccordion: 'PuikSidebar',
+  name: 'PuikSidebar',
 })
 
 const emit = defineEmits<{
@@ -72,18 +73,18 @@ const { t } = useLocale()
 const localExpanded = ref(props.expanded)
 const openAccordionName = ref(props.openAccordion)
 
-const expansionIcon = computed(() => {
-  return localExpanded.value ? 'first_page' : 'last_page'
-})
+const expansionIcon = computed(() =>
+  localExpanded.value ? 'first_page' : 'last_page'
+)
 
-function setExpanded(value) {
+function setExpanded(value: boolean) {
   localExpanded.value = value
   emit('update:expanded', value)
 }
 
-function openAccordion(value) {
+function openAccordion(value: string) {
   openAccordionName.value = value
-  emit('update:openAccordion', openAccordionName.value)
+  emit('update:openAccordion', value)
 }
 
 watch(

@@ -13,9 +13,6 @@ export default {
         type: {
           summary: 'string',
         },
-        defaultValue: {
-          summary: 'title',
-        },
       },
     },
     href: {
@@ -67,16 +64,8 @@ export default {
       },
     },
     default: {
-      control: 'text',
+      control: 'none',
       description: 'Set the defaut content slot',
-      table: {
-        type: {
-          summary: 'string',
-        },
-        defaultValue: {
-          summary: undefined,
-        },
-      },
     },
   },
   args: {
@@ -106,7 +95,7 @@ const Template: Story = (args: Args) => ({
   },
   template: `
 <puik-sidebar>
-  <puik-sidebar-item :title="args.title" :icon="args.icon" :active="args.active" />
+  <puik-sidebar-item v-bind="args" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
   <puik-sidebar-title>Section title</puik-sidebar-title>
   <puik-sidebar-group-item
@@ -115,7 +104,7 @@ const Template: Story = (args: Args) => ({
     name="group-1"
     :active="args.active"
   >
-  <puik-sidebar-item :title="args.title" :icon="args.icon" :active="args.active" />
+    <puik-sidebar-item v-bind="args" />
     <puik-sidebar-item title="Title 2" />
   </puik-sidebar-group-item>
 </puik-sidebar>
@@ -139,7 +128,7 @@ Default.parameters = {
     name="group-1"
     :active="active"
   >
-  <puik-sidebar-item :title="title" :icon="icon" :active="active" />
+    <puik-sidebar-item :title="title" :icon="icon" :active="active" />
     <puik-sidebar-item title="Title 2" />
   </puik-sidebar-group-item>
 </puik-sidebar>
