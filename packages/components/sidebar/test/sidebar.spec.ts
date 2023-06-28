@@ -20,17 +20,10 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
   })
 }
 
-export const getSidebar = (component) => component.find('.puik-sidebar')
-export const getSidebarsGroupItem = (component) =>
-  component.findAll('.puik-sidebar-group-item')
-export const getSidebarsItem = (component) =>
-  component.findAll('.puik-sidebar-item')
-export const getExpandButton = (component) =>
-  component.find('.puik-sidebar__header .puik-button')
-export const getSidebarContent = (component) =>
-  component.find('.puik-sidebar__content')
-export const getSidebarBackdrop = (component) =>
-  component.find('.puik-sidebar__backdrop')
+const getSidebar = () => wrapper.find('.puik-sidebar')
+const getSidebarsItem = () => wrapper.findAll('.puik-sidebar-item')
+const getExpandButton = () => wrapper.find('.puik-sidebar__header .puik-button')
+const getSidebarBackdrop = () => wrapper.find('.puik-sidebar__backdrop')
 
 describe('Sidebar tests', () => {
   it('should be a vue instance', () => {
@@ -54,12 +47,10 @@ describe('Sidebar tests', () => {
       </puik-sidebar>
     `
     await factory(template)
-    const expandButton = getExpandButton(wrapper)
-    expect(getSidebar(wrapper).classes()).toContain('puik-sidebar--collapsed')
+    const expandButton = getExpandButton()
+    expect(getSidebar().classes()).toContain('puik-sidebar--collapsed')
     await expandButton.trigger('click')
-    expect(getSidebar(wrapper).classes()).not.toContain(
-      'puik-sidebar--collapsed'
-    )
+    expect(getSidebar().classes()).not.toContain('puik-sidebar--collapsed')
   })
 
   it('should expand with v-model', async () => {
@@ -72,11 +63,9 @@ describe('Sidebar tests', () => {
     `
 
     await factory(template)
-    expect(getSidebar(wrapper).classes()).toContain('puik-sidebar--collapsed')
+    expect(getSidebar().classes()).toContain('puik-sidebar--collapsed')
     await wrapper.setProps({ expanded: true })
-    expect(getSidebar(wrapper).classes()).not.toContain(
-      'puik-sidebar--collapsed'
-    )
+    expect(getSidebar().classes()).not.toContain('puik-sidebar--collapsed')
   })
 
   it('should be mobile', async () => {
@@ -86,9 +75,9 @@ describe('Sidebar tests', () => {
       </puik-sidebar>
     `
     factory(template)
-    const items = getSidebarsItem(wrapper)[0]
+    const items = getSidebarsItem()[0]
     expect(items.exists()).toBeTruthy()
-    const backdrop = getSidebarBackdrop(wrapper)
+    const backdrop = getSidebarBackdrop()
     expect(backdrop).toBeTruthy()
   })
 
