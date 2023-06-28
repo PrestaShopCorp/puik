@@ -34,7 +34,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.13",
     "@popperjs/core": "^2.11.7",
-    "@vueuse/core": "^9.13.0",
+    "@vueuse/core": "^10.2.1",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3"
