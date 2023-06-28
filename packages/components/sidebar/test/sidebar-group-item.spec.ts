@@ -22,6 +22,8 @@ const getAccordionTitle = () =>
   wrapper.find('.puik-accordion__header__content__title')
 const getMenuButton = () =>
   wrapper.find('.puik-sidebar-group-item__menu-button')
+const getMenuContent = () =>
+  wrapper.find('.puik-sidebar-group-item__menu-content')
 
 describe('Sidebar tests', () => {
   it('should be a vue instance', () => {
@@ -96,5 +98,18 @@ describe('Sidebar tests', () => {
     `
     factory(template)
     expect(getAccordion().exists()).toBeTruthy()
+  })
+
+  it('should render menu content when collapsed', async () => {
+    const template = `
+      <puik-sidebar :expanded="false">
+        <puik-sidebar-group-item title="group" icon="store">
+          <puik-sidebar-item icon="home" title="title"></puik-sidebar-item>
+        </puik-sidebar-group-item>
+      </puik-sidebar>
+    `
+    factory(template)
+    await getMenuButton().trigger('click')
+    expect(getMenuContent().exists()).toBeTruthy()
   })
 })
