@@ -26,9 +26,9 @@ const getMenuButton = () =>
 describe('Sidebar tests', () => {
   it('should be a vue instance', () => {
     const template = `
-    <puik-sidebar-group-item title="group" icon="store">
-      <puik-sidebar-item title="title" />
-    </puik-sidebar-group-item>
+      <puik-sidebar-group-item title="group" icon="store">
+        <puik-sidebar-item title="title" />
+      </puik-sidebar-group-item>
     `
     factory(template)
     expect(wrapper).toBeTruthy()
@@ -36,9 +36,9 @@ describe('Sidebar tests', () => {
 
   it('should be active', () => {
     const template = `
-    <puik-sidebar-group-item title="group" icon="store" active>
-      <puik-sidebar-item title="title" />
-    </puik-sidebar-group-item>
+      <puik-sidebar-group-item title="group" icon="store" active>
+        <puik-sidebar-item title="title" />
+      </puik-sidebar-group-item>
     `
     factory(template)
     expect(wrapper.classes()).toContain('puik-sidebar-group-item--active')
@@ -56,10 +56,10 @@ describe('Sidebar tests', () => {
 
   it('should render an icon when expanded', () => {
     const template = `
-    <puik-sidebar :expanded="true">
-      <puik-sidebar-group-item title="group" icon="store">
-      </puik-sidebar-group-item>
-    </puik-sidebar>
+      <puik-sidebar :expanded="true">
+        <puik-sidebar-group-item title="group" icon="store">
+        </puik-sidebar-group-item>
+      </puik-sidebar>
     `
     factory(template)
     expect(getIcon().text()).toBe('store')
@@ -67,10 +67,10 @@ describe('Sidebar tests', () => {
 
   it('should render an icon when collapsed', () => {
     const template = `
-    <puik-sidebar :expanded="false">
-      <puik-sidebar-group-item title="group" icon="store">
-      </puik-sidebar-group-item>
-    </puik-sidebar>
+      <puik-sidebar :expanded="false">
+        <puik-sidebar-group-item title="group" icon="store">
+        </puik-sidebar-group-item>
+      </puik-sidebar>
     `
     factory(template)
     expect(getIcon().text()).toBe('store')
@@ -78,10 +78,10 @@ describe('Sidebar tests', () => {
 
   it('should render as a menu when collapsed', () => {
     const template = `
-    <puik-sidebar :expanded="false">
-      <puik-sidebar-group-item title="group" icon="store">
-      </puik-sidebar-group-item>
-    </puik-sidebar>
+      <puik-sidebar :expanded="false">
+        <puik-sidebar-group-item title="group" icon="store">
+        </puik-sidebar-group-item>
+      </puik-sidebar>
     `
     factory(template)
     expect(getMenuButton().exists()).toBeTruthy()
@@ -89,10 +89,10 @@ describe('Sidebar tests', () => {
 
   it('should render as an accordion when expanded', () => {
     const template = `
-    <puik-sidebar :expanded="true">
-      <puik-sidebar-group-item title="group" icon="store">
-      </puik-sidebar-group-item>
-    </puik-sidebar>
+      <puik-sidebar :expanded="true">
+        <puik-sidebar-group-item title="group" icon="store">
+        </puik-sidebar-group-item>
+      </puik-sidebar>
     `
     factory(template)
     expect(getAccordion().exists()).toBeTruthy()
