@@ -23,8 +23,6 @@ describe('Modal tests', () => {
   let wrapper: VueWrapper<any>
 
   const findModal = () => wrapper.find('.puik-modal')
-  const findDialogPanel = () =>
-    wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel')
   const findIcon = () =>
     wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header__icon')
   const findCloseButton = () =>

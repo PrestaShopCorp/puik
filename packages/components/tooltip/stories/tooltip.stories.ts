@@ -1,7 +1,7 @@
 import { PuikButton } from '@puik/components/button'
 import { PuikIcon } from '@puik/components/icon'
 import PuikTooltip from './../src/tooltip.vue'
-import { tooltipPosition } from './../src/tooltip'
+import { tooltipPositions } from './../src/tooltip'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
 export default {
@@ -17,10 +17,13 @@ export default {
     position: {
       control: 'select',
       description: 'Set the tooltip position',
-      options: tooltipPosition,
+      options: tooltipPositions,
       table: {
         defaultValue: {
           summary: 'top',
+        },
+        type: {
+          summary: tooltipPositions.join('|'),
         },
       },
     },

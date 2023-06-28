@@ -10,5 +10,5 @@ defineOptions({
   name: 'PuikBadge',
 })
 
-const props = defineProps(badgeProps)
+defineProps(badgeProps)
 </script>
