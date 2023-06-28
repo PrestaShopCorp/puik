@@ -7,22 +7,34 @@ export default {
   argTypes: {
     optional: {
       description: 'Set label in optional mode',
+      control: 'boolean',
       table: {
-        defaultValue: {
-          summary: false,
-        },
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
       },
     },
     required: {
       description: 'Set label in required mode',
+      control: 'boolean',
       table: {
-        defaultValue: {
-          summary: false,
-        },
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
+    readonly: {
+      description: 'Set label in readonly mode',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
       },
     },
     for: {
       description: 'Id of the form related element',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
     },
     default: {
       control: 'text',
@@ -45,6 +57,7 @@ export const Default = Template.bind({})
 Default.args = {
   optional: false,
   required: false,
+  readonly: false,
   for: 'input',
   default: 'My Label',
 }
@@ -114,6 +127,34 @@ Required.parameters = {
   <span class="puik-label--required">*</span>
 </label>
       `,
+      language: 'html',
+    },
+  },
+}
+
+export const Readonly: Story = (args: Args) => ({
+  components: {
+    PuikLabel,
+  },
+  setup() {
+    return { args }
+  },
+  template: `<puik-label for="input" readonly>My Label</puik-label>`,
+})
+
+Readonly.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-label for="input" readonly>My Label</puik-label>
+
+<!--HTML/CSS Snippet-->
+<label class="puik-label" for="input">
+  My Label
+  <span class="puik-label--readonly">(Read only)</span>
+</label>
+`,
       language: 'html',
     },
   },
