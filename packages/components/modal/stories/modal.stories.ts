@@ -168,7 +168,7 @@ export enum PuikModalSize {
 } as Meta
 
 const Template: Story = (args: Args) => {
-  const [_, updateArgs] = useArgs()
+  const updateArgs = useArgs()[1]
 
   return {
     components: {
