@@ -32,17 +32,17 @@
 
 .puik-brand-h1 {
   @extend .puik-h1;
-  @apply -tracking-[0] font-secondary;
+  @apply -tracking-[0] font-secondary font-normal;
 }
 
 .puik-brand-h2 {
   @extend .puik-h2;
-  @apply -tracking-[0] font-secondary;
+  @apply -tracking-[0] font-secondary font-normal;
 }
 
 .puik-brand-jumbotron {
   @extend .puik-jumbotron;
-  @apply -tracking-[0] font-secondary;
+  @apply -tracking-[0] font-secondary font-normal;
 }
 
 // Body
