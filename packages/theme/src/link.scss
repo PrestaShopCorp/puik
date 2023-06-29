@@ -21,12 +21,12 @@
     }
   }
   &--sm {
-    @extend .puik-body-small-bold;
+    @extend .puik-body-small;
   }
   &--md {
-    @extend .puik-body-default-bold;
+    @extend .puik-body-default;
   }
   &--lg {
-    @extend .puik-body-large-bold;
+    @extend .puik-body-large;
   }
 }
