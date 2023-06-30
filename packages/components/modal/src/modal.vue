@@ -75,7 +75,7 @@
 </template>
 
 <script setup lang="ts">
-import { toRef, computed, ref, watch, nextTick } from 'vue'
+import { computed, ref, watch, nextTick } from 'vue'
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { useWindowSize } from '@vueuse/core'
 import { PuikButton } from '@puik/components/button'

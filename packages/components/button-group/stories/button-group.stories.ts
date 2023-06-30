@@ -7,12 +7,15 @@ export default {
   title: 'Components/ButtonGroup',
   component: PuikButtonGroup,
   argTypes: {
-    selected: {
-      description: 'Selected button',
-      control: 'text',
+    modelValue: {
+      description: 'Selected button v-model',
+      control: 'none',
       table: {
         defaultValue: {
-          summary: false,
+          summary: 'undefined',
+        },
+        type: {
+          summary: 'string | number | object | []',
         },
       },
     },
@@ -22,7 +25,7 @@ export default {
     },
   },
   args: {
-    selected: 'btn1',
+    modelValue: 'btn1',
   },
 } as Meta
 
@@ -45,7 +48,7 @@ const Template: Story = (args: Args) => ({
       <puik-button :variant="(selectedValue === 'btn2') ? 'primary' : 'tertiary'" value="btn2">Button 2</puik-button>
       <puik-button :variant="(selectedValue === 'btn3') ? 'primary' : 'tertiary'" value="btn3">Button 3</puik-button>
     </puik-button-group>
-    
+
     `,
 })
 
@@ -55,9 +58,19 @@ Default.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      
-      <!--HTML/CSS Snippet-->
+<!--VueJS Snippet-->
+<puik-button-group v-model="selectedValue">
+  <puik-button :variant="(selectedValue === 'btn1') ? 'primary' : 'tertiary'" value="btn1">Button 1</puik-button>
+  <puik-button :variant="(selectedValue === 'btn2') ? 'primary' : 'tertiary'" value="btn2">Button 2</puik-button>
+  <puik-button :variant="(selectedValue === 'btn3') ? 'primary' : 'tertiary'" value="btn3">Button 3</puik-button>
+</puik-button-group>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-button-group">
+  <button class="puik-button puik-button--primary puik-button--md">Button 1</button>
+  <button class="puik-button puik-button--tertiary puik-button--md">Button 2</button>
+  <button class="puik-button puik-button--tertiary puik-button--md">Button 3</button>
+</div>
       `,
       language: 'html',
     },
