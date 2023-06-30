@@ -68,9 +68,6 @@ export default {
     label: '',
     color: 'primary',
   },
-  parameters: {
-    chromatic: { pauseAnimationAtEnd: true },
-  },
 } as Meta
 
 const Template: Story = (args: Args, storyContext) => ({
