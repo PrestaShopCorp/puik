@@ -4,17 +4,21 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "start-storybook -p 6006",
-    "build": "build-storybook"
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.5.16",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
-    "@storybook/builder-vite": "0.3.0",
-    "@storybook/vue3": "^6.5.16",
+    "@storybook/addon-a11y": "^7.0.24",
+    "@storybook/addon-actions": "^7.0.24",
+    "@storybook/addon-essentials": "^7.0.24",
+    "@storybook/addon-links": "^7.0.24",
+    "@storybook/blocks": "^7.0.24",
+    "@storybook/vue3": "^7.0.24",
+    "@storybook/vue3-vite": "^7.0.24",
     "@vitejs/plugin-vue": "^4.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.0.24",
     "vite": "^4.2.1"
   },
   "dependencies": {

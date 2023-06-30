@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 module.exports = {
   stories: [
-    '../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../stories/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../../packages/components/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
@@ -9,8 +9,10 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
   ],
-  framework: '@storybook/vue3',
-  core: { builder: '@storybook/builder-vite' },
+  framework: {
+    name: '@storybook/vue3-vite',
+    options: {},
+  },
   async viteFinal(config) {
     config.resolve.dedupe = ['@storybook/client-api']
     config.css = {
@@ -21,5 +23,8 @@ module.exports = {
     // eslint-disable-next-line
     config.plugins.push(require('unplugin-vue-define-options/vite')())
     return config
+  },
+  docs: {
+    autodocs: true,
   },
 }
