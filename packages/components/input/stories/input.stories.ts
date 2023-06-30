@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import PuikInput from './../src/input.vue'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {
   title: 'Components/Input',
@@ -96,7 +96,7 @@ export default {
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikInput,
   },
@@ -107,434 +107,457 @@ const Template: Story = (args: Args) => ({
   template: `<puik-input v-model="myValue" v-bind="args" :disabled="args.disabled"/>`,
 })
 
-export const Default = Template.bind({})
+export const Default = {
+  render: Template,
 
-Default.args = {
-  type: undefined,
-  id: '',
-  placeholder: '',
-  name: '',
-  autocomplete: '',
-  required: false,
-  success: false,
-  hideHint: false,
-  step: undefined,
-  precision: undefined,
-  min: undefined,
-  max: undefined,
-  disabled: false,
-}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-input v-model="myValue" />
-
-<!--HTML/CSS Snippet-->
-<div class="puik-input">
-  <div class="puik-input__wrapper">
-    <input class="puik-input__field" type="text" />
-  </div>
-</div>
-      `,
-      language: 'html',
-    },
+  args: {
+    type: undefined,
+    id: '',
+    placeholder: '',
+    name: '',
+    autocomplete: '',
+    required: false,
+    success: false,
+    hideHint: false,
+    step: undefined,
+    precision: undefined,
+    min: undefined,
+    max: undefined,
+    disabled: false,
   },
-}
 
-export const Disabled: Story = () => ({
-  components: {
-    PuikInput,
-  },
-  setup() {
-    const myValue = ref('')
-    return { myValue }
-  },
-  template: `<puik-input v-model="myValue" disabled></puik-input>`,
-})
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-input v-model="myValue" />
 
-Disabled.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-input v-model="myValue" disabled />
-
-<!--HTML/CSS Snippet-->
-<div class="puik-input">
-  <div class="puik-input__wrapper puik-input__wrapper--disabled">
-    <input class="puik-input__field" type="text" disabled />
-  </div>
-</div>
-      `,
-      language: 'html',
-    },
-  },
-}
-
-export const Placeholder: Story = () => ({
-  components: {
-    PuikInput,
-  },
-  setup() {
-    const myValue = ref('')
-    return { myValue }
-  },
-  template: `<puik-input v-model="myValue" placeholder='Input placeholder'></puik-input>`,
-})
-
-Placeholder.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-input v-model="myValue" placeholder='Input placeholder' />
-
-<!--HTML/CSS Snippet-->
-<div class="puik-input">
-  <div class="puik-input__wrapper">
-    <input class="puik-input__field" type="text" placeholder='Input placeholder' />
-  </div>
-</div>
-      `,
-      language: 'html',
-    },
-  },
-}
-
-export const Password: Story = () => ({
-  components: {
-    PuikInput,
-  },
-  setup() {
-    const myValue = ref('')
-    return { myValue }
-  },
-  template: `<puik-input v-model="myValue" type="password"></puik-input>`,
-})
-
-Password.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-input v-model="myValue" type="password" />
-
-<!--HTML/CSS Snippet-->
-<div class="puik-input">
-  <div class="puik-input__wrapper">
-    <input class="puik-input__field" type="text" placeholder='Input placeholder' />
-  </div>
-</div>
-      `,
-      language: 'html',
-    },
-  },
-}
-
-export const Number: Story = () => ({
-  components: {
-    PuikInput,
-  },
-  setup() {
-    const myValue = ref(0)
-    return { myValue }
-  },
-  template: `<puik-input v-model="myValue" type="number"></puik-input>`,
-})
-
-Number.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-input v-model="myValue" type="number" />
-
-<!--HTML/CSS Snippet-->
-<div class="puik-input">
-  <div class="puik-input__wrapper">
-    <input class="puik-input__field" type="number" />
-    <div class="puik-input__controls">
-      <button
-        type="button"
-        class="puik-input__controls__increment"
-        aria-label="Increase"
-      >
-        <span class="puik-input__controls__increment__icon">arrow_drop_up</span>
-      </button>
-      <button
-        type="button"
-        class="puik-input__controls__decrement"
-        aria-label="Decrease"
-      >
-        <span class="puik-input__controls__decrement__icon">arrow_drop_down</span>
-      </button>
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+    <div class="puik-input__wrapper">
+      <input class="puik-input__field" type="text" />
     </div>
   </div>
-</div>
-      `,
-      language: 'html',
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const MinMax: Story = () => ({
-  components: {
-    PuikInput,
-  },
-  setup() {
-    const myValue = ref(0)
-    return { myValue }
-  },
-  template: `<puik-input v-model="myValue" type="number" :min="0" :max="5"></puik-input>`,
-})
+export const Disabled: StoryObj = {
+  render: () => ({
+    components: {
+      PuikInput,
+    },
+    setup() {
+      const myValue = ref('')
+      return { myValue }
+    },
+    template: `<puik-input v-model="myValue" disabled></puik-input>`,
+  }),
 
-MinMax.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-input v-model="myValue" type="number" :min="0" :max="5" />
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-input v-model="myValue" disabled />
 
-<!--HTML/CSS Snippet-->
-<div class="puik-input">
-  <div class="puik-input__wrapper">
-    <input class="puik-input__field" type="number" min="0" max="5" />
-    <div class="puik-input__controls">
-      <button
-        type="button"
-        class="puik-input__controls__increment"
-        aria-label="Increase"
-      >
-        <span class="puik-input__controls__increment__icon">arrow_drop_up</span>
-      </button>
-      <button
-        type="button"
-        class="puik-input__controls__decrement"
-        aria-label="Decrease"
-      >
-        <span class="puik-input__controls__decrement__icon">arrow_drop_down</span>
-      </button>
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+    <div class="puik-input__wrapper puik-input__wrapper--disabled">
+      <input class="puik-input__field" type="text" disabled />
     </div>
   </div>
-</div>
-      `,
-      language: 'html',
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const Step: Story = () => ({
-  components: {
-    PuikInput,
-  },
-  setup() {
-    const myValue = ref(0)
-    return { myValue }
-  },
-  template: `<puik-input v-model="myValue" type="number" :step="5"></puik-input>`,
-})
+export const Placeholder: StoryObj = {
+  render: () => ({
+    components: {
+      PuikInput,
+    },
+    setup() {
+      const myValue = ref('')
+      return { myValue }
+    },
+    template: `<puik-input v-model="myValue" placeholder='Input placeholder'></puik-input>`,
+  }),
 
-Step.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-input v-model="myValue" type="number" :step="5" />
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-input v-model="myValue" placeholder='Input placeholder' />
 
-<!--HTML/CSS Snippet-->
-<div class="puik-input">
-  <div class="puik-input__wrapper">
-    <input class="puik-input__field" type="number" step="5" />
-    <div class="puik-input__controls">
-      <button
-        type="button"
-        class="puik-input__controls__increment"
-        aria-label="Increase"
-      >
-        <span class="puik-input__controls__increment__icon">arrow_drop_up</span>
-      </button>
-      <button
-        type="button"
-        class="puik-input__controls__decrement"
-        aria-label="Decrease"
-      >
-        <span class="puik-input__controls__decrement__icon">arrow_drop_down</span>
-      </button>
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+    <div class="puik-input__wrapper">
+      <input class="puik-input__field" type="text" placeholder='Input placeholder' />
     </div>
   </div>
-</div>
-      `,
-      language: 'html',
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const Success: Story = () => ({
-  components: {
-    PuikInput,
-  },
-  setup() {
-    const myValue = ref('')
-    return { myValue }
-  },
-  template: `<puik-input v-model="myValue" success></puik-input>`,
-})
+export const Password: StoryObj = {
+  render: () => ({
+    components: {
+      PuikInput,
+    },
+    setup() {
+      const myValue = ref('')
+      return { myValue }
+    },
+    template: `<puik-input v-model="myValue" type="password"></puik-input>`,
+  }),
 
-Success.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-input v-model="myValue" success />
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-input v-model="myValue" type="password" />
 
-<!--HTML/CSS Snippet-->
-<div class="puik-input">
-  <div class="puik-input__wrapper puik-input__wrapper--">
-    <input class="puik-input__field" type="text" />
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+    <div class="puik-input__wrapper">
+      <input class="puik-input__field" type="text" placeholder='Input placeholder' />
+    </div>
   </div>
-</div>
-      `,
-      language: 'html',
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const Error: Story = () => ({
-  components: {
-    PuikInput,
-  },
-  setup() {
-    const myValue = ref('')
-    return { myValue }
-  },
-  template: `
-    <puik-input v-model="myValue">
-      <template #error>This is an error</template>
-    </puik-input>
-  `,
-})
+export const Number: StoryObj = {
+  render: () => ({
+    components: {
+      PuikInput,
+    },
+    setup() {
+      const myValue = ref(0)
+      return { myValue }
+    },
+    template: `<puik-input v-model="myValue" type="number"></puik-input>`,
+  }),
 
-Error.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet using slot -->
-<puik-input v-model="myValue">
-  <template #error>This is an error</template>
-</puik-input>
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-input v-model="myValue" type="number" />
 
-<!--VueJS Snippet using prop -->
-<puik-input v-model="myValue" error="This is an error" />
-
-<!--HTML/CSS Snippet-->
-<div class="puik-input">
-  <div class="puik-input__wrapper puik-input__wrapper--error">
-    <input class="puik-input__field" type="text" />
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+    <div class="puik-input__wrapper">
+      <input class="puik-input__field" type="number" />
+      <div class="puik-input__controls">
+        <button
+          type="button"
+          class="puik-input__controls__increment"
+          aria-label="Increase"
+        >
+          <span class="puik-input__controls__increment__icon">arrow_drop_up</span>
+        </button>
+        <button
+          type="button"
+          class="puik-input__controls__decrement"
+          aria-label="Decrease"
+        >
+          <span class="puik-input__controls__decrement__icon">arrow_drop_down</span>
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="puik-input__hint">
-    <div class="puik-input__hint__error">
-      <span class="puik-icon puik-input__hint__error__icon">error</span>
-      <span class="puik-input__hint__error__text">
-        This is an error
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
+export const MinMax: StoryObj = {
+  render: () => ({
+    components: {
+      PuikInput,
+    },
+    setup() {
+      const myValue = ref(0)
+      return { myValue }
+    },
+    template: `<puik-input v-model="myValue" type="number" :min="0" :max="5"></puik-input>`,
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-input v-model="myValue" type="number" :min="0" :max="5" />
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+    <div class="puik-input__wrapper">
+      <input class="puik-input__field" type="number" min="0" max="5" />
+      <div class="puik-input__controls">
+        <button
+          type="button"
+          class="puik-input__controls__increment"
+          aria-label="Increase"
+        >
+          <span class="puik-input__controls__increment__icon">arrow_drop_up</span>
+        </button>
+        <button
+          type="button"
+          class="puik-input__controls__decrement"
+          aria-label="Decrease"
+        >
+          <span class="puik-input__controls__decrement__icon">arrow_drop_down</span>
+        </button>
+      </div>
+    </div>
+  </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
+export const Step: StoryObj = {
+  render: () => ({
+    components: {
+      PuikInput,
+    },
+    setup() {
+      const myValue = ref(0)
+      return { myValue }
+    },
+    template: `<puik-input v-model="myValue" type="number" :step="5"></puik-input>`,
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-input v-model="myValue" type="number" :step="5" />
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+    <div class="puik-input__wrapper">
+      <input class="puik-input__field" type="number" step="5" />
+      <div class="puik-input__controls">
+        <button
+          type="button"
+          class="puik-input__controls__increment"
+          aria-label="Increase"
+        >
+          <span class="puik-input__controls__increment__icon">arrow_drop_up</span>
+        </button>
+        <button
+          type="button"
+          class="puik-input__controls__decrement"
+          aria-label="Decrease"
+        >
+          <span class="puik-input__controls__decrement__icon">arrow_drop_down</span>
+        </button>
+      </div>
+    </div>
+  </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
+export const Success: StoryObj = {
+  render: () => ({
+    components: {
+      PuikInput,
+    },
+    setup() {
+      const myValue = ref('')
+      return { myValue }
+    },
+    template: `<puik-input v-model="myValue" success></puik-input>`,
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-input v-model="myValue" success />
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+    <div class="puik-input__wrapper puik-input__wrapper--">
+      <input class="puik-input__field" type="text" />
+    </div>
+  </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
+export const Error: StoryObj = {
+  render: () => ({
+    components: {
+      PuikInput,
+    },
+    setup() {
+      const myValue = ref('')
+      return { myValue }
+    },
+    template: `
+      <puik-input v-model="myValue">
+        <template #error>This is an error</template>
+      </puik-input>
+    `,
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet using slot -->
+  <puik-input v-model="myValue">
+    <template #error>This is an error</template>
+  </puik-input>
+
+  <!--VueJS Snippet using prop -->
+  <puik-input v-model="myValue" error="This is an error" />
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+    <div class="puik-input__wrapper puik-input__wrapper--error">
+      <input class="puik-input__field" type="text" />
+    </div>
+    <div class="puik-input__hint">
+      <div class="puik-input__hint__error">
+        <span class="puik-icon puik-input__hint__error__icon">error</span>
+        <span class="puik-input__hint__error__text">
+          This is an error
+        </span>
+      </div>
+    </div>
+  </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
+export const Hint: StoryObj = {
+  render: () => ({
+    components: {
+      PuikInput,
+    },
+    setup() {
+      const myValue = ref('')
+      return { myValue }
+    },
+    template: `
+      <puik-input v-model="myValue">
+        <template #hint>This is an hint</template>
+      </puik-input>
+    `,
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet using slot -->
+  <puik-input v-model="myValue">
+    <template #hint>This is an hint</template>
+  </puik-input>
+
+  <!--VueJS Snippet using prop -->
+  <puik-input v-model="myValue" hint="This is an hint" />
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+    <div class="puik-input__wrapper">
+      <input class="puik-input__field" type="text" />
+    </div>
+    <div class="puik-input__hint">
+      <span class="puik-input__hint__text">
+        This is an hint
       </span>
     </div>
   </div>
-</div>
-      `,
-      language: 'html',
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const Hint: Story = () => ({
-  components: {
-    PuikInput,
-  },
-  setup() {
-    const myValue = ref('')
-    return { myValue }
-  },
-  template: `
-    <puik-input v-model="myValue">
-      <template #hint>This is an hint</template>
-    </puik-input>
-  `,
-})
-
-Hint.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet using slot -->
-<puik-input v-model="myValue">
-  <template #hint>This is an hint</template>
-</puik-input>
-
-<!--VueJS Snippet using prop -->
-<puik-input v-model="myValue" hint="This is an hint" />
-
-<!--HTML/CSS Snippet-->
-<div class="puik-input">
-  <div class="puik-input__wrapper">
-    <input class="puik-input__field" type="text" />
-  </div>
-  <div class="puik-input__hint">
-    <span class="puik-input__hint__text">
-      This is an hint
-    </span>
-  </div>
-</div>
-      `,
-      language: 'html',
+export const PrependAppend: StoryObj = {
+  render: () => ({
+    components: {
+      PuikInput,
     },
-  },
-}
+    setup() {
+      const myValue = ref('')
+      return { myValue }
+    },
+    template: `
+      <puik-input v-model="myValue">
+        <template #prepend>$</template>
+        <template #append>kg</template>
+      </puik-input>
+    `,
+  }),
 
-export const PrependAppend: Story = () => ({
-  components: {
-    PuikInput,
-  },
-  setup() {
-    const myValue = ref('')
-    return { myValue }
-  },
-  template: `
-    <puik-input v-model="myValue">
-      <template #prepend>$</template>
-      <template #append>kg</template>
-    </puik-input>
-  `,
-})
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet using slot -->
+  <puik-input v-model="myValue">
+    <template #prepend>$</template>
+    <template #append>kg</template>
+  </puik-input>
 
-PrependAppend.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet using slot -->
-<puik-input v-model="myValue">
-  <template #prepend>$</template>
-  <template #append>kg</template>
-</puik-input>
+  <!--VueJS Snippet using prop -->
+  <puik-input v-model="myValue" hint="This is an hint" />
 
-<!--VueJS Snippet using prop -->
-<puik-input v-model="myValue" hint="This is an hint" />
-
-<!--HTML/CSS Snippet-->
-<div class="puik-input">
-  <div class="puik-input__wrapper>
-    <div class="puik-input__prepend">
-      $
-    </div>
-    <input class="puik-input__field" type="text" />
-    <div class="puik-input__append">
-      kg
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+    <div class="puik-input__wrapper>
+      <div class="puik-input__prepend">
+        $
+      </div>
+      <input class="puik-input__field" type="text" />
+      <div class="puik-input__append">
+        kg
+      </div>
     </div>
   </div>
-</div>
-      `,
-      language: 'html',
+        `,
+        language: 'html',
+      },
     },
   },
 }

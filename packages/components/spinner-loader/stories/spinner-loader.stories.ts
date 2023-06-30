@@ -4,7 +4,7 @@ import {
   puikSpinnerLoaderColors,
   puikSpinnerLoaderPositions,
 } from './../src/spinner-loader'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 const sizesSummary = puikSpinnerLoaderSizes.join('|')
 const colorsSummary = puikSpinnerLoaderColors.join('|')
@@ -70,7 +70,7 @@ export default {
   },
 } as Meta
 
-const Template: Story = (args: Args, storyContext) => ({
+const Template: StoryFn = (args: Args, storyContext) => ({
   components: {
     PuikSpinnerLoader,
   },
@@ -93,40 +93,43 @@ const Template: Story = (args: Args, storyContext) => ({
   `,
 })
 
-export const Default = Template.bind({})
-Default.args = {}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet -->
-      <!--
-      $sizes: ${sizesSummary}
-      $colors: ${colorsSummary}
-      $positions: ${positionSummary}
+export const Default = {
+  render: Template,
+  args: {},
 
-      -->
-      <puik-spinner-loader
-        size="$sizes"
-        color="$colors"
-        position="$positions"
-        :label="label"
-      />
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <!--VueJS Snippet -->
+        <!--
+        $sizes: ${sizesSummary}
+        $colors: ${colorsSummary}
+        $positions: ${positionSummary}
 
-      <!--HTML/CSS Snippet-->
-      <!--
-        State classes
-        size: "puik-spinner-loader--${sizesSummary}"
-        colors: "puik-spinner-loader--${colorsSummary}"
-        positions: "puik-spinner-loader--${positionSummary}"
-       -->
-      <div class="puik-spinner-loader" aria-live="polite" role="status">
-        <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
-        <!-- Label -->
-        <span class="puik-spinner-loader__label">label</span>
-      </div>
-      `,
-      language: 'html',
+        -->
+        <puik-spinner-loader
+          size="$sizes"
+          color="$colors"
+          position="$positions"
+          :label="label"
+        />
+
+        <!--HTML/CSS Snippet-->
+        <!--
+          State classes
+          size: "puik-spinner-loader--${sizesSummary}"
+          colors: "puik-spinner-loader--${colorsSummary}"
+          positions: "puik-spinner-loader--${positionSummary}"
+         -->
+        <div class="puik-spinner-loader" aria-live="polite" role="status">
+          <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
+          <!-- Label -->
+          <span class="puik-spinner-loader__label">label</span>
+        </div>
+        `,
+        language: 'html',
+      },
     },
   },
 }
@@ -156,93 +159,105 @@ const SpinnerTemplate = (args: Args, storyContext) => ({
   `,
 })
 
-export const Primary: Story = SpinnerTemplate.bind({})
-Primary.args = {
-  color: 'primary',
-}
+export const Primary: StoryObj = {
+  render: SpinnerTemplate,
 
-Primary.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet-->
-      <puik-spinner-loader />
+  args: {
+    color: 'primary',
+  },
 
-      <!--HTML/CSS Snippet-->
-      <div class="puik-spinner-loader" aria-live="polite" role="status">
-        <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
-      </div>
-      `,
-      language: 'html',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <!--VueJS Snippet-->
+        <puik-spinner-loader />
+
+        <!--HTML/CSS Snippet-->
+        <div class="puik-spinner-loader" aria-live="polite" role="status">
+          <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
+        </div>
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const Reverse: Story = SpinnerTemplate.bind({})
-Reverse.args = {
-  color: 'reverse',
-}
+export const Reverse: StoryObj = {
+  render: SpinnerTemplate,
 
-Reverse.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet-->
-      <puik-spinner-loader color="reverse" />
+  args: {
+    color: 'reverse',
+  },
 
-      <!--HTML/CSS Snippet-->
-      <div class="puik-spinner-loader puik-spinner-loader--reverse" aria-live="polite" role="status">
-        <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
-      </div>
-      `,
-      language: 'html',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <!--VueJS Snippet-->
+        <puik-spinner-loader color="reverse" />
+
+        <!--HTML/CSS Snippet-->
+        <div class="puik-spinner-loader puik-spinner-loader--reverse" aria-live="polite" role="status">
+          <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
+        </div>
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const LabelBottom: Story = SpinnerTemplate.bind({})
-LabelBottom.args = {
-  label: 'In progress',
-}
+export const LabelBottom: StoryObj = {
+  render: SpinnerTemplate,
 
-LabelBottom.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet-->
-      <puik-spinner-loader label="In progress" />
+  args: {
+    label: 'In progress',
+  },
 
-      <!--HTML/CSS Snippet-->
-      <div class="puik-spinner-loader" aria-live="polite" role="status">
-        <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
-        <span class="puik-spinner-loader__label">In progress</span>
-      </div>
-      `,
-      language: 'html',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <!--VueJS Snippet-->
+        <puik-spinner-loader label="In progress" />
+
+        <!--HTML/CSS Snippet-->
+        <div class="puik-spinner-loader" aria-live="polite" role="status">
+          <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
+          <span class="puik-spinner-loader__label">In progress</span>
+        </div>
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const LabelRight: Story = SpinnerTemplate.bind({})
-LabelRight.args = {
-  label: 'In progress ',
-  position: 'right',
-}
+export const LabelRight: StoryObj = {
+  render: SpinnerTemplate,
 
-LabelRight.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet-->
-      <puik-spinner-loader label="In progress" position="right"/>
+  args: {
+    label: 'In progress ',
+    position: 'right',
+  },
 
-      <!--HTML/CSS Snippet-->
-      <div class="puik-spinner-loader puik-spinner-loader--right" aria-live="polite" role="status">
-        <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
-        <span class="puik-spinner-loader__label">In progress</span>
-      </div>
-      `,
-      language: 'html',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <!--VueJS Snippet-->
+        <puik-spinner-loader label="In progress" position="right"/>
+
+        <!--HTML/CSS Snippet-->
+        <div class="puik-spinner-loader puik-spinner-loader--right" aria-live="polite" role="status">
+          <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
+          <span class="puik-spinner-loader__label">In progress</span>
+        </div>
+        `,
+        language: 'html',
+      },
     },
   },
 }

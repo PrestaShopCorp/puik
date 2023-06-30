@@ -1,7 +1,7 @@
 import { skeletonLoaderVariants } from '../src/skeleton-loader'
 import PuikSkeletonLoader from './../src/skeleton-loader.vue'
 import PuikSkeletonLoaderGroup from './../src/skeleton-loader-group.vue'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 const skeletonLoaderVariantsSummary = skeletonLoaderVariants.join('|')
 
@@ -58,7 +58,7 @@ export default {
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikSkeletonLoader,
     PuikSkeletonLoaderGroup,
@@ -71,29 +71,32 @@ const Template: Story = (args: Args) => ({
   </puik-skeleton-loader-group>`,
 })
 
-export const Default = Template.bind({})
-Default.args = {}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-skeleton-loader-group>
-  <!--
-    $variants: ${skeletonLoaderVariantsSummary}
-  ->
-  <puik-skeleton-loader variant="$variants"></puik-skeleton-loader>
-<puik-skeleton-loader-group>
+export const Default = {
+  render: Template,
+  args: {},
 
-<!--HTML/CSS Snippet-->
-<div class="puik-skeleton-loader-group" role="status" aria-label="Loading" aria-live="polite">
-  <!--
-    $variants:  ${skeletonLoaderVariantsSummary}
-  ->
-  <div class="puik-skeleton material-icons-round puik-skeleton--$variants"></div>
-</div>
-      `,
-      language: 'html',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-skeleton-loader-group>
+    <!--
+      $variants: ${skeletonLoaderVariantsSummary}
+    ->
+    <puik-skeleton-loader variant="$variants"></puik-skeleton-loader>
+  <puik-skeleton-loader-group>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-skeleton-loader-group" role="status" aria-label="Loading" aria-live="polite">
+    <!--
+      $variants:  ${skeletonLoaderVariantsSummary}
+    ->
+    <div class="puik-skeleton material-icons-round puik-skeleton--$variants"></div>
+  </div>
+        `,
+        language: 'html',
+      },
     },
   },
 }
