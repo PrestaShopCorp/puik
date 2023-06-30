@@ -44,7 +44,7 @@ export default {
       },
     },
     loading: {
-      description: 'Set the spinner loader inside the button',
+      description: 'Display spinner loader inside button, set it disabled',
       table: {
         defaultValue: {
           summary: false,
