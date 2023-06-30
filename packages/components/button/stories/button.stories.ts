@@ -403,26 +403,26 @@ Fluid.parameters = {
   },
 }
 
-export const WithSpinner: Story = ButtonTemplate.bind({})
-WithSpinner.args = {
+export const Loading: Story = ButtonTemplate.bind({})
+Loading.args = {
   leftIcon: 'shopping_cart',
   loading: true,
 }
 
-WithSpinner.parameters = {
+Loading.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button left-icon="shopping_cart" loading>My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button left-icon="shopping_cart" loading>My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--primary">
-        <div class="puik-spinner-loader puik-spinner-loader--md puik-spinner-loader--reverse puik-button__loading" aria-live="polite" role="status">
-          <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
-        </div>
-        My button
-      </button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--primary">
+  <div class="puik-spinner-loader puik-spinner-loader--md puik-spinner-loader--reverse puik-button__loading" aria-live="polite" role="status">
+    <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
+  </div>
+  My button
+</button>
       `,
       language: 'html',
     },
