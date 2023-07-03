@@ -1,16 +1,16 @@
 .puik-snackbar {
-  @apply w-full md:w-auto fixed flex text-white p-4 rounded-lg transition-all duration-300 z-50 shadow-md left-[50%] translate-x-[-50%] text-sm;
+  @apply w-full md:w-auto fixed flex text-white p-4 transition-all duration-300 z-50 shadow-md left-[50%] translate-x-[-50%] text-sm;
 
   &--default {
-    @apply bg-font-900;
+    @apply bg-primary-800;
   }
 
   &--danger {
-    @apply bg-accentuation-destructive-500;
+    @apply bg-red-500;
   }
 
   &__text {
-    @apply font-secondary flex-grow;
+    @apply font-primary flex-grow;
   }
 
   &__action {
