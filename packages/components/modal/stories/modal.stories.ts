@@ -1,9 +1,14 @@
 import { action } from '@storybook/addon-actions'
 import { useArgs } from '@storybook/client-api'
 import { PuikButton } from '@puik/components/button'
-import { ModalSize, ModalVariant } from '../src/modal'
+import { PuikModalVariant, PuikModalSize } from '../index'
 import PuikModal from './../src/modal.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
+
+const modalSizes = Object.values(PuikModalSize)
+const modalSizesSummary = modalSizes.join('|')
+const modalVariants = Object.values(PuikModalVariant)
+const modalVariantsSummary = modalVariants.join('|')
 
 const content = `
 <div class="flex flex-col gap-5">
@@ -14,10 +19,6 @@ const content = `
         It will be awesome !
       </p>
     </div>
-    <puik-button variant="tertiary">
-      Stay informed
-      <span class="puik-icon puik-button__right-icon">open_in_new</span>
-    </puik-button>
   </section>
 
   <section class="flex">
@@ -71,28 +72,50 @@ export default {
       control: 'text',
     },
     variant: {
-      description: 'Set the style of the modal (use the ModalVariant enum)',
+      description: 'Set the style of the modal (use the PuikModalVariant enum)',
       control: 'select',
-      options: Object.values(ModalVariant),
+      options: modalVariants,
       table: {
         defaultValue: {
-          summary: ModalVariant.DIALOG,
+          summary: PuikModalVariant.DIALOG,
         },
         type: {
-          summary: Object.values(ModalVariant).join('|'),
+          summary: 'PuikModalVariant',
+          detail: `
+// Import enum
+import { PuikModalVariant } from '@prestashopcorp/puik/components/modal/src/modal'
+
+// Detail
+export enum PuikModalVariant {
+  DESTRUCTIVE = 'destructive',
+  FEEDBACK = 'feedback',
+  DIALOG = 'dialog',
+}
+          `,
         },
       },
     },
     size: {
-      description: 'Set the size of the modal (use the ModalSize enum)',
+      description: 'Set the size of the modal (use the PuikModalSize enum)',
       control: 'select',
-      options: Object.values(ModalSize),
+      options: modalSizes,
       table: {
         defaultValue: {
-          summary: ModalSize.SMALL,
+          summary: PuikModalSize.SMALL,
         },
         type: {
-          summary: Object.values(ModalSize).join('|'),
+          summary: 'PuikModalSize',
+          detail: `
+// Import enum
+import { PuikModalSize } from '@prestashopcorp/puik/components/modal/src/modal'
+
+// Detail
+export enum PuikModalSize {
+  SMALL = 'small',
+  MEDIUM = 'medium',
+  LARGE = 'large',
+}
+`,
         },
       },
     },
@@ -132,6 +155,8 @@ export default {
     secondButtonText: 'Awesome secondary button',
     isOpen: true,
     titleIcon: 'home',
+    variant: PuikModalVariant.DIALOG,
+    size: PuikModalSize.SMALL,
   },
   parameters: {
     chromatic: { delay: 3000 },
@@ -143,7 +168,7 @@ export default {
 } as Meta
 
 const Template: Story = (args: Args) => {
-  const [_, updateArgs] = useArgs()
+  const updateArgs = useArgs()[1]
 
   return {
     components: {
@@ -196,22 +221,60 @@ Default.parameters = {
   docs: {
     source: {
       code: `
+<!--VueJS Snippet-->
+<!--
+$sizes: ${modalSizesSummary}
+$variants: ${modalVariantsSummary}
+-->
 <puik-modal
-  :title="args.title"
-  :main-button-text="args.mainButtonText"
-  :second-button-text="args.secondButtonText"
-  :side-button-text="args.sideButtonText"
-  :variant="args.variant"
-  :size="args.size"
-  :is-open="args.isOpen"
-  :title-icon="args.titleIcon"
+  :title="title"
+  :main-button-text="mainButtonText"
+  :second-button-text="secondButtonText"
+  :side-button-text="sideButtonText"
+  :variant="variants"
+  :size="size"
+  :is-open="true|false"
+  :title-icon="titleIcon"
   @close="closeModal"
   @buttonMain="mainAction"
   @buttonSecond="secondAction"
 >
   Your content
 </puik-modal>
-      `,
+
+<!--HTML/CSS Snippet-->
+<!--
+$sizes: ${modalSizesSummary}
+$variants: ${modalVariantsSummary}
+-->
+<!--
+State classes
+invisible: "puik-modal--invisible"
+-->
+<div class="puik-modal puik-modal--{$variants} puik-modal--small" role="dialog" aria-modal="true">
+  <div class="puik-modal__dialogPanelContainer">
+    <div class="puik-modal__dialogPanelContainer__dialogPanel">
+      <header class="puik-modal__dialogPanelContainer__dialogPanel__header">
+        <div class="puik-icon material-icons-round puik-modal__dialogPanelContainer__dialogPanel__header__icon" style="font-size: 24px;">home</div>
+          <h2 class="title">The awesome title</h2>
+        <button class="puik-button puik-button--text puik-button--md puik-modal__dialogPanelContainer__dialogPanel__header__close-button" aria-label="close">
+          <div class="puik-icon material-icons-round" style="font-size: 24px;">close</div>
+        </button>
+      </header>
+      <div class="puik-modal__dialogPanelContainer__dialogPanel__content"> Your content here </div>
+      <footer class="puik-modal__dialogPanelContainer__dialogPanel__footer">
+        <button class="puik-button puik-button--secondary puik-button--md puik-modal__dialogPanelContainer__dialogPanel__footer__button--second">
+          Awesome secondary button
+        </button>
+        <button class="puik-button puik-button--primary puik-button--md puik-modal__dialogPanelContainer__dialogPanel__footer__button--main">
+          Awesome main button
+        </button>
+        <span class="puik-modal__dialogPanelContainer__dialogPanel__footer__spacer"></span>
+      </footer>
+    </div>
+  </div>
+</div>
+`,
       language: 'html',
     },
   },
@@ -222,7 +285,7 @@ Destructive.args = {
   title: 'The awesome title',
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
-  variant: ModalVariant.DESTRUCTIVE,
+  variant: PuikModalVariant.DESTRUCTIVE,
 }
 Destructive.parameters = {
   docs: {
@@ -231,14 +294,13 @@ Destructive.parameters = {
     },
     source: {
       code: `
-
 <!--VueJS Snippet-->
 <puik-modal
-  :title="args.title"
-  :main-button-text="args.mainButtonText"
-  :second-button-text="args.secondButtonText"
-  :is-open="args.isOpen"
-  :variant="ModalVariant.DESTRUCTIVE" <---- HERE
+  title="Title"
+  main-button-text="Awesome main button"
+  second-button-text="Awesome seond button"
+  :is-open="true"
+  :variant="PuikModalVariant.DESTRUCTIVE"
   @close="closeModal"
   @buttonMain="mainAction"
   @buttonSecond="secondAction"
@@ -251,25 +313,13 @@ Destructive.parameters = {
   <div class="puik-modal__dialogPanelContainer">
     <div class="puik-modal__dialogPanelContainer__dialogPanel">
       <header class="puik-modal__dialogPanelContainer__dialogPanel__header">
-        <div class="puik-icon material-icons-round puik-modal__dialogPanelContainer__dialogPanel__header__icon" style="font-size: 1rem;">warning</div>
-        <div class="puik-tooltip puik-modal__dialogPanelContainer__dialogPanel__header__title" tabindex="0">
-          <div class="puik-tooltip__wrapper">
-            <h2 class="title">The awesome title</h2>
-          </div>
-          <div class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; display: none; position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(350px, -463px);" data-popper-placement="top">
-            <div class="puik-tooltip__tip__content">
-              <span class="puik-tooltip__tip__content__description">The awesome title</span>
-            </div>
-            <div class="puik-tooltip__tip__arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate(0px, 0px);"></div>
-          </div>
-        </div>
-        <button class="puik-button puik-button--error puik-button--md puik-modal__dialogPanelContainer__dialogPanel__header__close-button" aria-label="closeButton">
-          <div class="puik-icon material-icons-round" style="font-size: 1rem;">close</div>
+        <div class="puik-icon material-icons-round puik-modal__dialogPanelContainer__dialogPanel__header__icon" style="font-size: 24px;">warning</div>
+          <h2 class="title">The awesome title</h2>
+        <button class="puik-button puik-button--text puik-button--md puik-modal__dialogPanelContainer__dialogPanel__header__close-button" aria-label="close">
+          <div class="puik-icon material-icons-round" style="font-size: 24px;">close</div>
         </button>
       </header>
-      <div class="puik-modal__dialogPanelContainer__dialogPanel__content">
-        Your content
-      </div>
+      <div class="puik-modal__dialogPanelContainer__dialogPanel__content"> Your content here </div>
       <footer class="puik-modal__dialogPanelContainer__dialogPanel__footer">
         <button class="puik-button puik-button--tertiary puik-button--md puik-modal__dialogPanelContainer__dialogPanel__footer__button--second">
           Awesome secondary button
@@ -293,7 +343,7 @@ Feedback.args = {
   title: 'The awesome title',
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
-  variant: ModalVariant.FEEDBACK,
+  variant: PuikModalVariant.FEEDBACK,
 }
 Feedback.parameters = {
   docs: {
@@ -304,14 +354,12 @@ Feedback.parameters = {
       code: `
 <!--VueJS Snippet-->
 <puik-modal
-  :title="args.title"
-  :main-button-text="args.mainButtonText"
-  :second-button-text="args.secondButtonText"
-  :side-button-text="args.sideButtonText"
-  :variant="ModalVariant.FEEDBACK" <---- HERE
-  :size="args.size"
-  :is-open="args.isOpen"
-  :title-icon="args.titleIcon"
+  title="Title"
+  main-button-text="Awesome main button"
+  second-button-text="Awesome second button"
+  :variant="PuikModalVariant.FEEDBACK"
+  :is-open="true"
+  title-icon="home"
   @close="closeModal"
   @buttonMain="mainAction"
   @buttonSecond="secondAction"
@@ -325,17 +373,7 @@ Feedback.parameters = {
     <div class="puik-modal__dialogPanelContainer__dialogPanel">
       <header class="puik-modal__dialogPanelContainer__dialogPanel__header">
         <div class="puik-icon material-icons-round puik-modal__dialogPanelContainer__dialogPanel__header__icon" style="font-size: 1rem;">home</div>
-        <div class="puik-tooltip puik-modal__dialogPanelContainer__dialogPanel__header__title" tabindex="0">
-          <div class="puik-tooltip__wrapper">
-            <h2 class="title">The awesome title</h2>
-          </div>
-          <div class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; display: none; position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(350px, -463px);" data-popper-placement="top">
-            <div class="puik-tooltip__tip__content">
-              <span class="puik-tooltip__tip__content__description">The awesome title</span>
-            </div>
-            <div class="puik-tooltip__tip__arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate(0px, 0px);"></div>
-          </div>
-        </div>
+        <h2 class="title">The awesome title</h2>
         <button class="puik-button puik-button--error puik-button--md puik-modal__dialogPanelContainer__dialogPanel__header__close-button" aria-label="closeButton">
           <div class="puik-icon material-icons-round" style="font-size: 1rem;">close</div>
         </button>
@@ -367,7 +405,7 @@ Dialog.args = {
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
   sideButtonText: 'Awesome side button',
-  variant: ModalVariant.DIALOG,
+  variant: PuikModalVariant.DIALOG,
 }
 Dialog.parameters = {
   docs: {
@@ -378,18 +416,17 @@ Dialog.parameters = {
       code: `
 <!--VueJS Snippet-->
 <puik-modal
-  :title="args.title"
-  :main-button-text="args.mainButtonText"
-  :second-button-text="args.secondButtonText"
-  :side-button-text="Awesome side button" <---- HERE
-  :variant="ModalVariant.DIALOG" <---- HERE
-  :size="args.size"
-  :is-open="args.isOpen"
-  :title-icon="args.titleIcon"
+  title="title"
+  main-button-text="Awesome main button"
+  second-button-text="Awesome second button"
+  side-button-text="Awesome side button"
+  :variant="PuikModalVariant.DIALOG"
+  :is-open="true"
+  title-icon="home"
   @close="closeModal"
   @buttonMain="mainAction"
   @buttonSecond="secondAction"
-  @buttonSide="sideAction" <---- HERE
+  @buttonSide="sideAction"
 >
   Your content
 </puik-modal>
@@ -400,17 +437,7 @@ Dialog.parameters = {
     <div class="puik-modal__dialogPanelContainer__dialogPanel">
       <header class="puik-modal__dialogPanelContainer__dialogPanel__header">
         <div class="puik-icon material-icons-round puik-modal__dialogPanelContainer__dialogPanel__header__icon" style="font-size: 1rem;">home</div>
-        <div class="puik-tooltip puik-modal__dialogPanelContainer__dialogPanel__header__title" tabindex="0">
-          <div class="puik-tooltip__wrapper">
-            <h2 class="title">The awesome title</h2>
-          </div>
-          <div class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; display: none; position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(366px, -463px);" data-popper-placement="top">
-            <div class="puik-tooltip__tip__content">
-              <span class="puik-tooltip__tip__content__description">The awesome title</span>
-            </div>
-            <div class="puik-tooltip__tip__arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate(0px, 0px);"></div>
-          </div>
-        </div>
+        <h2 class="title">The awesome title</h2>
       </header>
       <div class="puik-modal__dialogPanelContainer__dialogPanel__content">
         Your content
@@ -441,7 +468,7 @@ Large.args = {
   title: 'The awesome title',
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
-  size: ModalSize.LARGE,
+  size: PuikModalSize.LARGE,
 }
 Large.parameters = {
   docs: {
@@ -452,14 +479,13 @@ Large.parameters = {
       code: `
 <!--VueJS Snippet-->
 <puik-modal
-  :title="args.title"
-  :main-button-text="args.mainButtonText"
-  :second-button-text="args.secondButtonText"
-  :side-button-text="args.sideButtonText"
-  :variant="args.variant" 
-  :size="ModalSize.LARGE" <---- HERE
-  :is-open="args.isOpen"
-  :title-icon="args.titleIcon"
+  title="title"
+  main-button-text="Awesome main button"
+  second-button-text="Awesome second button"
+  :variant="PuikModalVariant.DIALOG"
+  :size="PuikModalSize.LARGE"
+  :is-open="true"
+  title-icon="home"
   @close="closeModal"
   @buttonMain="mainAction"
   @buttonSecond="secondAction"
@@ -468,29 +494,14 @@ Large.parameters = {
 </puik-modal>
 
 <!--HTML/CSS Snippet-->
-<div class="puik-modal puik-modal--feedback puik-modal--large" role="dialog" aria-modal="true">
+<div class="puik-modal puik-modal--dialog puik-modal--large" role="dialog" aria-modal="true">
   <div class="puik-modal__dialogPanelContainer">
-    <div class="puik-modal__dialogPanelContainer__dialogPanel">
+    <div data-headlessui-state="open" class="puik-modal__dialogPanelContainer__dialogPanel">
       <header class="puik-modal__dialogPanelContainer__dialogPanel__header">
-        <div class="puik-icon material-icons-round puik-modal__dialogPanelContainer__dialogPanel__header__icon" style="font-size: 1rem;">home</div>
-        <div class="puik-tooltip puik-modal__dialogPanelContainer__dialogPanel__header__title" tabindex="0">
-          <div class="puik-tooltip__wrapper">
-            <h2 class="title">The awesome title</h2>
-          </div>
-          <div class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; display: none; position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(351px, -459px);" data-popper-placement="top">
-            <div class="puik-tooltip__tip__content">
-              <span class="puik-tooltip__tip__content__description">The awesome title</span>
-            </div>
-            <div class="puik-tooltip__tip__arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate(0px, 0px);"></div>
-          </div>
-        </div>
-        <button class="puik-button puik-button--error puik-button--md puik-modal__dialogPanelContainer__dialogPanel__header__close-button" aria-label="closeButton">
-          <div class="puik-icon material-icons-round" style="font-size: 1rem;">close</div>
-        </button>
+        <div class="puik-icon material-icons-round puik-modal__dialogPanelContainer__dialogPanel__header__icon" style="font-size: 24px;">home</div>
+        <h2 class="title">The awesome title</h2>
       </header>
-      <div class="puik-modal__dialogPanelContainer__dialogPanel__content">
-        Your content
-      </div>
+      <div class="puik-modal__dialogPanelContainer__dialogPanel__content"> Your content here </div>
       <footer class="puik-modal__dialogPanelContainer__dialogPanel__footer">
         <button class="puik-button puik-button--secondary puik-button--md puik-modal__dialogPanelContainer__dialogPanel__footer__button--second">
           Awesome secondary button
@@ -498,7 +509,6 @@ Large.parameters = {
         <button class="puik-button puik-button--primary puik-button--md puik-modal__dialogPanelContainer__dialogPanel__footer__button--main">
           Awesome main button
         </button>
-        <span class="puik-modal__dialogPanelContainer__dialogPanel__footer__spacer"></span>
       </footer>
     </div>
   </div>
@@ -514,7 +524,7 @@ Medium.args = {
   title: 'The awesome title',
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
-  size: ModalSize.MEDIUM,
+  size: PuikModalSize.MEDIUM,
 }
 Medium.parameters = {
   docs: {
@@ -525,14 +535,13 @@ Medium.parameters = {
       code: `
 <!--VueJS Snippet-->
 <puik-modal
-  :title="args.title"
-  :main-button-text="args.mainButtonText"
-  :second-button-text="args.secondButtonText"
-  :side-button-text="args.sideButtonText"
-  :variant="args.variant" 
-  :size="ModalSize.MEDIUM" <---- HERE
-  :is-open="args.isOpen"
-  :title-icon="args.titleIcon"
+  title="title"
+  main-button-text="Awesome main button"
+  second-button-text="Awesome second button"
+  :variant="PuikModalVariant.DIALOG"
+  :size="PuikModalSize.MEDIUM"
+  :is-open="true"
+  title-icon="home"
   @close="closeModal"
   @buttonMain="mainAction"
   @buttonSecond="secondAction"
@@ -541,29 +550,14 @@ Medium.parameters = {
 </puik-modal>
 
 <!--HTML/CSS Snippet-->
-<div class="puik-modal puik-modal--feedback puik-modal--medium" role="dialog" aria-modal="true">
+<div class="puik-modal puik-modal--dialog puik-modal--medium" id="headlessui-dialog-33" role="dialog" aria-modal="true" data-headlessui-state="open">
   <div class="puik-modal__dialogPanelContainer">
-    <div class="puik-modal__dialogPanelContainer__dialogPanel">
+    <div id="headlessui-dialog-panel-34" data-headlessui-state="open" class="puik-modal__dialogPanelContainer__dialogPanel">
       <header class="puik-modal__dialogPanelContainer__dialogPanel__header">
-        <div class="puik-icon material-icons-round puik-modal__dialogPanelContainer__dialogPanel__header__icon" style="font-size: 1rem;">home</div>
-        <div class="puik-tooltip puik-modal__dialogPanelContainer__dialogPanel__header__title" tabindex="0">
-          <div class="puik-tooltip__wrapper">
-            <h2 class="title">The awesome title</h2>
-          </div>
-          <div class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; display: none; position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(350px, -463px);" data-popper-placement="top">
-            <div class="puik-tooltip__tip__content">
-              <span class="puik-tooltip__tip__content__description">The awesome title</span>
-            </div>
-            <div class="puik-tooltip__tip__arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate(0px, 0px);"></div>
-          </div>
-        </div>
-        <button class="puik-button puik-button--error puik-button--md puik-modal__dialogPanelContainer__dialogPanel__header__close-button" aria-label="closeButton">
-          <div class="puik-icon material-icons-round" style="font-size: 1rem;">close</div>
-        </button>
+        <div class="puik-icon material-icons-round puik-modal__dialogPanelContainer__dialogPanel__header__icon" style="font-size: 24px;">home</div>
+        <h2 class="title">The awesome title</h2>
       </header>
-      <div class="puik-modal__dialogPanelContainer__dialogPanel__content">
-        Your content
-      </div>
+      <div class="puik-modal__dialogPanelContainer__dialogPanel__content"> Your content here </div>
       <footer class="puik-modal__dialogPanelContainer__dialogPanel__footer">
         <button class="puik-button puik-button--secondary puik-button--md puik-modal__dialogPanelContainer__dialogPanel__footer__button--second">
           Awesome secondary button
@@ -571,7 +565,6 @@ Medium.parameters = {
         <button class="puik-button puik-button--primary puik-button--md puik-modal__dialogPanelContainer__dialogPanel__footer__button--main">
           Awesome main button
         </button>
-        <span class="puik-modal__dialogPanelContainer__dialogPanel__footer__spacer"></span>
       </footer>
     </div>
   </div>
@@ -587,7 +580,7 @@ Small.args = {
   title: 'The awesome title',
   mainButtonText: 'Awesome main button',
   secondButtonText: 'Awesome secondary button',
-  size: ModalSize.SMALL,
+  size: PuikModalSize.SMALL,
 }
 Small.parameters = {
   docs: {
@@ -602,10 +595,10 @@ Small.parameters = {
   :main-button-text="args.mainButtonText"
   :second-button-text="args.secondButtonText"
   :side-button-text="args.sideButtonText"
-  :variant="args.variant" 
-  :size="ModalSize.SMALL" <---- HERE
+  :variant="args.variant"
+  :size="PuikModalSize.SMALL" <---- HERE
   :is-open="args.isOpen"
-  :title-icon="args.titleIcon"
+  :title-icon="home"
   @close="closeModal"
   @buttonMain="mainAction"
   @buttonSecond="secondAction"
@@ -614,29 +607,14 @@ Small.parameters = {
 </puik-modal>
 
 <!--HTML/CSS Snippet-->
-<div class="puik-modal puik-modal--feedback puik-modal--small" role="dialog" aria-modal="true">
+<div class="puik-modal puik-modal--dialog puik-modal--small" id="headlessui-dialog-3" role="dialog" aria-modal="true" data-headlessui-state="open">
   <div class="puik-modal__dialogPanelContainer">
-    <div class="puik-modal__dialogPanelContainer__dialogPanel">
+    <div id="headlessui-dialog-panel-4" data-headlessui-state="open" class="puik-modal__dialogPanelContainer__dialogPanel">
       <header class="puik-modal__dialogPanelContainer__dialogPanel__header">
-        <div class="puik-icon material-icons-round puik-modal__dialogPanelContainer__dialogPanel__header__icon" style="font-size: 1rem;">home</div>
-        <div class="puik-tooltip puik-modal__dialogPanelContainer__dialogPanel__header__title" tabindex="0">
-          <div class="puik-tooltip__wrapper">
-            <h2 class="title">The awesome title</h2>
-          </div>
-          <div class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; display: none; position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(350px, -463px);" data-popper-placement="top">
-            <div class="puik-tooltip__tip__content">
-              <span class="puik-tooltip__tip__content__description">The awesome title</span>
-            </div>
-            <div class="puik-tooltip__tip__arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate(0px, 0px);"></div>
-          </div>
-        </div>
-        <button class="puik-button puik-button--error puik-button--md puik-modal__dialogPanelContainer__dialogPanel__header__close-button" aria-label="closeButton">
-          <div class="puik-icon material-icons-round" style="font-size: 1rem;">close</div>
-        </button>
+        <div class="puik-icon material-icons-round puik-modal__dialogPanelContainer__dialogPanel__header__icon" style="font-size: 24px;">home</div>
+        <h2 class="title">The awesome title</h2>
       </header>
-      <div class="puik-modal__dialogPanelContainer__dialogPanel__content">
-        Your content
-      </div>
+      <div class="puik-modal__dialogPanelContainer__dialogPanel__content"> Your content here </div>
       <footer class="puik-modal__dialogPanelContainer__dialogPanel__footer">
         <button class="puik-button puik-button--secondary puik-button--md puik-modal__dialogPanelContainer__dialogPanel__footer__button--second">
           Awesome secondary button
@@ -644,7 +622,6 @@ Small.parameters = {
         <button class="puik-button puik-button--primary puik-button--md puik-modal__dialogPanelContainer__dialogPanel__footer__button--main">
           Awesome main button
         </button>
-        <span class="puik-modal__dialogPanelContainer__dialogPanel__footer__spacer"></span>
       </footer>
     </div>
   </div>

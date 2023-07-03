@@ -2,6 +2,9 @@ import PuikLink from './../src/link.vue'
 import { linkSizes, targetVariants } from './../src/link'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
+const targetVariantsSummary = targetVariants.join('|')
+const linkSizesSummary = linkSizes.join('|')
+
 export default {
   title: 'Components/Link',
   component: PuikLink,
@@ -24,6 +27,9 @@ export default {
         defaultValue: {
           summary: '_self',
         },
+        type: {
+          summary: targetVariantsSummary,
+        },
       },
     },
     size: {
@@ -33,6 +39,9 @@ export default {
       table: {
         defaultValue: {
           summary: 'md',
+        },
+        type: {
+          summary: linkSizesSummary,
         },
       },
     },
@@ -71,21 +80,23 @@ Default.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <!--
-      $sizes: sm|md|lg
-      -->
-      <puik-link size="$sizes" href="#" target="_self" title="I'm a tooltip for your link">
-      I'm a cool link
-      </puik-link>
+<!--VueJS Snippet-->
+<!--
+$sizes: ${linkSizesSummary}
+$targets: ${targetVariantsSummary}
+-->
+<puik-link size="$sizes" href="#" target="$targets" title="I'm a tooltip for your link">
+  I'm a cool link
+</puik-link>
 
-      <!--HTML/CSS Snippet-->
-      <!--
-      $sizes: sm|md|lg
-      -->
-      <a class="puik-link puik-link--{$sizes}" href="#" target="_self" title="I'm a tooltip for your link">
-        I'm a cool link
-      </a>
+<!--HTML/CSS Snippet-->
+<!--
+$sizes: ${linkSizesSummary}
+$targets: ${targetVariantsSummary}
+-->
+<a class="puik-link puik-link--{$sizes}" href="#" target="$targets" title="I'm a tooltip for your link">
+  I'm a cool link
+</a>
       `,
       language: 'html',
     },
@@ -100,15 +111,15 @@ Blank.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-link href="#" target="_blank" title="I'm a tooltip for your link">
-      I'm a cool link
-      </puik-link>
+<!--VueJS Snippet-->
+<puik-link href="#" target="_blank" title="I'm a tooltip for your link">
+I'm a cool link
+</puik-link>
 
-      <!--HTML/CSS Snippet-->
-      <a class="puik-link puik-link--md" href="#" target="_blank" title="I'm a tooltip for your link">
-        I'm a cool link
-      </a>
+<!--HTML/CSS Snippet-->
+<a class="puik-link puik-link--md" href="#" target="_blank" title="I'm a tooltip for your link">
+  I'm a cool link
+</a>
       `,
       language: 'html',
     },

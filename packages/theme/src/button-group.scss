@@ -1,22 +1,14 @@
 .puik-button-group {
   .puik-button {
+    @apply relative z-0 focus:z-[1];
     &--primary {
-      @apply border border-primary-purple-500;
+      @apply border border-primary-500;
     }
     &--tertiary {
-      @apply border border-light-blue-default-border;
+      @apply border border-primary-400;
     }
     .puik-button__left-icon {
       @apply mr-0;
-    }
-    &:first-of-type {
-      @apply rounded-l;
-    }
-    &:last-of-type {
-      @apply rounded-r;
-    }
-    & {
-      @apply rounded-none;
     }
   }
 }

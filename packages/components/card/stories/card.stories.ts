@@ -1,12 +1,26 @@
 import PrestaShopSloganBg from '../../../../docs/assets/img/prestashop-slogan-bg.jpg'
+import { cardVariants } from '../src/card'
 import PuikCard from './../src/card.vue'
 import PuikButton from './../../button/src/button.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
+
+const cardVariantsSummary = cardVariants.join('|')
 
 export default {
   title: 'Components/Card',
   component: PuikCard,
   argTypes: {
+    variant: {
+      description: 'Set the card variant',
+      table: {
+        defaultValue: {
+          summary: 'default',
+        },
+        type: {
+          summary: cardVariantsSummary,
+        },
+      },
+    },
     default: {
       control: 'text',
       description: 'Card content',
@@ -30,7 +44,7 @@ const Template: Story = (args: Args) => ({
     return { args }
   },
   template: `
-    <puik-card>
+    <puik-card v-bind="args">
       <h3 class="puik-h3">Card title</h3>
       {{ args.default }}
     </puik-card>
@@ -44,11 +58,110 @@ Default.parameters = {
     source: {
       code: `
 <!--VueJS Snippet-->
-<puik-card>
+<!--
+$variants: ${cardVariantsSummary}
+-->
+<puik-card variant="$variants">
   Card content
 </puik-card>
+
 <!--HTML/CSS Snippet-->
-<div class="puik-card">
+<!--
+$variants: ${cardVariantsSummary}
+-->
+<div class="puik-card puik-card--{$variants}">
+  Card content
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Highlight = Template.bind({})
+Highlight.args = {
+  variant: 'highlight',
+}
+Highlight.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-card variant="highlight">
+  Card content
+</puik-card>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-card puik-card--highlight">
+  Card content
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Blue = Template.bind({})
+Blue.args = {
+  variant: 'blue',
+}
+Blue.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-card variant="blue">
+  Card content
+</puik-card>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-card puik-card--blue">
+  Card content
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Purple = Template.bind({})
+Purple.args = {
+  variant: 'purple',
+}
+Purple.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-card variant="purple">
+  Card content
+</puik-card>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-card puik-card--purple">
+  Card content
+</div>
+      `,
+      language: 'html',
+    },
+  },
+}
+
+export const Amber = Template.bind({})
+Amber.args = {
+  variant: 'amber',
+}
+Amber.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet-->
+<puik-card variant="amber">
+  Card content
+</puik-card>
+
+<!--HTML/CSS Snippet-->
+<div class="puik-card puik-card--amber">
   Card content
 </div>
       `,

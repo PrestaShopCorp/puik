@@ -1,5 +1,7 @@
 {
   "name": "@prestashopcorp/puik",
+  "license": "MIT",
+  "author": "Prestashop",
   "version": "0.0.1",
   "exports": {
     ".": {
@@ -32,16 +34,16 @@
     "vue": "^3.2.0"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.12",
-    "@popperjs/core": "^2.11.6",
+    "@headlessui/vue": "^1.7.13",
+    "@popperjs/core": "^2.11.7",
     "@vueuse/core": "^9.13.0",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.191",
-    "@types/lodash-es": "^4.17.6",
+    "@types/lodash": "^4.14.192",
+    "@types/lodash-es": "^4.17.7",
     "@types/node": "*",
     "unplugin-vue-components": "^0.24.1",
     "vue": "^3.2.47",

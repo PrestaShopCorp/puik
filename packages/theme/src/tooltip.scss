@@ -1,3 +1,4 @@
+@use './common/typography.scss';
 .puik-tooltip {
   @apply inline-flex;
 
@@ -6,12 +7,14 @@
   }
 
   &__tip {
-    @apply absolute bg-font text-white rounded px-3 py-2 font-secondary transition-opacity duration-300;
+    @apply absolute bg-primary text-white px-3 py-2 font-primary transition-opacity duration-300;
 
     &__content {
+      @extend .puik-body-default;
       @apply flex flex-col relative z-10;
 
       &__title {
+        @extend .puik-body-default-bold;
         @apply font-bold mb-1;
       }
     }
@@ -45,6 +48,6 @@
   }
 
   &__icon {
-    @apply font-materialIcons text-font-500 hover:text-font text-base transition-colors cursor-pointer;
+    @apply font-materialIcons text-primary hover:text-primary-800 text-base transition-colors cursor-pointer;
   }
 }

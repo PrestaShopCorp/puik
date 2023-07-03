@@ -2,45 +2,28 @@
 
 .puik-button {
   @extend .puik-text-button-default;
-  @apply rounded transition cursor-pointer py-2.5 px-4;
+  @apply transition cursor-pointer py-2 px-4 gap-2 inline-flex items-center justify-center align-middle;
 
   &--sm {
     @extend .puik-text-button-small;
-    @apply py-1 px-4;
-    .puik-button__left-icon {
-      @apply mr-2;
-    }
-    .puik-button__right-icon {
-      @apply ml-2;
-    }
+    @apply py-1 px-2 h-7;
   }
 
   &--md {
-    .puik-button__left-icon {
-      @apply mr-2;
-    }
-    .puik-button__right-icon {
-      @apply ml-2;
-    }
+    @apply h-9;
   }
 
   &--lg {
     @extend .puik-text-button-large;
-    @apply py-3 px-5;
-    .puik-button__left-icon {
-      @apply mr-3;
-    }
-    .puik-button__right-icon {
-      @apply ml-3;
-    }
+    @apply py-3.5 px-4 gap-3 h-12;
   }
 
   &--fluid {
     @apply w-full;
   }
 
-  &:focus {
-    @apply outline-none ring ring-offset-2 ring-focus-main;
+  &:focus-visible {
+    @apply outline-none ring ring-offset-2 ring-blue;
   }
 
   &:disabled,
@@ -49,111 +32,133 @@
   }
 
   &--primary {
-    @apply bg-primary-purple-500 text-white;
+    @apply bg-primary-800 text-white;
     &:hover {
-      @apply bg-primary-purple-700;
+      @apply bg-primary-700;
     }
     &:active {
-      @apply bg-primary-purple-900;
+      @apply bg-primary-600;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply bg-purple-100;
-    }
-  }
-
-  &--destructive {
-    @apply bg-accentuation-destructive-500 text-white;
-    &:hover {
-      @apply bg-accentuation-destructive-700;
-    }
-    &:active {
-      @apply bg-accentuation-destructive-900;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply bg-accentuation-destructive-100;
+      @apply bg-primary-500;
     }
   }
 
   &--secondary {
-    @apply bg-primary-purple-50 text-primary-purple-500;
+    @apply bg-white text-primary border border-primary;
     &:hover {
-      @apply bg-primary-purple-100;
+      @apply bg-primary-300;
     }
     &:active {
-      @apply bg-primary-purple-200;
+      @apply bg-primary-400;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply bg-primary-purple-50 text-primary-purple-100;
+      @apply bg-primary-200 text-primary-500 border-primary-400;
     }
   }
 
   &--tertiary {
-    @apply text-font border border-light-blue-default-border;
+    @apply bg-primary-400 text-primary;
     &:hover {
-      @apply bg-font-50;
+      @apply bg-primary-300;
     }
     &:active {
-      @apply bg-font-100;
+      @apply bg-primary-200;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply text-font-100 border-font-100;
+      @apply bg-primary-200 text-primary-500;
+    }
+  }
+
+  &--destructive {
+    @apply bg-red text-white;
+    &:hover {
+      @apply bg-red-300;
+    }
+    &:active {
+      @apply bg-red-700;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply bg-red-100;
     }
   }
 
   &--text {
-    @apply text-font;
+    @apply text-primary;
     &:hover {
-      @apply bg-font-50;
+      @apply bg-primary-200;
     }
     &:active {
-      @apply bg-font-100;
+      @apply bg-primary-300;
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply text-font-100;
-    }
-  }
-
-  @mixin alert-banner-button-variant($color) {
-    @apply bg-accentuation-#{$color}-50 border-accentuation-#{$color}-500;
-    @apply text-gray-900 border;
-
-    &:hover {
-      @apply bg-accentuation-#{$color}-100;
-    }
-
-    &:active {
-      @apply bg-accentuation-#{$color}-200;
-    }
-
-    &:disabled,
-    &--disabled {
-      @apply border-accentuation-#{$color}-200 text-white;
+      @apply text-primary-500;
     }
   }
 
   &--info {
-    @include alert-banner-button-variant('info');
-  }
-
-  &--success {
-    @include alert-banner-button-variant('success');
-  }
-
-  &--warning {
-    @include alert-banner-button-variant('warning');
+    @apply text-primary bg-blue-50 border border-blue;
+    &:hover {
+      @apply bg-blue-100;
+    }
+    &:disabled,
+    &--disabled {
+      @apply border-blue-300 text-white;
+    }
+    &:active {
+      @apply bg-blue-300;
+    }
   }
 
   &--danger {
-    @include alert-banner-button-variant('destructive');
+    @apply text-primary bg-red-50 border border-red;
+    &:hover {
+      @apply bg-red-100;
+    }
+    &:disabled,
+    &--disabled {
+      @apply border-red-300 text-white;
+    }
+    &:active {
+      @apply bg-red-300;
+    }
+  }
+
+  &--success {
+    @apply text-primary bg-green-50 border border-green;
+    &:hover {
+      @apply bg-green-100;
+    }
+    &:disabled,
+    &--disabled {
+      @apply border-green-100 text-white;
+    }
+    &:active {
+      @apply bg-green-300;
+    }
+  }
+
+  &--warning {
+    @apply text-primary bg-yellow-50 border border-yellow;
+    &:hover {
+      @apply bg-yellow-100;
+    }
+    &:disabled,
+    &--disabled {
+      @apply border-yellow-100 text-white;
+    }
+    &:active {
+      @apply bg-yellow-300;
+    }
   }
 
   &__left-icon,
   &__right-icon {
-    @apply font-materialIcons align-middle leading-[0];
+    @apply font-materialIcons align-middle;
   }
 }
