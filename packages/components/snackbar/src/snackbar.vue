@@ -23,7 +23,13 @@
       >
         {{ action.label }}
       </button>
-      <button class="puik-snackbar__close-button" @click="close">close</button>
+      <button
+        class="puik-snackbar__close-button"
+        :aria-label="t('puik.snackbar.closeBtnLabel')"
+        @click="close"
+      >
+        close
+      </button>
     </div>
   </transition>
 </template>
@@ -31,16 +37,18 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { useTimeoutFn, useEventListener } from '@vueuse/core'
-import { snackBarProps } from './snackbar'
+import { useLocale } from '@puik/hooks'
+import { snackbarProps } from './snackbar'
 import type { CSSProperties } from 'vue'
 defineOptions({
   name: 'PuikSnackbar',
 })
+const { t } = useLocale()
 let timer: (() => void) | undefined
 
 const visible = ref(false)
 
-const props = defineProps(snackBarProps)
+const props = defineProps(snackbarProps)
 
 const position = computed<CSSProperties>(() => ({
   bottom: `${props.offset}px`,

@@ -1,26 +1,25 @@
 import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
-import type SnackBar from './snackbar.vue'
+import type Snackbar from './snackbar.vue'
 
-export type SnackbarVariants = 'default' | 'danger'
+export const snackbarVariants = ['default', 'danger'] as const
+export type PuikSnackbarVariant = (typeof snackbarVariants)[number]
 
-export const snackBarVariants: SnackbarVariants[] = ['default', 'danger']
-
-export interface SnackBarAction {
+export interface SnackbarAction {
   label: string
   callback: () => void
 }
 
-export interface SnackBarOptions {
+export interface PuikSnackbarOptions {
   text: string
-  variant?: SnackbarVariants
-  action?: SnackBarAction
+  variant?: PuikSnackbarVariant
+  action?: SnackbarAction
   duration?: number
   offset?: number
   onClose?: () => void
 }
 
-export const snackBarProps = buildProps({
+export const snackbarProps = buildProps({
   text: {
     type: String,
     required: false,
@@ -31,13 +30,13 @@ export const snackBarProps = buildProps({
     required: false,
   },
   action: {
-    type: Object as PropType<SnackBarAction>,
+    type: Object as PropType<SnackbarAction>,
     required: false,
     default: undefined,
   },
   variant: {
-    type: String,
-    values: snackBarVariants,
+    type: String as PropType<PuikSnackbarVariant>,
+    required: false,
     default: 'default',
   },
   duration: {
@@ -53,14 +52,15 @@ export const snackBarProps = buildProps({
   onClose: {
     type: Function,
     required: false,
+    default: undefined,
   },
 } as const)
 
-export const snackBarEmits = {
+export const snackbarEmits = {
   destroy: () => true,
 }
-export type SnackBarProps = ExtractPropTypes<typeof snackBarProps>
+export type SnackbarProps = ExtractPropTypes<typeof snackbarProps>
 
-export type SnackBarEmits = typeof snackBarEmits
+export type SnackbarEmits = typeof snackbarEmits
 
-export type SnackBarInstance = InstanceType<typeof SnackBar>
+export type SnackbarInstance = InstanceType<typeof Snackbar>

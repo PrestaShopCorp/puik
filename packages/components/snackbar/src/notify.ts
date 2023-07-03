@@ -1,6 +1,6 @@
 import { createVNode, render, type AppContext, type VNode } from 'vue'
-import SnackBar from './snackbar.vue'
-import type { SnackBarOptions } from './snackbar'
+import Snackbar from './snackbar.vue'
+import type { PuikSnackbarOptions } from './snackbar'
 
 const notifications: VNode[] = []
 
@@ -9,7 +9,7 @@ const GAP = 16
 let seed = 1
 
 const notify = (
-  options: SnackBarOptions,
+  options: PuikSnackbarOptions,
   context: AppContext | null = null
 ) => {
   const id = `puik-snackbar_${seed++}`
@@ -28,7 +28,7 @@ const notify = (
     onClose: () => close(id, customOnClose),
   }
 
-  const notification = createVNode(SnackBar, props)
+  const notification = createVNode(Snackbar, props)
   notification.appContext = context ?? notify._context
   const container = document.createElement('div')
 

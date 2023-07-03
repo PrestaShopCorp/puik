@@ -2,7 +2,7 @@
 module.exports = {
   stories: [
     '../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-    '../../packages/components/**/*.stories.@(js|jsx|ts|tsx)',
+    '../../packages/components/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
   addons: [
     '@storybook/addon-links',

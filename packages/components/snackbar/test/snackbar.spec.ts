@@ -2,18 +2,18 @@ import { mount } from '@vue/test-utils'
 import { describe, it, expect, vi } from 'vitest'
 import { faker } from '@faker-js/faker'
 import PuikSnackbar from '../src/snackbar.vue'
-import type { SnackBarOptions } from '../src/snackbar'
+import type { SnackbarOptions } from '../src/snackbar'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
-describe('SnackBar tests', () => {
+describe('Snackbar tests', () => {
   let wrapper: VueWrapper<any>
 
   const findText = () => wrapper.find('.puik-snackbar__text')
   const findAction = () => wrapper.find('.puik-snackbar__action')
-  const findSnackBar = () => wrapper.find('.puik-snackbar')
+  const findSnackbar = () => wrapper.find('.puik-snackbar')
   const findCloseButton = () => wrapper.find('.puik-snackbar__close-button')
 
   const factory = (
-    propsData: SnackBarOptions,
+    propsData: SnackbarOptions,
     options: MountingOptions<any> = {}
   ) => {
     wrapper = mount(PuikSnackbar, {
@@ -35,7 +35,7 @@ describe('SnackBar tests', () => {
     const text = faker.lorem.sentence()
     factory({ text })
     expect(findText().text()).toEqual(text)
-    expect(findSnackBar().classes()).toContain('puik-snackbar--default')
+    expect(findSnackbar().classes()).toContain('puik-snackbar--default')
     expect(findAction().exists()).toBeFalsy()
   })
 
@@ -52,7 +52,7 @@ describe('SnackBar tests', () => {
     })
     expect(findText().text()).toEqual(text)
     expect(findAction().exists()).toBeTruthy()
-    expect(findSnackBar().classes()).toContain('puik-snackbar--default')
+    expect(findSnackbar().classes()).toContain('puik-snackbar--default')
     expect(findAction().text()).toEqual(label)
     await findAction().trigger('click')
     expect(callback).toBeCalled()
@@ -62,7 +62,7 @@ describe('SnackBar tests', () => {
     const text = faker.lorem.sentence()
     factory({ text, variant: 'danger' })
     expect(findText().text()).toEqual(text)
-    expect(findSnackBar().classes()).toContain('puik-snackbar--danger')
+    expect(findSnackbar().classes()).toContain('puik-snackbar--danger')
     expect(findAction().exists()).toBeFalsy()
   })
 
@@ -80,7 +80,7 @@ describe('SnackBar tests', () => {
     })
     expect(findAction().exists()).toBeTruthy()
     expect(findText().text()).toEqual(text)
-    expect(findSnackBar().classes()).toContain('puik-snackbar--danger')
+    expect(findSnackbar().classes()).toContain('puik-snackbar--danger')
     expect(findAction().text()).toEqual(label)
     await findAction().trigger('click')
     expect(callback).toBeCalled()
@@ -89,18 +89,18 @@ describe('SnackBar tests', () => {
   it('should close the snackbar when clicking on the close button', async () => {
     const text = faker.lorem.sentence()
     await factory({ text })
-    expect(findSnackBar().isVisible()).toBeTruthy()
+    expect(findSnackbar().isVisible()).toBeTruthy()
     await findCloseButton().trigger('click')
-    expect(findSnackBar().isVisible()).toBeFalsy()
+    expect(findSnackbar().isVisible()).toBeFalsy()
   })
 
   it('should dismiss the snackbar after 3 seconds', async () => {
     vi.useFakeTimers()
     const text = faker.lorem.sentence()
     await factory({ text, duration: 3000 })
-    expect(findSnackBar().isVisible()).toBeTruthy()
+    expect(findSnackbar().isVisible()).toBeTruthy()
     await vi.advanceTimersByTime(3000)
-    expect(findSnackBar().isVisible()).toBeFalsy()
+    expect(findSnackbar().isVisible()).toBeFalsy()
     await vi.clearAllTimers()
   })
 
@@ -109,17 +109,17 @@ describe('SnackBar tests', () => {
     const text = faker.lorem.sentence()
 
     await factory({ text, duration: 3000 })
-    expect(findSnackBar().isVisible()).toBeTruthy()
+    expect(findSnackbar().isVisible()).toBeTruthy()
 
     await vi.advanceTimersByTime(2000)
-    await findSnackBar().trigger('mouseenter')
-    await findSnackBar().trigger('mouseleave')
+    await findSnackbar().trigger('mouseenter')
+    await findSnackbar().trigger('mouseleave')
 
     await vi.advanceTimersByTime(1000)
-    expect(findSnackBar().isVisible()).toBeTruthy()
+    expect(findSnackbar().isVisible()).toBeTruthy()
 
     await vi.advanceTimersByTime(2000)
-    expect(findSnackBar().isVisible()).toBeFalsy()
+    expect(findSnackbar().isVisible()).toBeFalsy()
 
     await vi.clearAllTimers()
   })

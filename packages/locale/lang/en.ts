@@ -44,5 +44,8 @@ export default {
         label: 'Page {page} to {maxPage}',
       },
     },
+    snackbar: {
+      closeBtnLabel: 'Close snackbar',
+    },
   },
 }

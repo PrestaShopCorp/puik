@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Components/Snackbar/Snackbar uses" />
+
+# Using snackbar component
+
+## Display snackbar
+
+To display a snackbar, call the function `PuikSnackbar`:
+
+```js
+import { PuikSnackbar } from '@prestashopcorp/puik'
+import { PuikSnackbarOptions } from '@prestashopcorp/puik/components/snackbar/src/snackbar'
+
+PuikSnackbar(args as PuikSnackbarOptions)
+
+interface PuikSnackbarOptions {
+  text: string
+  variant?: PuikSnackbarVariant
+  action?: SnackbarAction
+  duration?: number
+  offset?: number
+  onClose?: () => void
+}
+```
+
+## Usage
+
+```html
+<template>
+  <puik-button @click="displaySnackbar"> Display default snackbar </puik-button>
+</template>
+
+<script setup lang="ts">
+  improt { PuikSnackbar } from '@prestashopcorp/puik'
+  function displaySnackbar() {
+    PuikSnackbar({
+      text: 'Text to display',
+    })
+  }
+</script>
+```
+
+```html
+<template>
+  <puik-button @click="displaySnackbar"> Display danger snackbar </puik-button>
+</template>
+
+<script setup lang="ts">
+  improt { PuikSnackbar } from '@prestashopcorp/puik'
+  function displaySnackbar() {
+    PuikSnackbar({
+      text: 'Text to display',
+      variant: 'danger',
+      durantion: 1000
+    })
+  }
+</script>
+```
