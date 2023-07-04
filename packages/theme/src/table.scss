@@ -10,7 +10,7 @@
   }
 
   @mixin puik-table-item() {
-    @apply h-[52px] p-3.5;
+    @apply p-4;
     &--sm {
       @apply w-[112px] min-w-[112px];
     }
@@ -21,7 +21,6 @@
       @apply w-[480px] min-w-[480px];
     }
     &--selection {
-      @apply w-[48px] min-w-[48px];
       &__checkbox,
       > .puik-checkbox {
         .puik-checkbox__label {
@@ -50,7 +49,7 @@
       &__item,
       > th {
         @extend .puik-body-small;
-        @apply font-normal uppercase;
+        @apply font-normal uppercase text-primary-600;
         @include puik-table-item();
         @include puik-table-text-align();
       }
@@ -66,6 +65,8 @@
       }
       &__item,
       > td {
+        @extend .puik-body-default;
+        @apply text-primary-800;
         @include puik-table-item();
         @include puik-table-text-align();
       }
