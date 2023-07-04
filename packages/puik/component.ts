@@ -1,4 +1,6 @@
 import { PuikTable } from '@puik/components/table'
+import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
+import { PuikPagination } from '@puik/components/pagination'
 import { PuikBreadcrumb } from '@puik/components/breadcrumb'
 import { PuikAccordion, PuikAccordionGroup } from '@puik/components/accordion'
 import { PuikBadge } from '@puik/components/badge'
@@ -29,6 +31,8 @@ import type { Plugin } from 'vue'
 // prettier-ignore
 export default [
   PuikTable,
+  PuikSpinnerLoader,
+  PuikPagination,
   PuikBreadcrumb,
   PuikAccordion,
   PuikAccordionGroup,

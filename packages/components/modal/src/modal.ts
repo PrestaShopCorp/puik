@@ -4,17 +4,25 @@ import type Modal from './modal.vue'
 
 export const DESTRUCTIVE_ICON_NAME = 'warning'
 
+/**
+ * @deprecated Replace with string value
+ */
 export enum PuikModalVariant {
   DESTRUCTIVE = 'destructive',
   FEEDBACK = 'feedback',
   DIALOG = 'dialog',
 }
+export type ModalVariantType = `${PuikModalVariant}`
 
+/**
+ * @deprecated Replace with string value
+ */
 export enum PuikModalSize {
   SMALL = 'small',
   MEDIUM = 'medium',
   LARGE = 'large',
 }
+export type ModalSizeType = `${PuikModalSize}`
 
 export const modalProps = buildProps({
   title: {
@@ -42,14 +50,14 @@ export const modalProps = buildProps({
     default: undefined,
   },
   variant: {
-    type: String as PropType<PuikModalVariant>,
+    type: String as PropType<ModalVariantType>,
     required: false,
-    default: PuikModalVariant.FEEDBACK,
+    default: 'feedback',
   },
   size: {
-    type: String as PropType<PuikModalSize>,
+    type: String as PropType<ModalSizeType>,
     required: false,
-    default: PuikModalSize.SMALL,
+    default: 'small',
   },
   isOpen: {
     type: Boolean,

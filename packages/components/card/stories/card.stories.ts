@@ -4,7 +4,7 @@ import PuikCard from './../src/card.vue'
 import PuikButton from './../../button/src/button.vue'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
-const cardVariantsJoined = cardVariants.join('|')
+const cardVariantsSummary = cardVariants.join('|')
 
 export default {
   title: 'Components/Card',
@@ -17,7 +17,7 @@ export default {
           summary: 'default',
         },
         type: {
-          summary: cardVariantsJoined,
+          summary: cardVariantsSummary,
         },
       },
     },
@@ -59,16 +59,17 @@ Default.parameters = {
       code: `
 <!--VueJS Snippet-->
 <!--
-$variants: ${cardVariantsJoined}
+$variants: ${cardVariantsSummary}
 -->
 <puik-card variant="$variants">
   Card content
 </puik-card>
+
 <!--HTML/CSS Snippet-->
 <!--
-$variants: ${cardVariantsJoined}
+$variants: ${cardVariantsSummary}
 -->
-<div class="puik-card">
+<div class="puik-card puik-card--{$variants}">
   Card content
 </div>
       `,
@@ -86,16 +87,11 @@ Highlight.parameters = {
     source: {
       code: `
 <!--VueJS Snippet-->
-<!--
-$variants: ${cardVariantsJoined}
--->
 <puik-card variant="highlight">
   Card content
 </puik-card>
+
 <!--HTML/CSS Snippet-->
-<!--
-$variants: ${cardVariantsJoined}
--->
 <div class="puik-card puik-card--highlight">
   Card content
 </div>
@@ -114,16 +110,11 @@ Blue.parameters = {
     source: {
       code: `
 <!--VueJS Snippet-->
-<!--
-$variants: ${cardVariantsJoined}
--->
 <puik-card variant="blue">
   Card content
 </puik-card>
+
 <!--HTML/CSS Snippet-->
-<!--
-$variants: ${cardVariantsJoined}
--->
 <div class="puik-card puik-card--blue">
   Card content
 </div>
@@ -142,16 +133,11 @@ Purple.parameters = {
     source: {
       code: `
 <!--VueJS Snippet-->
-<!--
-$variants: ${cardVariantsJoined}
--->
 <puik-card variant="purple">
   Card content
 </puik-card>
+
 <!--HTML/CSS Snippet-->
-<!--
-$variants: ${cardVariantsJoined}
--->
 <div class="puik-card puik-card--purple">
   Card content
 </div>
@@ -170,16 +156,11 @@ Amber.parameters = {
     source: {
       code: `
 <!--VueJS Snippet-->
-<!--
-$variants: ${cardVariantsJoined}
--->
 <puik-card variant="amber">
   Card content
 </puik-card>
+
 <!--HTML/CSS Snippet-->
-<!--
-$variants: ${cardVariantsJoined}
--->
 <div class="puik-card puik-card--amber">
   Card content
 </div>

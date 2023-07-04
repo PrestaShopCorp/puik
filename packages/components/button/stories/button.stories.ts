@@ -3,6 +3,9 @@ import PuikButton from './../src/button.vue'
 import { buttonVariants, buttonSizes } from './../src/button'
 import type { Meta, Story, Args } from '@storybook/vue3'
 
+const buttonVariantsSummary = buttonVariants.join('|')
+const buttonSizesSummary = buttonSizes.join('|')
+
 export default {
   title: 'Components/Button',
   component: PuikButton,
@@ -15,6 +18,9 @@ export default {
         defaultValue: {
           summary: 'primary',
         },
+        type: {
+          summary: buttonVariantsSummary,
+        },
       },
     },
     size: {
@@ -24,6 +30,9 @@ export default {
       table: {
         defaultValue: {
           summary: 'md',
+        },
+        type: {
+          summary: buttonSizesSummary,
         },
       },
     },
@@ -87,26 +96,33 @@ const Template: Story = (args: Args) => ({
 })
 
 export const Default = Template.bind({})
-
 Default.args = {}
-
 Default.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <!--
-      $sizes: sm|md|lg
-      $variants: primary|secondary|tertiary|text|destructive|info|success|warning|error
-      -->
-      <puik-button size="$sizes" variant="$variants">My button</puik-button>
+<!--VueJS Snippet -->
+<!--
+$sizes: ${buttonSizesSummary}
+$variants: ${buttonVariantsSummary}
+-->
+<puik-button
+  :size="$sizes"
+  :variant="$variants"
+  :fluid="true|false"
+  :disabled="true|false"
+  :left-icon="leftIcon"
+  :right-icon="rightIcon"
+>
+  My button
+</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <!--
-      $sizes: sm|md|lg (defaults to md)
-      $variants: primary|secondary|tertiary|text|destructive|info|success|warning|error
-      -->
-      <button class="puik-button puik-button--{$variants} puik-button--{$sizes}">My button</button>
+<!--HTML/CSS Snippet-->
+<!--
+$sizes: ${buttonSizesSummary} (defaults to md)
+$variants: ${buttonVariantsSummary}
+-->
+<button class="puik-button puik-button--{$variants} puik-button--{$sizes}">My button</button>
       `,
       language: 'html',
     },
@@ -160,11 +176,11 @@ Primary.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button>My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button>My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--primary">My button</button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--primary">My button</button>
       `,
       language: 'html',
     },
@@ -180,11 +196,11 @@ Secondary.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button variant="secondary">My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button variant="secondary">My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--secondary">My button</button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--secondary">My button</button>
       `,
       language: 'html',
     },
@@ -200,11 +216,11 @@ Tertiary.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button variant="tertiary">My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button variant="tertiary">My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--tertiary">My button</button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--tertiary">My button</button>
       `,
       language: 'html',
     },
@@ -220,11 +236,11 @@ Destructive.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button variant="destructive">My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button variant="destructive">My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--destructive">My button</button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--destructive">My button</button>
       `,
       language: 'html',
     },
@@ -240,11 +256,11 @@ Text.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button variant="text">My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button variant="text">My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--text">My button</button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--text">My button</button>
       `,
       language: 'html',
     },
@@ -260,11 +276,11 @@ Info.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button variant="info">My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button variant="info">My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--info">My button</button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--info">My button</button>
       `,
       language: 'html',
     },
@@ -280,11 +296,11 @@ Success.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button variant="success">My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button variant="success">My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--success">My button</button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--success">My button</button>
       `,
       language: 'html',
     },
@@ -300,11 +316,11 @@ Warning.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button variant="warning">My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button variant="warning">My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--warning">My button</button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--warning">My button</button>
       `,
       language: 'html',
     },
@@ -320,11 +336,11 @@ Danger.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button variant="error">My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button variant="error">My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--error">My button</button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--error">My button</button>
       `,
       language: 'html',
     },
@@ -340,11 +356,11 @@ Disabled.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button disabled>My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button disabled>My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--primary" disabled>My button</button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--primary" disabled>My button</button>
       `,
       language: 'html',
     },
@@ -364,11 +380,11 @@ Fluid.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button fluid>My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button fluid>My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--primary puik-button--fluid">My button</button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--primary puik-button--fluid">My button</button>
       `,
       language: 'html',
     },
@@ -391,19 +407,19 @@ WithIcon.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet -->
-      <puik-button left-icon="shopping_cart">My button</puik-button>
-      <puik-button right-icon="shopping_cart">My button</puik-button>
+<!--VueJS Snippet -->
+<puik-button left-icon="shopping_cart">My button</puik-button>
+<puik-button right-icon="shopping_cart">My button</puik-button>
 
-      <!--HTML/CSS Snippet-->
-      <button class="puik-button puik-button--primary">
-        <span class="puik-icon puik-button__left-icon">shopping_cart</span>
-        My button
-      </button>
-      <button class="puik-button puik-button--primary">
-        My button
-        <span class="puik-icon puik-button__right-icon">shopping_cart</span>
-      </button>
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--primary">
+  <span class="puik-icon puik-button__left-icon">shopping_cart</span>
+  My button
+</button>
+<button class="puik-button puik-button--primary">
+  My button
+  <span class="puik-icon puik-button__right-icon">shopping_cart</span>
+</button>
       `,
       language: 'html',
     },
@@ -411,3 +427,17 @@ WithIcon.parameters = {
 }
 
 export const Variants: Story = AllVariantTemplate.bind({})
+Variants.parameters = {
+  docs: {
+    source: {
+      code: `
+<!--VueJS Snippet -->
+<puik-button>My button</puik-button>
+
+<!--HTML/CSS Snippet-->
+<button class="puik-button puik-button--{$variants}">My button</button>
+      `,
+      language: 'html',
+    },
+  },
+}

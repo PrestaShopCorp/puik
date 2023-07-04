@@ -27,6 +27,6 @@ defineOptions({
   name: 'PuikInputControls',
 })
 const { t } = useLocale()
-const props = defineProps(controlsProps)
-const emit = defineEmits(controlsEmits)
+defineProps(controlsProps)
+defineEmits(controlsEmits)
 </script>

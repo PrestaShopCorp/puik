@@ -26,6 +26,11 @@ export default {
     disabled: {
       control: 'boolean',
       description: 'Set accordion disabled',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
     },
     default: {
       control: 'none',
@@ -64,38 +69,38 @@ Default.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-accordion-group>
-        <puik-accordion title="Title 1" name="accordion-1">
-          Content 1
-        </puik-accordion>
-        <puik-accordion name="accordion-2" title="Title 2">
-          Content 2
-        </puik-accordion>
-        <puik-accordion title="Title 3" sub-title="Sub Title" name="accordion-3" disabled>
-          Content 3
-        </puik-accordion>
-      </puik-accordion-group>
+<!--VueJS Snippet-->
+<puik-accordion-group>
+  <puik-accordion
+      :name="name"
+      :title="title"
+      :sub-title="subTitle"
+      :icon="icon"
+      :disabled="true|false"
+  >
+    Content 1
+  </puik-accordion>
+</puik-accordion-group>
 
-      <!--HTML/CSS Snippet-->
-      <div class="puik-accordion-group">
-        <!--
-          State classes
-          Disabled: "puik-accordion--disabled"
-          Expanded: "puik-accordion--expanded"
-        -->
-        <div class="puik-accordion puik-accordion--expanded">
-          <button aria-expanded="true" aria-controls="accordion-id" class="puik-accordion__header">
-            <div class="puik-icon material-icons-round puik-accordion__header__icon" style="font-size: 24px;">home</div>
-            <div class="puik-accordion__header__content">
-              <div class="puik-accordion__header__content__title">Accordion title</div>
-              <div class="puik-accordion__header__content__sub-title">Accordion subtitle</div>
-            </div>
-            <div class="puik-icon material-icons-round puik-accordion__header__expand__icon" style="font-size: 24px;">keyboard_arrow_up</div>
-          </button>
-          <div id="accordion-id" class="puik-accordion__content" style=""> Content 1 </div>
-        </div>
+<!--HTML/CSS Snippet-->
+<div class="puik-accordion-group">
+  <!--
+    State classes
+    Disabled: "puik-accordion--disabled"
+    Expanded: "puik-accordion--expanded"
+  -->
+  <div class="puik-accordion puik-accordion--expanded">
+    <button aria-expanded="true" aria-controls="accordion-id" class="puik-accordion__header">
+      <div class="puik-icon material-icons-round puik-accordion__header__icon" style="font-size: 24px;">home</div>
+      <div class="puik-accordion__header__content">
+        <div class="puik-accordion__header__content__title">Accordion title</div>
+        <div class="puik-accordion__header__content__sub-title">Accordion subtitle</div>
       </div>
+      <div class="puik-icon material-icons-round puik-accordion__header__expand__icon" style="font-size: 24px;">keyboard_arrow_up</div>
+    </button>
+    <div id="accordion-id" class="puik-accordion__content"> Content 1 </div>
+  </div>
+</div>
       `,
       language: 'html',
     },
@@ -106,40 +111,35 @@ export const Disabled = Template.bind({})
 Disabled.args = {
   disabled: true,
   name: 'accordion-1',
-  title: 'Disabled accordion sub-title',
-  subTitle: 'Disabled accordion title',
+  title: 'Disabled accordion title',
+  subTitle: 'Disabled accordion sub-title',
   icon: 'home',
 }
 Disabled.parameters = {
   docs: {
     source: {
       code: `
-      <!--VueJS Snippet-->
-      <puik-accordion-group>
-        <puik-accordion name="accordion-1" disabled>
-          Content 1
-        </puik-accordion>
-      </puik-accordion-group>
+<!--VueJS Snippet-->
+<puik-accordion-group>
+  <puik-accordion name="accordion-1" disabled>
+    Content 1
+  </puik-accordion>
+</puik-accordion-group>
 
-      <!--HTML/CSS Snippet-->
-      <div class="puik-accordion-group">
-        <!--
-          State classes
-          Disabled: "puik-accordion--disabled"
-          Expanded: "puik-accordion--expanded"
-        -->
-        <div class="puik-accordion puik-accordion--disabled">
-          <button aria-expanded="true" aria-controls="accordion-id" class="puik-accordion__header" disabled>
-            <div class="puik-icon material-icons-round puik-accordion__header__icon" style="font-size: 24px;">home</div>
-            <div class="puik-accordion__header__content">
-              <div class="puik-accordion__header__content__title">Accordion title</div>
-              <div class="puik-accordion__header__content__sub-title">Accordion subtitle</div>
-            </div>
-            <div class="puik-icon material-icons-round puik-accordion__header__expand__icon" style="font-size: 24px;">keyboard_arrow_up</div>
-          </button>
-          <div id="accordion-id" class="puik-accordion__content" style=""> Content 1 </div>
-        </div>
+<!--HTML/CSS Snippet-->
+<div class="puik-accordion-group">
+  <div class="puik-accordion puik-accordion--disabled">
+    <button aria-expanded="true" aria-controls="accordion-id" class="puik-accordion__header" disabled>
+      <div class="puik-icon material-icons-round puik-accordion__header__icon" style="font-size: 24px;">home</div>
+      <div class="puik-accordion__header__content">
+        <div class="puik-accordion__header__content__title">Accordion title</div>
+        <div class="puik-accordion__header__content__sub-title">Accordion subtitle</div>
       </div>
+      <div class="puik-icon material-icons-round puik-accordion__header__expand__icon" style="font-size: 24px;">keyboard_arrow_up</div>
+    </button>
+    <div id="accordion-id" class="puik-accordion__content"> Content 1 </div>
+  </div>
+</div>
       `,
       language: 'html',
     },
