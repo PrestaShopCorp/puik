@@ -9,11 +9,11 @@
 }
 
 .puik-h2 {
-  @apply text-2xl leading-8 -tracking-[0.029375rem] font-bold font-primary;
+  @apply text-2xl leading-8 -tracking-[0.029375rem] font-semibold font-primary;
 }
 
 .puik-h3 {
-  @apply text-xl leading-[1.875rem] -tracking-[0.020625rem] font-bold font-primary;
+  @apply text-xl leading-[1.875rem] -tracking-[0.020625rem] font-semibold font-primary;
 }
 
 .puik-h4 {
@@ -32,17 +32,17 @@
 
 .puik-brand-h1 {
   @extend .puik-h1;
-  @apply -tracking-[0] font-secondary;
+  @apply -tracking-[0] font-secondary font-normal;
 }
 
 .puik-brand-h2 {
   @extend .puik-h2;
-  @apply -tracking-[0] font-secondary;
+  @apply -tracking-[0] font-secondary font-normal;
 }
 
 .puik-brand-jumbotron {
   @extend .puik-jumbotron;
-  @apply -tracking-[0] font-secondary;
+  @apply -tracking-[0] font-secondary font-normal;
 }
 
 // Body
@@ -93,7 +93,7 @@
 // Buttons
 
 .puik-text-button-default {
-  @apply font-primary font-semibold text-sm leading-4;
+  @apply font-primary font-semibold text-sm leading-[1.125rem];
 }
 
 .puik-text-button-small {
@@ -101,5 +101,5 @@
 }
 
 .puik-text-button-large {
-  @apply font-primary text-base leading-6 font-semibold;
+  @apply font-primary text-base leading-5 font-semibold;
 }

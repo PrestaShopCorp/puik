@@ -26,7 +26,7 @@
       disabled:text-primary-500 disabled:cursor-not-allowed
       placeholder:text-primary-700 placeholder:disabled:text-primary-500;
     &:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 50px #e9e6f8 inset;
+      -webkit-box-shadow: 0 0 0 50px theme('colors.ocean-blue.50') inset;
     }
     &[type='number'] {
       -moz-appearance: textfield;

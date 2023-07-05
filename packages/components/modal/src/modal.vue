@@ -7,7 +7,10 @@
   >
     <div class="puik-modal__dialogPanelContainer">
       <DialogPanel class="puik-modal__dialogPanelContainer__dialogPanel">
-        <header class="puik-modal__dialogPanelContainer__dialogPanel__header">
+        <header
+          v-if="title"
+          class="puik-modal__dialogPanelContainer__dialogPanel__header"
+        >
           <puik-icon
             v-if="titleIcon || PuikModalVariant.DESTRUCTIVE === variant"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__icon"
@@ -75,7 +78,7 @@
 </template>
 
 <script setup lang="ts">
-import { toRef, computed, ref, watch, nextTick } from 'vue'
+import { computed, ref, watch, nextTick } from 'vue'
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { useWindowSize } from '@vueuse/core'
 import { PuikButton } from '@puik/components/button'

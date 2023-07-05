@@ -15,6 +15,7 @@
 <!--- Describe your changes in detail -->
 <!--- Why is this change required? What problem does it solve? -->
 <!--- Is there any PR to sync with ? -->
+<!--- The component exists on old Prestashop UIKit ? Please create pull request on [migrating documentation](https://github.com/PrestaShopCorp/devdocs.uikit.prestashop.com) to help for migration.  -->
 
 ### 📝 Checklist
 
@@ -23,3 +24,4 @@
 - [ ] My change requires a change to the documentation.
 - [ ] I have updated the documentation accordingly.
 - [ ] I have added tests to cover my changes
+- [ ] The component exists on old Prestashop UIKit and my pull request on [migrating documentation](https://github.com/PrestaShopCorp/devdocs.uikit.prestashop.com) is accepted.

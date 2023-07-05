@@ -83,6 +83,12 @@ puik/
     └── global.d.ts
 ```
 
+### Style
+
+Classes created in scss files must be prefixed with `puik-` followed by the name of the component. Class naming must follow BEM convention.
+
+Example : `.puik-my-component`
+
 ### Unit tests
 
 This project uses [Vitest](https://vitest.dev/) & [Vue Test Utils](https://vue-test-utils.vuejs.org/) for unit testing.
@@ -128,3 +134,9 @@ $ pnpm docs:dev
 │                                                   │
 ╰───────────────────────────────────────────────────╯
 ```
+
+### Migrating Documentation from UIKit to PUIK
+
+A documentation is available on [devdocs.uikit.prestashop.com](https://devdocs.uikit.prestashop.com) to help migrate component from old Prestashop UIKit to PUIK.
+If you create a component which exists on Prestashop UIKit, you need to create a pull request on [doc migration repository](https://github.com/PrestaShopCorp/devdocs.uikit.prestashop.com) to add another paragraph about your component.
+Review will be refused if the migrating documentation isn't updated.
