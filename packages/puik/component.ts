@@ -1,3 +1,4 @@
+import { PuikTable } from '@puik/components/table'
 import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
 import { PuikPagination } from '@puik/components/pagination'
 import { PuikTextarea } from '@puik/components/textarea'
@@ -30,6 +31,7 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikTable,
   PuikSpinnerLoader,
   PuikPagination,
   PuikTextarea,
