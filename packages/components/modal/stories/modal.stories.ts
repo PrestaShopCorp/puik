@@ -207,8 +207,8 @@ export enum PuikModalSize {
     secondButtonText: 'Awesome secondary button',
     isOpen: true,
     titleIcon: 'home',
-    variant: 'dialog',
-    size: 'small',
+    variant: PuikModalVariant.DIALOG,
+    size: PuikModalSize.SMALL,
     hideHeader: false,
   },
   parameters: {
