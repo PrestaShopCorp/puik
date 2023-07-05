@@ -69,6 +69,11 @@ export const modalProps = buildProps({
     required: false,
     default: undefined,
   },
+  hideHeader: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 } as const)
 
 export const modalEmits = [

@@ -7,7 +7,10 @@
   >
     <div class="puik-modal__dialogPanelContainer">
       <DialogPanel class="puik-modal__dialogPanelContainer__dialogPanel">
-        <header class="puik-modal__dialogPanelContainer__dialogPanel__header">
+        <header
+          v-if="!hideHeader"
+          class="puik-modal__dialogPanelContainer__dialogPanel__header"
+        >
           <puik-icon
             v-if="titleIcon || PuikModalVariant.DESTRUCTIVE === variant"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__icon"

@@ -58,18 +58,47 @@ export default {
     title: {
       description: 'Set the modal title',
       control: 'text',
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
     },
     mainButtonText: {
       description: 'Set the text of the main button',
       control: 'text',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        defaultValue: {
+          summary: undefined,
+        },
+      },
     },
     secondButtonText: {
       description: 'Set the text of the secondary button',
       control: 'text',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        defaultValue: {
+          summary: undefined,
+        },
+      },
     },
     sideButtonText: {
       description: 'Set the text of the side button',
       control: 'text',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        defaultValue: {
+          summary: undefined,
+        },
+      },
     },
     variant: {
       description: 'Set the style of the modal (use the PuikModalVariant enum)',
@@ -123,6 +152,9 @@ export enum PuikModalSize {
       description: 'Tell if the modal is open or not',
       control: 'boolean',
       table: {
+        type: {
+          summary: 'boolean',
+        },
         defaultValue: {
           summary: false,
         },
@@ -131,6 +163,26 @@ export enum PuikModalSize {
     titleIcon: {
       description: 'The icon name of the modal (top left corner)',
       control: 'text',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        defaultValue: {
+          summary: undefined,
+        },
+      },
+    },
+    hideHeader: {
+      description: 'Hide header',
+      control: 'boolean',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
     },
     default: {
       description: 'Modal content',
@@ -155,8 +207,9 @@ export enum PuikModalSize {
     secondButtonText: 'Awesome secondary button',
     isOpen: true,
     titleIcon: 'home',
-    variant: PuikModalVariant.DIALOG,
-    size: PuikModalSize.SMALL,
+    variant: 'dialog',
+    size: 'small',
+    hideHeader: false,
   },
   parameters: {
     chromatic: { delay: 3000 },
