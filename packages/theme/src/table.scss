@@ -1,0 +1,75 @@
+@use './common/typography.scss';
+.puik-table {
+  @extend .puik-body-default;
+  @apply inline-table border-y-[1px] bg-white font-normal;
+  &__container {
+    @apply max-w-full overflow-x-auto;
+  }
+  &--full-width {
+    @apply w-full;
+  }
+
+  @mixin puik-table-item() {
+    @apply p-4;
+    &--sm {
+      @apply w-[112px] min-w-[112px];
+    }
+    &--md {
+      @apply w-[240px] min-w-[240px];
+    }
+    &--lg {
+      @apply w-[480px] min-w-[480px];
+    }
+    &--selection {
+      &__checkbox,
+      > .puik-checkbox {
+        .puik-checkbox__label {
+          @apply sr-only;
+        }
+      }
+    }
+  }
+
+  @mixin puik-table-text-align() {
+    &--left {
+      @apply text-left;
+    }
+    &--center {
+      @apply text-center;
+    }
+    &--right {
+      @apply text-right;
+    }
+  }
+
+  &__head,
+  > thead {
+    &__row,
+    > tr {
+      &__item,
+      > th {
+        @extend .puik-body-small;
+        @apply font-normal uppercase text-primary-600;
+        @include puik-table-item();
+        @include puik-table-text-align();
+      }
+    }
+  }
+  &__body,
+  > tbody {
+    &__row,
+    > tr {
+      @apply border-t-[1px];
+      &:hover {
+        @apply bg-primary-200;
+      }
+      &__item,
+      > td {
+        @extend .puik-body-default;
+        @apply text-primary-800;
+        @include puik-table-item();
+        @include puik-table-text-align();
+      }
+    }
+  }
+}
