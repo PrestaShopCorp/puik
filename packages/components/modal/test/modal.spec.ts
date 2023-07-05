@@ -224,11 +224,9 @@ describe('Modal tests', () => {
 
   it('expect to not have header', async () => {
     await factory({
-      title: 'Awesome title',
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
       isOpen: true,
-      hideHeader: true,
     })
 
     expect(findHeader().exists()).toBeFalsy()

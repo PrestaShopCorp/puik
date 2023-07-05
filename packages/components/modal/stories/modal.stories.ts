@@ -62,6 +62,9 @@ export default {
         type: {
           summary: 'string',
         },
+        defaultValue: {
+          summary: 'undefined',
+        },
       },
     },
     mainButtonText: {
@@ -172,18 +175,6 @@ export enum PuikModalSize {
         },
       },
     },
-    hideHeader: {
-      description: 'Hide header',
-      control: 'boolean',
-      table: {
-        type: {
-          summary: 'boolean',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
     default: {
       description: 'Modal content',
       control: 'none',
@@ -209,7 +200,6 @@ export enum PuikModalSize {
     titleIcon: 'home',
     variant: PuikModalVariant.DIALOG,
     size: PuikModalSize.SMALL,
-    hideHeader: false,
   },
   parameters: {
     chromatic: { delay: 3000 },

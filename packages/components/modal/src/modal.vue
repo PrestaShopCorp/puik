@@ -8,7 +8,7 @@
     <div class="puik-modal__dialogPanelContainer">
       <DialogPanel class="puik-modal__dialogPanelContainer__dialogPanel">
         <header
-          v-if="!hideHeader"
+          v-if="title"
           class="puik-modal__dialogPanelContainer__dialogPanel__header"
         >
           <puik-icon
