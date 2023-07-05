@@ -101,7 +101,7 @@ Example:
 $ pnpm test
 ```
 
-This project uses [istanbul](https://istanbul.js.org/) as test coverage provider. Run the following command to check the current coverage. Min coverage rate is at 70%
+This project uses [v8](https://v8.dev/blog/javascript-code-coverage) as test coverage provider. Run the following command to check the current coverage. Min coverage rate is at 70%
 
 Example:
 
