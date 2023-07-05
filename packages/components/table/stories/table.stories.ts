@@ -16,7 +16,7 @@ function generateData(length = 3) {
         firstname,
         lastname,
         email,
-        age: Math.floor(Math.random() * 100),
+        age: 40,
       }
     })
 }
