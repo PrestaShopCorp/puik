@@ -27,7 +27,8 @@ export type ModalSizeType = `${PuikModalSize}`
 export const modalProps = buildProps({
   title: {
     type: String,
-    required: true,
+    required: false,
+    default: undefined,
   },
   mainButtonText: {
     type: String,

@@ -5,7 +5,9 @@
   &--invisible {
     @apply invisible;
   }
-
+  .puik-modal__dialogPanelContainer__dialogPanel {
+    @apply w-full sm:w-auto;
+  }
   &--destructive {
     .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
       @apply text-red-500 bg-red-50;

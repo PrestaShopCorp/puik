@@ -17,6 +17,12 @@ export default {
       searchPlaceholder: 'Search',
       noResults: 'No results matched',
     },
+    table: {
+      selectLabel: 'Select item',
+      unselectLabel: 'Unnselect item',
+      selectAllLabel: 'Select all items',
+      unselectAllLabel: 'Unselect all items',
+    },
     skeletonLoaderGroup: {
       label: 'Loading',
     },
@@ -50,6 +56,9 @@ export default {
         collapsed: 'Collapse navigation sidebar',
         close: 'Close navigation sidebar',
       },
+    },
+    snackbar: {
+      closeBtnLabel: 'Close snackbar',
     },
   },
 }
