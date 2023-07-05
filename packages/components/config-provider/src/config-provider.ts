@@ -1,4 +1,4 @@
-import { defineComponent, renderSlot } from 'vue'
+import { defineComponent, renderSlot, type ExtractPropTypes } from 'vue'
 import { buildProps } from '@puik/utils'
 import { provideGlobalConfig } from '@puik/hooks'
 
@@ -16,6 +16,8 @@ export const configProviderProps = buildProps({
     type: Number,
   },
 } as const)
+
+export type ConfigProviderProps = ExtractPropTypes<typeof configProviderProps>
 
 export default defineComponent({
   name: 'PuikConfigProvider',
