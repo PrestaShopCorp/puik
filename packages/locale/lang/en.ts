@@ -50,6 +50,13 @@ export default {
         label: 'Page {page} to {maxPage}',
       },
     },
+    sidebar: {
+      expandButtonLabel: {
+        expanded: 'Expand navigation sidebar',
+        collapsed: 'Collapse navigation sidebar',
+        close: 'Close navigation sidebar',
+      },
+    },
     snackbar: {
       closeBtnLabel: 'Close snackbar',
     },

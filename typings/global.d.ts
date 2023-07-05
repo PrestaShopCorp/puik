@@ -3,6 +3,10 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     PuikTable: typeof import('@prestashopcorp/puik')['PuikTable']
     PuikSpinnerLoader: typeof import('@prestashopcorp/puik')['PuikSpinnerLoader']
+    PuikSidebar: typeof import('@prestashopcorp/puik')['PuikSidebar']
+    PuikSidebarGroupItem: typeof import('@prestashopcorp/puik')['PuikSidebarGroupItem']
+    PuikSidebarItem: typeof import('@prestashopcorp/puik')['PuikSidebarItem']
+    PuikSidebarTitle: typeof import('@prestashopcorp/puik')['PuikSidebarTitle']
     PuikSkeletonLoader: typeof import('@prestashopcorp/puik')['PuikSkeletonLoader']
     PuikSkeletonLoaderGroup: typeof import('@prestashopcorp/puik')['PuikSkeletonLoaderGroup']
     PuikPagination: typeof import('@prestashopcorp/puik')['PuikPagination']

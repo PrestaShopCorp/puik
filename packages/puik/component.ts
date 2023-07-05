@@ -1,5 +1,11 @@
 import { PuikTable } from '@puik/components/table'
 import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
+import {
+  PuikSidebar,
+  PuikSidebarGroupItem,
+  PuikSidebarItem,
+  PuikSidebarTitle,
+} from '@puik/components/sidebar'
 import { PuikPagination } from '@puik/components/pagination'
 import { PuikTextarea } from '@puik/components/textarea'
 import { PuikBreadcrumb } from '@puik/components/breadcrumb'
@@ -34,6 +40,10 @@ import type { Plugin } from 'vue'
 export default [
   PuikTable,
   PuikSpinnerLoader,
+  PuikSidebar,
+  PuikSidebarGroupItem,
+  PuikSidebarItem,
+  PuikSidebarTitle,
   PuikPagination,
   PuikTextarea,
   PuikBreadcrumb,
