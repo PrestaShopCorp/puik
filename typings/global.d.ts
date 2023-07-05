@@ -5,6 +5,7 @@ declare module '@vue/runtime-core' {
     PuikSkeletonLoader: typeof import('@prestashopcorp/puik')['PuikSkeletonLoader']
     PuikSkeletonLoaderGroup: typeof import('@prestashopcorp/puik')['PuikSkeletonLoaderGroup']
     PuikPagination: typeof import('@prestashopcorp/puik')['PuikPagination']
+    PuikTextarea: typeof import('@prestashopcorp/puik')['PuikTextarea']
     PuikBreadcrumb: typeof import('@prestashopcorp/puik')['PuikBreadcrumb']
     PuikAccordionGroup: typeof import('@prestashopcorp/puik')['PuikAccordionGroup']
     PuikAccordion: typeof import('@prestashopcorp/puik')['PuikAccordion']
