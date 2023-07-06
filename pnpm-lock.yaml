@@ -105,8 +105,8 @@ importers:
         specifier: ^6.17.3
         version: 6.17.3
       consola:
-        specifier: ^2.15.3
-        version: 2.15.3
+        specifier: ^3.2.3
+        version: 3.2.3
       cz-conventional-changelog:
         specifier: ^3.3.0
         version: 3.3.0
@@ -207,8 +207,8 @@ importers:
         specifier: ^2.1.4
         version: 2.1.4
       consola:
-        specifier: ^2.15.3
-        version: 2.15.3
+        specifier: ^3.2.3
+        version: 3.2.3
       esbuild:
         specifier: ^0.17.16
         version: 0.17.16
@@ -8226,6 +8226,11 @@ packages:
 
   /consola@2.15.3:
     resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==}
+    dev: true
+
+  /consola@3.2.3:
+    resolution: {integrity: sha512-I5qxpzLv+sJhTVEoLYNcTW+bThDCPsit0vLNKShZx6rLtpilNpmmeTPaeqJb9ZE9dV3DGaeby6Vuhrw38WjeyQ==}
+    engines: {node: ^14.18.0 || >=16.10.0}
 
   /console-browserify@1.2.0:
     resolution: {integrity: sha512-ZMkYO/LkF17QvCPqM0gxw8yUzigAOZOSWSHg91FH6orS7vcEj5dVZTidN2fQ14yBSdg97RqhSNwLUXInd52OTA==}
