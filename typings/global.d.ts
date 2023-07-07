@@ -1,10 +1,16 @@
 // GlobalComponents for Volar
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    PuikTable: typeof import('@prestashopcorp/puik')['PuikTable']
     PuikSpinnerLoader: typeof import('@prestashopcorp/puik')['PuikSpinnerLoader']
+    PuikSidebar: typeof import('@prestashopcorp/puik')['PuikSidebar']
+    PuikSidebarGroupItem: typeof import('@prestashopcorp/puik')['PuikSidebarGroupItem']
+    PuikSidebarItem: typeof import('@prestashopcorp/puik')['PuikSidebarItem']
+    PuikSidebarTitle: typeof import('@prestashopcorp/puik')['PuikSidebarTitle']
     PuikSkeletonLoader: typeof import('@prestashopcorp/puik')['PuikSkeletonLoader']
     PuikSkeletonLoaderGroup: typeof import('@prestashopcorp/puik')['PuikSkeletonLoaderGroup']
     PuikPagination: typeof import('@prestashopcorp/puik')['PuikPagination']
+    PuikTextarea: typeof import('@prestashopcorp/puik')['PuikTextarea']
     PuikBreadcrumb: typeof import('@prestashopcorp/puik')['PuikBreadcrumb']
     PuikAccordionGroup: typeof import('@prestashopcorp/puik')['PuikAccordionGroup']
     PuikAccordion: typeof import('@prestashopcorp/puik')['PuikAccordion']
@@ -30,6 +36,19 @@ declare module '@vue/runtime-core' {
     PuikSwitch: typeof import('@prestashopcorp/puik')['PuikSwitch']
     PuikButton: typeof import('@prestashopcorp/puik')['PuikButton']
     PuikConfigProvider: typeof import('@prestashopcorp/puik')['PuikConfigProvider']
+    PuikSnackbar: typeof import('puik')['PuikSnackbar']
+    PuikCheckbox: typeof import('puik')['PuikCheckbox']
+    PuikLabel: typeof import('puik')['PuikLabel']
+    PuikInput: typeof import('puik')['PuikInput']
+    PuikAlert: typeof import('puik')['PuikAlert']
+    PuikTooltip: typeof import('puik')['PuikTooltip']
+    PuikSwitch: typeof import('puik')['PuikSwitch']
+    PuikButton: typeof import('puik')['PuikButton']
+    PuikConfigProvider: typeof import('puik')['PuikConfigProvider']
+  }
+
+  interface ComponentCustomProperties {
+    $notify: typeof import('@prestashopcorp/puik')['PuikSnackbar']
   }
 }
 

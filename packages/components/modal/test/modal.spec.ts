@@ -41,6 +41,8 @@ describe('Modal tests', () => {
     wrapper.find(
       '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--side'
     )
+  const findHeader = () =>
+    wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header')
 
   const homeTitleIcon = 'home'
 
@@ -218,5 +220,15 @@ describe('Modal tests', () => {
 
     findSecondaryButton().trigger('click')
     expect(wrapper.emitted('button-second')).toBeTruthy()
+  })
+
+  it('expect to not have header', async () => {
+    await factory({
+      mainButtonText: 'Awesome main',
+      secondButtonText: 'Awesome second',
+      isOpen: true,
+    })
+
+    expect(findHeader().exists()).toBeFalsy()
   })
 })

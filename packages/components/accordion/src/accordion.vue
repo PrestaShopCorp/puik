@@ -21,7 +21,7 @@
       ></puik-icon>
       <div class="puik-accordion__header__content">
         <div class="puik-accordion__header__content__title">{{ title }}</div>
-        <div class="puik-accordion__header__content__sub-title">
+        <div v-if="subTitle" class="puik-accordion__header__content__sub-title">
           {{ subTitle }}
         </div>
       </div>

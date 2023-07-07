@@ -1,5 +1,13 @@
+import { PuikTable } from '@puik/components/table'
 import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
+import {
+  PuikSidebar,
+  PuikSidebarGroupItem,
+  PuikSidebarItem,
+  PuikSidebarTitle,
+} from '@puik/components/sidebar'
 import { PuikPagination } from '@puik/components/pagination'
+import { PuikTextarea } from '@puik/components/textarea'
 import { PuikBreadcrumb } from '@puik/components/breadcrumb'
 import { PuikAccordion, PuikAccordionGroup } from '@puik/components/accordion'
 import { PuikBadge } from '@puik/components/badge'
@@ -15,6 +23,7 @@ import { PuikProgressBar } from '@puik/components/progress-bar'
 import { PuikIcon } from '@puik/components/icon'
 import { PuikLink } from '@puik/components/link'
 import { PuikCard } from '@puik/components/card'
+import { PuikSnackbar } from '@puik/components/snackbar'
 import { PuikLabel } from '@puik/components/label'
 import { PuikCheckbox } from '@puik/components/checkbox'
 import { PuikRadio } from '@puik/components/radio'
@@ -29,8 +38,14 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikTable,
   PuikSpinnerLoader,
+  PuikSidebar,
+  PuikSidebarGroupItem,
+  PuikSidebarItem,
+  PuikSidebarTitle,
   PuikPagination,
+  PuikTextarea,
   PuikBreadcrumb,
   PuikAccordion,
   PuikAccordionGroup,
@@ -45,6 +60,7 @@ export default [
   PuikIcon,
   PuikLink,
   PuikCard,
+  PuikSnackbar,
   PuikLabel,
   PuikRadio,
   PuikInput,

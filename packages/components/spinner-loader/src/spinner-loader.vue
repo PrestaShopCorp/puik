@@ -9,7 +9,11 @@
     aria-live="polite"
     role="status"
   >
-    <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
+    <div
+      class="puik-spinner-loader__spinner"
+      aria-hidden="true"
+      data-chromatic="ignore"
+    ></div>
     <span v-if="label" class="puik-spinner-loader__label">
       {{ label }}
     </span>

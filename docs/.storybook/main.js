@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 module.exports = {
   stories: [
-    '../stories/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
-    '../../packages/components/**/*.stories.@(js|jsx|ts|tsx)',
+    '../stories/*/**.@(js|jsx|ts|tsx|mdx)',
+    '../../packages/components/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
   addons: [
     '@storybook/addon-links',
@@ -22,7 +22,16 @@ module.exports = {
     }
     // eslint-disable-next-line
     config.plugins.push(require('unplugin-vue-define-options/vite')())
-    return config
+    return {
+      ...config,
+      optimizeDeps: {
+        ...config.optimizeDeps,
+        entries: [
+          '../stories/**/*.stories.mdx',
+          '../../packages/components/**/*.stories.@(js|jsx|ts|tsx)',
+        ],
+      },
+    }
   },
   docs: {
     autodocs: true,
