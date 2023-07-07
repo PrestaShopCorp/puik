@@ -61,10 +61,31 @@ export default {
     trigger: {
       control: 'none',
       description: 'Trigger used to show or hide menu',
+      table: {
+        type: {
+          summary: 'SlotProps',
+          detail: `
+  {
+    open: boolean
+  }
+          `,
+        },
+      },
     },
     default: {
       control: 'none',
       description: 'Menu content',
+      table: {
+        type: {
+          summary: 'SlotProps',
+          detail: `
+  {
+    open: boolean,
+    close: () => void
+  }
+            `,
+        },
+      },
     },
   },
   args: {
