@@ -1,6 +1,6 @@
 import { PuikSidebarGroupItem, PuikSidebarItem, PuikSidebarTitle } from '..'
 import PuikSidebar from './../src/sidebar.vue'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { Meta, StoryObj, StoryFn, Args } from '@storybook/vue3'
 
 export default {
   title: 'Components/Sidebar/SidebarGroupItem',
@@ -61,13 +61,15 @@ export default {
   },
   parameters: {
     docs: {
-      inlineStories: false,
-      iframeHeight: 500,
+      story: {
+        inline: false,
+        iframeHeight: 500,
+      },
     },
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikSidebar,
     PuikSidebarGroupItem,
@@ -91,12 +93,13 @@ const Template: Story = (args: Args) => ({
   `,
 })
 
-export const Default = Template.bind({})
-Default.args = {}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
+export const Default: StoryObj = {
+  render: Template,
+  args: {},
+  parameters: {
+    docs: {
+      source: {
+        code: `
 <!--VueJS Snippet-->
 <puik-sidebar>
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
@@ -112,7 +115,8 @@ Default.parameters = {
   </puik-sidebar-group-item>
 </puik-sidebar>
 `,
-      language: 'html',
+        language: 'html',
+      },
     },
   },
 }

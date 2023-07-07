@@ -204,8 +204,10 @@ export enum PuikModalSize {
   parameters: {
     chromatic: { delay: 3000 },
     docs: {
-      inlineStories: false,
-      iframeHeight: 500,
+      story: {
+        inline: false,
+        iframeHeight: 500,
+      },
     },
   },
 } as Meta

@@ -1,7 +1,7 @@
 import { PuikSidebarGroupItem, PuikSidebarItem, PuikSidebarTitle } from '..'
 import { PuikButton } from '../..'
 import PuikSidebar from './../src/sidebar.vue'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { Meta, StoryObj, StoryFn, Args } from '@storybook/vue3'
 
 export default {
   title: 'Components/Sidebar',
@@ -47,13 +47,15 @@ export default {
   },
   parameters: {
     docs: {
-      inlineStories: false,
-      iframeHeight: 500,
+      story: {
+        inline: false,
+        iframeHeight: 500,
+      },
     },
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikSidebar,
     PuikSidebarGroupItem,
@@ -97,15 +99,16 @@ const Template: Story = (args: Args) => ({
   `,
 })
 
-export const Default = Template.bind({})
-Default.args = {
-  expanded: false,
-  mobile: false,
-}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
+export const Default: StoryObj = {
+  render: Template,
+  args: {
+    expanded: false,
+    mobile: false,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
 <!--VueJS Snippet-->
 <puik-sidebar :open-accordion="name" :mobile="mobile" v-model:expanded="expanded">
   <puik-sidebar-item title="Home" icon="home" />
@@ -162,7 +165,7 @@ Default.parameters = {
         <div disabled="false" id="headlessui-menu-button-1" aria-haspopup="menu" aria-expanded="false" data-headlessui-state="" class="puik-sidebar-group-item__menu-button">
           <button class="puik-button puik-button--text puik-button--md puik-button--fluid puik-sidebar-group-item__collapsed-button">
             <div class="puik-icon material-icons-round" style="font-size: 1.25rem;">shopping_basket</div>
-          
+
           </button>
         </div>
       </div>
@@ -316,12 +319,13 @@ Default.parameters = {
   </nav>
 </div>
 `,
-      language: 'html',
+        language: 'html',
+      },
     },
   },
 }
 
-const MobileTemplate = (args: Args) => ({
+const MobileTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikSidebar,
     PuikSidebarGroupItem,
@@ -374,15 +378,16 @@ const MobileTemplate = (args: Args) => ({
   `,
 })
 
-export const Mobile: Story = MobileTemplate.bind({})
-Mobile.args = {
-  expanded: false,
-  mobile: true,
-}
-Mobile.parameters = {
-  docs: {
-    source: {
-      code: `
+export const Mobile: StoryObj = {
+  render: MobileTemplate,
+  args: {
+    expanded: false,
+    mobile: true,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
 <puik-sidebar mobile v-model:expanded="expanded" style="position: fixed; height: 100vh;">
   <puik-sidebar-item title="Home" icon="home" />
   <puik-sidebar-item title="Dashboard" icon="trending_up" />
@@ -543,7 +548,8 @@ Mobile.parameters = {
   Open/Close
 </button>
 `,
-      language: 'html',
+        language: 'html',
+      },
     },
   },
 }

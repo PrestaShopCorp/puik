@@ -1,6 +1,6 @@
 import { PuikSidebarItem, PuikSidebarTitle } from '..'
 import PuikSidebar from './../src/sidebar.vue'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { Meta, StoryObj, StoryFn, Args } from '@storybook/vue3'
 
 export default {
   title: 'Components/Sidebar/SidebarTitle',
@@ -37,13 +37,15 @@ export default {
   },
   parameters: {
     docs: {
-      inlineStories: false,
-      iframeHeight: 500,
+      story: {
+        inline: false,
+        iframeHeight: 500,
+      },
     },
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikSidebar,
     PuikSidebarItem,
@@ -61,15 +63,18 @@ const Template: Story = (args: Args) => ({
   `,
 })
 
-export const Default = Template.bind({})
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
+export const Default: StoryObj = {
+  render: Template,
+  args: {},
+  parameters: {
+    docs: {
+      source: {
+        code: `
 <!--VueJS Snippet-->
 <puik-sidebar-title :tag="tag">Title</puik-sidebar-title>
 `,
-      language: 'html',
+        language: 'html',
+      },
     },
   },
 }

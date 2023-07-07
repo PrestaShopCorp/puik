@@ -1,6 +1,6 @@
 import { PuikSidebarGroupItem, PuikSidebarItem, PuikSidebarTitle } from '..'
 import PuikSidebar from './../src/sidebar.vue'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { Meta, StoryObj, StoryFn, Args } from '@storybook/vue3'
 
 export default {
   title: 'Components/Sidebar/SidebarItem',
@@ -77,13 +77,15 @@ export default {
   },
   parameters: {
     docs: {
-      inlineStories: false,
-      iframeHeight: 500,
+      story: {
+        inline: false,
+        iframeHeight: 500,
+      },
     },
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikSidebar,
     PuikSidebarGroupItem,
@@ -111,29 +113,31 @@ const Template: Story = (args: Args) => ({
   `,
 })
 
-export const Default = Template.bind({})
-Default.args = {}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-sidebar>
-  <puik-sidebar-item :title="title" :icon="icon" :active="active" />
-  <puik-sidebar-item title="Dashboard" icon="trending_up" />
-  <puik-sidebar-title>Section title</puik-sidebar-title>
-  <puik-sidebar-group-item
-    title="Orders"
-    icon="shopping_basket"
-    name="group-1"
-    :active="active"
-  >
+export const Default: StoryObj = {
+  render: Template,
+  args: {},
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-sidebar>
     <puik-sidebar-item :title="title" :icon="icon" :active="active" />
-    <puik-sidebar-item title="Title 2" />
-  </puik-sidebar-group-item>
-</puik-sidebar>
-`,
-      language: 'html',
+    <puik-sidebar-item title="Dashboard" icon="trending_up" />
+    <puik-sidebar-title>Section title</puik-sidebar-title>
+    <puik-sidebar-group-item
+      title="Orders"
+      icon="shopping_basket"
+      name="group-1"
+      :active="active"
+    >
+      <puik-sidebar-item :title="title" :icon="icon" :active="active" />
+      <puik-sidebar-item title="Title 2" />
+    </puik-sidebar-group-item>
+  </puik-sidebar>
+  `,
+        language: 'html',
+      },
     },
   },
 }

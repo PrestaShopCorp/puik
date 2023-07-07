@@ -4,6 +4,9 @@ module.exports = {
     '../stories/*/**.@(js|jsx|ts|tsx|mdx)',
     '../../packages/components/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
+  core: {
+    disableTelemetry: true,
+  },
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
