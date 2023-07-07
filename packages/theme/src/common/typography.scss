@@ -93,13 +93,13 @@
 // Buttons
 
 .puik-text-button-default {
-  @apply font-primary font-semibold text-sm leading-[1.125rem];
+  @apply font-primary font-medium text-sm leading-[1.125rem];
 }
 
 .puik-text-button-small {
-  @apply font-primary text-xs leading-4 font-semibold;
+  @apply font-primary text-xs leading-4 font-medium;
 }
 
 .puik-text-button-large {
-  @apply font-primary text-base leading-5 font-semibold;
+  @apply font-primary text-base leading-5 font-medium;
 }
