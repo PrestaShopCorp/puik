@@ -1,11 +1,12 @@
 <template>
   <Popover
+    v-slot="{ open }"
     class="puik-menu"
     :class="[`puik-menu--position-${position}`, `puik-menu--align-${align}`]"
     as="div"
   >
     <PopoverButton class="puik-menu__trigger" as="template">
-      <slot name="trigger"></slot>
+      <slot name="trigger" :open="open"></slot>
     </PopoverButton>
 
     <transition
@@ -21,7 +22,7 @@
         class="puik-menu__content"
         :style="{ maxHeight, width }"
       >
-        <slot :close="close"></slot>
+        <slot :close="close" :open="open"></slot>
       </PopoverPanel>
     </transition>
   </Popover>
