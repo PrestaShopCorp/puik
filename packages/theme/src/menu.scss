@@ -12,7 +12,8 @@
       flex
       flex-col
       gap-0.5
-      overflow-y-auto;
+      overflow-y-auto
+      z-[1];
   }
 
   &--invisible {
