@@ -27,6 +27,8 @@ export const getAccordionSubTitle = (component) =>
   component.find('.puik-accordion__header__content__sub-title')
 export const getAccordionExpandIcon = (component) =>
   component.find('.puik-accordion__header__expand__icon')
+export const getAccordionIcon = (component) =>
+  component.find('.puik-accordion__header__icon')
 
 describe('Accordion tests', () => {
   it('should be a vue instance', () => {
@@ -135,5 +137,19 @@ describe('Accordion tests', () => {
     const accordion = getAccordion(wrapper)
     expect(accordion.classes()).toContain('puik-accordion--disabled')
     expect(getAccordionHeader(accordion).attributes('disabled')).toBeDefined()
+  })
+
+  it('should have icon', () => {
+    const icon = 'home'
+    const template = `
+      <puik-accordion-group>
+        <puik-accordion name="accordion-1" icon="${icon}">
+          Content
+        </puik-accordion>
+      </puik-accordion-group>
+    `
+    factory(template)
+
+    expect(getAccordionIcon(wrapper).text()).toBe(icon)
   })
 })

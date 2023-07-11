@@ -7,5 +7,12 @@ export default defineConfig({
   test: {
     include: ['**/*.spec.ts'],
     environment: 'jsdom',
+    coverage: {
+      provider: 'v8',
+      branches: 60,
+      functions: 60,
+      lines: 60,
+      statements: 60,
+    },
   },
 })

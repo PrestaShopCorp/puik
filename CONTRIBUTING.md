@@ -101,6 +101,14 @@ Example:
 $ pnpm test
 ```
 
+This project uses [v8](https://v8.dev/blog/javascript-code-coverage) as test coverage provider. Run the following command to check the current coverage. Min coverage rate is at 60%
+
+Example:
+
+```sh
+$ pnpm coverage
+```
+
 ### Storybook
 
 If you are adding a new feature, refactoring or changing the behavior of a component
