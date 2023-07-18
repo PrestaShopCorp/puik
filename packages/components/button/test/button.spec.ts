@@ -8,6 +8,8 @@ describe('Button tests', () => {
   const findButton = () => wrapper.find('.puik-button')
   const findButtonLeftIcon = () => wrapper.find('.puik-button__left-icon')
   const findButtonRightIcon = () => wrapper.find('.puik-button__right-icon')
+  const findButtonSpinnerLoader = () =>
+    wrapper.find('.puik-spinner-loader__spinner')
 
   const factory = (
     propsData: Record<string, any> = {},
@@ -99,5 +101,10 @@ describe('Button tests', () => {
   it('should be a link if href prop is defined', () => {
     factory({ href: '/test' })
     expect(findButton().element.tagName).toBe('A')
+  })
+
+  it('should display a spinner loader if loading prop is defined', () => {
+    factory({ loading: true })
+    expect(findButtonSpinnerLoader().exists()).toBeTruthy()
   })
 })
