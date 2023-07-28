@@ -1,3 +1,4 @@
+import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
 import PuikAccordionGroup from '../src/accordion-group.vue'
@@ -17,8 +18,11 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
   })
 }
 
+const rootClass = 'puik-accordion'
+const expandedClass = 'puik-accordion--expanded'
+
 const getAccordionGroup = () => wrapper.find('.puik-accordion-group')
-const getAccordions = () => wrapper.findAll('.puik-accordion')
+const getAccordions = () => wrapper.findAll(`.${rootClass}`)
 
 describe('AccordionGroup collapse/expand tests', () => {
   it('should be a vue instance', () => {
@@ -50,7 +54,7 @@ describe('AccordionGroup collapse/expand tests', () => {
     factory(template)
 
     const accordion = getAccordion(wrapper)
-    expect(accordion.classes()).toContain('puik-accordion--expanded')
+    expect(accordion.classes()).toContain(expandedClass)
   })
 
   it('should accordions title have aria-expanded', () => {
@@ -112,5 +116,66 @@ describe('AccordionGroup props tests', () => {
 
     const group = getAccordionGroup()
     expect(group.classes()).toContain('puik-accordion-group--contained')
+  })
+  it('should change expanded accordion on v-model change', async () => {
+    const template = `
+      <puik-accordion-group v-model="expandedAccordions">
+        <puik-accordion name="accordion-1" title="title 1">
+          Content 1
+        </puik-accordion>
+        <puik-accordion name="accordion-2" title="title 2">
+          Content 2
+        </puik-accordion>
+        <puik-accordion name="accordion-3" title="title 3">
+          Content 3
+        </puik-accordion>
+      </puik-accordion-group>
+    `
+
+    factory(template, {
+      data() {
+        return { expandedAccordions: 'accordion-1' }
+      },
+    })
+
+    wrapper.setData({ expandedAccordions: 'accordion-2' })
+    await nextTick()
+
+    const accordions = getAccordions()
+    expect(accordions[1].classes()).toEqual([rootClass, expandedClass])
+    expect(accordions[2].classes()).toEqual([rootClass])
+
+    wrapper.setData({ expandedAccordions: ['accordion-3'] })
+    await nextTick()
+    expect(accordions[1].classes()).toEqual([rootClass])
+    expect(accordions[2].classes()).toEqual([rootClass, expandedClass])
+  })
+  it('should change expanded accordion on click on multiple mode', async () => {
+    const template = `
+      <puik-accordion-group multiple>
+        <puik-accordion name="accordion-1" title="title 1">
+          Content 1
+        </puik-accordion>
+        <puik-accordion name="accordion-2" title="title 2">
+          Content 2
+        </puik-accordion>
+        <puik-accordion name="accordion-3" title="title 3">
+          Content 3
+        </puik-accordion>
+      </puik-accordion-group>
+    `
+
+    factory(template)
+
+    const accordions = getAccordions()
+    const accordionButtons = wrapper.findAll('.puik-accordion__header')
+
+    accordionButtons[0].trigger('click')
+    accordionButtons[1].trigger('click')
+    await nextTick()
+
+    expect(accordions[0].classes()).toEqual([rootClass, expandedClass])
+    expect(accordions[1].classes()).toEqual([rootClass, expandedClass])
+    expect(accordions[2].classes()).toEqual([rootClass])
   })
 })

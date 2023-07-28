@@ -48,7 +48,7 @@ describe('Breadcrumb tests', () => {
     expect(wrapper).toBeTruthy()
   })
   it('should not display without items', () => {
-    factory({ items: [] })
+    factory()
     expect(wrapper.element.tagName).toBeFalsy()
   })
   it('should first item be A with href', () => {
