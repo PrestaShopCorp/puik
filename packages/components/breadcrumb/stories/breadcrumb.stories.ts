@@ -1,5 +1,5 @@
 import PuikBreadcrumb from './../src/breadcrumb.vue'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { Meta, StoryFn, Args } from '@storybook/vue3'
 export default {
   title: 'Components/Breadcrumb',
   component: PuikBreadcrumb,
@@ -69,7 +69,7 @@ interface BreadBreadcrumbItem {
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikBreadcrumb,
   },
@@ -79,33 +79,36 @@ const Template: Story = (args: Args) => ({
   template: `<puik-breadcrumb v-bind="args"></puik-breadcrumb>`,
 })
 
-export const Default = Template.bind({})
-Default.args = {}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-breadcrumb
-  :items="items"
-  :icon="icon"
-></puik-breadcrumb>
+export const Default = {
+  render: Template,
+  args: {},
 
-<!--HTML/CSS Snippet-->
-<nav class="puik-breadcrumb" role="navigation">
-  <div class="puik-icon material-icons-round puik-breadcrumb__home-icon" style="font-size: 16px;">home</div>
-  <div class="puik-breadcrumb__item">
-    <a href="#" target="_self" class="puik-link puik-link--sm puik-breadcrumb__item-link">First link</a>
-    <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 16px;">keyboard_arrow_right</div>
-  </div>
-  <div class="puik-breadcrumb__item">
-    <a href="#" target="_self" class="puik-link puik-link--sm puik-breadcrumb__item-link">Second link</a>
-    <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 16px;">keyboard_arrow_right</div>
-  </div>
-  <div class="puik-breadcrumb__item--last">Third link</div>
-</nav>
-      `,
-      language: 'html',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-breadcrumb
+    :items="items"
+    :icon="icon"
+  ></puik-breadcrumb>
+
+  <!--HTML/CSS Snippet-->
+  <nav class="puik-breadcrumb" role="navigation">
+    <div class="puik-icon material-icons-round puik-breadcrumb__home-icon" style="font-size: 16px;">home</div>
+    <div class="puik-breadcrumb__item">
+      <a href="#" target="_self" class="puik-link puik-link--sm puik-breadcrumb__item-link">First link</a>
+      <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 16px;">keyboard_arrow_right</div>
+    </div>
+    <div class="puik-breadcrumb__item">
+      <a href="#" target="_self" class="puik-link puik-link--sm puik-breadcrumb__item-link">Second link</a>
+      <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 16px;">keyboard_arrow_right</div>
+    </div>
+    <div class="puik-breadcrumb__item--last">Third link</div>
+  </nav>
+        `,
+        language: 'html',
+      },
     },
   },
 }

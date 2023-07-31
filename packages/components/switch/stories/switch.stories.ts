@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { useArgs } from '@storybook/client-api'
 import PuikSwitch from './../src/switch.vue'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { StoryObj, StoryFn, Meta, Args } from '@storybook/vue3'
 
 export default {
   title: 'Components/Switch',
@@ -67,7 +67,7 @@ export default {
   },
 } as Meta
 
-const Template: Story = (args: Args) => {
+const Template: StoryFn = (args: Args) => {
   const [_, updateArgs] = useArgs()
   return {
     components: {
@@ -81,35 +81,31 @@ const Template: Story = (args: Args) => {
   }
 }
 
-export const Default = Template.bind({})
-Default.args = {}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-switch
-  v-model="value"
-  :label="label"
-  :label-right="labelRight"
-  :disable="true|false"
-  :screen-reader-text="screenReaderText"
-></puik-switch>
+export const Default = {
+  render: Template,
+  args: {},
 
-<!--HTML/CSS Snippet-->
-<div class="puik-switch__group">
-  <label for="switch-id" class="puik-switch__label puik-switch__label--left">Switch label</label>
-  <button class="puik-switch" id="switch-id" role="switch" type="button" aria-checked="false">
-    <span class="puik-switch__screen-readers">Screen reader text</span>
-    <span class="puik-switch__toggle"></span>
-  </button>
-</div>
-      `,
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-switch v-model="enabled">Switch Label Slot</puik-switch>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-switch__group">
+    <label for="switch-id" class="puik-switch__label puik-switch__label--left">Switch label</label>
+    <button class="puik-switch" id="switch-id" role="switch" type="button" aria-checked="false>
+      <span class="puik-switch__toggle"></span>
+    </button>
+  </div>
+        `,
+      },
     },
   },
 }
 
-export const Label: Story = () => ({
+export const Label: StoryFn = () => ({
   components: {
     PuikSwitch,
   },
@@ -121,37 +117,40 @@ export const Label: Story = () => ({
     '<puik-switch v-model="enabled" label="Switch Label"></puik-switch>',
 })
 
-export const LabelRight: Story = () => ({
-  components: {
-    PuikSwitch,
-  },
-  setup() {
-    const enabled = ref(false)
-    return { enabled }
-  },
-  template:
-    '<puik-switch v-model="enabled" label-right="Switch Label Right"></puik-switch>',
-})
-LabelRight.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-switch v-model="enabled" label-right="Switch Label Right"></puik-switch>
+export const LabelRight: StoryObj = {
+  render: () => ({
+    components: {
+      PuikSwitch,
+    },
+    setup() {
+      const enabled = ref(false)
+      return { enabled }
+    },
+    template:
+      '<puik-switch v-model="enabled" label-right="Switch Label Right"></puik-switch>',
+  }),
 
-<!--HTML/CSS Snippet-->
-<div class="puik-switch__group">
-  <button class="puik-switch" id="switch-id" role="switch" type="button" aria-checked="false">
-    <span class="puik-switch__toggle"></span>
-  </button>
-  <label for="switch-id" class="puik-switch__label puik-switch__label--right">Switch Label Right</label>
-</div>
-      `,
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-switch v-model="enabled" label-right="Switch Label Right"></puik-switch>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-switch__group">
+    <button class="puik-switch" id="switch-id" role="switch" type="button" aria-checked="false">
+      <span class="puik-switch__toggle"></span>
+    </button>
+    <label for="switch-id" class="puik-switch__label puik-switch__label--right">Switch Label Right</label>
+  </div>
+        `,
+      },
     },
   },
 }
 
-export const LabelBySlot: Story = () => ({
+export const LabelBySlot: StoryFn = () => ({
   components: {
     PuikSwitch,
   },
@@ -161,151 +160,146 @@ export const LabelBySlot: Story = () => ({
   },
   template: '<puik-switch v-model="enabled">Switch Label Slot</puik-switch>',
 })
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-switch v-model="enabled">Switch Label Slot</puik-switch>
 
-<!--HTML/CSS Snippet-->
-<div class="puik-switch__group">
-  <label for="switch-id" class="puik-switch__label puik-switch__label--left">Switch label</label>
-  <button class="puik-switch" id="switch-id" role="switch" type="button" aria-checked="false>
-    <span class="puik-switch__toggle"></span>
-  </button>
-</div>
-      `,
+export const LabelRightBySlot: StoryObj = {
+  render: () => ({
+    components: {
+      PuikSwitch,
+    },
+    setup() {
+      const enabled = ref(false)
+      return { enabled }
+    },
+    template:
+      '<puik-switch v-model="enabled"><template #labelRight>Switch Label Right Slot</template></puik-switch>',
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-switch v-model="enabled">
+    <template #labelRight>Switch Label Right Slot</template>
+  </puik-switch>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-switch__group">
+    <button class="puik-switch" id="switch-id" role="switch" type="button" aria-checked="false">
+      <span class="puik-switch__toggle"></span>
+    </button>
+    <label for="switch-id" class="puik-switch__label puik-switch__label--right">Switch Label Right</label>
+  </div>
+        `,
+      },
     },
   },
 }
 
-export const LabelRightBySlot: Story = () => ({
-  components: {
-    PuikSwitch,
-  },
-  setup() {
-    const enabled = ref(false)
-    return { enabled }
-  },
-  template:
-    '<puik-switch v-model="enabled"><template #labelRight>Switch Label Right Slot</template></puik-switch>',
-})
-LabelRightBySlot.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-switch v-model="enabled">
-  <template #labelRight>Switch Label Right Slot</template>
-</puik-switch>
-
-<!--HTML/CSS Snippet-->
-<div class="puik-switch__group">
-  <button class="puik-switch" id="switch-id" role="switch" type="button" aria-checked="false">
-    <span class="puik-switch__toggle"></span>
-  </button>
-  <label for="switch-id" class="puik-switch__label puik-switch__label--right">Switch Label Right</label>
-</div>
-      `,
+export const Disabled: StoryObj = {
+  render: () => ({
+    components: {
+      PuikSwitch,
     },
-  },
-}
-export const Disabled: Story = () => ({
-  components: {
-    PuikSwitch,
-  },
-  setup() {
-    const firstSwitch = ref(true)
-    const secondSwitch = ref(false)
-    return { firstSwitch, secondSwitch }
-  },
-  template: `
-    <puik-switch v-model="firstSwitch" disabled>Disabled On</puik-switch>
-    <puik-switch v-model="secondSwitch" disabled>Disabled Off</puik-switch>
-  `,
-})
-Disabled.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-switch v-model="enabled" disabled>Disabled</puik-switch>
+    setup() {
+      const firstSwitch = ref(true)
+      const secondSwitch = ref(false)
+      return { firstSwitch, secondSwitch }
+    },
+    template: `
+      <puik-switch v-model="firstSwitch" disabled>Disabled On</puik-switch>
+      <puik-switch v-model="secondSwitch" disabled>Disabled Off</puik-switch>
+    `,
+  }),
 
-<!--HTML/CSS Snippet-->
-<div class="puik-switch__group">
-  <label for="switch-id" class="puik-switch__label puik-switch__label--left">Disabled</label>
-  <button class="puik-switch" disabled id="switch-id" role="switch" type="button" aria-checked="false">
-    <span class="puik-switch__toggle"></span>
-  </button>
-</div>
-      `,
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-switch v-model="enabled" disabled>Disabled</puik-switch>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-switch__group">
+    <label for="switch-id" class="puik-switch__label puik-switch__label--left">Disabled</label>
+    <button class="puik-switch" disabled id="switch-id" role="switch" type="button" aria-checked="false">
+      <span class="puik-switch__toggle"></span>
+    </button>
+  </div>
+        `,
+      },
     },
   },
 }
 
-export const Active: Story = () => ({
-  components: {
-    PuikSwitch,
-  },
-  setup() {
-    const enabled = ref(true)
-    return { enabled }
-  },
-  template: '<puik-switch v-model="enabled">On</puik-switch>',
-})
-Active.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-switch v-model="enabled">Switch label</puik-switch>
+export const Active: StoryObj = {
+  render: () => ({
+    components: {
+      PuikSwitch,
+    },
+    setup() {
+      const enabled = ref(true)
+      return { enabled }
+    },
+    template: '<puik-switch v-model="enabled">On</puik-switch>',
+  }),
 
-<!--HTML/CSS Snippet-->
-<div class="puik-switch__group">
-  <label for="switch-id" class="puik-switch__label puik-switch__label--left">Switch label</label>
-  <button class="puik-switch" id="switch-id" role="switch" type="button" aria-checked="false">
-    <span class="puik-switch__toggle"></span>
-  </button>
-</div>
-      `,
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-switch v-model="enabled">Switch label</puik-switch>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-switch__group">
+    <label for="switch-id" class="puik-switch__label puik-switch__label--left">Switch label</label>
+    <button class="puik-switch" id="switch-id" role="switch" type="button" aria-checked="false">
+      <span class="puik-switch__toggle"></span>
+    </button>
+  </div>
+        `,
+      },
     },
   },
 }
 
-export const AllStates: Story = () => ({
-  components: {
-    PuikSwitch,
-  },
-  setup() {
-    const firstSwitch = ref(true)
-    const secondSwitch = ref(false)
-    const thirdSwitch = ref(true)
-    const lastSwitch = ref(false)
-    return { firstSwitch, secondSwitch, thirdSwitch, lastSwitch }
-  },
-  template: `
-    <puik-switch v-model="firstSwitch" label="On"></puik-switch>
-    <puik-switch v-model="secondSwitch">Off</puik-switch>
-    <puik-switch v-model="thirdSwitch" disabled>Disabled On</puik-switch>
-    <puik-switch v-model="lastSwitch" disabled>Disabled Off</puik-switch>
-  `,
-})
-AllStates.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-switch v-model="enabled">Switch label</puik-switch>
+export const AllStates: StoryObj = {
+  render: () => ({
+    components: {
+      PuikSwitch,
+    },
+    setup() {
+      const firstSwitch = ref(true)
+      const secondSwitch = ref(false)
+      const thirdSwitch = ref(true)
+      const lastSwitch = ref(false)
+      return { firstSwitch, secondSwitch, thirdSwitch, lastSwitch }
+    },
+    template: `
+      <puik-switch v-model="firstSwitch" label="On"></puik-switch>
+      <puik-switch v-model="secondSwitch">Off</puik-switch>
+      <puik-switch v-model="thirdSwitch" disabled>Disabled On</puik-switch>
+      <puik-switch v-model="lastSwitch" disabled>Disabled Off</puik-switch>
+    `,
+  }),
 
-<!--HTML/CSS Snippet-->
-<div class="puik-switch__group">
-  <label for="switch-id" class="puik-switch__label puik-switch__label--left">Switch label</label>
-  <button class="puik-switch" id="switch-id" role="switch" type="button" aria-checked="false">
-    <span class="puik-switch__toggle"></span>
-  </button>
-</div>
-      `,
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-switch v-model="enabled">Switch label</puik-switch>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-switch__group">
+    <label for="switch-id" class="puik-switch__label puik-switch__label--left">Switch label</label>
+    <button class="puik-switch" id="switch-id" role="switch" type="button" aria-checked="false">
+      <span class="puik-switch__toggle"></span>
+    </button>
+  </div>
+        `,
+      },
     },
   },
 }

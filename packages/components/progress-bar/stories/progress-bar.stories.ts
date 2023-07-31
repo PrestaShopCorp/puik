@@ -1,5 +1,5 @@
 import PuikProgressBar from './../src/progress-bar.vue'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {
   title: 'Components/ProgressBar',
@@ -18,7 +18,7 @@ export default {
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikProgressBar,
   },
@@ -28,63 +28,74 @@ const Template: Story = (args: Args) => ({
   template: `<puik-progress-bar v-bind="args"/>`,
 })
 
-export const Default = Template.bind({})
-Default.args = {}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-progress-bar :percentage="50" />
+export const Default = {
+  render: Template,
+  args: {},
 
-<!--HTML/CSS Snippet-->
-<div class="progress-bar__container">
-  <div class="progress-bar__content" style="width: 50%;"></div>
-</div>
-      `,
-      language: 'html',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-progress-bar :percentage="50" />
+
+  <!--HTML/CSS Snippet-->
+  <div class="progress-bar__container">
+    <div class="progress-bar__content" style="width: 50%;"></div>
+  </div>
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const Max = Template.bind({})
-Max.args = {
-  percentage: 100,
-}
-Max.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-progress-bar :percentage="100" />
+export const Max = {
+  render: Template,
 
-<!--HTML/CSS Snippet-->
-<div class="progress-bar__container">
-  <div class="progress-bar__content" style="width: 100%;"></div>
-</div>
-      `,
-      language: 'html',
+  args: {
+    percentage: 100,
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-progress-bar :percentage="100" />
+
+  <!--HTML/CSS Snippet-->
+  <div class="progress-bar__container">
+    <div class="progress-bar__content" style="width: 100%;"></div>
+  </div>
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const Min = Template.bind({})
-Min.args = {
-  percentage: 0,
-}
-Min.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-progress-bar :percentage="0" />
+export const Min = {
+  render: Template,
 
-<!--HTML/CSS Snippet-->
-<div class="progress-bar__container">
-  <div class="progress-bar__content" style="width: 0%;"></div>
-</div>
-      `,
-      language: 'html',
+  args: {
+    percentage: 0,
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-progress-bar :percentage="0" />
+
+  <!--HTML/CSS Snippet-->
+  <div class="progress-bar__container">
+    <div class="progress-bar__content" style="width: 0%;"></div>
+  </div>
+        `,
+        language: 'html',
+      },
     },
   },
 }

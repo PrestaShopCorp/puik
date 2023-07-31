@@ -1,5 +1,5 @@
 import PuikLabel from '../src/label.vue'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {
   title: 'Components/Label',
@@ -43,7 +43,7 @@ export default {
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikLabel,
   },
@@ -53,109 +53,119 @@ const Template: Story = (args: Args) => ({
   template: `<puik-label v-bind="args">{{ args.default }}</puik-label>`,
 })
 
-export const Default = Template.bind({})
-Default.args = {
-  optional: false,
-  required: false,
-  readonly: false,
-  for: 'input',
-  default: 'My Label',
-}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-label for="input">My Label</puik-label>
+export const Default = {
+  render: Template,
 
-<!--HTML/CSS Snippet-->
-<label class="puik-label" for="input">My Label</label>
-      `,
-      language: 'html',
+  args: {
+    optional: false,
+    required: false,
+    readonly: false,
+    for: 'input',
+    default: 'My Label',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-label for="input">My Label</puik-label>
+
+  <!--HTML/CSS Snippet-->
+  <label class="puik-label" for="input">My Label</label>
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const Optional: Story = (args: Args) => ({
-  components: {
-    PuikLabel,
-  },
-  setup() {
-    return { args }
-  },
-  template: `<puik-label for="input" optional>My Label</puik-label>`,
-})
+export const Optional: StoryObj = {
+  render: (args: Args) => ({
+    components: {
+      PuikLabel,
+    },
+    setup() {
+      return { args }
+    },
+    template: `<puik-label for="input" optional>My Label</puik-label>`,
+  }),
 
-Optional.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-label for="input" optional>My Label</puik-label>
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-label for="input" optional>My Label</puik-label>
 
-<!--HTML/CSS Snippet-->
-<label class="puik-label" for="input">
-  My Label
-  <span class="puik-label--optional">(Optional)</span>
-</label>
-      `,
-      language: 'html',
+  <!--HTML/CSS Snippet-->
+  <label class="puik-label" for="input">
+    My Label
+    <span class="puik-label--optional">(Optional)</span>
+  </label>
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const Required: Story = (args: Args) => ({
-  components: {
-    PuikLabel,
-  },
-  setup() {
-    return { args }
-  },
-  template: `<puik-label for="input" required>My Label</puik-label>`,
-})
+export const Required: StoryObj = {
+  render: (args: Args) => ({
+    components: {
+      PuikLabel,
+    },
+    setup() {
+      return { args }
+    },
+    template: `<puik-label for="input" required>My Label</puik-label>`,
+  }),
 
-Required.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-label for="input" required>My Label</puik-label>
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-label for="input" required>My Label</puik-label>
 
-<!--HTML/CSS Snippet-->
-<label class="puik-label" for="input">
-  My Label
-  <span class="puik-label--required">*</span>
-</label>
-      `,
-      language: 'html',
+  <!--HTML/CSS Snippet-->
+  <label class="puik-label" for="input">
+    My Label
+    <span class="puik-label--required">*</span>
+  </label>
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const Readonly: Story = (args: Args) => ({
-  components: {
-    PuikLabel,
-  },
-  setup() {
-    return { args }
-  },
-  template: `<puik-label for="input" readonly>My Label</puik-label>`,
-})
+export const Readonly: StoryObj = {
+  render: (args: Args) => ({
+    components: {
+      PuikLabel,
+    },
+    setup() {
+      return { args }
+    },
+    template: `<puik-label for="input" readonly>My Label</puik-label>`,
+  }),
 
-Readonly.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-label for="input" readonly>My Label</puik-label>
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-label for="input" readonly>My Label</puik-label>
 
-<!--HTML/CSS Snippet-->
-<label class="puik-label" for="input">
-  My Label
-  <span class="puik-label--readonly">(Read only)</span>
-</label>
-`,
-      language: 'html',
+  <!--HTML/CSS Snippet-->
+  <label class="puik-label" for="input">
+    My Label
+    <span class="puik-label--readonly">(Read only)</span>
+  </label>
+  `,
+        language: 'html',
+      },
     },
   },
 }

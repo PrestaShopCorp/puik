@@ -1,6 +1,6 @@
 import PuikLink from './../src/link.vue'
 import { linkSizes, targetVariants } from './../src/link'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 const targetVariantsSummary = targetVariants.join('|')
 const linkSizesSummary = linkSizes.join('|')
@@ -64,7 +64,7 @@ export default {
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikLink,
   },
@@ -74,54 +74,61 @@ const Template: Story = (args: Args) => ({
   template: `<puik-link v-bind="args">{{ args.default }}</puik-link>`,
 })
 
-export const Default = Template.bind({})
-Default.args = {}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<!--
-$sizes: ${linkSizesSummary}
-$targets: ${targetVariantsSummary}
--->
-<puik-link size="$sizes" href="#" target="$targets" title="I'm a tooltip for your link">
-  I'm a cool link
-</puik-link>
+export const Default = {
+  render: Template,
+  args: {},
 
-<!--HTML/CSS Snippet-->
-<!--
-$sizes: ${linkSizesSummary}
-$targets: ${targetVariantsSummary}
--->
-<a class="puik-link puik-link--{$sizes}" href="#" target="$targets" title="I'm a tooltip for your link">
-  I'm a cool link
-</a>
-      `,
-      language: 'html',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <!--
+  $sizes: ${linkSizesSummary}
+  $targets: ${targetVariantsSummary}
+  -->
+  <puik-link size="$sizes" href="#" target="$targets" title="I'm a tooltip for your link">
+    I'm a cool link
+  </puik-link>
+
+  <!--HTML/CSS Snippet-->
+  <!--
+  $sizes: ${linkSizesSummary}
+  $targets: ${targetVariantsSummary}
+  -->
+  <a class="puik-link puik-link--{$sizes}" href="#" target="$targets" title="I'm a tooltip for your link">
+    I'm a cool link
+  </a>
+        `,
+        language: 'html',
+      },
     },
   },
 }
 
-export const Blank = Template.bind({})
-Blank.args = {
-  target: '_blank',
-}
-Blank.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<puik-link href="#" target="_blank" title="I'm a tooltip for your link">
-I'm a cool link
-</puik-link>
+export const Blank = {
+  render: Template,
 
-<!--HTML/CSS Snippet-->
-<a class="puik-link puik-link--md" href="#" target="_blank" title="I'm a tooltip for your link">
+  args: {
+    target: '_blank',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-link href="#" target="_blank" title="I'm a tooltip for your link">
   I'm a cool link
-</a>
-      `,
-      language: 'html',
+  </puik-link>
+
+  <!--HTML/CSS Snippet-->
+  <a class="puik-link puik-link--md" href="#" target="_blank" title="I'm a tooltip for your link">
+    I'm a cool link
+  </a>
+        `,
+        language: 'html',
+      },
     },
   },
 }
