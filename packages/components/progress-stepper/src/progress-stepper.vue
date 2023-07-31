@@ -5,23 +5,36 @@
 </template>
 
 <script setup lang="ts">
-import { provide, ref } from 'vue'
-import { progressStepperProps } from './progress-stepper'
+import { computed, provide, ref } from 'vue'
+import {
+  progressStepperProps,
+  progressStepperKey,
+  type PuikStep,
+} from './progress-stepper'
+
 defineOptions({
   name: 'PuikProgressStepper',
 })
 
 const props = defineProps(progressStepperProps)
 const emit = defineEmits<{
-  (event: 'update:modelValue', step: string | number): void
+  (event: 'update:modelValue', step: PuikStep): void
 }>()
-const steps = ref([])
-const handleClickStep = (step: string | number) => {
-  emit('update:modelValue', step)
+const steps = ref<PuikStep[]>([])
+const currentStep = computed<PuikStep>({
+  get: () => props.modelValue,
+  set: (step) => emit('update:modelValue', step),
+})
+const handleClickStep = (step: PuikStep) => {
+  currentStep.value = step
 }
-provide('puik-progress-stepper', {
+const currentStepIndex = computed(() =>
+  steps.value.lastIndexOf(currentStep.value)
+)
+provide(progressStepperKey, {
   steps,
   handleClickStep,
-  currentStep: props.modelValue,
+  currentStep,
+  currentStepIndex,
 })
 </script>
