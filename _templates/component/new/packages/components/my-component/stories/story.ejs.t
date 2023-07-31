@@ -6,7 +6,7 @@ import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {
   title: 'Components/<%= h.changeCase.pascal(name) %>',
-  component: <%= h.changeCase.pascal(name) %>,
+  component: Puik<%= h.changeCase.pascal(name) %>,
 } as Meta
 
 const Template: StoryFn = (args: Args) => ({
@@ -27,11 +27,11 @@ export const Default = {
       source: {
         code: `
         <!--VueJS Snippet-->
-        
+
         <!--HTML/CSS Snippet-->
         `,
         language: 'html',
       },
     },
-  }
+  },
 }
