@@ -1,27 +1,26 @@
-import type { Meta, Story } from '@storybook/vue3'
+import type { Meta, StoryFn, StoryObj } from '@storybook/vue3'
 
 export default {
   title: 'Styles/Typography',
 } as Meta
 
-function generateStory(htmlTemplate: string) {
-  const Template: Story = () => ({
+function generateStory(htmlTemplate: string): StoryObj {
+  const Template: StoryFn = () => ({
     template: htmlTemplate,
   })
 
-  const Story = Template.bind({})
-
-  Story.parameters = {
-    controls: { hideNoControlsWarning: true },
-    docs: {
-      source: {
-        code: htmlTemplate,
-        language: 'html',
+  return {
+    render: Template,
+    parameters: {
+      controls: { hideNoControlsWarning: true },
+      docs: {
+        source: {
+          code: htmlTemplate,
+          language: 'html',
+        },
       },
     },
   }
-
-  return Story
 }
 
 export const Title = generateStory(`

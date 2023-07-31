@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { PuikSnackbar } from '..'
 import { snackbarVariants, type PuikSnackbarOptions } from '../src/snackbar'
 import { PuikButton } from '../../button/index'
-import type { Meta, Story, Args } from '@storybook/vue3'
+import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3'
 
 const snackbarVariantSummary = snackbarVariants.join('|')
 
@@ -87,7 +87,7 @@ export default {
   args: {},
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikButton,
   },
@@ -98,13 +98,14 @@ const Template: Story = (args: Args) => ({
   template: `<puik-button @click="open">Display Snackbar</puik-button>`,
 })
 
-export const Default = Template.bind({})
-
-Default.args = {
-  text: 'New category added.',
+export const Default = {
+  render: Template,
+  args: {
+    text: 'New category added.',
+  },
 }
 
-export const WithoutAction: Story = () => ({
+const WithoutActionTemplate: StoryFn = () => ({
   components: {
     PuikButton,
   },
@@ -128,10 +129,12 @@ export const WithoutAction: Story = () => ({
   `,
 })
 
-WithoutAction.parameters = {
-  docs: {
-    source: {
-      code: `
+export const WithoutAction: StoryObj = {
+  render: WithoutActionTemplate,
+  parameters: {
+    docs: {
+      source: {
+        code: `
 <!--VueJS Snippet-->
 <template>
   <puik-button @click="displaySnackbar">Display Snackbar</puik-button>
@@ -177,12 +180,13 @@ const displayErrorSnackbar = () =>
   </button>
 </div>
       `,
-      language: 'html',
+        language: 'html',
+      },
     },
   },
 }
 
-export const WithAction: Story = () => ({
+const WithActionTemplate: StoryFn = () => ({
   components: {
     PuikButton,
   },
@@ -214,66 +218,69 @@ export const WithAction: Story = () => ({
   `,
 })
 
-WithAction.parameters = {
-  docs: {
-    source: {
-      code: `
-<!--VueJS Snippet-->
-<template>
-  <puik-button @click="displaySnackbar">Display Snackbar</puik-button>
-  <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
-</template>
+export const WithAction: StoryObj = {
+  render: WithActionTemplate,
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <template>
+    <puik-button @click="displaySnackbar">Display Snackbar</puik-button>
+    <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
+  </template>
 
-<script lang="ts" setup>
-const displaySnackbar = () =>
-  PuikSnackbar({
-    text: 'New attribute “Size” added.',
-    action: {
-      label: 'Cancel',
-      callback: action('Default snackbar action callback function'),
-    },
-  })
-const displayErrorSnackbar = () =>
-  PuikSnackbar({
-    text: 'Unable to update settings.',
-    variant: 'danger',
-    action: {
-      label: 'Cancel',
-      callback: action('Error snackbar action callback function'),
-    },
-  })
-</script>
+  <script lang="ts" setup>
+  const displaySnackbar = () =>
+    PuikSnackbar({
+      text: 'New attribute “Size” added.',
+      action: {
+        label: 'Cancel',
+        callback: action('Default snackbar action callback function'),
+      },
+    })
+  const displayErrorSnackbar = () =>
+    PuikSnackbar({
+      text: 'Unable to update settings.',
+      variant: 'danger',
+      action: {
+        label: 'Cancel',
+        callback: action('Error snackbar action callback function'),
+      },
+    })
+  </script>
 
-<!--HTML/CSS Snippet-->
-<!--
-    Snackbar, show/hide base on snackbar state
+  <!--HTML/CSS Snippet-->
+  <!--
+      Snackbar, show/hide base on snackbar state
 
-    Enter From: "puik-snackbar__transition--enter-from"
-    Leave To: "puik-snackbar__transition--leave-to"
+      Enter From: "puik-snackbar__transition--enter-from"
+      Leave To: "puik-snackbar__transition--leave-to"
 
-    Style bottom calculation:
-    If there is only one snack bar displayed the default value will be the offset (32px)
-    But if you want to stack the snackbar you may need to do the following computation
-    Offset (32px) + First Snackbar offsetHeight + Gap (16px)
-    Example: 32 + 52 + 16 = 100px
-  -->
-<div class="puik-snackbar puik-snackbar--default" style="bottom: 32px">
-  <span class="puik-snackbar__text">New category added.</span>
-  <button class="puik-snackbar__action">Cancel</button>
-  <button class="puik-snackbar__close-button">
-    close
-  </button>
-</div>
+      Style bottom calculation:
+      If there is only one snack bar displayed the default value will be the offset (32px)
+      But if you want to stack the snackbar you may need to do the following computation
+      Offset (32px) + First Snackbar offsetHeight + Gap (16px)
+      Example: 32 + 52 + 16 = 100px
+    -->
+  <div class="puik-snackbar puik-snackbar--default" style="bottom: 32px">
+    <span class="puik-snackbar__text">New category added.</span>
+    <button class="puik-snackbar__action">Cancel</button>
+    <button class="puik-snackbar__close-button">
+      close
+    </button>
+  </div>
 
-<div class="puik-snackbar puik-snackbar--danger" style="bottom: 100px">
-  <span class="puik-snackbar__text">Unable to update settings.</span>
-  <button class="puik-snackbar__action">Retry</button>
-  <button class="puik-snackbar__close-button">
-    close
-  </button>
-</div>
-      `,
-      language: 'html',
+  <div class="puik-snackbar puik-snackbar--danger" style="bottom: 100px">
+    <span class="puik-snackbar__text">Unable to update settings.</span>
+    <button class="puik-snackbar__action">Retry</button>
+    <button class="puik-snackbar__close-button">
+      close
+    </button>
+  </div>
+        `,
+        language: 'html',
+      },
     },
   },
 }

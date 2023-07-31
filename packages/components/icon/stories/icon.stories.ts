@@ -1,5 +1,5 @@
 import PuikIcon from './../src/icon.vue'
-import type { Args, Meta, Story } from '@storybook/vue3'
+import type { Args, Meta, StoryFn } from '@storybook/vue3'
 
 export default {
   title: 'Components/Icon',
@@ -34,7 +34,7 @@ export default {
   },
 } as Meta
 
-const Template: Story = (args: Args) => ({
+const Template: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
   },
@@ -44,24 +44,28 @@ const Template: Story = (args: Args) => ({
   template: `<puik-icon v-bind="args" />`,
 })
 
-export const Default = Template.bind({})
-Default.args = {
-  icon: 'check',
-  color: 'green',
-  fontSize: 24,
-  nodeType: 'span',
-}
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-      <!--VueJS Snippet-->
-      <puik-icon icon="check" font-size="70px" color="green" node-type="span" />
+export const Default = {
+  render: Template,
 
-      <!--HTML/CSS Snippet-->
-      <span class="puik-icon material-icons-round" style="font-size: 20px;">check</span>
-      `,
-      language: 'html',
+  args: {
+    icon: 'check',
+    color: 'green',
+    fontSize: 24,
+    nodeType: 'span',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <!--VueJS Snippet-->
+        <puik-icon icon="check" font-size="70px" color="green" node-type="span" />
+
+        <!--HTML/CSS Snippet-->
+        <span class="puik-icon material-icons-round" style="font-size: 20px;">check</span>
+        `,
+        language: 'html',
+      },
     },
   },
 }

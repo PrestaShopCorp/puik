@@ -1,14 +1,15 @@
-import { Meta } from '@storybook/addon-docs'
+import { Meta } from '@storybook/blocks'
 import { linkTo } from '@storybook/addon-links'
-import VueJsLogo from '../assets/img/Vue.js_Logo.png'
-import CssLogo from '../assets/img/css.svg'
-import Repo from '../assets/img/repo.svg'
-import GitHubLogo from '../assets/img/GitHub-Mark-64px.png'
-import FigmaLogo from '../assets/img/Figma-Icon.svg'
+import VueJsLogo from '../../assets/img/Vue.js_Logo.png'
+import CssLogo from '../../assets/img/css.svg'
+import Repo from '../../assets/img/repo.svg'
+import GitHubLogo from '../../assets/img/GitHub-Mark-64px.png'
+import FigmaLogo from '../../assets/img/Figma-Icon.svg'
 
 <Meta title="Docs/Introduction" />
 
-<style>{`
+<style>
+  {`
   .subheading {
     --mediumdark: '#999999';
     font-weight: 900;
@@ -62,7 +63,8 @@ import FigmaLogo from '../assets/img/Figma-Icon.svg'
   }
 
 
-`}</style>
+  `}
+</style>
 
 # Puik
 
@@ -73,68 +75,71 @@ This library provides two ways of using the design system in your project, the f
 <div className="subheading">Getting Started</div>
 
 <div className="grid md:grid-cols-2 gap-4">
-  <div
-    className="link-item cursor-pointer"
-    onClick={linkTo('Docs/VueJs Components')}
-  >
+  <div className="link-item cursor-pointer" onClick={linkTo('Docs/VueJs Components')}>
     <img src={VueJsLogo} alt="VueJs Components" />
+
     <span>
       <strong>Setup For VueJS</strong>
       Setup the library for a usage with VueJs
     </span>
+
   </div>
-  <div
-    className="link-item cursor-pointer"
-    onClick={linkTo('Docs/VueJs Components')}
-  >
+
+  <div className="link-item cursor-pointer" onClick={linkTo('Docs/VueJs Components')}>
     <img src={CssLogo} alt="Css Components" />
+
     <span>
       <strong>Setup for other language/framework</strong>
       Setup the library with another language or framework
     </span>
+
   </div>
 </div>
 
 <div className="subheading">Explore</div>
 
 <div className="grid md:grid-cols-2 gap-4">
-  <div
-    className="link-item cursor-pointer"
-    onClick={linkTo('Components/Alert')}
-  >
+  <div className="link-item cursor-pointer" onClick={linkTo('Components/Alert')}>
     <img src={VueJsLogo} alt="VueJs Components" />
+
     <span>
       <strong>Components Docs</strong>
       Access the components documentation
     </span>
+
   </div>
 </div>
+
 <div className="subheading">Learn</div>
 
 <div className="grid md:grid-cols-2 gap-4">
   <a className="link-item" target="_blank">
     <img src={Repo} alt="repo" />
+
     <span>
       <strong>Design System documentation</strong>
       Configure, customize, and extend
     </span>
+
   </a>
+
   <a className="link-item" target="_blank">
     <img src={FigmaLogo} alt="direction" />
+
     <span>
       <strong>Figma UI Kit</strong>
       Access the Figma UI Kit of the PrestaShop Design System
     </span>
+
   </a>
-  <a
-    className="link-item"
-    href="https://github.com/PrestaShopCorp/puik"
-    target="_blank"
-  >
+
+  <a className="link-item" href="https://github.com/PrestaShopCorp/puik" target="_blank">
     <img src={GitHubLogo} alt="code" />
+
     <span>
       <strong>GitHub project</strong>
       View the source code and add issues
     </span>
+
   </a>
 </div>
