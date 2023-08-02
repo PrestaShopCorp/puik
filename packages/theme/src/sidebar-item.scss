@@ -9,6 +9,9 @@
       @apply text-blue-700 font-bold;
     }
   }
+  &--active.puik-button--text {
+    @apply text-blue-700 font-bold bg-primary-200;
+  }
 
   &__button {
     @apply px-2 py-4 sm:py-2 justify-start font-normal text-left;
