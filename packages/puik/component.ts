@@ -1,3 +1,4 @@
+import { PuikTabNavigation } from '@puik/components/tab-navigation'
 import { PuikTable } from '@puik/components/table'
 import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
 import {
@@ -38,6 +39,7 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikTabNavigation,
   PuikTable,
   PuikSpinnerLoader,
   PuikSidebar,
