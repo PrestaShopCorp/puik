@@ -1,15 +1,15 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
-import PuikTabNavigationItem from '../src/tab-navigation-item.vue'
+import PuikTabNavigationPanel from '../src/tab-navigation-panel.vue'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
-describe('TabNavigation tests', () => {
+describe('TabNavigationPanel tests', () => {
   let wrapper: VueWrapper<any>
   const factory = (
     propsData: Record<string, any> = {},
     options: MountingOptions<any> = {}
   ) => {
-    wrapper = mount(PuikTabNavigationItem, {
+    wrapper = mount(PuikTabNavigationPanel, {
       props: {
         ...propsData,
       },

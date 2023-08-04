@@ -11,8 +11,7 @@
         {{ tab.name }}
       </li> -->
     </ul>
-
-    <!-- <component :is="tabs[currentTab].component"></component> -->
+    <slot />
   </div>
 </template>
 

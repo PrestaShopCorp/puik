@@ -1,20 +1,19 @@
-import { PuikTabNavigationItem } from '..'
-import PuikTabNavigation from './../src/tab-navigation.vue'
+import PuikTabNavigationTitle from './../src/tab-navigation-title.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {
-  title: 'Components/TabNavigation/TabNavigationItem',
-  component: PuikTabNavigationItem,
+  title: 'Components/TabNavigationTitle',
+  component: PuikTabNavigationTitle,
 } as Meta
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikTabNavigation,
+    PuikTabNavigationTitle,
   },
   setup() {
     return { args }
   },
-  template: `<puik-tab-navigation></puik-tab-navigation>`,
+  template: `<puik-tab-navigation-title></puik-tab-navigation-title>`,
 })
 
 export const Default = {
