@@ -1,11 +1,15 @@
 <template>
-  <div class="puik-tab-navigation-panel">
-    puik tab panel
+  <div
+    v-show="position == currentTab?.currentPosition.value"
+    class="puik-tab-navigation__panel"
+  >
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
+import { inject } from 'vue'
+import { currentTabKey } from './tab-navigation'
 import { tabNavigationPanelProps } from './tab-navigation-panel'
 
 defineOptions({
@@ -13,4 +17,5 @@ defineOptions({
 })
 
 const props = defineProps(tabNavigationPanelProps)
+const currentTab = inject(currentTabKey)
 </script>

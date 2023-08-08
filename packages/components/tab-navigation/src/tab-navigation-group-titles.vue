@@ -1,6 +1,9 @@
 <template>
-  <div>
-    puik group titles
+  <div
+    role="tablist"
+    aria-label="PuiK Tabs"
+    class="puik-tab-navigation__group-titles"
+  >
     <slot />
   </div>
 </template>

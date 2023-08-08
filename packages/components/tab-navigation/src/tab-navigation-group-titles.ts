@@ -6,7 +6,6 @@ export const tabNavigationGroupTitlesProps = buildProps({
   selectedIndex: {
     type: Number,
     required: false,
-    default: 0,
   },
 } as const)
 

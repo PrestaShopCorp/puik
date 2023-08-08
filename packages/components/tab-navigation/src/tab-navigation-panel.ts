@@ -3,10 +3,9 @@ import type { ExtractPropTypes } from 'vue'
 import type TabNavigationPanel from './tab-navigation-panel.vue'
 
 export const tabNavigationPanelProps = buildProps({
-  selected: {
-    type: Boolean,
-    required: false,
-    default: false,
+  position: {
+    type: Number,
+    required: true,
   },
 } as const)
 

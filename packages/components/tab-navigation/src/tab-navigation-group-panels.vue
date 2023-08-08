@@ -1,7 +1,5 @@
 <template>
-  <div>
-    puik group panel
-    {{ selectedIndex ? selectedIndex : 'no index' }}
+  <div class="puik-tab-navigation__group-panels">
     <slot />
   </div>
 </template>

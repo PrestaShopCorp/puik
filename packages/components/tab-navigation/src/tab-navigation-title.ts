@@ -8,10 +8,9 @@ export const tabNavigationTitleProps = buildProps({
     required: false,
     default: false,
   },
-  selected: {
-    type: Boolean,
-    required: false,
-    default: false,
+  position: {
+    type: Number,
+    required: true,
   },
 } as const)
 
