@@ -3,6 +3,10 @@ import type { ExtractPropTypes, InjectionKey, Ref } from 'vue'
 import type TabNavigation from './tab-navigation.vue'
 
 export const tabNavigationProps = buildProps({
+  name: {
+    type: String,
+    required: true,
+  },
   defaultPosition: {
     type: Number,
     required: false,
@@ -20,6 +24,7 @@ export type TabNavigationProps = ExtractPropTypes<typeof tabNavigationProps>
 export type TabNavigationInstance = InstanceType<typeof TabNavigation>
 
 export type currentTabKeyContext = {
+  name: string
   currentPosition: Ref<number>
   handleTabClick: (index: number) => void
 }

@@ -1,10 +1,19 @@
 @use './common/typography.scss';
 
 .puik-tab-navigation__title {
-  @apply relative min-w-[135px] min-h-full p-2 flex items-center cursor-pointer puik-body-default-bold;
+  @apply relative  min-h-full p-2 flex items-center cursor-pointer puik-body-default-bold;
+  flex: 0 1 135px;
   gap: 8px;
+  white-space: nowrap;
+  border-bottom: 1px solid #dce1e3;
+  &:focus:not(:hover):not(:focus-visible) {
+    @apply bg-primary-400;
+  }
   &:hover {
     @apply bg-primary-300;
+  }
+  &:focus-visible {
+    @apply outline-blue-500;
   }
   &--selected {
     &::before {
