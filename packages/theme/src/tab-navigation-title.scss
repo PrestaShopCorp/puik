@@ -6,14 +6,12 @@
   gap: 8px;
   white-space: nowrap;
   border-bottom: 1px solid #dce1e3;
-  &:focus:not(:hover):not(:focus-visible) {
+  &:focus:not(:hover) {
     @apply bg-primary-400;
+    outline: none;
   }
   &:hover {
     @apply bg-primary-300;
-  }
-  &:focus-visible {
-    @apply outline-blue-500;
   }
   &--selected {
     &::before {
