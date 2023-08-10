@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-import { tabNavigationGroupPanelsProps } from './tab-navigation-group-panels'
+// import { tabNavigationGroupPanelsProps } from './tab-navigation-group-panels'
 defineOptions({
   name: 'PuikTabNavigationGroupPanels',
 })
 
-const props = defineProps(tabNavigationGroupPanelsProps)
+// const props = defineProps(tabNavigationGroupPanelsProps)
 </script>

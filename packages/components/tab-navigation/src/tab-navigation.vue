@@ -20,18 +20,23 @@ const handleTabClick = (index: number) => {
   currentPosition.value = index
 }
 
+const keyEventDirection = ref<string | null>()
+const numberOfTabs = ref<number>()
+
 provide(currentTabKey, {
   name: name?.value,
+  numberOfTabs,
   currentPosition,
+  keyEventDirection,
   handleTabClick,
 })
 
 const selectNextTab = () => {
   const tabNavigationInstance = document.querySelector(`#${name.value}`)
-  const numberOfTabs =
+  numberOfTabs.value =
     tabNavigationInstance?.querySelectorAll('[role="tab"]').length || 1
 
-  currentPosition.value === numberOfTabs
+  currentPosition.value === numberOfTabs.value
     ? (currentPosition.value = 1)
     : currentPosition.value++
 
@@ -45,11 +50,11 @@ const selectNextTab = () => {
 
 const selectPreviousTab = () => {
   const tabNavigationInstance = document.querySelector(`#${name.value}`)
-  const numberOfTabs =
+  numberOfTabs.value =
     tabNavigationInstance?.querySelectorAll('[role="tab"]').length || 1
 
-  currentPosition.value === 1
-    ? (currentPosition.value = numberOfTabs)
+  currentPosition.value <= 1
+    ? (currentPosition.value = numberOfTabs.value)
     : currentPosition.value--
 
   nextTick(() => {
@@ -62,8 +67,10 @@ const selectPreviousTab = () => {
 
 const handleKeysEvent = (event: KeyboardEvent) => {
   if (event.key === 'ArrowRight') {
+    keyEventDirection.value = 'right'
     selectNextTab()
   } else if (event.key === 'ArrowLeft') {
+    keyEventDirection.value = 'left'
     selectPreviousTab()
   }
 }

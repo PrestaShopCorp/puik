@@ -1,17 +1,12 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
+// import { buildProps } from '@puik/utils'
+// import type { ExtractPropTypes } from 'vue'
 import type TabNavigationGroupPanels from './tab-navigation-group-panels.vue'
 
-export const tabNavigationGroupPanelsProps = buildProps({
-  selectedIndex: {
-    type: Number,
-    required: false,
-  },
-} as const)
+// export const tabNavigationGroupPanelsProps = buildProps({} as const)
 
-export type TabNavigationGroupPanelsProps = ExtractPropTypes<
-  typeof tabNavigationGroupPanelsProps
->
+// export type TabNavigationGroupPanelsProps = ExtractPropTypes<
+//   typeof tabNavigationGroupPanelsProps
+// >
 
 export type TabNavigationGroupPanelsInstance = InstanceType<
   typeof TabNavigationGroupPanels

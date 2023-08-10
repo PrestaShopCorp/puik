@@ -26,4 +26,7 @@
       border-radius: 4px 4px 0 0;
     }
   }
+  &--disabled {
+    @apply text-primary-600 bg-primary-200;
+  }
 }

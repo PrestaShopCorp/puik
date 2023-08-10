@@ -1,6 +1,6 @@
 <template>
   <div
-    v-show="isCurrentTab"
+    v-if="isCurrentTab"
     :id="`${name}-panel-${position}`"
     role="tabpanel"
     :tabindex="isCurrentTab ? 0 : -1"
