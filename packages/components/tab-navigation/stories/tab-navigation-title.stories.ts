@@ -2,7 +2,7 @@ import PuikTabNavigationTitle from './../src/tab-navigation-title.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {
-  title: 'Components/TabNavigationTitle',
+  title: 'Components/TabNavigation/TabNavigationTitle',
   component: PuikTabNavigationTitle,
 } as Meta
 
