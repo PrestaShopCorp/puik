@@ -8,6 +8,11 @@ export const selectProps = buildProps({
     type: [String, Number, Object] as PropType<Option>,
     required: true,
   },
+  customLabel: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   labelKey: {
     type: String,
     required: false,
@@ -67,6 +72,11 @@ export const selectProps = buildProps({
     type: Number,
     required: false,
     default: 1000,
+  },
+  fullWidth: {
+    type: Boolean,
+    required: false,
+    default: true,
   },
 } as const)
 

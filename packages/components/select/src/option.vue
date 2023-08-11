@@ -13,7 +13,7 @@
         'puik-option--disabled': disabled,
       }"
     >
-      <span class="puik-option__label">{{ label }}</span>
+      <slot class="puik-option__label">{{ label }}</slot>
       <puik-icon
         v-if="selectedValue === value"
         icon="checked"
