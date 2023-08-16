@@ -19,7 +19,7 @@ export type TabNavigationProps = ExtractPropTypes<typeof tabNavigationProps>
 export type TabNavigationInstance = InstanceType<typeof TabNavigation>
 
 export type currentTabKeyContext = {
-  name: string
+  name: Ref<string>
   numberOfTabs: Ref<number>
   currentPosition: Ref<number>
   keyEventDirection: Ref<string | null>

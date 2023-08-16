@@ -1,12 +1,18 @@
-// import { buildProps } from '@puik/utils'
-// import type { ExtractPropTypes } from 'vue'
+import { buildProps } from '@puik/utils'
+import { Default } from './../../switch/stories/switch.stories'
+import type { ExtractPropTypes } from 'vue'
 import type TabNavigationGroupTitles from './tab-navigation-group-titles.vue'
 
-// export const tabNavigationGroupTitlesProps = buildProps({} as const)
+export const tabNavigationGroupTitlesProps = buildProps({
+  ariaLabel: {
+    type: String,
+    required: true,
+  },
+} as const)
 
-// export type TabNavigationGroupTitlesProps = ExtractPropTypes<
-//   typeof tabNavigationGroupTitlesProps
-// >
+export type TabNavigationGroupTitlesProps = ExtractPropTypes<
+  typeof tabNavigationGroupTitlesProps
+>
 
 export type TabNavigationGroupTitlesInstance = InstanceType<
   typeof TabNavigationGroupTitles

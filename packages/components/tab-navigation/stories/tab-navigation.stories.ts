@@ -9,7 +9,13 @@ import {
 } from '..'
 import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3'
 
-const meta: Meta<typeof PuikTabNavigation> = {
+const meta: Meta<
+  | typeof PuikTabNavigation
+  | typeof PuikTabNavigationGroupTitles
+  | typeof PuikTabNavigationGroupPanels
+  | typeof PuikTabNavigationTitle
+  | typeof PuikTabNavigationPanel
+> = {
   title: 'Components/TabNavigation',
   component: PuikTabNavigation,
   argTypes: {
@@ -39,11 +45,50 @@ const meta: Meta<typeof PuikTabNavigation> = {
         },
       },
     },
+    ariaLabel: {
+      description: 'value of aria-label attribute',
+      control: 'text',
+      table: {
+        disable: true,
+        type: {
+          summary: 'string',
+        },
+        defaultValue: {
+          summary: 'none',
+        },
+      },
+    },
+    position: {
+      description:
+        'position of tab inside PuiktabNavigationGroupTitles component. NB: must be greater than 1',
+      table: {
+        disable: true,
+      },
+    },
+    disabled: {
+      description: 'disable a navigation tab',
+      control: 'boolean',
+      table: {
+        disable: true,
+        type: {
+          summary: 'boolean',
+        },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
   },
 }
 
 export default meta
-type Story = StoryObj<typeof PuikTabNavigation>
+type Story = StoryObj<
+  | typeof PuikTabNavigation
+  | typeof PuikTabNavigationGroupTitles
+  | typeof PuikTabNavigationGroupPanels
+  | typeof PuikTabNavigationTitle
+  | typeof PuikTabNavigationPanel
+>
 
 const Template: StoryFn = (args: Args) => ({
   components: {
@@ -56,17 +101,15 @@ const Template: StoryFn = (args: Args) => ({
   },
   setup() {
     const tabs = ref([
-      { name: 'Tab-1', content: 'content 1' },
-      { name: 'Tab-2', content: 'content 2' },
-      { name: 'Tab-3', content: 'content 3', disabled: true },
-      { name: 'Tab-4', content: 'content 4' },
-      { name: 'Tab-5', content: 'content 5' },
+      { name: 'title-1', content: 'content 1' },
+      { name: 'title-2', content: 'content 2' },
+      { name: 'title-3', content: 'content 3' },
     ])
     return { tabs, args }
   },
   template: `
-<puik-tab-navigation v-bind="args">
-  <puik-tab-navigation-group-titles>
+<puik-tab-navigation :name="args.name" :default-position="args.defaultPosition">
+  <puik-tab-navigation-group-titles :aria-label="args.ariaLabel">
     <template v-for="(tab, index) in tabs" :key="index">
       <puik-tab-navigation-title :position="index + 1" :disabled="tab?.disabled">
         {{ tab?.name }}
@@ -85,18 +128,23 @@ const Template: StoryFn = (args: Args) => ({
 })
 
 export const Default: Story = {
-  render: Template,
   args: {
-    name: 'storybook-example',
+    name: 'name-example',
     defaultPosition: 1,
+    ariaLabel: 'aria-label-example',
   },
+  render: Template,
   parameters: {
     docs: {
+      description: {
+        story:
+          'NB: The id attribute of the component corresponds to the prop name (allows you to identify each instance of the navigation component in the event that there are several on the same page)',
+      },
       source: {
         code: `
 <!--VueJS Snippet-->
-<puik-tab-navigation v-bind="args">
-  <puik-tab-navigation-group-titles>
+<puik-tab-navigation :name="args.name" :default-position="args.defaultPosition">
+  <puik-tab-navigation-group-titles :aria-label="args.ariaLabel">
     <template v-for="(tab, index) in tabs" :key="index">
       <puik-tab-navigation-title :position="index + 1" :disabled="tab?.disabled">
         {{ tab?.name }}
@@ -113,6 +161,8 @@ export const Default: Story = {
 </puik-tab-navigation>
 
 <!--HTML/CSS Snippet-->
+<!--NB: the id attribute of the component corresponds to the prop name (allows you to identify each instance of the navigation component in the event that there are several on the same page)-->
+<div id="name-example" class="puik-tab-navigation"></div>
 `,
         language: 'html',
       },

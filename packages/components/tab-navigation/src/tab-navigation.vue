@@ -15,16 +15,15 @@ defineOptions({
 const props = defineProps(tabNavigationProps)
 
 const name = ref<string>(props.name)
+const numberOfTabs = ref<number>()
 const currentPosition = ref<number>(props.defaultPosition)
+const keyEventDirection = ref<string | null>()
 const handleTabClick = (index: number) => {
   currentPosition.value = index
 }
 
-const keyEventDirection = ref<string | null>()
-const numberOfTabs = ref<number>()
-
 provide(currentTabKey, {
-  name: name?.value,
+  name,
   numberOfTabs,
   currentPosition,
   keyEventDirection,

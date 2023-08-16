@@ -1,7 +1,7 @@
 <template>
   <div
     role="tablist"
-    aria-label="PuiK Tabs"
+    :aria-label="ariaLabel"
     class="puik-tab-navigation__group-titles"
   >
     <slot />
@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-// import { tabNavigationGroupTitlesProps } from './tab-navigation-group-titles'
+import { tabNavigationGroupTitlesProps } from './tab-navigation-group-titles'
 defineOptions({
   name: 'PuikTabNavigationGroupTitles',
 })
 
-// const props = defineProps(tabNavigationGroupTitlesProps)
+const props = defineProps(tabNavigationGroupTitlesProps)
 </script>

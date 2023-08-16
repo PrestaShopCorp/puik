@@ -1,9 +1,9 @@
 <template>
   <button
-    :id="`${name}-position-${position}`"
+    :id="`${currentTab?.name.value}-position-${position}`"
     role="tab"
     :aria-selected="isCurrentTab"
-    :aria-controls="`${name}-panel-${position}`"
+    :aria-controls="`${currentTab?.name.value}-panel-${position}`"
     :tabindex="isCurrentTab ? 0 : -1"
     :class="[
       'puik-tab-navigation__title',
@@ -29,7 +29,6 @@ defineOptions({
 const props = defineProps(tabNavigationTitleProps)
 
 const currentTab = inject(currentTabKey, null)
-const name = ref(currentTab?.name)
 const handleclick = () => {
   if (!props.disabled) currentTab?.handleTabClick(props.position)
 }
