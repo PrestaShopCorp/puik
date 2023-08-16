@@ -1,5 +1,4 @@
 import { buildProps } from '@puik/utils'
-import { Default } from './../../switch/stories/switch.stories'
 import type { ExtractPropTypes } from 'vue'
 import type TabNavigationGroupTitles from './tab-navigation-group-titles.vue'
 
