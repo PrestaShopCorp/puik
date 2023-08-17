@@ -1,15 +1,29 @@
 import { capitalize } from 'lodash-unified'
 import PuikButton from './../src/button.vue'
-import { buttonVariants, buttonSizes } from './../src/button'
+import { buttonVariants, buttonSizes, buttonTheme } from './../src/button'
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 const buttonVariantsSummary = buttonVariants.join('|')
 const buttonSizesSummary = buttonSizes.join('|')
+const buttonThemeSummary = buttonTheme.join('|')
 
 export default {
   title: 'Components/Button',
   component: PuikButton,
   argTypes: {
+    theme: {
+      control: 'select',
+      description: 'Set the button color theme',
+      options: buttonTheme,
+      table: {
+        defaultValue: {
+          summary: 'light',
+        },
+        type: {
+          summary: buttonThemeSummary,
+        },
+      },
+    },
     variant: {
       control: 'select',
       description: 'Set the button variant',
@@ -73,6 +87,7 @@ export default {
     },
   },
   args: {
+    theme: 'light',
     variant: 'primary',
     size: 'md',
     fluid: false,
@@ -105,22 +120,25 @@ export const Default = {
         code: `
   <!--VueJS Snippet -->
   <!--
+  $themes: ${buttonThemeSummary}
   $sizes: ${buttonSizesSummary}
   $variants: ${buttonVariantsSummary}
   -->
   <puik-button
+    :theme="$themes"
     :size="$sizes"
     :variant="$variants"
     :fluid="true|false"
     :disabled="true|false"
     :left-icon="leftIcon"
     :right-icon="rightIcon"
-  >
+    >
     My button
   </puik-button>
-
+  
   <!--HTML/CSS Snippet-->
   <!--
+  $themes: ${buttonThemeSummary} (defaults to light)
   $sizes: ${buttonSizesSummary} (defaults to md)
   $variants: ${buttonVariantsSummary}
   -->

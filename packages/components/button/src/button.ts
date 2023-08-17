@@ -26,6 +26,7 @@ export const buttonProps = buildProps({
   theme: {
     type: String as PropType<PuikButtonTheme>,
     required: false,
+    default: 'light',
   },
   variant: {
     type: String as PropType<PuikButtonVariant>,
