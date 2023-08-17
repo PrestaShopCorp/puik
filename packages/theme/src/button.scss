@@ -31,7 +31,7 @@
     @apply pointer-events-none cursor-default;
   }
 
-  &--primary {
+  &--primary.puik-button--light {
     @apply bg-primary-800 text-white;
     &:hover {
       @apply bg-primary-700;
@@ -44,14 +44,40 @@
       @apply bg-primary-500;
     }
   }
+  &--primary.puik-button--dark {
+    @apply bg-white text-black;
+    &:hover {
+      @apply bg-primary-200;
+    }
+    &:active {
+      @apply bg-primary-400;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply bg-primary-500;
+    }
+  }
 
-  &--secondary {
+  &--secondary.puik-button--light {
     @apply bg-white text-primary border border-primary;
     &:hover {
       @apply bg-primary-300;
     }
     &:active {
       @apply bg-primary-400;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply bg-primary-200 text-primary-500 border-primary-400;
+    }
+  }
+  &--secondary.puik-button--dark {
+    @apply bg-black text-white border border-white;
+    &:hover {
+      @apply bg-primary-600;
+    }
+    &:active {
+      @apply bg-primary-700;
     }
     &:disabled,
     &.puik-button--disabled {
@@ -87,13 +113,27 @@
     }
   }
 
-  &--text {
+  &--text.puik-button--light {
     @apply text-primary;
     &:hover {
       @apply bg-primary-200;
     }
     &:active {
       @apply bg-primary-300;
+    }
+    &:disabled,
+    &.puik-button--disabled {
+      @apply text-primary-500;
+    }
+  }
+  &--text.puik-button--dark {
+    @apply text-white;
+    &:hover {
+      @apply text-primary;
+      @apply bg-primary-300;
+    }
+    &:active {
+      @apply bg-primary-400;
     }
     &:disabled,
     &.puik-button--disabled {
