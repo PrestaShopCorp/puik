@@ -72,7 +72,7 @@
     }
   }
   &--secondary.puik-button--dark {
-    @apply bg-black text-white border border-white;
+    @apply bg-transparent text-white border border-white;
     &:hover {
       @apply bg-primary-600;
     }
