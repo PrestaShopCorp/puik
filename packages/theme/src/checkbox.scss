@@ -14,14 +14,14 @@
     }
 
     &:disabled {
-      @apply border-primary-500 checked:bg-primary-400 indeterminate:bg-primary-400 cursor-default;
+      @apply border-primary-500 checked:bg-primary-500 indeterminate:bg-primary-500 cursor-default;
       & + #{$baseClass}__label {
         @apply text-primary-500 cursor-default;
       }
     }
 
     &:checked {
-      @apply bg-primary border-none;
+      @apply bg-blue border-none;
       &:before {
         @apply font-materialIcons text-white text-xl;
         content: '\e876';
@@ -29,7 +29,7 @@
     }
 
     &:indeterminate {
-      @apply bg-primary border-none;
+      @apply bg-blue border-none;
       &:before {
         @apply font-materialIcons text-white text-xl;
         content: '\f108';
@@ -40,6 +40,6 @@
     @extend .puik-body-default;
     @apply -tracking-[0.015625em] font-primary text-primary
       cursor-pointer
-      ml-3;
+      ml-2;
   }
 }
