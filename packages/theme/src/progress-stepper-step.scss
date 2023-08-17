@@ -10,9 +10,9 @@
     }
   }
   &__text {
-    @apply text-primary-800;
+    @apply px-4 text-primary-800;
   }
   &__additional-text {
-    @apply text-primary-600;
+    @apply px-4 text-primary-600;
   }
 }
