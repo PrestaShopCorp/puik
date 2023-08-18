@@ -12,6 +12,9 @@
     &--error {
       @apply border-red;
     }
+    &:disabled input {
+      @apply text-primary-500;
+    }
   }
   &__selected {
     @apply block truncate w-full
