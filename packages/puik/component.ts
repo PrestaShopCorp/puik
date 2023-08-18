@@ -1,7 +1,9 @@
-import { PuikTabNavigationGroupPanels } from '@puik/components/tab-navigation-group-panels'
-import { PuikTabNavigationTitle } from '@puik/components/tab-navigation-title'
-import { PuikTabNavigationGroupTitles } from '@puik/components/tab-navigation-group-titles'
-import { PuikTabNavigation } from '@puik/components/tab-navigation'
+import {
+  PuikTabNavigation,
+  PuikTabNavigationGroupPanels,
+  PuikTabNavigationTitle,
+  PuikTabNavigationGroupTitles,
+} from '@puik/components/tab-navigation'
 import { PuikTable } from '@puik/components/table'
 import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
 import {
