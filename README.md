@@ -113,6 +113,23 @@ app.mount('#app')
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+#### Dark Mode
+
+We are using the [Tailwind Dark Mode](https://tailwindcss.com/docs/dark-mode).
+
+To use it you just have to write the css dark rules with `dark:<oneRule>` in your css. (I recommand to put your light and dark styles on two lines for greater readability)
+
+##### Exemple
+
+```
+Here we are saying the button background will be blue in light mode and green in dark mode
+
+.my-button {
+  @apply bg-blue;
+  @apply dark:bg-green;
+}
+```
+
 ## Using the CSS components
 
 If you don't use VueJS for your application, you can use the CSS only version of our components. It includes all the

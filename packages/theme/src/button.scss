@@ -33,15 +33,19 @@
 
   &--primary {
     @apply bg-primary-800 text-white;
+    @apply dark:bg-white dark:text-primary;
     &:hover {
       @apply bg-primary-700;
+      @apply dark:bg-primary-200;
     }
     &:active {
       @apply bg-primary-600;
+      @apply dark:bg-primary-300;
     }
     &:disabled,
     &.puik-button--disabled {
       @apply bg-primary-500;
+      @apply dark:bg-primary-400;
     }
   }
 
