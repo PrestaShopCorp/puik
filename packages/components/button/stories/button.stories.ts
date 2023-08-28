@@ -109,7 +109,6 @@ export const Default = {
   $variants: ${buttonVariantsSummary}
   -->
   <puik-button
-    :theme="$themes"
     :size="$sizes"
     :variant="$variants"
     :fluid="true|false"
