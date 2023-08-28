@@ -208,7 +208,7 @@ export const PrimaryReverse: StoryObj = {
   <puik-button>My button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--primary">My button</button>
+  <button class="puik-button puik-button--primary-reverse">My button</button>
         `,
         language: 'html',
         dark: true,
@@ -255,7 +255,7 @@ export const SecondaryReverse: StoryObj = {
   <puik-button variant="secondary">My button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--secondary">My button</button>
+  <button class="puik-button puik-button--secondary-reverse">My button</button>
         `,
         language: 'html',
         dark: true,
@@ -349,7 +349,7 @@ export const TextReverse: StoryObj = {
   <puik-button variant="text">My button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--text">My button</button>
+  <button class="puik-button puik-button--text-reverse">My button</button>
         `,
         language: 'html',
       },
