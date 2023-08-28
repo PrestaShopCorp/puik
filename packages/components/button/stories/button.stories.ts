@@ -1,29 +1,15 @@
 import { capitalize } from 'lodash-unified'
 import PuikButton from './../src/button.vue'
-import { buttonVariants, buttonSizes, buttonTheme } from './../src/button'
+import { buttonVariants, buttonSizes } from './../src/button'
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 const buttonVariantsSummary = buttonVariants.join('|')
 const buttonSizesSummary = buttonSizes.join('|')
-const buttonThemeSummary = buttonTheme.join('|')
 
 export default {
   title: 'Components/Button',
   component: PuikButton,
   argTypes: {
-    theme: {
-      control: 'select',
-      description: 'Set the button color theme',
-      options: buttonTheme,
-      table: {
-        defaultValue: {
-          summary: 'light',
-        },
-        type: {
-          summary: buttonThemeSummary,
-        },
-      },
-    },
     variant: {
       control: 'select',
       description: 'Set the button variant',
@@ -87,7 +73,6 @@ export default {
     },
   },
   args: {
-    theme: 'light',
     variant: 'primary',
     size: 'md',
     fluid: false,
@@ -120,7 +105,6 @@ export const Default = {
         code: `
   <!--VueJS Snippet -->
   <!--
-  $themes: ${buttonThemeSummary}
   $sizes: ${buttonSizesSummary}
   $variants: ${buttonVariantsSummary}
   -->
@@ -138,7 +122,6 @@ export const Default = {
   
   <!--HTML/CSS Snippet-->
   <!--
-  $themes: ${buttonThemeSummary} (defaults to light)
   $sizes: ${buttonSizesSummary} (defaults to md)
   $variants: ${buttonVariantsSummary}
   -->
@@ -211,6 +194,30 @@ export const Primary: StoryObj = {
   },
 }
 
+export const PrimaryReverse: StoryObj = {
+  render: ButtonTemplate,
+
+  args: {
+    variant: 'primary-reverse',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button>My button</puik-button>
+
+  <!--HTML/CSS Snippet-->
+  <button class="puik-button puik-button--primary">My button</button>
+        `,
+        language: 'html',
+        dark: true,
+      },
+    },
+  },
+}
+
 export const Secondary: StoryObj = {
   render: ButtonTemplate,
 
@@ -229,6 +236,30 @@ export const Secondary: StoryObj = {
   <button class="puik-button puik-button--secondary">My button</button>
         `,
         language: 'html',
+      },
+    },
+  },
+}
+
+export const SecondaryReverse: StoryObj = {
+  render: ButtonTemplate,
+
+  args: {
+    variant: 'secondary-reverse',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button variant="secondary">My button</puik-button>
+
+  <!--HTML/CSS Snippet-->
+  <button class="puik-button puik-button--secondary">My button</button>
+        `,
+        language: 'html',
+        dark: true,
       },
     },
   },
@@ -285,6 +316,30 @@ export const Text: StoryObj = {
 
   args: {
     variant: 'text',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button variant="text">My button</puik-button>
+
+  <!--HTML/CSS Snippet-->
+  <button class="puik-button puik-button--text">My button</button>
+        `,
+        language: 'html',
+        dark: true,
+      },
+    },
+  },
+}
+
+export const TextReverse: StoryObj = {
+  render: ButtonTemplate,
+
+  args: {
+    variant: 'text-reverse',
   },
 
   parameters: {

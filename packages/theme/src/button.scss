@@ -31,7 +31,7 @@
     @apply pointer-events-none cursor-default;
   }
 
-  &--primary.puik-button--light {
+  &--primary {
     @apply bg-primary-800 text-white;
     &:hover {
       @apply bg-primary-700;
@@ -44,7 +44,7 @@
       @apply bg-primary-500;
     }
   }
-  &--primary.puik-button--dark {
+  &--primary-reverse {
     @apply bg-white text-black;
     &:hover {
       @apply bg-primary-200;
@@ -54,11 +54,11 @@
     }
     &:disabled,
     &.puik-button--disabled {
-      @apply bg-primary-500;
+      @apply bg-primary-500 text-white;
     }
   }
 
-  &--secondary.puik-button--light {
+  &--secondary {
     @apply bg-white text-primary border border-primary;
     &:hover {
       @apply bg-primary-300;
@@ -71,7 +71,7 @@
       @apply bg-primary-200 text-primary-500 border-primary-400;
     }
   }
-  &--secondary.puik-button--dark {
+  &--secondary-reverse {
     @apply bg-transparent text-white border border-white;
     &:hover {
       @apply bg-primary-600;
@@ -113,7 +113,7 @@
     }
   }
 
-  &--text.puik-button--light {
+  &--text {
     @apply text-primary;
     &:hover {
       @apply bg-primary-200;
@@ -126,7 +126,7 @@
       @apply text-primary-500;
     }
   }
-  &--text.puik-button--dark {
+  &--text-reverse {
     @apply text-white;
     &:hover {
       @apply text-primary;

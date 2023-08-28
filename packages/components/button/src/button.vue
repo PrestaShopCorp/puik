@@ -6,7 +6,6 @@
     :class="[
       `puik-button--${variant}`,
       `puik-button--${size}`,
-      `puik-button--${theme}`,
       { 'puik-button--disabled': disabled },
       { 'puik-button--fluid': fluid },
     ]"

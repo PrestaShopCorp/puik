@@ -3,15 +3,15 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Button from './button.vue'
 
-export const buttonTheme = ['light', 'dark'] as const
-export type PuikButtonTheme = (typeof buttonTheme)[number]
-
 export const buttonVariants = [
   'primary',
+  'primary-reverse',
   'destructive',
   'secondary',
+  'secondary-reverse',
   'tertiary',
   'text',
+  'text-reverse',
   'info',
   'success',
   'warning',
@@ -23,11 +23,6 @@ export const buttonSizes = ['sm', 'md', 'lg'] as const
 export type PuikButtonSize = (typeof buttonSizes)[number]
 
 export const buttonProps = buildProps({
-  theme: {
-    type: String as PropType<PuikButtonTheme>,
-    required: false,
-    default: 'light',
-  },
   variant: {
     type: String as PropType<PuikButtonVariant>,
     required: false,
