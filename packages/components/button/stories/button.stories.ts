@@ -328,7 +328,6 @@ export const Text: StoryObj = {
   <button class="puik-button puik-button--text">My button</button>
         `,
         language: 'html',
-        dark: true,
       },
     },
   },
@@ -352,6 +351,7 @@ export const TextReverse: StoryObj = {
   <button class="puik-button puik-button--text-reverse">My button</button>
         `,
         language: 'html',
+        dark: true,
       },
     },
   },
