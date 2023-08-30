@@ -1,4 +1,5 @@
 import { buildProps } from '@puik/utils'
+import type { RouteLocationRaw } from 'vue-router'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Button from './button.vue'
 
@@ -51,7 +52,7 @@ export const buttonProps = buildProps({
     default: '',
   },
   to: {
-    type: String,
+    type: [Object, String] as PropType<RouteLocationRaw>,
     required: false,
     default: undefined,
   },
