@@ -3,7 +3,7 @@
   @apply relative;
   @extend .puik-body-default;
   &__button {
-    @apply relative w-full cursor-default bg-white min-h-[36px] text-left
+    @apply relative w-full h-full cursor-default bg-white min-h-[36px] text-left
       border border-primary-400
       hover:border-primary
       text-primary
@@ -11,6 +11,9 @@
       disabled:border-primary-400 disabled:text-primary-500;
     &--error {
       @apply border-red;
+    }
+    &:disabled input {
+      @apply text-primary-500;
     }
   }
   &__selected {
@@ -34,8 +37,11 @@
     @apply p-2 truncate;
   }
   &__options {
-    @apply absolute mt-2 w-full rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5
+    @apply absolute mt-2 rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5
     focus-visible:outline-none sm:text-sm overflow-x-hidden;
+    &--full-width {
+      @apply w-full;
+    }
   }
   &__options-list {
     @apply max-h-60 overflow-y-auto overflow-x-hidden;
@@ -73,5 +79,8 @@
         @apply transform scale-95 opacity-0;
       }
     }
+  }
+  .puik-select__options:not(.puik-select__options--full-width) .puik-option {
+    @apply pr-10;
   }
 }

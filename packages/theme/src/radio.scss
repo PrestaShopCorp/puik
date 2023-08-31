@@ -11,9 +11,9 @@
      border-2 border-solid rounded-full border-primary cursor-pointer;
 
     &:checked {
-      @apply bg-primary
+      @apply bg-blue
       p-[3px]
-      border-2 border-solid border-primary;
+      border-2 border-solid border-blue;
       &:disabled {
         @apply border-2 border-solid rounded-full border-primary-500 bg-primary-500;
       }

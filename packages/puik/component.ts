@@ -4,6 +4,10 @@ import {
   PuikTabNavigationTitle,
   PuikTabNavigationGroupTitles,
 } from '@puik/components/tab-navigation'
+import {
+  PuikProgressStepper,
+  PuikProgressStepperStep,
+} from '@puik/components/progress-stepper'
 import { PuikTable } from '@puik/components/table'
 import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
 import {
@@ -48,6 +52,8 @@ export default [
   PuikTabNavigationTitle,
   PuikTabNavigationGroupTitles,
   PuikTabNavigation,
+  PuikProgressStepper,
+  PuikProgressStepperStep,
   PuikTable,
   PuikSpinnerLoader,
   PuikSidebar,

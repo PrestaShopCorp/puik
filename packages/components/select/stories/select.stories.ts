@@ -7,6 +7,14 @@ export default {
   title: 'Components/Select',
   components: PuikSelect,
   argTypes: {
+    customLabel: {
+      control: 'text',
+      description:
+        'Use custom label when the label is different from the option selected',
+      table: {
+        category: 'Common',
+      },
+    },
     labelKey: {
       control: 'text',
       description:
@@ -90,6 +98,15 @@ export default {
       description: 'Message to display when there is no results found',
       table: {
         category: 'Searchable',
+      },
+    },
+    fullWidth: {
+      control: 'boolean',
+      description:
+        'Keep same width for the dropdown and select input. True by default',
+      table: {
+        defaultValue: true,
+        category: 'Common',
       },
     },
   },
@@ -581,6 +598,144 @@ export const NoMatchCustomText: StoryObj = {
             <span class="puik-option__label">Test 1</span>
             <!-- Checkmark, only display for selected option. -->
             <span class="puik-icon puik-option__selected-icon"> checked </span>
+          </li>
+          <!-- More items... -->
+        </ul>
+      </div>
+    </div>
+  </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
+export const customLabel = {
+  render: () => ({
+    components: {
+      PuikSelect,
+      PuikOption,
+    },
+    setup() {
+      const myValue = ref('')
+      return { myValue }
+    },
+    template: `<puik-select v-model="myValue" placeholder="Select a value" customLabel="Custom label">
+        <puik-option value="test" label="Test 1"/>
+        <puik-option value="test2" label="Test 2"/>
+        <puik-option value="test3" label="Test 3"/>
+      </puik-select>`,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+    <!--VueJS Snippet-->
+    <puik-select v-model="myValue" placeholder="Select a value" custom-label="customLabel">
+      <puik-option value="test" label="Test 1"/>
+      <puik-option value="test2" label="Test 2"/>
+      <puik-option value="test3" label="Test 3"/>
+    </puik-select>
+    <!--HTML/CSS Snippet-->
+    <div class="puik-select">
+    <div class="puik-select__wrapper">
+      <button
+        class="puik-select__button"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        disabled
+      >
+        <span class="puik-select__selected">
+          <!-- Placeholder or selected value -->
+          Select a value
+        </span>
+        <span class="puik-icon puik-select__icon"> unfold_more </span>
+      </button>
+      <!--
+        Select list, show/hide base on select state
+
+        Leaving: "puik-select__transition__leave--active"
+        From: "puik-select__transition__leave--from"
+        To: "puik-select__transition__leave--to"
+      -->
+      <div
+        class="puik-select__options"
+        tabindex="-1"
+        role="listbox"
+      >
+        <ul class="puik-select__options-list">
+          <li class="puik-option" role="option">
+            <span class="puik-option__label">Test 1</span>
+          </li>
+          <!-- More items... -->
+        </ul>
+      </div>
+    </div>
+  </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
+export const maxContentOption = {
+  render: () => ({
+    components: {
+      PuikSelect,
+      PuikOption,
+    },
+    setup() {
+      const myValue = ref('')
+      return { myValue }
+    },
+    template: `<puik-select v-model="myValue" placeholder="Select a value" :full-width="false">
+        <puik-option value="test" label="Test 1"/>
+        <puik-option value="test2" label="Test 2"/>
+        <puik-option value="test3" label="Test 3"/>
+      </puik-select>`,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+    <!--VueJS Snippet-->
+    <puik-select v-model="myValue" placeholder="Select a value" custom-label="customLabel">
+      <puik-option value="test" label="Test 1"/>
+      <puik-option value="test2" label="Test 2"/>
+      <puik-option value="test3" label="Test 3"/>
+    </puik-select>
+    <!--HTML/CSS Snippet-->
+    <div class="puik-select">
+    <div class="puik-select__wrapper">
+      <button
+        class="puik-select__button"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        disabled
+      >
+        <span class="puik-select__selected">
+          <!-- Placeholder or selected value -->
+          Select a value
+        </span>
+        <span class="puik-icon puik-select__icon"> unfold_more </span>
+      </button>
+      <!--
+        Select list, show/hide base on select state
+
+        Leaving: "puik-select__transition__leave--active"
+        From: "puik-select__transition__leave--from"
+        To: "puik-select__transition__leave--to"
+      -->
+      <div
+        class="puik-select__options"
+        tabindex="-1"
+        role="listbox"
+      >
+        <ul class="puik-select__options-list">
+          <li class="puik-option" role="option">
+            <span class="puik-option__label">Test 1</span>
           </li>
           <!-- More items... -->
         </ul>

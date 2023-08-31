@@ -44,6 +44,7 @@
           v-show="isOpen(open)"
           static
           class="puik-select__options"
+          :class="{ 'puik-select__options--full-width': fullWidth }"
           as="div"
           :style="{ 'z-index': zindex }"
         >
@@ -133,7 +134,7 @@ const selectedValue = computed({
     return props.modelValue
   },
   set(option: any) {
-    currentLabel.value = option.label
+    currentLabel.value = props.customLabel || option.label
     return emit('update:modelValue', option.value)
   },
 })

@@ -44,9 +44,9 @@ const Template: StoryFn = (args: Args) => ({
   },
   template: `
     <puik-button-group v-model="selectedValue">
-      <puik-button :variant="(selectedValue === 'btn1') ? 'primary' : 'tertiary'" value="btn1">Button 1</puik-button>
-      <puik-button :variant="(selectedValue === 'btn2') ? 'primary' : 'tertiary'" value="btn2">Button 2</puik-button>
-      <puik-button :variant="(selectedValue === 'btn3') ? 'primary' : 'tertiary'" value="btn3">Button 3</puik-button>
+      <puik-button :variant="(selectedValue === 'btn1') ? 'primary' : 'secondary'" value="btn1">Button 1</puik-button>
+      <puik-button :variant="(selectedValue === 'btn2') ? 'primary' : 'secondary'" value="btn2">Button 2</puik-button>
+      <puik-button :variant="(selectedValue === 'btn3') ? 'primary' : 'secondary'" value="btn3">Button 3</puik-button>
     </puik-button-group>
 
     `,
@@ -62,16 +62,16 @@ export const Default = {
         code: `
   <!--VueJS Snippet-->
   <puik-button-group v-model="selectedValue">
-    <puik-button :variant="(selectedValue === 'btn1') ? 'primary' : 'tertiary'" value="btn1">Button 1</puik-button>
-    <puik-button :variant="(selectedValue === 'btn2') ? 'primary' : 'tertiary'" value="btn2">Button 2</puik-button>
-    <puik-button :variant="(selectedValue === 'btn3') ? 'primary' : 'tertiary'" value="btn3">Button 3</puik-button>
+    <puik-button :variant="(selectedValue === 'btn1') ? 'primary' : 'secondary'" value="btn1">Button 1</puik-button>
+    <puik-button :variant="(selectedValue === 'btn2') ? 'primary' : 'secondary'" value="btn2">Button 2</puik-button>
+    <puik-button :variant="(selectedValue === 'btn3') ? 'primary' : 'secondary'" value="btn3">Button 3</puik-button>
   </puik-button-group>
 
   <!--HTML/CSS Snippet-->
   <div class="puik-button-group">
     <button class="puik-button puik-button--primary puik-button--md">Button 1</button>
-    <button class="puik-button puik-button--tertiary puik-button--md">Button 2</button>
-    <button class="puik-button puik-button--tertiary puik-button--md">Button 3</button>
+    <button class="puik-button puik-button--secondary puik-button--md">Button 2</button>
+    <button class="puik-button puik-button--secondary puik-button--md">Button 3</button>
   </div>
         `,
         language: 'html',

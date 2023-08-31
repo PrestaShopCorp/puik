@@ -1,10 +1,11 @@
 import { buildProps } from '@puik/utils'
+import type { RouteLocationRaw } from 'vue-router'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Breadcrumb from './breadcrumb.vue'
 
 export interface BreadcrumbItem {
   label: string
-  to?: string
+  to?: RouteLocationRaw
   href?: string
   target?: string
 }

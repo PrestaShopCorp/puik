@@ -17,6 +17,7 @@ describe('Select tests', () => {
   const findSelected = () => wrapper.find('.puik-select__selected')
   const findAllOptions = () => wrapper.findAllComponents(PuikOption)
   const findErrorMsg = () => wrapper.find('.puik-select__error')
+  const findFullWidth = () => wrapper.find('.puik-select__selected--full-width')
 
   const factory = (
     template: string,
@@ -295,5 +296,45 @@ describe('Select tests', () => {
     await findSelect().trigger('click')
     await findInputComponent().setValue(query)
     expect(customFilterMethod).toHaveBeenCalledOnce()
+  })
+
+  it('should display the list of options with a maximum content width', () => {
+    factory(
+      `<puik-select v-model="value" :full-width="false">
+        <puik-option value="test" label="test" />
+      </puik-select>`,
+      () => ({
+        value: '',
+      })
+    )
+    expect(findSelected().classes(findFullWidth())).toBe(false)
+  })
+
+  it('should display the custom label', async () => {
+    const items = [
+      {
+        label: 'Test',
+        value: 'test',
+      },
+      {
+        label: 'Test2',
+        value: 'test2',
+      },
+      {
+        label: 'Test3',
+        value: 'test3',
+      },
+    ]
+    factory(
+      `<puik-select :options="items" v-model="value" custom-label="Custom Label">
+        <puik-option value="test" label="test" />
+      </puik-select>`,
+      () => ({
+        items,
+        value: '',
+      })
+    )
+    await findAllOptions().at(0)?.trigger('click')
+    expect(findSelected().element.value).toBe('Custom Label')
   })
 })

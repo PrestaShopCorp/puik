@@ -26,3 +26,5 @@ export * from './menu'
 export * from './sidebar'
 export * from './textarea'
 export * from './tab-navigation'
+export * from './progress-stepper'
+

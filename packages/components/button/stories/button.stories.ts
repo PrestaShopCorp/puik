@@ -115,10 +115,10 @@ export const Default = {
     :disabled="true|false"
     :left-icon="leftIcon"
     :right-icon="rightIcon"
-  >
+    >
     My button
   </puik-button>
-
+  
   <!--HTML/CSS Snippet-->
   <!--
   $sizes: ${buttonSizesSummary} (defaults to md)
@@ -193,6 +193,30 @@ export const Primary: StoryObj = {
   },
 }
 
+export const PrimaryReverse: StoryObj = {
+  render: ButtonTemplate,
+
+  args: {
+    variant: 'primary-reverse',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button>My button</puik-button>
+
+  <!--HTML/CSS Snippet-->
+  <button class="puik-button puik-button--primary-reverse">My button</button>
+        `,
+        language: 'html',
+        dark: true,
+      },
+    },
+  },
+}
+
 export const Secondary: StoryObj = {
   render: ButtonTemplate,
 
@@ -211,6 +235,30 @@ export const Secondary: StoryObj = {
   <button class="puik-button puik-button--secondary">My button</button>
         `,
         language: 'html',
+      },
+    },
+  },
+}
+
+export const SecondaryReverse: StoryObj = {
+  render: ButtonTemplate,
+
+  args: {
+    variant: 'secondary-reverse',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button variant="secondary">My button</puik-button>
+
+  <!--HTML/CSS Snippet-->
+  <button class="puik-button puik-button--secondary-reverse">My button</button>
+        `,
+        language: 'html',
+        dark: true,
       },
     },
   },
@@ -280,6 +328,30 @@ export const Text: StoryObj = {
   <button class="puik-button puik-button--text">My button</button>
         `,
         language: 'html',
+      },
+    },
+  },
+}
+
+export const TextReverse: StoryObj = {
+  render: ButtonTemplate,
+
+  args: {
+    variant: 'text-reverse',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button variant="text">My button</puik-button>
+
+  <!--HTML/CSS Snippet-->
+  <button class="puik-button puik-button--text-reverse">My button</button>
+        `,
+        language: 'html',
+        dark: true,
       },
     },
   },

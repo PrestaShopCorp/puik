@@ -5,6 +5,8 @@ declare module '@vue/runtime-core' {
     PuikTabNavigationTitle: typeof import('@prestashopcorp/puik')['PuikTabNavigationTitle']
     PuikTabNavigationGroupTitles: typeof import('@prestashopcorp/puik')['PuikTabNavigationGroupTitles']
     PuikTabNavigation: typeof import('@prestashopcorp/puik')['PuikTabNavigation']
+    PuikProgressStepper: typeof import('@prestashopcorp/puik')['PuikProgressStepper']
+    PuikProgressStepperStep: typeof import('@prestashopcorp/puik')['PuikProgressStepperStep']
     PuikTable: typeof import('@prestashopcorp/puik')['PuikTable']
     PuikSpinnerLoader: typeof import('@prestashopcorp/puik')['PuikSpinnerLoader']
     PuikSidebar: typeof import('@prestashopcorp/puik')['PuikSidebar']
