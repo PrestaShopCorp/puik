@@ -101,7 +101,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide, ref, useSlots } from 'vue'
+import { computed, provide, ref, useSlots, watch } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
 import { isObject, isFunction, isArray, slotIsEmpty } from '@puik/utils'
 import { useLocale } from '@puik/hooks'
@@ -134,10 +134,18 @@ const selectedValue = computed({
     return props.modelValue
   },
   set(option: any) {
-    currentLabel.value = props.customLabel || option.label
-    return emit('update:modelValue', option.value)
+    if (!props.customLabel) {
+      currentLabel.value = option.label
+    }
+    emit('update:modelValue', option.value)
   },
 })
+
+watch(
+  () => props.customLabel,
+  () => (currentLabel.value = props.customLabel)
+)
+
 const filteredItems = computed(() => {
   if (props.options) {
     if (query.value) {
