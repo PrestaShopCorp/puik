@@ -19,7 +19,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.0.24",
-    "vite": "^4.2.1"
+    "vite": "^4.2.3"
   },
   "dependencies": {
     "@storybook/client-api": "^7.2.3",
