@@ -1,4 +1,10 @@
 import {
+  PuikTabNavigation,
+  PuikTabNavigationGroupPanels,
+  PuikTabNavigationTitle,
+  PuikTabNavigationGroupTitles,
+} from '@puik/components/tab-navigation'
+import {
   PuikProgressStepper,
   PuikProgressStepperStep,
 } from '@puik/components/progress-stepper'
@@ -42,6 +48,10 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikTabNavigationGroupPanels,
+  PuikTabNavigationTitle,
+  PuikTabNavigationGroupTitles,
+  PuikTabNavigation,
   PuikProgressStepper,
   PuikProgressStepperStep,
   PuikTable,
