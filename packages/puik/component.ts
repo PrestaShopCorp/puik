@@ -1,3 +1,7 @@
+import {
+  PuikProgressStepper,
+  PuikProgressStepperStep,
+} from '@puik/components/progress-stepper'
 import { PuikTable } from '@puik/components/table'
 import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
 import {
@@ -38,6 +42,8 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikProgressStepper,
+  PuikProgressStepperStep,
   PuikTable,
   PuikSpinnerLoader,
   PuikSidebar,
