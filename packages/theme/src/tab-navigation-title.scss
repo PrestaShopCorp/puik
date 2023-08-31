@@ -27,6 +27,6 @@
     }
   }
   &--disabled {
-    @apply text-primary-600 bg-primary-200;
+    @apply text-primary-600 bg-primary-200 cursor-not-allowed;
   }
 }
