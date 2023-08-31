@@ -189,6 +189,33 @@ export const Amber = {
   },
 }
 
+export const Green = {
+  render: Template,
+
+  args: {
+    variant: 'green',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-card variant="amber">
+    Card content
+  </puik-card>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-card puik-card--green">
+    Card content
+  </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
 export const WithPictureTitleTextAndAction: StoryObj = {
   render: (args: Args) => ({
     components: {
