@@ -5,16 +5,18 @@ import type Button from './button.vue'
 
 export const buttonVariants = [
   'primary',
+  'primary-reverse',
   'destructive',
   'secondary',
+  'secondary-reverse',
   'tertiary',
   'text',
+  'text-reverse',
   'info',
   'success',
   'warning',
   'danger',
 ] as const
-
 export type PuikButtonVariant = (typeof buttonVariants)[number]
 
 export const buttonSizes = ['sm', 'md', 'lg'] as const
