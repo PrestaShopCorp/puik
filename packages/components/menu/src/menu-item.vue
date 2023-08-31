@@ -10,5 +10,4 @@ import { menuItemProps } from './menu-item'
 defineOptions({
   name: 'PuikMenuItem',
 })
-defineProps(menuItemProps)
 </script>
