@@ -1,6 +1,9 @@
 import PuikAccordionGroup from '../src/accordion-group.vue'
 import PuikAccordion from '../src/accordion.vue'
+import { paddingVariants } from '../src/accordion'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
+
+const paddingVariantsSummary = paddingVariants.join(' ')
 
 export default {
   title: 'Components/Accordion/Accordion',
@@ -29,6 +32,70 @@ export default {
       table: {
         defaultValue: {
           summary: false,
+        },
+      },
+    },
+    headerPaddingX: {
+      control: 'select',
+      options: ['smaller', 'small', 'normal', 'large', 'larger'],
+      description: 'Set horizontal paddings of accordion header',
+      table: {
+        defaultValue: {
+          summary: 'large',
+          detail: 'large (24px)',
+        },
+        type: {
+          summary: paddingVariantsSummary,
+          detail:
+            'smaller(4px) | small(8px) | normal(16px)| large(24px) | larger(32px)',
+        },
+      },
+    },
+    headerPaddingY: {
+      control: 'select',
+      options: ['smaller', 'small', 'normal', 'large', 'larger'],
+      description: 'Set vertical paddings of accordion header',
+      table: {
+        defaultValue: {
+          summary: 'normal',
+          detail: 'normal(16px)',
+        },
+        type: {
+          summary: paddingVariantsSummary,
+          detail:
+            'smaller(4px) | small(8px) | normal(16px)| large(24px) | larger(32px)',
+        },
+      },
+    },
+    contentPaddingX: {
+      control: 'select',
+      options: ['smaller', 'small', 'normal', 'large', 'larger'],
+      description: 'Set horizontal paddings of accordion content',
+      table: {
+        defaultValue: {
+          summary: 'large',
+          detail: 'large (24px)',
+        },
+        type: {
+          summary: paddingVariantsSummary,
+          detail:
+            'smaller(4px) | small(8px) | normal(16px)| large(24px) | larger(32px)',
+        },
+      },
+    },
+    contentPaddingY: {
+      control: 'select',
+      options: ['smaller', 'small', 'normal', 'large', 'larger'],
+      description: 'Set vertical paddings of accordion content',
+      table: {
+        defaultValue: {
+          summary: 'normal',
+          detail: 'normal(16px)',
+        },
+        type: {
+          summary: paddingVariantsSummary,
+          detail:
+            'smaller(4px) | small(8px) | normal(16px)| large(24px) | larger(32px)',
         },
       },
     },
@@ -80,6 +147,10 @@ export const Default = {
         :sub-title="subTitle"
         :icon="icon"
         :disabled="true|false"
+        header-padding-x="smaller | small | normal | large | larger"
+        header-padding-y="smaller | small | normal | large | larger"
+        content-padding-x="smaller | small | normal | large | larger"
+        content-padding-y="smaller | small | normal | large | larger"
     >
       Content 1
     </puik-accordion>
@@ -91,17 +162,32 @@ export const Default = {
       State classes
       Disabled: "puik-accordion--disabled"
       Expanded: "puik-accordion--expanded"
+
+      Padding Variants
+      $paddingVariants: smaller|small|normal|large|larger
     -->
     <div class="puik-accordion puik-accordion--expanded">
-      <button aria-expanded="true" aria-controls="accordion-id" class="puik-accordion__header">
+      <button aria-expanded="true" aria-controls="accordion-id" class="
+        puik-accordion__header
+        puik-accordion__header--padding-x-{$paddingVariants}
+        puik-accordion__header--padding-y-{$paddingVariants}"
+      >
         <div class="puik-icon material-icons-round puik-accordion__header__icon" style="font-size: 24px;">home</div>
         <div class="puik-accordion__header__content">
           <div class="puik-accordion__header__content__title">Accordion title</div>
           <div class="puik-accordion__header__content__sub-title">Accordion subtitle</div>
         </div>
-        <div class="puik-icon material-icons-round puik-accordion__header__expand__icon" style="font-size: 24px;">keyboard_arrow_up</div>
+        <div class="puik-icon material-icons-round puik-accordion__header__expand__icon" style="font-size: 24px;">
+          keyboard_arrow_up
+        </div>
       </button>
-      <div id="accordion-id" class="puik-accordion__content"> Content 1 </div>
+      <div id="accordion-id" class="
+        puik-accordion__content
+        puik-accordion__content--padding-x-{$paddingVariants}
+        puik-accordion__content--padding-y-{$paddingVariants}"
+      >
+        Content 1
+      </div>
     </div>
   </div>
         `,

@@ -4,7 +4,7 @@
   @apply border border-primary-400 mb-4;
 
   &__header {
-    @apply px-6 py-4 flex w-full items-center;
+    @apply flex w-full items-center;
 
     &:hover {
       @apply bg-primary-200;
@@ -32,10 +32,78 @@
     &__expand__icon {
       @apply ml-auto text-primary-600 transform transition-transform duration-100 ease-in-out;
     }
+    &--padding-x {
+      &-smaller {
+        @apply px-1;
+      }
+      &-small {
+        @apply px-2;
+      }
+      &-normal {
+        @apply px-4;
+      }
+      &-large {
+        @apply px-6;
+      }
+      &-larger {
+        @apply px-8;
+      }
+    }
+    &--padding-y {
+      &-smaller {
+        @apply py-1;
+      }
+      &-small {
+        @apply py-2;
+      }
+      &-normal {
+        @apply py-4;
+      }
+      &-large {
+        @apply py-6;
+      }
+      &-larger {
+        @apply py-8;
+      }
+    }
   }
   &__content {
     @extend .puik-body-default;
-    @apply p-4 ml-4 text-primary-600 invisible;
+    @apply text-primary-600 invisible;
+    &--padding-x {
+      &-smaller {
+        @apply px-1;
+      }
+      &-small {
+        @apply px-2;
+      }
+      &-normal {
+        @apply px-4;
+      }
+      &-large {
+        @apply px-6;
+      }
+      &-larger {
+        @apply px-8;
+      }
+    }
+    &--padding-y {
+      &-smaller {
+        @apply py-1;
+      }
+      &-small {
+        @apply py-2;
+      }
+      &-normal {
+        @apply py-4;
+      }
+      &-large {
+        @apply py-6;
+      }
+      &-larger {
+        @apply py-8;
+      }
+    }
   }
   &--expanded {
     .puik-accordion__title {

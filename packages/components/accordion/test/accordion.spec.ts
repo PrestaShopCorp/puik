@@ -152,4 +152,44 @@ describe('Accordion tests', () => {
 
     expect(getAccordionIcon(wrapper).text()).toBe(icon)
   })
+
+  it('should setting small horizontal padding for accordion header', () => {
+    const headerPaddingX = 'small'
+    const template = `
+      <puik-accordion-group>
+        <puik-accordion
+          name="accordion-1"
+          icon="home"
+          header-padding-x=${headerPaddingX}
+        >
+          Content
+        </puik-accordion>
+      </puik-accordion-group>
+    `
+    factory(template)
+    const accordion = getAccordion(wrapper)
+    expect(getAccordionHeader(accordion).classes()).toContain(
+      `puik-accordion__header--padding-x-${headerPaddingX}`
+    )
+  })
+
+  it('should setting large vertical padding for accordion content', () => {
+    const headerPaddingY = 'large'
+    const template = `
+      <puik-accordion-group>
+        <puik-accordion
+          name="accordion-1"
+          icon="home"
+          content-padding-y=${headerPaddingY}
+        >
+          Content
+        </puik-accordion>
+      </puik-accordion-group>
+    `
+    factory(template)
+    const accordion = getAccordion(wrapper)
+    expect(getAccordionContent(accordion).classes()).toContain(
+      `puik-accordion__content--padding-y-${headerPaddingY}`
+    )
+  })
 })

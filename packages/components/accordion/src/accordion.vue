@@ -1,15 +1,21 @@
 <template>
   <div
-    class="puik-accordion"
-    :class="{
-      'puik-accordion--expanded': isExpanded,
-      'puik-accordion--disabled': disabled,
-    }"
+    :class="[
+      'puik-accordion',
+      {
+        'puik-accordion--expanded': isExpanded,
+        'puik-accordion--disabled': disabled,
+      },
+    ]"
   >
     <button
       :aria-expanded="isExpanded"
       :aria-controls="id"
-      class="puik-accordion__header"
+      :class="[
+        `puik-accordion__header 
+        puik-accordion__header--padding-x-${headerPaddingX}
+        puik-accordion__header--padding-y-${headerPaddingY}`,
+      ]"
       :disabled="disabled"
       @click="onClick"
     >
@@ -32,7 +38,15 @@
       ></puik-icon>
     </button>
 
-    <div v-show="isExpanded" :id="id" class="puik-accordion__content">
+    <div
+      v-show="isExpanded"
+      :id="id"
+      :class="[
+        `puik-accordion__content 
+        puik-accordion__content--padding-x-${contentPaddingX}
+        puik-accordion__content--padding-y-${contentPaddingY}`,
+      ]"
+    >
       <slot></slot>
     </div>
   </div>

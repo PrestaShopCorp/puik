@@ -1,6 +1,16 @@
 import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type accordion from './accordion.vue'
+
+export const paddingVariants = [
+  'smaller',
+  'small',
+  'normal',
+  'large',
+  'larger',
+] as const
+
+export type PuikPaddingVariant = (typeof paddingVariants)[number]
 
 export const accordionProps = buildProps({
   name: {
@@ -26,6 +36,26 @@ export const accordionProps = buildProps({
     type: Boolean,
     required: false,
     default: false,
+  },
+  headerPaddingX: {
+    type: String as PropType<PuikPaddingVariant>,
+    required: false,
+    default: 'large',
+  },
+  headerPaddingY: {
+    type: String as PropType<PuikPaddingVariant>,
+    required: false,
+    default: 'normal',
+  },
+  contentPaddingX: {
+    type: String as PropType<PuikPaddingVariant>,
+    required: false,
+    default: 'large',
+  },
+  contentPaddingY: {
+    type: String as PropType<PuikPaddingVariant>,
+    required: false,
+    default: 'normal',
   },
 } as const)
 
