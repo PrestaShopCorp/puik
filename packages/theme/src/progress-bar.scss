@@ -1,3 +1,6 @@
+@use './common/variables.scss';
+@use './common/typography.scss';
+
 .progress-bar {
   &__container {
     @apply bg-primary-400 h-2 rounded-3xl;

@@ -1,3 +1,6 @@
+@use './common/variables.scss';
+@use './common/typography.scss';
+
 .puik-accordion-group {
   .puik-accordion {
     @apply mb-4;

@@ -1,4 +1,6 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
+
 .puik-textarea {
   @apply flex flex-col relative;
   &__character-count {
@@ -11,7 +13,7 @@
     }
   }
   &__wrapper {
-    @apply flex flex-row border border-primary-400 font-primary transition-colors text-primary overflow-hidden;
+    @apply flex flex-row border border-primary-400 tw-font-primary transition-colors text-primary overflow-hidden;
     &:hover {
       @apply border-primary;
     }
@@ -42,7 +44,7 @@
     @extend .puik-body-small;
     @apply flex text-primary font-normal mt-1 leading-4;
     &__error {
-      @apply flex text-red font-primary font-normal;
+      @apply flex text-red tw-font-primary font-normal;
       &__text {
         @apply mt-0.5;
       }

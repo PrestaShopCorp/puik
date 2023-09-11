@@ -1,4 +1,6 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
+
 .puik-menu-item {
   @extend .puik-body-default;
   @apply flex text-left;

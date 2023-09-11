@@ -1,4 +1,6 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
+
 .puik-switch__group {
   @apply flex items-center;
   .puik-switch {

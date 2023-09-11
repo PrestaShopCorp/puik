@@ -1,3 +1,4 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
 
 .puik-sidebar-group-item {
@@ -20,7 +21,7 @@
       }
 
       &__icon {
-        @apply mr-2 leading-5 text-primary;
+        @apply mr-2 tw-leading-5 text-primary;
         font-size: 1.25rem !important;
       }
 

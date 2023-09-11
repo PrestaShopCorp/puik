@@ -1,3 +1,6 @@
+@use './common/variables.scss';
+@use './common/typography.scss';
+
 .puik-menu-item-separator {
   @apply border-t-[1px] border-primary-400 z-0;
 }

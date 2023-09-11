@@ -1,5 +1,8 @@
+@use './common/variables.scss';
+@use './common/typography.scss';
+
 .puik-snackbar {
-  @apply w-full md:w-auto fixed flex text-white p-4 transition-all duration-300 z-50 shadow-md left-[50%] translate-x-[-50%] text-sm;
+  @apply w-full md:w-auto fixed flex text-white p-4 transition-all duration-300 z-50 shadow-md left-[50%] translate-x-[-50%] tw-text-sm;
 
   &--default {
     @apply bg-primary-800;
@@ -10,11 +13,11 @@
   }
 
   &__text {
-    @apply font-primary flex-grow;
+    @apply tw-font-primary flex-grow;
   }
 
   &__action {
-    @apply font-primary font-semibold hover:cursor-pointer ml-6;
+    @apply tw-font-primary font-semibold hover:cursor-pointer ml-6;
   }
 
   &__close-button {

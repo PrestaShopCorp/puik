@@ -1,4 +1,6 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
+
 .puik-radio {
   $baseClass: &;
   @extend .puik-body-default;
@@ -32,6 +34,6 @@
   }
   &__label {
     @extend .puik-body-default;
-    @apply font-primary cursor-pointer;
+    @apply tw-font-primary cursor-pointer;
   }
 }

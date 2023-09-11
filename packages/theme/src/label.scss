@@ -1,4 +1,6 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
+
 .puik-label {
   @extend .puik-body-default-bold;
   @apply text-primary-800;

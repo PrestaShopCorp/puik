@@ -1,3 +1,6 @@
+@use './common/variables.scss';
+@use './common/typography.scss';
+
 .puik-tab-navigation__group-panels {
   @apply p-2;
 }

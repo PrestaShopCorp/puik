@@ -1,9 +1,11 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
+
 .puik-pagination {
   @apply px-2 flex flex-row items-center w-max;
   &__label {
     @extend .puik-body-default;
-    @apply text-primary-700 mx-6 text-sm;
+    @apply text-primary-700 mx-6 tw-text-sm;
   }
   &__content {
     @apply flex flex-row items-center;
@@ -45,7 +47,7 @@
       @apply flex flex-row items-center mx-2;
       &-description {
         @extend .puik-body-default;
-        @apply text-primary-700 mx-2 text-sm;
+        @apply text-primary-700 mx-2 tw-text-sm;
       }
       .puik-pagination__select {
         @apply mx-2 w-[100px];
@@ -65,7 +67,7 @@
     @apply flex flex-col;
     .puik-pagination__label {
       @extend .puik-body-default;
-      @apply mx-0 mb-2 text-sm;
+      @apply mx-0 mb-2 tw-text-sm;
     }
   }
 }

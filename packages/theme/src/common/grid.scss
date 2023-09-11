@@ -1,3 +1,5 @@
-.puik-grid {
-  @apply grid grid-cols-4 gap-4 mx-4 md:grid-cols-8 lg:grid-cols-12 lg:gap-6 lg:mx-6;
+@layer components {
+  .puik-grid {
+    @apply grid grid-cols-4 gap-4 mx-4 md:grid-cols-8 lg:grid-cols-12 lg:gap-6 lg:mx-6;
+  }
 }

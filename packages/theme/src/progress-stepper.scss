@@ -1,3 +1,6 @@
+@use './common/variables.scss';
+@use './common/typography.scss';
+
 .puik-progress-stepper {
   @apply flex flex-row;
   &-step {

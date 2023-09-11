@@ -1,4 +1,6 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
+
 .puik-breadcrumb {
   @apply flex flex-row items-center;
 

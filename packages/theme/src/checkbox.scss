@@ -1,4 +1,6 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
+
 .puik-checkbox {
   @apply flex items-center;
   $baseClass: &;
@@ -38,7 +40,7 @@
   }
   &__label {
     @extend .puik-body-default;
-    @apply -tracking-[0.015625em] font-primary text-primary
+    @apply -tracking-[0.015625em] tw-font-primary text-primary
       cursor-pointer
       ml-2;
   }

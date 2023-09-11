@@ -1,3 +1,6 @@
+@use './common/variables.scss';
+@use './common/typography.scss';
+
 .puik-skeleton-loader {
   @apply rounded w-full text-primary-500 text-2xl;
 
@@ -35,7 +38,7 @@
   &--h6 {
     @apply h-[20px];
   }
-  &--text-small {
+  &--tw-text-small {
     @apply h-[18px];
   }
   &--text-medium {

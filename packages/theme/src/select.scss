@@ -1,4 +1,6 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
+
 .puik-select {
   @apply relative;
   @extend .puik-body-default;
@@ -18,7 +20,7 @@
   }
   &__selected {
     @apply block truncate w-full
-      py-1 pl-3 pr-9 select-none font-primary outline-none pointer-events-none
+      py-1 pl-3 pr-9 select-none tw-font-primary outline-none pointer-events-none
       text-primary
       disabled:bg-white
       placeholder:text-primary
@@ -38,7 +40,7 @@
   }
   &__options {
     @apply absolute mt-2 rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5
-    focus-visible:outline-none sm:text-sm overflow-x-hidden;
+    focus-visible:outline-none sm:tw-text-sm overflow-x-hidden;
     &--full-width {
       @apply w-full;
     }
@@ -47,7 +49,7 @@
     @apply max-h-60 overflow-y-auto overflow-x-hidden;
   }
   &__error {
-    @apply flex text-xs text-red font-primary font-normal mt-1;
+    @apply flex tw-text-xs text-red tw-font-primary font-normal mt-1;
     &__text {
       @extend .puik-body-small;
       @apply mt-0.5;

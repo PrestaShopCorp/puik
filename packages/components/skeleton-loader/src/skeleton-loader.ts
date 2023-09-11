@@ -11,7 +11,7 @@ export const skeletonLoaderVariants = [
   'h6',
   'jumbotron',
   'mega-jumbotron',
-  'text-small',
+  'tw-text-small',
   'text-medium',
   'text-large',
   'badge',

@@ -1,5 +1,8 @@
+@use './common/variables.scss';
+@use './common/typography.scss';
+
 .puik-sidebar {
-  @apply text-sm font-normal relative z-10 w-[20.5rem] sm:w-[13.125rem] h-full bg-white border-r border-primary-300 overflow-hidden;
+  @apply tw-text-sm font-normal relative z-10 w-[20.5rem] sm:w-[13.125rem] h-full bg-white border-r border-primary-300 overflow-hidden;
   transition: width 0.2s ease-out;
 
   &__header {

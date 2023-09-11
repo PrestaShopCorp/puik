@@ -1,4 +1,6 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
+
 .puik-table {
   @extend .puik-body-default;
   @apply inline-table border-y-[1px] bg-white font-normal;

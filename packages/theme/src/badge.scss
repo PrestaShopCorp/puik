@@ -1,7 +1,9 @@
+@use './common/variables.scss';
 @use './common/typography.scss';
+
 .puik-badge {
   @extend .puik-body-default;
-  @apply rounded-2xl inline-block py-1 px-3 leading-5 font-normal;
+  @apply rounded-2xl inline-block py-1 px-3 tw-leading-5 font-normal;
 
   &--success {
     @apply bg-green text-white;
