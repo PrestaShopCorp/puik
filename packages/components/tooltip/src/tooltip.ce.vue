@@ -7,7 +7,7 @@
     @mouseleave="start"
   >
     <div ref="tooltipWrapper" class="puik-tooltip__wrapper">
-      <slot></slot>
+      <slot name="default"></slot>
     </div>
     <Transition
       enter-from-class="puik-tooltip__transition__enter-from"

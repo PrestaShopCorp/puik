@@ -8,11 +8,11 @@ import DefineOptions from 'unplugin-vue-define-options/vite'
 export default defineConfig({
   plugins: [
     vue({
-      // template: {
-      //   compilerOptions: {
-      //     isCustomElement: (tag) => tag.includes('-ce'),
-      //   },
-      // },
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('-ce'),
+        },
+      },
     }),
     DefineOptions(),
   ],

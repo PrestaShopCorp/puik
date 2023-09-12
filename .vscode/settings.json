@@ -2,7 +2,8 @@
   "cSpell.words": ["Puik", "puik"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll": false,
+    "source.fixAll.eslint": false
   },
   "npm.packageManager": "pnpm",
   "eslint.probe": [

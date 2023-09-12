@@ -1,9 +1,9 @@
 import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
-import type TooltipCE from './tooltip.ce.vue'
+import type TooltipCe from './tooltip.ce.vue'
 
 export const tooltipPositionsCe = ['top', 'bottom', 'left', 'right'] as const
-export type PuikTooltipPosition = (typeof tooltipPositionsCe)[number]
+export type PuikTooltipPositionCe = (typeof tooltipPositionsCe)[number]
 export const tooltipPropsCe = buildProps({
   title: {
     type: String,
@@ -16,7 +16,7 @@ export const tooltipPropsCe = buildProps({
     default: undefined,
   },
   position: {
-    type: String as PropType<PuikTooltipPosition>,
+    type: String as PropType<PuikTooltipPositionCe>,
     required: false,
     default: 'top',
   },
@@ -44,4 +44,4 @@ export const tooltipPropsCe = buildProps({
 
 export type TooltipPropsCe = ExtractPropTypes<typeof tooltipPropsCe>
 
-export type TooltipInstanceCe = InstanceType<typeof TooltipCE>
+export type TooltipInstanceCe = InstanceType<typeof TooltipCe>
