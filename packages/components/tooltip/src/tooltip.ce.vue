@@ -45,7 +45,7 @@ import { onMounted, ref } from 'vue'
 import { createPopper } from '@popperjs/core'
 import { useTimeoutFn } from '@vueuse/core'
 import { generateId } from '@puik/utils'
-import { tooltipProps } from './tooltip-ce'
+import { tooltipPropsCe } from './tooltip-ce'
 import type { Instance as PopperInstance } from '@popperjs/core'
 
 defineOptions({
@@ -58,7 +58,7 @@ const isVisible = ref(false)
 let popperInstance: PopperInstance | null = null
 const id = `puik-tooltip-${generateId()}`
 
-const props = defineProps(tooltipProps)
+const props = defineProps(tooltipPropsCe)
 
 const { start, stop, isPending } = useTimeoutFn(() => {
   isVisible.value = false
@@ -88,3 +88,8 @@ onMounted(() => {
   }
 })
 </script>
+<style scoped lang="scss">
+@import '../../../theme/src/base.scss';
+@import '../../../theme/src/tooltip.scss';
+@import '../../../theme/src/icon.scss';
+</style>
