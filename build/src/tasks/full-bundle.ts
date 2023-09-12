@@ -80,6 +80,68 @@ async function buildFullEntry(minify: boolean) {
   ])
 }
 
+async function buildFullEntryCe(minify: boolean) {
+  const bundle = await rollup({
+    input: path.resolve(puikRoot, 'index-ce.ts'),
+    plugins: [
+      PuikAlias(),
+      vue({
+        isProduction: true,
+        // template: {
+        //   compilerOptions: {
+        //     isCustomElement: (tag) => tag.includes('-ce'),
+        //   },
+        // },
+      }),
+      DefineOptions(),
+      nodeResolve({
+        extensions: ['.mjs', '.js', '.json', '.ts'],
+      }),
+      commonjs(),
+      esbuild({
+        exclude: [],
+        minify,
+        sourceMap: minify,
+        target,
+        loaders: {
+          '.vue': 'ts',
+        },
+        define: {
+          'process.env.NODE_ENV': JSON.stringify('production'),
+        },
+      }),
+    ],
+    external: await generateExternal({ full: true }),
+  })
+  await writeBundles(bundle, [
+    {
+      format: 'umd',
+      file: path.resolve(
+        puikOutput,
+        'dist',
+        formatBundleFilename('index-ce.full', minify, 'js')
+      ),
+      exports: 'named',
+      name: 'Puik',
+      globals: {
+        vue: 'Vue',
+      },
+      sourcemap: minify,
+      banner,
+    },
+    {
+      format: 'esm',
+      file: path.resolve(
+        puikOutput,
+        'dist',
+        formatBundleFilename('index-ce.full', minify, 'mjs')
+      ),
+      sourcemap: minify,
+      banner,
+    },
+  ])
+}
+
 async function buildFullLocale(minify: boolean) {
   const files = await glob(`${path.resolve(localeRoot, 'lang')}/*.ts`, {
     absolute: true,
@@ -128,7 +190,11 @@ async function buildFullLocale(minify: boolean) {
 }
 
 export const buildFull = (minify: boolean) => async () =>
-  Promise.all([buildFullEntry(minify), buildFullLocale(minify)])
+  Promise.all([
+    buildFullEntry(minify),
+    buildFullEntryCe(minify),
+    buildFullLocale(minify),
+  ])
 
 export const buildFullBundle = parallel(
   withTaskName('buildFullMinified', buildFull(true)),
