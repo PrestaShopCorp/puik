@@ -88,7 +88,8 @@ onMounted(() => {
   }
 })
 </script>
-<style scoped lang="scss">
+
+<style lang="scss">
 @import '../../../theme/src/base.scss';
 @import '../../../theme/src/tooltip.scss';
 @import '../../../theme/src/icon.scss';

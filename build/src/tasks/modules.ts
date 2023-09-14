@@ -1,9 +1,9 @@
 import { rollup } from 'rollup'
-import vue from '@vitejs/plugin-vue'
-import DefineOptions from 'unplugin-vue-define-options/rollup'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import esbuild from 'rollup-plugin-esbuild'
+import vue from '@vitejs/plugin-vue'
+import DefineOptions from 'unplugin-vue-define-options/rollup'
 import glob from 'fast-glob'
 import {
   puikRoot,
@@ -28,15 +28,15 @@ export const buildModules = async () => {
   const bundle = await rollup({
     input,
     plugins: [
+      commonjs(),
+      nodeResolve({
+        extensions: ['.mjs', '.js', '.json', '.ts'],
+      }),
       PuikAlias(),
       DefineOptions(),
       vue({
         isProduction: false,
       }),
-      nodeResolve({
-        extensions: ['.mjs', '.js', '.json', '.ts'],
-      }),
-      commonjs(),
       esbuild({
         sourceMap: true,
         target,
