@@ -30,7 +30,7 @@ import {
   PuikMenuItemTitle,
 } from '@puik/components/menu'
 import { PuikProgressBar } from '@puik/components/progress-bar'
-import { PuikIcon } from '@puik/components/icon'
+import { PuikIcon, PuikIconCe } from '@puik/components/icon'
 import { PuikLink } from '@puik/components/link'
 import { PuikCard } from '@puik/components/card'
 import { PuikSnackbar } from '@puik/components/snackbar'
@@ -74,6 +74,7 @@ export default [
   PuikMenuItemTitle,
   PuikProgressBar,
   PuikIcon,
+  PuikIconCe,
   PuikLink,
   PuikCard,
   PuikSnackbar,

@@ -2,8 +2,8 @@ import path from 'path'
 import { rollup } from 'rollup'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import esbuild from 'rollup-plugin-esbuild'
 import scss from 'rollup-plugin-scss'
+import esbuild from 'rollup-plugin-esbuild'
 import vue from '@vitejs/plugin-vue'
 import DefineOptions from 'unplugin-vue-define-options/rollup'
 import { parallel } from 'gulp'
@@ -41,9 +41,7 @@ async function buildFullEntry(minify: boolean) {
           },
         },
       }),
-      scss({
-        include: ['**/*.ce.vue'],
-      }),
+      scss(),
       DefineOptions(),
       esbuild({
         exclude: [],
