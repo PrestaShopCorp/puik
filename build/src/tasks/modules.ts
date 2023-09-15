@@ -30,7 +30,7 @@ export const buildModules = async () => {
     plugins: [
       commonjs(),
       nodeResolve({
-        extensions: ['.mjs', '.js', '.json', '.ts'],
+        extensions: ['.mjs', '.js', '.json', '.ts', '.scss'],
       }),
       PuikAlias(),
       DefineOptions(),
