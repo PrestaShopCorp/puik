@@ -78,7 +78,7 @@
                 <puik-option
                   v-for="option in filteredItems"
                   :key="option"
-                  :label="option[labelKey]"
+                  :label="isObject(option) ? option[labelKey] : option"
                   :value="isObject(option) ? option[valueKey] : option"
                 />
               </template>
