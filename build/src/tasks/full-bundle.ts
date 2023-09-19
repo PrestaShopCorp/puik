@@ -2,16 +2,15 @@ import path from 'path'
 import { rollup } from 'rollup'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import scss from 'rollup-plugin-scss'
 import esbuild from 'rollup-plugin-esbuild'
 import vue from '@vitejs/plugin-vue'
 import DefineOptions from 'unplugin-vue-define-options/rollup'
 import { parallel } from 'gulp'
 import glob from 'fast-glob'
+import postcss from 'rollup-plugin-postcss'
 import { camelCase, upperFirst } from 'lodash-unified'
-import { version } from '../../../packages/puik/version'
-import { PuikAlias } from '../plugins/puik-alias'
 import {
+  themeRoot,
   puikRoot,
   puikOutput,
   localeRoot,
@@ -20,6 +19,8 @@ import {
   writeBundles,
   withTaskName,
 } from '../utils'
+import { version } from '../../../packages/puik/version'
+import { PuikAlias } from '../plugins/puik-alias'
 import { target } from '../build-info'
 
 const banner = `/*! Puik v${version} */\n`
@@ -35,13 +36,14 @@ async function buildFullEntry(minify: boolean) {
       PuikAlias(),
       vue({
         isProduction: true,
-        template: {
-          compilerOptions: {
-            isCustomElement: (tag) => tag.includes('-ce'),
-          },
+        customElement: true,
+      }),
+      postcss({
+        config: {
+          path: `${themeRoot}/postcss.config.js`,
+          ctx: {},
         },
       }),
-      scss(),
       DefineOptions(),
       esbuild({
         exclude: [],

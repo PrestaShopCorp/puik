@@ -2,12 +2,9 @@ import { defineCustomElement } from 'vue'
 import { withInstall } from '@puik/utils'
 
 import Tooltip from './src/tooltip.vue'
-import TooltipCE from './src/tooltip.ce.vue'
 
 export const PuikTooltip = withInstall(Tooltip)
-export const PuikTooltipCe = defineCustomElement(withInstall(TooltipCE))
-
-customElements.define('puik-tooltip-ce', PuikTooltipCe)
+export const PuikTooltipCe = defineCustomElement(PuikTooltip)
 
 export * from './src/tooltip'
 
