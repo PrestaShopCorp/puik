@@ -1,0 +1,31 @@
+@use './common/typography.scss';
+
+.puik-tag {
+  @extend .puik-body-small;
+  @apply font-bold flex items-center px-2 py-1 space-x-2;
+
+  &--neutral {
+    @apply bg-primary-300 text-primary;
+  }
+  &--blue {
+    @apply bg-ocean-blue-50 text-primary;
+  }
+  &--yellow {
+    @apply bg-amber-100 text-primary;
+  }
+  &--green {
+    @apply bg-green-50 text-primary;
+  }
+  &--purple {
+    @apply bg-purple-50 text-primary;
+  }
+  &__close {
+    @apply p-[3px] cursor-pointer rounded-[50%] hover:bg-primary-400;
+  }
+  &__disabled {
+    @apply bg-primary-200 text-primary-500;
+    .puik-tag__close {
+      @apply cursor-not-allowed hover:bg-primary-200;
+    }
+  }
+}
