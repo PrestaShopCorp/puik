@@ -3,16 +3,18 @@
     :id="id"
     :class="[
       `puik-tag puik-tag--${variant}`,
-      { 'puik-tag__disabled': disable },
+      { 'puik-tag__disabled': disabled },
     ]"
   >
     <PuikIcon v-if="icon && icon != ''" :icon="icon" />
-    <span><slot></slot></span>
+    <span class="puik-tag__content">
+      <slot></slot>
+    </span>
     <PuikIcon
       v-if="closeable"
       icon="close"
       class="puik-tag__close"
-      @click="disable ? '' : handleCloseEvent()"
+      @click="disabled ? '' : handleCloseEvent()"
     />
   </div>
 </template>

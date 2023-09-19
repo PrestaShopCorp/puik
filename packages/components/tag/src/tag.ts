@@ -33,7 +33,7 @@ export const tagProps = buildProps({
     required: false,
     default: true,
   },
-  disable: {
+  disabled: {
     type: Boolean,
     required: false,
     default: false,
