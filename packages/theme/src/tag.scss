@@ -2,8 +2,17 @@
 
 .puik-tag {
   @extend .puik-body-small;
-  @apply max-w-[220px] font-bold flex items-center px-2 py-1 space-x-2;
+  @apply max-w-fit font-bold flex items-center;
 
+  &--default {
+    @apply px-2 py-[3px];
+  }
+  &--small {
+    @apply px-1 py-0;
+    .puik-tag__close {
+      @apply p-[1px];
+    }
+  }
   &--neutral {
     @apply bg-primary-300 text-primary;
   }
@@ -19,39 +28,25 @@
   &--purple {
     @apply bg-purple-50 text-primary;
   }
-  &__close {
-    @apply p-[3px] cursor-pointer rounded-[50%] hover:bg-primary-400;
-  }
-  &__disabled {
+  &--disabled {
     @apply bg-primary-200 text-primary-500;
     .puik-tag__close {
       @apply cursor-not-allowed hover:bg-primary-200;
     }
   }
+  &__close {
+    @apply p-[3px] ml-auto cursor-pointer rounded-[50%] hover:bg-primary-400;
+  }
+  &__icon {
+    @apply mr-1;
+  }
   &__content {
-    @apply max-w-[150px] overflow-x-auto overflow-y-hidden whitespace-nowrap;
-    &::-webkit-scrollbar {
-      @apply bg-primary-100;
-      width: 12px;
+    @apply max-w-[150px] pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
+    & > .puik-tooltip {
+      @apply max-w-[150px] overflow-hidden whitespace-nowrap text-ellipsis;
     }
-    &::-webkit-scrollbar:horizontal {
-      height: 4px;
-    }
-    &::-webkit-scrollbar-track {
-      border: none;
-      border-radius: 0;
-      -webkit-box-shadow: none;
-    }
-    &::-webkit-scrollbar-thumb {
-      @apply bg-primary-400;
-      border: none;
-      border-radius: 0;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-      @apply bg-primary;
-    }
-    &::-webkit-scrollbar-thumb:active {
-      @apply bg-primary;
-    }
+  }
+  &__content .puik-tooltip__wrapper {
+    @apply max-w-[150px] mr-1 pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
   }
 }
