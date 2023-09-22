@@ -9,7 +9,7 @@
     <PuikIcon v-if="icon && icon != ''" :icon="icon" class="puik-tag__icon" />
     <div class="puik-tag__content">
       <puik-tooltip
-        v-if="content.length >= 30"
+        v-if="content?.length >= 30"
         :position="(tooltipPosition as PuikTooltipPosition)"
         :description="content"
       >
