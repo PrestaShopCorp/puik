@@ -10,9 +10,6 @@ describe('Tag tests', () => {
   const findCloseBtn = () => wrapper.find('.puik-tag__close')
   const findLeftIcon = () => wrapper.find('.puik-tag__icon')
 
-  // const findButtonLeftIcon = () => wrapper.find('.puik-button__left-icon')
-  // const findButtonRightIcon = () => wrapper.find('.puik-button__right-icon')
-
   const factory = (
     propsData: Record<string, any> = {},
     options: MountingOptions<any> = {}
