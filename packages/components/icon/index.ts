@@ -12,4 +12,4 @@ if (!customElements.get('puik-icon-ce')) {
 
 export * from './src/icon'
 
-export default { PuikIcon, PuikIconCe }
+export default PuikIcon

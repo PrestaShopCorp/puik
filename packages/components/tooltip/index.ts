@@ -12,4 +12,4 @@ if (!customElements.get('puik-tooltip-ce')) {
 
 export * from './src/tooltip'
 
-export default { PuikTooltip, PuikTooltipCe }
+export default PuikTooltip

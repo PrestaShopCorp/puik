@@ -67,16 +67,16 @@ describe('Sidebar tests', () => {
     expect(getIcon().text()).toBe('store')
   })
 
-  // it('should render an icon when collapsed', () => {
-  //   const template = `
-  //     <puik-sidebar :expanded="false">
-  //       <puik-sidebar-group-item title="group" icon="store">
-  //       </puik-sidebar-group-item>
-  //     </puik-sidebar>
-  //   `
-  //   factory(template)
-  //   expect(getIcon().text()).toBe('store')
-  // })
+  it('should render an icon when collapsed', () => {
+    const template = `
+      <puik-sidebar :expanded="false">
+        <puik-sidebar-group-item title="group" icon="store">
+        </puik-sidebar-group-item>
+      </puik-sidebar>
+    `
+    factory(template)
+    expect(getIcon().text()).toBe('store')
+  })
 
   it('should render as a menu when collapsed', () => {
     const template = `
