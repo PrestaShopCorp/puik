@@ -18,3 +18,8 @@ const selected = useVModel(props, 'modelValue')
 
 provide(ButtonGroupKey, { selected })
 </script>
+
+<style lang="scss">
+@use '../../../theme/src/base';
+@use '../../../theme/src/button-group.scss';
+</style>

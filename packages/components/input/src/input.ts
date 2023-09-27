@@ -45,6 +45,21 @@ export const inputProps = buildProps({
     required: false,
     default: undefined,
   },
+  append: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  prepend: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  hint: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   autocomplete: {
     type: String,
     required: false,

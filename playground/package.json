@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@prestashopcorp/puik": "^1.5.4",
     "vue": "^3.2.47"
   },
   "devDependencies": {
