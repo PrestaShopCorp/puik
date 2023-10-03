@@ -31,7 +31,7 @@ import {
   PuikMenuItemTitle,
 } from '@puik/components/menu'
 import { PuikProgressBar } from '@puik/components/progress-bar'
-import { PuikIcon } from '@puik/components/icon'
+import { PuikIcon, PuikIconCe } from '@puik/components/icon'
 import { PuikLink } from '@puik/components/link'
 import { PuikCard } from '@puik/components/card'
 import { PuikSnackbar } from '@puik/components/snackbar'
@@ -40,7 +40,7 @@ import { PuikCheckbox } from '@puik/components/checkbox'
 import { PuikRadio } from '@puik/components/radio'
 import { PuikSelect, PuikOption } from '@puik/components/select'
 import { PuikAlert } from '@puik/components/alert'
-import { PuikTooltip } from '@puik/components/tooltip'
+import { PuikTooltip, PuikTooltipCe } from '@puik/components/tooltip'
 import { PuikSwitch } from '@puik/components/switch'
 import { PuikButton } from '@puik/components/button'
 import { PuikInput } from '@puik/components/input'
@@ -76,6 +76,7 @@ export default [
   PuikMenuItemTitle,
   PuikProgressBar,
   PuikIcon,
+  PuikIconCe,
   PuikLink,
   PuikCard,
   PuikSnackbar,
@@ -87,6 +88,7 @@ export default [
   PuikSelect,
   PuikAlert,
   PuikTooltip,
+  PuikTooltipCe,
   PuikSwitch,
   PuikButton,
   PuikConfigProvider,

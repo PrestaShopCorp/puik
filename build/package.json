@@ -17,12 +17,12 @@
   "dependencies": {
     "@pnpm/find-workspace-packages": "^6.0.5",
     "@pnpm/logger": "^5.0.0",
-    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-commonjs": "^25.0.2",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@vitejs/plugin-vue": "^4.1.0",
     "chalk": "^5.2.0",
     "components-helper": "^2.1.4",
-    "consola": "^2.15.3",
+    "consola": "^3.2.3",
     "esbuild": "^0.17.16",
     "fast-glob": "^3.2.12",
     "fs-extra": "^11.1.1",
@@ -37,6 +37,8 @@
     "@esbuild-kit/cjs-loader": "^2.4.2",
     "@pnpm/types": "^9.0.0",
     "@types/rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "sass": "^1.67.0",
     "unbuild": "^1.2.0",
     "vue": "^3.2.47"
   }
