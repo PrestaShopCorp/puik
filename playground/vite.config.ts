@@ -6,7 +6,17 @@ import DefineOptions from 'unplugin-vue-define-options/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), DefineOptions()],
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('-ce'),
+        },
+      },
+      customElement: true,
+    }),
+    DefineOptions(),
+  ],
   css: {
     postcss: {
       plugins: [tailwindcss()],
@@ -18,6 +28,10 @@ export default defineConfig({
       {
         find: /^@puik\/(.*)$/,
         replacement: `${path.resolve('../packages')}/$1`,
+      },
+      {
+        find: /^~(.*)$/,
+        replacement: '$1',
       },
     ],
   },
