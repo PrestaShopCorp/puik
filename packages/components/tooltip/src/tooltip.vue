@@ -87,3 +87,8 @@ onMounted(() => {
   }
 })
 </script>
+
+<style lang="scss">
+@use '../../../theme/src/base';
+@use '../../../theme/src/tooltip.scss';
+</style>

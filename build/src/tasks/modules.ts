@@ -1,9 +1,10 @@
 import { rollup } from 'rollup'
-import vue from '@vitejs/plugin-vue'
-import DefineOptions from 'unplugin-vue-define-options/rollup'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import esbuild from 'rollup-plugin-esbuild'
+import vue from '@vitejs/plugin-vue'
+import DefineOptions from 'unplugin-vue-define-options/rollup'
+import postcss from 'rollup-plugin-postcss'
 import glob from 'fast-glob'
 import {
   puikRoot,
@@ -11,6 +12,7 @@ import {
   generateExternal,
   writeBundles,
   excludeFiles,
+  themeRoot,
 } from '../utils'
 import { PuikAlias } from '../plugins/puik-alias'
 import { buildConfigEntries, target } from '../build-info'
@@ -28,15 +30,22 @@ export const buildModules = async () => {
   const bundle = await rollup({
     input,
     plugins: [
+      commonjs(),
+      nodeResolve({
+        extensions: ['.mjs', '.js', '.json', '.ts', '.scss'],
+      }),
       PuikAlias(),
       DefineOptions(),
       vue({
         isProduction: false,
+        customElement: true,
       }),
-      nodeResolve({
-        extensions: ['.mjs', '.js', '.json', '.ts'],
+      postcss({
+        config: {
+          path: `${themeRoot}/postcss.config.js`,
+          ctx: {},
+        },
       }),
-      commonjs(),
       esbuild({
         sourceMap: true,
         target,
