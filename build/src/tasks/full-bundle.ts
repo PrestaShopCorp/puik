@@ -36,7 +36,7 @@ async function buildFullEntry(minify: boolean) {
       PuikAlias(),
       vue({
         isProduction: true,
-        customElement: true,
+        customElement: /\.ce\.vue$/,
       }),
       postcss({
         config: {
