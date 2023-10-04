@@ -11,9 +11,11 @@ const directive: Directive = {
       }
     })
   },
-  // beforeUnmount(el: HTMLInputElement) {
-  //   el.removeEventListener('input', () => {})
-  // },
+  beforeUnmount(el: HTMLInputElement) {
+    el.removeEventListener('input', () => {
+      console.log('before unmount')
+    })
+  },
 }
 
 export const vCustomModelDirective = {
