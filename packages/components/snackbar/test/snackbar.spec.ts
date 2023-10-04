@@ -66,6 +66,14 @@ describe('Snackbar tests', () => {
     expect(findAction().exists()).toBeFalsy()
   })
 
+  it('should be a success snackbar without action', () => {
+    const text = faker.lorem.sentence()
+    factory({ text, variant: 'success' })
+    expect(findText().text()).toEqual(text)
+    expect(findSnackbar().classes()).toContain('puik-snackbar--success')
+    expect(findAction().exists()).toBeFalsy()
+  })
+
   it('should be a dangerous snackbar with action', async () => {
     const text = faker.lorem.sentence()
     const label = faker.lorem.word()
@@ -81,6 +89,26 @@ describe('Snackbar tests', () => {
     expect(findAction().exists()).toBeTruthy()
     expect(findText().text()).toEqual(text)
     expect(findSnackbar().classes()).toContain('puik-snackbar--danger')
+    expect(findAction().text()).toEqual(label)
+    await findAction().trigger('click')
+    expect(callback).toBeCalled()
+  })
+
+  it('should be a success snackbar with action', async () => {
+    const text = faker.lorem.sentence()
+    const label = faker.lorem.word()
+    const callback = vi.fn()
+    factory({
+      text,
+      action: {
+        label,
+        callback,
+      },
+      variant: 'success',
+    })
+    expect(findAction().exists()).toBeTruthy()
+    expect(findText().text()).toEqual(text)
+    expect(findSnackbar().classes()).toContain('puik-snackbar--success')
     expect(findAction().text()).toEqual(label)
     await findAction().trigger('click')
     expect(callback).toBeCalled()
