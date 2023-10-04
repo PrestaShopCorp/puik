@@ -1,0 +1,25 @@
+<template>
+  <div class="puik-button-group">
+    <slot></slot>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { provide } from 'vue'
+import { useVModel } from '@vueuse/core'
+import { buttonGroupProps, ButtonGroupKey } from './button-group'
+
+defineOptions({
+  name: 'PuikButtonGroup',
+})
+
+const props = defineProps(buttonGroupProps)
+const selected = useVModel(props, 'modelValue')
+
+provide(ButtonGroupKey, { selected })
+</script>
+
+<style lang="scss">
+@use '../../../theme/src/base';
+@use '../../../theme/src/button-group.scss';
+</style>
