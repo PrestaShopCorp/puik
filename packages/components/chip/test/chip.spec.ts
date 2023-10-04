@@ -1,20 +1,20 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
-import PuikTag from '../src/tag.vue'
+import PuikChip from '../src/chip.vue'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
-describe('Tag tests', () => {
+describe('Chip tests', () => {
   let wrapper: VueWrapper<any>
-  const findTag = () => wrapper.find('.puik-tag')
-  const findTagContent = () => wrapper.find('.puik-tag__content')
-  const findCloseBtn = () => wrapper.find('.puik-tag__close')
-  const findLeftIcon = () => wrapper.find('.puik-tag__icon')
+  const findChip = () => wrapper.find('.puik-chip')
+  const findChipContent = () => wrapper.find('.puik-chip__content')
+  const findCloseBtn = () => wrapper.find('.puik-chip__close')
+  const findLeftIcon = () => wrapper.find('.puik-chip__icon')
 
   const factory = (
     propsData: Record<string, any> = {},
     options: MountingOptions<any> = {}
   ) => {
-    wrapper = mount(PuikTag, {
+    wrapper = mount(PuikChip, {
       props: {
         ...propsData,
       },
@@ -27,38 +27,38 @@ describe('Tag tests', () => {
     expect(wrapper).toBeTruthy()
   })
 
-  it('as id prop value is "puik-tag-example", id html attribute of puik-tag should be "puik-tag-example"', () => {
-    factory({ id: 'puik-tag-example' })
-    expect(findTag().attributes().id).toBe('puik-tag-example')
+  it('as id prop value is "puik-chip-example", id html attribute of puik-chip should be "puik-chip-example"', () => {
+    factory({ id: 'puik-chip-example' })
+    expect(findChip().attributes().id).toBe('puik-chip-example')
   })
 
-  it('Tag text should be "content"', () => {
+  it('Chip text should be "content"', () => {
     factory({ content: 'content' })
-    expect(findTagContent().text()).toBe('content')
+    expect(findChipContent().text()).toBe('content')
   })
 
-  it('should display a blue version of the tag', () => {
+  it('should display a blue version of the chip', () => {
     factory({ variant: 'blue' })
-    expect(findTag().classes()).toContain('puik-tag--blue')
+    expect(findChip().classes()).toContain('puik-chip--blue')
   })
 
-  it('should display a tag small version', () => {
+  it('should display a chip small version', () => {
     factory({ size: 'small' })
-    expect(findTag().classes()).toContain('puik-tag--small')
+    expect(findChip().classes()).toContain('puik-chip--small')
   })
 
-  it('should display a tag version with left icon', () => {
+  it('should display a chip version with left icon', () => {
     factory({ icon: 'home' })
     expect(findLeftIcon().text()).toBe('home')
   })
 
-  it('should display a tag closeable version', () => {
+  it('should display a chip closeable version', () => {
     factory({ closeable: true })
     expect(findCloseBtn().text()).toBe('close')
   })
 
-  it('should display a tag disabled version', () => {
+  it('should display a chip disabled version', () => {
     factory({ disabled: true })
-    expect(findTag().classes()).toContain('puik-tag--disabled')
+    expect(findChip().classes()).toContain('puik-chip--disabled')
   })
 })
