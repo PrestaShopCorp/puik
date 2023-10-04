@@ -1,12 +1,12 @@
 <template>
-  <div ref="inputCeRef" class="puik-input">
+  <div ref="CeRef" class="puik-input">
     <div class="puik-input__wrapper" :class="inputClasses">
-      <div v-if="slotPrepend" class="puik-input__prepend">
+      <div v-if="hasSlotPrepend" class="puik-input__prepend">
         <slot name="prepend"></slot>
       </div>
       <input
         :id="id"
-        :value="internalModelValue"
+        v-model="internalValue"
         class="puik-input__field"
         :placeholder="placeholder"
         :type="passwordIsVisible ? 'text' : type"
@@ -17,7 +17,7 @@
         :min="type === 'number' ? min : undefined"
         :max="type === 'number' ? max : undefined"
         :step="type === 'number' ? step : undefined"
-        @input="updateInternalModel"
+        @input="updateCeRefModelValue"
         @focus="handleFocus"
         @blur="handleBlur"
       />
@@ -27,7 +27,7 @@
         @click="togglePasswordVisibility"
         >{{ passwordIsVisible ? 'visibility' : 'visibility_off' }}</span
       >
-      <div v-if="slotAppend" class="puik-input__append">
+      <div v-if="hasSlotAppend" class="puik-input__append">
         <slot name="append"></slot>
       </div>
       <puik-input-controls
@@ -37,9 +37,9 @@
         @decrease="decrease"
       ></puik-input-controls>
     </div>
-    <div v-if="slotHint || hint || hasError" class="puik-input__hint">
+    <div v-if="hasSlotHint || hint || hasError" class="puik-input__hint">
       <span v-show="!hideHint" v-if="!hasError" class="puik-input__hint__text">
-        <slot v-if="hint && !slotHint" name="hint">{{ hint }}</slot>
+        <slot v-if="hint && !hasSlotHint" name="hint">{{ hint }}</slot>
         <slot v-else name="hint"></slot>
       </span>
       <div v-if="hasError" class="puik-input__hint__error">
@@ -61,26 +61,21 @@ import { isNumber } from '@vueuse/core'
 import { PuikIcon } from '@puik/components/icon'
 import { slotIsEmpty } from '@puik/utils'
 import PuikInputControls from './controls/controls.vue'
-import { inputEmits, inputProps } from './input'
+import { inputProps } from './input'
 
 defineOptions({
   name: 'PuikInput',
 })
 const props = defineProps(inputProps)
-// const emit = defineEmits(inputEmits)
 const slots = useSlots()
 const isFocus = ref(false)
 const passwordIsVisible = ref(false)
 
-const internalModelValue = ref<string | number>('')
-const inputCeRef = ref<HTMLElement | null>(null)
+const CeRef = ref<HTMLElement | null>(null)
+const internalValue = ref<string | number>('')
 
-const updateInternalModel = (event: Event) => {
-  const internalInput = event.target as HTMLInputElement
-  internalModelValue.value = internalInput.value
-  if (inputCeRef.value) {
-    inputCeRef.value.setAttribute('model-value', internalModelValue.value)
-  }
+const updateCeRefModelValue = () => {
+  CeRef?.value?.setAttribute('model-value', String(internalValue.value))
 }
 
 const inputClasses = computed(() => ({
@@ -97,41 +92,17 @@ const togglePasswordVisibility = () =>
   (passwordIsVisible.value = !passwordIsVisible.value)
 
 const increase = () => {
-  let numberInputValue = Number(internalModelValue.value)
-  if (isNumber(numberInputValue) && numberInputValue < props.max) {
-    internalModelValue.value = numberInputValue += props.step
-    inputCeRef?.value?.setAttribute(
-      'model-value',
-      String(internalModelValue.value)
-    )
+  if (isNumber(internalValue.value) && internalValue.value < props.max) {
+    internalValue.value += props.step
   }
 }
-
 const decrease = () => {
-  let numberInputValue = Number(internalModelValue.value)
-  if (isNumber(numberInputValue) && numberInputValue > props.min) {
-    internalModelValue.value = numberInputValue -= props.step
-    inputCeRef?.value?.setAttribute(
-      'model-value',
-      String(internalModelValue.value)
-    )
+  if (isNumber(internalValue.value) && internalValue.value > props.min) {
+    internalValue.value -= props.step
   }
 }
 
 const hasError = computed(() => props.error || slotIsEmpty(slots.error))
-
-// const Numbervalue = computed<string | number>({
-//   get() {
-//     if (isNumber(internalModelValue.value)) {
-//       return parseFloat(internalModelValue.value.toFixed(props.precision))
-//     }
-//     console.log(internalModelValue.value)
-//     return internalModelValue.value
-//   },
-//   set(value) {
-//     emit('update:modelValue', value)
-//   },
-// })
 </script>
 
 <style lang="scss">

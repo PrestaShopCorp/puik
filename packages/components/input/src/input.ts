@@ -20,17 +20,17 @@ export const inputProps = buildProps({
     required: false,
     default: '',
   },
-  slotAppend: {
+  hasSlotAppend: {
     type: Boolean,
     required: false,
     default: false,
   },
-  slotPrepend: {
+  hasSlotPrepend: {
     type: Boolean,
     required: false,
     default: false,
   },
-  slotHint: {
+  hasSlotHint: {
     type: Boolean,
     required: false,
     default: false,
