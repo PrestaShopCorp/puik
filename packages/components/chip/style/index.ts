@@ -1,2 +1,2 @@
 import '@puik/components/base/style'
-import '@puik/theme/src/tag.scss'
+import '@puik/theme/src/chip.scss'

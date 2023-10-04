@@ -1,9 +1,9 @@
 import { buildProps } from '@puik/utils'
 import type { PuikTooltipPosition } from '@puik/components'
 import type { ExtractPropTypes, PropType } from 'vue'
-import type Tag from './tag.vue'
+import type Chip from './chip.vue'
 
-export const tagColorsVariants = [
+export const chipColorsVariants = [
   'neutral',
   'blue',
   'yellow',
@@ -11,12 +11,12 @@ export const tagColorsVariants = [
   'purple',
 ] as const
 
-export const tagSizeVariants = ['default', 'small'] as const
+export const chipSizeVariants = ['default', 'small'] as const
 
-export type PuikTagColorVariant = (typeof tagColorsVariants)[number]
-export type PuikTagSizeVariant = (typeof tagSizeVariants)[number]
+export type PuikChipColorVariant = (typeof chipColorsVariants)[number]
+export type PuikChipSizeVariant = (typeof chipSizeVariants)[number]
 
-export const tagProps = buildProps({
+export const chipProps = buildProps({
   id: {
     type: String,
     required: true,
@@ -59,6 +59,6 @@ export const tagProps = buildProps({
   },
 } as const)
 
-export type TagProps = ExtractPropTypes<typeof tagProps>
+export type ChipProps = ExtractPropTypes<typeof chipProps>
 
-export type TagInstance = InstanceType<typeof Tag>
+export type ChipInstance = InstanceType<typeof Chip>

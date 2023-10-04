@@ -2,12 +2,12 @@
   <div
     :id="id"
     :class="[
-      `puik-tag puik-tag--${variant as PuikTagColorVariant} puik-tag--${size as PuikTagSizeVariant}`,
-      { 'puik-tag--disabled': disabled },
+      `puik-chip puik-chip--${variant as PuikChipColorVariant} puik-chip--${size as PuikChipSizeVariant}`,
+      { 'puik-chip--disabled': disabled },
     ]"
   >
-    <PuikIcon v-if="icon && icon != ''" :icon="icon" class="puik-tag__icon" />
-    <div class="puik-tag__content">
+    <PuikIcon v-if="icon && icon != ''" :icon="icon" class="puik-chip__icon" />
+    <div class="puik-chip__content">
       <puik-tooltip
         v-if="content?.length >= 30"
         :position="(tooltipPosition as PuikTooltipPosition)"
@@ -21,7 +21,7 @@
     <PuikIcon
       v-if="closeable"
       icon="close"
-      class="puik-tag__close"
+      class="puik-chip__close"
       @click="disabled ? '' : handleCloseEvent()"
     />
   </div>
@@ -31,16 +31,16 @@
 import { PuikIcon } from '@puik/components/icon'
 import { PuikTooltip } from '@puik/components/tooltip'
 import {
-  tagProps,
-  type PuikTagSizeVariant,
-  type PuikTagColorVariant,
-} from './tag'
+  chipProps,
+  type PuikChipSizeVariant,
+  type PuikChipColorVariant,
+} from './chip'
 import type { PuikTooltipPosition } from '@puik/components/tooltip'
 defineOptions({
-  name: 'PuikTag',
+  name: 'PuikChip',
 })
 
-const props = defineProps(tagProps)
+const props = defineProps(chipProps)
 const emit = defineEmits(['close'])
 
 const handleCloseEvent = () => {

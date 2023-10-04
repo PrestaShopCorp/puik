@@ -1,6 +1,6 @@
 @use './common/typography.scss';
 
-.puik-tag {
+.puik-chip {
   @extend .puik-body-small;
   @apply max-w-fit font-bold flex items-center;
 
@@ -9,7 +9,7 @@
   }
   &--small {
     @apply px-1 py-0;
-    .puik-tag__close {
+    .puik-chip__close {
       @apply p-[1px];
     }
   }
@@ -30,7 +30,7 @@
   }
   &--disabled {
     @apply bg-primary-200 text-primary-500;
-    .puik-tag__close {
+    .puik-chip__close {
       @apply cursor-not-allowed hover:bg-primary-200;
     }
   }

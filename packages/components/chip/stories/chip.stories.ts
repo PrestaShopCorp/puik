@@ -1,16 +1,16 @@
 import { ref } from 'vue'
 import { PuikIcon, PuikButton, tooltipPositions } from '@puik/components'
-import { tagColorsVariants, tagSizeVariants } from '../src/tag'
-import PuikTag from './../src/tag.vue'
+import { chipColorsVariants, chipSizeVariants } from '../src/chip'
+import PuikChip from './../src/chip.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
-const tagColorsVariantsSummary = tagColorsVariants.join('|')
-const tagSizeVariantsSummary = tagSizeVariants.join('|')
+const chipColorsVariantsSummary = chipColorsVariants.join('|')
+const chipSizeVariantsSummary = chipSizeVariants.join('|')
 const tooltipPositionsSummary = tooltipPositions.join('|')
 
 export default {
-  title: 'Components/Tag',
-  component: PuikTag,
+  title: 'Components/Chip',
+  component: PuikChip,
   argTypes: {
     id: {
       description:
@@ -39,12 +39,12 @@ export default {
       },
     },
     size: {
-      description: 'Size variants of tag component (default, small)',
+      description: 'Size variants of chip component (default, small)',
       control: 'select',
-      options: tagSizeVariants,
+      options: chipSizeVariants,
       table: {
         type: {
-          summary: tagSizeVariantsSummary,
+          summary: chipSizeVariantsSummary,
         },
         defaultValue: {
           summary: 'default',
@@ -53,12 +53,12 @@ export default {
     },
     variant: {
       description:
-        'Color variants of tag component (neutral by default, blue, yellow, green, purple)',
+        'Color variants of chip component (neutral by default, blue, yellow, green, purple)',
       control: 'select',
-      options: tagColorsVariants,
+      options: chipColorsVariants,
       table: {
         type: {
-          summary: tagColorsVariantsSummary,
+          summary: chipColorsVariantsSummary,
         },
         defaultValue: {
           summary: 'neutral',
@@ -87,13 +87,13 @@ export default {
           summary: tooltipPositionsSummary,
         },
         defaultValue: {
-          summary: 'neutral',
+          summary: 'bottom',
         },
       },
     },
     closeable: {
       description:
-        'Add closeable feature for the tag component (close icon which trigger a close event to parent component)',
+        'Add closeable feature for the chip component (close icon which trigger a close event to parent component)',
       control: 'boolean',
       table: {
         type: {
@@ -105,7 +105,7 @@ export default {
       },
     },
     disabled: {
-      description: 'Disables the Tag component ',
+      description: 'Disables the Chip component ',
       control: 'boolean',
       table: {
         type: {
@@ -118,8 +118,8 @@ export default {
     },
   },
   args: {
-    id: 'puik-tag-id',
-    content: 'default tag',
+    id: 'puik-chip-id',
+    content: 'default chip',
     size: 'default',
     variant: 'neutral',
     icon: '',
@@ -132,22 +132,22 @@ export default {
 const DefaultTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikChip,
   },
   setup() {
     return { args }
   },
-  template: `<puik-tag  v-bind="args"/>`,
+  template: `<puik-chip  v-bind="args"/>`,
 })
 
 const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikChip,
     PuikButton,
   },
   setup() {
-    const tags = ref([
+    const chips = ref([
       {
         variant: 'neutral',
         icon: 'home',
@@ -192,33 +192,33 @@ const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
       },
     ])
 
-    const copyInitialTags = [...tags.value]
-    const handleCloseTag = (index: number) => {
-      tags.value.splice(index, 1)
+    const copyInitialChips = [...chips.value]
+    const handleCloseChip = (index: number) => {
+      chips.value.splice(index, 1)
     }
-    const refreshTags = () => {
-      tags.value = []
-      copyInitialTags.map((tag) => {
-        tags.value.push(tag)
+    const refreshChips = () => {
+      chips.value = []
+      copyInitialChips.map((chip) => {
+        chips.value.push(chip)
       })
     }
-    return { tags, args, handleCloseTag, refreshTags }
+    return { chips, args, handleCloseChip, refreshChips }
   },
   template: `
   <div class="flex space-x-2 mb-4">
-    <puik-tag
-      v-for="(tag, index) in tags"
-      :id="'puik-tag-'+index"
+    <puik-chip
+      v-for="(chip, index) in chips"
+      :id="'puik-chip-'+index"
       :key="index"
-      :content="tag.content"
-      :variant="tag.variant"
-      :icon="tag.icon"
+      :content="chip.content"
+      :variant="chip.variant"
+      :icon="chip.icon"
       :closeable="true"
-      :disabled="tag.disabled"
-      @close="handleCloseTag(index)"
+      :disabled="chip.disabled"
+      @close="handleCloseChip(index)"
     />
   </div>
-  <puik-button @click="refreshTags">
+  <puik-button @click="refreshChips">
     <puik-icon icon="refresh"></puik-icon>
     Refresh
   </puik-button>
@@ -228,42 +228,42 @@ const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
 const ColorVariantsTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikChip,
   },
   setup() {
-    const tags = ref([
+    const chips = ref([
       {
         variant: 'neutral',
-        content: 'neutral tag',
+        content: 'neutral chip',
       },
       {
         variant: 'blue',
-        content: 'blue tag',
+        content: 'blue chip',
       },
       {
         variant: 'yellow',
-        content: 'yellow tag',
+        content: 'yellow chip',
       },
       {
         variant: 'green',
-        content: 'green tag',
+        content: 'green chip',
       },
       {
         variant: 'purple',
-        content: 'purple tag',
+        content: 'purple chip',
       },
     ])
 
-    return { tags, args }
+    return { chips, args }
   },
   template: `
   <div class="flex space-x-2 mb-4">
-    <puik-tag
-      v-for="(tag, index) in tags"
-      :id="'puik-tag-'+index"
+    <puik-chip
+      v-for="(chip, index) in chips"
+      :id="'puik-chip-'+index"
       :key="index"
-      :content="tag.content"
-      :variant="tag.variant"
+      :content="chip.content"
+      :variant="chip.variant"
     />
   </div>
 `,
@@ -272,21 +272,21 @@ const ColorVariantsTemplate: StoryFn = (args: Args) => ({
 const SizeVariantsTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikChip,
   },
   setup() {
     return { args }
   },
   template: `
-    <puik-tag
+    <puik-chip
       style="display: inline-block; margin-right: 8px;"
-      id="puik-tag-default"
+      id="puik-chip-default"
       content="default size"
       size="default"
     />
-    <puik-tag
+    <puik-chip
       style="display: inline-block"
-      id="puik-tag-small"
+      id="puik-chip-small"
       content="small size"
       size="small"
     />
@@ -296,15 +296,15 @@ const SizeVariantsTemplate: StoryFn = (args: Args) => ({
 const CloseableTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikChip,
   },
   setup() {
     return { args }
   },
   template: `
-    <puik-tag
-      id="puik-tag-default"
-      content="closeable tag"
+    <puik-chip
+      id="puik-chip-default"
+      content="closeable chip"
       :closeable="true"
     />
 `,
@@ -313,15 +313,15 @@ const CloseableTemplate: StoryFn = (args: Args) => ({
 const DisabledTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikChip,
   },
   setup() {
     return { args }
   },
   template: `
-    <puik-tag
-      id="puik-tag-default"
-      content="disabled tag"
+    <puik-chip
+      id="puik-chip-default"
+      content="disabled chip"
       :disabled="true"
     />
 `,
@@ -330,15 +330,15 @@ const DisabledTemplate: StoryFn = (args: Args) => ({
 const WithIconTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikChip,
   },
   setup() {
     return { args }
   },
   template: `
-    <puik-tag
-      id="puik-tag-default"
-      content="with icon tag"
+    <puik-chip
+      id="puik-chip-default"
+      content="with icon chip"
       icon="favorite"
     />
 `,
@@ -347,14 +347,14 @@ const WithIconTemplate: StoryFn = (args: Args) => ({
 const WithLongTextTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikChip,
   },
   setup() {
     return { args }
   },
   template: `
-    <puik-tag
-      id="puik-tag-default"
+    <puik-chip
+      id="puik-chip-default"
       content="very long text content very long text content"
       :tooltip-position="bottom"
     />
@@ -369,7 +369,7 @@ export const Default = {
       source: {
         code: `
 <!--VueJS Snippet-->
-<puik-tag
+<puik-chip
   :id="args.id"
   :content="args.content"
   :size="args.size"
@@ -378,14 +378,14 @@ export const Default = {
   :closeable="args.closeable"
   :disabled="args.disabled"
   :tooltipPosition="args.tooltipPosition"
-  @close="handleCloseTag()"
+  @close="handleCloseChip()"
 />
 </div>
 
 <!--HTML/CSS Snippet-->
-<div id="puik-tag-id" class="puik-tag puik-tag--neutral puik-tag--default">
-  <div class="puik-tag__content">
-    default tag
+<div id="puik-chip-id" class="puik-chip puik-chip--neutral puik-chip--default">
+  <div class="puik-chip__content">
+    default chip
   </div>
 </div>
 `,
@@ -404,24 +404,24 @@ export const HandleCloseEvent = {
         code: `
 <!--VueJS Snippet-->
 <div class="flex space-x-2 mb-4">
-  <puik-tag
-    v-for="(tag, index) in tags"
-    :id="'puik-tag-'+index"
+  <puik-chip
+    v-for="(chip, index) in chips"
+    :id="'puik-chip-'+index"
     :key="index"
-    :content="tag.content"
-    :variant="tag.variant"
-    :icon="tag.icon"
+    :content="chip.content"
+    :variant="chip.variant"
+    :icon="chip.icon"
     :closeable="true"
-    :disabled="tag.disabled"
-    @close="handleCloseTag(index)"
+    :disabled="chip.disabled"
+    @close="handleCloseChip(index)"
   />
 </div>
 
 <!-- Example of function for handling the closed event in a parent component -->
-const handleCloseTag = (index: number) => {
+const handleCloseChip = (index: number) => {
   // Do stuff before closing
   // Then
-  tags.value.splice(index, 1)
+  chips.value.splice(index, 1)
 }
 `,
         language: 'html',
@@ -438,8 +438,8 @@ export const ColorVariants = {
       source: {
         code: `
 <!--VueJS Snippet-->
-<!-- $variants: ${tagColorsVariantsSummary} -->
-<puik-tag
+<!-- $variants: ${chipColorsVariantsSummary} -->
+<puik-chip
   :id="args.id"
   :content="args.content"
   :variant="{$variant}"
@@ -447,10 +447,10 @@ export const ColorVariants = {
 </div>
 
 <!--HTML/CSS Snippet-->
-<!-- $variants: ${tagColorsVariantsSummary} -->
-<div id="puik-tag-id" class="puik-tag puik-tag--{$variant} puik-tag--default">
-  <div class="puik-tag__content">
-    {$variant} tag
+<!-- $variants: ${chipColorsVariantsSummary} -->
+<div id="puik-chip-id" class="puik-chip puik-chip--{$variant} puik-chip--default">
+  <div class="puik-chip__content">
+    {$variant} chip
   </div>
 </div>
 `,
@@ -468,8 +468,8 @@ export const SizeVariants = {
       source: {
         code: `
 <!--VueJS Snippet-->
-<!-- $sizes: ${tagSizeVariantsSummary} -->
-<puik-tag
+<!-- $sizes: ${chipSizeVariantsSummary} -->
+<puik-chip
   :id="args.id"
   :content="args.content"
   :size="{$size}"
@@ -477,10 +477,10 @@ export const SizeVariants = {
 </div>
 
 <!--HTML/CSS Snippet-->
-<!-- $sizes: ${tagSizeVariantsSummary} -->
-<div id="puik-tag-id" class="puik-tag puik-tag--neutral puik-tag--{$size}">
-  <div class="puik-tag__content">
-    {$size} tag
+<!-- $sizes: ${chipSizeVariantsSummary} -->
+<div id="puik-chip-id" class="puik-chip puik-chip--neutral puik-chip--{$size}">
+  <div class="puik-chip__content">
+    {$size} chip
   </div>
 </div>
 `,
@@ -499,7 +499,7 @@ export const Closeable = {
         code: `
 <!--VueJS Snippet-->
 <!-- $closeable: true | false -->
-<puik-tag
+<puik-chip
   :id="args.id"
   :content="args.content"
   :closeable="{$closeable}"
@@ -508,11 +508,11 @@ export const Closeable = {
 
 <!--HTML/CSS Snippet-->
 <!-- $closeable: true | false -->
-<div id="puik-tag-default" class="puik-tag puik-tag--neutral puik-tag--default">
-  <div class="puik-tag__content">
-    closeable tag
+<div id="puik-chip-default" class="puik-chip puik-chip--neutral puik-chip--default">
+  <div class="puik-chip__content">
+    closeable chip
   </div>
-  <div class="puik-icon material-icons-round puik-tag__close" style="font-size: 1rem;">close</div>
+  <div class="puik-icon material-icons-round puik-chip__close" style="font-size: 1rem;">close</div>
 </div>
 `,
         language: 'html',
@@ -529,7 +529,7 @@ export const Disabled = {
       source: {
         code: `
 <!--VueJS Snippet-->
-<puik-tag
+<puik-chip
   :id="args.id"
   :content="args.content"
   :disabled="true"
@@ -537,9 +537,9 @@ export const Disabled = {
 </div>
 
 <!--HTML/CSS Snippet-->
-<div id="puik-tag-default" class="puik-tag puik-tag--neutral puik-tag--default puik-tag--disabled">
-  <div class="puik-tag__content">
-    disabled tag
+<div id="puik-chip-default" class="puik-chip puik-chip--neutral puik-chip--default puik-chip--disabled">
+  <div class="puik-chip__content">
+    disabled chip
   </div>
 </div>
 `,
@@ -557,7 +557,7 @@ export const WithIcon = {
       source: {
         code: `
 <!--VueJS Snippet-->
-<puik-tag
+<puik-chip
   :id="args.id"
   :content="args.content"
   icon="favorite"
@@ -565,11 +565,11 @@ export const WithIcon = {
 </div>
 
 <!--HTML/CSS Snippet-->
-<div id="puik-tag-default" class="puik-tag puik-tag--neutral puik-tag--default">
-  <div class="puik-icon material-icons-round puik-tag__icon" style="font-size: 1rem;">
+<div id="puik-chip-default" class="puik-chip puik-chip--neutral puik-chip--default">
+  <div class="puik-icon material-icons-round puik-chip__icon" style="font-size: 1rem;">
     favorite
   </div>
-  <div class="puik-tag__content">with icon tag</div>
+  <div class="puik-chip__content">with icon chip</div>
 </div>
 `,
         language: 'html',
@@ -587,7 +587,7 @@ export const WithLongText = {
         code: `
 <!--VueJS Snippet-->
 <!--$tooltipPositions: ${tooltipPositionsSummary}-->
-<puik-tag
+<puik-chip
   id="args.id"
   content="very long text content very long text content"
   :tooltip-position="{$tooltipPosition}"
