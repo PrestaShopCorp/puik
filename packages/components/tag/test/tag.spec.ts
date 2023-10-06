@@ -7,7 +7,6 @@ describe('Tag tests', () => {
   let wrapper: VueWrapper<any>
   const findTag = () => wrapper.find('.puik-tag')
   const findTagContent = () => wrapper.find('.puik-tag__content')
-  const findCloseBtn = () => wrapper.find('.puik-tag__close')
   const findLeftIcon = () => wrapper.find('.puik-tag__icon')
 
   const factory = (
@@ -50,11 +49,6 @@ describe('Tag tests', () => {
   it('should display a tag version with left icon', () => {
     factory({ icon: 'home' })
     expect(findLeftIcon().text()).toBe('home')
-  })
-
-  it('should display a tag closeable version', () => {
-    factory({ closeable: true })
-    expect(findCloseBtn().text()).toBe('close')
   })
 
   it('should display a tag disabled version', () => {

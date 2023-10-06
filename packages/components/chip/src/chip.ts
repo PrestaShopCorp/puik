@@ -42,11 +42,6 @@ export const chipProps = buildProps({
     default: '',
     required: false,
   },
-  closeable: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
   disabled: {
     type: Boolean,
     required: false,

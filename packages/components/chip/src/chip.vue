@@ -19,7 +19,6 @@
       {{ content }}
     </div>
     <PuikIcon
-      v-if="closeable"
       icon="close"
       class="puik-chip__close"
       @click="disabled ? '' : handleCloseEvent()"

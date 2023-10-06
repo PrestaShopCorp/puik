@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { PuikIcon, PuikButton, tooltipPositions } from '@puik/components'
+import { PuikIcon, tooltipPositions } from '@puik/components'
 import { tagColorsVariants, tagSizeVariants } from '../src/tag'
 import PuikTag from './../src/tag.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
@@ -91,19 +91,6 @@ export default {
         },
       },
     },
-    closeable: {
-      description:
-        'Add closeable feature for the tag component (close icon which trigger a close event to parent component)',
-      control: 'boolean',
-      table: {
-        type: {
-          summary: 'boolean',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
     disabled: {
       description: 'Disables the Tag component ',
       control: 'boolean',
@@ -123,7 +110,6 @@ export default {
     size: 'default',
     variant: 'neutral',
     icon: '',
-    closeable: false,
     disabled: false,
     tooltipPosition: 'bottom',
   },
@@ -138,91 +124,6 @@ const DefaultTemplate: StoryFn = (args: Args) => ({
     return { args }
   },
   template: `<puik-tag  v-bind="args"/>`,
-})
-
-const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
-  components: {
-    PuikIcon,
-    PuikTag,
-    PuikButton,
-  },
-  setup() {
-    const tags = ref([
-      {
-        variant: 'neutral',
-        icon: 'home',
-        closeable: true,
-        disabled: true,
-        content: "can't close disabled",
-      },
-      {
-        variant: 'neutral',
-        icon: 'home',
-        closeable: true,
-        disabled: false,
-        content: 'close me !',
-      },
-      {
-        variant: 'blue',
-        icon: 'home',
-        closeable: true,
-        disabled: false,
-        content: 'close me !',
-      },
-      {
-        variant: 'yellow',
-        icon: 'home',
-        closeable: true,
-        disabled: false,
-        content: 'close me !',
-      },
-      {
-        variant: 'green',
-        icon: 'home',
-        closeable: true,
-        disabled: false,
-        content: 'close me !',
-      },
-      {
-        variant: 'purple',
-        icon: 'home',
-        closeable: true,
-        disabled: false,
-        content: 'close me !',
-      },
-    ])
-
-    const copyInitialTags = [...tags.value]
-    const handleCloseTag = (index: number) => {
-      tags.value.splice(index, 1)
-    }
-    const refreshTags = () => {
-      tags.value = []
-      copyInitialTags.map((tag) => {
-        tags.value.push(tag)
-      })
-    }
-    return { tags, args, handleCloseTag, refreshTags }
-  },
-  template: `
-  <div class="flex space-x-2 mb-4">
-    <puik-tag
-      v-for="(tag, index) in tags"
-      :id="'puik-tag-'+index"
-      :key="index"
-      :content="tag.content"
-      :variant="tag.variant"
-      :icon="tag.icon"
-      :closeable="true"
-      :disabled="tag.disabled"
-      @close="handleCloseTag(index)"
-    />
-  </div>
-  <puik-button @click="refreshTags">
-    <puik-icon icon="refresh"></puik-icon>
-    Refresh
-  </puik-button>
-`,
 })
 
 const ColorVariantsTemplate: StoryFn = (args: Args) => ({
@@ -293,23 +194,6 @@ const SizeVariantsTemplate: StoryFn = (args: Args) => ({
 `,
 })
 
-const CloseableTemplate: StoryFn = (args: Args) => ({
-  components: {
-    PuikIcon,
-    PuikTag,
-  },
-  setup() {
-    return { args }
-  },
-  template: `
-    <puik-tag
-      id="puik-tag-default"
-      content="closeable tag"
-      :closeable="true"
-    />
-`,
-})
-
 const DisabledTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
@@ -375,10 +259,8 @@ export const Default = {
   :size="args.size"
   :variant="args.variant"
   :icon="args.icon"
-  :closeable="args.closeable"
   :disabled="args.disabled"
   :tooltipPosition="args.tooltipPosition"
-  @close="handleCloseTag()"
 />
 </div>
 
@@ -388,41 +270,6 @@ export const Default = {
     default tag
   </div>
 </div>
-`,
-        language: 'html',
-      },
-    },
-  },
-}
-
-export const HandleCloseEvent = {
-  render: HandleCloseEventTemplate,
-  args: {},
-  parameters: {
-    docs: {
-      source: {
-        code: `
-<!--VueJS Snippet-->
-<div class="flex space-x-2 mb-4">
-  <puik-tag
-    v-for="(tag, index) in tags"
-    :id="'puik-tag-'+index"
-    :key="index"
-    :content="tag.content"
-    :variant="tag.variant"
-    :icon="tag.icon"
-    :closeable="true"
-    :disabled="tag.disabled"
-    @close="handleCloseTag(index)"
-  />
-</div>
-
-<!-- Example of function for handling the closed event in a parent component -->
-const handleCloseTag = (index: number) => {
-  // Do stuff before closing
-  // Then
-  tags.value.splice(index, 1)
-}
 `,
         language: 'html',
       },
@@ -482,37 +329,6 @@ export const SizeVariants = {
   <div class="puik-tag__content">
     {$size} tag
   </div>
-</div>
-`,
-        language: 'html',
-      },
-    },
-  },
-}
-
-export const Closeable = {
-  render: CloseableTemplate,
-  args: {},
-  parameters: {
-    docs: {
-      source: {
-        code: `
-<!--VueJS Snippet-->
-<!-- $closeable: true | false -->
-<puik-tag
-  :id="args.id"
-  :content="args.content"
-  :closeable="{$closeable}"
-/>
-</div>
-
-<!--HTML/CSS Snippet-->
-<!-- $closeable: true | false -->
-<div id="puik-tag-default" class="puik-tag puik-tag--neutral puik-tag--default">
-  <div class="puik-tag__content">
-    closeable tag
-  </div>
-  <div class="puik-icon material-icons-round puik-tag__close" style="font-size: 1rem;">close</div>
 </div>
 `,
         language: 'html',

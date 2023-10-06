@@ -91,19 +91,6 @@ export default {
         },
       },
     },
-    closeable: {
-      description:
-        'Add closeable feature for the chip component (close icon which trigger a close event to parent component)',
-      control: 'boolean',
-      table: {
-        type: {
-          summary: 'boolean',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
     disabled: {
       description: 'Disables the Chip component ',
       control: 'boolean',
@@ -123,7 +110,6 @@ export default {
     size: 'default',
     variant: 'neutral',
     icon: '',
-    closeable: false,
     disabled: false,
     tooltipPosition: 'bottom',
   },
@@ -151,42 +137,36 @@ const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
       {
         variant: 'neutral',
         icon: 'home',
-        closeable: true,
         disabled: true,
         content: "can't close disabled",
       },
       {
         variant: 'neutral',
         icon: 'home',
-        closeable: true,
         disabled: false,
         content: 'close me !',
       },
       {
         variant: 'blue',
         icon: 'home',
-        closeable: true,
         disabled: false,
         content: 'close me !',
       },
       {
         variant: 'yellow',
         icon: 'home',
-        closeable: true,
         disabled: false,
         content: 'close me !',
       },
       {
         variant: 'green',
         icon: 'home',
-        closeable: true,
         disabled: false,
         content: 'close me !',
       },
       {
         variant: 'purple',
         icon: 'home',
-        closeable: true,
         disabled: false,
         content: 'close me !',
       },
@@ -213,7 +193,6 @@ const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
       :content="chip.content"
       :variant="chip.variant"
       :icon="chip.icon"
-      :closeable="true"
       :disabled="chip.disabled"
       @close="handleCloseChip(index)"
     />
@@ -278,35 +257,18 @@ const SizeVariantsTemplate: StoryFn = (args: Args) => ({
     return { args }
   },
   template: `
+  <div style="display: flex; align-items: center; gap: 8px;">
     <puik-chip
-      style="display: inline-block; margin-right: 8px;"
       id="puik-chip-default"
       content="default size"
       size="default"
     />
     <puik-chip
-      style="display: inline-block"
       id="puik-chip-small"
       content="small size"
       size="small"
     />
-`,
-})
-
-const CloseableTemplate: StoryFn = (args: Args) => ({
-  components: {
-    PuikIcon,
-    PuikChip,
-  },
-  setup() {
-    return { args }
-  },
-  template: `
-    <puik-chip
-      id="puik-chip-default"
-      content="closeable chip"
-      :closeable="true"
-    />
+  </div>
 `,
 })
 
@@ -375,7 +337,6 @@ export const Default = {
   :size="args.size"
   :variant="args.variant"
   :icon="args.icon"
-  :closeable="args.closeable"
   :disabled="args.disabled"
   :tooltipPosition="args.tooltipPosition"
   @close="handleCloseChip()"
@@ -411,7 +372,6 @@ export const HandleCloseEvent = {
     :content="chip.content"
     :variant="chip.variant"
     :icon="chip.icon"
-    :closeable="true"
     :disabled="chip.disabled"
     @close="handleCloseChip(index)"
   />
@@ -482,37 +442,6 @@ export const SizeVariants = {
   <div class="puik-chip__content">
     {$size} chip
   </div>
-</div>
-`,
-        language: 'html',
-      },
-    },
-  },
-}
-
-export const Closeable = {
-  render: CloseableTemplate,
-  args: {},
-  parameters: {
-    docs: {
-      source: {
-        code: `
-<!--VueJS Snippet-->
-<!-- $closeable: true | false -->
-<puik-chip
-  :id="args.id"
-  :content="args.content"
-  :closeable="{$closeable}"
-/>
-</div>
-
-<!--HTML/CSS Snippet-->
-<!-- $closeable: true | false -->
-<div id="puik-chip-default" class="puik-chip puik-chip--neutral puik-chip--default">
-  <div class="puik-chip__content">
-    closeable chip
-  </div>
-  <div class="puik-icon material-icons-round puik-chip__close" style="font-size: 1rem;">close</div>
 </div>
 `,
         language: 'html',

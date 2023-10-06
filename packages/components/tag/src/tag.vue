@@ -18,12 +18,6 @@
       </puik-tooltip>
       {{ content }}
     </div>
-    <PuikIcon
-      v-if="closeable"
-      icon="close"
-      class="puik-tag__close"
-      @click="disabled ? '' : handleCloseEvent()"
-    />
   </div>
 </template>
 
@@ -47,4 +41,3 @@ const handleCloseEvent = () => {
   emit('close')
 }
 </script>
-./tag
