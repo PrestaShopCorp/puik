@@ -1,10 +1,9 @@
 import { ref } from 'vue'
 import { PuikIcon, PuikButton, tooltipPositions } from '@puik/components'
-import { chipColorsVariants, chipSizeVariants } from '../src/chip'
+import { chipSizeVariants } from '../src/chip'
 import PuikChip from './../src/chip.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
-const chipColorsVariantsSummary = chipColorsVariants.join('|')
 const chipSizeVariantsSummary = chipSizeVariants.join('|')
 const tooltipPositionsSummary = tooltipPositions.join('|')
 
@@ -51,20 +50,6 @@ export default {
         },
       },
     },
-    variant: {
-      description:
-        'Color variants of chip component (neutral by default, blue, yellow, green, purple)',
-      control: 'select',
-      options: chipColorsVariants,
-      table: {
-        type: {
-          summary: chipColorsVariantsSummary,
-        },
-        defaultValue: {
-          summary: 'neutral',
-        },
-      },
-    },
     icon: {
       description: 'Material icon name',
       control: 'text',
@@ -108,7 +93,6 @@ export default {
     id: 'puik-chip-id',
     content: 'default chip',
     size: 'default',
-    variant: 'neutral',
     icon: '',
     disabled: false,
     tooltipPosition: 'bottom',
@@ -135,37 +119,31 @@ const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
   setup() {
     const chips = ref([
       {
-        variant: 'neutral',
         icon: 'home',
         disabled: true,
         content: "can't close disabled",
       },
       {
-        variant: 'neutral',
         icon: 'home',
         disabled: false,
         content: 'close me !',
       },
       {
-        variant: 'blue',
         icon: 'home',
         disabled: false,
         content: 'close me !',
       },
       {
-        variant: 'yellow',
         icon: 'home',
         disabled: false,
         content: 'close me !',
       },
       {
-        variant: 'green',
         icon: 'home',
         disabled: false,
         content: 'close me !',
       },
       {
-        variant: 'purple',
         icon: 'home',
         disabled: false,
         content: 'close me !',
@@ -191,7 +169,6 @@ const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
       :id="'puik-chip-'+index"
       :key="index"
       :content="chip.content"
-      :variant="chip.variant"
       :icon="chip.icon"
       :disabled="chip.disabled"
       @close="handleCloseChip(index)"
@@ -201,50 +178,6 @@ const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
     <puik-icon icon="refresh"></puik-icon>
     Refresh
   </puik-button>
-`,
-})
-
-const ColorVariantsTemplate: StoryFn = (args: Args) => ({
-  components: {
-    PuikIcon,
-    PuikChip,
-  },
-  setup() {
-    const chips = ref([
-      {
-        variant: 'neutral',
-        content: 'neutral chip',
-      },
-      {
-        variant: 'blue',
-        content: 'blue chip',
-      },
-      {
-        variant: 'yellow',
-        content: 'yellow chip',
-      },
-      {
-        variant: 'green',
-        content: 'green chip',
-      },
-      {
-        variant: 'purple',
-        content: 'purple chip',
-      },
-    ])
-
-    return { chips, args }
-  },
-  template: `
-  <div class="flex space-x-2 mb-4">
-    <puik-chip
-      v-for="(chip, index) in chips"
-      :id="'puik-chip-'+index"
-      :key="index"
-      :content="chip.content"
-      :variant="chip.variant"
-    />
-  </div>
 `,
 })
 
@@ -335,7 +268,6 @@ export const Default = {
   :id="args.id"
   :content="args.content"
   :size="args.size"
-  :variant="args.variant"
   :icon="args.icon"
   :disabled="args.disabled"
   :tooltipPosition="args.tooltipPosition"
@@ -344,7 +276,7 @@ export const Default = {
 </div>
 
 <!--HTML/CSS Snippet-->
-<div id="puik-chip-id" class="puik-chip puik-chip--neutral puik-chip--default">
+<div id="puik-chip-id" class="puik-chip puik-chip--default">
   <div class="puik-chip__content">
     default chip
   </div>
@@ -370,7 +302,6 @@ export const HandleCloseEvent = {
     :id="'puik-chip-'+index"
     :key="index"
     :content="chip.content"
-    :variant="chip.variant"
     :icon="chip.icon"
     :disabled="chip.disabled"
     @close="handleCloseChip(index)"
@@ -383,36 +314,6 @@ const handleCloseChip = (index: number) => {
   // Then
   chips.value.splice(index, 1)
 }
-`,
-        language: 'html',
-      },
-    },
-  },
-}
-
-export const ColorVariants = {
-  render: ColorVariantsTemplate,
-  args: {},
-  parameters: {
-    docs: {
-      source: {
-        code: `
-<!--VueJS Snippet-->
-<!-- $variants: ${chipColorsVariantsSummary} -->
-<puik-chip
-  :id="args.id"
-  :content="args.content"
-  :variant="{$variant}"
-/>
-</div>
-
-<!--HTML/CSS Snippet-->
-<!-- $variants: ${chipColorsVariantsSummary} -->
-<div id="puik-chip-id" class="puik-chip puik-chip--{$variant} puik-chip--default">
-  <div class="puik-chip__content">
-    {$variant} chip
-  </div>
-</div>
 `,
         language: 'html',
       },
@@ -438,7 +339,7 @@ export const SizeVariants = {
 
 <!--HTML/CSS Snippet-->
 <!-- $sizes: ${chipSizeVariantsSummary} -->
-<div id="puik-chip-id" class="puik-chip puik-chip--neutral puik-chip--{$size}">
+<div id="puik-chip-id" class="puik-chip puik-chip--{$size}">
   <div class="puik-chip__content">
     {$size} chip
   </div>
@@ -466,7 +367,7 @@ export const Disabled = {
 </div>
 
 <!--HTML/CSS Snippet-->
-<div id="puik-chip-default" class="puik-chip puik-chip--neutral puik-chip--default puik-chip--disabled">
+<div id="puik-chip-default" class="puik-chip puik-chip--default puik-chip--disabled">
   <div class="puik-chip__content">
     disabled chip
   </div>
@@ -494,7 +395,7 @@ export const WithIcon = {
 </div>
 
 <!--HTML/CSS Snippet-->
-<div id="puik-chip-default" class="puik-chip puik-chip--neutral puik-chip--default">
+<div id="puik-chip-default" class="puik-chip puik-chip--default">
   <div class="puik-icon material-icons-round puik-chip__icon" style="font-size: 1rem;">
     favorite
   </div>

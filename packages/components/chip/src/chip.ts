@@ -3,17 +3,8 @@ import type { PuikTooltipPosition } from '@puik/components'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Chip from './chip.vue'
 
-export const chipColorsVariants = [
-  'neutral',
-  'blue',
-  'yellow',
-  'green',
-  'purple',
-] as const
-
 export const chipSizeVariants = ['default', 'small'] as const
 
-export type PuikChipColorVariant = (typeof chipColorsVariants)[number]
 export type PuikChipSizeVariant = (typeof chipSizeVariants)[number]
 
 export const chipProps = buildProps({
@@ -26,11 +17,6 @@ export const chipProps = buildProps({
     type: String,
     required: true,
     default: undefined,
-  },
-  variant: {
-    type: String,
-    required: false,
-    default: 'neutral',
   },
   size: {
     type: String,

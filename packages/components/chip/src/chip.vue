@@ -2,7 +2,7 @@
   <div
     :id="id"
     :class="[
-      `puik-chip puik-chip--${variant as PuikChipColorVariant} puik-chip--${size as PuikChipSizeVariant}`,
+      `puik-chip puik-chip--${size as PuikChipSizeVariant}`,
       { 'puik-chip--disabled': disabled },
     ]"
   >
@@ -29,11 +29,7 @@
 <script setup lang="ts">
 import { PuikIcon } from '@puik/components/icon'
 import { PuikTooltip } from '@puik/components/tooltip'
-import {
-  chipProps,
-  type PuikChipSizeVariant,
-  type PuikChipColorVariant,
-} from './chip'
+import { chipProps, type PuikChipSizeVariant } from './chip'
 import type { PuikTooltipPosition } from '@puik/components/tooltip'
 defineOptions({
   name: 'PuikChip',

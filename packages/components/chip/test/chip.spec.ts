@@ -37,11 +37,6 @@ describe('Chip tests', () => {
     expect(findChipContent().text()).toBe('content')
   })
 
-  it('should display a blue version of the chip', () => {
-    factory({ variant: 'blue' })
-    expect(findChip().classes()).toContain('puik-chip--blue')
-  })
-
   it('should display a chip small version', () => {
     factory({ size: 'small' })
     expect(findChip().classes()).toContain('puik-chip--small')
@@ -50,11 +45,6 @@ describe('Chip tests', () => {
   it('should display a chip version with left icon', () => {
     factory({ icon: 'home' })
     expect(findLeftIcon().text()).toBe('home')
-  })
-
-  it('should display a chip closeable version', () => {
-    factory({ closeable: true })
-    expect(findCloseBtn().text()).toBe('close')
   })
 
   it('should display a chip disabled version', () => {

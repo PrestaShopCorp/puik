@@ -2,7 +2,7 @@
 
 .puik-chip {
   @extend .puik-body-small;
-  @apply max-w-fit font-bold flex items-center;
+  @apply bg-primary-300 text-primary max-w-fit font-bold flex items-center;
 
   &--default {
     @apply px-2 py-[3px];
@@ -12,21 +12,6 @@
     .puik-chip__close {
       @apply p-[1px];
     }
-  }
-  &--neutral {
-    @apply bg-primary-300 text-primary;
-  }
-  &--blue {
-    @apply bg-ocean-blue-50 text-primary;
-  }
-  &--yellow {
-    @apply bg-amber-100 text-primary;
-  }
-  &--green {
-    @apply bg-green-50 text-primary;
-  }
-  &--purple {
-    @apply bg-purple-50 text-primary;
   }
   &--disabled {
     @apply bg-primary-200 text-primary-500;
