@@ -1,20 +1,20 @@
 @use './common/typography.scss';
 
 .puik-link {
-  @apply relative text-blue transition m-0.5 p-0.5 py-[4px] decoration-1;
+  @apply relative text-primary transition m-0.5 p-0.5 py-[4px] decoration-1;
   &:before {
     content: '';
-    @apply opacity-0 absolute h-[1px] bg-primary-800 bottom-0 left-[50%] translate-x-[-50%] transition-all ease-in-out duration-200;
-    width: calc(100% - 8px);
+    @apply absolute h-[1px] bg-primary-500 bottom-[1px] left-[50%] translate-x-[-50%] transition-all ease-in-out duration-150;
+    width: calc(100% - 4px);
   }
   &:hover,
   &:active {
-    @apply text-blue-700 cursor-pointer;
+    @apply cursor-pointer;
     &:before {
-      @apply opacity-100 bottom-[3px] transition-all ease-in-out duration-300;
+      @apply bg-primary-800 bottom-[3px] transition-all ease-in-out duration-150;
     }
     &:before:visited {
-      @apply bg-primary-500;
+      @apply bg-primary-800;
     }
   }
   &:focus-visible {
