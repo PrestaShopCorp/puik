@@ -7,7 +7,7 @@
   }
 
   &__tip {
-    @apply absolute bg-primary text-white px-3 py-2 font-primary transition-opacity;
+    @apply absolute bg-primary text-white px-3 py-2 font-primary;
 
     &__content {
       @extend .puik-body-default;
