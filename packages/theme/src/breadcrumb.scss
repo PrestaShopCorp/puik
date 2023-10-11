@@ -19,9 +19,6 @@
     &-link {
       @extend .puik-body-small;
       @apply text-primary font-normal;
-      &:hover {
-        @apply text-blue;
-      }
     }
 
     &--last {

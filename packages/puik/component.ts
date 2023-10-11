@@ -1,3 +1,5 @@
+import { PuikTag } from '@puik/components/tag'
+import { PuikChip } from '@puik/components/chip'
 import {
   PuikTabNavigation,
   PuikTabNavigationGroupPanels,
@@ -51,6 +53,8 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikTag,
+  PuikChip,
   PuikTabNavigationGroupPanels,
   PuikTabNavigationTitle,
   PuikTabNavigationGroupTitles,

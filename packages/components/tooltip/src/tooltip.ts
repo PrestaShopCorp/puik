@@ -18,7 +18,7 @@ export const tooltipProps = buildProps({
   position: {
     type: String as PropType<PuikTooltipPosition>,
     required: false,
-    default: 'top',
+    default: 'bottom',
   },
   isDisabled: {
     type: Boolean,
