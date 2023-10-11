@@ -119,12 +119,18 @@ const WithoutActionTemplate: StoryFn = () => ({
         text: 'Unable to update settings.',
         variant: 'danger',
       })
-    return { displaySnackbar, displayErrorSnackbar }
+    const displaySuccessSnackbar = () =>
+      PuikSnackbar({
+        text: 'Settings updated successfully.',
+        variant: 'success',
+      })
+    return { displaySnackbar, displayErrorSnackbar, displaySuccessSnackbar }
   },
   template: `
     <div class="space-x-4">
       <puik-button @click="displaySnackbar">Display Snackbar</puik-button>
       <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
+      <puik-button @click="displaySuccessSnackbar">Display Success Snackbar</puik-button>
     </div>
   `,
 })
@@ -139,6 +145,7 @@ export const WithoutAction: StoryObj = {
 <template>
   <puik-button @click="displaySnackbar">Display Snackbar</puik-button>
   <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
+  <puik-button @click="displaySuccessSnackbar">Display Success Snackbar</puik-button>
 </template>
 
 <script lang="ts" setup>
@@ -150,6 +157,11 @@ const displayErrorSnackbar = () =>
   PuikSnackbar({
     text: 'Unable to update settings.',
     variant: 'danger',
+  })
+const displaySuccessSnackbar = () =>
+  PuikSnackbar({
+    text: 'Settings updated successfully.',
+    variant: 'success',
   })
 </script>
 
@@ -175,6 +187,13 @@ const displayErrorSnackbar = () =>
 
 <div class="puik-snackbar puik-snackbar--danger" style="bottom: 100px">
   <span class="puik-snackbar__text">Unable to update settings.</span>
+  <button class="puik-snackbar__close-button">
+    close
+  </button>
+</div>
+
+<div class="puik-snackbar puik-snackbar--success" style="bottom: 168px">
+  <span class="puik-snackbar__text">Settings updated successfully.</span>
   <button class="puik-snackbar__close-button">
     close
   </button>
@@ -208,12 +227,22 @@ const WithActionTemplate: StoryFn = () => ({
           callback: action('Error snackbar action callback function'),
         },
       })
-    return { displaySnackbar, displayErrorSnackbar }
+    const displaySuccessSnackbar = () =>
+      PuikSnackbar({
+        text: 'Settings updated successfully.',
+        variant: 'success',
+        action: {
+          label: 'Cancel',
+          callback: action('Success snackbar action callback function'),
+        },
+      })
+    return { displaySnackbar, displayErrorSnackbar, displaySuccessSnackbar }
   },
   template: `
     <div class="space-x-4">
       <puik-button @click="displaySnackbar">Display Snackbar</puik-button>
       <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
+      <puik-button @click="displaySuccessSnackbar">Display Success Snackbar</puik-button>
     </div>
   `,
 })
@@ -228,6 +257,7 @@ export const WithAction: StoryObj = {
   <template>
     <puik-button @click="displaySnackbar">Display Snackbar</puik-button>
     <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
+    <puik-button @click="displaySuccessSnackbar">Display Success Snackbar</puik-button>
   </template>
 
   <script lang="ts" setup>
@@ -246,6 +276,15 @@ export const WithAction: StoryObj = {
       action: {
         label: 'Cancel',
         callback: action('Error snackbar action callback function'),
+      },
+    })
+  const displaySuccessSnackbar = () =>
+    PuikSnackbar({
+      text: 'Unable to update settings.',
+      variant: 'success',
+      action: {
+        label: 'Cancel',
+        callback: action('Success snackbar action callback function'),
       },
     })
   </script>
@@ -273,6 +312,14 @@ export const WithAction: StoryObj = {
 
   <div class="puik-snackbar puik-snackbar--danger" style="bottom: 100px">
     <span class="puik-snackbar__text">Unable to update settings.</span>
+    <button class="puik-snackbar__action">Retry</button>
+    <button class="puik-snackbar__close-button">
+      close
+    </button>
+  </div>
+
+  <div class="puik-snackbar puik-snackbar--success" style="bottom: 168px">
+    <span class="puik-snackbar__text">Settings updated successfully.</span>
     <button class="puik-snackbar__action">Retry</button>
     <button class="puik-snackbar__close-button">
       close
