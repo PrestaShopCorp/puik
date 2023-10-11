@@ -2,7 +2,7 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Snackbar from './snackbar.vue'
 
-export const snackbarVariants = ['default', 'danger'] as const
+export const snackbarVariants = ['default', 'danger', 'success'] as const
 export type PuikSnackbarVariant = (typeof snackbarVariants)[number]
 
 export interface SnackbarAction {
