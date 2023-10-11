@@ -1,17 +1,17 @@
 @use './common/typography.scss';
 
 .puik-link {
-  @apply relative text-primary transition m-0.5 p-0.5 py-[4px] decoration-1;
+  @apply relative text-primary transition m-0.5 p-0.5 py-[4px];
   &:before {
     content: '';
-    @apply absolute h-[1px] bg-primary-500 bottom-[1px] left-[50%] translate-x-[-50%] transition-all ease-in-out duration-150;
+    @apply absolute h-[1px] bg-primary-500 bottom-[4px] left-[50%] translate-x-[-50%] transition-all ease-in-out duration-150;
     width: calc(100% - 4px);
   }
   &:hover,
   &:active {
     @apply cursor-pointer;
     &:before {
-      @apply bg-primary-800 bottom-[3px] transition-all ease-in-out duration-150;
+      @apply bg-primary-800 bottom-[2.5px] transition-all ease-in-out duration-150;
     }
     &:before:visited {
       @apply bg-primary-800;
