@@ -59,3 +59,8 @@ const setSelected = () => {
   }
 }
 </script>
+
+<style lang="scss">
+@use '../../../theme/src/base';
+@use '../../../theme/src/button.scss';
+</style>

@@ -429,6 +429,9 @@ importers:
 
   playground:
     dependencies:
+      '@prestashopcorp/puik':
+        specifier: ^1.5.4
+        version: 1.5.4(@types/lodash-es@4.17.9)(vue@3.2.47)
       vue:
         specifier: ^3.2.47
         version: 3.2.47
@@ -2442,6 +2445,15 @@ packages:
       vue: 3.2.47
     dev: false
 
+  /@headlessui/vue@1.7.16(vue@3.2.47):
+    resolution: {integrity: sha512-nKT+nf/q6x198SsyK54mSszaQl/z+QxtASmgMEJtpxSX2Q0OPJX0upS/9daDyiECpeAsvjkoOrm2O/6PyBQ+Qg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      vue: 3.2.47
+    dev: false
+
   /@headlessui/vue@1.7.16(vue@3.3.4):
     resolution: {integrity: sha512-nKT+nf/q6x198SsyK54mSszaQl/z+QxtASmgMEJtpxSX2Q0OPJX0upS/9daDyiECpeAsvjkoOrm2O/6PyBQ+Qg==}
     engines: {node: '>=10'}
@@ -4045,6 +4057,23 @@ packages:
 
   /@popperjs/core@2.11.8:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+    dev: false
+
+  /@prestashopcorp/puik@1.5.4(@types/lodash-es@4.17.9)(vue@3.2.47):
+    resolution: {integrity: sha512-4ex7AUjiq34sRN2i+J20jpxJaDWdTbEFa7I8QkywEJeh+9SMykJyvmbjAAotlZSqGPLzxF6eY4D/XBetdU9mQg==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@headlessui/vue': 1.7.16(vue@3.2.47)
+      '@popperjs/core': 2.11.8
+      '@vueuse/core': 9.13.0(vue@3.2.47)
+      lodash: 4.17.21
+      lodash-es: 4.17.21
+      lodash-unified: 1.0.3(@types/lodash-es@4.17.9)(lodash-es@4.17.21)(lodash@4.17.21)
+      vue: 3.2.47
+    transitivePeerDependencies:
+      - '@types/lodash-es'
+      - '@vue/composition-api'
     dev: false
 
   /@rollup/plugin-alias@4.0.4(rollup@3.20.2):

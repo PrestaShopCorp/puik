@@ -24,7 +24,10 @@ import { PuikBreadcrumb } from '@puik/components/breadcrumb'
 import { PuikAccordion, PuikAccordionGroup } from '@puik/components/accordion'
 import { PuikBadge } from '@puik/components/badge'
 import { PuikModal } from '@puik/components/modal'
-import { PuikButtonGroup } from '@puik/components/button-group'
+import {
+  PuikButtonGroup,
+  PuikButtonGroupCe,
+} from '@puik/components/button-group'
 import {
   PuikMenu,
   PuikMenuItem,
@@ -43,8 +46,8 @@ import { PuikSelect, PuikOption } from '@puik/components/select'
 import { PuikAlert } from '@puik/components/alert'
 import { PuikTooltip, PuikTooltipCe } from '@puik/components/tooltip'
 import { PuikSwitch } from '@puik/components/switch'
-import { PuikButton } from '@puik/components/button'
-import { PuikInput } from '@puik/components/input'
+import { PuikButton, PuikButtonCe } from '@puik/components/button'
+import { PuikInput, PuikInputCe } from '@puik/components/input'
 import { PuikConfigProvider } from '@puik/components/config-provider'
 import type { Plugin } from 'vue'
 
@@ -72,6 +75,7 @@ export default [
   PuikBadge,
   PuikModal,
   PuikButtonGroup,
+  PuikButtonGroupCe,
   PuikMenu,
   PuikMenuItem,
   PuikMenuItemSeparator,
@@ -85,6 +89,7 @@ export default [
   PuikLabel,
   PuikRadio,
   PuikInput,
+  PuikInputCe,
   PuikCheckbox,
   PuikOption,
   PuikSelect,
@@ -93,5 +98,6 @@ export default [
   PuikTooltipCe,
   PuikSwitch,
   PuikButton,
+  PuikButtonCe,
   PuikConfigProvider,
 ] as Plugin[]

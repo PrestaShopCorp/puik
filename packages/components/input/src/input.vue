@@ -1,7 +1,7 @@
 <template>
   <div class="puik-input">
     <div class="puik-input__wrapper" :class="inputClasses">
-      <div v-if="$slots.prepend" class="puik-input__prepend">
+      <div v-if="$slots.prepend || hasSlotPrepend" class="puik-input__prepend">
         <slot name="prepend"></slot>
       </div>
       <input
@@ -26,7 +26,10 @@
         @click="togglePasswordVisibility"
         >{{ passwordIsVisible ? 'visibility' : 'visibility_off' }}</span
       >
-      <div v-else-if="$slots.append" class="puik-input__append">
+      <div
+        v-else-if="$slots.append || hasSlotAppend"
+        class="puik-input__append"
+      >
         <slot name="append"></slot>
       </div>
       <puik-input-controls
@@ -36,13 +39,14 @@
         @decrease="decrease"
       ></puik-input-controls>
     </div>
-    <div v-if="$slots.hint || hasError" class="puik-input__hint">
+    <div v-if="$slots.hint || hasSlotHint || hasError" class="puik-input__hint">
       <span
         v-show="!hideHint"
-        v-if="$slots.hint && !hasError"
+        v-if="($slots.hint || hasSlotHint) && !hasError"
         class="puik-input__hint__text"
-        ><slot name="hint"></slot
-      ></span>
+      >
+        <slot name="hint"></slot>
+      </span>
       <div v-if="hasError" class="puik-input__hint__error">
         <puik-icon
           icon="error"
@@ -110,3 +114,8 @@ const value = computed<string | number>({
   },
 })
 </script>
+
+<style lang="scss">
+@use '../../../theme/src/base';
+@use '../../../theme/src/input.scss';
+</style>

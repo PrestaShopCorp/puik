@@ -20,6 +20,21 @@ export const inputProps = buildProps({
     required: false,
     default: '',
   },
+  hasSlotAppend: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  hasSlotPrepend: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  hasSlotHint: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   type: {
     type: String as PropType<PuikInputType>,
     required: false,
@@ -41,6 +56,11 @@ export const inputProps = buildProps({
     default: false,
   },
   name: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  hint: {
     type: String,
     required: false,
     default: undefined,

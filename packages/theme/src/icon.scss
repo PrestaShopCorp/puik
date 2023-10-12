@@ -1,3 +1,6 @@
 .puik-icon {
   @apply font-materialIcons;
 }
+.puik-icon.material-icons-round {
+  @apply flex;
+}
