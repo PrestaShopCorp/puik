@@ -10,7 +10,7 @@
   &--small {
     @apply px-1 py-0;
     .puik-chip__close {
-      @apply p-[1px];
+      @apply p-1 py-[2px];
     }
   }
   &--disabled {
@@ -20,7 +20,7 @@
     }
   }
   &__close {
-    @apply p-[3px] ml-auto cursor-pointer rounded-[50%] hover:bg-primary-400;
+    @apply p-1 py-[2px] ml-auto cursor-pointer rounded-[50%] hover:bg-primary-400;
   }
   &__icon {
     @apply mr-1;

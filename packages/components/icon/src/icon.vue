@@ -26,8 +26,3 @@ const style = {
   color: props.color,
 }
 </script>
-
-<style lang="scss">
-@import '../../../theme/src/base';
-@import '../../../theme/src/icon';
-</style>
