@@ -1,3 +1,4 @@
+import { defineCustomElement } from 'vue'
 import { withInstall } from '@puik/utils'
 
 import Tooltip from './src/tooltip.vue'

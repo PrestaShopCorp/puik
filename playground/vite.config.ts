@@ -29,6 +29,10 @@ export default defineConfig({
         find: /^@puik\/(.*)$/,
         replacement: `${path.resolve('../packages')}/$1`,
       },
+      {
+        find: /^~(.*)$/,
+        replacement: '$1',
+      },
     ],
   },
 })
