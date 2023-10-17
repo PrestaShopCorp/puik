@@ -7,10 +7,12 @@ import DefineOptions from 'unplugin-vue-define-options/rollup'
 import esbuild from 'rollup-plugin-esbuild'
 import { parallel } from 'gulp'
 import glob from 'fast-glob'
+import postcss from 'rollup-plugin-postcss'
 import { camelCase, upperFirst } from 'lodash-unified'
 import { version } from '../../../packages/puik/version'
 import { PuikAlias } from '../plugins/puik-alias'
 import {
+  themeRoot,
   puikRoot,
   puikOutput,
   localeRoot,
@@ -29,7 +31,15 @@ async function buildFullEntry(minify: boolean) {
     plugins: [
       PuikAlias(),
       vue({
+        preprocessStyles: true, // Preprocess styles with PostCSS
         isProduction: true,
+        customElement: true,
+      }),
+      postcss({
+        config: {
+          path: `${themeRoot}/postcss.config.js`,
+          ctx: {},
+        },
       }),
       DefineOptions(),
       nodeResolve({
