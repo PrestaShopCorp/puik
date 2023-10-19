@@ -1,5 +1,5 @@
 <template>
-  <hr class="puik-divider" />
+  <hr :id="id" class="puik-divider" />
 </template>
 
 <script setup lang="ts">
