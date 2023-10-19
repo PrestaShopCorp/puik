@@ -1,0 +1,80 @@
+@use './common/typography.scss';
+
+.puik-avatar {
+  @apply flex justify-center items-center rounded-full overflow-hidden;
+}
+.puik-avatar--small {
+  @apply w-6 h-6;
+}
+.puik-avatar--medium {
+  @apply w-8 h-8;
+}
+.puik-avatar--large {
+  @apply w-12 h-12;
+}
+.puik-avatar--jumbo {
+  @apply w-14 h-14;
+}
+.puik-avatar--primary {
+  @apply border border-transparent;
+  .puik-avatar_initials {
+    @apply text-white;
+  }
+}
+.puik-avatar--reverse {
+  @apply border border-primary-300;
+  .puik-avatar_initials {
+    @apply text-primary-800;
+  }
+}
+.puik-avatar--photo {
+  @apply border-none;
+  img {
+    object-fit: cover;
+  }
+}
+.puik-avatar--neutral {
+  @apply bg-primary-800;
+}
+.puik-avatar--blue {
+  @apply bg-ocean-blue;
+}
+.puik-avatar--yellow {
+  @apply bg-amber;
+}
+.puik-avatar--green {
+  @apply bg-green-400;
+}
+.puik-avatar--purple {
+  @apply bg-purple;
+}
+.puik-avatar--reverse.puik-avatar--neutral {
+  @apply bg-white;
+}
+.puik-avatar--reverse.puik-avatar--blue {
+  @apply bg-ocean-blue-50;
+}
+.puik-avatar--reverse.puik-avatar--yellow {
+  @apply bg-amber-100;
+}
+.puik-avatar--reverse.puik-avatar--green {
+  @apply bg-green-50;
+}
+.puik-avatar--reverse.puik-avatar--purple {
+  @apply bg-purple-50;
+}
+.puik-avatar_initials {
+  @apply font-bold;
+  &--small {
+    @apply text-xs/none;
+  }
+  &--medium {
+    @apply text-sm/none;
+  }
+  &--large {
+    @apply text-base/none;
+  }
+  &--jumbo {
+    @apply text-2xl/none;
+  }
+}
