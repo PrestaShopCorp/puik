@@ -1,7 +1,7 @@
 <template>
   <div
     :id="id"
-    :class="`puik-avatar puik-avatar--${size} puik-avatar--${type} puik-avatar--${mode} puik-avatar--${colorVariant}`"
+    :class="`puik-avatar puik-avatar--${size} puik-avatar--${type} puik-avatar--${mode} puik-avatar--${color}`"
   >
     <img v-if="src && type == 'photo'" :src="src" :alt="alt" />
     <puik-icon

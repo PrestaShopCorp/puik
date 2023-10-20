@@ -2,14 +2,14 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Avatar from './avatar.vue'
 
-export const avatarColorVariants = [
+export const avatarColors = [
   'neutral',
   'blue',
   'yellow',
   'green',
   'purple',
 ] as const
-export type PuikAvatarBgColor = (typeof avatarColorVariants)[number]
+export type PuikAvatarBgColor = (typeof avatarColors)[number]
 
 export const avatarModes = ['primary', 'reverse'] as const
 export type PuikAvatarMode = (typeof avatarModes)[number]
@@ -26,10 +26,15 @@ export const avatarProps = buildProps({
     required: false,
     default: undefined,
   },
-  colorVariant: {
+  color: {
     type: String as PropType<PuikAvatarBgColor>,
     required: false,
     default: 'neutral',
+  },
+  mode: {
+    type: String as PropType<PuikAvatarMode>,
+    required: false,
+    default: 'primary',
   },
   size: {
     type: String as PropType<PuikAvatarSize>,
@@ -41,10 +46,10 @@ export const avatarProps = buildProps({
     required: false,
     default: 'initials',
   },
-  mode: {
-    type: String as PropType<PuikAvatarMode>,
+  icon: {
+    type: String,
     required: false,
-    default: 'primary',
+    default: '',
   },
   src: {
     type: String,
@@ -52,11 +57,6 @@ export const avatarProps = buildProps({
     default: '',
   },
   alt: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  icon: {
     type: String,
     required: false,
     default: '',
