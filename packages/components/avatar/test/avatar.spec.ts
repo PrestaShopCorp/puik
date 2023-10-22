@@ -5,6 +5,11 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 describe('Avatar tests', () => {
   let wrapper: VueWrapper<any>
+  const findAvatar = () => wrapper.find('.puik-avatar')
+  const findInitialsWrapper = () => wrapper.find('.puik-avatar_initials')
+  const findIconWrapper = () => wrapper.find('.puik-icon')
+  const findImg = () => wrapper.find('.puik-avatar img')
+
   const factory = (
     propsData: Record<string, any> = {},
     options: MountingOptions<any> = {}
@@ -19,5 +24,41 @@ describe('Avatar tests', () => {
   it('should be a vue instance', () => {
     factory()
     expect(wrapper).toBeTruthy()
+  })
+
+  it('as id prop value is "puik-avatar-id", id html attribute of puik-avatar should be "puik-avatar-id"', () => {
+    factory({ id: 'puik-avatar-id' })
+    expect(findAvatar().attributes().id).toBe('puik-avatar-id')
+  })
+
+  it('should display a blue version of the avatar', () => {
+    factory({ color: 'blue' })
+    expect(findAvatar().classes()).toContain('puik-avatar--blue')
+  })
+
+  it('should display the avatar in reverse mode', () => {
+    factory({ mode: 'reverse' })
+    expect(findAvatar().classes()).toContain('puik-avatar--reverse')
+  })
+
+  it('should display the avatar in large size', () => {
+    factory({ size: 'large' })
+    expect(findAvatar().classes()).toContain('puik-avatar--large')
+  })
+
+  it('should display the initials "PA"', () => {
+    factory({ firstname: 'Puik', lastname: 'Avatar' })
+    expect(findInitialsWrapper().text()).toBe('PA')
+  })
+
+  it('icon type avatar should display the icon material "home"', () => {
+    factory({ type: 'icon', icon: 'home' })
+    expect(findIconWrapper().text()).toBe('home')
+  })
+
+  it('photo type avatar should display an image with src attribute set to "src-img" and an attribute alt set to "alt-img"', () => {
+    factory({ type: 'photo', src: 'src-img', alt: 'alt-img' })
+    expect(findImg().attributes().src).toBe('src-img')
+    expect(findImg().attributes().alt).toBe('alt-img')
   })
 })
