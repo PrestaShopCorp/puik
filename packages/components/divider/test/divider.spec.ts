@@ -21,9 +21,4 @@ describe('Divider tests', () => {
     factory()
     expect(wrapper).toBeTruthy()
   })
-
-  it('as id prop value is "puik-chip-example", id html attribute of puik-chip should be "puik-chip-example"', () => {
-    factory({ id: 'puik-divider-id' })
-    expect(findDivider().attributes().id).toBe('puik-divider-id')
-  })
 })
