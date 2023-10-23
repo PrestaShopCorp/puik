@@ -1,21 +1,10 @@
 @use './common/typography.scss';
 
 .puik-link {
-  @apply relative text-primary transition m-0.5 p-0.5 py-[4px];
-  &:before {
-    content: '';
-    @apply absolute h-[1px] bg-primary-500 bottom-[4px] left-[50%] translate-x-[-50%] transition-all ease-in-out duration-150;
-    width: calc(100% - 4px);
-  }
+  @apply relative py-[1px] text-primary bg-gradient-to-bl from-primary-500 from-primary-500 bg-no-repeat bg-[length:100%_1px] bg-left-bottom transition-all ease-in-out duration-150;
   &:hover,
   &:active {
-    @apply cursor-pointer;
-    &:before {
-      @apply bg-primary-800 bottom-[2.5px] transition-all ease-in-out duration-150;
-    }
-    &:before:visited {
-      @apply bg-primary-800;
-    }
+    @apply py-[2.5px] cursor-pointer from-primary-800 to-primary-800 transition-all ease-in-out duration-150;
   }
   &:focus-visible {
     @apply outline-none ring-2 ring-blue rounded-[4px] shadow-none;
