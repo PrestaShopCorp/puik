@@ -38,8 +38,14 @@ props.size === 'small'
   ? (iconFontSize.value = '2.8rem')
   : '1rem'
 
-if (props.firstname !== '' && props.lastname !== '') {
-  initials.value =
-    props.firstname[0].toUpperCase() + props.lastname[0].toUpperCase()
-}
+props.firstname !== '' && props.lastname !== ''
+  ? (initials.value =
+      props.firstname[0]?.toUpperCase() + props.lastname[0]?.toUpperCase())
+  : props.firstname.length > 1 && !props.lastname
+  ? (initials.value =
+      props.firstname[0]?.toUpperCase() + props.firstname[1]?.toUpperCase())
+  : props.lastname.length > 1 && !props.firstname
+  ? (initials.value =
+      props.lastname[0]?.toUpperCase() + props.lastname[1]?.toUpperCase())
+  : (initials.value = 'PS')
 </script>

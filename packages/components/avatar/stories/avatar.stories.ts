@@ -124,7 +124,7 @@ export default {
     },
     firstname: {
       description:
-        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of firstname prop corresponds to the first)',
+        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of firstname prop corresponds to the first). NB: if the lastname prop is missing then the initials will be the first two letters of the firstname prop',
       control: 'text',
       table: {
         type: {
@@ -137,7 +137,7 @@ export default {
     },
     lastname: {
       description:
-        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of lastname corresponds to the last)',
+        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of lastname corresponds to the last). NB : if the firstname prop is missing then the initials will be the first two letters of the lastname prop ',
       control: 'text',
       table: {
         type: {
