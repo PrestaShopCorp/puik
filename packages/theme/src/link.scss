@@ -1,12 +1,10 @@
 @use './common/typography.scss';
 
 .puik-link {
-  @apply relative py-[0.5px] text-primary bg-gradient-to-bl from-primary-500 to-primary-500 bg-no-repeat bg-[length:100%_1px] transition-all ease-in-out duration-150;
-  background-position: left bottom 1.25px;
+  @apply relative py-[0.5px] text-primary bg-gradient-to-bl from-primary-500 to-primary-500 bg-no-repeat bg-[length:100%_1px] bg-[left_bottom_1.25px] transition-all ease-in-out duration-150;
   &:hover,
   &:active {
-    @apply cursor-pointer from-primary-800 to-primary-800 transition-all ease-in-out duration-150;
-    background-position: left bottom 0px;
+    @apply cursor-pointer from-primary-800 to-primary-800 bg-left-bottom transition-all ease-in-out duration-150;
   }
   &:focus-visible {
     @apply outline-none ring-2 ring-blue rounded-[4px] shadow-none;
