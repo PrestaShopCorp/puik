@@ -4,24 +4,7 @@ import type { Meta, StoryFn, Args } from '@storybook/vue3'
 export default {
   title: 'Components/Divider',
   component: PuikDivider,
-  argTypes: {
-    id: {
-      description:
-        "Prop which will correspond to the component's html id attribute. NB: must not start with a number",
-      control: 'text',
-      table: {
-        type: {
-          summary: 'string',
-        },
-        defaultValue: {
-          summary: 'undefined',
-        },
-      },
-    },
-  },
-  args: {
-    id: 'puik-chip-id',
-  },
+  args: {},
 } as Meta
 
 const Template: StoryFn = (args: Args) => ({
@@ -31,7 +14,7 @@ const Template: StoryFn = (args: Args) => ({
   setup() {
     return { args }
   },
-  template: `<puik-divider v-bind="args"/>`,
+  template: `<puik-divider />`,
 })
 
 export const Default = {
@@ -42,10 +25,10 @@ export const Default = {
       source: {
         code: `
 <!--VueJS Snippet-->
-<puik-divider id="puik-divider-id"/>
+<puik-divider />
 
 <!--HTML/CSS Snippet-->
-<hr id="puik-divider-id" class="puik-divider">
+<hr class="puik-divider">
 `,
         language: 'html',
       },
