@@ -16,6 +16,7 @@ export interface PuikSnackbarOptions {
   action?: SnackbarAction
   duration?: number
   offset?: number
+  hasCloseButton?: boolean
   onClose?: () => void
 }
 
@@ -48,6 +49,11 @@ export const snackbarProps = buildProps({
     type: Number,
     required: false,
     default: 0,
+  },
+  hasCloseButton: {
+    type: Boolean,
+    required: false,
+    default: true,
   },
   onClose: {
     type: Function,
