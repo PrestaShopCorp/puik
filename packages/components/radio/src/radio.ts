@@ -8,6 +8,11 @@ export const radioProps = buildProps({
     required: false,
     default: undefined,
   },
+  labelDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   name: {
     type: String,
     required: false,
@@ -27,6 +32,11 @@ export const radioProps = buildProps({
     type: [Boolean, String, Number],
     required: false,
     default: false,
+  },
+  inputDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
   },
 } as const)
 

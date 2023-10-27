@@ -90,6 +90,16 @@ export const inputProps = buildProps({
     required: false,
     default: false,
   },
+  inputDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  errorTextDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type InputProps = ExtractPropTypes<typeof inputProps>

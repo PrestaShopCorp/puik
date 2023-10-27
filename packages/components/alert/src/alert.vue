@@ -10,10 +10,13 @@
     <div class="puik-alert__content">
       <puik-icon :icon="icon" font-size="1.25rem" class="puik-alert__icon" />
       <div class="puik-alert__text">
-        <p v-if="title" class="puik-alert__title">{{ title }}</p>
+        <p v-if="title" class="puik-alert__title" :data-test="titleDataTest">
+          {{ title }}
+        </p>
         <span
           v-if="$slots.default || description"
           class="puik-alert__description"
+          :data-test="descriptionDataTest"
           ><slot>{{ description }}</slot></span
         >
       </div>
@@ -22,6 +25,7 @@
       v-if="buttonLabel"
       :variant="variant"
       class="puik-alert__button"
+      :button-data-test="buttonDataTest"
       @click="click"
     >
       {{ buttonLabel }}

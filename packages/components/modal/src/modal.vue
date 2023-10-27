@@ -22,7 +22,9 @@
             :is-disabled="!showTitleTooltip"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__title"
           >
-            <h2 ref="modalTitleElem" class="title">{{ title }}</h2>
+            <h2 ref="modalTitleElem" class="title" :data-test="titleDataTest">
+              {{ title }}
+            </h2>
             <template #description>{{ title }}</template>
           </puik-tooltip>
 
@@ -31,6 +33,7 @@
             :aria-label="t('puik.modal.closeButtonLabel')"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__close-button"
             variant="text"
+            :data-test="closeButtonDataTest"
             @click="sendCloseModalEvent()"
           >
             <puik-icon icon="close" :font-size="CLOSE_ICON_SIZE" />
@@ -47,6 +50,7 @@
             v-if="secondButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--second"
             :variant="secondButtonVariant"
+            :data-test="secondButtonDataTest"
             @click="$emit('button-second')"
           >
             {{ secondButtonText }}
@@ -56,6 +60,7 @@
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--main"
             :variant="mainButtonVariant"
             :disabled="isMainButtonDisabled"
+            :data-test="mainButtonDataTest"
             @click="$emit('button-main')"
           >
             {{ mainButtonText }}
@@ -67,6 +72,7 @@
             v-if="PuikModalVariant.DIALOG === variant && sideButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--side"
             variant="text"
+            :data-test="sideButtonDataTest"
             @click="$emit('button-side')"
           >
             {{ sideButtonText }}

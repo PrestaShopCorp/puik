@@ -33,6 +33,12 @@ export default {
         },
       },
     },
+    inputDataTest: {
+      description: 'Set the input data-test attribute',
+    },
+    labelDataTest: {
+      description: 'Set the label data-test attribute',
+    },
   },
   args: {
     label: 'Label',
@@ -40,6 +46,8 @@ export default {
     indeterminate: false,
     disabled: false,
     modelValue: false,
+    inputDataTest: '',
+    labelDataTest: '',
   },
 } as Meta
 

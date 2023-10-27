@@ -90,9 +90,45 @@ export default {
         },
       },
     },
+    labelDataTest: {
+      control: 'text',
+      description: 'Set the label data-test attribute',
+      table: {
+        defaultValue: {
+          summary: 'undefined',
+        },
+        type: {
+          summary: 'string',
+        },
+      },
+    },
     loaderButtonLabel: {
       control: 'text',
       description: 'Set the text used in button on loader variant',
+      table: {
+        defaultValue: {
+          summary: 'undefined',
+        },
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+    previousButtonDataTest: {
+      control: 'text',
+      description: 'Set the previous button data-test attribute',
+      table: {
+        defaultValue: {
+          summary: 'undefined',
+        },
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+    nextButtonDataTest: {
+      control: 'text',
+      description: 'Set the next button data-test attribute',
       table: {
         defaultValue: {
           summary: 'undefined',

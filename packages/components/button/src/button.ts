@@ -48,10 +48,20 @@ export const buttonProps = buildProps({
     required: false,
     default: '',
   },
+  leftIconDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   rightIcon: {
     type: String,
     required: false,
     default: '',
+  },
+  rightIconDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
   },
   to: {
     type: [Object, String] as PropType<RouteLocationRaw>,
@@ -65,6 +75,11 @@ export const buttonProps = buildProps({
   },
   value: {
     type: [String, Number, Object, Array],
+    required: false,
+    default: undefined,
+  },
+  buttonDataTest: {
+    type: String,
     required: false,
     default: undefined,
   },

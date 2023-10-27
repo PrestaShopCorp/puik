@@ -30,7 +30,17 @@ export const modalProps = buildProps({
     required: false,
     default: undefined,
   },
+  titleDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   mainButtonText: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  mainButtonDataTest: {
     type: String,
     required: false,
     default: undefined,
@@ -45,7 +55,17 @@ export const modalProps = buildProps({
     required: false,
     default: undefined,
   },
+  secondButtonDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   sideButtonText: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  sideButtonDataTest: {
     type: String,
     required: false,
     default: undefined,
@@ -66,6 +86,11 @@ export const modalProps = buildProps({
     default: false,
   },
   titleIcon: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  closeButtonDataTest: {
     type: String,
     required: false,
     default: undefined,

@@ -67,6 +67,10 @@ export default {
         },
       },
     },
+    titleDataTest: {
+      description: 'Set the data-test attribute of the title',
+      control: 'text',
+    },
     mainButtonText: {
       description: 'Set the text of the main button',
       control: 'text',
@@ -78,6 +82,10 @@ export default {
           summary: undefined,
         },
       },
+    },
+    mainButtonDataTest: {
+      description: 'Set the data-test attribute of the main button',
+      control: 'text',
     },
     secondButtonText: {
       description: 'Set the text of the secondary button',
@@ -91,6 +99,10 @@ export default {
         },
       },
     },
+    secondButtonDataTest: {
+      description: 'Set the data-test attribute of the secondary button',
+      control: 'text',
+    },
     sideButtonText: {
       description: 'Set the text of the side button',
       control: 'text',
@@ -102,6 +114,10 @@ export default {
           summary: undefined,
         },
       },
+    },
+    sideButtonDataTest: {
+      description: 'Set the data-test attribute of the side button',
+      control: 'text',
     },
     variant: {
       description: 'Set the style of the modal (use the PuikModalVariant enum)',
@@ -179,6 +195,10 @@ export enum PuikModalSize {
       description: 'Modal content',
       control: 'none',
     },
+    closeButtonDataTest: {
+      description: 'Set the data-test attribute of the close button',
+      control: 'text',
+    },
     'button-main': {
       control: 'none',
       description: 'Event emitted on main button click',
@@ -200,6 +220,11 @@ export enum PuikModalSize {
     titleIcon: 'home',
     variant: PuikModalVariant.DIALOG,
     size: PuikModalSize.SMALL,
+    titleDataTest: '',
+    mainButtonDataTest: '',
+    secondButtonDataTest: '',
+    sideButtonDataTest: '',
+    closeButtonDataTest: '',
   },
   parameters: {
     chromatic: { delay: 3000 },

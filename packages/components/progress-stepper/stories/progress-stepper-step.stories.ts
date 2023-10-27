@@ -15,12 +15,24 @@ export default {
         },
       },
     },
+    stepDataTest: {
+      description: 'Set the data-test of the step',
+      control: 'text',
+    },
     text: {
       description: 'Text of the step',
       control: 'text',
     },
+    textDataTest: {
+      description: 'Set the data-test of the text',
+      control: 'text',
+    },
     'additional-text': {
       description: 'Additional text of the step',
+      control: 'text',
+    },
+    additionalTextDataTest: {
+      description: 'Set the data-test of the additional text',
       control: 'text',
     },
     click: {

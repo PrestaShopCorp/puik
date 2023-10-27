@@ -5,6 +5,7 @@
     :target="target"
     :title="title"
     :class="['puik-link', `puik-link--${size}`]"
+    :data-test="dataTest"
   >
     <slot></slot>
   </component>

@@ -10,10 +10,20 @@ export const tooltipProps = buildProps({
     required: false,
     default: undefined,
   },
+  titleDataTest: {
+    type: String,
+    required: false,
+    default: 'tooltip-title',
+  },
   description: {
     type: String,
     required: false,
     default: undefined,
+  },
+  descriptionDataTest: {
+    type: String,
+    required: false,
+    default: 'tooltip-description',
   },
   position: {
     type: String as PropType<PuikTooltipPosition>,

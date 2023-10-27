@@ -15,13 +15,25 @@ export default {
       control: 'text',
       description: 'Title displayed in the header',
     },
+    titleDataTest: {
+      control: 'text',
+      description: 'Set the data-test attribute for the title',
+    },
     subTitle: {
       control: 'text',
       description: 'Sub title displayed in the header',
     },
+    subTitleDataTest: {
+      control: 'text',
+      description: 'Set the data-test attribute for the sub title',
+    },
     icon: {
       control: 'text',
       description: 'Icon used in the header',
+    },
+    iconDataTest: {
+      control: 'text',
+      description: 'Set the data-test attribute for the icon',
     },
     disabled: {
       control: 'boolean',
@@ -66,6 +78,9 @@ export const Default = {
     subTitle: 'Accordion subtitle',
     icon: 'home',
     disabled: false,
+    titleDataTest: '',
+    subTitleDataTest: '',
+    iconDataTest: '',
   },
 
   parameters: {

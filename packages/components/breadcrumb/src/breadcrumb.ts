@@ -7,7 +7,8 @@ export interface BreadcrumbItem {
   label: string
   to?: RouteLocationRaw
   href?: string
-  target?: string
+  target?: '_blank' | '_self' | '_parent' | '_top'
+  dataTest?: string
 }
 
 export const breadcrumbProps = buildProps({

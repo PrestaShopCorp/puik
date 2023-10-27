@@ -22,6 +22,21 @@ export const paginationSmallProps = buildProps({
     required: false,
     default: undefined,
   },
+  labelDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  previousButtonDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  nextButtonDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type PaginationProps = ExtractPropTypes<typeof paginationSmallProps>

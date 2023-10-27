@@ -61,7 +61,7 @@ describe('Select tests', () => {
   })
 
   it('should display a placeholder', () => {
-    const placeholder = faker.random.word()
+    const placeholder = faker.lorem.sentence(1)
     factory(
       `<puik-select v-model="value" :placeholder="placeholder">
         <puik-option value="test" label="test" />

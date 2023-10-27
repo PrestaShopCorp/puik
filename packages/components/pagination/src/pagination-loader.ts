@@ -22,6 +22,11 @@ export const paginationLoaderProps = buildProps({
     required: false,
     default: undefined,
   },
+  nextButtonDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type PaginationProps = ExtractPropTypes<typeof paginationLoaderProps>

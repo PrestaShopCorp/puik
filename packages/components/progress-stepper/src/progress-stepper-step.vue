@@ -9,16 +9,20 @@
       aria-live="polite"
       class="puik-progress-stepper-step__button"
       size="sm"
+      :button-data-test="stepButtonDataTest"
       @click="onClick"
     >
       <template v-if="!isCompleted">
         {{ step }}
       </template>
     </puik-button>
-    <span class="puik-progress-stepper-step__text">
+    <span class="puik-progress-stepper-step__text" :data-test="textDataTest">
       <slot name="text"></slot>
     </span>
-    <span class="puik-progress-stepper-step__additional-text">
+    <span
+      class="puik-progress-stepper-step__additional-text"
+      :data-test="additionalTextDataTest"
+    >
       <slot name="additional-text"></slot>
     </span>
   </div>

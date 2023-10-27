@@ -1,5 +1,5 @@
 <template>
-  <h4 class="puik-menu-item-title">
+  <h4 class="puik-menu-item-title" :data-test="titleDataTest">
     <slot></slot>
   </h4>
 </template>

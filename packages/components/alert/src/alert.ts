@@ -19,7 +19,17 @@ export const alertProps = buildProps({
     required: false,
     default: undefined,
   },
+  titleDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   description: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  descriptionDataTest: {
     type: String,
     required: false,
     default: undefined,
@@ -33,6 +43,11 @@ export const alertProps = buildProps({
     default: false,
   },
   buttonLabel: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  buttonDataTest: {
     type: String,
     required: false,
     default: undefined,

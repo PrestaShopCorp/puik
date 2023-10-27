@@ -25,11 +25,13 @@
           <span
             v-if="$slots.title || title"
             class="puik-tooltip__tip__content__title"
+            :data-test="titleDataTest"
             ><slot name="title">{{ title }}</slot></span
           >
           <span
             v-if="$slots.description || description"
             class="puik-tooltip__tip__content__description"
+            :data-test="descriptionDataTest"
             ><slot name="description">{{ description }}</slot></span
           >
         </div>

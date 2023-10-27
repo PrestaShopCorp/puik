@@ -25,10 +25,15 @@ export default {
         },
       },
     },
+    badgeDataTest: {
+      control: 'text',
+      description: 'Set the data-test attribute on the badge',
+    },
   },
   args: {
     default: 'Status',
     variant: 'neutral',
+    badgeDataTest: '',
   },
 } as Meta
 

@@ -12,6 +12,11 @@ export const checkboxProps = buildProps({
     required: false,
     default: undefined,
   },
+  labelDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   disabled: {
     type: Boolean,
     required: false,
@@ -21,6 +26,11 @@ export const checkboxProps = buildProps({
     type: Boolean,
     required: false,
     default: false,
+  },
+  inputDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
   },
 } as const)
 
