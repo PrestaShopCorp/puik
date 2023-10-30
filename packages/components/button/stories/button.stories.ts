@@ -74,7 +74,7 @@ export default {
     dataTest: {
       control: 'text',
       description:
-        'Set a data-test attribute to the button `button-${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`',
+        'Set a data-test attribute to the button `${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`',
     },
   },
   args: {

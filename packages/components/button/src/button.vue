@@ -10,7 +10,7 @@
       { 'puik-button--fluid': fluid },
     ]"
     :disabled="disabled"
-    :data-test="`button-${dataTest}`"
+    :data-test="`${dataTest}`"
     @click="setSelected"
   >
     <puik-icon
