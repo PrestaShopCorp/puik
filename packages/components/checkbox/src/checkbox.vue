@@ -8,13 +8,13 @@
       type="checkbox"
       :indeterminate="indeterminate"
       :disabled="disabled"
-      :data-test="inputDataTest"
+      :data-test="`input-${dataTest}`"
     />
     <label
       v-if="$slots.default || label"
       :for="id"
       class="puik-checkbox__label"
-      :data-test="labelDataTest"
+      :data-test="`label-${dataTest}`"
     >
       <slot>{{ label }}</slot>
     </label>

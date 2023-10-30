@@ -30,9 +30,10 @@ export default {
         },
       },
     },
-    sidebarTitleDataTest: {
+    dataTest: {
       control: 'text',
-      description: 'Set the data-test attribute on the sidebar title',
+      description:
+        'Set the data-test attribute on the sidebar title `sidebarTitle-${dataTest}`',
     },
   },
   args: {

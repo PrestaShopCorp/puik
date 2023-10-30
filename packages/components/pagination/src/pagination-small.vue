@@ -1,12 +1,12 @@
 <template>
-  <span class="puik-pagination__label" :data-test="labelDataTest">
+  <span class="puik-pagination__label" :data-test="`label-${dataTest}`">
     {{ label }}
   </span>
 
   <puik-button
     :aria-label="t('puik.pagination.previous', { page: page - 1 })"
     :disabled="page <= 1 || disabled"
-    :button-data-test="previousButtonDataTest"
+    :data-test="`previousButton-${dataTest}`"
     class="puik-pagination__previous-button puik-pagination__button"
     left-icon="keyboard_arrow_left"
     variant="secondary"
@@ -16,7 +16,7 @@
   <puik-button
     :aria-label="t('puik.pagination.next', { page: page + 1 })"
     :disabled="page >= maxPage || disabled"
-    :button-data-test="nextButtonDataTest"
+    :data-test="`nextButton-${dataTest}`"
     class="puik-pagination__button puik-pagination__next-button"
     right-icon="keyboard_arrow_right"
     variant="secondary"

@@ -1,5 +1,5 @@
 <template>
-  <span class="puik-pagination__label" :data-test="labelDataTest">
+  <span class="puik-pagination__label" :data-test="`label-${dataTest}`">
     {{ label }}
   </span>
 
@@ -10,7 +10,7 @@
       class="puik-pagination__previous-button puik-pagination__button"
       left-icon="keyboard_arrow_left"
       variant="tertiary"
-      :button-data-test="previousButtonDataTest"
+      :data-test="`previousButton-${dataTest}`"
       @click="emit('update:page', page - 1)"
     >
       <span class="puik-pagination__previous-button-text">
@@ -46,7 +46,7 @@
       class="puik-pagination__button puik-pagination__next-button"
       right-icon="keyboard_arrow_right"
       variant="tertiary"
-      :button-data-test="nextButtonDataTest"
+      :data-test="`nextButton-${dataTest}`"
       @click="emit('update:page', page + 1)"
     >
       <span class="puik-pagination__next-button-text">

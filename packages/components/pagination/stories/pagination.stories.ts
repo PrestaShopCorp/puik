@@ -90,18 +90,6 @@ export default {
         },
       },
     },
-    labelDataTest: {
-      control: 'text',
-      description: 'Set the label data-test attribute',
-      table: {
-        defaultValue: {
-          summary: 'undefined',
-        },
-        type: {
-          summary: 'string',
-        },
-      },
-    },
     loaderButtonLabel: {
       control: 'text',
       description: 'Set the text used in button on loader variant',
@@ -114,29 +102,10 @@ export default {
         },
       },
     },
-    previousButtonDataTest: {
+    dataTest: {
       control: 'text',
-      description: 'Set the previous button data-test attribute',
-      table: {
-        defaultValue: {
-          summary: 'undefined',
-        },
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-    nextButtonDataTest: {
-      control: 'text',
-      description: 'Set the next button data-test attribute',
-      table: {
-        defaultValue: {
-          summary: 'undefined',
-        },
-        type: {
-          summary: 'string',
-        },
-      },
+      description:
+        'Set the data-test attribute `nextButton-${dataTest}` `previousButton-${dataTest}` `label-${dataTest}` `loadMoreButton-${dataTest}` (only for loader variant)',
     },
   },
   args: {

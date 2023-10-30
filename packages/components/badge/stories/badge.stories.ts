@@ -25,7 +25,7 @@ export default {
         },
       },
     },
-    badgeDataTest: {
+    dataTest: {
       control: 'text',
       description: 'Set the data-test attribute on the badge',
     },
@@ -33,7 +33,6 @@ export default {
   args: {
     default: 'Status',
     variant: 'neutral',
-    badgeDataTest: '',
   },
 } as Meta
 

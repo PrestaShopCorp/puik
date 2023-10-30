@@ -3,7 +3,7 @@ import type { ExtractPropTypes } from 'vue'
 import type MenuItemTitle from './menu-item-title.vue'
 
 export const menuItemTitleProps = buildProps({
-  titleDataTest: {
+  dataTest: {
     type: String,
     required: false,
     default: undefined,

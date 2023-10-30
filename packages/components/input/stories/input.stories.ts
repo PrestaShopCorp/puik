@@ -93,11 +93,9 @@ export default {
       control: 'none',
       description: 'Append an icon or text to the input',
     },
-    inputDataTest: {
-      description: 'Set the data-test attribute on the input element',
-    },
-    errorTextDataTest: {
-      description: 'Set the data-test attribute on the error slot',
+    dataTest: {
+      description:
+        'Set the data-test attribute on the input and error text elements `input-${inputDataTest}` `error-${inputDataTest}`',
     },
   },
 } as Meta
@@ -130,8 +128,6 @@ export const Default = {
     min: undefined,
     max: undefined,
     disabled: false,
-    inputDataTest: '',
-    errorTextDataTest: '',
   },
 
   parameters: {

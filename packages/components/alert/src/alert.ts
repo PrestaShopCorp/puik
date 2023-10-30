@@ -19,17 +19,7 @@ export const alertProps = buildProps({
     required: false,
     default: undefined,
   },
-  titleDataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
   description: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  descriptionDataTest: {
     type: String,
     required: false,
     default: undefined,
@@ -47,15 +37,15 @@ export const alertProps = buildProps({
     required: false,
     default: undefined,
   },
-  buttonDataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
   ariaLive: {
     type: String as PropType<'polite' | 'assertive'>,
     required: false,
     default: 'polite',
+  },
+  alertDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
   },
 } as const)
 

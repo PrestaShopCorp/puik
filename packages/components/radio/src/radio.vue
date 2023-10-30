@@ -10,14 +10,14 @@
       class="puik-radio__input"
       type="radio"
       :name="name"
-      :data-test="inputDataTest"
+      :data-test="`input-${dataTest}`"
       @focus="handleFocus"
     />
     <label
       v-if="$slots.default || label"
       :for="id"
       class="puik-radio__label"
-      :data-test="labelDataTest"
+      :data-test="`label-${dataTest}`"
     >
       <slot>{{ label }}</slot>
     </label>

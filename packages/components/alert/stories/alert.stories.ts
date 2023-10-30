@@ -44,14 +44,10 @@ export default {
       control: 'none',
       description: 'Set the alert description',
     },
-    titleDataTest: {
-      description: 'Set the data-test attribute for the title',
-    },
-    descriptionDataTest: {
-      description: 'Set the data-test attribute for the description',
-    },
-    buttonDataTest: {
-      description: 'Set the data-test attribute for the button',
+    alertDataTest: {
+      control: 'text',
+      description:
+        'Set the data-test attribute for the alert components `title-${alertDataTest}` `description-${alertDataTest}` `button-${alertDataTest}`',
     },
   },
   args: {
@@ -60,9 +56,6 @@ export default {
     variant: 'success',
     disableBorders: false,
     buttonLabel: 'Button',
-    titleDataTest: '',
-    descriptionDataTest: '',
-    buttonDataTest: '',
   },
 } as Meta
 

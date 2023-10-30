@@ -11,7 +11,7 @@
       :label="currentLabel"
       :loader-button-label="loaderButtonLabel"
       :disabled="loaderButtonDisabled"
-      :next-button-data-test="nextButtonDataTest"
+      :data-test="dataTest"
     />
 
     <div v-else class="puik-pagination__content">
@@ -19,18 +19,14 @@
         v-if="variant === PuikPaginationVariantEnum.small"
         v-model="currentPage"
         v-bind="commonPaginationProps"
-        :label-data-test="labelDataTest"
-        :previous-button-data-test="previousButtonDataTest"
-        :next-button-data-test="nextButtonDataTest"
+        :data-test="dataTest"
       />
 
       <pagination-mobile
         v-if="variant === PuikPaginationVariantEnum.mobile"
         v-model="currentPage"
         v-bind="commonPaginationProps"
-        :previous-button-data-test="previousButtonDataTest"
-        :next-button-data-test="nextButtonDataTest"
-        :label-data-test="labelDataTest"
+        :data-test="dataTest"
       />
 
       <pagination-medium
@@ -38,9 +34,7 @@
         v-model="currentPage"
         v-bind="commonPaginationProps"
         :total-item="totalItem"
-        :previous-button-data-test="previousButtonDataTest"
-        :next-button-data-test="nextButtonDataTest"
-        :label-data-test="labelDataTest"
+        :data-test="dataTest"
       />
 
       <pagination-large
@@ -49,9 +43,7 @@
         :items-per-page="itemsPerPage"
         :total-item="totalItem"
         :items-per-page-options="itemsPerPageOptions"
-        :previous-button-data-test="previousButtonDataTest"
-        :next-button-data-test="nextButtonDataTest"
-        :label-data-test="labelDataTest"
+        :data-test="dataTest"
         v-bind="commonPaginationProps"
         @update:items-per-page="emit('update:itemsPerPage', $event)"
       />

@@ -71,17 +71,10 @@ export default {
       control: 'text',
       description: 'Set a link for the button (changes button to "a" html tag)',
     },
-    buttonDataTest: {
+    dataTest: {
       control: 'text',
-      description: 'Set a data-test attribute to the button',
-    },
-    leftIconDataTest: {
-      control: 'text',
-      description: 'Set a data-test attribute to the left icon',
-    },
-    rightIconDataTest: {
-      control: 'text',
-      description: 'Set a data-test attribute to the right icon',
+      description:
+        'Set a data-test attribute to the button `button-${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`',
     },
   },
   args: {
@@ -94,9 +87,6 @@ export default {
     to: undefined,
     href: undefined,
     default: 'Add to cart',
-    buttonDataTest: '',
-    leftIconDataTest: '',
-    rightIconDataTest: '',
   },
 } as Meta
 

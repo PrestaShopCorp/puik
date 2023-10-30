@@ -3,7 +3,7 @@
     :is="tag"
     v-if="isExpanded"
     class="puik-sidebar-title"
-    :data-test="sidebarTitleDataTest"
+    :data-test="`sidebarTitle-${dataTest}`"
   >
     <slot></slot>
   </component>

@@ -61,17 +61,7 @@ export const paginationProps = buildProps({
     required: false,
     default: false,
   },
-  labelDataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  previousButtonDataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  nextButtonDataTest: {
+  dataTest: {
     type: String,
     required: false,
     default: undefined,

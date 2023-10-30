@@ -67,9 +67,10 @@ export default {
       control: 'none',
       description: 'Set the defaut content slot',
     },
-    sidebarItemDataTest: {
+    dataTest: {
       control: 'text',
-      description: 'Set the data-test attribute on the item',
+      description:
+        'Set the data-test attribute on the item `menubuttonTitle-${dataTest}` `buttonTitle-${dataTest}` `title-${dataTest}`',
     },
   },
   args: {

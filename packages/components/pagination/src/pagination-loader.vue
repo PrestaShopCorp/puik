@@ -8,7 +8,7 @@
     variant="tertiary"
     class="puik-pagination__button puik-pagination__load-more-button"
     fluid
-    :button-data-test="nextButtonDataTest"
+    :data-test="`loadMoreButton-${dataTest}`"
     @click="$emit('update:modelValue', modelValue + 1)"
   >
     {{ currentButtonLabel }}

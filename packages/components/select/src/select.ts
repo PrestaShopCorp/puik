@@ -83,12 +83,7 @@ export const selectProps = buildProps({
     required: false,
     default: undefined,
   },
-  searchInputDataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  noResultsDataTest: {
+  dataTest: {
     type: String,
     required: false,
     default: undefined,

@@ -90,12 +90,7 @@ export const inputProps = buildProps({
     required: false,
     default: false,
   },
-  inputDataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  errorTextDataTest: {
+  dataTest: {
     type: String,
     required: false,
     default: undefined,

@@ -7,17 +7,7 @@ export const progressStepperStepProps = buildProps({
     type: [String, Number],
     required: true,
   },
-  stepButtonDataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  textDataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  additionalTextDataTest: {
+  dataTest: {
     type: String,
     required: false,
     default: undefined,

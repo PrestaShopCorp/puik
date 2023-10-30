@@ -21,7 +21,7 @@ export const sidebarGroupItemProps = buildProps({
     default: false,
     required: false,
   },
-  sidebarGroupItemDataTest: {
+  dataTest: {
     type: String,
     required: false,
     default: undefined,

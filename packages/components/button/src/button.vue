@@ -10,7 +10,7 @@
       { 'puik-button--fluid': fluid },
     ]"
     :disabled="disabled"
-    :data-test="buttonDataTest"
+    :data-test="`button-${dataTest}`"
     @click="setSelected"
   >
     <puik-icon
@@ -18,7 +18,7 @@
       :icon="leftIcon"
       :font-size="size !== 'sm' ? '1.25rem' : '1rem'"
       class="puik-button__left-icon"
-      :data-test="leftIconDataTest"
+      :data-test="`leftIcon-${dataTest}`"
     />
     <slot></slot>
     <puik-icon
@@ -26,7 +26,7 @@
       :icon="rightIcon"
       :font-size="size !== 'sm' ? '1.25rem' : '1rem'"
       class="puik-button__right-icon"
-      :data-test="rightIconDataTest"
+      :data-test="`rightIcon-${dataTest}`"
     />
   </component>
 </template>

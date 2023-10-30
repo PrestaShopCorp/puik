@@ -109,25 +109,12 @@ export default {
         category: 'Common',
       },
     },
-    selectDataTest: {
+    dataTest: {
       control: 'text',
-      description: 'Set the data-test attribute for the select',
+      description:
+        'Set the data-test attribute `searchInput-${dataTest}` `noResults-${dataTest}` `select-${dataTest}` `dataTestOption-${dataTest}-${index + 1}`',
       table: {
         category: 'Common',
-      },
-    },
-    searchInputDataTest: {
-      control: 'text',
-      description: 'Set the data-test attribute for the search input',
-      table: {
-        category: 'Searchable',
-      },
-    },
-    noResultsDataTest: {
-      control: 'text',
-      description: 'Set the data-test attribute for the no results message',
-      table: {
-        category: 'Searchable',
       },
     },
   },

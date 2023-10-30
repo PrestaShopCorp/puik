@@ -7,17 +7,7 @@ export const accordionProps = buildProps({
     type: String,
     required: true,
   },
-  buttonDataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
   title: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  titleDataTest: {
     type: String,
     required: false,
     default: undefined,
@@ -27,17 +17,7 @@ export const accordionProps = buildProps({
     required: false,
     default: undefined,
   },
-  subTitleDataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
   icon: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  iconDataTest: {
     type: String,
     required: false,
     default: undefined,
@@ -46,6 +26,11 @@ export const accordionProps = buildProps({
     type: Boolean,
     required: false,
     default: false,
+  },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
   },
 } as const)
 

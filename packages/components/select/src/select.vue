@@ -54,7 +54,7 @@
             v-model="query"
             class="puik-select__search"
             :placeholder="t('puik.select.searchPlaceholder')"
-            :input-data-test="searchInputDataTest"
+            :data-test="`searchInput-${dataTest}`"
           >
             <template #prepend
               ><puik-icon
@@ -71,7 +71,7 @@
                 : !filteredItems?.length)
             "
             class="puik-select__no-results"
-            :data-test="noResultsDataTest"
+            :data-test="`noResults-${dataTest}`"
           >
             {{ noMatchText || `${t('puik.select.noResults')} ${query}` }}
           </p>
@@ -83,7 +83,7 @@
                   :key="option"
                   :label="option[labelKey]"
                   :value="isObject(option) ? option[valueKey] : option"
-                  :option-data-test="`dataTestOption-${index + 1}`"
+                  :data-test="`dataTestOption-${dataTest}-${index + 1}`"
                 />
               </template>
             </slot>

@@ -23,7 +23,7 @@ export const optionProps = buildProps({
     required: false,
     default: false,
   },
-  optionDataTest: {
+  dataTest: {
     type: String,
     required: false,
   },

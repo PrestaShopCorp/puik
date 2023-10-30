@@ -52,9 +52,10 @@ export default {
       control: 'none',
       description: 'Set the defaut content slot',
     },
-    sidebarGroupItemDataTest: {
+    dataTest: {
       control: 'text',
-      description: 'Set the data-test attribute on the sidebar group item',
+      description:
+        'Set the data-test attribute on the sidebar group item `sidebarAccordion-${dataTest}` `sidebarMenuButton-${dataTest}` ',
     },
   },
   args: {

@@ -10,10 +10,6 @@ export default {
       control: 'text',
       description: 'Label of the radio button',
     },
-    labelDataTest: {
-      control: 'text',
-      description: 'Set the data-test attribute of the label',
-    },
     disabled: {
       control: 'boolean',
       description: 'Set if the radio button is disabled',
@@ -40,9 +36,10 @@ export default {
         },
       },
     },
-    inputDataTest: {
+    dataTest: {
       control: 'text',
-      description: 'Set the data-test attribute of the input',
+      description:
+        'Set the data-test attribute of the input and the label `label-${dataTest}` `input-${dataTest}`',
     },
   },
   args: {
@@ -51,8 +48,6 @@ export default {
     name: 'Slot by default',
     value: '',
     modelValue: '',
-    labelDataTest: '',
-    inputDataTest: '',
   },
 } as Meta
 

@@ -22,7 +22,7 @@ export const paginationLoaderProps = buildProps({
     required: false,
     default: undefined,
   },
-  nextButtonDataTest: {
+  dataTest: {
     type: String,
     required: false,
     default: undefined,

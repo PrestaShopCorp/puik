@@ -17,7 +17,7 @@ export const badgeProps = buildProps({
     type: String as PropType<PuikBadgeVariant>,
     default: 'neutral',
   },
-  badgeDataTest: {
+  dataTest: {
     type: String,
     required: false,
     default: undefined,

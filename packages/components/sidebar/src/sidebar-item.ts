@@ -28,7 +28,7 @@ export const sidebarItemProps = buildProps({
     required: false,
     default: false,
   },
-  sidebarItemDataTest: {
+  dataTest: {
     type: String,
     required: false,
     default: undefined,
