@@ -37,11 +37,6 @@ export const alertProps = buildProps({
     required: false,
     default: undefined,
   },
-  secondaryButtonLabel: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
   closable: {
     type: Boolean,
     required: false,
