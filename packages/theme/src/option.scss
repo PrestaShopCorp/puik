@@ -1,5 +1,5 @@
 .puik-option {
-  @apply relative cursor-default select-none py-2 px-2 text-primary-800 transition-colors;
+  @apply flex place-content-between relative cursor-default select-none p-2 text-primary-800 transition-colors;
   &--selected {
     @apply bg-primary-300;
   }
@@ -19,6 +19,6 @@
     @apply font-primary font-normal block truncate;
   }
   &__selected-icon {
-    @apply font-materialIcons absolute inset-y-0 right-0 flex items-center w-5 mr-3;
+    @apply font-materialIcons inset-y-0 right-0 flex items-center w-5 ml-2;
   }
 }
