@@ -1,65 +1,51 @@
-import { createVNode, render, type AppContext, type VNode } from 'vue'
+import {
+  createVNode,
+  render,
+  type AppContext,
+  type VNode,
+  ref,
+  type Ref,
+} from 'vue'
 import Snackbar from './snackbar.vue'
 import type { PuikSnackbarOptions } from './snackbar'
 
-const notifications: VNode[] = []
-
-const GAP = 16
-
-let seed = 1
+const currentNotification: Ref<VNode | null> = ref(null)
+const PUIK_SNACKBAR_ID = 'puik-snackbar-id'
 
 const notify = (
   options: PuikSnackbarOptions,
   context: AppContext | null = null
 ) => {
-  const id = `puik-snackbar_${seed++}`
   const customOnClose = options.onClose
-  let offset = options.offset || 32
+  const offset = options.offset || 32
 
-  notifications.forEach(({ el }) => {
-    offset += (el?.offsetHeight || 0) + GAP
-  })
-  const appendTo: HTMLElement | null = document.body
+  const documentBody: HTMLElement | null = document.body
 
   const props = {
     ...options,
     offset,
-    id,
-    onClose: () => close(id, customOnClose),
+    id: PUIK_SNACKBAR_ID,
+    onClose: () => {
+      currentNotification.value = null
+      return customOnClose
+    },
   }
 
-  const notification = createVNode(Snackbar, props)
-  notification.appContext = context ?? notify._context
+  const newNotification = createVNode(Snackbar, props)
+  newNotification.appContext = context ?? notify._context
+
   const container = document.createElement('div')
 
-  notification.props!.onDestroy = () => render(null, container)
+  newNotification.props!.onDestroy = () => render(null, container)
+  render(newNotification, container)
+  documentBody.appendChild(container.firstElementChild!)
 
-  render(notification, container)
-  notifications.push(notification)
-  appendTo.appendChild(container.firstElementChild!)
-
-  const close = (id: string, customClose?: () => void) => {
-    const idx = notifications.findIndex(({ props }) => props?.id === id)
-    if (idx === -1) return
-
-    const { el } = notifications[idx]
-    if (!el) return
-
-    customClose?.()
-
-    const removedHeight = el?.offsetHeight
-
-    notifications.splice(idx, 1)
-    const len = notifications.length
-
-    if (len < 1) return
-
-    for (let i = idx; i < len; i++) {
-      const { el, component } = notifications[i]
-      const pos = parseInt(el?.style.bottom, 10) - removedHeight - GAP
-      component!.props.offset = pos
-    }
+  if (currentNotification.value) {
+    const curNot = document.getElementById(PUIK_SNACKBAR_ID)
+    curNot?.remove()
   }
+
+  currentNotification.value = newNotification
 }
 
 notify._context = null
