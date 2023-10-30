@@ -40,7 +40,7 @@ export default {
     buttonLabel: {
       description: 'Label of the button',
     },
-    closable: {
+    isClosable: {
       description: 'Display a close button',
     },
     default: {
@@ -54,7 +54,7 @@ export default {
     variant: 'success',
     disableBorders: false,
     buttonLabel: 'Button',
-    closable: false,
+    isClosable: false,
   },
 } as Meta
 

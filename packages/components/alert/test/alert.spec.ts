@@ -69,7 +69,7 @@ describe('Alert tests', () => {
     factory({
       title: faker.lorem.word(2),
       description: faker.lorem.sentence(60),
-      closable: true,
+      isClosable: true,
     })
     expect(findCloseButton()).toBeTruthy()
     await findCloseButton().trigger('click')

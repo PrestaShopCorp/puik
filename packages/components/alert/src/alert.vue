@@ -30,7 +30,7 @@
     </div>
 
     <PuikIcon
-      v-if="closable"
+      v-if="isClosable"
       icon="close"
       font-size="1.25rem"
       class="puik-alert__close"

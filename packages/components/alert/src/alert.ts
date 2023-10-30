@@ -37,7 +37,7 @@ export const alertProps = buildProps({
     required: false,
     default: undefined,
   },
-  closable: {
+  isClosable: {
     type: Boolean,
     required: false,
     default: false,
