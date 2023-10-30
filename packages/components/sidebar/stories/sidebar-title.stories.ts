@@ -30,6 +30,10 @@ export default {
         },
       },
     },
+    sidebarTitleDataTest: {
+      control: 'text',
+      description: 'Set the data-test attribute on the sidebar title',
+    },
   },
   args: {
     tag: 'h3',

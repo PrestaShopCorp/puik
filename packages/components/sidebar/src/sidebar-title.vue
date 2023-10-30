@@ -1,5 +1,10 @@
 <template>
-  <component :is="tag" v-if="isExpanded" class="puik-sidebar-title">
+  <component
+    :is="tag"
+    v-if="isExpanded"
+    class="puik-sidebar-title"
+    :data-test="sidebarTitleDataTest"
+  >
     <slot></slot>
   </component>
 </template>

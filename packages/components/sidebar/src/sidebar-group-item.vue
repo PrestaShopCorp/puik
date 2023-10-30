@@ -11,6 +11,9 @@
       :name="accordionName"
       :icon="icon"
       class="puik-sidebar-group-item__accordion"
+      :title-data-test="`${sidebarGroupItemDataTest}-title`"
+      :icon-data-test="`${sidebarGroupItemDataTest}-icon`"
+      :button-data-test="`${sidebarGroupItemDataTest}-button`"
     >
       <slot></slot>
     </puik-accordion>
@@ -20,6 +23,7 @@
           variant="text"
           fluid
           class="puik-sidebar-group-item__collapsed-button"
+          :button-data-test="`${sidebarGroupItemDataTest}-button`"
         >
           <puik-icon :icon="icon" font-size="1.25rem"></puik-icon>
         </puik-button>

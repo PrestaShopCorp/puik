@@ -8,6 +8,11 @@ export const sidebarTitleProps = buildProps({
     required: false,
     default: 'h3',
   },
+  sidebarTitleDataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type SidebarTitleProps = ExtractPropTypes<typeof sidebarTitleProps>
