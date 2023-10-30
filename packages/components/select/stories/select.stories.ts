@@ -109,6 +109,27 @@ export default {
         category: 'Common',
       },
     },
+    selectDataTest: {
+      control: 'text',
+      description: 'Set the data-test attribute for the select',
+      table: {
+        category: 'Common',
+      },
+    },
+    searchInputDataTest: {
+      control: 'text',
+      description: 'Set the data-test attribute for the search input',
+      table: {
+        category: 'Searchable',
+      },
+    },
+    noResultsDataTest: {
+      control: 'text',
+      description: 'Set the data-test attribute for the no results message',
+      table: {
+        category: 'Searchable',
+      },
+    },
   },
   args: {
     labelKey: '',
