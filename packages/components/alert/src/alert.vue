@@ -32,7 +32,7 @@
     <PuikIcon
       v-if="isClosable"
       icon="close"
-      font-size="1.25rem"
+      font-size="1.5rem"
       class="puik-alert__close"
       @click="close"
     />
