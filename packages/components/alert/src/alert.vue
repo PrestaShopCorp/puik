@@ -7,33 +7,44 @@
     ]"
     :aria-live="ariaLive"
   >
-    <div class="puik-alert__content">
-      <puik-icon :icon="icon" font-size="1.25rem" class="puik-alert__icon" />
-      <div class="puik-alert__text">
-        <p
-          v-if="title"
-          class="puik-alert__title"
-          :data-test="`title-${alertDataTest}`"
-        >
-          {{ title }}
-        </p>
-        <span
-          v-if="$slots.default || description"
-          class="puik-alert__description"
-          :data-test="`description-${alertDataTest}`"
-          ><slot>{{ description }}</slot></span
-        >
+    <div class="puik-alert__container">
+      <div class="puik-alert__content">
+        <PuikIcon :icon="icon" font-size="1.25rem" class="puik-alert__icon" />
+        <div class="puik-alert__text">
+          <p
+            v-if="title"
+            class="puik-alert__title"
+            :data-test="`title-${dataTest}`"
+          >
+            {{ title }}
+          </p>
+          <span
+            v-if="$slots.default || description"
+            class="puik-alert__description"
+            :data-test="`description-${dataTest}`"
+            ><slot>{{ description }}</slot></span
+          >
+        </div>
       </div>
+      <PuikButton
+        v-if="buttonLabel"
+        :variant="variant"
+        class="puik-alert__button"
+        :data-test="`button-${dataTest}`"
+        @click="click"
+      >
+        {{ buttonLabel }}
+      </PuikButton>
     </div>
-    <puik-button
-      v-if="buttonLabel"
-      :variant="variant"
-      class="puik-alert__button"
-      :button-data-test="`button-${alertDataTest}`"
-      @click="click"
-    >
-      {{ buttonLabel }}
-    </puik-button>
+
+    <PuikIcon
+      v-if="isClosable"
+      icon="close"
+      font-size="1.5rem"
+      class="puik-alert__close"
+      :data-test="`close-${dataTest}`"
+      @click="close"
+    />
   </div>
 </template>
 
@@ -52,4 +63,5 @@ const emit = defineEmits(alertEmits)
 const icon = computed(() => ICONS[props.variant])
 
 const click = (event: Event) => emit('click', event)
+const close = (event: Event) => emit('close', event)
 </script>
