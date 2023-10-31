@@ -7,11 +7,12 @@
     ]"
   >
     <PuikIcon v-if="icon && icon != ''" :icon="icon" class="puik-tag__icon" />
-    <div class="puik-tag__content">
+    <div class="puik-tag__content" :data-test="`content-${dataTest}`">
       <puik-tooltip
         v-if="content?.length >= 30"
         :position="(tooltipPosition as PuikTooltipPosition)"
         :description="content"
+        :data-test="`tooltip-${dataTest}`"
       >
         <template #description>{{ content }}</template>
         {{ content }}
