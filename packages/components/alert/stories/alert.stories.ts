@@ -40,6 +40,9 @@ export default {
     buttonLabel: {
       description: 'Label of the button',
     },
+    isClosable: {
+      description: 'Display a close button',
+    },
     default: {
       control: 'none',
       description: 'Set the alert description',
@@ -51,6 +54,7 @@ export default {
     variant: 'success',
     disableBorders: false,
     buttonLabel: 'Button',
+    isClosable: false,
   },
 } as Meta
 
@@ -63,11 +67,13 @@ const Template: StoryFn = (args: Args) => ({
   },
   methods: {
     click: action('click'),
+    close: action('close'),
   },
   template: `
     <puik-alert
       v-bind="args"
       @click="click"
+      @close="close"
     ></puik-alert>`,
 })
 
