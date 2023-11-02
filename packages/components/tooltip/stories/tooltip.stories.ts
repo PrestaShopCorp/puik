@@ -18,9 +18,6 @@ export default {
         },
       },
     },
-    titleDataTest: {
-      description: 'Set the data-test attribute on the title',
-    },
     description: {
       description: 'Set the tooltip description (also available as a prop)',
       table: {
@@ -28,9 +25,6 @@ export default {
           summary: 'undefined',
         },
       },
-    },
-    descriptionDataTest: {
-      description: 'Set the data-test attribute on the description',
     },
     position: {
       control: 'select',
@@ -81,13 +75,21 @@ export default {
         },
       },
     },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set the data-test attribute on the tooltip `content-${dataTest}` `title-${dataTest}` `description-${dataTest}`',
+      table: {
+        defaultValue: {
+          summary: undefined,
+        },
+      },
+    },
   },
   args: {
     title: 'Title',
     description: 'This is a tooltip',
     position: 'top',
-    titleDataTest: '',
-    descriptionDataTest: '',
   },
 } as Meta
 

@@ -95,7 +95,8 @@ export default {
     },
     dataTest: {
       description:
-        'Set the data-test attribute on the input and error text elements `input-${inputDataTest}` `error-${inputDataTest}`',
+        'Set the data-test attribute on the input and error text elements `input-${dataTest}` `error-${dataTest}`',
+      control: 'text',
     },
   },
 } as Meta

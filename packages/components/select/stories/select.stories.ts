@@ -112,7 +112,7 @@ export default {
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute `searchInput-${dataTest}` `noResults-${dataTest}` `select-${dataTest}` `dataTestOption-${dataTest}-${index + 1}`',
+        'Set the data-test attribute `searchInput-${dataTest}` `noResults-${dataTest}` `select-${dataTest}` `option-${dataTest}-${index + 1}`',
       table: {
         category: 'Common',
       },

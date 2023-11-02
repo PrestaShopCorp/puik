@@ -36,6 +36,7 @@ export default {
     dataTest: {
       description:
         'Set the data-test attribute for the label and the input `label-${dataTest}` `input-${dataTest}`}`',
+      control: 'text',
     },
   },
   args: {
