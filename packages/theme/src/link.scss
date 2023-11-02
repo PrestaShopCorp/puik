@@ -1,40 +1,47 @@
 @use './common/typography.scss';
 
 .puik-link {
-  @apply relative text-primary transition m-0.5 p-0.5 py-[4px];
-  &:before {
-    content: '';
-    @apply absolute h-[1px] bg-primary-500 bottom-[4px] left-[50%] translate-x-[-50%] transition-all ease-in-out duration-150;
-    width: calc(100% - 4px);
-  }
+  @apply cursor-pointer 
+    relative 
+    text-primary
+    
+    underline 
+    decoration-auto
+    underline-offset-[2px]
+    decoration-primary-500
+    
+    transition-all
+    duration-150;
+
   &:hover,
   &:active {
-    @apply cursor-pointer;
-    &:before {
-      @apply bg-primary-800 bottom-[2.5px] transition-all ease-in-out duration-150;
-    }
-    &:before:visited {
-      @apply bg-primary-800;
-    }
+    @apply decoration-primary underline-offset-[5px];
   }
+
   &:focus-visible {
     @apply outline-none ring-2 ring-blue rounded-[4px] shadow-none;
   }
+
   &:visited {
     @apply text-purple-700;
   }
-  &[target='_blank'] {
-    &:after {
-      content: 'open_in_new';
-      @apply font-materialIcons ml-1.5 inline-block align-middle leading-[1em];
+
+  &__target__icon {
+    @apply font-materialIcons align-bottom;
+
+    &:before {
+      @apply content-['_'] text-[0.35rem] leading-[0.25rem];
     }
   }
+
   &--sm {
     @extend .puik-body-small;
   }
+
   &--md {
     @extend .puik-body-default;
   }
+
   &--lg {
     @extend .puik-body-large;
   }

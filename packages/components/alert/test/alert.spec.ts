@@ -11,6 +11,7 @@ describe('Alert tests', () => {
   const findButton = () => wrapper.find('.puik-alert__button')
   const findTitle = () => wrapper.find('.puik-alert__title')
   const findDesc = () => wrapper.find('.puik-alert__description')
+  const findCloseButton = () => wrapper.find('.puik-alert__close')
 
   const factory = (
     propsData: Record<string, any> = {},
@@ -62,5 +63,16 @@ describe('Alert tests', () => {
       disableBorders: true,
     })
     expect(findAlert().classes()).toContain('puik-alert--no-borders')
+  })
+
+  it('should display a close icon and emit a close event on click', async () => {
+    factory({
+      title: faker.lorem.word(2),
+      description: faker.lorem.sentence(60),
+      isClosable: true,
+    })
+    expect(findCloseButton()).toBeTruthy()
+    await findCloseButton().trigger('click')
+    expect(wrapper.emitted('close')).toBeTruthy()
   })
 })

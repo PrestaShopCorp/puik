@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import { describe, it, expect, vi } from 'vitest'
 import { faker } from '@faker-js/faker'
 import PuikSnackbar from '../src/snackbar.vue'
-import type { SnackbarOptions } from '../src/snackbar'
+import type { PuikSnackbarOptions } from '../src/snackbar'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 describe('Snackbar tests', () => {
   let wrapper: VueWrapper<any>
@@ -13,7 +13,7 @@ describe('Snackbar tests', () => {
   const findCloseButton = () => wrapper.find('.puik-snackbar__close-button')
 
   const factory = (
-    propsData: SnackbarOptions,
+    propsData: PuikSnackbarOptions,
     options: MountingOptions<any> = {}
   ) => {
     wrapper = mount(PuikSnackbar, {
@@ -37,6 +37,12 @@ describe('Snackbar tests', () => {
     expect(findText().text()).toEqual(text)
     expect(findSnackbar().classes()).toContain('puik-snackbar--default')
     expect(findAction().exists()).toBeFalsy()
+  })
+
+  it('should be a snackbar without close button', () => {
+    const text = faker.lorem.sentence()
+    factory({ text, hasCloseButton: false })
+    expect(findCloseButton().exists()).toBeFalsy()
   })
 
   it('should be a default snackbar with action', async () => {

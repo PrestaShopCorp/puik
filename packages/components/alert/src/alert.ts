@@ -37,6 +37,11 @@ export const alertProps = buildProps({
     required: false,
     default: undefined,
   },
+  isClosable: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   ariaLive: {
     type: String as PropType<'polite' | 'assertive'>,
     required: false,
@@ -48,6 +53,7 @@ export type AlertProps = ExtractPropTypes<typeof alertProps>
 
 export const alertEmits = {
   click: (event: Event) => event instanceof Event,
+  close: (event: Event) => event instanceof Event,
 }
 
 export type AlertEmits = typeof alertEmits
