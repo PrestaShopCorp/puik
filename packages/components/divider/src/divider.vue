@@ -2,12 +2,12 @@
   <hr
     v-if="props.orientation === PuikDividerOrientation.HORIZONTAL"
     class="puik-divider puik-divider--horizontal"
-    :data-test="dataTest != undefined ? `horizontal-${dataTest}` : ''"
+    :data-test="dataTest ?? undefined"
   />
   <div
     v-if="props.orientation === PuikDividerOrientation.VERTICAL"
     class="puik-divider puik-divider--vertical"
-    :data-test="dataTest != undefined ? `vertical-${dataTest}` : ''"
+    :data-test="dataTest ?? undefined"
   ></div>
 </template>
 
