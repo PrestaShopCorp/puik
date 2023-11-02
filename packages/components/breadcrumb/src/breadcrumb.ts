@@ -3,11 +3,12 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Breadcrumb from './breadcrumb.vue'
 
+import type { PuikTargetString } from '../../link/src/link'
 export interface BreadcrumbItem {
   label: string
   to?: RouteLocationRaw
   href?: string
-  target?: '_blank' | '_self' | '_parent' | '_top'
+  target?: PuikTargetString
   dataTest?: string
 }
 
