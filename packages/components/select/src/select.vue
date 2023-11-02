@@ -22,7 +22,7 @@
           tabindex="-1"
           :readonly="open"
           type="text"
-          :data-test="selectDataTest"
+          :data-test="`select-${dataTest}`"
           @input="
             handleAutoComplete(($event.target as HTMLInputElement)?.value)
           "

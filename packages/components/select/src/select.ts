@@ -78,11 +78,6 @@ export const selectProps = buildProps({
     required: false,
     default: true,
   },
-  selectDataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
   dataTest: {
     type: String,
     required: false,
