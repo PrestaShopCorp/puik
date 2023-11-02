@@ -21,8 +21,14 @@ describe('Divider tests', () => {
     factory()
     expect(wrapper).toBeTruthy()
   })
+
   it('should be a vertical divider', () => {
     factory({ orientation: 'vertical' })
     expect(findDivider().classes()).toContain('puik-divider--vertical')
+  })
+
+  it('the value of the data-test attribute should be "vertical-test"', () => {
+    factory({ orientation: 'vertical', dataTest: 'test' })
+    expect(findDivider().attributes('data-test')).toBe('vertical-test')
   })
 })

@@ -19,6 +19,11 @@ export const dividerProps = buildProps({
     required: false,
     default: PuikDividerOrientation.HORIZONTAL,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type DividerProps = ExtractPropTypes<typeof dividerProps>
