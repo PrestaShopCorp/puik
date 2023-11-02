@@ -27,8 +27,8 @@ describe('Divider tests', () => {
     expect(findDivider().classes()).toContain('puik-divider--vertical')
   })
 
-  it('the value of the data-test attribute should be "vertical-test"', () => {
+  it('the value of the data-test attribute should be "test"', () => {
     factory({ orientation: 'vertical', dataTest: 'test' })
-    expect(findDivider().attributes('data-test')).toBe('vertical-test')
+    expect(findDivider().attributes('data-test')).toBe('test')
   })
 })
