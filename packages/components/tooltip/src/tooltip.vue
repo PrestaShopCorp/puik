@@ -6,7 +6,11 @@
     @mouseover="updateTooltip"
     @mouseleave="start"
   >
-    <div ref="tooltipWrapper" class="puik-tooltip__wrapper">
+    <div
+      ref="tooltipWrapper"
+      class="puik-tooltip__wrapper"
+      :data-test="`content-${dataTest}`"
+    >
       <slot></slot>
     </div>
     <Transition
@@ -25,13 +29,13 @@
           <span
             v-if="$slots.title || title"
             class="puik-tooltip__tip__content__title"
-            :data-test="titleDataTest"
+            :data-test="`title-${dataTest}`"
             ><slot name="title">{{ title }}</slot></span
           >
           <span
             v-if="$slots.description || description"
             class="puik-tooltip__tip__content__description"
-            :data-test="descriptionDataTest"
+            :data-test="`description-${dataTest}`"
             ><slot name="description">{{ description }}</slot></span
           >
         </div>
