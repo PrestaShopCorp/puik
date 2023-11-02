@@ -76,4 +76,9 @@ describe('Label tests', () => {
     )
     expect(findLabelReadonly().exists()).toBeTruthy()
   })
+
+  it('should have a data-test attribute', () => {
+    factory({ 'data-test': 'test' })
+    expect(findLabel().attributes('data-test')).toBe('test')
+  })
 })
