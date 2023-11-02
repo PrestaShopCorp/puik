@@ -83,7 +83,7 @@
                   :key="option"
                   :label="option[labelKey]"
                   :value="isObject(option) ? option[valueKey] : option"
-                  :data-test="`dataTestOption-${dataTest}-${index + 1}`"
+                  :data-test="`option-${dataTest}-${index + 1}`"
                 />
               </template>
             </slot>
