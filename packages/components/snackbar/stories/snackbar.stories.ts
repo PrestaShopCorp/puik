@@ -72,6 +72,18 @@ export default {
         },
       },
     },
+    isClosable: {
+      description: 'Display a close button or not',
+      control: 'boolean',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
     onClose: {
       description: 'Set the function to call when the snackbar has been closed',
       table: {
@@ -102,6 +114,25 @@ export const Default = {
   render: Template,
   args: {
     text: 'New category added.',
+  },
+}
+
+const HasNoCloseButtonTemplate: StoryFn = (args: Args) => ({
+  components: {
+    PuikButton,
+  },
+  setup() {
+    const open = () => PuikSnackbar(args as PuikSnackbarOptions)
+    return { args, open }
+  },
+  template: `<puik-button @click="open">Display Snackbar</puik-button>`,
+})
+
+export const HasNoCloseButton = {
+  render: HasNoCloseButtonTemplate,
+  args: {
+    text: 'New category added.',
+    hasCloseButton: false,
   },
 }
 

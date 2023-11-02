@@ -7,6 +7,7 @@
   >
     <div
       v-show="visible"
+      :id="props.id"
       class="puik-snackbar"
       :class="`puik-snackbar--${variant}`"
       :style="position"
@@ -24,6 +25,7 @@
         {{ action.label }}
       </button>
       <button
+        v-if="hasCloseButton"
         class="puik-snackbar__close-button"
         :aria-label="t('puik.snackbar.closeBtnLabel')"
         @click="close"
@@ -40,9 +42,11 @@ import { useTimeoutFn, useEventListener } from '@vueuse/core'
 import { useLocale } from '@puik/hooks'
 import { snackbarProps } from './snackbar'
 import type { CSSProperties } from 'vue'
+
 defineOptions({
   name: 'PuikSnackbar',
 })
+
 const { t } = useLocale()
 let timer: (() => void) | undefined
 
