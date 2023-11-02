@@ -25,7 +25,9 @@
             <h2
               ref="modalTitleElem"
               class="title"
-              :data-test="`title-${dataTest}`"
+              :data-test="
+                dataTest != undefined ? `title-${dataTest}` : undefined
+              "
             >
               {{ title }}
             </h2>
@@ -37,7 +39,9 @@
             :aria-label="t('puik.modal.closeButtonLabel')"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__close-button"
             variant="text"
-            :data-test="`closeButton-${dataTest}`"
+            :data-test="
+              dataTest != undefined ? `closeButton-${dataTest}` : undefined
+            "
             @click="sendCloseModalEvent()"
           >
             <puik-icon icon="close" :font-size="CLOSE_ICON_SIZE" />
@@ -54,7 +58,9 @@
             v-if="secondButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--second"
             :variant="secondButtonVariant"
-            :data-test="`secondButton-${dataTest}`"
+            :data-test="
+              dataTest != undefined ? `secondButton-${dataTest}` : undefined
+            "
             @click="$emit('button-second')"
           >
             {{ secondButtonText }}
@@ -64,7 +70,9 @@
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--main"
             :variant="mainButtonVariant"
             :disabled="isMainButtonDisabled"
-            :data-test="`mainButton-${dataTest}`"
+            :data-test="
+              dataTest != undefined ? `mainButton-${dataTest}` : undefined
+            "
             @click="$emit('button-main')"
           >
             {{ mainButtonText }}
@@ -76,7 +84,9 @@
             v-if="PuikModalVariant.DIALOG === variant && sideButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--side"
             variant="text"
-            :data-test="`sideButton-${dataTest}`"
+            :data-test="
+              dataTest != undefined ? `sideButton-${dataTest}` : undefined
+            "
             @click="$emit('button-side')"
           >
             {{ sideButtonText }}

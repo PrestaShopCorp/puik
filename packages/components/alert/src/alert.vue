@@ -14,14 +14,16 @@
           <p
             v-if="title"
             class="puik-alert__title"
-            :data-test="`title-${dataTest}`"
+            :data-test="dataTest != undefined ? `title-${dataTest}` : undefined"
           >
             {{ title }}
           </p>
           <span
             v-if="$slots.default || description"
             class="puik-alert__description"
-            :data-test="`description-${dataTest}`"
+            :data-test="
+              dataTest != undefined ? `description-${dataTest}` : undefined
+            "
             ><slot>{{ description }}</slot></span
           >
         </div>
@@ -30,7 +32,7 @@
         v-if="buttonLabel"
         :variant="variant"
         class="puik-alert__button"
-        :data-test="`button-${dataTest}`"
+        :data-test="dataTest != undefined ? `button-${dataTest}` : undefined"
         @click="click"
       >
         {{ buttonLabel }}
@@ -42,7 +44,7 @@
       icon="close"
       font-size="1.5rem"
       class="puik-alert__close"
-      :data-test="`close-${dataTest}`"
+      :data-test="dataTest != undefined ? `close-${dataTest}` : undefined"
       @click="close"
     />
   </div>

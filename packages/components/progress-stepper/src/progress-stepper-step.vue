@@ -9,7 +9,7 @@
       aria-live="polite"
       class="puik-progress-stepper-step__button"
       size="sm"
-      :data-test="`stepButton-${dataTest}`"
+      :data-test="dataTest != undefined ? `stepButton-${dataTest}` : undefined"
       @click="onClick"
     >
       <template v-if="!isCompleted">
@@ -18,13 +18,15 @@
     </puik-button>
     <span
       class="puik-progress-stepper-step__text"
-      :data-test="`text-${dataTest}`"
+      :data-test="dataTest != undefined ? `text-${dataTest}` : undefined"
     >
       <slot name="text"></slot>
     </span>
     <span
       class="puik-progress-stepper-step__additional-text"
-      :data-test="`additionalText-${dataTest}`"
+      :data-test="
+        dataTest != undefined ? `additionalText-${dataTest}` : undefined
+      "
     >
       <slot name="additional-text"></slot>
     </span>

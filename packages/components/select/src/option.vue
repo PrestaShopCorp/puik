@@ -12,7 +12,7 @@
         'puik-option--selected': selectedValue === value,
         'puik-option--disabled': disabled,
       }"
-      :data-test="dataTest"
+      :data-test="dataTest ?? undefined"
     >
       <slot class="puik-option__label">{{ label }}</slot>
       <puik-icon

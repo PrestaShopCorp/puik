@@ -1,5 +1,8 @@
 <template>
-  <h4 class="puik-menu-item-title" :data-test="`title-${dataTest}`">
+  <h4
+    class="puik-menu-item-title"
+    :data-test="dataTest != undefined ? `title-${dataTest}` : undefined"
+  >
     <slot></slot>
   </h4>
 </template>

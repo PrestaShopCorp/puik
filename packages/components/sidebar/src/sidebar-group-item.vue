@@ -11,7 +11,9 @@
       :name="accordionName"
       :icon="icon"
       class="puik-sidebar-group-item__accordion"
-      :data-test="`sidebarAccordion-${dataTest}`"
+      :data-test="
+        dataTest != undefined ? `sidebarAccordion-${dataTest}` : undefined
+      "
     >
       <slot></slot>
     </puik-accordion>
@@ -21,7 +23,9 @@
           variant="text"
           fluid
           class="puik-sidebar-group-item__collapsed-button"
-          :data-test="`sidebarMenuButton-${dataTest}`"
+          :data-test="
+            dataTest != undefined ? `sidebarMenuButton-${dataTest}` : undefined
+          "
         >
           <puik-icon :icon="icon" font-size="1.25rem"></puik-icon>
         </puik-button>

@@ -5,7 +5,7 @@
     :target="target"
     :title="title"
     :class="['puik-link', `puik-link--${size}`]"
-    :data-test="dataTest"
+    :data-test="dataTest ?? undefined"
   >
     <slot></slot>
 

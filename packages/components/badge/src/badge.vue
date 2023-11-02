@@ -2,7 +2,7 @@
   <div
     class="puik-badge"
     :class="[`puik-badge--${variant}`]"
-    :data-test="dataTest"
+    :data-test="dataTest ?? undefined"
   >
     <slot></slot>
   </div>

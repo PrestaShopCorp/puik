@@ -1,5 +1,5 @@
 <template>
-  <label class="puik-label" :for="props.for" :data-test="dataTest">
+  <label class="puik-label" :for="props.for" :data-test="dataTest ?? undefined">
     <slot></slot>
     <span v-if="required" class="puik-label--required">*</span>
     <span v-else-if="optional" class="puik-label--optional"

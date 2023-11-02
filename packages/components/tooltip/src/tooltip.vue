@@ -9,7 +9,7 @@
     <div
       ref="tooltipWrapper"
       class="puik-tooltip__wrapper"
-      :data-test="`content-${dataTest}`"
+      :data-test="dataTest != undefined ? `content-${dataTest}` : undefined"
     >
       <slot></slot>
     </div>
@@ -29,13 +29,15 @@
           <span
             v-if="$slots.title || title"
             class="puik-tooltip__tip__content__title"
-            :data-test="`title-${dataTest}`"
+            :data-test="dataTest != undefined ? `title-${dataTest}` : undefined"
             ><slot name="title">{{ title }}</slot></span
           >
           <span
             v-if="$slots.description || description"
             class="puik-tooltip__tip__content__description"
-            :data-test="`description-${dataTest}`"
+            :data-test="
+              dataTest != undefined ? `description-${dataTest}` : undefined
+            "
             ><slot name="description">{{ description }}</slot></span
           >
         </div>
