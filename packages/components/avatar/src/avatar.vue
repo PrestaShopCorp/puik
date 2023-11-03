@@ -3,12 +3,12 @@
     :id="id"
     :class="`puik-avatar puik-avatar--${size} puik-avatar--${type} puik-avatar--${mode}`"
   >
-    <img v-if="src && type == 'photo'" :src="src" :alt="alt" />
+    <img v-if="src && type == PuikAvatarType.PHOTO" :src="src" :alt="alt" />
     <puik-icon
-      v-else-if="icon && type == 'icon'"
+      v-else-if="icon && type == PuikAvatarType.ICON"
       :icon="icon"
       :font-size="iconFontSize"
-      :color="mode === 'primary' ? 'white' : 'black'"
+      :color="mode === PuikAvatarMode.PRIMARY ? 'white' : 'black'"
     />
     <div v-else :class="`puik-avatar_initials puik-avatar_initials--${size}`">
       {{ initials }}
@@ -19,7 +19,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import PuikIcon from '../../icon'
-import { avatarProps } from './avatar'
+import {
+  avatarProps,
+  PuikAvatarMode,
+  PuikAvatarType,
+  PuikAvatarSize,
+} from './avatar'
 
 defineOptions({
   name: 'PuikAvatar',
@@ -29,13 +34,13 @@ const props = defineProps(avatarProps)
 const iconFontSize = ref()
 const initials = ref('PS')
 
-props.size === 'small'
+props.size === PuikAvatarSize.SMALL
   ? (iconFontSize.value = '1rem')
-  : props.size === 'medium'
+  : props.size === PuikAvatarSize.MEDIUM
   ? (iconFontSize.value = '1.5rem')
-  : props.size === 'large'
+  : props.size === PuikAvatarSize.LARGE
   ? (iconFontSize.value = '2rem')
-  : props.size === 'jumbo'
+  : props.size === PuikAvatarSize.JUMBO
   ? (iconFontSize.value = '2.8rem')
   : '1rem'
 
