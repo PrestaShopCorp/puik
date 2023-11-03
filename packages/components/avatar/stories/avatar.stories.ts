@@ -1,15 +1,9 @@
 import { ref } from 'vue'
 import { PuikIcon } from '@puik/components'
-import {
-  avatarColors,
-  avatarModes,
-  avatarSizes,
-  avatarTypes,
-} from '../src/avatar'
+import { avatarModes, avatarSizes, avatarTypes } from '../src/avatar'
 import PuikAvatar from './../src/avatar.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
-const avatarColorsSummary = avatarColors.join('|')
 const avatarModesSummary = avatarModes.join('|')
 const avatarSizesSummary = avatarSizes.join('|')
 const avatarTypesSummary = avatarTypes.join('|')
@@ -28,20 +22,6 @@ export default {
         },
         defaultValue: {
           summary: 'undefined',
-        },
-      },
-    },
-    color: {
-      description:
-        'Color variants of avatar component (neutral by default, blue, yellow, green, purple)',
-      control: 'select',
-      options: avatarColors,
-      table: {
-        type: {
-          summary: avatarColorsSummary,
-        },
-        defaultValue: {
-          summary: 'neutral',
         },
       },
     },
@@ -151,7 +131,6 @@ export default {
   },
   args: {
     id: 'puik-avatar-id',
-    color: 'neutral',
     mode: 'primary',
     size: 'medium',
     type: 'initials',
@@ -284,7 +263,7 @@ const SizesTemplate: StoryFn = (args: Args) => ({
 `,
 })
 
-const ModesAndColorsTemplate: StoryFn = (args: Args) => ({
+const ModesTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
     PuikAvatar,
@@ -294,56 +273,10 @@ const ModesAndColorsTemplate: StoryFn = (args: Args) => ({
       {
         type: 'initials',
         mode: 'primary',
-        color: 'neutral',
-      },
-      {
-        type: 'initials',
-        mode: 'primary',
-        color: 'blue',
-      },
-      {
-        type: 'initials',
-        mode: 'primary',
-        color: 'yellow',
-      },
-      {
-        type: 'initials',
-        mode: 'primary',
-        color: 'green',
-      },
-      {
-        type: 'initials',
-        mode: 'primary',
-        color: 'purple',
       },
       {
         type: 'icon',
         mode: 'primary',
-        color: 'neutral',
-        icon: 'home',
-      },
-      {
-        type: 'icon',
-        mode: 'primary',
-        color: 'blue',
-        icon: 'home',
-      },
-      {
-        type: 'icon',
-        mode: 'primary',
-        color: 'yellow',
-        icon: 'home',
-      },
-      {
-        type: 'icon',
-        mode: 'primary',
-        color: 'green',
-        icon: 'home',
-      },
-      {
-        type: 'icon',
-        mode: 'primary',
-        color: 'purple',
         icon: 'home',
       },
     ])
@@ -352,56 +285,10 @@ const ModesAndColorsTemplate: StoryFn = (args: Args) => ({
       {
         type: 'initials',
         mode: 'reverse',
-        color: 'neutral',
-      },
-      {
-        type: 'initials',
-        mode: 'reverse',
-        color: 'blue',
-      },
-      {
-        type: 'initials',
-        mode: 'reverse',
-        color: 'yellow',
-      },
-      {
-        type: 'initials',
-        mode: 'reverse',
-        color: 'green',
-      },
-      {
-        type: 'initials',
-        mode: 'reverse',
-        color: 'purple',
       },
       {
         type: 'icon',
         mode: 'reverse',
-        color: 'neutral',
-        icon: 'home',
-      },
-      {
-        type: 'icon',
-        mode: 'reverse',
-        color: 'blue',
-        icon: 'home',
-      },
-      {
-        type: 'icon',
-        mode: 'reverse',
-        color: 'yellow',
-        icon: 'home',
-      },
-      {
-        type: 'icon',
-        mode: 'reverse',
-        color: 'green',
-        icon: 'home',
-      },
-      {
-        type: 'icon',
-        mode: 'reverse',
-        color: 'purple',
         icon: 'home',
       },
     ])
@@ -415,7 +302,6 @@ const ModesAndColorsTemplate: StoryFn = (args: Args) => ({
     :key="index"
     :type="avatar.type"
     :mode="avatar.mode"
-    :color="avatar.color"
     :icon="avatar.icon"
   />
 </div>
@@ -425,7 +311,6 @@ const ModesAndColorsTemplate: StoryFn = (args: Args) => ({
     :key="index"
     :type="avatar.type"
     :mode="avatar.mode"
-    :color="avatar.color"
     :icon="avatar.icon"
   />
 </div>
@@ -443,7 +328,6 @@ export const Default = {
 <!-- Vue component with all possible props -->
 <PuikAvatar
   :id="args.id"
-  :color="args.color"
   :size="args.size"
   :type="args.type"
   :mode="args.mode"
@@ -456,7 +340,7 @@ export const Default = {
 
 <!-- HTML/CSS Snippet -->
 <!-- Avatar (by default) -->
-<div id="puik-avatar-id" class="puik-avatar puik-avatar--medium puik-avatar--initials puik-avatar--primary puik-avatar--neutral">
+<div id="puik-avatar-id" class="puik-avatar puik-avatar--medium puik-avatar--initials puik-avatar--primary">
   <div class="puik-avatar_initials puik-avatar_initials--medium">
     PS
   </div>
@@ -496,19 +380,19 @@ export const Types = {
 
 <!-- HTML/CSS Snippet -->
 <!-- type initials-->
-<div class="puik-avatar puik-avatar--medium puik-avatar--initials puik-avatar--primary puik-avatar--neutral">
+<div class="puik-avatar puik-avatar--medium puik-avatar--initials puik-avatar--primary">
   <div class="puik-avatar_initials puik-avatar_initials--medium">
     PS
   </div>
 </div>
 <!-- type icon-->
-<div class="puik-avatar puik-avatar--medium puik-avatar--icon puik-avatar--primary puik-avatar--neutral">
+<div class="puik-avatar puik-avatar--medium puik-avatar--icon puik-avatar--primary">
   <div class="puik-icon" style="font-size: 1.5rem; color: white;">
     home
   </div>
 </div>
 <!-- type photo-->
-<div class="puik-avatar puik-avatar--medium puik-avatar--photo puik-avatar--primary puik-avatar--neutral">
+<div class="puik-avatar puik-avatar--medium puik-avatar--photo puik-avatar--primary">
   <img src="https://picsum.photos/200" alt="puik-avatar-alt">
 </div>
         `,
@@ -536,7 +420,7 @@ export const Sizes = {
 
 <!-- HTML/CSS Snippet -->
 <!-- initials type -->
-<div class="puik-avatar puik-avatar--{$size} puik-avatar--initials puik-avatar--primary puik-avatar--neutral">
+<div class="puik-avatar puik-avatar--{$size} puik-avatar--initials puik-avatar--primary">
   <div class="puik-avatar_initials puik-avatar_initials--{$size}">
     PS
   </div>
@@ -549,13 +433,13 @@ NB: values of {$iconFontSize} to apply depending on the prop size:
   large = 2rem
   jumbo = 2.8rem
 -->
-<div class="puik-avatar puik-avatar--{$size} puik-avatar--icon puik-avatar--primary puik-avatar--neutral">
+<div class="puik-avatar puik-avatar--{$size} puik-avatar--icon puik-avatar--primary">
   <div class="puik-icon" style="font-size: {$iconFontSize}; color: white;">
     home
   </div>
 </div>
 <!-- photo type -->
-<div class="puik-avatar puik-avatar--{$size} puik-avatar--photo puik-avatar--primary puik-avatar--neutral">
+<div class="puik-avatar puik-avatar--{$size} puik-avatar--photo puik-avatar--primary">
   <img src="https://picsum.photos/200" alt="puik-avatar-alt">
 </div>
 `,
@@ -565,25 +449,21 @@ NB: values of {$iconFontSize} to apply depending on the prop size:
   },
 }
 
-export const ModesAndColors = {
-  render: ModesAndColorsTemplate,
+export const Modes = {
+  render: ModesTemplate,
   args: {},
   parameters: {
     docs: {
       source: {
         code: `
 <!-- VueJS Snippet -->
-<!-- $colors: ${avatarColorsSummary} -->
 <!-- $modes: ${avatarModesSummary} -->
 
-<puik-avatar
-  :mode="{$mode}"
-  :color="{$color}"
-/>
+<puik-avatar :mode="{$mode}"/>
 
 <!-- HTML/CSS Snippet -->
 <!-- initials type -->
-<div class="puik-avatar puik-avatar--medium puik-avatar--initials puik-avatar--{$mode} puik-avatar--{$color}">
+<div class="puik-avatar puik-avatar--medium puik-avatar--initials puik-avatar--{$mode}">
   <div class="puik-avatar_initials puik-avatar_initials--{$mode}">
     PS
   </div>
@@ -594,7 +474,7 @@ NB: values of {$iconColor} to apply depending on the prop mode:
   primary = white
   reverse = black
 -->
-<div class="puik-avatar puik-avatar--medium puik-avatar--icon puik-avatar--{$mode} puik-avatar--{$color}">
+<div class="puik-avatar puik-avatar--medium puik-avatar--icon puik-avatar--{$mode}">
   <div class="puik-icon" style="font-size: 1.5rem; color: {$iconColor};">
     home
   </div>

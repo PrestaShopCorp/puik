@@ -31,11 +31,6 @@ describe('Avatar tests', () => {
     expect(findAvatar().attributes().id).toBe('puik-avatar-id')
   })
 
-  it('should display a blue version of the avatar', () => {
-    factory({ color: 'blue' })
-    expect(findAvatar().classes()).toContain('puik-avatar--blue')
-  })
-
   it('should display the avatar in reverse mode', () => {
     factory({ mode: 'reverse' })
     expect(findAvatar().classes()).toContain('puik-avatar--reverse')

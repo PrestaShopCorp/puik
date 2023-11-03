@@ -1,7 +1,7 @@
 <template>
   <div
     :id="id"
-    :class="`puik-avatar puik-avatar--${size} puik-avatar--${type} puik-avatar--${mode} puik-avatar--${color}`"
+    :class="`puik-avatar puik-avatar--${size} puik-avatar--${type} puik-avatar--${mode}`"
   >
     <img v-if="src && type == 'photo'" :src="src" :alt="alt" />
     <puik-icon
@@ -20,6 +20,7 @@
 import { ref } from 'vue'
 import PuikIcon from '../../icon'
 import { avatarProps } from './avatar'
+
 defineOptions({
   name: 'PuikAvatar',
 })
