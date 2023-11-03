@@ -23,7 +23,7 @@ export default {
       },
     },
     dataTest: {
-      description: 'set data-test attribute for e2e test purpose',
+      description: 'set data-test attribute for e2e tests purpose',
       control: 'text',
       table: {
         type: {
