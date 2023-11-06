@@ -72,7 +72,7 @@
 import { useVModel } from '@vueuse/core'
 import { PuikSelect, PuikOption } from '@puik/components/select'
 import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { paginationLargeProps } from './pagination-large'
 defineOptions({
   name: 'PuikPaginationLarge',

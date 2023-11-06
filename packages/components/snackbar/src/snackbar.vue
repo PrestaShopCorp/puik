@@ -39,7 +39,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { useTimeoutFn, useEventListener } from '@vueuse/core'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { snackbarProps } from './snackbar'
 import type { CSSProperties } from 'vue'
 

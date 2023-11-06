@@ -1,7 +1,7 @@
 import { nextTick, ref } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import PuikPagination from '../src/pagination.vue'
 import { PuikPaginationVariantEnum } from '../src/pagination'
 import { PuikOption } from '../../select'
@@ -38,7 +38,7 @@ describe('Pagination tests', () => {
 
   const factory = (
     propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    options: MountingOptions<any> = {},
   ) => {
     wrapper = mount(PuikPagination, {
       props: {
@@ -111,7 +111,7 @@ describe('Pagination tests', () => {
     await findPreviousButton().trigger('click')
     await nextTick()
     expect(findPaginationComponent().emitted('update:page')?.[0]).toStrictEqual(
-      [4]
+      [4],
     )
   })
 
@@ -120,7 +120,7 @@ describe('Pagination tests', () => {
     await findNextButton().trigger('click')
     await nextTick()
     expect(findPaginationComponent().emitted('update:page')?.[0]).toStrictEqual(
-      [6]
+      [6],
     )
   })
 
@@ -149,7 +149,7 @@ describe('Pagination tests', () => {
     await findLoaderButton().trigger('click')
     await nextTick()
     expect(findPaginationComponent().emitted('update:page')?.[0]).toStrictEqual(
-      [6]
+      [6],
     )
   })
 
@@ -200,7 +200,7 @@ describe('Pagination tests', () => {
     await buttonPage1.trigger('click')
     await nextTick()
     expect(findPaginationComponent().emitted('update:page')?.[0]).toStrictEqual(
-      [1]
+      [1],
     )
   })
 
@@ -264,7 +264,7 @@ describe('Pagination tests', () => {
     await findAllOptions()[5].trigger('click')
     await nextTick()
     expect(findPaginationComponent().emitted('update:page')?.[0]).toStrictEqual(
-      [5]
+      [5],
     )
   })
 
@@ -277,7 +277,7 @@ describe('Pagination tests', () => {
     await findAllOptions(itemsPerPageSelect)[1].trigger('click')
     await nextTick()
     expect(
-      findPaginationComponent().emitted('update:itemsPerPage')?.[0]
+      findPaginationComponent().emitted('update:itemsPerPage')?.[0],
     ).toStrictEqual([10])
   })
 

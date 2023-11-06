@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   extend: {
     colors: {
       primary: {

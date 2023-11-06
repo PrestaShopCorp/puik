@@ -1,16 +1,16 @@
-import { provideGlobalConfig } from '@puik/hooks'
+import { provideGlobalConfig } from '@puik/components'
 import { version } from './version'
 import type { App, Plugin } from 'vue'
-import type { ConfigProviderContext } from '@puik/tokens'
+import type { ConfigProviderContext } from '@puik/components'
 
 const INSTALLED_KEY = Symbol('INSTALLED_KEY')
 
 export const makeInstaller = (components: Plugin[] = []) => {
-  const install = (app: App, options?: ConfigProviderContext) => {
+  const install = (app: App, options: ConfigProviderContext = {}) => {
     if (app[INSTALLED_KEY]) return
-
-    app[INSTALLED_KEY] = true
+    ;(app as any)[INSTALLED_KEY] = true
     components.forEach((c) => app.use(c))
+
     if (options) provideGlobalConfig(options, app, true)
   }
 

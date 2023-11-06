@@ -34,7 +34,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { switchEmits, switchProps } from './switch'
 defineOptions({
   name: 'PuikSwitch',
@@ -48,7 +48,7 @@ const screenReader = computed(
   () =>
     `${value.value ? t('puik.switch.disable') : t('puik.switch.enable')} ${
       props.screenReaderText
-    }`
+    }`,
 )
 
 const value = computed({

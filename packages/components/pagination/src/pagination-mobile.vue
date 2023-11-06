@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { paginationMobileProps } from './pagination-mobile'
 defineOptions({
   name: 'PuikPaginationMobile',

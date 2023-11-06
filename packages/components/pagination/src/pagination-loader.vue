@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { paginationLoaderProps } from './pagination-loader'
 defineOptions({
   name: 'PuikPaginationLoader',
@@ -31,6 +31,6 @@ defineEmits<{
 const { t } = useLocale()
 
 const currentButtonLabel = computed(
-  () => props.loaderButtonLabel ?? t('puik.pagination.loader.button')
+  () => props.loaderButtonLabel ?? t('puik.pagination.loader.button'),
 )
 </script>

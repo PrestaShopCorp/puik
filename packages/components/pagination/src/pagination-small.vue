@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { paginationSmallProps } from './pagination-small'
 defineOptions({
   name: 'PuikPaginationSmall',

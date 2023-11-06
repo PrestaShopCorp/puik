@@ -54,7 +54,7 @@
 
 <script setup lang="ts">
 import { ref, watch, provide, computed } from 'vue'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import PuikButton from '../../button'
 import { PuikAccordionGroup } from '../../accordion'
 import { sidebarProps, sidebarKey } from './sidebar'
@@ -74,7 +74,7 @@ const localExpanded = ref(props.expanded)
 const openAccordionName = ref(props.openAccordion)
 
 const expansionIcon = computed(() =>
-  localExpanded.value ? 'first_page' : 'last_page'
+  localExpanded.value ? 'first_page' : 'last_page',
 )
 
 function setExpanded(value: boolean) {
@@ -91,21 +91,21 @@ watch(
   () => props.expanded,
   () => {
     localExpanded.value = props.expanded
-  }
+  },
 )
 
 watch(
   () => props.openAccordion,
   () => {
     openAccordionName.value = props.openAccordion
-  }
+  },
 )
 
 const expandButtonAriaLabel = computed(() => {
   return t(
     `puik.sidebar.expandButtonLabel.${
       localExpanded.value ? 'collapsed' : 'expanded'
-    }`
+    }`,
   )
 })
 

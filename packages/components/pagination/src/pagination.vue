@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { paginationProps, PuikPaginationVariantEnum } from './pagination'
 
 import PaginationLoader from './pagination-loader.vue'

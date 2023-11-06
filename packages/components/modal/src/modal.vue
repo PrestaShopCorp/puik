@@ -85,7 +85,7 @@ import { PuikButton } from '@puik/components/button'
 import { PuikIcon } from '@puik/components/icon'
 import { PuikTooltip } from '@puik/components/tooltip'
 import { isEllipsisActive } from '@puik/utils'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import {
   modalProps,
   PuikModalVariant,

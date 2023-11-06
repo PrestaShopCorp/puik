@@ -1,23 +1,6 @@
-import { defineComponent, renderSlot, type ExtractPropTypes } from 'vue'
-import { buildProps } from '@puik/utils'
-import { provideGlobalConfig } from '@puik/hooks'
-
-export const configProviderProps = buildProps({
-  locale: {
-    type: String,
-  },
-
-  size: {
-    type: String,
-    values: ['large', 'default', 'small'],
-  },
-
-  zIndex: {
-    type: Number,
-  },
-} as const)
-
-export type ConfigProviderProps = ExtractPropTypes<typeof configProviderProps>
+import { defineComponent, renderSlot } from 'vue'
+import { configProviderProps } from './config-provider-props'
+import { provideGlobalConfig } from './hooks/use-global-config'
 
 export default defineComponent({
   name: 'PuikConfigProvider',

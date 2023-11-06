@@ -77,7 +77,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
 import { tableProps } from './table'
 defineOptions({
@@ -134,7 +134,7 @@ const selectAllLabel = computed(() => {
       indeterminate.value || !selectAll.value
         ? 'selectAllLabel'
         : 'unselectAllLabel'
-    }`
+    }`,
   )
 })
 
@@ -146,6 +146,6 @@ watch(
   () => props.selection,
   () => {
     checked.value = props.selection
-  }
+  },
 )
 </script>

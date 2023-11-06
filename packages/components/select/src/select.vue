@@ -104,7 +104,7 @@
 import { computed, provide, ref, useSlots, watch } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
 import { isObject, isFunction, isArray, slotIsEmpty } from '@puik/utils'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { PuikInput } from '@puik/components/input'
 import { PuikIcon } from '@puik/components/icon'
 import { selectProps, selectEmits, selectKey } from './select'
@@ -141,7 +141,7 @@ const selectedValue = computed({
 
 watch(
   () => props.customLabel,
-  () => (currentLabel.value = props.customLabel)
+  () => (currentLabel.value = props.customLabel),
 )
 
 const filteredItems = computed(() => {
@@ -154,7 +154,7 @@ const filteredItems = computed(() => {
         (isObject(option) ? option[props.labelKey] : option)
           .toString()
           .toLowerCase()
-          .includes(query.value.toLowerCase())
+          .includes(query.value.toLowerCase()),
       )
     }
     return props.options

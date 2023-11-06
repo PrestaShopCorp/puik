@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { skeletonLoaderGroupProps } from './skeleton-loader-group'
 defineOptions({
   name: 'PuikSkeletonLoaderGroup',

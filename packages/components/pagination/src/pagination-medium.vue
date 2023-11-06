@@ -85,7 +85,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/hooks'
+import { useLocale } from '@puik/locale'
 import { paginationMediumProps } from './pagination-medium'
 defineOptions({
   name: 'PuikPaginationMedium',
