@@ -3,17 +3,24 @@
     :id="id"
     :class="`puik-avatar puik-avatar--${size} puik-avatar--${type} puik-avatar--${mode}`"
   >
-    <img v-if="src && type == PuikAvatarType.PHOTO" :src="src" :alt="alt" />
+    <img
+      v-if="src && type == PuikAvatarType.PHOTO"
+      :src="src"
+      :alt="alt"
+      :data-test="dataTest != undefined ? `image-${dataTest}` : undefined"
+    />
     <puik-icon
       v-else-if="icon && type == PuikAvatarType.ICON"
       :icon="icon"
       :font-size="iconFontSize"
       :color="colorMode"
+      :data-test="dataTest != undefined ? `icon-${dataTest}` : undefined"
     />
     <div
       v-else
       :key="initials"
       :class="`puik-avatar_initials puik-avatar_initials--${size}`"
+      :data-test="dataTest != undefined ? `initials-${dataTest}` : undefined"
     >
       {{ initials }}
     </div>

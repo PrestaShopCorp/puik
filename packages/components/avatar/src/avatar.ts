@@ -89,6 +89,11 @@ export const avatarProps = buildProps({
     required: false,
     default: false,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type AvatarProps = ExtractPropTypes<typeof avatarProps>

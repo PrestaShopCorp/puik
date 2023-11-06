@@ -7,7 +7,7 @@ describe('Avatar tests', () => {
   let wrapper: VueWrapper<any>
   const findAvatar = () => wrapper.find('.puik-avatar')
   const findInitialsWrapper = () => wrapper.find('.puik-avatar_initials')
-  const findIconWrapper = () => wrapper.find('.puik-icon')
+  const findIcon = () => wrapper.find('.puik-icon')
   const findImg = () => wrapper.find('.puik-avatar img')
 
   const factory = (
@@ -48,12 +48,41 @@ describe('Avatar tests', () => {
 
   it('icon type avatar should display the icon material "home"', () => {
     factory({ type: 'icon', icon: 'home' })
-    expect(findIconWrapper().text()).toBe('home')
+    expect(findIcon().text()).toBe('home')
   })
 
   it('photo type avatar should display an image with src attribute set to "src-img" and an attribute alt set to "alt-img"', () => {
     factory({ type: 'photo', src: 'src-img', alt: 'alt-img' })
     expect(findImg().attributes().src).toBe('src-img')
     expect(findImg().attributes().alt).toBe('alt-img')
+  })
+
+  it('should have data-test attribute on initials wrapper', () => {
+    factory({
+      type: 'initials',
+      dataTest: 'example',
+    })
+    expect(findInitialsWrapper().attributes('data-test')).toBe(
+      'initials-example'
+    )
+  })
+
+  it('should have data-test attribute on icon', () => {
+    factory({
+      type: 'icon',
+      icon: 'home',
+      dataTest: 'example',
+    })
+    expect(findIcon().attributes('data-test')).toBe('icon-example')
+  })
+
+  it('should have data-test attribute on image', () => {
+    factory({
+      type: 'photo',
+      src: 'src-example',
+      alt: 'alt-example',
+      dataTest: 'example',
+    })
+    expect(findImg().attributes('data-test')).toBe('image-example')
   })
 })

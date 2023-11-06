@@ -137,6 +137,11 @@ export default {
         },
       },
     },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set the data-test attribute for the avatar `image-${dataTest}` `icon-${dataTest}` `initials-${dataTest}`',
+    },
   },
   args: {
     id: 'puik-avatar-id',
@@ -149,6 +154,7 @@ export default {
     firstname: 'Presta',
     lastname: 'Shop',
     singleInitial: false,
+    dataTest: undefined,
   },
 } as Meta
 
