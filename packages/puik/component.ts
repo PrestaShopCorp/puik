@@ -1,3 +1,4 @@
+import { PuikDivider } from '@puik/components/divider'
 import { PuikTag } from '@puik/components/tag'
 import { PuikChip } from '@puik/components/chip'
 import {
@@ -50,6 +51,7 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikDivider,
   PuikTag,
   PuikChip,
   PuikTabNavigationGroupPanels,
