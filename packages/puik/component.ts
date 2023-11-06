@@ -1,4 +1,5 @@
 import { PuikAvatar } from '@puik/components/avatar'
+import { PuikDivider } from '@puik/components/divider'
 import { PuikTag } from '@puik/components/tag'
 import { PuikChip } from '@puik/components/chip'
 import {
@@ -52,6 +53,7 @@ import type { Plugin } from 'vue'
 // prettier-ignore
 export default [
   PuikAvatar,
+  PuikDivider,
   PuikTag,
   PuikChip,
   PuikTabNavigationGroupPanels,
