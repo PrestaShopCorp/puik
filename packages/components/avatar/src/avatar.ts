@@ -6,7 +6,10 @@ export enum PuikAvatarMode {
   PRIMARY = 'primary',
   REVERSE = 'reverse',
 }
-
+export const COLOR_MODE = {
+  primary: 'white',
+  reverse: 'black',
+}
 export const avatarModes = ['primary', 'reverse'] as const
 export type PuikAvatarModeString = (typeof avatarModes)[number]
 
@@ -16,7 +19,12 @@ export enum PuikAvatarSize {
   LARGE = 'large',
   JUMBO = 'jumbo',
 }
-
+export const ICONS_FONTSIZE = {
+  small: '1rem',
+  medium: '1.5rem',
+  large: '2rem',
+  jumbo: '2.8rem',
+}
 export const avatarSizes = ['small', 'medium', 'large', 'jumbo'] as const
 export type PuikAvatarSizeString = (typeof avatarSizes)[number]
 
@@ -25,7 +33,6 @@ export enum PuikAvatarType {
   ICON = 'icon',
   INITIALS = 'initials',
 }
-
 export const avatarTypes = ['photo', 'icon', 'initials'] as const
 export type PuikAvatarTypeString = (typeof avatarTypes)[number]
 

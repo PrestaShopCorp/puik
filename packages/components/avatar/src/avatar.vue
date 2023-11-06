@@ -12,8 +12,8 @@
     <puik-icon
       v-else-if="icon && type == PuikAvatarType.ICON"
       :icon="icon"
-      :font-size="iconFontSize"
-      :color="colorMode"
+      :font-size="ICONS_FONTSIZE[props.size]"
+      :color="COLOR_MODE[props.mode]"
       :data-test="dataTest != undefined ? `icon-${dataTest}` : undefined"
     />
     <div
@@ -32,9 +32,9 @@ import { computed } from 'vue'
 import PuikIcon from '../../icon'
 import {
   avatarProps,
-  PuikAvatarMode,
   PuikAvatarType,
-  PuikAvatarSize,
+  ICONS_FONTSIZE,
+  COLOR_MODE,
 } from './avatar'
 
 defineOptions({
@@ -42,27 +42,6 @@ defineOptions({
 })
 
 const props = defineProps(avatarProps)
-
-const iconFontSize = computed(() => {
-  if (props.size === PuikAvatarSize.SMALL) {
-    return '1rem'
-  } else if (props.size === PuikAvatarSize.MEDIUM) {
-    return '1.5rem'
-  } else if (props.size === PuikAvatarSize.LARGE) {
-    return '2rem'
-  } else if (props.size === PuikAvatarSize.JUMBO) {
-    return '2.8rem'
-  } else {
-    return '1rem'
-  }
-})
-
-const colorMode = computed(() => {
-  if (props.mode === PuikAvatarMode.PRIMARY) {
-    return 'white'
-  }
-  return 'black'
-})
 
 const initials = computed(() => {
   const firstInitial = props.firstname
