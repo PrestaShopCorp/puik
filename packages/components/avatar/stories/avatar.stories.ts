@@ -104,7 +104,7 @@ export default {
     },
     firstname: {
       description:
-        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of firstname prop corresponds to the first). NB: if the lastname prop is missing then the initials will be the first two letters of the firstname prop',
+        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of firstname prop corresponds to the first). NB: if the lastname prop is missing then the initials will be the first two letters of the firstname prop in the case where the singleInitial prop is false. Special characters are removed',
       control: 'text',
       table: {
         type: {
@@ -117,7 +117,7 @@ export default {
     },
     lastname: {
       description:
-        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of lastname corresponds to the last). NB : if the firstname prop is missing then the initials will be the first two letters of the lastname prop ',
+        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of lastname corresponds to the last). NB : if the firstname prop is missing then the initials will be the first two letters of the lastname prop in the case where the singleInitial prop is false. Special characters are removed.',
       control: 'text',
       table: {
         type: {
@@ -129,7 +129,8 @@ export default {
       },
     },
     singleInitial: {
-      description: 'initials match a single letter',
+      description:
+        'Initials match a single letter (first letter of firstname. If the firstname conditions are not met this is the first letter of lastname). NB: if the conditions for the firstname and lastname props are not met then the default value is "P" (singleInitial set to true) or "PS" (singleInitial set to false).',
       table: {
         defaultValue: {
           summary: false,
