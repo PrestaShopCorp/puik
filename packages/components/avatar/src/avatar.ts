@@ -84,6 +84,11 @@ export const avatarProps = buildProps({
     required: false,
     default: '',
   },
+  singleInitial: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 } as const)
 
 export type AvatarProps = ExtractPropTypes<typeof avatarProps>

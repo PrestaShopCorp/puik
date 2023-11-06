@@ -58,14 +58,35 @@ const colorMode = computed(() => {
 })
 
 const initials = computed(() => {
-  if (props.firstname !== '' && props.lastname !== '') {
-    return props.firstname[0]?.toUpperCase() + props.lastname[0]?.toUpperCase()
-  } else if (props.firstname.length > 1 && !props.lastname) {
-    return props.firstname[0]?.toUpperCase() + props.firstname[1]?.toUpperCase()
-  } else if (props.lastname.length > 1 && !props.firstname) {
-    return props.lastname[0]?.toUpperCase() + props.lastname[1]?.toUpperCase()
-  } else {
-    return 'PS'
-  }
+  const firstInitial = props.firstname
+    ? props.firstname
+        .replace(/[^a-zA-Z0-9]/g, '')
+        .charAt(0)
+        .toUpperCase()
+    : ''
+  const lastInitial = props.lastname
+    ? props.lastname
+        .replace(/[^a-zA-Z0-9]/g, '')
+        .charAt(0)
+        .toUpperCase()
+    : ''
+  const initialsValue = props.singleInitial
+    ? firstInitial || lastInitial || 'P'
+    : firstInitial && lastInitial
+    ? firstInitial + lastInitial
+    : firstInitial && props.firstname.length > 1
+    ? firstInitial +
+      props.firstname
+        .replace(/[^a-zA-Z0-9]/g, '')
+        .charAt(1)
+        .toUpperCase()
+    : lastInitial && props.lastname.length > 1
+    ? lastInitial +
+      props.lastname
+        .replace(/[^a-zA-Z0-9]/g, '')
+        .charAt(1)
+        .toUpperCase()
+    : 'PS'
+  return initialsValue
 })
 </script>

@@ -128,6 +128,14 @@ export default {
         },
       },
     },
+    singleInitial: {
+      description: 'initials match a single letter',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
   },
   args: {
     id: 'puik-avatar-id',
@@ -139,6 +147,7 @@ export default {
     alt: 'puik-avatar-alt',
     firstname: 'Presta',
     lastname: 'Shop',
+    singleInitial: false,
   },
 } as Meta
 
