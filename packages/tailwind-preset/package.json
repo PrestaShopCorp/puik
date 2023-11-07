@@ -1,20 +1,21 @@
 {
   "name": "@puik/tailwind-preset",
   "description": "Puik tailwind preset",
+  "type": "module",
   "version": "0.0.1",
-  "main": "dist/es/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/es/index.mjs",
   "types": "dist/es/index.d.ts",
   "license": "MIT",
   "exports": {
     ".": {
       "require": {
-        "default": "./dist/lib/index.js",
-        "types": "./dist/lib/index.d.ts"
+        "default": "./dist/index.cjs",
+        "types": "./dist/index.d.ts"
       },
       "import": {
-        "default": "./dist/es/index.mjs",
-        "types": "./dist/es/index.d.ts"
+        "default": "./dist/index.mjs",
+        "types": "./dist/index.d.ts"
       }
     }
   },
@@ -22,7 +23,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && rollup -c"
+    "build": "vite build"
   },
   "devDependencies": {
     "tailwindcss": "^3.2.7"

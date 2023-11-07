@@ -3,26 +3,6 @@
   "description": "puiklocale",
   "version": "0.0.1",
   "license": "MIT",
-  "main": "./dist/es/index.mjs",
-  "types": "./dist/es/index.d.ts",
-  "exports": {
-    ".": {
-      "require": {
-        "default": "./dist/lib/index.js",
-        "types": "./dist/lib/index.d.ts"
-      },
-      "import": {
-        "default": "./dist/es/index.mjs",
-        "types": "./dist/es/index.d.ts"
-      }
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "peerDependencies": {
-    "vue": "^3.2.0"
-  },
   "dependencies": {
     "lodash-unified": "^1.0.3"
   },

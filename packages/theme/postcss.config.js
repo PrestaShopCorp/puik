@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path')
 module.exports = {
   plugins: {
-    tailwindcss: {
-      config: path.join(__dirname, 'tailwind.config.js'),
-    },
+    tailwindcss: {},
     autoprefixer: {},
+    cssnano: {
+      preset: 'default',
+    },
   },
 }

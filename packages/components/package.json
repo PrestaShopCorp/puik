@@ -1,54 +1,52 @@
 {
-  "name": "@puik/components",
+  "name": "@prestashopcorp/puik-components",
   "version": "0.0.1",
+  "type": "module",
   "description": "all components are settled here",
-  "main": "./dist/lib/index.js",
-  "module": "./dist/es/index.mjs",
-  "types": "./dist/es/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "default": "./dist/es/index.mjs",
-        "types": "./dist/es/index.d.ts"
-      },
-      "require": {
-        "default": "./dist/lib/index.js",
-        "types": "./dist/lib/index.d.ts"
-      }
-    },
-    "./es": "./dist/es/index.mjs",
-    "./lib": "./dist/lib/index.js",
-    "./es/*.mjs": "./dist/es/*.mjs",
-    "./es/*": "./dist/es/*.mjs",
-    "./lib/*.js": "./dist/lib/*.js",
-    "./lib/*": "./dist/lib/*.js",
-    "./*": "./dist/*"
-  },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build:lib": "rimraf dist && rollup -c",
-    "gen:esm-dts": "vue-tsc --p tsconfig.build.json --declaration --emitDeclarationOnly --outDir ./dist/es",
-    "gen:cjs-dts": "vue-tsc --p tsconfig.build.json --declaration --emitDeclarationOnly --outDir ./dist/lib",
-    "build": "pnpm build:lib && pnpm gen:esm-dts && pnpm gen:cjs-dts"
+    "build": "vite build"
   },
   "peerDependencies": {
-    "vue": "^3.2.0"
+    "vue": "^3.3.7"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.11",
     "@popperjs/core": "^2.11.6",
-    "@prestashopcorp/puik-locale": "workspace:*",
-    "@prestashopcorp/puik-theme": "workspace:*",
-    "@prestashopcorp/puik-utils": "workspace:*",
+    "@puik/theme": "workspace:*",
     "@vueuse/core": "^9.13.0"
   },
   "devDependencies": {
     "unplugin-vue-components": "^0.24.0",
     "unplugin-vue-define-options": "^1.2.3",
-    "vue": "^3.2.47",
+    "vue": "^3.3.7",
     "vue-router": "^4.1.6",
     "vue-tsc": "^1.2.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "import": {
+          "default": "./dist/index.mjs",
+          "types": "./dist/index.d.ts"
+        },
+        "require": {
+          "default": "./dist/index.cjs",
+          "types": "./dist/index.d.ts"
+        }
+      },
+      "./es": "./dist/index.mjs",
+      "./lib": "./dist/index.cjs",
+      "./es/*.mjs": "./dist/*.mjs",
+      "./es/*": "./dist/*.mjs",
+      "./lib/*.cjs": "./dist/*.cjs",
+      "./lib/*": "./dist/*.cjs",
+      "./*": "./dist/*"
+    }
   }
 }
