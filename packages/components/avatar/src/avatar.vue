@@ -13,7 +13,7 @@
       v-else-if="icon && type == PuikAvatarType.ICON"
       :icon="icon"
       :font-size="ICONS_FONTSIZE[props.size]"
-      :color="COLOR_MODE[props.mode]"
+      :color="AVATAR_MODE[props.mode]"
       :data-test="dataTest != undefined ? `icon-${dataTest}` : undefined"
     />
     <div
@@ -35,7 +35,7 @@ import {
   avatarProps,
   PuikAvatarType,
   ICONS_FONTSIZE,
-  COLOR_MODE,
+  AVATAR_MODE,
 } from './avatar'
 
 defineOptions({

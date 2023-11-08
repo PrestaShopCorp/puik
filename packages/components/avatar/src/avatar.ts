@@ -6,12 +6,10 @@ export enum PuikAvatarMode {
   PRIMARY = 'primary',
   REVERSE = 'reverse',
 }
-export const COLOR_MODE = {
+export const AVATAR_MODE = {
   primary: 'white',
   reverse: 'black',
 }
-export const avatarModes = ['primary', 'reverse'] as const
-export type PuikAvatarModeString = (typeof avatarModes)[number]
 
 export enum PuikAvatarSize {
   SMALL = 'small',
@@ -25,16 +23,12 @@ export const ICONS_FONTSIZE = {
   large: '2rem',
   jumbo: '2.8rem',
 }
-export const avatarSizes = ['small', 'medium', 'large', 'jumbo'] as const
-export type PuikAvatarSizeString = (typeof avatarSizes)[number]
 
 export enum PuikAvatarType {
   PHOTO = 'photo',
   ICON = 'icon',
   INITIALS = 'initials',
 }
-export const avatarTypes = ['photo', 'icon', 'initials'] as const
-export type PuikAvatarTypeString = (typeof avatarTypes)[number]
 
 export const avatarProps = buildProps({
   id: {
@@ -43,28 +37,19 @@ export const avatarProps = buildProps({
     default: undefined,
   },
   mode: {
-    type: [
-      String as PropType<PuikAvatarMode>,
-      String as PropType<PuikAvatarModeString>,
-    ],
+    type: String as PropType<PuikAvatarMode>,
     required: false,
-    default: 'primary',
+    default: PuikAvatarMode.PRIMARY,
   },
   size: {
-    type: [
-      String as PropType<PuikAvatarSize>,
-      String as PropType<PuikAvatarSizeString>,
-    ],
+    type: String as PropType<PuikAvatarSize>,
     required: false,
-    default: 'medium',
+    default: PuikAvatarSize.MEDIUM,
   },
   type: {
-    type: [
-      String as PropType<PuikAvatarType>,
-      String as PropType<PuikAvatarTypeString>,
-    ],
+    type: String as PropType<PuikAvatarType>,
     required: false,
-    default: 'initials',
+    default: PuikAvatarType.INITIALS,
   },
   icon: {
     type: String,

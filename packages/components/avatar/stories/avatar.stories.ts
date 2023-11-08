@@ -1,9 +1,12 @@
 import { ref } from 'vue'
 import { PuikIcon } from '@puik/components'
-import { avatarModes, avatarSizes, avatarTypes } from '../src/avatar'
+import { PuikAvatarMode, PuikAvatarSize, PuikAvatarType } from '../src/avatar'
 import PuikAvatar from './../src/avatar.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
+const avatarModes = Object.values(PuikAvatarMode)
+const avatarSizes = Object.values(PuikAvatarSize)
+const avatarTypes = Object.values(PuikAvatarType)
 const avatarModesSummary = avatarModes.join('|')
 const avatarSizesSummary = avatarSizes.join('|')
 const avatarTypesSummary = avatarTypes.join('|')
