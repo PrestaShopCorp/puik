@@ -93,10 +93,21 @@ module.exports = {
     screens: {
       xs: '320px',
     },
-    boxShadow: {
-      overlay: '0px 12px 60px 0px rgba(0, 0, 0, 0.1)',
-      sticky: '0px 6px 12px rgba(0, 0, 0, 0.1)',
-      'pop-modal': '0px 12px 24px rgba(0, 0, 0, 0.1)',
-    },
+  },
+  opacity: {
+    overlay: '0.8',
+  },
+  boxShadow: {
+    DEFAULT: '0px 1px 3px 0px rgba(29, 29, 27, 0.2)',
+    sm: '0px 1px 2px 0px rgba(29, 29, 27, 0.05)',
+    md: '0px 4px 6px -1px rgba(29, 29, 27, 0.2)',
+    lg: '0px 10px 15px -3px rgba(29, 29, 27, 0.2)',
+    xl: '0px 20px 25px -5px rgba(29, 29, 27, 0.2)',
+    '2xl': '0px 25px 60px -12px rgba(29, 29, 27, 0.25)',
+    inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+    none: 'none',
+    overlay: '0px 12px 60px 0px rgba(0, 0, 0, 0.1)',
+    sticky: '0px 6px 12px rgba(0, 0, 0, 0.1)',
+    'pop-modal': '0px 12px 24px rgba(0, 0, 0, 0.1)',
   },
 }
