@@ -2,7 +2,9 @@
   <div
     :id="id"
     :class="[
-      `puik-tag puik-tag--${variant as PuikTagColorVariant} puik-tag--${size as PuikTagSizeVariant}`,
+      `puik-tag puik-tag--${variant as PuikTagColorVariant} puik-tag--${
+        size as PuikTagSizeVariant
+      }`,
       { 'puik-tag--disabled': disabled },
     ]"
   >
@@ -10,7 +12,7 @@
     <div class="puik-tag__content">
       <puik-tooltip
         v-if="content?.length >= 30"
-        :position="(tooltipPosition as PuikTooltipPosition)"
+        :position="tooltipPosition"
         :description="content"
       >
         <template #description>{{ content }}</template>
@@ -22,22 +24,17 @@
 </template>
 
 <script setup lang="ts">
-import { PuikIcon } from '@puik/components/icon'
-import { PuikTooltip } from '@puik/components/tooltip'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
+import { PuikTooltip } from '@prestashopcorp/puik-components/tooltip'
 import {
   tagProps,
   type PuikTagSizeVariant,
   type PuikTagColorVariant,
 } from './tag'
-import type { PuikTooltipPosition } from '@puik/components/tooltip'
 defineOptions({
   name: 'PuikTag',
 })
 
-const props = defineProps(tagProps)
-const emit = defineEmits(['close'])
-
-const handleCloseEvent = () => {
-  emit('close')
-}
+defineProps(tagProps)
+defineEmits(['close'])
 </script>

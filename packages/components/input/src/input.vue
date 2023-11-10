@@ -59,15 +59,22 @@
 <script setup lang="ts">
 import { computed, ref, useSlots } from 'vue'
 import { isNumber } from '@vueuse/core'
-import { PuikIcon } from '@puik/components/icon'
-import { slotIsEmpty } from '@puik/utils'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
+import { slotIsEmpty } from '@prestashopcorp/puik-utils'
 import PuikInputControls from './controls/controls.vue'
-import { inputEmits, inputProps } from './input'
+import { PuikInputTypes, type InputProps } from './input'
 defineOptions({
   name: 'PuikInput',
 })
-const props = defineProps(inputProps)
-const emit = defineEmits(inputEmits)
+const props = withDefaults(defineProps<InputProps>(), {
+  type: PuikInputTypes.Text,
+  step: 1,
+  min: Number.NEGATIVE_INFINITY,
+  max: Number.POSITIVE_INFINITY,
+})
+const emit = defineEmits<{
+  'update:modelValue': [value: string | number | undefined]
+}>()
 const slots = useSlots()
 const isFocus = ref(false)
 const passwordIsVisible = ref(false)
@@ -98,7 +105,7 @@ const decrease = () => {
 
 const hasError = computed(() => props.error || slotIsEmpty(slots.error))
 
-const value = computed<string | number>({
+const value = computed<string | number | undefined>({
   get() {
     if (isNumber(props.modelValue)) {
       return parseFloat(props.modelValue.toFixed(props.precision))

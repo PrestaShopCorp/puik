@@ -6,12 +6,16 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { iconProps } from './icon'
+import { type IconProps } from './icon'
 defineOptions({
   name: 'PuikIcon',
 })
 
-const props = defineProps(iconProps)
+const props = withDefaults(defineProps<IconProps>(), {
+  nodeType: 'div',
+  fontSize: '1rem',
+  color: '#00000',
+})
 
 const fontSize = computed(() => {
   if (!Number.isNaN(Number(props.fontSize))) {

@@ -1,4 +1,4 @@
-import { withInstall } from '@puik/utils'
+import { withInstall } from '@prestashopcorp/puik-utils'
 
 import ProgressStepper from './src/progress-stepper.vue'
 import ProgressStepperStep from './src/progress-stepper-step.vue'

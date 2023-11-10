@@ -26,17 +26,17 @@
 
 <script setup lang="ts">
 import { inject, computed } from 'vue'
-import { PuikButton } from '@puik/components/button'
-import { progressStepperStepProps } from './progress-stepper-step'
+import { PuikButton } from '@prestashopcorp/puik-components/button'
+import { type ProgressStepperStepProps } from './progress-stepper-step'
 import { progressStepperKey, type PuikStep } from './progress-stepper'
 
 defineOptions({
   name: 'PuikProgressStepperStep',
 })
 
-const props = defineProps(progressStepperStepProps)
+const props = defineProps<ProgressStepperStepProps>()
 const emit = defineEmits<{
-  (e: 'click', step: PuikStep): void
+  click: [step: PuikStep]
 }>()
 const progressStepper = inject(progressStepperKey, null)
 progressStepper?.steps?.value.push(props.step)

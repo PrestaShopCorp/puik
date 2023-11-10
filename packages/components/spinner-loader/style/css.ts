@@ -1,2 +1,2 @@
-import '@puik/components/base/style/css'
-import '@puik/theme/puik-spinner-loader.css'
+import '@prestashopcorp/puik-components/base/style/css'
+import '@prestashopcorp/puik-theme/puik-spinner-loader.css'

@@ -16,16 +16,19 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/locale'
-import { paginationLoaderProps } from './pagination-loader'
+import { PuikButton } from '@prestashopcorp/puik-components/button'
+import { useLocale } from '@prestashopcorp/puik-locale'
+import { type PaginationLoaderProps } from './pagination-loader'
 defineOptions({
   name: 'PuikPaginationLoader',
 })
 
-const props = defineProps(paginationLoaderProps)
+const props = withDefaults(defineProps<PaginationLoaderProps>(), {
+  modelValue: 1,
+})
+
 defineEmits<{
-  (e: 'update:modelValue', value: number): void
+  'update:modelValue': [value: number]
 }>()
 
 const { t } = useLocale()

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
 import { faker } from '@faker-js/faker'
-import { locales } from '@puik/locale'
+import { locales } from '@prestashopcorp/puik-locale'
 import PuikTable from '../src/table.vue'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 import type { PuikTableHeader } from '../src/table'
@@ -40,7 +40,7 @@ describe('Table tests', () => {
 
   const factory = (
     propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    options: MountingOptions<any> = {},
   ) => {
     wrapper = mount(PuikTable, {
       props: {
@@ -91,7 +91,7 @@ describe('Table tests', () => {
         slots: {
           'item-initials': ({ item }) => getIinitials(item),
         },
-      }
+      },
     )
     const displayedItems = getCols(0)
     expect(displayedItems[0].text()).toBe(getIinitials(defaultItems[0]))
@@ -105,7 +105,7 @@ describe('Table tests', () => {
         slots: {
           'header-firstname': ({ header }) => header.value,
         },
-      }
+      },
     )
     const header = getHeaders()[0]
     expect(header.text()).toBe(value)
@@ -187,19 +187,19 @@ describe('Table tests', () => {
     const checkbox = getRowCheckbox(0)
     // Check label when selection is empty
     expect(getCheckboxLabel(headerCheckbox).text()).toBe(
-      tableLocales.selectAllLabel
+      tableLocales.selectAllLabel,
     )
     expect(getCheckboxLabel(checkbox).text()).toBe(tableLocales.selectLabel)
     // Check label when one item is selected
     await wrapper.setProps({ selection: [0] })
     expect(getCheckboxLabel(headerCheckbox).text()).toBe(
-      tableLocales.selectAllLabel
+      tableLocales.selectAllLabel,
     )
     expect(getCheckboxLabel(checkbox).text()).toBe(tableLocales.unselectLabel)
     // Check label when all items are selected
     await wrapper.setProps({ selection: [0, 1, 2, 3, 4] })
     expect(getCheckboxLabel(headerCheckbox).text()).toBe(
-      tableLocales.unselectAllLabel
+      tableLocales.unselectAllLabel,
     )
     expect(getCheckboxLabel(checkbox).text()).toBe(tableLocales.unselectLabel)
   })

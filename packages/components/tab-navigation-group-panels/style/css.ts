@@ -1,2 +1,2 @@
-import '@puik/components/base/style/css'
-import '@puik/theme/puik-tab-navigation-group-panels.css'
+import '@prestashopcorp/puik-components/base/style/css'
+import '@prestashopcorp/puik-theme/puik-tab-navigation-group-panels.css'

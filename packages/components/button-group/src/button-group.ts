@@ -1,21 +1,14 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, InjectionKey, Ref } from 'vue'
+import type { InjectionKey, Ref } from 'vue'
 import type ButtonGroup from './button-group.vue'
-import type { ButtonProps } from '@puik/components'
+import type { ButtonProps } from '@prestashopcorp/puik-components'
 
 export type ButtonGroupType = ButtonProps & {
   label: string
 }
 
-export const buttonGroupProps = buildProps({
-  modelValue: {
-    type: [String, Number, Object, Array],
-    required: false,
-    default: undefined,
-  },
-} as const)
-
-export type ButtonGroupProps = ExtractPropTypes<typeof buttonGroupProps>
+export interface ButtonGroupProps {
+  modelValue?: string | number | Record<string, any> | any[]
+}
 
 export type ButtonGroupInstance = InstanceType<typeof ButtonGroup>
 

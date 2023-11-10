@@ -40,18 +40,18 @@
 
 <script setup lang="ts">
 import { computed, inject } from 'vue'
-import { generateId } from '@puik/utils'
-import { PuikIcon } from '@puik/components/icon'
+import { generateId } from '@prestashopcorp/puik-utils'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
 import { accordionGroupKey } from './accordion-group'
-import { accordionProps, accordionEmits } from './accordion'
+import type { AccordionProps } from './accordion'
 defineOptions({
   name: 'PuikAccordion',
 })
-const emit = defineEmits(accordionEmits)
+const emit = defineEmits<{ click: [name: string] }>()
 
 const id = `puik-accordion-${generateId()}`
 
-const props = defineProps(accordionProps)
+const props = defineProps<AccordionProps>()
 const { accordionsList, handleChange, expandedAccordions } =
   inject(accordionGroupKey)!
 

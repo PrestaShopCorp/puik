@@ -21,11 +21,20 @@
 </template>
 
 <script setup lang="ts">
-import { spinnerLoaderProps } from './spinner-loader'
+import {
+  PuikSpinnerLoaderColors,
+  PuikSpinnerLoaderPositions,
+  PuikSpinnerLoaderSizes,
+  type SpinnerLoaderProps,
+} from './spinner-loader'
 
 defineOptions({
   name: 'PuikSpinnerLoader',
 })
 
-defineProps(spinnerLoaderProps)
+withDefaults(defineProps<SpinnerLoaderProps>(), {
+  size: PuikSpinnerLoaderSizes.Medium,
+  color: PuikSpinnerLoaderColors.Primary,
+  position: PuikSpinnerLoaderPositions.Bottom,
+})
 </script>

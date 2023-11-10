@@ -30,10 +30,16 @@
 
 <script setup lang="ts">
 import { Popover, PopoverPanel, PopoverButton } from '@headlessui/vue'
-import { menuProps } from './menu'
+import { PuikMenuAligns, type MenuProps, PuikMenuPositions } from './menu'
 
 defineOptions({
   name: 'PuikMenu',
 })
-defineProps(menuProps)
+
+withDefaults(defineProps<MenuProps>(), {
+  maxHeight: 'none',
+  width: '200px',
+  align: PuikMenuAligns.Left,
+  position: PuikMenuPositions.Bottom,
+})
 </script>

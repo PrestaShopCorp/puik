@@ -1,4 +1,4 @@
-import { buildProps } from '@puik/utils'
+import { buildProps } from '@prestashopcorp/puik-utils'
 import type { ExtractPropTypes } from 'vue'
 import type Switch from './switch.vue'
 

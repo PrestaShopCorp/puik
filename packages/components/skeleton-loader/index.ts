@@ -1,4 +1,4 @@
-import { withInstall } from '@puik/utils'
+import { withInstall } from '@prestashopcorp/puik-utils'
 
 import SkeletonLoader from './src/skeleton-loader.vue'
 import SkeletonLoaderGroup from './src/skeleton-loader-group.vue'

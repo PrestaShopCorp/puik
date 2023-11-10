@@ -14,7 +14,7 @@ describe('Alert tests', () => {
 
   const factory = (
     propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    options: MountingOptions<any> = {},
   ) => {
     wrapper = mount(Alert, {
       props: {

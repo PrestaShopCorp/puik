@@ -5,9 +5,11 @@
 </template>
 
 <script setup lang="ts">
-import { cardProps } from './card'
+import { PuikCardVariants, type CardProps } from './card'
 defineOptions({
   name: 'PuikCard',
 })
-defineProps(cardProps)
+withDefaults(defineProps<CardProps>(), {
+  variant: PuikCardVariants.Default,
+})
 </script>

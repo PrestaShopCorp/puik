@@ -1,3 +1,3 @@
-import '@puik/components/base/style/css'
-import '@puik/theme/puik-table.css'
-import '@puik/theme/puik-checkbox.css'
+import '@prestashopcorp/puik-components/base/style/css'
+import '@prestashopcorp/puik-theme/puik-table.css'
+import '@prestashopcorp/puik-theme/puik-checkbox.css'

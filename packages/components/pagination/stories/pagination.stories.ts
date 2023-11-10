@@ -1,13 +1,10 @@
 import { ref } from 'vue'
-import {
-  PuikPaginationVariantEnum,
-  puikPaginationItemsPerPageOptions,
-  puikPaginationVariants,
-} from '../src/pagination'
+import { PuikPaginationVariants } from '../src/pagination'
 import PuikPagination from './../src/pagination.vue'
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
-const paginationVariantsSummary = puikPaginationVariants.join('|')
+const paginationVariants = Object.values(PuikPaginationVariants)
+const paginationVariantsSummary = paginationVariants.join('|')
 
 export default {
   title: 'Components/Pagination',
@@ -15,11 +12,11 @@ export default {
   argTypes: {
     variant: {
       control: 'select',
-      options: puikPaginationVariants,
+      options: paginationVariants,
       description: 'Set the pagination variant',
       table: {
         defaultValue: {
-          summary: PuikPaginationVariantEnum.medium,
+          summary: PuikPaginationVariants.Medium,
         },
         type: {
           summary: paginationVariantsSummary,
@@ -53,7 +50,7 @@ export default {
           summary: 'number[]',
         },
         defaultValue: {
-          summary: puikPaginationItemsPerPageOptions,
+          summary: [5, 10, 15],
         },
       },
     },
@@ -104,7 +101,7 @@ export default {
     },
   },
   args: {
-    variant: PuikPaginationVariantEnum.medium,
+    variant: PuikPaginationVariants.Medium,
     totalItem: 500,
     itemCount: 25,
     label: '',

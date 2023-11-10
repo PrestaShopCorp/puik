@@ -7,13 +7,13 @@
 <script setup lang="ts">
 import { provide } from 'vue'
 import { useVModel } from '@vueuse/core'
-import { buttonGroupProps, ButtonGroupKey } from './button-group'
+import { type ButtonGroupProps, ButtonGroupKey } from './button-group'
 
 defineOptions({
   name: 'PuikButtonGroup',
 })
 
-const props = defineProps(buttonGroupProps)
+const props = defineProps<ButtonGroupProps>()
 const selected = useVModel(props, 'modelValue')
 
 provide(ButtonGroupKey, { selected })

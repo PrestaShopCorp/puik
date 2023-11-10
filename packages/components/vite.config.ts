@@ -1,4 +1,3 @@
-// TODO: REPLACE FAST-GLOB BY GLOB
 import { resolve } from 'path'
 import glob from 'fast-glob'
 import { defineConfig } from 'vite'
@@ -39,7 +38,7 @@ export default defineConfig({
       external: [
         ...Object.keys(pkg.dependencies),
         ...Object.keys(pkg.peerDependencies),
-        /^@puik\/theme\/.*/,
+        /^@prestashopcorp\/puik-theme\/.*/,
       ],
       input: excludeFiles(
         await glob('./**/*.{vue,ts}', {

@@ -1,8 +1,10 @@
 import PuikLink from './../src/link.vue'
-import { linkSizes, targetVariants } from './../src/link'
+import { PuikLinkSizes, PuikLinkTargetVariants } from './../src/link'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
+const targetVariants = Object.values(PuikLinkTargetVariants)
 const targetVariantsSummary = targetVariants.join('|')
+const linkSizes = Object.values(PuikLinkSizes)
 const linkSizesSummary = linkSizes.join('|')
 
 export default {

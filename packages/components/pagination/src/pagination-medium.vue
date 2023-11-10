@@ -84,14 +84,17 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/locale'
-import { paginationMediumProps } from './pagination-medium'
+import { PuikButton } from '@prestashopcorp/puik-components/button'
+import { useLocale } from '@prestashopcorp/puik-locale'
+import { type PaginationMediumProps } from './pagination-medium'
 defineOptions({
   name: 'PuikPaginationMedium',
 })
 
-const props = defineProps(paginationMediumProps)
+const props = withDefaults(defineProps<PaginationMediumProps>(), {
+  modelValue: 1,
+  itemCount: 0,
+})
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number): void
 }>()

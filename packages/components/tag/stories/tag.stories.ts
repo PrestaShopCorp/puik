@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { PuikIcon, tooltipPositions } from '@puik/components'
+import { PuikIcon, tooltipPositions } from '@prestashopcorp/puik-components'
 import { tagColorsVariants, tagSizeVariants } from '../src/tag'
 import PuikTag from './../src/tag.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'

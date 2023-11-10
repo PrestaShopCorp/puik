@@ -6,7 +6,7 @@
     :aria-label="t('puik.pagination.ariaLabel')"
   >
     <pagination-loader
-      v-if="variant === PuikPaginationVariantEnum.loader"
+      v-if="variant === PuikPaginationVariants.Loader"
       v-model="currentPage"
       :label="currentLabel"
       :loader-button-label="loaderButtonLabel"
@@ -15,26 +15,26 @@
 
     <div v-else class="puik-pagination__content">
       <pagination-small
-        v-if="variant === PuikPaginationVariantEnum.small"
+        v-if="variant === PuikPaginationVariants.Small"
         v-model="currentPage"
         v-bind="commonPaginationProps"
       />
 
       <pagination-mobile
-        v-if="variant === PuikPaginationVariantEnum.mobile"
+        v-if="variant === PuikPaginationVariants.Mobile"
         v-model="currentPage"
         v-bind="commonPaginationProps"
       />
 
       <pagination-medium
-        v-if="variant === PuikPaginationVariantEnum.medium && !disabled"
+        v-if="variant === PuikPaginationVariants.Medium && !disabled"
         v-model="currentPage"
         v-bind="commonPaginationProps"
         :total-item="totalItem"
       />
 
       <pagination-large
-        v-if="variant === PuikPaginationVariantEnum.large"
+        v-if="variant === PuikPaginationVariants.Large"
         v-model:page="currentPage"
         :items-per-page="itemsPerPage"
         :total-item="totalItem"
@@ -48,8 +48,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useLocale } from '@puik/locale'
-import { paginationProps, PuikPaginationVariantEnum } from './pagination'
+import { useLocale } from '@prestashopcorp/puik-locale'
+import { type PaginationProps, PuikPaginationVariants } from './pagination'
 
 import PaginationLoader from './pagination-loader.vue'
 import PaginationMobile from './pagination-mobile.vue'
@@ -61,10 +61,15 @@ defineOptions({
   name: 'PuikPagination',
 })
 
-const props = defineProps(paginationProps)
+const props = withDefaults(defineProps<PaginationProps>(), {
+  variant: PuikPaginationVariants.Medium,
+  itemsPerPage: 5,
+  itemsPerPageOptions: () => [5, 10, 15],
+  itemCount: 0,
+})
 const emit = defineEmits<{
-  (e: 'update:page', value: number): void
-  (e: 'update:itemsPerPage', value: number): void
+  'update:page': [value: number]
+  'update:itemsPerPage': [value: number]
 }>()
 
 const { t } = useLocale()
@@ -79,14 +84,14 @@ const currentLabel = computed(() => {
   const path = `puik.pagination.${props.variant}.label`
 
   switch (props.variant) {
-    case PuikPaginationVariantEnum.mobile:
-    case PuikPaginationVariantEnum.small:
+    case PuikPaginationVariants.Mobile:
+    case PuikPaginationVariants.Small:
       return t(path, {
         page: currentPage.value,
         maxPage: maxPage.value,
       })
-    case PuikPaginationVariantEnum.medium:
-    case PuikPaginationVariantEnum.large:
+    case PuikPaginationVariants.Medium:
+    case PuikPaginationVariants.Large:
       return t(path, {
         totalItem: props.totalItem,
       })

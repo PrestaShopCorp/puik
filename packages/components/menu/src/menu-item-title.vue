@@ -5,10 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { menuItemTitleProps } from './menu-item-title'
-
 defineOptions({
   name: 'PuikMenuItemTitle',
 })
-defineProps(menuItemTitleProps)
 </script>

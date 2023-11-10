@@ -1,5 +1,5 @@
 {
-  "name": "@puik/tailwind-preset",
+  "name": "@prestashopcorp/puik-tailwind-preset",
   "description": "Puik tailwind preset",
   "type": "module",
   "version": "0.0.1",

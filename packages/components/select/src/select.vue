@@ -103,11 +103,16 @@
 <script setup lang="ts">
 import { computed, provide, ref, useSlots, watch } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
-import { isObject, isFunction, isArray, slotIsEmpty } from '@puik/utils'
-import { useLocale } from '@puik/locale'
-import { PuikInput } from '@puik/components/input'
-import { PuikIcon } from '@puik/components/icon'
-import { selectProps, selectEmits, selectKey } from './select'
+import {
+  isObject,
+  isFunction,
+  isArray,
+  slotIsEmpty,
+} from '@prestashopcorp/puik-utils'
+import { useLocale } from '@prestashopcorp/puik-locale'
+import { PuikInput } from '@prestashopcorp/puik-components/input'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
+import { type SelectProps, selectKey } from './select'
 import PuikOption from './option.vue'
 import type { DefaultOption } from './option'
 
@@ -118,11 +123,16 @@ defineOptions({
 const optionsList = ref<DefaultOption[]>([])
 const labelInput = ref<HTMLInputElement>()
 
-const props = defineProps(selectProps)
+const props = withDefaults(defineProps<SelectProps>(), {
+  labelKey: 'label',
+  valueKey: 'value',
+  zindex: 1000,
+  fullWidth: true,
+})
 
 const slots = useSlots()
 
-const emit = defineEmits(selectEmits)
+const emit = defineEmits<{ 'update:modelValue': [option: any] }>()
 
 const { t } = useLocale()
 
@@ -150,7 +160,7 @@ const filteredItems = computed(() => {
       if (isFunction(props.customFilterMethod)) {
         return props.customFilterMethod(query.value)
       }
-      return props.options.filter((option) =>
+      return props.options.filter((option: any) =>
         (isObject(option) ? option[props.labelKey] : option)
           .toString()
           .toLowerCase()

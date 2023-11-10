@@ -24,14 +24,16 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/locale'
-import { paginationSmallProps } from './pagination-small'
+import { PuikButton } from '@prestashopcorp/puik-components/button'
+import { useLocale } from '@prestashopcorp/puik-locale'
+import { type PaginationSmallProps } from './pagination-small'
 defineOptions({
   name: 'PuikPaginationSmall',
 })
 
-const props = defineProps(paginationSmallProps)
+const props = withDefaults(defineProps<PaginationSmallProps>(), {
+  modelValue: 1,
+})
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number): void
 }>()

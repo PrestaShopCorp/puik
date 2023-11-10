@@ -27,22 +27,23 @@
 <script setup lang="ts">
 import { computed, inject, toRaw, watch } from 'vue'
 import { ListboxOption } from '@headlessui/vue'
-import { PuikIcon } from '@puik/components/icon'
-import { isObject } from '@puik/utils'
-import { optionProps } from './option'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
+import { isObject } from '@prestashopcorp/puik-utils'
+import { type OptionProps } from './option'
 import { selectKey } from './select'
 defineOptions({
   name: 'PuikOption',
 })
 
-const props = defineProps(optionProps)
+const props = defineProps<OptionProps>()
 
 const { optionsList, selectedValue, handleAutoComplete, labelKey } =
   inject(selectKey)!
 
 const label = computed(
   () =>
-    props.label ?? (isObject(props.value) ? props.value[labelKey] : props.value)
+    props.label ??
+    (isObject(props.value) ? props.value[labelKey] : props.value),
 )
 
 const option = {
@@ -65,6 +66,6 @@ watch(
       sendLabel()
     }
   },
-  { immediate: true }
+  { immediate: true },
 )
 </script>

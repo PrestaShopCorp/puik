@@ -1,9 +1,10 @@
-import { PuikButton } from '@puik/components/button'
-import { PuikIcon } from '@puik/components/icon'
+import { PuikButton } from '@prestashopcorp/puik-components/button'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
 import PuikTooltip from './../src/tooltip.vue'
-import { tooltipPositions } from './../src/tooltip'
+import { PuikTooltipPositions } from './../src/tooltip'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
+const tooltipPositions = Object.values(PuikTooltipPositions)
 const tooltipPositionsSummary = tooltipPositions.join('|')
 
 export default {

@@ -1,76 +1,30 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
 import type Modal from './modal.vue'
 
 export const DESTRUCTIVE_ICON_NAME = 'warning'
 
-/**
- * @deprecated Replace with string value
- */
-export enum PuikModalVariant {
-  DESTRUCTIVE = 'destructive',
-  FEEDBACK = 'feedback',
-  DIALOG = 'dialog',
+export enum PuikModalVariants {
+  Destructive = 'destructive',
+  Feedback = 'feedback',
+  Dialog = 'dialog',
 }
-export type ModalVariantType = `${PuikModalVariant}`
 
-/**
- * @deprecated Replace with string value
- */
-export enum PuikModalSize {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-  LARGE = 'large',
+export enum PuikModalSizes {
+  Small = 'small',
+  Medium = 'medium',
+  Large = 'large',
 }
-export type ModalSizeType = `${PuikModalSize}`
 
-export const modalProps = buildProps({
-  title: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  mainButtonText: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  isMainButtonDisabled: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  secondButtonText: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  sideButtonText: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  variant: {
-    type: String as PropType<ModalVariantType>,
-    required: false,
-    default: 'feedback',
-  },
-  size: {
-    type: String as PropType<ModalSizeType>,
-    required: false,
-    default: 'small',
-  },
-  isOpen: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  titleIcon: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-} as const)
+export interface ModalProps {
+  title?: string
+  mainButtonText?: string
+  isMainButtonDisabled?: boolean
+  secondButtonText?: string
+  sideButtonText?: string
+  variant?: `${PuikModalVariants}`
+  size?: `${PuikModalSizes}`
+  isOpen?: boolean
+  titleIcon?: string
+}
 
 export const modalEmits = [
   'close',
@@ -78,7 +32,5 @@ export const modalEmits = [
   'button-second',
   'button-side',
 ]
-
-export type ModalProps = ExtractPropTypes<typeof modalProps>
 
 export type ModalInstance = InstanceType<typeof Modal>

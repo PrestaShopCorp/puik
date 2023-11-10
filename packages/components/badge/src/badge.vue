@@ -5,10 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import { badgeProps } from './badge'
+import { PuikBadgeVariants } from './badge'
+import type { BadgeProps } from './badge'
 defineOptions({
   name: 'PuikBadge',
 })
 
-defineProps(badgeProps)
+withDefaults(defineProps<BadgeProps>(), {
+  variant: PuikBadgeVariants.Neutral,
+})
 </script>

@@ -1,9 +1,10 @@
 import PrestaShopSloganBg from '../../../../docs/assets/img/prestashop-slogan-bg.jpg'
-import { cardVariants } from '../src/card'
+import { PuikCardVariants } from '../src/card'
 import PuikCard from './../src/card.vue'
 import PuikButton from './../../button/src/button.vue'
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
+const cardVariants = Object.values(PuikCardVariants)
 const cardVariantsSummary = cardVariants.join('|')
 
 export default {

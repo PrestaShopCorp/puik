@@ -1,4 +1,4 @@
-import { withInstallFunction } from '@puik/utils'
+import { withInstallFunction } from '@prestashopcorp/puik-utils'
 
 import Notify from './src/notify'
 

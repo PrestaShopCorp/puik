@@ -1,4 +1,4 @@
-import { withInstall } from '@puik/utils'
+import { withInstall } from '@prestashopcorp/puik-utils'
 
 import AccordionGroup from './src/accordion-group.vue'
 import Accordion from './src/accordion.vue'

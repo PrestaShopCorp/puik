@@ -34,17 +34,17 @@
 <script setup lang="ts">
 import { provide, inject, computed } from 'vue'
 import { Menu, MenuButton, MenuItems } from '@headlessui/vue'
-import { generateId } from '@puik/utils'
+import { generateId } from '@prestashopcorp/puik-utils'
 import PuikAccordion from '../../accordion'
 import PuikButton from '../../button'
 import PuikIcon from '../../icon'
 import { groupItemKey, sidebarKey } from './sidebar'
-import { sidebarGroupItemProps } from './sidebar-group-item'
+import { type SidebarGroupItemsProps } from './sidebar-group-item'
 
 defineOptions({
   name: 'PuikSidebarGroupItem',
 })
-const props = defineProps(sidebarGroupItemProps)
+const props = defineProps<SidebarGroupItemsProps>()
 
 const accordionName = props.name ?? `sidebar-item-${generateId()}`
 const sidebarValues = inject(sidebarKey, null)

@@ -1,7 +1,8 @@
-import { badgeVariants } from '../src/badge'
+import { PuikBadgeVariants } from '../src/badge'
 import PuikBadge from './../src/badge.vue'
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
+const badgeVariants = Object.values(PuikBadgeVariants)
 const badgeVariantsSummary = badgeVariants.join('|')
 
 export default {

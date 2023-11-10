@@ -48,8 +48,8 @@
 <script setup lang="ts">
 import { computed, useSlots, ref, watch, nextTick, onMounted } from 'vue'
 import { useVModel } from '@vueuse/core'
-import { slotIsEmpty, clamp } from '@puik/utils'
-import { PuikIcon } from '@puik/components/icon'
+import { slotIsEmpty, clamp } from '@prestashopcorp/puik-utils'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
 import { textareaProps } from './textarea'
 defineOptions({
   name: 'PuikTextarea',
@@ -97,7 +97,7 @@ const computeHeight = () => {
     textarea.value.style.height = `${clamp(
       textarea.value.scrollHeight,
       minHeight,
-      maxHeight
+      maxHeight,
     )}px`
   })
 }

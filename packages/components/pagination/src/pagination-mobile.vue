@@ -23,14 +23,16 @@
 </template>
 
 <script setup lang="ts">
-import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/locale'
-import { paginationMobileProps } from './pagination-mobile'
+import { PuikButton } from '@prestashopcorp/puik-components/button'
+import { useLocale } from '@prestashopcorp/puik-locale'
+import { type PaginationMobileProps } from './pagination-mobile'
 defineOptions({
   name: 'PuikPaginationMobile',
 })
 
-defineProps(paginationMobileProps)
+withDefaults(defineProps<PaginationMobileProps>(), {
+  modelValue: 1,
+})
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number): void
 }>()

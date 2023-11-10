@@ -21,13 +21,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useVModel } from '@vueuse/core'
-import { generateId } from '@puik/utils'
-import { radioProps, radioEmits } from './radio'
+import { generateId } from '@prestashopcorp/puik-utils'
+import type { RadioProps } from './radio'
 defineOptions({
   name: 'PuikRadio',
 })
-const props = defineProps(radioProps)
-const emit = defineEmits(radioEmits)
+const props = defineProps<RadioProps>()
+const emit = defineEmits<{
+  'update:modelValue': [value: boolean | string | number]
+}>()
 const isFocus = ref(false)
 const id = `puik-radio-${generateId()}`
 

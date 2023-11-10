@@ -1,26 +1,11 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, InjectionKey, PropType, Ref } from 'vue'
+import type { InjectionKey, Ref } from 'vue'
 import type AccordionGroup from './accordion-group.vue'
 
-export const accordionGroupProps = buildProps({
-  modelValue: {
-    type: [String, Array, null] as PropType<string | string[] | null>,
-    required: false,
-    default: null,
-  },
-  multiple: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  contained: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-} as const)
-
-export type AccordionGroupProps = ExtractPropTypes<typeof accordionGroupProps>
+export interface AccordionGroupProps {
+  modelValue?: string | string[] | null
+  multiple?: boolean
+  contained?: boolean
+}
 
 export type AccordionGroupInstance = InstanceType<typeof AccordionGroup>
 
@@ -32,7 +17,7 @@ export type AccordionState = {
 export type AccordionGroupContext = {
   accordionsList: Ref<AccordionState[]>
   handleChange: (name: string) => void
-  expandedAccordions: Ref<string | string[]>
+  expandedAccordions: Ref<AccordionGroupProps['modelValue']>
 }
 
 export const accordionGroupKey: InjectionKey<AccordionGroupContext> =

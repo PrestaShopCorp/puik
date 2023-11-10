@@ -1,9 +1,11 @@
 import { capitalize } from 'lodash-unified'
 import PuikButton from './../src/button.vue'
-import { buttonVariants, buttonSizes } from './../src/button'
+import { PuikButtonVariants, PuikButtonSizes } from './../src/button'
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
+const buttonVariants = Object.values(PuikButtonVariants)
 const buttonVariantsSummary = buttonVariants.join('|')
+const buttonSizes = Object.values(PuikButtonSizes)
 const buttonSizesSummary = buttonSizes.join('|')
 
 export default {

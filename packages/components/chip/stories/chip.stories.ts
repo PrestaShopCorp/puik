@@ -1,10 +1,16 @@
 import { ref } from 'vue'
-import { PuikIcon, PuikButton, tooltipPositions } from '@puik/components'
-import { chipSizeVariants } from '../src/chip'
+import {
+  PuikIcon,
+  PuikButton,
+  PuikTooltipPositions,
+} from '@prestashopcorp/puik-components'
+import { PuikChipSizeVariants } from '../src/chip'
 import PuikChip from './../src/chip.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
+const chipSizeVariants = Object.values(PuikChipSizeVariants)
 const chipSizeVariantsSummary = chipSizeVariants.join('|')
+const tooltipPositions = Object.values(PuikTooltipPositions)
 const tooltipPositionsSummary = tooltipPositions.join('|')
 
 export default {

@@ -1,4 +1,4 @@
-import { buildProps } from '@puik/utils'
+import { buildProps } from '@prestashopcorp/puik-utils'
 import type { ExtractPropTypes, InjectionKey, Ref } from 'vue'
 import type TabNavigation from './tab-navigation.vue'
 

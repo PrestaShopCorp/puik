@@ -11,12 +11,14 @@
 </template>
 
 <script setup lang="ts">
-import { useLocale } from '@puik/locale'
-import { skeletonLoaderGroupProps } from './skeleton-loader-group'
+import { useLocale } from '@prestashopcorp/puik-locale'
+import { type SkeletonLoaderGroupProps } from './skeleton-loader-group'
 defineOptions({
   name: 'PuikSkeletonLoaderGroup',
 })
 
-defineProps(skeletonLoaderGroupProps)
+withDefaults(defineProps<SkeletonLoaderGroupProps>(), {
+  tag: 'div',
+})
 const { t } = useLocale()
 </script>

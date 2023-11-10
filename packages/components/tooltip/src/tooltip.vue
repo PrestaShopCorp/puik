@@ -44,8 +44,8 @@
 import { onMounted, ref } from 'vue'
 import { createPopper } from '@popperjs/core'
 import { useTimeoutFn } from '@vueuse/core'
-import { generateId } from '@puik/utils'
-import { tooltipProps } from './tooltip'
+import { generateId } from '@prestashopcorp/puik-utils'
+import { PuikTooltipPositions, type TooltipProps } from './tooltip'
 import type { Instance as PopperInstance } from '@popperjs/core'
 defineOptions({
   name: 'PuikTooltip',
@@ -57,7 +57,11 @@ const isVisible = ref(false)
 let popperInstance: PopperInstance | null = null
 const id = `puik-tooltip-${generateId()}`
 
-const props = defineProps(tooltipProps)
+const props = withDefaults(defineProps<TooltipProps>(), {
+  position: PuikTooltipPositions.Bottom,
+  zindex: 1000,
+  disappearDelay: 500,
+})
 
 const { start, stop, isPending } = useTimeoutFn(() => {
   isVisible.value = false

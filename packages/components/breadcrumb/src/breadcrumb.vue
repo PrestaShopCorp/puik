@@ -38,10 +38,12 @@
 <script setup lang="ts">
 import PuikLink from '../../link/src/link.vue'
 import PuikIcon from '../../icon/src/icon.vue'
-import { breadcrumbProps } from './breadcrumb'
+import type { BreadcrumbProps } from './breadcrumb'
 defineOptions({
   name: 'PuikBreadcrumb',
 })
 
-defineProps(breadcrumbProps)
+withDefaults(defineProps<BreadcrumbProps>(), {
+  separatorIcon: 'keyboard_arrow_right',
+})
 </script>

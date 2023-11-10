@@ -1,13 +1,16 @@
 import PuikSpinnerLoader from './../src/spinner-loader.vue'
 import {
-  puikSpinnerLoaderSizes,
-  puikSpinnerLoaderColors,
-  puikSpinnerLoaderPositions,
+  PuikSpinnerLoaderColors,
+  PuikSpinnerLoaderPositions,
+  PuikSpinnerLoaderSizes,
 } from './../src/spinner-loader'
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
+const puikSpinnerLoaderSizes = Object.values(PuikSpinnerLoaderSizes)
 const sizesSummary = puikSpinnerLoaderSizes.join('|')
+const puikSpinnerLoaderColors = Object.values(PuikSpinnerLoaderColors)
 const colorsSummary = puikSpinnerLoaderColors.join('|')
+const puikSpinnerLoaderPositions = Object.values(PuikSpinnerLoaderPositions)
 const positionSummary = puikSpinnerLoaderPositions.join('|')
 
 export default {

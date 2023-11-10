@@ -8,10 +8,16 @@
 </template>
 
 <script setup lang="ts">
-import { skeletonLoaderProps } from './skeleton-loader'
+import {
+  PuikSkeletonLoaderVariants,
+  type SkeletonLoaderProps,
+} from './skeleton-loader'
 defineOptions({
   name: 'PuikSkeletonLoader',
 })
 
-defineProps(skeletonLoaderProps)
+withDefaults(defineProps<SkeletonLoaderProps>(), {
+  variant: PuikSkeletonLoaderVariants.TextMedium,
+  tag: 'div',
+})
 </script>

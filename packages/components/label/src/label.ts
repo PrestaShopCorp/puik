@@ -1,28 +1,10 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
 import type Label from './label.vue'
-export const labelProps = buildProps({
-  optional: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  required: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  readonly: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  for: {
-    type: String,
-    required: true,
-  },
-} as const)
 
-export type LabelProps = ExtractPropTypes<typeof labelProps>
+export interface LabelProps {
+  for: string
+  optional?: boolean
+  required?: boolean
+  readonly?: boolean
+}
 
 export type LabelInstance = InstanceType<typeof Label>

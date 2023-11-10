@@ -1,8 +1,9 @@
-import { skeletonLoaderVariants } from '../src/skeleton-loader'
+import { PuikSkeletonLoaderVariants } from '../src/skeleton-loader'
 import PuikSkeletonLoader from './../src/skeleton-loader.vue'
 import PuikSkeletonLoaderGroup from './../src/skeleton-loader-group.vue'
 import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3'
 
+const skeletonLoaderVariants = Object.values(PuikSkeletonLoaderVariants)
 const skeletonLoaderVariantsSummary = skeletonLoaderVariants.join('|')
 
 export default {

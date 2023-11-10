@@ -12,12 +12,12 @@
 </template>
 
 <script setup lang="ts">
-import { useLocale } from '@puik/locale'
-import { labelProps } from './label'
+import { useLocale } from '@prestashopcorp/puik-locale'
+import type { LabelProps } from './label'
 defineOptions({
   name: 'PuikLabel',
 })
 
-const props = defineProps(labelProps)
+const props = defineProps<LabelProps>()
 const { t } = useLocale()
 </script>

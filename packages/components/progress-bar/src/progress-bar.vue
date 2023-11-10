@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import { progressBarProps } from './progress-bar'
+import { type ProgressBarProps } from './progress-bar'
 defineOptions({
   name: 'PuikProgressBar',
 })
 
-defineProps(progressBarProps)
+defineProps<ProgressBarProps>()
 </script>

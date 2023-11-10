@@ -1,4 +1,4 @@
-import { menuAligns, menuPositions } from '../src/menu'
+import { PuikMenuAligns, PuikMenuPositions } from '../src/menu'
 import PuikMenu from '../src/menu.vue'
 import PuikMenuItem from '../src/menu-item.vue'
 import PuikMenuItemSeparator from '../src/menu-item-separator.vue'
@@ -7,7 +7,9 @@ import PuikButton from '../../button/src/button.vue'
 import PuikLink from '../../link/src/link.vue'
 import type { Meta, Args, StoryFn } from '@storybook/vue3'
 
+const menuAligns = Object.values(PuikMenuAligns)
 const menuAlignsJoined = menuAligns.join('|')
+const menuPositions = Object.values(PuikMenuPositions)
 const menuPositionsJoined = menuPositions.join('|')
 
 export default {

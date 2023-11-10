@@ -7,13 +7,15 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 import { sidebarKey } from './sidebar'
-import { sidebarTitleProps } from './sidebar-title'
+import { type SidebarTitleProps } from './sidebar-title'
 
 defineOptions({
   name: 'PuikSidebarTitle',
 })
 
-defineProps(sidebarTitleProps)
+withDefaults(defineProps<SidebarTitleProps>(), {
+  tag: 'h3',
+})
 const sidebarValues = inject(sidebarKey, null)
 const isExpanded = computed(() => sidebarValues?.extended.value)
 </script>

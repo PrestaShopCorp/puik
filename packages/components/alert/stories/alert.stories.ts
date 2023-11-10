@@ -1,8 +1,9 @@
 import { action } from '@storybook/addon-actions'
-import { alertVariants } from '../src/alert'
+import { AlertVariants } from '../src/alert'
 import PuikAlert from './../src/alert.vue'
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
+const alertVariants = Object.values(AlertVariants)
 const alertVariantsSummary = alertVariants.join('|')
 
 export default {

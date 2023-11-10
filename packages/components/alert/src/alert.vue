@@ -31,15 +31,19 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { PuikButton } from '@puik/components/button'
-import { PuikIcon } from '@puik/components/icon'
-import { alertEmits, alertProps, ICONS } from './alert'
+import { PuikButton } from '@prestashopcorp/puik-components/button'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
+import { PuikAlertVariants, ICONS } from './alert'
+import type { AlertProps, AlertEmits } from './alert'
 defineOptions({
   name: 'PuikAlert',
 })
 
-const props = defineProps(alertProps)
-const emit = defineEmits(alertEmits)
+const props = withDefaults(defineProps<AlertProps>(), {
+  variant: PuikAlertVariants.Success,
+  ariaLive: 'polite',
+})
+const emit = defineEmits<AlertEmits>()
 
 const icon = computed(() => ICONS[props.variant])
 

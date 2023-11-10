@@ -1,1 +1,1 @@
-import '@puik/components/base/style'
+import '@prestashopcorp/puik-components/base/style'

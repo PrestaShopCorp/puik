@@ -1,4 +1,4 @@
-import { PuikCard } from '@puik/components'
+import { PuikCard } from '@prestashopcorp/puik-components'
 import type { StoryFn, StoryObj, Meta } from '@storybook/vue3'
 
 export default {

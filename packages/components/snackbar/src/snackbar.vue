@@ -39,8 +39,9 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { useTimeoutFn, useEventListener } from '@vueuse/core'
-import { useLocale } from '@puik/locale'
-import { snackbarProps } from './snackbar'
+import { useLocale } from '@prestashopcorp/puik-locale'
+import { PuikSnackbarVariants } from './snackbar'
+import type { PuikSnackbarProps } from './snackbar'
 import type { CSSProperties } from 'vue'
 
 defineOptions({
@@ -52,7 +53,12 @@ let timer: (() => void) | undefined
 
 const visible = ref(false)
 
-const props = defineProps(snackbarProps)
+const props = withDefaults(defineProps<PuikSnackbarProps>(), {
+  variant: PuikSnackbarVariants.Default,
+  offset: 0,
+  duration: 3000,
+  hasCloseButton: true,
+})
 
 const position = computed<CSSProperties>(() => ({
   bottom: `${props.offset}px`,

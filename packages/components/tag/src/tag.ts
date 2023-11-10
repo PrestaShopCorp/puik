@@ -1,5 +1,5 @@
-import { buildProps } from '@puik/utils'
-import type { PuikTooltipPosition } from '@puik/components'
+import { buildProps } from '@prestashopcorp/puik-utils'
+import type { PuikTooltipPosition } from '@prestashopcorp/puik-components'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Tag from './tag.vue'
 

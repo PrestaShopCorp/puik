@@ -1,2 +1,2 @@
-import '@puik/components/base/style'
-import '@puik/theme/src/chip.scss'
+import '@prestashopcorp/puik-components/base/style'
+import '@prestashopcorp/puik-theme/src/chip.scss'

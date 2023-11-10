@@ -77,7 +77,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { useLocale } from '@puik/locale'
+import { useLocale } from '@prestashopcorp/puik-locale'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
 import { tableProps } from './table'
 defineOptions({

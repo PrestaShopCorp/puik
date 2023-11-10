@@ -1,9 +1,10 @@
 import { action } from '@storybook/addon-actions'
 import { PuikSnackbar } from '..'
-import { snackbarVariants, type PuikSnackbarOptions } from '../src/snackbar'
+import { PuikSnackbarVariants, type PuikSnackbarOptions } from '../src/snackbar'
 import { PuikButton } from '../../button/index'
 import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3'
 
+const snackbarVariants = Object.values(PuikSnackbarVariants)
 const snackbarVariantSummary = snackbarVariants.join('|')
 
 export default {

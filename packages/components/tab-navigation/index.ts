@@ -1,4 +1,4 @@
-import { withInstall } from '@puik/utils'
+import { withInstall } from '@prestashopcorp/puik-utils'
 
 import TabNavigation from './src/tab-navigation.vue'
 import TabNavigationGroupTitles from './src/tab-navigation-group-titles.vue'
@@ -8,10 +8,10 @@ import TabNavigationPanel from './src/tab-navigation-panel.vue'
 
 export const PuikTabNavigation = withInstall(TabNavigation)
 export const PuikTabNavigationGroupTitles = withInstall(
-  TabNavigationGroupTitles
+  TabNavigationGroupTitles,
 )
 export const PuikTabNavigationGroupPanels = withInstall(
-  TabNavigationGroupPanels
+  TabNavigationGroupPanels,
 )
 export const PuikTabNavigationTitle = withInstall(TabNavigationTitle)
 export const PuikTabNavigationPanel = withInstall(TabNavigationPanel)

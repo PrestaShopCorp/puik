@@ -1,10 +1,11 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
 import type Alert from './alert.vue'
 
-export const alertVariants = ['success', 'warning', 'danger', 'info'] as const
-
-export type PuikAlertVariant = (typeof alertVariants)[number]
+export enum PuikAlertVariants {
+  Success = 'success',
+  Warning = 'warning',
+  Danger = 'danger',
+  Info = 'info',
+}
 
 export const ICONS = {
   success: 'check_circle',
@@ -13,43 +14,17 @@ export const ICONS = {
   info: 'info',
 }
 
-export const alertProps = buildProps({
-  title: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  description: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  variant: {
-    type: String as PropType<PuikAlertVariant>,
-    default: 'success',
-  },
-  disableBorders: {
-    type: Boolean,
-    default: false,
-  },
-  buttonLabel: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  ariaLive: {
-    type: String as PropType<'polite' | 'assertive'>,
-    required: false,
-    default: 'polite',
-  },
-} as const)
-
-export type AlertProps = ExtractPropTypes<typeof alertProps>
-
-export const alertEmits = {
-  click: (event: Event) => event instanceof Event,
+export interface AlertProps {
+  title?: string
+  description?: string
+  variant?: `${PuikAlertVariants}`
+  disableBorders?: boolean
+  buttonLabel?: string
+  ariaLive?: 'polite' | 'assertive'
 }
 
-export type AlertEmits = typeof alertEmits
+export type AlertEmits = {
+  click: [event: Event]
+}
 
 export type AlertInstance = InstanceType<typeof Alert>

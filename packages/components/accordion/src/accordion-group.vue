@@ -11,15 +11,17 @@
 
 <script setup lang="ts">
 import { provide, ref, watch } from 'vue'
-import { accordionGroupProps, accordionGroupKey } from './accordion-group'
-import type { AccordionState } from './accordion-group'
+import { accordionGroupKey } from './accordion-group'
+import type { AccordionGroupProps, AccordionState } from './accordion-group'
 defineOptions({
   name: 'PuikAccordionGroup',
 })
 
-const props = defineProps(accordionGroupProps)
-const emit = defineEmits(['update:modelValue'])
-const expandedAccordions = ref<string | string[] | null>(props.modelValue)
+const props = defineProps<AccordionGroupProps>()
+const emit = defineEmits<{
+  'update:modelValue': [value: string | string[] | null | undefined]
+}>()
+const expandedAccordions = ref(props.modelValue)
 const accordionsList = ref<AccordionState[]>([])
 
 watch(props, () => {
@@ -38,7 +40,7 @@ function handleChange(name: string) {
     })
   } else {
     const accordionIndex = accordionsList.value.findIndex(
-      (accordion) => accordion.name === name
+      (accordion) => accordion.name === name,
     )
     if (accordionIndex < 0) return
     accordionsList.value[accordionIndex].expanded =

@@ -1,6 +1,10 @@
 import { ref } from 'vue'
+import { PuikInputTypes } from './../src/input'
 import PuikInput from './../src/input.vue'
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+
+const inputTypes = Object.values(PuikInputTypes)
+const inputTypesSummary = inputTypes.join('|')
 
 export default {
   title: 'Components/Input',
@@ -8,11 +12,14 @@ export default {
   argTypes: {
     type: {
       control: 'select',
-      options: ['text', 'password', 'email', 'number', 'search', 'url', 'tel'],
+      options: inputTypes,
       description: 'Set the type of the input',
       table: {
+        type: {
+          summary: inputTypesSummary,
+        },
         defaultValue: {
-          summary: 'text',
+          summary: PuikInputTypes.Text,
         },
       },
     },

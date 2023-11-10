@@ -35,9 +35,9 @@
         </div>
         <puik-accordion-group
           contained
-          class="puik-sidebar__content"
+          class="puik-sidebar__content lul"
           :model-value="openAccordionName"
-          @update:model-value="openAccordion"
+          @update:model-value="openAccordion($event as string)"
         >
           <slot></slot>
         </puik-accordion-group>
@@ -54,20 +54,20 @@
 
 <script setup lang="ts">
 import { ref, watch, provide, computed } from 'vue'
-import { useLocale } from '@puik/locale'
+import { useLocale } from '@prestashopcorp/puik-locale'
 import PuikButton from '../../button'
 import { PuikAccordionGroup } from '../../accordion'
-import { sidebarProps, sidebarKey } from './sidebar'
+import { type SidebarProps, sidebarKey } from './sidebar'
 
 defineOptions({
   name: 'PuikSidebar',
 })
 
 const emit = defineEmits<{
-  (e: 'update:expanded', value: boolean): void
-  (e: 'update:openAccordion', value: string): void
+  'update:expanded': [value: boolean]
+  'update:openAccordion': [value: string]
 }>()
-const props = defineProps(sidebarProps)
+const props = defineProps<SidebarProps>()
 const { t } = useLocale()
 
 const localExpanded = ref(props.expanded)

@@ -30,14 +30,17 @@
 
 <script setup lang="ts">
 import { computed, inject } from 'vue'
-import { PuikIcon } from '@puik/components/icon'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon'
 import { ButtonGroupKey } from '../../button-group'
-import { buttonProps } from './button'
+import { PuikButtonVariants, type ButtonProps, PuikButtonSizes } from './button'
 defineOptions({
   name: 'PuikButton',
 })
 
-const props = defineProps(buttonProps)
+const props = withDefaults(defineProps<ButtonProps>(), {
+  variant: PuikButtonVariants.Primary,
+  size: PuikButtonSizes.Medium,
+})
 const buttonGroup = inject(ButtonGroupKey, undefined)
 
 const componentType = computed(() => {
@@ -50,7 +53,7 @@ const componentType = computed(() => {
 })
 
 const pathProp = computed(() =>
-  props.to ? { to: props.to } : { href: props.href }
+  props.to ? { to: props.to } : { href: props.href },
 )
 
 const setSelected = () => {

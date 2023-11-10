@@ -1,4 +1,4 @@
-import { withInstall } from '@puik/utils'
+import { withInstall } from '@prestashopcorp/puik-utils'
 
 import Sidebar from './src/sidebar.vue'
 import SidebarGroupItem from './src/sidebar-group-item.vue'

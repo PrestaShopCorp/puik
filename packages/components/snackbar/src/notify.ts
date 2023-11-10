@@ -14,7 +14,7 @@ const PUIK_SNACKBAR_ID = 'puik-snackbar-id'
 
 const notify = (
   options: PuikSnackbarOptions,
-  context: AppContext | null = null
+  context: AppContext | null = null,
 ) => {
   const customOnClose = options.onClose
   const offset = options.offset || 32

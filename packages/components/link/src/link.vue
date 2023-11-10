@@ -12,12 +12,15 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { linkProps } from './link'
+import { PuikLinkSizes, type LinkProps, PuikLinkTargetVariants } from './link'
 defineOptions({
   name: 'PuikLink',
 })
 
-const props = defineProps(linkProps)
+const props = withDefaults(defineProps<LinkProps>(), {
+  size: PuikLinkSizes.Medium,
+  target: PuikLinkTargetVariants.Self,
+})
 
 const componentType = computed(() => {
   if (props.to) {
@@ -27,6 +30,6 @@ const componentType = computed(() => {
 })
 
 const pathProp = computed(() =>
-  props.to ? { to: props.to } : { href: props.href }
+  props.to ? { to: props.to } : { href: props.href },
 )
 </script>

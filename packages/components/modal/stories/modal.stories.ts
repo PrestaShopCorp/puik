@@ -1,13 +1,13 @@
 import { action } from '@storybook/addon-actions'
 import { useArgs } from '@storybook/client-api'
-import { PuikButton } from '@puik/components/button'
-import { PuikModalVariant, PuikModalSize } from '../index'
+import { PuikButton } from '@prestashopcorp/puik-components/button'
+import { PuikModalVariants, PuikModalSizes } from '../index'
 import PuikModal from './../src/modal.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
-const modalSizes = Object.values(PuikModalSize)
+const modalSizes = Object.values(PuikModalSizes)
 const modalSizesSummary = modalSizes.join('|')
-const modalVariants = Object.values(PuikModalVariant)
+const modalVariants = Object.values(PuikModalVariants)
 const modalVariantsSummary = modalVariants.join('|')
 
 const content = `
@@ -104,48 +104,49 @@ export default {
       },
     },
     variant: {
-      description: 'Set the style of the modal (use the PuikModalVariant enum)',
+      description:
+        'Set the style of the modal (use the PuikModalVariants enum)',
       control: 'select',
       options: modalVariants,
       table: {
         defaultValue: {
-          summary: PuikModalVariant.DIALOG,
+          summary: PuikModalVariants.Dialog,
         },
         type: {
-          summary: 'PuikModalVariant',
+          summary: 'PuikModalVariants',
           detail: `
 // Import enum
-import { PuikModalVariant } from '@prestashopcorp/puik/components/modal/src/modal'
+import { PuikModalVariants } from '@prestashopcorp/puik/components/modal/src/modal'
 
 // Detail
-export enum PuikModalVariant {
-  DESTRUCTIVE = 'destructive',
-  FEEDBACK = 'feedback',
-  DIALOG = 'dialog',
+export enum PuikModalVariants {
+  Destructive = 'destructive',
+  Feedback = 'feedback',
+  Dialog = 'dialog',
 }
           `,
         },
       },
     },
     size: {
-      description: 'Set the size of the modal (use the PuikModalSize enum)',
+      description: 'Set the size of the modal (use the PuikModalSizes enum)',
       control: 'select',
       options: modalSizes,
       table: {
         defaultValue: {
-          summary: PuikModalSize.SMALL,
+          summary: PuikModalSizes.Small,
         },
         type: {
-          summary: 'PuikModalSize',
+          summary: 'PuikModalSizes',
           detail: `
 // Import enum
-import { PuikModalSize } from '@prestashopcorp/puik/components/modal/src/modal'
+import { PuikModalSizes } from '@prestashopcorp/puik/components/modal/src/modal'
 
 // Detail
-export enum PuikModalSize {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-  LARGE = 'large',
+export enum PuikModalSizes {
+  Small = 'small',
+  Medium = 'medium',
+  Large = 'large',
 }
 `,
         },
@@ -198,8 +199,8 @@ export enum PuikModalSize {
     secondButtonText: 'Awesome secondary button',
     isOpen: true,
     titleIcon: 'home',
-    variant: PuikModalVariant.DIALOG,
-    size: PuikModalSize.SMALL,
+    variant: PuikModalVariants.Dialog,
+    size: PuikModalSizes.Small,
   },
   parameters: {
     chromatic: { delay: 3000 },
@@ -335,7 +336,7 @@ export const Destructive = {
     title: 'The awesome title',
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
-    variant: PuikModalVariant.DESTRUCTIVE,
+    variant: PuikModalVariants.Destructive,
   },
 
   parameters: {
@@ -351,7 +352,7 @@ export const Destructive = {
     main-button-text="Awesome main button"
     second-button-text="Awesome seond button"
     :is-open="true"
-    :variant="PuikModalVariant.DESTRUCTIVE"
+    :variant="PuikModalVariants.Destructive"
     @close="closeModal"
     @buttonMain="mainAction"
     @buttonSecond="secondAction"
@@ -397,7 +398,7 @@ export const Feedback = {
     title: 'The awesome title',
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
-    variant: PuikModalVariant.FEEDBACK,
+    variant: PuikModalVariants.Feedback,
   },
 
   parameters: {
@@ -412,7 +413,7 @@ export const Feedback = {
     title="Title"
     main-button-text="Awesome main button"
     second-button-text="Awesome second button"
-    :variant="PuikModalVariant.FEEDBACK"
+    :variant="PuikModalVariants.Feedback"
     :is-open="true"
     title-icon="home"
     @close="closeModal"
@@ -463,7 +464,7 @@ export const Dialog = {
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
     sideButtonText: 'Awesome side button',
-    variant: PuikModalVariant.DIALOG,
+    variant: PuikModalVariants.Dialog,
   },
 
   parameters: {
@@ -479,7 +480,7 @@ export const Dialog = {
     main-button-text="Awesome main button"
     second-button-text="Awesome second button"
     side-button-text="Awesome side button"
-    :variant="PuikModalVariant.DIALOG"
+    :variant="PuikModalVariants.Dialog"
     :is-open="true"
     title-icon="home"
     @close="closeModal"
@@ -530,7 +531,7 @@ export const Large = {
     title: 'The awesome title',
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
-    size: PuikModalSize.LARGE,
+    size: PuikModalSizes.Large,
   },
 
   parameters: {
@@ -545,8 +546,8 @@ export const Large = {
     title="title"
     main-button-text="Awesome main button"
     second-button-text="Awesome second button"
-    :variant="PuikModalVariant.DIALOG"
-    :size="PuikModalSize.LARGE"
+    :variant="PuikModalVariants.Dialog"
+    :size="PuikModalSizes.Large"
     :is-open="true"
     title-icon="home"
     @close="closeModal"
@@ -590,7 +591,7 @@ export const Medium = {
     title: 'The awesome title',
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
-    size: PuikModalSize.MEDIUM,
+    size: PuikModalSizes.Medium,
   },
 
   parameters: {
@@ -605,8 +606,8 @@ export const Medium = {
     title="title"
     main-button-text="Awesome main button"
     second-button-text="Awesome second button"
-    :variant="PuikModalVariant.DIALOG"
-    :size="PuikModalSize.MEDIUM"
+    :variant="PuikModalVariants.Dialog"
+    :size="PuikModalSizes.Medium"
     :is-open="true"
     title-icon="home"
     @close="closeModal"
@@ -650,7 +651,7 @@ export const Small = {
     title: 'The awesome title',
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
-    size: PuikModalSize.SMALL,
+    size: PuikModalSizes.Small,
   },
 
   parameters: {
@@ -667,7 +668,7 @@ export const Small = {
     :second-button-text="args.secondButtonText"
     :side-button-text="args.sideButtonText"
     :variant="args.variant"
-    :size="PuikModalSize.SMALL" <---- HERE
+    :size="PuikModalSizes.Small" <---- HERE
     :is-open="args.isOpen"
     :title-icon="home"
     @close="closeModal"
