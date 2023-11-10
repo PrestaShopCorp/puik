@@ -8,7 +8,7 @@
     ]"
     aria-live="polite"
     role="status"
-    :data-test="dataTest ?? undefined"
+    :data-test="dataTest"
   >
     <div
       class="puik-spinner-loader__spinner"

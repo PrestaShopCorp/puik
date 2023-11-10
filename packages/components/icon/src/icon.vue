@@ -3,7 +3,7 @@
     :is="nodeType"
     class="puik-icon"
     :style="style"
-    :data-test="dataTest ?? undefined"
+    :data-test="dataTest"
   >
     {{ icon }}
   </component>
