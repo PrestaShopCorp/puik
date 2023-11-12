@@ -30,7 +30,7 @@
 .puik-avatar--photo {
   @apply border-none;
   img {
-    object-fit: cover;
+    @apply object-cover;
   }
 }
 .puik-avatar--reverse.puik-avatar {
