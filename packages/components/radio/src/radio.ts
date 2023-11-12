@@ -28,6 +28,11 @@ export const radioProps = buildProps({
     required: false,
     default: false,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type RadioProps = ExtractPropTypes<typeof radioProps>

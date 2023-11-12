@@ -7,6 +7,11 @@ export const progressStepperStepProps = buildProps({
     type: [String, Number],
     required: true,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type ProgressStepperStepProps = ExtractPropTypes<

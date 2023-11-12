@@ -68,4 +68,9 @@ describe('Icon tests', () => {
 
     expect(findIcon().element.nodeName).toBe('SPAN')
   })
+
+  it('should have a data-test attribute', () => {
+    factory({ 'data-test': 'test' })
+    expect(findIcon().attributes('data-test')).toBe('test')
+  })
 })

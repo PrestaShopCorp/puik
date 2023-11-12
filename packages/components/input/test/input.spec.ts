@@ -10,6 +10,7 @@ describe('Input tests', () => {
   const findWrapper = () => wrapper.find('.puik-input__wrapper')
   const findHint = () => wrapper.find('.puik-input__hint__text')
   const findError = () => wrapper.find('.puik-input__hint__error')
+  const findErrorMessage = () => wrapper.find('.puik-input__hint__error__text')
   const findIncrement = () => wrapper.find('.puik-input__controls__increment')
   const findDecrement = () => wrapper.find('.puik-input__controls__decrement')
   const findRevealPassword = () => wrapper.find('.puik-input__reveal-password')
@@ -182,5 +183,19 @@ describe('Input tests', () => {
     )
     expect(findAppend().exists).toBeTruthy()
     expect(findAppend().text()).toBe('$')
+  })
+
+  it('should have a data-tes attribut for the input and the error message', () => {
+    const error = 'This is an error message'
+    factory(
+      { modelValue: 'value', type: 'text', dataTest: 'test' },
+      {
+        slots: {
+          error,
+        },
+      }
+    )
+    expect(findField().attributes('data-test')).toBe('input-test')
+    expect(findErrorMessage().attributes('data-test')).toBe('error-test')
   })
 })

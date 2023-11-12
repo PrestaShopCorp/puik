@@ -1,5 +1,9 @@
 <template>
-  <div class="puik-badge" :class="[`puik-badge--${variant}`]">
+  <div
+    class="puik-badge"
+    :class="[`puik-badge--${variant}`]"
+    :data-test="dataTest"
+  >
     <slot></slot>
   </div>
 </template>

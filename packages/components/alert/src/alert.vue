@@ -11,10 +11,19 @@
       <div class="puik-alert__content">
         <PuikIcon :icon="icon" font-size="1.25rem" class="puik-alert__icon" />
         <div class="puik-alert__text">
-          <p v-if="title" class="puik-alert__title">{{ title }}</p>
+          <p
+            v-if="title"
+            class="puik-alert__title"
+            :data-test="dataTest != undefined ? `title-${dataTest}` : undefined"
+          >
+            {{ title }}
+          </p>
           <span
             v-if="$slots.default || description"
             class="puik-alert__description"
+            :data-test="
+              dataTest != undefined ? `description-${dataTest}` : undefined
+            "
             ><slot>{{ description }}</slot></span
           >
         </div>
@@ -23,6 +32,7 @@
         v-if="buttonLabel"
         :variant="variant"
         class="puik-alert__button"
+        :data-test="dataTest != undefined ? `button-${dataTest}` : undefined"
         @click="click"
       >
         {{ buttonLabel }}
@@ -34,6 +44,7 @@
       icon="close"
       font-size="1.5rem"
       class="puik-alert__close"
+      :data-test="dataTest != undefined ? `close-${dataTest}` : undefined"
       @click="close"
     />
   </div>

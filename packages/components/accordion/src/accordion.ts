@@ -27,6 +27,11 @@ export const accordionProps = buildProps({
     required: false,
     default: false,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export const accordionEmits = ['click']

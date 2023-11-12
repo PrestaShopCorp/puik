@@ -33,6 +33,11 @@ export const spinnerLoaderProps = buildProps({
     required: false,
     default: 'bottom',
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: 'spinner-loader',
+  },
 } as const)
 
 export type SpinnerLoaderProps = ExtractPropTypes<typeof spinnerLoaderProps>

@@ -13,6 +13,9 @@
       fluid
       variant="text"
       class="puik-sidebar-item__button"
+      :data-test="
+        dataTest != undefined ? `menubuttonTitle-${dataTest}` : undefined
+      "
     >
       {{ title }}
     </puik-button>
@@ -27,8 +30,13 @@
     :href="href"
     fluid
     variant="text"
+    :data-test="dataTest != undefined ? `buttonTitle-${dataTest}` : undefined"
   >
-    <span v-if="isExpanded">{{ title }}</span>
+    <span
+      v-if="isExpanded"
+      :data-test="dataTest != undefined ? `title-${dataTest}` : undefined"
+      >{{ title }}</span
+    >
   </puik-button>
 </template>
 
