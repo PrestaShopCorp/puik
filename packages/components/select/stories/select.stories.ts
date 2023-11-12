@@ -109,6 +109,14 @@ export default {
         category: 'Common',
       },
     },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set the data-test attribute `searchInput-${dataTest}` `noResults-${dataTest}` `select-${dataTest}` `option-${dataTest}-${index + 1}`',
+      table: {
+        category: 'Common',
+      },
+    },
   },
   args: {
     labelKey: '',

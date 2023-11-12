@@ -2,6 +2,11 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes } from 'vue'
 import type Label from './label.vue'
 export const labelProps = buildProps({
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   optional: {
     type: Boolean,
     required: false,

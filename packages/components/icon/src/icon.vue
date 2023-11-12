@@ -1,5 +1,10 @@
 <template>
-  <component :is="nodeType" class="puik-icon" :style="style">
+  <component
+    :is="nodeType"
+    class="puik-icon"
+    :style="style"
+    :data-test="dataTest"
+  >
     {{ icon }}
   </component>
 </template>

@@ -175,6 +175,11 @@ export enum PuikModalSize {
         },
       },
     },
+    dataTest: {
+      description:
+        'Set the data-test attribute for modal `title-${dataTest}` `mainButton-${dataTest}` `secondButton-${dataTest}` `sideButton-${dataTest}` `closeButton-${dataTest}`',
+      control: 'text',
+    },
     default: {
       description: 'Modal content',
       control: 'none',

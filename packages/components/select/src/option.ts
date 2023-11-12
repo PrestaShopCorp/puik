@@ -23,6 +23,10 @@ export const optionProps = buildProps({
     required: false,
     default: false,
   },
+  dataTest: {
+    type: String,
+    required: false,
+  },
 } as const)
 
 export type OptionProps = ExtractPropTypes<typeof optionProps>

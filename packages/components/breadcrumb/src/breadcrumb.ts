@@ -3,11 +3,13 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Breadcrumb from './breadcrumb.vue'
 
+import type { PuikTargetString } from '../../link/src/link'
 export interface BreadcrumbItem {
   label: string
   to?: RouteLocationRaw
   href?: string
-  target?: string
+  target?: PuikTargetString
+  dataTest?: string
 }
 
 export const breadcrumbProps = buildProps({

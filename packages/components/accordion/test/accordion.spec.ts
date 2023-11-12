@@ -152,4 +152,29 @@ describe('Accordion tests', () => {
 
     expect(getAccordionIcon(wrapper).text()).toBe(icon)
   })
+
+  it('should have data-test attribute on button, title, sub-title, icon', () => {
+    const template = `
+      <puik-accordion-group>
+        <puik-accordion name="accordion-1" icon="home" title="title" sub-title="sub-title" data-test="accordion">
+          Content
+        </puik-accordion>
+      </puik-accordion-group>
+    `
+    factory(template)
+
+    const accordion = getAccordion(wrapper)
+    expect(getAccordionHeader(accordion).attributes('data-test')).toBe(
+      'button-accordion'
+    )
+    expect(getAccordionTitle(accordion).attributes('data-test')).toBe(
+      'title-accordion'
+    )
+    expect(getAccordionSubTitle(accordion).attributes('data-test')).toBe(
+      'subTitle-accordion'
+    )
+    expect(getAccordionIcon(accordion).attributes('data-test')).toBe(
+      'icon-accordion'
+    )
+  })
 })
