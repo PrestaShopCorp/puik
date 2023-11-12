@@ -36,4 +36,9 @@ describe('Link tests', () => {
     factory({ href: '/test', size: 'sm' })
     expect(findLink().classes()).toContain('puik-link--sm')
   })
+
+  it('should have a data-test attribute', () => {
+    factory({ href: '/test', 'data-test': 'test' })
+    expect(findLink().attributes('data-test')).toBe('test')
+  })
 })

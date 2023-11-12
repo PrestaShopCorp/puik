@@ -12,9 +12,15 @@ export default {
         max: 100,
       },
     },
+    dataTest: {
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     percentage: 50,
+    dataTest: '',
   },
 } as Meta
 

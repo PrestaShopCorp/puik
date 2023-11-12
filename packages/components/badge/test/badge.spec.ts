@@ -47,4 +47,9 @@ describe('Badge tests', () => {
     )
     expect(findBadge().text()).toBe(slotDefault)
   })
+
+  it('should have a data-test attribute', () => {
+    factory({ 'data-test': 'test' })
+    expect(findBadge().attributes('data-test')).toBe('test')
+  })
 })

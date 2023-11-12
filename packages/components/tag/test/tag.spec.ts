@@ -55,4 +55,12 @@ describe('Tag tests', () => {
     factory({ disabled: true })
     expect(findTag().classes()).toContain('puik-tag--disabled')
   })
+
+  it('should have a data-test attribute for the content', () => {
+    factory({
+      content: 'long content for displaying the tooltip',
+      'data-test': 'test',
+    })
+    expect(findTagContent().attributes('data-test')).toBe('content-test')
+  })
 })

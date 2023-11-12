@@ -93,4 +93,10 @@ describe('Checkbox tests', () => {
     await findLabel().trigger('click')
     expect(wrapper.vm.checkboxInputRef.click).not.toHaveBeenCalled()
   })
+
+  it('shouold have a data-test attribute on the input and the label', () => {
+    factory({ label: 'Label', modelValue: false, dataTest: 'test' })
+    expect(findInput().attributes('data-test')).toBe('input-test')
+    expect(findLabel().attributes('data-test')).toBe('label-test')
+  })
 })

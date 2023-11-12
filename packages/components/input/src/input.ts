@@ -90,6 +90,11 @@ export const inputProps = buildProps({
     required: false,
     default: false,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type InputProps = ExtractPropTypes<typeof inputProps>

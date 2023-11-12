@@ -103,6 +103,11 @@ export default {
         },
       },
     },
+    dataTest: {
+      description:
+        'Set the data-test attribute `content-${dataTest}` `tooltip-${dataTest}`',
+      control: 'text',
+    },
   },
   args: {
     id: 'puik-tag-id',

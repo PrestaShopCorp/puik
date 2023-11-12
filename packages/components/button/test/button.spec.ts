@@ -100,4 +100,17 @@ describe('Button tests', () => {
     factory({ href: '/test' })
     expect(findButton().element.tagName).toBe('A')
   })
+
+  it('should have a data-test attribute on global component, left-icon and right-icon', () => {
+    factory({
+      leftIcon: 'close',
+      rightIcon: 'close',
+      dataTest: 'button',
+    })
+    expect(findButton().attributes('data-test')).toBe('button')
+    expect(findButtonLeftIcon().attributes('data-test')).toBe('leftIcon-button')
+    expect(findButtonRightIcon().attributes('data-test')).toBe(
+      'rightIcon-button'
+    )
+  })
 })

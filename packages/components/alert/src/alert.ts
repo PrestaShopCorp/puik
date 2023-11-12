@@ -47,6 +47,11 @@ export const alertProps = buildProps({
     required: false,
     default: 'polite',
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type AlertProps = ExtractPropTypes<typeof alertProps>

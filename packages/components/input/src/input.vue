@@ -17,6 +17,7 @@
         :min="type === 'number' ? min : undefined"
         :max="type === 'number' ? max : undefined"
         :step="type === 'number' ? step : undefined"
+        :data-test="dataTest != undefined ? `input-${dataTest}` : undefined"
         @focus="handleFocus"
         @blur="handleBlur"
       />
@@ -49,7 +50,10 @@
           class="puik-input__hint__error__icon"
           font-size="1.25rem"
         ></puik-icon>
-        <span class="puik-input__hint__error__text">
+        <span
+          class="puik-input__hint__error__text"
+          :data-test="dataTest != undefined ? `error-${dataTest}` : undefined"
+        >
           <slot name="error">{{ error }}</slot>
         </span>
       </div>
