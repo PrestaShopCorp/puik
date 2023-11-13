@@ -22,6 +22,11 @@ export const paginationMobileProps = buildProps({
     required: false,
     default: undefined,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type PaginationProps = ExtractPropTypes<typeof paginationMobileProps>

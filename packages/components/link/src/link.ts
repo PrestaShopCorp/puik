@@ -54,6 +54,11 @@ export const linkProps = buildProps({
     required: false,
     default: undefined,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type LinkProps = ExtractPropTypes<typeof linkProps>

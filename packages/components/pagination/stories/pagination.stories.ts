@@ -102,6 +102,11 @@ export default {
         },
       },
     },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set the data-test attribute `nextButton-${dataTest}` `previousButton-${dataTest}` `label-${dataTest}` `loadMoreButton-${dataTest}` (only for loader variant)',
+    },
   },
   args: {
     variant: PuikPaginationVariantEnum.medium,

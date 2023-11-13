@@ -70,6 +70,11 @@ export const modalProps = buildProps({
     required: false,
     default: undefined,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export const modalEmits = [

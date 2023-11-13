@@ -71,6 +71,11 @@ export default {
       control: 'text',
       description: 'Set a link for the button (changes button to "a" html tag)',
     },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set a data-test attribute to the button `${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`',
+    },
   },
   args: {
     variant: 'primary',

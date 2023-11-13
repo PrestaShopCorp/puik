@@ -62,6 +62,10 @@ export default {
         },
       },
     },
+    dataTest: {
+      control: 'text',
+      description: 'Set the data-test attribute on the spinner loader',
+    },
   },
   args: {
     size: 'md',

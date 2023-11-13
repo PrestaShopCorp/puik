@@ -47,6 +47,11 @@ export default {
       control: 'none',
       description: 'Set the alert description',
     },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}`',
+    },
   },
   args: {
     title: 'Title',

@@ -3,6 +3,7 @@
     <div
       :class="barClass"
       :style="{ width: `${percentage}%` }"
+      :data-test="dataTest"
       class="progress-bar__content"
     />
   </div>

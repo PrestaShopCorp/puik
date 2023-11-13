@@ -68,6 +68,11 @@ export const buttonProps = buildProps({
     required: false,
     default: undefined,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>

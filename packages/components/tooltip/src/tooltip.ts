@@ -40,6 +40,11 @@ export const tooltipProps = buildProps({
     required: false,
     default: 500,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: 'tooltip',
+  },
 } as const)
 
 export type TooltipProps = ExtractPropTypes<typeof tooltipProps>
