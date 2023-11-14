@@ -40,6 +40,14 @@ export default {
     buttonLabel: {
       description: 'Label of the button',
     },
+    buttonLeftIcon: {
+      description: 'Icon to the left button',
+      control: 'text',
+    },
+    buttonRightIcon: {
+      description: 'Icon to the right button',
+      control: 'text',
+    },
     isClosable: {
       description: 'Display a close button',
     },
@@ -310,7 +318,85 @@ export const Danger: StoryObj = {
         <span class="puik-alert__description">This a danger alert with a title and a description.</span>
       </div>
     </div>
-    <button class="puik-alert__button">Button</button>
+    <button class="puik-button puik-button--success puik-button--md puik-alert__button">
+      <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">
+        open_in_new
+      </div>
+      Button
+    </button>
+  </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
+export const WithIcon = {
+  render: () => ({
+    components: {
+      PuikAlert,
+    },
+    template: `
+      <div class="flex flex-col space-y-4">
+      <puik-alert title="Title" button-label="Button" button-right-icon="shopping_cart">This a success alert with a title, description and icon to the right of button.</puik-alert>
+      <puik-alert title="Title" button-label="Button" button-left-icon="shopping_cart">This a success alert with a title, description and icon to the left of button.</puik-alert>
+    </div>
+    `,
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-alert
+    title="Title"
+    button-label="Button"
+    button-left-icon="shopping_cart"
+    @click="click"
+  >
+  This a success alert with a title, description and icon to the right of button.
+  </puik-alert>
+  <puik-alert
+    title="Title"
+    button-label="Button"
+    button-left-icon="shopping_cart"
+    @click="click"
+  >
+  This a success alert with a title, description and icon to the right of button.
+  </puik-alert>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-alert puik-alert--info puik-alert--no-borders" aria-live="polite">
+    <div class="puik-alert__content">
+      <span class="puik-icon puik-alert__icon">info</span>
+      <div class="puik-alert__text">
+        <p class="puik-alert__title">Title</p>
+        <span class="puik-alert__description">This a success alert with a title, description and icon to the ledt of button.</span>
+      </div>
+    </div>
+    <button class="puik-button puik-button--success puik-button--md puik-alert__button">
+      <div class="puik-icon puik-button__left-icon" style="font-size: 1.25rem;">
+        shopping_cart
+      </div>
+      Button
+    </button>
+  </div>
+  <div class="puik-alert puik-alert--info puik-alert--no-borders" aria-live="polite">
+    <div class="puik-alert__content">
+      <span class="puik-icon puik-alert__icon">info</span>
+      <div class="puik-alert__text">
+        <p class="puik-alert__title">Title</p>
+        <span class="puik-alert__description">This a success alert with a title, description and icon to the right of button.</span>
+      </div>
+    </div>
+    <button class="puik-button puik-button--success puik-button--md puik-alert__button">
+      <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">
+        shopping_cart
+      </div>
+      Button
+    </button>
   </div>
         `,
         language: 'html',

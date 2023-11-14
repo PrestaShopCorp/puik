@@ -37,6 +37,16 @@ export const alertProps = buildProps({
     required: false,
     default: undefined,
   },
+  buttonLeftIcon: {
+    type: String,
+    required: false,
+    default: '',
+  },
+  buttonRightIcon: {
+    type: String,
+    required: false,
+    default: '',
+  },
   isClosable: {
     type: Boolean,
     required: false,
