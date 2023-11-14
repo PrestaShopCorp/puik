@@ -46,7 +46,7 @@
     @extend .puik-body-default;
   }
   &__button {
-    @apply text-sm px-4 py-3 mt-2 ml-9 md:m-0 h-auto;
+    @apply mt-2 ml-9 md:m-0;
   }
   &__icon {
     @apply mt-0.5 flex-shrink-0;
