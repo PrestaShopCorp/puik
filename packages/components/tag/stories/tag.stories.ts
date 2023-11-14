@@ -1,11 +1,14 @@
 import { ref } from 'vue'
-import { PuikIcon, tooltipPositions } from '@prestashopcorp/puik-components'
-import { tagColorsVariants, tagSizeVariants } from '../src/tag'
+import { PuikIcon, PuikTooltipPositions } from '@prestashopcorp/puik-components'
+import { PuikTagSizes, PuikTagVariants } from '../src/tag'
 import PuikTag from './../src/tag.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
+const tagColorsVariants = Object.values(PuikTagVariants)
 const tagColorsVariantsSummary = tagColorsVariants.join('|')
+const tagSizeVariants = Object.values(PuikTagSizes)
 const tagSizeVariantsSummary = tagSizeVariants.join('|')
+const tooltipPositions = Object.values(PuikTooltipPositions)
 const tooltipPositionsSummary = tooltipPositions.join('|')
 
 export default {

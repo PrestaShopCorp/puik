@@ -1,19 +1,11 @@
-import { buildProps } from '@prestashopcorp/puik-utils'
 import type { ExtractPropTypes } from 'vue'
 
-export const configProviderProps = buildProps({
+export const configProviderProps = {
   locale: {
     type: String,
+    required: false,
+    default: 'en',
   },
-
-  size: {
-    type: String,
-    values: ['large', 'default', 'small'],
-  },
-
-  zIndex: {
-    type: Number,
-  },
-} as const)
+}
 
 export type ConfigProviderProps = ExtractPropTypes<typeof configProviderProps>

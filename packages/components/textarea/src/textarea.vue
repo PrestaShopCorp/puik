@@ -2,11 +2,11 @@
   <div
     class="puik-textarea"
     :class="{
-      'puik-textarea--count-error': characterLength > maxlength,
+      'puik-textarea--count-error': maxLength && characterLength > maxLength,
     }"
   >
-    <div v-if="maxlength" class="puik-textarea__character-count">
-      <span>{{ characterLength }}/{{ maxlength }}</span>
+    <div v-if="maxLength" class="puik-textarea__character-count">
+      <span>{{ characterLength }}/{{ maxLength }}</span>
     </div>
     <div class="puik-textarea__wrapper" :class="textareaClass">
       <textarea
@@ -50,15 +50,19 @@ import { computed, useSlots, ref, watch, nextTick, onMounted } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { slotIsEmpty, clamp } from '@prestashopcorp/puik-utils'
 import { PuikIcon } from '@prestashopcorp/puik-components/icon'
-import { textareaProps } from './textarea'
+import { type TextareaProps } from './textarea'
 defineOptions({
   name: 'PuikTextarea',
 })
 
 const slots = useSlots()
-const props = defineProps(textareaProps)
+const props = withDefaults(defineProps<TextareaProps>(), {
+  maxRows: 2,
+  rows: 2,
+  autoGrow: true,
+})
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  'update:modelValue': [value: string]
 }>()
 const internalValue = useVModel(props, 'modelValue', emit)
 const textarea = ref<HTMLTextAreaElement>()

@@ -1,5 +1,6 @@
 import { computed, inject, isRef, ref, unref } from 'vue'
 import { get } from 'lodash-unified'
+import { configProviderContextKey } from '@prestashopcorp/puik-components'
 import { locales } from '../lang'
 import type { Ref, InjectionKey } from 'vue'
 import type { MaybeRef } from '@vueuse/core'
@@ -44,6 +45,8 @@ export const localeContextKey: InjectionKey<Ref<string | undefined>> =
   Symbol('localeContextKey')
 
 export const useLocale = () => {
-  const locale = inject(localeContextKey, ref())
-  return buildLocaleContext(computed(() => locales[locale.value || 'en']))
+  const config = inject(configProviderContextKey)
+  return buildLocaleContext(
+    computed(() => locales[config?.value.locale || 'en']),
+  )
 }

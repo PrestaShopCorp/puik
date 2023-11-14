@@ -2,9 +2,7 @@
   <div
     :id="id"
     :class="[
-      `puik-tag puik-tag--${variant as PuikTagColorVariant} puik-tag--${
-        size as PuikTagSizeVariant
-      }`,
+      `puik-tag puik-tag--${variant} puik-tag--${size}`,
       { 'puik-tag--disabled': disabled },
     ]"
   >
@@ -25,16 +23,21 @@
 
 <script setup lang="ts">
 import { PuikIcon } from '@prestashopcorp/puik-components/icon'
-import { PuikTooltip } from '@prestashopcorp/puik-components/tooltip'
 import {
-  tagProps,
-  type PuikTagSizeVariant,
-  type PuikTagColorVariant,
-} from './tag'
+  PuikTooltip,
+  PuikTooltipPositions,
+} from '@prestashopcorp/puik-components/tooltip'
+import { type TagProps, PuikTagSizes, PuikTagVariants } from './tag'
 defineOptions({
   name: 'PuikTag',
 })
 
-defineProps(tagProps)
-defineEmits(['close'])
+withDefaults(defineProps<TagProps>(), {
+  variant: PuikTagVariants.Neutral,
+  size: PuikTagSizes.Default,
+  tooltipPosition: PuikTooltipPositions.Bottom,
+})
+defineEmits<{
+  close: []
+}>()
 </script>

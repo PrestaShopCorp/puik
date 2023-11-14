@@ -35,13 +35,15 @@
 import { computed } from 'vue'
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
 import { useLocale } from '@prestashopcorp/puik-locale'
-import { switchEmits, switchProps } from './switch'
+import { type SwitchProps } from './switch'
 defineOptions({
   name: 'PuikSwitch',
 })
 
-const props = defineProps(switchProps)
-const emit = defineEmits(switchEmits)
+const props = defineProps<SwitchProps>()
+const emit = defineEmits<{
+  'update:modelValue': [value: boolean]
+}>()
 const { t } = useLocale()
 
 const screenReader = computed(

@@ -1,21 +1,8 @@
-import { buildProps } from '@prestashopcorp/puik-utils'
-import type { ExtractPropTypes } from 'vue'
 import type TabNavigationTitle from './tab-navigation-title.vue'
 
-export const tabNavigationTitleProps = buildProps({
-  disabled: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  position: {
-    type: Number,
-    required: true,
-  },
-} as const)
-
-export type TabNavigationTitleProps = ExtractPropTypes<
-  typeof tabNavigationTitleProps
->
+export interface TabNavigationTitleProps {
+  disabled?: boolean
+  position: number
+}
 
 export type TabNavigationTitleInstance = InstanceType<typeof TabNavigationTitle>

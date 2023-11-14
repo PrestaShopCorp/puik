@@ -14,13 +14,13 @@
 <script setup lang="ts">
 import { computed, inject, ref } from 'vue'
 import { currentTabKey } from './tab-navigation'
-import { tabNavigationPanelProps } from './tab-navigation-panel'
+import { type TabNavigationPanelProps } from './tab-navigation-panel'
 
 defineOptions({
   name: 'PuikTabNavigationPanel',
 })
 
-const props = defineProps(tabNavigationPanelProps)
+const props = defineProps<TabNavigationPanelProps>()
 
 const currentTab = inject(currentTabKey)
 const name = ref(currentTab?.name)

@@ -6,13 +6,15 @@
 
 <script setup lang="ts">
 import { nextTick, provide, ref } from 'vue'
-import { currentTabKey, tabNavigationProps } from './tab-navigation'
+import { currentTabKey, type TabNavigationProps } from './tab-navigation'
 
 defineOptions({
   name: 'PuikTabNavigation',
 })
 
-const props = defineProps(tabNavigationProps)
+const props = withDefaults(defineProps<TabNavigationProps>(), {
+  defaultPosition: 1,
+})
 
 const name = ref<string>(props.name)
 const numberOfTabs = ref<number>()
@@ -41,7 +43,7 @@ const selectNextTab = () => {
 
   nextTick(() => {
     const tabSelected = tabNavigationInstance?.querySelector(
-      '.puik-tab-navigation__title--selected'
+      '.puik-tab-navigation__title--selected',
     ) as HTMLElement
     tabSelected.focus()
   })
@@ -58,7 +60,7 @@ const selectPreviousTab = () => {
 
   nextTick(() => {
     const tabSelected = tabNavigationInstance?.querySelector(
-      '.puik-tab-navigation__title--selected'
+      '.puik-tab-navigation__title--selected',
     ) as HTMLElement
     tabSelected.focus()
   })

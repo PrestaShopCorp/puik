@@ -19,14 +19,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject, ref, watch } from 'vue'
+import { computed, inject, watch } from 'vue'
 import { currentTabKey } from './tab-navigation'
-import { tabNavigationTitleProps } from './tab-navigation-title'
+import { type TabNavigationTitleProps } from './tab-navigation-title'
 defineOptions({
   name: 'PuikTabNavigationTitle',
 })
 
-const props = defineProps(tabNavigationTitleProps)
+const props = defineProps<TabNavigationTitleProps>()
 
 const currentTab = inject(currentTabKey, null)
 const handleclick = () => {
@@ -52,6 +52,6 @@ watch(
           : currentTab?.handleTabClick(props.position - 1)
       }
     }
-  }
+  },
 )
 </script>

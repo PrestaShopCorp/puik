@@ -79,16 +79,19 @@
 import { computed, ref, watch } from 'vue'
 import { useLocale } from '@prestashopcorp/puik-locale'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
-import { tableProps } from './table'
+import { type TableProps } from './table'
 defineOptions({
   name: 'PuikTable',
 })
 
-const props = defineProps(tableProps)
+const props = withDefaults(defineProps<TableProps>(), {
+  items: () => [],
+  selection: () => [],
+})
 const emit = defineEmits<{
-  (e: 'select', index: number): void
-  (e: 'select:all'): void
-  (e: 'update:selection', value: number[]): void
+  select: [index: number]
+  'select:all': []
+  'update:selection': [value: number[]]
 }>()
 const { t } = useLocale()
 const checked = ref<number[]>(props.selection)

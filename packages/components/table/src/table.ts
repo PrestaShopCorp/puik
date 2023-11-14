@@ -1,42 +1,30 @@
-import { buildProps } from '@prestashopcorp/puik-utils'
-import type { ExtractPropTypes, PropType } from 'vue'
 import type Table from './table.vue'
+
+export enum PuikTableHeaderSize {
+  Small = 'sm',
+  Medium = 'md',
+  Large = 'lg',
+}
+export enum PuikTableHeaderAlign {
+  Left = 'left',
+  Center = 'center',
+  Right = 'right',
+}
 
 export interface PuikTableHeader {
   value: string
   text?: string
-  size?: 'sm' | 'md' | 'lg'
-  align?: 'left' | 'center' | 'right'
+  size?: `${PuikTableHeaderSize}`
+  align?: `${PuikTableHeaderAlign}`
   width?: string
 }
 
-export const tableProps = buildProps({
-  headers: {
-    type: Array as PropType<PuikTableHeader[]>,
-    required: true,
-  },
-  items: {
-    type: Array as PropType<any[]>,
-    required: false,
-    default: () => [],
-  },
-  selectable: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  selection: {
-    type: Array as PropType<number[]>,
-    required: false,
-    default: () => [],
-  },
-  fullWidth: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-} as const)
-
-export type TableProps = ExtractPropTypes<typeof tableProps>
+export interface TableProps {
+  headers: PuikTableHeader[]
+  items?: any[]
+  selectable?: boolean
+  selection?: number[]
+  fullWidth?: boolean
+}
 
 export type TableInstance = InstanceType<typeof Table>
