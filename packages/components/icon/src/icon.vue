@@ -22,12 +22,13 @@ const fontSize = computed(() => {
   if (!Number.isNaN(Number(props.fontSize))) {
     return `${props.fontSize}px`
   }
-
   return props.fontSize
 })
 
-const style = {
-  fontSize: fontSize.value,
-  color: props.color,
-}
+const style = computed(() => {
+  return {
+    fontSize: fontSize.value,
+    color: props.color,
+  }
+})
 </script>
