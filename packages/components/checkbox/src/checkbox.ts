@@ -22,6 +22,11 @@ export const checkboxProps = buildProps({
     required: false,
     default: false,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type CheckboxProps = ExtractPropTypes<typeof checkboxProps>

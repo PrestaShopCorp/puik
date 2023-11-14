@@ -7,6 +7,11 @@ export const iconProps = buildProps({
     type: String,
     required: true,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   nodeType: {
     type: String,
     default: 'div',

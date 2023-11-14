@@ -28,6 +28,11 @@ export const sidebarItemProps = buildProps({
     required: false,
     default: false,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type SidebarItemProps = ExtractPropTypes<typeof sidebarItemProps>

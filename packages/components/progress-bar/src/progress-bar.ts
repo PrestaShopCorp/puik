@@ -11,6 +11,11 @@ export const progressBarProps = buildProps({
     type: String,
     default: '',
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type ProgressBarProps = ExtractPropTypes<typeof progressBarProps>

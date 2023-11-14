@@ -22,6 +22,7 @@
           tabindex="-1"
           :readonly="open"
           type="text"
+          :data-test="dataTest != undefined ? `select-${dataTest}` : undefined"
           @input="
             handleAutoComplete(($event.target as HTMLInputElement)?.value)
           "
@@ -53,6 +54,9 @@
             v-model="query"
             class="puik-select__search"
             :placeholder="t('puik.select.searchPlaceholder')"
+            :data-test="
+              dataTest != undefined ? `searchInput-${dataTest}` : undefined
+            "
           >
             <template #prepend
               ><puik-icon
@@ -69,6 +73,9 @@
                 : !filteredItems?.length)
             "
             class="puik-select__no-results"
+            :data-test="
+              dataTest != undefined ? `noResults-${dataTest}` : undefined
+            "
           >
             {{ noMatchText || `${t('puik.select.noResults')} ${query}` }}
           </p>
@@ -76,10 +83,15 @@
             <slot :options="filteredItems">
               <template v-if="options">
                 <puik-option
-                  v-for="option in filteredItems"
+                  v-for="(option, index) in filteredItems"
                   :key="option"
                   :label="option[labelKey]"
                   :value="isObject(option) ? option[valueKey] : option"
+                  :data-test="
+                    dataTest != undefined
+                      ? `option-${dataTest}-${index + 1}`
+                      : undefined
+                  "
                 />
               </template>
             </slot>

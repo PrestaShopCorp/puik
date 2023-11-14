@@ -52,6 +52,11 @@ export const tagProps = buildProps({
     Required: false,
     default: 'bottom',
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type TagProps = ExtractPropTypes<typeof tagProps>

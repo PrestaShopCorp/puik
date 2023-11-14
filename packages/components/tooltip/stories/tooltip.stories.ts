@@ -75,6 +75,16 @@ export default {
         },
       },
     },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set the data-test attribute on the tooltip `content-${dataTest}` `title-${dataTest}` `description-${dataTest}`',
+      table: {
+        defaultValue: {
+          summary: undefined,
+        },
+      },
+    },
   },
   args: {
     title: 'Title',
