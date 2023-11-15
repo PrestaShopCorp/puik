@@ -26,10 +26,13 @@
     @apply mr-1;
   }
   &__content {
-    @apply max-w-[150px] pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
-    & > .puik-tooltip {
-      @apply max-w-[150px] overflow-hidden whitespace-nowrap text-ellipsis;
+    @apply relative max-w-[150px];
+    p {
+      @apply pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
     }
+    // & > .puik-tooltip {
+    //   @apply max-w-[150px] overflow-hidden whitespace-nowrap text-ellipsis;
+    // }
   }
   &__content .puik-tooltip__wrapper {
     @apply max-w-[150px] mr-1 pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
