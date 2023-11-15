@@ -3,14 +3,7 @@ import { resolve } from 'path'
 import glob from 'fast-glob'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
-
-// TODO: CREATE GENERIC UTIL FOR EXCLUDE FILES
-const excludeFiles = (files: string[]) => {
-  const excludes = ['node_modules', 'dist', 'vite.config.ts']
-  return files.filter(
-    (path) => !excludes.some((exclude) => path.includes(exclude)),
-  )
-}
+import { excludeFiles } from '../utils'
 
 export default defineConfig({
   plugins: [

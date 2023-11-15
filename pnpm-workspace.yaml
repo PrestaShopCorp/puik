@@ -3,4 +3,3 @@ packages:
   - packages/*
   - docs
   - playground
-  - build

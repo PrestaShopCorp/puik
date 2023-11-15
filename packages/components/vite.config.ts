@@ -4,29 +4,14 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import vue from '@vitejs/plugin-vue'
+import { excludeFiles } from '../utils'
 import pkg from './package.json' assert { type: 'json' }
-
-// TODO: CREATE GENERIC UTIL FOR EXCLUDE FILES
-const excludeFiles = (files: string[]) => {
-  const excludes = ['node_modules', 'dist', 'vite.config.ts', 'stories', 'test']
-  return files.filter(
-    (path) => !excludes.some((exclude) => path.includes(exclude)),
-  )
-}
 
 export default defineConfig({
   plugins: [
     vue(),
-    // TODO: CLEAN UP
     dts({
       tsconfigPath: 'tsconfig.build.json',
-      exclude: [
-        '**/node_modules',
-        '**/dist',
-        '**/vite.config.ts',
-        '**/stories',
-        '**/test',
-      ],
     }),
     nodeResolve(),
   ],
@@ -46,6 +31,7 @@ export default defineConfig({
           absolute: true,
           onlyFiles: true,
         }),
+        ['stories', 'test'],
       ),
       output: [
         {

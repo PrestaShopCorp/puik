@@ -3,11 +3,5 @@
   "description": "puiklocale",
   "private": true,
   "version": "0.0.1",
-  "license": "MIT",
-  "dependencies": {
-    "lodash-unified": "^1.0.3"
-  },
-  "scripts": {
-    "build": "rimraf dist && rollup -c"
-  }
+  "license": "MIT"
 }
