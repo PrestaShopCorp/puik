@@ -1,10 +1,8 @@
-import { withInstall } from '@prestashopcorp/puik-utils'
-
 import ProgressStepper from './src/progress-stepper.vue'
 import ProgressStepperStep from './src/progress-stepper-step.vue'
 
-export const PuikProgressStepper = withInstall(ProgressStepper)
-export const PuikProgressStepperStep = withInstall(ProgressStepperStep)
+export const PuikProgressStepper = ProgressStepper
+export const PuikProgressStepperStep = ProgressStepperStep
 export default PuikProgressStepper
 
 export * from './src/progress-stepper'

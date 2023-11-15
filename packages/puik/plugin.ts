@@ -1,4 +1,3 @@
-import { PuikSnackbar } from '@puik/components/snackbar'
-import type { Plugin } from 'vue'
+import { PuikSnackbar } from '@prestashopcorp/puik-components/snackbar'
 
-export default [PuikSnackbar] as Plugin[]
+export default [PuikSnackbar]

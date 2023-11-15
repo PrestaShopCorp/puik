@@ -1,8 +1,6 @@
-import { withInstall } from '@prestashopcorp/puik-utils'
-
 import ConfigProvider from './src/config-provider'
 
-export const PuikConfigProvider = withInstall(ConfigProvider)
+export const PuikConfigProvider = ConfigProvider
 export default PuikConfigProvider
 
 export * from './src/config-provider'

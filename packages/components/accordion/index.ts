@@ -1,10 +1,8 @@
-import { withInstall } from '@prestashopcorp/puik-utils'
-
 import AccordionGroup from './src/accordion-group.vue'
 import Accordion from './src/accordion.vue'
 
-export const PuikAccordion = withInstall(Accordion)
-export const PuikAccordionGroup = withInstall(AccordionGroup)
+export const PuikAccordion = Accordion
+export const PuikAccordionGroup = AccordionGroup
 
 export default PuikAccordion
 

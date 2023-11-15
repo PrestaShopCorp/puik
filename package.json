@@ -51,6 +51,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.16",
     "@popperjs/core": "^2.11.8",
+    "@prestashopcorp/puik": "workspace:*",
     "@prestashopcorp/puik-components": "workspace:*",
     "@prestashopcorp/puik-resolver": "workspace:*",
     "@prestashopcorp/puik-locale": "workspace:*",

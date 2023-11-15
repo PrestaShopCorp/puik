@@ -3,33 +3,35 @@
   "license": "MIT",
   "author": "Prestashop",
   "version": "0.0.1",
-  "exports": {
-    ".": {
-      "require": "./lib/index.js",
-      "import": "./es/index.mjs",
-      "types": "./es/index.d.ts"
+  "publishConfig": {
+    "main": "lib/index.js",
+    "module": "es/index.mjs",
+    "types": "es/index.d.ts",
+    "style": "dist/index.css",
+    "unpkg": "dist/index.full.js",
+    "jsdelivr": "dist/index.full.js",
+    "exports": {
+      ".": {
+        "require": "./lib/index.js",
+        "import": "./es/index.mjs",
+        "types": "./es/index.d.ts"
+      },
+      "./es": "./es/index.mjs",
+      "./lib": "./lib/index.js",
+      "./es/*.mjs": "./es/*.mjs",
+      "./es/*": "./es/*.mjs",
+      "./lib/*.js": "./lib/*.js",
+      "./lib/*": "./lib/*.js",
+      "./*": "./*"
     },
-    "./es": "./es/index.mjs",
-    "./lib": "./lib/index.js",
-    "./es/*.mjs": "./es/*.mjs",
-    "./es/*": "./es/*.mjs",
-    "./lib/*.js": "./lib/*.js",
-    "./lib/*": "./lib/*.js",
-    "./*": "./*"
+    "sideEffects": [
+      "dist/*",
+      "theme/*.css",
+      "theme/src/*.scss",
+      "es/components/*/style/*",
+      "lib/components/*/style/*"
+    ]
   },
-  "main": "lib/index.js",
-  "module": "es/index.mjs",
-  "types": "es/index.d.ts",
-  "style": "dist/index.css",
-  "unpkg": "dist/index.full.js",
-  "jsdelivr": "dist/index.full.js",
-  "sideEffects": [
-    "dist/*",
-    "theme/*.css",
-    "theme/src/*.scss",
-    "es/components/*/style/*",
-    "lib/components/*/style/*"
-  ],
   "peerDependencies": {
     "vue": "^3.3.0"
   },

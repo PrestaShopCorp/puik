@@ -12,7 +12,7 @@ import type { PuikSnackbarOptions } from './snackbar'
 const currentNotification: Ref<VNode | null> = ref(null)
 const PUIK_SNACKBAR_ID = 'puik-snackbar-id'
 
-const notify = (
+const PuikSnackbar = (
   options: PuikSnackbarOptions,
   context: AppContext | null = null,
 ) => {
@@ -32,7 +32,7 @@ const notify = (
   }
 
   const newNotification = createVNode(Snackbar, props)
-  newNotification.appContext = context ?? notify._context
+  newNotification.appContext = context ?? PuikSnackbar._context
 
   const container = document.createElement('div')
 
@@ -48,6 +48,6 @@ const notify = (
   currentNotification.value = newNotification
 }
 
-notify._context = null
+PuikSnackbar._context = null
 
-export default notify
+export default PuikSnackbar
