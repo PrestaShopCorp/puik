@@ -49,7 +49,7 @@
           :style="{ 'z-index': zindex }"
         >
           <puik-input
-            v-if="isArray(options) || isObject(options)"
+            v-if="Array.isArray(options) || isObject(options)"
             v-model="query"
             class="puik-select__search"
             :placeholder="t('puik.select.searchPlaceholder')"
@@ -103,12 +103,7 @@
 <script setup lang="ts">
 import { computed, provide, ref, useSlots, watch } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
-import {
-  isObject,
-  isFunction,
-  isArray,
-  slotIsEmpty,
-} from '@prestashopcorp/puik-utils'
+import { isObject, isFunction, slotIsEmpty } from '@prestashopcorp/puik-utils'
 import { useLocale } from '@prestashopcorp/puik-locale'
 import { PuikInput } from '@prestashopcorp/puik-components/input'
 import { PuikIcon } from '@prestashopcorp/puik-components/icon'

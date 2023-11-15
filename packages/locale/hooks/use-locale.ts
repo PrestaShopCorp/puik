@@ -1,8 +1,8 @@
 import { computed, inject, isRef, ref, unref } from 'vue'
-import { get } from 'lodash-unified'
 import { configProviderContextKey } from '@prestashopcorp/puik-components'
+import { debugWarn } from '@prestashopcorp/puik-utils'
 import { locales } from '../lang'
-import type { Ref, InjectionKey } from 'vue'
+import type { Ref } from 'vue'
 import type { MaybeRef } from '@vueuse/core'
 import type { Language } from '../lang'
 
@@ -16,18 +16,38 @@ export type LocaleContext = {
 
 export const buildTranslator =
   (locale: MaybeRef<Language>): Translator =>
-  (path, option) =>
-    translate(path, option, unref(locale))
+  (path, option) => {
+    const unrefedLocale = unref(locale)
+    let value = translate(path, option, unrefedLocale)
+    if (!value) {
+      debugWarn(
+        'i18n',
+        `Not found "${path}" key for "${unrefedLocale.name}" locale messages.`,
+      )
+      value = translate(path, option, unrefedLocale)
+    }
+    return value ? value : path
+  }
 
 export const translate = (
   path: string,
   option: undefined | TranslatorOption,
   locale: Language,
-): string =>
-  (get(locale, path, path) as string).replace(
+): string => {
+  const keys = path.split('.')
+  let value: any = locale
+  for (const key of keys) {
+    value = value[key]
+    if (!value) {
+      break
+    }
+  }
+
+  return value?.replace(
     /\{(\w+)\}/g,
     (_, key) => `${option?.[key] ?? `{${key}}`}`,
   )
+}
 
 export const buildLocaleContext = (
   locale: MaybeRef<Language>,
@@ -41,11 +61,8 @@ export const buildLocaleContext = (
   }
 }
 
-export const localeContextKey: InjectionKey<Ref<string | undefined>> =
-  Symbol('localeContextKey')
-
 export const useLocale = () => {
-  const config = inject(configProviderContextKey)
+  const config = inject(configProviderContextKey, null)
   return buildLocaleContext(
     computed(() => locales[config?.value.locale || 'en']),
   )

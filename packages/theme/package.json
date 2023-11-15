@@ -5,6 +5,10 @@
   "style": "./dist/index.css",
   "unpkg": "./dist/index.css",
   "jsdelivr": "./dist/index.css",
+  "files": [
+    "dist",
+    "assets"
+  ],
   "scripts": {
     "clean": "rimraf dist",
     "build": "pnpm clean && pnpm sass && pnpm postcss",
@@ -14,7 +18,8 @@
   "publishConfig": {
     "main": "./dist/index.css",
     "exports": {
-      "./*.css": "./dist/*.css"
+      "./*.css": "./dist/*.css",
+      "./assets/*": "./assets/*"
     }
   },
   "devDependencies": {

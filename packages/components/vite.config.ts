@@ -83,9 +83,4 @@ export default defineConfig({
       ],
     },
   },
-  resolve: {
-    alias: {
-      '@puik/components': resolve(__dirname, './'),
-    },
-  },
 })

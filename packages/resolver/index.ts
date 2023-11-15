@@ -22,7 +22,7 @@ function getSideEffects(
 ): SideEffectsInfo {
   const { ssr } = options
   const themeFolder = '@prestashopcorp/puik-theme'
-  const ComponentsFolder = '@prestashopcorp/puik-components/'
+  const ComponentsFolder = '@prestashopcorp/puik-components'
 
   return ssr
     ? [`${themeFolder}/base.css`, `${themeFolder}/puik-${dirName}.css`]

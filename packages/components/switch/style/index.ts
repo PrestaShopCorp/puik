@@ -1,2 +1,2 @@
 import '@prestashopcorp/puik-components/base/style'
-import '@prestashopcorp/puik-theme/src/switch.scss'
+import '@prestashopcorp/puik-theme/src/puik-switch.scss'

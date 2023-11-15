@@ -3,57 +3,37 @@
   "license": "MIT",
   "author": "Prestashop",
   "version": "0.0.1",
-  "publishConfig": {
-    "main": "lib/index.js",
-    "module": "es/index.mjs",
-    "types": "es/index.d.ts",
-    "style": "dist/index.css",
-    "unpkg": "dist/index.full.js",
-    "jsdelivr": "dist/index.full.js",
-    "exports": {
-      ".": {
-        "require": "./lib/index.js",
-        "import": "./es/index.mjs",
-        "types": "./es/index.d.ts"
-      },
-      "./es": "./es/index.mjs",
-      "./lib": "./lib/index.js",
-      "./es/*.mjs": "./es/*.mjs",
-      "./es/*": "./es/*.mjs",
-      "./lib/*.js": "./lib/*.js",
-      "./lib/*": "./lib/*.js",
-      "./*": "./*"
-    },
-    "sideEffects": [
-      "dist/*",
-      "theme/*.css",
-      "theme/src/*.scss",
-      "es/components/*/style/*",
-      "lib/components/*/style/*"
-    ]
+  "scripts": {
+    "build": "vite build"
   },
   "peerDependencies": {
     "vue": "^3.3.0"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.13",
-    "@popperjs/core": "^2.11.7",
-    "@vueuse/core": "^9.13.0",
-    "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21",
-    "lodash-unified": "^1.0.3"
+    "@prestashopcorp/puik-components": "workspace:*",
+    "@prestashopcorp/puik-resolver": "workspace:*",
+    "@prestashopcorp/puik-tailwind-preset": "workspace:*",
+    "@prestashopcorp/puik-theme": "workspace:*"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.192",
-    "@types/lodash-es": "^4.17.7",
-    "@types/node": "*",
-    "unplugin-vue-components": "^0.24.1",
     "vue": "^3.3.7",
     "vue-router": "^4.1.6"
   },
-  "vetur": {
-    "tags": "tags.json",
-    "attributes": "attributes.json"
-  },
-  "web-types": "web-types.json"
+  "publishConfig": {
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "import": {
+          "default": "./dist/index.mjs",
+          "types": "./dist/index.d.ts"
+        },
+        "require": {
+          "default": "./dist/index.cjs",
+          "types": "./dist/index.d.ts"
+        }
+      }
+    }
+  }
 }

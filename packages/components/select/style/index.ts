@@ -1,4 +1,4 @@
 import '@prestashopcorp/puik-components/base/style'
-import '@prestashopcorp/puik-theme/src/select.scss'
-import '@prestashopcorp/puik-theme/src/input.scss'
-import '@prestashopcorp/puik-theme/src/icon.scss'
+import '@prestashopcorp/puik-theme/src/puik-select.scss'
+import '@prestashopcorp/puik-theme/src/puik-input.scss'
+import '@prestashopcorp/puik-theme/src/puik-icon.scss'
