@@ -11,9 +11,6 @@
     },
   ],
   ignoreDeps: [
-    // Latest breaks build
-    'ts-morph',
-    'type-fest',
     // MDX style is broken for 0.4.x
     '@storybook/builder-vite',
   ],

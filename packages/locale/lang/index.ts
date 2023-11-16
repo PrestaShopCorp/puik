@@ -16,4 +16,4 @@ export type Language = {
   puik: TranslatePair
 }
 
-export const locales = { de, en, fr, es, it, nl, pl, pt }
+export const locales: Record<string, any> = { de, en, fr, es, it, nl, pl, pt }

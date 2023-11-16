@@ -4,7 +4,7 @@
   "author": "Prestashop",
   "version": "0.0.1",
   "scripts": {
-    "build": "vite build"
+    "build": "vue-tsc --noEmit --project ./tsconfig.build.json && vite build"
   },
   "peerDependencies": {
     "vue": "^3.3.0"
@@ -16,9 +16,12 @@
     "@prestashopcorp/puik-theme": "workspace:*"
   },
   "devDependencies": {
-    "vue": "^3.3.7",
-    "vue-router": "^4.1.6"
+    "vue": "^3.3.7"
   },
+  "files": [
+    "dist",
+    "global.d.ts"
+  ],
   "publishConfig": {
     "main": "./dist/index.cjs",
     "module": "./dist/index.mjs",

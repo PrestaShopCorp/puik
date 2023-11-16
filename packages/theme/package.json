@@ -28,6 +28,6 @@
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
     "sass": "^1.58.3",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.3.5"
   }
 }

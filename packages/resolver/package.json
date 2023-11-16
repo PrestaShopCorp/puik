@@ -6,7 +6,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build"
+    "build": "tsc --noEmit --project ./tsconfig.build.json && vite build"
   },
   "peerDependencies": {
     "@prestashopcorp/puik-components": "workspace:*",
@@ -17,9 +17,6 @@
   "devDependencies": {
     "unplugin-vue-components": "^0.25.2",
     "vue": "^3.3.8"
-  },
-  "dependencies": {
-    "lodash-unified": "^1.0.3"
   },
   "sideEffects": false,
   "publishConfig": {

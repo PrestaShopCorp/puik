@@ -23,8 +23,6 @@ module.exports = {
         plugins: [require('tailwindcss'), require('autoprefixer')],
       },
     }
-    // eslint-disable-next-line
-    config.plugins.push(require('unplugin-vue-define-options/vite')())
     return {
       ...config,
       optimizeDeps: {

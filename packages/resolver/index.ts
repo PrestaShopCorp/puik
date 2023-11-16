@@ -1,4 +1,3 @@
-import { kebabCase } from 'lodash-unified'
 import type {
   ComponentInfo,
   ComponentResolver,
@@ -37,12 +36,10 @@ function resolveComponent(
 
   if (!name.match(/^Puik[A-Z]/)) return
 
-  const kebabName = kebabCase(name.slice(4))
-
   return {
     name,
     from: `@prestashopcorp/puik-components`,
-    sideEffects: getSideEffects(kebabName, options),
+    sideEffects: getSideEffects(name.slice(4).toLowerCase(), options),
   }
 }
 

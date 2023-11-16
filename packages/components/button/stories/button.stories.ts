@@ -1,4 +1,3 @@
-import { capitalize } from 'lodash-unified'
 import PuikButton from './../src/button.vue'
 import { PuikButtonVariants, PuikButtonSizes } from './../src/button'
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
@@ -139,14 +138,13 @@ const ButtonTemplate = (args: Args) => ({
   setup() {
     return {
       args,
-      capitalize,
     }
   },
   template: `
   <div class="space-x-4">
-    <puik-button v-bind="args" :variant="args.variant" size="lg">{{ capitalize(args.variant) }} Button lg</puik-button>
-    <puik-button v-bind="args" :variant="args.variant">{{ capitalize(args.variant) }} Button md</puik-button>
-    <puik-button v-bind="args" :variant="args.variant" size="sm">{{ capitalize(args.variant) }} Button sm</puik-button>
+    <puik-button v-bind="args" :variant="args.variant" size="lg">{{ args.variant }} Button lg</puik-button>
+    <puik-button v-bind="args" :variant="args.variant">{{ args.variant }} Button md</puik-button>
+    <puik-button v-bind="args" :variant="args.variant" size="sm">{{ args.variant }} Button sm</puik-button>
   </div>
   `,
 })
@@ -157,7 +155,6 @@ const AllVariantTemplate = (args: Args, storyContext) => ({
     const variants = storyContext.argTypes.variant.options
     return {
       args,
-      capitalize,
       variants,
     }
   },
@@ -165,7 +162,7 @@ const AllVariantTemplate = (args: Args, storyContext) => ({
     <div class="flex flex-row flex-wrap items-center gap-4">
       <template v-for="(variant, i) in variants" :key="i">
         <puik-button v-bind="args" :variant="variant">
-          {{ capitalize(variant) }} Button
+          {{ variant }} Button
         </puik-button>
       </template>
     </div>

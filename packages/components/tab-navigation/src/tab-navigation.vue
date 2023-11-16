@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<TabNavigationProps>(), {
 })
 
 const name = ref<string>(props.name)
-const numberOfTabs = ref<number>()
+const numberOfTabs = ref<number>(1)
 const currentPosition = ref<number>(props.defaultPosition)
 const keyEventDirection = ref<string | null>()
 const handleTabClick = (index: number) => {

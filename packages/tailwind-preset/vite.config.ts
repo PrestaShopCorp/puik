@@ -1,4 +1,3 @@
-// TODO: REPLACE FAST-GLOB BY GLOB
 import { resolve } from 'path'
 import glob from 'fast-glob'
 import { defineConfig } from 'vite'

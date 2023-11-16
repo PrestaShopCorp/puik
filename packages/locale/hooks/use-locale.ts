@@ -45,7 +45,7 @@ export const translate = (
 
   return value?.replace(
     /\{(\w+)\}/g,
-    (_, key) => `${option?.[key] ?? `{${key}}`}`,
+    (_: any, key: any) => `${option?.[key] ?? `{${key}}`}`,
   )
 }
 

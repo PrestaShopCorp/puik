@@ -14,10 +14,7 @@ export default defineConfig({
       entry: resolve(__dirname, './index.ts'),
     },
     rollupOptions: {
-      external: [
-        ...Object.keys(pkg.dependencies),
-        ...Object.keys(pkg.peerDependencies),
-      ],
+      external: [...Object.keys(pkg.peerDependencies)],
       output: [
         {
           dir: './dist',

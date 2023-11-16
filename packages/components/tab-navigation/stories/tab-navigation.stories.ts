@@ -103,7 +103,8 @@ const Template: StoryFn = (args: Args) => ({
     const tabs = ref([
       { name: 'title-1', content: 'content 1' },
       { name: 'title-2', content: 'content 2' },
-      { name: 'title-3', content: 'content 3' },
+      { name: 'title-3', content: 'content 3', disabled: true },
+      { name: 'title-4', content: 'content 4' },
     ])
     return { tabs, args }
   },

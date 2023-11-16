@@ -10,7 +10,7 @@ export type TabNavigationInstance = InstanceType<typeof TabNavigation>
 
 export type currentTabKeyContext = {
   name: Ref<string>
-  numberOfTabs: Ref<number | undefined>
+  numberOfTabs: Ref<number>
   currentPosition: Ref<number>
   keyEventDirection: Ref<string | null | undefined>
   handleTabClick: (index: number) => void
