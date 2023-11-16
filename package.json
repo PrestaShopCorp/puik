@@ -29,7 +29,6 @@
     "dev": "pnpm --filter @puik/playground dev",
     "component": "hygen component new",
     "prepare": "husky install",
-    "postinstall": "npx rimraf ./node_modules/@types/react && pnpm stub",
     "preinstall": "npx only-allow pnpm -y"
   },
   "config": {

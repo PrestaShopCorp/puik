@@ -3,32 +3,35 @@
   "description": "Puik tailwind preset",
   "type": "module",
   "version": "0.0.1",
-  "main": "dist/index.cjs",
-  "module": "dist/es/index.mjs",
-  "types": "dist/es/index.d.ts",
   "license": "MIT",
-  "exports": {
-    ".": {
-      "require": {
-        "default": "./dist/index.cjs",
-        "types": "./dist/index.d.ts"
-      },
-      "import": {
-        "default": "./dist/index.mjs",
-        "types": "./dist/index.d.ts"
-      }
-    }
-  },
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "vite build"
   },
-  "devDependencies": {
-    "tailwindcss": "^3.2.7"
-  },
   "peerDependencies": {
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.3.5"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "main": "dist/index.cjs",
+    "module": "dist/es/index.mjs",
+    "types": "dist/es/index.d.ts",
+    "exports": {
+      ".": {
+        "require": {
+          "default": "./dist/index.cjs",
+          "types": "./dist/index.d.ts"
+        },
+        "import": {
+          "default": "./dist/index.mjs",
+          "types": "./dist/index.d.ts"
+        }
+      }
+    }
   }
 }

@@ -25,6 +25,7 @@
   "files": [
     "dist"
   ],
+  "sideEffects": false,
   "publishConfig": {
     "main": "./dist/index.cjs",
     "module": "./dist/index.mjs",

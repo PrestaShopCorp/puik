@@ -21,6 +21,7 @@
   "dependencies": {
     "lodash-unified": "^1.0.3"
   },
+  "sideEffects": false,
   "publishConfig": {
     "main": "dist/index.cjs",
     "module": "dist/index.mjs",
