@@ -7,7 +7,7 @@ describe('Textarea tests', () => {
   let wrapper: VueWrapper<any>
   const factory = (
     propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    options: MountingOptions<any> = {},
   ) => {
     wrapper = mount(PuikTextarea, {
       props: {
@@ -42,7 +42,7 @@ describe('Textarea tests', () => {
     factory({ disabled: true })
     expect(findField().attributes('disabled')).toBeDefined()
     expect(findWrapper().classes()).toContain(
-      'puik-textarea__wrapper--disabled'
+      'puik-textarea__wrapper--disabled',
     )
   })
 
@@ -50,7 +50,7 @@ describe('Textarea tests', () => {
     factory({ readonly: true })
     expect(findField().attributes('readonly')).toBeDefined()
     expect(findWrapper().classes()).toContain(
-      'puik-textarea__wrapper--readonly'
+      'puik-textarea__wrapper--readonly',
     )
   })
 
@@ -68,7 +68,7 @@ describe('Textarea tests', () => {
         slots: {
           hint,
         },
-      }
+      },
     )
     expect(findHint().text()).toBe(hint)
   })
@@ -81,7 +81,7 @@ describe('Textarea tests', () => {
         slots: {
           hint,
         },
-      }
+      },
     )
     expect(findHint().text()).toBe(hint)
     await wrapper.setProps({ hideHint: true })
@@ -105,7 +105,7 @@ describe('Textarea tests', () => {
           hint,
           error,
         },
-      }
+      },
     )
     expect(findHint().exists()).toBeFalsy()
     expect(findError().text()).toContain(error)
@@ -114,12 +114,12 @@ describe('Textarea tests', () => {
   it('should render a character count', async () => {
     const text = 'Hello World!'
     const textTooLong = 'Hello World! but way too long'
-    factory({ maxlength: 20 })
+    factory({ maxLength: 20 })
     expect(findCharacterCount().text()).toContain('0/20')
     await wrapper.setValue(text)
     expect(findCharacterCount().text()).toContain('12/20')
     expect(wrapper.classes()).not.toContain(
-      'puik-textarea__character-count--error'
+      'puik-textarea__character-count--error',
     )
     await wrapper.setValue(textTooLong)
     expect(findCharacterCount().text()).toContain('29/20')

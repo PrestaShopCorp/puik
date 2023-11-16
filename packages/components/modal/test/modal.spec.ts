@@ -2,9 +2,9 @@ import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
 import PuikModal from '../src/modal.vue'
 import {
-  PuikModalVariant,
+  PuikModalVariants,
   DESTRUCTIVE_ICON_NAME,
-  PuikModalSize,
+  PuikModalSizes,
 } from '../src/modal'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
@@ -27,19 +27,19 @@ describe('Modal tests', () => {
     wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header__icon')
   const findCloseButton = () =>
     wrapper.find(
-      '.puik-modal__dialogPanelContainer__dialogPanel__header__close-button'
+      '.puik-modal__dialogPanelContainer__dialogPanel__header__close-button',
     )
   const findMainButton = () =>
     wrapper.find(
-      '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--main'
+      '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--main',
     )
   const findSecondaryButton = () =>
     wrapper.find(
-      '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--second'
+      '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--second',
     )
   const findSideButton = () =>
     wrapper.find(
-      '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--side'
+      '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--side',
     )
   const findHeader = () =>
     wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header')
@@ -48,7 +48,7 @@ describe('Modal tests', () => {
 
   const factory = (
     propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    options: MountingOptions<any> = {},
   ) => {
     wrapper = mount(PuikModal, {
       global: {
@@ -86,7 +86,7 @@ describe('Modal tests', () => {
       secondButtonText: 'Awesome second',
       isOpen: true,
       titleIcon: homeTitleIcon,
-      variant: PuikModalVariant.DESTRUCTIVE,
+      variant: PuikModalVariants.Destructive,
     })
 
     expect(findIcon().text()).toBe(DESTRUCTIVE_ICON_NAME)
@@ -102,7 +102,7 @@ describe('Modal tests', () => {
       secondButtonText: 'Awesome second',
       isOpen: true,
       titleIcon: homeTitleIcon,
-      variant: PuikModalVariant.FEEDBACK,
+      variant: PuikModalVariants.Feedback,
     })
 
     expect(findIcon().text()).toBe(homeTitleIcon)
@@ -120,7 +120,7 @@ describe('Modal tests', () => {
       secondButtonText: 'Awesome second',
       isOpen: true,
       titleIcon: homeTitleIcon,
-      variant: PuikModalVariant.DIALOG,
+      variant: PuikModalVariants.Dialog,
       sideButtonText,
     })
 
@@ -138,7 +138,7 @@ describe('Modal tests', () => {
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
       isOpen: true,
-      size: PuikModalSize.LARGE,
+      size: PuikModalSizes.Large,
     })
 
     expect(findModal().classes()).toContain('puik-modal--large')
@@ -150,7 +150,7 @@ describe('Modal tests', () => {
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
       isOpen: true,
-      size: PuikModalSize.MEDIUM,
+      size: PuikModalSizes.Medium,
     })
 
     expect(findModal().classes()).toContain('puik-modal--medium')
@@ -162,7 +162,7 @@ describe('Modal tests', () => {
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
       isOpen: true,
-      size: PuikModalSize.SMALL,
+      size: PuikModalSizes.Small,
     })
 
     expect(findModal().classes()).toContain('puik-modal--small')

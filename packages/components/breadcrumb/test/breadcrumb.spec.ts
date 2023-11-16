@@ -8,7 +8,7 @@ describe('Breadcrumb tests', () => {
   let wrapper: VueWrapper<any>
   const factory = (
     propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    options: MountingOptions<any> = {},
   ) => {
     wrapper = mount(PuikBreadcrumb, {
       props: {
@@ -48,7 +48,7 @@ describe('Breadcrumb tests', () => {
     expect(wrapper).toBeTruthy()
   })
   it('should not display without items', () => {
-    factory()
+    factory({ items: [] })
     expect(wrapper.element.tagName).toBeFalsy()
   })
   it('should first item be A with href', () => {
@@ -85,12 +85,12 @@ describe('Breadcrumb tests', () => {
   it('should have target', () => {
     factory({ items })
     expect(getBreadcrumbItems()[0].element.getAttribute('target')).toBe(
-      '_blank'
+      '_blank',
     )
   })
   it('should last item be div', () => {
     factory({ items })
     const lastItem = getBreadcrumbItems().pop()
-    expect(lastItem.element.tagName).toBe('DIV')
+    expect(lastItem?.element.tagName).toBe('DIV')
   })
 })

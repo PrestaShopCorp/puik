@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
 import { useLocale } from '@prestashopcorp/puik-locale'
 import PuikPagination from '../src/pagination.vue'
-import { PuikPaginationVariantEnum } from '../src/pagination'
+import { PuikPaginationVariants } from '../src/pagination'
 import { PuikOption } from '../../select'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
@@ -68,7 +68,7 @@ describe('Pagination tests', () => {
   it('should display a small pagination', () => {
     factory({
       ...propsData,
-      variant: PuikPaginationVariantEnum.small,
+      variant: PuikPaginationVariants.Small,
     })
     expect(findPagination().classes()).toContain('puik-pagination--small')
   })
@@ -76,7 +76,7 @@ describe('Pagination tests', () => {
   it('should display a medium pagination', () => {
     factory({
       ...propsData,
-      variant: PuikPaginationVariantEnum.medium,
+      variant: PuikPaginationVariants.Medium,
     })
     expect(findPagination().classes()).toContain('puik-pagination--medium')
   })
@@ -84,7 +84,7 @@ describe('Pagination tests', () => {
   it('should display a large pagination', () => {
     factory({
       ...propsData,
-      variant: PuikPaginationVariantEnum.large,
+      variant: PuikPaginationVariants.Large,
     })
     expect(findPagination().classes()).toContain('puik-pagination--large')
   })
@@ -92,7 +92,7 @@ describe('Pagination tests', () => {
   it('should display a mobile pagination', () => {
     factory({
       ...propsData,
-      variant: PuikPaginationVariantEnum.mobile,
+      variant: PuikPaginationVariants.Mobile,
     })
     expect(findPagination().classes()).toContain('puik-pagination--mobile')
   })
@@ -100,7 +100,7 @@ describe('Pagination tests', () => {
   it('should display a loader pagination', () => {
     factory({
       ...propsData,
-      variant: PuikPaginationVariantEnum.loader,
+      variant: PuikPaginationVariants.Loader,
     })
     expect(findPagination().classes()).toContain('puik-pagination--loader')
   })
@@ -135,7 +135,7 @@ describe('Pagination tests', () => {
     const loaderButtonLabel = 'Custom label given to pagination'
     factory({
       ...propsData,
-      variant: PuikPaginationVariantEnum.loader,
+      variant: PuikPaginationVariants.Loader,
       loaderButtonLabel,
     })
     expect(findLoaderButton().text()).toBe(loaderButtonLabel)
@@ -144,7 +144,7 @@ describe('Pagination tests', () => {
   it('should emit event when clicking on load more button', async () => {
     factory({
       ...propsData,
-      variant: PuikPaginationVariantEnum.loader,
+      variant: PuikPaginationVariants.Loader,
     })
     await findLoaderButton().trigger('click')
     await nextTick()
@@ -248,13 +248,13 @@ describe('Pagination tests', () => {
     const previousText = t('puik.pagination.previous')
     const nextText = t('puik.pagination.next')
 
-    factory({ ...propsData, variant: PuikPaginationVariantEnum.large })
+    factory({ ...propsData, variant: PuikPaginationVariants.Large })
     expect(findPreviousButtonText().text()).toContain(previousText)
     expect(findNextButtonText().text()).toBe(nextText)
   })
 
   it('should click page change active class and aria-current', async () => {
-    factory({ ...propsData, variant: PuikPaginationVariantEnum.large })
+    factory({ ...propsData, variant: PuikPaginationVariants.Large })
 
     const findSelect = () => wrapper.find('.puik-pagination__select')
     const findAllOptions = () => wrapper.findAllComponents(PuikOption)
@@ -269,7 +269,7 @@ describe('Pagination tests', () => {
   })
 
   it('should emit when selecting item per page', async () => {
-    factory({ ...propsData, variant: PuikPaginationVariantEnum.large })
+    factory({ ...propsData, variant: PuikPaginationVariants.Large })
 
     const itemsPerPageSelect = findItemsPerPageSelect()
 
@@ -284,7 +284,7 @@ describe('Pagination tests', () => {
   it('should have custom items per page options', () => {
     factory({
       ...propsData,
-      variant: PuikPaginationVariantEnum.large,
+      variant: PuikPaginationVariants.Large,
       itemsPerPageOptions: [1, 2],
     })
 
