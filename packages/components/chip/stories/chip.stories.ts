@@ -1,11 +1,11 @@
 import { ref } from 'vue'
 import {
+  PuikChip,
   PuikIcon,
   PuikButton,
   PuikTooltipPositions,
+  PuikChipSizeVariants,
 } from '@prestashopcorp/puik-components'
-import { PuikChipSizeVariants } from '../src/chip'
-import PuikChip from './../src/chip.vue'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 const chipSizeVariants = Object.values(PuikChipSizeVariants)
@@ -162,9 +162,9 @@ const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
     }
     const refreshChips = () => {
       chips.value = []
-      copyInitialChips.map((chip) => {
+      copyInitialChips.map((chip) => 
         chips.value.push(chip)
-      })
+      )
     }
     return { chips, args, handleCloseChip, refreshChips }
   },

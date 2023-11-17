@@ -281,7 +281,7 @@ describe('Pagination tests', () => {
     ).toStrictEqual([10])
   })
 
-  it('should have custom items per page options', () => {
+  it('should have custom items per page options', async () => {
     factory({
       ...propsData,
       variant: PuikPaginationVariants.Large,
@@ -290,7 +290,7 @@ describe('Pagination tests', () => {
 
     const itemsPerPageSelect = findItemsPerPageSelect()
 
-    findItemsPerPageSelect().trigger('click')
+    await findItemsPerPageSelect().trigger('click')
     const options = findAllOptions(itemsPerPageSelect)
     expect(options[0].text()).toBe('1')
     expect(options[1].text()).toBe('2')

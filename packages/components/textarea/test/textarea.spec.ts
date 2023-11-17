@@ -12,8 +12,9 @@ describe('Textarea tests', () => {
     wrapper = mount(PuikTextarea, {
       props: {
         ...propsData,
-        'onUpdate:modelValue': async (modelValue: any) =>
-          await wrapper.setProps({ modelValue }),
+        'onUpdate:modelValue': async (modelValue: any) =>{
+          await wrapper.setProps({ modelValue })
+        }
       },
       ...options,
     })

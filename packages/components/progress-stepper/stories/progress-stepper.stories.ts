@@ -1,9 +1,6 @@
 import { useArgs } from '@storybook/client-api'
-import PuikButton from '../../button/src/button.vue'
-import PuikProgressStepper from './../src/progress-stepper.vue'
-import PuikProgressStepperStep from './../src/progress-stepper-step.vue'
+import { PuikButton, PuikProgressStepper ,PuikProgressStepperStep, PuikStep } from "@prestashopcorp/puik-components"
 import type { Meta, StoryFn } from '@storybook/vue3'
-import type { PuikStep } from '../src/progress-stepper'
 
 export default {
   title: 'Components/ProgressStepper',

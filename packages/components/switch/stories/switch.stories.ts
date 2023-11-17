@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { useArgs } from '@storybook/client-api'
-import PuikSwitch from './../src/switch.vue'
-import type { StoryObj, StoryFn, Meta, Args } from '@storybook/vue3'
+import { PuikSwitch } from "@prestashopcorp/puik-components"
+import type { StoryObj, StoryFn, Meta } from '@storybook/vue3'
 
 export default {
   title: 'Components/Switch',
@@ -67,8 +67,8 @@ export default {
   },
 } as Meta
 
-const Template: StoryFn = (args: Args) => {
-  const [_, updateArgs] = useArgs()
+const Template: StoryFn = () => {
+  const [args, updateArgs] = useArgs()
   return {
     components: {
       PuikSwitch,

@@ -1,4 +1,4 @@
-import PuikIcon from './../src/icon.vue'
+import { PuikIcon } from '@prestashopcorp/puik-components'
 import type { Args, Meta, StoryFn } from '@storybook/vue3'
 
 export default {

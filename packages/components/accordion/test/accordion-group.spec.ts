@@ -138,14 +138,14 @@ describe('AccordionGroup props tests', () => {
       },
     })
 
-    wrapper.setData({ expandedAccordions: 'accordion-2' })
+    await wrapper.setData({ expandedAccordions: 'accordion-2' })
     await nextTick()
 
     const accordions = getAccordions()
     expect(accordions[1].classes()).toEqual([rootClass, expandedClass])
     expect(accordions[2].classes()).toEqual([rootClass])
 
-    wrapper.setData({ expandedAccordions: ['accordion-3'] })
+    await wrapper.setData({ expandedAccordions: ['accordion-3'] })
     await nextTick()
     expect(accordions[1].classes()).toEqual([rootClass])
     expect(accordions[2].classes()).toEqual([rootClass, expandedClass])
@@ -170,8 +170,8 @@ describe('AccordionGroup props tests', () => {
     const accordions = getAccordions()
     const accordionButtons = wrapper.findAll('.puik-accordion__header')
 
-    accordionButtons[0].trigger('click')
-    accordionButtons[1].trigger('click')
+    await accordionButtons[0].trigger('click')
+    await accordionButtons[1].trigger('click')
     await nextTick()
 
     expect(accordions[0].classes()).toEqual([rootClass, expandedClass])

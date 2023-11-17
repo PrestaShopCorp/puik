@@ -78,31 +78,11 @@ const slots = useSlots()
 const isFocus = ref(false)
 const passwordIsVisible = ref(false)
 
-const inputClasses = computed(() => ({
-  'puik-input__wrapper--focus': isFocus.value,
-  'puik-input__wrapper--disabled': props.disabled,
-  'puik-input__wrapper--success': props.success,
-  'puik-input__wrapper--error': hasError.value,
-}))
-
 const handleFocus = () => (isFocus.value = true)
 const handleBlur = () => (isFocus.value = false)
 
 const togglePasswordVisibility = () =>
   (passwordIsVisible.value = !passwordIsVisible.value)
-
-const increase = () => {
-  if (isNumber(value.value) && value.value < props.max) {
-    value.value += props.step
-  }
-}
-const decrease = () => {
-  if (isNumber(value.value) && value.value > props.min) {
-    value.value -= props.step
-  }
-}
-
-const hasError = computed(() => props.error || slotIsEmpty(slots.error))
 
 const value = computed<string | number | undefined>({
   get() {
@@ -115,4 +95,23 @@ const value = computed<string | number | undefined>({
     emit('update:modelValue', value)
   },
 })
+
+const increase = () => {
+  if (isNumber(value.value) && value.value < props.max) {
+    value.value += props.step
+  }
+}
+const decrease = () => {
+  if (isNumber(value.value) && value.value > props.min) {
+    value.value -= props.step
+  }
+}
+const hasError = computed(() => props.error || slotIsEmpty(slots.error))
+
+const inputClasses = computed(() => ({
+  'puik-input__wrapper--focus': isFocus.value,
+  'puik-input__wrapper--disabled': props.disabled,
+  'puik-input__wrapper--success': props.success,
+  'puik-input__wrapper--error': hasError.value,
+}))
 </script>

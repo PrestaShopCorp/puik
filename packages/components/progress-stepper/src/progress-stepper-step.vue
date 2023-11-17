@@ -45,11 +45,6 @@ const isCurrentStep = computed(() => {
   return props.step === progressStepper?.currentStep.value
 })
 
-const buttonVariant = computed(() => {
-  if (isCompleted.value) return 'success'
-  return 'primary'
-})
-
 const stepIndex = computed(() => {
   if (!progressStepper) return -1
   return progressStepper.steps.value.lastIndexOf(props.step)
@@ -63,6 +58,11 @@ const disabled = computed(() => {
 const isCompleted = computed(() => {
   if (!progressStepper) return true
   return stepIndex.value < progressStepper.currentStepIndex.value
+})
+
+const buttonVariant = computed(() => {
+  if (isCompleted.value) return 'success'
+  return 'primary'
 })
 
 const onClick = () => {

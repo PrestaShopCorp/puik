@@ -1,5 +1,4 @@
-import PuikButton from './../src/button.vue'
-import { PuikButtonVariants, PuikButtonSizes } from './../src/button'
+import { PuikButton, PuikButtonVariants, PuikButtonSizes } from "@prestashopcorp/puik-components"
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 const buttonVariants = Object.values(PuikButtonVariants)

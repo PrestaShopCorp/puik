@@ -1,9 +1,8 @@
 import { action } from '@storybook/addon-actions'
-import { AlertVariants } from '../src/alert'
-import PuikAlert from './../src/alert.vue'
+import { PuikAlert, PuikAlertVariants } from "@prestashopcorp/puik-components"
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
-const alertVariants = Object.values(AlertVariants)
+const alertVariants = Object.values(PuikAlertVariants)
 const alertVariantsSummary = alertVariants.join('|')
 
 export default {

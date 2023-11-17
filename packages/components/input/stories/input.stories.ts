@@ -1,6 +1,5 @@
 import { ref } from 'vue'
-import { PuikInputTypes } from './../src/input'
-import PuikInput from './../src/input.vue'
+import { PuikInput, PuikInputTypes } from '@prestashopcorp/puik-components'
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 const inputTypes = Object.values(PuikInputTypes)

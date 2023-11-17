@@ -17,11 +17,11 @@ export enum PuikTagSizes {
 export interface TagProps {
   id: string
   content: string
-  variant: `${PuikTagVariants}`
-  size: `${PuikTagSizes}`
-  icon: string
-  disabled: boolean
-  tooltipPosition: `${PuikTooltipPositions}`
+  variant?: `${PuikTagVariants}`
+  size?: `${PuikTagSizes}`
+  icon?: string
+  disabled?: boolean
+  tooltipPosition?: `${PuikTooltipPositions}`
 }
 
 export type TagInstance = InstanceType<typeof Tag>

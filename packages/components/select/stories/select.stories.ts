@@ -1,6 +1,5 @@
 import { ref } from 'vue'
-import PuikSelect from './../src/select.vue'
-import PuikOption from './../src/option.vue'
+import { PuikSelect, PuikOption } from "@prestashopcorp/puik-components"
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {

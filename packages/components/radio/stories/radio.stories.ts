@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import PuikRadio from './../src/radio.vue'
+import { PuikRadio } from "@prestashopcorp/puik-components"
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {

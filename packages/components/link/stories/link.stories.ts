@@ -1,5 +1,4 @@
-import PuikLink from './../src/link.vue'
-import { PuikLinkSizes, PuikLinkTargetVariants } from './../src/link'
+import { PuikLink, PuikLinkSizes, PuikLinkTargetVariants } from "@prestashopcorp/puik-components"
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 const targetVariants = Object.values(PuikLinkTargetVariants)

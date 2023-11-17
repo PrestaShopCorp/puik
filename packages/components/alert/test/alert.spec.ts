@@ -39,10 +39,10 @@ describe('Alert tests', () => {
     expect(findAlert().classes()).toContain('puik-alert--warning')
   })
 
-  it('should display a button which emits the click event on click', () => {
+  it('should display a button which emits the click event on click', async () => {
     factory({ buttonLabel: 'Button' })
     expect(findButton().exists()).toBeTruthy()
-    findButton().trigger('click')
+    await findButton().trigger('click')
     expect(wrapper.emitted('click')).toBeTruthy()
   })
 

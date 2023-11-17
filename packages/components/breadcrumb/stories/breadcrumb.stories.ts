@@ -1,4 +1,4 @@
-import PuikBreadcrumb from './../src/breadcrumb.vue'
+import { PuikBreadcrumb } from "@prestashopcorp/puik-components"
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 export default {
   title: 'Components/Breadcrumb',

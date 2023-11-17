@@ -1,4 +1,4 @@
-import PuikProgressBar from './../src/progress-bar.vue'
+import { PuikProgressBar } from "@prestashopcorp/puik-components"
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {

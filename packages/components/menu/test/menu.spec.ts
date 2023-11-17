@@ -27,7 +27,7 @@ export const getMenu = (wrapper) => wrapper.find('.puik-menu')
 export const getMenuTrigger = (wrapper) => wrapper.find('.puik-menu__trigger')
 export const getMenuContent = (wrapper) => wrapper.find('.puik-menu__content')
 
-export const showMenu = (wrapper) => {
+export const showMenu = async (wrapper) => {
   getMenuTrigger(wrapper).trigger('click')
   return nextTick()
 }

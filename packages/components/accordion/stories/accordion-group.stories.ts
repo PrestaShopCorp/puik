@@ -1,6 +1,5 @@
 import { ref } from 'vue'
-import PuikAccordionGroup from '../src/accordion-group.vue'
-import PuikAccordion from '../src/accordion.vue'
+import { PuikAccordion, PuikAccordionGroup } from "@prestashopcorp/puik-components"
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {

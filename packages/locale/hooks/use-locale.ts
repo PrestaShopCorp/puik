@@ -26,7 +26,7 @@ export const buildTranslator =
       )
       value = translate(path, option, unrefedLocale)
     }
-    return value ? value : path
+    return value || path
   }
 
 export const translate = (
@@ -64,6 +64,6 @@ export const buildLocaleContext = (
 export const useLocale = () => {
   const config = inject(configProviderContextKey, null)
   return buildLocaleContext(
-    computed(() => locales[config?.value.locale || 'en']),
+    computed(() => locales[config?.value.locale ?? 'en']),
   )
 }

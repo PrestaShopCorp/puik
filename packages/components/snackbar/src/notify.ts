@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   createVNode,
   render,
@@ -17,7 +18,7 @@ const PuikSnackbar = (
   context: AppContext | null = null,
 ) => {
   const customOnClose = options.onClose
-  const offset = options.offset || 32
+  const offset = options.offset ?? 32
 
   const documentBody: HTMLElement | null = document.body
 

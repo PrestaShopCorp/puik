@@ -1,7 +1,4 @@
-import { PuikButton } from '@prestashopcorp/puik-components/button'
-import { PuikIcon } from '@prestashopcorp/puik-components/icon'
-import PuikTooltip from './../src/tooltip.vue'
-import { PuikTooltipPositions } from './../src/tooltip'
+import { PuikButton, PuikIcon, PuikTooltip, PuikTooltipPositions } from "@prestashopcorp/puik-components"
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 const tooltipPositions = Object.values(PuikTooltipPositions)

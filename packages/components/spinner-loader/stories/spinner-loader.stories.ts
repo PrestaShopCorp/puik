@@ -1,9 +1,4 @@
-import PuikSpinnerLoader from './../src/spinner-loader.vue'
-import {
-  PuikSpinnerLoaderColors,
-  PuikSpinnerLoaderPositions,
-  PuikSpinnerLoaderSizes,
-} from './../src/spinner-loader'
+import { PuikSpinnerLoader, PuikSpinnerLoaderColors, PuikSpinnerLoaderPositions, PuikSpinnerLoaderSizes } from "@prestashopcorp/puik-components"
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 const puikSpinnerLoaderSizes = Object.values(PuikSpinnerLoaderSizes)

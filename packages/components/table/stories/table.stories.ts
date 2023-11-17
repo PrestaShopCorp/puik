@@ -1,7 +1,5 @@
 import { ref } from 'vue'
-import PuikButton from '../../button/src/button.vue'
-import PuikTable from './../src/table.vue'
-import type { PuikTableHeader } from '../src/table'
+import { PuikTable, PuikButton, type PuikTableHeader} from "@prestashopcorp/puik-components"
 import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3'
 
 function generateData(length = 3) {
@@ -88,7 +86,7 @@ export default {
         },
       },
     },
-    '`header-${header.value}`': {
+    '`header-{header.value}`': {
       control: 'none',
       description: 'Slot to replace header',
       table: {
@@ -103,7 +101,7 @@ export default {
         },
       },
     },
-    '`item-${header.value}`': {
+    '`item-{header.value}`': {
       control: 'none',
       description: 'Slot to replace item',
       table: {

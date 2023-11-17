@@ -1,5 +1,4 @@
-import { PuikBadgeVariants } from '../src/badge'
-import PuikBadge from './../src/badge.vue'
+import { PuikBadge, PuikBadgeVariants } from "@prestashopcorp/puik-components"
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 const badgeVariants = Object.values(PuikBadgeVariants)

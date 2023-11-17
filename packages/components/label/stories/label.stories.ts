@@ -1,4 +1,4 @@
-import PuikLabel from '../src/label.vue'
+import { PuikLabel } from "@prestashopcorp/puik-components"
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {

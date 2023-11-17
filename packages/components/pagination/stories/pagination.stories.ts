@@ -1,6 +1,5 @@
 import { ref } from 'vue'
-import { PuikPaginationVariants } from '../src/pagination'
-import PuikPagination from './../src/pagination.vue'
+import { PuikPagination, PuikPaginationVariants } from "@prestashopcorp/puik-components"
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
 
 const paginationVariants = Object.values(PuikPaginationVariants)

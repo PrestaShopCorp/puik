@@ -1,5 +1,4 @@
-import { PuikSidebarItem, PuikSidebarTitle } from '..'
-import PuikSidebar from './../src/sidebar.vue'
+import { PuikSidebar, PuikSidebarItem, PuikSidebarTitle } from "@prestashopcorp/puik-components"
 import type { Meta, StoryObj, StoryFn, Args } from '@storybook/vue3'
 
 export default {

@@ -1,12 +1,5 @@
 import { ref } from 'vue'
-import PuikIcon from '../../icon/src/icon.vue'
-import {
-  PuikTabNavigation,
-  PuikTabNavigationGroupTitles,
-  PuikTabNavigationGroupPanels,
-  PuikTabNavigationTitle,
-  PuikTabNavigationPanel,
-} from '..'
+import { PuikTabNavigation, PuikTabNavigationGroupTitles, PuikTabNavigationGroupPanels, PuikTabNavigationTitle, PuikTabNavigationPanel, PuikIcon } from "@prestashopcorp/puik-components"
 import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3'
 
 const meta: Meta<
@@ -103,8 +96,7 @@ const Template: StoryFn = (args: Args) => ({
     const tabs = ref([
       { name: 'title-1', content: 'content 1' },
       { name: 'title-2', content: 'content 2' },
-      { name: 'title-3', content: 'content 3', disabled: true },
-      { name: 'title-4', content: 'content 4' },
+      { name: 'title-3', content: 'content 3' },
     ])
     return { tabs, args }
   },

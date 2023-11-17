@@ -68,12 +68,6 @@ const internalValue = useVModel(props, 'modelValue', emit)
 const textarea = ref<HTMLTextAreaElement>()
 
 const isFocus = ref(false)
-const textareaClass = computed(() => ({
-  'puik-textarea__wrapper--focus': isFocus.value,
-  'puik-textarea__wrapper--disabled': props.disabled,
-  'puik-textarea__wrapper--readonly': props.readonly,
-  'puik-textarea__wrapper--error': hasError.value,
-}))
 
 const handleFocus = () => (isFocus.value = true)
 const handleBlur = () => (isFocus.value = false)
@@ -105,6 +99,13 @@ const computeHeight = () => {
     )}px`
   })
 }
+
+const textareaClass = computed(() => ({
+  'puik-textarea__wrapper--focus': isFocus.value,
+  'puik-textarea__wrapper--disabled': props.disabled,
+  'puik-textarea__wrapper--readonly': props.readonly,
+  'puik-textarea__wrapper--error': hasError.value,
+}))
 
 onMounted(computeHeight)
 watch(() => props.modelValue, computeHeight)

@@ -1,6 +1,6 @@
 import { ref } from 'vue'
-import PuikButtonGroup from './../src/button-group.vue'
-import PuikButton from './../../button/src/button.vue'
+import { PuikButton, PuikButtonGroup } from "@prestashopcorp/puik-components"
+
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {

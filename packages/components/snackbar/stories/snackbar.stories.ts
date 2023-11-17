@@ -1,7 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { PuikSnackbar } from '..'
-import { PuikSnackbarVariants, type PuikSnackbarOptions } from '../src/snackbar'
-import { PuikButton } from '../../button/index'
+import { PuikButton, PuikSnackbar, PuikSnackbarVariants, type PuikSnackbarOptions } from "@prestashopcorp/puik-components"
 import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3'
 
 const snackbarVariants = Object.values(PuikSnackbarVariants)

@@ -46,13 +46,6 @@ const emit = defineEmits<{
 }>()
 const { t } = useLocale()
 
-const screenReader = computed(
-  () =>
-    `${value.value ? t('puik.switch.disable') : t('puik.switch.enable')} ${
-      props.screenReaderText
-    }`,
-)
-
 const value = computed({
   get() {
     return props.modelValue
@@ -61,4 +54,11 @@ const value = computed({
     emit('update:modelValue', value)
   },
 })
+
+const screenReader = computed(
+  () =>
+    `${value.value ? t('puik.switch.disable') : t('puik.switch.enable')} ${
+      props.screenReaderText
+    }`,
+)
 </script>

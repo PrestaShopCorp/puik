@@ -1,8 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import { useArgs } from '@storybook/client-api'
-import { PuikButton } from '@prestashopcorp/puik-components/button'
-import { PuikModalVariants, PuikModalSizes } from '../index'
-import PuikModal from './../src/modal.vue'
+import { PuikButton, PuikModal, PuikModalVariants, PuikModalSizes } from '@prestashopcorp/puik-components'
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 const modalSizes = Object.values(PuikModalSizes)

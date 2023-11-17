@@ -1,11 +1,4 @@
-import PuikIcon from '../../icon/src/icon.vue'
-import {
-  PuikTabNavigation,
-  PuikTabNavigationGroupTitles,
-  PuikTabNavigationGroupPanels,
-  PuikTabNavigationTitle,
-  PuikTabNavigationPanel,
-} from '..'
+import { PuikTabNavigation, PuikTabNavigationGroupTitles, PuikTabNavigationGroupPanels, PuikTabNavigationTitle, PuikTabNavigationPanel, PuikIcon } from "@prestashopcorp/puik-components"
 import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3'
 
 const meta: Meta<

@@ -79,6 +79,12 @@ const currentPage = computed({
   set: (page: number) => emit('update:page', page),
 })
 
+const maxPage = computed(() => {
+  return Math.ceil(props.totalItem / props.itemsPerPage)
+})
+
+const disabled = computed(() => !props.totalItem || !maxPage.value)
+
 const currentLabel = computed(() => {
   if (props.label) return props.label
   const path = `puik.pagination.${props.variant}.label`
@@ -109,11 +115,5 @@ const commonPaginationProps = computed(() => {
     maxPage: maxPage.value,
     disabled: disabled.value,
   }
-})
-
-const disabled = computed(() => !props.totalItem || !maxPage.value)
-
-const maxPage = computed(() => {
-  return Math.ceil(props.totalItem / props.itemsPerPage)
 })
 </script>

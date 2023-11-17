@@ -1,5 +1,4 @@
-import PuikProgressStepper from './../src/progress-stepper.vue'
-import PuikProgressStepperStep from './../src/progress-stepper-step.vue'
+import { PuikProgressStepper, PuikProgressStepperStep } from "@prestashopcorp/puik-components"
 import type { Meta, StoryFn, Args } from '@storybook/vue3'
 
 export default {

@@ -37,7 +37,7 @@
           contained
           class="puik-sidebar__content lul"
           :model-value="openAccordionName"
-          @update:model-value="openAccordion($event as string)"
+          @update:model-value="open($event as string)"
         >
           <slot></slot>
         </puik-accordion-group>
@@ -82,7 +82,7 @@ function setExpanded(value: boolean) {
   emit('update:expanded', value)
 }
 
-function openAccordion(value: string) {
+function open(value: string) {
   openAccordionName.value = value
   emit('update:openAccordion', value)
 }

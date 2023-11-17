@@ -96,13 +96,13 @@ const emit = defineEmits<{
 const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
 
+const indeterminate = computed(() => {
+  return checked.value.length > 0 && checked.value.length < props.items.length
+})
+
 const selectAll = computed(() => {
   if (indeterminate.value) return false
   return checked.value.length === props.items.length
-})
-
-const indeterminate = computed(() => {
-  return checked.value.length > 0 && checked.value.length < props.items.length
 })
 
 function handleClickAll() {
@@ -116,6 +116,10 @@ function handleClickAll() {
   emit('update:selection', checked.value)
 }
 
+function getSelected(index: number): boolean {
+  return checked.value.some((value) => value === index)
+}
+
 function handleClick(index: number) {
   if (getSelected(index)) {
     checked.value = checked.value.filter((value) => value !== index)
@@ -127,9 +131,7 @@ function handleClick(index: number) {
   emit('update:selection', checked.value)
 }
 
-function getSelected(index: number): boolean {
-  return checked.value.some((value) => value === index)
-}
+
 
 const selectAllLabel = computed(() => {
   return t(

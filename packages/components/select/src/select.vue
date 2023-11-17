@@ -181,6 +181,7 @@ const handleAutoComplete = (label: string | number) => {
     ) {
       selectedValue.value = option
     }
+    return null
   })
 }
 

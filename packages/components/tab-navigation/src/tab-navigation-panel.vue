@@ -25,6 +25,6 @@ const props = defineProps<TabNavigationPanelProps>()
 const currentTab = inject(currentTabKey)
 const name = ref(currentTab?.name)
 const isCurrentTab = computed(() => {
-  return props.position == currentTab?.currentPosition.value
+  return props.position === currentTab?.currentPosition.value
 })
 </script>

@@ -34,7 +34,7 @@ const handleclick = () => {
 }
 
 const isCurrentTab = computed(() => {
-  return props.position == currentTab?.currentPosition.value
+  return props.position === currentTab?.currentPosition.value
 })
 
 watch(

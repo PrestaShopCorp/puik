@@ -11,12 +11,8 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 // @ts-expect-error Find on the Tailwindlabs/headlessui repo
 // https://github.com/tailwindlabs/headlessui/blob/main/packages/%40headlessui-vue/src/components/dialog/dialog.test.ts#L46
 global.ResizeObserver = class FakeResizeObserver {
-  observe() {
-    return
-  }
-  disconnect() {
-    return
-  }
+  observe() {}
+  disconnect() {}
 }
 
 describe('Modal tests', () => {
@@ -179,7 +175,7 @@ describe('Modal tests', () => {
 
     expect(findCloseButton().exists()).toBeTruthy()
 
-    findCloseButton().trigger('click')
+    await findCloseButton().trigger('click')
     expect(wrapper.emitted('close')).toBeTruthy()
   })
 
@@ -194,7 +190,7 @@ describe('Modal tests', () => {
 
     expect(findCloseButton().exists()).toBeTruthy()
 
-    findCloseButton().trigger('click')
+    await findCloseButton().trigger('click')
     expect(wrapper.emitted('close')).toBeTruthy()
   })
 
@@ -206,7 +202,7 @@ describe('Modal tests', () => {
       isOpen: true,
     })
 
-    findMainButton().trigger('click')
+    await findMainButton().trigger('click')
     expect(wrapper.emitted('button-main')).toBeTruthy()
   })
 
@@ -218,7 +214,7 @@ describe('Modal tests', () => {
       isOpen: true,
     })
 
-    findSecondaryButton().trigger('click')
+    await findSecondaryButton().trigger('click')
     expect(wrapper.emitted('button-second')).toBeTruthy()
   })
 

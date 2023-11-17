@@ -48,6 +48,10 @@ defineOptions({
   name: 'PuikSnackbar',
 })
 
+defineEmits<{
+  destroy: []
+}>()
+
 const { t } = useLocale()
 let timer: (() => void) | undefined
 
@@ -64,6 +68,10 @@ const position = computed<CSSProperties>(() => ({
   bottom: `${props.offset}px`,
 }))
 
+const close = () => {
+  visible.value = false
+}
+
 const startTimer = () => {
   if (props.duration > 0) {
     ;({ stop: timer } = useTimeoutFn(() => {
@@ -73,10 +81,6 @@ const startTimer = () => {
 }
 
 const resetTimer = () => timer?.()
-
-const close = () => {
-  visible.value = false
-}
 
 const onKeyDown = ({ code }: KeyboardEvent) => {
   if (code === 'Escape') {
