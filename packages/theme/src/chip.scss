@@ -30,9 +30,6 @@
     p {
       @apply pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
     }
-    // & > .puik-tooltip {
-    //   @apply max-w-[150px] overflow-hidden whitespace-nowrap text-ellipsis;
-    // }
   }
   &__content .puik-tooltip__wrapper {
     @apply max-w-[150px] mr-1 pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
