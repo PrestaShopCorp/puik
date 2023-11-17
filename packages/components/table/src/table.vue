@@ -5,7 +5,10 @@
         <tr class="puik-table__head__row">
           <th
             v-if="selectable"
-            class="puik-table__head__row__item puik-table__head__row__item--selection"
+            :class="[
+              'puik-table__head__row__item puik-table__head__row__item--selection',
+              { 'puik-table__head__row__item--sticky': stickyFirstCol },
+            ]"
           >
             <puik-checkbox
               :model-value="selectAll"
@@ -20,7 +23,6 @@
             v-for="(header, index) in headers"
             :key="`headers${header.value}`"
             :class="[
-              'puik-table__head__row__item',
               `puik-table__head__row__item puik-table__head__row__item--${
                 header.align ?? 'left'
               }`,
@@ -28,6 +30,7 @@
                 [`puik-table__head__row__item--${header.size}`]:
                   header?.size && !header?.width,
               },
+              { 'puik-table__head__row__item--sticky': isSticky(index) },
             ]"
             :style="{ minWidth: header.width, width: header.width }"
           >
@@ -49,7 +52,10 @@
         >
           <td
             v-if="selectable"
-            class="puik-table__body__row__item puik-table__body__row__item--selection"
+            :class="[
+              'puik-table__body__row__item puik-table__body__row__item--selection',
+              { 'puik-table__body__row__item--sticky': stickyFirstCol },
+            ]"
           >
             <puik-checkbox
               :model-value="getSelected(rowIndex)"
@@ -63,7 +69,10 @@
             v-for="(header, colIndex) in headers"
             :key="`col-${colIndex}`"
             class="puik-table__body__row__item"
-            :class="`puik-table__body__row__item--${header.align ?? 'left'}`"
+            :class="[
+              `puik-table__body__row__item--${header.align ?? 'left'}`,
+              { 'puik-table__body__row__item--sticky': isSticky(colIndex) },
+            ]"
           >
             <slot :name="`item-${header.value}`" :item="item" :index="rowIndex">
               {{ item[header.value] }}
@@ -92,6 +101,20 @@ const emit = defineEmits<{
 }>()
 const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
+
+const isSticky = (
+  index: number,
+  selectable: boolean = props.selectable
+): boolean => {
+  if (selectable) {
+    return props.stickyLastCol && index === props.headers.length - 1
+  } else {
+    return (
+      (props.stickyFirstCol && index === 0) ||
+      (props.stickyLastCol && index === props.headers.length - 1)
+    )
+  }
+}
 
 const selectAll = computed(() => {
   if (indeterminate.value) return false

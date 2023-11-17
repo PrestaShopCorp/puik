@@ -88,6 +88,30 @@ export default {
         },
       },
     },
+    stickyFirstCol: {
+      control: 'boolean',
+      description: 'Makes the first column sticky',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    stickyLastCol: {
+      control: 'boolean',
+      description: 'Makes the last column sticky',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    stickyHeader: {
+      control: 'boolean',
+      description: 'Makes the header sticky',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     '`header-${header.value}`': {
       control: 'none',
       description: 'Slot to replace header',

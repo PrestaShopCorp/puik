@@ -72,4 +72,25 @@
       }
     }
   }
+  .puik-table__head__row__item--sticky,
+  .puik-table__body__row__item--sticky {
+    @apply sticky bg-white;
+    &::before {
+      @apply content-[''] block absolute top-0 bottom-0 w-1.5 bg-white;
+    }
+  }
+  tr .puik-table__head__row__item--sticky:first-child,
+  tr .puik-table__body__row__item--sticky:first-child {
+    @apply -left-px;
+    &::before {
+      @apply right-0 shadow-[4px_0_7px_-1px_rgba(29,29,27,0.1)];
+    }
+  }
+  tr .puik-table__head__row__item--sticky:last-child,
+  tr .puik-table__body__row__item--sticky:last-child {
+    @apply -right-px;
+    &::before {
+      @apply left-0 shadow-[-4px_0_7px_-1px_rgba(29,29,27,0.1)];
+    }
+  }
 }
