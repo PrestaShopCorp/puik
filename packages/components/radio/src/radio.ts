@@ -1,4 +1,4 @@
-import type Radio from './radio.vue'
+import type Radio from './radio.vue';
 
 export interface RadioProps {
   label?: string
@@ -8,4 +8,4 @@ export interface RadioProps {
   value: boolean | string | number
 }
 
-export type RadioInstance = InstanceType<typeof Radio>
+export type RadioInstance = InstanceType<typeof Radio>;

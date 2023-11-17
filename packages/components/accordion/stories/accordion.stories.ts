@@ -1,5 +1,5 @@
-import { PuikAccordion, PuikAccordionGroup } from "@prestashopcorp/puik-components"
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikAccordion, PuikAccordionGroup } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Accordion/Accordion',
@@ -8,44 +8,44 @@ export default {
     name: {
       control: 'text',
       description:
-        'name used by parent AccordionGroup to expand/collapse accordion',
+        'name used by parent AccordionGroup to expand/collapse accordion'
     },
     title: {
       control: 'text',
-      description: 'Title displayed in the header',
+      description: 'Title displayed in the header'
     },
     subTitle: {
       control: 'text',
-      description: 'Sub title displayed in the header',
+      description: 'Sub title displayed in the header'
     },
     icon: {
       control: 'text',
-      description: 'Icon used in the header',
+      description: 'Icon used in the header'
     },
     disabled: {
       control: 'boolean',
       description: 'Set accordion disabled',
       table: {
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     default: {
       control: 'none',
-      description: 'Accordion content',
-    },
-  },
-} as Meta
+      description: 'Accordion content'
+    }
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikAccordionGroup,
-    PuikAccordion,
+    PuikAccordion
   },
   args: {},
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <puik-accordion-group>
@@ -53,8 +53,8 @@ const Template: StoryFn = (args: Args) => ({
         Content 1
       </puik-accordion>
     </puik-accordion-group>
-  `,
-})
+  `
+});
 
 export const Default = {
   render: Template,
@@ -64,7 +64,7 @@ export const Default = {
     title: 'Accordion title',
     subTitle: 'Accordion subtitle',
     icon: 'home',
-    disabled: false,
+    disabled: false
   },
 
   parameters: {
@@ -104,11 +104,11 @@ export const Default = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Disabled = {
   render: Template,
@@ -118,7 +118,7 @@ export const Disabled = {
     name: 'accordion-1',
     title: 'Disabled accordion title',
     subTitle: 'Disabled accordion sub-title',
-    icon: 'home',
+    icon: 'home'
   },
 
   parameters: {
@@ -147,8 +147,8 @@ export const Disabled = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

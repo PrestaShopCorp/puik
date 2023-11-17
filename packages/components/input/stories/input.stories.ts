@@ -1,9 +1,9 @@
-import { ref } from 'vue'
-import { PuikInput, PuikInputTypes } from '@prestashopcorp/puik-components'
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+import { ref } from 'vue';
+import { PuikInput, PuikInputTypes } from '@prestashopcorp/puik-components';
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
-const inputTypes = Object.values(PuikInputTypes)
-const inputTypesSummary = inputTypes.join('|')
+const inputTypes = Object.values(PuikInputTypes);
+const inputTypesSummary = inputTypes.join('|');
 
 export default {
   title: 'Components/Input',
@@ -15,103 +15,103 @@ export default {
       description: 'Set the type of the input',
       table: {
         type: {
-          summary: inputTypesSummary,
+          summary: inputTypesSummary
         },
         defaultValue: {
-          summary: PuikInputTypes.Text,
-        },
-      },
+          summary: PuikInputTypes.Text
+        }
+      }
     },
     id: {
-      description: 'Set the id of the input',
+      description: 'Set the id of the input'
     },
     placeholder: {
-      description: 'Set the placeholder of the input',
+      description: 'Set the placeholder of the input'
     },
     disabled: {
       control: 'boolean',
       description: 'Set the input as disabled',
       table: {
         defaultValue: {
-          summary: 'false',
-        },
-      },
+          summary: 'false'
+        }
+      }
     },
     name: {
-      description: 'Set the name of the input',
+      description: 'Set the name of the input'
     },
     autocomplete: {
-      description: 'Set the autocomplete mode of the input',
+      description: 'Set the autocomplete mode of the input'
     },
     required: {
       description: 'Set the input as required',
       table: {
         defaultValue: {
-          summary: 'false',
-        },
-      },
+          summary: 'false'
+        }
+      }
     },
     error: {
-      description: 'Set an error for the input',
+      description: 'Set an error for the input'
     },
     success: {
       description: 'Set the input in a success state',
       table: {
         defaultValue: {
-          summary: 'false',
-        },
-      },
+          summary: 'false'
+        }
+      }
     },
     hideHint: {
       description: 'Hide the input hint',
       table: {
         defaultValue: {
-          summary: 'false',
-        },
-      },
+          summary: 'false'
+        }
+      }
     },
     step: {
       control: 'number',
       description: 'Set the incremental step (for number input only)',
       table: {
         defaultValue: {
-          summary: '1',
-        },
-      },
+          summary: '1'
+        }
+      }
     },
     precision: {
       control: 'number',
       description:
-        'Set the precision of the input value (for number input only)',
+        'Set the precision of the input value (for number input only)'
     },
     min: {
       control: 'number',
-      description: 'Set the min value of the input (for number input only)',
+      description: 'Set the min value of the input (for number input only)'
     },
     max: {
       control: 'number',
-      description: 'Set the max value of the input (for number input only)',
+      description: 'Set the max value of the input (for number input only)'
     },
     prepend: {
-      description: 'Prepend an icon or text to the input',
+      description: 'Prepend an icon or text to the input'
     },
     append: {
       control: 'none',
-      description: 'Append an icon or text to the input',
-    },
-  },
-} as Meta
+      description: 'Append an icon or text to the input'
+    }
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikInput,
+    PuikInput
   },
   setup() {
-    const myValue = ref('')
-    return { myValue, args }
+    const myValue = ref('');
+    return { myValue, args };
   },
-  template: `<puik-input v-model="myValue" v-bind="args" :disabled="args.disabled"/>`,
-})
+  template: '<puik-input v-model="myValue" v-bind="args" :disabled="args.disabled"/>'
+});
 
 export const Default = {
   render: Template,
@@ -129,7 +129,7 @@ export const Default = {
     precision: undefined,
     min: undefined,
     max: undefined,
-    disabled: false,
+    disabled: false
   },
 
   parameters: {
@@ -146,22 +146,22 @@ export const Default = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Disabled: StoryObj = {
   render: () => ({
     components: {
-      PuikInput,
+      PuikInput
     },
     setup() {
-      const myValue = ref('')
-      return { myValue }
+      const myValue = ref('');
+      return { myValue };
     },
-    template: `<puik-input v-model="myValue" disabled></puik-input>`,
+    template: '<puik-input v-model="myValue" disabled></puik-input>'
   }),
 
   parameters: {
@@ -178,22 +178,22 @@ export const Disabled: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Placeholder: StoryObj = {
   render: () => ({
     components: {
-      PuikInput,
+      PuikInput
     },
     setup() {
-      const myValue = ref('')
-      return { myValue }
+      const myValue = ref('');
+      return { myValue };
     },
-    template: `<puik-input v-model="myValue" placeholder='Input placeholder'></puik-input>`,
+    template: '<puik-input v-model="myValue" placeholder=\'Input placeholder\'></puik-input>'
   }),
 
   parameters: {
@@ -210,22 +210,22 @@ export const Placeholder: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Password: StoryObj = {
   render: () => ({
     components: {
-      PuikInput,
+      PuikInput
     },
     setup() {
-      const myValue = ref('')
-      return { myValue }
+      const myValue = ref('');
+      return { myValue };
     },
-    template: `<puik-input v-model="myValue" type="password"></puik-input>`,
+    template: '<puik-input v-model="myValue" type="password"></puik-input>'
   }),
 
   parameters: {
@@ -242,22 +242,22 @@ export const Password: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Number: StoryObj = {
   render: () => ({
     components: {
-      PuikInput,
+      PuikInput
     },
     setup() {
-      const myValue = ref(0)
-      return { myValue }
+      const myValue = ref(0);
+      return { myValue };
     },
-    template: `<puik-input v-model="myValue" type="number"></puik-input>`,
+    template: '<puik-input v-model="myValue" type="number"></puik-input>'
   }),
 
   parameters: {
@@ -290,22 +290,22 @@ export const Number: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const MinMax: StoryObj = {
   render: () => ({
     components: {
-      PuikInput,
+      PuikInput
     },
     setup() {
-      const myValue = ref(0)
-      return { myValue }
+      const myValue = ref(0);
+      return { myValue };
     },
-    template: `<puik-input v-model="myValue" type="number" :min="0" :max="5"></puik-input>`,
+    template: '<puik-input v-model="myValue" type="number" :min="0" :max="5"></puik-input>'
   }),
 
   parameters: {
@@ -338,22 +338,22 @@ export const MinMax: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Step: StoryObj = {
   render: () => ({
     components: {
-      PuikInput,
+      PuikInput
     },
     setup() {
-      const myValue = ref(0)
-      return { myValue }
+      const myValue = ref(0);
+      return { myValue };
     },
-    template: `<puik-input v-model="myValue" type="number" :step="5"></puik-input>`,
+    template: '<puik-input v-model="myValue" type="number" :step="5"></puik-input>'
   }),
 
   parameters: {
@@ -386,22 +386,22 @@ export const Step: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Success: StoryObj = {
   render: () => ({
     components: {
-      PuikInput,
+      PuikInput
     },
     setup() {
-      const myValue = ref('')
-      return { myValue }
+      const myValue = ref('');
+      return { myValue };
     },
-    template: `<puik-input v-model="myValue" success></puik-input>`,
+    template: '<puik-input v-model="myValue" success></puik-input>'
   }),
 
   parameters: {
@@ -418,26 +418,26 @@ export const Success: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Error: StoryObj = {
   render: () => ({
     components: {
-      PuikInput,
+      PuikInput
     },
     setup() {
-      const myValue = ref('')
-      return { myValue }
+      const myValue = ref('');
+      return { myValue };
     },
     template: `
       <puik-input v-model="myValue">
         <template #error>This is an error</template>
       </puik-input>
-    `,
+    `
   }),
 
   parameters: {
@@ -467,26 +467,26 @@ export const Error: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Hint: StoryObj = {
   render: () => ({
     components: {
-      PuikInput,
+      PuikInput
     },
     setup() {
-      const myValue = ref('')
-      return { myValue }
+      const myValue = ref('');
+      return { myValue };
     },
     template: `
       <puik-input v-model="myValue">
         <template #hint>This is an hint</template>
       </puik-input>
-    `,
+    `
   }),
 
   parameters: {
@@ -513,27 +513,27 @@ export const Hint: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const PrependAppend: StoryObj = {
   render: () => ({
     components: {
-      PuikInput,
+      PuikInput
     },
     setup() {
-      const myValue = ref('')
-      return { myValue }
+      const myValue = ref('');
+      return { myValue };
     },
     template: `
       <puik-input v-model="myValue">
         <template #prepend>$</template>
         <template #append>kg</template>
       </puik-input>
-    `,
+    `
   }),
 
   parameters: {
@@ -562,8 +562,8 @@ export const PrependAppend: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

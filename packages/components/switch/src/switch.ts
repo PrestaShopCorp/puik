@@ -1,4 +1,4 @@
-import type Switch from './switch.vue'
+import type Switch from './switch.vue';
 
 export interface SwitchProps {
   label?: string
@@ -8,4 +8,4 @@ export interface SwitchProps {
   screenReaderText?: string
 }
 
-export type SwitchInstance = InstanceType<typeof Switch>
+export type SwitchInstance = InstanceType<typeof Switch>;

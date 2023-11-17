@@ -1,6 +1,6 @@
-import type Modal from './modal.vue'
+import type Modal from './modal.vue';
 
-export const DESTRUCTIVE_ICON_NAME = 'warning'
+export const DESTRUCTIVE_ICON_NAME = 'warning';
 
 export enum PuikModalVariants {
   Destructive = 'destructive',
@@ -30,7 +30,7 @@ export const modalEmits = [
   'close',
   'button-main',
   'button-second',
-  'button-side',
-]
+  'button-side'
+];
 
-export type ModalInstance = InstanceType<typeof Modal>
+export type ModalInstance = InstanceType<typeof Modal>;

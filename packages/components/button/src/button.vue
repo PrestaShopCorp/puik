@@ -18,7 +18,7 @@
       :font-size="size !== 'sm' ? '1.25rem' : '1rem'"
       class="puik-button__left-icon"
     />
-    <slot></slot>
+    <slot />
     <puik-icon
       v-if="rightIcon"
       :icon="rightIcon"
@@ -29,36 +29,36 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject } from 'vue'
-import { PuikIcon } from '@prestashopcorp/puik-components/icon'
-import { ButtonGroupKey } from '../../button-group'
-import { PuikButtonVariants, type ButtonProps, PuikButtonSizes } from './button'
+import { computed, inject } from 'vue';
+import { PuikIcon } from '@prestashopcorp/puik-components/icon';
+import { ButtonGroupKey } from '../../button-group';
+import { PuikButtonVariants, type ButtonProps, PuikButtonSizes } from './button';
 defineOptions({
-  name: 'PuikButton',
-})
+  name: 'PuikButton'
+});
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   variant: PuikButtonVariants.Primary,
-  size: PuikButtonSizes.Medium,
-})
-const buttonGroup = inject(ButtonGroupKey, undefined)
+  size: PuikButtonSizes.Medium
+});
+const buttonGroup = inject(ButtonGroupKey, undefined);
 
 const componentType = computed(() => {
   if (props.to) {
-    return 'router-link'
+    return 'router-link';
   } else if (props.href) {
-    return 'a'
+    return 'a';
   }
-  return 'button'
-})
+  return 'button';
+});
 
 const pathProp = computed(() =>
-  props.to ? { to: props.to } : { href: props.href },
-)
+  props.to ? { to: props.to } : { href: props.href }
+);
 
 const setSelected = () => {
   if (buttonGroup && props.value) {
-    buttonGroup.selected.value = props.value
+    buttonGroup.selected.value = props.value;
   }
-}
+};
 </script>

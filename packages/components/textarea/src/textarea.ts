@@ -1,4 +1,4 @@
-import type Textarea from './textarea.vue'
+import type Textarea from './textarea.vue';
 
 export interface TextareaProps {
   id?: string
@@ -17,4 +17,4 @@ export interface TextareaProps {
   maxRows?: number
 }
 
-export type TextareaInstance = InstanceType<typeof Textarea>
+export type TextareaInstance = InstanceType<typeof Textarea>;

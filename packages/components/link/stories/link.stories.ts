@@ -1,10 +1,10 @@
-import { PuikLink, PuikLinkSizes, PuikLinkTargetVariants } from "@prestashopcorp/puik-components"
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikLink, PuikLinkSizes, PuikLinkTargetVariants } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
-const targetVariants = Object.values(PuikLinkTargetVariants)
-const targetVariantsSummary = targetVariants.join('|')
-const linkSizes = Object.values(PuikLinkSizes)
-const linkSizesSummary = linkSizes.join('|')
+const targetVariants = Object.values(PuikLinkTargetVariants);
+const targetVariantsSummary = targetVariants.join('|');
+const linkSizes = Object.values(PuikLinkSizes);
+const linkSizesSummary = linkSizes.join('|');
 
 export default {
   title: 'Components/Link',
@@ -12,12 +12,12 @@ export default {
   argTypes: {
     href: {
       control: 'text',
-      description: 'Set a link (changes link to "a" html tag)',
+      description: 'Set a link (changes link to "a" html tag)'
     },
     to: {
       control: 'text',
       description:
-        'Set a vue router link (changes link to "router-link" or html tag)',
+        'Set a vue router link (changes link to "router-link" or html tag)'
     },
     target: {
       control: 'select',
@@ -26,12 +26,12 @@ export default {
       options: targetVariants,
       table: {
         defaultValue: {
-          summary: '_self',
+          summary: '_self'
         },
         type: {
-          summary: targetVariantsSummary,
-        },
-      },
+          summary: targetVariantsSummary
+        }
+      }
     },
     size: {
       control: 'select',
@@ -39,21 +39,21 @@ export default {
       options: linkSizes,
       table: {
         defaultValue: {
-          summary: 'md',
+          summary: 'md'
         },
         type: {
-          summary: linkSizesSummary,
-        },
-      },
+          summary: linkSizesSummary
+        }
+      }
     },
     default: {
       control: 'text',
-      description: 'Label of the link',
+      description: 'Label of the link'
     },
     title: {
       control: 'text',
-      description: 'Title displayed in tooltips then your cursor stay in link',
-    },
+      description: 'Title displayed in tooltips then your cursor stay in link'
+    }
   },
   args: {
     href: '#',
@@ -61,19 +61,19 @@ export default {
     target: '_self',
     default: "I'm a cool link",
     title: "I'm a tooltip for your link",
-    size: 'md',
-  },
-} as Meta
+    size: 'md'
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikLink,
+    PuikLink
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<puik-link v-bind="args">{{ args.default }}</puik-link>`,
-})
+  template: '<puik-link v-bind="args">{{ args.default }}</puik-link>'
+});
 
 export const Default = {
   render: Template,
@@ -101,17 +101,17 @@ export const Default = {
     I'm a cool link
   </a>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Blank = {
   render: Template,
 
   args: {
-    target: '_blank',
+    target: '_blank'
   },
 
   parameters: {
@@ -128,8 +128,8 @@ export const Blank = {
     I'm a cool link
   </a>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

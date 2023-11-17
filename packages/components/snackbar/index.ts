@@ -1,6 +1,6 @@
-import Notify from './src/notify'
+import Notify from './src/notify';
 
-export const PuikSnackbar = Notify
-export default PuikSnackbar
+export const PuikSnackbar = Notify;
+export default PuikSnackbar;
 
-export * from './src/snackbar'
+export * from './src/snackbar';

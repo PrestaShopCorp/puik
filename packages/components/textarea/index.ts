@@ -1,6 +1,6 @@
-import Textarea from './src/textarea.vue'
+import Textarea from './src/textarea.vue';
 
-export const PuikTextarea = Textarea
-export default PuikTextarea
+export const PuikTextarea = Textarea;
+export default PuikTextarea;
 
-export * from './src/textarea'
+export * from './src/textarea';

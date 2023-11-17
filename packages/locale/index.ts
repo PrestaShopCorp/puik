@@ -1,2 +1,2 @@
-export * from './lang'
-export * from './hooks/use-locale'
+export * from './lang';
+export * from './hooks/use-locale';

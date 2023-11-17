@@ -1,4 +1,4 @@
-import type Icon from './icon.vue'
+import type Icon from './icon.vue';
 
 export interface IconProps {
   icon: string
@@ -7,4 +7,4 @@ export interface IconProps {
   color?: string
 }
 
-export type IconInstance = InstanceType<typeof Icon>
+export type IconInstance = InstanceType<typeof Icon>;

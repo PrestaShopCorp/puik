@@ -1,9 +1,9 @@
-import { ref } from 'vue'
-import { PuikPagination, PuikPaginationVariants } from "@prestashopcorp/puik-components"
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+import { ref } from 'vue';
+import { PuikPagination, PuikPaginationVariants } from '@prestashopcorp/puik-components';
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
-const paginationVariants = Object.values(PuikPaginationVariants)
-const paginationVariantsSummary = paginationVariants.join('|')
+const paginationVariants = Object.values(PuikPaginationVariants);
+const paginationVariantsSummary = paginationVariants.join('|');
 
 export default {
   title: 'Components/Pagination',
@@ -15,114 +15,114 @@ export default {
       description: 'Set the pagination variant',
       table: {
         defaultValue: {
-          summary: PuikPaginationVariants.Medium,
+          summary: PuikPaginationVariants.Medium
         },
         type: {
-          summary: paginationVariantsSummary,
-        },
-      },
+          summary: paginationVariantsSummary
+        }
+      }
     },
     totalItem: {
       control: 'number',
       description: 'Set the total item count',
       table: {
         type: {
-          summary: 'number',
-        },
-      },
+          summary: 'number'
+        }
+      }
     },
     itemsPerPage: {
       control: 'none',
       table: {
         type: {
-          summary: 'number',
+          summary: 'number'
         },
-        defaultValue: { summary: 5 },
+        defaultValue: { summary: 5 }
       },
-      description: 'v-model of the items per page',
+      description: 'v-model of the items per page'
     },
     itemsPerPageOptions: {
       control: 'none',
       description: 'Set the items per page options',
       table: {
         type: {
-          summary: 'number[]',
+          summary: 'number[]'
         },
         defaultValue: {
-          summary: [5, 10, 15],
-        },
-      },
+          summary: [5, 10, 15]
+        }
+      }
     },
     page: {
       control: 'numbnoneer',
       description: 'v-model of the current page',
       table: {
         type: {
-          summary: 'number',
-        },
-      },
+          summary: 'number'
+        }
+      }
     },
     itemCount: {
       control: 'number',
       description: 'Set the current item count',
       table: {
         type: {
-          summary: 'number',
+          summary: 'number'
         },
         defaultValue: {
-          summary: '0',
-        },
-      },
+          summary: '0'
+        }
+      }
     },
     label: {
       control: 'text',
       description: 'Set the label',
       table: {
         defaultValue: {
-          summary: 'undefined',
+          summary: 'undefined'
         },
         type: {
-          summary: 'string',
-        },
-      },
+          summary: 'string'
+        }
+      }
     },
     loaderButtonLabel: {
       control: 'text',
       description: 'Set the text used in button on loader variant',
       table: {
         defaultValue: {
-          summary: 'undefined',
+          summary: 'undefined'
         },
         type: {
-          summary: 'string',
-        },
-      },
-    },
+          summary: 'string'
+        }
+      }
+    }
   },
   args: {
     variant: PuikPaginationVariants.Medium,
     totalItem: 500,
     itemCount: 25,
     label: '',
-    loaderButtonLabel: undefined,
-  },
-} as Meta
+    loaderButtonLabel: undefined
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikPagination,
+    PuikPagination
   },
   setup() {
-    const page = ref(1)
-    const itemsPerPage = ref(5)
-    return { args, page, itemsPerPage }
+    const page = ref(1);
+    const itemsPerPage = ref(5);
+    return { args, page, itemsPerPage };
   },
   template: `<puik-pagination
       v-model:page="page"
       v-model:items-per-page="itemsPerPage"
       v-bind="args"
-    ></puik-pagination>`,
-})
+    ></puik-pagination>`
+});
 
 export const Default = {
   render: Template,
@@ -203,17 +203,17 @@ export const Default = {
     </div>
   </nav>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Small: StoryObj = {
   render: Template,
 
   args: {
-    variant: 'small',
+    variant: 'small'
   },
 
   parameters: {
@@ -249,17 +249,17 @@ export const Small: StoryObj = {
     </div>
   </nav>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Medium: StoryObj = {
   render: Template,
 
   args: {
-    variant: 'medium',
+    variant: 'medium'
   },
 
   parameters: {
@@ -338,17 +338,17 @@ export const Medium: StoryObj = {
     </div>
   </nav>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Large: StoryObj = {
   render: Template,
 
   args: {
-    variant: 'large',
+    variant: 'large'
   },
 
   parameters: {
@@ -446,17 +446,17 @@ export const Large: StoryObj = {
     </div>
   </nav>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Mobile: StoryObj = {
   render: Template,
 
   args: {
-    variant: 'mobile',
+    variant: 'mobile'
   },
 
   parameters: {
@@ -485,17 +485,17 @@ export const Mobile: StoryObj = {
     </div>
   </nav>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Loader: StoryObj = {
   render: Template,
 
   args: {
-    variant: 'loader',
+    variant: 'loader'
   },
 
   parameters: {
@@ -519,8 +519,8 @@ export const Loader: StoryObj = {
     </button>
   </nav>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

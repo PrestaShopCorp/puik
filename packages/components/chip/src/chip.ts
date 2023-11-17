@@ -1,5 +1,5 @@
-import type { PuikTooltipPositions } from '@prestashopcorp/puik-components'
-import type Chip from './chip.vue'
+import type { PuikTooltipPositions } from '@prestashopcorp/puik-components';
+import type Chip from './chip.vue';
 
 export enum PuikChipSizeVariants {
   Default = 'default',
@@ -15,4 +15,4 @@ export interface ChipProps {
   tooltipPosition?: `${PuikTooltipPositions}`
 }
 
-export type ChipInstance = InstanceType<typeof Chip>
+export type ChipInstance = InstanceType<typeof Chip>;

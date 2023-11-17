@@ -1,22 +1,22 @@
-import { ref } from 'vue'
-import { PuikTable, PuikButton, type PuikTableHeader} from "@prestashopcorp/puik-components"
-import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3'
+import { ref } from 'vue';
+import { PuikTable, PuikButton, type PuikTableHeader } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3';
 
 function generateData(length = 3) {
   return Array(length)
     .fill(null)
     .map((_, index) => {
-      const firstname = `firstname${index}`
-      const lastname = `lastname${index}`
-      const email = `${lastname}.${firstname}@email.com`.toLowerCase()
+      const firstname = `firstname${index}`;
+      const lastname = `lastname${index}`;
+      const email = `${lastname}.${firstname}@email.com`.toLowerCase();
 
       return {
         firstname,
         lastname,
         email,
-        age: 40,
-      }
-    })
+        age: 40
+      };
+    });
 }
 
 export default {
@@ -29,10 +29,10 @@ export default {
       description: 'Table items',
       table: {
         defaultValue: {
-          summary: '[]',
+          summary: '[]'
         },
-        type: { summary: 'any[]' },
-      },
+        type: { summary: 'any[]' }
+      }
     },
     headers: {
       control: 'none',
@@ -50,41 +50,41 @@ export default {
     width: string | undefined
     align: 'left' | 'center' | 'right' | undefined
   }
-  `,
-        },
-      },
+  `
+        }
+      }
     },
     selectable: {
       control: 'boolean',
       description: 'Add col with checkbox',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
+        defaultValue: { summary: 'false' }
+      }
     },
     selection: {
       control: 'none',
       description: 'v-model of the selected rows',
       table: {
         defaultValue: {
-          summary: '[]',
+          summary: '[]'
         },
         type: {
-          summary: 'number[]',
-        },
-      },
+          summary: 'number[]'
+        }
+      }
     },
     fullWidth: {
       control: 'boolean',
       description: 'Set the table width at 100%',
       table: {
         defaultValue: {
-          summary: false,
+          summary: false
         },
         type: {
-          summary: 'boolean',
-        },
-      },
+          summary: 'boolean'
+        }
+      }
     },
     '`header-{header.value}`': {
       control: 'none',
@@ -97,9 +97,9 @@ export default {
   header: PuikTableHeader
   index: number
 }
-          `,
-        },
-      },
+          `
+        }
+      }
     },
     '`item-{header.value}`': {
       control: 'none',
@@ -112,75 +112,75 @@ export default {
   item: any
   index: number
 }
-          `,
-        },
-      },
+          `
+        }
+      }
     },
     select: {
       control: 'none',
       description: 'Event emitted on select row',
       table: {
         type: {
-          summary: 'number',
-        },
-      },
+          summary: 'number'
+        }
+      }
     },
     'select:all': {
       control: 'none',
-      description: 'Event emitted on select all row',
+      description: 'Event emitted on select all row'
     },
     'update:selection': {
       control: 'none',
       description: 'Event emitted on selection change',
       table: {
         type: {
-          summary: 'number[]',
-        },
-      },
-    },
+          summary: 'number[]'
+        }
+      }
+    }
   },
   args: {
     selectable: false,
-    fullWidth: false,
-  },
-} as Meta
+    fullWidth: false
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikTable,
-    PuikButton,
+    PuikButton
   },
   setup() {
-    const selection = ref([])
-    const items = generateData()
+    const selection = ref([]);
+    const items = generateData();
     const headers: PuikTableHeader[] = [
       {
         text: 'Nom',
         value: 'lastname',
-        size: 'md',
+        size: 'md'
       },
       {
         text: 'Prénom',
         value: 'firstname',
-        size: 'md',
+        size: 'md'
       },
       {
         text: 'Age',
         value: 'age',
         size: 'sm',
-        align: 'center',
+        align: 'center'
       },
       {
         text: 'Email',
         value: 'email',
-        align: 'right',
+        align: 'right'
       },
       {
         value: 'actions',
-        size: 'sm',
-      },
-    ]
-    return { args, headers, items, selection }
+        size: 'sm'
+      }
+    ];
+    return { args, headers, items, selection };
   },
   template: `<puik-table v-model:selection="selection" :headers="headers" :items="items" v-bind="args">
     <template #item-value1="{ item }">
@@ -192,8 +192,8 @@ const Template: StoryFn = (args: Args) => ({
         aria-label="Delete item"
       ></puik-button>
     </template>
-  </puik-table>`,
-})
+  </puik-table>`
+});
 
 export const Default: StoryObj = {
   render: Template,
@@ -365,16 +365,16 @@ export const Default: StoryObj = {
     </table>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Selectable: StoryObj = {
   render: Template,
   args: {
-    selectable: true,
+    selectable: true
   },
   parameters: {
     docs: {
@@ -497,11 +497,11 @@ export const Selectable: StoryObj = {
     </table>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 export const FullWidth: StoryObj = {
   render: Template,
   args: {
@@ -566,46 +566,46 @@ export const FullWidth: StoryObj = {
       </table>
     </div>
           `,
-          language: 'html',
-        },
-      },
-    },
-  },
-}
+          language: 'html'
+        }
+      }
+    }
+  }
+};
 
 const ColSizesTemplate: StoryFn = (args: Args) => ({
   components: {
-    PuikTable,
+    PuikTable
   },
   args: {},
   setup() {
-    const item = { sm: 'sm', md: 'md', lg: 'lg', auto: 'auto' }
-    const items = [item, item]
+    const item = { sm: 'sm', md: 'md', lg: 'lg', auto: 'auto' };
+    const items = [item, item];
     const headers: PuikTableHeader[] = [
       {
         text: 'sm',
         value: 'sm',
-        size: 'sm',
+        size: 'sm'
       },
       {
         text: 'md',
         value: 'md',
-        size: 'md',
+        size: 'md'
       },
       {
         text: 'lg',
         value: 'lg',
-        size: 'lg',
+        size: 'lg'
       },
       {
         text: 'auto',
-        value: 'auto',
-      },
-    ]
-    return { args, items, headers }
+        value: 'auto'
+      }
+    ];
+    return { args, items, headers };
   },
-  template: `<puik-table v-bind="args" :headers="headers" :items="items"></puik-table>`,
-})
+  template: '<puik-table v-bind="args" :headers="headers" :items="items"></puik-table>'
+});
 
 export const ColSizes: StoryObj = {
   render: ColSizesTemplate,
@@ -670,44 +670,44 @@ export const ColSizes: StoryObj = {
     </table>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 const TextAlignTemplate: StoryFn = (args: Args) => ({
   components: {
-    PuikTable,
+    PuikTable
   },
   args: {},
   setup() {
-    const item = { left: 'left', center: 'center', right: 'right' }
-    const items = [item, item]
+    const item = { left: 'left', center: 'center', right: 'right' };
+    const items = [item, item];
     const headers: PuikTableHeader[] = [
       {
         text: 'left',
         value: 'left',
         align: 'left',
-        size: 'md',
+        size: 'md'
       },
       {
         text: 'center',
         value: 'center',
         align: 'center',
-        size: 'md',
+        size: 'md'
       },
       {
         text: 'right',
         value: 'right',
         align: 'right',
-        size: 'md',
-      },
-    ]
-    return { args, items, headers }
+        size: 'md'
+      }
+    ];
+    return { args, items, headers };
   },
-  template: `<puik-table v-bind="args" :headers="headers" :items="items"></puik-table>`,
-})
+  template: '<puik-table v-bind="args" :headers="headers" :items="items"></puik-table>'
+});
 
 export const TextAlign: StoryObj = {
   render: TextAlignTemplate,
@@ -769,8 +769,8 @@ export const TextAlign: StoryObj = {
     </table>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

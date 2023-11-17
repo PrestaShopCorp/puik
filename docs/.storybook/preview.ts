@@ -1,5 +1,5 @@
-import '../assets/css/index.css'
-import '@prestashopcorp/puik-theme/src/index.scss'
+import '../assets/css/index.css';
+import '@prestashopcorp/puik-theme/src/index.scss';
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   chromatic: { pauseAnimationAtEnd: true },
@@ -7,13 +7,13 @@ export const parameters = {
     expanded: true,
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/,
-    },
+      date: /Date$/
+    }
   },
   options: {
     storySort: {
-      order: ['Docs', ['Introduction', 'VueJs Components', 'Css Components']],
-    },
+      order: ['Docs', ['Introduction', 'VueJs Components', 'Css Components']]
+    }
   },
   viewport: {
     viewports: {
@@ -21,23 +21,23 @@ export const parameters = {
         name: 'sm',
         styles: {
           width: '640px',
-          height: '100%',
-        },
+          height: '100%'
+        }
       },
       md: {
         name: 'md',
         styles: {
           width: '768px',
-          height: '100%',
-        },
+          height: '100%'
+        }
       },
       lg: {
         name: 'lg',
         styles: {
           width: '1024px',
-          height: '100%',
-        },
-      },
-    },
-  },
-}
+          height: '100%'
+        }
+      }
+    }
+  }
+};

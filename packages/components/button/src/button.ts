@@ -1,5 +1,5 @@
-import type { RouteLocationRaw } from 'vue-router'
-import type Button from './button.vue'
+import type { RouteLocationRaw } from 'vue-router';
+import type Button from './button.vue';
 
 export enum PuikButtonVariants {
   Primary = 'primary',
@@ -34,4 +34,4 @@ export interface ButtonProps {
   value?: string | number | Record<string, any> | any[]
 }
 
-export type ButtonInstance = InstanceType<typeof Button>
+export type ButtonInstance = InstanceType<typeof Button>;

@@ -6,7 +6,7 @@
     left-icon="keyboard_arrow_left"
     variant="secondary"
     @click="emit('update:modelValue', modelValue - 1)"
-  ></puik-button>
+  />
 
   <span class="puik-pagination__label">
     {{ label }}
@@ -19,23 +19,21 @@
     right-icon="keyboard_arrow_right"
     variant="secondary"
     @click="emit('update:modelValue', modelValue + 1)"
-  ></puik-button>
+  />
 </template>
 
 <script setup lang="ts">
-import { PuikButton } from '@prestashopcorp/puik-components/button'
-import { useLocale } from '@prestashopcorp/puik-locale'
-import { type PaginationMobileProps } from './pagination-mobile'
+import { PuikButton } from '@prestashopcorp/puik-components/button';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { type PaginationMobileProps } from './pagination-mobile';
 defineOptions({
-  name: 'PuikPaginationMobile',
-})
+  name: 'PuikPaginationMobile'
+});
 
 withDefaults(defineProps<PaginationMobileProps>(), {
-  modelValue: 1,
-})
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: number): void
-}>()
+  modelValue: 1
+});
+const emit = defineEmits<{(e: 'update:modelValue', value: number): void}>();
 
-const { t } = useLocale()
+const { t } = useLocale();
 </script>

@@ -1,4 +1,4 @@
-import type Menu from './menu.vue'
+import type Menu from './menu.vue';
 
 export enum PuikMenuAligns {
   Left = 'left',
@@ -17,4 +17,4 @@ export interface MenuProps {
   position?: `${PuikMenuPositions}`
 }
 
-export type MenuInstance = InstanceType<typeof Menu>
+export type MenuInstance = InstanceType<typeof Menu>;

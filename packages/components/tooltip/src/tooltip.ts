@@ -1,4 +1,4 @@
-import type Tooltip from './tooltip.vue'
+import type Tooltip from './tooltip.vue';
 
 export enum PuikTooltipPositions {
   Top = 'top',
@@ -17,4 +17,4 @@ export interface TooltipProps {
   disappearDelay?: number
 }
 
-export type TooltipInstance = InstanceType<typeof Tooltip>
+export type TooltipInstance = InstanceType<typeof Tooltip>;

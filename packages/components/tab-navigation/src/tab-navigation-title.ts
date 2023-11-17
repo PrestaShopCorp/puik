@@ -1,8 +1,8 @@
-import type TabNavigationTitle from './tab-navigation-title.vue'
+import type TabNavigationTitle from './tab-navigation-title.vue';
 
 export interface TabNavigationTitleProps {
   disabled?: boolean
   position: number
 }
 
-export type TabNavigationTitleInstance = InstanceType<typeof TabNavigationTitle>
+export type TabNavigationTitleInstance = InstanceType<typeof TabNavigationTitle>;

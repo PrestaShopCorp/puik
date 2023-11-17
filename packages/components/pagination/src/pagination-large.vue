@@ -69,23 +69,23 @@
 </template>
 
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core'
-import { PuikSelect, PuikOption } from '@prestashopcorp/puik-components/select'
-import { PuikButton } from '@prestashopcorp/puik-components/button'
-import { useLocale } from '@prestashopcorp/puik-locale'
-import { type PaginationLargeProps } from './pagination-large'
+import { useVModel } from '@vueuse/core';
+import { PuikSelect, PuikOption } from '@prestashopcorp/puik-components/select';
+import { PuikButton } from '@prestashopcorp/puik-components/button';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { type PaginationLargeProps } from './pagination-large';
 defineOptions({
-  name: 'PuikPaginationLarge',
-})
+  name: 'PuikPaginationLarge'
+});
 const props = withDefaults(defineProps<PaginationLargeProps>(), {
-  itemCount: 0,
-})
+  itemCount: 0
+});
 const emit = defineEmits<{
   'update:page': [value: number]
   'update:itemsPerPage': [value: number]
-}>()
+}>();
 
-const currentItemsPerPage = useVModel(props, 'itemsPerPage', emit)
+const currentItemsPerPage = useVModel(props, 'itemsPerPage', emit);
 
-const { t } = useLocale()
+const { t } = useLocale();
 </script>

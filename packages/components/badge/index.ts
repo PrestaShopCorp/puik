@@ -1,6 +1,6 @@
-import Badge from './src/badge.vue'
+import Badge from './src/badge.vue';
 
-export const PuikBadge = Badge
-export default PuikBadge
+export const PuikBadge = Badge;
+export default PuikBadge;
 
-export * from './src/badge'
+export * from './src/badge';

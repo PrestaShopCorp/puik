@@ -1,5 +1,5 @@
-import { PuikBreadcrumb } from "@prestashopcorp/puik-components"
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikBreadcrumb } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 export default {
   title: 'Components/Breadcrumb',
   component: PuikBreadcrumb,
@@ -9,7 +9,7 @@ export default {
       description: 'Link displayed in breadcrumb',
       table: {
         defaultValue: {
-          summary: `[]`,
+          summary: '[]'
         },
         type: {
           summary: 'BreadcrumbItem[]',
@@ -23,9 +23,9 @@ interface BreadBreadcrumbItem {
   to: string | undefined,
   href: string | undefined,
   target: '_blank' | '_self' | '_parent' | '_top' | undefined,
-}`,
-        },
-      },
+}`
+        }
+      }
     },
     separatorIcon: {
       control: 'text',
@@ -33,9 +33,9 @@ interface BreadBreadcrumbItem {
       type: 'string',
       table: {
         defaultValue: {
-          summary: 'keyboard_arrow_right',
-        },
-      },
+          summary: 'keyboard_arrow_right'
+        }
+      }
     },
     icon: {
       control: 'text',
@@ -43,41 +43,41 @@ interface BreadBreadcrumbItem {
       type: 'string',
       table: {
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
-    },
+          summary: 'undefined'
+        }
+      }
+    }
   },
   args: {
     items: [
       {
         label: 'First link',
-        href: '#',
+        href: '#'
       },
       {
         label: 'Second link',
-        href: '#',
+        href: '#'
       },
       {
         label: 'Third link',
         to: 'name',
-        target: '_blank',
-      },
+        target: '_blank'
+      }
     ],
     separatorIcon: 'keyboard_arrow_right',
-    icon: 'home',
-  },
-} as Meta
+    icon: 'home'
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikBreadcrumb,
+    PuikBreadcrumb
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<puik-breadcrumb v-bind="args"></puik-breadcrumb>`,
-})
+  template: '<puik-breadcrumb v-bind="args"></puik-breadcrumb>'
+});
 
 export const Default = {
   render: Template,
@@ -107,8 +107,8 @@ export const Default = {
     <div class="puik-breadcrumb__item--last">Third link</div>
   </nav>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

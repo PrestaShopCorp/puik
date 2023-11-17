@@ -1,4 +1,4 @@
-import type Alert from './alert.vue'
+import type Alert from './alert.vue';
 
 export enum PuikAlertVariants {
   Success = 'success',
@@ -11,8 +11,8 @@ export const ICONS = {
   success: 'check_circle',
   warning: 'warning',
   danger: 'error',
-  info: 'info',
-}
+  info: 'info'
+};
 
 export interface AlertProps {
   title?: string
@@ -25,6 +25,6 @@ export interface AlertProps {
 
 export type AlertEmits = {
   click: [event: Event]
-}
+};
 
-export type AlertInstance = InstanceType<typeof Alert>
+export type AlertInstance = InstanceType<typeof Alert>;

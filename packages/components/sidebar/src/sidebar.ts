@@ -1,5 +1,5 @@
-import type { Ref, InjectionKey } from 'vue'
-import type Sidebar from './sidebar.vue'
+import type { Ref, InjectionKey } from 'vue';
+import type Sidebar from './sidebar.vue';
 
 export interface SidebarProps {
   expanded?: boolean
@@ -7,11 +7,11 @@ export interface SidebarProps {
   mobile?: boolean
 }
 
-export type SidebarInstance = InstanceType<typeof Sidebar>
+export type SidebarInstance = InstanceType<typeof Sidebar>;
 
 export type SidebarContext = {
   extended: Ref<boolean>
-}
+};
 
-export const sidebarKey: InjectionKey<SidebarContext> = Symbol('sidebar')
-export const groupItemKey: InjectionKey<boolean> = Symbol('sidebar-group-item')
+export const sidebarKey: InjectionKey<SidebarContext> = Symbol('sidebar');
+export const groupItemKey: InjectionKey<boolean> = Symbol('sidebar-group-item');

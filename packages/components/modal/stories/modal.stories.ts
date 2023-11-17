@@ -1,12 +1,12 @@
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/client-api'
-import { PuikButton, PuikModal, PuikModalVariants, PuikModalSizes } from '@prestashopcorp/puik-components'
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { action } from '@storybook/addon-actions';
+import { useArgs } from '@storybook/client-api';
+import { PuikButton, PuikModal, PuikModalVariants, PuikModalSizes } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
-const modalSizes = Object.values(PuikModalSizes)
-const modalSizesSummary = modalSizes.join('|')
-const modalVariants = Object.values(PuikModalVariants)
-const modalVariantsSummary = modalVariants.join('|')
+const modalSizes = Object.values(PuikModalSizes);
+const modalSizesSummary = modalSizes.join('|');
+const modalVariants = Object.values(PuikModalVariants);
+const modalVariantsSummary = modalVariants.join('|');
 
 const content = `
 <div class="flex flex-col gap-5">
@@ -47,7 +47,7 @@ const content = `
     </div>
   </section>
 </div>
-`
+`;
 
 export default {
   title: 'Components/Modal',
@@ -58,48 +58,48 @@ export default {
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     mainButtonText: {
       description: 'Set the text of the main button',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: undefined,
-        },
-      },
+          summary: undefined
+        }
+      }
     },
     secondButtonText: {
       description: 'Set the text of the secondary button',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: undefined,
-        },
-      },
+          summary: undefined
+        }
+      }
     },
     sideButtonText: {
       description: 'Set the text of the side button',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: undefined,
-        },
-      },
+          summary: undefined
+        }
+      }
     },
     variant: {
       description:
@@ -108,7 +108,7 @@ export default {
       options: modalVariants,
       table: {
         defaultValue: {
-          summary: PuikModalVariants.Dialog,
+          summary: PuikModalVariants.Dialog
         },
         type: {
           summary: 'PuikModalVariants',
@@ -122,9 +122,9 @@ export enum PuikModalVariants {
   Feedback = 'feedback',
   Dialog = 'dialog',
 }
-          `,
-        },
-      },
+          `
+        }
+      }
     },
     size: {
       description: 'Set the size of the modal (use the PuikModalSizes enum)',
@@ -132,7 +132,7 @@ export enum PuikModalVariants {
       options: modalSizes,
       table: {
         defaultValue: {
-          summary: PuikModalSizes.Small,
+          summary: PuikModalSizes.Small
         },
         type: {
           summary: 'PuikModalSizes',
@@ -146,50 +146,50 @@ export enum PuikModalSizes {
   Medium = 'medium',
   Large = 'large',
 }
-`,
-        },
-      },
+`
+        }
+      }
     },
     isOpen: {
       description: 'Tell if the modal is open or not',
       control: 'boolean',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     titleIcon: {
       description: 'The icon name of the modal (top left corner)',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: undefined,
-        },
-      },
+          summary: undefined
+        }
+      }
     },
     default: {
       description: 'Modal content',
-      control: 'none',
+      control: 'none'
     },
     'button-main': {
       control: 'none',
-      description: 'Event emitted on main button click',
+      description: 'Event emitted on main button click'
     },
     'button-second': {
       control: 'none',
-      description: 'Event emitted on second button click',
+      description: 'Event emitted on second button click'
     },
     'button-side': {
       control: 'none',
-      description: 'Event emitted on side button click',
-    },
+      description: 'Event emitted on side button click'
+    }
   },
   args: {
     title: 'The awesome title',
@@ -198,51 +198,51 @@ export enum PuikModalSizes {
     isOpen: true,
     titleIcon: 'home',
     variant: PuikModalVariants.Dialog,
-    size: PuikModalSizes.Small,
+    size: PuikModalSizes.Small
   },
   parameters: {
     chromatic: { delay: 3000 },
     docs: {
       story: {
         inline: false,
-        iframeHeight: 500,
-      },
-    },
-  },
-} as Meta
+        iframeHeight: 500
+      }
+    }
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => {
-  const updateArgs = useArgs()[1]
+  const updateArgs = useArgs()[1];
 
   return {
     components: {
       PuikModal,
-      PuikButton,
+      PuikButton
     },
     setup() {
       const openModal = () => {
-        updateArgs({ isOpen: true })
-      }
+        updateArgs({ isOpen: true });
+      };
 
       const closeModal = () => {
-        updateArgs({ isOpen: false })
-      }
+        updateArgs({ isOpen: false });
+      };
 
       const secondAction = () => {
-        updateArgs({ isOpen: false })
-      }
+        updateArgs({ isOpen: false });
+      };
 
       return {
         args,
         openModal,
         closeModal,
-        secondAction,
-      }
+        secondAction
+      };
     },
     methods: {
       closeModal: action('Close event triggered'),
       mainAction: action('Main event triggered'),
-      secondAction: action('Second event triggered'),
+      secondAction: action('Second event triggered')
     },
     template: `
       <puik-button variant="primary" @click="openModal">
@@ -256,9 +256,9 @@ const Template: StoryFn = (args: Args) => {
       >
         ${content}
       </PuikModal>
-    `,
-  }
-}
+    `
+  };
+};
 
 export const Default = {
   render: Template,
@@ -321,11 +321,11 @@ export const Default = {
     </div>
   </div>
   `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Destructive = {
   render: Template,
@@ -334,13 +334,13 @@ export const Destructive = {
     title: 'The awesome title',
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
-    variant: PuikModalVariants.Destructive,
+    variant: PuikModalVariants.Destructive
   },
 
   parameters: {
     docs: {
       description: {
-        story: 'Force the red warning icon and red main button',
+        story: 'Force the red warning icon and red main button'
       },
       source: {
         code: `
@@ -383,11 +383,11 @@ export const Destructive = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Feedback = {
   render: Template,
@@ -396,13 +396,13 @@ export const Feedback = {
     title: 'The awesome title',
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
-    variant: PuikModalVariants.Feedback,
+    variant: PuikModalVariants.Feedback
   },
 
   parameters: {
     docs: {
       description: {
-        story: 'Force the purple icon',
+        story: 'Force the purple icon'
       },
       source: {
         code: `
@@ -448,11 +448,11 @@ export const Feedback = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Dialog = {
   render: Template,
@@ -462,13 +462,13 @@ export const Dialog = {
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
     sideButtonText: 'Awesome side button',
-    variant: PuikModalVariants.Dialog,
+    variant: PuikModalVariants.Dialog
   },
 
   parameters: {
     docs: {
       description: {
-        story: 'Remove close button, remove backdrop click and add side button',
+        story: 'Remove close button, remove backdrop click and add side button'
       },
       source: {
         code: `
@@ -516,11 +516,11 @@ export const Dialog = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Large = {
   render: Template,
@@ -529,13 +529,13 @@ export const Large = {
     title: 'The awesome title',
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
-    size: PuikModalSizes.Large,
+    size: PuikModalSizes.Large
   },
 
   parameters: {
     docs: {
       description: {
-        story: 'Set the max-width to `904px`',
+        story: 'Set the max-width to `904px`'
       },
       source: {
         code: `
@@ -576,11 +576,11 @@ export const Large = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Medium = {
   render: Template,
@@ -589,13 +589,13 @@ export const Medium = {
     title: 'The awesome title',
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
-    size: PuikModalSizes.Medium,
+    size: PuikModalSizes.Medium
   },
 
   parameters: {
     docs: {
       description: {
-        story: 'Set the max-width to `680px`',
+        story: 'Set the max-width to `680px`'
       },
       source: {
         code: `
@@ -636,11 +636,11 @@ export const Medium = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Small = {
   render: Template,
@@ -649,13 +649,13 @@ export const Small = {
     title: 'The awesome title',
     mainButtonText: 'Awesome main button',
     secondButtonText: 'Awesome secondary button',
-    size: PuikModalSizes.Small,
+    size: PuikModalSizes.Small
   },
 
   parameters: {
     docs: {
       description: {
-        story: 'Set the max-width to `508px`',
+        story: 'Set the max-width to `508px`'
       },
       source: {
         code: `
@@ -697,8 +697,8 @@ export const Small = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

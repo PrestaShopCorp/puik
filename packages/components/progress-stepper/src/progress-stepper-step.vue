@@ -16,57 +16,57 @@
       </template>
     </puik-button>
     <span class="puik-progress-stepper-step__text">
-      <slot name="text"></slot>
+      <slot name="text" />
     </span>
     <span class="puik-progress-stepper-step__additional-text">
-      <slot name="additional-text"></slot>
+      <slot name="additional-text" />
     </span>
   </div>
 </template>
 
 <script setup lang="ts">
-import { inject, computed } from 'vue'
-import { PuikButton } from '@prestashopcorp/puik-components/button'
-import { type ProgressStepperStepProps } from './progress-stepper-step'
-import { progressStepperKey, type PuikStep } from './progress-stepper'
+import { inject, computed } from 'vue';
+import { PuikButton } from '@prestashopcorp/puik-components/button';
+import { type ProgressStepperStepProps } from './progress-stepper-step';
+import { progressStepperKey, type PuikStep } from './progress-stepper';
 
 defineOptions({
-  name: 'PuikProgressStepperStep',
-})
+  name: 'PuikProgressStepperStep'
+});
 
-const props = defineProps<ProgressStepperStepProps>()
+const props = defineProps<ProgressStepperStepProps>();
 const emit = defineEmits<{
   click: [step: PuikStep]
-}>()
-const progressStepper = inject(progressStepperKey, null)
-progressStepper?.steps?.value.push(props.step)
+}>();
+const progressStepper = inject(progressStepperKey, null);
+progressStepper?.steps?.value.push(props.step);
 
 const isCurrentStep = computed(() => {
-  return props.step === progressStepper?.currentStep.value
-})
+  return props.step === progressStepper?.currentStep.value;
+});
 
 const stepIndex = computed(() => {
-  if (!progressStepper) return -1
-  return progressStepper.steps.value.lastIndexOf(props.step)
-})
+  if (!progressStepper) return -1;
+  return progressStepper.steps.value.lastIndexOf(props.step);
+});
 
 const disabled = computed(() => {
-  if (!progressStepper) return true
-  return stepIndex.value > progressStepper.currentStepIndex.value
-})
+  if (!progressStepper) return true;
+  return stepIndex.value > progressStepper.currentStepIndex.value;
+});
 
 const isCompleted = computed(() => {
-  if (!progressStepper) return true
-  return stepIndex.value < progressStepper.currentStepIndex.value
-})
+  if (!progressStepper) return true;
+  return stepIndex.value < progressStepper.currentStepIndex.value;
+});
 
 const buttonVariant = computed(() => {
-  if (isCompleted.value) return 'success'
-  return 'primary'
-})
+  if (isCompleted.value) return 'success';
+  return 'primary';
+});
 
 const onClick = () => {
-  progressStepper?.handleClickStep(props.step)
-  emit('click', props.step)
-}
+  progressStepper?.handleClickStep(props.step);
+  emit('click', props.step);
+};
 </script>

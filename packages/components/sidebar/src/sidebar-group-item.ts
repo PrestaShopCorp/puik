@@ -1,4 +1,4 @@
-import type SidebarGroupItem from './sidebar-group-item.vue'
+import type SidebarGroupItem from './sidebar-group-item.vue';
 
 export interface SidebarGroupItemsProps {
   title: string
@@ -7,4 +7,4 @@ export interface SidebarGroupItemsProps {
   active?: boolean
 }
 
-export type SidebarGroupItemInstance = InstanceType<typeof SidebarGroupItem>
+export type SidebarGroupItemInstance = InstanceType<typeof SidebarGroupItem>;

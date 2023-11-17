@@ -1,4 +1,4 @@
-import type Badge from './badge.vue'
+import type Badge from './badge.vue';
 
 export enum PuikBadgeVariants {
   Success = 'success',
@@ -12,4 +12,4 @@ export interface BadgeProps {
   variant?: PuikBadgeVariants | `${PuikBadgeVariants}`
 }
 
-export type BadgeInstance = InstanceType<typeof Badge>
+export type BadgeInstance = InstanceType<typeof Badge>;

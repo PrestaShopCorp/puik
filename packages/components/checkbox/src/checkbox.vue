@@ -8,7 +8,7 @@
       type="checkbox"
       :indeterminate="indeterminate"
       :disabled="disabled"
-    />
+    >
     <label
       v-if="$slots.default || label"
       :for="id"
@@ -20,28 +20,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { useVModel } from '@vueuse/core'
-import { generateId } from '@prestashopcorp/puik-utils'
-import { type CheckboxProps } from './checkbox'
+import { ref, watch } from 'vue';
+import { useVModel } from '@vueuse/core';
+import { generateId } from '@prestashopcorp/puik-utils';
+import { type CheckboxProps } from './checkbox';
 
 defineOptions({
-  name: 'PuikCheckbox',
-})
+  name: 'PuikCheckbox'
+});
 
-const props = defineProps<CheckboxProps>()
-const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>()
+const props = defineProps<CheckboxProps>();
+const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>();
 
-const id = `puik-checkbox-${generateId()}`
-const checkboxInputRef = ref<HTMLInputElement>()
-const checked = useVModel(props, 'modelValue', emit)
+const id = `puik-checkbox-${generateId()}`;
+const checkboxInputRef = ref<HTMLInputElement>();
+const checked = useVModel(props, 'modelValue', emit);
 
 watch(
   () => props.indeterminate,
   (value: boolean) => {
     if (value && checked.value === true) {
-      checkboxInputRef.value?.click() // Set the checkbox state at false. Like this when we click on indeterminate checkbox it will be checked
+      checkboxInputRef.value?.click(); // Set the checkbox state at false. Like this when we click on indeterminate checkbox it will be checked
     }
-  },
-)
+  }
+);
 </script>

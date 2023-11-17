@@ -1,6 +1,6 @@
-import Alert from './src/alert.vue'
+import Alert from './src/alert.vue';
 
-export const PuikAlert = Alert
-export default PuikAlert
+export const PuikAlert = Alert;
+export default PuikAlert;
 
-export * from './src/alert'
+export * from './src/alert';

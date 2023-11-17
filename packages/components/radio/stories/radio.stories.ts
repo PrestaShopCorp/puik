@@ -1,6 +1,6 @@
-import { ref } from 'vue'
-import { PuikRadio } from "@prestashopcorp/puik-components"
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+import { ref } from 'vue';
+import { PuikRadio } from '@prestashopcorp/puik-components';
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Radio',
@@ -8,55 +8,55 @@ export default {
   argTypes: {
     label: {
       control: 'text',
-      description: 'Label of the radio button',
+      description: 'Label of the radio button'
     },
     disabled: {
       control: 'boolean',
-      description: 'Set if the radio button is disabled',
+      description: 'Set if the radio button is disabled'
     },
     default: {
       control: 'text',
-      description: 'Label of the radio button using the slot',
+      description: 'Label of the radio button using the slot'
     },
     value: {
       control: 'text',
       description: 'Value of the radio button',
       table: {
         type: {
-          summary: 'boolean | string | number',
-        },
-      },
+          summary: 'boolean | string | number'
+        }
+      }
     },
     modelValue: {
       control: 'none',
       description: 'v-model of the radio button',
       table: {
         type: {
-          summary: 'boolean | string | number',
-        },
-      },
-    },
+          summary: 'boolean | string | number'
+        }
+      }
+    }
   },
   args: {
     label: '',
     disabled: false,
     name: 'Slot by default',
     value: '',
-    modelValue: '',
-  },
-} as Meta
+    modelValue: ''
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikRadio,
+    PuikRadio
   },
   setup() {
-    const firstValue = ref('firstValue')
-    return { firstValue, args }
+    const firstValue = ref('firstValue');
+    return { firstValue, args };
   },
   template:
-    '<puik-radio v-model="firstValue" value="firstValue" v-bind="args"><template v-if="args.default">{{ args.default }}</template></puik-radio>',
-})
+    '<puik-radio v-model="firstValue" value="firstValue" v-bind="args"><template v-if="args.default">{{ args.default }}</template></puik-radio>'
+});
 
 export const Default = {
   render: Template,
@@ -80,23 +80,23 @@ export const Default = {
       <input class="puik-radio__input" type="radio" />
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const WithoutLabel: StoryObj = {
   render: () => ({
     components: {
-      PuikRadio,
+      PuikRadio
     },
     setup() {
-      const firstValue = ref('firstValue')
-      return { firstValue }
+      const firstValue = ref('firstValue');
+      return { firstValue };
     },
     template:
-      '<puik-radio v-model="firstValue" value="firstValue"></puik-radio>',
+      '<puik-radio v-model="firstValue" value="firstValue"></puik-radio>'
   }),
 
   parameters: {
@@ -111,23 +111,23 @@ export const WithoutLabel: StoryObj = {
       <input class="puik-radio__input" type="radio" />
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const LabelWithSlot: StoryObj = {
   render: (args) => ({
     components: {
-      PuikRadio,
+      PuikRadio
     },
     setup() {
-      const firstValue = ref('firstValue')
-      return { firstValue, args }
+      const firstValue = ref('firstValue');
+      return { firstValue, args };
     },
     template:
-      '<puik-radio v-model="firstValue" value="firstValue" >{{ args.default }}</puik-radio>',
+      '<puik-radio v-model="firstValue" value="firstValue" >{{ args.default }}</puik-radio>'
   }),
 
   parameters: {
@@ -147,23 +147,23 @@ export const LabelWithSlot: StoryObj = {
       <input class="puik-radio__input" type="radio" />
   </div>
   `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Selected: StoryObj = {
   render: () => ({
     components: {
-      PuikRadio,
+      PuikRadio
     },
     setup() {
-      const firstValue = ref('firstValue')
-      return { firstValue }
+      const firstValue = ref('firstValue');
+      return { firstValue };
     },
     template:
-      '<puik-radio v-model="firstValue" value="firstValue" label="Radio Label"></puik-radio>',
+      '<puik-radio v-model="firstValue" value="firstValue" label="Radio Label"></puik-radio>'
   }),
 
   parameters: {
@@ -178,24 +178,24 @@ export const Selected: StoryObj = {
       <input class="puik-radio__input" type="radio" />
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Unselected: StoryObj = {
   render: () => ({
     components: {
-      PuikRadio,
+      PuikRadio
     },
     setup() {
-      const firstValue = ref('firstValue')
-      const secondValue = ref('secondValue')
-      return { firstValue, secondValue }
+      const firstValue = ref('firstValue');
+      const secondValue = ref('secondValue');
+      return { firstValue, secondValue };
     },
     template:
-      '<puik-radio v-model="firstValue" value="secondValue">Radio Label by slot</puik-radio>',
+      '<puik-radio v-model="firstValue" value="secondValue">Radio Label by slot</puik-radio>'
   }),
 
   parameters: {
@@ -210,25 +210,25 @@ export const Unselected: StoryObj = {
       <input class="puik-radio__input" type="radio" />
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const DisabledSelected: StoryObj = {
   render: () => ({
     components: {
-      PuikRadio,
+      PuikRadio
     },
     setup() {
-      const firstValue = ref('firstValue')
-      return { firstValue }
+      const firstValue = ref('firstValue');
+      return { firstValue };
     },
     template: `
       <puik-radio v-model="firstValue" disabled label="Disabled On" value="firstValue"></puik-radio>
       <puik-radio v-model="firstValue" label="Disabled Off" value="firstValue"></puik-radio>
-    `,
+    `
   }),
 
   parameters: {
@@ -244,26 +244,26 @@ export const DisabledSelected: StoryObj = {
       <input class="puik-radio__input" type="radio" disabled />
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const DisabledUnselected: StoryObj = {
   render: () => ({
     components: {
-      PuikRadio,
+      PuikRadio
     },
     setup() {
-      const firstValue = ref('firstValue')
-      const secondValue = ref('secondValue')
-      return { firstValue, secondValue }
+      const firstValue = ref('firstValue');
+      const secondValue = ref('secondValue');
+      return { firstValue, secondValue };
     },
     template: `
     <puik-radio v-model="firstValue" disabled label="Disabled On" value="secondValue"></puik-radio>
     <puik-radio v-model="firstValue" label="Disabled Off" value="secondValue"></puik-radio>
-    `,
+    `
   }),
 
   parameters: {
@@ -279,8 +279,8 @@ export const DisabledUnselected: StoryObj = {
       <input class="puik-radio__input" type="radio" disabled />
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

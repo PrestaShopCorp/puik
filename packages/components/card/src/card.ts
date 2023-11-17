@@ -1,4 +1,4 @@
-import type Card from './card.vue'
+import type Card from './card.vue';
 
 export enum PuikCardVariants {
   Highlight = 'highlight',
@@ -13,4 +13,4 @@ export interface CardProps {
   variant?: PuikCardVariants | `${PuikCardVariants}`
 }
 
-export type CardInstance = InstanceType<typeof Card>
+export type CardInstance = InstanceType<typeof Card>;

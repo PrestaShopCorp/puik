@@ -1,4 +1,4 @@
-import type accordion from './accordion.vue'
+import type accordion from './accordion.vue';
 
 export interface AccordionProps {
   name: string
@@ -8,4 +8,4 @@ export interface AccordionProps {
   disabled?: boolean
 }
 
-export type AccordionInstance = InstanceType<typeof accordion>
+export type AccordionInstance = InstanceType<typeof accordion>;

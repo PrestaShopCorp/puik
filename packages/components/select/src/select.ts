@@ -1,6 +1,6 @@
-import type { InjectionKey, Ref } from 'vue'
-import type Select from './select.vue'
-import type { DefaultOption } from './option'
+import type { InjectionKey, Ref } from 'vue';
+import type Select from './select.vue';
+import type { DefaultOption } from './option';
 
 export interface SelectProps {
   modelValue: string | number | Record<string, any>
@@ -20,13 +20,13 @@ export interface SelectProps {
   fullWidth?: boolean
 }
 
-export type SelectInstance = InstanceType<typeof Select>
+export type SelectInstance = InstanceType<typeof Select>;
 
 export type SelectContext = {
   handleAutoComplete: (label: string | number) => void
   selectedValue: Ref<string | number | Record<string, any>>
   optionsList: Ref<DefaultOption[]>
   labelKey: string
-}
+};
 
-export const selectKey: InjectionKey<SelectContext> = Symbol('select')
+export const selectKey: InjectionKey<SelectContext> = Symbol('select');

@@ -1,4 +1,4 @@
-import type Option from './option.vue'
+import type Option from './option.vue';
 
 export interface DefaultOption {
   label: string | number
@@ -11,4 +11,4 @@ export interface OptionProps {
   disabled?: boolean
 }
 
-export type OptionInstance = InstanceType<typeof Option>
+export type OptionInstance = InstanceType<typeof Option>;

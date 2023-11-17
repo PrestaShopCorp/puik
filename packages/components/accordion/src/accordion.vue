@@ -18,10 +18,15 @@
         class="puik-accordion__header__icon"
         :icon="icon"
         :font-size="24"
-      ></puik-icon>
+      />
       <div class="puik-accordion__header__content">
-        <div class="puik-accordion__header__content__title">{{ title }}</div>
-        <div v-if="subTitle" class="puik-accordion__header__content__sub-title">
+        <div class="puik-accordion__header__content__title">
+          {{ title }}
+        </div>
+        <div
+          v-if="subTitle"
+          class="puik-accordion__header__content__sub-title"
+        >
           {{ subTitle }}
         </div>
       </div>
@@ -29,44 +34,48 @@
         class="puik-accordion__header__expand__icon"
         icon="keyboard_arrow_down"
         :font-size="24"
-      ></puik-icon>
+      />
     </button>
 
-    <div v-show="isExpanded" :id="id" class="puik-accordion__content">
-      <slot></slot>
+    <div
+      v-show="isExpanded"
+      :id="id"
+      class="puik-accordion__content"
+    >
+      <slot />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, inject } from 'vue'
-import { generateId } from '@prestashopcorp/puik-utils'
-import { PuikIcon } from '@prestashopcorp/puik-components/icon'
-import { accordionGroupKey } from './accordion-group'
-import type { AccordionProps } from './accordion'
+import { computed, inject } from 'vue';
+import { generateId } from '@prestashopcorp/puik-utils';
+import { PuikIcon } from '@prestashopcorp/puik-components/icon';
+import { accordionGroupKey } from './accordion-group';
+import type { AccordionProps } from './accordion';
 defineOptions({
-  name: 'PuikAccordion',
-})
-const emit = defineEmits<{ click: [name: string] }>()
+  name: 'PuikAccordion'
+});
+const emit = defineEmits<{ click: [name: string] }>();
 
-const id = `puik-accordion-${generateId()}`
+const id = `puik-accordion-${generateId()}`;
 
-const props = defineProps<AccordionProps>()
+const props = defineProps<AccordionProps>();
 const { accordionsList, handleChange, expandedAccordions } =
-  inject(accordionGroupKey)!
+  inject(accordionGroupKey)!;
 
 const isExpanded = computed(() => {
   if (Array.isArray(expandedAccordions.value)) {
-    return expandedAccordions.value.some((name) => props.name === name)
+    return expandedAccordions.value.some((name) => props.name === name);
   }
 
-  return props.name === expandedAccordions.value
-})
+  return props.name === expandedAccordions.value;
+});
 
-accordionsList.value.push({ name: props.name, expanded: isExpanded.value })
+accordionsList.value.push({ name: props.name, expanded: isExpanded.value });
 
 function onClick() {
-  handleChange(props.name)
-  emit('click', props.name)
+  handleChange(props.name);
+  emit('click', props.name);
 }
 </script>

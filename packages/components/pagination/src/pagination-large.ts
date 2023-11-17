@@ -1,4 +1,4 @@
-import type PaginationLarge from './pagination-large.vue'
+import type PaginationLarge from './pagination-large.vue';
 
 export interface PaginationLargeProps {
   page: number
@@ -11,4 +11,4 @@ export interface PaginationLargeProps {
   label?: string
 }
 
-export type PaginationInstance = InstanceType<typeof PaginationLarge>
+export type PaginationInstance = InstanceType<typeof PaginationLarge>;

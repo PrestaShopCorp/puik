@@ -1,15 +1,15 @@
-import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
+import { mount } from '@vue/test-utils';
+import { describe, it, expect } from 'vitest';
 import {
   PuikTabNavigation,
   PuikTabNavigationGroupTitles,
   PuikTabNavigationGroupPanels,
   PuikTabNavigationTitle,
-  PuikTabNavigationPanel,
-} from '..'
-import type { MountingOptions, VueWrapper } from '@vue/test-utils'
+  PuikTabNavigationPanel
+} from '..';
+import type { MountingOptions, VueWrapper } from '@vue/test-utils';
 
-let wrapper: VueWrapper<any>
+let wrapper: VueWrapper<any>;
 const factory = (template: string, options: MountingOptions<any> = {}) => {
   wrapper = mount({
     components: {
@@ -17,17 +17,17 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
       PuikTabNavigationGroupTitles,
       PuikTabNavigationGroupPanels,
       PuikTabNavigationTitle,
-      PuikTabNavigationPanel,
+      PuikTabNavigationPanel
     },
     template,
-    ...options,
-  })
-}
+    ...options
+  });
+};
 
 const getTabNavigationGroupTitlesHtml = () =>
-  wrapper.find('.puik-tab-navigation__group-titles')
+  wrapper.find('.puik-tab-navigation__group-titles');
 const getTabNavigationGroupTitlesComponent = () =>
-  wrapper.findComponent(PuikTabNavigationGroupTitles)
+  wrapper.findComponent(PuikTabNavigationGroupTitles);
 
 const template = `
 <puik-tab-navigation name="name-example" :default-position="2">
@@ -55,17 +55,17 @@ const template = `
     </puik-tab-navigation-panel>
   </puik-tab-navigation-group-panels>
 </puik-tab-navigation>
-`
+`;
 
 describe('TabNavigationGroupTitles tests', () => {
   it('should be a vue instance', () => {
-    factory(template)
-    expect(getTabNavigationGroupTitlesComponent).toBeTruthy()
-  })
+    factory(template);
+    expect(getTabNavigationGroupTitlesComponent).toBeTruthy();
+  });
   it('As ariaLabel prop value is "aria-label-example", aria-label attribute of puik-tab-navigation-group-titles should be "aria-label-example"', () => {
-    factory(template)
+    factory(template);
     expect(getTabNavigationGroupTitlesHtml().attributes('aria-label')).toBe(
       'aria-label-example'
-    )
-  })
-})
+    );
+  });
+});

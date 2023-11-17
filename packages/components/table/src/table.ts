@@ -1,4 +1,4 @@
-import type Table from './table.vue'
+import type Table from './table.vue';
 
 export enum PuikTableHeaderSize {
   Small = 'sm',
@@ -27,4 +27,4 @@ export interface TableProps {
   fullWidth?: boolean
 }
 
-export type TableInstance = InstanceType<typeof Table>
+export type TableInstance = InstanceType<typeof Table>;

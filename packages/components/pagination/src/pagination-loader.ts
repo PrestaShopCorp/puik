@@ -1,4 +1,4 @@
-import type PaginationLoader from './pagination-loader.vue'
+import type PaginationLoader from './pagination-loader.vue';
 
 export interface PaginationLoaderProps {
   modelValue?: number
@@ -7,4 +7,4 @@ export interface PaginationLoaderProps {
   loaderButtonLabel?: string
 }
 
-export type PaginationInstance = InstanceType<typeof PaginationLoader>
+export type PaginationInstance = InstanceType<typeof PaginationLoader>;

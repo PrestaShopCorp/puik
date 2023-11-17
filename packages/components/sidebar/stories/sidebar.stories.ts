@@ -1,5 +1,5 @@
-import { PuikButton, PuikSidebarGroupItem, PuikSidebar, PuikSidebarItem, PuikSidebarTitle } from "@prestashopcorp/puik-components"
-import type { Meta, StoryObj, StoryFn, Args } from '@storybook/vue3'
+import { PuikButton, PuikSidebarGroupItem, PuikSidebar, PuikSidebarItem, PuikSidebarTitle } from '@prestashopcorp/puik-components';
+import type { Meta, StoryObj, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Sidebar',
@@ -10,24 +10,24 @@ export default {
       description: 'v-model of the expansion state',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     openAccordion: {
       control: 'text',
       description: 'v-model of the open accordion name',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: undefined,
-        },
-      },
+          summary: undefined
+        }
+      }
     },
     mobile: {
       control: 'boolean',
@@ -35,33 +35,33 @@ export default {
         'Add a backdrop for dismiss and hide the sidebar when collapsed (mobile usage), expansion is triggered by the v-model',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: false,
-        },
-      },
-    },
+          summary: false
+        }
+      }
+    }
   },
   parameters: {
     docs: {
       story: {
         inline: false,
-        iframeHeight: 500,
-      },
-    },
-  },
-} as Meta
+        iframeHeight: 500
+      }
+    }
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikSidebar,
     PuikSidebarGroupItem,
     PuikSidebarItem,
-    PuikSidebarTitle,
+    PuikSidebarTitle
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
 <puik-sidebar v-bind="args">
@@ -94,14 +94,14 @@ const Template: StoryFn = (args: Args) => ({
     icon="extension"
   />
 </puik-sidebar>
-  `,
-})
+  `
+});
 
 export const Default: StoryObj = {
   render: Template,
   args: {
     expanded: false,
-    mobile: false,
+    mobile: false
   },
   parameters: {
     docs: {
@@ -317,11 +317,11 @@ export const Default: StoryObj = {
   </nav>
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 const MobileTemplate: StoryFn = (args: Args) => ({
   components: {
@@ -329,15 +329,15 @@ const MobileTemplate: StoryFn = (args: Args) => ({
     PuikSidebarGroupItem,
     PuikSidebarItem,
     PuikSidebarTitle,
-    PuikButton,
+    PuikButton
   },
   setup() {
-    return { args }
+    return { args };
   },
   data() {
     return {
-      expanded: false,
-    }
+      expanded: false
+    };
   },
   template: `
 <puik-sidebar v-bind="args" mobile v-model:expanded="expanded" style="position: fixed; height: 100vh;">
@@ -373,14 +373,14 @@ const MobileTemplate: StoryFn = (args: Args) => ({
 <puik-button @click="expanded = !expanded">
   Open/Close
 </puik-button>
-  `,
-})
+  `
+});
 
 export const Mobile: StoryObj = {
   render: MobileTemplate,
   args: {
     expanded: false,
-    mobile: true,
+    mobile: true
   },
   parameters: {
     docs: {
@@ -546,8 +546,8 @@ export const Mobile: StoryObj = {
   Open/Close
 </button>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

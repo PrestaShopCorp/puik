@@ -1,3 +1,3 @@
-import PuikTheme from './theme'
+import PuikTheme from './theme';
 
-export const puikTailwindPreset = { theme: PuikTheme }
+export const puikTailwindPreset = { theme: PuikTheme };

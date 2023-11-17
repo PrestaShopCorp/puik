@@ -6,14 +6,20 @@
       { 'puik-chip--disabled': disabled },
     ]"
   >
-    <PuikIcon v-if="icon && icon != ''" :icon="icon" class="puik-chip__icon" />
+    <PuikIcon
+      v-if="icon && icon != ''"
+      :icon="icon"
+      class="puik-chip__icon"
+    />
     <div class="puik-chip__content">
       <PuikTooltip
         v-if="content?.length >= 30"
         :position="tooltipPosition"
         :description="content"
       >
-        <template #description>{{ content }}</template>
+        <template #description>
+          {{ content }}
+        </template>
         {{ content }}
       </PuikTooltip>
       {{ content }}
@@ -27,23 +33,23 @@
 </template>
 
 <script setup lang="ts">
-import { PuikIcon } from '@prestashopcorp/puik-components/icon'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import {
   PuikTooltip,
-  PuikTooltipPositions,
-} from '@prestashopcorp/puik-components/tooltip'
-import { PuikChipSizeVariants, type ChipProps } from './chip'
+  PuikTooltipPositions
+} from '@prestashopcorp/puik-components/tooltip';
+import { PuikChipSizeVariants, type ChipProps } from './chip';
 defineOptions({
-  name: 'PuikChip',
-})
+  name: 'PuikChip'
+});
 
 withDefaults(defineProps<ChipProps>(), {
   size: PuikChipSizeVariants.Default,
-  tooltipPosition: PuikTooltipPositions.Bottom,
-})
-const emit = defineEmits(['close'])
+  tooltipPosition: PuikTooltipPositions.Bottom
+});
+const emit = defineEmits(['close']);
 
 const handleCloseEvent = () => {
-  emit('close')
-}
+  emit('close');
+};
 </script>

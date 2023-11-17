@@ -1,4 +1,4 @@
-import type Snackbar from './snackbar.vue'
+import type Snackbar from './snackbar.vue';
 
 export enum PuikSnackbarVariants {
   Default = 'default',
@@ -26,9 +26,9 @@ export interface PuikSnackbarProps extends PuikSnackbarOptions {
 }
 
 export const snackbarEmits = {
-  destroy: () => true,
-}
+  destroy: () => true
+};
 
-export type SnackbarEmits = typeof snackbarEmits
+export type SnackbarEmits = typeof snackbarEmits;
 
-export type SnackbarInstance = InstanceType<typeof Snackbar>
+export type SnackbarInstance = InstanceType<typeof Snackbar>;

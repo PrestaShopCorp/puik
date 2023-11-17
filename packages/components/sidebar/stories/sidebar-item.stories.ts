@@ -1,5 +1,5 @@
-import { PuikSidebarGroupItem, PuikSidebar, PuikSidebarItem, PuikSidebarTitle } from "@prestashopcorp/puik-components"
-import type { Meta, StoryObj, StoryFn, Args } from '@storybook/vue3'
+import { PuikSidebarGroupItem, PuikSidebar, PuikSidebarItem, PuikSidebarTitle } from '@prestashopcorp/puik-components';
+import type { Meta, StoryObj, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Sidebar/SidebarItem',
@@ -10,89 +10,89 @@ export default {
       description: 'Set the item title',
       table: {
         type: {
-          summary: 'string',
-        },
-      },
+          summary: 'string'
+        }
+      }
     },
     href: {
       control: 'text',
       description: 'Set the href of the item',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: undefined,
-        },
-      },
+          summary: undefined
+        }
+      }
     },
     to: {
       control: 'text',
       description: 'Set the to destination of the item (router-link)',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: undefined,
-        },
-      },
+          summary: undefined
+        }
+      }
     },
     icon: {
       control: 'text',
       description: 'Set the icon',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: undefined,
-        },
-      },
+          summary: undefined
+        }
+      }
     },
     active: {
       control: 'boolean',
       description: 'Set an active state',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     default: {
       control: 'none',
-      description: 'Set the defaut content slot',
-    },
+      description: 'Set the defaut content slot'
+    }
   },
   args: {
     title: 'title',
     active: false,
     href: undefined,
     to: undefined,
-    icon: 'home',
+    icon: 'home'
   },
   parameters: {
     docs: {
       story: {
         inline: false,
-        iframeHeight: 500,
-      },
-    },
-  },
-} as Meta
+        iframeHeight: 500
+      }
+    }
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikSidebar,
     PuikSidebarGroupItem,
     PuikSidebarItem,
-    PuikSidebarTitle,
+    PuikSidebarTitle
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
 <puik-sidebar>
@@ -109,8 +109,8 @@ const Template: StoryFn = (args: Args) => ({
     <puik-sidebar-item title="Title 2" />
   </puik-sidebar-group-item>
 </puik-sidebar>
-  `,
-})
+  `
+});
 
 export const Default: StoryObj = {
   render: Template,
@@ -135,8 +135,8 @@ export const Default: StoryObj = {
     </puik-sidebar-group-item>
   </puik-sidebar>
   `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

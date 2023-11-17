@@ -21,10 +21,10 @@
     "format": "prettier --write .",
     "lint": "eslint . --ext .vue,.js,.ts,",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts",
-    "docs:dev": "pnpm --filter @puik/docs dev",
-    "build-storybook": "pnpm --filter @puik/docs build",
+    "docs:dev": "pnpm --filter @prestashopcorp/puik-docs dev",
+    "build-storybook": "pnpm --filter @prestashopcorp/puik-docs build",
     "chromatic": "chromatic",
-    "dev": "pnpm --filter @puik/playground dev",
+    "dev": "pnpm --filter @prestashopcorp/puik-playground dev",
     "component": "hygen component new",
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm -y"
@@ -42,9 +42,6 @@
     "not ie 11",
     "not op_mini all"
   ],
-  "peerDependencies": {
-    "vue": "^3.3.0"
-  },
   "dependencies": {
     "@headlessui/vue": "^1.7.16",
     "@popperjs/core": "^2.11.8",

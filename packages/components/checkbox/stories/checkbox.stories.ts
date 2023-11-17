@@ -1,5 +1,5 @@
-import { PuikCheckbox } from "@prestashopcorp/puik-components"
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikCheckbox } from '@prestashopcorp/puik-components';
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Checkbox',
@@ -7,52 +7,52 @@ export default {
   argTypes: {
     label: {
       control: 'text',
-      description: 'Set the checkbox label',
+      description: 'Set the checkbox label'
     },
     default: {
       control: 'text',
-      description: 'Set the custom label',
+      description: 'Set the custom label'
     },
     indeterminate: {
       description: 'Set the indeterminate checkbox  state',
       table: {
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     modelValue: {
       description: 'v-model of the checkbox',
-      control: 'none',
+      control: 'none'
     },
     disabled: {
       description: 'Set the checkbox as disabled',
       table: {
         defaultValue: {
-          summary: false,
-        },
-      },
-    },
+          summary: false
+        }
+      }
+    }
   },
   args: {
     label: 'Label',
     default: undefined,
     indeterminate: false,
     disabled: false,
-    modelValue: false,
-  },
-} as Meta
+    modelValue: false
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikCheckbox,
+    PuikCheckbox
   },
   setup() {
-    return { args }
+    return { args };
   },
   template:
-    '<puik-checkbox v-bind="args"><template v-if="args.default">{{ args.default }}</template></puik-checkbox>',
-})
+    '<puik-checkbox v-bind="args"><template v-if="args.default">{{ args.default }}</template></puik-checkbox>'
+});
 
 export const Default = {
   render: Template,
@@ -71,17 +71,17 @@ export const Default = {
     <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Checked: StoryObj = {
   render: Template,
 
   args: {
-    modelValue: true,
+    modelValue: true
   },
 
   parameters: {
@@ -97,11 +97,11 @@ export const Checked: StoryObj = {
     <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Unchecked: StoryObj = {
   render: Template,
@@ -119,18 +119,18 @@ export const Unchecked: StoryObj = {
     <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Indeterminate: StoryObj = {
   render: Template,
 
   args: {
     indeterminate: true,
-    modelValue: false,
+    modelValue: false
   },
 
   parameters: {
@@ -146,17 +146,17 @@ export const Indeterminate: StoryObj = {
     <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const WithoutLabel: StoryObj = {
   render: Template,
 
   args: {
-    label: undefined,
+    label: undefined
   },
 
   parameters: {
@@ -171,29 +171,29 @@ export const WithoutLabel: StoryObj = {
     <input id="puik-checkbox-id" class="puik-checkbox__input" type="checkbox">
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const CustomLabel: StoryObj = {
   render: (args) => ({
     components: {
-      PuikCheckbox,
+      PuikCheckbox
     },
     setup() {
-      return { args }
+      return { args };
     },
     template: `
       <puik-checkbox :model-value="false">
         <span style="background: blue; color: white; padding: 5px">{{ args.default }}</span>
       </puik-checkbox>
-    `,
+    `
   }),
 
   args: {
-    default: 'Custom label',
+    default: 'Custom label'
   },
 
   parameters: {
@@ -213,17 +213,17 @@ export const CustomLabel: StoryObj = {
     </label>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const DisabledUnchecked: StoryObj = {
   render: Template,
 
   args: {
-    disabled: true,
+    disabled: true
   },
 
   parameters: {
@@ -239,18 +239,18 @@ export const DisabledUnchecked: StoryObj = {
     <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const DisabledChecked: StoryObj = {
   render: Template,
 
   args: {
     disabled: true,
-    modelValue: true,
+    modelValue: true
   },
 
   parameters: {
@@ -266,18 +266,18 @@ export const DisabledChecked: StoryObj = {
     <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const DisabledIndeterminate: StoryObj = {
   render: Template,
 
   args: {
     disabled: true,
-    indeterminate: true,
+    indeterminate: true
   },
 
   parameters: {
@@ -293,8 +293,8 @@ export const DisabledIndeterminate: StoryObj = {
     <label for="puik-checkbox-id" class="puik-checkbox__label">Label</label>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

@@ -1,4 +1,4 @@
 export default {
   name: 'de',
-  puik: {},
-}
+  puik: {}
+};

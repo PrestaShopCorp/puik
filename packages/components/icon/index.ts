@@ -1,7 +1,7 @@
-import Icon from './src/icon.vue'
+import Icon from './src/icon.vue';
 
-export const PuikIcon = Icon
+export const PuikIcon = Icon;
 
-export * from './src/icon'
+export * from './src/icon';
 
-export default PuikIcon
+export default PuikIcon;

@@ -1,5 +1,5 @@
-import { PuikProgressStepper, PuikProgressStepperStep } from "@prestashopcorp/puik-components"
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikProgressStepper, PuikProgressStepperStep } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/ProgressStepper/ProgressStepperStep',
@@ -10,42 +10,42 @@ export default {
       control: 'text',
       table: {
         type: {
-          summary: 'string | number',
-        },
-      },
+          summary: 'string | number'
+        }
+      }
     },
     text: {
       description: 'Text of the step',
-      control: 'text',
+      control: 'text'
     },
     'additional-text': {
       description: 'Additional text of the step',
-      control: 'text',
+      control: 'text'
     },
     click: {
       description: 'Event emitted on click step',
       control: 'none',
       table: {
         type: {
-          summary: 'string | number',
-        },
-      },
-    },
+          summary: 'string | number'
+        }
+      }
+    }
   },
   args: {
     step: '1',
     text: 'Text',
-    'additional-text': 'Additional text',
-  },
-} as Meta
+    'additional-text': 'Additional text'
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikProgressStepper,
-    PuikProgressStepperStep,
+    PuikProgressStepperStep
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `<puik-progress-stepper :model-value="args.step">
     <puik-progress-stepper-step :step="args.step">
@@ -53,8 +53,8 @@ const Template: StoryFn = (args: Args) => ({
       <template #additional-text>{{ args['additional-text'] }}</template>
     </puik-progress-stepper-step>
   </puik-progress-stepper>
-  `,
-})
+  `
+});
 
 export const Default = {
   render: Template,
@@ -84,8 +84,8 @@ export const Default = {
   </div>
 </div>
       `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

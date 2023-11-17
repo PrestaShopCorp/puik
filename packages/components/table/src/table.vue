@@ -1,6 +1,9 @@
 <template>
   <div class="puik-table__container">
-    <table class="puik-table" :class="{ 'puik-table--full-width': fullWidth }">
+    <table
+      class="puik-table"
+      :class="{ 'puik-table--full-width': fullWidth }"
+    >
       <thead class="puik-table__head">
         <tr class="puik-table__head__row">
           <th
@@ -65,7 +68,11 @@
             class="puik-table__body__row__item"
             :class="`puik-table__body__row__item--${header.align ?? 'left'}`"
           >
-            <slot :name="`item-${header.value}`" :item="item" :index="rowIndex">
+            <slot
+              :name="`item-${header.value}`"
+              :item="item"
+              :index="rowIndex"
+            >
               {{ item[header.value] }}
             </slot>
           </td>
@@ -76,62 +83,60 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
-import { useLocale } from '@prestashopcorp/puik-locale'
-import PuikCheckbox from '../../checkbox/src/checkbox.vue'
-import { type TableProps } from './table'
+import { computed, ref, watch } from 'vue';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import PuikCheckbox from '../../checkbox/src/checkbox.vue';
+import { type TableProps } from './table';
 defineOptions({
-  name: 'PuikTable',
-})
+  name: 'PuikTable'
+});
 
 const props = withDefaults(defineProps<TableProps>(), {
   items: () => [],
-  selection: () => [],
-})
+  selection: () => []
+});
 const emit = defineEmits<{
   select: [index: number]
   'select:all': []
   'update:selection': [value: number[]]
-}>()
-const { t } = useLocale()
-const checked = ref<number[]>(props.selection)
+}>();
+const { t } = useLocale();
+const checked = ref<number[]>(props.selection);
 
 const indeterminate = computed(() => {
-  return checked.value.length > 0 && checked.value.length < props.items.length
-})
+  return checked.value.length > 0 && checked.value.length < props.items.length;
+});
 
 const selectAll = computed(() => {
-  if (indeterminate.value) return false
-  return checked.value.length === props.items.length
-})
+  if (indeterminate.value) return false;
+  return checked.value.length === props.items.length;
+});
 
 function handleClickAll() {
   if (indeterminate.value || !selectAll.value) {
-    checked.value = props.items.map((...args) => args[1])
+    checked.value = props.items.map((...args) => args[1]);
   } else {
-    checked.value = []
+    checked.value = [];
   }
 
-  emit('select:all')
-  emit('update:selection', checked.value)
+  emit('select:all');
+  emit('update:selection', checked.value);
 }
 
 function getSelected(index: number): boolean {
-  return checked.value.some((value) => value === index)
+  return checked.value.some((value) => value === index);
 }
 
 function handleClick(index: number) {
   if (getSelected(index)) {
-    checked.value = checked.value.filter((value) => value !== index)
+    checked.value = checked.value.filter((value) => value !== index);
   } else {
-    checked.value.push(index)
+    checked.value.push(index);
   }
 
-  emit('select', index)
-  emit('update:selection', checked.value)
+  emit('select', index);
+  emit('update:selection', checked.value);
 }
-
-
 
 const selectAllLabel = computed(() => {
   return t(
@@ -139,18 +144,18 @@ const selectAllLabel = computed(() => {
       indeterminate.value || !selectAll.value
         ? 'selectAllLabel'
         : 'unselectAllLabel'
-    }`,
-  )
-})
+    }`
+  );
+});
 
 function getSelectLabel(index: number): string {
-  return t(`puik.table.${getSelected(index) ? 'unselectLabel' : 'selectLabel'}`)
+  return t(`puik.table.${getSelected(index) ? 'unselectLabel' : 'selectLabel'}`);
 }
 
 watch(
   () => props.selection,
   () => {
-    checked.value = props.selection
-  },
-)
+    checked.value = props.selection;
+  }
+);
 </script>

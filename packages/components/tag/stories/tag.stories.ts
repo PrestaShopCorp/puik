@@ -1,13 +1,13 @@
-import { ref } from 'vue'
-import { PuikIcon, PuikTooltipPositions, PuikTagSizes, PuikTagVariants, PuikTag } from "@prestashopcorp/puik-components"
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { ref } from 'vue';
+import { PuikIcon, PuikTooltipPositions, PuikTagSizes, PuikTagVariants, PuikTag } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
-const tagColorsVariants = Object.values(PuikTagVariants)
-const tagColorsVariantsSummary = tagColorsVariants.join('|')
-const tagSizeVariants = Object.values(PuikTagSizes)
-const tagSizeVariantsSummary = tagSizeVariants.join('|')
-const tooltipPositions = Object.values(PuikTooltipPositions)
-const tooltipPositionsSummary = tooltipPositions.join('|')
+const tagColorsVariants = Object.values(PuikTagVariants);
+const tagColorsVariantsSummary = tagColorsVariants.join('|');
+const tagSizeVariants = Object.values(PuikTagSizes);
+const tagSizeVariantsSummary = tagSizeVariants.join('|');
+const tooltipPositions = Object.values(PuikTooltipPositions);
+const tooltipPositionsSummary = tooltipPositions.join('|');
 
 export default {
   title: 'Components/Tag',
@@ -19,12 +19,12 @@ export default {
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     content: {
       description:
@@ -32,12 +32,12 @@ export default {
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     size: {
       description: 'Size variants of tag component (default, small)',
@@ -45,12 +45,12 @@ export default {
       options: tagSizeVariants,
       table: {
         type: {
-          summary: tagSizeVariantsSummary,
+          summary: tagSizeVariantsSummary
         },
         defaultValue: {
-          summary: 'default',
-        },
-      },
+          summary: 'default'
+        }
+      }
     },
     variant: {
       description:
@@ -59,24 +59,24 @@ export default {
       options: tagColorsVariants,
       table: {
         type: {
-          summary: tagColorsVariantsSummary,
+          summary: tagColorsVariantsSummary
         },
         defaultValue: {
-          summary: 'neutral',
-        },
-      },
+          summary: 'neutral'
+        }
+      }
     },
     icon: {
       description: 'Material icon name',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     tooltipPosition: {
       description:
@@ -85,25 +85,25 @@ export default {
       options: tooltipPositions,
       table: {
         type: {
-          summary: tooltipPositionsSummary,
+          summary: tooltipPositionsSummary
         },
         defaultValue: {
-          summary: 'bottom',
-        },
-      },
+          summary: 'bottom'
+        }
+      }
     },
     disabled: {
       description: 'Disables the Tag component ',
       control: 'boolean',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
+          summary: 'false'
+        }
+      }
+    }
   },
   args: {
     id: 'puik-tag-id',
@@ -112,51 +112,51 @@ export default {
     variant: 'neutral',
     icon: '',
     disabled: false,
-    tooltipPosition: 'bottom',
-  },
-} as Meta
+    tooltipPosition: 'bottom'
+  }
+} as Meta;
 
 const DefaultTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikTag
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<puik-tag  v-bind="args"/>`,
-})
+  template: '<puik-tag  v-bind="args"/>'
+});
 
 const ColorVariantsTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikTag
   },
   setup() {
     const tags = ref([
       {
         variant: 'neutral',
-        content: 'neutral tag',
+        content: 'neutral tag'
       },
       {
         variant: 'blue',
-        content: 'blue tag',
+        content: 'blue tag'
       },
       {
         variant: 'yellow',
-        content: 'yellow tag',
+        content: 'yellow tag'
       },
       {
         variant: 'green',
-        content: 'green tag',
+        content: 'green tag'
       },
       {
         variant: 'purple',
-        content: 'purple tag',
-      },
-    ])
+        content: 'purple tag'
+      }
+    ]);
 
-    return { tags, args }
+    return { tags, args };
   },
   template: `
   <div class="flex space-x-2 mb-4">
@@ -168,16 +168,16 @@ const ColorVariantsTemplate: StoryFn = (args: Args) => ({
       :variant="tag.variant"
     />
   </div>
-`,
-})
+`
+});
 
 const SizeVariantsTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikTag
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <puik-tag
@@ -192,16 +192,16 @@ const SizeVariantsTemplate: StoryFn = (args: Args) => ({
       content="small size"
       size="small"
     />
-`,
-})
+`
+});
 
 const DisabledTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikTag
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <puik-tag
@@ -209,16 +209,16 @@ const DisabledTemplate: StoryFn = (args: Args) => ({
       content="disabled tag"
       :disabled="true"
     />
-`,
-})
+`
+});
 
 const WithIconTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikTag
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <puik-tag
@@ -226,16 +226,16 @@ const WithIconTemplate: StoryFn = (args: Args) => ({
       content="with icon tag"
       icon="favorite"
     />
-`,
-})
+`
+});
 
 const WithLongTextTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikTag,
+    PuikTag
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <puik-tag
@@ -243,8 +243,8 @@ const WithLongTextTemplate: StoryFn = (args: Args) => ({
       content="very long text content very long text content"
       :tooltip-position="bottom"
     />
-`,
-})
+`
+});
 
 export const Default = {
   render: DefaultTemplate,
@@ -272,11 +272,11 @@ export const Default = {
   </div>
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const ColorVariants = {
   render: ColorVariantsTemplate,
@@ -302,11 +302,11 @@ export const ColorVariants = {
   </div>
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const SizeVariants = {
   render: SizeVariantsTemplate,
@@ -332,11 +332,11 @@ export const SizeVariants = {
   </div>
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Disabled = {
   render: DisabledTemplate,
@@ -360,11 +360,11 @@ export const Disabled = {
   </div>
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const WithIcon = {
   render: WithIconTemplate,
@@ -389,11 +389,11 @@ export const WithIcon = {
   <div class="puik-tag__content">with icon tag</div>
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const WithLongText = {
   render: WithLongTextTemplate,
@@ -410,8 +410,8 @@ export const WithLongText = {
   :tooltip-position="{$tooltipPosition}"
 />
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

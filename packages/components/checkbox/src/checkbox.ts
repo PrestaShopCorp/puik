@@ -1,4 +1,4 @@
-import type Checkbox from './checkbox.vue'
+import type Checkbox from './checkbox.vue';
 
 export interface CheckboxProps {
   modelValue: boolean
@@ -7,4 +7,4 @@ export interface CheckboxProps {
   indeterminate?: boolean
 }
 
-export type CheckboxInstance = InstanceType<typeof Checkbox>
+export type CheckboxInstance = InstanceType<typeof Checkbox>;

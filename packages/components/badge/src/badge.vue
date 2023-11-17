@@ -1,17 +1,20 @@
 <template>
-  <div class="puik-badge" :class="[`puik-badge--${variant}`]">
-    <slot></slot>
+  <div
+    class="puik-badge"
+    :class="[`puik-badge--${variant}`]"
+  >
+    <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-import { PuikBadgeVariants } from './badge'
-import type { BadgeProps } from './badge'
+import { PuikBadgeVariants } from './badge';
+import type { BadgeProps } from './badge';
 defineOptions({
-  name: 'PuikBadge',
-})
+  name: 'PuikBadge'
+});
 
 withDefaults(defineProps<BadgeProps>(), {
-  variant: PuikBadgeVariants.Neutral,
-})
+  variant: PuikBadgeVariants.Neutral
+});
 </script>

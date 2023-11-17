@@ -1,4 +1,4 @@
-import type SpinnerLoader from './spinner-loader.vue'
+import type SpinnerLoader from './spinner-loader.vue';
 
 export enum PuikSpinnerLoaderSizes {
   Small = 'sm',
@@ -23,4 +23,4 @@ export interface SpinnerLoaderProps {
   label?: string
 }
 
-export type SpinnerLoaderInstance = InstanceType<typeof SpinnerLoader>
+export type SpinnerLoaderInstance = InstanceType<typeof SpinnerLoader>;

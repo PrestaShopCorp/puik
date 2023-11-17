@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
   },
-  "include": ["packages", "typings"],
+  "include": ["packages"],
   "exclude": ["**/dist", "**/node_modules"]
 }

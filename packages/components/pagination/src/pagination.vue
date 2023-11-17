@@ -13,7 +13,10 @@
       :disabled="loaderButtonDisabled"
     />
 
-    <div v-else class="puik-pagination__content">
+    <div
+      v-else
+      class="puik-pagination__content"
+    >
       <pagination-small
         v-if="variant === PuikPaginationVariants.Small"
         v-model="currentPage"
@@ -47,73 +50,73 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useLocale } from '@prestashopcorp/puik-locale'
-import { type PaginationProps, PuikPaginationVariants } from './pagination'
+import { computed } from 'vue';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { type PaginationProps, PuikPaginationVariants } from './pagination';
 
-import PaginationLoader from './pagination-loader.vue'
-import PaginationMobile from './pagination-mobile.vue'
-import PaginationSmall from './pagination-small.vue'
-import PaginationMedium from './pagination-medium.vue'
-import PaginationLarge from './pagination-large.vue'
+import PaginationLoader from './pagination-loader.vue';
+import PaginationMobile from './pagination-mobile.vue';
+import PaginationSmall from './pagination-small.vue';
+import PaginationMedium from './pagination-medium.vue';
+import PaginationLarge from './pagination-large.vue';
 
 defineOptions({
-  name: 'PuikPagination',
-})
+  name: 'PuikPagination'
+});
 
 const props = withDefaults(defineProps<PaginationProps>(), {
   variant: PuikPaginationVariants.Medium,
   itemsPerPage: 5,
   itemsPerPageOptions: () => [5, 10, 15],
-  itemCount: 0,
-})
+  itemCount: 0
+});
 const emit = defineEmits<{
   'update:page': [value: number]
   'update:itemsPerPage': [value: number]
-}>()
+}>();
 
-const { t } = useLocale()
+const { t } = useLocale();
 
 const currentPage = computed({
   get: () => props.page,
-  set: (page: number) => emit('update:page', page),
-})
+  set: (page: number) => emit('update:page', page)
+});
 
 const maxPage = computed(() => {
-  return Math.ceil(props.totalItem / props.itemsPerPage)
-})
+  return Math.ceil(props.totalItem / props.itemsPerPage);
+});
 
-const disabled = computed(() => !props.totalItem || !maxPage.value)
+const disabled = computed(() => !props.totalItem || !maxPage.value);
 
 const currentLabel = computed(() => {
-  if (props.label) return props.label
-  const path = `puik.pagination.${props.variant}.label`
+  if (props.label) return props.label;
+  const path = `puik.pagination.${props.variant}.label`;
 
   switch (props.variant) {
     case PuikPaginationVariants.Mobile:
     case PuikPaginationVariants.Small:
       return t(path, {
         page: currentPage.value,
-        maxPage: maxPage.value,
-      })
+        maxPage: maxPage.value
+      });
     case PuikPaginationVariants.Medium:
     case PuikPaginationVariants.Large:
       return t(path, {
-        totalItem: props.totalItem,
-      })
+        totalItem: props.totalItem
+      });
     default:
       return t(path, {
         itemCount: props.itemCount,
-        totalItem: props.totalItem,
-      })
+        totalItem: props.totalItem
+      });
   }
-})
+});
 
 const commonPaginationProps = computed(() => {
   return {
     label: currentLabel.value,
     maxPage: maxPage.value,
-    disabled: disabled.value,
-  }
-})
+    disabled: disabled.value
+  };
+});
 </script>

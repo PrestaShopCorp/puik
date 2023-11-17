@@ -1,4 +1,4 @@
-import type Label from './label.vue'
+import type Label from './label.vue';
 
 export interface LabelProps {
   for: string
@@ -7,4 +7,4 @@ export interface LabelProps {
   readonly?: boolean
 }
 
-export type LabelInstance = InstanceType<typeof Label>
+export type LabelInstance = InstanceType<typeof Label>;

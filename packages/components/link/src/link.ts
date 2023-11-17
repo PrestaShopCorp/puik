@@ -1,5 +1,5 @@
-import type { RouteLocationRaw } from 'vue-router'
-import type Link from './link.vue'
+import type { RouteLocationRaw } from 'vue-router';
+import type Link from './link.vue';
 
 export enum PuikLinkTargetVariants {
   Blank = '_blank',
@@ -22,4 +22,4 @@ export interface LinkProps {
   title?: string
 }
 
-export type LinkInstance = InstanceType<typeof Link>
+export type LinkInstance = InstanceType<typeof Link>;

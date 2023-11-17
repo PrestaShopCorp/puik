@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import { type TabNavigationGroupTitlesProps } from './tab-navigation-group-titles'
+import { type TabNavigationGroupTitlesProps } from './tab-navigation-group-titles';
 defineOptions({
-  name: 'PuikTabNavigationGroupTitles',
-})
+  name: 'PuikTabNavigationGroupTitles'
+});
 
-defineProps<TabNavigationGroupTitlesProps>()
+defineProps<TabNavigationGroupTitlesProps>();
 </script>

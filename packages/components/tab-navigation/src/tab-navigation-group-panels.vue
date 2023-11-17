@@ -6,6 +6,6 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: 'PuikTabNavigationGroupPanels',
-})
+  name: 'PuikTabNavigationGroupPanels'
+});
 </script>

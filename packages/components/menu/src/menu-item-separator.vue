@@ -1,9 +1,9 @@
 <template>
-  <hr class="puik-menu-item-separator" />
+  <hr class="puik-menu-item-separator">
 </template>
 
 <script setup lang="ts">
 defineOptions({
-  name: 'PuikMenuItemSeparator',
-})
+  name: 'PuikMenuItemSeparator'
+});
 </script>

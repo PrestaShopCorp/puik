@@ -1,4 +1,4 @@
-import type PaginationMobile from './pagination-mobile.vue'
+import type PaginationMobile from './pagination-mobile.vue';
 
 export interface PaginationMobileProps {
   modelValue?: number
@@ -7,4 +7,4 @@ export interface PaginationMobileProps {
   label?: string
 }
 
-export type PaginationInstance = InstanceType<typeof PaginationMobile>
+export type PaginationInstance = InstanceType<typeof PaginationMobile>;

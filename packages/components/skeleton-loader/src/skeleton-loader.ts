@@ -1,4 +1,4 @@
-import type SkeletonLoader from './skeleton-loader.vue'
+import type SkeletonLoader from './skeleton-loader.vue';
 
 export enum PuikSkeletonLoaderVariants {
   H1 = 'h1',
@@ -26,4 +26,4 @@ export interface SkeletonLoaderProps {
   height?: string
 }
 
-export type SkeletonLoaderInstance = InstanceType<typeof SkeletonLoader>
+export type SkeletonLoaderInstance = InstanceType<typeof SkeletonLoader>;

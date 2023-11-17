@@ -3,28 +3,28 @@ export default {
   puik: {
     input: {
       increase: 'Increase',
-      decrease: 'Decrease',
+      decrease: 'Decrease'
     },
     switch: {
       enable: 'Enable',
-      disable: 'Disable',
+      disable: 'Disable'
     },
     label: {
       optional: 'Optional',
-      readonly: 'Read\xa0only',
+      readonly: 'Read\xa0only'
     },
     select: {
       searchPlaceholder: 'Search',
-      noResults: 'No results matched',
+      noResults: 'No results matched'
     },
     table: {
       selectLabel: 'Select item',
       unselectLabel: 'Unnselect item',
       selectAllLabel: 'Select all items',
-      unselectAllLabel: 'Unselect all items',
+      unselectAllLabel: 'Unselect all items'
     },
     skeletonLoaderGroup: {
-      label: 'Loading',
+      label: 'Loading'
     },
     pagination: {
       ariaLabel: 'Pagination navigation',
@@ -32,33 +32,33 @@ export default {
       previous: 'Previous page',
       next: 'Next page',
       small: {
-        label: 'Page {page} to {maxPage}',
+        label: 'Page {page} to {maxPage}'
       },
       medium: {
-        label: '{totalItem} results',
+        label: '{totalItem} results'
       },
       large: {
         label: '{totalItem} results',
         choosePage: 'Select page',
-        jumperDescription: 'To {maxPage} pages',
+        jumperDescription: 'To {maxPage} pages'
       },
       loader: {
         label: 'You saw {itemCount} products out of {totalItem}.',
-        button: 'Load more',
+        button: 'Load more'
       },
       mobile: {
-        label: 'Page {page} to {maxPage}',
-      },
+        label: 'Page {page} to {maxPage}'
+      }
     },
     sidebar: {
       expandButtonLabel: {
         expanded: 'Expand navigation sidebar',
         collapsed: 'Collapse navigation sidebar',
-        close: 'Close navigation sidebar',
-      },
+        close: 'Close navigation sidebar'
+      }
     },
     snackbar: {
-      closeBtnLabel: 'Close snackbar',
-    },
-  },
-}
+      closeBtnLabel: 'Close snackbar'
+    }
+  }
+};

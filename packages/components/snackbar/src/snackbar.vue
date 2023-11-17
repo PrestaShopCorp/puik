@@ -37,63 +37,63 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import { useTimeoutFn, useEventListener } from '@vueuse/core'
-import { useLocale } from '@prestashopcorp/puik-locale'
-import { PuikSnackbarVariants } from './snackbar'
-import type { PuikSnackbarProps } from './snackbar'
-import type { CSSProperties } from 'vue'
+import { computed, onMounted, ref } from 'vue';
+import { useTimeoutFn, useEventListener } from '@vueuse/core';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { PuikSnackbarVariants } from './snackbar';
+import type { PuikSnackbarProps } from './snackbar';
+import type { CSSProperties } from 'vue';
 
 defineOptions({
-  name: 'PuikSnackbar',
-})
+  name: 'PuikSnackbar'
+});
 
 defineEmits<{
   destroy: []
-}>()
+}>();
 
-const { t } = useLocale()
-let timer: (() => void) | undefined
+const { t } = useLocale();
+let timer: (() => void) | undefined;
 
-const visible = ref(false)
+const visible = ref(false);
 
 const props = withDefaults(defineProps<PuikSnackbarProps>(), {
   variant: PuikSnackbarVariants.Default,
   offset: 0,
   duration: 3000,
-  hasCloseButton: true,
-})
+  hasCloseButton: true
+});
 
 const position = computed<CSSProperties>(() => ({
-  bottom: `${props.offset}px`,
-}))
+  bottom: `${props.offset}px`
+}));
 
 const close = () => {
-  visible.value = false
-}
+  visible.value = false;
+};
 
 const startTimer = () => {
   if (props.duration > 0) {
-    ;({ stop: timer } = useTimeoutFn(() => {
-      close()
-    }, props.duration))
+    ({ stop: timer } = useTimeoutFn(() => {
+      close();
+    }, props.duration));
   }
-}
+};
 
-const resetTimer = () => timer?.()
+const resetTimer = () => timer?.();
 
 const onKeyDown = ({ code }: KeyboardEvent) => {
   if (code === 'Escape') {
     if (visible.value) {
-      close()
+      close();
     }
   }
-}
+};
 
-useEventListener(document, 'keydown', onKeyDown)
+useEventListener(document, 'keydown', onKeyDown);
 
 onMounted(() => {
-  startTimer()
-  visible.value = true
-})
+  startTimer();
+  visible.value = true;
+});
 </script>

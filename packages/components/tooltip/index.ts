@@ -1,7 +1,7 @@
-import Tooltip from './src/tooltip.vue'
+import Tooltip from './src/tooltip.vue';
 
-export const PuikTooltip = Tooltip
+export const PuikTooltip = Tooltip;
 
-export * from './src/tooltip'
+export * from './src/tooltip';
 
-export default PuikTooltip
+export default PuikTooltip;

@@ -1,1 +1,1 @@
-export * from '@prestashopcorp/puik-locale'
+export * from '@prestashopcorp/puik-locale';

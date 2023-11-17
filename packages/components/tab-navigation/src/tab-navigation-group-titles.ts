@@ -1,4 +1,4 @@
-import type TabNavigationGroupTitles from './tab-navigation-group-titles.vue'
+import type TabNavigationGroupTitles from './tab-navigation-group-titles.vue';
 
 export interface TabNavigationGroupTitlesProps {
   ariaLabel: string
@@ -6,4 +6,4 @@ export interface TabNavigationGroupTitlesProps {
 
 export type TabNavigationGroupTitlesInstance = InstanceType<
   typeof TabNavigationGroupTitles
->
+>;

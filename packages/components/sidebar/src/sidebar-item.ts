@@ -1,5 +1,5 @@
-import type { RouteLocationRaw } from 'vue-router'
-import type SidebarItem from './sidebar-item.vue'
+import type { RouteLocationRaw } from 'vue-router';
+import type SidebarItem from './sidebar-item.vue';
 
 export interface SidebarItemProps {
   title: string
@@ -9,4 +9,4 @@ export interface SidebarItemProps {
   active?: boolean
 }
 
-export type SidebarItemInstance = InstanceType<typeof SidebarItem>
+export type SidebarItemInstance = InstanceType<typeof SidebarItem>;

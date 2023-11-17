@@ -6,30 +6,30 @@
     :title="title"
     :class="['puik-link', `puik-link--${size}`]"
   >
-    <slot></slot>
+    <slot />
   </component>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { PuikLinkSizes, type LinkProps, PuikLinkTargetVariants } from './link'
+import { computed } from 'vue';
+import { PuikLinkSizes, type LinkProps, PuikLinkTargetVariants } from './link';
 defineOptions({
-  name: 'PuikLink',
-})
+  name: 'PuikLink'
+});
 
 const props = withDefaults(defineProps<LinkProps>(), {
   size: PuikLinkSizes.Medium,
-  target: PuikLinkTargetVariants.Self,
-})
+  target: PuikLinkTargetVariants.Self
+});
 
 const componentType = computed(() => {
   if (props.to) {
-    return 'router-link'
+    return 'router-link';
   }
-  return 'a'
-})
+  return 'a';
+});
 
 const pathProp = computed(() =>
-  props.to ? { to: props.to } : { href: props.href },
-)
+  props.to ? { to: props.to } : { href: props.href }
+);
 </script>

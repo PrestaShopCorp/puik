@@ -1,13 +1,13 @@
-import { ref } from 'vue'
-import { PuikTabNavigation, PuikTabNavigationGroupTitles, PuikTabNavigationGroupPanels, PuikTabNavigationTitle, PuikTabNavigationPanel, PuikIcon } from "@prestashopcorp/puik-components"
-import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3'
+import { ref } from 'vue';
+import { PuikTabNavigation, PuikTabNavigationGroupTitles, PuikTabNavigationGroupPanels, PuikTabNavigationTitle, PuikTabNavigationPanel, PuikIcon } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3';
 
 const meta: Meta<
-  | typeof PuikTabNavigation
-  | typeof PuikTabNavigationGroupTitles
-  | typeof PuikTabNavigationGroupPanels
-  | typeof PuikTabNavigationTitle
-  | typeof PuikTabNavigationPanel
+| typeof PuikTabNavigation
+| typeof PuikTabNavigationGroupTitles
+| typeof PuikTabNavigationGroupPanels
+| typeof PuikTabNavigationTitle
+| typeof PuikTabNavigationPanel
 > = {
   title: 'Components/TabNavigation/TabNavigationPanel',
   component: PuikTabNavigationPanel,
@@ -19,12 +19,12 @@ const meta: Meta<
       table: {
         disable: true,
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     defaultPosition: {
       description:
@@ -33,12 +33,12 @@ const meta: Meta<
       table: {
         disable: true,
         type: {
-          summary: 'number',
+          summary: 'number'
         },
         defaultValue: {
-          summary: 1,
-        },
-      },
+          summary: 1
+        }
+      }
     },
     ariaLabel: {
       description: 'value of aria-label attribute',
@@ -46,16 +46,16 @@ const meta: Meta<
       table: {
         disable: true,
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     position: {
       description:
-        'position of tab inside PuiktabNavigationGroupTitles component. NB: must be greater than or equal to 1',
+        'position of tab inside PuiktabNavigationGroupTitles component. NB: must be greater than or equal to 1'
     },
     disabled: {
       description: 'disable a navigation tab',
@@ -63,24 +63,24 @@ const meta: Meta<
       table: {
         disable: true,
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
-  },
-}
+          summary: 'false'
+        }
+      }
+    }
+  }
+};
 
-export default meta
+export default meta;
 type Story = StoryObj<
-  | typeof PuikTabNavigation
-  | typeof PuikTabNavigationGroupTitles
-  | typeof PuikTabNavigationGroupPanels
-  | typeof PuikTabNavigationTitle
-  | typeof PuikTabNavigationPanel
->
+| typeof PuikTabNavigation
+| typeof PuikTabNavigationGroupTitles
+| typeof PuikTabNavigationGroupPanels
+| typeof PuikTabNavigationTitle
+| typeof PuikTabNavigationPanel
+>;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
@@ -89,15 +89,15 @@ const Template: StoryFn = (args: Args) => ({
     PuikTabNavigationGroupTitles,
     PuikTabNavigationGroupPanels,
     PuikTabNavigationTitle,
-    PuikTabNavigationPanel,
+    PuikTabNavigationPanel
   },
   setup() {
     const tabs = ref([
       { name: 'Title-1', content: 'content 1' },
       { name: 'Title-2', content: 'content 2' },
-      { name: 'Title-3', content: 'content 3' },
-    ])
-    return { tabs, args }
+      { name: 'Title-3', content: 'content 3' }
+    ]);
+    return { tabs, args };
   },
   template: `
 <puik-tab-navigation :name="args.name" :default-position="args.defaultPosition">
@@ -116,21 +116,21 @@ const Template: StoryFn = (args: Args) => ({
     </template>
   </puik-tab-navigation-group-panels>
 </puik-tab-navigation>
-  `,
-})
+  `
+});
 
 export const Default: Story = {
   args: {
     name: 'name-example',
     defaultPosition: 1,
-    ariaLabel: 'aria-label-example',
+    ariaLabel: 'aria-label-example'
   },
   render: Template,
   parameters: {
     docs: {
       description: {
         story:
-          'NB: The position prop must be greater than or equal to 1, in the case of a loop it is therefore necessary to increment the index by 1 (see example below)',
+          'NB: The position prop must be greater than or equal to 1, in the case of a loop it is therefore necessary to increment the index by 1 (see example below)'
       },
       source: {
         code: `
@@ -155,8 +155,8 @@ export const Default: Story = {
 <!--HTML/CSS Snippet-->
 <div id="name-example-panel-1" role="tabpanel" tabindex="0" aria-labelledby="name-example-position-1" class="puik-tab-navigation__panel"></div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

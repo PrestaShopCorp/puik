@@ -1,4 +1,4 @@
-import type Input from './input.vue'
+import type Input from './input.vue';
 
 export enum PuikInputTypes {
   Text = 'text',
@@ -28,4 +28,4 @@ export interface InputProps {
   hideHint?: boolean
 }
 
-export type InputInstance = InstanceType<typeof Input>
+export type InputInstance = InstanceType<typeof Input>;

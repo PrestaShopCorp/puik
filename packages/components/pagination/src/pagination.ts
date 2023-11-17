@@ -1,4 +1,4 @@
-import type Pagination from './pagination.vue'
+import type Pagination from './pagination.vue';
 
 export enum PuikPaginationVariants {
   Loader = 'loader',
@@ -20,4 +20,4 @@ export interface PaginationProps {
   loaderButtonDisabled?: boolean
 }
 
-export type PaginationInstance = InstanceType<typeof Pagination>
+export type PaginationInstance = InstanceType<typeof Pagination>;

@@ -1,6 +1,6 @@
-import Table from './src/table.vue'
+import Table from './src/table.vue';
 
-export const PuikTable = Table
-export default PuikTable
+export const PuikTable = Table;
+export default PuikTable;
 
-export * from './src/table'
+export * from './src/table';

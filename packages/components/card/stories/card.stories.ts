@@ -1,9 +1,9 @@
-import PrestaShopSloganBg from '../../../../docs/assets/img/prestashop-slogan-bg.jpg'
-import { PuikButton, PuikCard, PuikCardVariants } from "@prestashopcorp/puik-components"
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+import PrestaShopSloganBg from '../../../../docs/assets/img/prestashop-slogan-bg.jpg';
+import { PuikButton, PuikCard, PuikCardVariants } from '@prestashopcorp/puik-components';
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
-const cardVariants = Object.values(PuikCardVariants)
-const cardVariantsSummary = cardVariants.join('|')
+const cardVariants = Object.values(PuikCardVariants);
+const cardVariantsSummary = cardVariants.join('|');
 
 export default {
   title: 'Components/Card',
@@ -13,42 +13,42 @@ export default {
       description: 'Set the card variant',
       table: {
         defaultValue: {
-          summary: 'default',
+          summary: 'default'
         },
         type: {
-          summary: cardVariantsSummary,
-        },
-      },
+          summary: cardVariantsSummary
+        }
+      }
     },
     default: {
       control: 'text',
-      description: 'Card content',
-    },
+      description: 'Card content'
+    }
   },
   args: {
-    default: 'Card content',
+    default: 'Card content'
   },
   decorators: [
     () => ({
-      template: '<div class="w-96"><story/></div>',
-    }),
-  ],
-} as Meta
+      template: '<div class="w-96"><story/></div>'
+    })
+  ]
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikCard,
+    PuikCard
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <puik-card v-bind="args">
       <h3 class="puik-h3">Card title</h3>
       {{ args.default }}
     </puik-card>
-  `,
-})
+  `
+});
 
 export const Default = {
   render: Template,
@@ -74,17 +74,17 @@ export const Default = {
     Card content
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Highlight = {
   render: Template,
 
   args: {
-    variant: 'highlight',
+    variant: 'highlight'
   },
 
   parameters: {
@@ -101,17 +101,17 @@ export const Highlight = {
     Card content
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Blue = {
   render: Template,
 
   args: {
-    variant: 'blue',
+    variant: 'blue'
   },
 
   parameters: {
@@ -128,17 +128,17 @@ export const Blue = {
     Card content
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Purple = {
   render: Template,
 
   args: {
-    variant: 'purple',
+    variant: 'purple'
   },
 
   parameters: {
@@ -155,17 +155,17 @@ export const Purple = {
     Card content
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Amber = {
   render: Template,
 
   args: {
-    variant: 'amber',
+    variant: 'amber'
   },
 
   parameters: {
@@ -182,17 +182,17 @@ export const Amber = {
     Card content
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Green = {
   render: Template,
 
   args: {
-    variant: 'green',
+    variant: 'green'
   },
 
   parameters: {
@@ -209,20 +209,20 @@ export const Green = {
     Card content
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const WithPictureTitleTextAndAction: StoryObj = {
   render: (args: Args) => ({
     components: {
       PuikButton,
-      PuikCard,
+      PuikCard
     },
     setup() {
-      return { args, PrestaShopSloganBg }
+      return { args, PrestaShopSloganBg };
     },
     template: `
     <puik-card>
@@ -233,7 +233,7 @@ export const WithPictureTitleTextAndAction: StoryObj = {
         <puik-button>Button</puik-button>
       </div>
     </puik-card>
-    `,
+    `
   }),
 
   parameters: {
@@ -260,8 +260,8 @@ export const WithPictureTitleTextAndAction: StoryObj = {
       </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

@@ -1,5 +1,5 @@
-import type { PuikTooltipPositions } from '@prestashopcorp/puik-components'
-import type Tag from './tag.vue'
+import type { PuikTooltipPositions } from '@prestashopcorp/puik-components';
+import type Tag from './tag.vue';
 
 export enum PuikTagVariants {
   Neutral = 'neutral',
@@ -24,4 +24,4 @@ export interface TagProps {
   tooltipPosition?: `${PuikTooltipPositions}`
 }
 
-export type TagInstance = InstanceType<typeof Tag>
+export type TagInstance = InstanceType<typeof Tag>;

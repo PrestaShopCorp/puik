@@ -1,2 +1,2 @@
-import '@prestashopcorp/puik-components/base/style/css'
-import '@prestashopcorp/puik-theme/puik-progress-bar.css'
+import '@prestashopcorp/puik-components/base/style/css';
+import '@prestashopcorp/puik-theme/puik-progress-bar.css';

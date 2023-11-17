@@ -1,2 +1,2 @@
-import '@prestashopcorp/puik-components/base/style'
-import '@prestashopcorp/puik-theme/src/puik-radio.scss'
+import '@prestashopcorp/puik-components/base/style';
+import '@prestashopcorp/puik-theme/src/puik-radio.scss';

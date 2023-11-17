@@ -12,19 +12,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject, ref } from 'vue'
-import { currentTabKey } from './tab-navigation'
-import { type TabNavigationPanelProps } from './tab-navigation-panel'
+import { computed, inject, ref } from 'vue';
+import { currentTabKey } from './tab-navigation';
+import { type TabNavigationPanelProps } from './tab-navigation-panel';
 
 defineOptions({
-  name: 'PuikTabNavigationPanel',
-})
+  name: 'PuikTabNavigationPanel'
+});
 
-const props = defineProps<TabNavigationPanelProps>()
+const props = defineProps<TabNavigationPanelProps>();
 
-const currentTab = inject(currentTabKey)
-const name = ref(currentTab?.name)
+const currentTab = inject(currentTabKey);
+const name = ref(currentTab?.name);
 const isCurrentTab = computed(() => {
-  return props.position === currentTab?.currentPosition.value
-})
+  return props.position === currentTab?.currentPosition.value;
+});
 </script>

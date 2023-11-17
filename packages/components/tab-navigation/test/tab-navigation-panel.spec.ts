@@ -1,15 +1,15 @@
-import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
+import { mount } from '@vue/test-utils';
+import { describe, it, expect } from 'vitest';
 import {
   PuikTabNavigation,
   PuikTabNavigationGroupTitles,
   PuikTabNavigationGroupPanels,
   PuikTabNavigationTitle,
-  PuikTabNavigationPanel,
-} from '..'
-import type { MountingOptions, VueWrapper } from '@vue/test-utils'
+  PuikTabNavigationPanel
+} from '..';
+import type { MountingOptions, VueWrapper } from '@vue/test-utils';
 
-let wrapper: VueWrapper<any>
+let wrapper: VueWrapper<any>;
 const factory = (template: string, options: MountingOptions<any> = {}) => {
   wrapper = mount({
     components: {
@@ -17,15 +17,15 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
       PuikTabNavigationGroupTitles,
       PuikTabNavigationGroupPanels,
       PuikTabNavigationTitle,
-      PuikTabNavigationPanel,
+      PuikTabNavigationPanel
     },
     template,
-    ...options,
-  })
-}
+    ...options
+  });
+};
 
 const getTabNavigationPanelComponent = () =>
-  wrapper.findComponent(PuikTabNavigationPanel)
+  wrapper.findComponent(PuikTabNavigationPanel);
 
 const template = `
 <puik-tab-navigation name="name-example" :default-position="2">
@@ -53,10 +53,10 @@ const template = `
     </puik-tab-navigation-panel>
   </puik-tab-navigation-group-panels>
 </puik-tab-navigation>
-`
+`;
 describe('TabNavigation tests', () => {
   it('should be a vue instance', () => {
-    factory(template)
-    expect(getTabNavigationPanelComponent).toBeTruthy()
-  })
-})
+    factory(template);
+    expect(getTabNavigationPanelComponent).toBeTruthy();
+  });
+});

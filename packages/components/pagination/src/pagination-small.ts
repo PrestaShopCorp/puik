@@ -1,4 +1,4 @@
-import type PaginationSmall from './pagination-small.vue'
+import type PaginationSmall from './pagination-small.vue';
 
 export interface PaginationSmallProps {
   modelValue?: number
@@ -7,4 +7,4 @@ export interface PaginationSmallProps {
   label?: string
 }
 
-export type PaginationInstance = InstanceType<typeof PaginationSmall>
+export type PaginationInstance = InstanceType<typeof PaginationSmall>;

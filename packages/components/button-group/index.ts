@@ -1,6 +1,6 @@
-import ButtonGroup from './src/button-group.vue'
+import ButtonGroup from './src/button-group.vue';
 
-export const PuikButtonGroup = ButtonGroup
-export default PuikButtonGroup
+export const PuikButtonGroup = ButtonGroup;
+export default PuikButtonGroup;
 
-export * from './src/button-group'
+export * from './src/button-group';

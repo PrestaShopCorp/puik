@@ -15,25 +15,25 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { PuikButton } from '@prestashopcorp/puik-components/button'
-import { useLocale } from '@prestashopcorp/puik-locale'
-import { type PaginationLoaderProps } from './pagination-loader'
+import { computed } from 'vue';
+import { PuikButton } from '@prestashopcorp/puik-components/button';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { type PaginationLoaderProps } from './pagination-loader';
 defineOptions({
-  name: 'PuikPaginationLoader',
-})
+  name: 'PuikPaginationLoader'
+});
 
 const props = withDefaults(defineProps<PaginationLoaderProps>(), {
-  modelValue: 1,
-})
+  modelValue: 1
+});
 
 defineEmits<{
   'update:modelValue': [value: number]
-}>()
+}>();
 
-const { t } = useLocale()
+const { t } = useLocale();
 
 const currentButtonLabel = computed(
-  () => props.loaderButtonLabel ?? t('puik.pagination.loader.button'),
-)
+  () => props.loaderButtonLabel ?? t('puik.pagination.loader.button')
+);
 </script>

@@ -1,4 +1,4 @@
-import type PaginationMedium from './pagination-medium.vue'
+import type PaginationMedium from './pagination-medium.vue';
 
 export interface PaginationMediumProps {
   modelValue?: number
@@ -9,4 +9,4 @@ export interface PaginationMediumProps {
   label?: string
 }
 
-export type PaginationInstance = InstanceType<typeof PaginationMedium>
+export type PaginationInstance = InstanceType<typeof PaginationMedium>;

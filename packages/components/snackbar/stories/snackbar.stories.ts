@@ -1,9 +1,9 @@
-import { action } from '@storybook/addon-actions'
-import { PuikButton, PuikSnackbar, PuikSnackbarVariants, type PuikSnackbarOptions } from "@prestashopcorp/puik-components"
-import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3'
+import { action } from '@storybook/addon-actions';
+import { PuikButton, PuikSnackbar, PuikSnackbarVariants, type PuikSnackbarOptions } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3';
 
-const snackbarVariants = Object.values(PuikSnackbarVariants)
-const snackbarVariantSummary = snackbarVariants.join('|')
+const snackbarVariants = Object.values(PuikSnackbarVariants);
+const snackbarVariantSummary = snackbarVariants.join('|');
 
 export default {
   title: 'Components/Snackbar',
@@ -13,12 +13,12 @@ export default {
       description: 'The text of the snackbar',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     variant: {
       description: 'The color variant of the snackbar',
@@ -26,24 +26,24 @@ export default {
       options: snackbarVariants,
       table: {
         type: {
-          summary: snackbarVariantSummary,
+          summary: snackbarVariantSummary
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     action: {
       description: 'The action label of the snackbar',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     duration: {
       description:
@@ -51,12 +51,12 @@ export default {
       control: 'number',
       table: {
         type: {
-          summary: 'number',
+          summary: 'number'
         },
         defaultValue: {
-          summary: 3000,
-        },
-      },
+          summary: 3000
+        }
+      }
     },
     offset: {
       description:
@@ -64,97 +64,97 @@ export default {
       control: 'number',
       table: {
         type: {
-          summary: 'number',
+          summary: 'number'
         },
         defaultValue: {
-          summary: 0,
-        },
-      },
+          summary: 0
+        }
+      }
     },
     isClosable: {
       description: 'Display a close button or not',
       control: 'boolean',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     onClose: {
       description: 'Set the function to call when the snackbar has been closed',
       table: {
         type: {
-          summary: '() => void',
+          summary: '() => void'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
-    },
+          summary: 'undefined'
+        }
+      }
+    }
   },
-  args: {},
-} as Meta
+  args: {}
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikButton,
+    PuikButton
   },
   setup() {
-    const open = () => PuikSnackbar(args as PuikSnackbarOptions)
-    return { args, open }
+    const open = () => PuikSnackbar(args as PuikSnackbarOptions);
+    return { args, open };
   },
-  template: `<puik-button @click="open">Display Snackbar</puik-button>`,
-})
+  template: '<puik-button @click="open">Display Snackbar</puik-button>'
+});
 
 export const Default = {
   render: Template,
   args: {
-    text: 'New category added.',
-  },
-}
+    text: 'New category added.'
+  }
+};
 
 const HasNoCloseButtonTemplate: StoryFn = (args: Args) => ({
   components: {
-    PuikButton,
+    PuikButton
   },
   setup() {
-    const open = () => PuikSnackbar(args as PuikSnackbarOptions)
-    return { args, open }
+    const open = () => PuikSnackbar(args as PuikSnackbarOptions);
+    return { args, open };
   },
-  template: `<puik-button @click="open">Display Snackbar</puik-button>`,
-})
+  template: '<puik-button @click="open">Display Snackbar</puik-button>'
+});
 
 export const HasNoCloseButton = {
   render: HasNoCloseButtonTemplate,
   args: {
     text: 'New category added.',
-    hasCloseButton: false,
-  },
-}
+    hasCloseButton: false
+  }
+};
 
 const WithoutActionTemplate: StoryFn = () => ({
   components: {
-    PuikButton,
+    PuikButton
   },
   setup() {
     const displaySnackbar = () =>
       PuikSnackbar({
-        text: 'New category added.',
-      })
+        text: 'New category added.'
+      });
     const displayErrorSnackbar = () =>
       PuikSnackbar({
         text: 'Unable to update settings.',
-        variant: 'danger',
-      })
+        variant: 'danger'
+      });
     const displaySuccessSnackbar = () =>
       PuikSnackbar({
         text: 'Settings updated successfully.',
-        variant: 'success',
-      })
-    return { displaySnackbar, displayErrorSnackbar, displaySuccessSnackbar }
+        variant: 'success'
+      });
+    return { displaySnackbar, displayErrorSnackbar, displaySuccessSnackbar };
   },
   template: `
     <div class="space-x-4">
@@ -162,8 +162,8 @@ const WithoutActionTemplate: StoryFn = () => ({
       <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
       <puik-button @click="displaySuccessSnackbar">Display Success Snackbar</puik-button>
     </div>
-  `,
-})
+  `
+});
 
 export const WithoutAction: StoryObj = {
   render: WithoutActionTemplate,
@@ -229,15 +229,15 @@ const displaySuccessSnackbar = () =>
   </button>
 </div>
       `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 const WithActionTemplate: StoryFn = () => ({
   components: {
-    PuikButton,
+    PuikButton
   },
   setup() {
     const displaySnackbar = () =>
@@ -245,28 +245,28 @@ const WithActionTemplate: StoryFn = () => ({
         text: 'New attribute “Size” added.',
         action: {
           label: 'Cancel',
-          callback: action('Default snackbar action callback function'),
-        },
-      })
+          callback: action('Default snackbar action callback function')
+        }
+      });
     const displayErrorSnackbar = () =>
       PuikSnackbar({
         text: 'Unable to update settings.',
         variant: 'danger',
         action: {
           label: 'Cancel',
-          callback: action('Error snackbar action callback function'),
-        },
-      })
+          callback: action('Error snackbar action callback function')
+        }
+      });
     const displaySuccessSnackbar = () =>
       PuikSnackbar({
         text: 'Settings updated successfully.',
         variant: 'success',
         action: {
           label: 'Cancel',
-          callback: action('Success snackbar action callback function'),
-        },
-      })
-    return { displaySnackbar, displayErrorSnackbar, displaySuccessSnackbar }
+          callback: action('Success snackbar action callback function')
+        }
+      });
+    return { displaySnackbar, displayErrorSnackbar, displaySuccessSnackbar };
   },
   template: `
     <div class="space-x-4">
@@ -274,8 +274,8 @@ const WithActionTemplate: StoryFn = () => ({
       <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
       <puik-button @click="displaySuccessSnackbar">Display Success Snackbar</puik-button>
     </div>
-  `,
-})
+  `
+});
 
 export const WithAction: StoryObj = {
   render: WithActionTemplate,
@@ -356,8 +356,8 @@ export const WithAction: StoryObj = {
     </button>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

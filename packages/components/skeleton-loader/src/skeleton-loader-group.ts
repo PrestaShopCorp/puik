@@ -1,4 +1,4 @@
-import type SkeletonLoaderGroup from './skeleton-loader-group.vue'
+import type SkeletonLoaderGroup from './skeleton-loader-group.vue';
 
 export interface SkeletonLoaderGroupProps {
   tag?: string
@@ -6,4 +6,4 @@ export interface SkeletonLoaderGroupProps {
 
 export type SkeletonLoaderGroupInstance = InstanceType<
   typeof SkeletonLoaderGroup
->
+>;

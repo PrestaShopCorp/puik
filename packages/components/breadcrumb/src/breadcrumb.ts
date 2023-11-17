@@ -1,6 +1,6 @@
-import type { RouteLocationRaw } from 'vue-router'
-import type Breadcrumb from './breadcrumb.vue'
-import type { PuikLinkTargetVariants } from '../../link'
+import type { RouteLocationRaw } from 'vue-router';
+import type Breadcrumb from './breadcrumb.vue';
+import type { PuikLinkTargetVariants } from '../../link';
 
 export interface BreadcrumbItem {
   label: string
@@ -15,4 +15,4 @@ export interface BreadcrumbProps {
   icon?: string
 }
 
-export type BreadcrumbInstance = InstanceType<typeof Breadcrumb>
+export type BreadcrumbInstance = InstanceType<typeof Breadcrumb>;
