@@ -650,86 +650,86 @@ export const stickyColumns: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <table class="puik-table">
-  <thead class="puik-table__head">
-     <tr class="puik-table__head__row">
-        <th class="puik-table__head__row__item puik-table__head__row__item--selection puik-table__head__row__item--sticky">
-          <div class="puik-checkbox puik-table__head__row__item--selection__checkbox">
-            <input id="puik-checkbox-9803" class="puik-checkbox__input" type="checkbox">
-            <label for="puik-checkbox-9803" class="puik-checkbox__label">
-              Select all items
-            </label>
-          </div>
-        </th>
-        <th class="puik-table__head__row__item puik-table__head__row__item--left puik-table__head__row__item--md">Nom</th>
-        <th class="puik-table__head__row__item puik-table__head__row__item--left puik-table__head__row__item--md">Prénom</th>
-        <th class="puik-table__head__row__item puik-table__head__row__item--center puik-table__head__row__item--sm">Age</th>
-        <th class="puik-table__head__row__item puik-table__head__row__item--right">Email</th>
-        <th class="puik-table__head__row__item puik-table__head__row__item--left puik-table__head__row__item--sm puik-table__head__row__item--sticky"></th>
-     </tr>
-  </thead>
-  <tbody class="puik-table__body">
-     <tr class="puik-table__body__row">
-        <td class="puik-table__body__row__item puik-table__body__row__item--selection puik-table__body__row__item--sticky">
-          <div class="puik-checkbox puik-table__body__row__item--selection__checkbox">
-            <input id="puik-checkbox-3764" class="puik-checkbox__input" type="checkbox">
-            <label for="puik-checkbox-3764" class="puik-checkbox__label">
-              Select item
-            </label>
-          </div>
-        </td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname0</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname0</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname0.firstname0@email.com</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--sticky">
-           <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
-              <!--v-if-->
-              <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
-           </button>
-        </td>
-     </tr>
-     <tr class="puik-table__body__row">
-        <td class="puik-table__body__row__item puik-table__body__row__item--selection puik-table__body__row__item--sticky">
-          <div class="puik-checkbox puik-table__body__row__item--selection__checkbox">
-            <input id="puik-checkbox-4045" class="puik-checkbox__input" type="checkbox">
-            <label for="puik-checkbox-4045" class="puik-checkbox__label">
-              Select item
-            </label>
-          </div>
-        </td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname1</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname1</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname1.firstname1@email.com</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--sticky">
-           <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
-              <!--v-if-->
-              <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
-           </button>
-        </td>
-     </tr>
-     <tr class="puik-table__body__row">
-        <td class="puik-table__body__row__item puik-table__body__row__item--selection puik-table__body__row__item--sticky">
-          <div class="puik-checkbox puik-table__body__row__item--selection__checkbox">
-            <input id="puik-checkbox-468" class="puik-checkbox__input" type="checkbox">
-            <label for="puik-checkbox-468" class="puik-checkbox__label">
-              Select item
-            </label>
-          </div>
-        </td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname2</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname2</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname2.firstname2@email.com</td>
-        <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--sticky">
-           <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
-              <!--v-if-->
-              <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
-           </button>
-        </td>
-     </tr>
-  </tbody>
-</table>
+    <thead class="puik-table__head">
+      <tr class="puik-table__head__row">
+          <th class="puik-table__head__row__item puik-table__head__row__item--selection puik-table__head__row__item--sticky">
+            <div class="puik-checkbox puik-table__head__row__item--selection__checkbox">
+              <input id="puik-checkbox-9803" class="puik-checkbox__input" type="checkbox">
+              <label for="puik-checkbox-9803" class="puik-checkbox__label">
+                Select all items
+              </label>
+            </div>
+          </th>
+          <th class="puik-table__head__row__item puik-table__head__row__item--left puik-table__head__row__item--md">Nom</th>
+          <th class="puik-table__head__row__item puik-table__head__row__item--left puik-table__head__row__item--md">Prénom</th>
+          <th class="puik-table__head__row__item puik-table__head__row__item--center puik-table__head__row__item--sm">Age</th>
+          <th class="puik-table__head__row__item puik-table__head__row__item--right">Email</th>
+          <th class="puik-table__head__row__item puik-table__head__row__item--left puik-table__head__row__item--sm puik-table__head__row__item--sticky"></th>
+      </tr>
+    </thead>
+    <tbody class="puik-table__body">
+      <tr class="puik-table__body__row">
+          <td class="puik-table__body__row__item puik-table__body__row__item--selection puik-table__body__row__item--sticky">
+            <div class="puik-checkbox puik-table__body__row__item--selection__checkbox">
+              <input id="puik-checkbox-3764" class="puik-checkbox__input" type="checkbox">
+              <label for="puik-checkbox-3764" class="puik-checkbox__label">
+                Select item
+              </label>
+            </div>
+          </td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname0</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname0</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname0.firstname0@email.com</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--sticky">
+            <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
+                <!--v-if-->
+                <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
+            </button>
+          </td>
+      </tr>
+      <tr class="puik-table__body__row">
+          <td class="puik-table__body__row__item puik-table__body__row__item--selection puik-table__body__row__item--sticky">
+            <div class="puik-checkbox puik-table__body__row__item--selection__checkbox">
+              <input id="puik-checkbox-4045" class="puik-checkbox__input" type="checkbox">
+              <label for="puik-checkbox-4045" class="puik-checkbox__label">
+                Select item
+              </label>
+            </div>
+          </td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname1</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname1</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname1.firstname1@email.com</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--sticky">
+            <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
+                <!--v-if-->
+                <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
+            </button>
+          </td>
+      </tr>
+      <tr class="puik-table__body__row">
+          <td class="puik-table__body__row__item puik-table__body__row__item--selection puik-table__body__row__item--sticky">
+            <div class="puik-checkbox puik-table__body__row__item--selection__checkbox">
+              <input id="puik-checkbox-468" class="puik-checkbox__input" type="checkbox">
+              <label for="puik-checkbox-468" class="puik-checkbox__label">
+                Select item
+              </label>
+            </div>
+          </td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname2</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname2</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname2.firstname2@email.com</td>
+          <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--sticky">
+            <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
+                <!--v-if-->
+                <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
+            </button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
         `,
         language: 'html',
       },
