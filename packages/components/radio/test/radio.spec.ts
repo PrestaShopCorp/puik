@@ -1,9 +1,10 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
-import Radio from '../src/radio.vue';
-import type { RadioProps } from '../src/radio';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikRadio } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+type PuikRadioProps = ExtractComponentPropType<typeof PuikRadio>;
 
 describe('Radio tests', () => {
   let wrapper: VueWrapper<any>;
@@ -12,21 +13,16 @@ describe('Radio tests', () => {
 
   const fakeValue = faker.word.adjective();
   const factory = (
-    props: Partial<RadioProps> = {
-      disabled: false,
-      label: 'Label',
-      modelValue: false,
-      value: fakeValue
-    },
-    options: MountingOptions<any> = {}
+    props: PuikRadioProps,
+    options?: ComponentMountingOptions<any>
   ) => {
-    wrapper = mount(Radio, {
+    wrapper = mount(PuikRadio, {
       props,
       ...options
     });
   };
   it('should emit update:modelValue with the right value as payload when the input is clicked', async () => {
-    factory();
+    factory({ modelValue: false, value: fakeValue });
     await findInput().setValue(true);
     expect(wrapper.emitted('update:modelValue')).toStrictEqual([[fakeValue]]);
   });
@@ -40,34 +36,34 @@ describe('Radio tests', () => {
     expect(wrapper.emitted('update:modelValue')).toStrictEqual([[fakeValue]]);
   });
   it('should not emit update:modelValue when the input is clicked AND the radio is disabled', async () => {
-    factory({ disabled: true, modelValue: false });
+    factory({ disabled: true, modelValue: false, value: fakeValue });
     await findInput().setValue(true);
     expect(wrapper.emitted('update:modelValue')).toBeFalsy();
   });
   it('should not emit update:modelValue when the label is clicked AND the radio is disabled', async () => {
-    factory({ label: 'Label', disabled: true, modelValue: false });
+    factory({ label: 'Label', disabled: true, modelValue: false, value: fakeValue });
     await findLabel().trigger('click');
     expect(wrapper.emitted('update:modelValue')).toBeFalsy();
   });
   it('should not emit update:modelValue when the custom label is clicked AND the radio is disabled', async () => {
     factory(
-      { disabled: true, modelValue: false },
+      { disabled: true, modelValue: false, value: fakeValue },
       { slots: { default: 'Custom label' } }
     );
     await findLabel().trigger('click');
     expect(wrapper.emitted('update:modelValue')).toBeFalsy();
   });
   it('should display the label', () => {
-    factory({ label: 'The label', modelValue: false });
+    factory({ label: 'The label', modelValue: false, value: fakeValue });
     expect(findLabel().text()).toContain('The label');
   });
   it('should not render the label if there is no label prop or slot', () => {
-    factory({ label: undefined });
+    factory({ label: undefined, modelValue: false, value: fakeValue });
     expect(findLabel().exists()).toBeFalsy();
   });
   it('should fill the custom label slot when no label is provided', () => {
     factory(
-      { modelValue: false },
+      { modelValue: false, value: fakeValue },
       {
         slots: { default: 'Custom label' }
       }
@@ -76,7 +72,7 @@ describe('Radio tests', () => {
   });
   it('should display the custom label slot even if a props label is provided', () => {
     factory(
-      { label: 'Label', modelValue: false },
+      { label: 'Label', modelValue: false, value: fakeValue },
       {
         slots: { default: 'Custom label' }
       }

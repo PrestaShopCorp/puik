@@ -1,15 +1,12 @@
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikMenu from '../src/menu.vue';
-import PuikMenuItem from '../src/menu-item.vue';
-import PuikMenuItemSeparator from '../src/menu-item-separator.vue';
-import PuikButton from '../../button/src/button.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikMenu, PuikMenuItem, PuikMenuItemSeparator, PuikButton } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 
 export function factoryMenu(
   template: string,
-  options: MountingOptions<any> = {}
+  options: ComponentMountingOptions<any> = {}
 ) {
   return mount({
     components: {

@@ -1,23 +1,23 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import Tooltip from '../src/tooltip.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikTooltip } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
 
+type PuikTooltipProps = ExtractComponentPropType<typeof PuikTooltip>;
 describe('Tooltip tests', () => {
   let wrapper: VueWrapper<any>;
   const findTitle = () => wrapper.find('.puik-tooltip__tip__content__title');
   const findDescription = () =>
     wrapper.find('.puik-tooltip__tip__content__description');
-  const findToolTip = () => wrapper.find('.puik-tooltip__tip');
+  const findToolTip = () => wrapper.find<HTMLElement>('.puik-tooltip__tip');
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props?: PuikTooltipProps,
+    options?: ComponentMountingOptions<PuikTooltipProps>
   ) => {
-    wrapper = mount(Tooltip, {
-      props: {
-        ...propsData
-      },
+    wrapper = mount(PuikTooltip, {
+      props,
       ...options
     });
   };

@@ -5,7 +5,10 @@ import { useLocale } from '@prestashopcorp/puik-locale';
 import PuikPagination from '../src/pagination.vue';
 import { PuikPaginationVariants } from '../src/pagination';
 import { PuikOption } from '../../select';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikPaginationProps = ExtractComponentPropType<typeof PuikPagination>;
 
 describe('Pagination tests', () => {
   let wrapper: VueWrapper<any>;
@@ -37,15 +40,13 @@ describe('Pagination tests', () => {
   const findAllOptions = (select) => select.findAllComponents(PuikOption);
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props: PuikPaginationProps,
+    options?: ComponentMountingOptions<PuikPaginationProps>
   ) => {
     wrapper = mount(PuikPagination, {
-      props: {
-        ...propsData
-      },
+      props,
       ...options
-    });
+    } as any);
   };
 
   const propsData = {

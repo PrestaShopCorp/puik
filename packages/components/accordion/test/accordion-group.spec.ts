@@ -1,13 +1,12 @@
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikAccordionGroup from '../src/accordion-group.vue';
-import PuikAccordion from '../src/accordion.vue';
+import { PuikAccordion, PuikAccordionGroup } from '@prestashopcorp/puik-components';
 import { getAccordion, getAccordionHeader } from './accordion.spec';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 
 let wrapper: VueWrapper<any>;
-const factory = (template: string, options: MountingOptions<any> = {}) => {
+const factory = (template: string, options: ComponentMountingOptions<any> = {}) => {
   wrapper = mount({
     components: {
       'puik-accordion-group': PuikAccordionGroup,

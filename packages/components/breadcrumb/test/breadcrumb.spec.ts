@@ -1,21 +1,21 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikBreadcrumb from '../src/breadcrumb.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikBreadcrumb } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import type { BreadcrumbItem } from '../src/breadcrumb';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
 
+type PuikBreadcrumbProps = ExtractComponentPropType<typeof PuikBreadcrumb>;
 describe('Breadcrumb tests', () => {
   let wrapper: VueWrapper<any>;
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props: PuikBreadcrumbProps,
+    options?: ComponentMountingOptions<PuikBreadcrumbProps>
   ) => {
     wrapper = mount(PuikBreadcrumb, {
-      props: {
-        ...propsData
-      },
+      props,
       ...options
-    });
+    } as any);
   };
 
   const getBreadcrumbItems = () =>

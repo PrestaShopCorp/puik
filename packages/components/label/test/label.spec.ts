@@ -1,8 +1,11 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
-import PuikLabel from '../src/label.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikLabel } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikLabelProps = ExtractComponentPropType<typeof PuikLabel>;
 
 describe('Label tests', () => {
   let wrapper: VueWrapper<any>;
@@ -13,25 +16,23 @@ describe('Label tests', () => {
   const findLabelReadonly = () => wrapper.find('.puik-label--readonly');
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props: PuikLabelProps,
+    options?: ComponentMountingOptions<PuikLabelProps>
   ) => {
     wrapper = mount(PuikLabel, {
-      props: {
-        ...propsData
-      },
+      props,
       ...options
-    });
+    } as any);
   };
   it('should be a vue instance', () => {
-    factory();
+    factory({ for: '' });
     expect(wrapper).toBeTruthy();
   });
 
   it('should set the label', () => {
     const label = faker.lorem.words(2);
     factory(
-      {},
+      { for: '' },
       {
         slots: {
           default: label
@@ -43,7 +44,7 @@ describe('Label tests', () => {
 
   it('should set the label in optional mode', () => {
     factory(
-      { optional: true },
+      { for: '', optional: true },
       {
         slots: {
           default: faker.lorem.words(2)
@@ -55,7 +56,7 @@ describe('Label tests', () => {
 
   it('should set the label in required mode', () => {
     factory(
-      { required: true },
+      { for: '', required: true },
       {
         slots: {
           default: faker.lorem.words(2)
@@ -67,7 +68,7 @@ describe('Label tests', () => {
 
   it('should set the label in readonly mode', () => {
     factory(
-      { readonly: true },
+      { for: '', readonly: true },
       {
         slots: {
           default: faker.lorem.words(2)

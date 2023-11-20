@@ -2,18 +2,19 @@ import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
 import { locales } from '@prestashopcorp/puik-locale';
-import PuikTable from '../src/table.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
-import type { PuikTableHeader } from '../src/table';
-
+import { PuikTable, PuikTableHeader } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
 const defaultItems = Array(5)
   .fill(null)
   .map(() => {
     return {
-      firstname: faker.name.firstName(),
-      lastname: faker.name.lastName()
+      firstname: faker.person.firstName(),
+      lastname: faker.person.lastName()
     };
   });
+
+type PuikTableProps = ExtractComponentPropType<typeof PuikTable>;
 
 describe('Table tests', () => {
   let wrapper: VueWrapper<any>;
@@ -39,16 +40,16 @@ describe('Table tests', () => {
   const getCheckboxLabel = (checkbox) => checkbox.find('.puik-checkbox__label');
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props: PuikTableProps,
+    options?: ComponentMountingOptions<PuikTableProps>
   ) => {
     wrapper = mount(PuikTable, {
       props: {
-        ...propsData,
-        items: propsData.items ?? defaultItems
+        ...props,
+        items: props.items ?? defaultItems
       },
       ...options
-    });
+    } as any);
   };
   // Global tests
   it('should be a vue instance', () => {
@@ -238,7 +239,7 @@ describe('Table tests', () => {
     const headers: PuikTableHeader[] = [{ value: 'firstname', width }];
     factory({ headers, items });
     const header = getHeaders()[0];
-    expect(header.element.style.width).toBe(width);
+    expect((header.element as HTMLElement).style.width).toBe(width);
   });
 
   // Other tests

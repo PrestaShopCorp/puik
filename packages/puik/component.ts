@@ -1,7 +1,9 @@
+import { PuikSkeletonLoader, PuikSkeletonLoaderGroup } from '@prestashopcorp/puik-components/skeleton-loader';
 import { PuikTag } from '@prestashopcorp/puik-components/tag';
 import { PuikChip } from '@prestashopcorp/puik-components/chip';
 import {
   PuikTabNavigation,
+  PuikTabNavigationPanel,
   PuikTabNavigationGroupPanels,
   PuikTabNavigationTitle,
   PuikTabNavigationGroupTitles
@@ -53,11 +55,14 @@ import type { Component } from 'vue';
 
 // prettier-ignore
 export default [
+  PuikSkeletonLoader,
+  PuikSkeletonLoaderGroup,
   PuikTag,
   PuikChip,
   PuikTabNavigationGroupPanels,
   PuikTabNavigationTitle,
   PuikTabNavigationGroupTitles,
+  PuikTabNavigationPanel,
   PuikTabNavigation,
   PuikProgressStepper,
   PuikProgressStepperStep,

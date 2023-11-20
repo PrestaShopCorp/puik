@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikSidebar, PuikSidebarItem } from '../..';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikSidebar, PuikSidebarItem } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 
 let wrapper: VueWrapper<any>;
-const factory = (template: string, options: MountingOptions<any> = {}) => {
+const factory = (template: string, options: ComponentMountingOptions<any> = {}) => {
   wrapper = mount({
     components: {
       PuikSidebarItem,

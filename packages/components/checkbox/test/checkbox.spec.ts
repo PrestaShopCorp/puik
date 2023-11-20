@@ -1,8 +1,10 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect, vi } from 'vitest';
-import Checkbox from '../src/checkbox.vue';
-import type { CheckboxProps } from '../src/checkbox';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikCheckbox } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikCheckboxProps = ExtractComponentPropType<typeof PuikCheckbox>;
 
 describe('Checkbox tests', () => {
   let wrapper: VueWrapper<any>;
@@ -10,21 +12,16 @@ describe('Checkbox tests', () => {
   const findLabel = () => wrapper.find('.puik-checkbox__label');
 
   const factory = (
-    props: Partial<CheckboxProps> = {
-      disabled: false,
-      label: 'Label',
-      indeterminate: false,
-      modelValue: false
-    },
-    options: MountingOptions<any> = {}
+    props?: PuikCheckboxProps,
+    options: ComponentMountingOptions<PuikCheckboxProps> = {}
   ) => {
-    wrapper = mount(Checkbox, {
+    wrapper = mount(PuikCheckbox, {
       props,
       ...options
-    });
+    } as any);
   };
   it('should emit update:modelValue with true as payload when the input is clicked', async () => {
-    factory();
+    factory({ modelValue: false });
     await findInput().setValue(true);
     expect(wrapper.emitted('update:modelValue')).toStrictEqual([[true]]);
   });

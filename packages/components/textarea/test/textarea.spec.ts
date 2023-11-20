@@ -1,17 +1,20 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikTextarea from '../src/textarea.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikTextarea } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikTextareaProps = ExtractComponentPropType<typeof PuikTextarea>;
 
 describe('Textarea tests', () => {
   let wrapper: VueWrapper<any>;
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props?: PuikTextareaProps,
+    options?: ComponentMountingOptions<PuikTextareaProps>
   ) => {
     wrapper = mount(PuikTextarea, {
       props: {
-        ...propsData,
+        ...props,
         'onUpdate:modelValue': async (modelValue: any) => {
           await wrapper.setProps({ modelValue });
         }

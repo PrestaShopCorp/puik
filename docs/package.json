@@ -10,21 +10,21 @@
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^7.0.24",
-    "@storybook/addon-actions": "^7.0.24",
-    "@storybook/addon-essentials": "^7.0.24",
-    "@storybook/addon-links": "^7.0.24",
-    "@storybook/blocks": "^7.0.24",
-    "@storybook/vue3": "^7.0.24",
-    "@storybook/vue3-vite": "^7.0.24",
-    "@vitejs/plugin-vue": "^4.1.0",
+    "@storybook/addon-actions": "^7.5.3",
+    "@storybook/addon-essentials": "^7.5.3",
+    "@storybook/addon-links": "^7.5.3",
+    "@storybook/blocks": "^7.5.3",
+    "@storybook/vue3": "^7.5.3",
+    "@storybook/vue3-vite": "^7.5.3",
+    "@vitejs/plugin-vue": "^4.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.0.24",
     "vite": "^4.2.1"
   },
   "dependencies": {
-    "@storybook/client-api": "^7.2.3",
+    "@storybook/client-api": "^7.5.3",
     "typescript": "^5.2.2",
-    "vue": "^3.3.7"
+    "vue": "^3.3.8"
   }
 }

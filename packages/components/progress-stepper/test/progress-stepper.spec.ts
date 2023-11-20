@@ -1,8 +1,7 @@
 import { nextTick, ref } from 'vue';
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikProgressStepper from '../src/progress-stepper.vue';
-import PuikProgressStepperStep from '../src/progress-stepper-step.vue';
+import { PuikProgressStepper, PuikProgressStepperStep } from '@prestashopcorp/puik-components';
 import type { VueWrapper } from '@vue/test-utils';
 
 describe('ProgressStepper tests', () => {
@@ -50,7 +49,6 @@ describe('ProgressStepper tests', () => {
     factory();
     await nextTick();
     const steps = getSteps();
-    console.log(getStepButton(steps[2]).classes());
     expect(getStepButton(steps[0]).classes()).toContain('puik-button--success');
   });
   it('should second step be current step', async () => {

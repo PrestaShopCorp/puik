@@ -1,8 +1,11 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
-import Alert from '../src/alert.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikAlert } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikAlertProps = ExtractComponentPropType<typeof PuikAlert>;
 
 describe('Alert tests', () => {
   let wrapper: VueWrapper<any>;
@@ -13,13 +16,11 @@ describe('Alert tests', () => {
   const findDesc = () => wrapper.find('.puik-alert__description');
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props?: PuikAlertProps,
+    options?: ComponentMountingOptions<PuikAlertProps>
   ) => {
-    wrapper = mount(Alert, {
-      props: {
-        ...propsData
-      },
+    wrapper = mount(PuikAlert, {
+      props,
       ...options
     });
   };

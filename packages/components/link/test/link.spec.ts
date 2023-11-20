@@ -1,19 +1,20 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikLink from '../src/link.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikLink } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikLinkProps = ExtractComponentPropType<typeof PuikLink>;
 
 describe('Link tests', () => {
   let wrapper: VueWrapper<any>;
   const findLink = () => wrapper.find('.puik-link');
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props?: PuikLinkProps,
+    options?: ComponentMountingOptions<PuikLinkProps>
   ) => {
     wrapper = mount(PuikLink, {
-      props: {
-        ...propsData
-      },
+      props,
       ...options
     });
   };

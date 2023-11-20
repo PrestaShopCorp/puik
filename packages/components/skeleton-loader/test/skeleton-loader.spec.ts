@@ -1,19 +1,20 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikSkeletonLoader from '../src/skeleton-loader.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikSkeletonLoader } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikSkeletonLoaderProps = ExtractComponentPropType<typeof PuikSkeletonLoader>;
 
 describe('SkeletonLoader tests', () => {
   let wrapper: VueWrapper<any>;
-  const getSkeletonLoader = () => wrapper.find('.puik-skeleton-loader');
+  const getSkeletonLoader = () => wrapper.find<HTMLElement>('.puik-skeleton-loader');
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props?: PuikSkeletonLoaderProps,
+    options?: ComponentMountingOptions<PuikSkeletonLoaderProps>
   ) => {
     wrapper = mount(PuikSkeletonLoader, {
-      props: {
-        ...propsData
-      },
+      props,
       ...options
     });
   };

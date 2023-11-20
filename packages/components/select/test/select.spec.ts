@@ -2,10 +2,8 @@ import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { describe, it, expect, vi } from 'vitest';
 import { faker } from '@faker-js/faker';
-import PuikSelect from '../src/select.vue';
-import PuikOption from '../src/option.vue';
-import PuikInput from '../../input/src/input.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikInput, PuikSelect, PuikOption } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 
 describe('Select tests', () => {
   let wrapper: VueWrapper<any>;
@@ -14,15 +12,14 @@ describe('Select tests', () => {
   const findSelectComponent = () => wrapper.findComponent(PuikSelect);
   const findInputComponent = () => wrapper.findComponent(PuikInput);
   const findList = () => wrapper.find('.puik-select__options');
-  const findSelected = () => wrapper.find('.puik-select__selected');
+  const findSelected = () => wrapper.find<HTMLInputElement>('.puik-select__selected');
   const findAllOptions = () => wrapper.findAllComponents(PuikOption);
   const findErrorMsg = () => wrapper.find('.puik-select__error');
-  const findFullWidth = () => wrapper.find('.puik-select__selected--full-width');
 
   const factory = (
     template: string,
-    data: Record<string, any> = () => ({}),
-    options: MountingOptions<any> = {}
+    data?: Record<string, any>,
+    options?: ComponentMountingOptions<any>
   ) => {
     wrapper = mount({
       components: {
@@ -61,7 +58,7 @@ describe('Select tests', () => {
   });
 
   it('should display a placeholder', () => {
-    const placeholder = faker.random.word();
+    const placeholder = faker.word.sample();
     factory(
       `<puik-select v-model="value" :placeholder="placeholder">
         <puik-option value="test" label="test" />
@@ -307,7 +304,7 @@ describe('Select tests', () => {
         value: ''
       })
     );
-    expect(findSelected().classes(findFullWidth())).toBe(false);
+    expect(findSelected().classes('puik-select__selected--full-width')).toBe(false);
   });
 
   it('should display the custom label', async () => {

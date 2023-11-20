@@ -35,7 +35,6 @@
 
           <puik-button
             v-if="PuikModalVariants.Dialog !== variant"
-            :aria-label="t('puik.modal.closeButtonLabel')"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__close-button"
             variant="text"
             @click="sendCloseModalEvent()"
@@ -95,7 +94,6 @@ import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { PuikTooltip } from '@prestashopcorp/puik-components/tooltip';
 import { isEllipsisActive } from '@prestashopcorp/puik-utils';
-import { useLocale } from '@prestashopcorp/puik-locale';
 import {
   type ModalProps,
   PuikModalVariants,
@@ -108,7 +106,6 @@ defineOptions({
   name: 'PuikModal'
 });
 
-const { t } = useLocale();
 const CLOSE_ICON_SIZE = 24;
 
 const props = withDefaults(defineProps<ModalProps>(), {

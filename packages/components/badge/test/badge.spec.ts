@@ -1,21 +1,21 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikBadge from '../src/badge.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikBadge } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
 
+type PuikBadgeProps = ExtractComponentPropType<typeof PuikBadge>;
 describe('Badge tests', () => {
   let wrapper: VueWrapper<any>;
 
   const findBadge = () => wrapper.find('.puik-badge');
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props?: PuikBadgeProps,
+    options?: ComponentMountingOptions<PuikBadgeProps>
   ) => {
     wrapper = mount(PuikBadge, {
-      props: {
-        ...propsData
-      },
+      props,
       ...options
     });
   };

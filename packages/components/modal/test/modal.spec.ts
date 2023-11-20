@@ -1,12 +1,10 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikModal from '../src/modal.vue';
-import {
-  PuikModalVariants,
-  DESTRUCTIVE_ICON_NAME,
-  PuikModalSizes
-} from '../src/modal';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikModal, PuikModalVariants, PuikModalSizes, DESTRUCTIVE_ICON_NAME } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikModalProps = ExtractComponentPropType<typeof PuikModal>;
 
 // @ts-expect-error Find on the Tailwindlabs/headlessui repo
 // https://github.com/tailwindlabs/headlessui/blob/main/packages/%40headlessui-vue/src/components/dialog/dialog.test.ts#L46
@@ -43,8 +41,8 @@ describe('Modal tests', () => {
   const homeTitleIcon = 'home';
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props?: PuikModalProps,
+    options?: ComponentMountingOptions<PuikModalProps>
   ) => {
     wrapper = mount(PuikModal, {
       global: {
@@ -52,9 +50,7 @@ describe('Modal tests', () => {
           teleport: true
         }
       },
-      props: {
-        ...propsData
-      },
+      props,
       ...options
     });
   };

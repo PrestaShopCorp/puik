@@ -1,7 +1,10 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikTag from '../src/tag.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikTag } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikTagProps = ExtractComponentPropType<typeof PuikTag>;
 
 describe('Tag tests', () => {
   let wrapper: VueWrapper<any>;
@@ -10,15 +13,13 @@ describe('Tag tests', () => {
   const findLeftIcon = () => wrapper.find('.puik-tag__icon');
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props: PuikTagProps = { id: 'puik-tag-example', content: 'content' },
+    options?: ComponentMountingOptions<PuikTagProps>
   ) => {
     wrapper = mount(PuikTag, {
-      props: {
-        ...propsData
-      },
+      props,
       ...options
-    });
+    } as any);
   };
 
   it('should be a vue instance', () => {
@@ -27,32 +28,32 @@ describe('Tag tests', () => {
   });
 
   it('as id prop value is "puik-tag-example", id html attribute of puik-tag should be "puik-tag-example"', () => {
-    factory({ id: 'puik-tag-example' });
+    factory();
     expect(findTag().attributes().id).toBe('puik-tag-example');
   });
 
   it('Tag text should be "content"', () => {
-    factory({ content: 'content' });
+    factory();
     expect(findTagContent().text()).toBe('content');
   });
 
   it('should display a blue version of the tag', () => {
-    factory({ variant: 'blue' });
+    factory({ id: 'puik-tag-example', content: 'content', variant: 'blue' });
     expect(findTag().classes()).toContain('puik-tag--blue');
   });
 
   it('should display a tag small version', () => {
-    factory({ size: 'small' });
+    factory({ id: 'puik-tag-example', content: 'content', size: 'small' });
     expect(findTag().classes()).toContain('puik-tag--small');
   });
 
   it('should display a tag version with left icon', () => {
-    factory({ icon: 'home' });
+    factory({ id: 'puik-tag-example', content: 'content', icon: 'home' });
     expect(findLeftIcon().text()).toBe('home');
   });
 
   it('should display a tag disabled version', () => {
-    factory({ disabled: true });
+    factory({ id: 'puik-tag-example', content: 'content', disabled: true });
     expect(findTag().classes()).toContain('puik-tag--disabled');
   });
 });

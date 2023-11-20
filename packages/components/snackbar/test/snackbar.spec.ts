@@ -2,8 +2,10 @@ import { mount } from '@vue/test-utils';
 import { describe, it, expect, vi } from 'vitest';
 import { faker } from '@faker-js/faker';
 import PuikSnackbar from '../src/snackbar.vue';
-import type { PuikSnackbarOptions } from '../src/snackbar';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikSnackbarProps = ExtractComponentPropType<typeof PuikSnackbar>;
 describe('Snackbar tests', () => {
   let wrapper: VueWrapper<any>;
 
@@ -13,27 +15,25 @@ describe('Snackbar tests', () => {
   const findCloseButton = () => wrapper.find('.puik-snackbar__close-button');
 
   const factory = (
-    propsData: PuikSnackbarOptions,
-    options: MountingOptions<any> = {}
+    props: PuikSnackbarProps,
+    options?: ComponentMountingOptions<PuikSnackbarProps>
   ) => {
     wrapper = mount(PuikSnackbar, {
-      props: {
-        ...propsData
-      },
+      props,
       attachTo: document.body,
       ...options
-    });
+    } as any);
   };
 
   it('should be a vue instance', () => {
     const text = faker.lorem.sentence();
-    factory({ text });
+    factory({ id: '', text });
     expect(wrapper).toBeTruthy();
   });
 
   it('should be a default snackbar without action', () => {
     const text = faker.lorem.sentence();
-    factory({ text });
+    factory({ id: '', text });
     expect(findText().text()).toEqual(text);
     expect(findSnackbar().classes()).toContain('puik-snackbar--default');
     expect(findAction().exists()).toBeFalsy();
@@ -41,7 +41,7 @@ describe('Snackbar tests', () => {
 
   it('should be a snackbar without close button', () => {
     const text = faker.lorem.sentence();
-    factory({ text, hasCloseButton: false });
+    factory({ id: '', text, hasCloseButton: false });
     expect(findCloseButton().exists()).toBeFalsy();
   });
 
@@ -50,6 +50,7 @@ describe('Snackbar tests', () => {
     const label = faker.lorem.word();
     const callback = vi.fn();
     factory({
+      id: '',
       text,
       action: {
         label,
@@ -66,7 +67,7 @@ describe('Snackbar tests', () => {
 
   it('should be a dangerous snackbar without action', () => {
     const text = faker.lorem.sentence();
-    factory({ text, variant: 'danger' });
+    factory({ id: '', text, variant: 'danger' });
     expect(findText().text()).toEqual(text);
     expect(findSnackbar().classes()).toContain('puik-snackbar--danger');
     expect(findAction().exists()).toBeFalsy();
@@ -74,7 +75,7 @@ describe('Snackbar tests', () => {
 
   it('should be a success snackbar without action', () => {
     const text = faker.lorem.sentence();
-    factory({ text, variant: 'success' });
+    factory({ id: '', text, variant: 'success' });
     expect(findText().text()).toEqual(text);
     expect(findSnackbar().classes()).toContain('puik-snackbar--success');
     expect(findAction().exists()).toBeFalsy();
@@ -85,6 +86,7 @@ describe('Snackbar tests', () => {
     const label = faker.lorem.word();
     const callback = vi.fn();
     factory({
+      id: '',
       text,
       action: {
         label,
@@ -105,6 +107,7 @@ describe('Snackbar tests', () => {
     const label = faker.lorem.word();
     const callback = vi.fn();
     factory({
+      id: '',
       text,
       action: {
         label,
@@ -122,7 +125,7 @@ describe('Snackbar tests', () => {
 
   it('should close the snackbar when clicking on the close button', async () => {
     const text = faker.lorem.sentence();
-    await factory({ text });
+    await factory({ id: '', text });
     expect(findSnackbar().isVisible()).toBeTruthy();
     await findCloseButton().trigger('click');
     expect(findSnackbar().isVisible()).toBeFalsy();
@@ -131,7 +134,7 @@ describe('Snackbar tests', () => {
   it('should dismiss the snackbar after 3 seconds', async () => {
     vi.useFakeTimers();
     const text = faker.lorem.sentence();
-    await factory({ text, duration: 3000 });
+    await factory({ id: '', text, duration: 3000 });
     expect(findSnackbar().isVisible()).toBeTruthy();
     await vi.advanceTimersByTime(3000);
     expect(findSnackbar().isVisible()).toBeFalsy();
@@ -142,7 +145,7 @@ describe('Snackbar tests', () => {
     vi.useFakeTimers();
     const text = faker.lorem.sentence();
 
-    await factory({ text, duration: 3000 });
+    await factory({ id: '', text, duration: 3000 });
     expect(findSnackbar().isVisible()).toBeTruthy();
 
     await vi.advanceTimersByTime(2000);

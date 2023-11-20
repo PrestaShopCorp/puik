@@ -1,19 +1,20 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikButtonGroup from '../src/button-group.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikButtonGroup } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikButtonGroupProps = ExtractComponentPropType<typeof PuikButtonGroup>;
 
 describe('ButtonGroup tests', () => {
   let wrapper: VueWrapper<any>;
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props?: PuikButtonGroupProps,
+    options?: ComponentMountingOptions<PuikButtonGroupProps>
   ) => {
     wrapper = mount(PuikButtonGroup, {
-      props: {
-        ...propsData
-      },
+      props,
       ...options
     });
   };

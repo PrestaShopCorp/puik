@@ -1,8 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import PuikSkeletonLoader from '../src/skeleton-loader.vue';
-import PuikSkeletonLoaderGroup from '../src/skeleton-loader-group.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikSkeletonLoader, PuikSkeletonLoaderGroup } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 
 describe('SkeletonLoaderGroup tests', () => {
   let wrapper: VueWrapper<any>;
@@ -10,14 +9,10 @@ describe('SkeletonLoaderGroup tests', () => {
     wrapper.find('.puik-skeleton-loader-group');
   const factory = (
     template: string,
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    options?: ComponentMountingOptions<any>
   ) => {
     wrapper = mount({
       template,
-      props: {
-        ...propsData
-      },
       ...options,
       components: {
         PuikSkeletonLoader,

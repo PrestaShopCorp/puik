@@ -6,7 +6,7 @@ import {
   PuikTabNavigationGroupPanels,
   PuikTabNavigationTitle,
   PuikTabNavigationPanel
-} from '..';
+} from '@prestashopcorp/puik-components';
 import type { MountingOptions, VueWrapper } from '@vue/test-utils';
 
 let wrapper: VueWrapper<any>;

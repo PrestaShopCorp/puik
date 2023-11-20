@@ -1,22 +1,23 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import PuikIcon from '../src/icon.vue';
-import type { MountingOptions, VueWrapper } from '@vue/test-utils';
+import { PuikIcon } from '@prestashopcorp/puik-components';
+import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+
+type PuikIconProps = ExtractComponentPropType<typeof PuikIcon>;
 
 describe('Icon tests', () => {
   let wrapper: VueWrapper<any>;
-  const findIcon = () => wrapper.find('.puik-icon');
+  const findIcon = () => wrapper.find<HTMLElement>('.puik-icon');
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props: PuikIconProps,
+    options?: ComponentMountingOptions<PuikIconProps>
   ) => {
     wrapper = mount(PuikIcon, {
-      props: {
-        ...propsData
-      },
+      props,
       ...options
-    });
+    } as any);
   };
   it('should be a vue instance', () => {
     factory({
