@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <div class="app-container"></div>
+  <div class="app-container" />
 </template>
 
 <style lang="scss">
