@@ -45,11 +45,6 @@ export const tableProps = buildProps({
     required: false,
     default: false,
   },
-  stickyHeader: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
 } as const)
 
 export type TableProps = ExtractPropTypes<typeof tableProps>
