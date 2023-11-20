@@ -61,7 +61,10 @@
     > tr {
       @apply border-t-[1px];
       &:hover {
-        @apply bg-primary-200;
+        td,
+        td::before {
+          @apply bg-primary-200;
+        }
       }
       &__item,
       > td {
@@ -72,6 +75,7 @@
       }
     }
   }
+
   .puik-table__head__row__item--sticky,
   .puik-table__body__row__item--sticky {
     @apply sticky bg-white;
