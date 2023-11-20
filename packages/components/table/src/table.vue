@@ -45,40 +45,51 @@
         </tr>
       </thead>
       <tbody class="puik-table__body">
-        <tr
-          v-for="(item, rowIndex) in items"
-          :key="`row-${rowIndex}`"
-          class="puik-table__body__row"
-        >
-          <td
-            v-if="selectable"
-            :class="[
-              'puik-table__body__row__item puik-table__body__row__item--selection',
-              { 'puik-table__body__row__item--sticky': stickyFirstCol },
-            ]"
-          >
-            <puik-checkbox
-              :model-value="getSelected(rowIndex)"
-              class="puik-table__body__row__item--selection__checkbox"
-              @click="handleClick(rowIndex)"
+        <template v-for="(item, rowIndex) in items" :key="`row-${rowIndex}`">
+          <tr class="puik-table__body__row">
+            <td
+              v-if="selectable"
+              :class="[
+                'puik-table__body__row__item puik-table__body__row__item--selection',
+                { 'puik-table__body__row__item--sticky': stickyFirstCol },
+              ]"
             >
-              {{ getSelectLabel(rowIndex) }}
-            </puik-checkbox>
-          </td>
-          <td
-            v-for="(header, colIndex) in headers"
-            :key="`col-${colIndex}`"
-            class="puik-table__body__row__item"
-            :class="[
-              `puik-table__body__row__item--${header.align ?? 'left'}`,
-              { 'puik-table__body__row__item--sticky': isSticky(colIndex) },
-            ]"
-          >
-            <slot :name="`item-${header.value}`" :item="item" :index="rowIndex">
-              {{ item[header.value] }}
-            </slot>
-          </td>
-        </tr>
+              <puik-checkbox
+                :model-value="getSelected(rowIndex)"
+                class="puik-table__body__row__item--selection__checkbox"
+                @click="handleClick(rowIndex)"
+              >
+                {{ getSelectLabel(rowIndex) }}
+              </puik-checkbox>
+            </td>
+
+            <td
+              v-for="(header, colIndex) in headers"
+              :key="`col-${colIndex}`"
+              :class="[
+                `puik-table__body__row__item puik-table__body__row__item--${
+                  header.align ?? 'left'
+                }`,
+                { 'puik-table__body__row__item--sticky': isSticky(colIndex) },
+              ]"
+            >
+              <slot
+                :name="`item-${header.value}`"
+                :item="item"
+                :index="rowIndex"
+              >
+                {{ item[header.value] }}
+              </slot>
+            </td>
+          </tr>
+          <slot :name="`puik-table__body__row__item`" :item="item">
+            <tr>
+              <td :colspan="headers.length" class="expanded-cell">
+                {{ item }}
+              </td>
+            </tr>
+          </slot>
+        </template>
       </tbody>
     </table>
   </div>
@@ -101,6 +112,7 @@ const emit = defineEmits<{
 }>()
 const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
+const expandedCell = ref(null)
 
 const isSticky = (
   index: number,
@@ -115,6 +127,13 @@ const isSticky = (
     )
   }
 }
+
+// const expandCell = (rowIndex: number, cellIndex: number) => {
+//   expandedCell.value = {
+//     content: rows.value[rowIndex][cellIndex],
+//     rowIndex,
+//   }
+// }
 
 const selectAll = computed(() => {
   if (indeterminate.value) return false

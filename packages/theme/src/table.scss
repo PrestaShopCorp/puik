@@ -61,8 +61,8 @@
     > tr {
       @apply border-t-[1px];
       &:hover {
-        td,
-        td::before {
+        .puik-table__body__row__item,
+        .puik-table__body__row__item::before {
           @apply bg-primary-200;
         }
       }
