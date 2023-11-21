@@ -58,7 +58,8 @@
   &__body,
   > tbody {
     &__row,
-    > tr {
+    > .puik-table__head__row,
+    .puik-table__body__row {
       @apply border-t-[1px];
       &:hover {
         .puik-table__body__row__item,
@@ -66,8 +67,7 @@
           @apply bg-primary-200;
         }
       }
-      &__item,
-      > td {
+      &__item {
         @extend .puik-body-default;
         @apply text-primary-800;
         @include puik-table-item();
@@ -95,6 +95,18 @@
     @apply -right-px;
     &::before {
       @apply left-0 shadow-[-4px_0_7px_-1px_rgba(29,29,27,0.1)];
+    }
+  }
+  .puik-table__body__row__item--expanded {
+    @apply p-0;
+  }
+  .puik-table__body__row__item__container {
+    @apply flex items-center space-x-4;
+    .puik-icon {
+      @apply select-none cursor-pointer -rotate-0 transform transition-transform duration-150 ease-in-out;
+    }
+    .puik-icon__expand {
+      @apply -rotate-180 transform transition-transform duration-100 ease-in-out;
     }
   }
 }

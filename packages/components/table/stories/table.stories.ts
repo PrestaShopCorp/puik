@@ -56,6 +56,14 @@ export default {
         },
       },
     },
+    expandable: {
+      control: 'boolean',
+      description: 'Makes rows expandable',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     selectable: {
       control: 'boolean',
       description: 'Add col with checkbox',

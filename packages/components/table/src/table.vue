@@ -4,13 +4,16 @@
       <thead class="puik-table__head">
         <tr class="puik-table__head__row">
           <th
-            v-if="selectable"
+            v-if="selectable || expandable"
             :class="[
-              'puik-table__head__row__item puik-table__head__row__item--selection',
+              'puik-table__head__row__item',
               { 'puik-table__head__row__item--sticky': stickyFirstCol },
+              { 'puik-table__head__row__item--selection': selectable },
+              { 'puik-table__head__row__item--expandable': expandable },
             ]"
           >
             <puik-checkbox
+              v-if="selectable"
               :model-value="selectAll"
               :indeterminate="indeterminate"
               class="puik-table__head__row__item--selection__checkbox"
@@ -19,6 +22,7 @@
               {{ selectAllLabel }}
             </puik-checkbox>
           </th>
+
           <th
             v-for="(header, index) in headers"
             :key="`headers${header.value}`"
@@ -48,19 +52,31 @@
         <template v-for="(item, rowIndex) in items" :key="`row-${rowIndex}`">
           <tr class="puik-table__body__row">
             <td
-              v-if="selectable"
+              v-if="selectable || expandable"
               :class="[
                 'puik-table__body__row__item puik-table__body__row__item--selection',
                 { 'puik-table__body__row__item--sticky': stickyFirstCol },
               ]"
             >
-              <puik-checkbox
-                :model-value="getSelected(rowIndex)"
-                class="puik-table__body__row__item--selection__checkbox"
-                @click="handleClick(rowIndex)"
-              >
-                {{ getSelectLabel(rowIndex) }}
-              </puik-checkbox>
+              <div class="puik-table__body__row__item__container">
+                <puik-checkbox
+                  v-if="selectable"
+                  :model-value="getSelected(rowIndex)"
+                  class="puik-table__body__row__item--selection__checkbox"
+                  @click="handleClick(rowIndex)"
+                >
+                  {{ getSelectLabel(rowIndex) }}
+                </puik-checkbox>
+                <PuikIcon
+                  v-if="expandable"
+                  :class="[
+                    { 'puik-icon__expand': expandedRows.includes(rowIndex) },
+                  ]"
+                  icon="keyboard_arrow_down"
+                  font-size="24"
+                  @click="expandRow(rowIndex)"
+                />
+              </div>
             </td>
 
             <td
@@ -82,13 +98,20 @@
               </slot>
             </td>
           </tr>
-          <slot :name="`puik-table__body__row__item`" :item="item">
-            <tr>
-              <td :colspan="headers.length" class="expanded-cell">
+          <tr
+            v-if="expandedRows.includes(rowIndex)"
+            :key="`expanded-row-${rowIndex}`"
+            class="puik-table__body__row--expanded"
+          >
+            <td
+              :colspan="headers.length"
+              class="puik-table__body__row__item--expanded"
+            >
+              <slot :name="`expanded-row-${rowIndex}`" :item="item">
                 {{ item }}
-              </td>
-            </tr>
-          </slot>
+              </slot>
+            </td>
+          </tr>
         </template>
       </tbody>
     </table>
@@ -99,6 +122,7 @@
 import { computed, ref, watch } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
+import PuikIcon from '../../icon/src/icon.vue'
 import { tableProps } from './table'
 defineOptions({
   name: 'PuikTable',
@@ -112,13 +136,14 @@ const emit = defineEmits<{
 }>()
 const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
-const expandedCell = ref(null)
+const expandedRows = ref<number[]>([])
 
 const isSticky = (
   index: number,
-  selectable: boolean = props.selectable
+  selectable: boolean = props.selectable,
+  expandable: boolean = props.expandable
 ): boolean => {
-  if (selectable) {
+  if (selectable || expandable) {
     return props.stickyLastCol && index === props.headers.length - 1
   } else {
     return (
@@ -128,12 +153,22 @@ const isSticky = (
   }
 }
 
-// const expandCell = (rowIndex: number, cellIndex: number) => {
-//   expandedCell.value = {
-//     content: rows.value[rowIndex][cellIndex],
-//     rowIndex,
+// const expandRow = (rowIndex: number) => {
+//   if (expandedRow.value === rowIndex) {
+//     return (expandedRow.value = null)
+//   } else {
+//     return (expandedRow.value = rowIndex)
 //   }
 // }
+
+const expandRow = (rowIndex: number) => {
+  const position = expandedRows.value.indexOf(rowIndex)
+  if (position !== -1) {
+    expandedRows.value.splice(position, 1)
+  } else {
+    expandedRows.value.push(rowIndex)
+  }
+}
 
 const selectAll = computed(() => {
   if (indeterminate.value) return false

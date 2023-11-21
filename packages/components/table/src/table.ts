@@ -20,6 +20,11 @@ export const tableProps = buildProps({
     required: false,
     default: () => [],
   },
+  expandable: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   selectable: {
     type: Boolean,
     required: false,
