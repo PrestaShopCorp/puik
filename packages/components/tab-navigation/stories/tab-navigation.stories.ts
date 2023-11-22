@@ -137,8 +137,13 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          'NB: The id attribute of the component corresponds to the prop name (allows you to identify each instance of the navigation component in the event that there are several on the same page)',
+        story: `
+  NB: The id attribute of the component corresponds to the prop name (allows you to identify each instance of the navigation component in the event that there are several on the same page).
+  
+  Tips: 
+  - If you want to set a width: set a width on the 'puik-tab-navigation'
+  - If you want to set a width on tab nav: set a MIN-WIDTH on the 'puik-tab-navigation-title'
+          `,
       },
       source: {
         code: `

@@ -1,7 +1,7 @@
 @use './common/typography.scss';
 
 .puik-tab-navigation__title {
-  @apply relative p-2 flex gap-2 whitespace-nowrap border-b border-b-primary-400 items-center cursor-pointer puik-body-default-bold sm:w-[135px];
+  @apply relative p-2 flex gap-2 whitespace-nowrap border-b border-b-primary-400 items-center cursor-pointer puik-body-default-bold;
 
   &:focus:not(:hover) {
     @apply bg-primary-400 outline-none;
