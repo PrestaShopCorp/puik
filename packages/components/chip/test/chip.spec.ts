@@ -6,7 +6,7 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 describe('Chip tests', () => {
   let wrapper: VueWrapper<any>
   const findChip = () => wrapper.find('.puik-chip')
-  const findChipContent = () => wrapper.find('.puik-chip__content')
+  const findChipContent = () => wrapper.find('.puik-chip__content p')
   const findCloseBtn = () => wrapper.find('.puik-chip__close')
   const findLeftIcon = () => wrapper.find('.puik-chip__icon')
 
