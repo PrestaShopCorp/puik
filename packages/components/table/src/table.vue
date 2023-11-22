@@ -151,7 +151,11 @@
               :colspan="headers.length"
               class="puik-table__body__row__item--expanded"
             >
-              <slot :name="`expanded-row-${rowIndex}`" :item="item">
+              <slot
+                :name="`expanded-row-${rowIndex}`"
+                :item="item"
+                :index="rowIndex"
+              >
                 {{ item }}
               </slot>
             </td>
