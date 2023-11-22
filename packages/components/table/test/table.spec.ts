@@ -302,4 +302,16 @@ describe('Table tests', () => {
       )
     })
   })
+
+  it('should have expandable rows', () => {
+    const headers: PuikTableHeader[] = [
+      { value: 'firstname' },
+      { value: 'lastname' },
+    ]
+    factory({ headers, expandable: true })
+    const header = getHeaders()[0]
+    expect(header.classes()).toContain(
+      'puik-table__head__row__item--expandable'
+    )
+  })
 })
