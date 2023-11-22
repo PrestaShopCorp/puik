@@ -1,5 +1,5 @@
 <template>
-  <div class="puik-table__container">
+  <div class="puik-table__container" @scroll="getScrollBarPosition">
     <table class="puik-table" :class="{ 'puik-table--full-width': fullWidth }">
       <thead class="puik-table__head">
         <tr class="puik-table__head__row">
@@ -8,6 +8,12 @@
             :class="[
               'puik-table__head__row__item',
               { 'puik-table__head__row__item--sticky': stickyFirstCol },
+              {
+                'puik-table__head__row__item--sticky-scroll':
+                  stickyFirstCol &&
+                  (ScrollBarPosition === 'isScrolling' ||
+                    ScrollBarPosition === 'right'),
+              },
               { 'puik-table__head__row__item--selection': selectable },
               { 'puik-table__head__row__item--expandable': expandable },
             ]"
@@ -35,6 +41,18 @@
                   header?.size && !header?.width,
               },
               { 'puik-table__head__row__item--sticky': isSticky(index) },
+              {
+                'puik-table__head__row__item--sticky-scroll':
+                  isSticky(index) && ScrollBarPosition === 'isScrolling',
+              },
+              {
+                'puik-table__head__row__item--sticky-left':
+                  isSticky(index) && ScrollBarPosition === 'left',
+              },
+              {
+                'puik-table__head__row__item--sticky-right':
+                  isSticky(index) && ScrollBarPosition === 'right',
+              },
             ]"
             :style="{ minWidth: header.width, width: header.width }"
           >
@@ -55,7 +73,21 @@
               v-if="selectable || expandable"
               :class="[
                 'puik-table__body__row__item puik-table__body__row__item--selection',
-                { 'puik-table__body__row__item--sticky': stickyFirstCol },
+                {
+                  'puik-table__body__row__item--sticky': stickyFirstCol,
+                },
+                {
+                  'puik-table__body__row__item--sticky-scroll':
+                    stickyFirstCol && ScrollBarPosition === 'isScrolling',
+                },
+                {
+                  'puik-table__body__row__item--sticky-left':
+                    stickyFirstCol && ScrollBarPosition === 'left',
+                },
+                {
+                  'puik-table__body__row__item--sticky-right':
+                    stickyFirstCol && ScrollBarPosition === 'right',
+                },
               ]"
             >
               <div class="puik-table__body__row__item__container">
@@ -87,6 +119,18 @@
                   header.align ?? 'left'
                 }`,
                 { 'puik-table__body__row__item--sticky': isSticky(colIndex) },
+                {
+                  'puik-table__body__row__item--sticky-scroll':
+                    isSticky(colIndex) && ScrollBarPosition == 'isScrolling',
+                },
+                {
+                  'puik-table__body__row__item--sticky-left':
+                    isSticky(colIndex) && ScrollBarPosition == 'left',
+                },
+                {
+                  'puik-table__body__row__item--sticky-right':
+                    isSticky(colIndex) && ScrollBarPosition == 'right',
+                },
               ]"
             >
               <slot
@@ -137,6 +181,23 @@ const emit = defineEmits<{
 const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
 const expandedRows = ref<number[]>([])
+const ScrollBarPosition = ref<string>('left')
+let lastScrollLeft = 0
+
+const getScrollBarPosition = async (event: Event) => {
+  const target = event.target as HTMLElement
+  if (target.scrollLeft === 0) {
+    ScrollBarPosition.value = 'left'
+  } else if (
+    Math.abs(target.scrollLeft + target.offsetWidth - target.scrollWidth) < 10
+  ) {
+    ScrollBarPosition.value = 'right'
+  } else {
+    ScrollBarPosition.value = 'isScrolling'
+  }
+
+  lastScrollLeft = target.scrollLeft
+}
 
 const isSticky = (
   index: number,
@@ -152,14 +213,6 @@ const isSticky = (
     )
   }
 }
-
-// const expandRow = (rowIndex: number) => {
-//   if (expandedRow.value === rowIndex) {
-//     return (expandedRow.value = null)
-//   } else {
-//     return (expandedRow.value = rowIndex)
-//   }
-// }
 
 const expandRow = (rowIndex: number) => {
   const position = expandedRows.value.indexOf(rowIndex)

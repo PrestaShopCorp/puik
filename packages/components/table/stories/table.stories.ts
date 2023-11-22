@@ -166,8 +166,11 @@ export default {
     },
   },
   args: {
+    expandable: false,
     selectable: false,
     fullWidth: false,
+    stickyFirstCol: false,
+    stickyLastCol: false,
   },
 } as Meta
 
