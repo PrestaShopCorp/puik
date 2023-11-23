@@ -216,6 +216,33 @@ export const Green = {
   },
 }
 
+export const Red = {
+  render: Template,
+
+  args: {
+    variant: 'red',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-card variant="red">
+    Card content
+  </puik-card>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-card puik-card--red">
+    Card content
+  </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
 export const WithPictureTitleTextAndAction: StoryObj = {
   render: (args: Args) => ({
     components: {
