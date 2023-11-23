@@ -1,16 +1,12 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikTextarea } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikTextareaProps = ExtractComponentPropType<typeof PuikTextarea>;
+import { PuikTextarea, TextareaProps } from '@prestashopcorp/puik-components';
 
 describe('Textarea tests', () => {
   let wrapper: VueWrapper<any>;
   const factory = (
-    props?: PuikTextareaProps,
-    options?: ComponentMountingOptions<PuikTextareaProps>
+    props?: TextareaProps,
+    options?: ComponentMountingOptions<typeof PuikTextarea>
   ) => {
     wrapper = mount(PuikTextarea, {
       props: {

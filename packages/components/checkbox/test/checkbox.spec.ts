@@ -1,10 +1,6 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, vi } from 'vitest';
-import { PuikCheckbox } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikCheckboxProps = ExtractComponentPropType<typeof PuikCheckbox>;
+import { PuikCheckbox, CheckboxProps } from '@prestashopcorp/puik-components';
 
 describe('Checkbox tests', () => {
   let wrapper: VueWrapper<any>;
@@ -12,8 +8,8 @@ describe('Checkbox tests', () => {
   const findLabel = () => wrapper.find('.puik-checkbox__label');
 
   const factory = (
-    props?: PuikCheckboxProps,
-    options: ComponentMountingOptions<PuikCheckboxProps> = {}
+    props?: CheckboxProps,
+    options?: ComponentMountingOptions<typeof PuikCheckbox>
   ) => {
     wrapper = mount(PuikCheckbox, {
       props,

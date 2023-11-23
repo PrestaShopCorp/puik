@@ -1,10 +1,6 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikSwitch } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikSwitchProps = ExtractComponentPropType<typeof PuikSwitch>;
+import { PuikSwitch, SwitchProps } from '@prestashopcorp/puik-components';
 
 describe('Switch tests', () => {
   let wrapper: VueWrapper<any>;
@@ -13,8 +9,8 @@ describe('Switch tests', () => {
   const findScreenReader = () => wrapper.find('.puik-switch__screen-readers');
   const findSwitch = () => wrapper.find('.puik-switch');
   const factory = (
-    props?: PuikSwitchProps,
-    options?: ComponentMountingOptions<PuikSwitchProps>
+    props?: SwitchProps,
+    options?: ComponentMountingOptions<typeof PuikSwitch>
   ) => {
     wrapper = mount(PuikSwitch, {
       props,

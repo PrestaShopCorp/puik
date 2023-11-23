@@ -1,10 +1,6 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikButton } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikButtonProps = ExtractComponentPropType<typeof PuikButton>;
+import { PuikButton, ButtonProps } from '@prestashopcorp/puik-components';
 
 describe('Button tests', () => {
   let wrapper: VueWrapper<any>;
@@ -13,8 +9,8 @@ describe('Button tests', () => {
   const findButtonRightIcon = () => wrapper.find('.puik-button__right-icon');
 
   const factory = (
-    props?: PuikButtonProps,
-    options?: ComponentMountingOptions<PuikButtonProps>
+    props?: ButtonProps,
+    options?: ComponentMountingOptions<typeof PuikButton>
   ) => {
     wrapper = mount(PuikButton, {
       props,

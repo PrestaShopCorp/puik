@@ -1,10 +1,6 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikInput } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikInputProps = ExtractComponentPropType<typeof PuikInput>;
+import { PuikInput, InputProps } from '@prestashopcorp/puik-components';
 
 describe('Input tests', () => {
   let wrapper: VueWrapper<any>;
@@ -20,8 +16,8 @@ describe('Input tests', () => {
   const findAppend = () => wrapper.find('.puik-input__append');
 
   const factory = (
-    props?: PuikInputProps,
-    options?: ComponentMountingOptions<PuikInputProps>
+    props?: InputProps,
+    options?: ComponentMountingOptions<typeof PuikInput>
   ) => {
     wrapper = mount(PuikInput, {
       props,

@@ -21,7 +21,7 @@ export interface PuikSnackbarOptions {
   onClose?: () => void
 }
 
-export interface PuikSnackbarProps extends PuikSnackbarOptions {
+export interface SnackbarProps extends PuikSnackbarOptions {
   id: string
 }
 

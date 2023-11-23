@@ -1,11 +1,9 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, vi } from 'vitest';
 import { faker } from '@faker-js/faker';
 import PuikSnackbar from '../src/snackbar.vue';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+import { SnackbarProps } from '@prestashopcorp/puik-components';
 
-type PuikSnackbarProps = ExtractComponentPropType<typeof PuikSnackbar>;
 describe('Snackbar tests', () => {
   let wrapper: VueWrapper<any>;
 
@@ -15,8 +13,8 @@ describe('Snackbar tests', () => {
   const findCloseButton = () => wrapper.find('.puik-snackbar__close-button');
 
   const factory = (
-    props: PuikSnackbarProps,
-    options?: ComponentMountingOptions<PuikSnackbarProps>
+    props: SnackbarProps,
+    options?: ComponentMountingOptions<typeof PuikSnackbar>
   ) => {
     wrapper = mount(PuikSnackbar, {
       props,

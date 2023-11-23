@@ -1,16 +1,12 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikCard } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikCardProps = ExtractComponentPropType<typeof PuikCard>;
+import { PuikCard, CardProps } from '@prestashopcorp/puik-components';
 
 describe('Card tests', () => {
   let wrapper: VueWrapper<any>;
   const factory = (
-    props?: PuikCardProps,
-    options?: ComponentMountingOptions<PuikCardProps>
+    props?: CardProps,
+    options?: ComponentMountingOptions<typeof PuikCard>
   ) => {
     wrapper = mount(PuikCard, {
       props,

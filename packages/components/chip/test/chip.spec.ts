@@ -1,10 +1,6 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikChip } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikChipProps = ExtractComponentPropType<typeof PuikChip>;
+import { PuikChip, ChipProps } from '@prestashopcorp/puik-components';
 
 describe('Chip tests', () => {
   let wrapper: VueWrapper<any>;
@@ -13,8 +9,8 @@ describe('Chip tests', () => {
   const findLeftIcon = () => wrapper.find('.puik-chip__icon');
 
   const factory = (
-    props: PuikChipProps,
-    options?: ComponentMountingOptions<PuikChipProps>
+    props: ChipProps,
+    options?: ComponentMountingOptions<typeof PuikChip>
   ) => {
     wrapper = mount(PuikChip, {
       props,

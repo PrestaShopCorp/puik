@@ -1,10 +1,6 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikTag } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikTagProps = ExtractComponentPropType<typeof PuikTag>;
+import { PuikTag, TagProps } from '@prestashopcorp/puik-components';
 
 describe('Tag tests', () => {
   let wrapper: VueWrapper<any>;
@@ -13,8 +9,8 @@ describe('Tag tests', () => {
   const findLeftIcon = () => wrapper.find('.puik-tag__icon');
 
   const factory = (
-    props: PuikTagProps = { id: 'puik-tag-example', content: 'content' },
-    options?: ComponentMountingOptions<PuikTagProps>
+    props: TagProps = { id: 'puik-tag-example', content: 'content' },
+    options?: ComponentMountingOptions<typeof PuikTag>
   ) => {
     wrapper = mount(PuikTag, {
       props,

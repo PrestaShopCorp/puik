@@ -1,9 +1,8 @@
 import { nextTick } from 'vue';
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, vi } from 'vitest';
 import { faker } from '@faker-js/faker';
 import { PuikInput, PuikSelect, PuikOption } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 
 describe('Select tests', () => {
   let wrapper: VueWrapper<any>;

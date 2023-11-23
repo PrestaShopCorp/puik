@@ -1,18 +1,14 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import { PuikIcon } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikIconProps = ExtractComponentPropType<typeof PuikIcon>;
+import { PuikIcon, IconProps } from '@prestashopcorp/puik-components';
 
 describe('Icon tests', () => {
   let wrapper: VueWrapper<any>;
   const findIcon = () => wrapper.find<HTMLElement>('.puik-icon');
 
   const factory = (
-    props: PuikIconProps,
-    options?: ComponentMountingOptions<PuikIconProps>
+    props: IconProps,
+    options?: ComponentMountingOptions<typeof PuikIcon>
   ) => {
     wrapper = mount(PuikIcon, {
       props,

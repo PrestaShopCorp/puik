@@ -1,10 +1,7 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
-import { PuikRadio } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-type PuikRadioProps = ExtractComponentPropType<typeof PuikRadio>;
+import { PuikRadio, RadioProps } from '@prestashopcorp/puik-components';
 
 describe('Radio tests', () => {
   let wrapper: VueWrapper<any>;
@@ -13,8 +10,8 @@ describe('Radio tests', () => {
 
   const fakeValue = faker.word.adjective();
   const factory = (
-    props: PuikRadioProps,
-    options?: ComponentMountingOptions<any>
+    props: RadioProps,
+    options?: ComponentMountingOptions<typeof PuikRadio>
   ) => {
     wrapper = mount(PuikRadio, {
       props,

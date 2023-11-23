@@ -1,14 +1,8 @@
 import { nextTick, ref } from 'vue';
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { useLocale } from '@prestashopcorp/puik-locale';
-import PuikPagination from '../src/pagination.vue';
-import { PuikPaginationVariants } from '../src/pagination';
-import { PuikOption } from '../../select';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikPaginationProps = ExtractComponentPropType<typeof PuikPagination>;
+import { PuikPagination, PuikPaginationVariants, PuikOption, PaginationProps } from '@prestashopcorp/puik-components';
 
 describe('Pagination tests', () => {
   let wrapper: VueWrapper<any>;
@@ -40,8 +34,8 @@ describe('Pagination tests', () => {
   const findAllOptions = (select) => select.findAllComponents(PuikOption);
 
   const factory = (
-    props: PuikPaginationProps,
-    options?: ComponentMountingOptions<PuikPaginationProps>
+    props: PaginationProps,
+    options?: ComponentMountingOptions<typeof PuikPagination>
   ) => {
     wrapper = mount(PuikPagination, {
       props,

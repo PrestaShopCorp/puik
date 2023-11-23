@@ -41,7 +41,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useTimeoutFn, useEventListener } from '@vueuse/core';
 import { useLocale } from '@prestashopcorp/puik-locale';
 import { PuikSnackbarVariants } from './snackbar';
-import type { PuikSnackbarProps } from './snackbar';
+import type { SnackbarProps } from './snackbar';
 import type { CSSProperties } from 'vue';
 
 defineOptions({
@@ -57,7 +57,7 @@ let timer: (() => void) | undefined;
 
 const visible = ref(false);
 
-const props = withDefaults(defineProps<PuikSnackbarProps>(), {
+const props = withDefaults(defineProps<SnackbarProps>(), {
   variant: PuikSnackbarVariants.Default,
   offset: 0,
   duration: 3000,

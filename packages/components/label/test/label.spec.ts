@@ -1,11 +1,7 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
-import { PuikLabel } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikLabelProps = ExtractComponentPropType<typeof PuikLabel>;
+import { PuikLabel, LabelProps } from '@prestashopcorp/puik-components';
 
 describe('Label tests', () => {
   let wrapper: VueWrapper<any>;
@@ -16,8 +12,8 @@ describe('Label tests', () => {
   const findLabelReadonly = () => wrapper.find('.puik-label--readonly');
 
   const factory = (
-    props: PuikLabelProps,
-    options?: ComponentMountingOptions<PuikLabelProps>
+    props: LabelProps,
+    options?: ComponentMountingOptions<typeof PuikLabel>
   ) => {
     wrapper = mount(PuikLabel, {
       props,

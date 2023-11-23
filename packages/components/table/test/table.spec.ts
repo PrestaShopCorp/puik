@@ -1,10 +1,9 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
 import { locales } from '@prestashopcorp/puik-locale';
-import { PuikTable, PuikTableHeader } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
+import { PuikTable, PuikTableHeader, TableProps } from '@prestashopcorp/puik-components';
+
 const defaultItems = Array(5)
   .fill(null)
   .map(() => {
@@ -13,8 +12,6 @@ const defaultItems = Array(5)
       lastname: faker.person.lastName()
     };
   });
-
-type PuikTableProps = ExtractComponentPropType<typeof PuikTable>;
 
 describe('Table tests', () => {
   let wrapper: VueWrapper<any>;
@@ -40,8 +37,8 @@ describe('Table tests', () => {
   const getCheckboxLabel = (checkbox) => checkbox.find('.puik-checkbox__label');
 
   const factory = (
-    props: PuikTableProps,
-    options?: ComponentMountingOptions<PuikTableProps>
+    props: TableProps,
+    options?: ComponentMountingOptions<typeof PuikTable>
   ) => {
     wrapper = mount(PuikTable, {
       props: {

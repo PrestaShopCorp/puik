@@ -1,10 +1,6 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikSpinnerLoader } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { ExtractComponentPropType } from '@prestashopcorp/puik-utils';
-
-type PuikSpinnerLoaderProps = ExtractComponentPropType<typeof PuikSpinnerLoader>;
+import { PuikSpinnerLoader, SpinnerLoaderProps } from '@prestashopcorp/puik-components';
 
 describe('SpinnerLoader tests', () => {
   let wrapper: VueWrapper<any>;
@@ -12,8 +8,8 @@ describe('SpinnerLoader tests', () => {
   const findLabel = () => wrapper.find('.puik-spinner-loader__label');
 
   const factory = (
-    props?: PuikSpinnerLoaderProps,
-    options?: ComponentMountingOptions<PuikSpinnerLoaderProps>
+    props?: SpinnerLoaderProps,
+    options?: ComponentMountingOptions<typeof PuikSpinnerLoader>
   ) => {
     wrapper = mount(PuikSpinnerLoader, {
       props,

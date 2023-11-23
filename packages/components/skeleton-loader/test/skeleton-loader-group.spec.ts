@@ -1,7 +1,6 @@
-import { mount } from '@vue/test-utils';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { PuikSkeletonLoader, PuikSkeletonLoaderGroup } from '@prestashopcorp/puik-components';
-import type { ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 
 describe('SkeletonLoaderGroup tests', () => {
   let wrapper: VueWrapper<any>;
