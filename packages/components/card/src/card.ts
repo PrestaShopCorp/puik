@@ -8,6 +8,7 @@ export const cardVariants = [
   'purple',
   'amber',
   'green',
+  'red',
   'default',
 ] as const
 
