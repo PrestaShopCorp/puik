@@ -56,18 +56,32 @@
             ]"
             :style="{ minWidth: header.width, width: header.width }"
           >
-            <slot
-              :name="`header-${header.value}`"
-              :header="header"
-              :index="index"
-            >
-              {{ header.text }}
-            </slot>
+            <div class="puik-table__head__row__item__content">
+              <span>
+                <slot
+                  :name="`header-${header.value}`"
+                  :header="header"
+                  :index="index"
+                >
+                  {{ header?.text || header?.value }}
+                </slot>
+              </span>
+              <PuikButton
+                v-if="header.sortable"
+                :right-icon="sortIcon[header.value] ?? 'unfold_more'"
+                variant="primary-reverse"
+                size="sm"
+                @click="sortTable(header.value)"
+              />
+            </div>
           </th>
         </tr>
       </thead>
       <tbody class="puik-table__body">
-        <template v-for="(item, rowIndex) in items" :key="`row-${rowIndex}`">
+        <template
+          v-for="(item, rowIndex) in sortedItems"
+          :key="`row-${rowIndex}`"
+        >
           <tr class="puik-table__body__row">
             <td
               v-if="selectable || expandable"
@@ -170,6 +184,7 @@
 import { computed, ref, watch } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
+import PuikButton from '../../button/src/button.vue'
 import PuikIcon from '../../icon/src/icon.vue'
 import { tableProps } from './table'
 defineOptions({
@@ -186,8 +201,36 @@ const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
 const expandedRows = ref<number[]>([])
 const ScrollBarPosition = ref<string>('left')
-let lastScrollLeft = 0
 
+const sortOrder = ref([])
+const sortIcon = ref({})
+const sortedItems = ref([...props.items])
+const currentSortCol = ref('')
+
+const sortTable = (headerCol: string) => {
+  for (const col in sortIcon.value) {
+    sortIcon.value[col] = 'unfold_more'
+  }
+  if (sortOrder.value[headerCol]) {
+    sortOrder.value[headerCol] =
+      sortOrder.value[headerCol] === 'ASC' && currentSortCol.value === headerCol
+        ? 'DESC'
+        : 'ASC'
+    sortIcon.value[headerCol] =
+      sortOrder.value[headerCol] === 'ASC' ? 'expand_more' : 'expand_less'
+  } else {
+    sortOrder.value[headerCol] = 'ASC'
+    sortIcon.value[headerCol] = 'expand_more'
+  }
+  const order = sortOrder.value[headerCol] === 'ASC' ? 1 : -1
+  sortedItems.value.sort(
+    (a, b) => order * (a[headerCol] < b[headerCol] ? -1 : 1)
+  )
+  currentSortCol.value = headerCol
+  return sortedItems.value
+}
+
+let lastScrollLeft = 0
 const getScrollBarPosition = async (event: Event) => {
   const target = event.target as HTMLElement
   if (target.scrollLeft === 0) {

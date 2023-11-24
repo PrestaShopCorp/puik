@@ -8,6 +8,7 @@ export interface PuikTableHeader {
   size?: 'sm' | 'md' | 'lg'
   align?: 'left' | 'center' | 'right'
   width?: string
+  sortable?: boolean
 }
 
 export const tableProps = buildProps({

@@ -129,6 +129,7 @@
   .puik-table__body__row__item--expanded {
     @apply p-0;
   }
+
   .puik-table__body__row__item__container {
     @apply flex items-center space-x-3;
     .puik-icon {
@@ -137,5 +138,9 @@
     .puik-icon__expand {
       @apply -rotate-180 transform transition-transform duration-100 ease-in-out;
     }
+  }
+
+  .puik-table__head__row__item__content {
+    @apply flex items-center space-x-1;
   }
 }
