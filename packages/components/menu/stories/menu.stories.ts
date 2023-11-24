@@ -7,7 +7,7 @@ const menuPositions = Object.values(PuikMenuPositions);
 const menuPositionsJoined = menuPositions.join('|');
 
 export default {
-  title: 'Components/Menu',
+  title: 'Components/Menu/Menu',
   component: PuikMenu,
   argTypes: {
     position: {

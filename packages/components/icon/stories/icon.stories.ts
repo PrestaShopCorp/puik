@@ -30,6 +30,9 @@ export default {
         type: 'radio',
         options: ['div', 'span']
       }
+    },
+    dataTest: {
+      description: 'Set the data-test attribute'
     }
   }
 } as Meta;
@@ -51,7 +54,8 @@ export const Default = {
     icon: 'check',
     color: 'green',
     fontSize: 24,
-    nodeType: 'span'
+    nodeType: 'span',
+    dataTest: ''
   },
 
   parameters: {

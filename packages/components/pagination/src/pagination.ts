@@ -18,6 +18,7 @@ export interface PaginationProps {
   label?: string
   loaderButtonLabel?: string
   loaderButtonDisabled?: boolean
+  dataTest?: string
 }
 
 export type PaginationInstance = InstanceType<typeof Pagination>;

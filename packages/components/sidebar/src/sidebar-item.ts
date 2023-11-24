@@ -7,6 +7,7 @@ export interface SidebarItemProps {
   to?: RouteLocationRaw
   icon?: string
   active?: boolean
+  dataTest?: string
 }
 
 export type SidebarItemInstance = InstanceType<typeof SidebarItem>;

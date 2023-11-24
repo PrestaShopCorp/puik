@@ -5,10 +5,16 @@
     class="puik-pagination__previous-button puik-pagination__button"
     left-icon="keyboard_arrow_left"
     variant="secondary"
+    :data-test="
+      dataTest != undefined ? `previousButton-${dataTest}` : undefined
+    "
     @click="emit('update:modelValue', modelValue - 1)"
   />
 
-  <span class="puik-pagination__label">
+  <span
+    class="puik-pagination__label"
+    :data-test="dataTest != undefined ? `label-${dataTest}` : undefined"
+  >
     {{ label }}
   </span>
 
@@ -18,6 +24,7 @@
     class="puik-pagination__button puik-pagination__next-button"
     right-icon="keyboard_arrow_right"
     variant="secondary"
+    :data-test="dataTest != undefined ? `nextButton-${dataTest}` : undefined"
     @click="emit('update:modelValue', modelValue + 1)"
   />
 </template>

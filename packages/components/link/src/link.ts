@@ -20,6 +20,7 @@ export interface LinkProps {
   to?: RouteLocationRaw
   target?: PuikLinkTargetVariants | `${PuikLinkTargetVariants}`
   title?: string
+  dataTest?: string
 }
 
 export type LinkInstance = InstanceType<typeof Link>;

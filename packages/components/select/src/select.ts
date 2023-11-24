@@ -18,6 +18,7 @@ export interface SelectProps {
   noMatchText?: string
   zindex?: number
   fullWidth?: boolean
+  dataTest?: string
 }
 
 export type SelectInstance = InstanceType<typeof Select>;

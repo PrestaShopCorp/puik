@@ -44,4 +44,9 @@ describe('Badge tests', () => {
     );
     expect(findBadge().text()).toBe(slotDefault);
   });
+
+  it('should have a data-test attribute', () => {
+    factory({ dataTest: 'test' });
+    expect(findBadge().attributes('data-test')).toBe('test');
+  });
 });

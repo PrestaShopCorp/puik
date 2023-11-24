@@ -5,6 +5,7 @@ export interface SidebarGroupItemsProps {
   icon: string
   name?: string
   active?: boolean
+  dataTest?: string
 }
 
 export type SidebarGroupItemInstance = InstanceType<typeof SidebarGroupItem>;

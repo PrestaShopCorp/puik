@@ -7,6 +7,7 @@ export interface BreadcrumbItem {
   to?: RouteLocationRaw
   href?: string
   target?: `${PuikLinkTargetVariants}`
+  dataTest?: string
 }
 
 export interface BreadcrumbProps {

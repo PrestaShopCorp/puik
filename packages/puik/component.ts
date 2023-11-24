@@ -1,4 +1,6 @@
 import {
+  PuikAvatar,
+  PuikDivider,
   PuikSkeletonLoader,
   PuikSkeletonLoaderGroup,
   PuikTag,
@@ -49,6 +51,8 @@ import type { Component } from 'vue';
 
 // prettier-ignore
 export default [
+  PuikAvatar,
+  PuikDivider,
   PuikSkeletonLoader,
   PuikSkeletonLoaderGroup,
   PuikTag,

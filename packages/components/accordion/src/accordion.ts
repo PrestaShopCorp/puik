@@ -6,6 +6,7 @@ export interface AccordionProps {
   subTitle?: string
   icon?: string
   disabled?: boolean
+  dataTest?: string
 }
 
 export type AccordionInstance = InstanceType<typeof accordion>;

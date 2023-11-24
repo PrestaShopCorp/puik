@@ -5,6 +5,7 @@ export interface PaginationMobileProps {
   disabled?: boolean
   maxPage: number
   label?: string
+  dataTest?: string
 }
 
 export type PaginationInstance = InstanceType<typeof PaginationMobile>;

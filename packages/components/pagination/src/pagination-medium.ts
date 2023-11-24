@@ -7,6 +7,7 @@ export interface PaginationMediumProps {
   maxPage: number
   itemCount?: number
   label?: string
+  dataTest?: string
 }
 
 export type PaginationInstance = InstanceType<typeof PaginationMedium>;

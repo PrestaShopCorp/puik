@@ -60,4 +60,9 @@ describe('SpinnerLoader tests', () => {
     expect(findLabel().exists()).toBeTruthy();
     expect(findLabel().text()).toBe(label);
   });
+
+  it('should have a data-test attribute', () => {
+    factory({ dataTest: 'test' });
+    expect(findComponent().attributes('data-test')).toBe('test');
+  });
 });

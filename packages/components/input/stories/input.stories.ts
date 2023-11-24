@@ -98,6 +98,11 @@ export default {
     append: {
       control: 'none',
       description: 'Append an icon or text to the input'
+    },
+    dataTest: {
+      description:
+        'Set the data-test attribute on the input and error text elements `input-${dataTest}` `error-${dataTest}`',
+      control: 'text'
     }
   }
 } as Meta;

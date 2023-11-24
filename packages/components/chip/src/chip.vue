@@ -12,17 +12,16 @@
       class="puik-chip__icon"
     />
     <div class="puik-chip__content">
-      <PuikTooltip
-        v-if="content?.length >= 30"
+      <puik-tooltip
+        :key="content"
+        :is-disabled="!showTooltip"
         :position="tooltipPosition"
         :description="content"
       >
-        <template #description>
+        <p ref="chipContentElem">
           {{ content }}
-        </template>
-        {{ content }}
-      </PuikTooltip>
-      {{ content }}
+        </p>
+      </puik-tooltip>
     </div>
     <PuikIcon
       icon="close"
@@ -39,6 +38,8 @@ import {
   PuikTooltipPositions
 } from '@prestashopcorp/puik-components/tooltip';
 import { PuikChipSizeVariants, type ChipProps } from './chip';
+import { nextTick, ref, watch } from 'vue';
+import { isEllipsisActive } from '@prestashopcorp/puik-utils';
 defineOptions({
   name: 'PuikChip'
 });
@@ -49,7 +50,17 @@ withDefaults(defineProps<ChipProps>(), {
 });
 const emit = defineEmits(['close']);
 
+const chipContentElem = ref(null);
+const showTooltip = ref(false);
+
 const handleCloseEvent = () => {
   emit('close');
 };
+
+watch(chipContentElem, async () => {
+  await nextTick();
+  if (chipContentElem?.value) {
+    showTooltip.value = isEllipsisActive(chipContentElem.value);
+  }
+});
 </script>

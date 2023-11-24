@@ -88,12 +88,31 @@ export default {
       materialIcons: ['Material Icons Round']
     },
     fontSize: {
-      '4xl': '2rem'
+      xs: ['0.75rem', { lineHeight: '1.125rem' }],
+      sm: ['0.875rem', { lineHeight: '1.25rem' }],
+      base: ['1rem', { lineHeight: '1.375rem' }],
+      lg: ['1.125rem', { lineHeight: '1.375rem' }],
+      xl: ['1.25rem', { lineHeight: '1.75rem' }],
+      '2xl': ['1.5rem', { lineHeight: '2rem' }],
+      '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+      '4xl': ['2rem', { lineHeight: '2.625rem' }],
+      '5xl': ['3rem', { lineHeight: '3.625rem' }]
     },
     screens: {
       xs: '320px'
     },
+    opacity: {
+      overlay: '0.8'
+    },
     boxShadow: {
+      DEFAULT: '0px 1px 3px 0px rgba(29, 29, 27, 0.2)',
+      sm: '0px 1px 2px 0px rgba(29, 29, 27, 0.05)',
+      md: '0px 4px 6px -1px rgba(29, 29, 27, 0.2)',
+      lg: '0px 10px 15px -3px rgba(29, 29, 27, 0.2)',
+      xl: '0px 20px 25px -5px rgba(29, 29, 27, 0.2)',
+      '2xl': '0px 25px 60px -12px rgba(29, 29, 27, 0.25)',
+      inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+      none: 'none',
       overlay: '0px 12px 60px 0px rgba(0, 0, 0, 0.1)',
       sticky: '0px 6px 12px rgba(0, 0, 0, 0.1)',
       'pop-modal': '0px 12px 24px rgba(0, 0, 0, 0.1)'

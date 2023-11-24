@@ -53,6 +53,9 @@ export default {
     title: {
       control: 'text',
       description: 'Title displayed in tooltips then your cursor stay in link'
+    },
+    dataTest: {
+      description: 'Set the data-test attribute'
     }
   },
   args: {
@@ -61,7 +64,8 @@ export default {
     target: '_self',
     default: "I'm a cool link",
     title: "I'm a tooltip for your link",
-    size: 'md'
+    size: 'md',
+    dataTest: ''
   }
 } as Meta;
 

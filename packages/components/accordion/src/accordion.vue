@@ -11,6 +11,7 @@
       :aria-controls="id"
       class="puik-accordion__header"
       :disabled="disabled"
+      :data-test="dataTest != undefined ? `button-${dataTest}` : undefined"
       @click="onClick"
     >
       <puik-icon
@@ -18,14 +19,21 @@
         class="puik-accordion__header__icon"
         :icon="icon"
         :font-size="24"
+        :data-test="dataTest != undefined ? `icon-${dataTest}` : undefined"
       />
       <div class="puik-accordion__header__content">
-        <div class="puik-accordion__header__content__title">
+        <div
+          class="puik-accordion__header__content__title"
+          :data-test="dataTest != undefined ? `title-${dataTest}` : undefined"
+        >
           {{ title }}
         </div>
         <div
           v-if="subTitle"
           class="puik-accordion__header__content__sub-title"
+          :data-test="
+            dataTest != undefined ? `subTitle-${dataTest}` : undefined
+          "
         >
           {{ subTitle }}
         </div>

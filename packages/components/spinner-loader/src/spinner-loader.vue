@@ -8,6 +8,7 @@
     ]"
     aria-live="polite"
     role="status"
+    :data-test="dataTest"
   >
     <div
       class="puik-spinner-loader__spinner"
@@ -38,6 +39,7 @@ defineOptions({
 withDefaults(defineProps<SpinnerLoaderProps>(), {
   size: PuikSpinnerLoaderSizes.Medium,
   color: PuikSpinnerLoaderColors.Primary,
-  position: PuikSpinnerLoaderPositions.Bottom
+  position: PuikSpinnerLoaderPositions.Bottom,
+  dataTest: 'spinner-loader'
 });
 </script>

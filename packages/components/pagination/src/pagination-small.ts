@@ -5,6 +5,7 @@ export interface PaginationSmallProps {
   disabled?: boolean
   maxPage: number
   label?: string
+  dataTest?: string
 }
 
 export type PaginationInstance = InstanceType<typeof PaginationSmall>;

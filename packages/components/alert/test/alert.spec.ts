@@ -10,6 +10,7 @@ describe('Alert tests', () => {
   const findButton = () => wrapper.find('.puik-alert__button');
   const findTitle = () => wrapper.find('.puik-alert__title');
   const findDesc = () => wrapper.find('.puik-alert__description');
+  const findCloseButton = () => wrapper.find('.puik-alert__close');
 
   const factory = (
     props?: AlertProps,
@@ -59,5 +60,30 @@ describe('Alert tests', () => {
       disableBorders: true
     });
     expect(findAlert().classes()).toContain('puik-alert--no-borders');
+  });
+
+  it('should display a close icon and emit a close event on click', async () => {
+    factory({
+      title: faker.lorem.word(2),
+      description: faker.lorem.sentence(60),
+      isClosable: true
+    });
+    expect(findCloseButton()).toBeTruthy();
+    await findCloseButton().trigger('click');
+    expect(wrapper.emitted('close')).toBeTruthy();
+  });
+
+  it('should have a data-test attribute on title, description button and close button', () => {
+    factory({
+      title: faker.lorem.word(2),
+      description: faker.lorem.sentence(60),
+      buttonLabel: 'Button',
+      isClosable: true,
+      dataTest: 'alert'
+    });
+    expect(findTitle().attributes('data-test')).toBe('title-alert');
+    expect(findDesc().attributes('data-test')).toBe('description-alert');
+    expect(findButton().attributes('data-test')).toBe('button-alert');
+    expect(findCloseButton().attributes('data-test')).toBe('close-alert');
   });
 });

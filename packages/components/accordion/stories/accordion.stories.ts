@@ -34,6 +34,11 @@ export default {
     default: {
       control: 'none',
       description: 'Accordion content'
+    },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set the data-test attribute for the accordion `button-${dataTest}` `title-${dataTest}` `icon-${dataTest}` `subTitle-${dataTest}`'
     }
   }
 } as Meta;

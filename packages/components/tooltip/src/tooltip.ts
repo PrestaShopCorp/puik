@@ -15,6 +15,7 @@ export interface TooltipProps {
   maxWidth?: string
   zindex?: number
   disappearDelay?: number
+  dataTest?: string
 }
 
 export type TooltipInstance = InstanceType<typeof Tooltip>;

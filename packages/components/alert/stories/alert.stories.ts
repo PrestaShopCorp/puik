@@ -40,9 +40,17 @@ export default {
     buttonLabel: {
       description: 'Label of the button'
     },
+    isClosable: {
+      description: 'Display a close button'
+    },
     default: {
       control: 'none',
       description: 'Set the alert description'
+    },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}`'
     }
   },
   args: {
@@ -50,7 +58,8 @@ export default {
     description: 'This is the description of the success alert.',
     variant: 'success',
     disableBorders: false,
-    buttonLabel: 'Button'
+    buttonLabel: 'Button',
+    isClosable: false
   }
 } as Meta;
 
@@ -62,12 +71,14 @@ const Template: StoryFn = (args: Args) => ({
     return { args };
   },
   methods: {
-    click: action('click')
+    click: action('click'),
+    close: action('close')
   },
   template: `
     <puik-alert
       v-bind="args"
       @click="click"
+      @close="close"
     ></puik-alert>`
 });
 

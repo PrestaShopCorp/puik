@@ -5,6 +5,7 @@ export interface CheckboxProps {
   label?: string
   disabled?: boolean
   indeterminate?: boolean
+  dataTest?: string
 }
 
 export type CheckboxInstance = InstanceType<typeof Checkbox>;

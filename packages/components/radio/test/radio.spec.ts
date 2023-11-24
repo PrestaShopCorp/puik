@@ -76,4 +76,12 @@ describe('Radio tests', () => {
     );
     expect(findLabel().text()).toContain('Custom label');
   });
+
+  it('should have a data-test attribute on label and input', () => {
+    factory({ label: 'Label', modelValue: false, value: fakeValue, dataTest: 'test' });
+    const label = findLabel();
+    const input = findInput();
+    expect(label.attributes('data-test')).toBe('label-test');
+    expect(input.attributes('data-test')).toBe('input-test');
+  });
 });

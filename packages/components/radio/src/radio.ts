@@ -6,6 +6,7 @@ export interface RadioProps {
   disabled?: boolean
   modelValue: boolean | string | number
   value: boolean | string | number
+  dataTest?: string
 }
 
 export type RadioInstance = InstanceType<typeof Radio>;

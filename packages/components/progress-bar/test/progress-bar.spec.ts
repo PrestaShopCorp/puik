@@ -28,4 +28,10 @@ describe('ProgressBar tests', () => {
       true
     );
   });
+
+  it('should have a data-test attribute', () => {
+    factory({ ...defaultProps, dataTest: 'test' });
+    const progressBarContent = wrapper.find('.progress-bar__content');
+    expect(progressBarContent.attributes('data-test')).toBe('test');
+  });
 });

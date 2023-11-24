@@ -35,6 +35,7 @@ describe('Modal tests', () => {
     wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header');
 
   const homeTitleIcon = 'home';
+  const findTitle = () => wrapper.find('.title');
 
   const factory = (
     props?: ModalProps,
@@ -161,8 +162,7 @@ describe('Modal tests', () => {
       title: 'Awesome title',
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
-      isOpen: true,
-      hasCloseButton: true
+      isOpen: true
     });
 
     expect(findCloseButton().exists()).toBeTruthy();
@@ -176,8 +176,7 @@ describe('Modal tests', () => {
       title: 'Awesome title',
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
-      isOpen: true,
-      hasCloseButton: true
+      isOpen: true
     });
 
     expect(findCloseButton().exists()).toBeTruthy();
@@ -218,5 +217,38 @@ describe('Modal tests', () => {
     });
 
     expect(findHeader().exists()).toBeFalsy();
+  });
+
+  it('should have a data-test attribute on title, mainButton, secondButton and closeButton', async () => {
+    await factory({
+      title: 'Awesome title',
+      mainButtonText: 'Awesome main',
+      secondButtonText: 'Awesome second',
+      isOpen: true,
+      dataTest: 'test'
+    });
+    expect(findTitle().attributes('data-test')).toBe('title-test');
+    expect(findMainButton().attributes('data-test')).toBe('mainButton-test');
+    expect(findSecondaryButton().attributes('data-test')).toBe(
+      'secondButton-test'
+    );
+    expect(findCloseButton().attributes('data-test')).toBe('closeButton-test');
+  });
+  it('should have a data-test attribute on side button', async () => {
+    const sideButtonText = 'Awesome side button';
+
+    await factory({
+      title: 'Awesome title',
+      mainButtonText: 'Awesome main',
+      secondButtonText: 'Awesome second',
+      isOpen: true,
+      titleIcon: homeTitleIcon,
+      variant: PuikModalVariants.Dialog,
+      sideButtonText,
+      dataTest: 'test'
+    });
+    expect(findSideButton().exists()).toBeTruthy();
+    expect(findSideButton().text()).toBe(sideButtonText);
+    expect(findSideButton().attributes('data-test')).toBe('sideButton-test');
   });
 });

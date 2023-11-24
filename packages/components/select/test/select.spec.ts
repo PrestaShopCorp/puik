@@ -57,7 +57,7 @@ describe('Select tests', () => {
   });
 
   it('should display a placeholder', () => {
-    const placeholder = faker.word.sample();
+    const placeholder = faker.lorem.sentence(1);
     factory(
       `<puik-select v-model="value" :placeholder="placeholder">
         <puik-option value="test" label="test" />
@@ -332,5 +332,43 @@ describe('Select tests', () => {
     );
     await findAllOptions().at(0)?.trigger('click');
     expect(findSelected().element.value).toBe('Custom Label');
+  });
+
+  it('should have a data-test attribute on select, searchInput noResults and options', async () => {
+    const items = [
+      {
+        label: 'Test',
+        value: 'test'
+      },
+      {
+        label: 'Test2',
+        value: 'test2'
+      },
+      {
+        label: 'Test3',
+        value: 'test3'
+      }
+    ];
+    const query = 'Test4';
+    factory(
+      `<puik-select v-slot="{ options }"  v-model="value" :options="items" data-test="test" noMatchText="No results">
+        <puik-option v-for="(option, index) in options" :value="option" :label="option.label" :data-test="'option-test-' + (index + 1)"/>
+      </puik-select>`,
+      () => ({
+        items,
+        value: {}
+      })
+    );
+
+    const select = wrapper.find('.puik-select__selected');
+    expect(select.attributes('data-test')).toBe('select-test');
+    await findSelect().trigger('click');
+    const field = wrapper.find('.puik-input__field');
+    expect(field.attributes('data-test')).toBe('input-searchInput-test');
+    const option = wrapper.findAll('.puik-option');
+    expect(option[2].attributes('data-test')).toBe('option-test-3');
+    await findInputComponent().setValue(query);
+    const noResults = wrapper.find('.puik-select__no-results');
+    expect(noResults.attributes('data-test')).toBe('noResults-test');
   });
 });

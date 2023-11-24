@@ -103,6 +103,11 @@ export default {
           summary: 'false'
         }
       }
+    },
+    dataTest: {
+      description:
+        'Set the data-test attribute `content-${dataTest}` `tooltip-${dataTest}`',
+      control: 'text'
     }
   },
   args: {

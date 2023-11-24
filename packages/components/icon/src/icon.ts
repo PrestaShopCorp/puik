@@ -5,6 +5,7 @@ export interface IconProps {
   nodeType?: string
   fontSize?: string | number
   color?: string
+  dataTest?: string
 }
 
 export type IconInstance = InstanceType<typeof Icon>;

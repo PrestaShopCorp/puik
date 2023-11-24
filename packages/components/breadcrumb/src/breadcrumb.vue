@@ -21,6 +21,7 @@
         :to="item.to"
         :href="item.href"
         :target="item.target"
+        :data-test="item.dataTest ? item.dataTest : undefined"
         size="sm"
       >
         {{ item.label }}
@@ -33,7 +34,14 @@
       />
     </div>
 
-    <div class="puik-breadcrumb__item--last">
+    <div
+      class="puik-breadcrumb__item--last"
+      :data-test="
+        items[items.length - 1].dataTest
+          ? items[items.length - 1].dataTest
+          : undefined
+      "
+    >
       {{ items[items.length - 1].label }}
     </div>
   </nav>

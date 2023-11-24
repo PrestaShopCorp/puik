@@ -5,7 +5,7 @@ import { PuikTag, TagProps } from '@prestashopcorp/puik-components';
 describe('Tag tests', () => {
   let wrapper: VueWrapper<any>;
   const findTag = () => wrapper.find('.puik-tag');
-  const findTagContent = () => wrapper.find('.puik-tag__content');
+  const findTagContent = () => wrapper.find('.puik-tag__content p');
   const findLeftIcon = () => wrapper.find('.puik-tag__icon');
 
   const factory = (
@@ -51,5 +51,14 @@ describe('Tag tests', () => {
   it('should display a tag disabled version', () => {
     factory({ id: 'puik-tag-example', content: 'content', disabled: true });
     expect(findTag().classes()).toContain('puik-tag--disabled');
+  });
+
+  it('should have a data-test attribute for the content', () => {
+    factory({
+      id: 'puik-tag-example',
+      content: 'long content for displaying the tooltip',
+      dataTest: 'test'
+    });
+    expect(findTagContent().attributes('data-test')).toBe('content-test');
   });
 });

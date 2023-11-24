@@ -26,6 +26,7 @@ export interface InputProps {
   error?: string
   success?: boolean
   hideHint?: boolean
+  dataTest?: string
 }
 
 export type InputInstance = InstanceType<typeof Input>;

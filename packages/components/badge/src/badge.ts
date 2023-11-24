@@ -10,6 +10,7 @@ export enum PuikBadgeVariants {
 
 export interface BadgeProps {
   variant?: PuikBadgeVariants | `${PuikBadgeVariants}`
+  dataTest?: string
 }
 
 export type BadgeInstance = InstanceType<typeof Badge>;

@@ -32,6 +32,7 @@ export interface ButtonProps {
   to?: RouteLocationRaw
   href?: string
   value?: string | number | Record<string, any> | any[]
+  dataTest?: string
 }
 
 export type ButtonInstance = InstanceType<typeof Button>;

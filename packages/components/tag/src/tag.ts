@@ -22,6 +22,7 @@ export interface TagProps {
   icon?: string
   disabled?: boolean
   tooltipPosition?: `${PuikTooltipPositions}`
+  dataTest?: string
 }
 
 export type TagInstance = InstanceType<typeof Tag>;

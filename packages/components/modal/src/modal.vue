@@ -25,6 +25,9 @@
             <h2
               ref="modalTitleElem"
               class="title"
+              :data-test="
+                dataTest != undefined ? `title-${dataTest}` : undefined
+              "
             >
               {{ title }}
             </h2>
@@ -37,6 +40,9 @@
             v-if="PuikModalVariants.Dialog !== variant"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__close-button"
             variant="text"
+            :data-test="
+              dataTest != undefined ? `closeButton-${dataTest}` : undefined
+            "
             @click="sendCloseModalEvent()"
           >
             <puik-icon
@@ -56,6 +62,9 @@
             v-if="secondButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--second"
             :variant="secondButtonVariant"
+            :data-test="
+              dataTest != undefined ? `secondButton-${dataTest}` : undefined
+            "
             @click="$emit('button-second')"
           >
             {{ secondButtonText }}
@@ -65,6 +74,9 @@
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--main"
             :variant="mainButtonVariant"
             :disabled="isMainButtonDisabled"
+            :data-test="
+              dataTest != undefined ? `mainButton-${dataTest}` : undefined
+            "
             @click="$emit('button-main')"
           >
             {{ mainButtonText }}
@@ -76,6 +88,9 @@
             v-if="PuikModalVariants.Dialog === variant && sideButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--side"
             variant="text"
+            :data-test="
+              dataTest != undefined ? `sideButton-${dataTest}` : undefined
+            "
             @click="$emit('button-side')"
           >
             {{ sideButtonText }}

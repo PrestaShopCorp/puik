@@ -35,6 +35,11 @@ export default {
           summary: 'boolean | string | number'
         }
       }
+    },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set the data-test attribute of the input and the label `label-${dataTest}` `input-${dataTest}`'
     }
   },
   args: {

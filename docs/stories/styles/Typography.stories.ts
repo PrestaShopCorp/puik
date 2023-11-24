@@ -41,10 +41,13 @@ export const BrandTitle = generateStory(`
 
 export const Body = generateStory(`
   <p class="puik-body-large-bold">.puik-body-large-bold</p>
+  <p class="puik-body-large-medium">.puik-body-large-medium</p>
   <p class="puik-body-large">.puik-body-large</p>
   <p class="puik-body-default-bold">.puik-body-default-bold</p>
+  <p class="puik-body-default-medium">.puik-body-default-medium</p>
   <p class="puik-body-default">.puik-body-default</p>
   <p class="puik-body-small-bold">.puik-body-small-bold</p>
+  <p class="puik-body-small-medium">.puik-body-small-medium</p>
   <p class="puik-body-small">.puik-body-small</p>
   <p class="puik-body-default-link">.puik-body-default-link</p>
 `);

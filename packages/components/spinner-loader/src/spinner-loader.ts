@@ -21,6 +21,7 @@ export interface SpinnerLoaderProps {
   color?: `${PuikSpinnerLoaderColors}`
   position?: `${PuikSpinnerLoaderPositions}`
   label?: string
+  dataTest?: string
 }
 
 export type SpinnerLoaderInstance = InstanceType<typeof SpinnerLoader>;

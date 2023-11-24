@@ -2,6 +2,7 @@
   <label
     class="puik-label"
     :for="props.for"
+    :data-test="dataTest"
   >
     <slot />
     <span

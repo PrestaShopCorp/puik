@@ -24,6 +24,10 @@ export default {
           summary: 'neutral'
         }
       }
+    },
+    dataTest: {
+      control: 'text',
+      description: 'Set the data-test attribute on the badge'
     }
   },
   args: {

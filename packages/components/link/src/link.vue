@@ -5,8 +5,16 @@
     :target="target"
     :title="title"
     :class="['puik-link', `puik-link--${size}`]"
+    :data-test="dataTest"
   >
     <slot />
+
+    <span
+      v-if="props.target === PuikLinkTargetVariants.Blank"
+      class="puik-link__target__icon"
+    >
+      {{ TARGET_BLANK_ICON }}
+    </span>
   </component>
 </template>
 
@@ -21,6 +29,8 @@ const props = withDefaults(defineProps<LinkProps>(), {
   size: PuikLinkSizes.Medium,
   target: PuikLinkTargetVariants.Self
 });
+
+const TARGET_BLANK_ICON = 'open_in_new';
 
 const componentType = computed(() => {
   if (props.to) {

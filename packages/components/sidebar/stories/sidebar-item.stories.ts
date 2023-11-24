@@ -65,6 +65,11 @@ export default {
     default: {
       control: 'none',
       description: 'Set the defaut content slot'
+    },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set the data-test attribute on the item `menubuttonTitle-${dataTest}` `buttonTitle-${dataTest}` `title-${dataTest}`'
     }
   },
   args: {

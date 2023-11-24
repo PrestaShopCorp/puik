@@ -5,6 +5,7 @@ export interface LabelProps {
   optional?: boolean
   required?: boolean
   readonly?: boolean
+  dataTest?: string
 }
 
 export type LabelInstance = InstanceType<typeof Label>;

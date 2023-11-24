@@ -5,3 +5,4 @@ export * from './types';
 export * from './isEllipsisActive';
 export * from './clamp';
 export * from './build';
+export * from './getInitialLetter.ts';

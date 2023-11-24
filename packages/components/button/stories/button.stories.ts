@@ -70,6 +70,11 @@ export default {
     href: {
       control: 'text',
       description: 'Set a link for the button (changes button to "a" html tag)'
+    },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set a data-test attribute to the button `${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`'
     }
   },
   args: {
@@ -148,7 +153,7 @@ const ButtonTemplate = (args: Args) => ({
   `
 });
 
-const AllVariantTemplate = (args: Args, storyContext) => ({
+const AllVariantTemplate: StoryFn = (args: Args, storyContext) => ({
   components: { PuikButton },
   setup() {
     const variants = storyContext.argTypes.variant.options;

@@ -1,6 +1,6 @@
 import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikBreadcrumb, BreadcrumbProps, BreadcrumbItem } from '@prestashopcorp/puik-components';
+import { PuikBreadcrumb, BreadcrumbProps, BreadcrumbItem, PuikLinkTargetVariants } from '@prestashopcorp/puik-components';
 
 describe('Breadcrumb tests', () => {
   let wrapper: VueWrapper<any>;
@@ -25,7 +25,8 @@ describe('Breadcrumb tests', () => {
     {
       label: 'First link',
       href: '#',
-      target: '_blank'
+      target: PuikLinkTargetVariants.Blank,
+      dataTest: 'test-1'
     },
     {
       label: 'Second link',
@@ -33,7 +34,8 @@ describe('Breadcrumb tests', () => {
     },
     {
       label: 'Third link',
-      to: 'name'
+      to: 'name',
+      dataTest: 'test-3'
     },
     {
       label: 'Last link'
@@ -47,17 +49,22 @@ describe('Breadcrumb tests', () => {
     factory({ items: [] });
     expect(wrapper.element.tagName).toBeFalsy();
   });
-  it('should first item be A with href', () => {
+  it('should first item be A with href and data-test', () => {
     factory({ items });
     const localItems = getBreadcrumbItems();
     expect(localItems[0].element.tagName).toBe('A');
     expect(localItems[0].element.getAttribute('href')).toBe(items[0].href);
+    expect(
+      localItems[0].element.getAttribute('data-test')?.includes(items[0].dataTest)
+    );
   });
-  it('should third item be ROUTER-LINK with to', () => {
+  it('should third item be ROUTER-LINK with to and data-test', () => {
     factory({ items });
     const localItems = getBreadcrumbItems();
     expect(localItems[2].element.tagName).toBe('ROUTER-LINK');
     expect(localItems[2].element.getAttribute('to')).toBe(items[2].to);
+    expect(localItems[2].element.getAttribute('data-test')?.includes(items[2].dataTest)
+    );
   });
   it('should display only three separator icon', () => {
     factory({ items });

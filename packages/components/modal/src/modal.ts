@@ -24,6 +24,7 @@ export interface ModalProps {
   size?: `${PuikModalSizes}`
   isOpen?: boolean
   titleIcon?: string
+  dataTest?: string
 }
 
 export const modalEmits = [
