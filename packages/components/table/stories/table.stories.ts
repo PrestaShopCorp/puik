@@ -181,6 +181,15 @@ export default {
         },
       },
     },
+    sortColumn: {
+      control: 'none',
+      description: 'Event emitted when sorting a column',
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
   },
   args: {
     selectable: false,

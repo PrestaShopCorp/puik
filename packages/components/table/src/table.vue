@@ -206,15 +206,19 @@ import {
   PuikTableSortIcon,
   PuikTableScrollBarPosistion,
 } from './table'
+// import type { ServerOption } from './table'
 defineOptions({
   name: 'PuikTable',
 })
 
 const props = defineProps(tableProps)
+
 const emit = defineEmits<{
   (e: 'select', index: number): void
   (e: 'select:all'): void
   (e: 'update:selection', value: number[]): void
+  // (e: 'update:serverOptions', value: ServerOption): void
+  (e: 'sortColumn', column: string): void
 }>()
 const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
@@ -227,6 +231,7 @@ const sortedItems = ref([...props.items])
 const currentSortCol = ref('')
 
 const sortTable = (headerCol: string) => {
+  emit('sortColumn', headerCol)
   for (const col in sortIcon.value) {
     sortIcon.value[col] = PuikTableSortIcon.DEFAULT
   }
