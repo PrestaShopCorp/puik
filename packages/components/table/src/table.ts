@@ -11,6 +11,23 @@ export interface PuikTableHeader {
   sortable?: boolean
 }
 
+export enum PuikTableSortOrder {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}
+
+export enum PuikTableSortIcon {
+  DEFAULT = 'unfold_more',
+  ASC = 'expand_more',
+  DESC = 'expand_less',
+}
+
+export enum PuikTableScrollBarPosistion {
+  LEFT = 'left',
+  RIGHT = 'right',
+  ISSCROLLING = 'isScrolling',
+}
+
 export const tableProps = buildProps({
   headers: {
     type: Array as PropType<PuikTableHeader[]>,

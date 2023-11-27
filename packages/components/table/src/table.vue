@@ -11,8 +11,9 @@
               {
                 'puik-table__head__row__item--sticky-scroll':
                   stickyFirstCol &&
-                  (ScrollBarPosition === 'isScrolling' ||
-                    ScrollBarPosition === 'right'),
+                  (ScrollBarPosition ===
+                    PuikTableScrollBarPosistion.ISSCROLLING ||
+                    ScrollBarPosition === PuikTableScrollBarPosistion.RIGHT),
               },
               { 'puik-table__head__row__item--selection': selectable },
               { 'puik-table__head__row__item--expandable': expandable },
@@ -43,15 +44,18 @@
               { 'puik-table__head__row__item--sticky': isSticky(index) },
               {
                 'puik-table__head__row__item--sticky-scroll':
-                  isSticky(index) && ScrollBarPosition === 'isScrolling',
+                  isSticky(index) &&
+                  ScrollBarPosition === PuikTableScrollBarPosistion.ISSCROLLING,
               },
               {
                 'puik-table__head__row__item--sticky-left':
-                  isSticky(index) && ScrollBarPosition === 'left',
+                  isSticky(index) &&
+                  ScrollBarPosition === PuikTableScrollBarPosistion.LEFT,
               },
               {
                 'puik-table__head__row__item--sticky-right':
-                  isSticky(index) && ScrollBarPosition === 'right',
+                  isSticky(index) &&
+                  ScrollBarPosition === PuikTableScrollBarPosistion.RIGHT,
               },
             ]"
             :style="{ minWidth: header.width, width: header.width }"
@@ -68,7 +72,9 @@
               </span>
               <PuikButton
                 v-if="header.sortable"
-                :right-icon="sortIcon[header.value] ?? 'unfold_more'"
+                :right-icon="
+                  sortIcon[header.value] ?? PuikTableSortIcon.DEFAULT
+                "
                 variant="primary-reverse"
                 size="sm"
                 @click="sortTable(header.value)"
@@ -92,15 +98,19 @@
                 },
                 {
                   'puik-table__body__row__item--sticky-scroll':
-                    stickyFirstCol && ScrollBarPosition === 'isScrolling',
+                    stickyFirstCol &&
+                    ScrollBarPosition ===
+                      PuikTableScrollBarPosistion.ISSCROLLING,
                 },
                 {
                   'puik-table__body__row__item--sticky-left':
-                    stickyFirstCol && ScrollBarPosition === 'left',
+                    stickyFirstCol &&
+                    ScrollBarPosition === PuikTableScrollBarPosistion.LEFT,
                 },
                 {
                   'puik-table__body__row__item--sticky-right':
-                    stickyFirstCol && ScrollBarPosition === 'right',
+                    stickyFirstCol &&
+                    ScrollBarPosition === PuikTableScrollBarPosistion.RIGHT,
                 },
               ]"
             >
@@ -135,15 +145,19 @@
                 { 'puik-table__body__row__item--sticky': isSticky(colIndex) },
                 {
                   'puik-table__body__row__item--sticky-scroll':
-                    isSticky(colIndex) && ScrollBarPosition == 'isScrolling',
+                    isSticky(colIndex) &&
+                    ScrollBarPosition ==
+                      PuikTableScrollBarPosistion.ISSCROLLING,
                 },
                 {
                   'puik-table__body__row__item--sticky-left':
-                    isSticky(colIndex) && ScrollBarPosition == 'left',
+                    isSticky(colIndex) &&
+                    ScrollBarPosition == PuikTableScrollBarPosistion.LEFT,
                 },
                 {
                   'puik-table__body__row__item--sticky-right':
-                    isSticky(colIndex) && ScrollBarPosition == 'right',
+                    isSticky(colIndex) &&
+                    ScrollBarPosition == PuikTableScrollBarPosistion.RIGHT,
                 },
               ]"
             >
@@ -186,7 +200,12 @@ import { useLocale } from '@puik/hooks'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
 import PuikButton from '../../button/src/button.vue'
 import PuikIcon from '../../icon/src/icon.vue'
-import { tableProps } from './table'
+import {
+  tableProps,
+  PuikTableSortOrder,
+  PuikTableSortIcon,
+  PuikTableScrollBarPosistion,
+} from './table'
 defineOptions({
   name: 'PuikTable',
 })
@@ -209,20 +228,23 @@ const currentSortCol = ref('')
 
 const sortTable = (headerCol: string) => {
   for (const col in sortIcon.value) {
-    sortIcon.value[col] = 'unfold_more'
+    sortIcon.value[col] = PuikTableSortIcon.DEFAULT
   }
   if (sortOrder.value[headerCol]) {
     sortOrder.value[headerCol] =
-      sortOrder.value[headerCol] === 'ASC' && currentSortCol.value === headerCol
-        ? 'DESC'
-        : 'ASC'
+      sortOrder.value[headerCol] === PuikTableSortOrder.ASC &&
+      currentSortCol.value === headerCol
+        ? PuikTableSortOrder.DESC
+        : PuikTableSortOrder.ASC
     sortIcon.value[headerCol] =
-      sortOrder.value[headerCol] === 'ASC' ? 'expand_more' : 'expand_less'
+      sortOrder.value[headerCol] === PuikTableSortOrder.ASC
+        ? PuikTableSortIcon.ASC
+        : PuikTableSortIcon.DESC
   } else {
-    sortOrder.value[headerCol] = 'ASC'
-    sortIcon.value[headerCol] = 'expand_more'
+    sortOrder.value[headerCol] = PuikTableSortOrder.ASC
+    sortIcon.value[headerCol] = PuikTableSortIcon.ASC
   }
-  const order = sortOrder.value[headerCol] === 'ASC' ? 1 : -1
+  const order = sortOrder.value[headerCol] === PuikTableSortOrder.ASC ? 1 : -1
   sortedItems.value.sort(
     (a, b) => order * (a[headerCol] < b[headerCol] ? -1 : 1)
   )
@@ -230,20 +252,20 @@ const sortTable = (headerCol: string) => {
   return sortedItems.value
 }
 
-let lastScrollLeft = 0
+const lastScrollLeft = ref(0)
 const getScrollBarPosition = async (event: Event) => {
   const target = event.target as HTMLElement
   if (target.scrollLeft === 0) {
-    ScrollBarPosition.value = 'left'
+    ScrollBarPosition.value = PuikTableScrollBarPosistion.LEFT
   } else if (
     Math.abs(target.scrollLeft + target.offsetWidth - target.scrollWidth) < 10
   ) {
-    ScrollBarPosition.value = 'right'
+    ScrollBarPosition.value = PuikTableScrollBarPosistion.RIGHT
   } else {
-    ScrollBarPosition.value = 'isScrolling'
+    ScrollBarPosition.value = PuikTableScrollBarPosistion.ISSCROLLING
   }
 
-  lastScrollLeft = target.scrollLeft
+  lastScrollLeft.value = target.scrollLeft
 }
 
 const isSticky = (
