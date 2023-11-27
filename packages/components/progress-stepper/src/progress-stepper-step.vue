@@ -1,5 +1,5 @@
 <template>
-  <div class="puik-progress-stepper-step">
+  <div class="puik-progress-stepper-step" :data-test="dataTest">
     <puik-button
       :aria-current="isCurrentStep ? 'step' : undefined"
       :aria-label="step"
