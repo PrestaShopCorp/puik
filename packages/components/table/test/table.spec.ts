@@ -85,7 +85,7 @@ describe('Table tests', () => {
   it('should display headers without text', () => {
     const headers: PuikTableHeader[] = [{ value: 'firstname' }]
     factory({ headers })
-    expect(getHeaders()[0].text()).toBe('')
+    expect(getHeaders()[0].text()).toBeUndefined
   })
   it('should display 5 items', () => {
     const headers: PuikTableHeader[] = [{ value: 'firstname' }]
