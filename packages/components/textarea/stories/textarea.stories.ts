@@ -125,7 +125,7 @@ export default {
         }
       }
     },
-    maxlength: {
+    maxLength: {
       control: 'number',
       description: 'Set the max number of character',
       table: {
@@ -186,7 +186,7 @@ export default {
     autoGrow: true,
     rows: 2,
     maxRows: 2,
-    maxlength: undefined,
+    maxLength: undefined,
     modelValue: ''
   }
 } as Meta;
@@ -315,7 +315,7 @@ export const Error: StoryObj = {
 export const CharacterCount: StoryObj = {
   render: Template,
   args: {
-    maxlength: 50
+    maxLength: 50
   },
   parameters: {
     docs: {
@@ -326,7 +326,7 @@ export const CharacterCount: StoryObj = {
       source: {
         code: `
 <!--VueJS Snippet-->
-<puik-textarea id="textarea" v-model="value" :maxlength="50"></puik-textarea>
+<puik-textarea id="textarea" v-model="value" :max-length="50"></puik-textarea>
 
 <!--HTML/CSS Snippet-->
 <div class="puik-textarea">
