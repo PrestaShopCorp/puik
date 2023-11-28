@@ -17,6 +17,8 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
 }
 
 export const getAccordion = (wrapper) => wrapper.findComponent(PuikAccordion)
+export const getAccordionContainer = (component) =>
+  component.find('.puik-accordion')
 export const getAccordionContent = (component) =>
   component.find('.puik-accordion__content')
 export const getAccordionHeader = (component) =>
@@ -153,7 +155,7 @@ describe('Accordion tests', () => {
     expect(getAccordionIcon(wrapper).text()).toBe(icon)
   })
 
-  it('should have data-test attribute on button, title, sub-title, icon', () => {
+  it('should have data-test attribute on accordion container div, button, title, sub-title, icon', () => {
     const template = `
       <puik-accordion-group>
         <puik-accordion name="accordion-1" icon="home" title="title" sub-title="sub-title" data-test="accordion">
@@ -164,6 +166,9 @@ describe('Accordion tests', () => {
     factory(template)
 
     const accordion = getAccordion(wrapper)
+    expect(getAccordionContainer(accordion).attributes('data-test')).toBe(
+      'accordion'
+    )
     expect(getAccordionHeader(accordion).attributes('data-test')).toBe(
       'button-accordion'
     )

@@ -1,5 +1,5 @@
 <template>
-  <div class="puik-input">
+  <div class="puik-input" :data-test="dataTest">
     <div class="puik-input__wrapper" :class="inputClasses">
       <div v-if="$slots.prepend" class="puik-input__prepend">
         <slot name="prepend"></slot>

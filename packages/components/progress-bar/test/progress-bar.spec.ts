@@ -31,9 +31,11 @@ describe('ProgressBar tests', () => {
     )
   })
 
-  it('should have a data-test attribute', () => {
+  it('should have a data-test attribute on progressBar container and content', () => {
     factory({ ...defaultProps, dataTest: 'test' })
+    const progressBarContainer = wrapper.find('.progress-bar__container')
     const progressBarContent = wrapper.find('.progress-bar__content')
-    expect(progressBarContent.attributes('data-test')).toBe('test')
+    expect(progressBarContainer.attributes('data-test')).toBe('test')
+    expect(progressBarContent.attributes('data-test')).toBe('bar-test')
   })
 })
