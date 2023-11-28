@@ -91,6 +91,11 @@ describe('Button tests', () => {
     expect(findButton().classes()).toContain('puik-button--fluid')
   })
 
+  it('should set the button label wrap to false', () => {
+    factory({ wrapLabel: false })
+    expect(findButton().classes()).toContain('puik-button--no-wrap')
+  })
+
   it('should be a router-link if to prop is defined', () => {
     factory({ to: '/test' })
     expect(findButton().element.tagName).toBe('ROUTER-LINK')

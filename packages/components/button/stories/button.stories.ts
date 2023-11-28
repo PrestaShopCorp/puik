@@ -44,6 +44,14 @@ export default {
         },
       },
     },
+    wrapLabel: {
+      description: 'Set the carriage return of the button label',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
     disabled: {
       description: 'Set the button as disabled',
       table: {
@@ -81,6 +89,7 @@ export default {
     variant: 'primary',
     size: 'md',
     fluid: false,
+    wrapLabel: true,
     disabled: false,
     leftIcon: '',
     rightIcon: '',
@@ -117,6 +126,7 @@ export const Default = {
     :size="$sizes"
     :variant="$variants"
     :fluid="true|false"
+    :wrap-label="true|false"
     :disabled="true|false"
     :left-icon="leftIcon"
     :right-icon="rightIcon"

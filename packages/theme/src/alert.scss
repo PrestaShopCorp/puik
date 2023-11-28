@@ -1,7 +1,7 @@
 @use './common/typography.scss';
 
 .puik-alert {
-  @apply relative flex flex-row p-4 border text-primary-800 items-start;
+  @apply relative min-w-fit flex flex-row items-start p-4 border text-primary-800;
   &--success {
     @apply bg-green-50 border border-green;
     .puik-alert__icon {
@@ -30,7 +30,7 @@
     @apply border-0;
   }
   &__container {
-    @apply flex flex-col md:flex-row w-full;
+    @apply flex flex-col md:flex-row md:items-start w-full;
   }
   &__content {
     @apply flex flex-row flex-grow;
@@ -46,7 +46,7 @@
     @extend .puik-body-default;
   }
   &__button {
-    @apply text-sm whitespace-nowrap px-4 py-3 mt-2 ml-9 md:m-0;
+    @apply mt-2 ml-9 md:m-0;
   }
   &__icon {
     @apply mt-0.5 flex-shrink-0;
