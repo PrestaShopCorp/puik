@@ -6,6 +6,7 @@
       { 'puik-alert--no-borders': disableBorders },
     ]"
     :aria-live="ariaLive"
+    :data-test="dataTest"
   >
     <div class="puik-alert__container">
       <div class="puik-alert__content">

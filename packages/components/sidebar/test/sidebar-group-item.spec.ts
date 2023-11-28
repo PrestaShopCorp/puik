@@ -16,6 +16,8 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
   })
 }
 
+const getSidebarGroupItemContainer = () =>
+  wrapper.find('.puik-sidebar-group-item')
 const getIcon = () => wrapper.find('.puik-sidebar-group-item .puik-icon')
 const getAccordion = () => wrapper.find('.puik-sidebar-group-item__accordion')
 const getAccordionTitle = () =>
@@ -111,5 +113,17 @@ describe('Sidebar tests', () => {
     factory(template)
     await getMenuButton().trigger('click')
     expect(getMenuContent().exists()).toBeTruthy()
+  })
+
+  it('should render data-test attribute on container div', async () => {
+    const template = `
+      <puik-sidebar>
+        <puik-sidebar-group-item title="group" icon="store" data-test="test">
+          <puik-sidebar-item icon="home" title="title"></puik-sidebar-item>
+        </puik-sidebar-group-item>
+      </puik-sidebar>
+    `
+    factory(template)
+    expect(getSidebarGroupItemContainer().attributes('data-test')).toBe('test')
   })
 })

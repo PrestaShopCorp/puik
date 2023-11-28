@@ -81,7 +81,7 @@ describe('Alert tests', () => {
     expect(wrapper.emitted('close')).toBeTruthy()
   })
 
-  it('should have a data-test attribute on title, description button and close button', () => {
+  it('should have a data-test attribute on container div, title, description button and close button', () => {
     factory({
       title: faker.lorem.word(2),
       description: faker.lorem.sentence(60),
@@ -89,6 +89,7 @@ describe('Alert tests', () => {
       isClosable: true,
       dataTest: 'alert',
     })
+    expect(findAlert().attributes('data-test')).toBe('alert')
     expect(findTitle().attributes('data-test')).toBe('title-alert')
     expect(findDesc().attributes('data-test')).toBe('description-alert')
     expect(findButton().attributes('data-test')).toBe('button-alert')
