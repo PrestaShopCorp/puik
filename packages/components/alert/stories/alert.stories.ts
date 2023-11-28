@@ -40,6 +40,14 @@ export default {
     buttonLabel: {
       description: 'Label of the button',
     },
+    buttonWrapLabel: {
+      description: 'Set the carriage return of the button label',
+      table: {
+        defaultValue: {
+          summary: true,
+        },
+      },
+    },
     isClosable: {
       description: 'Display a close button',
     },
@@ -59,6 +67,7 @@ export default {
     variant: 'success',
     disableBorders: false,
     buttonLabel: 'Button',
+    buttonWrapLabel: true,
     isClosable: false,
   },
 } as Meta
@@ -118,6 +127,70 @@ export const Default = {
     </div>
     <button class="puik-alert__button">Button</button>
   </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
+export const buttonWrapLabelToFalse: StoryObj = {
+  render: () => ({
+    components: {
+      PuikAlert,
+    },
+    template: `
+      <div class="flex flex-col space-y-4">
+       <puik-alert title="Title" button-label="Button with a very long label" :button-wrap-Label="false">
+        This an alert with a very long description.
+        This an alert with a very long description.
+        This an alert with a very long description.
+        This an alert with a very long description.
+        This an alert with a very long description.
+        This an alert with a very long description.
+        This an alert with a very long description.
+        This an alert with a very long description.
+        This an alert with a very long description.
+       </puik-alert>
+      </div>
+    `,
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-alert
+    title="Title"
+    button-label="No wrap button with a very long label"
+    :button-wrap-Label="false"
+    @click="click"
+  >
+    This an alert with a very long description.
+    This an alert with a very long description.
+    This an alert with a very long description.
+    This an alert with a very long description.
+    This an alert with a very long description.
+    This an alert with a very long description.
+    This an alert with a very long description.
+    This an alert with a very long description.
+    This an alert with a very long description.
+  </puik-alert>
+
+  <!--HTML/CSS Snippet-->
+<div class="puik-alert__container">
+  <div class="puik-alert__content">
+      <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;">check_circle</div>
+      <div class="puik-alert__text">
+          <p class="puik-alert__title">Title</p>
+          <span class="puik-alert__description"> This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. </span>
+      </div>
+  </div>
+  <button class="puik-button puik-button--success puik-button--md puik-button--no-wrap puik-alert__button">
+      Button with a very long label
+  </button>
+</div>
         `,
         language: 'html',
       },

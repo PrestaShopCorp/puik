@@ -40,6 +40,11 @@ describe('Alert tests', () => {
     expect(findAlert().classes()).toContain('puik-alert--warning')
   })
 
+  it('should set the button label wrap to false', () => {
+    factory({ buttonLabel: 'Button', buttonWrapLabel: false })
+    expect(findButton().classes()).toContain('puik-button--no-wrap')
+  })
+
   it('should display a button which emits the click event on click', () => {
     factory({ buttonLabel: 'Button' })
     expect(findButton().exists()).toBeTruthy()

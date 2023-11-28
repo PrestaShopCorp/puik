@@ -22,6 +22,10 @@
     @apply w-full;
   }
 
+  &--no-wrap {
+    @apply whitespace-nowrap;
+  }
+
   &:focus-visible {
     @apply outline-none ring ring-offset-2 ring-blue;
   }

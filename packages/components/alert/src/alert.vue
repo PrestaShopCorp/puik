@@ -31,6 +31,7 @@
       <PuikButton
         v-if="buttonLabel"
         :variant="variant"
+        :wrap-label="buttonWrapLabel"
         class="puik-alert__button"
         :data-test="dataTest != undefined ? `button-${dataTest}` : undefined"
         @click="click"
