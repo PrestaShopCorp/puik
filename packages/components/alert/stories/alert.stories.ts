@@ -214,7 +214,7 @@ export const buttonWrapLabel: StoryObj = {
           <span class="puik-alert__description"> This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. This an alert with a very long description. </span>
       </div>
   </div>
-  <button class="puik-button puik-button--success puik-button--md puik-button--no-wrap puik-alert__button">
+  <button class="puik-button puik-button--success puik-button--md puik-alert__button">
       Button with a very long label
   </button>
 </div>
