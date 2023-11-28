@@ -5,6 +5,7 @@
       `puik-tag puik-tag--${variant as PuikTagColorVariant} puik-tag--${size as PuikTagSizeVariant}`,
       { 'puik-tag--disabled': disabled },
     ]"
+    :data-test="dataTest"
   >
     <PuikIcon v-if="icon && icon != ''" :icon="icon" class="puik-tag__icon" />
     <div class="puik-tag__content">
