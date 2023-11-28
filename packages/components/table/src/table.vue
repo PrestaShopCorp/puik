@@ -206,7 +206,7 @@ import {
   PuikTableSortIcon,
   PuikTableScrollBarPosistion,
 } from './table'
-// import type { ServerOption } from './table'
+import type { ServerSortOption } from './table'
 defineOptions({
   name: 'PuikTable',
 })
@@ -218,20 +218,19 @@ const emit = defineEmits<{
   (e: 'select:all'): void
   (e: 'update:selection', value: number[]): void
   // (e: 'update:serverOptions', value: ServerOption): void
-  (e: 'sortColumn', column: string): void
+  (e: 'sortColumn', column: ServerSortOption): void
 }>()
 const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
 const expandedRows = ref<number[]>([])
 const ScrollBarPosition = ref<string>('left')
-
+const lastScrollLeft = ref(0)
 const sortOrder = ref([])
 const sortIcon = ref({})
 const sortedItems = ref([...props.items])
 const currentSortCol = ref('')
 
 const sortTable = (headerCol: string) => {
-  emit('sortColumn', headerCol)
   for (const col in sortIcon.value) {
     sortIcon.value[col] = PuikTableSortIcon.DEFAULT
   }
@@ -253,11 +252,15 @@ const sortTable = (headerCol: string) => {
   sortedItems.value.sort(
     (a, b) => order * (a[headerCol] < b[headerCol] ? -1 : 1)
   )
+  const options = {
+    sortBy: headerCol,
+    sortOrder: sortOrder.value[headerCol],
+  } as ServerSortOption
+  emit('sortColumn', options)
   currentSortCol.value = headerCol
   return sortedItems.value
 }
 
-const lastScrollLeft = ref(0)
 const getScrollBarPosition = async (event: Event) => {
   const target = event.target as HTMLElement
   if (target.scrollLeft === 0) {

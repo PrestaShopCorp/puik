@@ -11,12 +11,12 @@ export interface PuikTableHeader {
   sortable?: boolean
 }
 
-// export type ServerOption = {
-//   page: number
-//   rowsPerPage: number
-//   sortBy?: string | string[]
-//   sortType?: PuikTableSortOrder | PuikTableSortOrder[]
-// }
+export type ServerSortOption = {
+  // page: number
+  // rowsPerPage: number
+  sortBy?: string
+  sortOrder?: PuikTableSortOrder
+}
 
 export enum PuikTableSortOrder {
   ASC = 'ASC',
