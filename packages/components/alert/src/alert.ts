@@ -40,7 +40,7 @@ export const alertProps = buildProps({
   buttonWrapLabel: {
     type: Boolean,
     required: false,
-    default: true,
+    default: false,
   },
   isClosable: {
     type: Boolean,

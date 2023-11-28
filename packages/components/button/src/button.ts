@@ -41,7 +41,7 @@ export const buttonProps = buildProps({
   wrapLabel: {
     type: Boolean,
     required: false,
-    default: true,
+    default: false,
   },
   disabled: {
     type: Boolean,

@@ -48,7 +48,7 @@ export default {
       description: 'Set the carriage return of the button label',
       table: {
         defaultValue: {
-          summary: true,
+          summary: false,
         },
       },
     },
