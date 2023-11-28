@@ -6,7 +6,7 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 describe('Tag tests', () => {
   let wrapper: VueWrapper<any>
   const findTag = () => wrapper.find('.puik-tag')
-  const findTagContent = () => wrapper.find('.puik-tag__content')
+  const findTagContent = () => wrapper.find('.puik-tag__content p')
   const findLeftIcon = () => wrapper.find('.puik-tag__icon')
 
   const factory = (
@@ -56,11 +56,12 @@ describe('Tag tests', () => {
     expect(findTag().classes()).toContain('puik-tag--disabled')
   })
 
-  it('should have a data-test attribute for the content', () => {
+  it('should have a data-test attribute for the container div and the content', () => {
     factory({
       content: 'long content for displaying the tooltip',
       'data-test': 'test',
     })
+    expect(findTag().attributes('data-test')).toBe('test')
     expect(findTagContent().attributes('data-test')).toBe('content-test')
   })
 })
