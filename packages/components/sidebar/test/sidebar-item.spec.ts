@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
 import { PuikSidebar, PuikSidebarItem } from '../..'
+import { PuikMenuItem } from './../../menu/index'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 let wrapper: VueWrapper<any>
@@ -9,12 +10,15 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
     components: {
       PuikSidebarItem,
       PuikSidebar,
+      PuikMenuItem,
     },
     template,
     ...options,
   })
 }
 
+const getSideBarItem = () => wrapper.find('.puik-sidebar-item')
+const getSideBarItemLabel = () => wrapper.find('.puik-sidebar-item span')
 const getItemButton = () => wrapper.find('.puik-sidebar-item__button')
 
 describe('Sidebar tests', () => {
@@ -68,5 +72,16 @@ describe('Sidebar tests', () => {
     `
     factory(template)
     expect(getItemButton().text()).toBe('title')
+  })
+
+  it('should render a data-test attribute on sidebar item button and label (if sidebar is expanded)', () => {
+    const template = `
+      <puik-sidebar :expanded="true">
+        <puik-sidebar-item title="title" data-test="test"/>
+      </puik-sidebar>
+    `
+    factory(template)
+    expect(getSideBarItem().attributes('data-test')).toBe('buttonTitle-test')
+    expect(getSideBarItemLabel().attributes('data-test')).toBe('title-test')
   })
 })
