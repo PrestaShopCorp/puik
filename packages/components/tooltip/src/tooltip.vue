@@ -3,6 +3,7 @@
     class="puik-tooltip"
     tabindex="0"
     :aria-describedby="id"
+    :data-test="dataTest"
     @mouseover="updateTooltip"
     @mouseleave="start"
   >

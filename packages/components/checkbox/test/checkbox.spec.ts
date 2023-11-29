@@ -6,6 +6,7 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 describe('Checkbox tests', () => {
   let wrapper: VueWrapper<any>
+  const findCheckbox = () => wrapper.find('.puik-checkbox')
   const findInput = () => wrapper.find('.puik-checkbox__input')
   const findLabel = () => wrapper.find('.puik-checkbox__label')
 
@@ -94,8 +95,9 @@ describe('Checkbox tests', () => {
     expect(wrapper.vm.checkboxInputRef.click).not.toHaveBeenCalled()
   })
 
-  it('shouold have a data-test attribute on the input and the label', () => {
+  it('should have a data-test attribute on the container div, the input and the label', () => {
     factory({ label: 'Label', modelValue: false, dataTest: 'test' })
+    expect(findCheckbox().attributes('data-test')).toBe('test')
     expect(findInput().attributes('data-test')).toBe('input-test')
     expect(findLabel().attributes('data-test')).toBe('label-test')
   })

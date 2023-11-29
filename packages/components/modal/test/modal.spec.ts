@@ -233,7 +233,7 @@ describe('Modal tests', () => {
     expect(findHeader().exists()).toBeFalsy()
   })
 
-  it('should have a data-test attribute on title, mainButton, secondButton and closeButton', async () => {
+  it('should have a data-test attribute on container div, title, mainButton, secondButton and closeButton', async () => {
     await factory({
       title: 'Awesome title',
       mainButtonText: 'Awesome main',
@@ -242,6 +242,7 @@ describe('Modal tests', () => {
       hasCloseButton: true,
       dataTest: 'test',
     })
+    expect(findModal().attributes('data-test')).toBe('test')
     expect(findTitle().attributes('data-test')).toBe('title-test')
     expect(findMainButton().attributes('data-test')).toBe('mainButton-test')
     expect(findSecondaryButton().attributes('data-test')).toBe(

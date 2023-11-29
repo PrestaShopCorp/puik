@@ -2,6 +2,7 @@
   <div
     :id="id"
     :class="`puik-avatar puik-avatar--${size} puik-avatar--${type} puik-avatar--${mode}`"
+    :data-test="dataTest"
   >
     <img
       v-if="src && type == PuikAvatarType.PHOTO"

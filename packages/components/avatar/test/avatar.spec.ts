@@ -57,6 +57,14 @@ describe('Avatar tests', () => {
     expect(findImg().attributes().alt).toBe('alt-img')
   })
 
+  it('should have data-test attribute on container div of avatar', () => {
+    factory({
+      type: 'initials',
+      dataTest: 'example',
+    })
+    expect(findAvatar().attributes('data-test')).toBe('example')
+  })
+
   it('should have data-test attribute on initials wrapper', () => {
     factory({
       type: 'initials',

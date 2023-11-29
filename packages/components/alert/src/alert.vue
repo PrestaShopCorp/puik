@@ -6,6 +6,7 @@
       { 'puik-alert--no-borders': disableBorders },
     ]"
     :aria-live="ariaLive"
+    :data-test="dataTest"
   >
     <div class="puik-alert__container">
       <div class="puik-alert__content">
@@ -31,6 +32,7 @@
       <PuikButton
         v-if="buttonLabel"
         :variant="variant"
+        :wrap-label="buttonWrapLabel"
         class="puik-alert__button"
         :data-test="dataTest != undefined ? `button-${dataTest}` : undefined"
         @click="click"
