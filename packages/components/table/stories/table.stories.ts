@@ -144,7 +144,7 @@ export default {
         },
       },
     },
-    '`expanded-row-${rowIndex}`': {
+    'expanded-row': {
       control: 'none',
       description: 'slot for expanded row content',
       table: {
@@ -186,7 +186,15 @@ export default {
       description: 'Event emitted when sorting a column',
       table: {
         type: {
-          summary: 'string',
+          summary: 'sortOption',
+          detail: `
+import type { sortOption } from '@prestashopcorp/puik/es/components/table/src/table'
+
+type sortOption = {
+  sortBy?: string
+  sortOrder?: PuikTableSortOrder
+}
+`,
         },
       },
     },

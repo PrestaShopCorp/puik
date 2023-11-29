@@ -84,10 +84,7 @@
         </tr>
       </thead>
       <tbody class="puik-table__body">
-        <template
-          v-for="(item, rowIndex) in sortedItems"
-          :key="`row-${rowIndex}`"
-        >
+        <template v-for="(item, rowIndex) in data" :key="`row-${rowIndex}`">
           <tr class="puik-table__body__row">
             <td
               v-if="selectable || expandable"
@@ -176,17 +173,63 @@
             class="puik-table__body__row--expanded"
           >
             <td
-              :colspan="headers.length"
-              class="puik-table__body__row__item--expanded"
+              v-if="stickyFirstCol"
+              :class="[
+                'puik-table__body__row__item puik-table__body__row__item--selection',
+                { 'puik-table__body__row__item--sticky': stickyFirstCol },
+                {
+                  'puik-table__body__row__item--sticky-scroll':
+                    stickyFirstCol &&
+                    ScrollBarPosition ==
+                      PuikTableScrollBarPosistion.ISSCROLLING,
+                },
+                {
+                  'puik-table__body__row__item--sticky-left':
+                    stickyFirstCol &&
+                    ScrollBarPosition == PuikTableScrollBarPosistion.LEFT,
+                },
+                {
+                  'puik-table__body__row__item--sticky-right':
+                    stickyFirstCol &&
+                    ScrollBarPosition == PuikTableScrollBarPosistion.RIGHT,
+                },
+              ]"
+            ></td>
+            <td
+              :colspan="
+                stickyFirstCol && stickyLastCol
+                  ? headers.length - 1
+                  : headers.length
+              "
+              class="puik-table__body__row__item puik-table__body__row__item--expanded"
             >
-              <slot
-                :name="`expanded-row-${rowIndex}`"
-                :item="item"
-                :index="rowIndex"
-              >
+              <slot name="expanded-row" :item="item" :index="rowIndex">
                 {{ item }}
               </slot>
             </td>
+            <td
+              v-if="stickyLastCol"
+              :class="[
+                'puik-table__body__row__item puik-table__body__row__item--selection',
+                { 'puik-table__body__row__item--sticky': stickyLastCol },
+                {
+                  'puik-table__body__row__item--sticky-scroll':
+                    stickyLastCol &&
+                    ScrollBarPosition ==
+                      PuikTableScrollBarPosistion.ISSCROLLING,
+                },
+                {
+                  'puik-table__body__row__item--sticky-left':
+                    stickyLastCol &&
+                    ScrollBarPosition == PuikTableScrollBarPosistion.LEFT,
+                },
+                {
+                  'puik-table__body__row__item--sticky-right':
+                    stickyLastCol &&
+                    ScrollBarPosition == PuikTableScrollBarPosistion.RIGHT,
+                },
+              ]"
+            ></td>
           </tr>
         </template>
       </tbody>
@@ -206,7 +249,7 @@ import {
   PuikTableSortIcon,
   PuikTableScrollBarPosistion,
 } from './table'
-import type { ServerSortOption } from './table'
+import type { sortOption } from './table'
 defineOptions({
   name: 'PuikTable',
 })
@@ -217,8 +260,7 @@ const emit = defineEmits<{
   (e: 'select', index: number): void
   (e: 'select:all'): void
   (e: 'update:selection', value: number[]): void
-  // (e: 'update:serverOptions', value: ServerOption): void
-  (e: 'sortColumn', column: ServerSortOption): void
+  (e: 'sortColumn', column: sortOption): void
 }>()
 const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
@@ -227,13 +269,15 @@ const ScrollBarPosition = ref<string>('left')
 const lastScrollLeft = ref(0)
 const sortOrder = ref([])
 const sortIcon = ref({})
-const sortedItems = ref([...props.items])
+const data = ref([...props.items])
 const currentSortCol = ref('')
 
-const sortTable = (headerCol: string) => {
+const resetSortIcons = () => {
   for (const col in sortIcon.value) {
     sortIcon.value[col] = PuikTableSortIcon.DEFAULT
   }
+}
+const setSortOrderAndIcon = (headerCol: string) => {
   if (sortOrder.value[headerCol]) {
     sortOrder.value[headerCol] =
       sortOrder.value[headerCol] === PuikTableSortOrder.ASC &&
@@ -248,17 +292,25 @@ const sortTable = (headerCol: string) => {
     sortOrder.value[headerCol] = PuikTableSortOrder.ASC
     sortIcon.value[headerCol] = PuikTableSortIcon.ASC
   }
+}
+const sortDataLocally = (headerCol: string) => {
   const order = sortOrder.value[headerCol] === PuikTableSortOrder.ASC ? 1 : -1
-  sortedItems.value.sort(
-    (a, b) => order * (a[headerCol] < b[headerCol] ? -1 : 1)
-  )
+  data.value.sort((a, b) => order * (a[headerCol] < b[headerCol] ? -1 : 1))
+}
+const sortTable = (headerCol: string) => {
+  if (!props.sortFromServer) {
+    sortDataLocally(headerCol)
+  }
+  resetSortIcons()
+  setSortOrderAndIcon(headerCol)
+
   const options = {
     sortBy: headerCol,
     sortOrder: sortOrder.value[headerCol],
-  } as ServerSortOption
+  } as sortOption
   emit('sortColumn', options)
   currentSortCol.value = headerCol
-  return sortedItems.value
+  return data.value
 }
 
 const getScrollBarPosition = async (event: Event) => {
@@ -266,7 +318,7 @@ const getScrollBarPosition = async (event: Event) => {
   if (target.scrollLeft === 0) {
     ScrollBarPosition.value = PuikTableScrollBarPosistion.LEFT
   } else if (
-    Math.abs(target.scrollLeft + target.offsetWidth - target.scrollWidth) < 10
+    Math.abs(target.scrollLeft + target.offsetWidth - target.scrollWidth) < 20
   ) {
     ScrollBarPosition.value = PuikTableScrollBarPosistion.RIGHT
   } else {

@@ -79,7 +79,7 @@
   tr {
     .puik-table__head__row__item--sticky,
     .puik-table__body__row__item--sticky {
-      @apply sticky bg-white;
+      @apply sticky bg-white z-10;
     }
 
     .puik-table__head__row__item--sticky-scroll,

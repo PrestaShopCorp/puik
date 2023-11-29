@@ -11,9 +11,7 @@ export interface PuikTableHeader {
   sortable?: boolean
 }
 
-export type ServerSortOption = {
-  // page: number
-  // rowsPerPage: number
+export type sortOption = {
   sortBy?: string
   sortOrder?: PuikTableSortOrder
 }
@@ -59,6 +57,11 @@ export const tableProps = buildProps({
     type: Array as PropType<number[]>,
     required: false,
     default: () => [],
+  },
+  sortFromServer: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
   fullWidth: {
     type: Boolean,

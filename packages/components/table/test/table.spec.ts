@@ -3,8 +3,12 @@ import { describe, it, expect } from 'vitest'
 import { faker } from '@faker-js/faker'
 import { locales } from '@puik/locale'
 import PuikTable from '../src/table.vue'
+import {
+  PuikTableSortOrder,
+  type PuikTableHeader,
+  type sortOption,
+} from '../src/table'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
-import type { PuikTableHeader } from '../src/table'
 
 const defaultItems = Array(5)
   .fill(null)
@@ -313,5 +317,20 @@ describe('Table tests', () => {
     expect(header.classes()).toContain(
       'puik-table__head__row__item--expandable'
     )
+  })
+
+  it('should emit sortColum event', async () => {
+    const headers: PuikTableHeader[] = [{ value: 'firstname', sortable: true }]
+    factory({ headers })
+    const header = getHeaders()[0]
+    const SortButton = header.find('.puik-button')
+    const payload: sortOption = {
+      sortBy: 'firstname',
+      sortOrder: PuikTableSortOrder.ASC,
+    }
+    expect(SortButton.classes()).toContain('puik-button')
+    await SortButton.trigger('click')
+    expect(wrapper.emitted('sortColumn')).toBeTruthy()
+    expect(wrapper.emitted('sortColumn')?.[0]?.[0]).toStrictEqual(payload)
   })
 })
