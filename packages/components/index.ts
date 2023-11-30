@@ -19,6 +19,7 @@ export * from './button-group';
 export * from './skeleton-loader';
 export * from './breadcrumb';
 export * from './modal';
+export * from './modal_v2';
 export * from './snackbar';
 export * from './table';
 export * from './spinner-loader';
