@@ -58,18 +58,84 @@
   &__body,
   > tbody {
     &__row,
-    > tr {
+    > .puik-table__head__row,
+    .puik-table__body__row {
       @apply border-t-[1px];
       &:hover {
-        @apply bg-primary-200;
+        .puik-table__body__row__item,
+        .puik-table__body__row__item::before {
+          @apply bg-primary-200;
+        }
       }
-      &__item,
-      > td {
+      &__item {
         @extend .puik-body-default;
         @apply text-primary-800;
         @include puik-table-item();
         @include puik-table-text-align();
       }
+    }
+  }
+
+  tr {
+    .puik-table__head__row__item--sticky,
+    .puik-table__body__row__item--sticky {
+      @apply sticky bg-white;
+    }
+
+    .puik-table__head__row__item--sticky-scroll,
+    .puik-table__body__row__item--sticky-scroll,
+    .puik-table__head__row__item--sticky-right:first-child,
+    .puik-table__body__row__item--sticky-right:first-child,
+    .puik-table__head__row__item--sticky-left:last-child,
+    .puik-table__body__row__item--sticky-left:last-child {
+      &::before {
+        @apply content-[''] block absolute top-0 bottom-0 w-1.5 bg-white;
+      }
+    }
+
+    .puik-table__head__row__item--sticky:first-child,
+    .puik-table__body__row__item--sticky:first-child,
+    .puik-table__head__row__item--sticky-right:first-child,
+    .puik-table__body__row__item--sticky-right:first-child {
+      @apply -left-px;
+    }
+
+    .puik-table__head__row__item--sticky:last-child,
+    .puik-table__body__row__item--sticky:last-child,
+    .puik-table__head__row__item--sticky-left:last-child,
+    .puik-table__body__row__item--sticky-left:last-child {
+      @apply -right-px;
+    }
+
+    .puik-table__head__row__item--sticky-scroll:first-child,
+    .puik-table__body__row__item--sticky-scroll:first-child,
+    .puik-table__head__row__item--sticky-right:first-child,
+    .puik-table__body__row__item--sticky-right:first-child {
+      &::before {
+        @apply right-0 shadow-[4px_0_7px_-1px_rgba(29,29,27,0.1)];
+      }
+    }
+
+    .puik-table__head__row__item--sticky-scroll:last-child,
+    .puik-table__body__row__item--sticky-scroll:last-child,
+    .puik-table__head__row__item--sticky-left:last-child,
+    .puik-table__body__row__item--sticky-left:last-child {
+      &::before {
+        @apply left-0 shadow-[-4px_0_7px_-1px_rgba(29,29,27,0.1)];
+      }
+    }
+  }
+
+  .puik-table__body__row__item--expanded {
+    @apply p-0;
+  }
+  .puik-table__body__row__item__container {
+    @apply flex items-center space-x-3;
+    .puik-icon {
+      @apply select-none cursor-pointer -rotate-0 transform transition-transform duration-150 ease-in-out;
+    }
+    .puik-icon__expand {
+      @apply -rotate-180 transform transition-transform duration-100 ease-in-out;
     }
   }
 }
