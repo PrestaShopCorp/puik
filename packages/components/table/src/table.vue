@@ -1,13 +1,25 @@
 <template>
-  <div class="puik-table__container">
+  <div class="puik-table__container" @scroll="getScrollBarPosition">
     <table class="puik-table" :class="{ 'puik-table--full-width': fullWidth }">
       <thead class="puik-table__head">
         <tr class="puik-table__head__row">
           <th
-            v-if="selectable"
-            class="puik-table__head__row__item puik-table__head__row__item--selection"
+            v-if="selectable || expandable"
+            :class="[
+              'puik-table__head__row__item',
+              { 'puik-table__head__row__item--sticky': stickyFirstCol },
+              {
+                'puik-table__head__row__item--sticky-scroll':
+                  stickyFirstCol &&
+                  (ScrollBarPosition === 'isScrolling' ||
+                    ScrollBarPosition === 'right'),
+              },
+              { 'puik-table__head__row__item--selection': selectable },
+              { 'puik-table__head__row__item--expandable': expandable },
+            ]"
           >
             <puik-checkbox
+              v-if="selectable"
               :model-value="selectAll"
               :indeterminate="indeterminate"
               class="puik-table__head__row__item--selection__checkbox"
@@ -16,17 +28,30 @@
               {{ selectAllLabel }}
             </puik-checkbox>
           </th>
+
           <th
             v-for="(header, index) in headers"
             :key="`headers${header.value}`"
             :class="[
-              'puik-table__head__row__item',
               `puik-table__head__row__item puik-table__head__row__item--${
                 header.align ?? 'left'
               }`,
               {
                 [`puik-table__head__row__item--${header.size}`]:
                   header?.size && !header?.width,
+              },
+              { 'puik-table__head__row__item--sticky': isSticky(index) },
+              {
+                'puik-table__head__row__item--sticky-scroll':
+                  isSticky(index) && ScrollBarPosition === 'isScrolling',
+              },
+              {
+                'puik-table__head__row__item--sticky-left':
+                  isSticky(index) && ScrollBarPosition === 'left',
+              },
+              {
+                'puik-table__head__row__item--sticky-right':
+                  isSticky(index) && ScrollBarPosition === 'right',
               },
             ]"
             :style="{ minWidth: header.width, width: header.width }"
@@ -42,34 +67,100 @@
         </tr>
       </thead>
       <tbody class="puik-table__body">
-        <tr
-          v-for="(item, rowIndex) in items"
-          :key="`row-${rowIndex}`"
-          class="puik-table__body__row"
-        >
-          <td
-            v-if="selectable"
-            class="puik-table__body__row__item puik-table__body__row__item--selection"
-          >
-            <puik-checkbox
-              :model-value="getSelected(rowIndex)"
-              class="puik-table__body__row__item--selection__checkbox"
-              @click="handleClick(rowIndex)"
+        <template v-for="(item, rowIndex) in items" :key="`row-${rowIndex}`">
+          <tr class="puik-table__body__row">
+            <td
+              v-if="selectable || expandable"
+              :class="[
+                'puik-table__body__row__item puik-table__body__row__item--selection',
+                {
+                  'puik-table__body__row__item--sticky': stickyFirstCol,
+                },
+                {
+                  'puik-table__body__row__item--sticky-scroll':
+                    stickyFirstCol && ScrollBarPosition === 'isScrolling',
+                },
+                {
+                  'puik-table__body__row__item--sticky-left':
+                    stickyFirstCol && ScrollBarPosition === 'left',
+                },
+                {
+                  'puik-table__body__row__item--sticky-right':
+                    stickyFirstCol && ScrollBarPosition === 'right',
+                },
+              ]"
             >
-              {{ getSelectLabel(rowIndex) }}
-            </puik-checkbox>
-          </td>
-          <td
-            v-for="(header, colIndex) in headers"
-            :key="`col-${colIndex}`"
-            class="puik-table__body__row__item"
-            :class="`puik-table__body__row__item--${header.align ?? 'left'}`"
+              <div class="puik-table__body__row__item__container">
+                <puik-checkbox
+                  v-if="selectable"
+                  :model-value="getSelected(rowIndex)"
+                  class="puik-table__body__row__item--selection__checkbox"
+                  @click="handleClick(rowIndex)"
+                >
+                  {{ getSelectLabel(rowIndex) }}
+                </puik-checkbox>
+                <PuikIcon
+                  v-if="expandable"
+                  :class="[
+                    { 'puik-icon__expand': expandedRows.includes(rowIndex) },
+                  ]"
+                  icon="keyboard_arrow_down"
+                  font-size="24"
+                  @click="expandRow(rowIndex)"
+                />
+              </div>
+            </td>
+
+            <td
+              v-for="(header, colIndex) in headers"
+              :key="`col-${colIndex}`"
+              :class="[
+                `puik-table__body__row__item puik-table__body__row__item--${
+                  header.align ?? 'left'
+                }`,
+                { 'puik-table__body__row__item--sticky': isSticky(colIndex) },
+                {
+                  'puik-table__body__row__item--sticky-scroll':
+                    isSticky(colIndex) && ScrollBarPosition == 'isScrolling',
+                },
+                {
+                  'puik-table__body__row__item--sticky-left':
+                    isSticky(colIndex) && ScrollBarPosition == 'left',
+                },
+                {
+                  'puik-table__body__row__item--sticky-right':
+                    isSticky(colIndex) && ScrollBarPosition == 'right',
+                },
+              ]"
+            >
+              <slot
+                :name="`item-${header.value}`"
+                :item="item"
+                :index="rowIndex"
+              >
+                {{ item[header.value] }}
+              </slot>
+            </td>
+          </tr>
+          <tr
+            v-if="expandedRows.includes(rowIndex)"
+            :key="`expanded-row-${rowIndex}`"
+            class="puik-table__body__row--expanded"
           >
-            <slot :name="`item-${header.value}`" :item="item" :index="rowIndex">
-              {{ item[header.value] }}
-            </slot>
-          </td>
-        </tr>
+            <td
+              :colspan="headers.length"
+              class="puik-table__body__row__item--expanded"
+            >
+              <slot
+                :name="`expanded-row-${rowIndex}`"
+                :item="item"
+                :index="rowIndex"
+              >
+                {{ item }}
+              </slot>
+            </td>
+          </tr>
+        </template>
       </tbody>
     </table>
   </div>
@@ -79,6 +170,7 @@
 import { computed, ref, watch } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
+import PuikIcon from '../../icon/src/icon.vue'
 import { tableProps } from './table'
 defineOptions({
   name: 'PuikTable',
@@ -92,6 +184,48 @@ const emit = defineEmits<{
 }>()
 const { t } = useLocale()
 const checked = ref<number[]>(props.selection)
+const expandedRows = ref<number[]>([])
+const ScrollBarPosition = ref<string>('left')
+let lastScrollLeft = 0
+
+const getScrollBarPosition = async (event: Event) => {
+  const target = event.target as HTMLElement
+  if (target.scrollLeft === 0) {
+    ScrollBarPosition.value = 'left'
+  } else if (
+    Math.abs(target.scrollLeft + target.offsetWidth - target.scrollWidth) < 10
+  ) {
+    ScrollBarPosition.value = 'right'
+  } else {
+    ScrollBarPosition.value = 'isScrolling'
+  }
+
+  lastScrollLeft = target.scrollLeft
+}
+
+const isSticky = (
+  index: number,
+  selectable: boolean = props.selectable,
+  expandable: boolean = props.expandable
+): boolean => {
+  if (selectable || expandable) {
+    return props.stickyLastCol && index === props.headers.length - 1
+  } else {
+    return (
+      (props.stickyFirstCol && index === 0) ||
+      (props.stickyLastCol && index === props.headers.length - 1)
+    )
+  }
+}
+
+const expandRow = (rowIndex: number) => {
+  const position = expandedRows.value.indexOf(rowIndex)
+  if (position !== -1) {
+    expandedRows.value.splice(position, 1)
+  } else {
+    expandedRows.value.push(rowIndex)
+  }
+}
 
 const selectAll = computed(() => {
   if (indeterminate.value) return false

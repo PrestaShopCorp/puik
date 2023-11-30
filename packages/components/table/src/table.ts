@@ -20,6 +20,11 @@ export const tableProps = buildProps({
     required: false,
     default: () => [],
   },
+  expandable: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   selectable: {
     type: Boolean,
     required: false,
@@ -31,6 +36,16 @@ export const tableProps = buildProps({
     default: () => [],
   },
   fullWidth: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  stickyFirstCol: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  stickyLastCol: {
     type: Boolean,
     required: false,
     default: false,
