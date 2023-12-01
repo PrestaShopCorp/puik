@@ -1,6 +1,7 @@
 <template>
   <div
     class="puik-accordion"
+    :data-test="dataTest"
     :class="{
       'puik-accordion--expanded': isExpanded,
       'puik-accordion--disabled': disabled,

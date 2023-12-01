@@ -101,6 +101,11 @@ export default {
     screens: {
       xs: '320px'
     },
+    minHeight: {
+      sm: '1.75rem',
+      md: '2.25rem',
+      lg: '3rem'
+    },
     opacity: {
       overlay: '0.8'
     },

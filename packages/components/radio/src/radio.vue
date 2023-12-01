@@ -1,5 +1,8 @@
 <template>
-  <div class="puik-radio">
+  <div
+    class="puik-radio"
+    :data-test="dataTest"
+  >
     <input
       :id="id"
       ref="radioInputRef"

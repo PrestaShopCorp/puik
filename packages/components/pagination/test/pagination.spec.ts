@@ -292,7 +292,7 @@ describe('Pagination tests', () => {
     expect(options.length).toBe(2);
   });
 
-  it('should have a data-test attribute on nextButton, previousButton and label', () => {
+  it('should have a data-test attribute on container nav, nextButton, previousButton and label', () => {
     factory({
       ...propsData,
       variant: PuikPaginationVariants.Large,
@@ -302,6 +302,7 @@ describe('Pagination tests', () => {
     expect(findPreviousButton().attributes('data-test')).toBe(
       'previousButton-test'
     );
+    expect(findPagination().attributes('data-test')).toBe('test');
     expect(findNextButton().attributes('data-test')).toBe('nextButton-test');
     expect(findLabel().attributes('data-test')).toBe('label-test');
   });

@@ -1,9 +1,12 @@
 <template>
-  <div class="progress-bar__container">
+  <div
+    class="progress-bar__container"
+    :data-test="dataTest"
+  >
     <div
       :class="barClass"
       :style="{ width: `${percentage}%` }"
-      :data-test="dataTest"
+      :data-test="dataTest != undefined ? `bar-${dataTest}` : undefined"
       class="progress-bar__content"
     />
   </div>

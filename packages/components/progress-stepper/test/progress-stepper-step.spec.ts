@@ -29,16 +29,20 @@ describe('ProgressStepperStep tests', () => {
   };
 
   const getStep = () => wrapper.findComponent(PuikProgressStepperStep);
+  const getProgressStepperStep = () =>
+    getStep().find('.puik-progress-stepper-step');
   const getButton = () => getStep().find('.puik-progress-stepper-step__button');
   const getText = () => getStep().find('.puik-progress-stepper-step__text');
   const getAdditionalText = () =>
     getStep().find('.puik-progress-stepper-step__additional-text');
 
-  it('should have a step with data-test on button, text and additionnalText', () => {
+  it('should have a step with data-test on container div, button, text and additionnalText', () => {
     factory();
+    const container = getProgressStepperStep();
     const button = getButton();
     const text = getText();
     const additionalText = getAdditionalText();
+    expect(container.attributes('data-test')).toBe('test');
     expect(button.attributes('data-test')).toBe('stepButton-test');
     expect(text.attributes('data-test')).toBe('text-test');
     expect(additionalText.attributes('data-test')).toBe('additionalText-test');

@@ -26,6 +26,7 @@ export interface ButtonProps {
   variant?: PuikButtonVariants | `${PuikButtonVariants}`
   size?: PuikButtonSizes | `${PuikButtonSizes}`
   fluid?: boolean
+  wrapLabel?: boolean
   disabled?: boolean
   leftIcon?: string
   rightIcon?: string

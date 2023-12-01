@@ -4,6 +4,7 @@
     :class="{
       'puik-sidebar-group-item--active': active,
     }"
+    :data-test="dataTest"
   >
     <puik-accordion
       v-if="isExpanded"

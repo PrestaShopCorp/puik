@@ -53,12 +53,13 @@ describe('Tag tests', () => {
     expect(findTag().classes()).toContain('puik-tag--disabled');
   });
 
-  it('should have a data-test attribute for the content', () => {
+  it('should have a data-test attribute for the container div and the content', () => {
     factory({
       id: 'puik-tag-example',
       content: 'long content for displaying the tooltip',
       dataTest: 'test'
     });
+    expect(findTag().attributes('data-test')).toBe('test');
     expect(findTagContent().attributes('data-test')).toBe('content-test');
   });
 });

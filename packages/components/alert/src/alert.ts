@@ -21,6 +21,7 @@ export interface AlertProps {
   disableBorders?: boolean
   isClosable?: boolean
   buttonLabel?: string
+  buttonWrapLabel?: boolean
   ariaLive?: 'polite' | 'assertive'
   dataTest?: string
 }

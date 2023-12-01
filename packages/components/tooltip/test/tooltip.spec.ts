@@ -4,6 +4,7 @@ import { PuikTooltip, TooltipProps } from '@prestashopcorp/puik-components';
 
 describe('Tooltip tests', () => {
   let wrapper: VueWrapper<any>;
+  const findToolTipContainer = () => wrapper.find('.puik-tooltip');
   const findTitle = () => wrapper.find('.puik-tooltip__tip__content__title');
   const findDescription = () =>
     wrapper.find('.puik-tooltip__tip__content__description');
@@ -72,12 +73,13 @@ describe('Tooltip tests', () => {
     );
   });
 
-  it('should have a data-test attribute for the content, the title and the description', () => {
+  it('should have a data-test attribute for the container div, the content, the title and the description', () => {
     factory({
       title: 'long title for displaying the tooltip',
       description: 'long description for displaying the tooltip',
       dataTest: 'test'
     });
+    expect(findToolTipContainer().attributes('data-test')).toBe('test');
     expect(findTitle().attributes('data-test')).toBe('title-test');
     expect(findDescription().attributes('data-test')).toBe('description-test');
     expect(findWrapper().attributes('data-test')).toBe('content-test');

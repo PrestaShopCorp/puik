@@ -6,6 +6,7 @@ describe('Input tests', () => {
   let wrapper: VueWrapper<any>;
 
   const findField = () => wrapper.find('.puik-input__field');
+  const findInput = () => wrapper.find('.puik-input');
   const findWrapper = () => wrapper.find('.puik-input__wrapper');
   const findHint = () => wrapper.find('.puik-input__hint__text');
   const findError = () => wrapper.find('.puik-input__hint__error');
@@ -182,7 +183,7 @@ describe('Input tests', () => {
     expect(findAppend().text()).toBe('$');
   });
 
-  it('should have a data-tes attribut for the input and the error message', () => {
+  it('should have a data-tes attribut for the container div, the input and the error message', () => {
     const error = 'This is an error message';
     factory(
       { modelValue: 'value', type: 'text', dataTest: 'test' },
@@ -192,6 +193,7 @@ describe('Input tests', () => {
         }
       }
     );
+    expect(findInput().attributes('data-test')).toBe('test');
     expect(findField().attributes('data-test')).toBe('input-test');
     expect(findErrorMessage().attributes('data-test')).toBe('error-test');
   });

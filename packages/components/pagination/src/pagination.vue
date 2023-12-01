@@ -4,6 +4,7 @@
     :class="[`puik-pagination--${variant}`]"
     role="navigation"
     :aria-label="t('puik.pagination.ariaLabel')"
+    :data-test="dataTest"
   >
     <pagination-loader
       v-if="variant === PuikPaginationVariants.Loader"

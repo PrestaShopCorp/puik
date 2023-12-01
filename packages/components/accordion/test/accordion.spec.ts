@@ -14,18 +14,20 @@ const factory = (template: string, options: ComponentMountingOptions<any> = {}) 
   });
 };
 
-export const getAccordion = (wrapper) => wrapper.findComponent(PuikAccordion);
-export const getAccordionContent = (component) =>
+export const getAccordion = (wrapper: VueWrapper<any>) => wrapper.findComponent(PuikAccordion);
+export const getAccordionContainer = (component: VueWrapper<any>) =>
+  component.find('.puik-accordion');
+export const getAccordionContent = (component: VueWrapper<any>) =>
   component.find('.puik-accordion__content');
-export const getAccordionHeader = (component) =>
+export const getAccordionHeader = (component: VueWrapper<any>) =>
   component.find('.puik-accordion__header');
-export const getAccordionTitle = (component) =>
+export const getAccordionTitle = (component: VueWrapper<any>) =>
   component.find('.puik-accordion__header__content__title');
-export const getAccordionSubTitle = (component) =>
+export const getAccordionSubTitle = (component: VueWrapper<any>) =>
   component.find('.puik-accordion__header__content__sub-title');
-export const getAccordionExpandIcon = (component) =>
+export const getAccordionExpandIcon = (component: VueWrapper<any>) =>
   component.find('.puik-accordion__header__expand__icon');
-export const getAccordionIcon = (component) =>
+export const getAccordionIcon = (component: VueWrapper<any>) =>
   component.find('.puik-accordion__header__icon');
 
 describe('Accordion tests', () => {
@@ -44,7 +46,7 @@ describe('Accordion tests', () => {
     expect(wrapper).toBeTruthy();
   });
 
-  it('should accordion emit event', () => {
+  it('should accordion emit event', async () => {
     const template = `
       <puik-accordion-group>
         <puik-accordion name="accordion-1" title="title-1">
@@ -55,7 +57,7 @@ describe('Accordion tests', () => {
     factory(template);
 
     const accordion = getAccordion(wrapper);
-    getAccordionHeader(accordion).trigger('click');
+    await getAccordionHeader(accordion).trigger('click');
     expect(accordion.emitted('click')).toBeTruthy();
   });
 
@@ -151,7 +153,7 @@ describe('Accordion tests', () => {
     expect(getAccordionIcon(wrapper).text()).toBe(icon);
   });
 
-  it('should have data-test attribute on button, title, sub-title, icon', () => {
+  it('should have data-test attribute on accordion container div, button, title, sub-title, icon', () => {
     const template = `
       <puik-accordion-group>
         <puik-accordion name="accordion-1" icon="home" title="title" sub-title="sub-title" data-test="accordion">
@@ -162,6 +164,9 @@ describe('Accordion tests', () => {
     factory(template);
 
     const accordion = getAccordion(wrapper);
+    expect(getAccordionContainer(accordion).attributes('data-test')).toBe(
+      'accordion'
+    );
     expect(getAccordionHeader(accordion).attributes('data-test')).toBe(
       'button-accordion'
     );

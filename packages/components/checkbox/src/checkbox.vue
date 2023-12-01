@@ -1,5 +1,8 @@
 <template>
-  <div class="puik-checkbox">
+  <div
+    class="puik-checkbox"
+    :data-test="dataTest"
+  >
     <input
       :id="id"
       ref="checkboxInputRef"

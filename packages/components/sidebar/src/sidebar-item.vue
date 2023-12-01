@@ -4,6 +4,7 @@
     v-slot="{ active: focused }"
     class="puik-sidebar-item"
     :class="{ 'puik-sidebar-item--active': active }"
+    :data-test="dataTest"
   >
     <puik-button
       :aria-label="title"

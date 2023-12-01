@@ -3,6 +3,7 @@
     :open="isOpen"
     class="puik-modal"
     :class="[`puik-modal--${variant}`, `puik-modal--${size}`]"
+    :data-test="dataTest"
     @close="sendCloseModalEvent()"
   >
     <div class="puik-modal__dialogPanelContainer">

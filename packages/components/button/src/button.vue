@@ -8,6 +8,7 @@
       `puik-button--${size}`,
       { 'puik-button--disabled': disabled },
       { 'puik-button--fluid': fluid },
+      { 'puik-button--no-wrap': !wrapLabel },
     ]"
     :disabled="disabled"
     :data-test="dataTest"

@@ -22,9 +22,12 @@ export interface PuikTableHeader {
 export interface TableProps {
   headers: PuikTableHeader[]
   items?: any[]
+  expandable?: boolean
   selectable?: boolean
   selection?: number[]
   fullWidth?: boolean
+  stickyFirstCol?: boolean
+  stickyLastCol?: boolean
 }
 
 export type TableInstance = InstanceType<typeof Table>;
