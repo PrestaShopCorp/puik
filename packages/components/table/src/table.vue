@@ -12,8 +12,8 @@
                 'puik-table__head__row__item--sticky-scroll':
                   stickyFirstCol &&
                   (ScrollBarPosition ===
-                    PuikTableScrollBarPosistion.ISSCROLLING ||
-                    ScrollBarPosition === PuikTableScrollBarPosistion.RIGHT),
+                    PuikTableScrollBarPosistion.IsScrolling ||
+                    ScrollBarPosition === PuikTableScrollBarPosistion.Right),
               },
               { 'puik-table__head__row__item--selection': selectable },
               { 'puik-table__head__row__item--expandable': expandable },
@@ -45,17 +45,17 @@
               {
                 'puik-table__head__row__item--sticky-scroll':
                   isSticky(index) &&
-                  ScrollBarPosition === PuikTableScrollBarPosistion.ISSCROLLING,
+                  ScrollBarPosition === PuikTableScrollBarPosistion.IsScrolling,
               },
               {
                 'puik-table__head__row__item--sticky-left':
                   isSticky(index) &&
-                  ScrollBarPosition === PuikTableScrollBarPosistion.LEFT,
+                  ScrollBarPosition === PuikTableScrollBarPosistion.Left,
               },
               {
                 'puik-table__head__row__item--sticky-right':
                   isSticky(index) &&
-                  ScrollBarPosition === PuikTableScrollBarPosistion.RIGHT,
+                  ScrollBarPosition === PuikTableScrollBarPosistion.Right,
               },
             ]"
             :style="{ minWidth: header.width, width: header.width }"
@@ -74,7 +74,7 @@
                 <PuikButton
                   v-if="header.sortable"
                   :right-icon="
-                    sortIcon[header.value] ?? PuikTableSortIcon.DEFAULT
+                    sortIcon[header.value] ?? PuikTableSortIcon.Default
                   "
                   variant="primary-reverse"
                   size="sm"
@@ -99,17 +99,17 @@
                   'puik-table__body__row__item--sticky-scroll':
                     stickyFirstCol &&
                     ScrollBarPosition ===
-                      PuikTableScrollBarPosistion.ISSCROLLING,
+                      PuikTableScrollBarPosistion.IsScrolling,
                 },
                 {
                   'puik-table__body__row__item--sticky-left':
                     stickyFirstCol &&
-                    ScrollBarPosition === PuikTableScrollBarPosistion.LEFT,
+                    ScrollBarPosition === PuikTableScrollBarPosistion.Left,
                 },
                 {
                   'puik-table__body__row__item--sticky-right':
                     stickyFirstCol &&
-                    ScrollBarPosition === PuikTableScrollBarPosistion.RIGHT,
+                    ScrollBarPosition === PuikTableScrollBarPosistion.Right,
                 },
               ]"
             >
@@ -146,17 +146,17 @@
                   'puik-table__body__row__item--sticky-scroll':
                     isSticky(colIndex) &&
                     ScrollBarPosition ==
-                      PuikTableScrollBarPosistion.ISSCROLLING,
+                      PuikTableScrollBarPosistion.IsScrolling,
                 },
                 {
                   'puik-table__body__row__item--sticky-left':
                     isSticky(colIndex) &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.LEFT,
+                    ScrollBarPosition == PuikTableScrollBarPosistion.Left,
                 },
                 {
                   'puik-table__body__row__item--sticky-right':
                     isSticky(colIndex) &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.RIGHT,
+                    ScrollBarPosition == PuikTableScrollBarPosistion.Right,
                 },
               ]"
             >
@@ -187,17 +187,17 @@
                   'puik-table__body__row__item--sticky-scroll':
                     stickyFirstCol &&
                     ScrollBarPosition ==
-                      PuikTableScrollBarPosistion.ISSCROLLING,
+                      PuikTableScrollBarPosistion.IsScrolling,
                 },
                 {
                   'puik-table__body__row__item--sticky-left':
                     stickyFirstCol &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.LEFT,
+                    ScrollBarPosition == PuikTableScrollBarPosistion.Left,
                 },
                 {
                   'puik-table__body__row__item--sticky-right':
                     stickyFirstCol &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.RIGHT,
+                    ScrollBarPosition == PuikTableScrollBarPosistion.Right,
                 },
               ]"
             ></td>
@@ -222,17 +222,17 @@
                   'puik-table__body__row__item--sticky-scroll':
                     stickyLastCol &&
                     ScrollBarPosition ==
-                      PuikTableScrollBarPosistion.ISSCROLLING,
+                      PuikTableScrollBarPosistion.IsScrolling,
                 },
                 {
                   'puik-table__body__row__item--sticky-left':
                     stickyLastCol &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.LEFT,
+                    ScrollBarPosition == PuikTableScrollBarPosistion.Left,
                 },
                 {
                   'puik-table__body__row__item--sticky-right':
                     stickyLastCol &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.RIGHT,
+                    ScrollBarPosition == PuikTableScrollBarPosistion.Right,
                 },
               ]"
             ></td>
@@ -280,27 +280,27 @@ const currentSortCol = ref('')
 
 const resetSortIcons = () => {
   for (const col in sortIcon.value) {
-    sortIcon.value[col] = PuikTableSortIcon.DEFAULT
+    sortIcon.value[col] = PuikTableSortIcon.Default
   }
 }
 const setSortOrderAndIcon = (headerCol: string) => {
   if (sortOrder.value[headerCol]) {
     sortOrder.value[headerCol] =
-      sortOrder.value[headerCol] === PuikTableSortOrder.ASC &&
+      sortOrder.value[headerCol] === PuikTableSortOrder.Asc &&
       currentSortCol.value === headerCol
-        ? PuikTableSortOrder.DESC
-        : PuikTableSortOrder.ASC
+        ? PuikTableSortOrder.Desc
+        : PuikTableSortOrder.Asc
     sortIcon.value[headerCol] =
-      sortOrder.value[headerCol] === PuikTableSortOrder.ASC
-        ? PuikTableSortIcon.ASC
-        : PuikTableSortIcon.DESC
+      sortOrder.value[headerCol] === PuikTableSortOrder.Asc
+        ? PuikTableSortIcon.Asc
+        : PuikTableSortIcon.Desc
   } else {
-    sortOrder.value[headerCol] = PuikTableSortOrder.ASC
-    sortIcon.value[headerCol] = PuikTableSortIcon.ASC
+    sortOrder.value[headerCol] = PuikTableSortOrder.Asc
+    sortIcon.value[headerCol] = PuikTableSortIcon.Asc
   }
 }
 const sortDataLocally = (headerCol: string) => {
-  const order = sortOrder.value[headerCol] === PuikTableSortOrder.ASC ? 1 : -1
+  const order = sortOrder.value[headerCol] === PuikTableSortOrder.Asc ? 1 : -1
   data.value.sort((a, b) => order * (a[headerCol] < b[headerCol] ? -1 : 1))
 }
 const sortTable = (headerCol: string) => {
@@ -322,13 +322,13 @@ const sortTable = (headerCol: string) => {
 const getScrollBarPosition = async (event: Event) => {
   const target = event.target as HTMLElement
   if (target.scrollLeft === 0) {
-    ScrollBarPosition.value = PuikTableScrollBarPosistion.LEFT
+    ScrollBarPosition.value = PuikTableScrollBarPosistion.Left
   } else if (
     Math.abs(target.scrollLeft + target.offsetWidth - target.scrollWidth) < 20
   ) {
-    ScrollBarPosition.value = PuikTableScrollBarPosistion.RIGHT
+    ScrollBarPosition.value = PuikTableScrollBarPosistion.Right
   } else {
-    ScrollBarPosition.value = PuikTableScrollBarPosistion.ISSCROLLING
+    ScrollBarPosition.value = PuikTableScrollBarPosistion.IsScrolling
   }
 
   lastScrollLeft.value = target.scrollLeft
