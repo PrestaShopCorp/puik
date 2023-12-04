@@ -45,6 +45,15 @@ export default {
         },
       },
     },
+    highContrast: {
+      description:
+        'Sets the link in high contrast mode by disabling the purple color for the visited stated',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
     default: {
       control: 'text',
       description: 'Label of the link',
@@ -61,6 +70,7 @@ export default {
     href: '#',
     to: undefined,
     target: '_self',
+    highContrast: false,
     default: "I'm a cool link",
     title: "I'm a tooltip for your link",
     size: 'md',
@@ -99,8 +109,9 @@ export const Default = {
   <!--
   $sizes: ${linkSizesSummary}
   $targets: ${targetVariantsSummary}
+  $variants: high-contrast (optional)
   -->
-  <a class="puik-link puik-link--{$sizes}" href="#" target="$targets" title="I'm a tooltip for your link">
+  <a class="puik-link puik-link--{$sizes} puik-link--{$variants}" href="#" target="$targets" title="I'm a tooltip for your link">
     I'm a cool link
   </a>
         `,
