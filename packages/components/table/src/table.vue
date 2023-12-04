@@ -90,7 +90,13 @@
       </thead>
       <tbody class="puik-table__body">
         <template v-for="(item, rowIndex) in data" :key="`row-${rowIndex}`">
-          <tr class="puik-table__body__row">
+          <tr
+            :class="[
+              'puik-table__body__row',
+              { 'puik-table__body__row--expandable': expandable },
+            ]"
+            @click="expandable ? expandRow(rowIndex) : ''"
+          >
             <td
               v-if="selectable || expandable"
               :class="[
@@ -132,7 +138,6 @@
                   ]"
                   icon="keyboard_arrow_down"
                   font-size="24"
-                  @click="expandRow(rowIndex)"
                 />
               </div>
             </td>
