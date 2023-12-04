@@ -326,7 +326,7 @@ describe('Table tests', () => {
     const SortButton = header.find('.puik-button')
     const payload: sortOption = {
       sortBy: 'firstname',
-      sortOrder: PuikTableSortOrder.ASC,
+      sortOrder: PuikTableSortOrder.Asc,
     }
     expect(SortButton.classes()).toContain('puik-button')
     await SortButton.trigger('click')
