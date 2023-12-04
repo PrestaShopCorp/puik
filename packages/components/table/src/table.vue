@@ -41,6 +41,9 @@
                 [`puik-table__head__row__item--${header.size}`]:
                   header?.size && !header?.width,
               },
+              {
+                'puik-table__head__row__item--sortable': header?.sortable,
+              },
               { 'puik-table__head__row__item--sticky': isSticky(index) },
               {
                 'puik-table__head__row__item--sticky-scroll':
