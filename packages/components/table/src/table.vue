@@ -60,25 +60,27 @@
             ]"
             :style="{ minWidth: header.width, width: header.width }"
           >
-            <div class="puik-table__head__row__item__content">
-              <span>
-                <slot
-                  :name="`header-${header.value}`"
-                  :header="header"
-                  :index="index"
-                >
-                  {{ header?.text || header?.value }}
-                </slot>
-              </span>
-              <PuikButton
-                v-if="header.sortable"
-                :right-icon="
-                  sortIcon[header.value] ?? PuikTableSortIcon.DEFAULT
-                "
-                variant="primary-reverse"
-                size="sm"
-                @click="sortTable(header.value)"
-              />
+            <div class="puik-table__head__row__item__container">
+              <div class="puik-table__head__row__item__content">
+                <span>
+                  <slot
+                    :name="`header-${header.value}`"
+                    :header="header"
+                    :index="index"
+                  >
+                    {{ header?.text || header?.value }}
+                  </slot>
+                </span>
+                <PuikButton
+                  v-if="header.sortable"
+                  :right-icon="
+                    sortIcon[header.value] ?? PuikTableSortIcon.DEFAULT
+                  "
+                  variant="primary-reverse"
+                  size="sm"
+                  @click="sortTable(header.value)"
+                />
+              </div>
             </div>
           </th>
         </tr>
@@ -158,13 +160,17 @@
                 },
               ]"
             >
-              <slot
-                :name="`item-${header.value}`"
-                :item="item"
-                :index="rowIndex"
-              >
-                {{ item[header.value] }}
-              </slot>
+              <div class="puik-table__body__row__item__container">
+                <div class="puik-table__body__row__item__content">
+                  <slot
+                    :name="`item-${header.value}`"
+                    :item="item"
+                    :index="rowIndex"
+                  >
+                    {{ item[header.value] }}
+                  </slot>
+                </div>
+              </div>
             </td>
           </tr>
           <tr

@@ -30,15 +30,42 @@
     }
   }
 
-  @mixin puik-table-text-align() {
+  @mixin puik-table-align() {
+    > .puik-table__head__row__item__container,
+    .puik-table__body__row__item__container {
+      @apply flex;
+    }
     &--left {
-      @apply text-left;
+      > .puik-table__head__row__item__container,
+      .puik-table__body__row__item__container {
+        @apply justify-start;
+      }
+      > .puik-table__head__row__item__content,
+      .puik-table__body__row__item__content {
+        @apply text-left;
+      }
     }
     &--center {
-      @apply text-center;
+      > .puik-table__head__row__item__container,
+      .puik-table__body__row__item__container {
+        @apply flex;
+        @apply justify-center;
+      }
+      > .puik-table__head__row__item__content,
+      .puik-table__body__row__item__content {
+        @apply text-center;
+      }
     }
     &--right {
-      @apply text-right;
+      > .puik-table__head__row__item__container,
+      .puik-table__body__row__item__container {
+        @apply flex;
+        @apply justify-end;
+      }
+      > .puik-table__head__row__item__content,
+      .puik-table__body__row__item__content {
+        @apply text-right;
+      }
     }
   }
 
@@ -51,7 +78,7 @@
         @extend .puik-body-small;
         @apply font-normal uppercase text-primary-600;
         @include puik-table-item();
-        @include puik-table-text-align();
+        @include puik-table-align();
       }
     }
   }
@@ -71,7 +98,7 @@
         @extend .puik-body-default;
         @apply text-primary-800;
         @include puik-table-item();
-        @include puik-table-text-align();
+        @include puik-table-align();
       }
     }
   }
@@ -142,5 +169,9 @@
 
   .puik-table__head__row__item__content {
     @apply flex items-center space-x-1;
+  }
+
+  .puik-table__head__row__item--right {
+    @apply pr-2;
   }
 }
