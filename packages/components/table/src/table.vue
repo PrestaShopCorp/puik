@@ -304,7 +304,17 @@ const setSortOrderAndIcon = (headerCol: string) => {
 }
 const sortDataLocally = (headerCol: string) => {
   const order = sortOrder.value[headerCol] === PuikTableSortOrder.Asc ? 1 : -1
-  data.value.sort((a, b) => order * (a[headerCol] < b[headerCol] ? -1 : 1))
+  data.value.sort((a, b) => {
+    const aValue =
+      typeof a[headerCol] === 'string'
+        ? a[headerCol].toLowerCase()
+        : a[headerCol]
+    const bValue =
+      typeof b[headerCol] === 'string'
+        ? b[headerCol].toLowerCase()
+        : b[headerCol]
+    return order * (aValue < bValue ? -1 : aValue > bValue ? 1 : 0)
+  })
 }
 const sortTable = (headerCol: string) => {
   if (!props.sortFromServer) {
