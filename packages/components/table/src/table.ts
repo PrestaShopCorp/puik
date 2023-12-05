@@ -30,6 +30,7 @@ export interface PuikTableHeader {
   align?: 'left' | 'center' | 'right'
   width?: string
   sortable?: boolean
+  preventExpand?: boolean
 }
 
 export const tableProps = buildProps({

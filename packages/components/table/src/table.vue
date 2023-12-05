@@ -90,13 +90,7 @@
       </thead>
       <tbody class="puik-table__body">
         <template v-for="(item, rowIndex) in data" :key="`row-${rowIndex}`">
-          <tr
-            :class="[
-              'puik-table__body__row',
-              { 'puik-table__body__row--expandable': expandable },
-            ]"
-            @click="expandable ? expandRow(rowIndex) : ''"
-          >
+          <tr class="puik-table__body__row">
             <td
               v-if="selectable || expandable"
               :class="[
@@ -138,6 +132,7 @@
                   ]"
                   icon="keyboard_arrow_down"
                   font-size="24"
+                  @click="expandRow(rowIndex)"
                 />
               </div>
             </td>
@@ -149,6 +144,10 @@
                 `puik-table__body__row__item puik-table__body__row__item--${
                   header.align ?? 'left'
                 }`,
+                {
+                  'puik-table__body__row__item--expandable':
+                    expandable && !header?.preventExpand,
+                },
                 { 'puik-table__body__row__item--sticky': isSticky(colIndex) },
                 {
                   'puik-table__body__row__item--sticky-scroll':
@@ -167,6 +166,9 @@
                     ScrollBarPosition == PuikTableScrollBarPosistion.Right,
                 },
               ]"
+              @click="
+                expandable && !header?.preventExpand ? expandRow(rowIndex) : ''
+              "
             >
               <div class="puik-table__body__row__item__container">
                 <div class="puik-table__body__row__item__content">

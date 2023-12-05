@@ -53,22 +53,23 @@ export default {
     width: string | undefined
     align: 'left' | 'center' | 'right' | undefined
     sortable: boolean | undefined
+    preventExpand: boolean | undefined
   }
   `,
         },
       },
     },
-    selectable: {
+    expandable: {
       control: 'boolean',
-      description: 'Makes rows selectable',
+      description: 'Makes rows expandable',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
     },
-    expandable: {
+    selectable: {
       control: 'boolean',
-      description: 'Makes rows expandable',
+      description: 'Makes rows selectable',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
