@@ -145,7 +145,7 @@
                   header.align ?? 'left'
                 }`,
                 {
-                  'puik-table__body__row__item--expandable':
+                  'puik-table__body__row__item--expand-row':
                     expandable && !header?.preventExpand,
                 },
                 { 'puik-table__body__row__item--sticky': isSticky(colIndex) },
