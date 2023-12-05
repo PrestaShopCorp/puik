@@ -2,12 +2,34 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Table from './table.vue'
 
+export enum PuikTableSortOrder {
+  Asc = 'ASC',
+  Desc = 'DESC',
+}
+
+export enum PuikTableSortIcon {
+  Default = 'unfold_more',
+  Asc = 'expand_more',
+  Desc = 'expand_less',
+}
+
+export enum PuikTableScrollBarPosistion {
+  Left = 'left',
+  Right = 'right',
+  IsScrolling = 'isScrolling',
+}
+
+export type sortOption = {
+  sortBy?: string
+  sortOrder?: PuikTableSortOrder
+}
 export interface PuikTableHeader {
   value: string
   text?: string
   size?: 'sm' | 'md' | 'lg'
   align?: 'left' | 'center' | 'right'
   width?: string
+  sortable?: boolean
 }
 
 export const tableProps = buildProps({
@@ -34,6 +56,11 @@ export const tableProps = buildProps({
     type: Array as PropType<number[]>,
     required: false,
     default: () => [],
+  },
+  sortFromServer: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
   fullWidth: {
     type: Boolean,

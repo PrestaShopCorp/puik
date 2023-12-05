@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import PuikButton from '../../button/src/button.vue'
+import PuikIcon from '../../icon/src/icon.vue'
 import PuikTable from './../src/table.vue'
 import type { PuikTableHeader } from '../src/table'
 import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3'
@@ -51,6 +52,7 @@ export default {
     size: 'sm' | 'md' | 'lg' | undefined
     width: string | undefined
     align: 'left' | 'center' | 'right' | undefined
+    sortable: boolean | undefined
   }
   `,
         },
@@ -142,7 +144,7 @@ export default {
         },
       },
     },
-    '`expanded-row-${rowIndex}`': {
+    'expanded-row': {
       control: 'none',
       description: 'slot for expanded row content',
       table: {
@@ -176,6 +178,23 @@ export default {
       table: {
         type: {
           summary: 'number[]',
+        },
+      },
+    },
+    sortColumn: {
+      control: 'none',
+      description: 'Event emitted when sorting a column',
+      table: {
+        type: {
+          summary: 'sortOption',
+          detail: `
+import type { sortOption } from '@prestashopcorp/puik/es/components/table/src/table'
+
+type sortOption = {
+  sortBy?: string
+  sortOrder?: PuikTableSortOrder
+}
+`,
         },
       },
     },
@@ -213,6 +232,60 @@ const Template: StoryFn = (args: Args) => ({
         value: 'age',
         size: 'sm',
         align: 'center',
+      },
+      {
+        text: 'Email',
+        value: 'email',
+        align: 'right',
+      },
+      {
+        value: 'actions',
+        size: 'sm',
+      },
+    ]
+    return { args, headers, items, selection }
+  },
+  template: `<puik-table v-model:selection="selection" :headers="headers" :items="items" v-bind="args">
+    <template #item-value1="{ item }">
+    </template>
+    <template #item-actions="{ item }">
+      <puik-button
+        variant="text"
+        right-icon="delete"
+        aria-label="Delete item"
+      ></puik-button>
+    </template>
+  </puik-table>`,
+})
+
+const SortableTemplate: StoryFn = (args: Args) => ({
+  components: {
+    PuikTable,
+    PuikButton,
+    PuikIcon,
+  },
+  setup() {
+    const selection = ref([])
+    const items = generateData()
+    const headers: PuikTableHeader[] = [
+      {
+        text: 'Nom',
+        value: 'lastname',
+        size: 'md',
+        sortable: true,
+      },
+      {
+        text: 'Prénom',
+        value: 'firstname',
+        size: 'md',
+        sortable: true,
+      },
+      {
+        text: 'Age',
+        value: 'age',
+        size: 'sm',
+        align: 'center',
+        sortable: true,
       },
       {
         text: 'Email',
@@ -574,6 +647,126 @@ export const Expandable: StoryObj = {
       value: 'age',
       size: 'sm',
       align: 'center',
+    },
+    {
+      text: 'Email',
+      value: 'email',
+      align: 'right',
+    },
+    {
+      value: 'actions',
+      size: 'sm',
+    },
+  ]
+
+  <puik-table :expandable="true">
+    <template #item-actions="{ item }">
+      <puik-button
+        variant="text"
+        right-icon="delete"
+        aria-label="Delete item"
+      ></puik-button>
+    </template>
+  </puik-table>
+
+  <!--HTML/CSS Snippet-->
+  <table class="puik-table">
+    <thead class="puik-table__head">
+        <tr class="puik-table__head__row">
+            <th class="puik-table__head__row__item puik-table__head__row__item--expandable"></th>
+            <th class="puik-table__head__row__item puik-table__head__row__item--left puik-table__head__row__item--md">Nom</th>
+            <th class="puik-table__head__row__item puik-table__head__row__item--left puik-table__head__row__item--md">Prénom</th>
+            <th class="puik-table__head__row__item puik-table__head__row__item--center puik-table__head__row__item--sm">Age</th>
+            <th class="puik-table__head__row__item puik-table__head__row__item--right">Email</th>
+            <th class="puik-table__head__row__item puik-table__head__row__item--left puik-table__head__row__item--sm"></th>
+        </tr>
+    </thead>
+    <tbody class="puik-table__body">
+        <tr class="puik-table__body__row">
+            <td class="puik-table__body__row__item puik-table__body__row__item--selection">
+                <div class="puik-table__body__row__item__container">  
+                    <div class="puik-icon" style="font-size: 24px;">keyboard_arrow_down</div>
+                </div>
+            </td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname0</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname0</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname0.firstname0@email.com</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left">
+                <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
+                    <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
+                </button>
+            </td>
+        </tr>
+      
+        <tr class="puik-table__body__row">
+            <td class="puik-table__body__row__item puik-table__body__row__item--selection">
+                <div class="puik-table__body__row__item__container">
+                    <div class="puik-icon" style="font-size: 24px;">keyboard_arrow_down</div>
+                </div>
+            </td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname1</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname1</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname1.firstname1@email.com</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left">
+                <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
+                    <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
+                </button>
+            </td>
+        </tr>
+        <tr class="puik-table__body__row">
+            <td class="puik-table__body__row__item puik-table__body__row__item--selection">
+                <div class="puik-table__body__row__item__container">
+                    <div class="puik-icon" style="font-size: 24px;">keyboard_arrow_down</div>
+                </div>
+            </td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname2</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname2</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname2.firstname2@email.com</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left">
+                <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
+                    <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
+export const Sortable: StoryObj = {
+  render: SortableTemplate,
+  args: {},
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  const headers: PuikTableHeader[] = [
+    {
+      text: 'Nom',
+      value: 'lastname',
+      size: 'md',
+      sortable: true,
+    },
+    {
+      text: 'Prénom',
+      value: 'firstname',
+      size: 'md',
+      sortable: true,
+    },
+    {
+      text: 'Age',
+      value: 'age',
+      size: 'sm',
+      align: 'center',
+      sortable: true,
     },
     {
       text: 'Email',
