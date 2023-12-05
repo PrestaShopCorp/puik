@@ -144,6 +144,10 @@
                 `puik-table__body__row__item puik-table__body__row__item--${
                   header.align ?? 'left'
                 }`,
+                {
+                  'puik-table__body__row__item--expand-row':
+                    expandable && !header?.preventExpand,
+                },
                 { 'puik-table__body__row__item--sticky': isSticky(colIndex) },
                 {
                   'puik-table__body__row__item--sticky-scroll':
@@ -162,6 +166,9 @@
                     ScrollBarPosition == PuikTableScrollBarPosistion.Right,
                 },
               ]"
+              @click="
+                expandable && !header?.preventExpand ? expandRow(rowIndex) : ''
+              "
             >
               <div class="puik-table__body__row__item__container">
                 <div class="puik-table__body__row__item__content">

@@ -53,22 +53,23 @@ export default {
     width: string | undefined
     align: 'left' | 'center' | 'right' | undefined
     sortable: boolean | undefined
+    preventExpand: boolean | undefined
   }
   `,
         },
       },
     },
-    selectable: {
+    expandable: {
       control: 'boolean',
-      description: 'Makes rows selectable',
+      description: 'Makes rows expandable',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
     },
-    expandable: {
+    selectable: {
       control: 'boolean',
-      description: 'Makes rows expandable',
+      description: 'Makes rows selectable',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
@@ -241,6 +242,7 @@ const Template: StoryFn = (args: Args) => ({
       {
         value: 'actions',
         size: 'sm',
+        preventExpand: true,
       },
     ]
     return { args, headers, items, selection }
@@ -656,6 +658,7 @@ export const Expandable: StoryObj = {
     {
       value: 'actions',
       size: 'sm',
+      preventExpand: true,
     },
   ]
 
@@ -688,10 +691,10 @@ export const Expandable: StoryObj = {
                     <div class="puik-icon" style="font-size: 24px;">keyboard_arrow_down</div>
                 </div>
             </td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname0</td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname0</td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname0.firstname0@email.com</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--expand-row">lastname0</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--expand-row">firstname0</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--center puik-table__body__row__item--expand-row">40</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--right puik-table__body__row__item--expand-row">lastname0.firstname0@email.com</td>
             <td class="puik-table__body__row__item puik-table__body__row__item--left">
                 <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
                     <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
@@ -705,10 +708,10 @@ export const Expandable: StoryObj = {
                     <div class="puik-icon" style="font-size: 24px;">keyboard_arrow_down</div>
                 </div>
             </td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname1</td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname1</td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname1.firstname1@email.com</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--expand-row">lastname1</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--expand-row">firstname1</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--center puik-table__body__row__item--expand-row">40</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--right puik-table__body__row__item--expand-row">lastname1.firstname1@email.com</td>
             <td class="puik-table__body__row__item puik-table__body__row__item--left">
                 <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
                     <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
@@ -721,10 +724,10 @@ export const Expandable: StoryObj = {
                     <div class="puik-icon" style="font-size: 24px;">keyboard_arrow_down</div>
                 </div>
             </td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--left">lastname2</td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--left">firstname2</td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--center">40</td>
-            <td class="puik-table__body__row__item puik-table__body__row__item--right">lastname2.firstname2@email.com</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--expand-row">lastname2</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--left puik-table__body__row__item--expand-row">firstname2</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--center puik-table__body__row__item--expand-row">40</td>
+            <td class="puik-table__body__row__item puik-table__body__row__item--right puik-table__body__row__item--expand-row">lastname2.firstname2@email.com</td>
             <td class="puik-table__body__row__item puik-table__body__row__item--left">
                 <button class="puik-button puik-button--text puik-button--md" aria-label="Delete item">
                     <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>

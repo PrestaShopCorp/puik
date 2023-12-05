@@ -174,4 +174,8 @@
   .puik-table__head__row__item--right.puik-table__head__row__item--sortable {
     @apply pr-2;
   }
+
+  .puik-table__body__row__item--expand-row {
+    @apply cursor-pointer;
+  }
 }
