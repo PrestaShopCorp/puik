@@ -13,7 +13,6 @@
     "@headlessui/vue": "^1.7.11",
     "@popperjs/core": "^2.11.6",
     "@prestashopcorp/puik-components": "workspace:*",
-    "@prestashopcorp/puik-tailwind-preset": "workspace:*",
     "@vueuse/core": "^9.13.0"
   },
   "devDependencies": {

@@ -199,9 +199,6 @@ importers:
       '@prestashopcorp/puik-theme':
         specifier: workspace:*
         version: link:../theme
-      '@prestashopcorp/puik-web-components':
-        specifier: workspace:*
-        version: link:../web-components
     devDependencies:
       vue:
         specifier: ^3.3.8
@@ -260,9 +257,9 @@ importers:
       '@popperjs/core':
         specifier: ^2.11.6
         version: 2.11.8
-      '@prestashopcorp/puik-theme':
+      '@prestashopcorp/puik-components':
         specifier: workspace:*
-        version: link:../theme
+        version: link:../components
       '@vueuse/core':
         specifier: ^9.13.0
         version: 9.13.0(vue@3.3.8)

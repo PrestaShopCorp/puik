@@ -9,7 +9,7 @@ import pkg from './package.json' assert { type: 'json' };
 
 export default defineConfig({
   plugins: [
-    vue({ customElement: true }),
+    vue({ isProduction: true, customElement: true }),
     dts({
       tsconfigPath: 'tsconfig.build.json'
     }),
@@ -23,7 +23,6 @@ export default defineConfig({
       external: [
         ...Object.keys(pkg.dependencies),
         ...Object.keys(pkg.peerDependencies),
-        /^@prestashopcorp\/puik-theme\/.*/,
         /^@prestashopcorp\/puik-components\/.*/
       ],
       input: excludeFiles(

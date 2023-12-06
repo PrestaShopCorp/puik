@@ -1,7 +1,7 @@
 import PuikButtonGroupCe from './components/button-group';
 import PuikButtonCe from './components/button';
 import PuikIconCe from './components/icon';
-import '@prestashopcorp/puik-tailwind-preset';
+// import '@prestashopcorp/puik-tailwind-preset';
 
 const init = () => {
   customElements.define('puik-button-group-ce', PuikButtonGroupCe);
@@ -9,7 +9,7 @@ const init = () => {
   customElements.define('puik-icon-ce', PuikIconCe);
 };
 
-export { puikTailwindPreset } from '@prestashopcorp/puik-tailwind-preset';
+// export { puikTailwindPreset } from '@prestashopcorp/puik-tailwind-preset';
 
 export {
   PuikButtonGroupCe,
