@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "pnpm@8.2.0",
+  "packageManager": "pnpm@8.11.0",
   "workspaces": [
     "packages/*",
     "docs",
@@ -15,6 +15,7 @@
     "coverage": "vitest run --coverage",
     "build": "pnpm --parallel --filter './packages/**' build",
     "build:components": "pnpm --filter @prestashopcorp/puik-components build",
+    "build:web-components": "pnpm --filter @prestashopcorp/puik-web-components build",
     "build:theme": "pnpm --filter @prestashopcorp/puik-theme build",
     "lint": "eslint . --ext .vue,.js,.ts,",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts",
@@ -46,7 +47,8 @@
     "@prestashopcorp/puik-resolver": "workspace:*",
     "@prestashopcorp/puik-tailwind-preset": "workspace:*",
     "@prestashopcorp/puik-theme": "workspace:*",
-    "@prestashopcorp/puik-utils": "workspace:*"
+    "@prestashopcorp/puik-utils": "workspace:*",
+    "@prestashopcorp/puik-web-components": "workspace:*"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.2",

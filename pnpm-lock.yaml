@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -29,6 +29,9 @@ importers:
       '@prestashopcorp/puik-utils':
         specifier: workspace:*
         version: link:packages/utils
+      '@prestashopcorp/puik-web-components':
+        specifier: workspace:*
+        version: link:packages/web-components
     devDependencies:
       '@commitlint/cli':
         specifier: ^18.4.2
@@ -196,6 +199,9 @@ importers:
       '@prestashopcorp/puik-theme':
         specifier: workspace:*
         version: link:../theme
+      '@prestashopcorp/puik-web-components':
+        specifier: workspace:*
+        version: link:../web-components
     devDependencies:
       vue:
         specifier: ^3.3.8
@@ -245,6 +251,31 @@ importers:
         version: 3.3.5
 
   packages/utils: {}
+
+  packages/web-components:
+    dependencies:
+      '@headlessui/vue':
+        specifier: ^1.7.11
+        version: 1.7.16(vue@3.3.8)
+      '@popperjs/core':
+        specifier: ^2.11.6
+        version: 2.11.8
+      '@prestashopcorp/puik-theme':
+        specifier: workspace:*
+        version: link:../theme
+      '@vueuse/core':
+        specifier: ^9.13.0
+        version: 9.13.0(vue@3.3.8)
+    devDependencies:
+      vue:
+        specifier: ^3.3.8
+        version: 3.3.8(typescript@5.3.2)
+      vue-router:
+        specifier: ^4.1.6
+        version: 4.2.5(vue@3.3.8)
+      vue-tsc:
+        specifier: ^1.8.22
+        version: 1.8.22(typescript@5.3.2)
 
   playground:
     dependencies:
@@ -1703,6 +1734,7 @@ packages:
   /@commitlint/config-validator@18.4.3:
     resolution: {integrity: sha512-FPZZmTJBARPCyef9ohRC9EANiQEKSWIdatx5OlgeHKu878dWwpyeFauVkhzuBRJFcCA4Uvz/FDtlDKs008IHcA==}
     engines: {node: '>=v18'}
+    requiresBuild: true
     dependencies:
       '@commitlint/types': 18.4.3
       ajv: 8.12.0
@@ -1729,6 +1761,7 @@ packages:
   /@commitlint/execute-rule@18.4.3:
     resolution: {integrity: sha512-t7FM4c+BdX9WWZCPrrbV5+0SWLgT3kCq7e7/GhHCreYifg3V8qyvO127HF796vyFql75n4TFF+5v1asOOWkV1Q==}
     engines: {node: '>=v18'}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -1840,6 +1873,7 @@ packages:
   /@commitlint/resolve-extends@18.4.3:
     resolution: {integrity: sha512-30sk04LZWf8+SDgJrbJCjM90gTg2LxsD9cykCFeFu+JFHvBFq5ugzp2eO/DJGylAdVaqxej3c7eTSE64hR/lnw==}
     engines: {node: '>=v18'}
+    requiresBuild: true
     dependencies:
       '@commitlint/config-validator': 18.4.3
       '@commitlint/types': 18.4.3
@@ -1883,6 +1917,7 @@ packages:
   /@commitlint/types@18.4.3:
     resolution: {integrity: sha512-cvzx+vtY/I2hVBZHCLrpoh+sA0hfuzHwDc+BAFPimYLjJkpHnghQM+z8W/KyLGkygJh3BtI3xXXq+dKjnSWEmA==}
     engines: {node: '>=v18'}
+    requiresBuild: true
     dependencies:
       chalk: 4.1.2
     dev: true
@@ -4091,7 +4126,7 @@ packages:
       ts-dedent: 2.2.0
       type-fest: 2.19.0
       vue: 3.3.8(typescript@5.2.2)
-      vue-component-type-helpers: 1.8.22
+      vue-component-type-helpers: 1.8.25
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -11907,6 +11942,10 @@ packages:
 
   /vue-component-type-helpers@1.8.22:
     resolution: {integrity: sha512-LK3wJHs3vJxHG292C8cnsRusgyC5SEZDCzDCD01mdE/AoREFMl2tzLRuzwyuEsOIz13tqgBcnvysN3Lxsa14Fw==}
+    dev: true
+
+  /vue-component-type-helpers@1.8.25:
+    resolution: {integrity: sha512-NCA6sekiJIMnMs4DdORxATXD+/NRkQpS32UC+I1KQJUasx+Z7MZUb3Y+MsKsFmX+PgyTYSteb73JW77AibaCCw==}
     dev: true
 
   /vue-demi@0.14.6(vue@3.3.8):
