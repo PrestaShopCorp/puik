@@ -48,7 +48,7 @@ withDefaults(defineProps<ChipProps>(), {
   size: PuikChipSizeVariants.Default,
   tooltipPosition: PuikTooltipPositions.Bottom
 });
-const emit = defineEmits(['close']);
+const emit: any = defineEmits(['close']);
 
 const chipContentElem = ref(null);
 const showTooltip = ref(false);

@@ -3,9 +3,14 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
-    "source.fixAll.eslint": false
+    "source.fixAll.eslint": true
   },
   "npm.packageManager": "pnpm",
+  "eslint.options": {
+    "rules": {
+      "comma-dangle": "off"
+    }
+  },
   "eslint.probe": [
     "javascript",
     "javascriptreact",
@@ -29,5 +34,7 @@
   "i18n-ally.localesPaths": "packages/locale/lang",
   "i18n-ally.enabledParsers": ["ts"],
   "i18n-ally.enabledFrameworks": ["vue", "vue-sfc"],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.keystyle": "nested",
+  "vue3snippets.trailingComma": "none",
+  "prettier.trailingComma": "none"
 }

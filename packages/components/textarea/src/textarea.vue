@@ -72,7 +72,7 @@ const props = withDefaults(defineProps<TextareaProps>(), {
   rows: 2,
   autoGrow: true
 });
-const emit = defineEmits<{
+const emit: any = defineEmits<{
   'update:modelValue': [value: string]
 }>();
 const internalValue = useVModel(props, 'modelValue', emit);

@@ -69,7 +69,7 @@ const props = withDefaults(defineProps<AlertProps>(), {
   variant: PuikAlertVariants.Success,
   ariaLive: 'polite'
 });
-const emit = defineEmits<AlertEmits>();
+const emit: any = defineEmits<AlertEmits>();
 
 const icon = computed(() => ICONS[props.variant]);
 

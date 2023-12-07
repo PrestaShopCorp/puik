@@ -50,9 +50,9 @@ withDefaults(defineProps<TagProps>(), {
   tooltipPosition: PuikTooltipPositions.Bottom
 });
 
-defineEmits<{
-  close: []
-}>();
+// defineEmits<{
+//   close: []
+// }>();
 
 const tagContentElem = ref(null);
 const showTooltip = ref(false);

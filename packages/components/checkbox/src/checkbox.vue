@@ -35,7 +35,7 @@ defineOptions({
 });
 
 const props = defineProps<CheckboxProps>();
-const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>();
+const emit: any = defineEmits<{ 'update:modelValue': [value: boolean] }>();
 
 const id = `puik-checkbox-${generateId()}`;
 const checkboxInputRef = ref<HTMLInputElement>();

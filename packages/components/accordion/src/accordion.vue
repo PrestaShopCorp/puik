@@ -65,7 +65,7 @@ import type { AccordionProps } from './accordion';
 defineOptions({
   name: 'PuikAccordion'
 });
-const emit = defineEmits<{ click: [name: string] }>();
+const emit: any = defineEmits<{ click: [name: string] }>();
 
 const id = `puik-accordion-${generateId()}`;
 

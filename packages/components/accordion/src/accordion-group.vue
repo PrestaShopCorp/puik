@@ -18,7 +18,7 @@ defineOptions({
 });
 
 const props = defineProps<AccordionGroupProps>();
-const emit = defineEmits<{
+const emit: any = defineEmits<{
   'update:modelValue': [value: string | string[] | null | undefined]
 }>();
 const expandedAccordions = ref(props.modelValue);

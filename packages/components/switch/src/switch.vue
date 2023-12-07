@@ -48,7 +48,7 @@ defineOptions({
 });
 
 const props = defineProps<SwitchProps>();
-const emit = defineEmits<{
+const emit: any = defineEmits<{
   'update:modelValue': [value: boolean]
 }>();
 const { t } = useLocale();
