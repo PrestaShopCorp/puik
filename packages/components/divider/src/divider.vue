@@ -22,3 +22,8 @@ const props = withDefaults(defineProps<DividerProps>(), {
   orientation: PuikDividerOrientation.Horizontal
 });
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-divider.scss';
+</style>

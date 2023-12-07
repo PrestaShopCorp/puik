@@ -76,3 +76,8 @@ const icon = computed(() => ICONS[props.variant]);
 const click = (event: Event) => emit('click', event);
 const close = (event: Event) => emit('close', event);
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-alert.scss';
+</style>

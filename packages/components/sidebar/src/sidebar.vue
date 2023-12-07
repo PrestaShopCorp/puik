@@ -119,3 +119,8 @@ provide(sidebarKey, {
   extended: localExpanded
 });
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-sidebar.scss';
+</style>

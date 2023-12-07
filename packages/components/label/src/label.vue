@@ -31,3 +31,8 @@ defineOptions({
 const props = defineProps<LabelProps>();
 const { t } = useLocale();
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-label.scss';
+</style>

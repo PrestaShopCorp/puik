@@ -135,3 +135,8 @@ const inputClasses = computed(() => ({
   'puik-input__wrapper--error': hasError.value
 }));
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-input.scss';
+</style>

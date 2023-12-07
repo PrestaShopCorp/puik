@@ -24,3 +24,8 @@ withDefaults(defineProps<SidebarTitleProps>(), {
 const sidebarValues = inject(sidebarKey, null);
 const isExpanded = computed(() => sidebarValues?.extended.value);
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-sidebar-title.scss';
+</style>
