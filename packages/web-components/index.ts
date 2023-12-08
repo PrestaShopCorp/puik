@@ -1,3 +1,9 @@
+import {
+  initAllCe,
+  initCe
+} from './utils';
+import type { CustomElementWithTagName } from './types';
+
 import PuikAccordionCe from './components/accordion';
 import PuikAccordionGroupCe from './components/accordion-group';
 import PuikAlertCe from './components/alert';
@@ -44,161 +50,53 @@ import PuikTagCe from './components/tag';
 import PuikTextareaCe from './components/textarea';
 import PuikTooltipCe from './components/tooltip';
 
-const init = () => {
-  if (!customElements.get('puik-accordion-ce')) {
-    customElements.define('puik-accordion-ce', PuikAccordionCe);
-  }
-  if (!customElements.get('puik-accordion-group-ce')) {
-    customElements.define('puik-accordion-group-ce', PuikAccordionGroupCe);
-  }
-  if (!customElements.get('puik-alert-ce')) {
-    customElements.define('puik-alert-ce', PuikAlertCe);
-  }
-  if (!customElements.get('puik-avatar-ce')) {
-    customElements.define('puik-avatar-ce', PuikAvatarCe);
-  }
-  if (!customElements.get('puik-badge-ce')) {
-    customElements.define('puik-badge-ce', PuikBadgeCe);
-  }
-  if (!customElements.get('puik-breadcrumb-ce')) {
-    customElements.define('puik-breadcrumb-ce', PuikBreadcrumbCe);
-  }
-  if (!customElements.get('puik-button-ce')) {
-    customElements.define('puik-button-ce', PuikButtonCe);
-  }
-  if (!customElements.get('puik-tooltip-ce')) {
-    customElements.define('puik-button-group-ce', PuikButtonGroupCe);
-  }
-  if (!customElements.get('puik-card-ce')) {
-    customElements.define('puik-card-ce', PuikCardCe);
-  }
-  if (!customElements.get('puik-checkbox-ce')) {
-    customElements.define('puik-checkbox-ce', PuikCheckboxCe);
-  }
-  if (!customElements.get('puik-chip-ce')) {
-    customElements.define('puik-chip-ce', PuikChipCe);
-  }
-  if (!customElements.get('puik-divider-ce')) {
-    customElements.define('puik-divider-ce', PuikDividerCe);
-  }
-  if (!customElements.get('puik-icon-ce')) {
-    customElements.define('puik-icon-ce', PuikIconCe);
-  }
-  if (!customElements.get('puik-input-ce')) {
-    customElements.define('puik-input-ce', PuikInputCe);
-  }
-  if (!customElements.get('puik-label-ce')) {
-    customElements.define('puik-label-ce', PuikLabelCe);
-  }
-  if (!customElements.get('puik-link-ce')) {
-    customElements.define('puik-link-ce', PuikLinkCe);
-  }
-  if (!customElements.get('puik-menu-ce')) {
-    customElements.define('puik-menu-ce', PuikMenuCe);
-  }
-  if (!customElements.get('puik-menu-item-ce')) {
-    customElements.define('puik-menu-item-ce', PuikMenuItemCe);
-  }
-  if (!customElements.get('puik-menu-item-separator-ce')) {
-    customElements.define(
-      'puik-menu-item-separator-ce',
-      PuikMenuItemSeparatorCe
-    );
-  }
-  if (!customElements.get('puik-menu-item-title-ce')) {
-    customElements.define('puik-menu-item-title-ce', PuikMenuItemTitleCe);
-  }
-  if (!customElements.get('puik-modal-ce')) {
-    customElements.define('puik-modal-ce', PuikModalCe);
-  }
-  if (!customElements.get('puik-pagination-ce')) {
-    customElements.define('puik-pagination-ce', PuikPaginationCe);
-  }
-  if (!customElements.get('puik-progress-bar-ce')) {
-    customElements.define('puik-progress-bar-ce', PuikProgressBarCe);
-  }
-  if (!customElements.get('puik-radio-ce')) {
-    customElements.define('puik-radio-ce', PuikRadioCe);
-  }
-  if (!customElements.get('puik-select-ce')) {
-    customElements.define('puik-select-ce', PuikSelectCe);
-  }
-  if (!customElements.get('puik-sidebar-ce')) {
-    customElements.define('puik-sidebar-ce', PuikSidebarCe);
-  }
-  if (!customElements.get('puik-progress-stepper-ce')) {
-    customElements.define('puik-progress-stepper-ce', PuikProgressStepperCe);
-  }
-  if (!customElements.get('puik-progress-stepper-step-ce')) {
-    customElements.define('puik-progress-stepper-step-ce', PuikProgressStepperStepCe);
-  }
-  if (!customElements.get('puik-sidebar-group-item-ce')) {
-    customElements.define('puik-sidebar-group-item-ce', PuikSidebarGroupItemCe);
-  }
-  if (!customElements.get('puik-sidebar-item-ce')) {
-    customElements.define('puik-sidebar-item-ce', PuikSidebarItemCe);
-  }
-  if (!customElements.get('puik-sidebar-title-ce')) {
-    customElements.define('puik-sidebar-title-ce', PuikSidebarTitleCe);
-  }
-  if (!customElements.get('puik-skeleton-loader-ce')) {
-    customElements.define('puik-skeleton-loader-ce', PuikSkeletonLoaderCe);
-  }
-  if (!customElements.get('puik-skeleton-loader-group-ce')) {
-    customElements.define(
-      'puik-skeleton-loader-group-ce',
-      PuikSkeletonLoaderGroupCe
-    );
-  }
-  // if (!customElements.get('puik-snackbar-ce')) {
-  //   customElements.define('puik-snackbar-ce', PuikSnackbarCe);
-  // }
-  if (!customElements.get('puik-spinner-loader-ce')) {
-    customElements.define('puik-spinner-loader-ce', PuikSpinnerLoaderCe);
-  }
-  if (!customElements.get('puik-switch-ce')) {
-    customElements.define('puik-switch-ce', PuikSwitchCe);
-  }
-  if (!customElements.get('puik-tab-navigation-ce')) {
-    customElements.define('puik-tab-navigation-ce', PuikTabNavigationCe);
-  }
-  if (!customElements.get('puik-tab-navigation-group-panels-ce')) {
-    customElements.define(
-      'puik-tab-navigation-group-panels-ce',
-      PuikTabNavigationGroupPanelsCe
-    );
-  }
-  if (!customElements.get('puik-tab-navigation-group-titles-ce')) {
-    customElements.define(
-      'puik-tab-navigation-group-titles-ce',
-      PuikTabNavigationGroupTitlesCe
-    );
-  }
-  if (!customElements.get('puik-tab-navigation-panel-ce')) {
-    customElements.define(
-      'puik-tab-navigation-panel-ce',
-      PuikTabNavigationPanelCe
-    );
-  }
-  if (!customElements.get('puik-tab-navigation-title-ce')) {
-    customElements.define(
-      'puik-tab-navigation-title-ce',
-      PuikTabNavigationTitleCe
-    );
-  }
-  if (!customElements.get('puik-table-ce')) {
-    customElements.define('puik-table-ce', PuikTableCe);
-  }
-  if (!customElements.get('puik-tag-ce')) {
-    customElements.define('puik-tag-ce', PuikTagCe);
-  }
-  if (!customElements.get('puik-textarea-ce')) {
-    customElements.define('puik-textarea-ce', PuikTextareaCe);
-  }
-  if (!customElements.get('puik-tooltip-ce')) {
-    customElements.define('puik-tooltip-ce', PuikTooltipCe);
-  }
-};
+export const components: CustomElementWithTagName[] = [
+  PuikAccordionCe,
+  PuikAccordionGroupCe,
+  PuikAlertCe,
+  PuikAvatarCe,
+  PuikBadgeCe,
+  PuikBreadcrumbCe,
+  PuikButtonCe,
+  PuikButtonGroupCe,
+  PuikCardCe,
+  PuikCheckboxCe,
+  PuikChipCe,
+  PuikDividerCe,
+  PuikIconCe,
+  PuikInputCe,
+  PuikLabelCe,
+  PuikLinkCe,
+  PuikMenuCe,
+  PuikMenuItemCe,
+  PuikMenuItemSeparatorCe,
+  PuikMenuItemTitleCe,
+  PuikModalCe,
+  PuikPaginationCe,
+  PuikProgressBarCe,
+  PuikProgressStepperCe,
+  PuikProgressStepperStepCe,
+  PuikRadioCe,
+  PuikSelectCe,
+  PuikSidebarCe,
+  PuikSidebarGroupItemCe,
+  PuikSidebarItemCe,
+  PuikSidebarTitleCe,
+  PuikSkeletonLoaderCe,
+  PuikSkeletonLoaderGroupCe,
+  // PuikSnackbarCe,
+  PuikSpinnerLoaderCe,
+  PuikSwitchCe,
+  PuikTabNavigationCe,
+  PuikTabNavigationGroupPanelsCe,
+  PuikTabNavigationGroupTitlesCe,
+  PuikTabNavigationPanelCe,
+  PuikTabNavigationTitleCe,
+  PuikTableCe,
+  PuikTagCe,
+  PuikTextareaCe,
+  PuikTooltipCe
+];
 
 export {
   PuikAccordionCe,
@@ -217,6 +115,7 @@ export {
   PuikInputCe,
   PuikLabelCe,
   PuikLinkCe,
+  PuikMenuCe,
   PuikMenuItemCe,
   PuikMenuItemSeparatorCe,
   PuikMenuItemTitleCe,
@@ -245,7 +144,8 @@ export {
   PuikTagCe,
   PuikTextareaCe,
   PuikTooltipCe,
-  init
+  initCe,
+  initAllCe
 };
 
-export default init;
+export default initAllCe;
