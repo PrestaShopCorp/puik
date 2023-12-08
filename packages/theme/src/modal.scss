@@ -57,7 +57,7 @@
         @apply flex items-center gap-4;
 
         &__icon {
-          @apply rounded-full p-2;
+          @apply rounded-full p-2 w-[40px] h-[40px] flex items-center justify-center;
         }
 
         &__title {
