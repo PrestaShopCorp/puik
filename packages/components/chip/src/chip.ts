@@ -19,7 +19,7 @@ export const chipProps = buildProps({
     default: undefined,
   },
   size: {
-    type: String,
+    type: String as PropType<PuikChipSizeVariant>,
     required: false,
     default: 'default',
   },
