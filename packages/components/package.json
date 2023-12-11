@@ -2,7 +2,7 @@
   "name": "@prestashopcorp/puik-components",
   "version": "0.0.1",
   "type": "module",
-  "description": "all components are settled here",
+  "description": "PUIK available by vue components.",
   "scripts": {
     "build": "vue-tsc --noEmit --project ./tsconfig.build.json && vite build"
   },
