@@ -16,7 +16,7 @@
             v-if="titleIcon || PuikModalVariant.DESTRUCTIVE === variant"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__icon"
             :icon="getTitleIconName"
-            :font-size="24"
+            :font-size="ICON_SIZE"
           />
 
           <puik-tooltip
@@ -45,7 +45,7 @@
             "
             @click="sendCloseModalEvent()"
           >
-            <puik-icon icon="close" :font-size="CLOSE_ICON_SIZE" />
+            <puik-icon icon="close" :font-size="ICON_SIZE" />
           </puik-button>
         </header>
         <div class="puik-modal__dialogPanelContainer__dialogPanel__content">
@@ -119,7 +119,7 @@ defineOptions({
 })
 
 const { t } = useLocale()
-const CLOSE_ICON_SIZE = 24
+const ICON_SIZE = 24
 
 const props = defineProps(modalProps)
 const emit = defineEmits(modalEmits)
