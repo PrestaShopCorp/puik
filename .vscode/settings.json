@@ -6,11 +6,6 @@
     "source.fixAll.eslint": true
   },
   "npm.packageManager": "pnpm",
-  "eslint.options": {
-    "rules": {
-      "comma-dangle": "off"
-    }
-  },
   "eslint.probe": [
     "javascript",
     "javascriptreact",
