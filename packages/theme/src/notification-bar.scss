@@ -1,0 +1,66 @@
+$component-name: notification-bar;
+
+.#{$component-name}__container {
+  @apply grid text-primary py-4 sm:py-2 relative overflow-hidden;
+
+  &--blue {
+    @apply bg-ocean-blue;
+  }
+  &--purple {
+    @apply bg-purple;
+  }
+  &--yellow {
+    @apply bg-amber;
+  }
+  &--green {
+    @apply bg-green-marketing;
+  }
+
+  .#{$component-name}__item {
+    @apply flex sm:justify-center sm:items-center gap-2 px-4 sm:px-6;
+    grid-area: 1 / 1;
+    transition: transform 0.8s cubic-bezier(0.4, 0.14, 1, 1);
+
+    &.#{$component-name}__item--invisible {
+      @apply invisible pointer-events-none;
+    }
+
+    &.#{$component-name}__item--enter {
+      transform: translateX(100%);
+    }
+
+    &.#{$component-name}__item--leave {
+      transform: translateX(-100%);
+    }
+
+    .#{$component-name}-item__icon {
+      @apply text-2xl leading-6 self-start sm:self-center;
+    }
+
+    .#{$component-name}-item__content {
+      @apply flex gap-x-4 gap-y-3 sm:items-center flex-wrap;
+
+      .#{$component-name}-item__text {
+        @apply font-medium text-xs leading-[1.125rem] sm:text-sm w-full sm:w-auto;
+      }
+
+      .#{$component-name}-item__link {
+        @apply sm:h-7 sm:py-1 sm:px-2 sm:text-xs;
+      }
+    }
+  }
+
+  &--closable {
+    .#{$component-name}__item {
+      @apply pr-12 sm:pr-16;
+    }
+  }
+
+  .#{$component-name}__close-button {
+    @apply absolute right-3 top-3.5 sm:top-2.5 p-1 flex justify-center items-center w-6 h-6 focus-visible:outline-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-blue;
+
+    .#{$component-name}-close-button__icon {
+      @apply w-6 h-6 leading-6;
+    }
+  }
+}

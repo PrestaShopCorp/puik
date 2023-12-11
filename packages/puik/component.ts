@@ -1,3 +1,4 @@
+import { PuikNotificationBar } from '@puik/components/notification-bar'
 import { PuikDivider } from '@puik/components/divider'
 import { PuikTag } from '@puik/components/tag'
 import { PuikChip } from '@puik/components/chip'
@@ -51,6 +52,7 @@ import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
+  PuikNotificationBar,
   PuikDivider,
   PuikTag,
   PuikChip,
