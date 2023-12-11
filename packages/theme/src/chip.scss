@@ -10,7 +10,7 @@
   &--small {
     @apply px-1 py-0;
     .puik-chip__close {
-      @apply p-1 py-[2px];
+      @apply p-1 p-[2px];
     }
   }
   &--disabled {
