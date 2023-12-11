@@ -80,4 +80,6 @@ const close = (event: Event) => emit('close', event);
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-alert.scss';
+@use '@prestashopcorp/puik-theme/src/puik-button.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
 </style>

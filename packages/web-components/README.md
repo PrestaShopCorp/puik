@@ -31,7 +31,3 @@ $ yarn add @prestashopcorp/puik-web-components
 # pnpm
 $ pnpm install @prestashopcorp/puik-web-components
 ```
-
-## Usage
-
-### On demand import
