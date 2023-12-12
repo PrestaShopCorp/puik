@@ -15,10 +15,10 @@ export enum PuikLinkSizes {
 }
 
 export interface LinkProps {
-  size?: PuikLinkSizes | `${PuikLinkSizes}`
+  size?: `${PuikLinkSizes}`
   href?: string
   to?: RouteLocationRaw
-  target?: PuikLinkTargetVariants | `${PuikLinkTargetVariants}`
+  target?: `${PuikLinkTargetVariants}`
   title?: string
   dataTest?: string
 }
