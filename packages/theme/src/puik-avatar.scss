@@ -1,53 +1,41 @@
 @use './common/typography.scss';
 
 .puik-avatar {
-  @apply flex justify-center items-center bg-primary-800 rounded-full overflow-hidden;
-}
-.puik-avatar--small {
-  @apply w-6 h-6;
-}
-.puik-avatar--medium {
-  @apply w-8 h-8;
-}
-.puik-avatar--large {
-  @apply w-12 h-12;
-}
-.puik-avatar--jumbo {
-  @apply w-14 h-14;
-}
-.puik-avatar--primary {
-  @apply border border-transparent;
-  .puik-avatar_initials {
-    @apply text-white;
-  }
-}
-.puik-avatar--reverse {
-  @apply border border-primary-300;
-  .puik-avatar_initials {
-    @apply text-primary-800;
-  }
-}
-.puik-avatar--photo {
-  @apply border-none;
-  img {
-    @apply object-cover;
-  }
-}
-.puik-avatar--reverse.puik-avatar {
-  @apply bg-white;
-}
-.puik-avatar_initials {
-  @apply font-bold;
+  @apply flex justify-center items-center rounded-full overflow-hidden;
   &--small {
-    @apply text-xs/none;
+    @apply w-6 h-6;
   }
   &--medium {
-    @apply text-sm/none;
+    @apply w-8 h-8;
   }
   &--large {
-    @apply text-base/none;
+    @apply w-12 h-12;
   }
   &--jumbo {
-    @apply text-2xl/none;
+    @apply w-14 h-14;
+  }
+  &__fallback {
+    @apply flex items-center justify-center w-full h-full font-bold rounded-full;
+    &--small {
+      @apply text-xs/none;
+    }
+    &--medium {
+      @apply text-sm/none;
+    }
+    &--large {
+      @apply text-base/none;
+    }
+    &--jumbo {
+      @apply text-2xl/none;
+    }
+    &--primary {
+      @apply text-white bg-primary-800;
+    }
+    &--reverse {
+      @apply border border-primary-300 text-primary-800 bg-white;
+    }
+  }
+  img {
+    @apply w-full h-full object-cover;
   }
 }

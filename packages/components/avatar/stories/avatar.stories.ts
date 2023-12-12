@@ -1,45 +1,16 @@
 import { ref } from 'vue';
-import { PuikIcon, PuikAvatar, PuikAvatarMode, PuikAvatarSize, PuikAvatarType } from '@prestashopcorp/puik-components';
+import { PuikIcon, PuikAvatar, PuikAvatarSizes, PuikAvatarVariants } from '@prestashopcorp/puik-components';
 import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
-const avatarModes = Object.values(PuikAvatarMode);
-const avatarSizes = Object.values(PuikAvatarSize);
-const avatarTypes = Object.values(PuikAvatarType);
-const avatarModesSummary = avatarModes.join('|');
+const avatarSizes = Object.values(PuikAvatarSizes);
 const avatarSizesSummary = avatarSizes.join('|');
-const avatarTypesSummary = avatarTypes.join('|');
+const avatarVariants = Object.values(PuikAvatarVariants);
+const avatarVariantsSummary = avatarSizes.join('|');
 
 export default {
   title: 'Components/Avatar',
   component: PuikAvatar,
   argTypes: {
-    id: {
-      description:
-        "Prop which will correspond to the component's html id attribute. NB: must not start with a number",
-      control: 'text',
-      table: {
-        type: {
-          summary: 'string'
-        },
-        defaultValue: {
-          summary: 'undefined'
-        }
-      }
-    },
-    mode: {
-      description:
-        'Two possible variations (primary and reverse) : depending on a dark or light background of the container where the avatar is placed',
-      control: 'select',
-      options: avatarModes,
-      table: {
-        type: {
-          summary: avatarModesSummary
-        },
-        defaultValue: {
-          summary: 'primary'
-        }
-      }
-    },
     size: {
       description:
         'Size variants of avatar component (small, medium, large, jumbo)',
@@ -54,28 +25,17 @@ export default {
         }
       }
     },
-    type: {
-      description: 'Content type of avatar (initials, image or icon)',
+    variants: {
+      description:
+        'Two possible variations (primary and reverse) : depending on a dark or light background of the container where the avatar is placed',
       control: 'select',
-      options: avatarTypes,
+      options: avatarVariants,
       table: {
         type: {
-          summary: avatarTypesSummary
+          summary: avatarVariantsSummary
         },
         defaultValue: {
-          summary: 'initials'
-        }
-      }
-    },
-    icon: {
-      description: 'Material icon name (cf https://fonts.google.com/icons)',
-      control: 'text',
-      table: {
-        type: {
-          summary: 'string'
-        },
-        defaultValue: {
-          summary: 'none'
+          summary: 'primary'
         }
       }
     },
@@ -103,59 +63,28 @@ export default {
         }
       }
     },
-    firstName: {
-      description:
-        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of firstName prop corresponds to the first). NB: if the lastName prop is missing then the initials will be the first two letters of the firstName prop in the case where the singleInitial prop is false. Special characters are removed',
-      control: 'text',
-      table: {
-        type: {
-          summary: 'string'
-        },
-        defaultValue: {
-          summary: 'none'
-        }
-      }
-    },
-    lastName: {
-      description:
-        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of lastName corresponds to the last). NB : if the firstName prop is missing then the initials will be the first two letters of the lastName prop in the case where the singleInitial prop is false. Special characters are removed.',
-      control: 'text',
-      table: {
-        type: {
-          summary: 'string'
-        },
-        defaultValue: {
-          summary: 'none'
-        }
-      }
-    },
-    singleInitial: {
-      description:
-        'Initials match a single letter (first letter of firstName. If the firstName conditions are not met this is the first letter of lastName). NB: if the conditions for the firstName and lastName props are not met then the default value is "P" (singleInitial set to true) or "PS" (singleInitial set to false).',
-      table: {
-        defaultValue: {
-          summary: false
-        }
-      }
-    },
     dataTest: {
       control: 'text',
       description:
         'Set the data-test attribute for the avatar `image-${dataTest}` `icon-${dataTest}` `initials-${dataTest}`'
+    },
+    fallback: {
+      control: 'text',
+      description: 'Avatar fallback slot when the user doesn\'t have a picture or if the picture fails to load',
+      table: {
+        defaultValue: {
+          summary: 'PS'
+        }
+      }
     }
   },
   args: {
-    id: 'puik-avatar-id',
-    mode: 'primary',
+    variant: 'primary',
     size: 'medium',
-    type: 'initials',
-    icon: 'home',
-    src: 'https://picsum.photos/200',
+    src: 'https://picsum.photos/id/64/200',
     alt: 'puik-avatar-alt',
-    firstName: 'Presta',
-    lastName: 'Shop',
-    singleInitial: false,
-    dataTest: undefined
+    dataTest: undefined,
+    fallback: ''
   }
 } as Meta;
 
@@ -182,15 +111,16 @@ const TypesTemplate: StoryFn = (args: Args) => ({
   },
   template: `
 <div class="flex space-x-2">
-  <PuikAvatar
-    type="initials"
-    :firstName="args.firstName"
-    :lastName="args.lastName"
-  />
-  <PuikAvatar
-    type="icon"
-    :icon="args.icon"
-  />
+  <PuikAvatar>
+    <template #fallback>
+      AB
+    </template>
+  </PuikAvatar>
+  <PuikAvatar>
+    <template #fallback>
+      <PuikIcon icon="home" />
+    </template>
+  </PuikAvatar>
   <PuikAvatar
     type="photo"
     :src="args.src"
@@ -208,60 +138,33 @@ const SizesTemplate: StoryFn = (args: Args) => ({
   setup() {
     const avatars = ref([
       {
-        type: 'initials',
         size: 'small'
       },
       {
-        type: 'initials',
         size: 'medium'
       },
       {
-        type: 'initials',
         size: 'large'
       },
       {
-        type: 'initials',
         size: 'jumbo'
       },
       {
-        type: 'icon',
         size: 'small',
-        icon: 'home'
+        src: 'https://picsum.photos/id/64/200'
       },
       {
-        type: 'icon',
         size: 'medium',
-        icon: 'home'
-      },
-      {
-        type: 'icon',
-        size: 'large',
-        icon: 'home'
-      },
-      {
-        type: 'icon',
-        size: 'jumbo',
-        icon: 'home'
-      },
-      {
-        type: 'photo',
-        size: 'small',
-        src: 'https://picsum.photos/200'
-      },
-      {
-        type: 'photo',
-        size: 'medium',
-        src: 'https://picsum.photos/200'
+        src: 'https://picsum.photos/id/64/200'
       },
       {
         type: 'photo',
         size: 'large',
-        src: 'https://picsum.photos/200'
+        src: 'https://picsum.photos/id/64/200'
       },
       {
-        type: 'photo',
         size: 'jumbo',
-        src: 'https://picsum.photos/200'
+        src: 'https://picsum.photos/id/64/200'
       }
     ]);
     return { avatars, args };
@@ -272,64 +175,41 @@ const SizesTemplate: StoryFn = (args: Args) => ({
     v-for="(avatar, index) in avatars"
     :key="index"
     :size="avatar.size"
-    :type="avatar.type"
-    :icon="avatar.icon"
     :src="avatar.src"
   />
 </div>
 `
 });
 
-const ModesTemplate: StoryFn = (args: Args) => ({
+const VariantsTemplate: StoryFn = () => ({
   components: {
     PuikIcon,
     PuikAvatar
   },
-  setup() {
-    const avatarsPrimary = ref([
-      {
-        type: 'initials',
-        mode: 'primary'
-      },
-      {
-        type: 'icon',
-        mode: 'primary',
-        icon: 'home'
-      }
-    ]);
-
-    const avatarsReverse = ref([
-      {
-        type: 'initials',
-        mode: 'reverse'
-      },
-      {
-        type: 'icon',
-        mode: 'reverse',
-        icon: 'home'
-      }
-    ]);
-
-    return { avatarsPrimary, avatarsReverse, args };
-  },
   template: `
 <div class="flex space-x-2" style="margin-bottom: 1rem; padding: 1rem;">
-  <puik-avatar
-    v-for="(avatar, index) in avatarsPrimary"
-    :key="index"
-    :type="avatar.type"
-    :mode="avatar.mode"
-    :icon="avatar.icon"
-  />
+  <PuikAvatar>
+    <template #fallback>
+      AB
+    </template>
+  </PuikAvatar>
+  <PuikAvatar>
+    <template #fallback>
+      <PuikIcon icon="home" />
+    </template>
+  </PuikAvatar>
 </div>
 <div class="flex space-x-2" style="padding: 1rem; background-color: black;">
-  <puik-avatar
-    v-for="(avatar, index) in avatarsReverse"
-    :key="index"
-    :type="avatar.type"
-    :mode="avatar.mode"
-    :icon="avatar.icon"
-  />
+  <PuikAvatar variant="reverse">
+    <template #fallback>
+      AB
+    </template>
+  </PuikAvatar>
+  <PuikAvatar variant="reverse">
+    <template #fallback>
+      <PuikIcon icon="home" />
+    </template>
+  </PuikAvatar>
 </div>
 `
 });
@@ -344,21 +224,16 @@ export const Default = {
 <!-- VueJS Snippet -->
 <!-- Vue component with all possible props -->
 <PuikAvatar
-  :id="args.id"
   :size="args.size"
-  :type="args.type"
-  :mode="args.mode"
+  :variant="args.mode"
   :src="args.src"
   :alt="args.alt"
-  :icon="args.icon"
-  :firstName="args.firstName"
-  :lastName="args.lastName"
 />
 
 <!-- HTML/CSS Snippet -->
 <!-- Avatar (by default) -->
-<div id="puik-avatar-id" class="puik-avatar puik-avatar--medium puik-avatar--initials puik-avatar--primary">
-  <div class="puik-avatar_initials puik-avatar_initials--medium">
+<div class="puik-avatar puik-avatar--medium">
+  <div class="puik-avatar_fallback puik-avatar_fallback--medium puik-avatar__fallback--primary">
     PS
   </div>
 </div>
@@ -397,8 +272,8 @@ export const Types = {
 
 <!-- HTML/CSS Snippet -->
 <!-- type initials-->
-<div class="puik-avatar puik-avatar--medium puik-avatar--initials puik-avatar--primary">
-  <div class="puik-avatar_initials puik-avatar_initials--medium">
+<div class="puik-avatar puik-avatar--medium">
+  <div class="puik-avatar_fallback puik-avatar_fallback--medium puik-avatar__fallback--primary">
     PS
   </div>
 </div>
@@ -409,7 +284,7 @@ export const Types = {
   </div>
 </div>
 <!-- type photo-->
-<div class="puik-avatar puik-avatar--medium puik-avatar--photo puik-avatar--primary">
+<div class="puik-avatar puik-avatar--medium">
   <img src="https://picsum.photos/200" alt="puik-avatar-alt">
 </div>
         `,
@@ -428,35 +303,18 @@ export const Sizes = {
         code: `
 <!-- VueJS Snippet -->
 <!-- $sizes: ${avatarSizesSummary} -->
-<!-- $types: ${avatarTypesSummary} -->
 
 <PuikAvatar
   :size="{$size}"
-  :type="{$type}"
 />
 
 <!-- HTML/CSS Snippet -->
-<!-- initials type -->
-<div class="puik-avatar puik-avatar--{$size} puik-avatar--initials puik-avatar--primary">
-  <div class="puik-avatar_initials puik-avatar_initials--{$size}">
+<div class="puik-avatar puik-avatar--{$size}">
+  <div class="puik-avatar_fallback puik-avatar_fallback--{$size} puik-avatar__fallback--primary">
     PS
   </div>
 </div>
-<!-- icon type -->
-<!-- 
-NB: values of {$iconFontSize} to apply depending on the prop size:
-  small = 1rem
-  medium = 1.5rem
-  large = 2rem
-  jumbo = 2.8rem
--->
-<div class="puik-avatar puik-avatar--{$size} puik-avatar--icon puik-avatar--primary">
-  <div class="puik-icon" style="font-size: {$iconFontSize}; color: white;">
-    home
-  </div>
-</div>
-<!-- photo type -->
-<div class="puik-avatar puik-avatar--{$size} puik-avatar--photo puik-avatar--primary">
+<div class="puik-avatar puik-avatar--{$size}">
   <img src="https://picsum.photos/200" alt="puik-avatar-alt">
 </div>
 `,
@@ -466,34 +324,22 @@ NB: values of {$iconFontSize} to apply depending on the prop size:
   }
 };
 
-export const Modes = {
-  render: ModesTemplate,
+export const Variants = {
+  render: VariantsTemplate,
   args: {},
   parameters: {
     docs: {
       source: {
         code: `
 <!-- VueJS Snippet -->
-<!-- $modes: ${avatarModesSummary} -->
+<!-- $variant: ${avatarVariantsSummary} -->
 
-<puik-avatar :mode="{$mode}"/>
+<puik-avatar :variant="{$variant}"/>
 
 <!-- HTML/CSS Snippet -->
-<!-- initials type -->
-<div class="puik-avatar puik-avatar--medium puik-avatar--initials puik-avatar--{$mode}">
-  <div class="puik-avatar_initials puik-avatar_initials--{$mode}">
+<div class="puik-avatar puik-avatar--medium">
+  <div class="puik-avatar_fallback puik-avatar_fallback--medium puik-avatar__fallback--{$variant}">
     PS
-  </div>
-</div>
-<!-- icon type -->
-<!--
-NB: values of {$iconColor} to apply depending on the prop mode:
-  primary = white
-  reverse = black
--->
-<div class="puik-avatar puik-avatar--medium puik-avatar--icon puik-avatar--{$mode}">
-  <div class="puik-icon" style="font-size: 1.5rem; color: {$iconColor};">
-    home
   </div>
 </div>
 `,

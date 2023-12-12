@@ -30,5 +30,5 @@
 }
 
 .puik-modal-v2-overlay {
-    @apply bg-primary-800 bg-opacity-75 fixed inset-0;
+    @apply bg-primary-800 bg-opacity-75 fixed inset-0 z-[999];
 }
