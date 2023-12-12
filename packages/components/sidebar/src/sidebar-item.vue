@@ -64,4 +64,5 @@ const isMenuItem = computed(
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-sidebar-item.scss';
+@use '@prestashopcorp/puik-theme/src/puik-button.scss';
 </style>

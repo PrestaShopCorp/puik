@@ -64,4 +64,6 @@ watch(tagContentElem, async () => {
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-tag.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+@use '@prestashopcorp/puik-theme/src/puik-tooltip.scss';
 </style>
