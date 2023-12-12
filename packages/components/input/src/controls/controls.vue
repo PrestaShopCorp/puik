@@ -22,11 +22,14 @@
 </template>
 <script setup lang="ts">
 import { useLocale } from '@prestashopcorp/puik-locale';
-import { controlsEmits, type ControlsProps } from './controls';
+import { type ControlsProps } from './controls';
 defineOptions({
   name: 'PuikInputControls'
 });
 const { t } = useLocale();
 defineProps<ControlsProps>();
-defineEmits(controlsEmits);
+defineEmits<{
+  increase: [],
+  decrease: []
+}>();
 </script>

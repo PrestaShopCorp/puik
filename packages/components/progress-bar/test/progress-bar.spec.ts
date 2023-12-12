@@ -16,7 +16,7 @@ describe('ProgressBar tests', () => {
     wrapper = mount(PuikProgressBar, {
       props,
       ...options
-    } as any);
+    });
   };
   it('should set the width depending on modelValue prop', () => {
     factory({ ...defaultProps });

@@ -11,7 +11,7 @@ describe('Breadcrumb tests', () => {
     wrapper = mount(PuikBreadcrumb, {
       props,
       ...options
-    } as any);
+    });
   };
 
   const getBreadcrumbItems = () =>

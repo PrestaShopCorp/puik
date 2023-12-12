@@ -15,7 +15,7 @@ describe('Chip tests', () => {
     wrapper = mount(PuikChip, {
       props,
       ...options
-    } as any);
+    });
   };
 
   it('as id prop value is "puik-chip-example", id html attribute of puik-chip should be "puik-chip-example"', () => {

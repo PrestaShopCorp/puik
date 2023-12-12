@@ -15,7 +15,7 @@ describe('Tag tests', () => {
     wrapper = mount(PuikTag, {
       props,
       ...options
-    } as any);
+    });
   };
 
   it('should be a vue instance', () => {

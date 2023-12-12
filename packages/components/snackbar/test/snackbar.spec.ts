@@ -20,7 +20,7 @@ describe('Snackbar tests', () => {
       props,
       attachTo: document.body,
       ...options
-    } as any);
+    });
   };
 
   it('should be a vue instance', () => {
