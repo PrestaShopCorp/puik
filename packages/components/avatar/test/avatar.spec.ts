@@ -1,5 +1,6 @@
 import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, beforeEach } from 'vitest';
+import { nextTick } from 'vue';
 import { PuikAvatar, AvatarProps, PuikAvatarVariants, PuikAvatarSizes } from '@prestashopcorp/puik-components';
 
 describe('Avatar tests', () => {
@@ -9,13 +10,13 @@ describe('Avatar tests', () => {
   const findImg = () => wrapper.find('.puik-avatar img');
 
   const mockImage = {
-    src: null,
+    src: 'https://picsum.photos/id/64/200',
     onload: () => {},
     onerror: () => {}
   };
 
   beforeEach(() => {
-    window.Image = function() { return mockImage; };
+    (window.Image as any) = function() { return mockImage; };
   });
 
   const factory = (
@@ -51,9 +52,10 @@ describe('Avatar tests', () => {
     expect(findFallbackWrapper().text()).toBe('PA');
   });
 
-  it('photo type avatar should display an image with src attribute set to "src-img" and an attribute alt set to "alt-img"', () => {
+  it('photo type avatar should display an image with src attribute set to "src-img" and an attribute alt set to "alt-img"', async () => {
     factory({ src: 'https://picsum.photos/id/64/200', alt: 'alt-img' });
     mockImage.onload();
+    await nextTick();
     expect(findImg().attributes().src).toBe('https://picsum.photos/id/64/200');
     expect(findImg().attributes().alt).toBe('alt-img');
   });
@@ -67,12 +69,14 @@ describe('Avatar tests', () => {
     );
   });
 
-  it('should have data-test attribute on image', () => {
+  it('should have data-test attribute on image', async () => {
     factory({
       src: 'https://picsum.photos/id/64/200',
       alt: 'alt-example',
       dataTest: 'example'
     });
+    mockImage.onload();
+    await nextTick();
     expect(findImg().attributes('data-test')).toBe('avatar-image-example');
   });
 });
