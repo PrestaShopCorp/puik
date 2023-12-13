@@ -24,6 +24,7 @@
     "chromatic": "chromatic",
     "dev": "pnpm --filter @prestashopcorp/puik-playground dev",
     "component": "hygen component new",
+    "pack:all" : "pnpm -r --parallel --filter './packages/**' exec pnpm pack --pack-destination ../../packages-tars",
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm -y"
   },
