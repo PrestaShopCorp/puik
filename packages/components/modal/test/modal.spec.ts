@@ -1,254 +1,255 @@
-import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { describe, it, expect } from 'vitest';
-import { PuikModal, PuikModalVariants, PuikModalSizes, DESTRUCTIVE_ICON_NAME, ModalProps } from '@prestashopcorp/puik-components';
-
-// @ts-expect-error Find on the Tailwindlabs/headlessui repo
-// https://github.com/tailwindlabs/headlessui/blob/main/packages/%40headlessui-vue/src/components/dialog/dialog.test.ts#L46
-global.ResizeObserver = class FakeResizeObserver {
-  observe() {}
-  disconnect() {}
-};
+import { mount, ComponentMountingOptions, VueWrapper, flushPromises } from '@vue/test-utils';
+import { describe, it, expect, afterEach } from 'vitest';
+import {
+  PuikModal,
+  PuikModalVariants,
+  PuikModalSizes,
+  PuikModalActions,
+  PuikModalClose,
+  PuikModalContent,
+  PuikModalHeader,
+  PuikModalTrigger,
+  PuikButton
+} from '@prestashopcorp/puik-components';
+import { nextTick } from 'vue';
 
 describe('Modal tests', () => {
   let wrapper: VueWrapper<any>;
 
-  const findModal = () => wrapper.find('.puik-modal');
+  const findModal = () => document.querySelector('.puik-modal');
   const findIcon = () =>
-    wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header__icon');
+    document.querySelector('.puik-modal__header__icon');
   const findCloseButton = () =>
-    wrapper.find(
-      '.puik-modal__dialogPanelContainer__dialogPanel__header__close-button'
-    );
-  const findMainButton = () =>
-    wrapper.find(
-      '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--main'
-    );
-  const findSecondaryButton = () =>
-    wrapper.find(
-      '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--second'
-    );
-  const findSideButton = () =>
-    wrapper.find(
-      '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--side'
-    );
-  const findHeader = () =>
-    wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header');
-
+    document.querySelector<HTMLButtonElement>('.puik-modal__close');
+  const findTitle = () => document.querySelector('.puik-modal__header .puik-h2');
+  const findActions = () => document.querySelector('.puik-modal__actions');
+  const findButtons = () => document.querySelectorAll('.puik-modal__actions .puik-button');
   const homeTitleIcon = 'home';
-  const findTitle = () => wrapper.find('.title');
+
+  afterEach(() => {
+    document.body.outerHTML = '';
+  });
 
   const factory = (
-    props?: ModalProps,
+    template: string,
     options?: ComponentMountingOptions<typeof PuikModal>
   ) => {
-    wrapper = mount(PuikModal, {
-      global: {
-        stubs: {
-          teleport: true
-        }
+    wrapper = mount({
+      template,
+      attachTo: document.body,
+      components: {
+        PuikModal,
+        PuikModalContent,
+        PuikModalTrigger,
+        PuikModalActions,
+        PuikModalClose,
+        PuikModalHeader,
+        PuikButton
       },
-      props,
       ...options
     });
   };
 
-  it('should be a vue instance, the default one', async () => {
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true
-    });
+  it('should be a vue instance', async () => {
+    factory(`
+    <PuikModal :open="true">
+      <PuikModalContent>
+        <PuikModalHeader>Title</PuikModalHeader>
+      </PuikModalContent>
+    </PuikModal>`);
+    await nextTick();
 
     expect(wrapper).toBeTruthy();
-    expect(findIcon().exists()).toBeFalsy();
-    expect(findCloseButton().exists()).toBeTruthy();
-    expect(findModal().classes()).toContain('puik-modal--small');
-    expect(findMainButton().classes()).toContain('puik-button--primary');
-    expect(findSecondaryButton().classes()).toContain('puik-button--secondary');
+    expect(findIcon()).toBeFalsy();
+    expect(findCloseButton()).toBeTruthy();
+    expect(findModal()?.className).toContain('puik-modal--medium');
   });
 
   it('should display destructive style', async () => {
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true,
-      titleIcon: homeTitleIcon,
-      variant: PuikModalVariants.Destructive
-    });
+    factory(`
+    <PuikModal :open="true" variant="${PuikModalVariants.Destructive}">
+      <PuikModalContent>
+        <PuikModalHeader>Title</PuikModalHeader>
+      </PuikModalContent>
+    </PuikModal>`);
+    await nextTick();
 
-    expect(findIcon().text()).toBe(DESTRUCTIVE_ICON_NAME);
-    expect(findModal().classes()).toContain('puik-modal--destructive');
-    expect(findMainButton().classes()).toContain('puik-button--destructive');
-    expect(findSecondaryButton().classes()).toContain('puik-button--tertiary');
+    expect(findIcon()?.textContent).toBe('warning');
+    expect(findIcon()?.className).toContain('puik-modal__header__icon--destructive');
+    expect(findCloseButton()).toBeTruthy();
   });
 
   it('should display feedback style', async () => {
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true,
-      titleIcon: homeTitleIcon,
-      variant: PuikModalVariants.Feedback
-    });
+    factory(`
+    <PuikModal :open="true" variant="${PuikModalVariants.Feedback}">
+      <PuikModalContent>
+        <PuikModalHeader icon="home">Title</PuikModalHeader>
+      </PuikModalContent>
+    </PuikModal>`);
+    await nextTick();
 
-    expect(findIcon().text()).toBe(homeTitleIcon);
-    expect(findModal().classes()).toContain('puik-modal--feedback');
-    expect(findMainButton().classes()).toContain('puik-button--primary');
-    expect(findSecondaryButton().classes()).toContain('puik-button--secondary');
+    expect(findIcon()?.textContent).toBe(homeTitleIcon);
+    expect(findCloseButton()).toBeTruthy();
   });
 
   it('should display dialog style', async () => {
-    const sideButtonText = 'Awesome side button';
+    factory(`
+    <PuikModal :open="true" variant="${PuikModalVariants.Dialog}">
+      <PuikModalContent>
+        <PuikModalHeader icon="home">Title</PuikModalHeader>
+      </PuikModalContent>
+    </PuikModal>`);
+    await nextTick();
 
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true,
-      titleIcon: homeTitleIcon,
-      variant: PuikModalVariants.Dialog,
-      sideButtonText
-    });
-
-    expect(findIcon().text()).toBe(homeTitleIcon);
-    expect(findModal().classes()).toContain('puik-modal--dialog');
-    expect(findMainButton().classes()).toContain('puik-button--primary');
-    expect(findSecondaryButton().classes()).toContain('puik-button--secondary');
-    expect(findSideButton().exists()).toBeTruthy();
-    expect(findSideButton().text()).toBe(sideButtonText);
+    expect(findIcon()?.textContent).toBe(homeTitleIcon);
+    expect(findCloseButton()).toBeFalsy();
   });
 
   it('should display with the large size', async () => {
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true,
-      size: PuikModalSizes.Large
-    });
+    factory(`
+    <PuikModal :open="true" size="${PuikModalSizes.Large}">
+      <PuikModalContent>
+        <PuikModalHeader icon="home">Title</PuikModalHeader>
+      </PuikModalContent>
+    </PuikModal>`);
+    await nextTick();
 
-    expect(findModal().classes()).toContain('puik-modal--large');
-  });
-
-  it('should display with the medium size', async () => {
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true,
-      size: PuikModalSizes.Medium
-    });
-
-    expect(findModal().classes()).toContain('puik-modal--medium');
+    expect(findModal()?.className).toContain('puik-modal--large');
   });
 
   it('should display with the small size', async () => {
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true,
-      size: PuikModalSizes.Small
-    });
+    factory(`
+    <PuikModal :open="true" size="${PuikModalSizes.Small}">
+      <PuikModalContent>
+        <PuikModalHeader icon="home">Title</PuikModalHeader>
+      </PuikModalContent>
+    </PuikModal>`);
+    await nextTick();
 
-    expect(findModal().classes()).toContain('puik-modal--small');
+    expect(findModal()?.className).toContain('puik-modal--small');
   });
 
   it('should display the close button and send close event when clicked', async () => {
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true
-    });
+    factory(`
+    <PuikModal :open="true">
+      <PuikModalContent>
+        <PuikModalHeader>Title</PuikModalHeader>
+      </PuikModalContent>
+    </PuikModal>`);
+    await nextTick();
 
-    expect(findCloseButton().exists()).toBeTruthy();
+    expect(findCloseButton()).toBeTruthy();
 
-    await findCloseButton().trigger('click');
-    expect(wrapper.emitted('close')).toBeTruthy();
+    await findCloseButton()?.click();
+    expect(wrapper.findComponent(PuikModalContent).emitted('closed')).toBeTruthy();
   });
 
-  it('should display the close button', async () => {
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true
-    });
-
-    expect(findCloseButton().exists()).toBeTruthy();
-
-    await findCloseButton().trigger('click');
-    expect(wrapper.emitted('close')).toBeTruthy();
+  it('should have a data-test attribute on title and closeButton', async () => {
+    factory(`
+    <PuikModal :open="true" data-test="test">
+      <PuikModalContent>
+        <PuikModalHeader icon="home">Title</PuikModalHeader>
+      </PuikModalContent>
+    </PuikModal>`);
+    await nextTick();
+    expect(findTitle()?.getAttribute('data-test')).toBe('title-test');
+    expect(findCloseButton()?.getAttribute('data-test')).toBe('closeButton-test');
   });
 
-  it('check main button event', async () => {
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true
-    });
+  it('should open the modal using the PuikModalTrigger component', async () => {
+    factory(`
+    <PuikModal>
+      <PuikModalTrigger>
+        <button class="open-modal">Open modal</button>
+      </PuikModalTrigger>
+      <PuikModalContent>
+        <PuikModalHeader icon="home">Title</PuikModalHeader>
+      </PuikModalContent>
+    </PuikModal>`);
 
-    await findMainButton().trigger('click');
-    expect(wrapper.emitted('button-main')).toBeTruthy();
+    await wrapper.find('.open-modal').trigger('click');
+    await nextTick();
+    expect(findModal()).toBeTruthy();
   });
 
-  it('check secondary button event', async () => {
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true
+  it('should open the modal using the open v-model/prop', async () => {
+    factory(`
+    <button class="open-modal" @click="open = true">Open modal</button>
+    <PuikModal v-model:open="open">
+      <PuikModalContent>
+        <PuikModalHeader icon="home">Title</PuikModalHeader>
+      </PuikModalContent>
+    </PuikModal>`, {
+      data() {
+        return {
+          open: false
+        };
+      }
     });
 
-    await findSecondaryButton().trigger('click');
-    expect(wrapper.emitted('button-second')).toBeTruthy();
+    await wrapper.find('.open-modal').trigger('click');
+    await nextTick();
+    expect(findModal()).toBeTruthy();
   });
 
-  it('expect to not have header', async () => {
-    await factory({
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true
-    });
+  it('should display the PuikModalActions component and two buttons', async () => {
+    factory(`
+    <PuikModal :open="true">
+      <PuikModalContent>
+        <PuikModalHeader icon="home">Title</PuikModalHeader>
+        <PuikModalActions>
+          <PuikButton variant="secondary">Secondary button</PuikButton>
+          <PuikButton>Primary button</PuikButton>
+        </PuikModalActions>
+      </PuikModalContent>
+    </PuikModal>`);
 
-    expect(findHeader().exists()).toBeFalsy();
+    await nextTick();
+    expect(findActions()).toBeTruthy();
+    expect(findButtons().length).toBe(2);
   });
 
-  it('should have a data-test attribute on title, mainButton, secondButton and closeButton', async () => {
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true,
-      dataTest: 'test'
-    });
-    expect(findTitle().attributes('data-test')).toBe('title-test');
-    expect(findMainButton().attributes('data-test')).toBe('mainButton-test');
-    expect(findSecondaryButton().attributes('data-test')).toBe(
-      'secondButton-test'
-    );
-    expect(findCloseButton().attributes('data-test')).toBe('closeButton-test');
-  });
-  it('should have a data-test attribute on side button', async () => {
-    const sideButtonText = 'Awesome side button';
+  it('should close the modal when clicking on the close button', async () => {
+    factory(`
+    <PuikModal>
+      <PuikModalTrigger>
+        <button class="open-modal">Open modal</button>
+      </PuikModalTrigger>
+      <PuikModalContent>
+        <PuikModalHeader icon="home">Title</PuikModalHeader>
+      </PuikModalContent>
+    </PuikModal>`);
 
-    await factory({
-      title: 'Awesome title',
-      mainButtonText: 'Awesome main',
-      secondButtonText: 'Awesome second',
-      isOpen: true,
-      titleIcon: homeTitleIcon,
-      variant: PuikModalVariants.Dialog,
-      sideButtonText,
-      dataTest: 'test'
-    });
-    expect(findSideButton().exists()).toBeTruthy();
-    expect(findSideButton().text()).toBe(sideButtonText);
-    expect(findSideButton().attributes('data-test')).toBe('sideButton-test');
+    await wrapper.find('.open-modal').trigger('click');
+    await nextTick();
+    expect(findModal()).toBeTruthy();
+    await findCloseButton()?.click();
+    await flushPromises();
+    expect(findModal()).toBeFalsy();
+  });
+
+  it('should close the modal when clicking on the PuikModalClose', async () => {
+    factory(`
+    <PuikModal>
+      <PuikModalTrigger>
+        <button class="open-modal">Open modal</button>
+      </PuikModalTrigger>
+      <PuikModalContent>
+        <PuikModalHeader icon="home">Title</PuikModalHeader>
+        <PuikModalActions>
+          <PuikModalClose>
+            <PuikButton class="close-modal" variant="secondary">Close</PuikButton>
+          </PuikModalClose>
+          <PuikButton>Primary button</PuikButton>
+        </PuikModalActions>
+      </PuikModalContent>
+    </PuikModal>`);
+
+    await wrapper.find('.open-modal').trigger('click');
+    await nextTick();
+    expect(findModal()).toBeTruthy();
+    await document.querySelector<HTMLButtonElement>('.close-modal')?.click();
+    await flushPromises();
+    expect(findModal()).toBeFalsy();
   });
 });

@@ -1,3 +1,4 @@
+import animations from './animations';
 export default {
   extend: {
     colors: {
@@ -116,6 +117,7 @@ export default {
       overlay: '0px 12px 60px 0px rgba(0, 0, 0, 0.1)',
       sticky: '0px 6px 12px rgba(0, 0, 0, 0.1)',
       'pop-modal': '0px 12px 24px rgba(0, 0, 0, 0.1)'
-    }
+    },
+    ...animations
   }
 };

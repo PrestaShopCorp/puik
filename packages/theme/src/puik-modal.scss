@@ -1,104 +1,34 @@
-@use './common/typography.scss';
 .puik-modal {
-  @apply relative z-50;
-
-  &--invisible {
-    @apply invisible;
-  }
-  .puik-modal__dialogPanelContainer__dialogPanel {
-    @apply w-full sm:w-auto;
-  }
-  &--destructive {
-    .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-      @apply text-red-500 bg-red-50;
+    @apply fixed bottom-0 sm:bottom-auto sm:top-[50%] left-[50%] translate-x-[-50%] sm:translate-y-[-50%] bg-white p-6 border drop-shadow-xl border-primary-400 flex flex-col gap-6 sm:max-w-[680px] w-full data-[state=open]:animate-contentShow;
+    &--large {
+        @apply sm:max-w-[904px];
     }
-  }
-  &--dialog {
-    .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-      @apply text-primary-500 bg-primary-300;
+    &--small {
+        @apply sm:max-w-[508px];
     }
-  }
-  &--feedback {
-    .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-      @apply text-primary-800 bg-ocean-blue-50;
-    }
-  }
-
-  &--large {
-    .puik-modal__dialogPanelContainer__dialogPanel {
-      @apply sm:max-w-[904px];
-    }
-  }
-  &--medium {
-    .puik-modal__dialogPanelContainer__dialogPanel {
-      @apply sm:max-w-[680px];
-    }
-  }
-  &--small {
-    .puik-modal__dialogPanelContainer__dialogPanel {
-      @apply sm:max-w-[508px];
-    }
-  }
-
-  &__dialogPanelContainer {
-    @apply fixed max-h-full bg-primary-700/50 inset-0 flex justify-center items-end sm:items-center;
-    &__dialogPanel {
-      @apply max-h-full
-        flex
-        flex-col
-        bg-white
-        border
-        drop-shadow-xl
-        border-primary-400
-        p-6
-        gap-6;
-
-      &__header {
-        @apply flex items-center gap-4;
-
-        &__icon {
-          @apply rounded-full p-2;
-        }
-
+    &__header {
+        @apply flex flex-row justify-between items-center;
         &__title {
-          @extend .puik-h2;
-          @apply min-w-0 flex-1;
-
-          .title {
-            @apply font-bold flex-1 overflow-hidden text-ellipsis whitespace-nowrap;
-          }
+            @apply flex flex-row items-center;
         }
-
-        &__close-button {
-          @apply p-0;
+        &__icon {
+            @apply rounded-full p-2 mr-4 leading-none text-primary-700 bg-ocean-blue-50;
+            &--destructive {
+                @apply bg-red-50;
+            }
         }
-      }
-
-      &__content {
-        @apply overflow-hidden overflow-y-auto flex flex-1 text-primary-800;
-      }
-
-      &__footer {
-        @apply flex flex-col gap-4 sm:flex-row;
-
-        &__button {
-          &--main {
-            @apply sm:order-4;
-          }
-
-          &--second {
-            @apply sm:order-3;
-          }
-
-          &--side {
-            @apply sm:order-1;
-          }
-        }
-
-        &__spacer {
-          @apply hidden sm:visible sm:flex sm:flex-1 sm:order-2;
-        }
-      }
     }
-  }
+    &__close {
+        @apply p-0 absolute top-6 right-6;
+    }
+    &__content {
+        @apply overflow-y-auto;
+    }
+    &__actions {
+        @apply flex flex-col sm:flex-row justify-end gap-4;
+    }
+}
+
+.puik-modal-overlay {
+    @apply bg-primary-800 bg-opacity-75 fixed inset-0 z-[999] data-[state=open]:animate-overlayShow;
 }

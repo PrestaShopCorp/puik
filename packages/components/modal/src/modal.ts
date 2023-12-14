@@ -1,6 +1,5 @@
 import type Modal from './modal.vue';
-
-export const DESTRUCTIVE_ICON_NAME = 'warning';
+import { InjectionKey } from 'vue';
 
 export enum PuikModalVariants {
   Destructive = 'destructive',
@@ -15,23 +14,14 @@ export enum PuikModalSizes {
 }
 
 export interface ModalProps {
-  title?: string
-  mainButtonText?: string
-  isMainButtonDisabled?: boolean
-  secondButtonText?: string
-  sideButtonText?: string
   variant?: `${PuikModalVariants}`
   size?: `${PuikModalSizes}`
-  isOpen?: boolean
-  titleIcon?: string
+  description?: string
   dataTest?: string
 }
 
-export const modalEmits = [
-  'close',
-  'button-main',
-  'button-second',
-  'button-side'
-];
+export type ModalContext = Required<Pick<ModalProps, 'variant' | 'size'>> & Pick<ModalProps, 'dataTest' | 'description'>;
+
+export const ModalInjectionKey = Symbol('PuikModalInjectionKey') as InjectionKey<ModalContext>;
 
 export type ModalInstance = InstanceType<typeof Modal>;
