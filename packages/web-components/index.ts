@@ -1,7 +1,5 @@
-import {
-  initAllCe,
-  initCe
-} from './utils';
+import initAllCe from './utils/initAllCe.ts';
+import initCe from './utils/initCe';
 import type { CustomElementWithTagName } from './types';
 
 import PuikAccordionCe from './components/accordion';
