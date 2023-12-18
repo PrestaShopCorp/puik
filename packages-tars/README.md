@@ -15,6 +15,7 @@ Allows you, for example, to test a package before publishing it
 ## Example in a local node project
 
 dependencies parameter of package.json file
+
 ```json
 "dependencies": {   
     "@prestashopcorp/puik-components": "file:[path_to_tar]/prestashopcorp-puik-components-[0.0.x].tgz",
