@@ -36,7 +36,3 @@ const style = computed(() => {
   };
 });
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
-</style>

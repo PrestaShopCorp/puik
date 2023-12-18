@@ -59,10 +59,3 @@ withDefaults(defineProps<BreadcrumbProps>(), {
   separatorIcon: 'keyboard_arrow_right'
 });
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-breadcrumb.scss';
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
-@use '@prestashopcorp/puik-theme/src/puik-link.scss';
-</style>

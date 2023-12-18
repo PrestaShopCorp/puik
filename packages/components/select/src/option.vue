@@ -72,8 +72,3 @@ watch(
   { immediate: true }
 );
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-option.scss';
-</style>

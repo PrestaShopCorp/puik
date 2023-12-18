@@ -68,7 +68,5 @@ const setSelected = () => {
 </script>
 
 <style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-button.scss';
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+@import './../../node_modules/@prestashopcorp/puik-theme/dist/puik-button.css';
 </style>

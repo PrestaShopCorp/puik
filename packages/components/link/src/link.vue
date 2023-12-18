@@ -43,8 +43,3 @@ const pathProp = computed(() =>
   props.to ? { to: props.to } : { href: props.href }
 );
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-link.scss';
-</style>

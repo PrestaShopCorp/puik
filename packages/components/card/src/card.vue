@@ -13,8 +13,3 @@ withDefaults(defineProps<CardProps>(), {
   variant: PuikCardVariants.Default
 });
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-card.scss';
-</style>

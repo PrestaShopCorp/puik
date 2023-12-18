@@ -292,10 +292,3 @@ watch(
   }
 );
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-table.scss';
-@use '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
-</style>
