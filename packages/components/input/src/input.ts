@@ -6,8 +6,8 @@ export enum PuikInputTypes {
   Email = 'email',
   Number = 'number',
   Search = 'search',
-  URL = 'url',
-  Telephone = 'tel',
+  Url = 'url',
+  Phone = 'tel',
 }
 
 export interface InputProps {

@@ -40,7 +40,7 @@ describe('Pagination tests', () => {
     wrapper = mount(PuikPagination, {
       props,
       ...options
-    } as any);
+    });
   };
 
   const propsData = {

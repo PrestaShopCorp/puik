@@ -15,7 +15,7 @@ describe('Checkbox tests', () => {
     wrapper = mount(PuikCheckbox, {
       props,
       ...options
-    } as any);
+    });
   };
   it('should emit update:modelValue with true as payload when the input is clicked', async () => {
     factory({ modelValue: false });

@@ -53,7 +53,7 @@ describe('Table tests', () => {
         items: props.items ?? defaultItems
       },
       ...options
-    } as any);
+    });
   };
   // Global tests
   it('should be a vue instance', () => {

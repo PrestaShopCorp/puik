@@ -18,7 +18,7 @@ describe('Label tests', () => {
     wrapper = mount(PuikLabel, {
       props,
       ...options
-    } as any);
+    });
   };
   it('should be a vue instance', () => {
     factory({ for: '' });

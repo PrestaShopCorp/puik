@@ -41,7 +41,7 @@
         </div>
         <puik-accordion-group
           contained
-          class="puik-sidebar__content lul"
+          class="puik-sidebar__content"
           :model-value="openAccordionName"
           @update:model-value="open($event as string)"
         >

@@ -2,6 +2,7 @@
   "name": "@prestashopcorp/puik-resolver",
   "description": "Puik Component Resolver for unplugin-vue-components",
   "version": "0.0.1",
+  "type": "module",
   "files": [
     "dist"
   ],
@@ -15,8 +16,8 @@
     "vue": "^3.3.0"
   },
   "devDependencies": {
-    "unplugin-vue-components": "^0.25.2",
-    "vue": "^3.3.8"
+    "unplugin-vue-components": "^0.26.0",
+    "vue": "3.3.10"
   },
   "sideEffects": false,
   "publishConfig": {

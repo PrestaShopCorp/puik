@@ -13,7 +13,7 @@ describe('Icon tests', () => {
     wrapper = mount(PuikIcon, {
       props,
       ...options
-    } as any);
+    });
   };
   it('should be a vue instance', () => {
     factory({

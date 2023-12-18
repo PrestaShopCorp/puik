@@ -155,6 +155,7 @@ const selectedValue = computed({
     return props.modelValue;
   },
   set(option: any) {
+    // console.log(props.customLabel ?? option.label)
     currentLabel.value = props.customLabel ?? option.label;
     emit('update:modelValue', option.value);
   }
