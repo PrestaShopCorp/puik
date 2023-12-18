@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -164,8 +164,8 @@ importers:
         specifier: ^2.11.6
         version: 2.11.8
       '@prestashopcorp/puik-theme':
-        specifier: workspace:*
-        version: link:../theme
+        specifier: file:../../packages-tars/prestashopcorp-puik-theme-0.0.1.tgz
+        version: file:packages-tars/prestashopcorp-puik-theme-0.0.1.tgz
       '@vueuse/core':
         specifier: ^10.7.0
         version: 10.7.0(vue@3.3.10)
@@ -12081,3 +12081,9 @@ packages:
     optionalDependencies:
       commander: 9.5.0
     dev: true
+
+  file:packages-tars/prestashopcorp-puik-theme-0.0.1.tgz:
+    resolution: {integrity: sha512-dFIhPL4uhVXPqLXN0S8lQf8JXIJq/BgGHweAP/TryunZ2iLLe2buh/xYG8Pscs626LHcOClyUZFMqx4c5kUUDA==, tarball: file:packages-tars/prestashopcorp-puik-theme-0.0.1.tgz}
+    name: '@prestashopcorp/puik-theme'
+    version: 0.0.1
+    dev: false
