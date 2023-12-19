@@ -31,3 +31,6 @@ $ yarn add @prestashopcorp/puik-web-components
 # pnpm
 $ pnpm install @prestashopcorp/puik-web-components
 ```
+### Web-Components Registration
+
+run  `initAllCe()` in your application.

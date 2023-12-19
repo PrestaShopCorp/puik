@@ -15,6 +15,22 @@ export default defineConfig({
     }),
     nodeResolve()
   ],
+  // resolve: {
+  //   preserveSymlinks: true,
+  //   alias: [
+  //     {
+  //       find: '@prestashopcorp/puik',
+  //       replacement: `${path.resolve('../puik')}`
+  //     },
+  //     {
+  //       find: /^@prestashopcorp\/puik-(.*)$/,
+  //       replacement: `${path.resolve('../')}/$1`
+  //     }
+  //   ]
+  // },
+  css: {
+    postcss: resolve(__dirname, '../theme/postcss.config.js')
+  },
   build: {
     lib: {
       entry: resolve(__dirname, './index.ts')
