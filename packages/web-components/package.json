@@ -4,7 +4,6 @@
   "type": "module",
   "description": "PUIK available by web components.",
   "scripts": {
-    "prebuild": "mkdir -p public/styles public/styles/common",
     "build": "vue-tsc --noEmit --project ./tsconfig.build.json && vite build"
   },
   "peerDependencies": {
@@ -14,7 +13,6 @@
     "@headlessui/vue": "^1.7.11",
     "@popperjs/core": "^2.11.6",
     "@prestashopcorp/puik-components": "workspace:*",
-    "@prestashopcorp/puik-theme": "workspace:*",
     "@vueuse/core": "^9.13.0"
   },
   "devDependencies": {
