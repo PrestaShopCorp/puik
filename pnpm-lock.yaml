@@ -260,9 +260,6 @@ importers:
       '@prestashopcorp/puik-components':
         specifier: workspace:*
         version: link:../components
-      '@prestashopcorp/puik-theme':
-        specifier: workspace:*
-        version: link:../theme
       '@vueuse/core':
         specifier: ^9.13.0
         version: 9.13.0(vue@3.3.10)
