@@ -20,7 +20,7 @@
             ]"
           >
             <puik-checkbox
-              v-if="selectable"
+              v-if="selectable && !searchBar"
               :model-value="selectAll"
               :indeterminate="indeterminate"
               class="puik-table__head__row__item--selection__checkbox"
@@ -83,6 +83,118 @@
                   size="sm"
                   @click="sortTable(header.value)"
                 />
+              </div>
+            </div>
+          </th>
+        </tr>
+        <tr
+          v-if="searchBar"
+          class="puik-table__head__row puik-table__search__bar"
+        >
+          <th
+            v-if="selectable || expandable"
+            :class="[
+              'puik-table__head__row__item',
+              { 'puik-table__head__row__item--sticky': stickyFirstCol },
+              {
+                'puik-table__head__row__item--sticky-scroll':
+                  stickyFirstCol &&
+                  (ScrollBarPosition ===
+                    PuikTableScrollBarPosistion.IsScrolling ||
+                    ScrollBarPosition === PuikTableScrollBarPosistion.Right),
+              },
+              { 'puik-table__head__row__item--selection': selectable },
+              { 'puik-table__head__row__item--expandable': expandable },
+            ]"
+          >
+            <puik-checkbox
+              v-if="selectable"
+              :model-value="selectAll"
+              :indeterminate="indeterminate"
+              class="puik-table__head__row__item--selection__checkbox"
+              @click="handleClickAll"
+            >
+              {{ selectAllLabel }}
+            </puik-checkbox>
+          </th>
+
+          <th
+            v-for="(header, index) in headers"
+            :key="`headers${header.value}`"
+            :class="[
+              `puik-table__head__row__item puik-table__head__row__item--${
+                header.align ?? 'left'
+              }`,
+              {
+                [`puik-table__head__row__item--${header.size}`]:
+                  header?.size && !header?.width,
+              },
+              {
+                'puik-table__head__row__item--sortable': header?.sortable,
+              },
+              { 'puik-table__head__row__item--sticky': isSticky(index) },
+              {
+                'puik-table__head__row__item--sticky-scroll':
+                  isSticky(index) &&
+                  ScrollBarPosition === PuikTableScrollBarPosistion.IsScrolling,
+              },
+              {
+                'puik-table__head__row__item--sticky-left':
+                  isSticky(index) &&
+                  ScrollBarPosition === PuikTableScrollBarPosistion.Left,
+              },
+              {
+                'puik-table__head__row__item--sticky-right':
+                  isSticky(index) &&
+                  ScrollBarPosition === PuikTableScrollBarPosistion.Right,
+              },
+            ]"
+            :style="{ minWidth: header.width, width: header.width }"
+          >
+            <div class="puik-table__head__row__item__container">
+              <div class="puik-table__head__row__item__content">
+                <slot
+                  :name="`header-${header.value}`"
+                  :header="header"
+                  :index="index"
+                >
+                  <PuikInput
+                    v-if="
+                      !header.searchSubmit &&
+                      header.searchType === PuikTableSearchTypes.Text
+                    "
+                    type="text"
+                    :value="header.searchInputType"
+                    placeholder="Search"
+                    :min="0"
+                    :max="10"
+                  />
+                  <div class="flex flex-col">
+                    <PuikInput
+                      v-if="
+                        !header.searchSubmit &&
+                        header.searchType === PuikTableSearchTypes.Range
+                      "
+                      type="number"
+                      placeholder="Min"
+                      :min="0"
+                      :max="10"
+                    />
+                    <PuikInput
+                      v-if="
+                        !header.searchSubmit &&
+                        header.searchType === PuikTableSearchTypes.Range
+                      "
+                      type="number"
+                      placeholder="Max"
+                      :min="0"
+                      :max="10"
+                    />
+                  </div>
+                  <puik-button v-if="header.searchSubmit" left-icon="search">
+                    Search
+                  </puik-button>
+                </slot>
               </div>
             </div>
           </th>
@@ -259,11 +371,13 @@ import { useLocale } from '@puik/hooks'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
 import PuikButton from '../../button/src/button.vue'
 import PuikIcon from '../../icon/src/icon.vue'
+import PuikInput from '../../input/src/input.vue'
 import {
   tableProps,
   PuikTableSortOrder,
   PuikTableSortIcon,
   PuikTableScrollBarPosistion,
+  PuikTableSearchTypes,
 } from './table'
 import type { sortOption } from './table'
 defineOptions({

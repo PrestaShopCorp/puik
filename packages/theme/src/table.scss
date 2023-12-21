@@ -179,3 +179,20 @@
     @apply cursor-pointer;
   }
 }
+.puik-table__search__bar {
+  @apply border-t-[1px];
+  th,
+  th.puik-table__head__row__item--sticky {
+    @apply bg-primary-200;
+  }
+}
+
+tr.puik-table__search__bar {
+  .puik-table__head__row__item--sticky-scroll,
+  .puik-table__head__row__item--sticky-right:first-child,
+  .puik-table__head__row__item--sticky-left:last-child {
+    &::before {
+      @apply bg-primary-200;
+    }
+  }
+}
