@@ -31,3 +31,4 @@ export * from './chip';
 export * from './tag';
 export * from './avatar';
 export * from './divider';
+export * from './combo-box';

@@ -40,6 +40,10 @@ import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { PuikModalClose } from '@prestashopcorp/puik-components/modal';
 import { inject } from 'vue';
 
+defineOptions({
+  name: 'PuikModalContent'
+});
+
 defineEmits<{closed: []}>();
 
 const { size, dataTest, variant, description } = inject(ModalInjectionKey) as ModalContext;

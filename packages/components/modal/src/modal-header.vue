@@ -26,6 +26,11 @@ import { ModalHeaderProps, DESTRUCTIVE_ICON_NAME } from './modal-header';
 import { PuikModalVariants, ModalInjectionKey, ModalContext } from './modal';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { computed, inject } from 'vue';
+
+defineOptions({
+  name: 'PuikModalHeader'
+});
+
 const props = defineProps<ModalHeaderProps>();
 
 const { variant, dataTest } = inject(ModalInjectionKey) as ModalContext;

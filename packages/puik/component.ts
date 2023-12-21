@@ -1,4 +1,5 @@
 import {
+  PuikComboBox,
   PuikAvatar,
   PuikDivider,
   PuikSkeletonLoader,
@@ -51,6 +52,7 @@ import type { Component } from 'vue';
 
 // prettier-ignore
 export default [
+  PuikComboBox,
   PuikAvatar,
   PuikDivider,
   PuikSkeletonLoader,

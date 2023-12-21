@@ -1,0 +1,59 @@
+.puik-combobox__button {
+    @apply w-full flex items-center justify-between cursor-default bg-white min-h-[36px] text-left border border-primary-400 hover:border-primary text-primary focus-visible:outline-none focus-visible:ring focus-visible:ring-blue disabled:border-primary-400 disabled:text-primary-500;
+
+    &:disabled input {
+        @apply text-primary-500;
+    }
+}
+
+.puik-combobox__list {
+    @apply bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus-visible:outline-none sm:text-sm max-h-60 overflow-y-auto overflow-x-hidden w-full;
+}
+
+[data-radix-popper-content-wrapper] {
+    @apply w-full;
+}
+
+.puik-combobox__no-results {
+    @apply p-2 truncate;
+}
+
+.puik-combobox__item {
+    @apply flex place-content-between relative cursor-default select-none p-2 text-primary-800 transition-colors;
+
+    &--selected {
+        @apply bg-primary-300;
+    }
+
+    &:hover:not(&--disabled, &--selected) {
+        @apply bg-primary-200 text-primary-800;
+    }
+
+    &--active:not(&--disabled, &--selected, &:hover) {
+        @apply ring ring-blue ring-inset rounded-lg;
+    }
+
+    &:active:not(&--disabled) {
+        @apply bg-white;
+    }
+
+    &--disabled {
+        @apply bg-white text-primary-300 pointer-events-none;
+    }
+}
+
+.puik-combobox__search {
+    @apply flex flex-col px-1 my-1;
+
+    &__wrapper {
+        @apply flex flex-row border border-primary-400 font-primary transition-colors text-primary overflow-hidden;
+    }
+
+    &__input {
+        @apply bg-transparent w-full py-2 outline-none pr-3 text-primary disabled:text-primary-500 disabled:cursor-not-allowed placeholder:text-primary-700 placeholder:disabled:text-primary-500;
+    }
+
+    &__icon {
+        @apply flex items-center text-primary-700 pl-3 pr-2;
+    }
+}

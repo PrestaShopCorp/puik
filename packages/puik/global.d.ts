@@ -1,6 +1,7 @@
 // GlobalComponents for Volar
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    PuikComboBox: typeof import('@prestashopcorp/puik-components')['PuikComboBox']
     PuikTag: (typeof import('@prestashopcorp/puik-components'))['PuikTag']
     PuikTabNavigationGroupPanels: (typeof import('@prestashopcorp/puik-components'))['PuikTabNavigationGroupPanels']
     PuikTabNavigationTitle: (typeof import('@prestashopcorp/puik-components'))['PuikTabNavigationTitle']
