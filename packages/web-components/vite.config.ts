@@ -36,15 +36,7 @@ export default defineConfig({
           format: 'cjs',
           preserveModules: true,
           preserveModulesRoot: resolve(__dirname, './'),
-          entryFileNames: (chunk) => {
-            if (chunk.name.includes('node_modules')) {
-              return `${chunk.name.replace('node_modules', '_external')}.cjs`;
-            }
-            if (chunk.name.includes('packages')) {
-              return `${chunk.name.replace('packages', '_external')}.cjs`;
-            }
-            return '[name].cjs';
-          },
+          entryFileNames: '[name].cjs',
           exports: 'named'
         }
       ]
