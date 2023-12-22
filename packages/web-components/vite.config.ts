@@ -11,7 +11,6 @@ export default defineConfig({
     dts({
       tsconfigPath: 'tsconfig.build.json'
     }),
-    nodeResolve()
   ],
   build: {
     lib: {
