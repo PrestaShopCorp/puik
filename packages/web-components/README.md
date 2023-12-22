@@ -13,7 +13,7 @@
 
 ## About The Project
 
-Puik Web Components is a library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem.
+Puik Web Components is a library that aims to provide a complete set of reusable web components based on the PrestaShop Design System for all the PrestaShop ecosystem.
 
 ## Prerequisites
 
