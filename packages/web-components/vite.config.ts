@@ -1,7 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
 import vue from '@vitejs/plugin-vue';
 import pkg from './package.json' assert { type: 'json' };
 
@@ -10,7 +9,7 @@ export default defineConfig({
     vue(),
     dts({
       tsconfigPath: 'tsconfig.build.json'
-    }),
+    })
   ],
   build: {
     lib: {
@@ -19,8 +18,7 @@ export default defineConfig({
     rollupOptions: {
       external: [
         ...Object.keys(pkg.dependencies),
-        ...Object.keys(pkg.peerDependencies),
-        /^@prestashopcorp\/puik-components\/.*/
+        ...Object.keys(pkg.peerDependencies)
       ],
       output: [
         {
