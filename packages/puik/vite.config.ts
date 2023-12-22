@@ -18,7 +18,6 @@ export default defineConfig({
         ...Object.keys(pkg.dependencies),
         ...Object.keys(pkg.peerDependencies),
         /^@prestashopcorp\/puik-components\/.*/,
-        /^@prestashopcorp\/puik-web-components\/.*/
       ],
       output: [
         {
