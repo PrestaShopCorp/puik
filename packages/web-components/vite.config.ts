@@ -7,7 +7,7 @@ import pkg from './package.json' assert { type: 'json' };
 
 export default defineConfig({
   plugins: [
-    vue({ isProduction: true, customElement: true }),
+    vue(),
     dts({
       tsconfigPath: 'tsconfig.build.json'
     }),
