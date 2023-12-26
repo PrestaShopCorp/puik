@@ -1,15 +1,17 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import vue from '@vitejs/plugin-vue';
 import pkg from './package.json' assert { type: 'json' };
 
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({ isProduction: true }),
     dts({
       tsconfigPath: 'tsconfig.build.json'
-    })
+    }),
+    nodeResolve()
   ],
   build: {
     lib: {
@@ -18,7 +20,7 @@ export default defineConfig({
     rollupOptions: {
       external: [
         ...Object.keys(pkg.dependencies),
-        ...Object.keys(pkg.peerDependencies)
+        ...Object.keys(pkg.devDependencies)
       ],
       output: [
         {
@@ -26,7 +28,15 @@ export default defineConfig({
           format: 'esm',
           preserveModules: true,
           preserveModulesRoot: resolve(__dirname, './'),
-          entryFileNames: '[name].mjs',
+          entryFileNames: (chunk) => {
+            if (chunk.name.includes('node_modules')) {
+              return `${chunk.name.replace('node_modules', '_external')}.mjs`;
+            }
+            if (chunk.name.includes('packages')) {
+              return `${chunk.name.replace('packages', '_external')}.mjs`;
+            }
+            return '[name].mjs';
+          },
           exports: 'named'
         },
         {
@@ -34,7 +44,15 @@ export default defineConfig({
           format: 'cjs',
           preserveModules: true,
           preserveModulesRoot: resolve(__dirname, './'),
-          entryFileNames: '[name].cjs',
+          entryFileNames: (chunk) => {
+            if (chunk.name.includes('node_modules')) {
+              return `${chunk.name.replace('node_modules', '_external')}.cjs`;
+            }
+            if (chunk.name.includes('packages')) {
+              return `${chunk.name.replace('packages', '_external')}.cjs`;
+            }
+            return '[name].cjs';
+          },
           exports: 'named'
         }
       ]
