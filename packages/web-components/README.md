@@ -31,6 +31,27 @@ $ yarn add @prestashopcorp/puik-web-components
 # pnpm
 $ pnpm install @prestashopcorp/puik-web-components
 ```
-### Web-Components Registration
 
-run  `initAllCe()` in your application.
+## Using Puik Web Components
+
+### Global registration
+
+To use all Puik web components in your application, you first need to import and initialize them. Here’s how you can do it:
+
+`import {
+  initAllCe,
+  PuikExampleCe,
+  PuikAnotherExampleCe,
+  // other components...
+ } from @prestashopcorp/puik-web-components`
+
+// Then, run the following function in your application:
+`initAllCe()`
+
+### On-demand Registration
+
+If you only want to use a specific component in your application, you can import and initialize it individually. Here’s how you can do it:
+`import { initCe, PuikExampleCe } from @prestashopcorp/puik-web-components`
+
+// Then, run the following function in your application:
+initCe(PuikExampleCe);
