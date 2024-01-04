@@ -163,3 +163,19 @@ $ pnpm docs:dev
 A documentation is available on [devdocs.uikit.prestashop.com](https://devdocs.uikit.prestashop.com) to help migrate component from old Prestashop UIKit to PUIK.
 If you create a component which exists on Prestashop UIKit, you need to create a pull request on [doc migration repository](https://github.com/PrestaShopCorp/devdocs.uikit.prestashop.com) to add another paragraph about your component.
 Review will be refused if the migrating documentation isn't updated.
+
+## Testing a Branch
+
+Use the `pnpm pack:all` command to generate `.tgz` files that will be stored in the `packages-tars` directory.
+This allows you to test a package before publishing it, for example.
+
+### Example in a Local Node Project
+
+You can specify the dependencies in the `package.json` file of your project as shown below:
+
+```json
+"dependencies": {   
+    "@prestashopcorp/puik-components": "file:[path_to_tar]/prestashopcorp-puik-components-[0.0.x].tgz",
+    "@prestashopcorp/puik-resolver": "file:[path_to_tar]/prestashopcorp-puik-resolver-[0.0.x].tgz",
+}
+```

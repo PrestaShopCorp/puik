@@ -3,6 +3,15 @@
 # Path to the versions.json file
 VERSIONS_FILE="./packages-tars/versions.json"
 
+# Create packages-tars and packages-tars/tmp directories if they don't exist
+if [ ! -d "./packages-tars" ]; then
+    mkdir -p "./packages-tars"
+fi
+
+if [ ! -d "./packages-tars/tmp" ]; then
+    mkdir -p "./packages-tars/tmp"
+fi
+
 # Iterate over all .tgz files in packages-tars/tmp
 for TGZ_PATH in ./packages-tars/tmp/*.tgz; do
     # Extract the package name from the .tgz filename

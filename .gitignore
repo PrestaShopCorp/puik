@@ -20,6 +20,5 @@ packages/puik/version.ts
 playground/src/App.vue
 storybook-static
 
-# packages tars
-packages-tars/prestashopcorp-puik*
-packages-tars/versions.json
+# Ignore the packages-tars directory
+/packages-tars/
