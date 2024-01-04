@@ -143,7 +143,7 @@ const props = withDefaults(defineProps<SelectProps>(), {
 
 const slots = useSlots();
 
-const emit: any = defineEmits<{ 'update:modelValue': [option: any] }>();
+const emit = defineEmits<{ 'update:modelValue': [option: any] }>();
 
 const { t } = useLocale();
 

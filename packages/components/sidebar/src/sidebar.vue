@@ -69,7 +69,7 @@ defineOptions({
   name: 'PuikSidebar'
 });
 
-const emit: any = defineEmits<{
+const emit = defineEmits<{
   'update:expanded': [value: boolean]
   'update:openAccordion': [value: string]
 }>();

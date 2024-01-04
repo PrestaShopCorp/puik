@@ -189,7 +189,7 @@ const props = withDefaults(defineProps<TableProps>(), {
   items: () => [],
   selection: () => []
 });
-const emit: any = defineEmits<{
+const emit = defineEmits<{
   select: [index: number]
   'select:all': []
   'update:selection': [value: number[]]

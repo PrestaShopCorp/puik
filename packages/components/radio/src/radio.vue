@@ -36,7 +36,7 @@ defineOptions({
   name: 'PuikRadio'
 });
 const props = defineProps<RadioProps>();
-const emit: any = defineEmits<{
+const emit = defineEmits<{
   'update:modelValue': [value: boolean | string | number]
 }>();
 const isFocus = ref(false);

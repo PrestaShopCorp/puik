@@ -17,7 +17,7 @@ defineOptions({
 });
 
 const props = defineProps<ProgressStepperProps>();
-const emit: any = defineEmits<{(event: 'update:modelValue', step: PuikStep): void}>();
+const emit = defineEmits<{(event: 'update:modelValue', step: PuikStep): void}>();
 const steps = ref<PuikStep[]>([]);
 const currentStep = computed<PuikStep>({
   get: () => props.modelValue,

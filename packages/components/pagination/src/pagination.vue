@@ -76,7 +76,7 @@ const props = withDefaults(defineProps<PaginationProps>(), {
   itemsPerPageOptions: () => [5, 10, 15],
   itemCount: 0
 });
-const emit: any = defineEmits<{
+const emit = defineEmits<{
   'update:page': [value: number]
   'update:itemsPerPage': [value: number]
 }>();

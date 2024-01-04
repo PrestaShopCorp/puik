@@ -47,7 +47,7 @@ defineOptions({
 });
 
 const props = defineProps<ProgressStepperStepProps>();
-const emit: any = defineEmits<{
+const emit = defineEmits<{
   click: [step: PuikStep]
 }>();
 const progressStepper = inject(progressStepperKey, null);

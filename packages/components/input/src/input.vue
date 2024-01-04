@@ -91,7 +91,7 @@ const props = withDefaults(defineProps<InputProps>(), {
   min: Number.NEGATIVE_INFINITY,
   max: Number.POSITIVE_INFINITY
 });
-const emit: any = defineEmits<{
+const emit = defineEmits<{
   'update:modelValue': [value: string | number | undefined]
 }>();
 const slots = useSlots();
