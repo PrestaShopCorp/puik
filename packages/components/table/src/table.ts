@@ -1,11 +1,7 @@
 import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Table from './table.vue'
-
-export enum PuikTableSearchTypes {
-  Text = 'text',
-  Range = 'range',
-}
+import type { PuikTableSearchInputTypes } from '../src/table-search-input'
 
 export enum PuikTableSortOrder {
   Asc = 'ASC',
@@ -38,7 +34,7 @@ export interface PuikTableHeader {
   preventExpand?: boolean
   searchable?: boolean
   searchSubmit?: boolean
-  searchType?: `${PuikTableSearchTypes}`
+  searchType?: `${PuikTableSearchInputTypes}`
 }
 
 export const tableProps = buildProps({
@@ -61,17 +57,22 @@ export const tableProps = buildProps({
     required: false,
     default: false,
   },
-  searchBar: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
   selection: {
     type: Array as PropType<number[]>,
     required: false,
     default: () => [],
   },
+  searchBar: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   sortFromServer: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  searchFromServer: {
     type: Boolean,
     required: false,
     default: false,
