@@ -35,6 +35,8 @@
         :wrap-label="buttonWrapLabel"
         class="puik-alert__button"
         :data-test="dataTest != undefined ? `button-${dataTest}` : undefined"
+        :left-icon="buttonLeftIcon"
+        :right-icon="buttonRightIcon"
         @click="click"
       >
         {{ buttonLabel }}
