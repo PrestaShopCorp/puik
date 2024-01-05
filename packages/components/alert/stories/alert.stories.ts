@@ -238,6 +238,67 @@ export const buttonWrapLabel: StoryObj = {
   },
 }
 
+export const WithIcon: StoryObj = {
+  render: () => ({
+    components: {
+      PuikAlert,
+    },
+    template: `
+      <div class="flex flex-col space-y-4">
+       <puik-alert title="Title" button-label="Button" button-left-icon="edit">This an alert with a button with en icon on the left.</puik-alert>
+       <puik-alert title="Title" button-label="Button" button-right-icon="open_in_new">This an alert with a button with en icon on the right.</puik-alert>
+      </div>
+    `,
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-alert
+    title="Title"
+    button-label="Button"
+    button-left-icon="edit"
+    @click="click"
+  >
+    This an alert with a button with en icon on the left.
+  </puik-alert>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-alert puik-alert--success" aria-live="polite">
+      <div class="puik-alert__container">
+        <div class="puik-alert__content">
+          <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem">
+            check_circle
+          </div>
+          <div class="puik-alert__text">
+            <p class="puik-alert__title">Titre</p>
+            <span class="puik-alert__description">
+              This an alert with a button with en icon on the left.
+            </span>
+          </div>
+        </div>
+        <button
+          class="puik-button puik-button--success puik-button--md puik-button--no-wrap puik-alert__button"
+        >
+          <div
+            class="puik-icon puik-button__left-icon"
+            style="font-size: 1.25rem"
+          >
+            edit
+          </div>
+          Button
+        </button>
+      </div>
+    </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
 export const Success: StoryObj = {
   render: () => ({
     components: {
