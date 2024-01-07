@@ -12,11 +12,7 @@ import {
   PuikProgressStepper,
   PuikProgressStepperStep,
 } from '@puik/components/progress-stepper'
-import {
-  PuikTable,
-  PuikTableSearchInput,
-  PuikTableSearchBar,
-} from '@puik/components/table'
+import { PuikTable, PuikTableSearchInput } from '@puik/components/table'
 import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
 import {
   PuikSidebar,
@@ -57,7 +53,6 @@ import type { Plugin } from 'vue'
 // prettier-ignore
 export default [
   PuikTableSearchInput,
-  PuikTableSearchBar,
   PuikAvatar,
   PuikDivider,
   PuikTag,
