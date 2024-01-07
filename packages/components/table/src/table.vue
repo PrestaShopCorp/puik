@@ -421,7 +421,6 @@ const handleSearchReset = () => {
 }
 
 const handleSearchDataLocally = () => {
-  searchReset.value = true
   searchLoading.value = true
   const searchedRows = props.items.filter((row) => {
     return globalSearchOptions.value.every((searchOption) => {
@@ -454,6 +453,7 @@ const handleSearchDataLocally = () => {
 }
 
 const handleSearchSubmit = () => {
+  searchReset.value = true
   if (!props.searchFromServer) {
     handleSearchDataLocally()
   }

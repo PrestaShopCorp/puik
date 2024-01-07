@@ -3,7 +3,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
     "source.fixAll": "never",
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": true
   },
   "npm.packageManager": "pnpm",
   "eslint.probe": [
