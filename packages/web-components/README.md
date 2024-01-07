@@ -39,22 +39,44 @@ $ pnpm install @prestashopcorp/puik-web-components
 To use all Puik web components in your application, you first need to import and initialize them. Here’s how you can do it:  
 
 `import {
-  initAllCe,
+  initAllWeb,
   PuikExampleCe,
   PuikAnotherExampleCe,
   // other components...
  } from @prestashopcorp/puik-web-components`  
 
 Then, run the following function in your application:  
+`initAllWeb();`
 
-`initAllCe();`
+For each component, it replaces 'ce' in the component's name with the provided suffix to form the `tagname`.
+If no suffix is provided, 'ce' is used as the default suffix
+
+Here’s how you can do it:
+
+```javascript
+// Initialize all web components without argument
+initAllWeb(); // The tagname for PuikExampleCe will default to 'puik-example-ce'
+
+// Initialize all web components with 'mySuffix' as the suffix
+initAllWeb('mySuffix'); // The tagname for PuikExampleCe will be 'puik-example-mySuffix'
+```
 
 ### On-demand Registration
 
-If you only want to use a specific component in your application, you can import and initialize it individually. Here’s how you can do it:
+If you only want to use a specific component in your application, you can import and initialize it individually.
+In this case you can name your web-component whatever you want.
+
+Here’s how you can do it:
 
 `import { initCe, PuikExampleCe } from @prestashopcorp/puik-web-components`
 
 Then, run the following function in your application:
+`initCe('your-tagname-here', PuikExampleCe);`
 
-`initCe(PuikExampleCe);`
+Then, use your web-component:
+
+```html
+<your-tagname-here>
+  ...
+</your-tagname-here>
+```
