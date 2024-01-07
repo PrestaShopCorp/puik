@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikBadge } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikBadgeCe = defineCustomElement(PuikBadge) as CustomElementWithTagName;
-PuikBadgeCe.tagName = 'puik-badge-ce';
+const PuikBadgeCe = defineCustomElement(PuikBadge) as CustomElementWithName;
+PuikBadgeCe.ceName = 'puik-badge-ce';
 
 export default PuikBadgeCe;

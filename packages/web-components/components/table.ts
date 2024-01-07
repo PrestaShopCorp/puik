@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikTable } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikTableCe = defineCustomElement(PuikTable) as CustomElementWithTagName;
-PuikTableCe.tagName = 'puik-table-ce';
+const PuikTableCe = defineCustomElement(PuikTable) as CustomElementWithName;
+PuikTableCe.ceName = 'puik-table-ce';
 
 export default PuikTableCe;

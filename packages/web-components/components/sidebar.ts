@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikSidebar } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikSidebarCe = defineCustomElement(PuikSidebar) as CustomElementWithTagName;
-PuikSidebarCe.tagName = 'puik-sidebar-ce';
+const PuikSidebarCe = defineCustomElement(PuikSidebar) as CustomElementWithName;
+PuikSidebarCe.ceName = 'puik-sidebar-ce';
 
 export default PuikSidebarCe;

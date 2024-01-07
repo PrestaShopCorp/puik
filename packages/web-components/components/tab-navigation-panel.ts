@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikTabNavigationPanel } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikTabNavigationPanelCe = defineCustomElement(PuikTabNavigationPanel) as CustomElementWithTagName;
-PuikTabNavigationPanelCe.tagName = 'puik-navigation-panel-ce';
+const PuikTabNavigationPanelCe = defineCustomElement(PuikTabNavigationPanel) as CustomElementWithName;
+PuikTabNavigationPanelCe.ceName = 'puik-navigation-panel-ce';
 
 export default PuikTabNavigationPanelCe;

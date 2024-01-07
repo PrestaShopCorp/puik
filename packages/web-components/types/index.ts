@@ -1,3 +1,3 @@
-import type CustomElementWithTagName from './customElementWithTagName';
+import type CustomElementWithName from './customElementWithName';
 
-export type { CustomElementWithTagName };
+export type { CustomElementWithName };

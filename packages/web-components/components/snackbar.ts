@@ -2,7 +2,7 @@
 // import { PuikSnackbar } from '@prestashopcorp/puik-components';
 // import type { CustomElementWithTagName } from '../types'
 
-// const PuikSnackbarCe = defineCustomElement(PuikSnackbar) as CustomElementWithTagName;
-// PuikSnackbarCe.tagName = 'puik-snackbar-ce';
+// const PuikSnackbarCe = defineCustomElement(PuikSnackbar) as CustomElementWithName;
+// PuikSnackbarCe.ceName = 'puik-snackbar-ce';
 
 // export default PuikSnackbarCe;

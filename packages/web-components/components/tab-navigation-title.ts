@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikTabNavigationTitle } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikTabNavigationTitleCe = defineCustomElement(PuikTabNavigationTitle) as CustomElementWithTagName;
-PuikTabNavigationTitleCe.tagName = 'puik-tab-navigation-title-ce';
+const PuikTabNavigationTitleCe = defineCustomElement(PuikTabNavigationTitle) as CustomElementWithName;
+PuikTabNavigationTitleCe.ceName = 'puik-tab-navigation-title-ce';
 
 export default PuikTabNavigationTitleCe;

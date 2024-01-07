@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikLabel } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikLabelCe = defineCustomElement(PuikLabel) as CustomElementWithTagName;
-PuikLabelCe.tagName = 'puik-label-ce';
+const PuikLabelCe = defineCustomElement(PuikLabel) as CustomElementWithName;
+PuikLabelCe.ceName = 'puik-label-ce';
 
 export default PuikLabelCe;

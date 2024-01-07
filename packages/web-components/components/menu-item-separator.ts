@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikMenuItemSeparator } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikMenuItemSeparatorCe = defineCustomElement(PuikMenuItemSeparator) as CustomElementWithTagName;
-PuikMenuItemSeparatorCe.tagName = 'puik-menu-item-separator-ce';
+const PuikMenuItemSeparatorCe = defineCustomElement(PuikMenuItemSeparator) as CustomElementWithName;
+PuikMenuItemSeparatorCe.ceName = 'puik-menu-item-separator-ce';
 
 export default PuikMenuItemSeparatorCe;

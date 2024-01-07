@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikCard } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikCardCe = defineCustomElement(PuikCard) as CustomElementWithTagName;
-PuikCardCe.tagName = 'puik-card-ce';
+const PuikCardCe = defineCustomElement(PuikCard) as CustomElementWithName;
+PuikCardCe.ceName = 'puik-card-ce';
 
 export default PuikCardCe;

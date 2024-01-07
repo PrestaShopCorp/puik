@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikModal } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikModalCe = defineCustomElement(PuikModal) as CustomElementWithTagName;
-PuikModalCe.tagName = 'puik-modal-ce';
+const PuikModalCe = defineCustomElement(PuikModal) as CustomElementWithName;
+PuikModalCe.ceName = 'puik-modal-ce';
 
 export default PuikModalCe;

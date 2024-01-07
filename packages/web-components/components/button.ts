@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikButton } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikButtonCe = defineCustomElement(PuikButton) as CustomElementWithTagName;
-PuikButtonCe.tagName = 'puik-button-ce';
+const PuikButtonCe = defineCustomElement(PuikButton) as CustomElementWithName;
+PuikButtonCe.ceName = 'puik-button-ce';
 
 export default PuikButtonCe;

@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikBreadcrumb } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikBreadcrumbCe = defineCustomElement(PuikBreadcrumb) as CustomElementWithTagName;
-PuikBreadcrumbCe.tagName = 'puik-breadcrumb-ce';
+const PuikBreadcrumbCe = defineCustomElement(PuikBreadcrumb) as CustomElementWithName;
+PuikBreadcrumbCe.ceName = 'puik-breadcrumb-ce';
 
 export default PuikBreadcrumbCe;

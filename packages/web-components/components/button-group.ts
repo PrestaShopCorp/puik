@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikButtonGroup } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikButtonGroupCe = defineCustomElement(PuikButtonGroup) as CustomElementWithTagName;
-PuikButtonGroupCe.tagName = 'puik-button-group-ce';
+const PuikButtonGroupCe = defineCustomElement(PuikButtonGroup) as CustomElementWithName;
+PuikButtonGroupCe.ceName = 'puik-button-group-ce';
 
 export default PuikButtonGroupCe;

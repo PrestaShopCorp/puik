@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikAvatar } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikAvatarCe = defineCustomElement(PuikAvatar) as CustomElementWithTagName;
-PuikAvatarCe.tagName = 'puik-avatar-ce';
+const PuikAvatarCe = defineCustomElement(PuikAvatar) as CustomElementWithName;
+PuikAvatarCe.ceName = 'puik-avatar-ce';
 
 export default PuikAvatarCe;

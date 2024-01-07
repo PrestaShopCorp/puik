@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikTextarea } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikTextareaCe = defineCustomElement(PuikTextarea) as CustomElementWithTagName;
-PuikTextareaCe.tagName = 'puik-textarea-ce';
+const PuikTextareaCe = defineCustomElement(PuikTextarea) as CustomElementWithName;
+PuikTextareaCe.ceName = 'puik-textarea-ce';
 
 export default PuikTextareaCe;

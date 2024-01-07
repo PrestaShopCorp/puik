@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikChip } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikChipCe = defineCustomElement(PuikChip) as CustomElementWithTagName;
-PuikChipCe.tagName = 'puik-chip-ce';
+const PuikChipCe = defineCustomElement(PuikChip) as CustomElementWithName;
+PuikChipCe.ceName = 'puik-chip-ce';
 
 export default PuikChipCe;

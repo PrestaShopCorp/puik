@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikMenuItemTitle } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikMenuItemTitleCe = defineCustomElement(PuikMenuItemTitle) as CustomElementWithTagName;
-PuikMenuItemTitleCe.tagName = 'puik-menu-item-title-ce';
+const PuikMenuItemTitleCe = defineCustomElement(PuikMenuItemTitle) as CustomElementWithName;
+PuikMenuItemTitleCe.ceName = 'puik-menu-item-title-ce';
 
 export default PuikMenuItemTitleCe;

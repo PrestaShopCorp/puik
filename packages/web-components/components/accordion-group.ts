@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikAccordionGroup } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikAccordionGroupCe = defineCustomElement(PuikAccordionGroup) as CustomElementWithTagName;
-PuikAccordionGroupCe.tagName = 'puik-accordion-group-ce';
+const PuikAccordionGroupCe = defineCustomElement(PuikAccordionGroup) as CustomElementWithName;
+PuikAccordionGroupCe.ceName = 'puik-accordion-group-ce';
 
 export default PuikAccordionGroupCe;

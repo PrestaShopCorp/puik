@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikSelect } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikSelectCe = defineCustomElement(PuikSelect) as CustomElementWithTagName;
-PuikSelectCe.tagName = 'puik-select-ce';
+const PuikSelectCe = defineCustomElement(PuikSelect) as CustomElementWithName;
+PuikSelectCe.ceName = 'puik-select-ce';
 
 export default PuikSelectCe;

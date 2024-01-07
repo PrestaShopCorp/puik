@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikIcon } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikIconCe = defineCustomElement(PuikIcon) as CustomElementWithTagName;
-PuikIconCe.tagName = 'puik-icon-ce';
+const PuikIconCe = defineCustomElement(PuikIcon) as CustomElementWithName;
+PuikIconCe.ceName = 'puik-icon-ce';
 
 export default PuikIconCe;

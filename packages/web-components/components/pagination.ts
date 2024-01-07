@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue';
 import { PuikPagination } from '@prestashopcorp/puik-components';
-import type { CustomElementWithTagName } from '../types';
+import type { CustomElementWithName } from '../types';
 
-const PuikPaginationCe = defineCustomElement(PuikPagination) as CustomElementWithTagName;
-PuikPaginationCe.tagName = 'puik-pagination-ce';
+const PuikPaginationCe = defineCustomElement(PuikPagination) as CustomElementWithName;
+PuikPaginationCe.ceName = 'puik-pagination-ce';
 
 export default PuikPaginationCe;

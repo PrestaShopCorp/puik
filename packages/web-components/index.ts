@@ -1,6 +1,6 @@
-import initAllCe from './utils/initAllCe.ts';
-import initCe from './utils/initCe';
-import type { CustomElementWithTagName } from './types';
+import type { CustomElementWithName } from './types';
+import initWeb from './utils/initWeb';
+import initAllWeb from './utils/initAllWeb';
 
 import PuikAccordionCe from './components/accordion';
 import PuikAccordionGroupCe from './components/accordion-group';
@@ -48,7 +48,7 @@ import PuikTagCe from './components/tag';
 import PuikTextareaCe from './components/textarea';
 import PuikTooltipCe from './components/tooltip';
 
-export const components: CustomElementWithTagName[] = [
+export const components: CustomElementWithName[] = [
   PuikAccordionCe,
   PuikAccordionGroupCe,
   PuikAlertCe,
@@ -142,8 +142,8 @@ export {
   PuikTagCe,
   PuikTextareaCe,
   PuikTooltipCe,
-  initCe,
-  initAllCe
+  initWeb,
+  initAllWeb
 };
 
-export default initAllCe;
+export default initAllWeb;
