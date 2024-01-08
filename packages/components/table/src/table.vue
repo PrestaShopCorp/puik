@@ -163,6 +163,7 @@
               @search-range-value="handleSearch"
               @search-submit-event="handleSearchSubmit"
               @search-reset-event="handleSearchReset"
+              @keyup.enter="handleSearchSubmit"
             />
           </th>
         </tr>
