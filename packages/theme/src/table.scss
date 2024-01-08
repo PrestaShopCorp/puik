@@ -200,3 +200,7 @@ tr.puik-table__search__bar {
 .puik-table__search__bar {
   @apply h-[90px];
 }
+
+.puik-table__container {
+  @apply pb-2 scrollbar-thin scrollbar-thumb-primary-500 scrollbar-thumb-rounded-full;
+}
