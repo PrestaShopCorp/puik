@@ -204,3 +204,7 @@ tr.puik-table__search__bar {
 .puik-table__container {
   @apply pb-2 scrollbar-thin scrollbar-thumb-primary-500 scrollbar-thumb-rounded-full;
 }
+
+.puik-table__body__row__item--loading {
+  @apply p-1;
+}

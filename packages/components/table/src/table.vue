@@ -174,7 +174,7 @@
             <td
               v-for="(header, colIndex) in headers"
               :key="colIndex"
-              style="padding: 4px"
+              class="puik-table__body__row__item--loading"
             >
               <puik-skeleton-loader variant="jumbotron"></puik-skeleton-loader>
             </td>
