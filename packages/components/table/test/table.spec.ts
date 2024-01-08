@@ -23,6 +23,9 @@ describe('Table tests', () => {
   let wrapper: VueWrapper<any>
   const colClass = 'puik-table__body__row__item'
   const headerColClass = 'puik-table__head__row__item'
+  const searchBarClass = '.puik-table__search__bar'
+  const searchSubmitButtonClass =
+    '.puik-table-search-input--submit .puik-button'
 
   const getTable = () => wrapper.find('.puik-table')
   const getHeaders = () => wrapper.findAll(`.${headerColClass}`)
@@ -332,5 +335,29 @@ describe('Table tests', () => {
     await SortButton.trigger('click')
     expect(wrapper.emitted('sortColumn')).toBeTruthy()
     expect(wrapper.emitted('sortColumn')?.[0]?.[0]).toStrictEqual(payload)
+  })
+
+  it('should display a search bar', async () => {
+    const headers: PuikTableHeader[] = [
+      { value: 'firstname', searchable: true },
+      { value: 'lastname', searchable: true },
+      { value: 'action', searchSubmit: true, preventExpand: true },
+    ]
+    factory({ headers, searchBar: true })
+    const searchBar = getTable().find(searchBarClass)
+    expect(searchBar).toBeTruthy()
+  })
+
+  it('should emit searchSubmit event', async () => {
+    const headers: PuikTableHeader[] = [
+      { value: 'firstname', searchable: true },
+      { value: 'lastname', searchable: true },
+      { value: 'action', searchSubmit: true, preventExpand: true },
+    ]
+    factory({ headers, searchBar: true })
+    const searchSubmitButton = getTable().find(searchSubmitButtonClass)
+    expect(searchSubmitButton).toBeTruthy()
+    await searchSubmitButton.trigger('click')
+    expect(wrapper.emitted('searchSubmit')).toBeTruthy()
   })
 })
