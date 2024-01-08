@@ -39,13 +39,13 @@
       </div>
       <template v-if="props.searchSubmit">
         <div class="puik-table-search-input--submit">
-          <puik-button left-icon="search" @click="$emit('searchSubmit')">
+          <puik-button left-icon="search" @click="$emit('searchSubmitEvent')">
             {{ t('puik.table.search') }}
           </puik-button>
           <div
             v-if="props.searchReset"
             class="puik-table-search-input--reset"
-            @click="$emit('searchReset')"
+            @click="$emit('searchResetEvent')"
           >
             <puik-button left-icon="close" variant="text" size="sm">
               {{ t('puik.table.reset') }}
@@ -76,8 +76,8 @@ const props = defineProps(tableSearchInputProps)
 const emit = defineEmits<{
   (e: 'searchTextValue', column: searchOption): void
   (e: 'searchRangeValue', column: searchOption): void
-  (e: 'searchSubmit'): void
-  (e: 'searchReset'): void
+  (e: 'searchSubmitEvent'): void
+  (e: 'searchResetEvent'): void
 }>()
 
 const { t } = useLocale()

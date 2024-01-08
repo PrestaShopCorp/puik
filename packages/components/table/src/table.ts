@@ -67,12 +67,12 @@ export const tableProps = buildProps({
     required: false,
     default: false,
   },
-  sortFromServer: {
+  searchFromServer: {
     type: Boolean,
     required: false,
     default: false,
   },
-  searchFromServer: {
+  sortFromServer: {
     type: Boolean,
     required: false,
     default: false,

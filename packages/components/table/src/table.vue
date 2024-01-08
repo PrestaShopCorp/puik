@@ -161,8 +161,8 @@
               :search-type="(header.searchType as PuikTableSearchInputTypes)"
               @search-text-value="handleSearch"
               @search-range-value="handleSearch"
-              @search-submit="handleSearchSubmit"
-              @search-reset="handleSearchReset"
+              @search-submit-event="handleSearchSubmit"
+              @search-reset-event="handleSearchReset"
             />
           </th>
         </tr>
