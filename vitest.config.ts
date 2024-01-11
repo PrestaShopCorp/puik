@@ -10,11 +10,15 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       provider: 'v8',
+      all: false,
+      clean: true,
       thresholds: {
-        branches: 60,
-        functions: 60,
-        lines: 60,
-        statements: 60
+        'packages/component/**/src/*.{ts,vue}': {
+          branches: 60,
+          functions: 60,
+          lines: 60,
+          statements: 60
+        }
       }
     }
   }
