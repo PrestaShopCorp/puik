@@ -36,6 +36,15 @@ export default {
       control: 'none',
       description: 'Accordion content',
     },
+    borderNone: {
+      control: 'boolean',
+      description: 'remove borders',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
     dataTest: {
       control: 'text',
       description:
@@ -142,6 +151,49 @@ export const Disabled = {
   <div class="puik-accordion-group">
     <div class="puik-accordion puik-accordion--disabled">
       <button aria-expanded="true" aria-controls="accordion-id" class="puik-accordion__header" disabled>
+        <div class="puik-icon material-icons-round puik-accordion__header__icon" style="font-size: 24px;">home</div>
+        <div class="puik-accordion__header__content">
+          <div class="puik-accordion__header__content__title">Accordion title</div>
+          <div class="puik-accordion__header__content__sub-title">Accordion subtitle</div>
+        </div>
+        <div class="puik-icon material-icons-round puik-accordion__header__expand__icon" style="font-size: 24px;">keyboard_arrow_up</div>
+      </button>
+      <div id="accordion-id" class="puik-accordion__content"> Content 1 </div>
+    </div>
+  </div>
+        `,
+        language: 'html',
+      },
+    },
+  },
+}
+
+export const NoBorder = {
+  render: Template,
+
+  args: {
+    name: 'accordion-1',
+    title: 'Disabled accordion title',
+    subTitle: 'Disabled accordion sub-title',
+    icon: 'home',
+    borderNone: true,
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-accordion-group>
+    <puik-accordion name="accordion-1" border-none>
+      Content 1
+    </puik-accordion>
+  </puik-accordion-group>
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-accordion-group">
+    <div class="puik-accordion puik-accordion--border-none">
+      <button aria-expanded="true" aria-controls="accordion-id" class="puik-accordion__header">
         <div class="puik-icon material-icons-round puik-accordion__header__icon" style="font-size: 24px;">home</div>
         <div class="puik-accordion__header__content">
           <div class="puik-accordion__header__content__title">Accordion title</div>
