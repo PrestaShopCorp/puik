@@ -168,13 +168,13 @@ export const Disabled = {
   },
 }
 
-export const NoBorder = {
+export const NoBorders = {
   render: Template,
 
   args: {
     name: 'accordion-1',
-    title: 'Disabled accordion title',
-    subTitle: 'Disabled accordion sub-title',
+    title: 'Accordion title',
+    subTitle: 'Accordion subtitle',
     icon: 'home',
     borderNone: true,
   },
