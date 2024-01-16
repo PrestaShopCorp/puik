@@ -99,17 +99,12 @@ const sendRangeValue = (
   minValue?: number | string,
   maxValue?: number | string
 ) => {
-  minValue === '' || minValue === undefined
-    ? (minValue = Number.NEGATIVE_INFINITY)
-    : minValue
-  maxValue === '' || maxValue === undefined
-    ? (maxValue = Number.POSITIVE_INFINITY)
-    : maxValue
+ 
   const searchOption: searchOption = {
     searchBy: column,
     inputRange: {
-      min: minValue,
-      max: maxValue,
+      min: minValue || Number.NEGATIVE_INFINITY,
+      max: maxValue || Number.POSITIVE_INFINITY,
     } as inputRange,
   }
   emit('searchRangeValue', searchOption)
