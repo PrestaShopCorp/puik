@@ -5,8 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import { menuItemProps } from './menu-item'
-
 defineOptions({
   name: 'PuikMenuItem',
 })
