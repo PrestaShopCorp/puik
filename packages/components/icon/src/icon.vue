@@ -11,11 +11,15 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '@puik/tailwind-preset/theme'
 import { iconProps } from './icon'
+
 defineOptions({
   name: 'PuikIcon',
 })
 
+const fullConf = resolveConfig(tailwindConfig)
 const props = defineProps(iconProps)
 
 const fontSize = computed(() => {
@@ -28,7 +32,9 @@ const fontSize = computed(() => {
 const style = computed(() => {
   return {
     fontSize: fontSize.value,
-    color: props.color,
+    color: props.isDisabled
+      ? fullConf.extend?.colors?.primary['500']
+      : props.color,
   }
 })
 </script>
