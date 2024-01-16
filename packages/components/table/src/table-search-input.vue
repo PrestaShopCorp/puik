@@ -96,10 +96,9 @@ const sendTextValue = (column: string, textValue?: string) => {
 
 const sendRangeValue = (
   column: string,
-  minValue?: number | string,
-  maxValue?: number | string
+  minValue?: number,
+  maxValue?: number
 ) => {
- 
   const searchOption: searchOption = {
     searchBy: column,
     inputRange: {
