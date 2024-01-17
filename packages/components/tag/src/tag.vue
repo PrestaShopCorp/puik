@@ -48,6 +48,7 @@ import {
   type PuikTagColorVariant,
 } from './tag'
 import type { PuikTooltipPosition } from '@puik/components/tooltip'
+
 defineOptions({
   name: 'PuikTag',
 })

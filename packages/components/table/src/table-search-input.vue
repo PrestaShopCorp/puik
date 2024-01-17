@@ -67,6 +67,7 @@ import {
   PuikTableSearchInputTypes,
 } from './table-search-input'
 import type { searchOption, inputRange } from './table-search-input'
+
 defineOptions({
   name: 'PuikTableSearchInput',
 })

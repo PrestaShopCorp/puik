@@ -22,6 +22,7 @@
 import { computed, inject, watch } from 'vue'
 import { currentTabKey } from './tab-navigation'
 import { tabNavigationTitleProps } from './tab-navigation-title'
+
 defineOptions({
   name: 'PuikTabNavigationTitle',
 })
