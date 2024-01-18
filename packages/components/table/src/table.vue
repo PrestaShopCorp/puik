@@ -254,7 +254,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, toRef, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
 import PuikButton from '../../button/src/button.vue'
@@ -285,7 +285,7 @@ const ScrollBarPosition = ref<string>('left')
 const lastScrollLeft = ref(0)
 const sortOrder = ref([])
 const sortIcon = ref({})
-const data = toRef(props, 'items')
+const data = ref([...props.items])
 const currentSortCol = ref('')
 
 const resetSortIcons = () => {
@@ -431,6 +431,12 @@ watch(
   () => props.selection,
   () => {
     checked.value = props.selection
+  }
+)
+watch(
+  () => props.items,
+  (newItems) => {
+    data.value = [...newItems]
   }
 )
 </script>
