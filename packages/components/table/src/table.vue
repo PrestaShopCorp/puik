@@ -12,8 +12,8 @@
                 'puik-table__head__row__item--sticky-scroll':
                   stickyFirstCol &&
                   (scrollBarPosition ===
-                    PuikTableScrollBarPosistion.IsScrolling ||
-                    scrollBarPosition === PuikTableScrollBarPosistion.Right),
+                    PuikTableScrollBarPosition.IsScrolling ||
+                    scrollBarPosition === PuikTableScrollBarPosition.Right),
               },
               { 'puik-table__head__row__item--selection': selectable },
               { 'puik-table__head__row__item--expandable': expandable },
@@ -48,17 +48,17 @@
               {
                 'puik-table__head__row__item--sticky-scroll':
                   isSticky(index) &&
-                  scrollBarPosition === PuikTableScrollBarPosistion.IsScrolling,
+                  scrollBarPosition === PuikTableScrollBarPosition.IsScrolling,
               },
               {
                 'puik-table__head__row__item--sticky-left':
                   isSticky(index) &&
-                  scrollBarPosition === PuikTableScrollBarPosistion.Left,
+                  scrollBarPosition === PuikTableScrollBarPosition.Left,
               },
               {
                 'puik-table__head__row__item--sticky-right':
                   isSticky(index) &&
-                  scrollBarPosition === PuikTableScrollBarPosistion.Right,
+                  scrollBarPosition === PuikTableScrollBarPosition.Right,
               },
             ]"
             :style="{ minWidth: header.width, width: header.width }"
@@ -100,8 +100,8 @@
                 'puik-table__head__row__item--sticky-scroll':
                   stickyFirstCol &&
                   (scrollBarPosition ===
-                    PuikTableScrollBarPosistion.IsScrolling ||
-                    scrollBarPosition === PuikTableScrollBarPosistion.Right),
+                    PuikTableScrollBarPosition.IsScrolling ||
+                    scrollBarPosition === PuikTableScrollBarPosition.Right),
               },
               { 'puik-table__head__row__item--selection': selectable },
               { 'puik-table__head__row__item--expandable': expandable },
@@ -136,17 +136,17 @@
               {
                 'puik-table__head__row__item--sticky-scroll':
                   isSticky(index) &&
-                  scrollBarPosition === PuikTableScrollBarPosistion.IsScrolling,
+                  scrollBarPosition === PuikTableScrollBarPosition.IsScrolling,
               },
               {
                 'puik-table__head__row__item--sticky-left':
                   isSticky(index) &&
-                  scrollBarPosition === PuikTableScrollBarPosistion.Left,
+                  scrollBarPosition === PuikTableScrollBarPosition.Left,
               },
               {
                 'puik-table__head__row__item--sticky-right':
                   isSticky(index) &&
-                  scrollBarPosition === PuikTableScrollBarPosistion.Right,
+                  scrollBarPosition === PuikTableScrollBarPosition.Right,
               },
             ]"
             :style="{ minWidth: header.width, width: header.width }"
@@ -194,17 +194,17 @@
                     'puik-table__body__row__item--sticky-scroll':
                       stickyFirstCol &&
                       scrollBarPosition ===
-                        PuikTableScrollBarPosistion.IsScrolling,
+                        PuikTableScrollBarPosition.IsScrolling,
                   },
                   {
                     'puik-table__body__row__item--sticky-left':
                       stickyFirstCol &&
-                      scrollBarPosition === PuikTableScrollBarPosistion.Left,
+                      scrollBarPosition === PuikTableScrollBarPosition.Left,
                   },
                   {
                     'puik-table__body__row__item--sticky-right':
                       stickyFirstCol &&
-                      scrollBarPosition === PuikTableScrollBarPosistion.Right,
+                      scrollBarPosition === PuikTableScrollBarPosition.Right,
                   },
                 ]"
               >
@@ -245,17 +245,17 @@
                     'puik-table__body__row__item--sticky-scroll':
                       isSticky(colIndex) &&
                       scrollBarPosition ==
-                        PuikTableScrollBarPosistion.IsScrolling,
+                        PuikTableScrollBarPosition.IsScrolling,
                   },
                   {
                     'puik-table__body__row__item--sticky-left':
                       isSticky(colIndex) &&
-                      scrollBarPosition == PuikTableScrollBarPosistion.Left,
+                      scrollBarPosition == PuikTableScrollBarPosition.Left,
                   },
                   {
                     'puik-table__body__row__item--sticky-right':
                       isSticky(colIndex) &&
-                      scrollBarPosition == PuikTableScrollBarPosistion.Right,
+                      scrollBarPosition == PuikTableScrollBarPosition.Right,
                   },
                 ]"
                 @click="
@@ -291,17 +291,17 @@
                     'puik-table__body__row__item--sticky-scroll':
                       stickyFirstCol &&
                       scrollBarPosition ==
-                        PuikTableScrollBarPosistion.IsScrolling,
+                        PuikTableScrollBarPosition.IsScrolling,
                   },
                   {
                     'puik-table__body__row__item--sticky-left':
                       stickyFirstCol &&
-                      scrollBarPosition == PuikTableScrollBarPosistion.Left,
+                      scrollBarPosition == PuikTableScrollBarPosition.Left,
                   },
                   {
                     'puik-table__body__row__item--sticky-right':
                       stickyFirstCol &&
-                      scrollBarPosition == PuikTableScrollBarPosistion.Right,
+                      scrollBarPosition == PuikTableScrollBarPosition.Right,
                   },
                 ]"
               ></td>
@@ -326,17 +326,17 @@
                     'puik-table__body__row__item--sticky-scroll':
                       stickyLastCol &&
                       scrollBarPosition ==
-                        PuikTableScrollBarPosistion.IsScrolling,
+                        PuikTableScrollBarPosition.IsScrolling,
                   },
                   {
                     'puik-table__body__row__item--sticky-left':
                       stickyLastCol &&
-                      scrollBarPosition == PuikTableScrollBarPosistion.Left,
+                      scrollBarPosition == PuikTableScrollBarPosition.Left,
                   },
                   {
                     'puik-table__body__row__item--sticky-right':
                       stickyLastCol &&
-                      scrollBarPosition == PuikTableScrollBarPosistion.Right,
+                      scrollBarPosition == PuikTableScrollBarPosition.Right,
                   },
                 ]"
               ></td>
@@ -360,7 +360,7 @@ import {
   tableProps,
   PuikTableSortOrder,
   PuikTableSortIcon,
-  PuikTableScrollBarPosistion,
+  PuikTableScrollBarPosition,
 } from './table'
 import type { sortOption } from './table'
 import type {
@@ -519,13 +519,13 @@ const sortTable = (headerCol: string) => {
 const getScrollBarPosition = async (event: Event) => {
   const target = event.target as HTMLElement
   if (target.scrollLeft === 0) {
-    scrollBarPosition.value = PuikTableScrollBarPosistion.Left
+    scrollBarPosition.value = PuikTableScrollBarPosition.Left
   } else if (
     Math.abs(target.scrollLeft + target.offsetWidth - target.scrollWidth) < 20
   ) {
-    scrollBarPosition.value = PuikTableScrollBarPosistion.Right
+    scrollBarPosition.value = PuikTableScrollBarPosition.Right
   } else {
-    scrollBarPosition.value = PuikTableScrollBarPosistion.IsScrolling
+    scrollBarPosition.value = PuikTableScrollBarPosition.IsScrolling
   }
 
   lastScrollLeft.value = target.scrollLeft
@@ -608,6 +608,12 @@ watch(
   () => props.selection,
   () => {
     checked.value = props.selection
+  }
+)
+watch(
+  () => props.items,
+  (newItems) => {
+    data.value = [...newItems]
   }
 )
 </script>

@@ -360,4 +360,17 @@ describe('Table tests', () => {
     await searchSubmitButton.trigger('click')
     expect(wrapper.emitted('searchSubmit')).toBeTruthy()
   })
+
+  it('should update the table when items prop changes', async () => {
+    const headers: PuikTableHeader[] = [{ value: 'firstname' }]
+    factory({ headers, items: [] })
+    expect(getRows().length).toBe(0)
+    const newItems = [{ firstname: 'John' }, { firstname: 'Jane' }]
+    await wrapper.setProps({ items: newItems })
+    expect(getRows().length).toBe(newItems.length)
+    newItems.forEach((item, index) => {
+      const row = getRows()[index]
+      expect(row.text()).toContain(item.firstname)
+    })
+  })
 })
