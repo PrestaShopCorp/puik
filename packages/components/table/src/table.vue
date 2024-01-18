@@ -349,7 +349,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, toRaw } from 'vue'
 import { useLocale } from '@puik/hooks'
 import PuikCheckbox from '../../checkbox/src/checkbox.vue'
 import PuikButton from '../../button/src/button.vue'
@@ -459,7 +459,7 @@ const handleSearchSubmit = () => {
   if (!props.searchFromServer) {
     handleSearchDataLocally()
   }
-  emit('searchSubmit', globalSearchOptions.value)
+  emit('searchSubmit', toRaw(globalSearchOptions.value))
 }
 
 const resetSortIcons = () => {

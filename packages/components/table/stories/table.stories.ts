@@ -235,16 +235,18 @@ type sortOption = {
         type: {
           summary: 'event',
           detail: `
-// Payload type:
+Payload type = Array<SearchOption>
 
-globalSearchOptions: Ref<{
+type searchOption = {
   searchBy: string;
   inputText?: string | undefined;
-  inputRange?: {
-      min?: number | undefined;
-      max?: number | undefined;
-  } | undefined;
-}[]>
+  inputRange?: inputRange | undefined;
+}
+
+type inputRange = {
+  min?: number | undefined;
+  max?: number | undefined;
+}
           `,
         },
       },
