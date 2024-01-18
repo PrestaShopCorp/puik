@@ -13,7 +13,7 @@ export enum PuikTableSortIcon {
   Desc = 'expand_less',
 }
 
-export enum PuikTableScrollBarPosistion {
+export enum PuikTableScrollBarPosition {
   Left = 'left',
   Right = 'right',
   IsScrolling = 'isScrolling',
