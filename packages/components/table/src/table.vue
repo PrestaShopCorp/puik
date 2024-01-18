@@ -12,8 +12,8 @@
                 'puik-table__head__row__item--sticky-scroll':
                   stickyFirstCol &&
                   (ScrollBarPosition ===
-                    PuikTableScrollBarPosistion.IsScrolling ||
-                    ScrollBarPosition === PuikTableScrollBarPosistion.Right),
+                    PuikTableScrollBarPosition.IsScrolling ||
+                    ScrollBarPosition === PuikTableScrollBarPosition.Right),
               },
               { 'puik-table__head__row__item--selection': selectable },
               { 'puik-table__head__row__item--expandable': expandable },
@@ -48,17 +48,17 @@
               {
                 'puik-table__head__row__item--sticky-scroll':
                   isSticky(index) &&
-                  ScrollBarPosition === PuikTableScrollBarPosistion.IsScrolling,
+                  ScrollBarPosition === PuikTableScrollBarPosition.IsScrolling,
               },
               {
                 'puik-table__head__row__item--sticky-left':
                   isSticky(index) &&
-                  ScrollBarPosition === PuikTableScrollBarPosistion.Left,
+                  ScrollBarPosition === PuikTableScrollBarPosition.Left,
               },
               {
                 'puik-table__head__row__item--sticky-right':
                   isSticky(index) &&
-                  ScrollBarPosition === PuikTableScrollBarPosistion.Right,
+                  ScrollBarPosition === PuikTableScrollBarPosition.Right,
               },
             ]"
             :style="{ minWidth: header.width, width: header.width }"
@@ -102,17 +102,17 @@
                   'puik-table__body__row__item--sticky-scroll':
                     stickyFirstCol &&
                     ScrollBarPosition ===
-                      PuikTableScrollBarPosistion.IsScrolling,
+                      PuikTableScrollBarPosition.IsScrolling,
                 },
                 {
                   'puik-table__body__row__item--sticky-left':
                     stickyFirstCol &&
-                    ScrollBarPosition === PuikTableScrollBarPosistion.Left,
+                    ScrollBarPosition === PuikTableScrollBarPosition.Left,
                 },
                 {
                   'puik-table__body__row__item--sticky-right':
                     stickyFirstCol &&
-                    ScrollBarPosition === PuikTableScrollBarPosistion.Right,
+                    ScrollBarPosition === PuikTableScrollBarPosition.Right,
                 },
               ]"
             >
@@ -152,18 +152,17 @@
                 {
                   'puik-table__body__row__item--sticky-scroll':
                     isSticky(colIndex) &&
-                    ScrollBarPosition ==
-                      PuikTableScrollBarPosistion.IsScrolling,
+                    ScrollBarPosition == PuikTableScrollBarPosition.IsScrolling,
                 },
                 {
                   'puik-table__body__row__item--sticky-left':
                     isSticky(colIndex) &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.Left,
+                    ScrollBarPosition == PuikTableScrollBarPosition.Left,
                 },
                 {
                   'puik-table__body__row__item--sticky-right':
                     isSticky(colIndex) &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.Right,
+                    ScrollBarPosition == PuikTableScrollBarPosition.Right,
                 },
               ]"
               @click="
@@ -196,18 +195,17 @@
                 {
                   'puik-table__body__row__item--sticky-scroll':
                     stickyFirstCol &&
-                    ScrollBarPosition ==
-                      PuikTableScrollBarPosistion.IsScrolling,
+                    ScrollBarPosition == PuikTableScrollBarPosition.IsScrolling,
                 },
                 {
                   'puik-table__body__row__item--sticky-left':
                     stickyFirstCol &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.Left,
+                    ScrollBarPosition == PuikTableScrollBarPosition.Left,
                 },
                 {
                   'puik-table__body__row__item--sticky-right':
                     stickyFirstCol &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.Right,
+                    ScrollBarPosition == PuikTableScrollBarPosition.Right,
                 },
               ]"
             ></td>
@@ -231,18 +229,17 @@
                 {
                   'puik-table__body__row__item--sticky-scroll':
                     stickyLastCol &&
-                    ScrollBarPosition ==
-                      PuikTableScrollBarPosistion.IsScrolling,
+                    ScrollBarPosition == PuikTableScrollBarPosition.IsScrolling,
                 },
                 {
                   'puik-table__body__row__item--sticky-left':
                     stickyLastCol &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.Left,
+                    ScrollBarPosition == PuikTableScrollBarPosition.Left,
                 },
                 {
                   'puik-table__body__row__item--sticky-right':
                     stickyLastCol &&
-                    ScrollBarPosition == PuikTableScrollBarPosistion.Right,
+                    ScrollBarPosition == PuikTableScrollBarPosition.Right,
                 },
               ]"
             ></td>
@@ -263,7 +260,7 @@ import {
   tableProps,
   PuikTableSortOrder,
   PuikTableSortIcon,
-  PuikTableScrollBarPosistion,
+  PuikTableScrollBarPosition,
 } from './table'
 import type { sortOption } from './table'
 defineOptions({
@@ -342,13 +339,13 @@ const sortTable = (headerCol: string) => {
 const getScrollBarPosition = async (event: Event) => {
   const target = event.target as HTMLElement
   if (target.scrollLeft === 0) {
-    ScrollBarPosition.value = PuikTableScrollBarPosistion.Left
+    ScrollBarPosition.value = PuikTableScrollBarPosition.Left
   } else if (
     Math.abs(target.scrollLeft + target.offsetWidth - target.scrollWidth) < 20
   ) {
-    ScrollBarPosition.value = PuikTableScrollBarPosistion.Right
+    ScrollBarPosition.value = PuikTableScrollBarPosition.Right
   } else {
-    ScrollBarPosition.value = PuikTableScrollBarPosistion.IsScrolling
+    ScrollBarPosition.value = PuikTableScrollBarPosition.IsScrolling
   }
 
   lastScrollLeft.value = target.scrollLeft
