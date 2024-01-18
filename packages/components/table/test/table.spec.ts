@@ -333,4 +333,17 @@ describe('Table tests', () => {
     expect(wrapper.emitted('sortColumn')).toBeTruthy()
     expect(wrapper.emitted('sortColumn')?.[0]?.[0]).toStrictEqual(payload)
   })
+
+  it('should update the table when items prop changes', async () => {
+    const headers: PuikTableHeader[] = [{ value: 'firstname' }]
+    factory({ headers, items: [] })
+    expect(getRows().length).toBe(0)
+    const newItems = [{ firstname: 'John' }, { firstname: 'Jane' }]
+    await wrapper.setProps({ items: newItems })
+    expect(getRows().length).toBe(newItems.length)
+    newItems.forEach((item, index) => {
+      const row = getRows()[index]
+      expect(row.text()).toContain(item.firstname)
+    })
+  })
 })
