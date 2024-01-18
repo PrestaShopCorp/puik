@@ -61,3 +61,7 @@
     }
   }
 }
+
+.puik-accordion.puik-accordion--border-none {
+  @apply border-transparent;
+}

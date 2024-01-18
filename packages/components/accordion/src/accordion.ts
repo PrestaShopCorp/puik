@@ -27,6 +27,11 @@ export const accordionProps = buildProps({
     required: false,
     default: false,
   },
+  borderNone: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   dataTest: {
     type: String,
     required: false,
