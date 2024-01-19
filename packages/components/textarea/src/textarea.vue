@@ -51,6 +51,7 @@ import { useVModel } from '@vueuse/core'
 import { slotIsEmpty, clamp } from '@puik/utils'
 import { PuikIcon } from '@puik/components/icon'
 import { textareaProps } from './textarea'
+
 defineOptions({
   name: 'PuikTextarea',
 })

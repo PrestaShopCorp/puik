@@ -1,28 +1,32 @@
 <template>
   <div
-    :id="id"
+    :id="props.id"
     :class="[
-      `puik-chip puik-chip--${size as PuikChipSizeVariant}`,
-      { 'puik-chip--disabled': disabled },
+      `puik-chip puik-chip--${props.size as PuikChipSizeVariant}`,
+      { 'puik-chip--disabled': props.disabled },
     ]"
   >
-    <PuikIcon v-if="icon && icon != ''" :icon="icon" class="puik-chip__icon" />
+    <PuikIcon
+      v-if="props.icon && props.icon != ''"
+      :icon="props.icon"
+      class="puik-chip__icon"
+    />
     <div class="puik-chip__content">
       <puik-tooltip
-        :key="content"
+        :key="props.content"
         :is-disabled="!showTooltip"
         :position="(tooltipPosition as PuikTooltipPosition)"
-        :description="content"
+        :description="props.content"
       >
         <p ref="chipContentElem">
-          {{ content }}
+          {{ props.content }}
         </p>
       </puik-tooltip>
     </div>
     <PuikIcon
       icon="close"
       class="puik-chip__close"
-      @click="disabled ? '' : handleCloseEvent()"
+      @click="props.disabled ? '' : handleCloseEvent()"
     />
   </div>
 </template>
