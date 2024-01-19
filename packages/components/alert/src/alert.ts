@@ -61,11 +61,7 @@ export const alertProps = buildProps({
 
 export type AlertProps = ExtractPropTypes<typeof alertProps>
 
-export const alertEmits = {
-  click: (event: Event) => event instanceof Event,
-  close: (event: Event) => event instanceof Event,
-}
-
+export const alertEmits = ['click', 'close']
 export type AlertEmits = typeof alertEmits
 
 export type AlertInstance = InstanceType<typeof Alert>
