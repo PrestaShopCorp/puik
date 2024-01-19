@@ -5,7 +5,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "storybook build"
+    "build": "storybook build",
+    "docs:dev": "vitepress dev vitepress",
+    "docs:build": "vitepress build vitepress",
+    "docs:preview": "vitepress preview vitepress"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^7.0.24",
@@ -19,7 +22,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.0.24",
-    "vite": "^4.2.1"
+    "vite": "^4.2.1",
+    "vitepress": "1.0.0-rc.39"
   },
   "dependencies": {
     "@storybook/client-api": "^7.2.3",

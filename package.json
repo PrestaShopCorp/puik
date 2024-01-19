@@ -23,6 +23,7 @@
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx && pretty-quick --check --branch main",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx && pretty-quick --branch main",
     "docs:dev": "pnpm --filter @puik/docs dev",
+    "docs:vite": "pnpm --filter @puik/docs docs:dev",
     "build-storybook": "pnpm --filter @puik/docs build",
     "chromatic": "chromatic",
     "dev": "pnpm --filter @puik/playground dev",
