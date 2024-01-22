@@ -151,20 +151,23 @@
             ]"
             :style="{ minWidth: header.width, width: header.width }"
           >
-            <PuikTableSearchInput
-              v-if="header.searchable || header.searchSubmit"
-              :key="`search-${header.value}-${searchInputKey}`"
-              :name="`search-${header.value}`"
-              :column="header.value"
-              :search-submit="header.searchSubmit"
-              :search-reset="searchReset"
-              :search-type="(header.searchType as PuikTableSearchInputTypes)"
-              @search-text-value="handleSearch"
-              @search-range-value="handleSearch"
-              @search-submit-event="handleSearchSubmit"
-              @search-reset-event="handleSearchReset"
-              @keyup.enter="handleSearchSubmit"
-            />
+            <template v-if="header.searchable || header.searchSubmit">
+              <div class="puik-table__head__row__item__container">
+                <PuikTableSearchInput
+                  :key="`search-${header.value}-${searchInputKey}`"
+                  :name="`search-${header.value}`"
+                  :column="header.value"
+                  :search-submit="header.searchSubmit"
+                  :search-reset="searchReset"
+                  :search-type="(header.searchType as PuikTableSearchInputTypes)"
+                  @search-text-value="handleSearch"
+                  @search-range-value="handleSearch"
+                  @search-submit-event="handleSearchSubmit"
+                  @search-reset-event="handleSearchReset"
+                  @keyup.enter="handleSearchSubmit"
+                />
+              </div>
+            </template>
           </th>
         </tr>
       </thead>
