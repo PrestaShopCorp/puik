@@ -1,3 +1,5 @@
+@use './input.scss';
+
 .puik-table-search-input--submit {
   @apply relative cursor-pointer;
   .puik-table-search-input--reset {
