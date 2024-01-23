@@ -21,7 +21,11 @@ export default {
       selectLabel: 'Select item',
       unselectLabel: 'Unnselect item',
       selectAllLabel: 'Select all items',
-      unselectAllLabel: 'Unselect all items'
+      unselectAllLabel: 'Unselect all items',
+      min: 'Min',
+      max: 'Max',
+      reset: 'Reset',
+      search: 'Search'
     },
     skeletonLoaderGroup: {
       label: 'Loading'

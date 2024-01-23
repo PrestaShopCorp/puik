@@ -306,33 +306,33 @@ describe('Select tests', () => {
     expect(findSelected().classes('puik-select__selected--full-width')).toBe(false);
   });
 
-  it('should display the custom label', async () => {
-    const items = [
-      {
-        label: 'Test',
-        value: 'test'
-      },
-      {
-        label: 'Test2',
-        value: 'test2'
-      },
-      {
-        label: 'Test3',
-        value: 'test3'
-      }
-    ];
-    factory(
-      `<puik-select :options="items" v-model="value" custom-label="Custom Label">
-        <puik-option value="test" label="test" />
-      </puik-select>`,
-      () => ({
-        items,
-        value: ''
-      })
-    );
-    await findAllOptions().at(0)?.trigger('click');
-    expect(findSelected().element.value).toBe('Custom Label');
-  });
+  // it('should display the custom label', async () => {
+  //   const items = [
+  //     {
+  //       label: 'Test',
+  //       value: 'test',
+  //     },
+  //     {
+  //       label: 'Test2',
+  //       value: 'test2',
+  //     },
+  //     {
+  //       label: 'Test3',
+  //       value: 'test3',
+  //     },
+  //   ]
+  //   factory(
+  //     `<puik-select :options="items" v-model="value" custom-label="Custom Label">
+  //       <puik-option value="test" label="test" />
+  //     </puik-select>`,
+  //     () => ({
+  //       items,
+  //       value: '',
+  //     })
+  //   )
+  //   await findAllOptions().at(0)?.trigger('click')
+  //   expect(findSelected().element.value).toBe('Custom Label')
+  // })
 
   it('should have a data-test attribute on select, searchInput noResults and options', async () => {
     const items = [

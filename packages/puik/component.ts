@@ -13,6 +13,7 @@ import {
   PuikProgressStepper,
   PuikProgressStepperStep,
   PuikTable,
+  PuikTableSearchInput,
   PuikSpinnerLoader,
   PuikSidebar,
   PuikSidebarGroupItem,
@@ -51,6 +52,7 @@ import type { Component } from 'vue';
 
 // prettier-ignore
 export default [
+  PuikTableSearchInput,
   PuikAvatar,
   PuikDivider,
   PuikSkeletonLoader,

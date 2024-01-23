@@ -2,8 +2,8 @@
   "cSpell.words": ["Puik", "puik"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
-    "source.fixAll": false,
-    "source.fixAll.eslint": false
+    "source.fixAll": "never",
+    "source.fixAll.eslint": "explicit"
   },
   "npm.packageManager": "pnpm",
   "eslint.probe": [
@@ -29,5 +29,6 @@
   "i18n-ally.localesPaths": "packages/locale/lang",
   "i18n-ally.enabledParsers": ["ts"],
   "i18n-ally.enabledFrameworks": ["vue", "vue-sfc"],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.keystyle": "nested",
+  "eslint.format.enable": true
 }

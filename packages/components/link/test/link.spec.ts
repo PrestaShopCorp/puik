@@ -38,4 +38,9 @@ describe('Link tests', () => {
     factory({ href: '/test', dataTest: 'test' });
     expect(findLink().attributes('data-test')).toBe('test');
   });
+
+  it('should set the link in high-contrast mode', () => {
+    factory({ highContrast: true });
+    expect(findLink().classes()).toContain('puik-link--high-contrast');
+  });
 });

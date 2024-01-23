@@ -45,4 +45,11 @@
   &--lg {
     @extend .puik-body-large;
   }
+
+  &--high-contrast {
+    &:visited {
+      @apply text-primary;
+    }
+    @apply decoration-primary;
+  }
 }

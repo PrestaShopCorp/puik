@@ -1,6 +1,16 @@
 export default {
   name: 'fr',
   puik: {
+    table: {
+      selectLabel: 'Cocher',
+      unselectLabel: 'Décocher',
+      selectAllLabel: 'Tout cocher',
+      unselectAllLabel: 'Tout décocher',
+      min: 'Min',
+      max: 'Max',
+      reset: 'Réinitialiser',
+      search: 'Rechercher'
+    },
     pagination: {
       ariaLabel: 'Pagination',
       goTo: 'Aller à la page {page}',

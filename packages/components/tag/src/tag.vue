@@ -18,11 +18,17 @@
         :is-disabled="!showTooltip"
         :position="tooltipPosition"
         :description="content"
-        :data-test="dataTest != undefined ? `tooltip-${dataTest}` : undefined"
+        :data-test="
+          dataTest != undefined ? `tooltip-${dataTest}` : undefined
+        "
       >
         <p
           ref="tagContentElem"
-          :data-test="dataTest != undefined ? `content-${dataTest}` : undefined"
+          :data-test="
+            dataTest != undefined
+              ? `content-${dataTest}`
+              : undefined
+          "
         >
           {{ content }}
         </p>
@@ -40,6 +46,7 @@ import {
 } from '@prestashopcorp/puik-components/tooltip';
 import { isEllipsisActive } from '@prestashopcorp/puik-utils';
 import { type TagProps, PuikTagSizes, PuikTagVariants } from './tag';
+
 defineOptions({
   name: 'PuikTag'
 });

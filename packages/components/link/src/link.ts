@@ -20,6 +20,7 @@ export interface LinkProps {
   to?: RouteLocationRaw
   target?: `${PuikLinkTargetVariants}`
   title?: string
+  highContrast?: boolean
   dataTest?: string
 }
 
