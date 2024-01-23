@@ -1,66 +1,64 @@
 <template>
-  <div class="puik-table__head__row__item__container">
+  <div
+    class="puik-table__head__row__item__content puik-table-search-input__content"
+  >
+    <PuikInput
+      v-if="
+        !props.searchSubmit &&
+          props.searchType === PuikTableSearchInputTypes.Text
+      "
+      v-model="inputTextValue"
+      :type="PuikInputTypes.Text"
+      :placeholder="t('puik.table.search')"
+      @update:model-value="sendTextValue(props.column, inputTextValue)"
+    />
     <div
-      class="puik-table__head__row__item__content puik-table-search-input__content"
+      v-if="
+        !props.searchSubmit &&
+          props.searchType === PuikTableSearchInputTypes.Range
+      "
+      class="puik-table-search-input--range"
     >
       <PuikInput
-        v-if="
-          !props.searchSubmit &&
-            props.searchType === PuikTableSearchInputTypes.Text
+        v-model="inputMinValue"
+        :type="PuikInputTypes.Number"
+        :placeholder="t('puik.table.min')"
+        @update:model-value="
+          sendRangeValue(props.column, inputMinValue, inputMaxValue)
         "
-        v-model="inputTextValue"
-        :type="PuikInputTypes.Text"
-        :placeholder="t('puik.table.search')"
-        @update:model-value="sendTextValue(props.column, inputTextValue)"
       />
-      <div
-        v-if="
-          !props.searchSubmit &&
-            props.searchType === PuikTableSearchInputTypes.Range
+      <PuikInput
+        v-model="inputMaxValue"
+        :type="PuikInputTypes.Number"
+        :placeholder="t('puik.table.max')"
+        @update:model-value="
+          sendRangeValue(props.column, inputMinValue, inputMaxValue)
         "
-        class="puik-table-search-input--range"
-      >
-        <PuikInput
-          v-model="inputMinValue"
-          :type="PuikInputTypes.Number"
-          :placeholder="t('puik.table.min')"
-          @update:model-value="
-            sendRangeValue(props.column, inputMinValue, inputMaxValue)
-          "
-        />
-        <PuikInput
-          v-model="inputMaxValue"
-          :type="PuikInputTypes.Number"
-          :placeholder="t('puik.table.max')"
-          @update:model-value="
-            sendRangeValue(props.column, inputMinValue, inputMaxValue)
-          "
-        />
-      </div>
-      <template v-if="props.searchSubmit">
-        <div class="puik-table-search-input--submit">
-          <puik-button
-            left-icon="search"
-            @click="$emit('searchSubmitEvent')"
-          >
-            {{ t('puik.table.search') }}
-          </puik-button>
-          <div
-            v-if="props.searchReset"
-            class="puik-table-search-input--reset"
-            @click="$emit('searchResetEvent')"
-          >
-            <puik-button
-              left-icon="close"
-              variant="text"
-              size="sm"
-            >
-              {{ t('puik.table.reset') }}
-            </puik-button>
-          </div>
-        </div>
-      </template>
+      />
     </div>
+    <template v-if="props.searchSubmit">
+      <div class="puik-table-search-input--submit">
+        <puik-button
+          left-icon="search"
+          @click="$emit('searchSubmitEvent')"
+        >
+          {{ t('puik.table.search') }}
+        </puik-button>
+        <div
+          v-if="props.searchReset"
+          class="puik-table-search-input--reset"
+          @click="$emit('searchResetEvent')"
+        >
+          <puik-button
+            left-icon="close"
+            variant="text"
+            size="sm"
+          >
+            {{ t('puik.table.reset') }}
+          </puik-button>
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 

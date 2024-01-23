@@ -52,7 +52,6 @@ import type { Component } from 'vue';
 
 // prettier-ignore
 export default [
-  PuikTableSearchInput,
   PuikAvatar,
   PuikDivider,
   PuikSkeletonLoader,
@@ -66,7 +65,6 @@ export default [
   PuikTabNavigation,
   PuikProgressStepper,
   PuikProgressStepperStep,
-  PuikTable,
   PuikSpinnerLoader,
   PuikSidebar,
   PuikSidebarGroupItem,
@@ -92,6 +90,8 @@ export default [
   PuikLabel,
   PuikRadio,
   PuikInput,
+  PuikTableSearchInput,
+  PuikTable,
   PuikCheckbox,
   PuikOption,
   PuikSelect,
