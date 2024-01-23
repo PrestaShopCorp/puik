@@ -5,6 +5,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import esbuild from 'rollup-plugin-esbuild'
 import glob from 'fast-glob'
+import json from '@rollup/plugin-json'
 import {
   puikRoot,
   pkgRoot,
@@ -44,6 +45,7 @@ export const buildModules = async () => {
           '.vue': 'ts',
         },
       }),
+      json(),
     ],
     external: await generateExternal({ full: false }),
     treeshake: false,
