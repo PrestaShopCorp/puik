@@ -2,7 +2,7 @@ import { mount, ComponentMountingOptions, VueWrapper, DOMWrapper } from '@vue/te
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
 import { locales } from '@prestashopcorp/puik-locale';
-import { PuikTable, PuikTableHeader, TableProps } from '@prestashopcorp/puik-components';
+import { PuikTable, PuikTableHeader, PuikTableSortOrder, sortOption, TableProps } from '@prestashopcorp/puik-components';
 
 const defaultItems = Array(5)
   .fill(null)
@@ -17,6 +17,9 @@ describe('Table tests', () => {
   let wrapper: VueWrapper<any>;
   const colClass = 'puik-table__body__row__item';
   const headerColClass = 'puik-table__head__row__item';
+  const searchBarClass = '.puik-table__search__bar';
+  const searchSubmitButtonClass =
+    '.puik-table-search-input--submit .puik-button';
 
   const getTable = () => wrapper.find('.puik-table');
   const getHeaders = () => wrapper.findAll(`.${headerColClass}`);
@@ -62,15 +65,14 @@ describe('Table tests', () => {
     expect(wrapper).toBeTruthy();
   });
   it('should display headers with text', () => {
-    const text = 'firstname';
-    const headers: PuikTableHeader[] = [{ text, value: text }];
+    const headers: PuikTableHeader[] = [{ text: 'text', value: 'value' }];
     factory({ headers });
-    expect(getHeaders()[0].text()).toBe(text);
+    expect(getHeaders()[0].text()).toBe('text');
   });
-  it('should display headers without text', () => {
-    const headers: PuikTableHeader[] = [{ value: 'firstname' }];
+  it('should display headers without text (should display value instead)', () => {
+    const headers: PuikTableHeader[] = [{ value: 'value' }];
     factory({ headers });
-    expect(getHeaders()[0].text()).toBe('');
+    expect(getHeaders()[0].text()).toBe('value');
   });
   it('should display 5 items', () => {
     const headers: PuikTableHeader[] = [{ value: 'firstname' }];
@@ -298,5 +300,57 @@ describe('Table tests', () => {
     expect(header.classes()).toContain(
       'puik-table__head__row__item--expandable'
     );
+  });
+
+  it('should emit sortColum event', async () => {
+    const headers: PuikTableHeader[] = [{ value: 'firstname', sortable: true }];
+    factory({ headers });
+    const header = getHeaders()[0];
+    const SortButton = header.find('.puik-button');
+    const payload: sortOption = {
+      sortBy: 'firstname',
+      sortOrder: PuikTableSortOrder.Asc
+    };
+    expect(SortButton.classes()).toContain('puik-button');
+    await SortButton.trigger('click');
+    expect(wrapper.emitted('sortColumn')).toBeTruthy();
+    expect(wrapper.emitted('sortColumn')?.[0]?.[0]).toStrictEqual(payload);
+  });
+
+  it('should display a search bar', async () => {
+    const headers: PuikTableHeader[] = [
+      { value: 'firstname', searchable: true },
+      { value: 'lastname', searchable: true },
+      { value: 'action', searchSubmit: true, preventExpand: true }
+    ];
+    factory({ headers, searchBar: true });
+    const searchBar = getTable().find(searchBarClass);
+    expect(searchBar).toBeTruthy();
+  });
+
+  it('should emit searchSubmit event', async () => {
+    const headers: PuikTableHeader[] = [
+      { value: 'firstname', searchable: true },
+      { value: 'lastname', searchable: true },
+      { value: 'action', searchSubmit: true, preventExpand: true }
+    ];
+    factory({ headers, searchBar: true });
+    const searchSubmitButton = getTable().find(searchSubmitButtonClass);
+    expect(searchSubmitButton).toBeTruthy();
+    await searchSubmitButton.trigger('click');
+    expect(wrapper.emitted('searchSubmit')).toBeTruthy();
+  });
+
+  it('should update the table when items prop changes', async () => {
+    const headers: PuikTableHeader[] = [{ value: 'firstname' }];
+    factory({ headers, items: [] });
+    expect(getRows().length).toBe(0);
+    const newItems = [{ firstname: 'John' }, { firstname: 'Jane' }];
+    await wrapper.setProps({ items: newItems });
+    expect(getRows().length).toBe(newItems.length);
+    newItems.forEach((item, index) => {
+      const row = getRows()[index];
+      expect(row.text()).toContain(item.firstname);
+    });
   });
 });

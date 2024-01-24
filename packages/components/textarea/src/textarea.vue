@@ -62,6 +62,7 @@ import { useVModel } from '@vueuse/core';
 import { slotIsEmpty, clamp } from '@prestashopcorp/puik-utils';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { type TextareaProps } from './textarea';
+
 defineOptions({
   name: 'PuikTextarea'
 });

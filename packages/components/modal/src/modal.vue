@@ -16,7 +16,7 @@
             v-if="titleIcon || PuikModalVariants.Destructive === variant"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__icon"
             :icon="getTitleIconName ?? ''"
-            :font-size="24"
+            :font-size="ICON_SIZE"
           />
 
           <puik-tooltip
@@ -48,7 +48,7 @@
           >
             <puik-icon
               icon="close"
-              :font-size="CLOSE_ICON_SIZE"
+              :font-size="ICON_SIZE"
             />
           </puik-button>
         </header>
@@ -122,7 +122,7 @@ defineOptions({
   name: 'PuikModal'
 });
 
-const CLOSE_ICON_SIZE = 24;
+const ICON_SIZE = 24;
 
 const props = withDefaults(defineProps<ModalProps>(), {
   variant: PuikModalVariants.Feedback,

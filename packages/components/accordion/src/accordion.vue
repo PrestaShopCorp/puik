@@ -5,6 +5,7 @@
     :class="{
       'puik-accordion--expanded': isExpanded,
       'puik-accordion--disabled': disabled,
+      'puik-accordion--border-none': borderNone,
     }"
   >
     <button

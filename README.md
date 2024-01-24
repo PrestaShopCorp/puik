@@ -72,6 +72,8 @@ $ pnpm install unplugin-vue-components unplugin-auto-import -D
 
 Then add the code below in your vite.config file
 
+ℹ️ if you don't use Vite [follow this link](https://github.com/unplugin/unplugin-vue-components?tab=readme-ov-file#installation)
+
 ```typescript
 import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'

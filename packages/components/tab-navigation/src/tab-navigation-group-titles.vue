@@ -10,6 +10,7 @@
 
 <script setup lang="ts">
 import { type TabNavigationGroupTitlesProps } from './tab-navigation-group-titles';
+
 defineOptions({
   name: 'PuikTabNavigationGroupTitles'
 });

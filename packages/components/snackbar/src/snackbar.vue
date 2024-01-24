@@ -20,7 +20,7 @@
       <button
         v-if="action"
         class="puik-snackbar__action"
-        @click="action?.callback"
+        @click="action?.callback(), close()"
       >
         {{ action.label }}
       </button>

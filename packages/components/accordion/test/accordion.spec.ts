@@ -180,4 +180,19 @@ describe('Accordion tests', () => {
       'icon-accordion'
     );
   });
+
+  it('should not contain borders', () => {
+    const template = `
+    <puik-accordion-group>
+      <puik-accordion name="accordion-1" title="title-1" border-none>
+        Content 1
+      </puik-accordion>
+    </puik-accordion-group>
+  `;
+    factory(template);
+    const accordion = getAccordion(wrapper);
+    expect(getAccordionContainer(accordion).classes()).toContain(
+      'puik-accordion--border-none'
+    );
+  });
 });
