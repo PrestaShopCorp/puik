@@ -1,5 +1,8 @@
 <template>
-  <div class="puik-progress-stepper-step" :data-test="dataTest">
+  <div
+    class="puik-progress-stepper-step"
+    :data-test="dataTest"
+  >
     <puik-button
       :aria-current="isCurrentStep ? 'step' : undefined"
       :aria-label="step"
@@ -20,7 +23,7 @@
       class="puik-progress-stepper-step__text"
       :data-test="dataTest != undefined ? `text-${dataTest}` : undefined"
     >
-      <slot name="text"></slot>
+      <slot name="text" />
     </span>
     <span
       class="puik-progress-stepper-step__additional-text"
@@ -28,54 +31,54 @@
         dataTest != undefined ? `additionalText-${dataTest}` : undefined
       "
     >
-      <slot name="additional-text"></slot>
+      <slot name="additional-text" />
     </span>
   </div>
 </template>
 
 <script setup lang="ts">
-import { inject, computed } from 'vue'
-import { PuikButton } from '@puik/components/button'
-import { progressStepperStepProps } from './progress-stepper-step'
-import { progressStepperKey, type PuikStep } from './progress-stepper'
+import { inject, computed } from 'vue';
+import { PuikButton } from '@prestashopcorp/puik-components/button';
+import { type ProgressStepperStepProps } from './progress-stepper-step';
+import { progressStepperKey, type PuikStep } from './progress-stepper';
 
 defineOptions({
-  name: 'PuikProgressStepperStep',
-})
+  name: 'PuikProgressStepperStep'
+});
 
-const props = defineProps(progressStepperStepProps)
+const props = defineProps<ProgressStepperStepProps>();
 const emit = defineEmits<{
-  (e: 'click', step: PuikStep): void
-}>()
-const progressStepper = inject(progressStepperKey, null)
-progressStepper?.steps?.value.push(props.step)
+  click: [step: PuikStep]
+}>();
+const progressStepper = inject(progressStepperKey, null);
+progressStepper?.steps?.value.push(props.step);
 
 const isCurrentStep = computed(() => {
-  return props.step === progressStepper?.currentStep.value
-})
-
-const buttonVariant = computed(() => {
-  if (isCompleted.value) return 'success'
-  return 'primary'
-})
+  return props.step === progressStepper?.currentStep.value;
+});
 
 const stepIndex = computed(() => {
-  if (!progressStepper) return -1
-  return progressStepper.steps.value.lastIndexOf(props.step)
-})
+  if (!progressStepper) return -1;
+  return progressStepper.steps.value.lastIndexOf(props.step);
+});
 
 const disabled = computed(() => {
-  if (!progressStepper) return true
-  return stepIndex.value > progressStepper.currentStepIndex.value
-})
+  if (!progressStepper) return true;
+  return stepIndex.value > progressStepper.currentStepIndex.value;
+});
 
 const isCompleted = computed(() => {
-  if (!progressStepper) return true
-  return stepIndex.value < progressStepper.currentStepIndex.value
-})
+  if (!progressStepper) return true;
+  return stepIndex.value < progressStepper.currentStepIndex.value;
+});
+
+const buttonVariant = computed(() => {
+  if (isCompleted.value) return 'success';
+  return 'primary';
+});
 
 const onClick = () => {
-  progressStepper?.handleClickStep(props.step)
-  emit('click', props.step)
-}
+  progressStepper?.handleClickStep(props.step);
+  emit('click', props.step);
+};
 </script>

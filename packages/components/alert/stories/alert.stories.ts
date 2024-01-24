@@ -1,19 +1,19 @@
-import { action } from '@storybook/addon-actions'
-import { alertVariants } from '../src/alert'
-import PuikAlert from './../src/alert.vue'
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+import { action } from '@storybook/addon-actions';
+import { PuikAlert, PuikAlertVariants } from '@prestashopcorp/puik-components';
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
-const alertVariantsSummary = alertVariants.join('|')
+const alertVariants = Object.values(PuikAlertVariants);
+const alertVariantsSummary = alertVariants.join('|');
 
 export default {
   title: 'Components/Alert',
   component: PuikAlert,
   argTypes: {
     title: {
-      description: 'Set the alert title',
+      description: 'Set the alert title'
     },
     description: {
-      description: 'Set the alert description (also exists as a default slot)',
+      description: 'Set the alert description (also exists as a default slot)'
     },
     variant: {
       control: 'select',
@@ -21,45 +21,45 @@ export default {
       options: alertVariants,
       table: {
         defaultValue: {
-          summary: 'success',
+          summary: 'success'
         },
         type: {
-          summary: alertVariantsSummary,
-        },
-      },
+          summary: alertVariantsSummary
+        }
+      }
     },
     disableBorders: {
       description:
         'Disable alert borders (only for info, warning, error variants)',
       table: {
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     buttonLabel: {
-      description: 'Label of the button',
+      description: 'Label of the button'
     },
     buttonWrapLabel: {
       description: 'Set the carriage return of the button label',
       table: {
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     isClosable: {
-      description: 'Display a close button',
+      description: 'Display a close button'
     },
     default: {
       control: 'none',
-      description: 'Set the alert description',
+      description: 'Set the alert description'
     },
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}`',
-    },
+        'Set the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}`'
+    }
   },
   args: {
     title: 'Title',
@@ -68,28 +68,28 @@ export default {
     disableBorders: false,
     buttonLabel: 'Button',
     buttonWrapLabel: false,
-    isClosable: false,
-  },
-} as Meta
+    isClosable: false
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikAlert,
+    PuikAlert
   },
   setup() {
-    return { args }
+    return { args };
   },
   methods: {
     click: action('click'),
-    close: action('close'),
+    close: action('close')
   },
   template: `
     <puik-alert
       v-bind="args"
       @click="click"
       @close="close"
-    ></puik-alert>`,
-})
+    ></puik-alert>`
+});
 
 export const Default = {
   render: Template,
@@ -128,16 +128,16 @@ export const Default = {
     <button class="puik-alert__button">Button</button>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const buttonWrapLabel: StoryObj = {
   render: () => ({
     components: {
-      PuikAlert,
+      PuikAlert
     },
     template: `
       <div class="flex flex-col space-y-4">
@@ -164,7 +164,7 @@ export const buttonWrapLabel: StoryObj = {
         This an alert with a very long description.
        </puik-alert>
       </div>
-    `,
+    `
   }),
 
   parameters: {
@@ -232,16 +232,16 @@ export const buttonWrapLabel: StoryObj = {
   </button>
 </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Success: StoryObj = {
   render: () => ({
     components: {
-      PuikAlert,
+      PuikAlert
     },
     template: `
       <div class="flex flex-col space-y-4">
@@ -250,7 +250,7 @@ export const Success: StoryObj = {
        <puik-alert title="Title" button-label="Button">This a success alert with a title and a description and a button.</puik-alert>
        <puik-alert button-label="Button">This a success alert with a description and a button.</puik-alert>
       </div>
-    `,
+    `
   }),
 
   parameters: {
@@ -279,16 +279,16 @@ export const Success: StoryObj = {
     <button class="puik-alert__button">Button</button>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Warning: StoryObj = {
   render: () => ({
     components: {
-      PuikAlert,
+      PuikAlert
     },
     template: `
       <div class="flex flex-col space-y-4">
@@ -298,7 +298,7 @@ export const Warning: StoryObj = {
         <puik-alert variant="warning" title="Title" button-label="Button">This a warning alert with a title and a description and a button.</puik-alert>
         <puik-alert variant="warning" button-label="Button">This a warning alert with a description and a button.</puik-alert>
       </div>
-    `,
+    `
   }),
 
   parameters: {
@@ -328,16 +328,16 @@ export const Warning: StoryObj = {
     <button class="puik-alert__button">Button</button>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Info: StoryObj = {
   render: () => ({
     components: {
-      PuikAlert,
+      PuikAlert
     },
     template: `
       <div class="flex flex-col space-y-4">
@@ -347,7 +347,7 @@ export const Info: StoryObj = {
        <puik-alert variant="info" title="Title" button-label="Button">This a info alert with a title and a description and a button.</puik-alert>
        <puik-alert variant="info" button-label="Button">This a info alert with a description and a button.</puik-alert>
       </div>
-    `,
+    `
   }),
 
   parameters: {
@@ -377,16 +377,16 @@ export const Info: StoryObj = {
     <button class="puik-alert__button">Button</button>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Danger: StoryObj = {
   render: () => ({
     components: {
-      PuikAlert,
+      PuikAlert
     },
     template: `
       <div class="flex flex-col space-y-4">
@@ -396,7 +396,7 @@ export const Danger: StoryObj = {
        <puik-alert variant="danger" title="Title" button-label="Button">This a danger alert with a title and a description and a button.</puik-alert>
        <puik-alert variant="danger" button-label="Button">This a danger alert with a description and a button.</puik-alert>
       </div>
-    `,
+    `
   }),
 
   parameters: {
@@ -426,8 +426,8 @@ export const Danger: StoryObj = {
     <button class="puik-alert__button">Button</button>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

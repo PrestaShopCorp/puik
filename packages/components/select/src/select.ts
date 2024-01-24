@@ -1,102 +1,33 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, InjectionKey, PropType, Ref } from 'vue'
-import type Select from './select.vue'
-import type { Option, DefaultOption } from './option'
+import type { InjectionKey, Ref } from 'vue';
+import type Select from './select.vue';
+import type { DefaultOption } from './option';
 
-export const selectProps = buildProps({
-  modelValue: {
-    type: [String, Number, Object] as PropType<Option>,
-    required: true,
-  },
-  customLabel: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  labelKey: {
-    type: String,
-    required: false,
-    default: 'label',
-  },
-  valueKey: {
-    type: String,
-    required: false,
-    default: 'value',
-  },
-  id: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  disabled: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  name: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  autocomplete: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  placeholder: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  error: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  options: {
-    type: [Array, Object],
-    required: false,
-    default: undefined,
-  },
-  customFilterMethod: {
-    type: Function,
-    required: false,
-    default: undefined,
-  },
-  noMatchText: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  zindex: {
-    type: Number,
-    required: false,
-    default: 1000,
-  },
-  fullWidth: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
-  dataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-} as const)
+export interface SelectProps {
+  modelValue: string | number | Record<string, any>
+  customLabel?: string
+  labelKey?: string
+  valueKey?: string
+  id?: string
+  disabled?: boolean
+  name?: string
+  autocomplete?: string
+  placeholder?: string
+  error?: string
+  options?: any[] | Record<string, any>
+  customFilterMethod?: (query: string) => any[] | Record<string, any>
+  noMatchText?: string
+  zindex?: number
+  fullWidth?: boolean
+  dataTest?: string
+}
 
-export type SelectProps = ExtractPropTypes<typeof selectProps>
-
-export const selectEmits = ['update:modelValue']
-export type SelectEmits = typeof selectEmits
-
-export type SelectInstance = InstanceType<typeof Select>
+export type SelectInstance = InstanceType<typeof Select>;
 
 export type SelectContext = {
   handleAutoComplete: (label: string | number) => void
   selectedValue: Ref<string | number | Record<string, any>>
   optionsList: Ref<DefaultOption[]>
   labelKey: string
-}
+};
 
-export const selectKey: InjectionKey<SelectContext> = Symbol('select')
+export const selectKey: InjectionKey<SelectContext> = Symbol('select');

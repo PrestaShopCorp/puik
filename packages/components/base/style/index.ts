@@ -1,1 +1,1 @@
-import '@puik/theme/src/base.scss'
+import '@prestashopcorp/puik-theme/src/base.scss';

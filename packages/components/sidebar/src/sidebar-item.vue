@@ -36,28 +36,27 @@
     <span
       v-if="isExpanded"
       :data-test="dataTest != undefined ? `title-${dataTest}` : undefined"
-      >{{ title }}</span
-    >
+    >{{ title }}</span>
   </puik-button>
 </template>
 
 <script setup lang="ts">
-import { inject, computed } from 'vue'
-import { MenuItem } from '@headlessui/vue'
-import PuikButton from '../../button'
-import { sidebarKey, groupItemKey } from './sidebar'
-import { sidebarItemProps } from './sidebar-item'
+import { inject, computed } from 'vue';
+import { MenuItem } from '@headlessui/vue';
+import PuikButton from '../../button';
+import { sidebarKey, groupItemKey } from './sidebar';
+import { type SidebarItemProps } from './sidebar-item';
 
 defineOptions({
-  name: 'PuikSidebarItem',
-})
+  name: 'PuikSidebarItem'
+});
 
-defineProps(sidebarItemProps)
-const sidebarValues = inject(sidebarKey, null)
-const groupItemValues = inject(groupItemKey, false)
+defineProps<SidebarItemProps>();
+const sidebarValues = inject(sidebarKey, null);
+const groupItemValues = inject(groupItemKey, false);
 
-const isExpanded = computed(() => sidebarValues?.extended.value)
+const isExpanded = computed(() => sidebarValues?.extended.value);
 const isMenuItem = computed(
   () => !sidebarValues?.extended.value && groupItemValues
-)
+);
 </script>

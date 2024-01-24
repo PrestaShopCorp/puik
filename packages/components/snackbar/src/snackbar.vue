@@ -37,53 +37,63 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import { useTimeoutFn, useEventListener } from '@vueuse/core'
-import { useLocale } from '@puik/hooks'
-import { snackbarProps } from './snackbar'
-import type { CSSProperties } from 'vue'
+import { computed, onMounted, ref } from 'vue';
+import { useTimeoutFn, useEventListener } from '@vueuse/core';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { PuikSnackbarVariants } from './snackbar';
+import type { SnackbarProps } from './snackbar';
+import type { CSSProperties } from 'vue';
 
 defineOptions({
-  name: 'PuikSnackbar',
-})
+  name: 'PuikSnackbar'
+});
 
-const { t } = useLocale()
-let timer: (() => void) | undefined
+defineEmits<{
+  destroy: []
+}>();
 
-const visible = ref(false)
+const { t } = useLocale();
+let timer: (() => void) | undefined;
 
-const props = defineProps(snackbarProps)
+const visible = ref(false);
+
+const props = withDefaults(defineProps<SnackbarProps>(), {
+  variant: PuikSnackbarVariants.Default,
+  offset: 0,
+  duration: 3000,
+  hasCloseButton: true
+});
 
 const position = computed<CSSProperties>(() => ({
-  bottom: `${props.offset}px`,
-}))
+  bottom: `${props.offset}px`
+}));
+
+const close = () => {
+  visible.value = false;
+};
 
 const startTimer = () => {
   if (props.duration > 0) {
-    ;({ stop: timer } = useTimeoutFn(() => {
-      close()
-    }, props.duration))
+    ({ stop: timer } = useTimeoutFn(() => {
+      close();
+    }, props.duration));
   }
-}
+};
 
-const resetTimer = () => timer?.()
-
-const close = () => {
-  visible.value = false
-}
+const resetTimer = () => timer?.();
 
 const onKeyDown = ({ code }: KeyboardEvent) => {
   if (code === 'Escape') {
     if (visible.value) {
-      close()
+      close();
     }
   }
-}
+};
 
-useEventListener(document, 'keydown', onKeyDown)
+useEventListener(document, 'keydown', onKeyDown);
 
 onMounted(() => {
-  startTimer()
-  visible.value = true
-})
+  startTimer();
+  visible.value = true;
+});
 </script>

@@ -5,7 +5,7 @@
     <PuikInput
       v-if="
         !props.searchSubmit &&
-        props.searchType === PuikTableSearchInputTypes.Text
+          props.searchType === PuikTableSearchInputTypes.Text
       "
       v-model="inputTextValue"
       :type="PuikInputTypes.Text"
@@ -15,7 +15,7 @@
     <div
       v-if="
         !props.searchSubmit &&
-        props.searchType === PuikTableSearchInputTypes.Range
+          props.searchType === PuikTableSearchInputTypes.Range
       "
       class="puik-table-search-input--range"
     >
@@ -38,7 +38,10 @@
     </div>
     <template v-if="props.searchSubmit">
       <div class="puik-table-search-input--submit">
-        <puik-button left-icon="search" @click="$emit('searchSubmitEvent')">
+        <puik-button
+          left-icon="search"
+          @click="$emit('searchSubmitEvent')"
+        >
           {{ t('puik.table.search') }}
         </puik-button>
         <div
@@ -46,7 +49,11 @@
           class="puik-table-search-input--reset"
           @click="$emit('searchResetEvent')"
         >
-          <puik-button left-icon="close" variant="text" size="sm">
+          <puik-button
+            left-icon="close"
+            variant="text"
+            size="sm"
+          >
             {{ t('puik.table.reset') }}
           </puik-button>
         </div>
@@ -56,42 +63,45 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useLocale } from '@puik/hooks'
-import { PuikButton } from '@puik/components/button'
-import { PuikInput, PuikInputTypes } from '@puik/components/input'
+import { ref } from 'vue';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { PuikButton } from '@prestashopcorp/puik-components/button';
+import { PuikInput, PuikInputTypes } from '@prestashopcorp/puik-components/input';
 import {
-  tableSearchInputProps,
-  PuikTableSearchInputTypes,
-} from './table-search-input'
-import type { searchOption, inputRange } from './table-search-input'
+  TableSearchInputProps,
+  PuikTableSearchInputTypes
+} from './table-search-input';
+import type { searchOption, inputRange } from './table-search-input';
 
 defineOptions({
-  name: 'PuikTableSearchInput',
-})
+  name: 'PuikTableSearchInput'
+});
 
-const props = defineProps(tableSearchInputProps)
+const props = withDefaults(defineProps<TableSearchInputProps>(), {
+  column: '',
+  searchType: PuikTableSearchInputTypes.Text
+});
 
 const emit = defineEmits<{
-  (e: 'searchTextValue', column: searchOption): void
-  (e: 'searchRangeValue', column: searchOption): void
-  (e: 'searchSubmitEvent'): void
-  (e: 'searchResetEvent'): void
-}>()
+  searchTextValue: [column: searchOption]
+  searchRangeValue: [column: searchOption]
+  searchSubmitEvent: []
+  searchResetEvent: []
+}>();
 
-const { t } = useLocale()
+const { t } = useLocale();
 
-const inputTextValue = ref<string>()
-const inputMinValue = ref<number>()
-const inputMaxValue = ref<number>()
+const inputTextValue = ref<string>();
+const inputMinValue = ref<number>();
+const inputMaxValue = ref<number>();
 
 const sendTextValue = (column: string, textValue?: string) => {
   const searchOption: searchOption = {
     searchBy: column,
-    inputText: textValue,
-  }
-  emit('searchTextValue', searchOption)
-}
+    inputText: textValue
+  };
+  emit('searchTextValue', searchOption);
+};
 
 const sendRangeValue = (
   column: string,
@@ -102,9 +112,9 @@ const sendRangeValue = (
     searchBy: column,
     inputRange: {
       min: minValue || Number.NEGATIVE_INFINITY,
-      max: maxValue || Number.POSITIVE_INFINITY,
-    } as inputRange,
-  }
-  emit('searchRangeValue', searchOption)
-}
+      max: maxValue || Number.POSITIVE_INFINITY
+    } as inputRange
+  };
+  emit('searchRangeValue', searchOption);
+};
 </script>

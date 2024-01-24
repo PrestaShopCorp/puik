@@ -5,4 +5,4 @@ skip_if: <%= h.changeCase.param(name) %>
 append: true
 eof_last: false
 ---
-export * from './<%= h.changeCase.param(name) %>'
+export * from './<%= h.changeCase.param(name) %>';

@@ -1,26 +1,16 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
-import type Card from './card.vue'
+import type Card from './card.vue';
 
-export const cardVariants = [
-  'highlight',
-  'blue',
-  'purple',
-  'amber',
-  'green',
-  'default',
-] as const
+export enum PuikCardVariants {
+  Highlight = 'highlight',
+  Blue = 'blue',
+  Purple = 'purple',
+  Amber = 'amber',
+  Green = 'green',
+  Default = 'default',
+}
 
-export type PuikCardVariant = (typeof cardVariants)[number]
+export interface CardProps {
+  variant?: PuikCardVariants | `${PuikCardVariants}`
+}
 
-export const cardProps = buildProps({
-  variant: {
-    type: String as PropType<PuikCardVariant>,
-    required: false,
-    default: 'default',
-  },
-} as const)
-
-export type CardProps = ExtractPropTypes<typeof cardProps>
-
-export type CardInstance = InstanceType<typeof Card>
+export type CardInstance = InstanceType<typeof Card>;

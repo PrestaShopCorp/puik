@@ -1,8 +1,8 @@
-import { dividerOrientations } from '../src/divider'
-import PuikDivider from './../src/divider.vue'
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikDivider, PuikDividerOrientation } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
-const dividerOrientationsSummary = dividerOrientations.join('|')
+const dividerOrientations = Object.values(PuikDividerOrientation);
+const dividerOrientationsSummary = dividerOrientations.join('|');
 
 export default {
   title: 'Components/Divider',
@@ -15,45 +15,45 @@ export default {
       options: dividerOrientations,
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'horizontal',
-        },
-      },
+          summary: 'horizontal'
+        }
+      }
     },
     dataTest: {
       description: 'set data-test attribute for e2e tests purpose',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
-    },
+          summary: 'undefined'
+        }
+      }
+    }
   },
-  args: {},
-} as Meta
+  args: {}
+} as Meta;
 
 const DefaultTemplate: StoryFn = (args: Args) => ({
   components: {
-    PuikDivider,
+    PuikDivider
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<puik-divider v-bind="args"/>`,
-})
+  template: '<puik-divider v-bind="args"/>'
+});
 
 const OrientationTemplate: StoryFn = (args: Args) => ({
   components: {
-    PuikDivider,
+    PuikDivider
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
 <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -62,15 +62,15 @@ const OrientationTemplate: StoryFn = (args: Args) => ({
     <puik-divider orientation="vertical"/>
   </div>
 </div>
-  `,
-})
+  `
+});
 
 const DataTestTemplate: StoryFn = (args: Args) => ({
   components: {
-    PuikDivider,
+    PuikDivider
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
 <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -79,8 +79,8 @@ const DataTestTemplate: StoryFn = (args: Args) => ({
     <puik-divider orientation="vertical" dataTest="test"/>
   </div>
 </div>
-  `,
-})
+  `
+});
 
 export const Default = {
   render: DefaultTemplate,
@@ -95,11 +95,11 @@ export const Default = {
 <!-- HTML/CSS Snippet -->
 <hr class="puik-divider puik-divider--horizontal">
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Orientation = {
   render: OrientationTemplate,
@@ -118,11 +118,11 @@ export const Orientation = {
 <!-- $size = 'vertical' -->
 <div class="puik-divider puik-divider--vertical"></div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const DataTest = {
   render: DataTestTemplate,
@@ -140,8 +140,8 @@ export const DataTest = {
 <!-- $size = 'vertical' -->
 <div class="puik-divider puik-divider--vertical" data-test="vertical-{$test}"></div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

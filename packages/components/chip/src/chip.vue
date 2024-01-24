@@ -1,61 +1,66 @@
 <template>
   <div
-    :id="props.id"
+    :id="id"
     :class="[
-      `puik-chip puik-chip--${props.size as PuikChipSizeVariant}`,
-      { 'puik-chip--disabled': props.disabled },
+      `puik-chip puik-chip--${size}`,
+      { 'puik-chip--disabled': disabled },
     ]"
   >
     <PuikIcon
-      v-if="props.icon && props.icon != ''"
-      :icon="props.icon"
+      v-if="icon && icon != ''"
+      :icon="icon"
       class="puik-chip__icon"
     />
     <div class="puik-chip__content">
       <puik-tooltip
-        :key="props.content"
+        :key="content"
         :is-disabled="!showTooltip"
-        :position="(tooltipPosition as PuikTooltipPosition)"
-        :description="props.content"
+        :position="tooltipPosition"
+        :description="content"
       >
         <p ref="chipContentElem">
-          {{ props.content }}
+          {{ content }}
         </p>
       </puik-tooltip>
     </div>
     <PuikIcon
       icon="close"
       class="puik-chip__close"
-      @click="props.disabled ? '' : handleCloseEvent()"
+      @click="disabled ? '' : handleCloseEvent()"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, watch } from 'vue'
-import { PuikIcon } from '@puik/components/icon'
-import { PuikTooltip } from '@puik/components/tooltip'
-import { isEllipsisActive } from '@puik/utils'
-import { chipProps, type PuikChipSizeVariant } from './chip'
-import type { PuikTooltipPosition } from '@puik/components/tooltip'
+import { PuikIcon } from '@prestashopcorp/puik-components/icon';
+import {
+  PuikTooltip,
+  PuikTooltipPositions
+} from '@prestashopcorp/puik-components/tooltip';
+import { PuikChipSizeVariants, type ChipProps } from './chip';
+import { nextTick, ref, watch } from 'vue';
+import { isEllipsisActive } from '@prestashopcorp/puik-utils';
 defineOptions({
-  name: 'PuikChip',
-})
+  name: 'PuikChip'
+});
 
-const props = defineProps(chipProps)
-const chipContentElem = ref(null)
-const showTooltip = ref(false)
+withDefaults(defineProps<ChipProps>(), {
+  size: PuikChipSizeVariants.Default,
+  tooltipPosition: PuikTooltipPositions.Bottom
+});
+const emit = defineEmits(['close']);
 
-const emit = defineEmits(['close'])
+const chipContentElem = ref(null);
+const showTooltip = ref(false);
 
 const handleCloseEvent = () => {
-  emit('close')
-}
+  emit('close');
+};
 
 watch(chipContentElem, async () => {
-  await nextTick()
+  await nextTick();
   if (chipContentElem?.value) {
-    showTooltip.value = isEllipsisActive(chipContentElem.value)
+    showTooltip.value = isEllipsisActive(chipContentElem.value);
   }
-})
+});
 </script>

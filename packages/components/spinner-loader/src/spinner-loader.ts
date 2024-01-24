@@ -1,45 +1,27 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
-import type SpinnerLoader from './spinner-loader.vue'
+import type SpinnerLoader from './spinner-loader.vue';
 
-export const puikSpinnerLoaderSizes = ['sm', 'md', 'lg'] as const
-export type PuikSpinnerSizeType = (typeof puikSpinnerLoaderSizes)[number]
+export enum PuikSpinnerLoaderSizes {
+  Small = 'sm',
+  Medium = 'md',
+  Large = 'lg',
+}
 
-export const puikSpinnerLoaderColors = ['primary', 'reverse'] as const
-export type PuikspinnerColorsType = (typeof puikSpinnerLoaderColors)[number]
+export enum PuikSpinnerLoaderColors {
+  Primary = 'primary',
+  Reverse = 'reverse',
+}
 
-export const puikSpinnerLoaderPositions = ['bottom', 'right'] as const
-export type PuikspinnerPositionType =
-  (typeof puikSpinnerLoaderPositions)[number]
+export enum PuikSpinnerLoaderPositions {
+  Bottom = 'bottom',
+  Right = 'right',
+}
 
-export const spinnerLoaderProps = buildProps({
-  size: {
-    type: String as PropType<PuikSpinnerSizeType>,
-    required: false,
-    default: 'md',
-  },
-  color: {
-    type: String as PropType<PuikspinnerColorsType>,
-    required: false,
-    default: 'primary',
-  },
-  label: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  position: {
-    type: String as PropType<PuikspinnerPositionType>,
-    required: false,
-    default: 'bottom',
-  },
-  dataTest: {
-    type: String,
-    required: false,
-    default: 'spinner-loader',
-  },
-} as const)
+export interface SpinnerLoaderProps {
+  size?: `${PuikSpinnerLoaderSizes}`
+  color?: `${PuikSpinnerLoaderColors}`
+  position?: `${PuikSpinnerLoaderPositions}`
+  label?: string
+  dataTest?: string
+}
 
-export type SpinnerLoaderProps = ExtractPropTypes<typeof spinnerLoaderProps>
-
-export type SpinnerLoaderInstance = InstanceType<typeof SpinnerLoader>
+export type SpinnerLoaderInstance = InstanceType<typeof SpinnerLoader>;

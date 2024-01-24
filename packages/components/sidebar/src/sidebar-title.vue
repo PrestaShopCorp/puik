@@ -5,20 +5,22 @@
     class="puik-sidebar-title"
     :data-test="dataTest != undefined ? `sidebarTitle-${dataTest}` : undefined"
   >
-    <slot></slot>
+    <slot />
   </component>
 </template>
 
 <script setup lang="ts">
-import { computed, inject } from 'vue'
-import { sidebarKey } from './sidebar'
-import { sidebarTitleProps } from './sidebar-title'
+import { computed, inject } from 'vue';
+import { sidebarKey } from './sidebar';
+import { type SidebarTitleProps } from './sidebar-title';
 
 defineOptions({
-  name: 'PuikSidebarTitle',
-})
+  name: 'PuikSidebarTitle'
+});
 
-defineProps(sidebarTitleProps)
-const sidebarValues = inject(sidebarKey, null)
-const isExpanded = computed(() => sidebarValues?.extended.value)
+withDefaults(defineProps<SidebarTitleProps>(), {
+  tag: 'h3'
+});
+const sidebarValues = inject(sidebarKey, null);
+const isExpanded = computed(() => sidebarValues?.extended.value);
 </script>

@@ -1,32 +1,32 @@
 <template>
   <div
-    :id="props.id"
+    :id="id"
     :class="[
-      `puik-tag puik-tag--${props.variant as PuikTagColorVariant} puik-tag--${props.size as PuikTagSizeVariant}`,
-      { 'puik-tag--disabled': props.disabled },
+      `puik-tag puik-tag--${variant} puik-tag--${size}`,
+      { 'puik-tag--disabled': disabled },
     ]"
-    :data-test="props.dataTest"
+    :data-test="dataTest"
   >
     <PuikIcon
-      v-if="props.icon && props.icon != ''"
-      :icon="props.icon"
+      v-if="icon && icon != ''"
+      :icon="icon"
       class="puik-tag__icon"
     />
     <div class="puik-tag__content">
       <puik-tooltip
-        :key="props.content"
+        :key="content"
         :is-disabled="!showTooltip"
-        :position="(props.tooltipPosition as PuikTooltipPosition)"
-        :description="props.content"
+        :position="tooltipPosition"
+        :description="content"
         :data-test="
-          props.dataTest != undefined ? `tooltip-${props.dataTest}` : undefined
+          dataTest != undefined ? `tooltip-${dataTest}` : undefined
         "
       >
         <p
           ref="tagContentElem"
           :data-test="
-            props.dataTest != undefined
-              ? `content-${props.dataTest}`
+            dataTest != undefined
+              ? `content-${dataTest}`
               : undefined
           "
         >
@@ -38,29 +38,36 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, watch } from 'vue'
-import { PuikIcon } from '@puik/components/icon'
-import { PuikTooltip } from '@puik/components/tooltip'
-import { isEllipsisActive } from '@puik/utils'
+import { nextTick, ref, watch } from 'vue';
+import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import {
-  tagProps,
-  type PuikTagSizeVariant,
-  type PuikTagColorVariant,
-} from './tag'
-import type { PuikTooltipPosition } from '@puik/components/tooltip'
+  PuikTooltip,
+  PuikTooltipPositions
+} from '@prestashopcorp/puik-components/tooltip';
+import { isEllipsisActive } from '@prestashopcorp/puik-utils';
+import { type TagProps, PuikTagSizes, PuikTagVariants } from './tag';
 
 defineOptions({
-  name: 'PuikTag',
-})
+  name: 'PuikTag'
+});
 
-const props = defineProps(tagProps)
-const tagContentElem = ref(null)
-const showTooltip = ref(false)
+withDefaults(defineProps<TagProps>(), {
+  variant: PuikTagVariants.Neutral,
+  size: PuikTagSizes.Default,
+  tooltipPosition: PuikTooltipPositions.Bottom
+});
+
+defineEmits<{
+  close: []
+}>();
+
+const tagContentElem = ref(null);
+const showTooltip = ref(false);
 
 watch(tagContentElem, async () => {
-  await nextTick()
+  await nextTick();
   if (tagContentElem?.value) {
-    showTooltip.value = isEllipsisActive(tagContentElem.value)
+    showTooltip.value = isEllipsisActive(tagContentElem.value);
   }
-})
+});
 </script>

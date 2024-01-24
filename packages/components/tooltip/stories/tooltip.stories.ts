@@ -1,10 +1,8 @@
-import { PuikButton } from '@puik/components/button'
-import { PuikIcon } from '@puik/components/icon'
-import PuikTooltip from './../src/tooltip.vue'
-import { tooltipPositions } from './../src/tooltip'
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikButton, PuikIcon, PuikTooltip, PuikTooltipPositions } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
-const tooltipPositionsSummary = tooltipPositions.join('|')
+const tooltipPositions = Object.values(PuikTooltipPositions);
+const tooltipPositionsSummary = tooltipPositions.join('|');
 
 export default {
   title: 'Components/Tooltip',
@@ -14,17 +12,17 @@ export default {
       description: 'Set the tooltip title (also available as a prop)',
       table: {
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     description: {
       description: 'Set the tooltip description (also available as a prop)',
       table: {
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     position: {
       control: 'select',
@@ -32,48 +30,48 @@ export default {
       options: tooltipPositions,
       table: {
         defaultValue: {
-          summary: 'top',
+          summary: 'top'
         },
         type: {
-          summary: tooltipPositions,
-        },
-      },
+          summary: tooltipPositions
+        }
+      }
     },
     isDisabled: {
       control: 'boolean',
       description: 'Enable or disable the tooltip',
       table: {
         defaultValue: {
-          summary: 'false',
-        },
-      },
+          summary: 'false'
+        }
+      }
     },
     maxWidth: {
       control: 'text',
       description: 'Set a max-width for the tooltip',
       table: {
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     zindex: {
       control: 'number',
       description: 'Set the z-index level',
       table: {
         defaultValue: {
-          summary: '1000',
-        },
-      },
+          summary: '1000'
+        }
+      }
     },
     disappearDelay: {
       control: 'number',
       description: 'Set the timer to make the tooltip disappear (in ms)',
       table: {
         defaultValue: {
-          summary: '500',
-        },
-      },
+          summary: '500'
+        }
+      }
     },
     dataTest: {
       control: 'text',
@@ -81,25 +79,25 @@ export default {
         'Set the data-test attribute on the tooltip `content-${dataTest}` `title-${dataTest}` `description-${dataTest}`',
       table: {
         defaultValue: {
-          summary: undefined,
-        },
-      },
-    },
+          summary: undefined
+        }
+      }
+    }
   },
   args: {
     title: 'Title',
     description: 'This is a tooltip',
-    position: 'top',
-  },
-} as Meta
+    position: 'top'
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikTooltip,
-    PuikIcon,
+    PuikIcon
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <div class="flex items-center justify-center h-[320px]">
@@ -108,8 +106,8 @@ const Template: StoryFn = (args: Args) => ({
         <template #title>{{ args.title }}</template>
         <template #description>{{ args.description }}</template>
       </puik-tooltip>
-    </div>`,
-})
+    </div>`
+});
 
 export const Default = {
   render: Template,
@@ -150,17 +148,17 @@ export const Default = {
       <div class="puik-tooltip__tip__arrow" style="position: absolute; top: 0px; transform: translate(0px, 22px);"></div>
     </div>
   </div>
-        `,
-      },
-    },
-  },
-}
+        `
+      }
+    }
+  }
+};
 
 export const DisabledTooltip = {
   render: () => ({
     components: {
       PuikTooltip,
-      PuikButton,
+      PuikButton
     },
     template: `
   <div class="flex items-center justify-center h-[320px]">
@@ -170,7 +168,7 @@ export const DisabledTooltip = {
       <template #description>This tooltip is on a button</template>
     </puik-tooltip>
   </div>
-    `,
+    `
   }),
 
   parameters: {
@@ -183,17 +181,17 @@ export const DisabledTooltip = {
     <template #title>Title</template>
     <template #description>This tooltip is on a button</template>
   </puik-tooltip>
-        `,
-      },
-    },
-  },
-}
+        `
+      }
+    }
+  }
+};
 
 export const UsingAComponent = {
   render: () => ({
     components: {
       PuikTooltip,
-      PuikButton,
+      PuikButton
     },
     template: `
       <div class="flex items-center justify-center h-[320px]">
@@ -202,7 +200,7 @@ export const UsingAComponent = {
           <template #title>Title</template>
           <template #description>This tooltip is on a button</template>
         </puik-tooltip>
-      </div>`,
+      </div>`
   }),
 
   parameters: {
@@ -231,17 +229,17 @@ export const UsingAComponent = {
       <div class="puik-tooltip__tip__arrow" style="position: absolute; left: 0px; transform: translate(95px, 0px);"></div>
     </div>
   </div>
-        `,
-      },
-    },
-  },
-}
+        `
+      }
+    }
+  }
+};
 
 export const Bottom = {
   render: () => ({
     components: {
       PuikTooltip,
-      PuikIcon,
+      PuikIcon
     },
     template: `
       <div class="flex items-center justify-center h-[320px]">
@@ -250,7 +248,7 @@ export const Bottom = {
           <template #title>Title</template>
           <template #description>This is a bottom tooltip</template>
         </puik-tooltip>
-      </div>`,
+      </div>`
   }),
 
   parameters: {
@@ -277,17 +275,17 @@ export const Bottom = {
       <div class="puik-tooltip__tip__arrow" style="position: absolute; left: 0px; transform: translate(86px, 0px);"></div>
     </div>
   </div>
-        `,
-      },
-    },
-  },
-}
+        `
+      }
+    }
+  }
+};
 
 export const Left = {
   render: () => ({
     components: {
       PuikTooltip,
-      PuikIcon,
+      PuikIcon
     },
     template: `
       <div class="flex items-center justify-center h-[320px]">
@@ -296,7 +294,7 @@ export const Left = {
           <template #title>Title</template>
           <template #description>This is a left tooltip</template>
         </puik-tooltip>
-      </div>`,
+      </div>`
   }),
 
   parameters: {
@@ -323,17 +321,17 @@ export const Left = {
       <div class="puik-tooltip__tip__arrow" style="position: absolute; top: 0px; transform: translate(0px, 22px);"></div>
     </div>
   </div>
-        `,
-      },
-    },
-  },
-}
+        `
+      }
+    }
+  }
+};
 
 export const Right = {
   render: () => ({
     components: {
       PuikTooltip,
-      PuikIcon,
+      PuikIcon
     },
     template: `
       <div class="flex items-center justify-center h-[320px]">
@@ -342,7 +340,7 @@ export const Right = {
           <template #title>Title</template>
           <template #description>This is a right tooltip</template>
         </puik-tooltip>
-      </div>`,
+      </div>`
   }),
 
   parameters: {
@@ -369,20 +367,20 @@ export const Right = {
       <div class="puik-tooltip__tip__arrow" style="position: absolute; top: 0px; transform: translate(0px, 22px);"></div>
     </div>
   </div>
-        `,
-      },
-    },
-  },
-}
+        `
+      }
+    }
+  }
+};
 
 export const Positions = {
   render: (args: Args) => ({
     components: {
       PuikTooltip,
-      PuikIcon,
+      PuikIcon
     },
     setup() {
-      return { args }
+      return { args };
     },
     template: `
       <div class="flex items-center justify-center h-screen">
@@ -406,7 +404,7 @@ export const Positions = {
           <template #title>Title</template>
           <template #description>This is a right tooltip</template>
         </puik-tooltip>
-      </div>`,
+      </div>`
   }),
 
   parameters: {
@@ -433,8 +431,8 @@ export const Positions = {
       <div class="puik-tooltip__tip__arrow" style="position: absolute; top: 0px; transform: translate(0px, 22px);"></div>
     </div>
   </div>
-        `,
-      },
-    },
-  },
-}
+        `
+      }
+    }
+  }
+};

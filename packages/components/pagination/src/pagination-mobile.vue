@@ -9,7 +9,7 @@
       dataTest != undefined ? `previousButton-${dataTest}` : undefined
     "
     @click="emit('update:modelValue', modelValue - 1)"
-  ></puik-button>
+  />
 
   <span
     class="puik-pagination__label"
@@ -26,21 +26,21 @@
     variant="secondary"
     :data-test="dataTest != undefined ? `nextButton-${dataTest}` : undefined"
     @click="emit('update:modelValue', modelValue + 1)"
-  ></puik-button>
+  />
 </template>
 
 <script setup lang="ts">
-import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/hooks'
-import { paginationMobileProps } from './pagination-mobile'
+import { PuikButton } from '@prestashopcorp/puik-components/button';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { type PaginationMobileProps } from './pagination-mobile';
 defineOptions({
-  name: 'PuikPaginationMobile',
-})
+  name: 'PuikPaginationMobile'
+});
 
-defineProps(paginationMobileProps)
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: number): void
-}>()
+withDefaults(defineProps<PaginationMobileProps>(), {
+  modelValue: 1
+});
+const emit = defineEmits<{(e: 'update:modelValue', value: number): void}>();
 
-const { t } = useLocale()
+const { t } = useLocale();
 </script>

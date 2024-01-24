@@ -4,15 +4,18 @@
     :class="[`puik-badge--${variant}`]"
     :data-test="dataTest"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-import { badgeProps } from './badge'
+import { PuikBadgeVariants } from './badge';
+import type { BadgeProps } from './badge';
 defineOptions({
-  name: 'PuikBadge',
-})
+  name: 'PuikBadge'
+});
 
-defineProps(badgeProps)
+withDefaults(defineProps<BadgeProps>(), {
+  variant: PuikBadgeVariants.Neutral
+});
 </script>

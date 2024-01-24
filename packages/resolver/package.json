@@ -1,0 +1,41 @@
+{
+  "name": "@prestashopcorp/puik-resolver",
+  "description": "Puik Component Resolver for unplugin-vue-components",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --noEmit --project ./tsconfig.build.json && vite build"
+  },
+  "peerDependencies": {
+    "@prestashopcorp/puik-components": "workspace:*",
+    "@prestashopcorp/puik-theme": "workspace:*",
+    "unplugin-vue-components": "^0.25.0",
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "unplugin-vue-components": "^0.26.0",
+    "vue": "3.3.10"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "main": "dist/index.cjs",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "license": "MIT",
+    "exports": {
+      ".": {
+        "require": {
+          "default": "./dist/index.cjs",
+          "types": "./dist/index.d.ts"
+        },
+        "import": {
+          "default": "./dist/index.mjs",
+          "types": "./dist/index.d.ts"
+        }
+      }
+    }
+  }
+}

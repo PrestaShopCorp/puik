@@ -1,51 +1,29 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
-import type SkeletonLoader from './skeleton-loader.vue'
+import type SkeletonLoader from './skeleton-loader.vue';
 
-export const skeletonLoaderVariants = [
-  'h1',
-  'h2',
-  'h3',
-  'h4',
-  'h5',
-  'h6',
-  'jumbotron',
-  'mega-jumbotron',
-  'text-small',
-  'text-medium',
-  'text-large',
-  'badge',
-  'tag',
-  'image',
-  'graph',
-  'video',
-] as const
+export enum PuikSkeletonLoaderVariants {
+  H1 = 'h1',
+  H2 = 'h2',
+  H3 = 'h3',
+  H4 = 'h4',
+  H5 = 'h5',
+  H6 = 'h6',
+  Jumbotron = 'jumbotron',
+  MegaJumbotron = 'mega-jumbotron',
+  TextSmall = 'text-small',
+  TextMedium = 'text-medium',
+  TextLarge = 'text-large',
+  Badge = 'badge',
+  Tag = 'tag',
+  Image = 'image',
+  Graph = 'graph',
+  Video = 'video',
+}
 
-export type PuikSkeletonLoader = (typeof skeletonLoaderVariants)[number]
+export interface SkeletonLoaderProps {
+  variant?: `${PuikSkeletonLoaderVariants}`
+  tag?: string
+  width?: string
+  height?: string
+}
 
-export const skeletonLoaderProps = buildProps({
-  variant: {
-    type: String as PropType<PuikSkeletonLoader>,
-    required: false,
-    default: 'text-medium',
-  },
-  tag: {
-    type: String,
-    required: false,
-    default: 'div',
-  },
-  width: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  height: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-} as const)
-
-export type SkeletonLoaderProps = ExtractPropTypes<typeof skeletonLoaderProps>
-
-export type SkeletonLoaderInstance = InstanceType<typeof SkeletonLoader>
+export type SkeletonLoaderInstance = InstanceType<typeof SkeletonLoader>;

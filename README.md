@@ -10,31 +10,44 @@
   <p align="center">
     The <b>P</b>restaShop <b>UI</b> <b>K</b>it
   </p>
-  <a href="https://main--6267e986619a13004a943d93.chromatic.com/">Documentation</a>
+  <a href="https://uikit.prestashop.com/">Documentation</a>
 </div>
 
 ## About The Project
 
 Puik is a component library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem.
 
-## Using the VueJS components
+## About the repository
+
+This monorepo contains the following libraries:
+- [@prestashopcorp/puik-components](./packages/components/README.md) a Vue 3 component library
+- [@prestashopcorp/puik-resolver](./packages/resolver/README.md) a component resolver for our Vue 3 component library
+- [@prestashopcorp/puik-theme](./packages/theme/README.md) a CSS library containing all the classes used in our components
+- [@prestashopcorp/puik-tailwind-preset](./packages/tailwind-preset/README.md) a Tailwind Css preset that contains all the design tokens used to create the components
+- [@prestashopcorp/puik](./packages/puik/README.md) a library containing all the other libraries
+
+
+## Installation
+
+ℹ️ This README only covers the Vue components library usage if you need more information about the usage of the other packages please refer to their README
 
 ### Prerequisites
 
-- Node.js LTS is required
+- Node.js LTS is required.
+- Vue 3
 
-### Installation
+#### Vue components only
 
 ```sh
-# chose your favorite package manager
+# @prestashopcorp/puik-resolver is optional but strongly recommended
 # NPM
-$ npm install @prestashopcorp/puik --save
+$ npm install @prestashopcorp/puik-components @prestashopcorp/puik-resolver --save
 
 # Yarn
-$ yarn add @prestashopcorp/puik
+$ yarn add @prestashopcorp/puik-components @prestashopcorp/puik-resolver
 
 # pnpm
-$ pnpm install @prestashopcorp/puik
+$ pnpm install @prestashopcorp/puik-components @prestashopcorp/puik-resolver
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -57,11 +70,13 @@ $ pnpm install unplugin-vue-components unplugin-auto-import -D
 
 Then add the code below in your vite.config file
 
+ℹ️ if you don't use Vite [follow this link](https://github.com/unplugin/unplugin-vue-components?tab=readme-ov-file#installation)
+
 ```typescript
 import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import { PuikResolver } from '@prestashopcorp/puik'
+import { PuikResolver } from '@prestashopcorp/puik-resolver'
 
 export default defineConfig({
   plugins: [
@@ -76,80 +91,21 @@ export default defineConfig({
 })
 ```
 
+ℹ️ If you are using the puik global package you can import PuikResolver directly from `@prestashopcorp/puik`
+
 #### On demand import
 
 Import the vue component and the component css directly into your vue file
 
 ```vue
 <script setup>
-import '@prestashopcorp/puik/es/components/button/style/css'
-import { PuikButton } from '@prestashopcorp/puik'
+import '@prestashopcorp/puik-components/button/style/css'
+import { PuikButton } from '@prestashopcorp/puik-components'
 </script>
 
 <template>
   <puik-button>Example button</puik-button>
 </template>
-```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-#### Full import
-
-If you don't care about bundle size you can full import the library by following these instructions
-
-Import the vue library and the css directly into your main.js / main.ts
-
-```typescript
-import { createApp } from 'vue'
-import Puik from '@prestashopcorp/puik'
-import '@prestashopcorp/puik/dist/index.css'
-import App from './App.vue'
-
-const app = createApp(App)
-
-app.use(Puik)
-app.mount('#app')
-```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-#### Dark Mode
-
-We are using the [Tailwind Dark Mode](https://tailwindcss.com/docs/dark-mode).
-
-To use it you just have to write the css dark rules with `dark:<oneRule>` in your css. (I recommand to put your light and dark styles on two lines for greater readability)
-
-##### Exemple
-
-```
-Here we are saying the button background will be blue in light mode and green in dark mode
-
-.my-button {
-  @apply bg-blue;
-  @apply dark:bg-green;
-}
-```
-
-## Using the CSS components
-
-If you don't use VueJS for your application, you can use the CSS only version of our components. It includes all the
-styles used in the VueJs component library.
-
-### Usage
-
-1. Include the CSS in your HTML by using the CDN
-
-```html
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/@prestashopcorp/puik/dist/index.css"
-/>
-```
-
-2. Add the classes in your HTML
-
-```html
-<button class="puik-button">Example button</button>
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>

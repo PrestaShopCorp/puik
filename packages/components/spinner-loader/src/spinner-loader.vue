@@ -14,19 +14,32 @@
       class="puik-spinner-loader__spinner"
       aria-hidden="true"
       data-chromatic="ignore"
-    ></div>
-    <span v-if="label" class="puik-spinner-loader__label">
+    />
+    <span
+      v-if="label"
+      class="puik-spinner-loader__label"
+    >
       {{ label }}
     </span>
   </div>
 </template>
 
 <script setup lang="ts">
-import { spinnerLoaderProps } from './spinner-loader'
+import {
+  PuikSpinnerLoaderColors,
+  PuikSpinnerLoaderPositions,
+  PuikSpinnerLoaderSizes,
+  type SpinnerLoaderProps
+} from './spinner-loader';
 
 defineOptions({
-  name: 'PuikSpinnerLoader',
-})
+  name: 'PuikSpinnerLoader'
+});
 
-defineProps(spinnerLoaderProps)
+withDefaults(defineProps<SpinnerLoaderProps>(), {
+  size: PuikSpinnerLoaderSizes.Medium,
+  color: PuikSpinnerLoaderColors.Primary,
+  position: PuikSpinnerLoaderPositions.Bottom,
+  dataTest: 'spinner-loader'
+});
 </script>

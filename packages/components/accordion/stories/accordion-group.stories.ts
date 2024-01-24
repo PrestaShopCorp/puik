@@ -1,7 +1,6 @@
-import { ref } from 'vue'
-import PuikAccordionGroup from '../src/accordion-group.vue'
-import PuikAccordion from '../src/accordion.vue'
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { ref } from 'vue';
+import { PuikAccordion, PuikAccordionGroup } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Accordion/AccordionGroup',
@@ -12,18 +11,18 @@ export default {
       description: 'Allow multiple accordions to be expanded',
       table: {
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     contained: {
       control: 'boolean',
       description: 'Remove space between accordion',
       table: {
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     modelValue: {
       control: 'select',
@@ -31,29 +30,29 @@ export default {
       description: 'v-model to control expanded accordions',
       table: {
         defaultValue: {
-          summary: 'null',
-        },
-      },
+          summary: 'null'
+        }
+      }
     },
     default: {
       control: 'none',
-      description: 'Accordions slots',
-    },
+      description: 'Accordions slots'
+    }
   },
   args: {
     multiple: false,
-    modelValue: 'accordion-2',
-  },
-} as Meta
+    modelValue: 'accordion-2'
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikAccordionGroup,
-    PuikAccordion,
+    PuikAccordion
   },
   setup() {
-    const expandedAccordions = ref('accordion-1')
-    return { args, expandedAccordions }
+    const expandedAccordions = ref('accordion-1');
+    return { args, expandedAccordions };
   },
   template: `
     <puik-accordion-group v-model="expandedAccordions" v-bind="args">
@@ -67,15 +66,15 @@ const Template: StoryFn = (args: Args) => ({
         Content 3
       </puik-accordion>
     </puik-accordion-group>
-  `,
-})
+  `
+});
 
 export const Default = {
   render: Template,
 
   args: {
     multiple: false,
-    contained: false,
+    contained: false
   },
 
   parameters: {
@@ -140,11 +139,11 @@ export const Default = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Multiple = {
   render: Template,
@@ -152,7 +151,7 @@ export const Multiple = {
   args: {
     multiple: true,
     contained: false,
-    modelValue: ['accordion-1', 'accordion-2', 'accordion-3'],
+    modelValue: ['accordion-1', 'accordion-2', 'accordion-3']
   },
 
   parameters: {
@@ -208,18 +207,18 @@ export const Multiple = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Contained = {
   render: Template,
 
   args: {
     multiple: false,
-    contained: true,
+    contained: true
   },
 
   parameters: {
@@ -275,8 +274,8 @@ export const Contained = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

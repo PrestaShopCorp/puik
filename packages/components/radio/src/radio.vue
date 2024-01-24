@@ -1,5 +1,8 @@
 <template>
-  <div class="puik-radio" :data-test="dataTest">
+  <div
+    class="puik-radio"
+    :data-test="dataTest"
+  >
     <input
       :id="id"
       ref="radioInputRef"
@@ -12,7 +15,7 @@
       :name="name"
       :data-test="dataTest != undefined ? `input-${dataTest}` : undefined"
       @focus="handleFocus"
-    />
+    >
     <label
       v-if="$slots.default || label"
       :for="id"
@@ -25,19 +28,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useVModel } from '@vueuse/core'
-import { generateId } from '@puik/utils'
-import { radioProps, radioEmits } from './radio'
+import { ref } from 'vue';
+import { useVModel } from '@vueuse/core';
+import { generateId } from '@prestashopcorp/puik-utils';
+import type { RadioProps } from './radio';
 defineOptions({
-  name: 'PuikRadio',
-})
-const props = defineProps(radioProps)
-const emit = defineEmits(radioEmits)
-const isFocus = ref(false)
-const id = `puik-radio-${generateId()}`
+  name: 'PuikRadio'
+});
+const props = defineProps<RadioProps>();
+const emit = defineEmits<{
+  'update:modelValue': [value: boolean | string | number]
+}>();
+const isFocus = ref(false);
+const id = `puik-radio-${generateId()}`;
 
-const handleFocus = () => (isFocus.value = true)
+const handleFocus = () => (isFocus.value = true);
 
-const valueModel = useVModel(props, 'modelValue', emit)
+const valueModel = useVModel(props, 'modelValue', emit);
 </script>

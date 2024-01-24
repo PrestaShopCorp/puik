@@ -1,42 +1,29 @@
-import { Comment } from 'vue'
-import { isArray, isObject } from '@vue/shared'
-import type { VNode, Slot } from 'vue'
+import { Comment } from 'vue';
+import type { VNode, Slot } from 'vue';
 
-export {
-  isArray,
-  isFunction,
-  isObject,
-  isString,
-  isDate,
-  isPromise,
-  isSymbol,
-} from '@vue/shared'
-export { isBoolean, isNumber } from '@vueuse/core'
-export { isVNode } from 'vue'
+export { isVNode } from 'vue';
 
-export const isUndefined = (val: any): val is undefined => val === undefined
+export const isObject = (val: unknown): val is Record<any, any> =>
+  val !== null && typeof val === 'object';
 
-export const isEmpty = (val: unknown) =>
-  (!val && val !== 0) ||
-  (isArray(val) && val.length === 0) ||
-  (isObject(val) && !Object.keys(val).length)
+export const isFunction = (val: unknown): val is () => void =>
+  typeof val === 'function';
 
-export const isElement = (e: unknown): e is Element => {
-  if (typeof Element === 'undefined') return false
-  return e instanceof Element
-}
+export const isNumber = (val: unknown): val is number => typeof val === 'number';
+
+export const isString = (val: unknown): val is string => typeof val === 'string';
 
 export function slotIsEmpty(slot: Slot | undefined, slotProps = {}): boolean {
-  if (!slot) return false
+  if (!slot) return false;
 
   return slot(slotProps).some((vnode: VNode) => {
-    if (vnode.type === Comment) return false
+    if (vnode.type === Comment) return false;
 
-    if (Array.isArray(vnode.children) && !vnode.children.length) return false
+    if (Array.isArray(vnode.children) && !vnode.children.length) return false;
 
     return (
       vnode.type !== Text ||
       (typeof vnode.children === 'string' && vnode.children.trim() !== '')
-    )
-  })
+    );
+  });
 }

@@ -1,12 +1,12 @@
-import PuikIcon from './../src/icon.vue'
-import type { Args, Meta, StoryFn } from '@storybook/vue3'
+import { PuikIcon } from '@prestashopcorp/puik-components';
+import type { Args, Meta, StoryFn } from '@storybook/vue3';
 
 export default {
   title: 'Components/Icon',
   component: PuikIcon,
   argTypes: {
     icon: {
-      description: 'Set the icon name',
+      description: 'Set the icon name'
     },
     fontSize: {
       description: 'Set the icon font size',
@@ -14,38 +14,38 @@ export default {
         type: 'range',
         min: 1,
         max: 100,
-        step: 1,
-      },
+        step: 1
+      }
     },
     color: {
       description: 'Set the icon color',
       control: {
-        type: 'color',
-      },
+        type: 'color'
+      }
     },
     nodeType: {
       description: 'Set the HTML node type',
       default: 'div',
       control: {
         type: 'radio',
-        options: ['div', 'span'],
-      },
+        options: ['div', 'span']
+      }
     },
     dataTest: {
-      description: 'Set the data-test attribute',
-    },
-  },
-} as Meta
+      description: 'Set the data-test attribute'
+    }
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikIcon,
+    PuikIcon
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<puik-icon v-bind="args" />`,
-})
+  template: '<puik-icon v-bind="args" />'
+});
 
 export const Default = {
   render: Template,
@@ -55,7 +55,7 @@ export const Default = {
     color: 'green',
     fontSize: 24,
     nodeType: 'span',
-    dataTest: '',
+    dataTest: ''
   },
 
   parameters: {
@@ -68,8 +68,8 @@ export const Default = {
         <!--HTML/CSS Snippet-->
         <span class="puik-icon material-icons-round" style="font-size: 20px;">check</span>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

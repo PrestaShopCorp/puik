@@ -15,23 +15,38 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
       - name: Get tag
         id: get_tag
         run: echo ::set-output name=TAG::$(echo $GITHUB_REF | cut -d / -f 3)
 
-      - name: Get git head
-        id: get_head
-        run: echo ::set-output name=GIT_HEAD::$(echo $GITHUB_SHA)
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Build and Publish
-        uses: ./.github/actions/build-and-publish
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
-          git_author_email: squad-engagement@prestashop.com
-          node_version: 18
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          npm_token: ${{ secrets.NPM_TOKEN }}
-          version: ${{ steps.get_tag.outputs.TAG }}
-          git_head: ${{ steps.get_head.outputs.GIT_HEAD }}
+          version: 8.x.x
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/hydrogen
+          registry-url: https://registry.npmjs.org/
+          cache: "pnpm"
+
+      - name: Install dependencies 👨🏻‍💻
+        run: pnpm i --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Update npm version
+        run: pnpm version $VERSION --no-git-tag-version --allow-same-version
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          VERSION: ${{ steps.get_tag.outputs.TAG }}
+
+      - name: Publish
+        run: pnpm publish --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

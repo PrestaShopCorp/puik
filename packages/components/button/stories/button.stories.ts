@@ -1,10 +1,10 @@
-import { capitalize } from 'lodash-unified'
-import PuikButton from './../src/button.vue'
-import { buttonVariants, buttonSizes } from './../src/button'
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikButton, PuikButtonVariants, PuikButtonSizes } from '@prestashopcorp/puik-components';
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
-const buttonVariantsSummary = buttonVariants.join('|')
-const buttonSizesSummary = buttonSizes.join('|')
+const buttonVariants = Object.values(PuikButtonVariants);
+const buttonVariantsSummary = buttonVariants.join('|');
+const buttonSizes = Object.values(PuikButtonSizes);
+const buttonSizesSummary = buttonSizes.join('|');
 
 export default {
   title: 'Components/Button',
@@ -16,12 +16,12 @@ export default {
       options: buttonVariants,
       table: {
         defaultValue: {
-          summary: 'primary',
+          summary: 'primary'
         },
         type: {
-          summary: buttonVariantsSummary,
-        },
-      },
+          summary: buttonVariantsSummary
+        }
+      }
     },
     size: {
       control: 'select',
@@ -29,61 +29,61 @@ export default {
       options: buttonSizes,
       table: {
         defaultValue: {
-          summary: 'md',
+          summary: 'md'
         },
         type: {
-          summary: buttonSizesSummary,
-        },
-      },
+          summary: buttonSizesSummary
+        }
+      }
     },
     fluid: {
       description: 'Set the button as fluid',
       table: {
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     wrapLabel: {
       description: 'Set the carriage return of the button label',
       table: {
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     disabled: {
       description: 'Set the button as disabled',
       table: {
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     leftIcon: {
-      description: 'Set the button left icon',
+      description: 'Set the button left icon'
     },
     rightIcon: {
-      description: 'Set the button right icon',
+      description: 'Set the button right icon'
     },
     default: {
       control: 'text',
-      description: 'Label/Content of the button',
+      description: 'Label/Content of the button'
     },
     to: {
       control: 'text',
       description:
-        'Set a vue router link for the button (changes button to router-link)',
+        'Set a vue router link for the button (changes button to router-link)'
     },
     href: {
       control: 'text',
-      description: 'Set a link for the button (changes button to "a" html tag)',
+      description: 'Set a link for the button (changes button to "a" html tag)'
     },
     dataTest: {
       control: 'text',
       description:
-        'Set a data-test attribute to the button `${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`',
-    },
+        'Set a data-test attribute to the button `${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`'
+    }
   },
   args: {
     variant: 'primary',
@@ -95,19 +95,19 @@ export default {
     rightIcon: '',
     to: undefined,
     href: undefined,
-    default: 'Add to cart',
-  },
-} as Meta
+    default: 'Add to cart'
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikButton,
+    PuikButton
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<puik-button v-bind="args">{{ args.default }}</puik-button>`,
-})
+  template: '<puik-button v-bind="args">{{ args.default }}</puik-button>'
+});
 
 export const Default = {
   render: Template,
@@ -141,55 +141,53 @@ export const Default = {
   -->
   <button class="puik-button puik-button--{$variants} puik-button--{$sizes}">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 const ButtonTemplate = (args: Args) => ({
   components: { PuikButton },
   setup() {
     return {
-      args,
-      capitalize,
-    }
+      args
+    };
   },
   template: `
   <div class="space-x-4">
-    <puik-button v-bind="args" :variant="args.variant" size="lg">{{ capitalize(args.variant) }} Button lg</puik-button>
-    <puik-button v-bind="args" :variant="args.variant">{{ capitalize(args.variant) }} Button md</puik-button>
-    <puik-button v-bind="args" :variant="args.variant" size="sm">{{ capitalize(args.variant) }} Button sm</puik-button>
+    <puik-button v-bind="args" :variant="args.variant" size="lg">{{ args.variant }} Button lg</puik-button>
+    <puik-button v-bind="args" :variant="args.variant">{{ args.variant }} Button md</puik-button>
+    <puik-button v-bind="args" :variant="args.variant" size="sm">{{ args.variant }} Button sm</puik-button>
   </div>
-  `,
-})
+  `
+});
 
-const AllVariantTemplate = (args: Args, storyContext) => ({
+const AllVariantTemplate: StoryFn = (args: Args, storyContext) => ({
   components: { PuikButton },
   setup() {
-    const variants = storyContext.argTypes.variant.options
+    const variants = storyContext.argTypes.variant.options;
     return {
       args,
-      capitalize,
-      variants,
-    }
+      variants
+    };
   },
   template: `
     <div class="flex flex-row flex-wrap items-center gap-4">
       <template v-for="(variant, i) in variants" :key="i">
         <puik-button v-bind="args" :variant="variant">
-          {{ capitalize(variant) }} Button
+          {{ variant }} Button
         </puik-button>
       </template>
     </div>
-  `,
-})
+  `
+});
 
 export const Primary: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'primary',
+    variant: 'primary'
   },
 
   parameters: {
@@ -202,17 +200,17 @@ export const Primary: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--primary">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const PrimaryReverse: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'primary-reverse',
+    variant: 'primary-reverse'
   },
 
   parameters: {
@@ -226,17 +224,17 @@ export const PrimaryReverse: StoryObj = {
   <button class="puik-button puik-button--primary-reverse">My button</button>
         `,
         language: 'html',
-        dark: true,
-      },
-    },
-  },
-}
+        dark: true
+      }
+    }
+  }
+};
 
 export const Secondary: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'secondary',
+    variant: 'secondary'
   },
 
   parameters: {
@@ -249,17 +247,17 @@ export const Secondary: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--secondary">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const SecondaryReverse: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'secondary-reverse',
+    variant: 'secondary-reverse'
   },
 
   parameters: {
@@ -273,17 +271,17 @@ export const SecondaryReverse: StoryObj = {
   <button class="puik-button puik-button--secondary-reverse">My button</button>
         `,
         language: 'html',
-        dark: true,
-      },
-    },
-  },
-}
+        dark: true
+      }
+    }
+  }
+};
 
 export const Tertiary: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'tertiary',
+    variant: 'tertiary'
   },
 
   parameters: {
@@ -296,17 +294,17 @@ export const Tertiary: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--tertiary">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Destructive: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'destructive',
+    variant: 'destructive'
   },
 
   parameters: {
@@ -319,17 +317,17 @@ export const Destructive: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--destructive">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Text: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'text',
+    variant: 'text'
   },
 
   parameters: {
@@ -342,17 +340,17 @@ export const Text: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--text">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const TextReverse: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'text-reverse',
+    variant: 'text-reverse'
   },
 
   parameters: {
@@ -366,17 +364,17 @@ export const TextReverse: StoryObj = {
   <button class="puik-button puik-button--text-reverse">My button</button>
         `,
         language: 'html',
-        dark: true,
-      },
-    },
-  },
-}
+        dark: true
+      }
+    }
+  }
+};
 
 export const Info: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'info',
+    variant: 'info'
   },
 
   parameters: {
@@ -389,17 +387,17 @@ export const Info: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--info">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Success: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'success',
+    variant: 'success'
   },
 
   parameters: {
@@ -412,17 +410,17 @@ export const Success: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--success">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Warning: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'warning',
+    variant: 'warning'
   },
 
   parameters: {
@@ -435,17 +433,17 @@ export const Warning: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--warning">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Danger: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'danger',
+    variant: 'danger'
   },
 
   parameters: {
@@ -458,17 +456,17 @@ export const Danger: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--error">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Disabled: StoryObj = {
   render: AllVariantTemplate,
 
   args: {
-    disabled: true,
+    disabled: true
   },
 
   parameters: {
@@ -481,20 +479,20 @@ export const Disabled: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--primary" disabled>My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Fluid: StoryObj = {
   render: () => ({
     components: {
-      PuikButton,
+      PuikButton
     },
     template: `
       <puik-button fluid>Primary Button lg</puik-button>
-    `,
+    `
   }),
 
   parameters: {
@@ -507,23 +505,23 @@ export const Fluid: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--primary puik-button--fluid">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const WithIcon: StoryObj = {
   render: () => ({
     components: {
-      PuikButton,
+      PuikButton
     },
     template: `
       <div class="space-x-4">
         <puik-button left-icon="shopping_cart">Left Icon</puik-button>
         <puik-button right-icon="shopping_cart">Right Icon</puik-button>
       </div>
-    `,
+    `
   }),
 
   parameters: {
@@ -544,11 +542,11 @@ export const WithIcon: StoryObj = {
     <span class="puik-icon puik-button__right-icon">shopping_cart</span>
   </button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Variants: StoryObj = {
   render: AllVariantTemplate,
@@ -563,8 +561,8 @@ export const Variants: StoryObj = {
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--{$variants}">My button</button>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

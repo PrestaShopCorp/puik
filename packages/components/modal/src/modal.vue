@@ -13,9 +13,9 @@
           class="puik-modal__dialogPanelContainer__dialogPanel__header"
         >
           <puik-icon
-            v-if="titleIcon || PuikModalVariant.DESTRUCTIVE === variant"
+            v-if="titleIcon || PuikModalVariants.Destructive === variant"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__icon"
-            :icon="getTitleIconName"
+            :icon="getTitleIconName ?? ''"
             :font-size="ICON_SIZE"
           />
 
@@ -32,12 +32,13 @@
             >
               {{ title }}
             </h2>
-            <template #description>{{ title }}</template>
+            <template #description>
+              {{ title }}
+            </template>
           </puik-tooltip>
 
           <puik-button
-            v-if="PuikModalVariant.DIALOG !== variant"
-            :aria-label="t('puik.modal.closeButtonLabel')"
+            v-if="PuikModalVariants.Dialog !== variant"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__close-button"
             variant="text"
             :data-test="
@@ -45,11 +46,14 @@
             "
             @click="sendCloseModalEvent()"
           >
-            <puik-icon icon="close" :font-size="ICON_SIZE" />
+            <puik-icon
+              icon="close"
+              :font-size="ICON_SIZE"
+            />
           </puik-button>
         </header>
         <div class="puik-modal__dialogPanelContainer__dialogPanel__content">
-          <slot></slot>
+          <slot />
         </div>
         <footer
           v-if="hasFooter"
@@ -82,7 +86,7 @@
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__spacer"
           />
           <puik-button
-            v-if="PuikModalVariant.DIALOG === variant && sideButtonText"
+            v-if="PuikModalVariants.Dialog === variant && sideButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--side"
             variant="text"
             :data-test="
@@ -99,63 +103,65 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch, nextTick } from 'vue'
-import { Dialog, DialogPanel } from '@headlessui/vue'
-import { useWindowSize } from '@vueuse/core'
-import { PuikButton } from '@puik/components/button'
-import { PuikIcon } from '@puik/components/icon'
-import { PuikTooltip } from '@puik/components/tooltip'
-import { isEllipsisActive } from '@puik/utils'
-import { useLocale } from '@puik/hooks'
+import { computed, ref, watch, nextTick } from 'vue';
+import { Dialog, DialogPanel } from '@headlessui/vue';
+import { useWindowSize } from '@vueuse/core';
+import { PuikButton } from '@prestashopcorp/puik-components/button';
+import { PuikIcon } from '@prestashopcorp/puik-components/icon';
+import { PuikTooltip } from '@prestashopcorp/puik-components/tooltip';
+import { isEllipsisActive } from '@prestashopcorp/puik-utils';
 import {
-  modalProps,
-  PuikModalVariant,
+  type ModalProps,
+  PuikModalVariants,
+  PuikModalSizes,
   modalEmits,
-  DESTRUCTIVE_ICON_NAME,
-} from './modal'
+  DESTRUCTIVE_ICON_NAME
+} from './modal';
 
 defineOptions({
-  name: 'PuikModal',
-})
+  name: 'PuikModal'
+});
 
-const { t } = useLocale()
-const ICON_SIZE = 24
+const ICON_SIZE = 24;
 
-const props = defineProps(modalProps)
-const emit = defineEmits(modalEmits)
+const props = withDefaults(defineProps<ModalProps>(), {
+  variant: PuikModalVariants.Feedback,
+  size: PuikModalSizes.Small
+});
+const emit = defineEmits(modalEmits);
 
 const getTitleIconName = computed(() => {
-  return PuikModalVariant.DESTRUCTIVE === props.variant
+  return PuikModalVariants.Destructive === props.variant
     ? DESTRUCTIVE_ICON_NAME
-    : props.titleIcon
-})
+    : props.titleIcon;
+});
 
-const { width } = useWindowSize()
-const modalTitleElem = ref(null)
-const showTitleTooltip = ref(false)
+const { width } = useWindowSize();
+const modalTitleElem = ref(null);
+const showTitleTooltip = ref(false);
 
 watch(width, async () => {
-  await nextTick()
+  await nextTick();
   if (modalTitleElem?.value) {
-    showTitleTooltip.value = isEllipsisActive(modalTitleElem.value)
+    showTitleTooltip.value = isEllipsisActive(modalTitleElem.value);
   }
-})
+});
 
 const mainButtonVariant =
-  PuikModalVariant.DESTRUCTIVE === props.variant ? 'destructive' : 'primary'
+  PuikModalVariants.Destructive === props.variant ? 'destructive' : 'primary';
 
 const secondButtonVariant =
-  PuikModalVariant.DESTRUCTIVE === props.variant ? 'tertiary' : 'secondary'
+  PuikModalVariants.Destructive === props.variant ? 'tertiary' : 'secondary';
 
 const sendCloseModalEvent = () => {
-  if (PuikModalVariant.DIALOG !== props.variant) {
-    return emit('close')
+  if (PuikModalVariants.Dialog !== props.variant) {
+    return emit('close');
   }
-}
+};
 
 const hasFooter = !!(
   props.mainButtonText ||
   props.secondButtonText ||
   props.sideButtonText
-)
+);
 </script>

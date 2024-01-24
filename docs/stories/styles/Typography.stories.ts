@@ -1,13 +1,13 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryFn, StoryObj } from '@storybook/vue3';
 
 export default {
-  title: 'Styles/Typography',
-} as Meta
+  title: 'Styles/Typography'
+} as Meta;
 
 function generateStory(htmlTemplate: string): StoryObj {
   const Template: StoryFn = () => ({
-    template: htmlTemplate,
-  })
+    template: htmlTemplate
+  });
 
   return {
     render: Template,
@@ -16,11 +16,11 @@ function generateStory(htmlTemplate: string): StoryObj {
       docs: {
         source: {
           code: htmlTemplate,
-          language: 'html',
-        },
-      },
-    },
-  }
+          language: 'html'
+        }
+      }
+    }
+  };
 }
 
 export const Title = generateStory(`
@@ -31,13 +31,13 @@ export const Title = generateStory(`
   <h4 class="puik-h4">.puik-h4</h4>
   <h5 class="puik-h5">.puik-h5</h5>
   <h6 class="puik-h6">.puik-h6</h6>
-`)
+`);
 
 export const BrandTitle = generateStory(`
   <h1 class="puik-brand-jumbotron">.puik-brand-jumbotron</h1>
   <h1 class="puik-brand-h1">.puik-brand-h1</h1>
   <h2 class="puik-brand-h2">.puik-brand-h2</h2>
-`)
+`);
 
 export const Body = generateStory(`
   <p class="puik-body-large-bold">.puik-body-large-bold</p>
@@ -50,4 +50,4 @@ export const Body = generateStory(`
   <p class="puik-body-small-medium">.puik-body-small-medium</p>
   <p class="puik-body-small">.puik-body-small</p>
   <p class="puik-body-default-link">.puik-body-default-link</p>
-`)
+`);

@@ -6,17 +6,19 @@
     aria-live="polite"
     role="status"
   >
-    <slot></slot>
+    <slot />
   </component>
 </template>
 
 <script setup lang="ts">
-import { useLocale } from '@puik/hooks'
-import { skeletonLoaderGroupProps } from './skeleton-loader-group'
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { type SkeletonLoaderGroupProps } from './skeleton-loader-group';
 defineOptions({
-  name: 'PuikSkeletonLoaderGroup',
-})
+  name: 'PuikSkeletonLoaderGroup'
+});
 
-defineProps(skeletonLoaderGroupProps)
-const { t } = useLocale()
+withDefaults(defineProps<SkeletonLoaderGroupProps>(), {
+  tag: 'div'
+});
+const { t } = useLocale();
 </script>

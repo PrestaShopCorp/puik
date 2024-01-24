@@ -1,8 +1,6 @@
-import { withInstall } from '@puik/utils'
+import Chip from './src/chip.vue';
 
-import Chip from './src/chip.vue'
+export const PuikChip = Chip;
+export default PuikChip;
 
-export const PuikChip = withInstall(Chip)
-export default PuikChip
-
-export * from './src/chip'
+export * from './src/chip';

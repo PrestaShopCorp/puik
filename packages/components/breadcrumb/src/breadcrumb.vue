@@ -1,11 +1,15 @@
 <template>
-  <nav v-if="items.length" class="puik-breadcrumb" role="navigation">
+  <nav
+    v-if="items.length"
+    class="puik-breadcrumb"
+    role="navigation"
+  >
     <PuikIcon
       v-if="icon"
       class="puik-breadcrumb__home-icon"
       :icon="icon"
       :font-size="16"
-    ></PuikIcon>
+    />
 
     <div
       v-for="(item, index) in items.slice(0, items.length - 1)"
@@ -27,7 +31,7 @@
         class="puik-breadcrumb__item-icon"
         :icon="separatorIcon"
         :font-size="16"
-      ></PuikIcon>
+      />
     </div>
 
     <div
@@ -44,12 +48,14 @@
 </template>
 
 <script setup lang="ts">
-import PuikLink from '../../link/src/link.vue'
-import PuikIcon from '../../icon/src/icon.vue'
-import { breadcrumbProps } from './breadcrumb'
+import PuikLink from '../../link/src/link.vue';
+import PuikIcon from '../../icon/src/icon.vue';
+import type { BreadcrumbProps } from './breadcrumb';
 defineOptions({
-  name: 'PuikBreadcrumb',
-})
+  name: 'PuikBreadcrumb'
+});
 
-defineProps(breadcrumbProps)
+withDefaults(defineProps<BreadcrumbProps>(), {
+  separatorIcon: 'keyboard_arrow_right'
+});
 </script>
