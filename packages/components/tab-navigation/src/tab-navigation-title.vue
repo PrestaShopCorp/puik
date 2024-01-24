@@ -55,3 +55,8 @@ watch(
   }
 );
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-tab-navigation-title.scss';
+</style>

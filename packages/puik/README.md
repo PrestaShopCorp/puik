@@ -14,6 +14,7 @@
 ## About The Project
 
 Puik is a library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem. This packages includes the following packages:
+
 - [@prestashopcorp/puik-components](../components/README.md)
 - [@prestashopcorp/puik-resolver](../resolver/README.md)
 - [@prestashopcorp/puik-theme](../theme/README.md)

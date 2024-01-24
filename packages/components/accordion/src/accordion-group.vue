@@ -19,7 +19,7 @@ defineOptions({
 
 const props = defineProps<AccordionGroupProps>();
 const emit = defineEmits<{
-  'update:modelValue': [value: string | string[] | null | undefined]
+  'update:modelValue': [value: string | string[] | null | undefined];
 }>();
 const expandedAccordions = ref(props.modelValue);
 const accordionsList = ref<AccordionState[]>([]);
@@ -36,7 +36,8 @@ watch(props, () => {
 function handleChange(name: string) {
   if (!props.multiple) {
     accordionsList.value.forEach((accordion) => {
-      accordion.expanded = accordion.name === name ? !accordion.expanded : false;
+      accordion.expanded =
+        accordion.name === name ? !accordion.expanded : false;
     });
   } else {
     const accordionIndex = accordionsList.value.findIndex(
@@ -63,3 +64,8 @@ provide(accordionGroupKey, {
   expandedAccordions
 });
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-accordion-group.scss';
+</style>

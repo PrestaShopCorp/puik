@@ -18,3 +18,8 @@ const selected = useVModel(props, 'modelValue');
 
 provide(ButtonGroupKey, { selected });
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-button-group.scss';
+</style>

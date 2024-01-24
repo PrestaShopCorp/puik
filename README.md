@@ -20,7 +20,9 @@ Puik is a component library that aims to provide a complete set of reusable comp
 ## About the repository
 
 This monorepo contains the following libraries:
+
 - [@prestashopcorp/puik-components](./packages/components/README.md) a Vue 3 component library
+- [@prestashopcorp/puik-web-components](./packages/web-components/README.md) a Web component library
 - [@prestashopcorp/puik-resolver](./packages/resolver/README.md) a component resolver for our Vue 3 component library
 - [@prestashopcorp/puik-theme](./packages/theme/README.md) a CSS library containing all the classes used in our components
 - [@prestashopcorp/puik-tailwind-preset](./packages/tailwind-preset/README.md) a Tailwind Css preset that contains all the design tokens used to create the components

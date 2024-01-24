@@ -89,3 +89,9 @@ function onClick() {
   emit('click', props.name);
 }
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-accordion.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+</style>

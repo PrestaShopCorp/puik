@@ -19,3 +19,8 @@ withDefaults(defineProps<BadgeProps>(), {
   variant: PuikBadgeVariants.Neutral
 });
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-badge.scss';
+</style>

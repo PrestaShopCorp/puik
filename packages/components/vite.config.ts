@@ -9,12 +9,15 @@ import pkg from './package.json' assert { type: 'json' };
 
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({ customElement: true }),
     dts({
       tsconfigPath: 'tsconfig.build.json'
     }),
     nodeResolve()
   ],
+  css: {
+    postcss: resolve(__dirname, '../theme/postcss.config.js')
+  },
   build: {
     lib: {
       entry: resolve(__dirname, './index.ts')

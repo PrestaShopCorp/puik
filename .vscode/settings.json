@@ -30,5 +30,7 @@
   "i18n-ally.enabledParsers": ["ts"],
   "i18n-ally.enabledFrameworks": ["vue", "vue-sfc"],
   "i18n-ally.keystyle": "nested",
+  "vue3snippets.trailingComma": "none",
+  "prettier.trailingComma": "none",
   "eslint.format.enable": true
 }

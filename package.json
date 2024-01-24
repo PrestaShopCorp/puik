@@ -16,6 +16,7 @@
     "coverage": "vitest run --coverage",
     "build": "pnpm --parallel --filter './packages/**' build",
     "build:components": "pnpm --filter @prestashopcorp/puik-components build",
+    "build:web": "pnpm --filter @prestashopcorp/puik-web-components build",
     "build:theme": "pnpm --filter @prestashopcorp/puik-theme build",
     "lint": "eslint . --ext .vue,.js,.ts,",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts",
@@ -24,6 +25,7 @@
     "chromatic": "chromatic",
     "dev": "pnpm --filter @prestashopcorp/puik-playground dev",
     "component": "hygen component new",
+    "pack:all" : "pnpm -r --parallel --filter './packages/**' exec pnpm pack --pack-destination ../../packages-tars/tmp && scripts/increment_version.sh",
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm -y"
   },
@@ -47,7 +49,8 @@
     "@prestashopcorp/puik-resolver": "workspace:*",
     "@prestashopcorp/puik-tailwind-preset": "workspace:*",
     "@prestashopcorp/puik-theme": "workspace:*",
-    "@prestashopcorp/puik-utils": "workspace:*"
+    "@prestashopcorp/puik-utils": "workspace:*",
+    "@prestashopcorp/puik-web-components": "workspace:*"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",

@@ -73,3 +73,9 @@ const initials = computed(() => {
   return initialsValue;
 });
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-avatar.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+</style>
