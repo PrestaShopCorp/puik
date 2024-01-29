@@ -26,6 +26,11 @@ export const iconProps = buildProps({
     default: '#00000',
     required: false,
   },
+  isDisabled: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
 } as const)
 
 export type IconProps = ExtractPropTypes<typeof iconProps>
