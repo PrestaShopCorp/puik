@@ -47,14 +47,21 @@ export default {
   import type { PuikTableHeader } from '@prestashopcorp/puik/es/components/table/src/table'
 
   interface PuikTableHeader {
-    text: string | undefined
     value: string
-    size: 'sm' | 'md' | 'lg' | undefined
-    width: string | undefined
-    align: 'left' | 'center' | 'right' | undefined
-    sortable: boolean | undefined
-    searchable: boolean | undefined
-    preventExpand: boolean | undefined
+    text?: string
+    size?: 'sm' | 'md' | 'lg'
+    align?: 'left' | 'center' | 'right'
+    width?: string
+    sortable?: boolean
+    preventExpand?: boolean
+    searchable?: boolean
+    searchSubmit?: boolean
+    searchType?: {$PuikTableSearchInputTypes}
+  }
+
+  enum PuikTableSearchInputTypes {
+    Text = 'text',
+    Range = 'range',
   }
   `,
         },
@@ -216,8 +223,10 @@ export default {
       description: 'Event emitted when sorting a column',
       table: {
         type: {
-          summary: 'sortOption',
+          summary: 'event => sortOption',
           detail: `
+// Payload type = sortOption
+
 import type { sortOption } from '@prestashopcorp/puik/es/components/table/src/table'
 
 type sortOption = {
@@ -233,9 +242,11 @@ type sortOption = {
       control: 'none',
       table: {
         type: {
-          summary: 'event',
+          summary: 'event => SearchOption[]',
           detail: `
-Payload type = Array<SearchOption>
+// Payload type = Array<SearchOption>
+
+import type { searchOption } from '@prestashopcorp/puik/es/components/table/src/table'
 
 type searchOption = {
   searchBy: string;

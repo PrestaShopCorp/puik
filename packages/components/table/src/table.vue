@@ -378,11 +378,11 @@ defineOptions({
 const props = defineProps(tableProps)
 
 const emit = defineEmits<{
-  (e: 'select', index: number): void
-  (e: 'select:all'): void
-  (e: 'update:selection', value: number[]): void
-  (e: 'sortColumn', column: sortOption): void
-  (e: 'searchSubmit', column: searchOption[]): void
+  select: [index: number]
+  'select:all': []
+  'update:selection': [value: number[]]
+  sortColumn: [column: sortOption]
+  searchSubmit: [column: searchOption[]]
 }>()
 
 const { t } = useLocale()
