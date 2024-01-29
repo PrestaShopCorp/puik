@@ -34,6 +34,12 @@ export default {
     dataTest: {
       description: 'Set the data-test attribute',
     },
+    isDisabled: {
+      description: 'If the icon is disable',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 } as Meta
 
@@ -56,6 +62,7 @@ export const Default = {
     fontSize: 24,
     nodeType: 'span',
     dataTest: '',
+    isDisabled: false,
   },
 
   parameters: {

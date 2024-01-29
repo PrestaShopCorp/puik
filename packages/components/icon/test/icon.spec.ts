@@ -33,6 +33,16 @@ describe('Icon tests', () => {
     expect(findIcon().text()).toBe('check')
   })
 
+  it('should set the icon disabled', async () => {
+    factory({
+      icon: 'check',
+      color: 'red',
+      isDisabled: true,
+    })
+
+    expect(findIcon().element.style.color).toBe('rgb(187, 187, 187)')
+  })
+
   it('should set the color', async () => {
     factory({
       icon: 'check',
@@ -74,3 +84,6 @@ describe('Icon tests', () => {
     expect(findIcon().attributes('data-test')).toBe('test')
   })
 })
+function resolveConfig(tailwindConfig: any) {
+  throw new Error('Function not implemented.')
+}
