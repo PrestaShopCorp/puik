@@ -80,6 +80,7 @@ export default {
     to: undefined,
     target: '_self',
     highContrast: false,
+    articles: false,
     default: "I'm a cool link",
     title: "I'm a tooltip for your link",
     size: 'md',
