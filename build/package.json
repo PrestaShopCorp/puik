@@ -36,8 +36,8 @@
   "devDependencies": {
     "@esbuild-kit/cjs-loader": "^2.4.2",
     "@pnpm/types": "^9.0.0",
-    "@rollup/plugin-json": "^6.1.0",
     "@types/rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-polyfill-node": "^0.13.0",
     "unbuild": "^1.2.0",
     "vue": "^3.2.47"
   }

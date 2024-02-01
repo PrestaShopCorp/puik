@@ -1,5 +1,4 @@
-/** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   extend: {
     colors: {
       primary: {
