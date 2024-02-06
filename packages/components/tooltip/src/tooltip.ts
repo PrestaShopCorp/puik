@@ -5,7 +5,7 @@ import type Tooltip from './tooltip.vue'
 export const tooltipPositions = ['top', 'bottom', 'left', 'right'] as const
 export type PuikTooltipPosition = (typeof tooltipPositions)[number]
 export const tooltipProps = buildProps({
-  title: {
+  heading: {
     type: String,
     required: false,
     default: undefined,
