@@ -1,6 +1,6 @@
 <template>
   <nav
-    v-if="internalItems?.length"
+    v-if="internalItems && internalItems.length"
     class="puik-breadcrumb"
     role="navigation"
   >
@@ -35,6 +35,7 @@
     </div>
 
     <div
+      v-if="internalItems.length"
       class="puik-breadcrumb__item--last"
       :data-test="
         internalItems[internalItems.length - 1].dataTest
@@ -63,10 +64,10 @@ const props = withDefaults(defineProps<BreadcrumbProps>(), {
 const internalItems = ref<BreadcrumbItem[]>([]);
 
 const itemsToWatch = computed(() => {
-  return props.dataItems ? JSON.parse(props.dataItems) : props.items;
+  return props.itemsJson ? JSON.parse(props.itemsJson) : props.items;
 });
 
-watch(itemsToWatch, (newValue: BreadcrumbItem[]) => {
+watch(itemsToWatch, (newValue) => {
   internalItems.value = newValue;
 }, { immediate: true });
 </script>

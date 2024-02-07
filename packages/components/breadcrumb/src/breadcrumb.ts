@@ -12,7 +12,7 @@ export interface BreadcrumbItem {
 
 export interface BreadcrumbProps {
   items?: BreadcrumbItem[]
-  dataItems?: string
+  itemsJson?: string
   separatorIcon?: string
   icon?: string
 }

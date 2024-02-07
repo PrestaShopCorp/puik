@@ -99,7 +99,7 @@ describe('Breadcrumb tests', () => {
     expect(lastItem?.element.tagName).toBe('DIV');
   });
   it('should handle dataItems prop correctly', () => {
-    factory({ dataItems: itemsJson });
+    factory({ itemsJson });
     const localItems = getBreadcrumbItems();
     expect(localItems.length).toBe(items.length);
     items.forEach((item, index) => {

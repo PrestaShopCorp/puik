@@ -28,7 +28,7 @@ interface BreadBreadcrumbItem {
         }
       }
     },
-    dataItems: {
+    itemsJson: {
       control: 'text',
       description: 'The breadcrumb items as a JSON string. Use this prop when using the component as a Web Component. For regular Vue usage, prefer the `items` prop.',
       table: {
@@ -78,7 +78,7 @@ interface BreadBreadcrumbItem {
         target: '_blank'
       }
     ],
-    dataItems: JSON.stringify([
+    itemsJson: JSON.stringify([
       {
         label: 'First link',
         href: '#'
@@ -161,7 +161,7 @@ export const Default = {
 export const WithDataItems = {
   render: Template,
   args: {
-    dataItems: JSON.stringify([
+    itemsJson: JSON.stringify([
       {
         label: 'First link',
         href: '#'
@@ -185,7 +185,7 @@ export const WithDataItems = {
       source: {
         code: `
   <!--VueJS Snippet-->
-  dataItems: JSON.stringify([
+  itemsJson: JSON.stringify([
     {
       label: 'First link',
       href: '#'
@@ -202,7 +202,7 @@ export const WithDataItems = {
   ])
 
   <puik-breadcrumb
-    :data-items="dataItems"
+    :items-json="itemsJson"
     :icon="icon"
   ></puik-breadcrumb>
 
