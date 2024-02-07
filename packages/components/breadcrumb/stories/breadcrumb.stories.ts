@@ -9,7 +9,7 @@ export default {
       description: 'Link displayed in breadcrumb',
       table: {
         defaultValue: {
-          summary: '[]'
+          summary: 'undefined'
         },
         type: {
           summary: 'BreadcrumbItem[]',
@@ -25,6 +25,19 @@ interface BreadBreadcrumbItem {
   target: '_blank' | '_self' | '_parent' | '_top' | undefined,
   dataTest: string | undefined,
 }`
+        }
+      }
+    },
+    dataItems: {
+      control: 'text',
+      description: 'The breadcrumb items as a JSON string. Use this prop when using the component as a Web Component. For regular Vue usage, prefer the `items` prop.',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string',
+          detail: 'A JSON string representing an array of BreadcrumbItem'
         }
       }
     },
@@ -65,6 +78,21 @@ interface BreadBreadcrumbItem {
         target: '_blank'
       }
     ],
+    dataItems: JSON.stringify([
+      {
+        label: 'First link',
+        href: '#'
+      },
+      {
+        label: 'Second link',
+        href: '#'
+      },
+      {
+        label: 'Third link',
+        to: 'name',
+        target: '_blank'
+      }
+    ]),
     separatorIcon: 'keyboard_arrow_right',
     icon: 'home'
   }
@@ -89,8 +117,92 @@ export const Default = {
       source: {
         code: `
   <!--VueJS Snippet-->
+  const items = [
+    {
+      label: 'First link',
+      href: '#'
+    },
+    {
+      label: 'Second link',
+      href: '#'
+    },
+    {
+      label: 'Third link',
+      to: 'name',
+      target: '_blank'
+    }
+  ]
+
   <puik-breadcrumb
     :items="items"
+    :icon="icon"
+  ></puik-breadcrumb>
+
+  <!--HTML/CSS Snippet-->
+  <nav class="puik-breadcrumb" role="navigation">
+    <div class="puik-icon material-icons-round puik-breadcrumb__home-icon" style="font-size: 16px;">home</div>
+    <div class="puik-breadcrumb__item">
+      <a href="#" target="_self" class="puik-link puik-link--sm puik-breadcrumb__item-link">First link</a>
+      <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 16px;">keyboard_arrow_right</div>
+    </div>
+    <div class="puik-breadcrumb__item">
+      <a href="#" target="_self" class="puik-link puik-link--sm puik-breadcrumb__item-link">Second link</a>
+      <div class="puik-icon material-icons-round puik-breadcrumb__item-icon" style="font-size: 16px;">keyboard_arrow_right</div>
+    </div>
+    <div class="puik-breadcrumb__item--last">Third link</div>
+  </nav>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const WithDataItems = {
+  render: Template,
+  args: {
+    dataItems: JSON.stringify([
+      {
+        label: 'First link',
+        href: '#'
+      },
+      {
+        label: 'Second link',
+        href: '#'
+      },
+      {
+        label: 'Third link',
+        to: 'name',
+        target: '_blank'
+      }
+    ]),
+    separatorIcon: 'keyboard_arrow_right',
+    icon: 'home'
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  dataItems: JSON.stringify([
+    {
+      label: 'First link',
+      href: '#'
+    },
+    {
+      label: 'Second link',
+      href: '#'
+    },
+    {
+      label: 'Third link',
+      to: 'name',
+      target: '_blank'
+    }
+  ])
+
+  <puik-breadcrumb
+    :data-items="dataItems"
     :icon="icon"
   ></puik-breadcrumb>
 

@@ -41,6 +41,8 @@ describe('Breadcrumb tests', () => {
       label: 'Last link'
     }
   ];
+  const itemsJson: string = JSON.stringify(items);
+
   it('should be a vue instance', () => {
     factory({ items });
     expect(wrapper).toBeTruthy();
@@ -95,5 +97,13 @@ describe('Breadcrumb tests', () => {
     factory({ items });
     const lastItem = getBreadcrumbItems().pop();
     expect(lastItem?.element.tagName).toBe('DIV');
+  });
+  it('should handle dataItems prop correctly', () => {
+    factory({ dataItems: itemsJson });
+    const localItems = getBreadcrumbItems();
+    expect(localItems.length).toBe(items.length);
+    items.forEach((item, index) => {
+      expect(localItems[index].text()).toContain(item.label);
+    });
   });
 });
