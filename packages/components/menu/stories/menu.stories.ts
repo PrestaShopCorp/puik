@@ -1,14 +1,10 @@
-import { menuAligns, menuPositions } from '../src/menu'
-import PuikMenu from '../src/menu.vue'
-import PuikMenuItem from '../src/menu-item.vue'
-import PuikMenuItemSeparator from '../src/menu-item-separator.vue'
-import PuikMenuItemTitle from '../src/menu-item-title.vue'
-import PuikButton from '../../button/src/button.vue'
-import PuikLink from '../../link/src/link.vue'
-import type { Meta, Args, StoryFn } from '@storybook/vue3'
+import { PuikMenu, PuikMenuItem, PuikMenuItemSeparator, PuikMenuItemTitle, PuikMenuAligns, PuikMenuPositions, PuikButton, PuikLink } from '@prestashopcorp/puik-components';
+import type { Meta, Args, StoryFn } from '@storybook/vue3';
 
-const menuAlignsJoined = menuAligns.join('|')
-const menuPositionsJoined = menuPositions.join('|')
+const menuAligns = Object.values(PuikMenuAligns);
+const menuAlignsJoined = menuAligns.join('|');
+const menuPositions = Object.values(PuikMenuPositions);
+const menuPositionsJoined = menuPositions.join('|');
 
 export default {
   title: 'Components/Menu/Menu',
@@ -20,12 +16,12 @@ export default {
       options: menuPositions,
       table: {
         defaultValue: {
-          summary: 'bottom',
+          summary: 'bottom'
         },
         type: {
-          summary: menuPositionsJoined,
-        },
-      },
+          summary: menuPositionsJoined
+        }
+      }
     },
     align: {
       description: 'Menu alignment',
@@ -33,30 +29,30 @@ export default {
       options: menuAligns,
       table: {
         defaultValue: {
-          summary: 'left',
+          summary: 'left'
         },
         type: {
-          summary: menuAlignsJoined,
-        },
-      },
+          summary: menuAlignsJoined
+        }
+      }
     },
     maxHeight: {
       control: 'text',
       description: 'Menu max height',
       table: {
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     width: {
       control: 'text',
       description: 'Menu width',
       table: {
         defaultValue: {
-          summary: '200px',
-        },
-      },
+          summary: '200px'
+        }
+      }
     },
     trigger: {
       control: 'none',
@@ -68,9 +64,9 @@ export default {
   {
     open: boolean
   }
-          `,
-        },
-      },
+          `
+        }
+      }
     },
     default: {
       control: 'none',
@@ -83,23 +79,23 @@ export default {
     open: boolean,
     close: () => void
   }
-            `,
-        },
-      },
-    },
+            `
+        }
+      }
+    }
   },
   args: {
-    width: '200px',
+    width: '200px'
   },
   parameters: {
     docs: {
       story: {
         inline: false,
-        iframeHeight: 500,
-      },
-    },
-  },
-} as Meta
+        iframeHeight: 500
+      }
+    }
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   args: {},
@@ -109,10 +105,10 @@ const Template: StoryFn = (args: Args) => ({
     PuikMenu,
     PuikMenuItem,
     PuikMenuItemSeparator,
-    PuikMenuItemTitle,
+    PuikMenuItemTitle
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
   <puik-menu v-bind="args">
@@ -171,8 +167,8 @@ const Template: StoryFn = (args: Args) => ({
       </div>
     </template>
   </puik-menu>
-    `,
-})
+    `
+});
 
 export const Default = {
   render: Template,
@@ -180,7 +176,7 @@ export const Default = {
   args: {
     maxHeight: 'none',
     position: 'bottom',
-    align: 'left',
+    align: 'left'
   },
 
   parameters: {
@@ -282,8 +278,8 @@ export const Default = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

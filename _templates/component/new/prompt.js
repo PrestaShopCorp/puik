@@ -5,6 +5,6 @@ module.exports = [
   {
     type: 'input',
     name: 'name',
-    message: 'Whats the name of your new component ?',
-  },
-]
+    message: 'Whats the name of your new component ?'
+  }
+];

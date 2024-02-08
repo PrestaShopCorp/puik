@@ -1,14 +1,45 @@
 {
-  "name": "@puik/components",
+  "name": "@prestashopcorp/puik-components",
   "version": "0.0.1",
-  "description": "all components are settled here",
-  "peerDependencies": {
-    "vue": "^3.2.0"
+  "type": "module",
+  "description": "PUIK vue components library.",
+  "scripts": {
+    "build": "vue-tsc --noEmit --project ./tsconfig.build.json && vite build"
   },
-  "main": "index.ts",
-  "module": "index.ts",
-  "types": "index.d.ts",
-  "unpkg": "index.js",
-  "jsdelivr": "index.js",
-  "sideEffects": false
+  "peerDependencies": {
+    "vue": "^3.3.7"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.11",
+    "@popperjs/core": "^2.11.6",
+    "@prestashopcorp/puik-theme": "workspace:*",
+    "@vueuse/core": "^10.7.0"
+  },
+  "devDependencies": {
+    "vue": "3.3.10",
+    "vue-router": "^4.1.6",
+    "vue-tsc": "^1.8.25"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.mjs"
+        },
+        "require": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.cjs"
+        }
+      },
+      "./*": "./dist/*"
+    }
+  }
 }

@@ -1,6 +1,5 @@
-import PuikTableSearchInput from '../src/table-search-input.vue'
-import { PuikTableSearchInputTypes } from '../src/table-search-input'
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikTableSearchInput, PuikTableSearchInputTypes } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Table/TableSearchInput',
@@ -12,12 +11,12 @@ export default {
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     column: {
       description:
@@ -38,36 +37,36 @@ export default {
             sortable: boolean | undefined
             preventExpand: boolean | undefined
           }
-          `,
+          `
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     searchSubmit: {
       description: 'Set input as submit button',
       control: 'boolean',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: 'false',
-        },
-      },
+          summary: 'false'
+        }
+      }
     },
     searchReset: {
       description: 'Display reset button after submit',
       control: 'boolean',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: 'false',
-        },
-      },
+          summary: 'false'
+        }
+      }
     },
     searchType: {
       description: 'The input type (text or range)',
@@ -81,30 +80,30 @@ export default {
             Text = 'text',
             Range = 'range',
           }
-          `,
+          `
         },
         defaultValue: {
-          summary: 'text',
-        },
-      },
+          summary: 'text'
+        }
+      }
     },
     searchSubmitEvent: {
       description: 'Event emitted when clicking the search button',
       control: 'none',
       table: {
         type: {
-          summary: 'event',
-        },
-      },
+          summary: 'event'
+        }
+      }
     },
     searchResetEvent: {
       description: 'Event emitted when clicking the reset button',
       control: 'none',
       table: {
         type: {
-          summary: 'event',
-        },
-      },
+          summary: 'event'
+        }
+      }
     },
     searchTextValue: {
       description: 'Event emitted when updating the value of input text',
@@ -124,9 +123,9 @@ type inputRange = {
   min?: number
   max?: number
 }
-          `,
-        },
-      },
+          `
+        }
+      }
     },
     searchRangeValue: {
       description: 'Event emitted when updating the value of input Range',
@@ -146,29 +145,29 @@ type inputRange = {
   min?: number
   max?: number
 }
-          `,
-        },
-      },
-    },
+          `
+        }
+      }
+    }
   },
   args: {
     name: 'search-column',
     column: 'column',
     searchSubmit: false,
     searchReset: false,
-    searchType: 'text',
-  },
-} as Meta
+    searchType: 'text'
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikTableSearchInput,
+    PuikTableSearchInput
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<PuikTableSearchInput v-bind="args"/>`,
-})
+  template: '<PuikTableSearchInput v-bind="args"/>'
+});
 
 export const Default = {
   render: Template,
@@ -194,8 +193,8 @@ export const Default = {
 
 <!--HTML/CSS Snippet-->
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

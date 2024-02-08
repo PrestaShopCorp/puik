@@ -9,5 +9,5 @@ export const getInitialLetter = (str: string, index: number): string => {
   return str
     .replace(/[^a-zA-Z0-9]/g, '')
     .charAt(index)
-    .toUpperCase()
-}
+    .toUpperCase();
+};

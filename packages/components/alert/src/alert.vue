@@ -10,7 +10,11 @@
   >
     <div class="puik-alert__container">
       <div class="puik-alert__content">
-        <PuikIcon :icon="icon" font-size="1.25rem" class="puik-alert__icon" />
+        <PuikIcon
+          :icon="icon"
+          font-size="1.25rem"
+          class="puik-alert__icon"
+        />
         <div class="puik-alert__text">
           <p
             v-if="title"
@@ -25,8 +29,7 @@
             :data-test="
               dataTest != undefined ? `description-${dataTest}` : undefined
             "
-            ><slot>{{ description }}</slot></span
-          >
+          ><slot>{{ description }}</slot></span>
         </div>
       </div>
       <PuikButton
@@ -53,19 +56,30 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { PuikButton } from '@puik/components/button'
-import { PuikIcon } from '@puik/components/icon'
-import { alertEmits, alertProps, ICONS } from './alert'
+import { computed } from 'vue';
+import { PuikButton } from '@prestashopcorp/puik-components/button';
+import { PuikIcon } from '@prestashopcorp/puik-components/icon';
+import { PuikAlertVariants, ICONS } from './alert';
+import type { AlertProps, AlertEmits } from './alert';
 defineOptions({
-  name: 'PuikAlert',
-})
+  name: 'PuikAlert'
+});
 
-const props = defineProps(alertProps)
-const emit = defineEmits(alertEmits)
+const props = withDefaults(defineProps<AlertProps>(), {
+  variant: PuikAlertVariants.Success,
+  ariaLive: 'polite'
+});
+const emit = defineEmits<AlertEmits>();
 
-const icon = computed(() => ICONS[props.variant])
+const icon = computed(() => ICONS[props.variant]);
 
-const click = (event: Event) => emit('click', event)
-const close = (event: Event) => emit('close', event)
+const click = (event: Event) => emit('click', event);
+const close = (event: Event) => emit('close', event);
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-alert.scss';
+@use '@prestashopcorp/puik-theme/src/puik-button.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+</style>

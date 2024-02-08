@@ -5,8 +5,14 @@
     :class="[`puik-menu--position-${position}`, `puik-menu--align-${align}`]"
     as="div"
   >
-    <PopoverButton class="puik-menu__trigger" as="template">
-      <slot name="trigger" :open="open"></slot>
+    <PopoverButton
+      class="puik-menu__trigger"
+      as="template"
+    >
+      <slot
+        name="trigger"
+        :open="open"
+      />
     </PopoverButton>
 
     <transition
@@ -22,18 +28,32 @@
         class="puik-menu__content"
         :style="{ maxHeight, width }"
       >
-        <slot :close="close" :open="open"></slot>
+        <slot
+          :close="close"
+          :open="open"
+        />
       </PopoverPanel>
     </transition>
   </Popover>
 </template>
 
 <script setup lang="ts">
-import { Popover, PopoverPanel, PopoverButton } from '@headlessui/vue'
-import { menuProps } from './menu'
+import { Popover, PopoverPanel, PopoverButton } from '@headlessui/vue';
+import { PuikMenuAligns, type MenuProps, PuikMenuPositions } from './menu';
 
 defineOptions({
-  name: 'PuikMenu',
-})
-defineProps(menuProps)
+  name: 'PuikMenu'
+});
+
+withDefaults(defineProps<MenuProps>(), {
+  maxHeight: 'none',
+  width: '200px',
+  align: PuikMenuAligns.Left,
+  position: PuikMenuPositions.Bottom
+});
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-menu.scss';
+</style>

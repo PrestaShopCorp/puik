@@ -1,35 +1,11 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
-import type SidebarGroupItem from './sidebar-group-item.vue'
+import type SidebarGroupItem from './sidebar-group-item.vue';
 
-export const sidebarGroupItemProps = buildProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  icon: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  active: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-  dataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-} as const)
+export interface SidebarGroupItemsProps {
+  title: string
+  icon: string
+  name?: string
+  active?: boolean
+  dataTest?: string
+}
 
-export type SidebarGroupItemProps = ExtractPropTypes<
-  typeof sidebarGroupItemProps
->
-
-export type SidebarGroupItemInstance = InstanceType<typeof SidebarGroupItem>
+export type SidebarGroupItemInstance = InstanceType<typeof SidebarGroupItem>;

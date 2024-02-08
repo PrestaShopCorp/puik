@@ -1,11 +1,6 @@
-import installer from './defaults'
-export { default as puikTailwindPreset } from '@puik/tailwind-preset'
-export * from '@puik/components'
-export * from '@puik/hooks'
-export * from '@puik/tokens'
-export { makeInstaller } from './make-installer'
-export { PuikResolver } from './resolver'
+import installer from './defaults';
+export * from '@prestashopcorp/puik-components';
+export { PuikResolver } from '@prestashopcorp/puik-resolver';
+export { puikTailwindPreset } from '@prestashopcorp/puik-tailwind-preset';
 
-export const install = installer.install
-export const version = installer.version
-export default installer
+export default installer;

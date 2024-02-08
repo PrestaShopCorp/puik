@@ -1,46 +1,13 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes } from 'vue'
-import type accordion from './accordion.vue'
+import type accordion from './accordion.vue';
 
-export const accordionProps = buildProps({
-  name: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  subTitle: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  icon: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  disabled: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  borderNone: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  dataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-} as const)
+export interface AccordionProps {
+  name: string
+  title?: string
+  subTitle?: string
+  icon?: string
+  disabled?: boolean
+  borderNone?: boolean
+  dataTest?: string
+}
 
-export const accordionEmits = ['click']
-
-export type AccordionProps = ExtractPropTypes<typeof accordionProps>
-
-export type AccordionInstance = InstanceType<typeof accordion>
+export type AccordionInstance = InstanceType<typeof accordion>;

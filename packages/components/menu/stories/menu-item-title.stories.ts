@@ -1,5 +1,5 @@
-import PuikMenuItemTitle from '../src/menu-item-title.vue'
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import PuikMenuItemTitle from '../src/menu-item-title.vue';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Menu/MenuItemTitle',
@@ -7,30 +7,30 @@ export default {
   argTypes: {
     default: {
       control: 'text',
-      description: 'Default slot to set title text',
+      description: 'Default slot to set title text'
     },
     dataTest: {
       description: 'Set the data-test attribute for title `title-${dataTest}`',
-      control: 'text',
-    },
-  },
-} as Meta
+      control: 'text'
+    }
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikMenuItemTitle,
+    PuikMenuItemTitle
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<puik-menu-item-title v-bind="args">{{ args.default }}</puik-menu-item-title>`,
-})
+  template: '<puik-menu-item-title v-bind="args">{{ args.default }}</puik-menu-item-title>'
+});
 
 export const Default = {
   render: Template,
   args: {
     default: 'Menu Item Title',
-    titleDataTest: '',
+    titleDataTest: ''
   },
 
   parameters: {
@@ -41,8 +41,8 @@ export const Default = {
     Menu Item Title
 </puik-menu-item-title>
             `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

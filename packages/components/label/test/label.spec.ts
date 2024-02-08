@@ -1,84 +1,81 @@
-import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
-import { faker } from '@faker-js/faker'
-import PuikLabel from '../src/label.vue'
-import type { MountingOptions, VueWrapper } from '@vue/test-utils'
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { describe, it, expect } from 'vitest';
+import { faker } from '@faker-js/faker';
+import { PuikLabel, LabelProps } from '@prestashopcorp/puik-components';
 
 describe('Label tests', () => {
-  let wrapper: VueWrapper<any>
+  let wrapper: VueWrapper<any>;
 
-  const findLabel = () => wrapper.find('.puik-label')
-  const findLabelOptional = () => wrapper.find('.puik-label--optional')
-  const findLabelRequired = () => wrapper.find('.puik-label--required')
-  const findLabelReadonly = () => wrapper.find('.puik-label--readonly')
+  const findLabel = () => wrapper.find('.puik-label');
+  const findLabelOptional = () => wrapper.find('.puik-label--optional');
+  const findLabelRequired = () => wrapper.find('.puik-label--required');
+  const findLabelReadonly = () => wrapper.find('.puik-label--readonly');
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props: LabelProps,
+    options?: ComponentMountingOptions<typeof PuikLabel>
   ) => {
     wrapper = mount(PuikLabel, {
-      props: {
-        ...propsData,
-      },
-      ...options,
-    })
-  }
+      props,
+      ...options
+    });
+  };
   it('should be a vue instance', () => {
-    factory()
-    expect(wrapper).toBeTruthy()
-  })
+    factory({ for: '' });
+    expect(wrapper).toBeTruthy();
+  });
 
   it('should set the label', () => {
-    const label = faker.lorem.words(2)
+    const label = faker.lorem.words(2);
     factory(
-      {},
+      { for: '' },
       {
         slots: {
-          default: label,
-        },
+          default: label
+        }
       }
-    )
-    expect(findLabel().text()).toBe(label)
-  })
+    );
+    expect(findLabel().text()).toBe(label);
+  });
 
   it('should set the label in optional mode', () => {
     factory(
-      { optional: true },
+      { for: '', optional: true },
       {
         slots: {
-          default: faker.lorem.words(2),
-        },
+          default: faker.lorem.words(2)
+        }
       }
-    )
-    expect(findLabelOptional().exists()).toBeTruthy()
-  })
+    );
+    expect(findLabelOptional().exists()).toBeTruthy();
+  });
 
   it('should set the label in required mode', () => {
     factory(
-      { required: true },
+      { for: '', required: true },
       {
         slots: {
-          default: faker.lorem.words(2),
-        },
+          default: faker.lorem.words(2)
+        }
       }
-    )
-    expect(findLabelRequired().exists()).toBeTruthy()
-  })
+    );
+    expect(findLabelRequired().exists()).toBeTruthy();
+  });
 
   it('should set the label in readonly mode', () => {
     factory(
-      { readonly: true },
+      { for: '', readonly: true },
       {
         slots: {
-          default: faker.lorem.words(2),
-        },
+          default: faker.lorem.words(2)
+        }
       }
-    )
-    expect(findLabelReadonly().exists()).toBeTruthy()
-  })
+    );
+    expect(findLabelReadonly().exists()).toBeTruthy();
+  });
 
   it('should have a data-test attribute', () => {
-    factory({ 'data-test': 'test' })
-    expect(findLabel().attributes('data-test')).toBe('test')
-  })
-})
+    factory({ for: '', dataTest: 'test' });
+    expect(findLabel().attributes('data-test')).toBe('test');
+  });
+});

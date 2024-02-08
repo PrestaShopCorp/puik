@@ -1,34 +1,31 @@
-import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
-import PuikDivider from '../src/divider.vue'
-import type { MountingOptions, VueWrapper } from '@vue/test-utils'
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { describe, it, expect } from 'vitest';
+import { PuikDivider, DividerProps, PuikDividerOrientation } from '@prestashopcorp/puik-components';
 
 describe('Divider tests', () => {
-  let wrapper: VueWrapper<any>
-  const findDivider = () => wrapper.find('.puik-divider')
+  let wrapper: VueWrapper<any>;
+  const findDivider = () => wrapper.find('.puik-divider');
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props?: DividerProps,
+    options?: ComponentMountingOptions<typeof PuikDivider>
   ) => {
     wrapper = mount(PuikDivider, {
-      props: {
-        ...propsData,
-      },
-      ...options,
-    })
-  }
+      props,
+      ...options
+    });
+  };
   it('should be a vue instance', () => {
-    factory()
-    expect(wrapper).toBeTruthy()
-  })
+    factory();
+    expect(wrapper).toBeTruthy();
+  });
 
   it('should be a vertical divider', () => {
-    factory({ orientation: 'vertical' })
-    expect(findDivider().classes()).toContain('puik-divider--vertical')
-  })
+    factory({ orientation: PuikDividerOrientation.Vertical });
+    expect(findDivider().classes()).toContain('puik-divider--vertical');
+  });
 
   it('the value of the data-test attribute should be "test"', () => {
-    factory({ orientation: 'vertical', dataTest: 'test' })
-    expect(findDivider().attributes('data-test')).toBe('test')
-  })
-})
+    factory({ orientation: PuikDividerOrientation.Vertical, dataTest: 'test' });
+    expect(findDivider().attributes('data-test')).toBe('test');
+  });
+});

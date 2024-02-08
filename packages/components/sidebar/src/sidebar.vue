@@ -16,30 +16,36 @@
           'puik-sidebar--collapsed': !localExpanded,
         }"
       >
-        <div v-if="!mobile" class="puik-sidebar__header">
+        <div
+          v-if="!mobile"
+          class="puik-sidebar__header"
+        >
           <puik-button
             class="puik-sidebar__header__button"
             variant="text"
             :left-icon="expansionIcon"
             :aria-label="expandButtonAriaLabel"
             @click="setExpanded(!localExpanded)"
-          ></puik-button>
+          />
         </div>
-        <div v-else class="puik-sidebar__header puik-sidebar__header--mobile">
+        <div
+          v-else
+          class="puik-sidebar__header puik-sidebar__header--mobile"
+        >
           <puik-button
             variant="text"
             left-icon="close"
             :aria-label="t('puik.sidebar.expandButtonLabel.close')"
             @click="setExpanded(false)"
-          ></puik-button>
+          />
         </div>
         <puik-accordion-group
           contained
           class="puik-sidebar__content"
           :model-value="openAccordionName"
-          @update:model-value="openAccordion"
+          @update:model-value="open($event as string)"
         >
-          <slot></slot>
+          <slot />
         </puik-accordion-group>
       </nav>
     </transition>
@@ -48,68 +54,75 @@
       class="puik-sidebar__backdrop"
       aria-hidden="true"
       @click="setExpanded(false)"
-    ></div>
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, provide, computed } from 'vue'
-import { useLocale } from '@puik/hooks'
-import PuikButton from '../../button'
-import { PuikAccordionGroup } from '../../accordion'
-import { sidebarProps, sidebarKey } from './sidebar'
+import { ref, watch, provide, computed } from 'vue';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import PuikButton from '../../button';
+import { PuikAccordionGroup } from '../../accordion';
+import { type SidebarProps, sidebarKey } from './sidebar';
 
 defineOptions({
-  name: 'PuikSidebar',
-})
+  name: 'PuikSidebar'
+});
 
 const emit = defineEmits<{
-  (e: 'update:expanded', value: boolean): void
-  (e: 'update:openAccordion', value: string): void
-}>()
-const props = defineProps(sidebarProps)
-const { t } = useLocale()
+  'update:expanded': [value: boolean]
+  'update:openAccordion': [value: string]
+}>();
+const props = defineProps<SidebarProps>();
+const { t } = useLocale();
 
-const localExpanded = ref(props.expanded)
-const openAccordionName = ref(props.openAccordion)
+const localExpanded = ref(props.expanded);
+const openAccordionName = ref(props.openAccordion);
 
 const expansionIcon = computed(() =>
   localExpanded.value ? 'first_page' : 'last_page'
-)
+);
 
 function setExpanded(value: boolean) {
-  localExpanded.value = value
-  emit('update:expanded', value)
+  localExpanded.value = value;
+  emit('update:expanded', value);
 }
 
-function openAccordion(value: string) {
-  openAccordionName.value = value
-  emit('update:openAccordion', value)
+function open(value: string) {
+  openAccordionName.value = value;
+  emit('update:openAccordion', value);
 }
 
 watch(
   () => props.expanded,
   () => {
-    localExpanded.value = props.expanded
+    localExpanded.value = props.expanded;
   }
-)
+);
 
 watch(
   () => props.openAccordion,
   () => {
-    openAccordionName.value = props.openAccordion
+    openAccordionName.value = props.openAccordion;
   }
-)
+);
 
 const expandButtonAriaLabel = computed(() => {
   return t(
     `puik.sidebar.expandButtonLabel.${
       localExpanded.value ? 'collapsed' : 'expanded'
     }`
-  )
-})
+  );
+});
 
 provide(sidebarKey, {
-  extended: localExpanded,
-})
+  extended: localExpanded
+});
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-sidebar.scss';
+@use '@prestashopcorp/puik-theme/src/puik-button.scss';
+@use '@prestashopcorp/puik-theme/src/puik-accordion-group.scss';
+</style>

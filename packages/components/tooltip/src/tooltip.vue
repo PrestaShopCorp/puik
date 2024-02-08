@@ -12,7 +12,7 @@
       class="puik-tooltip__wrapper"
       :data-test="dataTest != undefined ? `content-${dataTest}` : undefined"
     >
-      <slot></slot>
+      <slot />
     </div>
     <Transition
       enter-from-class="puik-tooltip__transition__enter-from"
@@ -30,58 +30,62 @@
           <span
             v-if="$slots.heading || heading"
             class="puik-tooltip__tip__content__heading"
-            :data-test="
-              dataTest != undefined ? `heading-${dataTest}` : undefined
-            "
-            ><slot name="heading">{{ heading }}</slot></span
+            :data-test="dataTest != undefined ? `heading-${dataTest}` : undefined"
           >
+            <slot name="heading">{{ heading }}</slot></span>
           <span
             v-if="$slots.description || description"
             class="puik-tooltip__tip__content__description"
             :data-test="
               dataTest != undefined ? `description-${dataTest}` : undefined
             "
-            ><slot name="description">{{ description }}</slot></span
-          >
+          ><slot name="description">{{ description }}</slot></span>
         </div>
 
-        <div class="puik-tooltip__tip__arrow" data-popper-arrow></div>
+        <div
+          class="puik-tooltip__tip__arrow"
+          data-popper-arrow
+        />
       </div>
     </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { createPopper } from '@popperjs/core'
-import { useTimeoutFn } from '@vueuse/core'
-import { generateId } from '@puik/utils'
-import { tooltipProps } from './tooltip'
-import type { Instance as PopperInstance } from '@popperjs/core'
-
+import { onMounted, ref } from 'vue';
+import { createPopper } from '@popperjs/core';
+import { useTimeoutFn } from '@vueuse/core';
+import { generateId } from '@prestashopcorp/puik-utils';
+import { PuikTooltipPositions, type TooltipProps } from './tooltip';
+import type { Instance as PopperInstance } from '@popperjs/core';
 defineOptions({
-  name: 'PuikTooltip',
-})
+  name: 'PuikTooltip'
+});
 
-const tooltipWrapper = ref<HTMLElement | null>(null)
-const tooltip = ref<HTMLElement | null>(null)
-const isVisible = ref(false)
-let popperInstance: PopperInstance | null = null
-const id = `puik-tooltip-${generateId()}`
+const tooltipWrapper = ref<HTMLElement | null>(null);
+const tooltip = ref<HTMLElement | null>(null);
+const isVisible = ref(false);
+let popperInstance: PopperInstance | null = null;
+const id = `puik-tooltip-${generateId()}`;
 
-const props = defineProps(tooltipProps)
+const props = withDefaults(defineProps<TooltipProps>(), {
+  position: PuikTooltipPositions.Bottom,
+  zindex: 1000,
+  disappearDelay: 500,
+  dataTest: 'tooltip'
+});
 
 const { start, stop, isPending } = useTimeoutFn(() => {
-  isVisible.value = false
-}, props.disappearDelay)
+  isVisible.value = false;
+}, props.disappearDelay);
 
 const updateTooltip = () => {
   if (isPending) {
-    stop()
+    stop();
   }
-  isVisible.value = true
-  popperInstance?.update()
-}
+  isVisible.value = true;
+  popperInstance?.update();
+};
 
 onMounted(() => {
   if (tooltipWrapper.value && tooltip.value) {
@@ -91,11 +95,16 @@ onMounted(() => {
         {
           name: 'offset',
           options: {
-            offset: [0, 12],
-          },
-        },
-      ],
-    })
+            offset: [0, 12]
+          }
+        }
+      ]
+    });
   }
-})
+});
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-tooltip.scss';
+</style>

@@ -1,25 +1,22 @@
-import { ref } from 'vue'
-import PuikButton from '../../button/src/button.vue'
-import PuikIcon from '../../icon/src/icon.vue'
-import PuikTable from './../src/table.vue'
-import type { PuikTableHeader } from '../src/table'
-import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3'
+import { ref } from 'vue';
+import { PuikTable, PuikButton, PuikIcon, type PuikTableHeader } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3';
 
 function generateData(length = 3) {
   return Array(length)
     .fill(null)
     .map((_, index) => {
-      const firstname = `firstname${index}`
-      const lastname = `lastname${index}`
-      const email = `${lastname}.${firstname}@email.com`.toLowerCase()
+      const firstname = `firstname${index}`;
+      const lastname = `lastname${index}`;
+      const email = `${lastname}.${firstname}@email.com`.toLowerCase();
 
       return {
         firstname,
         lastname,
         email,
-        age: 40,
-      }
-    })
+        age: 40
+      };
+    });
 }
 
 export default {
@@ -32,10 +29,10 @@ export default {
       description: 'Table items',
       table: {
         defaultValue: {
-          summary: '[]',
+          summary: '[]'
         },
-        type: { summary: 'any[]' },
-      },
+        type: { summary: 'any[]' }
+      }
     },
     headers: {
       control: 'none',
@@ -63,45 +60,33 @@ export default {
     Text = 'text',
     Range = 'range',
   }
-  `,
-        },
-      },
+  `
+        }
+      }
     },
     expandable: {
       control: 'boolean',
       description: 'Makes rows expandable',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
+        defaultValue: { summary: 'false' }
+      }
     },
     selectable: {
       control: 'boolean',
       description: 'Makes rows selectable',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
-    selection: {
-      control: 'none',
-      description: 'v-model of the selected rows',
-      table: {
-        defaultValue: {
-          summary: '[]',
-        },
-        type: {
-          summary: 'number[]',
-        },
-      },
+        defaultValue: { summary: 'false' }
+      }
     },
     searchBar: {
       control: 'boolean',
       description: 'Display the search bar',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
+        defaultValue: { summary: 'false' }
+      }
     },
     searchFromServer: {
       control: 'boolean',
@@ -109,10 +94,10 @@ export default {
         'No client-side search handling (however the searchSubmit event is always emitted with a gloabaSearchOptions payload with useful informations to create a query)',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
-        defaultValue: { summary: 'false' },
-      },
+        defaultValue: { summary: 'false' }
+      }
     },
     sortFromServer: {
       control: 'boolean',
@@ -120,36 +105,36 @@ export default {
         'No client-side sort handling (however the sortColumn event is always emitted with a sortOption type payload with useful informations to create a query)',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
+        defaultValue: { summary: 'false' }
+      }
     },
     fullWidth: {
       control: 'boolean',
       description: 'Set the table width at 100%',
       table: {
         defaultValue: {
-          summary: false,
+          summary: false
         },
         type: {
-          summary: 'boolean',
-        },
-      },
+          summary: 'boolean'
+        }
+      }
     },
     stickyFirstCol: {
       control: 'boolean',
       description: 'Makes the first column sticky',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
+        defaultValue: { summary: 'false' }
+      }
     },
     stickyLastCol: {
       control: 'boolean',
       description: 'Makes the last column sticky',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
+        defaultValue: { summary: 'false' }
+      }
     },
     '`header-${header.value}`': {
       control: 'none',
@@ -162,11 +147,11 @@ export default {
   header: PuikTableHeader
   index: number
 }
-          `,
-        },
-      },
+          `
+        }
+      }
     },
-    '`item-${header.value}`': {
+    '`item-{header.value}`': {
       control: 'none',
       description: 'Slot to replace item',
       table: {
@@ -177,9 +162,9 @@ export default {
   item: any
   index: number
 }
-          `,
-        },
-      },
+          `
+        }
+      }
     },
     'expanded-row': {
       control: 'none',
@@ -192,31 +177,31 @@ export default {
   item: any
   index: number
 }
-          `,
-        },
-      },
+          `
+        }
+      }
     },
     select: {
       control: 'none',
       description: 'Event emitted on select row',
       table: {
         type: {
-          summary: 'number',
-        },
-      },
+          summary: 'number'
+        }
+      }
     },
     'select:all': {
       control: 'none',
-      description: 'Event emitted on select all row',
+      description: 'Event emitted on select all row'
     },
     'update:selection': {
       control: 'none',
       description: 'Event emitted on selection change',
       table: {
         type: {
-          summary: 'number[]',
-        },
-      },
+          summary: 'number[]'
+        }
+      }
     },
     sortColumn: {
       control: 'none',
@@ -233,9 +218,9 @@ type sortOption = {
   sortBy?: string
   sortOrder?: PuikTableSortOrder
 }
-`,
-        },
-      },
+`
+        }
+      }
     },
     searchSubmit: {
       description: 'Event emitted when clicking the search button',
@@ -258,10 +243,10 @@ type inputRange = {
   min?: number | undefined;
   max?: number | undefined;
 }
-          `,
-        },
-      },
-    },
+          `
+        }
+      }
+    }
   },
   args: {
     expandable: false,
@@ -271,54 +256,54 @@ type inputRange = {
     sortFromServer: false,
     fullWidth: false,
     stickyFirstCol: false,
-    stickyLastCol: false,
-  },
-} as Meta
+    stickyLastCol: false
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikTable,
-    PuikButton,
+    PuikButton
   },
   setup() {
-    const selection = ref([])
-    const items = generateData()
+    const selection = ref([]);
+    const items = generateData();
     const headers: PuikTableHeader[] = [
       {
         text: 'Nom',
         value: 'lastname',
         size: 'md',
-        searchable: true,
+        searchable: true
       },
       {
         text: 'Prénom',
         value: 'firstname',
         size: 'md',
-        searchable: true,
+        searchable: true
       },
       {
         text: 'Age',
         value: 'age',
         size: 'sm',
         align: 'right',
-        searchable: true,
+        searchable: true
       },
       {
         text: 'Email',
         value: 'email',
         size: 'md',
         align: 'left',
-        searchable: true,
+        searchable: true
       },
       {
         value: 'actions',
         size: 'sm',
         align: 'center',
         preventExpand: true,
-        searchSubmit: true,
-      },
-    ]
-    return { args, headers, items, selection }
+        searchSubmit: true
+      }
+    ];
+    return { args, headers, items, selection };
   },
   template: `<puik-table v-model:selection="selection" :headers="headers" :items="items" v-bind="args">
     <template #item-value1="{ item }">
@@ -329,33 +314,33 @@ const Template: StoryFn = (args: Args) => ({
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
-    </template>
-  </puik-table>`,
-})
+    </template> 
+  </puik-table>`
+});
 
 const SearchableTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikTable,
     PuikButton,
-    PuikIcon,
+    PuikIcon
   },
   setup() {
-    const selection = ref([])
-    const items = generateData()
+    const selection = ref([]);
+    const items = generateData();
     const headers: PuikTableHeader[] = [
       {
         text: 'Nom',
         value: 'lastname',
         size: 'md',
         searchable: true,
-        searchType: 'text',
+        searchType: 'text'
       },
       {
         text: 'Prénom',
         value: 'firstname',
         size: 'md',
         searchable: true,
-        searchType: 'text',
+        searchType: 'text'
       },
       {
         text: 'Age',
@@ -363,14 +348,14 @@ const SearchableTemplate: StoryFn = (args: Args) => ({
         size: 'sm',
         align: 'right',
         searchable: true,
-        searchType: 'range',
+        searchType: 'range'
       },
       {
         text: 'Email',
         value: 'email',
         align: 'left',
         searchable: true,
-        searchType: 'text',
+        searchType: 'text'
       },
       {
         value: 'actions',
@@ -378,10 +363,10 @@ const SearchableTemplate: StoryFn = (args: Args) => ({
         align: 'center',
         preventExpand: true,
         searchable: true,
-        searchSubmit: true,
-      },
-    ]
-    return { args, headers, items, selection }
+        searchSubmit: true
+      }
+    ];
+    return { args, headers, items, selection };
   },
   template: `
   <puik-table v-model:selection="selection" :headers="headers" :items="items" v-bind="args">
@@ -394,50 +379,50 @@ const SearchableTemplate: StoryFn = (args: Args) => ({
         aria-label="Delete item"
       ></puik-button>
     </template>
-  </puik-table>`,
-})
+  </puik-table>`
+});
 
 const SortableTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikTable,
     PuikButton,
-    PuikIcon,
+    PuikIcon
   },
   setup() {
-    const selection = ref([])
-    const items = generateData()
+    const selection = ref([]);
+    const items = generateData();
     const headers: PuikTableHeader[] = [
       {
         text: 'Nom',
         value: 'lastname',
         size: 'md',
-        sortable: true,
+        sortable: true
       },
       {
         text: 'Prénom',
         value: 'firstname',
         size: 'md',
-        sortable: true,
+        sortable: true
       },
       {
         text: 'Age',
         value: 'age',
         size: 'sm',
         align: 'right',
-        sortable: true,
+        sortable: true
       },
       {
         text: 'Email',
         value: 'email',
-        align: 'left',
+        align: 'left'
       },
       {
         value: 'actions',
         align: 'center',
-        size: 'sm',
-      },
-    ]
-    return { args, headers, items, selection }
+        size: 'sm'
+      }
+    ];
+    return { args, headers, items, selection };
   },
   template: `<puik-table v-model:selection="selection" :headers="headers" :items="items" v-bind="args">
     <template #item-value1="{ item }">
@@ -449,8 +434,8 @@ const SortableTemplate: StoryFn = (args: Args) => ({
         aria-label="Delete item"
       ></puik-button>
     </template>
-  </puik-table>`,
-})
+  </puik-table>`
+});
 
 export const Default: StoryObj = {
   render: Template,
@@ -671,16 +656,16 @@ export const Default: StoryObj = {
   </table>
 </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Selectable: StoryObj = {
   render: Template,
   args: {
-    selectable: true,
+    selectable: true
   },
   parameters: {
     docs: {
@@ -804,16 +789,16 @@ export const Selectable: StoryObj = {
     </table>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Expandable: StoryObj = {
   render: Template,
   args: {
-    expandable: true,
+    expandable: true
   },
   parameters: {
     docs: {
@@ -1023,16 +1008,16 @@ export const Expandable: StoryObj = {
     </table>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Searchable: StoryObj = {
   render: SearchableTemplate,
   args: {
-    searchBar: true,
+    searchBar: true
   },
   parameters: {
     docs: {
@@ -1296,11 +1281,11 @@ export const Searchable: StoryObj = {
     </table>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Sortable: StoryObj = {
   render: SortableTemplate,
@@ -1501,16 +1486,16 @@ export const Sortable: StoryObj = {
     </table>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const FullWidth: StoryObj = {
   render: Template,
   args: {
-    fullWidth: true,
+    fullWidth: true
   },
   parameters: {
     docs: {
@@ -1700,18 +1685,18 @@ export const FullWidth: StoryObj = {
       </table>
     </div>
           `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const stickyColumns: StoryObj = {
   render: Template,
   args: {
     selectable: true,
     stickyFirstCol: true,
-    stickyLastCol: true,
+    stickyLastCol: true
   },
   parameters: {
     docs: {
@@ -1929,45 +1914,45 @@ export const stickyColumns: StoryObj = {
     </table>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 const ColSizesTemplate: StoryFn = (args: Args) => ({
   components: {
-    PuikTable,
+    PuikTable
   },
   args: {},
   setup() {
-    const item = { sm: 'sm', md: 'md', lg: 'lg', auto: 'auto' }
-    const items = [item, item]
+    const item = { sm: 'sm', md: 'md', lg: 'lg', auto: 'auto' };
+    const items = [item, item];
     const headers: PuikTableHeader[] = [
       {
         text: 'sm',
         value: 'sm',
-        size: 'sm',
+        size: 'sm'
       },
       {
         text: 'md',
         value: 'md',
-        size: 'md',
+        size: 'md'
       },
       {
         text: 'lg',
         value: 'lg',
-        size: 'lg',
+        size: 'lg'
       },
       {
         text: 'auto',
-        value: 'auto',
-      },
-    ]
-    return { args, items, headers }
+        value: 'auto'
+      }
+    ];
+    return { args, items, headers };
   },
-  template: `<puik-table v-bind="args" :headers="headers" :items="items"></puik-table>`,
-})
+  template: '<puik-table v-bind="args" :headers="headers" :items="items"></puik-table>'
+});
 
 export const ColSizes: StoryObj = {
   render: ColSizesTemplate,
@@ -2088,44 +2073,44 @@ export const ColSizes: StoryObj = {
   </table>
 </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 const TextAlignTemplate: StoryFn = (args: Args) => ({
   components: {
-    PuikTable,
+    PuikTable
   },
   args: {},
   setup() {
-    const item = { left: 'left', center: 'center', right: 'right' }
-    const items = [item, item]
+    const item = { left: 'left', center: 'center', right: 'right' };
+    const items = [item, item];
     const headers: PuikTableHeader[] = [
       {
         text: 'left',
         value: 'left',
         align: 'left',
-        size: 'md',
+        size: 'md'
       },
       {
         text: 'center',
         value: 'center',
         align: 'center',
-        size: 'md',
+        size: 'md'
       },
       {
         text: 'right',
         value: 'right',
         align: 'right',
-        size: 'md',
-      },
-    ]
-    return { args, items, headers }
+        size: 'md'
+      }
+    ];
+    return { args, items, headers };
   },
-  template: `<puik-table v-bind="args" :headers="headers" :items="items"></puik-table>`,
-})
+  template: '<puik-table v-bind="args" :headers="headers" :items="items"></puik-table>'
+});
 
 export const TextAlign: StoryObj = {
   render: TextAlignTemplate,
@@ -2228,8 +2213,8 @@ export const TextAlign: StoryObj = {
     </table>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

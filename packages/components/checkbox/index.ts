@@ -1,8 +1,6 @@
-import { withInstall } from '@puik/utils'
+import Checkbox from './src/checkbox.vue';
 
-import Checkbox from './src/checkbox.vue'
+export const PuikCheckbox = Checkbox;
+export default PuikCheckbox;
 
-export const PuikCheckbox = withInstall(Checkbox)
-export default PuikCheckbox
-
-export * from './src/checkbox'
+export * from './src/checkbox';

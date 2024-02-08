@@ -1,18 +1,25 @@
-import { defineConfig } from 'vitest/config'
-import Vue from '@vitejs/plugin-vue'
-import DefineOptions from 'unplugin-vue-define-options/vite'
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference types="vitest" />
+import { defineConfig } from 'vitest/config';
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
-  plugins: [Vue(), DefineOptions()],
+  plugins: [vue()],
   test: {
     include: ['**/*.spec.ts'],
     environment: 'jsdom',
     coverage: {
       provider: 'v8',
-      branches: 60,
-      functions: 60,
-      lines: 60,
-      statements: 60,
-    },
-  },
-})
+      all: false,
+      clean: true,
+      thresholds: {
+        'packages/component/**/src/*.{ts,vue}': {
+          branches: 60,
+          functions: 60,
+          lines: 60,
+          statements: 60
+        }
+      }
+    }
+  }
+});

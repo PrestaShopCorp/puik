@@ -1,3 +1,3 @@
-import '@puik/components/base/style'
-import '@puik/theme/src/sidebar-item.scss'
-import '@puik/theme/src/button.scss'
+import '@prestashopcorp/puik-components/base/style';
+import '@prestashopcorp/puik-theme/src/puik-sidebar-item.scss';
+import '@prestashopcorp/puik-theme/src/puik-button.scss';
