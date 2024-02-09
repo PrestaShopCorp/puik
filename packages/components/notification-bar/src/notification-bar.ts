@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type NotificationBar from './notification-bar.vue'

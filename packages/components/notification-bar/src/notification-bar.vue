@@ -4,7 +4,7 @@
     :to="teleport ? teleport.to : 'body'"
   >
     <div
-      v-if="messages.length"
+      v-if="messages && messages.length"
       ref="domNotificationBar"
       class="notification-bar"
     >
