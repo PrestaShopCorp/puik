@@ -1,6 +1,6 @@
 <template>
   <nav
-    v-if="items.length"
+    v-if="internalItems && internalItems.length"
     class="puik-breadcrumb"
     role="navigation"
   >
@@ -12,7 +12,7 @@
     />
 
     <div
-      v-for="(item, index) in items.slice(0, items.length - 1)"
+      v-for="(item, index) in internalItems.slice(0, internalItems.length - 1)"
       :key="`puik-breadcrumb-item-${index}`"
       class="puik-breadcrumb__item"
     >
@@ -35,14 +35,15 @@
     </div>
 
     <div
+      v-if="internalItems.length"
       class="puik-breadcrumb__item--last"
       :data-test="
-        items[items.length - 1].dataTest
-          ? items[items.length - 1].dataTest
+        internalItems[internalItems.length - 1].dataTest
+          ? internalItems[internalItems.length - 1].dataTest
           : undefined
       "
     >
-      {{ items[items.length - 1].label }}
+      {{ internalItems[internalItems.length - 1].label }}
     </div>
   </nav>
 </template>
@@ -50,14 +51,25 @@
 <script setup lang="ts">
 import PuikLink from '../../link/src/link.vue';
 import PuikIcon from '../../icon/src/icon.vue';
-import type { BreadcrumbProps } from './breadcrumb';
+import { computed, ref, watch } from 'vue';
+import type { BreadcrumbProps, BreadcrumbItem } from './breadcrumb';
 defineOptions({
   name: 'PuikBreadcrumb'
 });
 
-withDefaults(defineProps<BreadcrumbProps>(), {
+const props = withDefaults(defineProps<BreadcrumbProps>(), {
   separatorIcon: 'keyboard_arrow_right'
 });
+
+const internalItems = ref<BreadcrumbItem[]>([]);
+
+const itemsToWatch = computed(() => {
+  return props.itemsJson ? JSON.parse(props.itemsJson) : props.items;
+});
+
+watch(itemsToWatch, (newValue) => {
+  internalItems.value = newValue;
+}, { immediate: true });
 </script>
 
 <style lang="scss">
