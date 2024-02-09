@@ -4,6 +4,9 @@
     class="puik-icon"
     :style="style"
     :data-test="dataTest"
+    :class="{
+      'puik-icon--disabled': isDisabled,
+    }"
   >
     {{ icon }}
   </component>

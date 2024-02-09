@@ -21,6 +21,7 @@ export interface LinkProps {
   target?: `${PuikLinkTargetVariants}`
   title?: string
   highContrast?: boolean
+  articles?: boolean
   dataTest?: string
 }
 

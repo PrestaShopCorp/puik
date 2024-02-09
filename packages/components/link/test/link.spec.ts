@@ -43,4 +43,9 @@ describe('Link tests', () => {
     factory({ highContrast: true });
     expect(findLink().classes()).toContain('puik-link--high-contrast');
   });
+
+  it('should set the link in articles mode', () => {
+    factory({ articles: true });
+    expect(findLink().classes()).toContain('puik-link--articles');
+  });
 });

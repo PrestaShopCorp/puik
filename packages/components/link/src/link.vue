@@ -8,6 +8,7 @@
       'puik-link',
       `puik-link--${size}`,
       { 'puik-link--high-contrast': highContrast },
+      { 'puik-link--articles': articles },
     ]"
     :data-test="dataTest"
   >

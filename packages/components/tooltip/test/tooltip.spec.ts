@@ -5,7 +5,7 @@ import { PuikTooltip, TooltipProps } from '@prestashopcorp/puik-components';
 describe('Tooltip tests', () => {
   let wrapper: VueWrapper<any>;
   const findToolTipContainer = () => wrapper.find('.puik-tooltip');
-  const findTitle = () => wrapper.find('.puik-tooltip__tip__content__title');
+  const findTitle = () => wrapper.find('.puik-tooltip__tip__content__heading');
   const findDescription = () =>
     wrapper.find('.puik-tooltip__tip__content__description');
   const findToolTip = () => wrapper.find<HTMLElement>('.puik-tooltip__tip');
@@ -26,20 +26,20 @@ describe('Tooltip tests', () => {
     expect(wrapper).toBeTruthy();
   });
 
-  it('should have a title and a description', () => {
-    const title = 'Title';
+  it('should have a heading and a description', () => {
+    const heading = 'Title';
     const description = 'This is a tooltip';
     factory(
       {},
       {
         slots: {
-          title,
+          heading,
           description
         }
       }
     );
 
-    expect(findTitle().text()).toBe(title);
+    expect(findTitle().text()).toBe(heading);
     expect(findDescription().text()).toBe(description);
   });
 
@@ -73,14 +73,14 @@ describe('Tooltip tests', () => {
     );
   });
 
-  it('should have a data-test attribute for the container div, the content, the title and the description', () => {
+  it('should have a data-test attribute for the container div, the content, the heading and the description', () => {
     factory({
-      title: 'long title for displaying the tooltip',
+      heading: 'long heading for displaying the tooltip',
       description: 'long description for displaying the tooltip',
       dataTest: 'test'
     });
     expect(findToolTipContainer().attributes('data-test')).toBe('test');
-    expect(findTitle().attributes('data-test')).toBe('title-test');
+    expect(findTitle().attributes('data-test')).toBe('heading-test');
     expect(findDescription().attributes('data-test')).toBe('description-test');
     expect(findWrapper().attributes('data-test')).toBe('content-test');
   });

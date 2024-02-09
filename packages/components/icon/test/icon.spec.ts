@@ -30,6 +30,16 @@ describe('Icon tests', () => {
     expect(findIcon().text()).toBe('check');
   });
 
+  it('should set the icon disabled', async () => {
+    factory({
+      icon: 'check',
+      color: 'red',
+      isDisabled: true
+    });
+
+    expect(findIcon().classes()).toContain('puik-icon--disabled');
+  });
+
   it('should set the color', async () => {
     factory({
       icon: 'check',

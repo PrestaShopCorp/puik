@@ -28,10 +28,11 @@
       >
         <div class="puik-tooltip__tip__content">
           <span
-            v-if="$slots.title || title"
-            class="puik-tooltip__tip__content__title"
-            :data-test="dataTest != undefined ? `title-${dataTest}` : undefined"
-          ><slot name="title">{{ title }}</slot></span>
+            v-if="$slots.heading || heading"
+            class="puik-tooltip__tip__content__heading"
+            :data-test="dataTest != undefined ? `heading-${dataTest}` : undefined"
+          >
+            <slot name="heading">{{ heading }}</slot></span>
           <span
             v-if="$slots.description || description"
             class="puik-tooltip__tip__content__description"

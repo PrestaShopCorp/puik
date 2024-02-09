@@ -8,8 +8,8 @@ export default {
   title: 'Components/Tooltip',
   component: PuikTooltip,
   argTypes: {
-    title: {
-      description: 'Set the tooltip title (also available as a prop)',
+    heading: {
+      description: 'Set the tooltip heading (also available as a prop)',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -76,7 +76,7 @@ export default {
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute on the tooltip `content-${dataTest}` `title-${dataTest}` `description-${dataTest}`',
+        'Set the data-test attribute on the tooltip `content-${dataTest}` `heading-${dataTest}` `description-${dataTest}`',
       table: {
         defaultValue: {
           summary: undefined
@@ -85,7 +85,7 @@ export default {
     }
   },
   args: {
-    title: 'Title',
+    heading: 'Heading',
     description: 'This is a tooltip',
     position: 'top'
   }
@@ -103,7 +103,7 @@ const Template: StoryFn = (args: Args) => ({
     <div class="flex items-center justify-center h-[320px]">
       <puik-tooltip :position="args.position" :is-disabled="args.isDisabled" :max-width="args.maxWidth">
         <puik-icon font-size="1.25rem" icon="help_outline" />
-        <template #title>{{ args.title }}</template>
+        <template #heading>{{ args.heading }}</template>
         <template #description>{{ args.description }}</template>
       </puik-tooltip>
     </div>`
@@ -123,15 +123,15 @@ export const Default = {
   -->
   <puik-tooltip
     :position="$positions"
-    :title="title"
+    :heading="heading"
     :description="description"
     :is-disabled="isDisabled"
     :max-width="maxWidth"
     :zindex="zindex"
-    :disappearDelay="disappearDelay"
+    :disappear-delay="disappearDelay"
   >
     <puik-icon font-size="1.25rem" icon="help_outline" />
-    <template #title>{{ args.title }}</template>
+    <template #heading>{{ args.heading }}</template>
     <template #description>{{ args.description }}</template>
   </puik-tooltip>
 
@@ -142,7 +142,7 @@ export const Default = {
     </div>
     <div id="tooltip-id" class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(-589px, 146px); display: none;" data-popper-placement="left">
       <div class="puik-tooltip__tip__content">
-        <span class="puik-tooltip__tip__content__title">Title</span>
+        <span class="puik-tooltip__tip__content__heading">Heading</span>
         <span class="puik-tooltip__tip__content__description">This is a tooltip</span>
       </div>
       <div class="puik-tooltip__tip__arrow" style="position: absolute; top: 0px; transform: translate(0px, 22px);"></div>
@@ -164,7 +164,7 @@ export const DisabledTooltip = {
   <div class="flex items-center justify-center h-[320px]">
     <puik-tooltip :is-disabled="true" position="top">
       <puik-button>There is no tooltip</puik-button>
-      <template #title>Title</template>
+      <template #heading>Heading</template>
       <template #description>This tooltip is on a button</template>
     </puik-tooltip>
   </div>
@@ -178,7 +178,7 @@ export const DisabledTooltip = {
   <!--VueJS Snippet-->
   <puik-tooltip :is-disabled="true" position="top">
     <puik-button>There is no tooltip</puik-button>
-    <template #title>Title</template>
+    <template #heading>Heading</template>
     <template #description>This tooltip is on a button</template>
   </puik-tooltip>
         `
@@ -197,7 +197,7 @@ export const UsingAComponent = {
       <div class="flex items-center justify-center h-[320px]">
         <puik-tooltip position="top">
           <puik-button>Button</puik-button>
-          <template #title>Title</template>
+          <template #heading>Heading</template>
           <template #description>This tooltip is on a button</template>
         </puik-tooltip>
       </div>`
@@ -210,7 +210,7 @@ export const UsingAComponent = {
   <!--VueJS Snippet-->
   <puik-tooltip :is-disabled="true" position="top">
     <puik-button>There is no tooltip</puik-button>
-    <template #title>Title</template>
+    <template #heading>Heading</template>
     <template #description>This tooltip is on a button</template>
   </puik-tooltip>
 
@@ -223,7 +223,7 @@ export const UsingAComponent = {
     </div>
     <div id="tooltip-id" class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(465px, -284px); display: none;" data-popper-placement="top">
       <div class="puik-tooltip__tip__content">
-        <span class="puik-tooltip__tip__content__title">Title</span>
+        <span class="puik-tooltip__tip__content__heading">Heading</span>
         <span class="puik-tooltip__tip__content__description">This tooltip is on a button</span>
       </div>
       <div class="puik-tooltip__tip__arrow" style="position: absolute; left: 0px; transform: translate(95px, 0px);"></div>
@@ -245,7 +245,7 @@ export const Bottom = {
       <div class="flex items-center justify-center h-[320px]">
         <puik-tooltip position="bottom">
           <puik-icon font-size="1.25rem" icon="help_outline" />
-          <template #title>Title</template>
+          <template #heading>Heading</template>
           <template #description>This is a bottom tooltip</template>
         </puik-tooltip>
       </div>`
@@ -258,7 +258,7 @@ export const Bottom = {
   <!--VueJS Snippet-->
   <puik-tooltip position="bottom">
     <puik-icon font-size="1.25rem" icon="help_outline" />
-    <template #title>Title</template>
+    <template #heading>Heading</template>
     <template #description>This is a bottom tooltip</template>
   </puik-tooltip>
 
@@ -269,7 +269,7 @@ export const Bottom = {
     </div>
     <div id="tooltip-id" class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(474px, 201px); display: none;" data-popper-placement="bottom">
       <div class="puik-tooltip__tip__content">
-        <span class="puik-tooltip__tip__content__title">Title</span>
+        <span class="puik-tooltip__tip__content__heading">Heading</span>
         <span class="puik-tooltip__tip__content__description">This is a bottom tooltip</span>
       </div>
       <div class="puik-tooltip__tip__arrow" style="position: absolute; left: 0px; transform: translate(86px, 0px);"></div>
@@ -291,7 +291,7 @@ export const Left = {
       <div class="flex items-center justify-center h-[320px]">
         <puik-tooltip position="left">
           <puik-icon font-size="1.25rem" icon="help_outline" />
-          <template #title>Title</template>
+          <template #heading>Heading</template>
           <template #description>This is a left tooltip</template>
         </puik-tooltip>
       </div>`
@@ -304,7 +304,7 @@ export const Left = {
   <!--VueJS Snippet-->
   <puik-tooltip position="left">
     <puik-icon font-size="1.25rem" icon="help_outline" />
-    <template #title>Title</template>
+    <template #heading>Heading</template>
     <template #description>This is a bottom tooltip</template>
   </puik-tooltip>
 
@@ -315,7 +315,7 @@ export const Left = {
     </div>
     <div id="tooltip-id" class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(-589px, 146px); display: none;" data-popper-placement="left">
       <div class="puik-tooltip__tip__content">
-        <span class="puik-tooltip__tip__content__title">Title</span>
+        <span class="puik-tooltip__tip__content__heading">Heading</span>
         <span class="puik-tooltip__tip__content__description">This is a left tooltip</span>
       </div>
       <div class="puik-tooltip__tip__arrow" style="position: absolute; top: 0px; transform: translate(0px, 22px);"></div>
@@ -337,7 +337,7 @@ export const Right = {
       <div class="flex items-center justify-center h-[320px]">
         <puik-tooltip position="right">
           <puik-icon font-size="1.25rem" icon="help_outline" />
-          <template #title>Title</template>
+          <template #heading>Heading</template>
           <template #description>This is a right tooltip</template>
         </puik-tooltip>
       </div>`
@@ -350,7 +350,7 @@ export const Right = {
   <!--VueJS Snippet-->
   <puik-tooltip position="right">
     <puik-icon font-size="1.25rem" icon="help_outline" />
-    <template #title>Title</template>
+    <template #heading>Heading</template>
     <template #description>This is a bottom tooltip</template>
   </puik-tooltip>
 
@@ -361,7 +361,7 @@ export const Right = {
     </div>
     <div id="tooltip-id" class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(589px, 146px); display: none;" data-popper-placement="right">
       <div class="puik-tooltip__tip__content">
-        <span class="puik-tooltip__tip__content__title">Title</span>
+        <span class="puik-tooltip__tip__content__heading">Heading</span>
         <span class="puik-tooltip__tip__content__description">This is a right tooltip</span>
       </div>
       <div class="puik-tooltip__tip__arrow" style="position: absolute; top: 0px; transform: translate(0px, 22px);"></div>
@@ -386,22 +386,22 @@ export const Positions = {
       <div class="flex items-center justify-center h-screen">
         <puik-tooltip position="top">
           <puik-icon font-size="1.25rem" icon="help_outline" />
-          <template #title>Title</template>
+          <template #heading>Heading</template>
           <template #description>This is a top tooltip</template>
         </puik-tooltip>
         <puik-tooltip position="bottom">
           <puik-icon font-size="1.25rem" icon="help_outline" />
-          <template #title>Title</template>
+          <template #heading>Heading</template>
           <template #description>This is a bottom tooltip</template>
         </puik-tooltip>
         <puik-tooltip position="left">
           <puik-icon font-size="1.25rem" icon="help_outline" />
-          <template #title>Title</template>
+          <template #heading>Heading</template>
           <template #description>This is a left tooltip</template>
         </puik-tooltip>
         <puik-tooltip position="right">
           <puik-icon font-size="1.25rem" icon="help_outline" />
-          <template #title>Title</template>
+          <template #heading>Heading</template>
           <template #description>This is a right tooltip</template>
         </puik-tooltip>
       </div>`
@@ -414,7 +414,7 @@ export const Positions = {
   <!--VueJS Snippet-->
   <puik-tooltip position="$positions">
     <puik-icon font-size="1.25rem" icon="help_outline" />
-    <template #title>Title</template>
+    <template #heading>Heading</template>
     <template #description>This is a bottom tooltip</template>
   </puik-tooltip>
 
@@ -425,7 +425,7 @@ export const Positions = {
     </div>
     <div id="tooltip-id" class="puik-tooltip__tip" role="tooltip" style="z-index: 1000; position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(-589px, 146px); display: none;" data-popper-placement="left">
       <div class="puik-tooltip__tip__content">
-        <span class="puik-tooltip__tip__content__title">Title</span>
+        <span class="puik-tooltip__tip__content__heading">Heading</span>
         <span class="puik-tooltip__tip__content__description">This is a tooltip</span>
       </div>
       <div class="puik-tooltip__tip__arrow" style="position: absolute; top: 0px; transform: translate(0px, 22px);"></div>

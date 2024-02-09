@@ -5,6 +5,7 @@ export interface IconProps {
   nodeType?: string
   fontSize?: string | number
   color?: string
+  isDisabled?: boolean
   dataTest?: string
 }
 

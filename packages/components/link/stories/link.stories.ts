@@ -48,7 +48,16 @@ export default {
     },
     highContrast: {
       description:
-        'Sets the link in high contrast mode by disabling the purple color for the visited stated',
+        'Sets the link in high contrast mode by changing the gray underline color',
+      table: {
+        defaultValue: {
+          summary: false
+        }
+      }
+    },
+    articles: {
+      description:
+        'Sets the link in articles mode, adding the purple color for the visited stated',
       table: {
         defaultValue: {
           summary: false
@@ -72,6 +81,7 @@ export default {
     to: undefined,
     target: '_self',
     highContrast: false,
+    articles: false,
     default: "I'm a cool link",
     title: "I'm a tooltip for your link",
     size: 'md',

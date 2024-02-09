@@ -8,7 +8,7 @@ export enum PuikTooltipPositions {
 }
 
 export interface TooltipProps {
-  title?: string
+  heading?: string
   description?: string
   position?: `${PuikTooltipPositions}`
   isDisabled?: boolean
