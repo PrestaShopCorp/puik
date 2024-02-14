@@ -38,6 +38,11 @@ export const buttonProps = buildProps({
     required: false,
     default: false,
   },
+  wrapLabel: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   disabled: {
     type: Boolean,
     required: false,
@@ -65,6 +70,11 @@ export const buttonProps = buildProps({
   },
   value: {
     type: [String, Number, Object, Array],
+    required: false,
+    default: undefined,
+  },
+  dataTest: {
+    type: String,
     required: false,
     default: undefined,
   },

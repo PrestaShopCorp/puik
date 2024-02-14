@@ -33,6 +33,16 @@ describe('Icon tests', () => {
     expect(findIcon().text()).toBe('check')
   })
 
+  it('should set the icon disabled', async () => {
+    factory({
+      icon: 'check',
+      color: 'red',
+      isDisabled: true,
+    })
+
+    expect(findIcon().classes()).toContain('puik-icon--disabled')
+  })
+
   it('should set the color', async () => {
     factory({
       icon: 'check',
@@ -67,5 +77,10 @@ describe('Icon tests', () => {
     })
 
     expect(findIcon().element.nodeName).toBe('SPAN')
+  })
+
+  it('should have a data-test attribute', () => {
+    factory({ 'data-test': 'test' })
+    expect(findIcon().attributes('data-test')).toBe('test')
   })
 })

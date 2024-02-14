@@ -50,7 +50,6 @@ describe('ProgressStepper tests', () => {
     factory()
     await nextTick()
     const steps = getSteps()
-    console.log(getStepButton(steps[2]).classes())
     expect(getStepButton(steps[0]).classes()).toContain('puik-button--success')
   })
   it('should second step be current step', async () => {

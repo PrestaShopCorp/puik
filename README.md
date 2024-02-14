@@ -21,7 +21,7 @@ Puik is a component library that aims to provide a complete set of reusable comp
 
 ### Prerequisites
 
-- Node.js LTS is required.
+- Node.js LTS is required
 
 ### Installation
 

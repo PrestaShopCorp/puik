@@ -17,6 +17,8 @@ const factory = (template: string, options: MountingOptions<any> = {}) => {
 }
 
 export const getAccordion = (wrapper) => wrapper.findComponent(PuikAccordion)
+export const getAccordionContainer = (component) =>
+  component.find('.puik-accordion')
 export const getAccordionContent = (component) =>
   component.find('.puik-accordion__content')
 export const getAccordionHeader = (component) =>
@@ -151,5 +153,48 @@ describe('Accordion tests', () => {
     factory(template)
 
     expect(getAccordionIcon(wrapper).text()).toBe(icon)
+  })
+
+  it('should have data-test attribute on accordion container div, button, title, sub-title, icon', () => {
+    const template = `
+      <puik-accordion-group>
+        <puik-accordion name="accordion-1" icon="home" title="title" sub-title="sub-title" data-test="accordion">
+          Content
+        </puik-accordion>
+      </puik-accordion-group>
+    `
+    factory(template)
+
+    const accordion = getAccordion(wrapper)
+    expect(getAccordionContainer(accordion).attributes('data-test')).toBe(
+      'accordion'
+    )
+    expect(getAccordionHeader(accordion).attributes('data-test')).toBe(
+      'button-accordion'
+    )
+    expect(getAccordionTitle(accordion).attributes('data-test')).toBe(
+      'title-accordion'
+    )
+    expect(getAccordionSubTitle(accordion).attributes('data-test')).toBe(
+      'subTitle-accordion'
+    )
+    expect(getAccordionIcon(accordion).attributes('data-test')).toBe(
+      'icon-accordion'
+    )
+  })
+
+  it('should not contain borders', () => {
+    const template = `
+    <puik-accordion-group>
+      <puik-accordion name="accordion-1" title="title-1" border-none>
+        Content 1
+      </puik-accordion>
+    </puik-accordion-group>
+  `
+    factory(template)
+    const accordion = getAccordion(wrapper)
+    expect(getAccordionContainer(accordion).classes()).toContain(
+      'puik-accordion--border-none'
+    )
   })
 })

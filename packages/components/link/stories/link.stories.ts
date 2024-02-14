@@ -45,6 +45,24 @@ export default {
         },
       },
     },
+    highContrast: {
+      description:
+        'Sets the link in high contrast mode by changing the gray underline color',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
+    articles: {
+      description:
+        'Sets the link in articles mode, adding the purple color for the visited stated',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
     default: {
       control: 'text',
       description: 'Label of the link',
@@ -53,14 +71,20 @@ export default {
       control: 'text',
       description: 'Title displayed in tooltips then your cursor stay in link',
     },
+    dataTest: {
+      description: 'Set the data-test attribute',
+    },
   },
   args: {
     href: '#',
     to: undefined,
     target: '_self',
+    highContrast: false,
+    articles: false,
     default: "I'm a cool link",
     title: "I'm a tooltip for your link",
     size: 'md',
+    dataTest: '',
   },
 } as Meta
 
@@ -95,8 +119,9 @@ export const Default = {
   <!--
   $sizes: ${linkSizesSummary}
   $targets: ${targetVariantsSummary}
+  $variants: high-contrast (optional)
   -->
-  <a class="puik-link puik-link--{$sizes}" href="#" target="$targets" title="I'm a tooltip for your link">
+  <a class="puik-link puik-link--{$sizes} puik-link--{$variants}" href="#" target="$targets" title="I'm a tooltip for your link">
     I'm a cool link
   </a>
         `,

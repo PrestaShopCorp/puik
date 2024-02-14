@@ -40,6 +40,9 @@ export default {
       control: 'text',
       description: 'Default slot to set label text',
     },
+    dataTest: {
+      description: 'Set the data-test attribute',
+    },
   },
 } as Meta
 
@@ -62,6 +65,7 @@ export const Default = {
     readonly: false,
     for: 'input',
     default: 'My Label',
+    dataTest: '',
   },
 
   parameters: {

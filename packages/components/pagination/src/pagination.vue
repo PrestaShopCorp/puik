@@ -4,6 +4,7 @@
     :class="[`puik-pagination--${variant}`]"
     role="navigation"
     :aria-label="t('puik.pagination.ariaLabel')"
+    :data-test="dataTest"
   >
     <pagination-loader
       v-if="variant === PuikPaginationVariantEnum.loader"
@@ -11,6 +12,7 @@
       :label="currentLabel"
       :loader-button-label="loaderButtonLabel"
       :disabled="loaderButtonDisabled"
+      :data-test="dataTest"
     />
 
     <div v-else class="puik-pagination__content">
@@ -18,12 +20,14 @@
         v-if="variant === PuikPaginationVariantEnum.small"
         v-model="currentPage"
         v-bind="commonPaginationProps"
+        :data-test="dataTest"
       />
 
       <pagination-mobile
         v-if="variant === PuikPaginationVariantEnum.mobile"
         v-model="currentPage"
         v-bind="commonPaginationProps"
+        :data-test="dataTest"
       />
 
       <pagination-medium
@@ -31,6 +35,7 @@
         v-model="currentPage"
         v-bind="commonPaginationProps"
         :total-item="totalItem"
+        :data-test="dataTest"
       />
 
       <pagination-large
@@ -39,6 +44,7 @@
         :items-per-page="itemsPerPage"
         :total-item="totalItem"
         :items-per-page-options="itemsPerPageOptions"
+        :data-test="dataTest"
         v-bind="commonPaginationProps"
         @update:items-per-page="emit('update:itemsPerPage', $event)"
       />

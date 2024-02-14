@@ -1,4 +1,5 @@
 import { PuikNotificationBar } from '@puik/components/notification-bar'
+import { PuikAvatar } from '@puik/components/avatar'
 import { PuikDivider } from '@puik/components/divider'
 import { PuikTag } from '@puik/components/tag'
 import { PuikChip } from '@puik/components/chip'
@@ -12,7 +13,6 @@ import {
   PuikProgressStepper,
   PuikProgressStepperStep,
 } from '@puik/components/progress-stepper'
-import { PuikTable } from '@puik/components/table'
 import { PuikSpinnerLoader } from '@puik/components/spinner-loader'
 import {
   PuikSidebar,
@@ -47,12 +47,14 @@ import { PuikTooltip } from '@puik/components/tooltip'
 import { PuikSwitch } from '@puik/components/switch'
 import { PuikButton } from '@puik/components/button'
 import { PuikInput } from '@puik/components/input'
+import { PuikTable, PuikTableSearchInput } from '@puik/components/table'
 import { PuikConfigProvider } from '@puik/components/config-provider'
 import type { Plugin } from 'vue'
 
 // prettier-ignore
 export default [
   PuikNotificationBar,
+  PuikAvatar,
   PuikDivider,
   PuikTag,
   PuikChip,
@@ -62,7 +64,6 @@ export default [
   PuikTabNavigation,
   PuikProgressStepper,
   PuikProgressStepperStep,
-  PuikTable,
   PuikSpinnerLoader,
   PuikSidebar,
   PuikSidebarGroupItem,
@@ -88,6 +89,8 @@ export default [
   PuikLabel,
   PuikRadio,
   PuikInput,
+  PuikTableSearchInput,
+  PuikTable,
   PuikCheckbox,
   PuikOption,
   PuikSelect,

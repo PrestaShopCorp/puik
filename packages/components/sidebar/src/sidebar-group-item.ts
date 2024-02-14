@@ -21,6 +21,11 @@ export const sidebarGroupItemProps = buildProps({
     default: false,
     required: false,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type SidebarGroupItemProps = ExtractPropTypes<

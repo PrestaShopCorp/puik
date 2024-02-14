@@ -7,6 +7,11 @@ export const iconProps = buildProps({
     type: String,
     required: true,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
   nodeType: {
     type: String,
     default: 'div',
@@ -19,6 +24,11 @@ export const iconProps = buildProps({
   color: {
     type: String,
     default: '#00000',
+    required: false,
+  },
+  isDisabled: {
+    type: Boolean,
+    default: false,
     required: false,
   },
 } as const)

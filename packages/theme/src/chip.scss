@@ -10,7 +10,7 @@
   &--small {
     @apply px-1 py-0;
     .puik-chip__close {
-      @apply p-1 py-[2px];
+      @apply p-[0.125rem];
     }
   }
   &--disabled {
@@ -20,15 +20,15 @@
     }
   }
   &__close {
-    @apply p-1 py-[2px] ml-auto cursor-pointer rounded-[50%] hover:bg-primary-400;
+    @apply p-[0.125rem] ml-auto cursor-pointer rounded-[50%] hover:bg-primary-400;
   }
   &__icon {
     @apply mr-1;
   }
   &__content {
-    @apply max-w-[150px] pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
-    & > .puik-tooltip {
-      @apply max-w-[150px] overflow-hidden whitespace-nowrap text-ellipsis;
+    @apply relative max-w-[150px];
+    p {
+      @apply pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
     }
   }
   &__content .puik-tooltip__wrapper {

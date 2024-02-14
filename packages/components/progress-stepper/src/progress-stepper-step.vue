@@ -1,5 +1,5 @@
 <template>
-  <div class="puik-progress-stepper-step">
+  <div class="puik-progress-stepper-step" :data-test="dataTest">
     <puik-button
       :aria-current="isCurrentStep ? 'step' : undefined"
       :aria-label="step"
@@ -9,16 +9,25 @@
       aria-live="polite"
       class="puik-progress-stepper-step__button"
       size="sm"
+      :data-test="dataTest != undefined ? `stepButton-${dataTest}` : undefined"
       @click="onClick"
     >
       <template v-if="!isCompleted">
         {{ step }}
       </template>
     </puik-button>
-    <span class="puik-progress-stepper-step__text">
+    <span
+      class="puik-progress-stepper-step__text"
+      :data-test="dataTest != undefined ? `text-${dataTest}` : undefined"
+    >
       <slot name="text"></slot>
     </span>
-    <span class="puik-progress-stepper-step__additional-text">
+    <span
+      class="puik-progress-stepper-step__additional-text"
+      :data-test="
+        dataTest != undefined ? `additionalText-${dataTest}` : undefined
+      "
+    >
       <slot name="additional-text"></slot>
     </span>
   </div>

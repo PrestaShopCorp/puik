@@ -3,10 +3,15 @@
     class="puik-tooltip"
     tabindex="0"
     :aria-describedby="id"
+    :data-test="dataTest"
     @mouseover="updateTooltip"
     @mouseleave="start"
   >
-    <div ref="tooltipWrapper" class="puik-tooltip__wrapper">
+    <div
+      ref="tooltipWrapper"
+      class="puik-tooltip__wrapper"
+      :data-test="dataTest != undefined ? `content-${dataTest}` : undefined"
+    >
       <slot></slot>
     </div>
     <Transition
@@ -25,11 +30,15 @@
           <span
             v-if="$slots.title || title"
             class="puik-tooltip__tip__content__title"
+            :data-test="dataTest != undefined ? `title-${dataTest}` : undefined"
             ><slot name="title">{{ title }}</slot></span
           >
           <span
             v-if="$slots.description || description"
             class="puik-tooltip__tip__content__description"
+            :data-test="
+              dataTest != undefined ? `description-${dataTest}` : undefined
+            "
             ><slot name="description">{{ description }}</slot></span
           >
         </div>
@@ -47,6 +56,7 @@ import { useTimeoutFn } from '@vueuse/core'
 import { generateId } from '@puik/utils'
 import { tooltipProps } from './tooltip'
 import type { Instance as PopperInstance } from '@popperjs/core'
+
 defineOptions({
   name: 'PuikTooltip',
 })

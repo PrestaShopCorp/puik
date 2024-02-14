@@ -44,6 +44,14 @@ export default {
         },
       },
     },
+    wrapLabel: {
+      description: 'Set the carriage return of the button label',
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
     disabled: {
       description: 'Set the button as disabled',
       table: {
@@ -71,11 +79,17 @@ export default {
       control: 'text',
       description: 'Set a link for the button (changes button to "a" html tag)',
     },
+    dataTest: {
+      control: 'text',
+      description:
+        'Set a data-test attribute to the button `${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`',
+    },
   },
   args: {
     variant: 'primary',
     size: 'md',
     fluid: false,
+    wrapLabel: true,
     disabled: false,
     leftIcon: '',
     rightIcon: '',
@@ -112,6 +126,7 @@ export const Default = {
     :size="$sizes"
     :variant="$variants"
     :fluid="true|false"
+    :wrap-label="true|false"
     :disabled="true|false"
     :left-icon="leftIcon"
     :right-icon="rightIcon"

@@ -37,6 +37,11 @@ export const alertProps = buildProps({
     required: false,
     default: undefined,
   },
+  buttonWrapLabel: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   isClosable: {
     type: Boolean,
     required: false,
@@ -47,15 +52,16 @@ export const alertProps = buildProps({
     required: false,
     default: 'polite',
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type AlertProps = ExtractPropTypes<typeof alertProps>
 
-export const alertEmits = {
-  click: (event: Event) => event instanceof Event,
-  close: (event: Event) => event instanceof Event,
-}
-
+export const alertEmits = ['click', 'close']
 export type AlertEmits = typeof alertEmits
 
 export type AlertInstance = InstanceType<typeof Alert>

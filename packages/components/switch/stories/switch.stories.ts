@@ -68,7 +68,7 @@ export default {
 } as Meta
 
 const Template: StoryFn = (args: Args) => {
-  const [_, updateArgs] = useArgs()
+  const [updateArgs] = useArgs()
   return {
     components: {
       PuikSwitch,

@@ -4,7 +4,13 @@
     v-bind="pathProp"
     :target="target"
     :title="title"
-    :class="['puik-link', `puik-link--${size}`]"
+    :class="[
+      'puik-link',
+      `puik-link--${size}`,
+      { 'puik-link--high-contrast': highContrast },
+      { 'puik-link--articles': articles },
+    ]"
+    :data-test="dataTest"
   >
     <slot></slot>
 

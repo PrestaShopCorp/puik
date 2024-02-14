@@ -78,6 +78,11 @@ export const selectProps = buildProps({
     required: false,
     default: true,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type SelectProps = ExtractPropTypes<typeof selectProps>

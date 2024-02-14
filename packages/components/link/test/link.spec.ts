@@ -36,4 +36,19 @@ describe('Link tests', () => {
     factory({ href: '/test', size: 'sm' })
     expect(findLink().classes()).toContain('puik-link--sm')
   })
+
+  it('should have a data-test attribute', () => {
+    factory({ href: '/test', 'data-test': 'test' })
+    expect(findLink().attributes('data-test')).toBe('test')
+  })
+
+  it('should set the link in high-contrast mode', () => {
+    factory({ highContrast: true })
+    expect(findLink().classes()).toContain('puik-link--high-contrast')
+  })
+
+  it('should set the link in articles mode', () => {
+    factory({ articles: true })
+    expect(findLink().classes()).toContain('puik-link--articles')
+  })
 })

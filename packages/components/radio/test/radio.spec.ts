@@ -7,6 +7,7 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 describe('Radio tests', () => {
   let wrapper: VueWrapper<any>
+  const findInputContainer = () => wrapper.find('.puik-radio')
   const findInput = () => wrapper.find('.puik-radio__input')
   const findLabel = () => wrapper.find('.puik-radio__label')
 
@@ -82,5 +83,15 @@ describe('Radio tests', () => {
       }
     )
     expect(findLabel().text()).toContain('Custom label')
+  })
+
+  it('should have a data-test attribute on container div, label and input', () => {
+    factory({ label: 'Label', modelValue: false, dataTest: 'test' })
+    const container = findInputContainer()
+    const label = findLabel()
+    const input = findInput()
+    expect(container.attributes('data-test')).toBe('test')
+    expect(label.attributes('data-test')).toBe('label-test')
+    expect(input.attributes('data-test')).toBe('input-test')
   })
 })

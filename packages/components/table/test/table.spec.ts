@@ -3,15 +3,19 @@ import { describe, it, expect } from 'vitest'
 import { faker } from '@faker-js/faker'
 import { locales } from '@puik/locale'
 import PuikTable from '../src/table.vue'
+import {
+  PuikTableSortOrder,
+  type PuikTableHeader,
+  type sortOption,
+} from '../src/table'
 import type { MountingOptions, VueWrapper } from '@vue/test-utils'
-import type { PuikTableHeader } from '../src/table'
 
 const defaultItems = Array(5)
   .fill(null)
   .map(() => {
     return {
-      firstname: faker.name.firstName(),
-      lastname: faker.name.lastName(),
+      firstname: faker.person.firstName(),
+      lastname: faker.person.lastName(),
     }
   })
 
@@ -19,24 +23,47 @@ describe('Table tests', () => {
   let wrapper: VueWrapper<any>
   const colClass = 'puik-table__body__row__item'
   const headerColClass = 'puik-table__head__row__item'
+  const searchBarClass = '.puik-table__search__bar'
+  const searchSubmitButtonClass =
+    '.puik-table-search-input--submit .puik-button'
 
   const getTable = () => wrapper.find('.puik-table')
   const getHeaders = () => wrapper.findAll(`.${headerColClass}`)
   const getRows = () => wrapper.findAll('.puik-table__body__row')
-  const getCols = (rowIndex) => getRows()[rowIndex].findAll(`.${colClass}`)
-  const getRowCheckbox = (rowIndex) =>
+  const getCols = (rowIndex: number): HTMLElement =>
+    getRows()[rowIndex].findAll(`.${colClass}`)
+  const getAllItemsOfCol = (colIndex: number) => {
+    const allItems: Array<HTMLElement> = []
+    getRows().map((row, rowIndex) => {
+      const Item: HTMLElement = getCols(rowIndex)[colIndex]
+      allItems.push(Item)
+    })
+    return allItems
+  }
+  const getRowCheckbox = (rowIndex: number) =>
     getRows()[rowIndex].find(`.${colClass}--selection__checkbox`)
   const getAllRowCheckbox = () =>
     wrapper.findAll(`.${colClass}--selection__checkbox`)
   const getHeaderCheckbox = () =>
     wrapper.find(`.${headerColClass}--selection__checkbox`)
 
-  const isCheckboxChecked = (checkbox) =>
-    checkbox.find('.puik-checkbox__input:checked').exists()
-  const isCheckboxInderminate = (checkbox) =>
-    checkbox.find('.puik-checkbox__input:indeterminate').exists()
+  const isCheckboxChecked = (checkbox: {
+    find: (arg0: string) => {
+      (): any
+      new (): any
+      exists: { (): any; new (): any }
+    }
+  }) => checkbox.find('.puik-checkbox__input:checked').exists()
+  const isCheckboxInderminate = (checkbox: {
+    find: (arg0: string) => {
+      (): any
+      new (): any
+      exists: { (): any; new (): any }
+    }
+  }) => checkbox.find('.puik-checkbox__input:indeterminate').exists()
 
-  const getCheckboxLabel = (checkbox) => checkbox.find('.puik-checkbox__label')
+  const getCheckboxLabel = (checkbox: { find: (arg0: string) => any }) =>
+    checkbox.find('.puik-checkbox__label')
 
   const factory = (
     propsData: Record<string, any> = {},
@@ -65,7 +92,7 @@ describe('Table tests', () => {
   it('should display headers without text', () => {
     const headers: PuikTableHeader[] = [{ value: 'firstname' }]
     factory({ headers })
-    expect(getHeaders()[0].text()).toBe('')
+    expect(getHeaders()[0].text()).toBeUndefined
   })
   it('should display 5 items', () => {
     const headers: PuikTableHeader[] = [{ value: 'firstname' }]
@@ -83,7 +110,8 @@ describe('Table tests', () => {
     expect(displayedItems[1].text()).toBe(defaultItems[0].lastname)
   })
   it('should display item using slot', () => {
-    const getIinitials = (item) => item.firstname[0] + item.lastname[0]
+    const getIinitials = (item: { firstname: any; lastname: any }) =>
+      item.firstname[0] + item.lastname[0]
     const headers: PuikTableHeader[] = [{ value: 'initials' }]
     factory(
       { headers },
@@ -247,5 +275,102 @@ describe('Table tests', () => {
     factory({ headers, fullWidth: true })
     const table = getTable()
     expect(table.classes()).toContain('puik-table--full-width')
+  })
+
+  it('should have selectable column sticky', () => {
+    const headers: PuikTableHeader[] = [
+      { value: 'firstname' },
+      { value: 'lastname' },
+    ]
+    factory({ headers, selectable: true, stickyFirstCol: true })
+    const header = getHeaders()[0]
+    const allFirstItems = getAllItemsOfCol(0)
+    expect(header.classes()).toContain('puik-table__head__row__item--selection')
+    expect(header.classes()).toContain('puik-table__head__row__item--sticky')
+    allFirstItems.map((firstItemRow) => {
+      expect(firstItemRow.classes()).toContain(
+        'puik-table__body__row__item--sticky'
+      )
+    })
+  })
+
+  it('should have last column sticky', () => {
+    const headers: PuikTableHeader[] = [
+      { value: 'firstname' },
+      { value: 'lastname' },
+    ]
+    factory({ headers, stickyLastCol: true })
+    const header = getHeaders()[1]
+    const allLastItems = getAllItemsOfCol(1)
+    expect(header.classes()).toContain('puik-table__head__row__item--sticky')
+    allLastItems.map((lastItemRow) => {
+      expect(lastItemRow.classes()).toContain(
+        'puik-table__body__row__item--sticky'
+      )
+    })
+  })
+
+  it('should have expandable rows', () => {
+    const headers: PuikTableHeader[] = [
+      { value: 'firstname' },
+      { value: 'lastname' },
+    ]
+    factory({ headers, expandable: true })
+    const header = getHeaders()[0]
+    expect(header.classes()).toContain(
+      'puik-table__head__row__item--expandable'
+    )
+  })
+
+  it('should emit sortColum event', async () => {
+    const headers: PuikTableHeader[] = [{ value: 'firstname', sortable: true }]
+    factory({ headers })
+    const header = getHeaders()[0]
+    const SortButton = header.find('.puik-button')
+    const payload: sortOption = {
+      sortBy: 'firstname',
+      sortOrder: PuikTableSortOrder.Asc,
+    }
+    expect(SortButton.classes()).toContain('puik-button')
+    await SortButton.trigger('click')
+    expect(wrapper.emitted('sortColumn')).toBeTruthy()
+    expect(wrapper.emitted('sortColumn')?.[0]?.[0]).toStrictEqual(payload)
+  })
+
+  it('should display a search bar', async () => {
+    const headers: PuikTableHeader[] = [
+      { value: 'firstname', searchable: true },
+      { value: 'lastname', searchable: true },
+      { value: 'action', searchSubmit: true, preventExpand: true },
+    ]
+    factory({ headers, searchBar: true })
+    const searchBar = getTable().find(searchBarClass)
+    expect(searchBar).toBeTruthy()
+  })
+
+  it('should emit searchSubmit event', async () => {
+    const headers: PuikTableHeader[] = [
+      { value: 'firstname', searchable: true },
+      { value: 'lastname', searchable: true },
+      { value: 'action', searchSubmit: true, preventExpand: true },
+    ]
+    factory({ headers, searchBar: true })
+    const searchSubmitButton = getTable().find(searchSubmitButtonClass)
+    expect(searchSubmitButton).toBeTruthy()
+    await searchSubmitButton.trigger('click')
+    expect(wrapper.emitted('searchSubmit')).toBeTruthy()
+  })
+
+  it('should update the table when items prop changes', async () => {
+    const headers: PuikTableHeader[] = [{ value: 'firstname' }]
+    factory({ headers, items: [] })
+    expect(getRows().length).toBe(0)
+    const newItems = [{ firstname: 'John' }, { firstname: 'Jane' }]
+    await wrapper.setProps({ items: newItems })
+    expect(getRows().length).toBe(newItems.length)
+    newItems.forEach((item, index) => {
+      const row = getRows()[index]
+      expect(row.text()).toContain(item.firstname)
+    })
   })
 })

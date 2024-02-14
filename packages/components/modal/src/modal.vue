@@ -3,6 +3,7 @@
     :open="isOpen"
     class="puik-modal"
     :class="[`puik-modal--${variant}`, `puik-modal--${size}`]"
+    :data-test="dataTest"
     @close="sendCloseModalEvent()"
   >
     <div class="puik-modal__dialogPanelContainer">
@@ -15,14 +16,22 @@
             v-if="titleIcon || PuikModalVariant.DESTRUCTIVE === variant"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__icon"
             :icon="getTitleIconName"
-            :font-size="24"
+            :font-size="ICON_SIZE"
           />
 
           <puik-tooltip
             :is-disabled="!showTitleTooltip"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__title"
           >
-            <h2 ref="modalTitleElem" class="title">{{ title }}</h2>
+            <h2
+              ref="modalTitleElem"
+              class="title"
+              :data-test="
+                dataTest != undefined ? `title-${dataTest}` : undefined
+              "
+            >
+              {{ title }}
+            </h2>
             <template #description>{{ title }}</template>
           </puik-tooltip>
 
@@ -31,9 +40,12 @@
             :aria-label="t('puik.modal.closeButtonLabel')"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__close-button"
             variant="text"
+            :data-test="
+              dataTest != undefined ? `closeButton-${dataTest}` : undefined
+            "
             @click="sendCloseModalEvent()"
           >
-            <puik-icon icon="close" :font-size="CLOSE_ICON_SIZE" />
+            <puik-icon icon="close" :font-size="ICON_SIZE" />
           </puik-button>
         </header>
         <div class="puik-modal__dialogPanelContainer__dialogPanel__content">
@@ -47,6 +59,9 @@
             v-if="secondButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--second"
             :variant="secondButtonVariant"
+            :data-test="
+              dataTest != undefined ? `secondButton-${dataTest}` : undefined
+            "
             @click="$emit('button-second')"
           >
             {{ secondButtonText }}
@@ -56,6 +71,9 @@
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--main"
             :variant="mainButtonVariant"
             :disabled="isMainButtonDisabled"
+            :data-test="
+              dataTest != undefined ? `mainButton-${dataTest}` : undefined
+            "
             @click="$emit('button-main')"
           >
             {{ mainButtonText }}
@@ -67,6 +85,9 @@
             v-if="PuikModalVariant.DIALOG === variant && sideButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--side"
             variant="text"
+            :data-test="
+              dataTest != undefined ? `sideButton-${dataTest}` : undefined
+            "
             @click="$emit('button-side')"
           >
             {{ sideButtonText }}
@@ -98,7 +119,7 @@ defineOptions({
 })
 
 const { t } = useLocale()
-const CLOSE_ICON_SIZE = 24
+const ICON_SIZE = 24
 
 const props = defineProps(modalProps)
 const emit = defineEmits(modalEmits)

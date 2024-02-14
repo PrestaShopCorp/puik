@@ -8,8 +8,10 @@
       `puik-button--${size}`,
       { 'puik-button--disabled': disabled },
       { 'puik-button--fluid': fluid },
+      { 'puik-button--no-wrap': !wrapLabel },
     ]"
     :disabled="disabled"
+    :data-test="dataTest"
     @click="setSelected"
   >
     <puik-icon
@@ -17,6 +19,7 @@
       :icon="leftIcon"
       :font-size="size !== 'sm' ? '1.25rem' : '1rem'"
       class="puik-button__left-icon"
+      :data-test="dataTest != undefined ? `leftIcon-${dataTest}` : undefined"
     />
     <slot></slot>
     <puik-icon
@@ -24,6 +27,7 @@
       :icon="rightIcon"
       :font-size="size !== 'sm' ? '1.25rem' : '1rem'"
       class="puik-button__right-icon"
+      :data-test="dataTest != undefined ? `rightIcon-${dataTest}` : undefined"
     />
   </component>
 </template>

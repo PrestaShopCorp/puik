@@ -91,6 +91,11 @@ describe('Button tests', () => {
     expect(findButton().classes()).toContain('puik-button--fluid')
   })
 
+  it('should set the button label wrap to false', () => {
+    factory({ wrapLabel: false })
+    expect(findButton().classes()).toContain('puik-button--no-wrap')
+  })
+
   it('should be a router-link if to prop is defined', () => {
     factory({ to: '/test' })
     expect(findButton().element.tagName).toBe('ROUTER-LINK')
@@ -99,5 +104,18 @@ describe('Button tests', () => {
   it('should be a link if href prop is defined', () => {
     factory({ href: '/test' })
     expect(findButton().element.tagName).toBe('A')
+  })
+
+  it('should have a data-test attribute on global component, left-icon and right-icon', () => {
+    factory({
+      leftIcon: 'close',
+      rightIcon: 'close',
+      dataTest: 'button',
+    })
+    expect(findButton().attributes('data-test')).toBe('button')
+    expect(findButtonLeftIcon().attributes('data-test')).toBe('leftIcon-button')
+    expect(findButtonRightIcon().attributes('data-test')).toBe(
+      'rightIcon-button'
+    )
   })
 })

@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import { tabNavigationGroupPanelsProps } from './tab-navigation-group-panels'
+
 defineOptions({
   name: 'PuikTabNavigationGroupPanels',
 })

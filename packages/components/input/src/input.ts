@@ -2,17 +2,15 @@ import { buildProps } from '@puik/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type Input from './input.vue'
 
-export const inputTypes = [
-  'text',
-  'password',
-  'email',
-  'number',
-  'search',
-  'url',
-  'tel',
-] as const
-
-export type PuikInputType = (typeof inputTypes)[number]
+export enum PuikInputTypes {
+  Text = 'text',
+  Password = 'password',
+  Email = 'email',
+  Number = 'number',
+  Search = 'search',
+  Url = 'url',
+  Phone = 'tel',
+}
 
 export const inputProps = buildProps({
   modelValue: {
@@ -21,9 +19,9 @@ export const inputProps = buildProps({
     default: '',
   },
   type: {
-    type: String as PropType<PuikInputType>,
+    type: String as PropType<PuikInputTypes>,
     required: false,
-    default: 'text',
+    default: PuikInputTypes.Text,
   },
   id: {
     type: String,
@@ -89,6 +87,11 @@ export const inputProps = buildProps({
     type: Boolean,
     required: false,
     default: false,
+  },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
   },
 } as const)
 

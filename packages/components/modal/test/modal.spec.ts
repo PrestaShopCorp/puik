@@ -45,8 +45,9 @@ describe('Modal tests', () => {
     wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header')
 
   const homeTitleIcon = 'home'
+  const findTitle = () => wrapper.find('.title')
 
-  const factory = (
+  const factory = async (
     propsData: Record<string, any> = {},
     options: MountingOptions<any> = {}
   ) => {
@@ -230,5 +231,40 @@ describe('Modal tests', () => {
     })
 
     expect(findHeader().exists()).toBeFalsy()
+  })
+
+  it('should have a data-test attribute on container div, title, mainButton, secondButton and closeButton', async () => {
+    await factory({
+      title: 'Awesome title',
+      mainButtonText: 'Awesome main',
+      secondButtonText: 'Awesome second',
+      isOpen: true,
+      hasCloseButton: true,
+      dataTest: 'test',
+    })
+    expect(findModal().attributes('data-test')).toBe('test')
+    expect(findTitle().attributes('data-test')).toBe('title-test')
+    expect(findMainButton().attributes('data-test')).toBe('mainButton-test')
+    expect(findSecondaryButton().attributes('data-test')).toBe(
+      'secondButton-test'
+    )
+    expect(findCloseButton().attributes('data-test')).toBe('closeButton-test')
+  })
+  it('should have a data-test attribute on side button', async () => {
+    const sideButtonText = 'Awesome side button'
+
+    await factory({
+      title: 'Awesome title',
+      mainButtonText: 'Awesome main',
+      secondButtonText: 'Awesome second',
+      isOpen: true,
+      titleIcon: homeTitleIcon,
+      variant: PuikModalVariant.DIALOG,
+      sideButtonText,
+      dataTest: 'test',
+    })
+    expect(findSideButton().exists()).toBeTruthy()
+    expect(findSideButton().text()).toBe(sideButtonText)
+    expect(findSideButton().attributes('data-test')).toBe('sideButton-test')
   })
 })

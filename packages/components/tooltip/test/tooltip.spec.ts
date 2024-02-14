@@ -5,10 +5,12 @@ import type { MountingOptions, VueWrapper } from '@vue/test-utils'
 
 describe('Tooltip tests', () => {
   let wrapper: VueWrapper<any>
+  const findToolTipContainer = () => wrapper.find('.puik-tooltip')
   const findTitle = () => wrapper.find('.puik-tooltip__tip__content__title')
   const findDescription = () =>
     wrapper.find('.puik-tooltip__tip__content__description')
   const findToolTip = () => wrapper.find('.puik-tooltip__tip')
+  const findWrapper = () => wrapper.find('.puik-tooltip__wrapper')
 
   const factory = (
     propsData: Record<string, any> = {},
@@ -72,5 +74,17 @@ describe('Tooltip tests', () => {
     expect(findToolTip().element.style.getPropertyValue('max-width')).toBe(
       '200px'
     )
+  })
+
+  it('should have a data-test attribute for the container div, the content, the title and the description', () => {
+    factory({
+      title: 'long title for displaying the tooltip',
+      description: 'long description for displaying the tooltip',
+      'data-test': 'test',
+    })
+    expect(findToolTipContainer().attributes('data-test')).toBe('test')
+    expect(findTitle().attributes('data-test')).toBe('title-test')
+    expect(findDescription().attributes('data-test')).toBe('description-test')
+    expect(findWrapper().attributes('data-test')).toBe('content-test')
   })
 })

@@ -19,9 +19,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject, ref, watch } from 'vue'
+import { computed, inject, watch } from 'vue'
 import { currentTabKey } from './tab-navigation'
 import { tabNavigationTitleProps } from './tab-navigation-title'
+
 defineOptions({
   name: 'PuikTabNavigationTitle',
 })

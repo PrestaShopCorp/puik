@@ -54,6 +54,21 @@ export const linkProps = buildProps({
     required: false,
     default: undefined,
   },
+  dataTest: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+  highContrast: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  articles: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 } as const)
 
 export type LinkProps = ExtractPropTypes<typeof linkProps>
