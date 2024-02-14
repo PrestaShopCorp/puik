@@ -484,14 +484,14 @@ export const Default: StoryObj = {
     v-model:selection="selection"
     :headers="headers"
     :items="items"
-    :expandable: args.expandable,
-    :selectable: args.selectable,
-    :searchBar: args.searchBar,
-    :searchFromServer: args.searchFromServer,
-    :sortFromServer: args.sortFromServer,
-    :fullWidth: args.fullWidth,
-    :stickyFirstCol: args.stickyFirstCol,
-    :stickyLastCol: args.stickyLastCol,
+    :expandable="args.expandable",
+    :selectable="args.selectable",
+    :searchBar="args.searchBar",
+    :searchFromServer="args.searchFromServer",
+    :sortFromServer="args.sortFromServer",
+    :fullWidth="args.fullWidth",
+    :stickyFirstCol="args.stickyFirstCol",
+    :stickyLastCol="args.stickyLastCol",
   >
     <template #item-actions="{ item }">
       <puik-button
@@ -1743,7 +1743,7 @@ export const stickyColumns: StoryObj = {
     v-model:selection="selection"
     :headers="headers"
     :items="items"
-    :selectable: true,
+    :selectable="true",
     :stickyFirstCol="true"
     :stickyLastCol="true"
   >

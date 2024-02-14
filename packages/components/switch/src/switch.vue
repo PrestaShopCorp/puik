@@ -53,15 +53,6 @@ const emit = defineEmits<{
 }>();
 const { t } = useLocale();
 
-// const value = computed({
-//   get() {
-//     return props.modelValue;
-//   },
-//   set(value: boolean) {
-//     emit('update:modelValue', value);
-//   }
-// });
-
 const value = computed({
   get() {
     return (props.modelValue === true || props.modelValue === 'true');
