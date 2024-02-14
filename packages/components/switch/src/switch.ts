@@ -4,7 +4,7 @@ export interface SwitchProps {
   label?: string
   labelRight?: string
   disabled?: boolean
-  modelValue?: boolean
+  modelValue?: boolean | string
   screenReaderText?: string
 }
 

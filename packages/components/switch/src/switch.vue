@@ -49,13 +49,22 @@ defineOptions({
 
 const props = defineProps<SwitchProps>();
 const emit = defineEmits<{
-  'update:modelValue': [value: boolean]
+  'update:modelValue': [value: boolean | string]
 }>();
 const { t } = useLocale();
 
+// const value = computed({
+//   get() {
+//     return props.modelValue;
+//   },
+//   set(value: boolean) {
+//     emit('update:modelValue', value);
+//   }
+// });
+
 const value = computed({
   get() {
-    return props.modelValue;
+    return (props.modelValue === true || props.modelValue === 'true');
   },
   set(value: boolean) {
     emit('update:modelValue', value);
@@ -64,8 +73,7 @@ const value = computed({
 
 const screenReader = computed(
   () =>
-    `${value.value ? t('puik.switch.disable') : t('puik.switch.enable')} ${
-      props.screenReaderText
+    `${value.value ? t('puik.switch.disable') : t('puik.switch.enable')} ${props.screenReaderText
     }`
 );
 </script>

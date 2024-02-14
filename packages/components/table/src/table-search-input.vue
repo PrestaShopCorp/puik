@@ -118,3 +118,8 @@ const sendRangeValue = (
   emit('searchRangeValue', searchOption);
 };
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/puik-input.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+</style>
