@@ -37,6 +37,7 @@
             </p>
             <puik-button
               v-if="message.link"
+              size="sm"
               class="notification-bar-item__link"
               variant="primary"
               right-icon="arrow_forward"
@@ -46,18 +47,25 @@
             </puik-button>
           </div>
         </div>
-        <puik-button
-          v-if="closable"
-          class="notification-bar__close-button"
-          variant="text"
-          @click="close"
+        <div
+          :class="[
+            'notification-bar-close__container',
+            `notification-bar-close__container--${variant}`,
+          ]"
         >
-          <puik-icon
-            class="notification-bar-close-button__icon"
-            icon="close"
-            font-size="1.5rem"
-          />
-        </puik-button>
+          <puik-button
+            v-if="closable"
+            class="notification-bar__close-button"
+            variant="text"
+            @click="close"
+          >
+            <puik-icon
+              class="notification-bar-close-button__icon"
+              icon="close"
+              font-size="1.5rem"
+            />
+          </puik-button>
+        </div>
       </aside>
     </div>
   </teleport>
