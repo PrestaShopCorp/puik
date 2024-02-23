@@ -13,7 +13,7 @@ const Template: StoryFn = (args: Args) => ({
   setup() {
     return { args };
   },
-  template: '<puik-SnackbarProvider></puik-SnackbarProvider>'
+  template: '<puik-snackbar-provider></puik-snackbar-provider>'
 });
 
 export const Default = {
