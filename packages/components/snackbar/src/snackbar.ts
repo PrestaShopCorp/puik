@@ -5,30 +5,18 @@ export enum PuikSnackbarVariants {
   Danger = 'danger',
   Success = 'success',
 }
-
-export interface SnackbarAction {
-  label: string
-  callback: () => void
-}
-
-export interface PuikSnackbarOptions {
+export interface SnackbarProps {
+  id?: string
+  open?: boolean
   text: string
   variant?: `${PuikSnackbarVariants}`
-  action?: SnackbarAction
   duration?: number
   offset?: number
   hasCloseButton?: boolean
-  onClose?: () => void
 }
 
-export interface SnackbarProps extends PuikSnackbarOptions {
-  id: string
-}
-
-export const snackbarEmits = {
-  destroy: () => true
+export type SnackbarEmits = {
+  'update:open': [value: boolean]
 };
-
-export type SnackbarEmits = typeof snackbarEmits;
 
 export type SnackbarInstance = InstanceType<typeof Snackbar>;

@@ -1,104 +1,57 @@
 <template>
-  <transition
-    enter-from-class="puik-snackbar__transition--enter-from"
-    leave-to-class="puik-snackbar__transition--leave-to"
-    @before-leave="onClose"
-    @after-leave="$emit('destroy')"
+  <ToastRoot
+    v-bind="forwarded"
+    :class="['puik-snackbar-root',`puik-snackbar-root--${variant}`]"
   >
-    <div
-      v-show="visible"
-      :id="props.id"
-      class="puik-snackbar"
-      :class="`puik-snackbar--${variant}`"
-      :style="position"
-      role="status"
-      aria-live="polite"
-      @mouseenter="resetTimer"
-      @mouseleave="startTimer"
+    <ToastTitle class="puik-snackbar-title">
+      {{ text }}
+    </ToastTitle>
+    <ToastAction
+      class="puik-snackbar-action"
+      as-child
+      alt-text="alt-text"
     >
-      <span class="puik-snackbar__text">{{ text }}</span>
-      <button
-        v-if="action"
-        class="puik-snackbar__action"
-        @click="action?.callback(), close()"
-      >
-        {{ action.label }}
-      </button>
-      <button
-        v-if="hasCloseButton"
-        class="puik-snackbar__close-button"
-        :aria-label="t('puik.snackbar.closeBtnLabel')"
-        @click="close"
-      >
-        close
-      </button>
-    </div>
-  </transition>
+      <slot name="action">
+        <puik-button
+          size="md"
+          variant="text-reverse"
+        >
+          undo
+        </puik-button>
+      </slot>
+    </ToastAction>
+    <ToastClose
+      v-if="hasCloseButton"
+      aria-label="Close"
+    >
+      <PuikIcon
+        icon="close"
+        aria-hidden
+      />
+    </ToastClose>
+  </ToastRoot>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
-import { useTimeoutFn, useEventListener } from '@vueuse/core';
-import { useLocale } from '@prestashopcorp/puik-locale';
+import { useForwardPropsEmits, ToastAction, ToastClose, ToastTitle, ToastRoot } from 'radix-vue';
+import { type SnackbarProps, SnackbarEmits } from './snackbar';
 import { PuikSnackbarVariants } from './snackbar';
-import type { SnackbarProps } from './snackbar';
-import type { CSSProperties } from 'vue';
+import { PuikButton, PuikIcon } from '@prestashopcorp/puik-components';
 
 defineOptions({
   name: 'PuikSnackbar'
 });
 
-defineEmits<{
-  destroy: []
-}>();
-
-const { t } = useLocale();
-let timer: (() => void) | undefined;
-
-const visible = ref(false);
-
 const props = withDefaults(defineProps<SnackbarProps>(), {
-  variant: PuikSnackbarVariants.Default,
-  offset: 0,
-  duration: 3000,
-  hasCloseButton: true
+  variant: PuikSnackbarVariants.Default
 });
+const emits = defineEmits<SnackbarEmits>();
+const forwarded = useForwardPropsEmits(props, emits);
 
-const position = computed<CSSProperties>(() => ({
-  bottom: `${props.offset}px`
-}));
-
-const close = () => {
-  visible.value = false;
-};
-
-const startTimer = () => {
-  if (props.duration > 0) {
-    ({ stop: timer } = useTimeoutFn(() => {
-      close();
-    }, props.duration));
-  }
-};
-
-const resetTimer = () => timer?.();
-
-const onKeyDown = ({ code }: KeyboardEvent) => {
-  if (code === 'Escape') {
-    if (visible.value) {
-      close();
-    }
-  }
-};
-
-useEventListener(document, 'keydown', onKeyDown);
-
-onMounted(() => {
-  startTimer();
-  visible.value = true;
-});
 </script>
 
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-snackbar.scss';
+@use '@prestashopcorp/puik-theme/src/puik-button.scss';
 </style>
