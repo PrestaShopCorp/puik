@@ -54,10 +54,6 @@ declare module '@vue/runtime-core' {
     PuikButton: (typeof import('@prestashopcorp/puik-components'))['PuikButton']
     PuikConfigProvider: (typeof import('@prestashopcorp/puik-components'))['PuikConfigProvider']
   }
-
-  // interface ComponentCustomProperties {
-  //   PuikSnackbar: (typeof import('@prestashopcorp/puik-components'))['PuikSnackbar']
-  // }
 }
 
 export {};
