@@ -13,7 +13,13 @@ export default {
       control: 'none',
       table: {
         type: {
-          summary: '{ to: string, prepend?: boolean }',
+          summary: 'NotificationBarTeleport',
+          detail: `
+interface NotificationBarTeleport {
+  to: string
+  prepend?: boolean
+}
+          `,
         },
         defaultValue: {
           summary: null,
@@ -50,8 +56,15 @@ export default {
       control: 'object',
       table: {
         type: {
-          summary:
-            '{ icon?: string, text: string, link?: { url: string, text: string }}',
+          summary: 'PuikMessagesType',
+          detail: `
+type PuikMessagesType = NotificationBarMessage[]
+interface NotificationBarMessage {
+  icon?: string
+  text: string
+  link?: NotificationLink
+}
+          `,
         },
         defaultValue: {
           summary: null,
@@ -96,12 +109,24 @@ export const Default = {
       source: {
         code: `
         <!--VueJS Snippet-->
+        const messages: PuikMessagesType = [
+          {
+            icon: "sentiment_satisfied",
+            text: "Promo thèmes: profitez de -20% sur tous les thèmes PrestaShop",
+            link: {
+              url: "#",
+              text: "J'en profite",
+            },
+          },
+        ]
+
         <puik-notification-bar
             :teleport="null"
             variant="blue"
             closable
-            :messages="{ icon: 'sentiment_satisfied', text: 'Promo thèmes: profitez de -20% sur tous les thèmes PrestaShop', link: { url: '#', text: 'J'en profite' }}"
+            :messages="messages"
         />
+
         <!--HTML/CSS Snippet-->
         <div class="puik-notification-bar">
             <aside class="puik-notification-bar__container puik-notification-bar__container--blue puik-notification-bar__container--closable">

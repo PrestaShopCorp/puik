@@ -17,7 +17,7 @@ $component-name: notification-bar;
   }
 
   .#{$component-name}__item {
-    @apply flex sm:justify-center sm:items-center gap-2 px-4 sm:px-6;
+    @apply flex justify-center items-center gap-2 px-4 sm:px-6;
     grid-area: 1 / 1;
     transition: transform 0.8s cubic-bezier(0.4, 0.14, 1, 1);
 
@@ -34,7 +34,7 @@ $component-name: notification-bar;
     }
 
     .#{$component-name}-item__icon {
-      @apply text-2xl leading-6 self-start sm:self-center;
+      @apply text-2xl leading-7;
     }
 
     .#{$component-name}-item__content {
@@ -43,9 +43,8 @@ $component-name: notification-bar;
       .#{$component-name}-item__text {
         @apply font-medium text-xs leading-[1.125rem] sm:text-sm w-full sm:w-auto;
       }
-
       .#{$component-name}-item__link {
-        @apply sm:h-7 sm:py-1 sm:px-2 sm:text-xs;
+        @apply max-h-7 sm:py-1 sm:px-2 sm:text-xs;
       }
     }
   }
@@ -56,11 +55,23 @@ $component-name: notification-bar;
     }
   }
 
-  .#{$component-name}__close-button {
-    @apply absolute right-3 top-3.5 sm:top-2.5 p-1 flex justify-center items-center w-6 h-6 focus-visible:outline-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-blue;
-
-    .#{$component-name}-close-button__icon {
-      @apply w-6 h-6 leading-6;
+  .#{$component-name}-close__container {
+    @apply absolute top-0 bottom-0 right-0 py-4 sm:py-2 pr-4 sm:pr-6 pl-2 w-fit flex items-start;
+    &--blue {
+      @apply bg-ocean-blue;
     }
+    &--purple {
+      @apply bg-purple;
+    }
+    &--yellow {
+      @apply bg-amber;
+    }
+    &--green {
+      @apply bg-green-marketing;
+    }
+  }
+
+  .#{$component-name}__close-button {
+    @apply p-0 min-h-0 focus-visible:outline-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-blue;
   }
 }
