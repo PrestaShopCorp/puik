@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-// const Puiktheme = require('./theme')
-import PuikTheme from './theme'
+const Puiktheme = require('./theme')
 
-export default {
-  theme: PuikTheme,
+module.exports = {
+  theme: Puiktheme,
 }

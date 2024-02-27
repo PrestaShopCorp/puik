@@ -8,7 +8,6 @@ import esbuild from 'rollup-plugin-esbuild'
 import { parallel } from 'gulp'
 import glob from 'fast-glob'
 import { camelCase, upperFirst } from 'lodash-unified'
-import json from '@rollup/plugin-json'
 import { version } from '../../../packages/puik/version'
 import { PuikAlias } from '../plugins/puik-alias'
 import {
@@ -49,7 +48,6 @@ async function buildFullEntry(minify: boolean) {
           'process.env.NODE_ENV': JSON.stringify('production'),
         },
       }),
-      json(),
     ],
     external: await generateExternal({ full: true }),
   })
@@ -99,7 +97,6 @@ async function buildFullLocale(minify: boolean) {
             sourceMap: minify,
             target,
           }),
-          json(),
         ],
       })
       await writeBundles(bundle, [

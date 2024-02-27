@@ -40,7 +40,7 @@ describe('Icon tests', () => {
       isDisabled: true,
     })
 
-    expect(findIcon().element.style.color).toBe('rgb(187, 187, 187)')
+    expect(findIcon().classes()).toContain('puik-icon--disabled')
   })
 
   it('should set the color', async () => {
@@ -84,6 +84,3 @@ describe('Icon tests', () => {
     expect(findIcon().attributes('data-test')).toBe('test')
   })
 })
-function resolveConfig(tailwindConfig: any) {
-  throw new Error('Function not implemented.')
-}
