@@ -14,7 +14,7 @@
       >
         <input
           ref="labelInput"
-          :value="currentLabel"
+          :value="customLabel || currentLabel"
           class="puik-select__selected"
           :autocomplete="autocomplete"
           :placeholder="placeholder"
@@ -113,7 +113,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide, ref, useSlots, watch } from 'vue'
+import { computed, provide, ref, useSlots } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
 import { isObject, isFunction, isArray, slotIsEmpty } from '@puik/utils'
 import { useLocale } from '@puik/hooks'
@@ -142,19 +142,12 @@ const query = ref('')
 const currentLabel = ref()
 
 const selectedValue = computed({
-  get() {
-    return props.modelValue
-  },
-  set(option: any) {
-    currentLabel.value = props.customLabel ?? option.label
-    emit('update:modelValue', option.value)
+  get: () => props.modelValue,
+  set: (option: any) => {
+    currentLabel.value = option.label
+    return emit('update:modelValue', option.value)
   },
 })
-
-watch(
-  () => props.customLabel,
-  () => (currentLabel.value = props.customLabel)
-)
 
 const filteredItems = computed(() => {
   if (props.options) {
@@ -177,7 +170,7 @@ const filteredItems = computed(() => {
 const hasError = computed(() => props.error || slotIsEmpty(slots.error))
 
 const handleAutoComplete = (label: string | number) => {
-  if (label === currentLabel.value) return
+  if (label === props.customLabel || currentLabel.value) return
   if (labelInput.value) {
     labelInput.value.value = ''
   }
