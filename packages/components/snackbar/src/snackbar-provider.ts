@@ -1,8 +1,18 @@
 import type SnackbarProvider from './snackbar-provider.vue';
 
-export enum PuikSnackbarDirections {
+export enum PuikSnackbarSwipeDirections {
   Right = 'right',
   Left = 'left',
+  Up = 'up',
+  Down = 'down',
+}
+
+export enum PuikSnackbarPositionsX {
+  Left = 'left',
+  Center = 'center',
+  Right = 'right',
+}
+export enum PuikSnackbarPositionsY {
   Up = 'up',
   Down = 'down',
 }
@@ -10,8 +20,10 @@ export enum PuikSnackbarDirections {
 export interface SnackbarProviderProps {
   duration?: number
   label?: string
-  swipeDirection?: `${PuikSnackbarDirections}`
+  swipeDirection?: `${PuikSnackbarSwipeDirections}`
   swipeThreshold?: number
+  positionX?: `${PuikSnackbarPositionsX}`
+  positionY?: `${PuikSnackbarPositionsY}`
 }
 
 export type SnackbarProviderInstance = InstanceType<typeof SnackbarProvider>;

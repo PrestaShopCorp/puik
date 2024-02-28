@@ -1,12 +1,18 @@
 <template>
   <ToastProvider v-bind="props">
     <slot />
-    <ToastViewport class="puik-snackbar-viewport" />
+    <ToastViewport
+      :class="[
+        'puik-snackbar-viewport',
+        `puik-snackbar-viewport--${positionX}`,
+        `puik-snackbar-viewport--${positionY}`,
+      ]"
+    />
   </ToastProvider>
 </template>
 
 <script setup lang="ts">
-import { SnackbarProviderProps, PuikSnackbarDirections } from './snackbar-provider';
+import { SnackbarProviderProps, PuikSnackbarSwipeDirections, PuikSnackbarPositionsX, PuikSnackbarPositionsY } from './snackbar-provider';
 import { ToastProvider, ToastViewport } from 'radix-vue';
 defineOptions({
   name: 'PuikSnackbarProvider'
@@ -15,8 +21,10 @@ defineOptions({
 const props = withDefaults(defineProps<SnackbarProviderProps>(), {
   duration: 5000,
   label: 'Notification',
-  swipeDirection: PuikSnackbarDirections.Right,
-  swipeThreshold: 50
+  swipeDirection: PuikSnackbarSwipeDirections.Right,
+  swipeThreshold: 50,
+  positionX: PuikSnackbarPositionsX.Center,
+  positionY: PuikSnackbarPositionsY.Down
 });
 </script>
 
