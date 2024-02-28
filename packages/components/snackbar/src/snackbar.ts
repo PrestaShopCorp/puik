@@ -8,7 +8,8 @@ export enum PuikSnackbarVariants {
 export interface SnackbarProps {
   id?: string
   open?: boolean
-  text: string
+  title?: string
+  description: string
   variant?: `${PuikSnackbarVariants}`
   duration?: number
   offset?: number

@@ -1,22 +1,33 @@
+@use './common/typography.scss';
+
 .puik-snackbar-root {
- @apply text-white p-4 flex space-x-2 items-center;
+ @apply text-white p-4 flex items-center justify-between space-x-2;
  &--default{
-  @apply bg-primary;
- }
- &--success{
-  @apply bg-green;
- }
- &--danger{
-  @apply bg-red;
- }
+   @apply bg-primary;
+  }
+  &--success{
+    @apply bg-green;
+  }
+  &--danger{
+    @apply bg-red;
+  }
+}
+.puik-snackbar-message {
+  @apply grow;
 }
 .puik-snackbar-title {
- @apply grow font-medium pr-5;
+  @extend .puik-body-default-bold;
+  @apply pb-2;
+}
+.puik-snackbar-description {
+  @extend .puik-body-default;
 }
 .puik-snackbar-action {
+  @apply self-start;
 }
-
-/* styles.css */
+.puik-snackbar-close {
+  @apply self-start py-2;
+}
 .puik-snackbar-root[data-swipe='move'] {
   transform: translateX(var(--radix-toast-swipe-move-x));
 }
@@ -27,7 +38,6 @@
 .puik-snackbar-root[data-swipe='end'] {
   animation: slideRight 100ms ease-out;
 }
-
 @keyframes slideRight {
   from {
     transform: translateX(var(--radix-toast-swipe-end-x));

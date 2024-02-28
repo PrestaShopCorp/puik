@@ -1,11 +1,19 @@
 <template>
   <ToastRoot
     v-bind="forwarded"
-    :class="['puik-snackbar-root',`puik-snackbar-root--${variant}`]"
+    :class="['puik-snackbar-root', `puik-snackbar-root--${variant}`]"
   >
-    <ToastTitle class="puik-snackbar-title">
-      {{ text }}
-    </ToastTitle>
+    <div class="puik-snackbar-message">
+      <ToastTitle
+        v-if="title"
+        class="puik-snackbar-title"
+      >
+        {{ title }}
+      </ToastTitle>
+      <ToastDescription class="puik-snackbar-description">
+        {{ description }}
+      </ToastDescription>
+    </div>
     <ToastAction
       class="puik-snackbar-action"
       as-child
@@ -22,6 +30,7 @@
     </ToastAction>
     <ToastClose
       v-if="hasCloseButton"
+      class="puik-snackbar-close"
       aria-label="Close"
     >
       <PuikIcon
@@ -33,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { useForwardPropsEmits, ToastAction, ToastClose, ToastTitle, ToastRoot } from 'radix-vue';
+import { useForwardPropsEmits, ToastAction, ToastClose, ToastTitle, ToastRoot, ToastDescription } from 'radix-vue';
 import { type SnackbarProps, SnackbarEmits } from './snackbar';
 import { PuikSnackbarVariants } from './snackbar';
 import { PuikButton, PuikIcon } from '@prestashopcorp/puik-components';
@@ -54,4 +63,5 @@ const forwarded = useForwardPropsEmits(props, emits);
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-snackbar.scss';
 @use '@prestashopcorp/puik-theme/src/puik-button.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
 </style>

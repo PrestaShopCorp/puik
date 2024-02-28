@@ -2,6 +2,7 @@
   <ToastProvider v-bind="props">
     <slot />
     <ToastViewport
+      v-bind="$attrs"
       :class="[
         'puik-snackbar-viewport',
         `puik-snackbar-viewport--${positionX}`,
