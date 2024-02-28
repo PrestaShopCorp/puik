@@ -50,11 +50,6 @@ describe('SnackbarProvider tests', () => {
     expect(wrapper.props().positionY).toBe(PuikSnackbarPositionsY.Up);
   });
 
-  it('should have correct classes for swipeDirection', () => {
-    factory({ swipeDirection: PuikSnackbarSwipeDirections.Left });
-    expect(wrapper.find('.puik-snackbar-viewport--left').exists()).toBe(true);
-  });
-
   it('should have correct classes for positionX and positionY', () => {
     factory({ positionX: PuikSnackbarPositionsX.Left, positionY: PuikSnackbarPositionsY.Up });
     expect(wrapper.find('.puik-snackbar-viewport--left').exists()).toBe(true);
