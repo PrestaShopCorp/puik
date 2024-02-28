@@ -1,3 +1,4 @@
+import { PuikSnackbarSwipeDirections } from '..';
 import type Snackbar from './snackbar.vue';
 
 export enum PuikSnackbarVariants {
@@ -11,6 +12,7 @@ export interface SnackbarProps {
   title?: string
   description: string
   variant?: `${PuikSnackbarVariants}`
+  swipeDirection?: `${PuikSnackbarSwipeDirections}`
   duration?: number
   offset?: number
   hasCloseButton?: boolean

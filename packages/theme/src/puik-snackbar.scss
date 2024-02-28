@@ -16,7 +16,7 @@
   @apply grow;
 }
 .puik-snackbar-title {
-  @extend .puik-body-default-bold;
+  @extend .puik-body-large-medium;
   @apply pb-2;
 }
 .puik-snackbar-description {
@@ -28,21 +28,67 @@
 .puik-snackbar-close {
   @apply self-start py-2;
 }
-.puik-snackbar-root[data-swipe='move'] {
+
+.puik-snackbar-root--swipe-right[data-swipe='move'] {
   transform: translateX(var(--radix-toast-swipe-move-x));
 }
-.puik-snackbar-root[data-swipe='cancel'] {
-  transform: translateX(0);
-  transition: transform 200ms ease-out;
+.puik-snackbar-root--swipe-left[data-swipe='move'] {
+  transform: translateX(var(--radix-toast-swipe-move-x));
 }
-.puik-snackbar-root[data-swipe='end'] {
+.puik-snackbar-root--swipe-up[data-swipe='move'] {
+  transform: translateY(var(--radix-toast-swipe-move-y));
+}
+.puik-snackbar-root--swipe-down[data-swipe='move'] {
+  transform: translateY(var(--radix-toast-swipe-move-y));
+}
+
+.puik-snackbar-root--swipe-right[data-swipe='end'] {
   animation: slideRight 100ms ease-out;
 }
+.puik-snackbar-root--swipe-left[data-swipe='end'] {
+  animation: slideLeft 100ms ease-out;
+}
+.puik-snackbar-root--swipe-up[data-swipe='end'] {
+  animation: slideUp 100ms ease-out;
+}
+.puik-snackbar-root--swipe-down[data-swipe='end'] {
+  animation: slideDown 100ms ease-out;
+}
+
+.puik-snackbar-root[data-swipe='cancel'] {
+  transform: translate(0);
+  transition: transform 200ms ease-out;
+}
+
 @keyframes slideRight {
   from {
     transform: translateX(var(--radix-toast-swipe-end-x));
   }
   to {
     transform: translateX(100%);
+  }
+}
+@keyframes slideLeft {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(var(--radix-toast-swipe-end-y));
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes slideDown{
+  from {
+    transform: translateY(var(--radix-toast-swipe-end-y));
+  }
+  to {
+    transform: translateY(100%);
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <ToastRoot
     v-bind="forwarded"
-    :class="['puik-snackbar-root', `puik-snackbar-root--${variant}`]"
+    :class="['puik-snackbar-root', `puik-snackbar-root--${variant}`, `puik-snackbar-root--swipe-${swipeDirection}`]"
   >
     <div class="puik-snackbar-message">
       <ToastTitle
@@ -43,16 +43,18 @@
 
 <script setup lang="ts">
 import { useForwardPropsEmits, ToastAction, ToastClose, ToastTitle, ToastRoot, ToastDescription } from 'radix-vue';
-import { type SnackbarProps, SnackbarEmits } from './snackbar';
-import { PuikSnackbarVariants } from './snackbar';
 import { PuikButton, PuikIcon } from '@prestashopcorp/puik-components';
+import { PuikSnackbarSwipeDirections } from './snackbar-provider';
+import { PuikSnackbarVariants } from './snackbar';
+import { type SnackbarProps, SnackbarEmits } from './snackbar';
 
 defineOptions({
   name: 'PuikSnackbar'
 });
 
 const props = withDefaults(defineProps<SnackbarProps>(), {
-  variant: PuikSnackbarVariants.Default
+  variant: PuikSnackbarVariants.Default,
+  swipeDirection: PuikSnackbarSwipeDirections.Right
 });
 const emits = defineEmits<SnackbarEmits>();
 const forwarded = useForwardPropsEmits(props, emits);
