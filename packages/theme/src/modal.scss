@@ -6,7 +6,7 @@
     @apply invisible;
   }
   .puik-modal__dialogPanelContainer__dialogPanel {
-    @apply w-full sm:w-auto;
+    @apply w-full;
   }
   &--destructive {
     .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
