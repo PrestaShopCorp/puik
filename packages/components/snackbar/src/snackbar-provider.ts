@@ -18,8 +18,8 @@ export enum PuikSnackbarPositionsY {
 }
 
 export interface SnackbarProviderProps {
-  duration?: number
   label?: string
+  duration?: number
   swipeDirection?: `${PuikSnackbarSwipeDirections}`
   swipeThreshold?: number
   positionX?: `${PuikSnackbarPositionsX}`

@@ -1,14 +1,16 @@
 <template>
   <ToastProvider v-bind="props">
     <slot />
-    <ToastViewport
-      v-bind="$attrs"
-      :class="[
-        'puik-snackbar-viewport',
-        `puik-snackbar-viewport--${positionX}`,
-        `puik-snackbar-viewport--${positionY}`,
-      ]"
-    />
+    <Teleport to="body">
+      <ToastViewport
+        v-bind="$attrs"
+        :class="[
+          'puik-snackbar-viewport',
+          `puik-snackbar-viewport--${positionX}`,
+          `puik-snackbar-viewport--${positionY}`,
+        ]"
+      />
+    </Teleport>
   </ToastProvider>
 </template>
 
