@@ -134,7 +134,6 @@ const Template: StoryFn = (args: Args) => ({
     @update:open="snackbarArgs.open = false">
     <template #action>
       <puik-button
-        variant="text-reverse"
         @click="console.log('action btn triggered')"
       >
         action
@@ -167,7 +166,6 @@ export const Default = {
     @update:open="snackbarArgs.open = false">
     <template #action>
       <puik-button
-        variant="text-reverse"
         @click="console.log('action btn triggered')"
       >
         action

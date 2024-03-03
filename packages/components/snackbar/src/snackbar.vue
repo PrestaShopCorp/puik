@@ -19,14 +19,7 @@
       as-child
       alt-text="alt-text"
     >
-      <slot name="action">
-        <puik-button
-          size="sm"
-          variant="text-reverse"
-        >
-          undo
-        </puik-button>
-      </slot>
+      <slot name="action" />
     </ToastAction>
     <ToastClose
       v-if="hasCloseButton"
@@ -43,7 +36,7 @@
 
 <script setup lang="ts">
 import { useForwardPropsEmits, ToastAction, ToastClose, ToastTitle, ToastRoot, ToastDescription } from 'radix-vue';
-import { PuikButton, PuikIcon } from '@prestashopcorp/puik-components';
+import { PuikIcon } from '@prestashopcorp/puik-components';
 import { PuikSnackbarVariants, PuikSnackbarSwipeAnimations } from './snackbar';
 import { type SnackbarProps, SnackbarEmits } from './snackbar';
 
