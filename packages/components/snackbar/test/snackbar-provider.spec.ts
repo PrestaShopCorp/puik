@@ -52,7 +52,7 @@ describe('SnackbarProvider tests', () => {
 
   it('should have correct classes for positionX and positionY', () => {
     factory({ positionX: PuikSnackbarPositionsX.Left, positionY: PuikSnackbarPositionsY.Up });
-    expect(wrapper.find('.puik-snackbar-viewport--left').exists()).toBe(true);
-    expect(wrapper.find('.puik-snackbar-viewport--up').exists()).toBe(true);
+    expect(document.body.querySelector('.puik-snackbar-viewport--left')).toBeTruthy();
+    expect(document.body.querySelector('.puik-snackbar-viewport--up')).toBeTruthy();
   });
 });
