@@ -2,7 +2,7 @@
 
 .puik-snackbar-root {
  @apply text-white p-4 flex items-center justify-between space-x-2;
- animation: slideIn 100ms ease-in;
+ animation: slideIn 250ms ease-in;
  &--default{
    @apply bg-primary;
   }
@@ -64,7 +64,7 @@
 @keyframes slideIn{
   from {
     opacity: 0;
-    transform: translateY(-25%);
+    transform: translateY(100%);
   }
   to {
     opacity: 1;

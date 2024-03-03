@@ -47,7 +47,16 @@ export default {
       options: snackbarVariants,
       table: {
         type: {
-          summary: snackbarVariantsSummary
+          summary: snackbarVariantsSummary,
+          detail: `
+import { PuikSnackbarVariants } from '@prestashopcorp/puik-components';
+
+enum PuikSnackbarVariants {
+  Default = 'default',
+  Danger = 'danger',
+  Success = 'success',
+}
+          `
         },
         defaultValue: {
           summary: 'default'
@@ -60,7 +69,17 @@ export default {
       options: snackbarSwipeAnimations,
       table: {
         type: {
-          summary: snackbarSwipeAnimationsSummary
+          summary: snackbarSwipeAnimationsSummary,
+          detail: `
+import { PuikSnackbarSwipeAnimations } from '@prestashopcorp/puik-components';
+
+enum PuikSnackbarSwipeAnimations {
+  Right = 'slide-right',
+  Left = 'slide-left',
+  Up = 'slide-up',
+  Down = 'slide-down',
+}
+          `
         },
         defaultValue: {
           summary: 'slide-right'

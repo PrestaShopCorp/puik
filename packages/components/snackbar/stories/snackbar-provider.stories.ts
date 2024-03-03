@@ -45,7 +45,17 @@ export default {
       options: snackbarSwipeDirectionsVariants,
       table: {
         type: {
-          summary: snackbarSwipeDirectionsVariantsSummary
+          summary: snackbarSwipeDirectionsVariantsSummary,
+          detail: `
+import { PuikSnackbarSwipeDirections } from '@prestashopcorp/puik-components';
+
+enum PuikSnackbarSwipeDirections {
+  Right = 'right',
+  Left = 'left',
+  Up = 'up',
+  Down = 'down',
+}
+          `
         },
         defaultValue: {
           summary: 'right'
@@ -70,7 +80,16 @@ export default {
       options: snackbarPositionsX,
       table: {
         type: {
-          summary: snackbarPositionsXSummary
+          summary: snackbarPositionsXSummary,
+          detail: `
+import { PuikSnackbarPositionsX } from '@prestashopcorp/puik-components';
+
+enum PuikSnackbarPositionsX {
+  Left = 'left',
+  Center = 'center',
+  Right = 'right',
+}          
+          `
         },
         defaultValue: {
           summary: 'center'
@@ -83,7 +102,15 @@ export default {
       options: snackbarPositionsY,
       table: {
         type: {
-          summary: snackbarPositionsYSummary
+          summary: snackbarPositionsYSummary,
+          detail: `
+import { PuikSnackbarPositionsY } from '@prestashopcorp/puik-components';
+
+enum PuikSnackbarPositionsY {
+  Up = 'up',
+  Down = 'down',
+}        
+                    `
         },
         defaultValue: {
           summary: 'down'
