@@ -26,17 +26,21 @@ export default {
         type: {
           summary: 'string',
           detail: `
-          // cf headers prop in Table Docs ('value' field of PuikTableHeader interface)
+// cf headers prop in Table Docs ('value' field of PuikTableHeader interface)
 
-          interface PuikTableHeader {
-            text: string | undefined
-            value: string
-            size: 'sm' | 'md' | 'lg' | undefined
-            width: string | undefined
-            align: 'left' | 'center' | 'right' | undefined
-            sortable: boolean | undefined
-            preventExpand: boolean | undefined
-          }
+// Import
+import type { PuikTableHeader } from '@prestashopcorp/puik-components';
+
+//Detail
+interface PuikTableHeader {
+  text: string | undefined
+  value: string
+  size: 'sm' | 'md' | 'lg' | undefined
+  width: string | undefined
+  align: 'left' | 'center' | 'right' | undefined
+  sortable: boolean | undefined
+  preventExpand: boolean | undefined
+}
           `
         },
         defaultValue: {
@@ -76,10 +80,14 @@ export default {
         type: {
           summary: 'PuikTableSearchInputTypes',
           detail: `
-          enum PuikTableSearchInputTypes {
-            Text = 'text',
-            Range = 'range',
-          }
+// Import
+import { PuikTableSearchInputTypes } from '@prestashopcorp/puik-components';
+
+// Detail
+enum PuikTableSearchInputTypes {
+  Text = 'text',
+  Range = 'range',
+}
           `
         },
         defaultValue: {
@@ -112,6 +120,10 @@ export default {
         type: {
           summary: 'event',
           detail: `
+// Import
+import type { searchOption, inputRange } from '@prestashopcorp/puik-components';
+
+// Details
 // Payload type :
 type searchOption = {
   searchBy: string;
@@ -134,7 +146,10 @@ type inputRange = {
         type: {
           summary: 'event',
           detail: `
-// Payload type :
+// Import
+import type { searchOption, inputRange } from '@prestashopcorp/puik-components';
+
+// Details
 type searchOption = {
   searchBy: string;
   inputText?: string | undefined;
