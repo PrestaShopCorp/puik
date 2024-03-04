@@ -5,6 +5,8 @@
 In the transition from Puik v1 to Puik v2, we've made several significant changes to improve the library's performance, usability, and maintainability. Here are the key changes that you should be aware of:
 
 - **Monorepo Structure**: In Puik v2, we've transitioned to a monorepo structure. This structure includes separate libraries for Vue 3 components, Web components, a component resolver for our Vue 3 component library, a CSS library containing all the classes used in our components, a Tailwind CSS preset that contains all the design tokens used to create the components. This change was made to improve the modularity and maintainability of the project.
+  
+  :warning: **Please note that this new structure may affect the import paths for the Puik library in your project. We recommend checking the README files for each package to understand the correct import paths.**
 
 - **Snackbar Component**: In Puik v1, the Snackbar component was implemented using Headless UI. In Puik v2, we've transitioned to using Radix Vue for the Snackbar component. This change was made to improve the component's accessibility and flexibility. If you're using the Snackbar component in your project, please refer to the Storybook documentation for details on how to adapt your code to this change.
 
