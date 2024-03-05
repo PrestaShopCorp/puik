@@ -17,6 +17,14 @@
 
 Puik is a component library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem.
 
+🚧 Please note that version 2 of this project is still in beta. There are significant changes from version 1 to version 2. For more informations, please refer to the [release-notes-v2](./RELEASE-NOTES-V2.md)
+
+## Contributing
+
+Please make sure to read the Contributing Guide before making a pull request.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## About the repository
 
 This monorepo contains the following libraries:
@@ -27,7 +35,6 @@ This monorepo contains the following libraries:
 - [@prestashopcorp/puik-theme](./packages/theme/README.md) a CSS library containing all the classes used in our components
 - [@prestashopcorp/puik-tailwind-preset](./packages/tailwind-preset/README.md) a Tailwind Css preset that contains all the design tokens used to create the components
 - [@prestashopcorp/puik](./packages/puik/README.md) a library containing all the other libraries
-
 
 ## Installation
 
@@ -75,10 +82,10 @@ Then add the code below in your vite.config file
 ℹ️ if you don't use Vite [follow this link](https://github.com/unplugin/unplugin-vue-components?tab=readme-ov-file#installation)
 
 ```typescript
-import { defineConfig } from 'vite'
-import Components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import { PuikResolver } from '@prestashopcorp/puik-resolver'
+import { defineConfig } from 'vite';
+import Components from 'unplugin-vue-components/vite';
+import AutoImport from 'unplugin-auto-import/vite';
+import { PuikResolver } from '@prestashopcorp/puik-resolver';
 
 export default defineConfig({
   plugins: [
@@ -90,7 +97,7 @@ export default defineConfig({
       resolvers: [PuikResolver()],
     }),
   ],
-})
+});
 ```
 
 ℹ️ If you are using the puik global package you can import PuikResolver directly from `@prestashopcorp/puik`
@@ -101,8 +108,8 @@ Import the vue component and the component css directly into your vue file
 
 ```vue
 <script setup>
-import '@prestashopcorp/puik-components/button/style/css'
-import { PuikButton } from '@prestashopcorp/puik-components'
+import '@prestashopcorp/puik-components/button/style/css';
+import { PuikButton } from '@prestashopcorp/puik-components';
 </script>
 
 <template>

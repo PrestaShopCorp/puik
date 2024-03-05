@@ -15,7 +15,7 @@ export default {
           summary: 'BreadcrumbItem[]',
           detail: `
 // Import
-import { BreadcrumbItem } from '@prestashopcorp/puik/components/breadcrumb/src/breadcrumb'
+import { BreadcrumbItem } from '@prestashopcorp/puik-components';
 
 // Detail
 interface BreadBreadcrumbItem {

@@ -15,22 +15,22 @@ import PuikCheckboxCe from './components/checkbox';
 import PuikChipCe from './components/chip';
 import PuikDividerCe from './components/divider';
 import PuikIconCe from './components/icon';
-import PuikInputCe from './components/input';
+// import PuikInputCe from './components/input';
 import PuikLabelCe from './components/label';
 import PuikLinkCe from './components/link';
-import PuikMenuCe from './components/menu';
-import PuikMenuItemCe from './components/menu-item';
-import PuikMenuItemSeparatorCe from './components/menu-item-separator';
-import PuikMenuItemTitleCe from './components/menu-item-title';
-import PuikModalCe from './components/modal';
-import PuikPaginationCe from './components/pagination';
+// import PuikMenuCe from './components/menu';
+// import PuikMenuItemCe from './components/menu-item';
+// import PuikMenuItemSeparatorCe from './components/menu-item-separator';
+// import PuikMenuItemTitleCe from './components/menu-item-title';
+// import PuikModalCe from './components/modal';
+// import PuikPaginationCe from './components/pagination';
 import PuikProgressBarCe from './components/progress-bar';
 import PuikProgressStepperCe from './components/progress-stepper';
 import PuikProgressStepperStepCe from './components/progress-stepper-step';
 import PuikRadioCe from './components/radio';
-import PuikSelectCe from './components/select';
+// import PuikSelectCe from './components/select';
 import PuikSidebarCe from './components/sidebar';
-import PuikSidebarGroupItemCe from './components/sidebar-group-item';
+// import PuikSidebarGroupItemCe from './components/sidebar-group-item';
 import PuikSidebarItemCe from './components/sidebar-item';
 import PuikSidebarTitleCe from './components/sidebar-title';
 import PuikSkeletonLoaderCe from './components/skeletonLoader';
@@ -44,7 +44,7 @@ import PuikTabNavigationGroupPanelsCe from './components/tab-navigation-group-pa
 import PuikTabNavigationGroupTitlesCe from './components/tab-navigation-group-titles';
 import PuikTabNavigationPanelCe from './components/tab-navigation-panel';
 import PuikTabNavigationTitleCe from './components/tab-navigation-title';
-import PuikTableCe from './components/table';
+// import PuikTableCe from './components/table';
 import PuikTagCe from './components/tag';
 import PuikTextareaCe from './components/textarea';
 import PuikTooltipCe from './components/tooltip';
@@ -63,22 +63,22 @@ export const components: CustomElementWithName[] = [
   PuikChipCe,
   PuikDividerCe,
   PuikIconCe,
-  PuikInputCe,
+  // PuikInputCe,
   PuikLabelCe,
   PuikLinkCe,
-  PuikMenuCe,
-  PuikMenuItemCe,
-  PuikMenuItemSeparatorCe,
-  PuikMenuItemTitleCe,
-  PuikModalCe,
-  PuikPaginationCe,
+  // PuikMenuCe,
+  // PuikMenuItemCe,
+  // PuikMenuItemSeparatorCe,
+  // PuikMenuItemTitleCe,
+  // PuikModalCe,
+  // PuikPaginationCe,
   PuikProgressBarCe,
   PuikProgressStepperCe,
   PuikProgressStepperStepCe,
   PuikRadioCe,
-  PuikSelectCe,
+  // PuikSelectCe,
   PuikSidebarCe,
-  PuikSidebarGroupItemCe,
+  // PuikSidebarGroupItemCe,
   PuikSidebarItemCe,
   PuikSidebarTitleCe,
   PuikSkeletonLoaderCe,
@@ -92,7 +92,7 @@ export const components: CustomElementWithName[] = [
   PuikTabNavigationGroupTitlesCe,
   PuikTabNavigationPanelCe,
   PuikTabNavigationTitleCe,
-  PuikTableCe,
+  // PuikTableCe,
   PuikTagCe,
   PuikTextareaCe,
   PuikTooltipCe
@@ -112,22 +112,22 @@ export {
   PuikChipCe,
   PuikDividerCe,
   PuikIconCe,
-  PuikInputCe,
+  // PuikInputCe,
   PuikLabelCe,
   PuikLinkCe,
-  PuikMenuCe,
-  PuikMenuItemCe,
-  PuikMenuItemSeparatorCe,
-  PuikMenuItemTitleCe,
-  PuikModalCe,
-  PuikPaginationCe,
+  // PuikMenuCe,
+  // PuikMenuItemCe,
+  // PuikMenuItemSeparatorCe,
+  // PuikMenuItemTitleCe,
+  // PuikModalCe,
+  // PuikPaginationCe,
   PuikProgressBarCe,
   PuikProgressStepperCe,
   PuikProgressStepperStepCe,
   PuikRadioCe,
-  PuikSelectCe,
+  // PuikSelectCe,
   PuikSidebarCe,
-  PuikSidebarGroupItemCe,
+  // PuikSidebarGroupItemCe,
   PuikSidebarItemCe,
   PuikSidebarTitleCe,
   PuikSkeletonLoaderCe,
@@ -141,7 +141,7 @@ export {
   PuikTabNavigationGroupTitlesCe,
   PuikTabNavigationPanelCe,
   PuikTabNavigationTitleCe,
-  PuikTableCe,
+  // PuikTableCe,
   PuikTagCe,
   PuikTextareaCe,
   PuikTooltipCe,

@@ -41,25 +41,27 @@ export default {
         type: {
           summary: 'PuikTableHeader[]',
           detail: `
-  import type { PuikTableHeader } from '@prestashopcorp/puik/es/components/table/src/table'
+// Import
+import type { PuikTableHeader, PuikTableSearchInputTypes } from '@prestashopcorp/puik-components';
 
-  interface PuikTableHeader {
-    value: string
-    text?: string
-    size?: 'sm' | 'md' | 'lg'
-    align?: 'left' | 'center' | 'right'
-    width?: string
-    sortable?: boolean
-    preventExpand?: boolean
-    searchable?: boolean
-    searchSubmit?: boolean
-    searchType?: {$PuikTableSearchInputTypes}
-  }
+// Details
+interface PuikTableHeader {
+  value: string
+  text?: string
+  size?: 'sm' | 'md' | 'lg'
+  align?: 'left' | 'center' | 'right'
+  width?: string
+  sortable?: boolean
+  preventExpand?: boolean
+  searchable?: boolean
+  searchSubmit?: boolean
+  searchType?: {$PuikTableSearchInputTypes}
+}
 
-  enum PuikTableSearchInputTypes {
-    Text = 'text',
-    Range = 'range',
-  }
+enum PuikTableSearchInputTypes {
+  Text = 'text',
+  Range = 'range',
+}
   `
         }
       }
@@ -212,8 +214,10 @@ export default {
           detail: `
 // Payload type = sortOption
 
-import type { sortOption } from '@prestashopcorp/puik/es/components/table/src/table'
+//Import
+import type { sortOption } from '@prestashopcorp/puik-components';
 
+// Detail
 type sortOption = {
   sortBy?: string
   sortOrder?: PuikTableSortOrder
@@ -231,8 +235,10 @@ type sortOption = {
           detail: `
 // Payload type = Array<SearchOption>
 
-import type { searchOption } from '@prestashopcorp/puik/es/components/table/src/table'
+// Import
+import type { searchOption, inputRange } from '@prestashopcorp/puik-components';
 
+// Details
 type searchOption = {
   searchBy: string;
   inputText?: string | undefined;

@@ -113,8 +113,8 @@ export default {
         type: {
           summary: 'PuikModalVariants',
           detail: `
-// Import enum
-import { PuikModalVariants } from '@prestashopcorp/puik/components/modal/src/modal'
+// Import
+import { PuikModalVariants } from '@prestashopcorp/puik-components';
 
 // Detail
 export enum PuikModalVariants {
@@ -137,8 +137,8 @@ export enum PuikModalVariants {
         type: {
           summary: 'PuikModalSizes',
           detail: `
-// Import enum
-import { PuikModalSizes } from '@prestashopcorp/puik/components/modal/src/modal'
+// Import
+import { PuikModalSizes } from '@prestashopcorp/puik-components';
 
 // Detail
 export enum PuikModalSizes {
