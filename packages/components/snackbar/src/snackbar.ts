@@ -6,29 +6,24 @@ export enum PuikSnackbarVariants {
   Success = 'success',
 }
 
-export interface SnackbarAction {
-  label: string
-  callback: () => void
+export enum PuikSnackbarSwipeAnimations {
+  Right = 'slide-right',
+  Left = 'slide-left',
+  Up = 'slide-up',
+  Down = 'slide-down',
 }
-
-export interface PuikSnackbarOptions {
-  text: string
-  variant?: `${PuikSnackbarVariants}`
-  action?: SnackbarAction
+export interface SnackbarProps {
+  open?: boolean
+  title?: string
+  description: string
   duration?: number
-  offset?: number
+  variant?: `${PuikSnackbarVariants}`
+  swipeAnimation?: `${PuikSnackbarSwipeAnimations}`
   hasCloseButton?: boolean
-  onClose?: () => void
 }
 
-export interface SnackbarProps extends PuikSnackbarOptions {
-  id: string
-}
-
-export const snackbarEmits = {
-  destroy: () => true
+export type SnackbarEmits = {
+  'update:open': [value: boolean]
 };
-
-export type SnackbarEmits = typeof snackbarEmits;
 
 export type SnackbarInstance = InstanceType<typeof Snackbar>;

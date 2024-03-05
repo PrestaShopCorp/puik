@@ -1,360 +1,183 @@
-import { action } from '@storybook/addon-actions';
-import { PuikButton, PuikSnackbar, PuikSnackbarVariants, type PuikSnackbarOptions } from '@prestashopcorp/puik-components';
-import type { Meta, StoryFn, StoryObj, Args } from '@storybook/vue3';
+import { PuikSnackbarVariants, PuikSnackbarSwipeAnimations, PuikSnackbarProvider, PuikSnackbar, PuikButton } from '@prestashopcorp/puik-components';
+import { Meta, StoryFn, Args } from '@storybook/vue3';
+import { ref } from 'vue';
 
 const snackbarVariants = Object.values(PuikSnackbarVariants);
-const snackbarVariantSummary = snackbarVariants.join('|');
+const snackbarVariantsSummary = snackbarVariants.join('|');
+
+const snackbarSwipeAnimations = Object.values(PuikSnackbarSwipeAnimations);
+const snackbarSwipeAnimationsSummary = snackbarSwipeAnimations.join('|');
 
 export default {
   title: 'Components/Snackbar',
-  component: PuikSnackbar,
+  components: PuikSnackbar,
   argTypes: {
-    text: {
-      description: 'The text of the snackbar',
-      table: {
-        type: {
-          summary: 'string'
-        },
-        defaultValue: {
-          summary: 'undefined'
-        }
-      }
-    },
-    variant: {
-      description: 'The color variant of the snackbar',
-      control: 'select',
-      options: snackbarVariants,
-      table: {
-        type: {
-          summary: snackbarVariantSummary
-        },
-        defaultValue: {
-          summary: 'undefined'
-        }
-      }
-    },
-    action: {
-      description: 'The action label of the snackbar',
-      control: 'text',
-      table: {
-        type: {
-          summary: 'string'
-        },
-        defaultValue: {
-          summary: 'undefined'
-        }
-      }
-    },
-    duration: {
-      description:
-        'Duration in ms before the snackbar closes. Can be disabled if set to 0',
-      control: 'number',
-      table: {
-        type: {
-          summary: 'number'
-        },
-        defaultValue: {
-          summary: 3000
-        }
-      }
-    },
-    offset: {
-      description:
-        'Offset from the bottom edge of the screen. Every Snackbar must have the same offset',
-      control: 'number',
-      table: {
-        type: {
-          summary: 'number'
-        },
-        defaultValue: {
-          summary: 0
-        }
-      }
-    },
-    isClosable: {
-      description: 'Display a close button or not',
+    open: {
       control: 'boolean',
+      description: 'The controlled open state of the snackbar. Can be bind as v-model:open.',
       table: {
-        type: {
-          summary: 'boolean'
-        },
         defaultValue: {
           summary: false
         }
       }
     },
-    onClose: {
-      description: 'Set the function to call when the snackbar has been closed',
+    title: {
+      control: 'text',
+      description: 'Set the snackbar title'
+    },
+    description: {
+      control: 'text',
+      description: 'Set the snackbar description'
+    },
+    duration: {
+      description: 'Time in milliseconds that snackbar should remain visible for. Overrides value given to PuikSnackbarProvider component.',
+      control: 'number',
       table: {
         type: {
-          summary: '() => void'
+          summary: 'number'
         },
         defaultValue: {
-          summary: 'undefined'
+          summary: 5000
+        }
+      }
+    },
+    variant: {
+      control: 'select',
+      description: 'Set the color variant of the snackbar',
+      options: snackbarVariants,
+      table: {
+        type: {
+          summary: snackbarVariantsSummary,
+          detail: `
+import { PuikSnackbarVariants } from '@prestashopcorp/puik-components';
+
+enum PuikSnackbarVariants {
+  Default = 'default',
+  Danger = 'danger',
+  Success = 'success',
+}
+          `
+        },
+        defaultValue: {
+          summary: 'default'
+        }
+      }
+    },
+    swipeAnimation: {
+      control: 'select',
+      description: 'Set the swipe animation (to close the snackbar dialog)',
+      options: snackbarSwipeAnimations,
+      table: {
+        type: {
+          summary: snackbarSwipeAnimationsSummary,
+          detail: `
+import { PuikSnackbarSwipeAnimations } from '@prestashopcorp/puik-components';
+
+enum PuikSnackbarSwipeAnimations {
+  Right = 'slide-right',
+  Left = 'slide-left',
+  Up = 'slide-up',
+  Down = 'slide-down',
+}
+          `
+        },
+        defaultValue: {
+          summary: 'slide-right'
+        }
+      }
+    },
+    hasCloseButton: {
+      control: 'boolean',
+      description: 'Add a close button',
+      table: {
+        defaultValue: {
+          summary: false
         }
       }
     }
   },
-  args: {}
+  args: {
+    open: false,
+    title: 'Snackbar Title',
+    description: 'Snackbar Description',
+    variant: 'default',
+    duration: 5000,
+    swipeAnimation: 'slide-right',
+    hasCloseButton: true
+  }
 } as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
+    PuikSnackbarProvider,
+    PuikSnackbar,
     PuikButton
   },
   setup() {
-    const open = () => PuikSnackbar(args as PuikSnackbarOptions);
-    return { args, open };
+    const snackbarProviderArgs = ref({
+      label: 'Notification',
+      duration: 3000,
+      swipeDirection: 'right',
+      swipeThreshold: 50,
+      positionX: 'center',
+      positionY: 'down'
+
+    });
+    return { snackbarProviderArgs, args };
   },
-  template: '<puik-button @click="open">Display Snackbar</puik-button>'
+  template: `
+<puik-snackbar-provider
+  v-bind="snackbarProviderArgs"
+>
+  <puik-button
+    @click="args.open = true"
+  >
+    Display snackbar
+  </puik-button>
+
+  <puik-snackbar v-bind="args" @update:open="args.open = false">
+    <template #action>
+      <puik-button
+        @click="console.log('action btn triggered')"
+      >
+        action
+      </puik-button>
+    </template>
+  </puik-snackbar>
+</puik-snackbar-provider>
+  `
 });
 
 export const Default = {
   render: Template,
-  args: {
-    text: 'New category added.'
-  }
-};
+  args: {},
 
-const HasNoCloseButtonTemplate: StoryFn = (args: Args) => ({
-  components: {
-    PuikButton
-  },
-  setup() {
-    const open = () => PuikSnackbar(args as PuikSnackbarOptions);
-    return { args, open };
-  },
-  template: '<puik-button @click="open">Display Snackbar</puik-button>'
-});
-
-export const HasNoCloseButton = {
-  render: HasNoCloseButtonTemplate,
-  args: {
-    text: 'New category added.',
-    hasCloseButton: false
-  }
-};
-
-const WithoutActionTemplate: StoryFn = () => ({
-  components: {
-    PuikButton
-  },
-  setup() {
-    const displaySnackbar = () =>
-      PuikSnackbar({
-        text: 'New category added.'
-      });
-    const displayErrorSnackbar = () =>
-      PuikSnackbar({
-        text: 'Unable to update settings.',
-        variant: 'danger'
-      });
-    const displaySuccessSnackbar = () =>
-      PuikSnackbar({
-        text: 'Settings updated successfully.',
-        variant: 'success'
-      });
-    return { displaySnackbar, displayErrorSnackbar, displaySuccessSnackbar };
-  },
-  template: `
-    <div class="space-x-4">
-      <puik-button @click="displaySnackbar">Display Snackbar</puik-button>
-      <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
-      <puik-button @click="displaySuccessSnackbar">Display Success Snackbar</puik-button>
-    </div>
-  `
-});
-
-export const WithoutAction: StoryObj = {
-  render: WithoutActionTemplate,
-  parameters: {
-    docs: {
-      source: {
-        code: `
-<!--VueJS Snippet-->
-<template>
-  <puik-button @click="displaySnackbar">Display Snackbar</puik-button>
-  <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
-  <puik-button @click="displaySuccessSnackbar">Display Success Snackbar</puik-button>
-</template>
-
-<script lang="ts" setup>
-const displaySnackbar = () =>
-  PuikSnackbar({
-    text: 'New category added.',
-  })
-const displayErrorSnackbar = () =>
-  PuikSnackbar({
-    text: 'Unable to update settings.',
-    variant: 'danger',
-  })
-const displaySuccessSnackbar = () =>
-  PuikSnackbar({
-    text: 'Settings updated successfully.',
-    variant: 'success',
-  })
-</script>
-
-<!--HTML/CSS Snippet-->
-<!--
-    Snackbar, show/hide base on snackbar state
-
-    Enter From: "puik-snackbar__transition--enter-from"
-    Leave To: "puik-snackbar__transition--leave-to"
-
-    Style bottom calculation:
-    If there is only one snack bar displayed the default value will be the offset (32px)
-    But if you want to stack the snackbar you may need to do the following computation
-    Offset (32px) + First Snackbar offsetHeight + Gap (16px)
-    Example: 32 + 52 + 16 = 100px
-  -->
-<div class="puik-snackbar puik-snackbar--default" style="bottom: 32px">
-  <span class="puik-snackbar__text">New category added.</span>
-  <button class="puik-snackbar__close-button">
-    close
-  </button>
-</div>
-
-<div class="puik-snackbar puik-snackbar--danger" style="bottom: 100px">
-  <span class="puik-snackbar__text">Unable to update settings.</span>
-  <button class="puik-snackbar__close-button">
-    close
-  </button>
-</div>
-
-<div class="puik-snackbar puik-snackbar--success" style="bottom: 168px">
-  <span class="puik-snackbar__text">Settings updated successfully.</span>
-  <button class="puik-snackbar__close-button">
-    close
-  </button>
-</div>
-      `,
-        language: 'html'
-      }
-    }
-  }
-};
-
-const WithActionTemplate: StoryFn = () => ({
-  components: {
-    PuikButton
-  },
-  setup() {
-    const displaySnackbar = () =>
-      PuikSnackbar({
-        text: 'New attribute “Size” added.',
-        action: {
-          label: 'Cancel',
-          callback: action('Default snackbar action callback function')
-        }
-      });
-    const displayErrorSnackbar = () =>
-      PuikSnackbar({
-        text: 'Unable to update settings.',
-        variant: 'danger',
-        action: {
-          label: 'Cancel',
-          callback: action('Error snackbar action callback function')
-        }
-      });
-    const displaySuccessSnackbar = () =>
-      PuikSnackbar({
-        text: 'Settings updated successfully.',
-        variant: 'success',
-        action: {
-          label: 'Cancel',
-          callback: action('Success snackbar action callback function')
-        }
-      });
-    return { displaySnackbar, displayErrorSnackbar, displaySuccessSnackbar };
-  },
-  template: `
-    <div class="space-x-4">
-      <puik-button @click="displaySnackbar">Display Snackbar</puik-button>
-      <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
-      <puik-button @click="displaySuccessSnackbar">Display Success Snackbar</puik-button>
-    </div>
-  `
-});
-
-export const WithAction: StoryObj = {
-  render: WithActionTemplate,
   parameters: {
     docs: {
       source: {
         code: `
   <!--VueJS Snippet-->
-  <template>
-    <puik-button @click="displaySnackbar">Display Snackbar</puik-button>
-    <puik-button @click="displayErrorSnackbar">Display Error Snackbar</puik-button>
-    <puik-button @click="displaySuccessSnackbar">Display Success Snackbar</puik-button>
-  </template>
+  <puik-snackbar-provider
+    v-bind="snackbarProviderArgs"
+  >
+    <puik-button
+      @click="args.open = true"
+    >
+      Display snackbar
+    </puik-button>
 
-  <script lang="ts" setup>
-  const displaySnackbar = () =>
-    PuikSnackbar({
-      text: 'New attribute “Size” added.',
-      action: {
-        label: 'Cancel',
-        callback: action('Default snackbar action callback function'),
-      },
-    })
-  const displayErrorSnackbar = () =>
-    PuikSnackbar({
-      text: 'Unable to update settings.',
-      variant: 'danger',
-      action: {
-        label: 'Cancel',
-        callback: action('Error snackbar action callback function'),
-      },
-    })
-  const displaySuccessSnackbar = () =>
-    PuikSnackbar({
-      text: 'Unable to update settings.',
-      variant: 'success',
-      action: {
-        label: 'Cancel',
-        callback: action('Success snackbar action callback function'),
-      },
-    })
-  </script>
+    <puik-snackbar v-bind="args" @update:open="args.open = false">
+      <template #action>
+        <puik-button
+          @click="console.log('action btn triggered')"
+        >
+          action
+        </puik-button>
+      </template>
+    </puik-snackbar>
+  </puik-snackbar-provider>
 
   <!--HTML/CSS Snippet-->
-  <!--
-      Snackbar, show/hide base on snackbar state
-
-      Enter From: "puik-snackbar__transition--enter-from"
-      Leave To: "puik-snackbar__transition--leave-to"
-
-      Style bottom calculation:
-      If there is only one snack bar displayed the default value will be the offset (32px)
-      But if you want to stack the snackbar you may need to do the following computation
-      Offset (32px) + First Snackbar offsetHeight + Gap (16px)
-      Example: 32 + 52 + 16 = 100px
-    -->
-  <div class="puik-snackbar puik-snackbar--default" style="bottom: 32px">
-    <span class="puik-snackbar__text">New category added.</span>
-    <button class="puik-snackbar__action">Cancel</button>
-    <button class="puik-snackbar__close-button">
-      close
-    </button>
-  </div>
-
-  <div class="puik-snackbar puik-snackbar--danger" style="bottom: 100px">
-    <span class="puik-snackbar__text">Unable to update settings.</span>
-    <button class="puik-snackbar__action">Retry</button>
-    <button class="puik-snackbar__close-button">
-      close
-    </button>
-  </div>
-
-  <div class="puik-snackbar puik-snackbar--success" style="bottom: 168px">
-    <span class="puik-snackbar__text">Settings updated successfully.</span>
-    <button class="puik-snackbar__action">Retry</button>
-    <button class="puik-snackbar__close-button">
-      close
-    </button>
-  </div>
         `,
         language: 'html'
       }

@@ -35,7 +35,8 @@ import PuikSidebarItemCe from './components/sidebar-item';
 import PuikSidebarTitleCe from './components/sidebar-title';
 import PuikSkeletonLoaderCe from './components/skeletonLoader';
 import PuikSkeletonLoaderGroupCe from './components/skeleton-loader-group';
-// import PuikSnackbarCe from './components/snackbar';
+import PuikSnackbarCe from './components/snackbar';
+import PuikSnackbarProviderCe from './components/snackbar-provider';
 import PuikSpinnerLoaderCe from './components/spinner-loader';
 import PuikSwitchCe from './components/switch';
 import PuikTabNavigationCe from './components/tab-navigation';
@@ -82,7 +83,8 @@ export const components: CustomElementWithName[] = [
   PuikSidebarTitleCe,
   PuikSkeletonLoaderCe,
   PuikSkeletonLoaderGroupCe,
-  // PuikSnackbarCe,
+  PuikSnackbarCe,
+  PuikSnackbarProviderCe,
   PuikSpinnerLoaderCe,
   PuikSwitchCe,
   PuikTabNavigationCe,
@@ -130,7 +132,8 @@ export {
   PuikSidebarTitleCe,
   PuikSkeletonLoaderCe,
   PuikSkeletonLoaderGroupCe,
-  // PuikSnackbarCe,
+  PuikSnackbarCe,
+  PuikSnackbarProviderCe,
   PuikSpinnerLoaderCe,
   PuikSwitchCe,
   PuikTabNavigationCe,

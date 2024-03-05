@@ -16,7 +16,7 @@ const Template: StoryFn = (args: Args) => ({
   setup() {
     return { args };
   },
-  template: '<puik-<%= h.changeCase.pascal(name) %>></puik-<%= h.changeCase.pascal(name) %>>'
+  template: '<puik-<%= h.changeCase.param(name) %>></puik-<%= h.changeCase.param(name) %>>'
 });
 
 export const Default = {
