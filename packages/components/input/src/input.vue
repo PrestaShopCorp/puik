@@ -27,6 +27,7 @@
         :max="type === 'number' ? max : undefined"
         :step="type === 'number' ? step : undefined"
         :data-test="dataTest != undefined ? `input-${dataTest}` : undefined"
+        v-bind="$attrs"
         @focus="handleFocus"
         @blur="handleBlur"
       >

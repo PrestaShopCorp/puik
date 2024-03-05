@@ -10,7 +10,7 @@ In the transition from Puik v1 to Puik v2, we made several significant changes t
 
 - **Snackbar Component**: In Puik v1, the Snackbar component was implemented using Headless UI. In Puik v2, we moved to using Radix Vue for the Snackbar component. This change was made to improve the component's accessibility and flexibility. If you're using the Snackbar component in your project, please refer to the Storybook documentation for details on how to adapt your code to this change.
 
-- **Future Changes**: Please note that all components that were implemented using Headless UI in Puik v1 may be transitioned to Radix Vue in future releases of Puik v2. We recommend regularly checking the Storybook documentation for the latest updates.
+- **Future Changes**: Please note that all components that were implemented using Headless UI in Puik v1 may be moved to Radix Vue in future releases of Puik v2. We recommend regularly checking the Storybook documentation for the latest updates.
 
 Please note that as Puik v2 is still in beta, additional breaking changes may be introduced as we continue to improve and expand the library. We recommend regularly checking this document and the Storybook documentation for the latest updates.
 
@@ -38,6 +38,7 @@ Here is the list of available components in the Vue and Web-Components version o
 | Link                        | ✅  | ✅            |                  |
 | Menu                        | ✅  | ❌            |                  |
 | Modal                       | ✅  | ❌            |                  |
+| Notification-bar            | ✅  | ✅            |                  |
 | Pagination                  | ✅  | ❌            |                  |
 | Progress-bar                | ✅  | ✅            |                  |
 | Progress-stepper            | ✅  | ✅            |                  |

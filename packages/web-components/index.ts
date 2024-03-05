@@ -23,6 +23,7 @@ import PuikLinkCe from './components/link';
 // import PuikMenuItemSeparatorCe from './components/menu-item-separator';
 // import PuikMenuItemTitleCe from './components/menu-item-title';
 // import PuikModalCe from './components/modal';
+import PuikNotificationBarCe from './components/notification-bar';
 // import PuikPaginationCe from './components/pagination';
 import PuikProgressBarCe from './components/progress-bar';
 import PuikProgressStepperCe from './components/progress-stepper';
@@ -71,6 +72,7 @@ export const components: CustomElementWithName[] = [
   // PuikMenuItemSeparatorCe,
   // PuikMenuItemTitleCe,
   // PuikModalCe,
+  PuikNotificationBarCe,
   // PuikPaginationCe,
   PuikProgressBarCe,
   PuikProgressStepperCe,
@@ -120,6 +122,7 @@ export {
   // PuikMenuItemSeparatorCe,
   // PuikMenuItemTitleCe,
   // PuikModalCe,
+  PuikNotificationBarCe,
   // PuikPaginationCe,
   PuikProgressBarCe,
   PuikProgressStepperCe,
