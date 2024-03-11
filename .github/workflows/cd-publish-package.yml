@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: lts/hydrogen
           registry-url: https://registry.npmjs.org/
-          cache: "pnpm"
+          cache: 'pnpm'
 
       - name: Install dependencies 👨🏻‍💻
         run: pnpm i --frozen-lockfile
@@ -47,6 +47,12 @@ jobs:
           VERSION: ${{ steps.get_tag.outputs.TAG }}
 
       - name: Publish
-        run: pnpm publish --no-git-checks --access public
+        run: |
+          if [[ ${{ steps.get_tag.outputs.name }} =~ beta$ ]]; then
+            pnpm publish --no-git-checks --access public --tag "beta"
+          else 
+            pnpm publish --no-git-checks --access public
+          fi
+
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
