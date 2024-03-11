@@ -48,7 +48,7 @@ jobs:
 
       - name: Publish
         run: |
-          if [[ ${{ steps.get_tag.outputs.name }} =~ beta$ ]]; then
+          if [[ $VERSION =~ beta$ ]]; then
             pnpm publish --no-git-checks --access public --tag "beta"
           else 
             pnpm publish --no-git-checks --access public
@@ -56,3 +56,4 @@ jobs:
 
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          VERSION: ${{ steps.get_tag.outputs.TAG }}
