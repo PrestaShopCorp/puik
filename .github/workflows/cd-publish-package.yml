@@ -21,13 +21,6 @@ jobs:
 
       - name: Checkout repository on main
         uses: actions/checkout@v3
-        if: ${{ steps.get_tag.outputs.TAG }} = ^(?!.*beta).*$
-
-      - name: Checkout repository on beta branch
-        uses: actions/checkout@v3
-        if: ${{ steps.get_tag.outputs.TAG }} =~ beta$
-        with:
-          ref: 'feat/2.0.0-beta'
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -48,7 +41,7 @@ jobs:
         run: pnpm build
 
       - name: Update npm version
-        run: pnpm -r --parallel --filter './packages/**' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
+        run: pnpm -r --filter './packages/**' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ steps.get_tag.outputs.TAG }}
