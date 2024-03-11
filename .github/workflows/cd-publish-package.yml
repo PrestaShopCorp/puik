@@ -41,7 +41,15 @@ jobs:
         run: pnpm build
 
       - name: Update npm version
-        run: pnpm -r --filter './packages/**' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
+        run: |
+          pnpm --filter './packages/locale' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
+          pnpm --filter './packages/theme' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
+          pnpm --filter './packages/tailwind-preset' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
+          pnpm --filter './packages/utils' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
+          pnpm --filter './packages/components' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
+          pnpm --filter './packages/resolver' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
+          pnpm --filter './packages/web-components' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
+          pnpm --filter './packages/puik' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ steps.get_tag.outputs.TAG }}
