@@ -49,9 +49,9 @@ jobs:
       - name: Publish
         run: |
           if [[ $VERSION =~ beta$ ]]; then
-            pnpm -r --parallel --filter './packages/**' exec pnpm publish --no-git-checks --access public --tag "beta"
+            pnpm publish --no-git-checks --access public --tag "beta"
           else 
-            pnpm -r --parallel --filter './packages/**' exec pnpm publish --no-git-checks --access public
+            pnpm publish --no-git-checks --access public
           fi
 
         env:
