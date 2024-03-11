@@ -41,7 +41,7 @@ jobs:
         run: pnpm build
 
       - name: Update npm version
-        run: pnpm version $VERSION --no-git-tag-version --allow-same-version
+        run:  pnpm -r --parallel --filter './packages/**' exec pnpm version $VERSION --no-git-tag-version --allow-same-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ steps.get_tag.outputs.TAG }}
@@ -49,9 +49,9 @@ jobs:
       - name: Publish
         run: |
           if [[ $VERSION =~ beta$ ]]; then
-            pnpm publish --no-git-checks --access public --tag "beta"
+            pnpm -r --parallel --filter './packages/**' exec pnpm publish --no-git-checks --access public --tag "beta"
           else 
-            pnpm publish --no-git-checks --access public
+            pnpm -r --parallel --filter './packages/**' exec pnpm publish --no-git-checks --access public
           fi
 
         env:
