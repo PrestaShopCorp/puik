@@ -25,7 +25,7 @@
     "chromatic": "chromatic",
     "dev": "pnpm --filter @prestashopcorp/puik-playground dev",
     "component": "hygen component new",
-    "pack:all" : "pnpm -r --parallel --filter './packages/**' exec pnpm pack --pack-destination ../../packages-tars/tmp && scripts/increment_version.sh",
+    "pack:all": "pnpm -r --parallel --filter './packages/**' exec pnpm pack --pack-destination ../../packages-tars/tmp && scripts/increment_version.sh",
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm -y"
   },
@@ -53,6 +53,7 @@
     "@prestashopcorp/puik-web-components": "workspace:*"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.1",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@faker-js/faker": "^8.3.1",
