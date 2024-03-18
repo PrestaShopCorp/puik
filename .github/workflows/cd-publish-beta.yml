@@ -41,7 +41,7 @@ jobs:
         run: pnpm build
 
       - name: Publish beta
-        run: pnpm -r  --filter './packages/**' publish --no-git-checks --access public --tag beta
+        run: pnpm -r --filter './packages/**' publish --no-git-checks --access public --tag beta
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ steps.get_tag.outputs.TAG }}

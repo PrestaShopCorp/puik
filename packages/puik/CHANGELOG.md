@@ -1,5 +1,12 @@
 # @prestashopcorp/puik
 
+## 2.0.0-beta.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @prestashopcorp/puik-resolver@2.0.0-beta.1
+
 ## 2.0.0-beta.0
 
 ### Major Changes

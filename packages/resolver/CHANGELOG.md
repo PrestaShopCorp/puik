@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-resolver
 
+## 2.0.0-beta.1
+
+### Patch Changes
+
+- Rollback version unplugin-vue-component
+
 ## 2.0.0-beta.0
 
 ### Major Changes
