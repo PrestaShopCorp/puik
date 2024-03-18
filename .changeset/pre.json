@@ -2,15 +2,15 @@
   "mode": "pre",
   "tag": "beta",
   "initialVersions": {
-    "@prestashopcorp/puik-docs": "1.0.0",
-    "@prestashopcorp/puik-components": "1.0.0",
-    "@prestashopcorp/puik-locale": "1.0.0",
-    "@prestashopcorp/puik": "1.0.0",
+    "@prestashopcorp/puik-docs": "0.0.1",
+    "@prestashopcorp/puik-components": "0.0.1",
+    "@prestashopcorp/puik-locale": "0.0.1",
+    "@prestashopcorp/puik": "0.0.1",
     "@prestashopcorp/puik-resolver": "0.0.1",
-    "@prestashopcorp/puik-tailwind-preset": "1.0.0",
-    "@prestashopcorp/puik-theme": "1.0.0",
-    "@prestashopcorp/puik-utils": "1.0.0",
-    "@prestashopcorp/puik-web-components": "1.0.0"
+    "@prestashopcorp/puik-tailwind-preset": "0.0.1",
+    "@prestashopcorp/puik-theme": "0.0.1",
+    "@prestashopcorp/puik-utils": "0.0.1",
+    "@prestashopcorp/puik-web-components": "0.0.1"
   },
   "changesets": [
     "famous-crews-fetch",
