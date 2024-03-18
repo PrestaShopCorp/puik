@@ -1,0 +1,18 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@prestashopcorp/puik-docs": "1.0.0",
+    "@prestashopcorp/puik-components": "1.0.0",
+    "@prestashopcorp/puik-locale": "1.0.0",
+    "@prestashopcorp/puik": "1.0.0",
+    "@prestashopcorp/puik-resolver": "1.0.0",
+    "@prestashopcorp/puik-tailwind-preset": "1.0.0",
+    "@prestashopcorp/puik-theme": "1.0.0",
+    "@prestashopcorp/puik-utils": "1.0.0",
+    "@prestashopcorp/puik-web-components": "1.0.0"
+  },
+  "changesets": [
+    "tender-pianos-kiss"
+  ]
+}

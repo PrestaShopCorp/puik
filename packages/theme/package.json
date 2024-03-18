@@ -1,6 +1,6 @@
 {
   "name": "@prestashopcorp/puik-theme",
-  "version": "0.0.1",
+  "version": "2.0.0-beta.0",
   "description": "Puik component Theme",
   "style": "./dist/index.css",
   "unpkg": "./dist/index.css",
