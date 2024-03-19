@@ -1,4 +1,5 @@
 {
+  "description": "PUIK - PrestaShop UI kit.",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@8.2.0",

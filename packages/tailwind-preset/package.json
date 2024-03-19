@@ -1,6 +1,6 @@
 {
   "name": "@prestashopcorp/puik-tailwind-preset",
-  "description": "Puik tailwind preset - A set of Tailwind CSS utility classes, adapted to the new branding.",
+  "description": "PUIK tailwind preset - A set of Tailwind CSS utility classes, adapted to the new branding.",
   "type": "module",
   "version": "2.0.0-beta.1",
   "license": "MIT",

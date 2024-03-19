@@ -15,7 +15,7 @@ export enum PuikTagSizes {
 }
 
 export interface TagProps {
-  id: string
+  id?: string
   content: string
   variant?: `${PuikTagVariants}`
   size?: `${PuikTagSizes}`

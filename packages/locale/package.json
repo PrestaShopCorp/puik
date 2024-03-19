@@ -1,6 +1,6 @@
 {
   "name": "@prestashopcorp/puik-locale",
-  "description": "Puik locale - Translations feature.",
+  "description": "PUIK locale - Translations feature.",
   "private": true,
   "version": "2.0.0-beta.1",
   "license": "MIT"
