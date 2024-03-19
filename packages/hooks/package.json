@@ -1,6 +1,6 @@
 {
   "name": "@puik/hooks",
-  "description": "PrestaShop UI kit composables",
+  "description": "PUIK hooks - PrestaShop UI kit composables.",
   "version": "0.0.1",
   "main": "index.ts",
   "module": "index.ts",

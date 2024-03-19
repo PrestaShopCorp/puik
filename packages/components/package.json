@@ -1,7 +1,7 @@
 {
   "name": "@puik/components",
+  "description": "PUIK Vue 3 components library.",
   "version": "0.0.1",
-  "description": "all components are settled here",
   "peerDependencies": {
     "vue": "^3.2.0"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@puik/tailwind-preset",
-  "description": "Puik tailwind preset",
+  "description": "PUIK tailwind preset - A set of Tailwind CSS utility classes, adapted to the new branding.",
   "version": "0.0.1",
   "module": "index.ts",
   "unpkg": "index.js",
