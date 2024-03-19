@@ -19,7 +19,7 @@ export type PuikTagSizeVariant = (typeof tagSizeVariants)[number]
 export const tagProps = buildProps({
   id: {
     type: String,
-    required: true,
+    required: false,
     default: undefined,
   },
   content: {
