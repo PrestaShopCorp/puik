@@ -1,5 +1,14 @@
 # @prestashopcorp/puik-resolver
 
+## 2.0.0-beta.3
+
+### Patch Changes
+
+- merge main branch (see release v1.14.2) and update packages descriptions
+- Updated dependencies
+  - @prestashopcorp/puik-components@2.0.0-beta.2
+  - @prestashopcorp/puik-theme@2.0.0-beta.2
+
 ## 2.0.0-beta.2
 
 ### Patch Changes

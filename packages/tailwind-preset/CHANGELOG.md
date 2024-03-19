@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-tailwind-preset
 
+## 2.0.0-beta.2
+
+### Patch Changes
+
+- merge main branch (see release v1.14.2) and update packages descriptions
+
 ## 2.0.0-beta.1
 
 ### Patch Changes
