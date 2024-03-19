@@ -309,7 +309,7 @@ export const Warning: StoryObj = {
   <puik-alert
     title="Title"
     variant="warning"
-    :disabled-borders="true|false"
+    :disable-borders="true|false"
     button-label="Button"
     @click="click"
   >
@@ -358,7 +358,7 @@ export const Info: StoryObj = {
   <puik-alert
     title="Title"
     variant="info"
-    :disabled-borders="true|false"
+    :disable-borders="true|false"
     button-label="Button"
     @click="click"
   >
@@ -407,7 +407,7 @@ export const Danger: StoryObj = {
   <puik-alert
     title="Title"
     variant="danger"
-    :disabled-borders="true|false"
+    :disable-borders="true|false"
     button-label="Button"
     @click="click"
   >
