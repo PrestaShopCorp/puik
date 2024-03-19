@@ -1,5 +1,6 @@
 {
   "name": "@prestashopcorp/puik",
+  "description": "PUIK - PrestaShop UI kit.",
   "license": "MIT",
   "author": "Prestashop",
   "version": "0.0.1",

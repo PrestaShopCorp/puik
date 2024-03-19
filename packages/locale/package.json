@@ -1,6 +1,6 @@
 {
   "name": "@puik/locale",
-  "description": "puiklocale",
+  "description": "PUIK locale - Translations feature.",
   "version": "0.0.1",
   "main": "index.ts",
   "module": "index.ts",
