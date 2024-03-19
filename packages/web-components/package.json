@@ -1,8 +1,8 @@
 {
   "name": "@prestashopcorp/puik-web-components",
+  "description": "PUIK Web-Components library.",
   "version": "2.0.0-beta.0",
   "type": "module",
-  "description": "PUIK web components library.",
   "scripts": {
     "build": "tsc --noEmit --project ./tsconfig.build.json && vite build"
   },

@@ -1,5 +1,6 @@
 {
   "name": "@prestashopcorp/puik-docs",
+  "description": "PUIK docs - Storybook documentation.",
   "version": "1.0.0",
   "private": true,
   "main": "index.js",

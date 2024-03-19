@@ -1,8 +1,8 @@
 {
   "name": "@prestashopcorp/puik-components",
+  "description": "PUIK Vue 3 components library.",
   "version": "2.0.0-beta.0",
   "type": "module",
-  "description": "PUIK vue components library.",
   "scripts": {
     "build": "vue-tsc --noEmit --project ./tsconfig.build.json && vite build"
   },
