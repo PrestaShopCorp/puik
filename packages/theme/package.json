@@ -1,7 +1,7 @@
 {
   "name": "@prestashopcorp/puik-theme",
   "description": "PUIK theme - CSS classes of Prestashop UI Kit.",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "style": "./dist/index.css",
   "unpkg": "./dist/index.css",
   "jsdelivr": "./dist/index.css",

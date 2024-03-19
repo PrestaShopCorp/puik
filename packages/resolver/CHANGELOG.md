@@ -1,5 +1,15 @@
 # @prestashopcorp/puik-resolver
 
+## 2.0.0-beta.2
+
+### Patch Changes
+
+- 13cc8a6: - Changing package descriptions.
+  - upgrade unplugin-vue-components
+- Updated dependencies [13cc8a6]
+  - @prestashopcorp/puik-components@2.0.0-beta.1
+  - @prestashopcorp/puik-theme@2.0.0-beta.1
+
 ## 2.0.0-beta.1
 
 ### Patch Changes

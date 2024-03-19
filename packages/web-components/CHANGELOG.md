@@ -1,5 +1,14 @@
 # @prestashopcorp/puik-web-components
 
+## 2.0.0-beta.1
+
+### Patch Changes
+
+- 13cc8a6: - Changing package descriptions.
+  - upgrade unplugin-vue-components
+- Updated dependencies [13cc8a6]
+  - @prestashopcorp/puik-components@2.0.0-beta.1
+
 ## 2.0.0-beta.0
 
 ### Major Changes
