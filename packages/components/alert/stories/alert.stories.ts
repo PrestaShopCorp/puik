@@ -58,7 +58,10 @@ export default {
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}`'
+        'Set the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}` `link-${dataTest}`'
+    },
+    linkLabel: {
+      description: 'Label of the link'
     }
   },
   args: {
@@ -68,7 +71,8 @@ export default {
     disableBorders: false,
     buttonLabel: 'Button',
     buttonWrapLabel: false,
-    isClosable: false
+    isClosable: false,
+    linkLabel: 'See more'
   }
 } as Meta;
 
@@ -81,12 +85,14 @@ const Template: StoryFn = (args: Args) => ({
   },
   methods: {
     click: action('click'),
-    close: action('close')
+    close: action('close'),
+    clickLink: action('clickLink')
   },
   template: `
     <puik-alert
       v-bind="args"
       @click="click"
+      @click-link="clickLink"
       @close="close"
     ></puik-alert>`
 });

@@ -54,4 +54,7 @@
   &__close {
     @apply ml-4 cursor-pointer leading-none;
   }
+  &__link {
+    @apply m-2 max-w-xs whitespace-nowrap overflow-hidden;
+  }
 }

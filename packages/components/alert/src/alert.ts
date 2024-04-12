@@ -22,6 +22,7 @@ export interface AlertProps {
   isClosable?: boolean
   buttonLabel?: string
   buttonWrapLabel?: boolean
+  linkLabel?: string
   ariaLive?: 'polite' | 'assertive'
   dataTest?: string
 }
@@ -29,6 +30,7 @@ export interface AlertProps {
 export type AlertEmits = {
   click: [event: Event]
   close: [event: Event]
+  clickLink: [event: Event]
 };
 
 export type AlertInstance = InstanceType<typeof Alert>;
