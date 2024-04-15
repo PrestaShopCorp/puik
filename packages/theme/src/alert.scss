@@ -55,7 +55,7 @@
     @apply ml-4 cursor-pointer leading-none;
   }
   &__link {
-    @apply ml-9 lg:m-0 pl-0 lg:pl-2 p-2 overflow-hidden lg:text-ellipsis;
+    @apply ml-9 lg:m-0 pl-0 lg:pl-2 p-2 overflow-hidden lg:text-ellipsis lg:min-w-[128px] lg:max-w-[320px];
     @media (min-width: 1024px) {
       text-wrap: nowrap;
     }
