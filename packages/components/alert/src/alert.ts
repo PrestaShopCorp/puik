@@ -57,11 +57,16 @@ export const alertProps = buildProps({
     required: false,
     default: undefined,
   },
+  linkLabel: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
 } as const)
 
 export type AlertProps = ExtractPropTypes<typeof alertProps>
 
-export const alertEmits = ['click', 'close']
+export const alertEmits = ['click', 'clickLink', 'close']
 export type AlertEmits = typeof alertEmits
 
 export type AlertInstance = InstanceType<typeof Alert>

@@ -29,6 +29,14 @@
           >
         </div>
       </div>
+      <PuikLink
+        v-if="linkLabel"
+        class="puik-alert__link"
+        :data-test="dataTest != undefined ? `link-${dataTest}` : undefined"
+        @click="clickLink"
+      >
+        {{ linkLabel }}
+      </PuikLink>
       <PuikButton
         v-if="buttonLabel"
         :variant="variant"
@@ -55,6 +63,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { PuikButton } from '@puik/components/button'
+import { PuikLink } from '@puik/components/link'
 import { PuikIcon } from '@puik/components/icon'
 import { alertEmits, alertProps, ICONS } from './alert'
 defineOptions({
@@ -68,4 +77,5 @@ const icon = computed(() => ICONS[props.variant])
 
 const click = (event: Event) => emit('click', event)
 const close = (event: Event) => emit('close', event)
+const clickLink = (event: Event) => emit('clickLink', event)
 </script>
