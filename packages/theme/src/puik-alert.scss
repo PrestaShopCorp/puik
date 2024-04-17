@@ -55,6 +55,6 @@
     @apply ml-4 cursor-pointer leading-none;
   }
   &__link {
-    @apply flex-none leading-6 w-fit block ml-9 pl-0 m-2 lg:mr-4 lg:pl-0 lg:truncate lg:max-w-[320px];
+    @apply flex-none leading-6 w-fit block ml-9 pl-0 m-2 lg:ml-2 lg:mr-4 lg:pl-0 lg:truncate lg:max-w-[320px];
   }
 }
