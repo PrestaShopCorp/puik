@@ -32,6 +32,14 @@
           ><slot>{{ description }}</slot></span>
         </div>
       </div>
+      <PuikLink
+        v-if="linkLabel"
+        class="puik-alert__link"
+        :data-test="dataTest != undefined ? `link-${dataTest}` : undefined"
+        @click="clickLink"
+      >
+        {{ linkLabel }}
+      </PuikLink>
       <PuikButton
         v-if="buttonLabel"
         :variant="variant"
@@ -59,6 +67,7 @@
 import { computed } from 'vue';
 import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
+import { PuikLink } from '@prestashopcorp/puik-components/link';
 import { PuikAlertVariants, ICONS } from './alert';
 import type { AlertProps, AlertEmits } from './alert';
 defineOptions({
@@ -75,6 +84,7 @@ const icon = computed(() => ICONS[props.variant]);
 
 const click = (event: Event) => emit('click', event);
 const close = (event: Event) => emit('close', event);
+const clickLink = (event: Event) => emit('clickLink', event);
 </script>
 
 <style lang="scss">
@@ -82,4 +92,5 @@ const close = (event: Event) => emit('close', event);
 @use '@prestashopcorp/puik-theme/src/puik-alert.scss';
 @use '@prestashopcorp/puik-theme/src/puik-button.scss';
 @use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+@use '@prestashopcorp/puik-theme/src/puik-link.scss';
 </style>

@@ -30,7 +30,7 @@
     @apply border-0;
   }
   &__container {
-    @apply flex flex-col md:flex-row md:items-start w-full;
+    @apply flex flex-col lg:flex-row lg:items-start w-full;
   }
   &__content {
     @apply flex flex-row flex-grow;
@@ -46,12 +46,15 @@
     @extend .puik-body-default;
   }
   &__button {
-    @apply mt-2 ml-9 md:m-0;
+    @apply mt-2 ml-9 lg:m-0;
   }
   &__icon {
     @apply mt-0.5 flex-shrink-0;
   }
   &__close {
     @apply ml-4 cursor-pointer leading-none;
+  }
+  &__link {
+    @apply flex-none leading-6 w-fit block ml-9 pl-0 m-2 lg:mx-4 lg:pl-0 lg:truncate lg:max-w-[320px];
   }
 }

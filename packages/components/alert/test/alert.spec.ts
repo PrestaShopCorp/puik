@@ -11,6 +11,7 @@ describe('Alert tests', () => {
   const findTitle = () => wrapper.find('.puik-alert__title');
   const findDesc = () => wrapper.find('.puik-alert__description');
   const findCloseButton = () => wrapper.find('.puik-alert__close');
+  const findLink = () => wrapper.find('.puik-alert__link');
 
   const factory = (
     props?: AlertProps,
@@ -49,6 +50,13 @@ describe('Alert tests', () => {
     expect(wrapper.emitted('click')).toBeTruthy();
   });
 
+  it('should display a link which emits the clickLink event on click', async () => {
+    factory({ linkLabel: 'See more' });
+    expect(findLink().exists()).toBeTruthy();
+    await findLink().trigger('click');
+    expect(wrapper.emitted('clickLink')).toBeTruthy();
+  });
+
   it('should display a title and a description', async () => {
     factory({
       title: faker.lorem.word(2),
@@ -78,11 +86,12 @@ describe('Alert tests', () => {
     expect(wrapper.emitted('close')).toBeTruthy();
   });
 
-  it('should have a data-test attribute on container div, title, description button and close button', () => {
+  it('should have a data-test attribute on container div, title, description button, close button, and link', () => {
     factory({
       title: faker.lorem.word(2),
       description: faker.lorem.sentence(60),
       buttonLabel: 'Button',
+      linkLabel: 'See more',
       isClosable: true,
       dataTest: 'alert'
     });
@@ -91,5 +100,6 @@ describe('Alert tests', () => {
     expect(findDesc().attributes('data-test')).toBe('description-alert');
     expect(findButton().attributes('data-test')).toBe('button-alert');
     expect(findCloseButton().attributes('data-test')).toBe('close-alert');
+    expect(findLink().attributes('data-test')).toBe('link-alert');
   });
 });
