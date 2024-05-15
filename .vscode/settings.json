@@ -12,8 +12,7 @@
     "typescript",
     "typescriptreact",
     "html",
-    "vue",
-    "markdown"
+    "vue"
   ],
   "eslint.validate": [
     "javascript",
@@ -21,8 +20,7 @@
     "typescript",
     "typescriptreact",
     "html",
-    "vue",
-    "markdown"
+    "vue"
   ],
   "css.customData": [".vscode/tailwind.json"],
   "vite.devCommand": "pnpm run dev -- --",

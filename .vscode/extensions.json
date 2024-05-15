@@ -5,6 +5,7 @@
     "esbenp.prettier-vscode",
     "antfu.vite",
     "lokalise.i18n-ally",
-    "vitest.explorer"
+    "vitest.explorer",
+    "davidanson.vscode-markdownlint"
   ]
 }
