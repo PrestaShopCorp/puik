@@ -12,7 +12,7 @@ export default defineConfig({
           isCustomElement: (tag) => tag.includes('-ce')
         }
       },
-      customElement: /^(?!.*App\.vue).*$/
+      customElement: /^(?!.*App\.vue)(?!.*VueComponentsView\.vue)(?!.*WebComponentsView\.vue).*$/
     })
   ],
   css: {

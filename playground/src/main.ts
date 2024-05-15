@@ -1,6 +1,11 @@
-import { createApp } from 'vue';
-import App from './App.vue';
 import '@prestashopcorp/puik-theme/src/index.scss';
 import './assets/css/style.css';
 
-createApp(App).mount('#app');
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+
+const app = createApp(App);
+app.use(router);
+
+app.mount('#app');

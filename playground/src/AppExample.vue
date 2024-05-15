@@ -1,21 +1,37 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import { RouterView } from 'vue-router';
+import { PuikLink } from '@prestashopcorp/puik-components';
 </script>
 
 <template>
-  <div class="app-container" />
+  <header>
+    <div>
+      <h1 class="puik-brand-h1">
+        Puik Playground
+      </h1>
+      <nav>
+        <puik-link to="/">
+          Vue components
+        </puik-link>
+        <puik-link to="/web-components">
+          Web components
+        </puik-link>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <RouterView />
+  </main>
 </template>
 
-<style lang="scss">
-html,
-body {
-  @apply w-screen h-screen m-0;
-  #app {
-    @apply w-full h-full;
-    .app-container {
-      @apply w-full h-full;
-    }
-  }
+<style scoped lang="scss">
+header,
+main {
+  @apply flex flex-col space-y-5 p-5;
+}
+nav {
+  @apply flex space-x-5;
 }
 </style>

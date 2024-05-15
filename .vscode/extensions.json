@@ -1,11 +1,10 @@
 {
   "recommendations": [
-    "Vue.volar",
-    "Vue.vscode-typescript-vue-plugin",
+    "vue.volar",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "antfu.vite",
     "lokalise.i18n-ally",
-    "ZixuanChen.vitest-explorer"
+    "vitest.explorer"
   ]
 }

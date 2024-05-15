@@ -23,5 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-# views directory
-views
+# playground views files
+/src/views/*
+!/src/views/VueComponentsViewExample.vue
+!/src/views/WebComponentsViewExample.vue
