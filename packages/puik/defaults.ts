@@ -11,7 +11,9 @@ export default {
     });
 
     Plugins.forEach((plugin) => {
-      app.config.globalProperties[plugin.name] = plugin;
+      if (plugin.name) {
+        app.config.globalProperties[plugin.name] = plugin;
+      }
     });
   }
 };

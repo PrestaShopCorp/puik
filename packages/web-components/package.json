@@ -7,11 +7,11 @@
     "build": "tsc --noEmit --project ./tsconfig.build.json && vite build"
   },
   "dependencies": {
-    "vue": "^3.3.8",
-    "@prestashopcorp/puik-components": "workspace:*"
+    "@prestashopcorp/puik-components": "workspace:*",
+    "vue": "3.3.10"
   },
   "devDependencies": {
-    "vue-tsc": "^1.8.22"
+    "vue-tsc": "^1.8.27"
   },
   "files": [
     "dist"

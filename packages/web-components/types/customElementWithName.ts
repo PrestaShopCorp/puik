@@ -1,7 +1,7 @@
 import { VueElementConstructor } from 'vue';
 
 export interface CustomElementWithName extends VueElementConstructor<{}> {
-  ceName: string
+  ceName?: string
 }
 
 export default CustomElementWithName;
