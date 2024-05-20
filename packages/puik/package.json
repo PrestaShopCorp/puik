@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@prestashopcorp/puik-components": "workspace:*",
+    "@prestashopcorp/puik-web-components": "workspace:*",
     "@prestashopcorp/puik-resolver": "workspace:*",
     "@prestashopcorp/puik-tailwind-preset": "workspace:*",
     "@prestashopcorp/puik-theme": "workspace:*"
