@@ -205,6 +205,9 @@ importers:
       '@prestashopcorp/puik-theme':
         specifier: workspace:*
         version: link:../theme
+      '@prestashopcorp/puik-web-components':
+        specifier: workspace:*
+        version: link:../web-components
     devDependencies:
       vue:
         specifier: 3.3.10
