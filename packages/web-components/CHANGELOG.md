@@ -1,5 +1,16 @@
 # @prestashopcorp/puik-web-components
 
+## 2.0.0-beta.3
+
+### Minor Changes
+
+- update dependencies
+
+### Patch Changes
+
+- Updated dependencies
+  - @prestashopcorp/puik-components@2.0.0-beta.3
+
 ## 2.0.0-beta.2
 
 ### Patch Changes

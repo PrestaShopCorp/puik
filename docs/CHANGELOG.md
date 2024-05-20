@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-docs
 
+## 1.1.0-beta.2
+
+### Minor Changes
+
+- update dependencies
+
 ## 1.0.1-beta.1
 
 ### Patch Changes

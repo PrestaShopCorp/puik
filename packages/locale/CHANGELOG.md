@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-locale
 
+## 2.0.0-beta.3
+
+### Minor Changes
+
+- update dependencies
+
 ## 2.0.0-beta.2
 
 ### Patch Changes
