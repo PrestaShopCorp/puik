@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-docs
 
+## 1.1.0-beta.3
+
+### Minor Changes
+
+- update pnpm version and fix ci workflows
+
 ## 1.1.0-beta.2
 
 ### Minor Changes

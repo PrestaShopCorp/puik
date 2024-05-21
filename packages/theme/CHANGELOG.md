@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-theme
 
+## 2.0.0-beta.4
+
+### Minor Changes
+
+- update pnpm version and fix ci workflows
+
 ## 2.0.0-beta.3
 
 ### Minor Changes

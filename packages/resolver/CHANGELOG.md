@@ -1,5 +1,17 @@
 # @prestashopcorp/puik-resolver
 
+## 2.0.0-beta.5
+
+### Minor Changes
+
+- update pnpm version and fix ci workflows
+
+### Patch Changes
+
+- Updated dependencies
+  - @prestashopcorp/puik-components@2.0.0-beta.4
+  - @prestashopcorp/puik-theme@2.0.0-beta.4
+
 ## 2.0.0-beta.4
 
 ### Minor Changes
