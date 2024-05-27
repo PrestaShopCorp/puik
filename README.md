@@ -29,12 +29,12 @@ Please make sure to read the Contributing Guide before making a pull request.
 
 This monorepo contains the following libraries:
 
-- [@prestashopcorp/puik-components](./packages/components/README.md) a Vue 3 component library
-- [@prestashopcorp/puik-web-components](./packages/web-components/README.md) a Web component library
-- [@prestashopcorp/puik-resolver](./packages/resolver/README.md) a component resolver for our Vue 3 component library
-- [@prestashopcorp/puik-theme](./packages/theme/README.md) a CSS library containing all the classes used in our components
-- [@prestashopcorp/puik-tailwind-preset](./packages/tailwind-preset/README.md) a Tailwind Css preset that contains all the design tokens used to create the components
-- [@prestashopcorp/puik](./packages/puik/README.md) a library containing all the other libraries
+- [@prestashopcorp/puik-components](https://www.npmjs.com/package/@prestashopcorp/puik-components) a Vue 3 component library
+- [@prestashopcorp/puik-web-components](https://www.npmjs.com/package/@prestashopcorp/puik-web-components) a Web component library
+- [@prestashopcorp/puik-resolver](https://www.npmjs.com/package/@prestashopcorp/puik-resolver) a component resolver for our Vue 3 component library
+- [@prestashopcorp/puik-theme](https://www.npmjs.com/package/@prestashopcorp/puik-theme) a CSS library containing all the classes used in our components
+- [@prestashopcorp/puik-tailwind-preset](https://www.npmjs.com/package/@prestashopcorp/puik-tailwind-preset) a Tailwind Css preset that contains all the design tokens used to create the components
+- [@prestashopcorp/puik](https://www.npmjs.com/package/@prestashopcorp/puik) a library containing all the other libraries
 
 ## Installation
 
