@@ -4,7 +4,7 @@
 
 ### Major Changes
 
-- ad02b14: Init Puik v2 beta
+- ad02b14: Init Puik v2
 
   For more informations, please refer to the [release-notes-v2](../RELEASE-NOTES-V2.md) and [readme file](../RELEASE-NOTES-V2.md)
 

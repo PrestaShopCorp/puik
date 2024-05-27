@@ -1,4 +1,4 @@
-# Puik v2 (Beta) - Breaking Changes and Available Components
+# Puik v2 - Breaking Changes and Available Components
 
 ## Breaking Changes
 
