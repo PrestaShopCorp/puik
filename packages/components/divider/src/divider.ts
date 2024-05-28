@@ -1,31 +1,13 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
-import type Divider from './divider.vue'
+import type Divider from './divider.vue';
 
 export enum PuikDividerOrientation {
-  HORIZONTAL = 'horizontal',
-  VERTICAL = 'vertical',
+  Horizontal = 'horizontal',
+  Vertical = 'vertical',
 }
 
-export const dividerOrientations = ['horizontal', 'vertical'] as const
-export type PuikDividerOrientationString = (typeof dividerOrientations)[number]
+export interface DividerProps {
+  orientation?: `${PuikDividerOrientation}`
+  dataTest?: string
+}
 
-export const dividerProps = buildProps({
-  orientation: {
-    type: [
-      String as PropType<PuikDividerOrientation>,
-      String as PropType<PuikDividerOrientationString>,
-    ],
-    required: false,
-    default: PuikDividerOrientation.HORIZONTAL,
-  },
-  dataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-} as const)
-
-export type DividerProps = ExtractPropTypes<typeof dividerProps>
-
-export type DividerInstance = InstanceType<typeof Divider>
+export type DividerInstance = InstanceType<typeof Divider>;

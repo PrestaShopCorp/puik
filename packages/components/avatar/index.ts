@@ -1,8 +1,6 @@
-import { withInstall } from '@puik/utils'
+import Avatar from './src/avatar.vue';
 
-import Avatar from './src/avatar.vue'
+export const PuikAvatar = Avatar;
+export default PuikAvatar;
 
-export const PuikAvatar = withInstall(Avatar)
-export default PuikAvatar
-
-export * from './src/avatar'
+export * from './src/avatar';

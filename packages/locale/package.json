@@ -1,11 +1,7 @@
 {
-  "name": "@puik/locale",
+  "name": "@prestashopcorp/puik-locale",
   "description": "PUIK locale - Translations feature.",
-  "version": "0.0.1",
-  "main": "index.ts",
-  "module": "index.ts",
-  "unpkg": "index.js",
-  "jsdelivr": "index.js",
-  "types": "index.d.ts",
+  "private": true,
+  "version": "2.0.0",
   "license": "MIT"
 }

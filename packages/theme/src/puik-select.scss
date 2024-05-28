@@ -1,0 +1,87 @@
+@use './common/typography.scss';
+
+.puik-select {
+  @apply relative;
+  @extend .puik-body-default;
+  &__button {
+    @apply relative w-full cursor-default bg-white min-h-[36px] text-left
+      border border-primary-400
+      hover:border-primary
+      text-primary
+      focus-visible:outline-none focus-visible:ring focus-visible:ring-blue
+      disabled:border-primary-400 disabled:text-primary-500;
+    &--error {
+      @apply border-red;
+    }
+    &:disabled input {
+      @apply text-primary-500;
+    }
+  }
+  &__selected {
+    @apply block truncate w-full
+      py-1 pl-3 pr-9 select-none font-primary outline-none pointer-events-none
+      text-primary
+      disabled:bg-white
+      placeholder:text-primary
+      disabled:placeholder:text-primary-500;
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 50px theme('colors.ocean-blue.50') inset;
+    }
+  }
+  &__icon {
+    @apply pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 select-none;
+  }
+  &__search {
+    @apply px-1 my-1;
+  }
+  &__no-results {
+    @apply p-2 truncate;
+  }
+  &__options {
+    @apply absolute bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5
+    focus-visible:outline-none sm:text-sm overflow-x-hidden;
+    &--full-width {
+      @apply min-w-full w-max;
+    }
+  }
+  &__options-list {
+    @apply max-h-60 overflow-y-auto overflow-x-hidden;
+  }
+  &__error {
+    @apply flex text-xs text-red font-primary font-normal mt-1;
+    &__text {
+      @extend .puik-body-small;
+      @apply mt-0.5;
+    }
+    &__icon {
+      @apply mr-1;
+    }
+  }
+  &__transition {
+    &__enter {
+      &--active {
+        @apply transition duration-100 ease-out;
+      }
+      &--from {
+        @apply transform scale-95 opacity-0;
+      }
+      &--to {
+        @apply transform scale-100 opacity-100;
+      }
+    }
+    &__leave {
+      &--active {
+        @apply transition duration-75 ease-out;
+      }
+      &--from {
+        @apply transform scale-100 opacity-100;
+      }
+      &--to {
+        @apply transform scale-95 opacity-0;
+      }
+    }
+  }
+  .puik-select__options:not(.puik-select__options--full-width) .puik-option {
+    @apply pr-10;
+  }
+}

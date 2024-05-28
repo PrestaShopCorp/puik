@@ -8,5 +8,5 @@
  * @returns If your HTML element is ellipsed or not
  */
 export function isEllipsisActive(elem: HTMLElement) {
-  return elem.offsetWidth < elem.scrollWidth
+  return elem.offsetWidth < elem.scrollWidth;
 }

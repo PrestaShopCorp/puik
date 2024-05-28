@@ -1,9 +1,9 @@
-import { describe, it, expect } from 'vitest'
-import { factoryMenu } from './menu.spec'
-import type { VueWrapper } from '@vue/test-utils'
+import { describe, it, expect } from 'vitest';
+import { factoryMenu } from './menu.spec';
+import type { VueWrapper } from '@vue/test-utils';
 
 describe('Menu item group tests', () => {
-  let wrapper: VueWrapper<any>
+  let wrapper: VueWrapper<any>;
   const template = `
     <puik-menu>
       <template #trigger>
@@ -20,10 +20,10 @@ describe('Menu item group tests', () => {
         <puik-button>Third link</puik-button>
       </puik-menu-item>
     </puik-menu>
-  `
+  `;
 
   it('should be a vue instance', () => {
-    wrapper = factoryMenu(template)
-    expect(wrapper).toBeTruthy()
-  })
-})
+    wrapper = factoryMenu(template);
+    expect(wrapper).toBeTruthy();
+  });
+});

@@ -1,2 +1,2 @@
-import '@puik/components/base/style'
-import '@puik/theme/src/progress-stepper.scss'
+import '@prestashopcorp/puik-components/base/style';
+import '@prestashopcorp/puik-theme/src/puik-progress-stepper.scss';

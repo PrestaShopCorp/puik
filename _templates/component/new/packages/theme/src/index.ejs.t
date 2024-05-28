@@ -5,4 +5,4 @@ skip_if: <%= h.changeCase.param(name) %>
 append: true
 eof_last: false
 ---
-@use '<%= h.changeCase.param(name) %>';
+@use 'puik-<%= h.changeCase.param(name) %>';

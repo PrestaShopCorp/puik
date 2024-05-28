@@ -1,72 +1,36 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
-import type Alert from './alert.vue'
+import type Alert from './alert.vue';
 
-export const alertVariants = ['success', 'warning', 'danger', 'info'] as const
-
-export type PuikAlertVariant = (typeof alertVariants)[number]
+export enum PuikAlertVariants {
+  Success = 'success',
+  Warning = 'warning',
+  Danger = 'danger',
+  Info = 'info',
+}
 
 export const ICONS = {
   success: 'check_circle',
   warning: 'warning',
   danger: 'error',
-  info: 'info',
+  info: 'info'
+};
+
+export interface AlertProps {
+  title?: string
+  description?: string
+  variant?: `${PuikAlertVariants}`
+  disableBorders?: boolean
+  isClosable?: boolean
+  buttonLabel?: string
+  buttonWrapLabel?: boolean
+  linkLabel?: string
+  ariaLive?: 'polite' | 'assertive'
+  dataTest?: string
 }
 
-export const alertProps = buildProps({
-  title: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  description: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  variant: {
-    type: String as PropType<PuikAlertVariant>,
-    default: 'success',
-  },
-  disableBorders: {
-    type: Boolean,
-    default: false,
-  },
-  buttonLabel: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  buttonWrapLabel: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  isClosable: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  ariaLive: {
-    type: String as PropType<'polite' | 'assertive'>,
-    required: false,
-    default: 'polite',
-  },
-  dataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  linkLabel: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-} as const)
+export type AlertEmits = {
+  click: [event: Event]
+  close: [event: Event]
+  clickLink: [event: Event]
+};
 
-export type AlertProps = ExtractPropTypes<typeof alertProps>
-
-export const alertEmits = ['click', 'clickLink', 'close']
-export type AlertEmits = typeof alertEmits
-
-export type AlertInstance = InstanceType<typeof Alert>
+export type AlertInstance = InstanceType<typeof Alert>;

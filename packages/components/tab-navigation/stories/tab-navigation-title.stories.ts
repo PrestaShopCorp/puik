@@ -1,19 +1,12 @@
-import PuikIcon from '../../icon/src/icon.vue'
-import {
-  PuikTabNavigation,
-  PuikTabNavigationGroupTitles,
-  PuikTabNavigationGroupPanels,
-  PuikTabNavigationTitle,
-  PuikTabNavigationPanel,
-} from '..'
-import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3'
+import { PuikTabNavigation, PuikTabNavigationGroupTitles, PuikTabNavigationGroupPanels, PuikTabNavigationTitle, PuikTabNavigationPanel, PuikIcon } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3';
 
 const meta: Meta<
-  | typeof PuikTabNavigation
-  | typeof PuikTabNavigationGroupTitles
-  | typeof PuikTabNavigationGroupPanels
-  | typeof PuikTabNavigationTitle
-  | typeof PuikTabNavigationPanel
+| typeof PuikTabNavigation
+| typeof PuikTabNavigationGroupTitles
+| typeof PuikTabNavigationGroupPanels
+| typeof PuikTabNavigationTitle
+| typeof PuikTabNavigationPanel
 > = {
   title: 'Components/TabNavigation/TabNavigationTitle',
   component: PuikTabNavigationTitle,
@@ -25,12 +18,12 @@ const meta: Meta<
       table: {
         disable: true,
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     defaultPosition: {
       description:
@@ -39,12 +32,12 @@ const meta: Meta<
       table: {
         disable: true,
         type: {
-          summary: 'number',
+          summary: 'number'
         },
         defaultValue: {
-          summary: 1,
-        },
-      },
+          summary: 1
+        }
+      }
     },
     ariaLabel: {
       description: 'value of aria-label attribute',
@@ -52,16 +45,16 @@ const meta: Meta<
       table: {
         disable: true,
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     position: {
       description:
-        'position of tab inside PuiktabNavigationGroupTitles component. NB: must be greater than or equal to 1',
+        'position of tab inside PuiktabNavigationGroupTitles component. NB: must be greater than or equal to 1'
     },
     disabled: {
       description:
@@ -69,24 +62,24 @@ const meta: Meta<
       control: 'boolean',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
-  },
-}
+          summary: 'false'
+        }
+      }
+    }
+  }
+};
 
-export default meta
+export default meta;
 type Story = StoryObj<
-  | typeof PuikTabNavigation
-  | typeof PuikTabNavigationGroupTitles
-  | typeof PuikTabNavigationGroupPanels
-  | typeof PuikTabNavigationTitle
-  | typeof PuikTabNavigationPanel
->
+| typeof PuikTabNavigation
+| typeof PuikTabNavigationGroupTitles
+| typeof PuikTabNavigationGroupPanels
+| typeof PuikTabNavigationTitle
+| typeof PuikTabNavigationPanel
+>;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
@@ -95,10 +88,10 @@ const Template: StoryFn = (args: Args) => ({
     PuikTabNavigationGroupTitles,
     PuikTabNavigationGroupPanels,
     PuikTabNavigationTitle,
-    PuikTabNavigationPanel,
+    PuikTabNavigationPanel
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
 <puik-tab-navigation :name="args.name" :default-position="args.defaultPosition">
@@ -134,21 +127,21 @@ const Template: StoryFn = (args: Args) => ({
   </puik-tab-navigation-group-panels>
 
 </puik-tab-navigation>
-`,
-})
+`
+});
 
 export const Default: Story = {
   args: {
     name: 'name-example',
     defaultPosition: 1,
-    ariaLabel: 'aria-label-example',
+    ariaLabel: 'aria-label-example'
   },
   render: Template,
   parameters: {
     docs: {
       description: {
         story:
-          'NB: 1) The position prop must be greater than or equal to 1, in the case of a loop it is therefore necessary to increment the index by 1 (see the example with the linked component: tabNavigationPanel). 2) Special attention regarding disabled prop: the defaultPosition prop of tabNavigation component takes precedence over the disabled prop. During the initialization of the TabNavigation component the content of the panel will be visible (it is only once the panel is switched that the disabled behavior is applied). 3) tabNavigationTitle component has a slot tag that allows you to integrate any content (ex: adding an icon in the example below)',
+          'NB: 1) The position prop must be greater than or equal to 1, in the case of a loop it is therefore necessary to increment the index by 1 (see the example with the linked component: tabNavigationPanel). 2) Special attention regarding disabled prop: the defaultPosition prop of tabNavigation component takes precedence over the disabled prop. During the initialization of the TabNavigation component the content of the panel will be visible (it is only once the panel is switched that the disabled behavior is applied). 3) tabNavigationTitle component has a slot tag that allows you to integrate any content (ex: adding an icon in the example below)'
       },
       controls: { exclude: ['name', 'defaultPosition', 'ariaLabel'] },
       source: {
@@ -223,8 +216,8 @@ export const Default: Story = {
   }
 }
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

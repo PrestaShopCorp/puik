@@ -1,13 +1,20 @@
 <template>
   <div :class="['puik-card', `puik-card--${variant}`]">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-import { cardProps } from './card'
+import { PuikCardVariants, type CardProps } from './card';
 defineOptions({
-  name: 'PuikCard',
-})
-defineProps(cardProps)
+  name: 'PuikCard'
+});
+withDefaults(defineProps<CardProps>(), {
+  variant: PuikCardVariants.Default
+});
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-card.scss';
+</style>

@@ -1,6 +1,5 @@
-import PuikTextarea from './../src/textarea.vue'
-import PuikLabel from './../../label/src/label.vue'
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikTextarea, PuikLabel } from '@prestashopcorp/puik-components';
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Textarea',
@@ -11,169 +10,169 @@ export default {
       description: 'v-model for textarea value',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     id: {
       description: 'Set the textarea id',
       control: 'none',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     name: {
       control: 'text',
       description: 'Set the textarea name',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     placeholder: {
       control: 'text',
       description: 'Set the placeholder',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     autofocus: {
       control: 'boolean',
       description: 'Set the autofocus attribute',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     disabled: {
       control: 'boolean',
       description: 'Set the textarea as disabled',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     readonly: {
       control: 'boolean',
       description: 'Set the textarea as readonly',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     required: {
       control: 'boolean',
       description: 'Set the textarea as required',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     hideHint: {
       control: 'boolean',
       description: 'Hide the hint slot',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     autoGrow: {
       control: 'boolean',
       description: 'Set the textarea height as the text increase to maxRows',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: true,
-        },
-      },
+          summary: true
+        }
+      }
     },
-    maxlength: {
+    maxLength: {
       control: 'number',
       description: 'Set the max number of character',
       table: {
         type: {
-          summary: 'number',
+          summary: 'number'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     rows: {
       control: 'number',
       description: 'Set the default height',
       table: {
         type: {
-          summary: 'number',
+          summary: 'number'
         },
         defaultValue: {
-          summary: 2,
-        },
-      },
+          summary: 2
+        }
+      }
     },
     maxRows: {
       control: 'number',
       description: 'Set the maximum height',
       table: {
         type: {
-          summary: 'number',
+          summary: 'number'
         },
         defaultValue: {
-          summary: 2,
-        },
-      },
+          summary: 2
+        }
+      }
     },
     error: {
       control: 'text',
       description: 'Set an error message',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
-    },
+          summary: 'undefined'
+        }
+      }
+    }
   },
   args: {
     id: 'textarea-1',
@@ -187,23 +186,23 @@ export default {
     autoGrow: true,
     rows: 2,
     maxRows: 2,
-    maxlength: undefined,
-    modelValue: '',
-  },
-} as Meta
+    maxLength: undefined,
+    modelValue: ''
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikTextarea,
-    PuikLabel,
+    PuikLabel
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
 <puik-textarea v-bind="args" v-model="args.modelValue"></puik-textarea>
-  `,
-})
+  `
+});
 
 export const Default: StoryObj = {
   render: Template,
@@ -226,16 +225,16 @@ export const Default: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Disabled: StoryObj = {
   render: Template,
   args: {
-    disabled: true,
+    disabled: true
   },
   parameters: {
     docs: {
@@ -251,16 +250,16 @@ export const Disabled: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Readonly: StoryObj = {
   render: Template,
   args: {
-    readonly: true,
+    readonly: true
   },
   parameters: {
     docs: {
@@ -276,16 +275,16 @@ export const Readonly: StoryObj = {
   </div>
 </div>
       `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Error: StoryObj = {
   render: Template,
   args: {
-    error: 'This is an error message',
+    error: 'This is an error message'
   },
   parameters: {
     docs: {
@@ -307,27 +306,27 @@ export const Error: StoryObj = {
   </div>
 </div>
       `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const CharacterCount: StoryObj = {
   render: Template,
   args: {
-    maxlength: 50,
+    maxLength: 50
   },
   parameters: {
     docs: {
       story: {
         inline: false,
-        iframeHeight: 100,
+        iframeHeight: 100
       },
       source: {
         code: `
 <!--VueJS Snippet-->
-<puik-textarea id="textarea" v-model="value" :maxlength="50"></puik-textarea>
+<puik-textarea id="textarea" v-model="value" :max-length="50"></puik-textarea>
 
 <!--HTML/CSS Snippet-->
 <div class="puik-textarea">
@@ -339,28 +338,28 @@ export const CharacterCount: StoryObj = {
   </div>
 </div>
       `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const AutoGrow: StoryObj = {
   render: Template,
   args: {
     autoGrow: true,
     rows: 5,
-    maxRows: 10,
+    maxRows: 10
   },
   parameters: {
     docs: {
       story: {
         inline: false,
-        iframeHeight: 200,
+        iframeHeight: 200
       },
       description: {
         story:
-          'This component will autogrow when text overflow and stop when reaching `maxRows`',
+          'This component will autogrow when text overflow and stop when reaching `maxRows`'
       },
       source: {
         code: `
@@ -377,8 +376,8 @@ export const AutoGrow: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

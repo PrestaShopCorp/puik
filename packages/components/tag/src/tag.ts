@@ -1,64 +1,28 @@
-import { buildProps } from '@puik/utils'
-import type { PuikTooltipPosition } from '@puik/components'
-import type { ExtractPropTypes, PropType } from 'vue'
-import type Tag from './tag.vue'
+import type { PuikTooltipPositions } from '@prestashopcorp/puik-components';
+import type Tag from './tag.vue';
 
-export const tagColorsVariants = [
-  'neutral',
-  'blue',
-  'yellow',
-  'green',
-  'purple',
-] as const
+export enum PuikTagVariants {
+  Neutral = 'neutral',
+  Blue = 'blue',
+  Yellow = 'yellow',
+  Green = 'green',
+  Purple = 'purple',
+}
 
-export const tagSizeVariants = ['default', 'small'] as const
+export enum PuikTagSizes {
+  Default = 'default',
+  Small = 'small',
+}
 
-export type PuikTagColorVariant = (typeof tagColorsVariants)[number]
-export type PuikTagSizeVariant = (typeof tagSizeVariants)[number]
+export interface TagProps {
+  id?: string
+  content: string
+  variant?: `${PuikTagVariants}`
+  size?: `${PuikTagSizes}`
+  icon?: string
+  disabled?: boolean
+  tooltipPosition?: `${PuikTooltipPositions}`
+  dataTest?: string
+}
 
-export const tagProps = buildProps({
-  id: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-  content: {
-    type: String,
-    required: true,
-    default: undefined,
-  },
-  variant: {
-    type: String,
-    required: false,
-    default: 'neutral',
-  },
-  size: {
-    type: String,
-    required: false,
-    default: 'default',
-  },
-  icon: {
-    type: String,
-    default: '',
-    required: false,
-  },
-  disabled: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  tooltipPosition: {
-    type: String as PropType<PuikTooltipPosition>,
-    Required: false,
-    default: 'bottom',
-  },
-  dataTest: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-} as const)
-
-export type TagProps = ExtractPropTypes<typeof tagProps>
-
-export type TagInstance = InstanceType<typeof Tag>
+export type TagInstance = InstanceType<typeof Tag>;

@@ -1,6 +1,5 @@
-import PuikTableSearchInput from '../src/table-search-input.vue'
-import { PuikTableSearchInputTypes } from '../src/table-search-input'
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikTableSearchInput, PuikTableSearchInputTypes } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Table/TableSearchInput',
@@ -12,12 +11,12 @@ export default {
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     column: {
       description:
@@ -27,47 +26,51 @@ export default {
         type: {
           summary: 'string',
           detail: `
-          // cf headers prop in Table Docs ('value' field of PuikTableHeader interface)
+// cf headers prop in Table Docs ('value' field of PuikTableHeader interface)
 
-          interface PuikTableHeader {
-            text: string | undefined
-            value: string
-            size: 'sm' | 'md' | 'lg' | undefined
-            width: string | undefined
-            align: 'left' | 'center' | 'right' | undefined
-            sortable: boolean | undefined
-            preventExpand: boolean | undefined
-          }
-          `,
+// Import
+import type { PuikTableHeader } from '@prestashopcorp/puik-components';
+
+//Detail
+interface PuikTableHeader {
+  text: string | undefined
+  value: string
+  size: 'sm' | 'md' | 'lg' | undefined
+  width: string | undefined
+  align: 'left' | 'center' | 'right' | undefined
+  sortable: boolean | undefined
+  preventExpand: boolean | undefined
+}
+          `
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     searchSubmit: {
       description: 'Set input as submit button',
       control: 'boolean',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: 'false',
-        },
-      },
+          summary: 'false'
+        }
+      }
     },
     searchReset: {
       description: 'Display reset button after submit',
       control: 'boolean',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: 'false',
-        },
-      },
+          summary: 'false'
+        }
+      }
     },
     searchType: {
       description: 'The input type (text or range)',
@@ -77,34 +80,38 @@ export default {
         type: {
           summary: 'PuikTableSearchInputTypes',
           detail: `
-          enum PuikTableSearchInputTypes {
-            Text = 'text',
-            Range = 'range',
-          }
-          `,
+// Import
+import { PuikTableSearchInputTypes } from '@prestashopcorp/puik-components';
+
+// Detail
+enum PuikTableSearchInputTypes {
+  Text = 'text',
+  Range = 'range',
+}
+          `
         },
         defaultValue: {
-          summary: 'text',
-        },
-      },
+          summary: 'text'
+        }
+      }
     },
     searchSubmitEvent: {
       description: 'Event emitted when clicking the search button',
       control: 'none',
       table: {
         type: {
-          summary: 'event',
-        },
-      },
+          summary: 'event'
+        }
+      }
     },
     searchResetEvent: {
       description: 'Event emitted when clicking the reset button',
       control: 'none',
       table: {
         type: {
-          summary: 'event',
-        },
-      },
+          summary: 'event'
+        }
+      }
     },
     searchTextValue: {
       description: 'Event emitted when updating the value of input text',
@@ -113,6 +120,10 @@ export default {
         type: {
           summary: 'event',
           detail: `
+// Import
+import type { searchOption, inputRange } from '@prestashopcorp/puik-components';
+
+// Details
 // Payload type :
 type searchOption = {
   searchBy: string;
@@ -124,9 +135,9 @@ type inputRange = {
   min?: number
   max?: number
 }
-          `,
-        },
-      },
+          `
+        }
+      }
     },
     searchRangeValue: {
       description: 'Event emitted when updating the value of input Range',
@@ -135,7 +146,10 @@ type inputRange = {
         type: {
           summary: 'event',
           detail: `
-// Payload type :
+// Import
+import type { searchOption, inputRange } from '@prestashopcorp/puik-components';
+
+// Details
 type searchOption = {
   searchBy: string;
   inputText?: string | undefined;
@@ -146,29 +160,29 @@ type inputRange = {
   min?: number
   max?: number
 }
-          `,
-        },
-      },
-    },
+          `
+        }
+      }
+    }
   },
   args: {
     name: 'search-column',
     column: 'column',
     searchSubmit: false,
     searchReset: false,
-    searchType: 'text',
-  },
-} as Meta
+    searchType: 'text'
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikTableSearchInput,
+    PuikTableSearchInput
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<PuikTableSearchInput v-bind="args"/>`,
-})
+  template: '<PuikTableSearchInput v-bind="args"/>'
+});
 
 export const Default = {
   render: Template,
@@ -194,8 +208,8 @@ export const Default = {
 
 <!--HTML/CSS Snippet-->
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

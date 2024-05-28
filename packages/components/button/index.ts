@@ -1,8 +1,6 @@
-import { withInstall } from '@puik/utils'
+import Button from './src/button.vue';
 
-import Button from './src/button.vue'
+export const PuikButton = Button;
+export default PuikButton;
 
-export const PuikButton = withInstall(Button)
-export default PuikButton
-
-export * from './src/button'
+export * from './src/button';

@@ -1,7 +1,6 @@
-import { ref } from 'vue'
-import PuikSelect from './../src/select.vue'
-import PuikOption from './../src/option.vue'
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+import { ref } from 'vue';
+import { PuikSelect, PuikOption } from '@prestashopcorp/puik-components';
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Select',
@@ -12,8 +11,8 @@ export default {
       description:
         'Use custom label when the label is different from the option selected',
       table: {
-        category: 'Common',
-      },
+        category: 'Common'
+      }
     },
     labelKey: {
       control: 'text',
@@ -21,8 +20,8 @@ export default {
         'In the case of using objects as a options prop you can set which property of the object is the label',
       table: {
         defaultValue: { summary: 'label' },
-        category: 'Searchable',
-      },
+        category: 'Searchable'
+      }
     },
     valueKey: {
       control: 'text',
@@ -30,75 +29,75 @@ export default {
         'In the case of using objects as a options prop you can set which property of the object is the value',
       table: {
         defaultValue: { summary: 'value' },
-        category: 'Searchable',
-      },
+        category: 'Searchable'
+      }
     },
     id: {
       control: 'text',
       description: 'Sets the id attribute of the select',
       table: {
-        category: 'Common',
-      },
+        category: 'Common'
+      }
     },
     disabled: {
       control: 'boolean',
       description: 'Disables the select',
       table: {
         defaultValue: { summary: false },
-        category: 'Common',
-      },
+        category: 'Common'
+      }
     },
     placeholder: {
       control: 'text',
       description: 'Sets a placeholder for the select',
       table: {
-        category: 'Common',
-      },
+        category: 'Common'
+      }
     },
     name: {
       control: 'text',
       description: 'Defines a name for the select',
       table: {
-        category: 'Common',
-      },
+        category: 'Common'
+      }
     },
     autocomplete: {
       control: 'text',
       description: 'Enables browser autocompletion for the select',
       table: {
-        category: 'Common',
-      },
+        category: 'Common'
+      }
     },
     error: {
       control: 'text',
       description:
         'Display an error message under the field and sets the select in a error state (also available as a slot named error)',
       table: {
-        category: 'Common',
-      },
+        category: 'Common'
+      }
     },
     options: {
       control: 'none',
       description:
         'Pass options to the component to enable the option filtering (⚠️ Default filtering only works for arrays of string, number, object. Use `customFilterMethod` for specific needs) (Returns also an `options` value through the v-slot directive',
       table: {
-        category: 'Searchable',
-      },
+        category: 'Searchable'
+      }
     },
     customFilterMethod: {
       control: 'none',
       description:
         'Use your own method to filter the options when using the search',
       table: {
-        category: 'Searchable',
-      },
+        category: 'Searchable'
+      }
     },
     noMatchText: {
       control: 'text',
       description: 'Message to display when there is no results found',
       table: {
-        category: 'Searchable',
-      },
+        category: 'Searchable'
+      }
     },
     fullWidth: {
       control: 'boolean',
@@ -106,17 +105,17 @@ export default {
         'Keep same width for the dropdown and select input. True by default',
       table: {
         defaultValue: true,
-        category: 'Common',
-      },
+        category: 'Common'
+      }
     },
     dataTest: {
       control: 'text',
       description:
         'Set the data-test attribute `searchInput-${dataTest}` `noResults-${dataTest}` `select-${dataTest}` `option-${dataTest}-${index + 1}`',
       table: {
-        category: 'Common',
-      },
-    },
+        category: 'Common'
+      }
+    }
   },
   args: {
     labelKey: '',
@@ -127,26 +126,26 @@ export default {
     error: '',
     options: undefined,
     customFilterMethod: undefined,
-    noMatchText: '',
-  },
-} as Meta
+    noMatchText: ''
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikSelect,
-    PuikOption,
+    PuikOption
   },
   setup() {
-    const myValue = ref('')
-    return { args, myValue }
+    const myValue = ref('');
+    return { args, myValue };
   },
   template: `
   <puik-select v-model="myValue" v-bind="args">
     <puik-option value="test">Test</puik-option>
     <puik-option value="test2">Test2</puik-option>
     <puik-option value="test3">Test3</puik-option>
-  </puik-select>`,
-})
+  </puik-select>`
+});
 
 export const Default = {
   render: Template,
@@ -216,19 +215,19 @@ export const Default = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Disabled: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikOption,
+      PuikOption
     },
-    template: `<puik-select disabled placeholder="Disabled select"></puik-select>`,
+    template: '<puik-select disabled placeholder="Disabled select"></puik-select>'
   }),
 
   parameters: {
@@ -280,27 +279,27 @@ export const Disabled: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const DisabledOption: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikOption,
+      PuikOption
     },
     setup() {
-      const myValue = ref('')
-      return { myValue }
+      const myValue = ref('');
+      return { myValue };
     },
     template: `<puik-select v-model="myValue" placeholder="Select a value">
         <puik-option value="test" label="Test" disabled/>
         <puik-option value="test2" label="Test2"/>
         <puik-option value="test3" label="Test3"/>
-      </puik-select>`,
+      </puik-select>`
   }),
 
   parameters: {
@@ -351,27 +350,27 @@ export const DisabledOption: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Error: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikOption,
+      PuikOption
     },
     setup() {
-      const myValue = ref('')
-      return { myValue }
+      const myValue = ref('');
+      return { myValue };
     },
     template: `<puik-select error="This is an error message" v-model="myValue" placeholder="Select a value">
         <puik-option value="test" label="Test"/>
         <puik-option value="test2" label="Test2"/>
         <puik-option value="test3" label="Test3"/>
-      </puik-select>`,
+      </puik-select>`
   }),
 
   parameters: {
@@ -429,31 +428,31 @@ export const Error: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Searchable: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikOption,
+      PuikOption
     },
     setup() {
-      const myValue = ref('')
+      const myValue = ref('');
       const myOptions = ref([
         { value: 'test', label: 'Test' },
         { value: 'test2', label: 'Test2' },
-        { value: 'test3', label: 'Test3' },
-      ])
-      return { myValue, myOptions }
+        { value: 'test3', label: 'Test3' }
+      ]);
+      return { myValue, myOptions };
     },
     template: `
       <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value">
         <puik-option v-for="option in options" :value="option.value" :label="option.label"/>
-      </puik-select>`,
+      </puik-select>`
   }),
 
   parameters: {
@@ -519,35 +518,35 @@ export const Searchable: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const NoMatchCustomText: StoryObj = {
   render: (args: Args) => ({
     components: {
       PuikSelect,
-      PuikOption,
+      PuikOption
     },
     setup() {
-      const myValue = ref('')
+      const myValue = ref('');
       const myOptions = ref([
         { value: 'test', label: 'Test' },
         { value: 'test2', label: 'Test2' },
-        { value: 'test3', label: 'Test3' },
-      ])
-      return { myValue, myOptions, args }
+        { value: 'test3', label: 'Test3' }
+      ]);
+      return { myValue, myOptions, args };
     },
     template: `
       <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value" :no-match-text="args.noMatchText">
         <puik-option v-for="option in options" :value="option.value" :label="option.label"/>
-      </puik-select>`,
+      </puik-select>`
   }),
 
   args: {
-    noMatchText: 'No results found custom text',
+    noMatchText: 'No results found custom text'
   },
 
   parameters: {
@@ -613,27 +612,27 @@ export const NoMatchCustomText: StoryObj = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const customLabel = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikOption,
+      PuikOption
     },
     setup() {
-      const myValue = ref('')
-      return { myValue }
+      const myValue = ref('');
+      return { myValue };
     },
     template: `<puik-select v-model="myValue" placeholder="Select a value" customLabel="Custom label">
         <puik-option value="test" label="Test 1"/>
         <puik-option value="test2" label="Test 2"/>
         <puik-option value="test3" label="Test 3"/>
-      </puik-select>`,
+      </puik-select>`
   }),
   parameters: {
     docs: {
@@ -682,27 +681,27 @@ export const customLabel = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const maxContentOption = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikOption,
+      PuikOption
     },
     setup() {
-      const myValue = ref('')
-      return { myValue }
+      const myValue = ref('');
+      return { myValue };
     },
     template: `<puik-select v-model="myValue" placeholder="Select a value" :full-width="false">
         <puik-option value="test" label="Test 1"/>
         <puik-option value="test2" label="Test 2"/>
         <puik-option value="test3" label="Test 3"/>
-      </puik-select>`,
+      </puik-select>`
   }),
   parameters: {
     docs: {
@@ -751,8 +750,8 @@ export const maxContentOption = {
     </div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

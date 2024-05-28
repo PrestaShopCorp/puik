@@ -1,76 +1,87 @@
 <template>
-  <div :id="name" class="puik-tab-navigation" @keyup="handleKeysEvent">
+  <div
+    :id="name"
+    class="puik-tab-navigation"
+    @keyup="handleKeysEvent"
+  >
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-import { nextTick, provide, ref } from 'vue'
-import { currentTabKey, tabNavigationProps } from './tab-navigation'
+import { nextTick, provide, ref } from 'vue';
+import { currentTabKey, type TabNavigationProps } from './tab-navigation';
 
 defineOptions({
-  name: 'PuikTabNavigation',
-})
+  name: 'PuikTabNavigation'
+});
 
-const props = defineProps(tabNavigationProps)
+const props = withDefaults(defineProps<TabNavigationProps>(), {
+  defaultPosition: 1
+});
 
-const name = ref<string>(props.name)
-const numberOfTabs = ref<number>()
-const currentPosition = ref<number>(props.defaultPosition)
-const keyEventDirection = ref<string | null>()
+const name = ref<string>(props.name);
+const numberOfTabs = ref<number>(1);
+const currentPosition = ref<number>(props.defaultPosition);
+const keyEventDirection = ref<string | null>();
 const handleTabClick = (index: number) => {
-  currentPosition.value = index
-}
+  currentPosition.value = index;
+};
 
 provide(currentTabKey, {
   name,
   numberOfTabs,
   currentPosition,
   keyEventDirection,
-  handleTabClick,
-})
+  handleTabClick
+});
 
 const selectNextTab = () => {
-  const tabNavigationInstance = document.querySelector(`#${name.value}`)
+  const tabNavigationInstance = document.querySelector(`#${name.value}`);
   numberOfTabs.value =
-    tabNavigationInstance?.querySelectorAll('[role="tab"]').length || 1
+    tabNavigationInstance?.querySelectorAll('[role="tab"]').length || 1;
 
   currentPosition.value === numberOfTabs.value
     ? (currentPosition.value = 1)
-    : currentPosition.value++
+    : currentPosition.value++;
 
   nextTick(() => {
     const tabSelected = tabNavigationInstance?.querySelector(
       '.puik-tab-navigation__title--selected'
-    ) as HTMLElement
-    tabSelected.focus()
-  })
-}
+    ) as HTMLElement;
+    tabSelected.focus();
+  });
+};
 
 const selectPreviousTab = () => {
-  const tabNavigationInstance = document.querySelector(`#${name.value}`)
+  const tabNavigationInstance = document.querySelector(`#${name.value}`);
   numberOfTabs.value =
-    tabNavigationInstance?.querySelectorAll('[role="tab"]').length || 1
+    tabNavigationInstance?.querySelectorAll('[role="tab"]').length || 1;
 
   currentPosition.value <= 1
     ? (currentPosition.value = numberOfTabs.value)
-    : currentPosition.value--
+    : currentPosition.value--;
 
   nextTick(() => {
     const tabSelected = tabNavigationInstance?.querySelector(
       '.puik-tab-navigation__title--selected'
-    ) as HTMLElement
-    tabSelected.focus()
-  })
-}
+    ) as HTMLElement;
+    tabSelected.focus();
+  });
+};
 
 const handleKeysEvent = (event: KeyboardEvent) => {
   if (event.key === 'ArrowRight') {
-    keyEventDirection.value = 'right'
-    selectNextTab()
+    keyEventDirection.value = 'right';
+    selectNextTab();
   } else if (event.key === 'ArrowLeft') {
-    keyEventDirection.value = 'left'
-    selectPreviousTab()
+    keyEventDirection.value = 'left';
+    selectPreviousTab();
   }
-}
+};
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-tab-navigation.scss';
+</style>

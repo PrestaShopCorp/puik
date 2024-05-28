@@ -1,0 +1,6 @@
+@use './common/typography.scss';
+
+.puik-menu-item-title {
+  @extend .puik-body-default-bold;
+  @apply uppercase h-9 p-2;
+}

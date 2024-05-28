@@ -5,9 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { tabNavigationGroupPanelsProps } from './tab-navigation-group-panels'
-
 defineOptions({
-  name: 'PuikTabNavigationGroupPanels',
-})
+  name: 'PuikTabNavigationGroupPanels'
+});
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-tab-navigation-group-panels.scss';
+</style>

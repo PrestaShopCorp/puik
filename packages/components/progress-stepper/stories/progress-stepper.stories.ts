@@ -1,9 +1,6 @@
-import { useArgs } from '@storybook/client-api'
-import PuikButton from '../../button/src/button.vue'
-import PuikProgressStepper from './../src/progress-stepper.vue'
-import PuikProgressStepperStep from './../src/progress-stepper-step.vue'
-import type { Meta, StoryFn } from '@storybook/vue3'
-import type { PuikStep } from '../src/progress-stepper'
+import { useArgs } from '@storybook/client-api';
+import { PuikButton, PuikProgressStepper, PuikProgressStepperStep, PuikStep } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
   title: 'Components/ProgressStepper',
@@ -15,53 +12,53 @@ export default {
       options: [1, 2, 3],
       table: {
         type: {
-          summary: 'string | number',
-        },
-      },
+          summary: 'string | number'
+        }
+      }
     },
     default: {
       description:
         'Content of progress stepper (should be progress stepper steps)',
-      control: 'none',
+      control: 'none'
     },
     'update:modelValue': {
       description: 'event emitted of current step change',
       control: 'none',
       table: {
         type: {
-          summary: 'string | number',
-        },
-      },
-    },
+          summary: 'string | number'
+        }
+      }
+    }
   },
   args: {
-    modelValue: 2,
-  },
-} as Meta
+    modelValue: 2
+  }
+} as Meta;
 
 const Template: StoryFn = () => {
-  const [args, updateArgs] = useArgs()
+  const [args, updateArgs] = useArgs();
   return {
     components: {
       PuikProgressStepper,
       PuikProgressStepperStep,
-      PuikButton,
+      PuikButton
     },
     setup() {
       const nextStep = () =>
         updateArgs({
-          modelValue: args.modelValue + 1,
-        })
+          modelValue: args.modelValue + 1
+        });
       const prevStep = () =>
         updateArgs({
-          modelValue: args.modelValue - 1,
-        })
+          modelValue: args.modelValue - 1
+        });
       const stepChange = (step: PuikStep) => {
         updateArgs({
-          modelValue: step,
-        })
-      }
-      return { args, nextStep, prevStep, stepChange }
+          modelValue: step
+        });
+      };
+      return { args, nextStep, prevStep, stepChange };
     },
     template: `<puik-progress-stepper v-bind="args" @update:model-value="stepChange">
     <puik-progress-stepper-step :step="1">
@@ -80,9 +77,9 @@ const Template: StoryFn = () => {
   <div class="mt-16 flex space-x-4">
     <puik-button :disabled="args.modelValue === 1" @click="prevStep">Previous step</puik-button>
     <puik-button :disabled="args.modelValue === 3" @click="nextStep">Next step</puik-button>
-  </div>`,
-  }
-}
+  </div>`
+  };
+};
 
 export const Default = {
   render: Template,
@@ -134,8 +131,8 @@ export const Default = {
   </div>
 </div>
       `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

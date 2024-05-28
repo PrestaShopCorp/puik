@@ -1,19 +1,12 @@
-import PuikIcon from '../../icon/src/icon.vue'
-import {
-  PuikTabNavigation,
-  PuikTabNavigationGroupTitles,
-  PuikTabNavigationGroupPanels,
-  PuikTabNavigationTitle,
-  PuikTabNavigationPanel,
-} from '..'
-import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3'
+import { PuikTabNavigation, PuikTabNavigationGroupTitles, PuikTabNavigationGroupPanels, PuikTabNavigationTitle, PuikTabNavigationPanel, PuikIcon } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3';
 
 const meta: Meta<
-  | typeof PuikTabNavigation
-  | typeof PuikTabNavigationGroupTitles
-  | typeof PuikTabNavigationGroupPanels
-  | typeof PuikTabNavigationTitle
-  | typeof PuikTabNavigationPanel
+| typeof PuikTabNavigation
+| typeof PuikTabNavigationGroupTitles
+| typeof PuikTabNavigationGroupPanels
+| typeof PuikTabNavigationTitle
+| typeof PuikTabNavigationPanel
 > = {
   title: 'Components/TabNavigation/TabNavigationGroupTitles',
   component: PuikTabNavigationGroupTitles,
@@ -25,12 +18,12 @@ const meta: Meta<
       table: {
         disable: true,
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     defaultPosition: {
       description:
@@ -39,31 +32,31 @@ const meta: Meta<
       table: {
         disable: true,
         type: {
-          summary: 'number',
+          summary: 'number'
         },
         defaultValue: {
-          summary: 1,
-        },
-      },
+          summary: 1
+        }
+      }
     },
     ariaLabel: {
       description: 'value of aria-label attribute',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     position: {
       description:
         'position of tab inside PuiktabNavigationGroupTitles component. NB: must be greater than 1',
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     disabled: {
       description: 'disable a navigation tab',
@@ -71,24 +64,24 @@ const meta: Meta<
       table: {
         disable: true,
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
-  },
-}
+          summary: 'false'
+        }
+      }
+    }
+  }
+};
 
-export default meta
+export default meta;
 type Story = StoryObj<
-  | typeof PuikTabNavigation
-  | typeof PuikTabNavigationGroupTitles
-  | typeof PuikTabNavigationGroupPanels
-  | typeof PuikTabNavigationTitle
-  | typeof PuikTabNavigationPanel
->
+| typeof PuikTabNavigation
+| typeof PuikTabNavigationGroupTitles
+| typeof PuikTabNavigationGroupPanels
+| typeof PuikTabNavigationTitle
+| typeof PuikTabNavigationPanel
+>;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
@@ -97,10 +90,10 @@ const Template: StoryFn = (args: Args) => ({
     PuikTabNavigationGroupTitles,
     PuikTabNavigationGroupPanels,
     PuikTabNavigationTitle,
-    PuikTabNavigationPanel,
+    PuikTabNavigationPanel
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
 <puik-tab-navigation :name="args.name" :default-position="args.defaultPosition">
@@ -130,19 +123,19 @@ const Template: StoryFn = (args: Args) => ({
   </puik-tab-navigation-group-panels>
 
 </puik-tab-navigation>
-`,
-})
+`
+});
 
 export const Default: Story = {
   args: {
     name: 'name-example',
     defaultPosition: 1,
-    ariaLabel: 'aria-label-example',
+    ariaLabel: 'aria-label-example'
   },
   render: Template,
   parameters: {
     args: {
-      ariaLabel: 'aria-label-example',
+      ariaLabel: 'aria-label-example'
     },
     docs: {
       controls: { exclude: ['name', 'defaultPosition'] },
@@ -187,8 +180,8 @@ export const Default: Story = {
   overflow-x: auto;
 }
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

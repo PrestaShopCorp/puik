@@ -1,7 +1,17 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
-import type Table from './table.vue'
-import type { PuikTableSearchInputTypes } from '../src/table-search-input'
+import type Table from './table.vue';
+import type { PuikTableSearchInputTypes } from '../src/table-search-input';
+
+export enum PuikTableHeaderSize {
+  Small = 'sm',
+  Medium = 'md',
+  Large = 'lg',
+}
+
+export enum PuikTableHeaderAlign {
+  Left = 'left',
+  Center = 'center',
+  Right = 'right',
+}
 
 export enum PuikTableSortOrder {
   Asc = 'ASC',
@@ -23,12 +33,13 @@ export enum PuikTableScrollBarPosition {
 export type sortOption = {
   sortBy?: string
   sortOrder?: PuikTableSortOrder
-}
+};
+
 export interface PuikTableHeader {
   value: string
   text?: string
-  size?: 'sm' | 'md' | 'lg'
-  align?: 'left' | 'center' | 'right'
+  size?: `${PuikTableHeaderSize}`
+  align?: `${PuikTableHeaderAlign}`
   width?: string
   sortable?: boolean
   preventExpand?: boolean
@@ -37,63 +48,18 @@ export interface PuikTableHeader {
   searchType?: `${PuikTableSearchInputTypes}`
 }
 
-export const tableProps = buildProps({
-  headers: {
-    type: Array as PropType<PuikTableHeader[]>,
-    required: true,
-  },
-  items: {
-    type: Array as PropType<any[]>,
-    required: false,
-    default: () => [],
-  },
-  expandable: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  selectable: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  selection: {
-    type: Array as PropType<number[]>,
-    required: false,
-    default: () => [],
-  },
-  searchBar: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  searchFromServer: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  sortFromServer: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  fullWidth: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  stickyFirstCol: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  stickyLastCol: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-} as const)
+export interface TableProps {
+  headers: PuikTableHeader[]
+  items?: any[]
+  expandable?: boolean
+  selectable?: boolean
+  selection?: number[]
+  searchBar?: boolean
+  searchFromServer?: boolean
+  sortFromServer?: boolean
+  fullWidth?: boolean
+  stickyFirstCol?: boolean
+  stickyLastCol?: boolean
+}
 
-export type TableProps = ExtractPropTypes<typeof tableProps>
-
-export type TableInstance = InstanceType<typeof Table>
+export type TableInstance = InstanceType<typeof Table>;

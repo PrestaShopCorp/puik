@@ -1,67 +1,65 @@
-import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
-import PuikTag from '../src/tag.vue'
-import type { MountingOptions, VueWrapper } from '@vue/test-utils'
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { describe, it, expect } from 'vitest';
+import { PuikTag, TagProps } from '@prestashopcorp/puik-components';
 
 describe('Tag tests', () => {
-  let wrapper: VueWrapper<any>
-  const findTag = () => wrapper.find('.puik-tag')
-  const findTagContent = () => wrapper.find('.puik-tag__content p')
-  const findLeftIcon = () => wrapper.find('.puik-tag__icon')
+  let wrapper: VueWrapper<any>;
+  const findTag = () => wrapper.find('.puik-tag');
+  const findTagContent = () => wrapper.find('.puik-tag__content p');
+  const findLeftIcon = () => wrapper.find('.puik-tag__icon');
 
   const factory = (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+    props: TagProps = { id: 'puik-tag-example', content: 'content' },
+    options?: ComponentMountingOptions<typeof PuikTag>
   ) => {
     wrapper = mount(PuikTag, {
-      props: {
-        ...propsData,
-      },
-      ...options,
-    })
-  }
+      props,
+      ...options
+    });
+  };
 
   it('should be a vue instance', () => {
-    factory()
-    expect(wrapper).toBeTruthy()
-  })
+    factory();
+    expect(wrapper).toBeTruthy();
+  });
 
   it('as id prop value is "puik-tag-example", id html attribute of puik-tag should be "puik-tag-example"', () => {
-    factory({ id: 'puik-tag-example' })
-    expect(findTag().attributes().id).toBe('puik-tag-example')
-  })
+    factory();
+    expect(findTag().attributes().id).toBe('puik-tag-example');
+  });
 
   it('Tag text should be "content"', () => {
-    factory({ content: 'content' })
-    expect(findTagContent().text()).toBe('content')
-  })
+    factory();
+    expect(findTagContent().text()).toBe('content');
+  });
 
   it('should display a blue version of the tag', () => {
-    factory({ variant: 'blue' })
-    expect(findTag().classes()).toContain('puik-tag--blue')
-  })
+    factory({ id: 'puik-tag-example', content: 'content', variant: 'blue' });
+    expect(findTag().classes()).toContain('puik-tag--blue');
+  });
 
   it('should display a tag small version', () => {
-    factory({ size: 'small' })
-    expect(findTag().classes()).toContain('puik-tag--small')
-  })
+    factory({ id: 'puik-tag-example', content: 'content', size: 'small' });
+    expect(findTag().classes()).toContain('puik-tag--small');
+  });
 
   it('should display a tag version with left icon', () => {
-    factory({ icon: 'home' })
-    expect(findLeftIcon().text()).toBe('home')
-  })
+    factory({ id: 'puik-tag-example', content: 'content', icon: 'home' });
+    expect(findLeftIcon().text()).toBe('home');
+  });
 
   it('should display a tag disabled version', () => {
-    factory({ disabled: true })
-    expect(findTag().classes()).toContain('puik-tag--disabled')
-  })
+    factory({ id: 'puik-tag-example', content: 'content', disabled: true });
+    expect(findTag().classes()).toContain('puik-tag--disabled');
+  });
 
   it('should have a data-test attribute for the container div and the content', () => {
     factory({
+      id: 'puik-tag-example',
       content: 'long content for displaying the tooltip',
-      'data-test': 'test',
-    })
-    expect(findTag().attributes('data-test')).toBe('test')
-    expect(findTagContent().attributes('data-test')).toBe('content-test')
-  })
-})
+      dataTest: 'test'
+    });
+    expect(findTag().attributes('data-test')).toBe('test');
+    expect(findTagContent().attributes('data-test')).toBe('content-test');
+  });
+});

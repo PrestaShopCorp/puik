@@ -1,84 +1,72 @@
-import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
-import PuikModal from '../src/modal.vue'
-import {
-  PuikModalVariant,
-  DESTRUCTIVE_ICON_NAME,
-  PuikModalSize,
-} from '../src/modal'
-import type { MountingOptions, VueWrapper } from '@vue/test-utils'
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { describe, it, expect } from 'vitest';
+import { PuikModal, PuikModalVariants, PuikModalSizes, DESTRUCTIVE_ICON_NAME, ModalProps } from '@prestashopcorp/puik-components';
 
 // @ts-expect-error Find on the Tailwindlabs/headlessui repo
 // https://github.com/tailwindlabs/headlessui/blob/main/packages/%40headlessui-vue/src/components/dialog/dialog.test.ts#L46
 global.ResizeObserver = class FakeResizeObserver {
-  observe() {
-    return
-  }
-  disconnect() {
-    return
-  }
-}
+  observe() {}
+  disconnect() {}
+};
 
 describe('Modal tests', () => {
-  let wrapper: VueWrapper<any>
+  let wrapper: VueWrapper<any>;
 
-  const findModal = () => wrapper.find('.puik-modal')
+  const findModal = () => wrapper.find('.puik-modal');
   const findIcon = () =>
-    wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header__icon')
+    wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header__icon');
   const findCloseButton = () =>
     wrapper.find(
       '.puik-modal__dialogPanelContainer__dialogPanel__header__close-button'
-    )
+    );
   const findMainButton = () =>
     wrapper.find(
       '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--main'
-    )
+    );
   const findSecondaryButton = () =>
     wrapper.find(
       '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--second'
-    )
+    );
   const findSideButton = () =>
     wrapper.find(
       '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--side'
-    )
+    );
   const findHeader = () =>
-    wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header')
+    wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header');
 
-  const homeTitleIcon = 'home'
-  const findTitle = () => wrapper.find('.title')
+  const homeTitleIcon = 'home';
+  const findTitle = () => wrapper.find('.title');
 
-  const factory = async (
-    propsData: Record<string, any> = {},
-    options: MountingOptions<any> = {}
+  const factory = (
+    props?: ModalProps,
+    options?: ComponentMountingOptions<typeof PuikModal>
   ) => {
     wrapper = mount(PuikModal, {
       global: {
         stubs: {
-          teleport: true,
-        },
+          teleport: true
+        }
       },
-      props: {
-        ...propsData,
-      },
-      ...options,
-    })
-  }
+      props,
+      ...options
+    });
+  };
 
   it('should be a vue instance, the default one', async () => {
     await factory({
       title: 'Awesome title',
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
-      isOpen: true,
-    })
+      isOpen: true
+    });
 
-    expect(wrapper).toBeTruthy()
-    expect(findIcon().exists()).toBeFalsy()
-    expect(findCloseButton().exists()).toBeTruthy()
-    expect(findModal().classes()).toContain('puik-modal--small')
-    expect(findMainButton().classes()).toContain('puik-button--primary')
-    expect(findSecondaryButton().classes()).toContain('puik-button--secondary')
-  })
+    expect(wrapper).toBeTruthy();
+    expect(findIcon().exists()).toBeFalsy();
+    expect(findCloseButton().exists()).toBeTruthy();
+    expect(findModal().classes()).toContain('puik-modal--small');
+    expect(findMainButton().classes()).toContain('puik-button--primary');
+    expect(findSecondaryButton().classes()).toContain('puik-button--secondary');
+  });
 
   it('should display destructive style', async () => {
     await factory({
@@ -87,14 +75,14 @@ describe('Modal tests', () => {
       secondButtonText: 'Awesome second',
       isOpen: true,
       titleIcon: homeTitleIcon,
-      variant: PuikModalVariant.DESTRUCTIVE,
-    })
+      variant: PuikModalVariants.Destructive
+    });
 
-    expect(findIcon().text()).toBe(DESTRUCTIVE_ICON_NAME)
-    expect(findModal().classes()).toContain('puik-modal--destructive')
-    expect(findMainButton().classes()).toContain('puik-button--destructive')
-    expect(findSecondaryButton().classes()).toContain('puik-button--tertiary')
-  })
+    expect(findIcon().text()).toBe(DESTRUCTIVE_ICON_NAME);
+    expect(findModal().classes()).toContain('puik-modal--destructive');
+    expect(findMainButton().classes()).toContain('puik-button--destructive');
+    expect(findSecondaryButton().classes()).toContain('puik-button--tertiary');
+  });
 
   it('should display feedback style', async () => {
     await factory({
@@ -103,17 +91,17 @@ describe('Modal tests', () => {
       secondButtonText: 'Awesome second',
       isOpen: true,
       titleIcon: homeTitleIcon,
-      variant: PuikModalVariant.FEEDBACK,
-    })
+      variant: PuikModalVariants.Feedback
+    });
 
-    expect(findIcon().text()).toBe(homeTitleIcon)
-    expect(findModal().classes()).toContain('puik-modal--feedback')
-    expect(findMainButton().classes()).toContain('puik-button--primary')
-    expect(findSecondaryButton().classes()).toContain('puik-button--secondary')
-  })
+    expect(findIcon().text()).toBe(homeTitleIcon);
+    expect(findModal().classes()).toContain('puik-modal--feedback');
+    expect(findMainButton().classes()).toContain('puik-button--primary');
+    expect(findSecondaryButton().classes()).toContain('puik-button--secondary');
+  });
 
   it('should display dialog style', async () => {
-    const sideButtonText = 'Awesome side button'
+    const sideButtonText = 'Awesome side button';
 
     await factory({
       title: 'Awesome title',
@@ -121,17 +109,17 @@ describe('Modal tests', () => {
       secondButtonText: 'Awesome second',
       isOpen: true,
       titleIcon: homeTitleIcon,
-      variant: PuikModalVariant.DIALOG,
-      sideButtonText,
-    })
+      variant: PuikModalVariants.Dialog,
+      sideButtonText
+    });
 
-    expect(findIcon().text()).toBe(homeTitleIcon)
-    expect(findModal().classes()).toContain('puik-modal--dialog')
-    expect(findMainButton().classes()).toContain('puik-button--primary')
-    expect(findSecondaryButton().classes()).toContain('puik-button--secondary')
-    expect(findSideButton().exists()).toBeTruthy()
-    expect(findSideButton().text()).toBe(sideButtonText)
-  })
+    expect(findIcon().text()).toBe(homeTitleIcon);
+    expect(findModal().classes()).toContain('puik-modal--dialog');
+    expect(findMainButton().classes()).toContain('puik-button--primary');
+    expect(findSecondaryButton().classes()).toContain('puik-button--secondary');
+    expect(findSideButton().exists()).toBeTruthy();
+    expect(findSideButton().text()).toBe(sideButtonText);
+  });
 
   it('should display with the large size', async () => {
     await factory({
@@ -139,11 +127,11 @@ describe('Modal tests', () => {
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
       isOpen: true,
-      size: PuikModalSize.LARGE,
-    })
+      size: PuikModalSizes.Large
+    });
 
-    expect(findModal().classes()).toContain('puik-modal--large')
-  })
+    expect(findModal().classes()).toContain('puik-modal--large');
+  });
 
   it('should display with the medium size', async () => {
     await factory({
@@ -151,11 +139,11 @@ describe('Modal tests', () => {
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
       isOpen: true,
-      size: PuikModalSize.MEDIUM,
-    })
+      size: PuikModalSizes.Medium
+    });
 
-    expect(findModal().classes()).toContain('puik-modal--medium')
-  })
+    expect(findModal().classes()).toContain('puik-modal--medium');
+  });
 
   it('should display with the small size', async () => {
     await factory({
@@ -163,75 +151,73 @@ describe('Modal tests', () => {
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
       isOpen: true,
-      size: PuikModalSize.SMALL,
-    })
+      size: PuikModalSizes.Small
+    });
 
-    expect(findModal().classes()).toContain('puik-modal--small')
-  })
+    expect(findModal().classes()).toContain('puik-modal--small');
+  });
 
   it('should display the close button and send close event when clicked', async () => {
     await factory({
       title: 'Awesome title',
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
-      isOpen: true,
-      hasCloseButton: true,
-    })
+      isOpen: true
+    });
 
-    expect(findCloseButton().exists()).toBeTruthy()
+    expect(findCloseButton().exists()).toBeTruthy();
 
-    findCloseButton().trigger('click')
-    expect(wrapper.emitted('close')).toBeTruthy()
-  })
+    await findCloseButton().trigger('click');
+    expect(wrapper.emitted('close')).toBeTruthy();
+  });
 
   it('should display the close button', async () => {
     await factory({
       title: 'Awesome title',
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
-      isOpen: true,
-      hasCloseButton: true,
-    })
+      isOpen: true
+    });
 
-    expect(findCloseButton().exists()).toBeTruthy()
+    expect(findCloseButton().exists()).toBeTruthy();
 
-    findCloseButton().trigger('click')
-    expect(wrapper.emitted('close')).toBeTruthy()
-  })
+    await findCloseButton().trigger('click');
+    expect(wrapper.emitted('close')).toBeTruthy();
+  });
 
   it('check main button event', async () => {
     await factory({
       title: 'Awesome title',
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
-      isOpen: true,
-    })
+      isOpen: true
+    });
 
-    findMainButton().trigger('click')
-    expect(wrapper.emitted('button-main')).toBeTruthy()
-  })
+    await findMainButton().trigger('click');
+    expect(wrapper.emitted('button-main')).toBeTruthy();
+  });
 
   it('check secondary button event', async () => {
     await factory({
       title: 'Awesome title',
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
-      isOpen: true,
-    })
+      isOpen: true
+    });
 
-    findSecondaryButton().trigger('click')
-    expect(wrapper.emitted('button-second')).toBeTruthy()
-  })
+    await findSecondaryButton().trigger('click');
+    expect(wrapper.emitted('button-second')).toBeTruthy();
+  });
 
   it('expect to not have header', async () => {
     await factory({
       mainButtonText: 'Awesome main',
       secondButtonText: 'Awesome second',
-      isOpen: true,
-    })
+      isOpen: true
+    });
 
-    expect(findHeader().exists()).toBeFalsy()
-  })
+    expect(findHeader().exists()).toBeFalsy();
+  });
 
   it('should have a data-test attribute on container div, title, mainButton, secondButton and closeButton', async () => {
     await factory({
@@ -240,18 +226,18 @@ describe('Modal tests', () => {
       secondButtonText: 'Awesome second',
       isOpen: true,
       hasCloseButton: true,
-      dataTest: 'test',
-    })
-    expect(findModal().attributes('data-test')).toBe('test')
-    expect(findTitle().attributes('data-test')).toBe('title-test')
-    expect(findMainButton().attributes('data-test')).toBe('mainButton-test')
+      dataTest: 'test'
+    });
+    expect(findModal().attributes('data-test')).toBe('test');
+    expect(findTitle().attributes('data-test')).toBe('title-test');
+    expect(findMainButton().attributes('data-test')).toBe('mainButton-test');
     expect(findSecondaryButton().attributes('data-test')).toBe(
       'secondButton-test'
-    )
-    expect(findCloseButton().attributes('data-test')).toBe('closeButton-test')
-  })
+    );
+    expect(findCloseButton().attributes('data-test')).toBe('closeButton-test');
+  });
   it('should have a data-test attribute on side button', async () => {
-    const sideButtonText = 'Awesome side button'
+    const sideButtonText = 'Awesome side button';
 
     await factory({
       title: 'Awesome title',
@@ -259,12 +245,12 @@ describe('Modal tests', () => {
       secondButtonText: 'Awesome second',
       isOpen: true,
       titleIcon: homeTitleIcon,
-      variant: PuikModalVariant.DIALOG,
+      variant: PuikModalVariants.Dialog,
       sideButtonText,
-      dataTest: 'test',
-    })
-    expect(findSideButton().exists()).toBeTruthy()
-    expect(findSideButton().text()).toBe(sideButtonText)
-    expect(findSideButton().attributes('data-test')).toBe('sideButton-test')
-  })
-})
+      dataTest: 'test'
+    });
+    expect(findSideButton().exists()).toBeTruthy();
+    expect(findSideButton().text()).toBe(sideButtonText);
+    expect(findSideButton().attributes('data-test')).toBe('sideButton-test');
+  });
+});

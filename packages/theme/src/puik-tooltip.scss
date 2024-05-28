@@ -1,0 +1,54 @@
+@use './common/typography.scss';
+
+.puik-tooltip {
+  @apply inline-flex relative;
+
+  &__wrapper {
+    @apply w-fit min-w-0;
+  }
+
+  &__tip {
+    @apply absolute bg-primary text-white px-3 py-2 font-primary;
+
+    &__content {
+      @extend .puik-body-default;
+      @apply flex flex-col relative z-10;
+
+      &__heading {
+        @extend .puik-body-default-bold;
+        @apply font-bold mb-1;
+      }
+    }
+
+    &[data-popper-placement^='top'] > &__arrow {
+      @apply -bottom-1.5;
+    }
+    &[data-popper-placement^='bottom'] > &__arrow {
+      @apply -top-1.5;
+    }
+    &[data-popper-placement^='left'] > &__arrow {
+      @apply -right-1.5;
+    }
+    &[data-popper-placement^='right'] > &__arrow {
+      @apply -left-1.5;
+    }
+
+    &__arrow {
+      visibility: hidden;
+    }
+
+    &__arrow::before {
+      @apply visible rotate-45;
+      content: '';
+    }
+
+    &__arrow,
+    &__arrow::before {
+      @apply absolute w-4 h-4 bg-inherit rounded-sm;
+    }
+  }
+
+  &__icon {
+    @apply font-materialIcons text-primary hover:text-primary-800 text-base transition-colors cursor-pointer;
+  }
+}

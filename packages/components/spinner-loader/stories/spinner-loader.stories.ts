@@ -1,14 +1,12 @@
-import PuikSpinnerLoader from './../src/spinner-loader.vue'
-import {
-  puikSpinnerLoaderSizes,
-  puikSpinnerLoaderColors,
-  puikSpinnerLoaderPositions,
-} from './../src/spinner-loader'
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikSpinnerLoader, PuikSpinnerLoaderColors, PuikSpinnerLoaderPositions, PuikSpinnerLoaderSizes } from '@prestashopcorp/puik-components';
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
-const sizesSummary = puikSpinnerLoaderSizes.join('|')
-const colorsSummary = puikSpinnerLoaderColors.join('|')
-const positionSummary = puikSpinnerLoaderPositions.join('|')
+const puikSpinnerLoaderSizes = Object.values(PuikSpinnerLoaderSizes);
+const sizesSummary = puikSpinnerLoaderSizes.join('|');
+const puikSpinnerLoaderColors = Object.values(PuikSpinnerLoaderColors);
+const colorsSummary = puikSpinnerLoaderColors.join('|');
+const puikSpinnerLoaderPositions = Object.values(PuikSpinnerLoaderPositions);
+const positionSummary = puikSpinnerLoaderPositions.join('|');
 
 export default {
   title: 'Components/SpinnerLoader',
@@ -20,12 +18,12 @@ export default {
       options: puikSpinnerLoaderSizes,
       table: {
         type: {
-          summary: sizesSummary,
+          summary: sizesSummary
         },
         defaultValue: {
-          summary: 'md',
-        },
-      },
+          summary: 'md'
+        }
+      }
     },
     color: {
       control: 'select',
@@ -33,21 +31,21 @@ export default {
       options: puikSpinnerLoaderColors,
       table: {
         type: {
-          summary: colorsSummary,
+          summary: colorsSummary
         },
         defaultValue: {
-          summary: 'primary',
-        },
-      },
+          summary: 'primary'
+        }
+      }
     },
     label: {
       control: 'text',
       description: 'Set label below the spinner',
       table: {
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     position: {
       control: 'select',
@@ -55,37 +53,37 @@ export default {
       options: puikSpinnerLoaderPositions,
       table: {
         type: {
-          summary: positionSummary,
+          summary: positionSummary
         },
         defaultValue: {
-          summary: 'bottom',
-        },
-      },
+          summary: 'bottom'
+        }
+      }
     },
     dataTest: {
       control: 'text',
-      description: 'Set the data-test attribute on the spinner loader',
-    },
+      description: 'Set the data-test attribute on the spinner loader'
+    }
   },
   args: {
     size: 'md',
     label: '',
-    color: 'primary',
-  },
-} as Meta
+    color: 'primary'
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args, storyContext) => ({
   components: {
-    PuikSpinnerLoader,
+    PuikSpinnerLoader
   },
   setup() {
-    const color = args.color ?? storyContext?.args?.color ?? ''
-    const isDark = color !== 'primary' ? 'bg-primary-800' : ''
+    const color = args.color ?? storyContext?.args?.color ?? '';
+    const isDark = color !== 'primary' ? 'bg-primary-800' : '';
 
     return {
       args,
-      isDark,
-    }
+      isDark
+    };
   },
   template: `
     <div
@@ -94,8 +92,8 @@ const Template: StoryFn = (args: Args, storyContext) => ({
     >
       <puik-spinner-loader v-bind="args" />
     </div>
-  `,
-})
+  `
+});
 
 export const Default = {
   render: Template,
@@ -132,22 +130,22 @@ export const Default = {
           <span class="puik-spinner-loader__label">label</span>
         </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 const SpinnerTemplate = (args: Args, storyContext) => ({
   components: { PuikSpinnerLoader },
   setup() {
-    const color = args.color ?? storyContext?.args?.color ?? ''
-    const isDark = color !== 'primary' ? 'bg-primary-800' : ''
+    const color = args.color ?? storyContext?.args?.color ?? '';
+    const isDark = color !== 'primary' ? 'bg-primary-800' : '';
 
     return {
       args,
-      isDark,
-    }
+      isDark
+    };
   },
   template: `
     <div
@@ -160,14 +158,14 @@ const SpinnerTemplate = (args: Args, storyContext) => ({
 
       <puik-spinner-loader v-bind="args" size="sm" />
     </div>
-  `,
-})
+  `
+});
 
 export const Primary: StoryObj = {
   render: SpinnerTemplate,
 
   args: {
-    color: 'primary',
+    color: 'primary'
   },
 
   parameters: {
@@ -182,17 +180,17 @@ export const Primary: StoryObj = {
           <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
         </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Reverse: StoryObj = {
   render: SpinnerTemplate,
 
   args: {
-    color: 'reverse',
+    color: 'reverse'
   },
 
   parameters: {
@@ -207,17 +205,17 @@ export const Reverse: StoryObj = {
           <div class="puik-spinner-loader__spinner" aria-hidden="true"></div>
         </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const LabelBottom: StoryObj = {
   render: SpinnerTemplate,
 
   args: {
-    label: 'In progress',
+    label: 'In progress'
   },
 
   parameters: {
@@ -233,18 +231,18 @@ export const LabelBottom: StoryObj = {
           <span class="puik-spinner-loader__label">In progress</span>
         </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const LabelRight: StoryObj = {
   render: SpinnerTemplate,
 
   args: {
     label: 'In progress ',
-    position: 'right',
+    position: 'right'
   },
 
   parameters: {
@@ -260,8 +258,8 @@ export const LabelRight: StoryObj = {
           <span class="puik-spinner-loader__label">In progress</span>
         </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

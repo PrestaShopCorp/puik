@@ -1,7 +1,7 @@
-import { ref } from 'vue'
-import PuikButtonGroup from './../src/button-group.vue'
-import PuikButton from './../../button/src/button.vue'
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { ref } from 'vue';
+import { PuikButton, PuikButtonGroup } from '@prestashopcorp/puik-components';
+
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/ButtonGroup',
@@ -12,35 +12,35 @@ export default {
       control: 'none',
       table: {
         defaultValue: {
-          summary: 'undefined',
+          summary: 'undefined'
         },
         type: {
-          summary: 'string | number | object | []',
-        },
-      },
+          summary: 'string | number | object | []'
+        }
+      }
     },
     default: {
       control: 'none',
-      description: 'Use puik buttons in the puik button group',
-    },
+      description: 'Use puik buttons in the puik button group'
+    }
   },
   args: {
-    modelValue: 'btn1',
-  },
-} as Meta
+    modelValue: 'btn1'
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikButtonGroup,
-    PuikButton,
+    PuikButton
   },
   setup() {
-    const selectedValue = ref('btn1')
+    const selectedValue = ref('btn1');
 
     return {
       selectedValue,
-      args,
-    }
+      args
+    };
   },
   template: `
     <puik-button-group v-model="selectedValue">
@@ -49,8 +49,8 @@ const Template: StoryFn = (args: Args) => ({
       <puik-button :variant="(selectedValue === 'btn3') ? 'primary' : 'secondary'" value="btn3">Button 3</puik-button>
     </puik-button-group>
 
-    `,
-})
+    `
+});
 
 export const Default = {
   render: Template,
@@ -74,8 +74,8 @@ export const Default = {
     <button class="puik-button puik-button--secondary puik-button--md">Button 3</button>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

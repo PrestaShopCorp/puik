@@ -26,7 +26,7 @@
           @input="
             handleAutoComplete(($event.target as HTMLInputElement)?.value)
           "
-        />
+        >
         <puik-icon
           font-size="1.25rem"
           icon="unfold_more"
@@ -50,7 +50,7 @@
           :style="{ 'z-index': zindex }"
         >
           <puik-input
-            v-if="isArray(options) || isObject(options)"
+            v-if="Array.isArray(options) || isObject(options)"
             v-model="query"
             class="puik-select__search"
             :placeholder="t('puik.select.searchPlaceholder')"
@@ -58,19 +58,20 @@
               dataTest != undefined ? `searchInput-${dataTest}` : undefined
             "
           >
-            <template #prepend
-              ><puik-icon
+            <template #prepend>
+              <puik-icon
                 font-size="1.25rem"
                 icon="search"
                 class="puik-select__search__icon"
-            /></template>
+              />
+            </template>
           </puik-input>
           <p
             v-if="
               options &&
-              (isObject(filteredItems)
-                ? !Object.keys(filteredItems).length
-                : !filteredItems?.length)
+                (isObject(filteredItems)
+                  ? !Object.keys(filteredItems).length
+                  : !filteredItems?.length)
             "
             class="puik-select__no-results"
             :data-test="
@@ -98,7 +99,10 @@
           </ul>
         </ListboxOptions>
       </transition>
-      <div v-if="hasError" class="puik-select__error">
+      <div
+        v-if="hasError"
+        class="puik-select__error"
+      >
         <puik-icon
           icon="error"
           font-size="1.25rem"
@@ -113,88 +117,99 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide, ref, useSlots } from 'vue'
-import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue'
-import { isObject, isFunction, isArray, slotIsEmpty } from '@puik/utils'
-import { useLocale } from '@puik/hooks'
-import { PuikInput } from '@puik/components/input'
-import { PuikIcon } from '@puik/components/icon'
-import { selectProps, selectEmits, selectKey } from './select'
-import PuikOption from './option.vue'
-import type { DefaultOption } from './option'
+import { computed, provide, ref, useSlots } from 'vue';
+import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue';
+import { isObject, isFunction, slotIsEmpty } from '@prestashopcorp/puik-utils';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { PuikInput } from '@prestashopcorp/puik-components/input';
+import { PuikIcon } from '@prestashopcorp/puik-components/icon';
+import { type SelectProps, selectKey } from './select';
+import PuikOption from './option.vue';
+import type { DefaultOption } from './option';
 
 defineOptions({
-  name: 'PuikSelect',
-})
+  name: 'PuikSelect'
+});
 
-const optionsList = ref<DefaultOption[]>([])
-const labelInput = ref<HTMLInputElement>()
+const optionsList = ref<DefaultOption[]>([]);
+const labelInput = ref<HTMLInputElement>();
 
-const props = defineProps(selectProps)
+const props = withDefaults(defineProps<SelectProps>(), {
+  labelKey: 'label',
+  valueKey: 'value',
+  zindex: 1000,
+  fullWidth: true
+});
 
-const slots = useSlots()
+const slots = useSlots();
 
-const emit = defineEmits(selectEmits)
+const emit = defineEmits<{ 'update:modelValue': [option: any] }>();
 
-const { t } = useLocale()
+const { t } = useLocale();
 
-const query = ref('')
-const currentLabel = ref()
+const query = ref('');
+const currentLabel = ref();
 
 const selectedValue = computed({
   get: () => props.modelValue,
   set: (option: any) => {
-    currentLabel.value = option.label
-    return emit('update:modelValue', option.value)
-  },
-})
+    currentLabel.value = option.label;
+    return emit('update:modelValue', option.value);
+  }
+});
 
 const filteredItems = computed(() => {
   if (props.options) {
     if (query.value) {
       if (isFunction(props.customFilterMethod)) {
-        return props.customFilterMethod(query.value)
+        return props.customFilterMethod(query.value);
       }
-      return props.options.filter((option) =>
+      return props.options.filter((option: any) =>
         (isObject(option) ? option[props.labelKey] : option)
           .toString()
           .toLowerCase()
           .includes(query.value.toLowerCase())
-      )
+      );
     }
-    return props.options
+    return props.options;
   }
-  return null
-})
+  return null;
+});
 
-const hasError = computed(() => props.error || slotIsEmpty(slots.error))
+const hasError = computed(() => props.error || slotIsEmpty(slots.error));
 
 const handleAutoComplete = (label: string | number) => {
-  if (label === props.customLabel || currentLabel.value) return
+  if (label === props.customLabel || currentLabel.value) return;
   if (labelInput.value) {
-    labelInput.value.value = ''
+    labelInput.value.value = '';
   }
   optionsList.value.filter((option) => {
     if (
       String(option.label).toLowerCase() === label.toString().toLowerCase() ||
       String(option.value).toLowerCase() === label.toString().toLowerCase()
     ) {
-      selectedValue.value = option
+      selectedValue.value = option;
     }
-  })
-}
+    return null;
+  });
+};
 
 const isOpen = (open: boolean) => {
   if (open && props.options) {
-    query.value = ''
+    query.value = '';
   }
-  return open
-}
+  return open;
+};
 
 provide(selectKey, {
   selectedValue,
   optionsList,
   handleAutoComplete,
-  labelKey: props.labelKey,
-})
+  labelKey: props.labelKey
+});
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-select.scss';
+</style>
