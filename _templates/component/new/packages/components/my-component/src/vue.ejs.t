@@ -6,10 +6,15 @@ to: packages/components/<%= h.changeCase.param(name) %>/src/<%= h.changeCase.par
 </template>
 
 <script setup lang="ts">
-import { <%= h.changeCase.camel(name) %>Props } from './<%= h.changeCase.param(name) %>'
+import { <%= h.changeCase.pascal(name) %>Props } from './<%= h.changeCase.param(name) %>';
 defineOptions({
-  name: 'Puik<%= h.changeCase.pascal(name) %>',
-})
+  name: 'Puik<%= h.changeCase.pascal(name) %>'
+});
 
-const props = defineProps(<%= h.changeCase.camel(name) %>Props)
+defineProps<<%= h.changeCase.pascal(name) %>Props>();
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-<%= h.changeCase.param(name) %>.scss';
+</style>

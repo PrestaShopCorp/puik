@@ -1,0 +1,71 @@
+@use './common/typography.scss';
+
+.puik-menu {
+  @extend .puik-body-default;
+  @apply relative left-0 w-max;
+
+  &__content {
+    @apply absolute
+      mt-2
+      bg-white
+      shadow-md
+      p-2
+      flex
+      flex-col
+      gap-0.5
+      overflow-y-auto
+      z-[1];
+  }
+
+  &--invisible {
+    .puik-menu__content {
+      @apply invisible;
+    }
+  }
+
+  &--align {
+    &-right {
+      .puik-menu__content {
+        @apply right-0;
+      }
+    }
+  }
+
+  &--position {
+    &-top {
+      .puik-menu__content {
+        @apply bottom-full mb-2;
+      }
+    }
+  }
+
+  &__transition {
+    &__enter {
+      &--active {
+        @apply transition duration-200 ease-out;
+      }
+
+      &--from {
+        @apply translate-y-1 opacity-0;
+      }
+
+      &--to {
+        @apply translate-y-0 opacity-100;
+      }
+    }
+
+    &__leave {
+      &--active {
+        @apply transition duration-150 ease-in;
+      }
+
+      &--from {
+        @apply translate-y-0 opacity-100;
+      }
+
+      &--to {
+        @apply translate-y-1 opacity-0;
+      }
+    }
+  }
+}

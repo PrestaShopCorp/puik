@@ -17,9 +17,12 @@
         dataTest != undefined ? `previousButton-${dataTest}` : undefined
       "
       @click="page -= 1"
-    ></puik-button>
+    />
 
-    <ul v-if="!disabled" class="puik-pagination__pager">
+    <ul
+      v-if="!disabled"
+      class="puik-pagination__pager"
+    >
       <li class="puik-pagination__pager-item">
         <puik-button
           :aria-current="page === 1"
@@ -64,7 +67,10 @@
         <span class="puik-pagination__pager-separator"> &hellip; </span>
       </li>
 
-      <li v-if="maxPage >= 2" class="puik-pagination__pager-item">
+      <li
+        v-if="maxPage >= 2"
+        class="puik-pagination__pager-item"
+      >
         <puik-button
           :aria-current="page === maxPage"
           :aria-label="t('puik.pagination.goTo', { page: maxPage })"
@@ -85,55 +91,56 @@
       variant="secondary"
       :data-test="dataTest != undefined ? `nextButton-${dataTest}` : undefined"
       @click="page += 1"
-    ></puik-button>
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/hooks'
-import { paginationMediumProps } from './pagination-medium'
+import { computed } from 'vue';
+import { PuikButton } from '@prestashopcorp/puik-components/button';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { type PaginationMediumProps } from './pagination-medium';
 defineOptions({
-  name: 'PuikPaginationMedium',
-})
+  name: 'PuikPaginationMedium'
+});
 
-const props = defineProps(paginationMediumProps)
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: number): void
-}>()
+const props = withDefaults(defineProps<PaginationMediumProps>(), {
+  modelValue: 1,
+  itemCount: 0
+});
+const emit = defineEmits<{(e: 'update:modelValue', value: number): void}>();
 
-const { t } = useLocale()
+const { t } = useLocale();
 
 const page = computed({
   get: () => props.modelValue,
-  set: (page: number) => emit('update:modelValue', page),
-})
+  set: (page: number) => emit('update:modelValue', page)
+});
 
 const pager = computed(() => {
-  if (props.maxPage <= 2) return []
+  if (props.maxPage <= 2) return [];
 
-  const maxPagesDisplayed = page.value <= 3 ? 4 : 5
-  const halfPagesDisplayed = 2
-  const pages: number[] = []
-  let startPage: number
+  const maxPagesDisplayed = page.value <= 3 ? 4 : 5;
+  const halfPagesDisplayed = 2;
+  const pages: number[] = [];
+  let startPage: number;
 
-  if (page.value - halfPagesDisplayed <= 1) startPage = 2
-  else if (page.value + halfPagesDisplayed > props.maxPage)
-    if (props.maxPage - maxPagesDisplayed <= 1) startPage = 2
-    else startPage = props.maxPage - maxPagesDisplayed + 1
-  else startPage = page.value - halfPagesDisplayed
+  if (page.value - halfPagesDisplayed <= 1) startPage = 2;
+  else if (page.value + halfPagesDisplayed > props.maxPage) {
+    if (props.maxPage - maxPagesDisplayed <= 1) startPage = 2;
+    else startPage = props.maxPage - maxPagesDisplayed + 1;
+  } else startPage = page.value - halfPagesDisplayed;
 
-  pages.push(startPage)
+  pages.push(startPage);
 
   for (
     let i = startPage + 1;
     i < props.maxPage && i < startPage + maxPagesDisplayed;
     i++
   ) {
-    pages.push(i)
+    pages.push(i);
   }
 
-  return pages
-})
+  return pages;
+});
 </script>

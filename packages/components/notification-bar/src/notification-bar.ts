@@ -1,16 +1,11 @@
-import { buildProps } from '@puik/utils'
-import type { ExtractPropTypes, PropType } from 'vue'
-import type NotificationBar from './notification-bar.vue'
+import type NotificationBar from './notification-bar.vue';
 
-export const notificationBarVariants = [
-  'blue',
-  'purple',
-  'yellow',
-  'green',
-] as const
-
-export type PuikNotificationBarVariants =
-  (typeof notificationBarVariants)[number]
+export enum PuikNotificationBarVariants {
+  Blue = 'blue',
+  Purple = 'purple',
+  Yellow = 'yellow',
+  Green = 'green',
+}
 
 export interface NotificationLink {
   url: string
@@ -28,31 +23,13 @@ export interface NotificationBarTeleport {
   prepend?: boolean
 }
 
-export type PuikMessagesType = NotificationBarMessage[]
+export type PuikMessagesType = NotificationBarMessage[];
 
-export const notificationBarProps = buildProps({
-  teleport: {
-    type: Object as PropType<NotificationBarTeleport>,
-    required: false,
-    default: undefined,
-  },
-  variant: {
-    type: String as PropType<PuikNotificationBarVariants>,
-    required: false,
-    default: notificationBarVariants[0],
-  },
-  closable: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
-  messages: {
-    type: Array as PropType<PuikMessagesType>,
-    required: true,
-    default: undefined,
-  },
-} as const)
+export interface NotificationBarProps {
+  teleport?: NotificationBarTeleport
+  variant?: `${PuikNotificationBarVariants}`
+  closable?: boolean
+  messages: PuikMessagesType
+}
 
-export type NotificationBarProps = ExtractPropTypes<typeof notificationBarProps>
-
-export type NotificationBarInstance = InstanceType<typeof NotificationBar>
+export type NotificationBarInstance = InstanceType<typeof NotificationBar>;

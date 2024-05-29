@@ -1,13 +1,16 @@
 <template>
   <div class="puik-menu-item">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-import { menuItemProps } from './menu-item'
-
 defineOptions({
-  name: 'PuikMenuItem',
-})
+  name: 'PuikMenuItem'
+});
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-menu-item.scss';
+</style>

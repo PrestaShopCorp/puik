@@ -1,8 +1,6 @@
-import { withInstall } from '@puik/utils'
+import Input from './src/input.vue';
 
-import Input from './src/input.vue'
+export const PuikInput = Input;
+export default PuikInput;
 
-export const PuikInput = withInstall(Input)
-export default PuikInput
-
-export * from './src/input'
+export * from './src/input';

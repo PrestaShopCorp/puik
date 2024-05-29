@@ -1,10 +1,37 @@
 {
-  "name": "@puik/tailwind-preset",
+  "name": "@prestashopcorp/puik-tailwind-preset",
   "description": "PUIK tailwind preset - A set of Tailwind CSS utility classes, adapted to the new branding.",
-  "version": "0.0.1",
-  "module": "index.ts",
-  "unpkg": "index.js",
-  "jsdelivr": "index.js",
-  "types": "index.d.ts",
-  "license": "MIT"
+  "type": "module",
+  "version": "2.0.0",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --noEmit --project ./tsconfig.build.json && vite build"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^3.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.6"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "main": "dist/index.cjs",
+    "module": "dist/es/index.mjs",
+    "types": "dist/es/index.d.ts",
+    "exports": {
+      ".": {
+        "require": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.cjs"
+        },
+        "import": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.mjs"
+        }
+      }
+    }
+  }
 }

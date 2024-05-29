@@ -1,11 +1,17 @@
-import { ref } from 'vue'
-import { PuikIcon, PuikButton, tooltipPositions } from '@puik/components'
-import { chipSizeVariants } from '../src/chip'
-import PuikChip from './../src/chip.vue'
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { ref } from 'vue';
+import {
+  PuikChip,
+  PuikIcon,
+  PuikButton,
+  PuikTooltipPositions,
+  PuikChipSizeVariants
+} from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
-const chipSizeVariantsSummary = chipSizeVariants.join('|')
-const tooltipPositionsSummary = tooltipPositions.join('|')
+const chipSizeVariants = Object.values(PuikChipSizeVariants);
+const chipSizeVariantsSummary = chipSizeVariants.join('|');
+const tooltipPositions = Object.values(PuikTooltipPositions);
+const tooltipPositionsSummary = tooltipPositions.join('|');
 
 export default {
   title: 'Components/Chip',
@@ -17,12 +23,12 @@ export default {
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     content: {
       description:
@@ -30,12 +36,12 @@ export default {
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     size: {
       description: 'Size variants of chip component (default, small)',
@@ -43,24 +49,24 @@ export default {
       options: chipSizeVariants,
       table: {
         type: {
-          summary: chipSizeVariantsSummary,
+          summary: chipSizeVariantsSummary
         },
         defaultValue: {
-          summary: 'default',
-        },
-      },
+          summary: 'default'
+        }
+      }
     },
     icon: {
       description: 'Material icon name',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     tooltipPosition: {
       description:
@@ -69,25 +75,25 @@ export default {
       options: tooltipPositions,
       table: {
         type: {
-          summary: tooltipPositionsSummary,
+          summary: tooltipPositionsSummary
         },
         defaultValue: {
-          summary: 'bottom',
-        },
-      },
+          summary: 'bottom'
+        }
+      }
     },
     disabled: {
       description: 'Disables the Chip component ',
       control: 'boolean',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean'
         },
         defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
+          summary: 'false'
+        }
+      }
+    }
   },
   args: {
     id: 'puik-chip-id',
@@ -95,72 +101,72 @@ export default {
     size: 'default',
     icon: '',
     disabled: false,
-    tooltipPosition: 'bottom',
-  },
-} as Meta
+    tooltipPosition: 'bottom'
+  }
+} as Meta;
 
 const DefaultTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikChip,
+    PuikChip
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<puik-chip  v-bind="args"/>`,
-})
+  template: '<puik-chip  v-bind="args"/>'
+});
 
 const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
     PuikChip,
-    PuikButton,
+    PuikButton
   },
   setup() {
     const chips = ref([
       {
         icon: 'home',
         disabled: true,
-        content: "can't close disabled",
+        content: "can't close disabled"
       },
       {
         icon: 'home',
         disabled: false,
-        content: 'close me !',
+        content: 'close me !'
       },
       {
         icon: 'home',
         disabled: false,
-        content: 'close me !',
+        content: 'close me !'
       },
       {
         icon: 'home',
         disabled: false,
-        content: 'close me !',
+        content: 'close me !'
       },
       {
         icon: 'home',
         disabled: false,
-        content: 'close me !',
+        content: 'close me !'
       },
       {
         icon: 'home',
         disabled: false,
-        content: 'close me !',
-      },
-    ])
+        content: 'close me !'
+      }
+    ]);
 
-    const copyInitialChips = [...chips.value]
+    const copyInitialChips = [...chips.value];
     const handleCloseChip = (index: number) => {
-      chips.value.splice(index, 1)
-    }
+      chips.value.splice(index, 1);
+    };
     const refreshChips = () => {
-      chips.value = []
-      copyInitialChips.map((chip) => {
+      chips.value = [];
+      copyInitialChips.map((chip) =>
         chips.value.push(chip)
-      })
-    }
-    return { chips, args, handleCloseChip, refreshChips }
+      );
+    };
+    return { chips, args, handleCloseChip, refreshChips };
   },
   template: `
   <div class="flex space-x-2 mb-4">
@@ -178,16 +184,16 @@ const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
     <puik-icon icon="refresh"></puik-icon>
     Refresh
   </puik-button>
-`,
-})
+`
+});
 
 const SizeVariantsTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikChip,
+    PuikChip
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
   <div style="display: flex; align-items: center; gap: 8px;">
@@ -202,16 +208,16 @@ const SizeVariantsTemplate: StoryFn = (args: Args) => ({
       size="small"
     />
   </div>
-`,
-})
+`
+});
 
 const DisabledTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikChip,
+    PuikChip
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <puik-chip
@@ -219,16 +225,16 @@ const DisabledTemplate: StoryFn = (args: Args) => ({
       content="disabled chip"
       :disabled="true"
     />
-`,
-})
+`
+});
 
 const WithIconTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikChip,
+    PuikChip
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <puik-chip
@@ -236,16 +242,16 @@ const WithIconTemplate: StoryFn = (args: Args) => ({
       content="with icon chip"
       icon="favorite"
     />
-`,
-})
+`
+});
 
 const WithLongTextTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikChip,
+    PuikChip
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
     <puik-chip
@@ -253,8 +259,8 @@ const WithLongTextTemplate: StoryFn = (args: Args) => ({
       content="very long text content very long text content"
       :tooltip-position="bottom"
     />
-`,
-})
+`
+});
 
 export const Default = {
   render: DefaultTemplate,
@@ -282,11 +288,11 @@ export const Default = {
   </div>
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const HandleCloseEvent = {
   render: HandleCloseEventTemplate,
@@ -315,11 +321,11 @@ const handleCloseChip = (index: number) => {
   chips.value.splice(index, 1)
 }
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const SizeVariants = {
   render: SizeVariantsTemplate,
@@ -345,11 +351,11 @@ export const SizeVariants = {
   </div>
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Disabled = {
   render: DisabledTemplate,
@@ -373,11 +379,11 @@ export const Disabled = {
   </div>
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const WithIcon = {
   render: WithIconTemplate,
@@ -402,11 +408,11 @@ export const WithIcon = {
   <div class="puik-chip__content">with icon chip</div>
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const WithLongText = {
   render: WithLongTextTemplate,
@@ -423,8 +429,8 @@ export const WithLongText = {
   :tooltip-position="{$tooltipPosition}"
 />
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

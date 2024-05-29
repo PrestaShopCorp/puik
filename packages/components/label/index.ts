@@ -1,8 +1,6 @@
-import { withInstall } from '@puik/utils'
+import Label from './src/label.vue';
 
-import Label from './src/label.vue'
+export const PuikLabel = Label;
+export default PuikLabel;
 
-export const PuikLabel = withInstall(Label)
-export default PuikLabel
-
-export * from './src/label'
+export * from './src/label';

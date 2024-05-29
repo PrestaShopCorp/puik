@@ -1,5 +1,5 @@
-import PuikProgressBar from './../src/progress-bar.vue'
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikProgressBar } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/ProgressBar',
@@ -9,30 +9,30 @@ export default {
       control: {
         type: 'range',
         min: 0,
-        max: 100,
-      },
+        max: 100
+      }
     },
     dataTest: {
       control: {
-        type: 'text',
-      },
-    },
+        type: 'text'
+      }
+    }
   },
   args: {
     percentage: 50,
-    dataTest: '',
-  },
-} as Meta
+    dataTest: ''
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikProgressBar,
+    PuikProgressBar
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<puik-progress-bar v-bind="args"/>`,
-})
+  template: '<puik-progress-bar v-bind="args"/>'
+});
 
 export const Default = {
   render: Template,
@@ -50,17 +50,17 @@ export const Default = {
     <div class="progress-bar__content" style="width: 50%;"></div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Max = {
   render: Template,
 
   args: {
-    percentage: 100,
+    percentage: 100
   },
 
   parameters: {
@@ -75,17 +75,17 @@ export const Max = {
     <div class="progress-bar__content" style="width: 100%;"></div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Min = {
   render: Template,
 
   args: {
-    percentage: 0,
+    percentage: 0
   },
 
   parameters: {
@@ -100,8 +100,8 @@ export const Min = {
     <div class="progress-bar__content" style="width: 0%;"></div>
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

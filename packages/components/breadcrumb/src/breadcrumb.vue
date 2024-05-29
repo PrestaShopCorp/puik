@@ -1,14 +1,18 @@
 <template>
-  <nav v-if="items.length" class="puik-breadcrumb" role="navigation">
+  <nav
+    v-if="internalItems && internalItems.length"
+    class="puik-breadcrumb"
+    role="navigation"
+  >
     <PuikIcon
       v-if="icon"
       class="puik-breadcrumb__home-icon"
       :icon="icon"
       :font-size="16"
-    ></PuikIcon>
+    />
 
     <div
-      v-for="(item, index) in items.slice(0, items.length - 1)"
+      v-for="(item, index) in internalItems.slice(0, internalItems.length - 1)"
       :key="`puik-breadcrumb-item-${index}`"
       class="puik-breadcrumb__item"
     >
@@ -27,29 +31,50 @@
         class="puik-breadcrumb__item-icon"
         :icon="separatorIcon"
         :font-size="16"
-      ></PuikIcon>
+      />
     </div>
 
     <div
+      v-if="internalItems.length"
       class="puik-breadcrumb__item--last"
       :data-test="
-        items[items.length - 1].dataTest
-          ? items[items.length - 1].dataTest
+        internalItems[internalItems.length - 1].dataTest
+          ? internalItems[internalItems.length - 1].dataTest
           : undefined
       "
     >
-      {{ items[items.length - 1].label }}
+      {{ internalItems[internalItems.length - 1].label }}
     </div>
   </nav>
 </template>
 
 <script setup lang="ts">
-import PuikLink from '../../link/src/link.vue'
-import PuikIcon from '../../icon/src/icon.vue'
-import { breadcrumbProps } from './breadcrumb'
+import PuikLink from '../../link/src/link.vue';
+import PuikIcon from '../../icon/src/icon.vue';
+import { computed, ref, watch } from 'vue';
+import type { BreadcrumbProps, BreadcrumbItem } from './breadcrumb';
 defineOptions({
-  name: 'PuikBreadcrumb',
-})
+  name: 'PuikBreadcrumb'
+});
 
-defineProps(breadcrumbProps)
+const props = withDefaults(defineProps<BreadcrumbProps>(), {
+  separatorIcon: 'keyboard_arrow_right'
+});
+
+const internalItems = ref<BreadcrumbItem[]>([]);
+
+const itemsToWatch = computed(() => {
+  return props.itemsJson ? JSON.parse(props.itemsJson) : props.items;
+});
+
+watch(itemsToWatch, (newValue) => {
+  internalItems.value = newValue;
+}, { immediate: true });
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-breadcrumb.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+@use '@prestashopcorp/puik-theme/src/puik-link.scss';
+</style>

@@ -12,8 +12,7 @@
     "typescript",
     "typescriptreact",
     "html",
-    "vue",
-    "markdown"
+    "vue"
   ],
   "eslint.validate": [
     "javascript",
@@ -21,13 +20,15 @@
     "typescript",
     "typescriptreact",
     "html",
-    "vue",
-    "markdown"
+    "vue"
   ],
   "css.customData": [".vscode/tailwind.json"],
   "vite.devCommand": "pnpm run dev -- --",
   "i18n-ally.localesPaths": "packages/locale/lang",
   "i18n-ally.enabledParsers": ["ts"],
   "i18n-ally.enabledFrameworks": ["vue", "vue-sfc"],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.keystyle": "nested",
+  "vue3snippets.trailingComma": "none",
+  "prettier.trailingComma": "none",
+  "eslint.format.enable": true
 }

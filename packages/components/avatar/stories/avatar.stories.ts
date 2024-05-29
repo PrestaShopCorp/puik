@@ -1,15 +1,13 @@
-import { ref } from 'vue'
-import { PuikIcon } from '@puik/components'
-import { PuikAvatarMode, PuikAvatarSize, PuikAvatarType } from '../src/avatar'
-import PuikAvatar from './../src/avatar.vue'
-import type { Meta, StoryFn, Args } from '@storybook/vue3'
+import { ref } from 'vue';
+import { PuikIcon, PuikAvatar, PuikAvatarMode, PuikAvatarSize, PuikAvatarType } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args } from '@storybook/vue3';
 
-const avatarModes = Object.values(PuikAvatarMode)
-const avatarSizes = Object.values(PuikAvatarSize)
-const avatarTypes = Object.values(PuikAvatarType)
-const avatarModesSummary = avatarModes.join('|')
-const avatarSizesSummary = avatarSizes.join('|')
-const avatarTypesSummary = avatarTypes.join('|')
+const avatarModes = Object.values(PuikAvatarMode);
+const avatarSizes = Object.values(PuikAvatarSize);
+const avatarTypes = Object.values(PuikAvatarType);
+const avatarModesSummary = avatarModes.join('|');
+const avatarSizesSummary = avatarSizes.join('|');
+const avatarTypesSummary = avatarTypes.join('|');
 
 export default {
   title: 'Components/Avatar',
@@ -21,12 +19,12 @@ export default {
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'undefined',
-        },
-      },
+          summary: 'undefined'
+        }
+      }
     },
     mode: {
       description:
@@ -35,12 +33,12 @@ export default {
       options: avatarModes,
       table: {
         type: {
-          summary: avatarModesSummary,
+          summary: avatarModesSummary
         },
         defaultValue: {
-          summary: 'primary',
-        },
-      },
+          summary: 'primary'
+        }
+      }
     },
     size: {
       description:
@@ -49,12 +47,12 @@ export default {
       options: avatarSizes,
       table: {
         type: {
-          summary: avatarSizesSummary,
+          summary: avatarSizesSummary
         },
         defaultValue: {
-          summary: 'medium',
-        },
-      },
+          summary: 'medium'
+        }
+      }
     },
     type: {
       description: 'Content type of avatar (initials, image or icon)',
@@ -62,89 +60,89 @@ export default {
       options: avatarTypes,
       table: {
         type: {
-          summary: avatarTypesSummary,
+          summary: avatarTypesSummary
         },
         defaultValue: {
-          summary: 'initials',
-        },
-      },
+          summary: 'initials'
+        }
+      }
     },
     icon: {
       description: 'Material icon name (cf https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     src: {
       description: 'Image source if avatar type is set to "photo"',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     alt: {
       description: 'Image alt attribute if avatar type prop is set to "photo"',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
-    firstname: {
+    firstName: {
       description:
-        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of firstname prop corresponds to the first). NB: if the lastname prop is missing then the initials will be the first two letters of the firstname prop in the case where the singleInitial prop is false. Special characters are removed',
+        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of firstName prop corresponds to the first). NB: if the lastName prop is missing then the initials will be the first two letters of the firstName prop in the case where the singleInitial prop is false. Special characters are removed',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
-    lastname: {
+    lastName: {
       description:
-        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of lastname corresponds to the last). NB : if the firstname prop is missing then the initials will be the first two letters of the lastname prop in the case where the singleInitial prop is false. Special characters are removed.',
+        'If avatar type prop is set to "initials". The "initials" type is composed of two letters max (first letter of lastName corresponds to the last). NB : if the firstName prop is missing then the initials will be the first two letters of the lastName prop in the case where the singleInitial prop is false. Special characters are removed.',
       control: 'text',
       table: {
         type: {
-          summary: 'string',
+          summary: 'string'
         },
         defaultValue: {
-          summary: 'none',
-        },
-      },
+          summary: 'none'
+        }
+      }
     },
     singleInitial: {
       description:
-        'Initials match a single letter (first letter of firstname. If the firstname conditions are not met this is the first letter of lastname). NB: if the conditions for the firstname and lastname props are not met then the default value is "P" (singleInitial set to true) or "PS" (singleInitial set to false).',
+        'Initials match a single letter (first letter of firstName. If the firstName conditions are not met this is the first letter of lastName). NB: if the conditions for the firstName and lastName props are not met then the default value is "P" (singleInitial set to true) or "PS" (singleInitial set to false).',
       table: {
         defaultValue: {
-          summary: false,
-        },
-      },
+          summary: false
+        }
+      }
     },
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute for the avatar `image-${dataTest}` `icon-${dataTest}` `initials-${dataTest}`',
-    },
+        'Set the data-test attribute for the avatar `image-${dataTest}` `icon-${dataTest}` `initials-${dataTest}`'
+    }
   },
   args: {
     id: 'puik-avatar-id',
@@ -154,40 +152,40 @@ export default {
     icon: 'home',
     src: 'https://picsum.photos/200',
     alt: 'puik-avatar-alt',
-    firstname: 'Presta',
-    lastname: 'Shop',
+    firstName: 'Presta',
+    lastName: 'Shop',
     singleInitial: false,
-    dataTest: undefined,
-  },
-} as Meta
+    dataTest: undefined
+  }
+} as Meta;
 
 const DefaultTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikAvatar,
+    PuikAvatar
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
 <PuikAvatar v-bind="args" />
-`,
-})
+`
+});
 
 const TypesTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikAvatar,
+    PuikAvatar
   },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
 <div class="flex space-x-2">
   <PuikAvatar
     type="initials"
-    :firstname="args.firstname"
-    :lastname="args.lastname"
+    :firstName="args.firstName"
+    :lastName="args.lastName"
   />
   <PuikAvatar
     type="icon"
@@ -199,74 +197,74 @@ const TypesTemplate: StoryFn = (args: Args) => ({
     :alt="args.alt"
   />
 </div>
-`,
-})
+`
+});
 
 const SizesTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikAvatar,
+    PuikAvatar
   },
   setup() {
     const avatars = ref([
       {
         type: 'initials',
-        size: 'small',
+        size: 'small'
       },
       {
         type: 'initials',
-        size: 'medium',
+        size: 'medium'
       },
       {
         type: 'initials',
-        size: 'large',
+        size: 'large'
       },
       {
         type: 'initials',
-        size: 'jumbo',
+        size: 'jumbo'
       },
       {
         type: 'icon',
         size: 'small',
-        icon: 'home',
+        icon: 'home'
       },
       {
         type: 'icon',
         size: 'medium',
-        icon: 'home',
+        icon: 'home'
       },
       {
         type: 'icon',
         size: 'large',
-        icon: 'home',
+        icon: 'home'
       },
       {
         type: 'icon',
         size: 'jumbo',
-        icon: 'home',
+        icon: 'home'
       },
       {
         type: 'photo',
         size: 'small',
-        src: 'https://picsum.photos/200',
+        src: 'https://picsum.photos/200'
       },
       {
         type: 'photo',
         size: 'medium',
-        src: 'https://picsum.photos/200',
+        src: 'https://picsum.photos/200'
       },
       {
         type: 'photo',
         size: 'large',
-        src: 'https://picsum.photos/200',
+        src: 'https://picsum.photos/200'
       },
       {
         type: 'photo',
         size: 'jumbo',
-        src: 'https://picsum.photos/200',
-      },
-    ])
-    return { avatars, args }
+        src: 'https://picsum.photos/200'
+      }
+    ]);
+    return { avatars, args };
   },
   template: `
 <div class="flex space-x-2">
@@ -279,40 +277,40 @@ const SizesTemplate: StoryFn = (args: Args) => ({
     :src="avatar.src"
   />
 </div>
-`,
-})
+`
+});
 
 const ModesTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikIcon,
-    PuikAvatar,
+    PuikAvatar
   },
   setup() {
     const avatarsPrimary = ref([
       {
         type: 'initials',
-        mode: 'primary',
+        mode: 'primary'
       },
       {
         type: 'icon',
         mode: 'primary',
-        icon: 'home',
-      },
-    ])
+        icon: 'home'
+      }
+    ]);
 
     const avatarsReverse = ref([
       {
         type: 'initials',
-        mode: 'reverse',
+        mode: 'reverse'
       },
       {
         type: 'icon',
         mode: 'reverse',
-        icon: 'home',
-      },
-    ])
+        icon: 'home'
+      }
+    ]);
 
-    return { avatarsPrimary, avatarsReverse, args }
+    return { avatarsPrimary, avatarsReverse, args };
   },
   template: `
 <div class="flex space-x-2" style="margin-bottom: 1rem; padding: 1rem;">
@@ -333,8 +331,8 @@ const ModesTemplate: StoryFn = (args: Args) => ({
     :icon="avatar.icon"
   />
 </div>
-`,
-})
+`
+});
 
 export const Default = {
   render: DefaultTemplate,
@@ -353,8 +351,8 @@ export const Default = {
   :src="args.src"
   :alt="args.alt"
   :icon="args.icon"
-  :firstname="args.firstname"
-  :lastname="args.lastname"
+  :firstName="args.firstName"
+  :lastName="args.lastName"
 />
 
 <!-- HTML/CSS Snippet -->
@@ -365,11 +363,11 @@ export const Default = {
   </div>
 </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Types = {
   render: TypesTemplate,
@@ -382,8 +380,8 @@ export const Types = {
 <!-- initials type -->
 <PuikAvatar
   type="initials"
-  :firstname="args.firstname"
-  :lastname="args.lastname"
+  :firstName="args.firstName"
+  :lastName="args.lastName"
 />
 <!-- icon type -->
 <PuikAvatar
@@ -415,11 +413,11 @@ export const Types = {
   <img src="https://picsum.photos/200" alt="puik-avatar-alt">
 </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Sizes = {
   render: SizesTemplate,
@@ -462,11 +460,11 @@ NB: values of {$iconFontSize} to apply depending on the prop size:
   <img src="https://picsum.photos/200" alt="puik-avatar-alt">
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Modes = {
   render: ModesTemplate,
@@ -499,8 +497,8 @@ NB: values of {$iconColor} to apply depending on the prop mode:
   </div>
 </div>
 `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

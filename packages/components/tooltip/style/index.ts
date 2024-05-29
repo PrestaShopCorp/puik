@@ -1,3 +1,3 @@
-import '@puik/components/base/style'
-import '@puik/theme/src/tooltip.scss'
-import '@puik/theme/src/icon.scss'
+import '@prestashopcorp/puik-components/base/style';
+import '@prestashopcorp/puik-theme/src/puik-tooltip.scss';
+import '@prestashopcorp/puik-theme/src/puik-icon.scss';

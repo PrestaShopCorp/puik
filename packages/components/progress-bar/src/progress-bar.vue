@@ -1,5 +1,8 @@
 <template>
-  <div class="progress-bar__container" :data-test="dataTest">
+  <div
+    class="progress-bar__container"
+    :data-test="dataTest"
+  >
     <div
       :class="barClass"
       :style="{ width: `${percentage}%` }"
@@ -10,10 +13,15 @@
 </template>
 
 <script setup lang="ts">
-import { progressBarProps } from './progress-bar'
+import { type ProgressBarProps } from './progress-bar';
 defineOptions({
-  name: 'PuikProgressBar',
-})
+  name: 'PuikProgressBar'
+});
 
-defineProps(progressBarProps)
+defineProps<ProgressBarProps>();
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-progress-bar.scss';
+</style>

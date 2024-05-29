@@ -1,28 +1,26 @@
-import { nextTick } from 'vue'
-import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
-import PuikAccordionGroup from '../src/accordion-group.vue'
-import PuikAccordion from '../src/accordion.vue'
-import { getAccordion, getAccordionHeader } from './accordion.spec'
-import type { MountingOptions, VueWrapper } from '@vue/test-utils'
+import { nextTick } from 'vue';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { describe, it, expect } from 'vitest';
+import { PuikAccordion, PuikAccordionGroup } from '@prestashopcorp/puik-components';
+import { getAccordion, getAccordionHeader } from './accordion.spec';
 
-let wrapper: VueWrapper<any>
-const factory = (template: string, options: MountingOptions<any> = {}) => {
+let wrapper: VueWrapper<any>;
+const factory = (template: string, options: ComponentMountingOptions<any> = {}) => {
   wrapper = mount({
     components: {
       'puik-accordion-group': PuikAccordionGroup,
-      'puik-accordion': PuikAccordion,
+      'puik-accordion': PuikAccordion
     },
     template,
-    ...options,
-  })
-}
+    ...options
+  });
+};
 
-const rootClass = 'puik-accordion'
-const expandedClass = 'puik-accordion--expanded'
+const rootClass = 'puik-accordion';
+const expandedClass = 'puik-accordion--expanded';
 
-const getAccordionGroup = () => wrapper.find('.puik-accordion-group')
-const getAccordions = () => wrapper.findAll(`.${rootClass}`)
+const getAccordionGroup = () => wrapper.find('.puik-accordion-group');
+const getAccordions = () => wrapper.findAll(`.${rootClass}`);
 
 describe('AccordionGroup collapse/expand tests', () => {
   it('should be a vue instance', () => {
@@ -38,10 +36,10 @@ describe('AccordionGroup collapse/expand tests', () => {
           Content 3
         </puik-accordion>
       </puik-accordion-group>
-    `
-    factory(template)
-    expect(wrapper).toBeTruthy()
-  })
+    `;
+    factory(template);
+    expect(wrapper).toBeTruthy();
+  });
 
   it('should accordion be expanded', () => {
     const template = `
@@ -50,12 +48,12 @@ describe('AccordionGroup collapse/expand tests', () => {
           Content 1
         </puik-accordion>
       </puik-accordion-group>
-    `
-    factory(template)
+    `;
+    factory(template);
 
-    const accordion = getAccordion(wrapper)
-    expect(accordion.classes()).toContain(expandedClass)
-  })
+    const accordion = getAccordion(wrapper);
+    expect(accordion.classes()).toContain(expandedClass);
+  });
 
   it('should accordions title have aria-expanded', () => {
     const template = `
@@ -67,15 +65,15 @@ describe('AccordionGroup collapse/expand tests', () => {
           Content 2
         </puik-accordion>
       </puik-accordion-group>
-    `
-    factory(template)
+    `;
+    factory(template);
 
     const accordionsHeaders = getAccordions().map((accordion) =>
       getAccordionHeader(accordion)
-    )
-    expect(accordionsHeaders[0].attributes('aria-expanded')).toBe('true')
-    expect(accordionsHeaders[1].attributes('aria-expanded')).toBe('false')
-  })
+    );
+    expect(accordionsHeaders[0].attributes('aria-expanded')).toBe('true');
+    expect(accordionsHeaders[1].attributes('aria-expanded')).toBe('false');
+  });
 
   it('should have multiple accordions expanded', () => {
     const template = `
@@ -90,13 +88,13 @@ describe('AccordionGroup collapse/expand tests', () => {
           Content 3
         </puik-accordion>
       </puik-accordion-group>
-    `
-    factory(template)
+    `;
+    factory(template);
 
-    const accordionsExpanded = wrapper.findAll('.puik-accordion--expanded')
-    expect(accordionsExpanded.length).toBe(2)
-  })
-})
+    const accordionsExpanded = wrapper.findAll('.puik-accordion--expanded');
+    expect(accordionsExpanded.length).toBe(2);
+  });
+});
 describe('AccordionGroup props tests', () => {
   it('should have contained class', () => {
     const template = `
@@ -111,12 +109,12 @@ describe('AccordionGroup props tests', () => {
           Content 3
         </puik-accordion>
       </puik-accordion-group>
-    `
-    factory(template)
+    `;
+    factory(template);
 
-    const group = getAccordionGroup()
-    expect(group.classes()).toContain('puik-accordion-group--contained')
-  })
+    const group = getAccordionGroup();
+    expect(group.classes()).toContain('puik-accordion-group--contained');
+  });
   it('should change expanded accordion on v-model change', async () => {
     const template = `
       <puik-accordion-group v-model="expandedAccordions">
@@ -130,26 +128,26 @@ describe('AccordionGroup props tests', () => {
           Content 3
         </puik-accordion>
       </puik-accordion-group>
-    `
+    `;
 
     factory(template, {
       data() {
-        return { expandedAccordions: 'accordion-1' }
-      },
-    })
+        return { expandedAccordions: 'accordion-1' };
+      }
+    });
 
-    wrapper.setData({ expandedAccordions: 'accordion-2' })
-    await nextTick()
+    await wrapper.setData({ expandedAccordions: 'accordion-2' });
+    await nextTick();
 
-    const accordions = getAccordions()
-    expect(accordions[1].classes()).toEqual([rootClass, expandedClass])
-    expect(accordions[2].classes()).toEqual([rootClass])
+    const accordions = getAccordions();
+    expect(accordions[1].classes()).toEqual([rootClass, expandedClass]);
+    expect(accordions[2].classes()).toEqual([rootClass]);
 
-    wrapper.setData({ expandedAccordions: ['accordion-3'] })
-    await nextTick()
-    expect(accordions[1].classes()).toEqual([rootClass])
-    expect(accordions[2].classes()).toEqual([rootClass, expandedClass])
-  })
+    await wrapper.setData({ expandedAccordions: ['accordion-3'] });
+    await nextTick();
+    expect(accordions[1].classes()).toEqual([rootClass]);
+    expect(accordions[2].classes()).toEqual([rootClass, expandedClass]);
+  });
   it('should change expanded accordion on click on multiple mode', async () => {
     const template = `
       <puik-accordion-group multiple>
@@ -163,19 +161,19 @@ describe('AccordionGroup props tests', () => {
           Content 3
         </puik-accordion>
       </puik-accordion-group>
-    `
+    `;
 
-    factory(template)
+    factory(template);
 
-    const accordions = getAccordions()
-    const accordionButtons = wrapper.findAll('.puik-accordion__header')
+    const accordions = getAccordions();
+    const accordionButtons = wrapper.findAll('.puik-accordion__header');
 
-    accordionButtons[0].trigger('click')
-    accordionButtons[1].trigger('click')
-    await nextTick()
+    await accordionButtons[0].trigger('click');
+    await accordionButtons[1].trigger('click');
+    await nextTick();
 
-    expect(accordions[0].classes()).toEqual([rootClass, expandedClass])
-    expect(accordions[1].classes()).toEqual([rootClass, expandedClass])
-    expect(accordions[2].classes()).toEqual([rootClass])
-  })
-})
+    expect(accordions[0].classes()).toEqual([rootClass, expandedClass]);
+    expect(accordions[1].classes()).toEqual([rootClass, expandedClass]);
+    expect(accordions[2].classes()).toEqual([rootClass]);
+  });
+});

@@ -1,8 +1,8 @@
-import { badgeVariants } from '../src/badge'
-import PuikBadge from './../src/badge.vue'
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3'
+import { PuikBadge, PuikBadgeVariants } from '@prestashopcorp/puik-components';
+import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
-const badgeVariantsSummary = badgeVariants.join('|')
+const badgeVariants = Object.values(PuikBadgeVariants);
+const badgeVariantsSummary = badgeVariants.join('|');
 
 export default {
   title: 'Components/Badge',
@@ -10,7 +10,7 @@ export default {
   argTypes: {
     default: {
       control: 'text',
-      description: 'Badge content',
+      description: 'Badge content'
     },
     variant: {
       control: 'select',
@@ -18,33 +18,33 @@ export default {
       options: badgeVariants,
       table: {
         type: {
-          summary: badgeVariantsSummary,
+          summary: badgeVariantsSummary
         },
         defaultValue: {
-          summary: 'neutral',
-        },
-      },
+          summary: 'neutral'
+        }
+      }
     },
     dataTest: {
       control: 'text',
-      description: 'Set the data-test attribute on the badge',
-    },
+      description: 'Set the data-test attribute on the badge'
+    }
   },
   args: {
     default: 'Status',
-    variant: 'neutral',
-  },
-} as Meta
+    variant: 'neutral'
+  }
+} as Meta;
 
 const Template: StoryFn = (args: Args) => ({
   components: {
-    PuikBadge,
+    PuikBadge
   },
   setup() {
-    return { args }
+    return { args };
   },
-  template: `<puik-badge v-bind="args">{{ args.default }}</puik-badge>`,
-})
+  template: '<puik-badge v-bind="args">{{ args.default }}</puik-badge>'
+});
 
 export const Default = {
   render: Template,
@@ -70,27 +70,27 @@ export const Default = {
     The text of the badge
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const success: StoryObj = {
   render: (args: Args) => ({
     components: {
-      PuikBadge,
+      PuikBadge
     },
     setup() {
       return {
-        args,
-      }
+        args
+      };
     },
-    template: `<puik-badge variant="success" v-bind="args">{{ args.default }}</puik-badge>`,
+    template: '<puik-badge variant="success" v-bind="args">{{ args.default }}</puik-badge>'
   }),
 
   args: {
-    variant: 'success',
+    variant: 'success'
   },
 
   parameters: {
@@ -107,27 +107,27 @@ export const success: StoryObj = {
     Status
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const warning: StoryObj = {
   render: (args: Args) => ({
     components: {
-      PuikBadge,
+      PuikBadge
     },
     setup() {
       return {
-        args,
-      }
+        args
+      };
     },
-    template: `<puik-badge variant="warning" v-bind="args">{{ args.default }}</puik-badge>`,
+    template: '<puik-badge variant="warning" v-bind="args">{{ args.default }}</puik-badge>'
   }),
 
   args: {
-    variant: 'warning',
+    variant: 'warning'
   },
 
   parameters: {
@@ -144,27 +144,27 @@ export const warning: StoryObj = {
     Status
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const danger: StoryObj = {
   render: (args: Args) => ({
     components: {
-      PuikBadge,
+      PuikBadge
     },
     setup() {
       return {
-        args,
-      }
+        args
+      };
     },
-    template: `<puik-badge variant="danger" v-bind="args">{{ args.default }}</puik-badge>`,
+    template: '<puik-badge variant="danger" v-bind="args">{{ args.default }}</puik-badge>'
   }),
 
   args: {
-    variant: 'danger',
+    variant: 'danger'
   },
 
   parameters: {
@@ -181,27 +181,27 @@ export const danger: StoryObj = {
     Status
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const info: StoryObj = {
   render: (args: Args) => ({
     components: {
-      PuikBadge,
+      PuikBadge
     },
     setup() {
       return {
-        args,
-      }
+        args
+      };
     },
-    template: `<puik-badge variant="info" v-bind="args">{{ args.default }}</puik-badge>`,
+    template: '<puik-badge variant="info" v-bind="args">{{ args.default }}</puik-badge>'
   }),
 
   args: {
-    variant: 'info',
+    variant: 'info'
   },
 
   parameters: {
@@ -218,27 +218,27 @@ export const info: StoryObj = {
     Status
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const neutral: StoryObj = {
   render: (args: Args) => ({
     components: {
-      PuikBadge,
+      PuikBadge
     },
     setup() {
       return {
-        args,
-      }
+        args
+      };
     },
-    template: `<puik-badge variant="neutral" v-bind="args">{{ args.default }}</puik-badge>`,
+    template: '<puik-badge variant="neutral" v-bind="args">{{ args.default }}</puik-badge>'
   }),
 
   args: {
-    variant: 'neutral',
+    variant: 'neutral'
   },
 
   parameters: {
@@ -255,8 +255,8 @@ export const neutral: StoryObj = {
     Status
   </div>
         `,
-        language: 'html',
-      },
-    },
-  },
-}
+        language: 'html'
+      }
+    }
+  }
+};

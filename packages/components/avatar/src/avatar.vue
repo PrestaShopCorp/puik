@@ -5,13 +5,13 @@
     :data-test="dataTest"
   >
     <img
-      v-if="src && type == PuikAvatarType.PHOTO"
+      v-if="src && type == PuikAvatarType.Photo"
       :src="src"
       :alt="alt"
       :data-test="dataTest != undefined ? `image-${dataTest}` : undefined"
-    />
+    >
     <puik-icon
-      v-else-if="icon && type == PuikAvatarType.ICON"
+      v-else-if="icon && type == PuikAvatarType.Icon"
       :icon="icon"
       :font-size="ICONS_FONTSIZE[props.size]"
       :color="AVATAR_MODE[props.mode]"
@@ -29,39 +29,53 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { getInitialLetter } from '@puik/utils'
-import PuikIcon from '../../icon'
+import { computed } from 'vue';
+import { getInitialLetter } from '@prestashopcorp/puik-utils';
+import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import {
-  avatarProps,
+  AvatarProps,
   PuikAvatarType,
   ICONS_FONTSIZE,
   AVATAR_MODE,
-} from './avatar'
+  PuikAvatarMode,
+  PuikAvatarSize
+} from './avatar';
 
 defineOptions({
-  name: 'PuikAvatar',
-})
+  name: 'PuikAvatar'
+});
 
-const props = defineProps(avatarProps)
+const props = withDefaults(defineProps<AvatarProps>(), {
+  mode: PuikAvatarMode.Primary,
+  type: PuikAvatarType.Initials,
+  size: PuikAvatarSize.Medium,
+  firstName: '',
+  lastName: ''
+});
 
 const initials = computed(() => {
-  const firstInitial = props.firstname
-    ? getInitialLetter(props.firstname, 0)
-    : ''
+  const firstInitial = props.firstName
+    ? getInitialLetter(props.firstName, 0)
+    : '';
 
-  const lastInitial = props.lastname ? getInitialLetter(props.lastname, 0) : ''
+  const lastInitial = props.lastName ? getInitialLetter(props.lastName, 0) : '';
 
   const initialsValue = props.singleInitial
     ? firstInitial || lastInitial || 'P'
     : firstInitial && lastInitial
-    ? firstInitial + lastInitial
-    : firstInitial && props.firstname.length > 1
-    ? firstInitial + getInitialLetter(props.firstname, 1)
-    : lastInitial && props.lastname.length > 1
-    ? lastInitial + getInitialLetter(props.lastname, 1)
-    : 'PS'
+      ? firstInitial + lastInitial
+      : firstInitial && props.firstName.length > 1
+        ? firstInitial + getInitialLetter(props.firstName, 1)
+        : lastInitial && props.lastName.length > 1
+          ? lastInitial + getInitialLetter(props.lastName, 1)
+          : 'PS';
 
-  return initialsValue
-})
+  return initialsValue;
+});
 </script>
+
+<style lang="scss">
+@use '@prestashopcorp/puik-theme/src/base.scss';
+@use '@prestashopcorp/puik-theme/src/puik-avatar.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+</style>

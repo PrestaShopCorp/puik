@@ -16,7 +16,7 @@
     left-icon="keyboard_arrow_left"
     variant="secondary"
     @click="page -= 1"
-  ></puik-button>
+  />
 
   <puik-button
     :aria-label="t('puik.pagination.next', { page: page + 1 })"
@@ -26,27 +26,27 @@
     right-icon="keyboard_arrow_right"
     variant="secondary"
     @click="page += 1"
-  ></puik-button>
+  />
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { PuikButton } from '@puik/components/button'
-import { useLocale } from '@puik/hooks'
-import { paginationSmallProps } from './pagination-small'
+import { computed } from 'vue';
+import { PuikButton } from '@prestashopcorp/puik-components/button';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { type PaginationSmallProps } from './pagination-small';
 defineOptions({
-  name: 'PuikPaginationSmall',
-})
+  name: 'PuikPaginationSmall'
+});
 
-const props = defineProps(paginationSmallProps)
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: number): void
-}>()
+const props = withDefaults(defineProps<PaginationSmallProps>(), {
+  modelValue: 1
+});
+const emit = defineEmits<{(e: 'update:modelValue', value: number): void}>();
 
-const { t } = useLocale()
+const { t } = useLocale();
 
 const page = computed({
   get: () => props.modelValue,
-  set: (page: number) => emit('update:modelValue', page),
-})
+  set: (page: number) => emit('update:modelValue', page)
+});
 </script>

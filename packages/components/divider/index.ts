@@ -1,8 +1,6 @@
-import { withInstall } from '@puik/utils'
+import Divider from './src/divider.vue';
 
-import Divider from './src/divider.vue'
+export const PuikDivider = Divider;
+export default PuikDivider;
 
-export const PuikDivider = withInstall(Divider)
-export default PuikDivider
-
-export * from './src/divider'
+export * from './src/divider';

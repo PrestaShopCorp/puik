@@ -25,12 +25,12 @@ runs:
   using: 'composite'
 
   steps:
-    - name: Set version
-      shell: bash
-      run: |
-        git config user.email "${{ inputs.git_author_email }}"
-        git config user.name "Github action"
-        npm version ${{ inputs.version }} --allow-same-version
+    # - name: Set version
+    #   shell: bash
+    #   run: |
+    #     git config user.email "${{ inputs.git_author_email }}"
+    #     git config user.name "Github action"
+    #     npm version ${{ inputs.version }} --allow-same-version
     - name: Setup pnpm
       uses: pnpm/action-setup@v2
 
