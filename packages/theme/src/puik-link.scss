@@ -4,23 +4,26 @@
   @apply cursor-pointer 
     relative 
     text-primary
-    
     underline 
     decoration-auto
     underline-offset-[2px]
     decoration-primary-500
-    
     transition-all
     duration-150;
 
   &:hover,
   &:active,
   &:visited {
-    @apply decoration-primary underline-offset-[5px];
+    @apply underline-offset-[5px];
+  }
+  
+  &:hover,
+  &:visited:hover {
+    @apply decoration-primary;
   }
 
   &:focus-visible {
-    @apply outline-none ring-2 ring-blue rounded-[4px] shadow-none;
+    @apply outline-none ring-2 ring-blue rounded-[4px] shadow-none decoration-primary-800;
   }
 
   &__target__icon {
@@ -49,12 +52,32 @@
     }
     @apply decoration-primary;
   }
-
+  
   &--articles {
     @apply decoration-primary-500;
-
+    
     &:visited {
       @apply text-purple-700 decoration-primary-500;
+    }
+    
+    &:hover, &:visited:hover {
+      @apply decoration-primary;
+    }
+    
+    &:focus-visible {
+      @apply decoration-primary-800;
+    }
+  }
+
+  &--high-contrast.puik-link--articles {
+    @apply text-primary decoration-primary;
+    
+    &:visited {
+      @apply text-primary decoration-primary;
+    }
+    
+    &:visited:hover {
+      @apply decoration-primary;
     }
 
     &:focus-visible {
