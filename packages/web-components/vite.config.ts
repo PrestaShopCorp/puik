@@ -28,7 +28,10 @@ export default defineConfig({
           preserveModules: true,
           preserveModulesRoot: resolve(__dirname, './'),
           entryFileNames: '[name].mjs',
-          exports: 'named'
+          exports: 'named',
+          globals: {
+            vue: 'Vue'
+          }
         },
         {
           dir: './dist',
@@ -36,7 +39,10 @@ export default defineConfig({
           preserveModules: true,
           preserveModulesRoot: resolve(__dirname, './'),
           entryFileNames: '[name].cjs',
-          exports: 'named'
+          exports: 'named',
+          globals: {
+            vue: 'Vue'
+          }
         }
       ]
     }
