@@ -41,7 +41,8 @@ Or include the CSS in your HTML by using the CDN
 
 ## Usage
 
-Once the CSS styles are loaded using the CDN or by importing the library, you can start using all the classes prefixed by `puik-` 
+Once the CSS styles are loaded using the CDN or by importing the library, you can start using all the classes prefixed by `puik-`
+
 ```html
-<button class="puik-button">Example button</button>
+<button class="puik-button puik-button--primary">Example button</button>
 ```

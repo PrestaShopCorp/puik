@@ -15,11 +15,11 @@
 
 Puik is a library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem. This packages includes the following packages:
 
-- [@prestashopcorp/puik-components](../components/README.md)
-- [@prestashopcorp/puik-components](../web-components/README.md)
-- [@prestashopcorp/puik-resolver](../resolver/README.md)
-- [@prestashopcorp/puik-theme](../theme/README.md)
-- [@prestashopcorp/puik-tailwind-preset](../tailwind-preset/README.md)
+- [@prestashopcorp/puik-components](https://www.npmjs.com/package/@prestashopcorp/puik-components) a Vue 3 components library
+- [@prestashopcorp/puik-web-components](https://www.npmjs.com/package/@prestashopcorp/puik-web-components) a Web components library
+- [@prestashopcorp/puik-resolver](https://www.npmjs.com/package/@prestashopcorp/puik-resolver) a component resolver for our Vue 3 component library
+- [@prestashopcorp/puik-theme](https://www.npmjs.com/package/@prestashopcorp/puik-theme) a CSS library containing all the classes used in our components
+- [@prestashopcorp/puik-tailwind-preset](https://www.npmjs.com/package/@prestashopcorp/puik-tailwind-preset) a Tailwind Css preset that contains all the design tokens used to create the components
 
 ## Prerequisites
 

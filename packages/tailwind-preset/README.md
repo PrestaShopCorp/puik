@@ -34,10 +34,12 @@ $ pnpm install @prestashopcorp/puik-tailwind-preset
 
 ## Usage
 
-If you want to use the Tailwind CSS preset used for this library you can import the configuration in your project
+If you want to use the Tailwind CSS preset used for this library you can import the configuration in your project.
+
+Require the puikTailwindPreset in your `tailwind.config.{js|ts}` file
 
 ```typescript
-const { puikTailwindPreset } = require('@prestashopcorp/puik')
+const { puikTailwindPreset } = require('@prestashopcorp/puik-tailwind-preset')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   presets: [puikTailwindPreset],
@@ -46,4 +48,4 @@ module.exports = {
 
 ## Available tokens
 
-You can find all the available tokens [here](./theme.ts)
+You can find all the available tokens [here](https://github.com/PrestaShopCorp/puik/blob/main/packages/tailwind-preset/theme.ts)
