@@ -15,6 +15,8 @@
 
 Puik Web Components is a library that aims to provide a complete set of reusable web components based on the PrestaShop Design System for all the PrestaShop ecosystem.
 
+ℹ️ [see list of available Web components](https://github.com/PrestaShopCorp/puik/blob/main/RELEASE-NOTES-V2.md#available-components)
+
 ## Prerequisites
 
 - Node.js LTS is required.
