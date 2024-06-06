@@ -29,12 +29,14 @@ $ pnpm install @prestashopcorp/puik-web-components
 
 To use all Puik web components in your application, you first need to import and initialize them. Here’s how you can do it:  
 
-`import {
+```js
+import {
   initAllWeb,
   PuikExampleCe,
   PuikAnotherExampleCe,
   // other components...
- } from @prestashopcorp/puik-web-components`  
+ } from @prestashopcorp/puik-web-components
+ ```
 
 Then, run the following function in your application:  
 `initAllWeb();`
@@ -52,22 +54,35 @@ initAllWeb(); // The tagname for PuikExampleCe will default to 'puik-example-ce'
 initAllWeb('mySuffix'); // The tagname for PuikExampleCe will be 'puik-example-mySuffix'
 ```
 
-### On-demand Registration
+### On-demand Registration (recommended)
 
 If you only want to use a specific component in your application, you can import and initialize it individually.
 In this case you can name your web-component whatever you want.
 
-Here’s how you can do it:
+1 - Import the Web component in JS file and apply one of the following two ways to registering your custom element :
 
-`import { initCe, PuikExampleCe } from @prestashopcorp/puik-web-components`
+- By using the [`customElements.define`](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#registering_a_custom_element) method :
 
-Then, run the following function in your application:
-`initCe('your-tagname-here', PuikExampleCe);`
+```js
+import { PuikExampleCe } from @prestashopcorp/puik-web-components
 
-Then, use your web-component:
+customElements.define('your-tagname-here', PuikExampleCe);
+```
+
+- Or by using the `initCe` method that you can importing from the package :
+
+```js
+import { initCe, PuikExampleCe } from @prestashopcorp/puik-web-components
+
+initCe('your-tagname-here', PuikExampleCe)
+```
+
+2 - Then, use your web-component:
 
 ```html
 <your-tagname-here>
   ...
 </your-tagname-here>
 ```
+
+ℹ️ Web components can use the same props as Vue components
