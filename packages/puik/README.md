@@ -13,7 +13,7 @@
 
 ## About The Project
 
-Puik is a library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem. This packages includes the following packages:
+Puik is a library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem. This project includes the following packages:
 
 - [@prestashopcorp/puik-components](https://www.npmjs.com/package/@prestashopcorp/puik-components) a Vue 3 components library
 - [@prestashopcorp/puik-web-components](https://www.npmjs.com/package/@prestashopcorp/puik-web-components) a Web components library
