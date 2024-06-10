@@ -2,6 +2,8 @@ import { Meta } from '@storybook/blocks'
 import { linkTo } from '@storybook/addon-links'
 import VueJsLogo from '../../assets/img/Vue.js_Logo.png'
 import CssLogo from '../../assets/img/css.svg'
+import WebComponentsLogo from '../../assets/img/web-components.svg'
+import TailwindCssLogo from '../../assets/img/tailwind-css.svg'
 import Repo from '../../assets/img/repo.svg'
 import GitHubLogo from '../../assets/img/GitHub-Mark-64px.png'
 import FigmaLogo from '../../assets/img/Figma-Icon.svg'
@@ -68,9 +70,19 @@ import FigmaLogo from '../../assets/img/Figma-Icon.svg'
 
 # Puik
 
-Puik is a component library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem.
+<div className="subheading">About The Project</div>
 
-This library provides two ways of using the design system in your project, the first one is by using the VueJs components and the second one by using the css classes from the theme
+Puik is a library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem. This project includes the following packages:
+
+- [@prestashopcorp/puik-components](https://www.npmjs.com/package/@prestashopcorp/puik-components) a Vue 3 components library
+- [@prestashopcorp/puik-web-components](https://www.npmjs.com/package/@prestashopcorp/puik-web-components) a Web components library
+- [@prestashopcorp/puik-resolver](https://www.npmjs.com/package/@prestashopcorp/puik-resolver) a component resolver for our Vue 3 components library
+- [@prestashopcorp/puik-theme](https://www.npmjs.com/package/@prestashopcorp/puik-theme) a CSS library containing all the classes used in our components
+- [@prestashopcorp/puik-tailwind-preset](https://www.npmjs.com/package/@prestashopcorp/puik-tailwind-preset) a Tailwind Css preset that contains all the design tokens used to create the components
+
+This library provides three ways of using the design system in your project by using the VueJs components, the css classes from the theme or by using Web components.
+
+ℹ️ [see list of available Vue and Web components](https://github.com/PrestaShopCorp/puik/blob/main/RELEASE-NOTES-V2.md#available-components)
 
 <div className="subheading">Getting Started</div>
 
@@ -79,18 +91,38 @@ This library provides two ways of using the design system in your project, the f
     <img src={VueJsLogo} alt="VueJs Components" />
 
     <span>
-      <strong>Setup For VueJS</strong>
-      Setup the library for a usage with VueJs
+      <strong>Setup for VueJS</strong>
+      Setup the Puik Components library
     </span>
 
   </div>
 
-  <div className="link-item cursor-pointer" onClick={linkTo('Docs/VueJs Components')}>
+  <div className="link-item cursor-pointer" onClick={linkTo('Docs/CSS Components')}>
     <img src={CssLogo} alt="Css Components" />
 
     <span>
-      <strong>Setup for other language/framework</strong>
-      Setup the library with another language or framework
+      <strong>Setup for CSS components</strong>
+      Setup the Puik Theme library (CSS components)
+    </span>
+
+  </div>
+
+  <div className="link-item cursor-pointer" onClick={linkTo('Docs/Web Components')}>
+    <img src={WebComponentsLogo} alt="Web Components" />
+
+    <span>
+      <strong>Setup for WebComponents</strong>
+      Setup the Puik Web Components library
+    </span>
+
+  </div>
+  
+  <div className="link-item cursor-pointer" onClick={linkTo('Docs/Tailwind CSS Preset')}>
+    <img src={TailwindCssLogo} alt="Web Components" />
+
+    <span>
+      <strong>Setup for Tailwind CSS</strong>
+      Setup the Puik Tailwind Preset library
     </span>
 
   </div>
@@ -113,7 +145,7 @@ This library provides two ways of using the design system in your project, the f
 <div className="subheading">Learn</div>
 
 <div className="grid md:grid-cols-2 gap-4">
-  <a className="link-item" target="_blank">
+  <a className="link-item" href="https://docs.uikit.prestashop.com/34f250d18/p/356a7b-prestashop-ui-kit-puik" target="_blank">
     <img src={Repo} alt="repo" />
 
     <span>
@@ -123,7 +155,7 @@ This library provides two ways of using the design system in your project, the f
 
   </a>
 
-  <a className="link-item" target="_blank">
+  <a className="link-item" href="https://www.figma.com/design/YxI7gWKwOKc0QGMvaTal8j/PrestaShop-Core-Design-Kit" target="_blank">
     <img src={FigmaLogo} alt="direction" />
 
     <span>

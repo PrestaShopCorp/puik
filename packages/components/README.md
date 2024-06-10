@@ -13,7 +13,9 @@
 
 ## About The Project
 
-Puik Components is a Vue Component library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem.
+Puik Components is a Vue Components library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem.
+
+ℹ️ [see list of available Vue components](https://github.com/PrestaShopCorp/puik/blob/main/RELEASE-NOTES-V2.md#available-components)
 
 ## Prerequisites
 

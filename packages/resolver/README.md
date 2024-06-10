@@ -34,6 +34,7 @@ $ pnpm install unplugin-vue-components unplugin-auto-import @prestashopcorp/puik
 ```
 
 ℹ️ `unplugin-auto-import` is only used for the snackbar component at the moment if you don't need this component you can skip everything related to `unplugin-auto-import`
+
 ## Usage
 
 Add the following code to your `vite.config.ts` file

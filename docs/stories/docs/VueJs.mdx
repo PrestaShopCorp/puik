@@ -2,49 +2,57 @@ import { Meta } from '@storybook/blocks'
 
 <Meta title="Docs/VueJS Components" />
 
-# VueJs components
+# VueJs Components
 
-### Prerequisites
+Puik Components is a Vue Components library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem.
+
+ℹ️ [see list of available Vue components](https://github.com/PrestaShopCorp/puik/blob/main/RELEASE-NOTES-V2.md#available-components)
+
+## Prerequisites
 
 - Node.js LTS is required.
+- Vue 3
 
-### Installation
+## Installation
 
-```sh
-# chose your favorite package manager
+Install the `@prestashopcorp/puik-components` package
+
+```shell
 # NPM
-$ npm install @prestashopcorp/puik --save
+$ npm install @prestashopcorp/puik-components --save
 
 # Yarn
-$ yarn add @prestashopcorp/puik
+$ yarn add @prestashopcorp/puik-components
 
 # pnpm
-$ pnpm install @prestashopcorp/puik
+$ pnpm install @prestashopcorp/puik-components
 ```
 
 ## Usage
 
-#### Auto import (recommended)
+### Auto import using Puik Resolver (recommended)
 
-First you need to install `unplugin-vue-components` & `unplugin-auto-import`
+First you need to install `unplugin-vue-components`, `unplugin-auto-import` and the Puik resolver `@prestashopcorp/puik-resolver` 
 
-```sh
-$ npm install -D unplugin-vue-components unplugin-auto-import
+```shell
+$ npm install -D unplugin-vue-components unplugin-auto-import @prestashopcorp/puik-resolver
 
 # Yarn
-$ yarn add unplugin-vue-components unplugin-auto-import -D
+$ yarn add unplugin-vue-components unplugin-auto-import @prestashopcorp/puik-resolver -D
 
 # pnpm
-$ pnpm install unplugin-vue-components unplugin-auto-import -D
+$ pnpm install unplugin-vue-components unplugin-auto-import @prestashopcorp/puik-resolver -D
 ```
 
 Then add the code below in your vite.config file
 
-```typescript
+ℹ️ if you don't use Vite [follow this link](https://github.com/unplugin/unplugin-vue-components?tab=readme-ov-file#installation)
+
+```js
 import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import { PuikResolver } from '@prestashopcorp/puik'
+import { PuikResolver } from '@prestashopcorp/puik-resolver'
 
 export default defineConfig({
   plugins: [
@@ -63,31 +71,13 @@ export default defineConfig({
 
 Import the vue component and the component css directly into your vue file
 
-```vue
+```js
 <script setup>
-import '@prestashopcorp/puik/es/components/button/style/css'
-import { PuikButton } from '@prestashopcorp/puik'
+import '@prestashopcorp/puik-components/button/style/css'
+import { PuikButton } from '@prestashopcorp/puik-components'
 </script>
 
 <template>
   <puik-button>Example button</puik-button>
 </template>
-```
-
-### Full import
-
-If you don't care about bundle size you can full import the library by following these instructions
-
-Import the vue library and the css directly into your main.js / main.ts
-
-```typescript
-import { createApp } from 'vue'
-import Puik from '@prestashopcorp/puik'
-import '@prestashopcorp/puik/dist/index.css'
-import App from './App.vue'
-
-const app = createApp(App)
-
-app.use(Puik)
-app.mount('#app')
 ```

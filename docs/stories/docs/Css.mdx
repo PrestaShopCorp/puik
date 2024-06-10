@@ -2,23 +2,39 @@ import { Meta } from '@storybook/blocks'
 
 <Meta title="Docs/CSS Components" />
 
-# Css Components
+# CSS Components
 
+Puik Theme is a Css library that contains all the CSS classes used to create the Vue Components.
 If you don't use VueJS for your application, you can use the CSS only version of our components. It includes all the
 styles used in the VueJs component library.
 
-## Usage
+## Installation
 
-1.  Include the CSS in your HTML
+Install the `@prestashopcorp/puik-theme` package and import the css files you need
+
+```shell
+# NPM
+$ npm install @prestashopcorp/puik-theme --save
+
+# Yarn
+$ yarn add @prestashopcorp/puik-theme
+
+# pnpm
+$ pnpm install @prestashopcorp/puik-theme
+```
+
+Or include the CSS in your HTML by using the CDN
 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@prestashopcorp/puik/dist/index.css"
+  href="https://unpkg.com/@prestashopcorp/puik-theme/dist/index.css"
 />
 ```
 
-2.  Add the classes in your HTML
+## Usage
+
+Once the CSS styles are loaded using the CDN or by importing the library, you can start using all the classes prefixed by `puik-`
 
 ```html
 <button class="puik-button puik-button--primary">Example button</button>
