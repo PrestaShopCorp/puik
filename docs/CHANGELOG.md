@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-docs
 
+## 1.1.1
+
+### Patch Changes
+
+- update documentations (storybook and readme's), patch link component (style defaut link for visited state)
+
 ## 1.1.0
 
 ### Minor Changes
