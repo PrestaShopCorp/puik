@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-theme
 
+## 2.0.1
+
+### Patch Changes
+
+- update documentations (storybook and readme's), patch link component (style defaut link for visited state)
+
 ## 2.0.0
 
 ### Major Changes
