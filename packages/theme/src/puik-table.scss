@@ -2,7 +2,7 @@
 
 .puik-table {
   @extend .puik-body-default;
-  @apply inline-table border-y-[1px] bg-white font-normal;
+  @apply inline-table bg-white font-normal;
   &__container {
     @apply max-w-full overflow-x-auto;
   }
@@ -72,6 +72,7 @@
 
   &__head,
   > thead {
+    @apply sticky bg-white z-20 -top-px;
     &__row,
     > tr {
       &__item,
@@ -83,12 +84,17 @@
       }
     }
   }
+
+  &__head-separator {
+    @apply h-px bg-primary-400;
+  }
+
   &__body,
   > tbody {
     &__row,
     > .puik-table__head__row,
     .puik-table__body__row {
-      @apply border-t-[1px];
+      @apply border-b-[1px];
       &:hover {
         .puik-table__body__row__item,
         .puik-table__body__row__item::before {
@@ -181,7 +187,6 @@
   }
 }
 .puik-table__search__bar {
-  @apply border-t-[1px];
   th,
   th.puik-table__head__row__item--sticky {
     @apply bg-primary-200;
@@ -203,7 +208,30 @@ tr.puik-table__search__bar {
 }
 
 .puik-table__container {
-  @apply pb-2 scrollbar-thin scrollbar-thumb-primary-500 scrollbar-thumb-rounded-full;
+  @apply pb-2 max-h-[80vh] overflow-y-auto;
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: theme('colors.primary.400');
+    border: 8px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 12px;
+    &:hover {
+      background-color: theme('colors.primary.500');
+    }
+  }
 }
 
 .puik-table__body__row__item--loading {

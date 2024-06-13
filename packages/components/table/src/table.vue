@@ -8,6 +8,11 @@
       :class="{ 'puik-table--full-width': fullWidth }"
     >
       <thead class="puik-table__head">
+        <tr>
+          <td :colspan="selectable ? headers.length +1 : headers.length">
+            <div class="puik-table__head-separator" />
+          </td>
+        </tr>
         <tr class="puik-table__head__row">
           <th
             v-if="selectable || expandable"
@@ -89,6 +94,11 @@
             </div>
           </th>
         </tr>
+        <tr>
+          <td :colspan="selectable ? headers.length +1 : headers.length">
+            <div class="puik-table__head-separator" />
+          </td>
+        </tr>
         <tr
           v-if="searchBar"
           class="puik-table__head__row puik-table__search__bar"
@@ -101,8 +111,7 @@
               {
                 'puik-table__head__row__item--sticky-scroll':
                   stickyFirstCol &&
-                  (scrollBarPosition ===
-                    'isScrolling' ||
+                  (scrollBarPosition === 'isScrolling' ||
                     scrollBarPosition === 'right'),
               },
               { 'puik-table__head__row__item--selection': selectable },
@@ -137,18 +146,15 @@
               { 'puik-table__head__row__item--sticky': isSticky(index) },
               {
                 'puik-table__head__row__item--sticky-scroll':
-                  isSticky(index) &&
-                  scrollBarPosition === 'isScrolling',
+                  isSticky(index) && scrollBarPosition === 'isScrolling',
               },
               {
                 'puik-table__head__row__item--sticky-left':
-                  isSticky(index) &&
-                  scrollBarPosition === 'left',
+                  isSticky(index) && scrollBarPosition === 'left',
               },
               {
                 'puik-table__head__row__item--sticky-right':
-                  isSticky(index) &&
-                  scrollBarPosition === 'right',
+                  isSticky(index) && scrollBarPosition === 'right',
               },
             ]"
             :style="{ minWidth: header.width, width: header.width }"
@@ -171,6 +177,11 @@
               </div>
             </template>
           </th>
+        </tr>
+        <tr>
+          <td :colspan="selectable ? headers.length +1 : headers.length">
+            <div class="puik-table__head-separator" />
+          </td>
         </tr>
       </thead>
       <tbody class="puik-table__body">
@@ -250,18 +261,15 @@
                   { 'puik-table__body__row__item--sticky': isSticky(colIndex) },
                   {
                     'puik-table__body__row__item--sticky-scroll':
-                      isSticky(colIndex) &&
-                      scrollBarPosition === 'isScrolling',
+                      isSticky(colIndex) && scrollBarPosition === 'isScrolling',
                   },
                   {
                     'puik-table__body__row__item--sticky-left':
-                      isSticky(colIndex) &&
-                      scrollBarPosition === 'left',
+                      isSticky(colIndex) && scrollBarPosition === 'left',
                   },
                   {
                     'puik-table__body__row__item--sticky-right':
-                      isSticky(colIndex) &&
-                      scrollBarPosition === 'right',
+                      isSticky(colIndex) && scrollBarPosition === 'right',
                   },
                 ]"
                 @click="
@@ -295,13 +303,11 @@
                   { 'puik-table__body__row__item--sticky': stickyFirstCol },
                   {
                     'puik-table__body__row__item--sticky-scroll':
-                      stickyFirstCol &&
-                      scrollBarPosition === 'isScrolling',
+                      stickyFirstCol && scrollBarPosition === 'isScrolling',
                   },
                   {
                     'puik-table__body__row__item--sticky-left':
-                      stickyFirstCol &&
-                      scrollBarPosition === 'left',
+                      stickyFirstCol && scrollBarPosition === 'left',
                   },
                   {
                     'puik-table__body__row__item--sticky-right':
@@ -332,18 +338,15 @@
                   { 'puik-table__body__row__item--sticky': stickyLastCol },
                   {
                     'puik-table__body__row__item--sticky-scroll':
-                      stickyLastCol &&
-                      scrollBarPosition === 'isScrolling',
+                      stickyLastCol && scrollBarPosition === 'isScrolling',
                   },
                   {
                     'puik-table__body__row__item--sticky-left':
-                      stickyLastCol &&
-                      scrollBarPosition === 'left',
+                      stickyLastCol && scrollBarPosition === 'left',
                   },
                   {
                     'puik-table__body__row__item--sticky-right':
-                      stickyLastCol &&
-                      scrollBarPosition === 'right',
+                      stickyLastCol && scrollBarPosition === 'right',
                   },
                 ]"
               />
@@ -384,11 +387,11 @@ const props = withDefaults(defineProps<TableProps>(), {
 });
 
 const emit = defineEmits<{
-  select: [index: number]
-  'select:all': []
-  'update:selection': [value: number[]]
-  sortColumn: [column: sortOption]
-  searchSubmit: [column: searchOption[]]
+  select: [index: number];
+  'select:all': [];
+  'update:selection': [value: number[]];
+  sortColumn: [column: sortOption];
+  searchSubmit: [column: searchOption[]];
 }>();
 
 const { t } = useLocale();
@@ -530,7 +533,7 @@ const getScrollBarPosition = async (event: Event) => {
   if (target.scrollLeft === 0) {
     scrollBarPosition.value = 'left';
   } else if (
-    Math.abs(target.scrollLeft + target.offsetWidth - target.scrollWidth) < 20
+    Math.abs(target.scrollLeft + target.offsetWidth - target.scrollWidth) < 28
   ) {
     scrollBarPosition.value = 'right';
   } else {
@@ -610,7 +613,9 @@ const selectAllLabel = computed(() => {
 });
 
 const getSelectLabel = (index: number): string => {
-  return t(`puik.table.${getSelected(index) ? 'unselectLabel' : 'selectLabel'}`);
+  return t(
+    `puik.table.${getSelected(index) ? 'unselectLabel' : 'selectLabel'}`
+  );
 };
 
 watch(
