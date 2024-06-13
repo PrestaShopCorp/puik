@@ -178,7 +178,7 @@
             </template>
           </th>
         </tr>
-        <tr>
+        <tr v-if="searchBar">
           <td :colspan="selectable ? headers.length +1 : headers.length">
             <div class="puik-table__head-separator" />
           </td>
