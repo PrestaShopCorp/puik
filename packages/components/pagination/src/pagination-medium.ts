@@ -5,7 +5,6 @@ export interface PaginationMediumProps {
   disabled?: boolean
   totalItem: number
   maxPage: number
-  itemCount?: number
   label?: string
   dataTest?: string
 }

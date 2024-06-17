@@ -14,7 +14,6 @@ export interface PaginationProps {
   itemsPerPage?: number
   itemsPerPageOptions?: number[]
   page: number
-  itemCount?: number
   label?: string
   loaderButtonLabel?: string
   loaderButtonDisabled?: boolean

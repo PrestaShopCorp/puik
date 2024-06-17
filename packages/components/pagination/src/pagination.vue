@@ -73,8 +73,7 @@ defineOptions({
 const props = withDefaults(defineProps<PaginationProps>(), {
   variant: PuikPaginationVariants.Medium,
   itemsPerPage: 5,
-  itemsPerPageOptions: () => [5, 10, 15],
-  itemCount: 0
+  itemsPerPageOptions: () => [5, 10, 15]
 });
 const emit = defineEmits<{
   'update:page': [value: number]
@@ -87,6 +86,9 @@ const currentPage = computed({
   get: () => props.page,
   set: (page: number) => emit('update:page', page)
 });
+
+const itemCount = computed(() => props.page * props.itemsPerPage);
+const loaderButtonDisabled = computed(() => itemCount.value === props.totalItem);
 
 const maxPage = computed(() => {
   return Math.ceil(props.totalItem / props.itemsPerPage);
@@ -112,7 +114,7 @@ const currentLabel = computed(() => {
       });
     default:
       return t(path, {
-        itemCount: props.itemCount,
+        itemCount: itemCount.value,
         totalItem: props.totalItem
       });
   }

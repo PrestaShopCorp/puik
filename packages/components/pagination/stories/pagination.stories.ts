@@ -62,18 +62,6 @@ export default {
         }
       }
     },
-    itemCount: {
-      control: 'number',
-      description: 'Set the current item count',
-      table: {
-        type: {
-          summary: 'number'
-        },
-        defaultValue: {
-          summary: '0'
-        }
-      }
-    },
     label: {
       control: 'text',
       description: 'Set the label',
@@ -107,7 +95,6 @@ export default {
   args: {
     variant: PuikPaginationVariants.Medium,
     totalItem: 500,
-    itemCount: 25,
     label: '',
     loaderButtonLabel: undefined
   }

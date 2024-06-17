@@ -85,9 +85,7 @@ import { type PaginationLargeProps } from './pagination-large';
 defineOptions({
   name: 'PuikPaginationLarge'
 });
-const props = withDefaults(defineProps<PaginationLargeProps>(), {
-  itemCount: 0
-});
+const props = defineProps<PaginationLargeProps>();
 const emit = defineEmits<{
   'update:page': [value: number];
   'update:itemsPerPage': [value: number];
