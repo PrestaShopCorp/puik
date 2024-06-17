@@ -25,6 +25,7 @@
 
     <div class="puik-pagination__jumper">
       <puik-select
+        :key="page"
         :model-value="page"
         :aria-label="t('puik.pagination.large.choosePage')"
         :disabled="disabled"
@@ -88,8 +89,8 @@ const props = withDefaults(defineProps<PaginationLargeProps>(), {
   itemCount: 0
 });
 const emit = defineEmits<{
-  'update:page': [value: number]
-  'update:itemsPerPage': [value: number]
+  'update:page': [value: number];
+  'update:itemsPerPage': [value: number];
 }>();
 
 const currentItemsPerPage = useVModel(props, 'itemsPerPage', emit);
