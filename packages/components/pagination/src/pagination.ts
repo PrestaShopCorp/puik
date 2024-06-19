@@ -16,7 +16,6 @@ export interface PaginationProps {
   page: number
   label?: string
   loaderButtonLabel?: string
-  loaderButtonDisabled?: boolean
   dataTest?: string
 }
 
