@@ -105,8 +105,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<PaginationMediumProps>(), {
-  modelValue: 1,
-  itemCount: 0
+  modelValue: 1
 });
 const emit = defineEmits<{(e: 'update:modelValue', value: number): void}>();
 

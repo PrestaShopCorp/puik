@@ -46,8 +46,7 @@ describe('Pagination tests', () => {
   const propsData = {
     page: 5,
     itemsPerPage: 10,
-    totalItem: 500,
-    itemCount: 50
+    totalItem: 500
   };
 
   it('should be a vue instance', () => {
@@ -153,8 +152,7 @@ describe('Pagination tests', () => {
     factory({
       page: 10,
       itemsPerPage: 20,
-      totalItem: 500,
-      itemCount: 50
+      totalItem: 500
     });
     expect(findSeparators().length).toBe(2);
   });
@@ -163,8 +161,7 @@ describe('Pagination tests', () => {
     factory({
       page: 10,
       itemsPerPage: 50,
-      totalItem: 500,
-      itemCount: 50
+      totalItem: 500
     });
     expect(findSeparators().length).toBe(1);
   });
@@ -173,8 +170,7 @@ describe('Pagination tests', () => {
     factory({
       page: 2,
       itemsPerPage: 20,
-      totalItem: 500,
-      itemCount: 50
+      totalItem: 500
     });
     expect(findSeparators().length).toBe(1);
   });
@@ -183,8 +179,7 @@ describe('Pagination tests', () => {
     factory({
       page: 3,
       itemsPerPage: 100,
-      totalItem: 500,
-      itemCount: 50
+      totalItem: 500
     });
     expect(findSeparators().length).toBe(0);
   });
