@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useLocale } from '@prestashopcorp/puik-locale';
 import { type PaginationProps, PuikPaginationVariants } from './pagination';
 
@@ -133,6 +133,12 @@ const commonPaginationProps = computed(() => {
     maxPage: maxPage.value,
     disabled: disabled.value
   };
+});
+
+watch(() => props.itemsPerPage, () => {
+  if (currentPage.value > maxPage.value) {
+    currentPage.value = maxPage.value;
+  }
 });
 </script>
 
