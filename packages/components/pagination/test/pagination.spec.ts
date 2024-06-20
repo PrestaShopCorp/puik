@@ -313,4 +313,46 @@ describe('Pagination tests', () => {
       'loadMoreButton-test'
     );
   });
+
+  it('should display items per page select when displayItemsPerPage is true for large pagination variant', async () => {
+    factory({
+      ...propsData,
+      displayItemsPerPage: true,
+      variant: 'large'
+    });
+    await nextTick();
+    const itemsPerPageSelect = findItemsPerPageSelect();
+    expect(itemsPerPageSelect.exists()).toBe(true);
+  });
+
+  it('should not display items per page select when displayItemsPerPage is false for large pagination variant', async () => {
+    factory({
+      ...propsData,
+      displayItemsPerPage: false,
+      variant: 'large'
+    });
+    await nextTick();
+    const itemsPerPageSelect = findItemsPerPageSelect();
+    expect(itemsPerPageSelect.exists()).toBe(false);
+  });
+
+  it('should display results label when displayResults is true', async () => {
+    factory({
+      ...propsData,
+      displayResults: true
+    });
+    await nextTick();
+    const label = findLabel();
+    expect(label.exists()).toBe(true);
+  });
+
+  it('should not display results label when displayResults is false', async () => {
+    factory({
+      ...propsData,
+      displayResults: false
+    });
+    await nextTick();
+    const label = findLabel();
+    expect(label.exists()).toBe(false);
+  });
 });
