@@ -1,10 +1,15 @@
 import type { ExtractPropTypes } from 'vue';
 
+export enum PuikConfigProviderLocale {
+  En = 'en',
+  Fr = 'fr',
+}
+
 export const configProviderProps = {
   locale: {
-    type: String,
+    type: String as () => PuikConfigProviderLocale,
     required: false,
-    default: 'en'
+    default: PuikConfigProviderLocale.En
   }
 };
 
