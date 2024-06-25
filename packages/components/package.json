@@ -14,7 +14,9 @@
     "@popperjs/core": "^2.11.8",
     "@prestashopcorp/puik-theme": "workspace:*",
     "@vueuse/core": "^10.9.0",
-    "radix-vue": "^1.7.4"
+    "radix-vue": "^1.7.4",
+    "sortablejs": "^1.15.2",
+    "sortablejs-vue3": "^1.2.11"
   },
   "devDependencies": {
     "vue": "3.3.10",

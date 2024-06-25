@@ -2,6 +2,7 @@ import type { CustomElementWithName } from './types';
 import initWeb from './utils/initWeb';
 import initAllWeb from './utils/initAllWeb';
 
+import PuikSortableListCe from './components/sortable-list';
 import PuikAccordionCe from './components/accordion';
 import PuikAccordionGroupCe from './components/accordion-group';
 import PuikAlertCe from './components/alert';
@@ -51,6 +52,7 @@ import PuikTextareaCe from './components/textarea';
 import PuikTooltipCe from './components/tooltip';
 
 export const components: CustomElementWithName[] = [
+  PuikSortableListCe,
   PuikAccordionCe,
   PuikAccordionGroupCe,
   PuikAlertCe,
@@ -101,6 +103,7 @@ export const components: CustomElementWithName[] = [
 ];
 
 export {
+  PuikSortableListCe,
   PuikAccordionCe,
   PuikAccordionGroupCe,
   PuikAlertCe,

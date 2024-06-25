@@ -19,6 +19,7 @@ $ pnpm cz
 ## Mono repository structure
 
 This mono repository contains multiple packages under the folder `packages`
+
 - `components` contains all the vue components and is released under the name `@prestashopcorp/puik-components`
 - `locale` contains all the translations files for the default wording in the components, this package is bundled with the other packages when it's used and isn't released as a standalone
 - `puik` contains all the other packages and is released under the name `@prestashopcorp/puik`
