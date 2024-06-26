@@ -1,17 +1,31 @@
 <template>
   <div role="list">
     <Sortable
-      :list="props.list"
+      :list="localList"
       :item-key="props.itemKey"
       :tag="props.tag"
       :options="props.options"
-      role="list"
+      @change="logEvent"
+      @choose="logEvent"
+      @unchoose="logEvent"
+      @start="logEvent"
+      @end="logEvent"
+      @add="logEvent"
+      @update="logEvent"
+      @sort="logEvent"
+      @remove="logEvent"
+      @filter="logEvent"
+      @move="logEvent"
+      @clone="logEvent"
     >
       <template #item="{element, index}">
         <div
           :key="element"
           class="draggable"
           tabindex="0"
+          :aria-label="`Item ${index + 1}`"
+          :data-sortable-id="index"
+          @keydown="handleKeyDown(index, $event)"
         >
           <div class="puik-sortable-list_item">
             <span class="puik-sortable-list_item-index">{{ index }}</span>
@@ -19,6 +33,7 @@
               <PuikIcon
                 icon="drag_indicator"
                 color="#1D1D1B"
+                tabindex="-1"
               />
               <img
                 class="puik-sortable-list_item-img"
@@ -42,9 +57,10 @@
 </template>
 
 <script setup lang="ts">
-import { SortableListProps } from './sortable-list';
+import { SortableListProps, SortableListEmits } from './sortable-list';
 import { PuikIcon } from '@prestashopcorp/puik-components';
 import { Sortable } from 'sortablejs-vue3';
+import { nextTick, ref, watch } from 'vue';
 
 defineOptions({
   name: 'PuikSortableList'
@@ -53,6 +69,92 @@ defineOptions({
 const props = withDefaults(defineProps<SortableListProps>(), {
   tag: 'div'
 });
+
+const emit = defineEmits<SortableListEmits>();
+
+const localList = ref([...props.list]);
+
+watch(props.list, (newList) => {
+  localList.value = [...newList];
+});
+
+const logEvent = (event: Sortable.SortableEvent) => {
+  console.log(event.type);
+  if (event.type === 'end') {
+    const order = Array.from(event.to.children).map((child: unknown) => {
+      const element = child as Element;
+      const sortableId = element.getAttribute('data-sortable-id');
+      return sortableId ? parseInt(sortableId) : -1;
+    });
+    localList.value = order.map(i => localList.value[i]);
+    emit('list-changed', localList.value);
+  }
+};
+
+const moveElement = (index: number, direction: string) => {
+  if (['up', 'down'].includes(direction) === false) {
+    return false;
+  }
+
+  const order = localList.value.map((_item, i) => i.toString());
+  const sortableId = index.toString();
+
+  // pull the item we're moving out of the order
+  order.splice(index, 1);
+
+  // put it back in at the correct position
+  if (direction === 'down' && index < localList.value.length - 1) {
+    order.splice(index + 1, 0, sortableId);
+  } else if (direction === 'up' && index > 0) {
+    order.splice(index - 1, 0, sortableId);
+  }
+
+  localList.value = order.map(i => localList.value[parseInt(i)]);
+  emit('list-changed', localList.value);
+};
+
+const handleKeyDown = (index: number, event: KeyboardEvent) => {
+  // Empêcher le comportement par défaut du navigateur pour les touches haut et bas
+  if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
+    event.preventDefault();
+  }
+
+  switch (event.key) {
+    case 'ArrowUp':
+      if (event.shiftKey && index > 0) {
+        moveElement(index, 'up');
+        // Maintenir le focus sur l'élément après le déplacement
+        nextTick(() => {
+          (document.querySelector(`[data-sortable-id="${index - 1}"]`) as HTMLElement).focus();
+        });
+      } else if (!event.shiftKey && index > 0) {
+        nextTick(() => {
+          (document.querySelector(`[data-sortable-id="${index - 1}"]`) as HTMLElement).focus();
+        });
+      }
+      break;
+    case 'ArrowDown':
+      if (event.shiftKey && index < localList.value.length - 1) {
+        moveElement(index, 'down');
+        // Keep focus on the element after moving
+        nextTick(() => {
+          const nextElement = document.querySelector(`[data-sortable-id="${index + 1}"]`) as HTMLElement;
+          if (nextElement) {
+            nextElement.focus();
+          }
+        });
+      } else if (!event.shiftKey && index < localList.value.length - 1) {
+        nextTick(() => {
+          const nextElement = document.querySelector(`[data-sortable-id="${index + 1}"]`) as HTMLElement;
+          if (nextElement) {
+            nextElement.focus();
+          }
+        });
+      }
+      break;
+  }
+};
+
 </script>
 
 <style lang="scss">

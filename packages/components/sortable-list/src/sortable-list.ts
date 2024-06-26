@@ -25,4 +25,8 @@ export interface SortableListProps {
   tag?: string
 }
 
+export type SortableListEmits = {
+  'list-changed': any[]
+};
+
 export type SortableListInstance = InstanceType<typeof SortableList>;
