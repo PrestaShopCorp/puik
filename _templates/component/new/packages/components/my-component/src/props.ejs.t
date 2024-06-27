@@ -6,3 +6,4 @@ import type <%= h.changeCase.pascal(name) %> from './<%= h.changeCase.param(name
 export interface <%= h.changeCase.pascal(name) %>Props {}
 
 export type <%= h.changeCase.pascal(name) %>Instance = InstanceType<typeof <%= h.changeCase.pascal(name) %>>;
+
