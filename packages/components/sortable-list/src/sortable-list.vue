@@ -1,22 +1,23 @@
 <template>
   <div role="list">
     <Sortable
+      v-model:sortable="sortable"
       :list="localList"
       :item-key="props.itemKey"
       :tag="props.tag"
       :options="props.options"
-      @change="logEvent"
-      @choose="logEvent"
-      @unchoose="logEvent"
-      @start="logEvent"
-      @end="logEvent"
-      @add="logEvent"
-      @update="logEvent"
-      @sort="logEvent"
-      @remove="logEvent"
-      @filter="logEvent"
-      @move="logEvent"
-      @clone="logEvent"
+      @change="handleEvent"
+      @choose="handleEvent"
+      @unchoose="handleEvent"
+      @start="handleEvent"
+      @end="handleEvent"
+      @add="handleEvent"
+      @update="handleEvent"
+      @sort="handleEvent"
+      @remove="handleEvent"
+      @filter="handleEvent"
+      @move="handleEvent"
+      @clone="handleEvent"
     >
       <template #item="{element, index}">
         <div
@@ -57,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { SortableListProps, SortableListEmits } from './sortable-list';
+import { SortableListProps, SortableListEmits, SortableEvent } from './sortable-list';
 import { PuikIcon } from '@prestashopcorp/puik-components';
 import { Sortable } from 'sortablejs-vue3';
 import { nextTick, ref, watch } from 'vue';
@@ -72,13 +73,19 @@ const props = withDefaults(defineProps<SortableListProps>(), {
 
 const emit = defineEmits<SortableListEmits>();
 
+const sortable = ref(null);
+
+defineExpose({
+  sortable
+});
+
 const localList = ref([...props.list]);
 
 watch(props.list, (newList) => {
   localList.value = [...newList];
 });
 
-const logEvent = (event: Sortable.SortableEvent) => {
+const handleEvent = (event: SortableEvent) => {
   console.log(event.type);
   if (event.type === 'end') {
     const order = Array.from(event.to.children).map((child: unknown) => {
@@ -88,6 +95,7 @@ const logEvent = (event: Sortable.SortableEvent) => {
     });
     localList.value = order.map(i => localList.value[i]);
     emit('list-changed', localList.value);
+    console.log(event.to.sortable);
   }
 };
 
@@ -99,10 +107,7 @@ const moveElement = (index: number, direction: string) => {
   const order = localList.value.map((_item, i) => i.toString());
   const sortableId = index.toString();
 
-  // pull the item we're moving out of the order
   order.splice(index, 1);
-
-  // put it back in at the correct position
   if (direction === 'down' && index < localList.value.length - 1) {
     order.splice(index + 1, 0, sortableId);
   } else if (direction === 'up' && index > 0) {
@@ -114,7 +119,6 @@ const moveElement = (index: number, direction: string) => {
 };
 
 const handleKeyDown = (index: number, event: KeyboardEvent) => {
-  // Empêcher le comportement par défaut du navigateur pour les touches haut et bas
   if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
     event.preventDefault();
   }
@@ -123,7 +127,6 @@ const handleKeyDown = (index: number, event: KeyboardEvent) => {
     case 'ArrowUp':
       if (event.shiftKey && index > 0) {
         moveElement(index, 'up');
-        // Maintenir le focus sur l'élément après le déplacement
         nextTick(() => {
           (document.querySelector(`[data-sortable-id="${index - 1}"]`) as HTMLElement).focus();
         });
@@ -136,7 +139,6 @@ const handleKeyDown = (index: number, event: KeyboardEvent) => {
     case 'ArrowDown':
       if (event.shiftKey && index < localList.value.length - 1) {
         moveElement(index, 'down');
-        // Keep focus on the element after moving
         nextTick(() => {
           const nextElement = document.querySelector(`[data-sortable-id="${index + 1}"]`) as HTMLElement;
           if (nextElement) {
