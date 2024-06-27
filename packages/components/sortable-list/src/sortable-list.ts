@@ -41,6 +41,7 @@ export type SortableListEmits = {
   (eventName: 'move', evt: Sortable.MoveEvent, originalEvent: Event): void
   (eventName: 'clone', evt: Sortable.SortableEvent): void
   (eventName: 'change', evt: Sortable.SortableEvent): void
+  (eventName: 'list-changed', newList: any[]): void
 };
 
 export type SortableListInstance = InstanceType<typeof SortableList>;

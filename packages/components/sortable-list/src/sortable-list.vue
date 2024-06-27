@@ -4,6 +4,7 @@
     ref="containerRef"
     :class="$props.class"
     role="list"
+    aria-label="Sortable list"
   >
     <div
       v-for="(item, index) of list"
@@ -12,9 +13,17 @@
       :index="index"
       name="item"
       class="puik-sortable-list_item"
+      tabindex="0"
+      role="listitem"
+      aria-label="Draggable list item"
+      @keydown="handleKeyboard($event, index)"
     >
-      <span class="puik-sortable-list_item-index">{{ index }}</span>
-      <div class="puik-sortable-list_item-container">
+      <span class="puik-sortable-list_item-index">{{ `${item?.position}` }}</span>
+      <div
+        class="puik-sortable-list_item-container"
+        role="listitem"
+        aria-label="Draggable list item"
+      >
         <PuikIcon
           icon="drag_indicator"
           color="#1D1D1B"
@@ -44,6 +53,7 @@ import {
   watch,
   onUnmounted,
   computed,
+  nextTick,
   useAttrs,
   Ref
 } from 'vue';
@@ -77,6 +87,64 @@ const getKey = computed(() => {
   return props.itemKey;
 });
 
+// Créer une copie réactive de la liste de props
+const list = ref([...props.list]);
+
+const moveItem = (fromIndex: number, toIndex: number) => {
+  const itemToMove = list.value.splice(fromIndex, 1)[0];
+  list.value.splice(toIndex, 0, itemToMove);
+
+  // Mettre à jour la position de chaque élément après le déplacement
+  list.value.forEach((item, index) => {
+    item.position = index + 1;
+  });
+
+  emit('end', { oldIndex: fromIndex, newIndex: toIndex });
+  emit('list-changed', list.value); // Émettre l'événement 'list-changed' avec la nouvelle liste comme payload
+};
+
+const handleKeyboard = (event: KeyboardEvent, index: number) => {
+  if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
+    event.preventDefault();
+  }
+  switch (event.key) {
+    case 'ArrowUp':
+      if (index === 0) return; // Ajout de la condition pour l'index 0
+      if (event.shiftKey) {
+        event.preventDefault();
+        event.stopPropagation();
+        moveItem(index, index - 1);
+        nextTick(() => {
+          const prevItem = containerRef.value?.children[index - 1] as HTMLElement;
+          prevItem?.focus();
+        });
+      } else {
+        nextTick(() => {
+          const prevItem = containerRef.value?.children[index - 1] as HTMLElement;
+          prevItem?.focus();
+        });
+      }
+      break;
+    case 'ArrowDown':
+      if (index === list.value.length - 1) return; // Ajout de la condition pour le dernier index
+      if (event.shiftKey) {
+        event.preventDefault();
+        event.stopPropagation();
+        moveItem(index, index + 1);
+        nextTick(() => {
+          const nextItem = containerRef.value?.children[index + 1] as HTMLElement;
+          nextItem?.focus();
+        });
+      } else {
+        nextTick(() => {
+          const nextItem = containerRef.value?.children[index + 1] as HTMLElement;
+          nextItem?.focus();
+        });
+      }
+      break;
+  }
+};
+
 defineExpose({
   containerRef,
   sortable,
@@ -96,9 +164,16 @@ watch(containerRef, (newDraggable) => {
       onEnd: (event: SortableEvent) => {
         setTimeout(() => {
           isDragging.value = false;
+          // Créer une nouvelle liste avec les positions mises à jour
+          const newList = list.value.map((item, index) => {
+            return { ...item, position: index + 1 };
+          });
+          list.value = newList;
           emit('end', event);
+          emit('list-changed', newList);
         });
       },
+
       onAdd: (event: SortableEvent) => emit('add', event),
       onUpdate: (event: SortableEvent) => emit('update', event),
       onSort: (event: SortableEvent) => emit('sort', event),
@@ -111,7 +186,8 @@ watch(containerRef, (newDraggable) => {
           ))(event, originalEvent)
           : emit('move', event, originalEvent),
       onClone: (event: SortableEvent) => emit('clone', event),
-      onChange: (event: SortableEvent) => emit('change', event)
+      onChange: (event: SortableEvent) => emit('change', event),
+      onListChanged: (event: SortableEvent) => emit('list-changed', event)
     });
   }
 });
@@ -127,6 +203,14 @@ watch(
         );
       }
     }
+  }
+);
+
+// Mettre à jour la copie réactive de la liste lorsque la prop change
+watch(
+  () => props.list,
+  (newList) => {
+    list.value = [...newList];
   }
 );
 
