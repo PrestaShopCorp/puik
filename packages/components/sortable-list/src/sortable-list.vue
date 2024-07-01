@@ -1,6 +1,7 @@
 <template>
   <component
     :is="$props.tag"
+    :id="props.id"
     ref="containerRef"
     :class="$props.class"
     role="list"
@@ -16,22 +17,30 @@
       tabindex="0"
       role="listitem"
       aria-label="Draggable list item"
+      :data-sortable-id="index"
       @keydown="handleKeyboard($event, index)"
     >
-      <span class="puik-sortable-list_item-index">{{ `${item?.position}` }}</span>
+      <span
+        v-if="displayPositionNumbers"
+        class="puik-sortable-list_item-index"
+      >
+        {{ index }}
+      </span>
       <div
         class="puik-sortable-list_item-container"
         role="listitem"
         aria-label="Draggable list item"
       >
         <PuikIcon
+          v-if="iconPosition == PuikSortableListIconPosition.Left"
           icon="drag_indicator"
           color="#1D1D1B"
           tabindex="-1"
         />
         <img
+          v-if="item.imgSrc"
           class="puik-sortable-list_item-img"
-          src="https://picsum.photos/200/300"
+          :src="item.imgSrc"
           alt="img alt"
         >
         <div class="puik-sortable-list_item-content">
@@ -42,6 +51,12 @@
             {{ `${item?.name}` }}
           </p>
         </div>
+        <PuikIcon
+          v-if="iconPosition == PuikSortableListIconPosition.Right"
+          icon="drag_indicator"
+          color="#1D1D1B"
+          tabindex="-1"
+        />
       </div>
     </div>
   </component>
@@ -58,7 +73,7 @@ import {
   Ref
 } from 'vue';
 import Sortable from 'sortablejs';
-import { SortableListProps, SortableOptionsProp, SortableListEmits, SortableEvent, SortableMoveEvent } from './sortable-list';
+import { SortableListProps, SortableOptionsProp, SortableListEmits, SortableEvent, SortableMoveEvent, PuikSortableListIconPosition } from './sortable-list';
 import { PuikIcon } from '@prestashopcorp/puik-components';
 
 defineOptions({
@@ -66,7 +81,9 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SortableListProps>(), {
-  tag: 'div'
+  tag: 'div',
+  iconPosition: PuikSortableListIconPosition.Right,
+  displayPositionNumbers: true
 });
 
 const emit = defineEmits<SortableListEmits>();
@@ -87,20 +104,17 @@ const getKey = computed(() => {
   return props.itemKey;
 });
 
-// Créer une copie réactive de la liste de props
 const list = ref([...props.list]);
 
 const moveItem = (fromIndex: number, toIndex: number) => {
   const itemToMove = list.value.splice(fromIndex, 1)[0];
   list.value.splice(toIndex, 0, itemToMove);
-
-  // Mettre à jour la position de chaque élément après le déplacement
   list.value.forEach((item, index) => {
     item.position = index + 1;
   });
 
   emit('end', { oldIndex: fromIndex, newIndex: toIndex });
-  emit('list-changed', list.value); // Émettre l'événement 'list-changed' avec la nouvelle liste comme payload
+  emit('list-changed', list.value);
 };
 
 const handleKeyboard = (event: KeyboardEvent, index: number) => {
@@ -109,7 +123,7 @@ const handleKeyboard = (event: KeyboardEvent, index: number) => {
   }
   switch (event.key) {
     case 'ArrowUp':
-      if (index === 0) return; // Ajout de la condition pour l'index 0
+      if (index === 0) return;
       if (event.shiftKey) {
         event.preventDefault();
         event.stopPropagation();
@@ -126,7 +140,7 @@ const handleKeyboard = (event: KeyboardEvent, index: number) => {
       }
       break;
     case 'ArrowDown':
-      if (index === list.value.length - 1) return; // Ajout de la condition pour le dernier index
+      if (index === list.value.length - 1) return;
       if (event.shiftKey) {
         event.preventDefault();
         event.stopPropagation();
@@ -164,19 +178,35 @@ watch(containerRef, (newDraggable) => {
       onEnd: (event: SortableEvent) => {
         setTimeout(() => {
           isDragging.value = false;
-          // Créer une nouvelle liste avec les positions mises à jour
-          const newList = list.value.map((item, index) => {
-            return { ...item, position: index + 1 };
-          });
-          list.value = newList;
           emit('end', event);
-          emit('list-changed', newList);
         });
-      },
+        // const order = Array.from(event.to.children).map((child: unknown) => {
+        //   const element = child as Element;
+        //   const sortableId = element.getAttribute('data-sortable-id');
+        //   return sortableId ? parseInt(sortableId) : -1;
+        // });
+        // list.value = order.map(i => list.value[i]);
+        // emit('list-changed', list.value);
 
+        // const oldIndex = event.oldIndex;
+        // const newIndex = event.newIndex;
+
+        // const movedItem = list.value.splice(oldIndex, 1)[0];
+        // list.value.splice(newIndex, 0, movedItem);
+
+        // // Mettre à jour les index
+        // list.value.forEach((item, index) => {
+        //   item.position = index + 1;
+        // });
+
+        // emit('end', { oldIndex, newIndex });
+        // emit('list-changed', list.value);
+      },
       onAdd: (event: SortableEvent) => emit('add', event),
       onUpdate: (event: SortableEvent) => emit('update', event),
-      onSort: (event: SortableEvent) => emit('sort', event),
+      onSort: (event: SortableEvent) => {
+        emit('sort', event);
+      },
       onRemove: (event: SortableEvent) => emit('remove', event),
       onFilter: (event: SortableEvent) => emit('filter', event),
       onMove: (event: SortableEvent, originalEvent: SortableEvent) =>
@@ -206,7 +236,6 @@ watch(
   }
 );
 
-// Mettre à jour la copie réactive de la liste lorsque la prop change
 watch(
   () => props.list,
   (newList) => {
