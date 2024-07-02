@@ -1,6 +1,22 @@
 export default {
   name: 'fr',
   puik: {
+    input: {
+      increase: 'Augmenter',
+      decrease: 'diminuer'
+    },
+    switch: {
+      enable: 'Activer',
+      disable: 'Désactiver'
+    },
+    label: {
+      optional: 'Optionnel',
+      readonly: 'Lecture uniquement'
+    },
+    select: {
+      searchPlaceholder: 'Chercher',
+      noResults: 'Aucun résultat'
+    },
     table: {
       selectLabel: 'Cocher',
       unselectLabel: 'Décocher',
@@ -10,6 +26,9 @@ export default {
       max: 'Max',
       reset: 'Réinitialiser',
       search: 'Rechercher'
+    },
+    skeletonLoaderGroup: {
+      label: 'Chargement'
     },
     pagination: {
       ariaLabel: 'Pagination',
@@ -28,14 +47,23 @@ export default {
         jumperDescription: 'sur {maxPage} page(s)'
       },
       loader: {
-        label:
-          'Vous visualisez {itemCount} produit(s) sur un total de {totalItem}.',
+        label: 'Vous visualisez {itemCount} produits sur un total de {totalItem}.',
         button: 'Charger plus'
       },
       mobile: {
         label: 'Page {page} à {maxPage}'
       },
       itemPerPageLabel: 'élément(s) par page'
+    },
+    sidebar: {
+      expandButtonLabel: {
+        expanded: 'Étendre le menu',
+        collapsed: 'Reduire le menu',
+        close: 'Fermer le menu'
+      }
+    },
+    snackbar: {
+      closeBtnLabel: 'Fermer'
     }
   }
 };
