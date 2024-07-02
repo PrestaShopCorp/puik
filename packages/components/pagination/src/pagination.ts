@@ -13,6 +13,8 @@ export interface PaginationProps {
   totalItem: number
   itemsPerPage?: number
   itemsPerPageOptions?: number[]
+  displayItemsPerPage?: boolean
+  displayResults?: boolean
   page: number
   label?: string
   loaderButtonLabel?: string

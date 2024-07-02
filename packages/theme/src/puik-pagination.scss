@@ -58,6 +58,10 @@
     .puik-pagination__select {
       @apply mr-2;
     }
+    .puik-pagination__items-per-page-label {
+      @extend .puik-body-default;
+      @apply text-primary-700 mx-2 text-sm;
+    }
     .puik-pagination__items-per-page-select {
       @apply w-[100px];
     }
