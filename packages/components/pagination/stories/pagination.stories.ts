@@ -53,8 +53,26 @@ export default {
         }
       }
     },
+    displayItemsPerPage: {
+      control: 'boolean',
+      description: 'displays the select in order to choose the desired number of items per page (for large pagination variant)',
+      table: {
+        defaultValue: {
+          summary: true
+        }
+      }
+    },
+    displayResults: {
+      control: 'boolean',
+      description: 'displays a label in front of the pagination for the small, medium and large variants indicating either the current page for the small variant or the total number of items for the medium and large variants',
+      table: {
+        defaultValue: {
+          summary: true
+        }
+      }
+    },
     page: {
-      control: 'numbnoneer',
+      control: 'number',
       description: 'v-model of the current page',
       table: {
         type: {
@@ -94,9 +112,11 @@ export default {
   },
   args: {
     variant: PuikPaginationVariants.Medium,
-    totalItem: 500,
+    totalItem: 150,
     label: '',
-    loaderButtonLabel: undefined
+    loaderButtonLabel: undefined,
+    displayItemsPerPage: true,
+    displayResults: true
   }
 } as Meta;
 
@@ -127,71 +147,54 @@ export const Default = {
   <!--VueJS Snippet-->
     <puik-pagination
       v-model:page="page"
-      :total-item="500"
-      :item-count="25"
-      :items-per-page="20"
+      :total-item="150"
   ></puik-pagination>
 
   <!--HTML/CSS Snippet-->
   <nav class="puik-pagination puik-pagination--medium" role="navigation" aria-label="Pagination navigation">
     <div class="puik-pagination__content">
-      <span class="puik-pagination__label">500 results</span>
-      <div class="puik-pagination__content">
-        <button class="puik-button puik-button--tertiary puik-button--md puik-button--disabled puik-pagination__previous-button puik-pagination__button" disabled aria-label="Previous page">
-          <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">
-            keyboard_arrow_left
-          </div>
-
-        </button>
-        <ul class="puik-pagination__pager">
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__pager-button--active puik-pagination__button puik-pagination__pager-button" aria-current="true" aria-label="Go to page 1">
-              1
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item" aria-hidden="true">
-            <span class="puik-pagination__pager-separator"> … </span>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 2" aria-current="false">
-              10
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 3" aria-current="false">
-              11
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 3" aria-current="false">
-              12
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 4" aria-current="false">
-              13
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 5" aria-current="false">
-              14
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item" aria-hidden="true">
-            <span class="puik-pagination__pager-separator"> … </span>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-current="false" aria-label="Go to page 25">
-              25
-            </button>
-          </li>
-        </ul>
-        <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__next-button" aria-label="Next page">
-          <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">
-            keyboard_arrow_right
-          </div>
-        </button>
-      </div>
+        <span class="puik-pagination__label">150 result(s)</span>
+        <div class="puik-pagination__content">
+          <button class="puik-button puik-button--secondary puik-button--md puik-button--disabled puik-button--no-wrap puik-pagination__previous-button puik-pagination__button" aria-label="Previous page" disabled="">
+              <div class="puik-icon puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
+          </button>
+          <ul class="puik-pagination__pager">
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--secondary puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-current="true" aria-label="Go to page 1">
+                    1 
+                </button>
+              </li>
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 2" aria-current="false">
+                    2
+                </button>
+              </li>
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 3" aria-current="false">
+                    3
+                </button>
+              </li>
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 4" aria-current="false">
+                    4
+                </button>
+              </li>
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 5" aria-current="false">
+                    5
+                </button>
+              </li>
+              <li class="puik-pagination__pager-item" aria-hidden="true"><span class="puik-pagination__pager-separator"> … </span></li>
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-current="false" aria-label="Go to page 30">
+                    30
+                </button>
+              </li>
+          </ul>
+          <button class="puik-button puik-button--secondary puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__next-button" aria-label="Next page">
+              <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">keyboard_arrow_right</div>
+          </button>
+        </div>
     </div>
   </nav>
         `,
@@ -216,28 +219,19 @@ export const Small: StoryObj = {
   <puik-pagination
     v-model:page="page"
     variant="small"
-    :total-item="500"
-    :item-count="25"
-    :items-per-page="20"
+    :total-item="150"
   ></puik-pagination>
 
   <!--HTML/CSS Snippet-->
   <nav class="puik-pagination puik-pagination--small" role="navigation" aria-label="Pagination navigation">
     <div class="puik-pagination__content">
-      <span class="puik-pagination__label">Page 1 to 25</span>
-      <button
-        class="puik-button puik-button--tertiary puik-button--md puik-button--disabled puik-pagination__previous-button puik-pagination__button" disabled aria-label="Previous page">
-        <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">
-          keyboard_arrow_left
-        </div>
-        </button
-      >
-
-      <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__next-button" aria-label="Next page">
-        <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">
-          keyboard_arrow_right
-        </div>
-      </button>
+        <span class="puik-pagination__label">Page 1 to 30</span>
+        <button class="puik-button puik-button--secondary puik-button--md puik-button--disabled puik-button--no-wrap puik-pagination__previous-button puik-pagination__button" disabled="" aria-label="Previous page">
+          <div class="puik-icon puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
+        </button>
+        <button class="puik-button puik-button--secondary puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__next-button" aria-label="Next page">
+          <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">keyboard_arrow_right</div>
+        </button>
     </div>
   </nav>
         `,
@@ -262,71 +256,54 @@ export const Medium: StoryObj = {
   <puik-pagination
     v-model:page="page"
     variant="medium"
-    :total-item="500"
-    :item-count="25"
-    :items-per-page="20"
+    :total-item="150"
   ></puik-pagination>
 
   <!--HTML/CSS Snippet-->
   <nav class="puik-pagination puik-pagination--medium" role="navigation" aria-label="Pagination navigation">
     <div class="puik-pagination__content">
-      <span class="puik-pagination__label">500 results</span>
-      <div class="puik-pagination__content">
-        <button class="puik-button puik-button--tertiary puik-button--md puik-button--disabled puik-pagination__previous-button puik-pagination__button" disabled aria-label="Previous page">
-          <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">
-            keyboard_arrow_left
-          </div>
-
-        </button>
-        <ul class="puik-pagination__pager">
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__pager-button--active puik-pagination__button puik-pagination__pager-button" aria-current="true" aria-label="Go to page 1">
-              1
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item" aria-hidden="true">
-            <span class="puik-pagination__pager-separator"> … </span>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 2" aria-current="false">
-              10
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 3" aria-current="false">
-              11
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 3" aria-current="false">
-              12
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 4" aria-current="false">
-              13
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 5" aria-current="false">
-              14
-            </button>
-          </li>
-          <li class="puik-pagination__pager-item" aria-hidden="true">
-            <span class="puik-pagination__pager-separator"> … </span>
-          </li>
-          <li class="puik-pagination__pager-item">
-            <button class="puik-button puik-button--text puik-button--md puik-pagination__button puik-pagination__pager-button" aria-current="false" aria-label="Go to page 25">
-              25
-            </button>
-          </li>
-        </ul>
-        <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__next-button" aria-label="Next page">
-          <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">
-            keyboard_arrow_right
-          </div>
-        </button>
-      </div>
+        <span class="puik-pagination__label">150 result(s)</span>
+        <div class="puik-pagination__content">
+          <button class="puik-button puik-button--secondary puik-button--md puik-button--disabled puik-button--no-wrap puik-pagination__previous-button puik-pagination__button" aria-label="Previous page" disabled="">
+              <div class="puik-icon puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
+          </button>
+          <ul class="puik-pagination__pager">
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--secondary puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-current="true" aria-label="Go to page 1">
+                    1 
+                </button>
+              </li>
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 2" aria-current="false">
+                    2
+                </button>
+              </li>
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 3" aria-current="false">
+                    3
+                </button>
+              </li>
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 4" aria-current="false">
+                    4
+                </button>
+              </li>
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-label="Go to page 5" aria-current="false">
+                    5
+                </button>
+              </li>
+              <li class="puik-pagination__pager-item" aria-hidden="true"><span class="puik-pagination__pager-separator"> … </span></li>
+              <li class="puik-pagination__pager-item">
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__pager-button" aria-current="false" aria-label="Go to page 30">
+                    30
+                </button>
+              </li>
+          </ul>
+          <button class="puik-button puik-button--secondary puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__next-button" aria-label="Next page">
+              <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">keyboard_arrow_right</div>
+          </button>
+        </div>
     </div>
   </nav>
         `,
@@ -340,7 +317,8 @@ export const Large: StoryObj = {
   render: Template,
 
   args: {
-    variant: 'large'
+    variant: 'large',
+    totalItem: 150
   },
 
   parameters: {
@@ -358,79 +336,140 @@ export const Large: StoryObj = {
   <!--HTML/CSS Snippet-->
   <nav class="puik-pagination puik-pagination--large" role="navigation" aria-label="Pagination navigation">
     <div class="puik-pagination__content">
-      <span class="puik-pagination__label">150 results</span>
+      <span class="puik-pagination__label">150 result(s)</span>
       <div class="puik-pagination__content">
-        <button class="puik-button puik-button--tertiary puik-button--md puik-button--disabled puik-pagination__previous-button puik-pagination__button" aria-label="Previous page">
-          <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
+        <button class="puik-button puik-button--tertiary puik-button--md puik-button--disabled puik-button--no-wrap puik-pagination__previous-button puik-pagination__button" aria-label="Previous page" disabled="">
+          <div class="puik-icon puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
           <span class="puik-pagination__previous-button-text">Previous page</span>
         </button>
         <div class="puik-pagination__jumper">
-          <input type="hidden" value="1" style="position: fixed; height: 0px; padding: 0px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px; display: none;">
-          <div class="puik-select__wrapper puik-select puik-pagination__select" aria-label="Select page">
-            <button id="page-selector-id" type="button" aria-haspopup="listbox" aria-expanded="false" class="puik-select__button" aria-controls="page-selector-content-id">
-              <input class="puik-select__selected" type="text">
-              <div class="puik-icon material-icons-round puik-select__icon" style="font-size: 1.25rem;">unfold_more</div>
+          <div class="puik-select__wrapper puik-select puik-pagination__select" aria-label="Select page" data-headlessui-state="">
+            <button id="headlessui-listbox-button-6552" type="button" aria-haspopup="listbox" aria-expanded="false" data-headlessui-state="" class="puik-select__button" aria-controls="headlessui-listbox-options-6553">
+              <input class="puik-select__selected" tabindex="-1" type="text">
+              <div class="puik-icon puik-select__icon" style="font-size: 1.25rem;">unfold_more</div>
             </button>
-            <div aria-orientation="vertical" id="page-selector-content-id" role="listbox" tabindex="0" class="puik-select__options" aria-labelledby="page-selector-id" style="z-index: 1000; display: none;">
+            <div id="headlessui-listbox-options-6553" aria-orientation="vertical" role="listbox" tabindex="0" data-headlessui-state="" class="puik-select__options puik-select__options--full-width" aria-labelledby="headlessui-listbox-button-6552" style="z-index: 1000; display: none;">
+              
               <ul class="puik-select__options-list">
-                <li class="puik-option puik-option--selected" role="option" aria-selected="false">
-                  <span class="puik-option__label">1</span>
-                  <div class="puik-icon material-icons-round puik-option__selected-icon" style="font-size: 1.25rem;">checked</div>
+                <li class="puik-option puik-option--selected" id="headlessui-listbox-option-6554" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  1
+                  <div class="puik-icon puik-option__selected-icon" style="font-size: 1.25rem;">checked</div>
                 </li>
-                <li class="puik-option" role="option" aria-selected="false">
-                  <span class="puik-option__label">2</span>
+                <li class="puik-option" id="headlessui-listbox-option-6555" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  2
                 </li>
-                <li class="puik-option" role="option" aria-selected="false">
-                  <span class="puik-option__label">3</span>
+                <li class="puik-option" id="headlessui-listbox-option-6556" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  3
                 </li>
-                <li class="puik-option" role="option" aria-selected="false">
-                  <span class="puik-option__label">4</span>
+                <li class="puik-option" id="headlessui-listbox-option-6557" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  4
                 </li>
-                <li class="puik-option" role="option" aria-selected="false">
-                  <span class="puik-option__label">5</span>
+                <li class="puik-option" id="headlessui-listbox-option-6558" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  5
                 </li>
-                <li class="puik-option" role="option" aria-selected="false">
-                  <span class="puik-option__label">6</span>
+                <li class="puik-option" id="headlessui-listbox-option-6559" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  6
                 </li>
-                <li class="puik-option" role="option" aria-selected="false">
-                  <span class="puik-option__label">7</span>
+                <li class="puik-option" id="headlessui-listbox-option-6560" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  7
                 </li>
-                <li class="puik-option" role="option" aria-selected="false">
-                  <span class="puik-option__label">8</span>
+                <li class="puik-option" id="headlessui-listbox-option-6561" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  8
                 </li>
-                <li class="puik-option" role="option" aria-selected="false">
-                  <span class="puik-option__label">9</span>
+                <li class="puik-option" id="headlessui-listbox-option-6562" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  9
                 </li>
-                <li class="puik-option" role="option" aria-selected="false">
-                  <span class="puik-option__label">10</span>
+                <li class="puik-option" id="headlessui-listbox-option-6563" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  10
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6564" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  11
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6565" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  12
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6566" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  13
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6567" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  14
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6568" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  15
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6569" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  16
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6570" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  17
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6571" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  18
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6572" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  19
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6573" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  20
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6574" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  21
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6575" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  22
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6576" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  23
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6577" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  24
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6578" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  25
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6579" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  26
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6580" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  27
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6581" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  28
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6582" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  29
+                </li>
+                <li class="puik-option" id="headlessui-listbox-option-6583" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+                  30
                 </li>
               </ul>
             </div>
+            
           </div>
-          <span class="puik-pagination__jumper-description">To 10 pages</span>
+          <span class="puik-pagination__jumper-description">to 30 page(s)</span>
         </div>
-        <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__next-button" aria-label="Next page">
+        <button class="puik-button puik-button--tertiary puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__next-button" aria-label="Next page">
           <span class="puik-pagination__next-button-text">Next page</span>
-          <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">keyboard_arrow_right</div>
+          <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">keyboard_arrow_right</div>
         </button>
       </div>
-      <input type="hidden" value="15" style="position: fixed; height: 0px; padding: 0px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px; display: none;">
-      <div class="puik-select__wrapper puik-select puik-pagination__items-per-page-select">
-        <button id="items-per-page-selector-id" type="button" aria-haspopup="listbox" aria-expanded="false" class="puik-select__button" aria-controls="items-per-page-selector-content-id">
-          <input class="puik-select__selected" type="text">
-          <div class="puik-icon material-icons-round puik-select__icon" style="font-size: 1.25rem;">unfold_more</div>
+      <span class="puik-pagination__items-per-page-label">item(s) per page</span>
+      <div class="puik-select__wrapper puik-select puik-pagination__items-per-page-select" data-headlessui-state="">
+        <button id="headlessui-listbox-button-6538" type="button" aria-haspopup="listbox" aria-expanded="false" data-headlessui-state="" class="puik-select__button" aria-controls="headlessui-listbox-options-6539">
+          <input class="puik-select__selected" tabindex="-1" type="text">
+          <div class="puik-icon puik-select__icon" style="font-size: 1.25rem;">unfold_more</div>
         </button>
-        <div aria-orientation="vertical" id="items-per-page-selector-content-id" role="listbox" tabindex="0" class="puik-select__options" aria-labelledby="items-per-page-selector-id" style="z-index: 1000; display: none;">
+        <div id="headlessui-listbox-options-6539" aria-orientation="vertical" role="listbox" tabindex="0" data-headlessui-state="" class="puik-select__options puik-select__options--full-width" aria-labelledby="headlessui-listbox-button-6538" style="z-index: 1000; display: none;">
           <ul class="puik-select__options-list">
-            <li class="puik-option puik-pagination__items-per-page-select__option" role="option" aria-selected="false">
-              <span class="puik-option__label">5</span>
+            <li class="puik-option puik-option--selected puik-pagination__items-per-page-select__option" id="headlessui-listbox-option-6540" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+              5
+              <div class="puik-icon puik-option__selected-icon" style="font-size: 1.25rem;">checked</div>
             </li>
-            <li class="puik-option puik-pagination__items-per-page-select__option" role="option" aria-selected="false">
-              <span class="puik-option__label">10</span>
+            <li class="puik-option puik-pagination__items-per-page-select__option" id="headlessui-listbox-option-6541" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+              10
             </li>
-            <li class="puik-option puik-option--selected puik-pagination__items-per-page-select__option" role="option" aria-selected="false">
-              <span class="puik-option__label">15</span>
-              <div class="puik-icon material-icons-round puik-option__selected-icon" style="font-size: 1.25rem;">checked</div>
+            <li class="puik-option puik-pagination__items-per-page-select__option" id="headlessui-listbox-option-6542" role="option" tabindex="-1" aria-selected="false" data-headlessui-state="">
+              15
             </li>
           </ul>
         </div>
@@ -459,21 +498,19 @@ export const Mobile: StoryObj = {
   <puik-pagination
     v-model:page="page"
     variant="mobile"
-    :total-item="500"
-    :item-count="100"
-    :items-per-page="50"
+    :total-item="150"
   ></puik-pagination>
 
   <!--HTML/CSS Snippet-->
   <nav class="puik-pagination puik-pagination--mobile" role="navigation" aria-label="Pagination navigation">
     <div class="puik-pagination__content">
-      <button class="puik-button puik-button--tertiary puik-button--md puik-button--disabled puik-pagination__previous-button puik-pagination__button" aria-label="Previous page">
-        <div class="puik-icon material-icons-round puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
-      </button>
-      <span class="puik-pagination__label">Page 1 to 25</span>
-      <button class="puik-button puik-button--tertiary puik-button--md puik-pagination__button puik-pagination__next-button" aria-label="Next page">
-        <div class="puik-icon material-icons-round puik-button__right-icon" style="font-size: 1.25rem;">keyboard_arrow_right</div>
-      </button>
+        <button class="puik-button puik-button--secondary puik-button--md puik-button--disabled puik-button--no-wrap puik-pagination__previous-button puik-pagination__button" disabled="" aria-label="Previous page">
+          <div class="puik-icon puik-button__left-icon" style="font-size: 1.25rem;">keyboard_arrow_left</div>
+        </button>
+        <span class="puik-pagination__label">Page 1 to 30</span>
+        <button class="puik-button puik-button--secondary puik-button--md puik-button--no-wrap puik-pagination__button puik-pagination__next-button" aria-label="Next page">
+          <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">keyboard_arrow_right</div>
+        </button>
     </div>
   </nav>
         `,
@@ -498,16 +535,14 @@ export const Loader: StoryObj = {
   <puik-pagination
     v-model:page="page"
     variant="mobile"
-    :total-item="500"
-    :item-count="100"
-    :items-per-page="50"
+    :total-item="150"
   ></puik-pagination>
 
   <!--HTML/CSS Snippet-->
   <nav class="puik-pagination puik-pagination--loader" role="navigation" aria-label="Pagination navigation">
-    <span class="puik-pagination__label">You saw 25 products out of 500.</span>
-    <button class="puik-button puik-button--tertiary puik-button--md puik-button--fluid puik-pagination__button puik-pagination__load-more-button">
-      Load more
+    <span class="puik-pagination__label">You saw 5 product(s) out of 150.</span>
+    <button class="puik-button puik-button--tertiary puik-button--md puik-button--fluid puik-button--no-wrap puik-pagination__button puik-pagination__load-more-button">
+        Load more
     </button>
   </nav>
         `,

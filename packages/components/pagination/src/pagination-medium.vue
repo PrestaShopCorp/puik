@@ -1,5 +1,6 @@
 <template>
   <span
+    v-if="displayResults"
     class="puik-pagination__label"
     :data-test="dataTest != undefined ? `label-${dataTest}` : undefined"
   >

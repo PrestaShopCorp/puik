@@ -34,17 +34,17 @@ export default {
       ariaLabel: 'Pagination',
       goTo: 'Aller à la page {page}',
       previous: 'Précédent',
-      next: 'Suivante',
+      next: 'Suivant',
       small: {
         label: 'Page {page} à {maxPage}'
       },
       medium: {
-        label: '{totalItem} résultats'
+        label: '{totalItem} résultat(s)'
       },
       large: {
-        label: '{totalItem} résultats',
+        label: '{totalItem} résultat(s)',
         choosePage: 'Selectionner page',
-        jumperDescription: 'Sur {maxPage} pages'
+        jumperDescription: 'sur {maxPage} page(s)'
       },
       loader: {
         label: 'Vous visualisez {itemCount} produits sur un total de {totalItem}.',
@@ -52,7 +52,8 @@ export default {
       },
       mobile: {
         label: 'Page {page} à {maxPage}'
-      }
+      },
+      itemPerPageLabel: 'élément(s) par page'
     },
     sidebar: {
       expandButtonLabel: {

@@ -39,20 +39,21 @@ export default {
         label: 'Page {page} to {maxPage}'
       },
       medium: {
-        label: '{totalItem} results'
+        label: '{totalItem} result(s)'
       },
       large: {
-        label: '{totalItem} results',
+        label: '{totalItem} result(s)',
         choosePage: 'Select page',
-        jumperDescription: 'To {maxPage} pages'
+        jumperDescription: 'to {maxPage} page(s)'
       },
       loader: {
-        label: 'You saw {itemCount} products out of {totalItem}.',
+        label: 'You saw {itemCount} product(s) out of {totalItem}.',
         button: 'Load more'
       },
       mobile: {
         label: 'Page {page} to {maxPage}'
-      }
+      },
+      itemPerPageLabel: 'item(s) per page'
     },
     sidebar: {
       expandButtonLabel: {
