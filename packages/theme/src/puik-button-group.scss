@@ -2,9 +2,6 @@
   .puik-button:first-child {
     @apply border-l;
   }
-  .puik-button:last-child {
-    @apply border-r;
-  }
   .puik-button {
     @apply relative z-0 focus:z-[1] border-l-0;
     &--primary {
