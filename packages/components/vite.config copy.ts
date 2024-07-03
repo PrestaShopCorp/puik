@@ -14,9 +14,7 @@ export default defineConfig({
     dts({
       tsconfigPath: 'tsconfig.build.json'
     }),
-    nodeResolve({
-      mainFields: ['module', 'js', 'json']
-    }),
+    nodeResolve(),
     createStyleImportPlugin({
       libs: [
         {
@@ -36,10 +34,11 @@ export default defineConfig({
     rollupOptions: {
       external: [
         ...Object.keys(pkg.dependencies),
-        ...Object.keys(pkg.peerDependencies)
+        ...Object.keys(pkg.peerDependencies),
+        /^@prestashopcorp\/puik-theme\/.*/
       ],
       input: excludeFiles(
-        await glob('./**/*.ts', {
+        await glob('./**/*.{vue,ts}', {
           cwd: './',
           absolute: true,
           onlyFiles: true
