@@ -175,7 +175,7 @@ You can specify the dependencies in the `package.json` file of your project as s
 
 ```json
 "dependencies": {   
-    "@prestashopcorp/puik-components": "file:[path_to_tar]/prestashopcorp-puik-components-[x.x.x].tgz",
-    "@prestashopcorp/puik-resolver": "file:[path_to_tar]/prestashopcorp-puik-resolver-[x.x.x].tgz",
+    "@prestashopcorp/puik-components": "file:[path_to_tar]/prestashopcorp-puik-components-0.0.0-test-[x].tgz",
+    "@prestashopcorp/puik-resolver": "file:[path_to_tar]/prestashopcorp-puik-resolver-0.0.0-test-[x].tgz",
 }
 ```
