@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "vue": "^3.3.10",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "@prestashopcorp/puik-theme": "workspace:*",
+    "@prestashopcorp/puik-components": "workspace:*",
+    "@prestashopcorp/puik-resolver": "workspace:*",
+    "@prestashopcorp/puik-tailwind-preset": "workspace:*"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",

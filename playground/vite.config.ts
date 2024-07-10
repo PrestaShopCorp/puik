@@ -1,4 +1,4 @@
-import path from 'path';
+// import path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import tailwindcss from 'tailwindcss';
@@ -19,18 +19,18 @@ export default defineConfig({
     postcss: {
       plugins: [tailwindcss()]
     }
-  },
-  resolve: {
-    preserveSymlinks: true,
-    alias: [
-      {
-        find: '@prestashopcorp/puik',
-        replacement: `${path.resolve('../packages/puik')}`
-      },
-      {
-        find: /^@prestashopcorp\/puik-(.*)$/,
-        replacement: `${path.resolve('../packages')}/$1`
-      }
-    ]
   }
+  // resolve: {
+  //   preserveSymlinks: true,
+  //   alias: [
+  //     {
+  //       find: '@prestashopcorp/puik',
+  //       replacement: `${path.resolve('../packages/puik')}`
+  //     },
+  //     {
+  //       find: /^@prestashopcorp\/puik-(.*)$/,
+  //       replacement: `${path.resolve('../packages')}/$1`
+  //     }
+  //   ]
+  // }
 });
