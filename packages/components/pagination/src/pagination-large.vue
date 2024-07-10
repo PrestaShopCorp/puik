@@ -1,5 +1,6 @@
 <template>
   <span
+    v-if="displayResults"
     class="puik-pagination__label"
     :data-test="dataTest != undefined ? `label-${dataTest}` : undefined"
   >
@@ -60,8 +61,14 @@
       </span>
     </puik-button>
   </div>
-
+  <span
+    v-if="displayItemsPerPage"
+    class="puik-pagination__items-per-page-label"
+  >
+    {{ t('puik.pagination.itemPerPageLabel', { maxPage }) }}
+  </span>
   <puik-select
+    v-if="displayItemsPerPage"
     v-model="currentItemsPerPage"
     class="puik-pagination__items-per-page-select"
   >
@@ -85,7 +92,9 @@ import { type PaginationLargeProps } from './pagination-large';
 defineOptions({
   name: 'PuikPaginationLarge'
 });
+
 const props = defineProps<PaginationLargeProps>();
+
 const emit = defineEmits<{
   'update:page': [value: number];
   'update:itemsPerPage': [value: number];

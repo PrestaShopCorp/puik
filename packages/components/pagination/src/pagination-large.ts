@@ -9,6 +9,8 @@ export interface PaginationLargeProps {
   maxPage: number
   label?: string
   dataTest?: string
+  displayItemsPerPage?: boolean
+  displayResults?: boolean
 }
 
 export type PaginationInstance = InstanceType<typeof PaginationLarge>;

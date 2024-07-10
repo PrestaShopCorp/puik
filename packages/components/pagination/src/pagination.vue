@@ -9,23 +9,16 @@
     <pagination-loader
       v-if="variant === PuikPaginationVariants.Loader"
       v-model="currentPage"
+      :data-test="dataTest"
+      :disabled="loaderButtonDisabled"
       :label="currentLabel"
       :loader-button-label="loaderButtonLabel"
-      :disabled="loaderButtonDisabled"
-      :data-test="dataTest"
     />
 
     <div
       v-else
       class="puik-pagination__content"
     >
-      <pagination-small
-        v-if="variant === PuikPaginationVariants.Small"
-        v-model="currentPage"
-        v-bind="commonPaginationProps"
-        :data-test="dataTest"
-      />
-
       <pagination-mobile
         v-if="variant === PuikPaginationVariants.Mobile"
         v-model="currentPage"
@@ -33,21 +26,32 @@
         :data-test="dataTest"
       />
 
+      <pagination-small
+        v-if="variant === PuikPaginationVariants.Small"
+        v-model="currentPage"
+        v-bind="commonPaginationProps"
+        :data-test="dataTest"
+        :display-results="displayResults"
+      />
+
       <pagination-medium
         v-if="variant === PuikPaginationVariants.Medium && !disabled"
         v-model="currentPage"
         v-bind="commonPaginationProps"
-        :total-item="totalItem"
         :data-test="dataTest"
+        :display-results="displayResults"
+        :total-item="totalItem"
       />
 
       <pagination-large
         v-if="variant === PuikPaginationVariants.Large"
         v-model:page="currentPage"
-        :items-per-page="itemsPerPage"
-        :total-item="totalItem"
-        :items-per-page-options="itemsPerPageOptions"
         :data-test="dataTest"
+        :display-items-per-page="displayItemsPerPage"
+        :display-results="displayResults"
+        :items-per-page="itemsPerPage"
+        :items-per-page-options="itemsPerPageOptions"
+        :total-item="totalItem"
         v-bind="commonPaginationProps"
         @update:items-per-page="emit('update:itemsPerPage', $event)"
       />
@@ -56,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useLocale } from '@prestashopcorp/puik-locale';
 import { type PaginationProps, PuikPaginationVariants } from './pagination';
 
@@ -73,7 +77,9 @@ defineOptions({
 const props = withDefaults(defineProps<PaginationProps>(), {
   variant: PuikPaginationVariants.Medium,
   itemsPerPage: 5,
-  itemsPerPageOptions: () => [5, 10, 15]
+  itemsPerPageOptions: () => [5, 10, 15],
+  displayItemsPerPage: true,
+  displayResults: true
 });
 const emit = defineEmits<{
   'update:page': [value: number]
@@ -105,7 +111,8 @@ const currentLabel = computed(() => {
     case PuikPaginationVariants.Small:
       return t(path, {
         page: currentPage.value,
-        maxPage: maxPage.value
+        maxPage: maxPage.value,
+        totalItem: props.totalItem
       });
     case PuikPaginationVariants.Medium:
     case PuikPaginationVariants.Large:
@@ -126,6 +133,12 @@ const commonPaginationProps = computed(() => {
     maxPage: maxPage.value,
     disabled: disabled.value
   };
+});
+
+watch(() => props.itemsPerPage, () => {
+  if (currentPage.value > maxPage.value) {
+    currentPage.value = maxPage.value;
+  }
 });
 </script>
 
