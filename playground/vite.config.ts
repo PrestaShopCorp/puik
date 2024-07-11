@@ -20,17 +20,12 @@ export default defineConfig({
       plugins: [tailwindcss()]
     }
   },
+
   resolve: {
-    preserveSymlinks: true,
-    alias: [
-      {
-        find: '@prestashopcorp/puik',
-        replacement: `${path.resolve('../packages/puik')}`
-      },
-      {
-        find: /^@prestashopcorp\/puik-(.*)$/,
-        replacement: `${path.resolve('../packages')}/$1`
-      }
-    ]
+    alias: {
+      '@prestashopcorp/puik-theme/assets': path.resolve(__dirname, './node_modules/@prestashopcorp/puik-theme/assets'),
+      '@prestashopcorp/puik-theme/src': path.resolve(__dirname, './node_modules/@prestashopcorp/puik-theme/src'),
+      '@prestashopcorp/puik-theme': path.resolve(__dirname, './node_modules/@prestashopcorp/puik-theme/dist')
+    }
   }
 });

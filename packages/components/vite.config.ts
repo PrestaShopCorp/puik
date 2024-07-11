@@ -3,7 +3,6 @@ import glob from 'fast-glob';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import { createStyleImportPlugin } from 'vite-plugin-style-import';
 import vue from '@vitejs/plugin-vue';
 import { excludeFiles } from '../utils';
 import pkg from './package.json' assert { type: 'json' };
@@ -16,14 +15,6 @@ export default defineConfig({
     }),
     nodeResolve({
       mainFields: ['module', 'js', 'json']
-    }),
-    createStyleImportPlugin({
-      libs: [
-        {
-          libraryName: '@prestashopcorp/puik-theme',
-          resolveStyle: (name: any) => `@prestashopcorp/puik-theme/src/${name}.scss`
-        }
-      ]
     })
   ],
   css: {
@@ -36,10 +27,11 @@ export default defineConfig({
     rollupOptions: {
       external: [
         ...Object.keys(pkg.dependencies),
-        ...Object.keys(pkg.peerDependencies)
+        ...Object.keys(pkg.peerDependencies),
+        /^@prestashopcorp\/puik-theme\/.*/
       ],
       input: excludeFiles(
-        await glob('./**/*.ts', {
+        await glob('./**/*.{vue,ts}', {
           cwd: './',
           absolute: true,
           onlyFiles: true

@@ -14,8 +14,7 @@
     "@popperjs/core": "^2.11.8",
     "@prestashopcorp/puik-theme": "workspace:*",
     "@vueuse/core": "^10.9.0",
-    "radix-vue": "^1.7.4",
-    "vite-plugin-style-import": "^2.0.0"
+    "radix-vue": "^1.7.4"
   },
   "devDependencies": {
     "vue": "3.3.10",
