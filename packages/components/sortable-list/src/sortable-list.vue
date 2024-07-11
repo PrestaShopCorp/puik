@@ -238,8 +238,10 @@ watch(
 
 watch(
   () => props.list,
-  (newList) => {
-    list.value = [...newList];
+  (newList, oldList) => {
+    if (JSON.stringify(newList) !== JSON.stringify(oldList)) {
+      list.value = [...newList];
+    }
   }
 );
 
