@@ -150,7 +150,7 @@ export default {
     size: 'medium',
     type: 'initials',
     icon: 'home',
-    src: 'https://picsum.photos/200',
+    src: 'https://picsum.photos/id/823/200',
     alt: 'puik-avatar-alt',
     firstName: 'Presta',
     lastName: 'Shop',
@@ -246,22 +246,22 @@ const SizesTemplate: StoryFn = (args: Args) => ({
       {
         type: 'photo',
         size: 'small',
-        src: 'https://picsum.photos/200'
+        src: 'https://picsum.photos/id/823/200'
       },
       {
         type: 'photo',
         size: 'medium',
-        src: 'https://picsum.photos/200'
+        src: 'https://picsum.photos/id/823/200'
       },
       {
         type: 'photo',
         size: 'large',
-        src: 'https://picsum.photos/200'
+        src: 'https://picsum.photos/id/823/200'
       },
       {
         type: 'photo',
         size: 'jumbo',
-        src: 'https://picsum.photos/200'
+        src: 'https://picsum.photos/id/823/200'
       }
     ]);
     return { avatars, args };
@@ -410,7 +410,7 @@ export const Types = {
 </div>
 <!-- type photo-->
 <div class="puik-avatar puik-avatar--medium puik-avatar--photo puik-avatar--primary">
-  <img src="https://picsum.photos/200" alt="puik-avatar-alt">
+  <img src="https://picsum.photos/id/823/200" alt="puik-avatar-alt">
 </div>
         `,
         language: 'html'
@@ -457,7 +457,7 @@ NB: values of {$iconFontSize} to apply depending on the prop size:
 </div>
 <!-- photo type -->
 <div class="puik-avatar puik-avatar--{$size} puik-avatar--photo puik-avatar--primary">
-  <img src="https://picsum.photos/200" alt="puik-avatar-alt">
+  <img src="https://picsum.photos/id/823/200" alt="puik-avatar-alt">
 </div>
 `,
         language: 'html'
