@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/tooltip/style/css';
 import type Tooltip from './tooltip.vue';
 
 export enum PuikTooltipPositions {

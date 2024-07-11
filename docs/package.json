@@ -24,6 +24,11 @@
     "vite": "^5.2.11"
   },
   "dependencies": {
+    "@prestashopcorp/puik-components": "workspace:*",
+    "@prestashopcorp/puik-resolver": "workspace:*",
+    "@prestashopcorp/puik-tailwind-preset": "workspace:*",
+    "@prestashopcorp/puik-theme": "workspace:*",
+    "@prestashopcorp/puik-web-components": "workspace:*",
     "@storybook/client-api": "^7.6.17",
     "typescript": "^5.4.5",
     "vue": "3.3.10"

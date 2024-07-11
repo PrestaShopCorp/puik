@@ -1,5 +1,5 @@
-import type Alert from './alert.vue';
 import '@prestashopcorp/puik-components/alert/style/css';
+import type Alert from './alert.vue';
 
 export enum PuikAlertVariants {
   Success = 'success',

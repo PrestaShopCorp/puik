@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/input/style/css';
 import type Input from './input.vue';
 
 export enum PuikInputTypes {

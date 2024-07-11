@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/select/style/css';
 import type { InjectionKey, Ref } from 'vue';
 import type Select from './select.vue';
 import type { DefaultOption } from './option';

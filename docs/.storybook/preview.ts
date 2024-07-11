@@ -1,5 +1,4 @@
 import '../assets/css/index.css';
-import '@prestashopcorp/puik-theme/src/index.scss';
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   chromatic: { pauseAnimationAtEnd: true },

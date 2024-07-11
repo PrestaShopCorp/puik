@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/switch/style/css';
 import type Switch from './switch.vue';
 
 export interface SwitchProps {

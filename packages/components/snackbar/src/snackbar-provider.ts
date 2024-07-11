@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/snackbar-provider/style/css';
 import type SnackbarProvider from './snackbar-provider.vue';
 
 export enum PuikSnackbarSwipeDirections {

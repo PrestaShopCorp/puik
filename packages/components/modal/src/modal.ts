@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/modal/style/css';
 import type Modal from './modal.vue';
 
 export const DESTRUCTIVE_ICON_NAME = 'warning';

@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/pagination/style/css';
 import type Pagination from './pagination.vue';
 
 export enum PuikPaginationVariants {

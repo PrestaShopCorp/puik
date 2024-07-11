@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/divider/style/css';
 import type Divider from './divider.vue';
 
 export enum PuikDividerOrientation {
