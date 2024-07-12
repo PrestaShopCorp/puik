@@ -21,13 +21,17 @@ export default defineConfig({
           statements: 60
         }
       }
+    },
+    server: {
+      deps: {
+        external: ['@prestashopcorp/puik-theme']
+      }
     }
   },
   resolve: {
     alias: {
       '@prestashopcorp/puik-theme/assets': resolve(__dirname, './nodes_modules/puik-theme/assets'),
-      '@prestashopcorp/puik-theme/src': resolve(__dirname, './nodes_modules/puik-theme/src'),
-      '@prestashopcorp/puik-theme': resolve(__dirname, './nodes_modules/puik-theme/dist')
+      '@prestashopcorp/puik-theme/src': resolve(__dirname, './nodes_modules/puik-theme/src')
     }
   }
 });
