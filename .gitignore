@@ -9,7 +9,8 @@ node_modules
 .DS_Store
 
 # Bundle
-dist
+packages/*/dist
+!packages/theme/dist
 coverage
 packages/puik/version.ts
 

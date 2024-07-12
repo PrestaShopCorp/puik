@@ -43,5 +43,17 @@ jobs:
       # - name: Run linter 👀
       #   run: pnpm lint
 
+      - name: Print resolved alias paths
+        run: node -e "const path = require('path'); console.log('puik-theme/assets:', path.resolve(__dirname, './packages/theme/assets')); console.log('puik-theme/src:', path.resolve(__dirname, './packages/theme/src')); console.log('puik-theme:', path.resolve(__dirname, './packages/theme/dist'));"
+
+      - name: List files in puik-theme/assets
+        run: ls -R packages/theme/assets
+
+      - name: List files in puik-theme/src
+        run: ls -R packages/theme/src
+
+      - name: List files in puik-theme
+        run: ls -R packages/theme/dist
+
       - name: Run tests 🧪
         run: pnpm coverage
