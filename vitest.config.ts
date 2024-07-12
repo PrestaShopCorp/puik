@@ -25,9 +25,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@prestashopcorp/puik-theme/assets': resolve(__dirname, './packages/theme/assets'),
-      '@prestashopcorp/puik-theme/src': resolve(__dirname, './packages/theme/src'),
-      '@prestashopcorp/puik-theme': resolve(__dirname, './packages/theme/dist')
+      '@prestashopcorp/puik-theme/assets': resolve(__dirname, './nodes_modules/puik-theme/assets'),
+      '@prestashopcorp/puik-theme/src': resolve(__dirname, './nodes_modules/puik-theme/src'),
+      '@prestashopcorp/puik-theme': resolve(__dirname, './nodes_modules/puik-theme/dist')
     }
   }
 });
