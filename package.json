@@ -28,8 +28,7 @@
     "component": "hygen component new",
     "pack:all": "pnpm -r --parallel --filter './packages/**' exec pnpm pack --pack-destination ../../packages-tars/tmp && scripts/increment_versions.sh",
     "prepare": "husky install",
-    "preinstall": "npx only-allow pnpm -y",
-    "print-alias-paths": "node -e \"const path = require('path'); console.log('puik-theme/assets:', path.resolve(__dirname, './packages/theme/assets')); console.log('puik-theme/src:', path.resolve(__dirname, './packages/theme/src')); console.log('puik-theme:', path.resolve(__dirname, './packages/theme/dist'));\""
+    "preinstall": "npx only-allow pnpm -y"
   },
   "config": {
     "commitizen": {
