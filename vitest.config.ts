@@ -32,7 +32,7 @@ export default defineConfig({
     alias: {
       '@prestashopcorp/puik-theme/assets': resolve(__dirname, './packages/theme/assets'),
       '@prestashopcorp/puik-theme/src': resolve(__dirname, './packages/theme/src'),
-      '@prestashopcorp/puik-theme/dist': resolve(__dirname, './packages/theme/src/dist')
+      '@prestashopcorp/puik-theme': resolve(__dirname, './packages/theme/dist')
     }
   }
 });
