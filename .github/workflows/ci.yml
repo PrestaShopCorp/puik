@@ -49,5 +49,8 @@ jobs:
       - name: List files in project directory
         run: ls -R
 
+      - name: Print resolved alias paths
+        run: node -e "const path = require('path'); console.log('puik-theme/assets:', path.resolve(__dirname, './packages/theme/assets')); console.log('puik-theme/src:', path.resolve(__dirname, './packages/theme/src')); console.log('puik-theme:', path.resolve(__dirname, './packages/theme/dist'));"
+
       - name: Run tests 🧪
         run: pnpm coverage
