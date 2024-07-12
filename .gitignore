@@ -10,6 +10,7 @@ node_modules
 
 # Bundle
 dist
+!packages/theme/dist
 coverage
 packages/puik/version.ts
 
