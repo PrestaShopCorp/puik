@@ -43,5 +43,11 @@ jobs:
       - name: Run linter 👀
         run: pnpm lint
 
+      - name: Print working directory
+        run: pwd
+    
+      - name: List files in project directory
+        run: ls -R
+
       - name: Run tests 🧪
         run: pnpm coverage
