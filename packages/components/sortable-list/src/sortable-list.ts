@@ -33,7 +33,7 @@ export interface SortableListProps {
   itemKey: string | ((item: any) => string | number | Symbol)
   tag?: string
   iconPosition?: `${PuikSortableListIconPosition}`
-  displayPositionNumbers: boolean
+  displayPositionNumbers?: boolean
 }
 
 export type SortableListEmits = {
