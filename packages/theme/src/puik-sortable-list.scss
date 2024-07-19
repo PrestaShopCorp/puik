@@ -11,7 +11,7 @@
             @apply px-4 py-2 space-x-4 flex items-center grow border;
         }
         &-content{
-            @apply flex flex-col;
+            @apply flex flex-col grow;
             &_title {
                 @extend .puik-body-default-bold;
             }

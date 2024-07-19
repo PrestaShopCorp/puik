@@ -2,7 +2,11 @@ import type SortableList from './sortable-list.vue';
 import Sortable, { SortableOptions } from 'sortablejs';
 import type { AutoScrollOptions } from 'sortablejs/plugins';
 
-type SortableOptionsProp = Omit<
+export enum PuikSortableListIconPosition {
+  Left = 'left',
+  Right = 'right',
+}
+export type SortableOptionsProp = Omit<
 SortableOptions | AutoScrollOptions,
 | 'onUnchoose'
 | 'onChoose'
@@ -19,12 +23,16 @@ SortableOptions | AutoScrollOptions,
 >;
 
 export type SortableEvent = Sortable.SortableEvent;
+export type SortableMoveEvent = Sortable.MoveEvent;
 
 export interface SortableListProps {
-  options?: SortableOptionsProp
+  listId: string
   list: any[]
+  displayPositionNumbers?: boolean
+  iconPosition?: `${PuikSortableListIconPosition}`
   itemKey: string | ((item: any) => string | number | Symbol)
   tag?: string
+  options?: SortableOptionsProp
 }
 
 export type SortableListEmits = {

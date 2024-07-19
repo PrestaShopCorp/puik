@@ -6,32 +6,39 @@
       :item-key="props.itemKey"
       :tag="props.tag"
       :options="props.options"
-      @change="handleEvent"
-      @choose="handleEvent"
-      @unchoose="handleEvent"
-      @start="handleEvent"
-      @end="handleEvent"
-      @add="handleEvent"
-      @update="handleEvent"
-      @sort="handleEvent"
-      @remove="handleEvent"
-      @filter="handleEvent"
-      @move="handleEvent"
-      @clone="handleEvent"
+      @change="handleEvents"
+      @choose="handleEvents"
+      @unchoose="handleEvents"
+      @start="handleEvents"
+      @end="handleEvents"
+      @add="handleEvents"
+      @update="handleEvents"
+      @sort="handleEvents"
+      @remove="handleEvents"
+      @filter="handleEvents"
+      @move="handleEvents"
+      @clone="handleEvents"
     >
       <template #item="{element, index}">
         <div
           :key="element"
+          :data-item="JSON.stringify(element)"
           class="draggable"
           tabindex="0"
           :aria-label="`Item ${index + 1}`"
-          :data-sortable-id="index"
+          :data-sortable-id="index + 1"
           @keydown="handleKeyDown(index, $event)"
         >
           <div class="puik-sortable-list_item">
-            <span class="puik-sortable-list_item-index">{{ index }}</span>
+            <span
+              v-if="displayPositionNumbers"
+              class="puik-sortable-list_item-index"
+            >
+              {{ $attrs.dataSortableId || index + 1 }}
+            </span>
             <div class="puik-sortable-list_item-container">
               <PuikIcon
+                v-if="iconPosition == PuikSortableListIconPosition.Left"
                 icon="drag_indicator"
                 color="#1D1D1B"
                 tabindex="-1"
@@ -49,6 +56,12 @@
                   {{ `${element?.name}` }}
                 </p>
               </div>
+              <PuikIcon
+                v-if="iconPosition == PuikSortableListIconPosition.Right"
+                icon="drag_indicator"
+                color="#1D1D1B"
+                tabindex="-1"
+              />
             </div>
           </div>
         </div>
@@ -58,7 +71,7 @@
 </template>
 
 <script setup lang="ts">
-import { SortableListProps, SortableListEmits, SortableEvent } from './sortable-list';
+import { SortableListProps, SortableListEmits, SortableEvent, PuikSortableListIconPosition } from './sortable-list';
 import { PuikIcon } from '@prestashopcorp/puik-components';
 import { Sortable } from 'sortablejs-vue3';
 import { nextTick, ref, watch } from 'vue';
@@ -68,7 +81,9 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SortableListProps>(), {
-  tag: 'div'
+  tag: 'div',
+  iconPosition: PuikSortableListIconPosition.Right,
+  displayPositionNumbers: true
 });
 
 const emit = defineEmits<SortableListEmits>();
@@ -85,17 +100,34 @@ watch(props.list, (newList) => {
   localList.value = [...newList];
 });
 
-const handleEvent = (event: SortableEvent) => {
-  console.log(event.type);
-  if (event.type === 'end') {
-    const order = Array.from(event.to.children).map((child: unknown) => {
-      const element = child as Element;
-      const sortableId = element.getAttribute('data-sortable-id');
-      return sortableId ? parseInt(sortableId) : -1;
+const handleEvents = (event: SortableEvent) => {
+  let items: HTMLCollection;
+  if (event.type === 'remove') {
+    items = event.from.children;
+  } else {
+    items = event.to.children;
+  }
+
+  if (['add', 'remove'].includes(event.type) ||
+      (event.type === 'end' && event.from.children === event.to.children)) {
+    console.log(event.type);
+    for (let i = 0; i < items.length; i++) {
+      items[i].setAttribute('data-sortable-id', i.toString());
+      const positionSpan = items[i].querySelector('.puik-sortable-list_item-index');
+      if (positionSpan) {
+        positionSpan.textContent = (i + 1).toString();
+      }
+    }
+
+    const newList = Array.from(items).map((item) => {
+      if (item.hasAttribute('data-item')) {
+        const attributeValue = item.getAttribute('data-item');
+        return attributeValue ? JSON.parse(attributeValue) : null;
+      }
+      return null;
     });
-    localList.value = order.map(i => localList.value[i]);
-    emit('list-changed', localList.value);
-    console.log(event.to.sortable);
+
+    emit('list-changed', newList);
   }
 };
 
