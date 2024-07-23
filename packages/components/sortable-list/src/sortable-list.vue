@@ -1,5 +1,8 @@
 <template>
-  <div role="list">
+  <div
+    :id="listId"
+    role="list"
+  >
     <Sortable
       v-model:sortable="sortable"
       :list="localList"
@@ -18,16 +21,16 @@
       @filter="handleEvents"
       @move="handleEvents"
       @clone="handleEvents"
+      @keydown="handleKeyDown($event)"
     >
       <template #item="{element, index}">
         <div
           :key="element"
           :data-item="JSON.stringify(element)"
-          class="draggable"
+          :class="['draggable', `draggable-${listId}`]"
           tabindex="0"
           :aria-label="`Item ${index + 1}`"
-          :data-sortable-id="index + 1"
-          @keydown="handleKeyDown(index, $event)"
+          :data-sortable-id="index"
         >
           <div class="puik-sortable-list_item">
             <span
@@ -45,16 +48,27 @@
               />
               <img
                 class="puik-sortable-list_item-img"
-                src="https://picsum.photos/200/300"
+                :src="element.imgSrc ? element.imgSrc : 'https://picsum.photos/id/823/200'"
                 alt="img alt"
               >
               <div class="puik-sortable-list_item-content">
-                <p class="puik-sortable-list_item-content_title">
-                  {{ `${element?.name}` }}
+                <p
+                  v-if="element.title"
+                  class="puik-sortable-list_item-content_title"
+                >
+                  {{ `${element?.title}` }}
                 </p>
-                <p class="puik-sortable-list_item-content_subtitle">
-                  {{ `${element?.name}` }}
+                <p
+                  v-if="element.description"
+                  class="puik-sortable-list_item-content_subtitle"
+                >
+                  {{ `${element?.description}` }}
                 </p>
+                <slot
+                  name="custom-content"
+                  :element="element"
+                  :index="index"
+                />
               </div>
               <PuikIcon
                 v-if="iconPosition == PuikSortableListIconPosition.Right"
@@ -88,7 +102,7 @@ const props = withDefaults(defineProps<SortableListProps>(), {
 
 const emit = defineEmits<SortableListEmits>();
 
-const sortable = ref(null);
+const sortable = ref<InstanceType<typeof Sortable> | null>(null);
 
 defineExpose({
   sortable
@@ -97,6 +111,10 @@ defineExpose({
 const localList = ref([...props.list]);
 
 watch(props.list, (newList) => {
+  localList.value = [...newList];
+});
+
+watch(localList.value, (newList) => {
   localList.value = [...newList];
 });
 
@@ -110,7 +128,6 @@ const handleEvents = (event: SortableEvent) => {
 
   if (['add', 'remove'].includes(event.type) ||
       (event.type === 'end' && event.from.children === event.to.children)) {
-    console.log(event.type);
     for (let i = 0; i < items.length; i++) {
       items[i].setAttribute('data-sortable-id', i.toString());
       const positionSpan = items[i].querySelector('.puik-sortable-list_item-index');
@@ -119,74 +136,75 @@ const handleEvents = (event: SortableEvent) => {
       }
     }
 
-    const newList = Array.from(items).map((item) => {
+    const newList = Array.from(items).map((item: { [key: string]: any }) => {
       if (item.hasAttribute('data-item')) {
-        const attributeValue = item.getAttribute('data-item');
-        return attributeValue ? JSON.parse(attributeValue) : null;
+        const dataItem = item.getAttribute('data-item');
+        return dataItem ? JSON.parse(dataItem) : null;
       }
       return null;
     });
 
     emit('list-changed', newList);
   }
+
+  emit(event.type, event);
 };
 
-const moveElement = (index: number, direction: string) => {
-  if (['up', 'down'].includes(direction) === false) {
-    return false;
-  }
+let isProcessing = false;
 
-  const order = localList.value.map((_item, i) => i.toString());
-  const sortableId = index.toString();
+const handleKeyDown = (event: KeyboardEvent) => {
+  if (props.options?.group === 'shared') return;
+  if (isProcessing) return;
+  isProcessing = true;
+  const target = event.target as HTMLElement;
+  const key = event.key;
 
-  order.splice(index, 1);
-  if (direction === 'down' && index < localList.value.length - 1) {
-    order.splice(index + 1, 0, sortableId);
-  } else if (direction === 'up' && index > 0) {
-    order.splice(index - 1, 0, sortableId);
-  }
+  if (target.classList.contains(`draggable-${props.listId}`)) {
+    let newIndex: number | null = null;
+    const index = Number(target.getAttribute('data-sortable-id'));
 
-  localList.value = order.map(i => localList.value[parseInt(i)]);
-  emit('list-changed', localList.value);
-};
-
-const handleKeyDown = (index: number, event: KeyboardEvent) => {
-  if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
-    event.preventDefault();
-  }
-
-  switch (event.key) {
-    case 'ArrowUp':
-      if (event.shiftKey && index > 0) {
-        moveElement(index, 'up');
-        nextTick(() => {
-          (document.querySelector(`[data-sortable-id="${index - 1}"]`) as HTMLElement).focus();
-        });
-      } else if (!event.shiftKey && index > 0) {
-        nextTick(() => {
-          (document.querySelector(`[data-sortable-id="${index - 1}"]`) as HTMLElement).focus();
-        });
+    if (event.shiftKey && (key === 'ArrowUp' || key === 'ArrowDown')) {
+      event.preventDefault();
+      if (key === 'ArrowUp' && index > 0) {
+        newIndex = index - 1;
+      } else if (key === 'ArrowDown' && index < localList.value.length - 1) {
+        newIndex = index + 1;
       }
-      break;
-    case 'ArrowDown':
-      if (event.shiftKey && index < localList.value.length - 1) {
-        moveElement(index, 'down');
+
+      if (newIndex !== null) {
+        const itemToMove = localList.value[index];
+        localList.value.splice(index, 1);
+        localList.value.splice(newIndex, 0, itemToMove);
         nextTick(() => {
-          const nextElement = document.querySelector(`[data-sortable-id="${index + 1}"]`) as HTMLElement;
-          if (nextElement) {
-            nextElement.focus();
-          }
+          const newTarget = document.querySelector(`[data-sortable-id="${newIndex}"]`) as HTMLElement;
+          newTarget?.focus();
         });
-      } else if (!event.shiftKey && index < localList.value.length - 1) {
-        nextTick(() => {
-          const nextElement = document.querySelector(`[data-sortable-id="${index + 1}"]`) as HTMLElement;
-          if (nextElement) {
-            nextElement.focus();
-          }
-        });
+        emit('list-changed', localList.value);
       }
-      break;
+    } else if (key === 'ArrowUp' || key === 'ArrowDown') {
+      event.preventDefault();
+      if (key === 'ArrowUp' && index > 0) {
+        newIndex = index - 1;
+      } else if (key === 'ArrowDown' && index < localList.value.length - 1) {
+        newIndex = index + 1;
+      }
+
+      if (newIndex !== null) {
+        const newTarget = document.querySelector(`[data-sortable-id="${newIndex}"]`) as HTMLElement;
+        newTarget?.focus();
+      }
+    }
+
+    const items = document.querySelectorAll(`.draggable-${props.listId}`);
+    for (let i = 0; i < items.length; i++) {
+      items[i].setAttribute('data-sortable-id', i.toString());
+      const positionSpan = items[i].querySelector('.puik-sortable-list_item-index');
+      if (positionSpan) {
+        positionSpan.textContent = (i + 1).toString();
+      }
+    }
   }
+  isProcessing = false;
 };
 
 </script>

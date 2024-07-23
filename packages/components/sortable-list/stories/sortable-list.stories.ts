@@ -8,39 +8,45 @@ const sortableListIconPositionSummary = sortableListIconPosition.join('|');
 const list1 = ref([
   {
     id: 1,
-    name: 'list-1-item 1',
+    title: 'list-1-item 1',
+    description: 'description',
     initialOrder: 1,
     imgSrc: 'https://t.ly/Ku50h'
   },
   {
     id: 2,
-    name: 'list-1-item 2',
+    title: 'list-1-item 2',
+    description: 'description',
     initialOrder: 2,
     imgSrc: 'https://t.ly/hkQSL'
   },
   {
     id: 3,
-    name: 'list-1-item 3',
+    title: 'list-1-item 3',
+    description: 'description',
     initialOrder: 3,
     imgSrc: 'https://t.ly/MeB5s'
   },
   {
     id: 4,
-    name: 'list-1-item 4',
+    title: 'list-1-item 4',
+    description: 'description',
     initialOrder: 4,
     imgSrc: 'https://t.ly/UfeAc'
   },
   {
     id: 5,
-    name: 'list-1-item 5',
+    title: 'list-1-item 5',
+    description: 'description',
     initialOrder: 5,
-    imgSrc: 'https://rb.gy/bvcz13'
+    imgSrc: 'https://rb.gy/3wn9bd'
   },
   {
     id: 6,
-    name: 'list-1-item 6',
+    title: 'list-1-item 6',
+    description: 'description',
     initialOrder: 6,
-    imgSrc: 'https://rb.gy/3wn9bd'
+    imgSrc: 'https://rb.gy/bvcz13'
   }
 ]);
 
