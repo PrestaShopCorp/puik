@@ -25,19 +25,9 @@ SortableOptions | AutoScrollOptions,
 export type SortableEvent = Sortable.SortableEvent;
 export type SortableMoveEvent = Sortable.MoveEvent;
 
-export interface ListItemOptions {
-  title?: string
-  description?: string
-  imgSrc?: string
-}
-
-export type ListItem = {
-  [key: string]: any
-} & ListItemOptions;
-
 export interface SortableListProps {
   listId: string
-  list: ListItem[]
+  list: any[]
   displayPositionNumbers?: boolean
   iconPosition?: `${PuikSortableListIconPosition}`
   itemKey: string | ((item: any) => string | number | Symbol)

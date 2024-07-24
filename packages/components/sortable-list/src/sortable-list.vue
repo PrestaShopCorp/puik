@@ -4,6 +4,7 @@
     role="list"
   >
     <Sortable
+      :ref="props.listId"
       v-model:sortable="sortable"
       :list="localList"
       :item-key="props.itemKey"
@@ -47,8 +48,9 @@
                 tabindex="-1"
               />
               <img
+                v-if="element.imgSrc"
                 class="puik-sortable-list_item-img"
-                :src="element.imgSrc ? element.imgSrc : 'https://picsum.photos/id/823/200'"
+                :src="element.imgSrc"
                 alt="img alt"
               >
               <div class="puik-sortable-list_item-content">
@@ -88,7 +90,7 @@
 import { SortableListProps, SortableListEmits, SortableEvent, PuikSortableListIconPosition } from './sortable-list';
 import { PuikIcon } from '@prestashopcorp/puik-components';
 import { Sortable } from 'sortablejs-vue3';
-import { nextTick, ref, watch } from 'vue';
+import { nextTick, ref } from 'vue';
 
 defineOptions({
   name: 'PuikSortableList'
@@ -109,14 +111,6 @@ defineExpose({
 });
 
 const localList = ref([...props.list]);
-
-watch(props.list, (newList) => {
-  localList.value = [...newList];
-});
-
-watch(localList.value, (newList) => {
-  localList.value = [...newList];
-});
 
 const handleEvents = (event: SortableEvent) => {
   let items: HTMLCollection;
@@ -153,9 +147,18 @@ const handleEvents = (event: SortableEvent) => {
 let isProcessing = false;
 
 const handleKeyDown = (event: KeyboardEvent) => {
-  if (props.options?.group === 'shared') return;
-  if (isProcessing) return;
+  if (props.options?.group === 'shared' || isProcessing) return;
   isProcessing = true;
+
+  const items = document.querySelectorAll(`.draggable-${props.listId}`);
+  for (let i = 0; i < items.length; i++) {
+    items[i].setAttribute('data-sortable-id', i.toString());
+    const positionSpan = items[i].querySelector('.puik-sortable-list_item-index');
+    if (positionSpan) {
+      positionSpan.textContent = (i + 1).toString();
+    }
+  }
+
   const target = event.target as HTMLElement;
   const key = event.key;
 
@@ -176,7 +179,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
         localList.value.splice(index, 1);
         localList.value.splice(newIndex, 0, itemToMove);
         nextTick(() => {
-          const newTarget = document.querySelector(`[data-sortable-id="${newIndex}"]`) as HTMLElement;
+          const newTarget = document.querySelector(`.draggable-${props.listId}[data-sortable-id="${newIndex}"]`) as HTMLElement;
           newTarget?.focus();
         });
         emit('list-changed', localList.value);
@@ -190,17 +193,8 @@ const handleKeyDown = (event: KeyboardEvent) => {
       }
 
       if (newIndex !== null) {
-        const newTarget = document.querySelector(`[data-sortable-id="${newIndex}"]`) as HTMLElement;
+        const newTarget = document.querySelector(`.draggable-${props.listId}[data-sortable-id="${newIndex}"]`) as HTMLElement;
         newTarget?.focus();
-      }
-    }
-
-    const items = document.querySelectorAll(`.draggable-${props.listId}`);
-    for (let i = 0; i < items.length; i++) {
-      items[i].setAttribute('data-sortable-id', i.toString());
-      const positionSpan = items[i].querySelector('.puik-sortable-list_item-index');
-      if (positionSpan) {
-        positionSpan.textContent = (i + 1).toString();
       }
     }
   }

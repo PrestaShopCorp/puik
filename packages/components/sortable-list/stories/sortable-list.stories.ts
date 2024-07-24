@@ -5,48 +5,148 @@ import { Meta, StoryFn, Args } from '@storybook/vue3';
 const sortableListIconPosition = Object.values(PuikSortableListIconPosition);
 const sortableListIconPositionSummary = sortableListIconPosition.join('|');
 
-const list1 = ref([
+const itemKey = ref('id');
+
+const defaultList = ref([
   {
     id: 1,
     title: 'list-1-item 1',
     description: 'description',
-    initialOrder: 1,
-    imgSrc: 'https://t.ly/Ku50h'
+    imgSrc: 'https://t.ly/Ku50h',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
   },
   {
     id: 2,
     title: 'list-1-item 2',
     description: 'description',
-    initialOrder: 2,
-    imgSrc: 'https://t.ly/hkQSL'
+    imgSrc: 'https://t.ly/hkQSL',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
   },
   {
     id: 3,
     title: 'list-1-item 3',
     description: 'description',
-    initialOrder: 3,
-    imgSrc: 'https://t.ly/MeB5s'
+    imgSrc: 'https://t.ly/MeB5s',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
   },
   {
     id: 4,
     title: 'list-1-item 4',
     description: 'description',
-    initialOrder: 4,
-    imgSrc: 'https://t.ly/UfeAc'
+    imgSrc: 'https://t.ly/UfeAc',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  }
+]);
+
+const sharedList1 = ref([
+  {
+    id: 1,
+    title: 'list-1-item 1',
+    description: 'description',
+    imgSrc: 'https://t.ly/Ku50h',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
   },
   {
-    id: 5,
-    title: 'list-1-item 5',
+    id: 2,
+    title: 'list-1-item 2',
     description: 'description',
-    initialOrder: 5,
-    imgSrc: 'https://rb.gy/3wn9bd'
+    imgSrc: 'https://t.ly/hkQSL',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
   },
   {
-    id: 6,
-    title: 'list-1-item 6',
+    id: 3,
+    title: 'list-1-item 3',
     description: 'description',
-    initialOrder: 6,
-    imgSrc: 'https://rb.gy/bvcz13'
+    imgSrc: 'https://t.ly/MeB5s',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    id: 4,
+    title: 'list-1-item 4',
+    description: 'description',
+    imgSrc: 'https://t.ly/UfeAc',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  }
+]);
+
+const sharedList2 = ref([
+  {
+    id: 7,
+    title: 'list-2-item 1',
+    description: 'description',
+    imgSrc: 'https://rb.gy/3wn9bd',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    id: 8,
+    title: 'list-2-item 2',
+    description: 'description',
+    imgSrc: 'https://rb.gy/bvcz13',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  }
+]);
+
+const customlist = ref([
+  {
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  }
+]);
+
+const eventsList = ref([
+  {
+    id: 1,
+    title: 'list-1-item 1',
+    description: 'description',
+    imgSrc: 'https://t.ly/Ku50h',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    id: 2,
+    title: 'list-1-item 2',
+    description: 'description',
+    imgSrc: 'https://t.ly/hkQSL',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    id: 3,
+    title: 'list-1-item 3',
+    description: 'description',
+    imgSrc: 'https://t.ly/MeB5s',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    id: 4,
+    title: 'list-1-item 4',
+    description: 'description',
+    imgSrc: 'https://t.ly/UfeAc',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
   }
 ]);
 
@@ -114,6 +214,21 @@ emptyInsertThreshold: 5, // px, distance mouse must be from empty sortable to in
       table: {
         defaultValue: {
           summary: 'undefined'
+        },
+        type: {
+          summary: 'ListItem[]',
+          detail: `
+// ListItem
+{
+  title?: string
+  description?: string
+  imgSrc?: string
+  [key: string]: any
+}
+
+// list prop
+ListItem[]
+          `
         }
       }
     },
@@ -123,12 +238,16 @@ emptyInsertThreshold: 5, // px, distance mouse must be from empty sortable to in
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'true' }
-      }
+      },
+      defaultValue: { summary: 'true' }
     },
     itemKey: {
       control: 'text',
       description: 'Item key of the sortable list',
       table: {
+        type: {
+          summary: 'string'
+        },
         defaultValue: {
           summary: 'undefined'
         }
@@ -139,7 +258,7 @@ emptyInsertThreshold: 5, // px, distance mouse must be from empty sortable to in
       description: 'Tag of the sortable list',
       table: {
         type: {
-          summary: 'HTML tag'
+          summary: 'string'
         },
         defaultValue: { summary: 'div' }
       }
@@ -166,13 +285,16 @@ enum PuikSortableListIconPosition {
     }
   },
   args: {
-    listId: 'puik-list-id',
-    list: list1,
-    itemKey: 'id'
+    listId: 'default-list',
+    displayPositionNumbers: true,
+    iconPosition: 'right',
+    list: defaultList.value,
+    itemKey: 'id',
+    tag: 'div'
   }
 } as Meta;
 
-const Template: StoryFn = (args: Args) => ({
+const DefaultTemplate: StoryFn = (args: Args) => ({
   components: {
     PuikSortableList,
     PuikIcon
@@ -184,15 +306,278 @@ const Template: StoryFn = (args: Args) => ({
 });
 
 export const Default = {
-  render: Template,
+  render: DefaultTemplate,
+  args: {
+    listId: 'default-list-2',
+    list: defaultList.value
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+          `
+      },
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// A listItem is an object that can include any key/value pair. However, the keys 'title', 'description', and 'imgSrc' are specifically used to generate the default UI of the list items.
+
+// Here is a detailed description of these keys:
+// 'title': A string representing the title of the list item. It is displayed as the main text of the item.
+// 'description': A string providing additional information about the list item. It is displayed below the title.
+// 'imgSrc': A string URL pointing to an image. It is displayed before the content (title, description).
+
+// Note: These keys are all optional, and you can include other keys as per your requirements by using the custom-content slot instead (see Custom Content Slot section).
+
+const list = [
+  {
+    id: 1,
+    title: 'list-1-item 1',
+    description: 'description',
+    imgSrc: 'https://t.ly/Ku50h',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    id: 2,
+    title: 'list-1-item 2',
+    description: 'description',
+    imgSrc: 'https://t.ly/hkQSL',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    id: 3,
+    title: 'list-1-item 3',
+    description: 'description',
+    imgSrc: 'https://t.ly/MeB5s',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    id: 4,
+    title: 'list-1-item 4',
+    description: 'description',
+    imgSrc: 'https://t.ly/UfeAc',
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  }
+];
+
+<puik-sortable-list 
+  :list-id="args.listId" 
+  :options="args.options" 
+  :list="list" 
+  :displayPositionNumbers="args.displayPositionNumbers" 
+  :item-key="args.itemKey" 
+  :tag="args.tag" 
+  :iconPosition="args.iconPosition">
+</puik-sortable-list>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+const CustomContentSlotTemplate: StoryFn = (args: Args) => ({
+  components: {
+    PuikSortableList,
+    PuikIcon
+  },
+  setup() {
+    return { args };
+  },
+  template: `
+<puik-sortable-list v-bind="args">
+  <template #custom-content="{ element, index }">
+    <p>{{ element.customKey }}</p>
+    <p>{{ element.anotherKey }}</p>
+  </template>
+</puik-sortable-list>
+  `
+});
+
+export const CustomContentSlot = {
+  render: CustomContentSlotTemplate,
+  args: {
+    listId: 'custom-list',
+    list: customlist.value
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// Using the customContent slot
+
+const customlist = ref([
+  {
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  },
+  {
+    customKey: 'A custom Value',
+    anotherKey: 'Another custom value'
+  }
+]);
+
+<puik-sortable-list v-bind="args">
+  <template #custom-content="{ element, index }">
+    <p>{{ element.customKey }}</p>
+    <p>{{ element.anotherKey }}</p>
+  </template>
+</puik-sortable-list>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+const SharedTemplate: StoryFn = (args: Args) => ({
+  components: {
+    PuikSortableList,
+    PuikIcon
+  },
+  setup() {
+    const argsList1 = {
+      listId: 'shared-list-1',
+      list: sharedList1.value,
+      itemKey: itemKey.value
+    };
+    const argsList2 = {
+      listId: 'shared-list-2',
+      list: sharedList2.value,
+      itemKey: itemKey.value
+    };
+    const options = {
+      group: 'shared'
+    };
+    return { args, argsList1, argsList2, options };
+  },
+  template: `
+    <div style="width: 100%; display: flex; gap: 2rem">
+      <puik-sortable-list v-bind="argsList1" :options="options" style="flex-grow: 1;"></puik-sortable-list>
+      <puik-sortable-list v-bind="argsList2" :options="options" style="flex-grow: 1;"></puik-sortable-list>
+    </div>
+  `
+});
+
+export const Shared = {
+  render: SharedTemplate,
   args: {},
   parameters: {
     docs: {
       source: {
         code: `
-        <!--VueJS Snippet-->
+<!--VueJS Snippet-->
+// Shared option example (for other options see https://github.com/SortableJS/Sortable#options)
 
-        <!--HTML/CSS Snippet-->
+let options = {
+  group: "shared",  // Name of the group for shared sortable lists
+};
+
+// Using the options in the component
+<div style="width: 100%; display: flex; gap: 2rem">
+  <puik-sortable-list 
+    :list-id="argsList1.listId" 
+    :list="argsList1.list" 
+    :itemKey="argsList1.itemKey" 
+    :options="options" 
+    style="flex-grow: 1;">
+  </puik-sortable-list>
+  
+  <puik-sortable-list 
+    :list-id="argsList2.listId" 
+    :list="argsList2.list" 
+    :itemKey="argsList2.itemKey" 
+    :options="options" 
+    style="flex-grow: 1;">
+  </puik-sortable-list>
+</div>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+const EventsTemplate: StoryFn = (args: Args) => ({
+  components: {
+    PuikSortableList,
+    PuikIcon
+  },
+  setup() {
+    const logEvent = (name: string, event: any) => {
+      console.log(name, event);
+    };
+    return { args, logEvent };
+  },
+  template: `
+    <puik-sortable-list
+      v-bind="args"
+      @end="logEvent('end', $event)"
+      @choose="logEvent('choose event', $event)"
+      @unchoose="logEvent('update event', $event)"
+      @start="logEvent('unchoose event', $event)"
+      @add="logEvent('add event', $event)"
+      @update="logEvent('update event', $event)"
+      @sort="logEvent('sort event', $event)"
+      @remove="logEvent('remove event', $event)"
+      @filter="logEvent('filter event', $event)"
+      @move="logEvent('move event', $event)"
+      @clone="logEvent('clone event', $event)"
+      @list-changed="logEvent('list-changed', $event)"
+    />
+  `
+});
+
+export const Events = {
+  render: EventsTemplate,
+  args: {
+    listId: 'events-list',
+    list: eventsList.value
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// Using the sortable js events in the component (view the browser console to inspect different behaviors)
+
+// -  set of events available in the sortable library (all return an object of type CustomEvents)
+// See https://github.com/SortableJS/Sortable#events
+// - exception of the list-changed event specific to Puik and which returns the updated list
+
+
+const logEvent = (name, event) => {
+  console.log(name, event);
+};
+
+<puik-sortable-list
+  v-bind="args"
+  @end="logEvent('end', $event)"
+  @choose="logEvent('choose event', $event)"
+  @unchoose="logEvent('update event', $event)"
+  @start="logEvent('unchoose event', $event)"
+  @add="logEvent('add event', $event)"
+  @update="logEvent('update event', $event)"
+  @sort="logEvent('sort event', $event)"
+  @remove="logEvent('remove event', $event)"
+  @filter="logEvent('filter event', $event)"
+  @move="logEvent('move event', $event)"
+  @clone="logEvent('clone event', $event)"
+  @list-changed="logEvent('list-changed', $event)"
+/>
         `,
         language: 'html'
       }
