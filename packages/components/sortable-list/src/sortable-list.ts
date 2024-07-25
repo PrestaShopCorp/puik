@@ -36,19 +36,19 @@ export interface SortableListProps {
 }
 
 export type SortableListEmits = {
-  'list-changed': any[]
-  'change': [event: SortableEvent]
-  'choose': [event: SortableEvent]
-  'unchoose': [event: SortableEvent]
-  'start': [event: SortableEvent]
-  'end': [event: SortableEvent]
-  'add': [event: SortableEvent]
-  'update': [event: SortableEvent]
-  'sort': [event: SortableEvent]
-  'remove': [event: SortableEvent]
-  'filter': [event: SortableEvent]
-  'move': [event: SortableEvent]
-  'clone': [event: SortableEvent]
+  (event: 'list-changed', evt: any[]): void
+  (event: 'choose', evt: Sortable.SortableEvent): void
+  (event: 'unchoose', evt: Sortable.SortableEvent): void
+  (event: 'start', evt: Sortable.SortableEvent): void
+  (event: 'end', evt: Sortable.SortableEvent): void
+  (event: 'add', evt: Sortable.SortableEvent): void
+  (event: 'update', evt: Sortable.SortableEvent): void
+  (event: 'sort', evt: Sortable.SortableEvent): void
+  (event: 'remove', evt: Sortable.SortableEvent): void
+  (event: 'filter', evt: Sortable.SortableEvent): void
+  (event: 'move', evt: Sortable.MoveEvent, originalEvent: Event): void
+  (event: 'clone', evt: Sortable.SortableEvent): void
+  (event: 'change', evt: Sortable.SortableEvent): void
 };
 
 export type SortableListInstance = InstanceType<typeof SortableList>;

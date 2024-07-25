@@ -20,7 +20,7 @@
       @sort="handleEvents"
       @remove="handleEvents"
       @filter="handleEvents"
-      @move="handleEvents"
+      @move="handleMoveEvents"
       @clone="handleEvents"
       @keydown="handleKeyDown($event)"
     >
@@ -87,7 +87,7 @@
 </template>
 
 <script setup lang="ts">
-import { SortableListProps, SortableListEmits, SortableEvent, PuikSortableListIconPosition } from './sortable-list';
+import { SortableListProps, SortableListEmits, SortableEvent, SortableMoveEvent, PuikSortableListIconPosition } from './sortable-list';
 import { PuikIcon } from '@prestashopcorp/puik-components';
 import { Sortable } from 'sortablejs-vue3';
 import { nextTick, ref } from 'vue';
@@ -111,6 +111,10 @@ defineExpose({
 });
 
 const localList = ref([...props.list]);
+
+const handleMoveEvents = (evt: SortableMoveEvent, originalEvent: Event) => {
+  emit('move', evt, originalEvent);
+};
 
 const handleEvents = (event: SortableEvent) => {
   let items: HTMLCollection;
@@ -141,14 +145,14 @@ const handleEvents = (event: SortableEvent) => {
     emit('list-changed', newList);
   }
 
-  emit(event.type, event);
+  emit(event.type as keyof SortableListEmits, event);
 };
 
 let isProcessing = false;
 
 const handleKeyDown = (event: KeyboardEvent) => {
-  if (props.options?.group === 'shared' || isProcessing) return;
-  isProcessing = true;
+  isProcessing = isProcessing ?? true;
+  // if (props.options?.group === 'shared' || isProcessing) return;
 
   const items = document.querySelectorAll(`.draggable-${props.listId}`);
   for (let i = 0; i < items.length; i++) {
