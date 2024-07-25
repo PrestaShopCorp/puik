@@ -99,7 +99,8 @@ defineOptions({
 const props = withDefaults(defineProps<SortableListProps>(), {
   tag: 'div',
   iconPosition: PuikSortableListIconPosition.Right,
-  displayPositionNumbers: true
+  displayPositionNumbers: true,
+  options: { animation: 150 }
 });
 
 const emit = defineEmits<SortableListEmits>();
@@ -152,7 +153,7 @@ let isProcessing = false;
 
 const handleKeyDown = (event: KeyboardEvent) => {
   isProcessing = isProcessing ?? true;
-  // if (props.options?.group === 'shared' || isProcessing) return;
+  if (props.options?.group === 'shared' || isProcessing) return;
 
   const items = document.querySelectorAll(`.draggable-${props.listId}`);
   for (let i = 0; i < items.length; i++) {

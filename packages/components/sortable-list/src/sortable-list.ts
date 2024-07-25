@@ -6,6 +6,7 @@ export enum PuikSortableListIconPosition {
   Left = 'left',
   Right = 'right',
 }
+
 export type SortableOptionsProp = Omit<
 SortableOptions | AutoScrollOptions,
 | 'onUnchoose'
@@ -32,7 +33,7 @@ export interface SortableListProps {
   iconPosition?: `${PuikSortableListIconPosition}`
   itemKey: string | ((item: any) => string | number | Symbol)
   tag?: string
-  options?: SortableOptionsProp
+  options?: any
 }
 
 export type SortableListEmits = {

@@ -183,27 +183,22 @@ handle: ".my-handle",  // Drag handle selector within list items
 filter: ".ignore-elements",  // Selectors that do not lead to dragging (String or Function)
 preventOnFilter: true, // Call event.preventDefault() when triggered filter
 draggable: ".item",  // Specifies which items inside the element should be draggable
-
 dataIdAttr: 'data-id', // HTML attribute that is used by the toArray() method
-
 ghostClass: "sortable-ghost",  // Class name for the drop placeholder
 chosenClass: "sortable-chosen",  // Class name for the chosen item
 dragClass: "sortable-drag",  // Class name for the dragging item
-
 swapThreshold: 1, // Threshold of the swap zone
 invertSwap: false, // Will always use inverted swap zone if set to true
 invertedSwapThreshold: 1, // Threshold of the inverted swap zone (will be set to swapThreshold value by default)
 direction: 'horizontal', // Direction of Sortable (will be detected automatically if not given)
-
 forceFallback: false,  // ignore the HTML5 DnD behaviour and force the fallback to kick in
-
 fallbackClass: "sortable-fallback",  // Class name for the cloned DOM Element when using forceFallback
 fallbackOnBody: false,  // Appends the cloned DOM Element into the Document's Body
 fallbackTolerance: 0, // Specify in pixels how far the mouse should move before it's considered as a drag.
-
 dragoverBubble: false,
 removeCloneOnHide: true, // Remove the clone element when it is not showing, rather than just hiding it
 emptyInsertThreshold: 5, // px, distance mouse must be from empty sortable to insert drag element into it
+
   `
         }
       }
@@ -255,7 +250,7 @@ ListItem[]
     },
     tag: {
       control: 'text',
-      description: 'Tag of the sortable list',
+      description: 'The HTML Tag of the sortable list container',
       table: {
         type: {
           summary: 'string'
@@ -264,7 +259,8 @@ ListItem[]
       }
     },
     iconPosition: {
-      control: 'text',
+      control: 'select',
+      options: sortableListIconPosition,
       description: 'Drag icon position of the sortable list items',
       table: {
         type: {
@@ -308,7 +304,7 @@ const DefaultTemplate: StoryFn = (args: Args) => ({
 export const Default = {
   render: DefaultTemplate,
   args: {
-    listId: 'default-list-2',
+    listId: 'default-list',
     list: defaultList.value
   },
   parameters: {
