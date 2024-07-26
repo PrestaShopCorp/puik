@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/accordion-group/style/css';
 import type { InjectionKey, Ref } from 'vue';
 import type AccordionGroup from './accordion-group.vue';
 

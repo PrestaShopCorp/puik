@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/badge/style/css';
 import type Badge from './badge.vue';
 
 export enum PuikBadgeVariants {

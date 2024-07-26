@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/sortable-list/style/css';
 import type SortableList from './sortable-list.vue';
 import Sortable, { SortableOptions } from 'sortablejs';
 import type { AutoScrollOptions } from 'sortablejs/plugins';

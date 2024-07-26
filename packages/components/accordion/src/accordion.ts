@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/accordion/style/css';
 import type accordion from './accordion.vue';
 
 export interface AccordionProps {

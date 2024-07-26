@@ -2,7 +2,7 @@
 import { PuikAlert } from '@prestashopcorp/puik-components';
 
 const Alertclick = (event: Event) => {
-  console.log('alert btn clicked');
+  console.log('alert btn clicked', event);
 };
 </script>
 

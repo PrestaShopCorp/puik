@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/chip/style/css';
 import type { PuikTooltipPositions } from '@prestashopcorp/puik-components';
 import type Chip from './chip.vue';
 

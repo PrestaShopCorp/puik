@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/button/style/css';
 import type { RouteLocationRaw } from 'vue-router';
 import type Button from './button.vue';
 

@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/checkbox/style/css';
 import type Checkbox from './checkbox.vue';
 
 export interface CheckboxProps {

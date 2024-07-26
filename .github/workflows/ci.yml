@@ -40,6 +40,9 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: pnpm i --frozen-lockfile
 
+      - name: Build Library
+        run: pnpm build
+
       - name: Run linter 👀
         run: pnpm lint
 
