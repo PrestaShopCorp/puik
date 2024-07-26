@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/snackbar/style/css';
 import type Snackbar from './snackbar.vue';
 
 export enum PuikSnackbarVariants {

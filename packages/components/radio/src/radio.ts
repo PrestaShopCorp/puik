@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/radio/style/css';
 import type Radio from './radio.vue';
 
 export interface RadioProps {

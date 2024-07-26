@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/table-search-input/style/css';
 import type TableSearchInput from './table-search-input.vue';
 
 export enum PuikTableSearchInputTypes {

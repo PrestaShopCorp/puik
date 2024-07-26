@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/option/style/css';
 import type Option from './option.vue';
 
 export interface DefaultOption {

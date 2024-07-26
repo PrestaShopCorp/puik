@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/avatar/style/css';
 import type Avatar from './avatar.vue';
 
 export enum PuikAvatarMode {

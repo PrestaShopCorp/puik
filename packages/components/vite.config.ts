@@ -13,7 +13,9 @@ export default defineConfig({
     dts({
       tsconfigPath: 'tsconfig.build.json'
     }),
-    nodeResolve()
+    nodeResolve({
+      mainFields: ['module', 'js', 'json']
+    })
   ],
   css: {
     postcss: resolve(__dirname, '../theme/postcss.config.js')

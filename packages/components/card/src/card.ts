@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/card/style/css';
 import type Card from './card.vue';
 
 export enum PuikCardVariants {

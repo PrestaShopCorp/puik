@@ -9,6 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@prestashopcorp/puik-components": "workspace:*",
+    "@prestashopcorp/puik-resolver": "workspace:*",
+    "@prestashopcorp/puik-tailwind-preset": "workspace:*",
+    "@prestashopcorp/puik-theme": "workspace:*",
+    "@prestashopcorp/puik-web-components": "workspace:*",
     "vue": "^3.3.10",
     "vue-router": "^4.1.6"
   },

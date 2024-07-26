@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/icon/style/css';
 import type Icon from './icon.vue';
 
 export interface IconProps {

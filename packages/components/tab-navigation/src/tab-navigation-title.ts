@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/tab-navigation-title/style/css';
 import type TabNavigationTitle from './tab-navigation-title.vue';
 
 export interface TabNavigationTitleProps {

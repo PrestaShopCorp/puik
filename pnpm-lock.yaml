@@ -114,6 +114,21 @@ importers:
 
   docs:
     dependencies:
+      '@prestashopcorp/puik-components':
+        specifier: workspace:*
+        version: link:../packages/components
+      '@prestashopcorp/puik-resolver':
+        specifier: workspace:*
+        version: link:../packages/resolver
+      '@prestashopcorp/puik-tailwind-preset':
+        specifier: workspace:*
+        version: link:../packages/tailwind-preset
+      '@prestashopcorp/puik-theme':
+        specifier: workspace:*
+        version: link:../packages/theme
+      '@prestashopcorp/puik-web-components':
+        specifier: workspace:*
+        version: link:../packages/web-components
       '@storybook/client-api':
         specifier: ^7.6.17
         version: 7.6.17
@@ -273,6 +288,21 @@ importers:
 
   playground:
     dependencies:
+      '@prestashopcorp/puik-components':
+        specifier: workspace:*
+        version: link:../packages/components
+      '@prestashopcorp/puik-resolver':
+        specifier: workspace:*
+        version: link:../packages/resolver
+      '@prestashopcorp/puik-tailwind-preset':
+        specifier: workspace:*
+        version: link:../packages/tailwind-preset
+      '@prestashopcorp/puik-theme':
+        specifier: workspace:*
+        version: link:../packages/theme
+      '@prestashopcorp/puik-web-components':
+        specifier: workspace:*
+        version: link:../packages/web-components
       vue:
         specifier: ^3.3.10
         version: 3.4.27(typescript@5.4.5)
@@ -6593,8 +6623,8 @@ packages:
   vue-component-type-helpers@2.0.19:
     resolution: {integrity: sha512-cN3f1aTxxKo4lzNeQAkVopswuImUrb5Iurll9Gaw5cqpnbTAxtEMM1mgi6ou4X79OCyqYv1U1mzBHJkzmiK82w==}
 
-  vue-component-type-helpers@2.0.21:
-    resolution: {integrity: sha512-3NaicyZ7N4B6cft4bfb7dOnPbE9CjLcx+6wZWAg5zwszfO4qXRh+U52dN5r5ZZfc6iMaxKCEcoH9CmxxoFZHLg==}
+  vue-component-type-helpers@2.0.26:
+    resolution: {integrity: sha512-sO9qQ8oC520SW6kqlls0iqDak53gsTVSrYylajgjmkt1c0vcgjsGSy1KzlDrbEx8pm02IEYhlUkU5hCYf8rwtg==}
 
   vue-demi@0.14.7:
     resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
@@ -9324,7 +9354,7 @@ snapshots:
       ts-dedent: 2.2.0
       type-fest: 2.19.0
       vue: 3.3.10(typescript@5.4.5)
-      vue-component-type-helpers: 2.0.21
+      vue-component-type-helpers: 2.0.26
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -14314,7 +14344,7 @@ snapshots:
 
   vue-component-type-helpers@2.0.19: {}
 
-  vue-component-type-helpers@2.0.21: {}
+  vue-component-type-helpers@2.0.26: {}
 
   vue-demi@0.14.7(vue@3.3.10(typescript@5.4.5)):
     dependencies:

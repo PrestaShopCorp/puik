@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/breadcrumb/style/css';
 import type { RouteLocationRaw } from 'vue-router';
 import type Breadcrumb from './breadcrumb.vue';
 import type { PuikLinkTargetVariants } from '../../link';

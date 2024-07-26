@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/progress-bar/style/css';
 import type ProgressBar from './progress-bar.vue';
 
 export interface ProgressBarProps {

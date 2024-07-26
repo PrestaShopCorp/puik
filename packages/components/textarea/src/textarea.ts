@@ -1,3 +1,4 @@
+import '@prestashopcorp/puik-components/textarea/style/css';
 import type Textarea from './textarea.vue';
 
 export interface TextareaProps {
