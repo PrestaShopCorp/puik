@@ -1,5 +1,16 @@
 # @prestashopcorp/puik-web-components
 
+## 2.1.0
+
+### Minor Changes
+
+- version 2.1.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @prestashopcorp/puik-components@2.1.0
+
 ## 2.0.1
 
 ### Patch Changes

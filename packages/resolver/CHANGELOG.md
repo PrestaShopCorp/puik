@@ -1,5 +1,15 @@
 # @prestashopcorp/puik-resolver
 
+## 3.0.0
+
+### Minor Changes
+
+### Patch Changes
+
+- Updated dependencies
+  - @prestashopcorp/puik-components@2.1.0
+  - @prestashopcorp/puik-theme@2.1.0
+
 ## 2.0.1
 
 ### Patch Changes
