@@ -1,4 +1,5 @@
 import {
+  PuikSortableList,
   PuikNotificationBar,
   PuikAvatar,
   PuikDivider,
@@ -54,6 +55,7 @@ import type { Component } from 'vue';
 
 // prettier-ignore
 export default [
+  PuikSortableList,
   PuikNotificationBar,
   PuikAvatar,
   PuikDivider,

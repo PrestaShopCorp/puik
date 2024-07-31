@@ -2,7 +2,7 @@
 to: packages/web-components/components/<%= h.changeCase.param(name) %>.ts
 ---
 import { defineCustomElement } from 'vue';
-import { Puik<%= h.changeCase.pascal(name) %>} from '@prestashopcorp/puik-components';
+import { Puik<%= h.changeCase.pascal(name) %> } from '@prestashopcorp/puik-components';
 import type { CustomElementWithName } from '../types';
 
 const Puik<%= h.changeCase.pascal(name) %>Ce = defineCustomElement(Puik<%= h.changeCase.pascal(name) %>) as CustomElementWithName;
