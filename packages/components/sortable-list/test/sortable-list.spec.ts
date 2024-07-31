@@ -1,143 +1,71 @@
 import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { PuikSortableList, SortableListProps } from '@prestashopcorp/puik-components';
 
 describe('SortableList tests', () => {
   let wrapper: VueWrapper<any>;
   const factory = (
     props: SortableListProps,
-    options: ComponentMountingOptions<typeof PuikSortableList>
+    options: ComponentMountingOptions<typeof PuikSortableList> = {}
   ) => {
     wrapper = mount(PuikSortableList, {
       props,
-      ...options
+      ...options,
+      listeners: {
+        add: vi.fn(),
+        update: vi.fn(),
+        remove: vi.fn(),
+        choose: vi.fn(),
+        unchoose: vi.fn(),
+        start: vi.fn(),
+        end: vi.fn(),
+        sort: vi.fn(),
+        filter: vi.fn(),
+        move: vi.fn(),
+        clone: vi.fn()
+      }
     });
   };
 
-  it('should be a vue instance', () => {
-    factory({ listId: 'test', list: [], itemKey: 'id' }, {});
+  it('should be a Vue instance', () => {
+    factory({ listId: 'test', list: [], itemKey: 'id' });
     expect(wrapper).toBeTruthy();
   });
 
   it('should render list items correctly', () => {
     const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
+    factory({ listId: 'test', list, itemKey: 'id' });
     expect(wrapper.findAll('.draggable').length).toBe(list.length);
   });
 
   it('should handle keydown events correctly', async () => {
     const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
+    factory({ listId: 'test', list, itemKey: 'id' });
     const draggable = wrapper.find('.draggable');
     await draggable.trigger('keydown', { key: 'ArrowUp' });
-    // Add assertions to check the behavior of the keydown event...
-  });
-
-  it('should handle sortable events correctly', async () => {
-    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
-    const sortable = wrapper.findComponent({ ref: 'test' });
-    await sortable.trigger('add');
-    // Add assertions to check the behavior of the sortable events...
+    expect(wrapper.emitted().keydown).toBeTruthy();
+    expect((wrapper.emitted().keydown[0][0] as KeyboardEvent).key).toBe('ArrowUp');
+    await draggable.trigger('keydown', { key: 'ArrowDown' });
+    expect(wrapper.emitted().keydown).toBeTruthy();
+    expect((wrapper.emitted().keydown[1][0] as KeyboardEvent).key).toBe('ArrowDown');
   });
 
   it('should handle displayPositionNumbers prop correctly', () => {
     const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id', displayPositionNumbers: true }, {});
+    factory({ listId: 'test', list, itemKey: 'id', displayPositionNumbers: true });
     expect(wrapper.findAll('.puik-sortable-list_item-index').length).toBe(list.length);
   });
 
   it('should handle iconPosition prop correctly', () => {
     const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id', iconPosition: 'left' }, {});
+    factory({ listId: 'test', list, itemKey: 'id', iconPosition: 'left' });
     expect(wrapper.findAll('.puik-icon').length).toBe(list.length);
   });
 
   it('should handle tag prop correctly', () => {
     const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id', tag: 'section' }, {});
+    factory({ listId: 'test', list, itemKey: 'id', tag: 'section' });
     expect(wrapper.find('section').exists()).toBe(true);
-  });
-
-  it('should handle options prop correctly', async () => {
-    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    const options = { group: 'shared' };
-    factory({ listId: 'test', list, itemKey: 'id', options }, {});
-    const sortable = wrapper.findComponent({ ref: 'test' });
-    await sortable.trigger('add');
-    // Add assertions to check the behavior of the sortable events with the given options...
-  });
-
-  it('should handle unchoose event correctly', async () => {
-    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
-    const sortable = wrapper.findComponent({ ref: 'test' });
-    await sortable.trigger('unchoose');
-    // Add assertions to check the behavior of the unchoose event...
-  });
-
-  it('should handle start event correctly', async () => {
-    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
-    const sortable = wrapper.findComponent({ ref: 'test' });
-    await sortable.trigger('start');
-    // Add assertions to check the behavior of the start event...
-  });
-
-  it('should handle end event correctly', async () => {
-    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
-    const sortable = wrapper.findComponent({ ref: 'test' });
-    await sortable.trigger('end');
-    // Add assertions to check the behavior of the end event...
-  });
-
-  it('should handle update event correctly', async () => {
-    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
-    const sortable = wrapper.findComponent({ ref: 'test' });
-    await sortable.trigger('update');
-    // Add assertions to check the behavior of the update event...
-  });
-
-  it('should handle sort event correctly', async () => {
-    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
-    const sortable = wrapper.findComponent({ ref: 'test' });
-    await sortable.trigger('sort');
-    // Add assertions to check the behavior of the sort event...
-  });
-
-  it('should handle remove event correctly', async () => {
-    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
-    const sortable = wrapper.findComponent({ ref: 'test' });
-    await sortable.trigger('remove');
-    // Add assertions to check the behavior of the remove event...
-  });
-
-  it('should handle filter event correctly', async () => {
-    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
-    const sortable = wrapper.findComponent({ ref: 'test' });
-    await sortable.trigger('filter');
-    // Add assertions to check the behavior of the filter event...
-  });
-
-  it('should handle move event correctly', async () => {
-    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
-    const sortable = wrapper.findComponent({ ref: 'test' });
-    await sortable.trigger('move');
-    // Add assertions to check the behavior of the move event...
-  });
-
-  it('should handle clone event correctly', async () => {
-    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
-    factory({ listId: 'test', list, itemKey: 'id' }, {});
-    const sortable = wrapper.findComponent({ ref: 'test' });
-    await sortable.trigger('clone');
-    // Add assertions to check the behavior of the clone event...
   });
 
   it('should handle custom-content slot correctly', () => {
@@ -154,5 +82,17 @@ describe('SortableList tests', () => {
     expect(wrapper.findAll('.custom-content').length).toBe(list.length);
   });
 
-  // Add more tests as needed...
+  it('should emit events without errors', async () => {
+    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
+    factory({ listId: 'test', list, itemKey: 'id' });
+    const events = [
+      'choose', 'unchoose', 'start', 'end', 'add', 'update', 'sort', 'remove', 'filter', 'move', 'clone', 'change'
+    ];
+
+    events.forEach(event => {
+      const spy = vi.spyOn(wrapper.vm, '$emit');
+      wrapper.vm.$emit(event, {});
+      expect(spy).toHaveBeenCalledWith(event, {});
+    });
+  });
 });

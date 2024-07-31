@@ -311,20 +311,19 @@ export const Default = {
     docs: {
       description: {
         story: `
+A listItem is an object that can include any key/value pair. However, the keys 'title', 'description', and 'imgSrc' are specifically used to generate the default UI of the list items.
+
+ Here is a detailed description of these keys:
+- 'title': A string representing the title of the list item. It is displayed as the main text of the item.
+- 'description': A string providing additional information about the list item. It is displayed below the title.
+- 'imgSrc': A string URL pointing to an image. It is displayed before the content (title, description).
+
+Note: These keys are all optional, and you can include other keys as per your requirements by using the custom-content slot instead (see Custom Content Slot section).
           `
       },
       source: {
         code: `
 <!--VueJS Snippet-->
-// A listItem is an object that can include any key/value pair. However, the keys 'title', 'description', and 'imgSrc' are specifically used to generate the default UI of the list items.
-
-// Here is a detailed description of these keys:
-// 'title': A string representing the title of the list item. It is displayed as the main text of the item.
-// 'description': A string providing additional information about the list item. It is displayed below the title.
-// 'imgSrc': A string URL pointing to an image. It is displayed before the content (title, description).
-
-// Note: These keys are all optional, and you can include other keys as per your requirements by using the custom-content slot instead (see Custom Content Slot section).
-
 const list = [
   {
     id: 1,
@@ -402,11 +401,14 @@ export const CustomContentSlot = {
   },
   parameters: {
     docs: {
+      description: {
+        story: `
+Using the customContent slot with the named template '#custom-content' (click show code for more details)
+          `
+      },
       source: {
         code: `
 <!--VueJS Snippet-->
-// Using the customContent slot
-
 const customlist = ref([
   {
     customKey: 'A custom Value',
@@ -473,11 +475,14 @@ export const Shared = {
   args: {},
   parameters: {
     docs: {
+      description: {
+        story: `
+  Using Sortable JS options : Shared option example here (for more options see https://github.com/SortableJS/Sortable#options)
+  `
+      },
       source: {
         code: `
 <!--VueJS Snippet-->
-// Shared option example (for other options see https://github.com/SortableJS/Sortable#options)
-
 let options = {
   group: "shared",  // Name of the group for shared sortable lists
 };
@@ -545,16 +550,18 @@ export const Events = {
   },
   parameters: {
     docs: {
+      description: {
+        story: `
+Using the sortable js events in the component (view the browser console to inspect different behaviors)
+
+-  set of events available in the sortable library (all return an object of type CustomEvents)
+See https://github.com/SortableJS/Sortable#events
+- exception of the list-changed event specific to Puik and which returns the updated list
+        `
+      },
       source: {
         code: `
 <!--VueJS Snippet-->
-// Using the sortable js events in the component (view the browser console to inspect different behaviors)
-
-// -  set of events available in the sortable library (all return an object of type CustomEvents)
-// See https://github.com/SortableJS/Sortable#events
-// - exception of the list-changed event specific to Puik and which returns the updated list
-
-
 const logEvent = (name, event) => {
   console.log(name, event);
 };

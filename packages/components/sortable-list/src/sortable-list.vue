@@ -152,6 +152,7 @@ const handleEvents = (event: SortableEvent) => {
 let isProcessing = false;
 
 const handleKeyDown = (event: KeyboardEvent) => {
+  event.preventDefault();
   isProcessing = isProcessing ?? true;
   if (props.options?.group === 'shared' || isProcessing) return;
 
@@ -177,17 +178,19 @@ const handleKeyDown = (event: KeyboardEvent) => {
         newIndex = index - 1;
       } else if (key === 'ArrowDown' && index < localList.value.length - 1) {
         newIndex = index + 1;
+      } else {
+        newIndex = index;
       }
 
       if (newIndex !== null) {
         const itemToMove = localList.value[index];
         localList.value.splice(index, 1);
         localList.value.splice(newIndex, 0, itemToMove);
+        emit('list-changed', localList.value);
         nextTick(() => {
           const newTarget = document.querySelector(`.draggable-${props.listId}[data-sortable-id="${newIndex}"]`) as HTMLElement;
           newTarget?.focus();
         });
-        emit('list-changed', localList.value);
       }
     } else if (key === 'ArrowUp' || key === 'ArrowDown') {
       event.preventDefault();
@@ -195,6 +198,8 @@ const handleKeyDown = (event: KeyboardEvent) => {
         newIndex = index - 1;
       } else if (key === 'ArrowDown' && index < localList.value.length - 1) {
         newIndex = index + 1;
+      } else {
+        newIndex = index;
       }
 
       if (newIndex !== null) {
@@ -205,7 +210,6 @@ const handleKeyDown = (event: KeyboardEvent) => {
   }
   isProcessing = false;
 };
-
 </script>
 
 <style lang="scss">
