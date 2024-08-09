@@ -14,12 +14,13 @@
         }"
         class="puik-switch"
         :disabled="disabled"
+        :aria-label="computedAriaLabel"
       >
         <span
-          v-if="screenReaderText"
-          class="puik-switch__screen-readers"
+          v-if="srLabel && srLabel.length > 0"
+          class="puik-sr-only"
         >
-          {{ screenReader }}
+          {{ srLabelComputed }}
         </span>
         <span
           :class="{ 'puik-switch__toggle--enabled': value }"
@@ -62,11 +63,20 @@ const value = computed({
   }
 });
 
-const screenReader = computed(
+const srLabelComputed = computed(
   () =>
-    `${value.value ? t('puik.switch.disable') : t('puik.switch.enable')} ${props.screenReaderText
-    }`
+    `${value.value ? t('puik.switch.disable') : t('puik.switch.enable')} ${props.srLabel}`
 );
+
+const computedAriaLabel = computed(() => {
+  if (props.label) {
+    return props.label;
+  } else if (props.srLabel && props.srLabel.length > 0) {
+    return srLabelComputed.value;
+  } else {
+    return '';
+  }
+});
 </script>
 
 <style lang="scss">

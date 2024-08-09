@@ -7,7 +7,10 @@
     @close="sendCloseModalEvent()"
   >
     <div class="puik-modal__dialogPanelContainer">
-      <DialogPanel class="puik-modal__dialogPanelContainer__dialogPanel">
+      <DialogPanel
+        tabindex="0"
+        class="puik-modal__dialogPanelContainer__dialogPanel"
+      >
         <header
           v-if="title"
           class="puik-modal__dialogPanelContainer__dialogPanel__header"

@@ -41,6 +41,7 @@ export interface AvatarProps {
   lastName?: string
   singleInitial?: Boolean
   dataTest?: string
+  ariaLabel?: string
 }
 
 export type AvatarInstance = InstanceType<typeof Avatar>;

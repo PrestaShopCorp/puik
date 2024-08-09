@@ -1,5 +1,10 @@
 <template>
-  <div :class="['puik-card', `puik-card--${variant}`]">
+  <div
+    v-bind="ariaLabel ? { 'aria-label': ariaLabel } : {}"
+    :class="['puik-card', `puik-card--${variant}`]"
+    role="region"
+    tabindex="0"
+  >
     <slot />
   </div>
 </template>

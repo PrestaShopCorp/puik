@@ -1,4 +1,5 @@
 @use './common/typography.scss';
+@use './common/scrollbar.scss';
 
 .puik-modal {
   @apply relative z-50;
@@ -7,7 +8,7 @@
     @apply invisible;
   }
   .puik-modal__dialogPanelContainer__dialogPanel {
-    @apply w-full;
+    @apply w-full focus-visible:outline-none;
   }
   &--destructive {
     .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
@@ -42,7 +43,7 @@
   }
 
   &__dialogPanelContainer {
-    @apply fixed max-h-full bg-primary-700/50 inset-0 flex justify-center items-end sm:items-center;
+    @apply fixed p-5 max-h-full bg-primary-700/50 inset-0 flex justify-center items-end sm:items-center;
     &__dialogPanel {
       @apply max-h-full
         flex
@@ -76,11 +77,13 @@
       }
 
       &__content {
-        @apply overflow-hidden overflow-y-auto flex flex-1 text-primary-800;
+        @extend .puik-scrollbar;
+        @apply mb-[56px] overflow-hidden overflow-y-auto flex flex-1 text-primary-800;
       }
 
       &__footer {
-        @apply flex flex-col gap-4 sm:flex-row;
+        @extend .puik-scrollbar;
+        @apply fixed bottom-0 right-5 left-5 p-2 max-w-[calc(100%-40px)] overflow-x-scroll bg-white flex flex-col gap-4 sm:flex-row;
 
         &__button {
           &--main {

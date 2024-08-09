@@ -12,6 +12,7 @@ export enum PuikCardVariants {
 
 export interface CardProps {
   variant?: PuikCardVariants | `${PuikCardVariants}`
+  ariaLabel?: string
 }
 
 export type CardInstance = InstanceType<typeof Card>;

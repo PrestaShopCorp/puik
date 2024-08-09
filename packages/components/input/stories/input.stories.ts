@@ -25,6 +25,17 @@ export default {
     id: {
       description: 'Set the id of the input'
     },
+    label: {
+      description: 'Set the input label for screen readers',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     placeholder: {
       description: 'Set the placeholder of the input'
     },

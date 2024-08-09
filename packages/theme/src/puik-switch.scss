@@ -16,9 +16,6 @@
         @apply bg-green-100;
       }
     }
-    &__screen-readers {
-      @apply sr-only;
-    }
     &__toggle {
       @apply inline-block w-4 h-4 transform bg-white rounded-full translate-x-0.5 transition duration-200 ease-in-out;
       &--enabled {

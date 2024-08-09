@@ -49,4 +49,14 @@ describe('Badge tests', () => {
     factory({ dataTest: 'test' });
     expect(findBadge().attributes('data-test')).toBe('test');
   });
+
+  it('should have an aria-label attribute', () => {
+    factory({ ariaLabel: 'Test Badge' });
+    expect(findBadge().attributes('aria-label')).toBe('Test Badge');
+  });
+
+  it('should have an aria-live attribute', () => {
+    factory({ ariaLive: 'assertive' });
+    expect(findBadge().attributes('aria-live')).toBe('assertive');
+  });
 });

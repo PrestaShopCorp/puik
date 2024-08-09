@@ -5,8 +5,14 @@
       `puik-alert--${variant}`,
       { 'puik-alert--no-borders': disableBorders },
     ]"
+    role="alert"
+    v-bind="{
+      ...(title && title.trim() && { 'aria-labelledby': `title-${ariaId}` }),
+      ...(($slots.default || (description && description.trim())) && { 'aria-describedby': `description-${ariaId}` })
+    }"
     :aria-live="ariaLive"
     :data-test="dataTest"
+    tabindex="0"
   >
     <div class="puik-alert__container">
       <div class="puik-alert__content">
@@ -16,26 +22,31 @@
           class="puik-alert__icon"
         />
         <div class="puik-alert__text">
-          <p
+          <h4
             v-if="title"
+            :id="`title-${ariaId}`"
             class="puik-alert__title"
             :data-test="dataTest != undefined ? `title-${dataTest}` : undefined"
           >
             {{ title }}
-          </p>
-          <span
+          </h4>
+          <p
             v-if="$slots.default || description"
+            :id="`description-${ariaId}`"
             class="puik-alert__description"
             :data-test="
               dataTest != undefined ? `description-${dataTest}` : undefined
             "
-          ><slot>{{ description }}</slot></span>
+          >
+            <slot>{{ description }}</slot>
+          </p>
         </div>
       </div>
       <PuikLink
         v-if="linkLabel"
         class="puik-alert__link"
         :data-test="dataTest != undefined ? `link-${dataTest}` : undefined"
+        tabindex="0"
         @click="clickLink"
       >
         {{ linkLabel }}
@@ -65,9 +76,11 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { generateId } from '@prestashopcorp/puik-utils';
 import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { PuikLink } from '@prestashopcorp/puik-components/link';
+import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 import { PuikAlertVariants, ICONS } from './alert';
 import type { AlertProps, AlertEmits } from './alert';
 defineOptions({
@@ -76,10 +89,12 @@ defineOptions({
 
 const props = withDefaults(defineProps<AlertProps>(), {
   variant: PuikAlertVariants.Success,
-  ariaLive: 'polite'
+  ariaLive: PuikAriaLive.Polite
 });
 
 const emit = defineEmits<AlertEmits>();
+
+const ariaId = `${generateId()}`;
 
 const icon = computed(() => ICONS[props.variant]);
 

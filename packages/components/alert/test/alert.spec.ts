@@ -102,4 +102,27 @@ describe('Alert tests', () => {
     expect(findCloseButton().attributes('data-test')).toBe('close-alert');
     expect(findLink().attributes('data-test')).toBe('link-alert');
   });
+
+  it('should set the aria-labelledby and aria-describedby attributes correctly', () => {
+    const ariaId = 'test-id';
+    factory({
+      title: 'Test Title',
+      description: 'Test Description'
+    }, {
+      attrs: {
+        'aria-labelledby': `title-${ariaId}`,
+        'aria-describedby': `description-${ariaId}`
+      }
+    });
+
+    expect(findAlert().attributes('aria-labelledby')).toBe(`title-${ariaId}`);
+    expect(findAlert().attributes('aria-describedby')).toBe(`description-${ariaId}`);
+  });
+
+  it('should set the aria-live attribute correctly', () => {
+    factory({
+      ariaLive: 'assertive'
+    });
+    expect(findAlert().attributes('aria-live')).toBe('assertive');
+  });
 });

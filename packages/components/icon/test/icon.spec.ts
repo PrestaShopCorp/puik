@@ -80,4 +80,19 @@ describe('Icon tests', () => {
     factory({ icon: 'check', dataTest: 'test' });
     expect(findIcon().attributes('data-test')).toBe('test');
   });
+
+  it('should have an aria-label attribute', () => {
+    factory({ icon: 'check', ariaLabel: 'check icon' });
+    expect(findIcon().attributes('aria-label')).toBe('check icon');
+  });
+
+  it('should use icon content as aria-label if ariaLabel is not provided', () => {
+    factory({ icon: 'check' });
+    expect(findIcon().attributes('aria-label')).toBe('check icon');
+  });
+
+  it('should have a role attribute set to img', () => {
+    factory({ icon: 'check' });
+    expect(findIcon().attributes('role')).toBe('img');
+  });
 });

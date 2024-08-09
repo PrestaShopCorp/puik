@@ -11,12 +11,15 @@
       { 'puik-link--articles': articles },
     ]"
     :data-test="dataTest"
+    role="link"
+    :aria-label="ariaLabel"
   >
     <slot />
 
     <span
       v-if="props.target === PuikLinkTargetVariants.Blank"
       class="puik-link__target__icon"
+      aria-hidden="true"
     >
       {{ TARGET_BLANK_ICON }}
     </span>

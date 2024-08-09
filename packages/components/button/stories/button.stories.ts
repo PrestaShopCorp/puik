@@ -83,6 +83,21 @@ export default {
       control: 'text',
       description:
         'Set a data-test attribute to the button `${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`'
+    },
+    ariaLabel: {
+      description: 'Set the aria-label attribute for accessibility',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    disabledReason: {
+      control: 'text',
+      description: 'Set the aria-describedby attribute for accessibility if disabled'
     }
   },
   args: {
@@ -91,6 +106,7 @@ export default {
     fluid: false,
     wrapLabel: true,
     disabled: false,
+    disabledReason: 'Reason not specified',
     leftIcon: '',
     rightIcon: '',
     to: undefined,
@@ -163,7 +179,26 @@ const ButtonTemplate = (args: Args) => ({
   `
 });
 
-const AllVariantTemplate: StoryFn = (args: Args, storyContext) => ({
+const AllCommonVariantsTemplate: StoryFn = (args: Args, storyContext) => ({
+  components: { PuikButton },
+  setup() {
+    const variants = storyContext.argTypes.variant.options;
+    return {
+      args,
+      variants
+    };
+  },
+  template: `
+    <div class="flex flex-row flex-wrap items-center gap-4">
+      <template v-for="(variant, i) in variants" :key="i">
+        <puik-button v-if="!variant.includes('reverse')" v-bind="args" :variant="variant">
+          {{ variant }} Button
+        </puik-button>
+      </template>
+    </div>
+  `
+});
+const AllVariantsTemplate: StoryFn = (args: Args, storyContext) => ({
   components: { PuikButton },
   setup() {
     const variants = storyContext.argTypes.variant.options;
@@ -183,6 +218,26 @@ const AllVariantTemplate: StoryFn = (args: Args, storyContext) => ({
   `
 });
 
+const AllReversedVariantsTemplate: StoryFn = (args: Args, storyContext) => ({
+  components: { PuikButton },
+  setup() {
+    const variants = storyContext.argTypes.variant.options;
+    return {
+      args,
+      variants
+    };
+  },
+  template: `
+    <div class="flex flex-row flex-wrap items-center gap-4">
+      <template v-for="(variant, i) in variants" :key="i">
+        <puik-button v-if="variant.includes('reverse')" v-bind="args" :variant="variant">
+          {{ variant }} Button
+        </puik-button>
+      </template>
+    </div>
+  `
+});
+
 export const Primary: StoryObj = {
   render: ButtonTemplate,
 
@@ -195,10 +250,10 @@ export const Primary: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button>My button</puik-button>
+  <puik-button variant="primary">My button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--primary">My button</button>
+  <button class="puik-button puik-button--primary puik-button--md" role="button" aria-label="puik-button">My button</button>
         `,
         language: 'html'
       }
@@ -208,23 +263,24 @@ export const Primary: StoryObj = {
 
 export const PrimaryReverse: StoryObj = {
   render: ButtonTemplate,
-
   args: {
     variant: 'primary-reverse'
   },
 
   parameters: {
+    backgrounds: {
+      default: 'dark'
+    },
     docs: {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button>My button</puik-button>
+  <puik-button variant="primary-reverse">My button</puik-button>
 
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--primary-reverse">My button</button>
         `,
-        language: 'html',
-        dark: true
+        language: 'html'
       }
     }
   }
@@ -261,6 +317,9 @@ export const SecondaryReverse: StoryObj = {
   },
 
   parameters: {
+    backgrounds: {
+      default: 'dark'
+    },
     docs: {
       source: {
         code: `
@@ -354,11 +413,14 @@ export const TextReverse: StoryObj = {
   },
 
   parameters: {
+    backgrounds: {
+      default: 'dark'
+    },
     docs: {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="text">My button</puik-button>
+  <puik-button variant="text-reverse">My button</puik-button>
 
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--text-reverse">My button</button>
@@ -463,13 +525,16 @@ export const Danger: StoryObj = {
 };
 
 export const Disabled: StoryObj = {
-  render: AllVariantTemplate,
+  render: AllVariantsTemplate,
 
   args: {
     disabled: true
   },
 
   parameters: {
+    backgrounds: {
+      default: 'light'
+    },
     docs: {
       source: {
         code: `
@@ -549,9 +614,31 @@ export const WithIcon: StoryObj = {
 };
 
 export const Variants: StoryObj = {
-  render: AllVariantTemplate,
+  render: AllCommonVariantsTemplate,
 
   parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button>My button</puik-button>
+
+  <!--HTML/CSS Snippet-->
+  <button class="puik-button puik-button--{$variants}">My button</button>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const ReversedVariants: StoryObj = {
+  render: AllReversedVariantsTemplate,
+
+  parameters: {
+    backgrounds: {
+      default: 'dark'
+    },
     docs: {
       source: {
         code: `

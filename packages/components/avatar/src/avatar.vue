@@ -3,11 +3,14 @@
     :id="id"
     :class="`puik-avatar puik-avatar--${size} puik-avatar--${type} puik-avatar--${mode}`"
     :data-test="dataTest"
+    role="img"
+    :aria-label="ariaLabel || altText"
+    tabindex="0"
   >
     <img
       v-if="src && type == PuikAvatarType.Photo"
       :src="src"
-      :alt="alt"
+      :alt="alt || avatarAltDefault"
       :data-test="dataTest != undefined ? `image-${dataTest}` : undefined"
     >
     <puik-icon
@@ -16,12 +19,16 @@
       :font-size="ICONS_FONTSIZE[props.size]"
       :color="AVATAR_MODE[props.mode]"
       :data-test="dataTest != undefined ? `icon-${dataTest}` : undefined"
+      role="img"
+      :aria-label="ariaLabel ||iconAltText"
     />
     <div
       v-else
       :key="initials"
       :class="`puik-avatar_initials puik-avatar_initials--${size}`"
       :data-test="dataTest != undefined ? `initials-${dataTest}` : undefined"
+      role="img"
+      :aria-label="ariaLabel || initialsAltText"
     >
       {{ initials }}
     </div>
@@ -30,6 +37,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useLocale } from '@prestashopcorp/puik-locale';
 import { getInitialLetter } from '@prestashopcorp/puik-utils';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import {
@@ -53,6 +61,9 @@ const props = withDefaults(defineProps<AvatarProps>(), {
   lastName: ''
 });
 
+const { t } = useLocale();
+const avatarAltDefault = t('puik.avatar.altDefault');
+
 const initials = computed(() => {
   const firstInitial = props.firstName
     ? getInitialLetter(props.firstName, 0)
@@ -72,6 +83,19 @@ const initials = computed(() => {
 
   return initialsValue;
 });
+
+const altText = computed(() => {
+  if (props.type === PuikAvatarType.Photo) {
+    return props.alt || avatarAltDefault;
+  } else if (props.type === PuikAvatarType.Icon) {
+    return props.icon || avatarAltDefault;
+  } else {
+    return initials.value;
+  }
+});
+
+const iconAltText = computed(() => props.icon || avatarAltDefault);
+const initialsAltText = computed(() => initials.value);
 </script>
 
 <style lang="scss">

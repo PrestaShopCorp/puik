@@ -1,9 +1,13 @@
 import { action } from '@storybook/addon-actions';
+import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 import { PuikAlert, PuikAlertVariants } from '@prestashopcorp/puik-components';
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
 const alertVariants = Object.values(PuikAlertVariants);
 const alertVariantsSummary = alertVariants.join('|');
+
+const alertAriaLive = Object.values(PuikAriaLive);
+const alertAriaLiveSummary = alertAriaLive.join('|');
 
 export default {
   title: 'Components/Alert',
@@ -62,6 +66,19 @@ export default {
     },
     linkLabel: {
       description: 'Label of the link'
+    },
+    ariaLive: {
+      description: 'option for "aria-live" attribute',
+      control: 'select',
+      options: alertAriaLive,
+      table: {
+        defaultValue: {
+          summary: 'polite'
+        },
+        type: {
+          summary: alertAriaLiveSummary
+        }
+      }
     }
   },
   args: {

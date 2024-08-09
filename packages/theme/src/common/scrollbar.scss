@@ -1,0 +1,24 @@
+.puik-scrollbar {
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: theme('colors.primary.400');
+    border: 8px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 12px;
+    &:hover {
+      background-color: theme('colors.primary.500');
+    }
+  }
+}
