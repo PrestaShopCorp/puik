@@ -8,7 +8,7 @@
     @apply invisible;
   }
   .puik-modal__dialogPanelContainer__dialogPanel {
-    @apply w-full focus:outline-none;
+    @apply w-full focus-visible:outline-none;
   }
   &--destructive {
     .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
