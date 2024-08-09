@@ -39,6 +39,17 @@ export default {
       control: {
         type: 'boolean'
       }
+    },
+    ariaLabel: {
+      description: 'Set the aria-label attribute for accessibility (if this prop is not present the default aria-label will be set to the icon name)',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
     }
   }
 } as Meta;
@@ -69,11 +80,11 @@ export const Default = {
     docs: {
       source: {
         code: `
-        <!--VueJS Snippet-->
-        <puik-icon icon="check" font-size="70px" color="green" node-type="span" />
+  <!--VueJS Snippet-->
+  <puik-icon icon="check" font-size="70px" color="green" node-type="span" />
 
-        <!--HTML/CSS Snippet-->
-        <span class="puik-icon material-icons-round" style="font-size: 20px;">check</span>
+  <!--HTML/CSS Snippet-->
+  <span class="puik-icon" aria-label="check icon" role="img" style="font-size: 24px; color: green;">check</span>
         `,
         language: 'html'
       }

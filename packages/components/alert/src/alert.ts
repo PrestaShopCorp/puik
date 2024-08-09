@@ -1,5 +1,6 @@
 import '@prestashopcorp/puik-components/alert/style/css';
 import type Alert from './alert.vue';
+import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 
 export enum PuikAlertVariants {
   Success = 'success',
@@ -24,7 +25,7 @@ export interface AlertProps {
   buttonLabel?: string
   buttonWrapLabel?: boolean
   linkLabel?: string
-  ariaLive?: 'polite' | 'assertive'
+  ariaLive?: `${PuikAriaLive}`
   dataTest?: string
 }
 

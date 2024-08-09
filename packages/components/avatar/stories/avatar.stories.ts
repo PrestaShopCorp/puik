@@ -91,6 +91,17 @@ export default {
         }
       }
     },
+    ariaLabel: {
+      description: 'Set the aria-label attribute for accessibility',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     alt: {
       description: 'Image alt attribute if avatar type prop is set to "photo"',
       control: 'text',

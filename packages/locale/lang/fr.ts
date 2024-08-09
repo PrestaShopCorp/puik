@@ -1,6 +1,12 @@
 export default {
   name: 'fr',
   puik: {
+    common: {
+      ariaDisabledDescription: 'Raison non spécifiée'
+    },
+    avatar: {
+      altDefault: 'Image d\'avatar'
+    },
     input: {
       increase: 'Augmenter',
       decrease: 'diminuer'

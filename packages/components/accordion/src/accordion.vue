@@ -7,14 +7,21 @@
       'puik-accordion--disabled': disabled,
       'puik-accordion--border-none': borderNone,
     }"
+    role="region"
+    :aria-labelledby="`header-${id}`"
   >
     <button
+      :id="`header-${id}`"
+      ref="accordionHeader"
       :aria-expanded="isExpanded"
       :aria-controls="id"
       class="puik-accordion__header"
       :disabled="disabled"
       :data-test="dataTest != undefined ? `button-${dataTest}` : undefined"
+      role="button"
+      :aria-label="title"
       @click="onClick"
+      @keydown="onKeydown"
     >
       <puik-icon
         v-if="icon"
@@ -50,7 +57,9 @@
     <div
       v-show="isExpanded"
       :id="id"
+      ref="accordionContent"
       class="puik-accordion__content"
+      tabindex="-1"
     >
       <slot />
     </div>
@@ -58,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject } from 'vue';
+import { computed, inject, nextTick, ref } from 'vue';
 import { generateId } from '@prestashopcorp/puik-utils';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { accordionGroupKey } from './accordion-group';
@@ -84,9 +93,24 @@ const isExpanded = computed(() => {
 
 accordionsList.value.push({ name: props.name, expanded: isExpanded.value });
 
+const accordionContent = ref<HTMLDivElement | null>(null);
+const accordionHeader = ref<HTMLButtonElement | null>(null);
+
 function onClick() {
   handleChange(props.name);
   emit('click', props.name);
+  nextTick(() => {
+    if (isExpanded.value && accordionContent.value) {
+      accordionContent.value.focus();
+    }
+  });
+}
+
+function onKeydown(event: KeyboardEvent) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    onClick();
+  }
 }
 </script>
 

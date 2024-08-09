@@ -8,6 +8,8 @@ export interface RadioProps {
   modelValue: boolean | string | number
   value: boolean | string | number
   dataTest?: string
+  ariaLabel?: string
+  description?: string
 }
 
 export type RadioInstance = InstanceType<typeof Radio>;

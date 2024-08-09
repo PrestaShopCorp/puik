@@ -10,6 +10,17 @@ export default {
       control: 'text',
       description: 'Label of the radio button'
     },
+    ariaLabel: {
+      description: 'Set the aria-label attribute for accessibility',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     disabled: {
       control: 'boolean',
       description: 'Set if the radio button is disabled'

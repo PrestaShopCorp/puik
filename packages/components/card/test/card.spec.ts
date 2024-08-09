@@ -13,6 +13,7 @@ describe('Card tests', () => {
       ...options
     });
   };
+
   it('should be a vue instance', () => {
     factory();
     expect(wrapper).toBeTruthy();
@@ -41,5 +42,21 @@ describe('Card tests', () => {
     const variant = 'blue';
     factory({ variant });
     expect(wrapper.classes()).toContain(`puik-card--${variant}`);
+  });
+
+  it('should have the role attribute set to region', () => {
+    factory();
+    expect(wrapper.attributes('role')).toBe('region');
+  });
+
+  it('should have the tabindex attribute set to 0', () => {
+    factory();
+    expect(wrapper.attributes('tabindex')).toBe('0');
+  });
+
+  it('should set the aria-label attribute', () => {
+    const ariaLabel = 'Card description';
+    factory({ ariaLabel });
+    expect(wrapper.attributes('aria-label')).toBe(ariaLabel);
   });
 });

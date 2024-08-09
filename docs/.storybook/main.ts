@@ -1,4 +1,8 @@
-module.exports = {
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
+import type { StorybookConfig } from '@storybook/vue3-vite';
+
+const config: StorybookConfig = {
   stories: [
     '../stories/*/**.@(js|jsx|ts|tsx|mdx)',
     '../../packages/components/**/*.stories.@(js|jsx|ts|tsx|mdx)'
@@ -16,10 +20,12 @@ module.exports = {
     options: {}
   },
   async viteFinal(config) {
-    config.resolve.dedupe = ['@storybook/client-api'];
+    if (config.resolve) {
+      config.resolve.dedupe = ['@storybook/client-api'];
+    }
     config.css = {
       postcss: {
-        plugins: [require('tailwindcss'), require('autoprefixer')]
+        plugins: [tailwindcss, autoprefixer]
       }
     };
     return {
@@ -37,3 +43,5 @@ module.exports = {
     autodocs: true
   }
 };
+
+export default config;

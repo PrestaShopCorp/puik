@@ -25,6 +25,17 @@ export default {
         }
       }
     },
+    ariaLabel: {
+      description: 'Set the aria-label attribute for accessibility',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     dataTest: {
       control: 'text',
       description: 'Set the data-test attribute on the badge'

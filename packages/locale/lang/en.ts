@@ -1,13 +1,20 @@
 export default {
   name: 'en',
   puik: {
+    common: {
+      ariaDisabledDescription: 'reason not specified',
+      ariaLabelDefault: 'aria-label not specified'
+    },
+    avatar: {
+      altDefault: 'Avatar image'
+    },
     input: {
       increase: 'Increase',
       decrease: 'Decrease'
     },
     switch: {
-      enable: 'Enable',
-      disable: 'Disable'
+      enable: 'Enable :',
+      disable: 'Disable :'
     },
     label: {
       optional: 'Optional',

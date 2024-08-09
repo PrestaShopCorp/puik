@@ -24,6 +24,7 @@ export interface LinkProps {
   highContrast?: boolean
   articles?: boolean
   dataTest?: string
+  ariaLabel?: string
 }
 
 export type LinkInstance = InstanceType<typeof Link>;
