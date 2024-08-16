@@ -12,6 +12,10 @@ describe('Alert tests', () => {
   const findTitle = () => wrapper.find('.puik-alert__title')
   const findDesc = () => wrapper.find('.puik-alert__description')
   const findCloseButton = () => wrapper.find('.puik-alert__close')
+  const findButtonLeftIcon = () =>
+    wrapper.find('.puik-alert__button .puik-button__left-icon')
+  const findButtonRightIcon = () =>
+    wrapper.find('.puik-alert__button .puik-button__right-icon')
 
   const factory = (
     propsData: Record<string, any> = {},
@@ -45,6 +49,16 @@ describe('Alert tests', () => {
     expect(findButton().exists()).toBeTruthy()
     findButton().trigger('click')
     expect(wrapper.emitted('click')).toBeTruthy()
+  })
+
+  it('should display a button left icon', () => {
+    factory({ buttonLabel: 'Button', buttonLeftIcon: 'open_in_new' })
+    expect(findButtonLeftIcon().text()).toBe('open_in_new')
+  })
+
+  it('should display a button right icon', () => {
+    factory({ buttonLabel: 'Button', buttonRightIcon: 'open_in_new' })
+    expect(findButtonRightIcon().text()).toBe('open_in_new')
   })
 
   it('should display a title and a description', async () => {
