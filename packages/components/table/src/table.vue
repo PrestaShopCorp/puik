@@ -9,7 +9,7 @@
     >
       <thead class="puik-table__head">
         <tr>
-          <td :colspan="selectable ? headers.length +1 : headers.length">
+          <td :colspan="selectable || expandable ? headers.length +1 : headers.length">
             <div class="puik-table__head-separator" />
           </td>
         </tr>
@@ -38,6 +38,12 @@
             >
               {{ selectAllLabel }}
             </puik-checkbox>
+            <span
+              v-if="expandable"
+              class="puik-sr-only"
+            >
+              {{ t('puik.table.expandableHeaderLabel') }}
+            </span>
           </th>
 
           <th
@@ -88,6 +94,7 @@
                   "
                   variant="primary-reverse"
                   size="sm"
+                  :aria-label="sortIcon[header.value] === PuikTableSortIcon.Asc ? `${t('puik.table.sortableAscLabel')} ${header.value}` : sortIcon[header.value] === PuikTableSortIcon.Desc ? `${t('puik.table.sortableDescLabel')} ${header.value}` : `${t('puik.table.sortableDefaultLabel')} ${header.value}`"
                   @click="sortTable(header.value)"
                 />
               </div>
@@ -95,7 +102,7 @@
           </th>
         </tr>
         <tr>
-          <td :colspan="selectable ? headers.length +1 : headers.length">
+          <td :colspan="selectable || expandable ? headers.length +1 : headers.length">
             <div class="puik-table__head-separator" />
           </td>
         </tr>
@@ -127,6 +134,12 @@
             >
               {{ selectAllLabel }}
             </puik-checkbox>
+            <span
+              v-if="expandable"
+              class="puik-sr-only"
+            >
+              {{ t('puik.table.expandableHeaderLabel') }}
+            </span>
           </th>
 
           <th

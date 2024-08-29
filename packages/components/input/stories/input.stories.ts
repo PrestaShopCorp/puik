@@ -114,6 +114,17 @@ export default {
       description:
         'Set the data-test attribute on the input and error text elements `input-${dataTest}` `error-${dataTest}`',
       control: 'text'
+    },
+    ariaLabel: {
+      description: 'Set the aria-label attribute for accessibility',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
     }
   }
 } as Meta;

@@ -35,6 +35,7 @@
         :step="type === 'number' ? step : undefined"
         :data-test="dataTest != undefined ? `input-${dataTest}` : undefined"
         v-bind="$attrs"
+        :aria-label="ariaLabel ? ariaLabel : label ? label : 'undefined'"
         :aria-live="ariaLive"
         @focus="handleFocus"
         @blur="handleBlur"

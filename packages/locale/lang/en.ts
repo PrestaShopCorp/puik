@@ -25,6 +25,10 @@ export default {
       noResults: 'No results matched'
     },
     table: {
+      expandableHeaderLabel: 'header column for the expandable rows feature',
+      sortableDefaultLabel: 'click the button to sort in ascending order (currently the column is not sorted) for',
+      sortableAscLabel: 'click the button to sort in ascending order (currently column sorted in descending order) for',
+      sortableDescLabel: 'click the button to sort in descending order (currently column sorted in ascending order) for',
       selectLabel: 'Select item',
       unselectLabel: 'Unnselect item',
       selectAllLabel: 'Select all items',

@@ -16,6 +16,7 @@ export interface TextareaProps {
   autoGrow?: boolean
   rows?: number
   maxRows?: number
+  ariaLabel?: string
 }
 
 export type TextareaInstance = InstanceType<typeof Textarea>;

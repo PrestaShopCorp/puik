@@ -30,6 +30,7 @@ export interface InputProps {
   success?: boolean
   hideHint?: boolean
   dataTest?: string
+  ariaLabel?: string
   ariaLive?: `${PuikAriaLive}`
 }
 

@@ -26,6 +26,8 @@
         :disabled="disabled"
         :readonly="readonly"
         :required="required"
+        :aria-invalid="hasError ? 'true' : 'false'"
+        :aria-label="ariaLabel ?? 'undefined'"
         @focus="handleFocus"
         @blur="handleBlur"
       />
@@ -33,6 +35,8 @@
     <div
       v-if="$slots.hint || hasError"
       class="puik-textarea__hint"
+      role="alert"
+      aria-live="assertive"
     >
       <span
         v-show="!hideHint"

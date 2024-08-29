@@ -6,6 +6,8 @@
     :data-test="dataTest"
     @mouseover="updateTooltip"
     @mouseleave="start"
+    @focus="updateTooltip"
+    @blur="start"
   >
     <div
       ref="tooltipWrapper"
@@ -25,6 +27,7 @@
         class="puik-tooltip__tip"
         role="tooltip"
         :style="{ 'z-index': zindex, 'max-width': maxWidth }"
+        aria-live="polite"
       >
         <div class="puik-tooltip__tip__content">
           <span
