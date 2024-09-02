@@ -197,4 +197,48 @@ describe('Input tests', () => {
     expect(findField().attributes('data-test')).toBe('input-test');
     expect(findErrorMessage().attributes('data-test')).toBe('error-test');
   });
+
+  it('should render a search input', () => {
+    factory({ type: 'search' });
+    expect(findField().attributes('type')).toBe('search');
+  });
+
+  it('should render an email input', () => {
+    factory({ type: 'email' });
+    expect(findField().attributes('type')).toBe('email');
+  });
+
+  it('should render a URL input', () => {
+    factory({ type: 'url' });
+    expect(findField().attributes('type')).toBe('url');
+  });
+
+  it('should render a phone input', () => {
+    factory({ type: 'tel' });
+    expect(findField().attributes('type')).toBe('tel');
+  });
+
+  it('should render a custom aria-label', () => {
+    const ariaLabel = 'Custom Aria Label';
+    factory({ ariaLabel });
+    expect(findField().attributes('aria-label')).toBe(ariaLabel);
+  });
+
+  it('should render a custom aria-live', () => {
+    const ariaLive = 'assertive';
+    factory({ ariaLive });
+    expect(findField().attributes('aria-live')).toBe(ariaLive);
+  });
+
+  it('should render a custom name attribute', () => {
+    const name = 'custom-name';
+    factory({ name });
+    expect(findField().attributes('name')).toBe(name);
+  });
+
+  it('should render a custom autocomplete attribute', () => {
+    const autocomplete = 'on';
+    factory({ autocomplete });
+    expect(findField().attributes('autocomplete')).toBe(autocomplete);
+  });
 });

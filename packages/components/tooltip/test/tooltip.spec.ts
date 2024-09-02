@@ -84,4 +84,25 @@ describe('Tooltip tests', () => {
     expect(findDescription().attributes('data-test')).toBe('description-test');
     expect(findWrapper().attributes('data-test')).toBe('content-test');
   });
+
+  it('should not show tooltip if isDisabled is true', async () => {
+    await factory(
+      { isDisabled: true },
+      {
+        slots: {
+          default: '<button>Hover me</button>'
+        }
+      }
+    );
+    const button = wrapper.find('button');
+    await button.trigger('mouseover');
+    expect(findToolTip().isVisible()).toBe(false);
+  });
+
+  it('should apply custom styles to tooltip', async () => {
+    await factory({ maxWidth: '300px', zindex: 2000 });
+    const tooltipElement = findToolTip().element;
+    expect(tooltipElement.style.maxWidth).toBe('300px');
+    expect(tooltipElement.style.zIndex).toBe('2000');
+  });
 });
