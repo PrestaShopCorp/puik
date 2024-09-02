@@ -1,9 +1,13 @@
 import { ref } from 'vue';
+import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 import { PuikInput, PuikInputTypes } from '@prestashopcorp/puik-components';
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
 const inputTypes = Object.values(PuikInputTypes);
 const inputTypesSummary = inputTypes.join('|');
+
+const inputAriaLive = Object.values(PuikAriaLive);
+const inputAriaLiveSummary = inputAriaLive.join('|');
 
 export default {
   title: 'Components/Input',
@@ -25,7 +29,7 @@ export default {
     id: {
       description: 'Set the id of the input'
     },
-    label: {
+    srLabel: {
       description: 'Set the input label for screen readers',
       table: {
         defaultValue: {
@@ -123,6 +127,19 @@ export default {
         },
         type: {
           summary: 'string'
+        }
+      }
+    },
+    ariaLive: {
+      description: 'option for "aria-live" attribute',
+      control: 'select',
+      options: inputAriaLive,
+      table: {
+        defaultValue: {
+          summary: 'polite'
+        },
+        type: {
+          summary: inputAriaLiveSummary
         }
       }
     }

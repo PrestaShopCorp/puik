@@ -16,7 +16,7 @@ export interface InputProps {
   modelValue?: string | number
   type?: `${PuikInputTypes}`
   id?: string
-  label?: string
+  srLabel?: string
   placeholder?: string
   disabled?: boolean
   name?: string

@@ -4,11 +4,11 @@
     :data-test="dataTest"
   >
     <label
-      v-if="label"
+      v-if="srLabel"
       :for="id"
       class="puik-sr-only"
     >
-      {{ label }}
+      {{ srLabel }}
     </label>
     <div
       class="puik-input__wrapper"
@@ -35,7 +35,7 @@
         :step="type === 'number' ? step : undefined"
         :data-test="dataTest != undefined ? `input-${dataTest}` : undefined"
         v-bind="$attrs"
-        :aria-label="ariaLabel ? ariaLabel : label ? label : 'undefined'"
+        :aria-label="ariaLabel ? ariaLabel : srLabel ? srLabel : 'undefined'"
         :aria-live="ariaLive"
         @focus="handleFocus"
         @blur="handleBlur"

@@ -16,6 +16,7 @@ describe('Input tests', () => {
   const findRevealPassword = () => wrapper.find('.puik-input__reveal-password');
   const findPrepend = () => wrapper.find('.puik-input__prepend');
   const findAppend = () => wrapper.find('.puik-input__append');
+  const findSrLabel = () => wrapper.find('.puik-sr-only');
 
   const factory = (
     props?: InputProps,
@@ -240,5 +241,12 @@ describe('Input tests', () => {
     const autocomplete = 'on';
     factory({ autocomplete });
     expect(findField().attributes('autocomplete')).toBe(autocomplete);
+  });
+
+  it('should render a screen reader label', () => {
+    const srLabel = 'Screen Reader Label';
+    factory({ srLabel, id: 'input-id' });
+    expect(findSrLabel().text()).toBe(srLabel);
+    expect(findSrLabel().attributes('for')).toBe('input-id');
   });
 });
