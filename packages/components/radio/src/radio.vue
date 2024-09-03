@@ -4,41 +4,39 @@
     :data-test="dataTest"
   >
     <input
-      :id="id"
+      :id="id ?? refId"
       ref="radioInputRef"
       v-model="valueModel"
       v-bind="{
-        ...(label && label.trim() && { 'aria-labelledby': `label-${id}` }),
-        ...(description && description.trim() && { 'aria-describedby': `description-${id}` })
+        ...(label && label.trim() && { 'aria-labelledby': `label-${id ?? refId}` }),
+        ...(srDescriptionOnly && srDescriptionOnly.trim() && { 'aria-describedby': `sr-description-only-${id ?? refId}` } || ariaDescribedby && ariaDescribedby.trim() && { 'aria-describedby': ariaDescribedby }),
       }"
-      :aria-label="ariaLabel || label || 'undefined'"
+      :aria-label="ariaLabel || label ||'undefined'"
       :value="value"
       :checked="valueModel === value"
       :disabled="disabled"
       class="puik-radio__input"
       type="radio"
       :name="name"
-      :aria-checked="valueModel === value"
       :aria-disabled="disabled"
-      role="radio"
       :data-test="dataTest != undefined ? `input-${dataTest}` : undefined"
       @focus="handleFocus"
     >
     <label
       v-if="$slots.default || label"
-      :id="`label-${id}`"
-      :for="id"
+      :id="`label-${id ?? refId}`"
+      :for="id ??refId"
       class="puik-radio__label"
       :data-test="dataTest != undefined ? `label-${dataTest}` : undefined"
     >
       <slot>{{ label }}</slot>
     </label>
     <span
-      v-if="description"
-      :id="`description-${id}`"
-      class="puik-radio__description"
+      v-if="srDescriptionOnly"
+      :id="`sr-description-only-${id ?? refId}`"
+      class="puik-sr-only"
     >
-      {{ description }}
+      {{ srDescriptionOnly }}
     </span>
   </div>
 </template>
@@ -51,15 +49,16 @@ import type { RadioProps } from './radio';
 defineOptions({
   name: 'PuikRadio'
 });
+
 const props = defineProps<RadioProps>();
 const emit = defineEmits<{
   'update:modelValue': [value: boolean | string | number]
 }>();
+
+const refId = ref(`puik-radio-${generateId()}`);
+
 const isFocus = ref(false);
-const id = `puik-radio-${generateId()}`;
-
 const handleFocus = () => (isFocus.value = true);
-
 const valueModel = useVModel(props, 'modelValue', emit);
 </script>
 
