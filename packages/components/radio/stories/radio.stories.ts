@@ -295,14 +295,105 @@ export const Disabled: StoryObj = {
       source: {
         code: `
 <!--VueJS Snippet-->
-// const selectedValue = ref('otherValue');
-// unselected when modelValue !== value
+// const selectedValue = ref('firstValue');
 
 <puik-radio
   v-model="selectedValue"
   value="firstValue"
   label="Radio disabled"
   disabled
+/>
+
+<!--HTML/CSS Snippet-->
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const ariaDescribedby: StoryObj = {
+  render: () => ({
+    components: {
+      PuikRadio
+    },
+    setup() {
+      const selectedValue = ref('firstValue');
+      const description = 'description of the radio button';
+      return { selectedValue, description };
+    },
+    template: `
+    <div class="flex flex-col">
+      <puik-radio
+        v-model="selectedValue"
+        value="firstValue"
+        label="Radio button with description"
+        :aria-describedby="descriptionIdElement"
+      />
+      <span :id="descriptionIdElement" class="puik-body-small pl-7">{{ description }}</span>
+    </div>
+    `
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const selectedValue = ref('firstValue');
+// const description = 'description of the radio button';
+
+<div class="flex flex-col">
+  <puik-radio
+    v-model="selectedValue"
+    value="firstValue"
+    label="Radio button with description"
+    :aria-describedby="descriptionIdElement"
+  />
+  <span :id="descriptionIdElement" class="puik-body-small pl-7">{{ description }}</span>
+</div>
+
+<!--HTML/CSS Snippet-->
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const DescriptionForScreenReadersOnly: StoryObj = {
+  render: () => ({
+    components: {
+      PuikRadio
+    },
+    setup() {
+      const selectedValue = ref('firstValue');
+      const srDescription = 'description for screen readers only';
+      return { selectedValue, srDescription };
+    },
+    template: `
+    <puik-radio
+      v-model="selectedValue"
+      value="firstValue"
+      label="Radio button with hidden description for screen readers only"
+      :sr-description-only="srDescription"
+    />
+    `
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const selectedValue = ref('firstValue');
+// const srDescription = 'description for screen readers only';
+
+<puik-radio
+  v-model="selectedValue"
+  value="firstValue"
+  label="Radio button with hidden description for screen readers only"
+  :sr-description-only="srDescription"
 />
 
 <!--HTML/CSS Snippet-->
