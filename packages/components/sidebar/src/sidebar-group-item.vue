@@ -20,7 +20,7 @@
     </puik-accordion>
     <Menu v-else>
       <MenuButton
-        as="div"
+        as="template"
         class="puik-sidebar-group-item__menu-button"
       >
         <puik-button

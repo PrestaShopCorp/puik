@@ -30,8 +30,8 @@
       role="button"
       :aria-disabled="disabled ? 'true' : 'false'"
       @click="disabled ? '' : handleCloseEvent()"
-      @keydown.enter="disabled ? '' : handleCloseEvent()"
-      @keydown.space="disabled ? '' : handleCloseEvent()"
+      @keydown.enter.prevent="disabled ? '' : handleCloseEvent()"
+      @keydown.space.prevent="disabled ? '' : handleCloseEvent()"
     />
   </div>
 </template>

@@ -6,7 +6,7 @@
   &:hover:not(&--disabled, &--selected) {
     @apply bg-primary-200 text-primary-800;
   }
-  &--active:not(&--disabled, &--selected, &:hover) {
+  &--active:not(&--disabled, &:hover) {
     @apply ring ring-blue ring-inset rounded-lg;
   }
   &:active:not(&--disabled) {
