@@ -35,6 +35,7 @@ export interface SortableListProps {
   itemKey: string | ((item: any) => string | number | Symbol)
   tag?: string
   options?: any
+  dataTest?: string
 }
 
 export type SortableListEmits = {

@@ -2,6 +2,7 @@
   <div
     :id="listId"
     role="list"
+    :data-test="dataTest"
   >
     <Sortable
       :ref="props.listId"

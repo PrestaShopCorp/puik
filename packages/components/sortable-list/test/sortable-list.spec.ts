@@ -95,4 +95,11 @@ describe('SortableList tests', () => {
       expect(spy).toHaveBeenCalledWith(event, {});
     });
   });
+
+  it('should handle dataTest prop correctly', () => {
+    const list = [{ id: '1', title: 'Item 1' }, { id: '2', title: 'Item 2' }];
+    const dataTest = 'sortable-list-test';
+    factory({ listId: 'test', list, itemKey: 'id', dataTest });
+    expect(wrapper.attributes('data-test')).toBe(dataTest);
+  });
 });

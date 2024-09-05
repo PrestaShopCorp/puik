@@ -6644,8 +6644,8 @@ packages:
   vue-component-type-helpers@2.0.19:
     resolution: {integrity: sha512-cN3f1aTxxKo4lzNeQAkVopswuImUrb5Iurll9Gaw5cqpnbTAxtEMM1mgi6ou4X79OCyqYv1U1mzBHJkzmiK82w==}
 
-  vue-component-type-helpers@2.0.29:
-    resolution: {integrity: sha512-58i+ZhUAUpwQ+9h5Hck0D+jr1qbYl4voRt5KffBx8qzELViQ4XdT/Tuo+mzq8u63teAG8K0lLaOiL5ofqW38rg==}
+  vue-component-type-helpers@2.1.6:
+    resolution: {integrity: sha512-ng11B8B/ZADUMMOsRbqv0arc442q7lifSubD0v8oDXIFoMg/mXwAPUunrroIDkY+mcD0dHKccdaznSVp8EoX3w==}
 
   vue-demi@0.14.7:
     resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
@@ -9375,7 +9375,7 @@ snapshots:
       ts-dedent: 2.2.0
       type-fest: 2.19.0
       vue: 3.3.10(typescript@5.4.5)
-      vue-component-type-helpers: 2.0.29
+      vue-component-type-helpers: 2.1.6
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -14374,7 +14374,7 @@ snapshots:
 
   vue-component-type-helpers@2.0.19: {}
 
-  vue-component-type-helpers@2.0.29: {}
+  vue-component-type-helpers@2.1.6: {}
 
   vue-demi@0.14.7(vue@3.3.10(typescript@5.4.5)):
     dependencies:

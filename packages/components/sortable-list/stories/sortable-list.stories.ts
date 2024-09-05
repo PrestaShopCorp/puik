@@ -278,6 +278,10 @@ enum PuikSortableListIconPosition {
         },
         defaultValue: { summary: 'right' }
       }
+    },
+    dataTest: {
+      control: 'text',
+      description: 'Set the data-test attribute on the sortable list'
     }
   },
   args: {
