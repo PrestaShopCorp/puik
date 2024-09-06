@@ -1,7 +1,6 @@
 <template>
   <div
     :id="listId"
-    role="list"
     :data-test="dataTest"
   >
     <Sortable
@@ -25,19 +24,21 @@
       @clone="handleEvents"
       @keydown="handleKeyDown($event)"
     >
-      <template #item="{element, index}">
-        <div
+      <template #item="{ element, index }">
+        <li
           :key="element"
           :data-item="JSON.stringify(element)"
           :class="['draggable', `draggable-${listId}`]"
           tabindex="0"
           :aria-label="`Item ${index + 1}`"
           :data-sortable-id="index"
+          :data-test="`${dataTest}-item-${index + 1}`"
         >
           <div class="puik-sortable-list_item">
             <span
               v-if="displayPositionNumbers"
               class="puik-sortable-list_item-index"
+              :data-test="`${dataTest}-list_item-index-${index + 1}`"
             >
               {{ $attrs.dataSortableId || index + 1 }}
             </span>
@@ -47,23 +48,27 @@
                 icon="drag_indicator"
                 color="#1D1D1B"
                 tabindex="-1"
+                :data-test="`${dataTest}-left-icon-${index + 1}`"
               />
               <img
                 v-if="element.imgSrc"
                 class="puik-sortable-list_item-img"
                 :src="element.imgSrc"
                 alt="img alt"
+                :data-test="`${dataTest}-img-${index + 1}`"
               >
               <div class="puik-sortable-list_item-content">
                 <p
                   v-if="element.title"
                   class="puik-sortable-list_item-content_title"
+                  :data-test="`${dataTest}-title-${index + 1}`"
                 >
                   {{ `${element?.title}` }}
                 </p>
                 <p
                   v-if="element.description"
                   class="puik-sortable-list_item-content_subtitle"
+                  :data-test="`${dataTest}-description-${index + 1}`"
                 >
                   {{ `${element?.description}` }}
                 </p>
@@ -78,17 +83,24 @@
                 icon="drag_indicator"
                 color="#1D1D1B"
                 tabindex="-1"
+                :data-test="`${dataTest}-right-icon-${index + 1}`"
               />
             </div>
           </div>
-        </div>
+        </li>
       </template>
     </Sortable>
   </div>
 </template>
 
 <script setup lang="ts">
-import { SortableListProps, SortableListEmits, SortableEvent, SortableMoveEvent, PuikSortableListIconPosition } from './sortable-list';
+import {
+  SortableListProps,
+  SortableListEmits,
+  SortableEvent,
+  SortableMoveEvent,
+  PuikSortableListIconPosition
+} from './sortable-list';
 import { PuikIcon } from '@prestashopcorp/puik-components';
 import { Sortable } from 'sortablejs-vue3';
 import { nextTick, ref } from 'vue';
@@ -98,7 +110,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SortableListProps>(), {
-  tag: 'div',
+  tag: 'ul',
   iconPosition: PuikSortableListIconPosition.Right,
   displayPositionNumbers: true,
   options: { animation: 150 }
@@ -126,11 +138,15 @@ const handleEvents = (event: SortableEvent) => {
     items = event.to.children;
   }
 
-  if (['add', 'remove'].includes(event.type) ||
-      (event.type === 'end' && event.from.children === event.to.children)) {
+  if (
+    ['add', 'remove'].includes(event.type) ||
+    (event.type === 'end' && event.from.children === event.to.children)
+  ) {
     for (let i = 0; i < items.length; i++) {
       items[i].setAttribute('data-sortable-id', i.toString());
-      const positionSpan = items[i].querySelector('.puik-sortable-list_item-index');
+      const positionSpan = items[i].querySelector(
+        '.puik-sortable-list_item-index'
+      );
       if (positionSpan) {
         positionSpan.textContent = (i + 1).toString();
       }
@@ -160,7 +176,9 @@ const handleKeyDown = (event: KeyboardEvent) => {
   const items = document.querySelectorAll(`.draggable-${props.listId}`);
   for (let i = 0; i < items.length; i++) {
     items[i].setAttribute('data-sortable-id', i.toString());
-    const positionSpan = items[i].querySelector('.puik-sortable-list_item-index');
+    const positionSpan = items[i].querySelector(
+      '.puik-sortable-list_item-index'
+    );
     if (positionSpan) {
       positionSpan.textContent = (i + 1).toString();
     }
@@ -189,7 +207,9 @@ const handleKeyDown = (event: KeyboardEvent) => {
         localList.value.splice(newIndex, 0, itemToMove);
         emit('list-changed', localList.value);
         nextTick(() => {
-          const newTarget = document.querySelector(`.draggable-${props.listId}[data-sortable-id="${newIndex}"]`) as HTMLElement;
+          const newTarget = document.querySelector(
+            `.draggable-${props.listId}[data-sortable-id="${newIndex}"]`
+          ) as HTMLElement;
           newTarget?.focus();
         });
       }
@@ -204,7 +224,9 @@ const handleKeyDown = (event: KeyboardEvent) => {
       }
 
       if (newIndex !== null) {
-        const newTarget = document.querySelector(`.draggable-${props.listId}[data-sortable-id="${newIndex}"]`) as HTMLElement;
+        const newTarget = document.querySelector(
+          `.draggable-${props.listId}[data-sortable-id="${newIndex}"]`
+        ) as HTMLElement;
         newTarget?.focus();
       }
     }
