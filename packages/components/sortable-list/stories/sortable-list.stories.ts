@@ -259,6 +259,7 @@ ListItem[]
     },
     tag: {
       control: 'select',
+      options: sortableListTagSummary,
       description: 'The HTML Tag of the sortable list container',
       table: {
         type: {
