@@ -38,7 +38,7 @@
             <span
               v-if="displayPositionNumbers"
               class="puik-sortable-list_item-index"
-              :data-test="`${dataTest}-list_item-index-${index + 1}`"
+              :data-test="`${dataTest}-list-item-index-${index + 1}`"
             >
               {{ $attrs.dataSortableId || index + 1 }}
             </span>
