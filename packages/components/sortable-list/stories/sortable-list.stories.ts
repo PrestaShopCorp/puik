@@ -1,5 +1,9 @@
 import { ref } from 'vue';
-import { PuikSortableList, PuikSortableListIconPosition, PuikIcon } from '@prestashopcorp/puik-components';
+import {
+  PuikSortableList,
+  PuikSortableListIconPosition,
+  PuikIcon
+} from '@prestashopcorp/puik-components';
 import { Meta, StoryFn, Args } from '@storybook/vue3';
 
 const sortableListIconPosition = Object.values(PuikSortableListIconPosition);
@@ -165,7 +169,8 @@ export default {
     },
     options: {
       control: 'object',
-      description: 'Options of the sortable list (see https://github.com/SortableJS/Sortable#options)',
+      description:
+        'Options of the sortable list (see https://github.com/SortableJS/Sortable#options)',
       table: {
         defaultValue: {
           summary: 'see details',
@@ -255,7 +260,7 @@ ListItem[]
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: 'div' }
+        defaultValue: { summary: 'ul' }
       }
     },
     iconPosition: {
@@ -290,7 +295,7 @@ enum PuikSortableListIconPosition {
     iconPosition: 'right',
     list: defaultList.value,
     itemKey: 'id',
-    tag: 'div'
+    tag: 'ul'
   }
 } as Meta;
 
