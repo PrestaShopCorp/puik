@@ -147,7 +147,6 @@ describe('SortableList tests', () => {
 
   it('should handle dataTest prop correctly', () => {
     const list = [
-      // with iconPosition right
       {
         id: '1',
         title: 'Item 1',
@@ -155,14 +154,18 @@ describe('SortableList tests', () => {
         imgSrc: 'https://t.ly/Ku50h',
         iconPosition: 'right'
       },
-      // with iconPosition left
-      { id: '2', title: 'Item 2', iconPosition: 'left' }
+      { id: '2', title: 'Item 2' }
     ];
     const dataTest = 'sortable-list-test';
 
-    factory({ listId: 'test', list, itemKey: 'id', dataTest });
+    factory({
+      listId: 'test',
+      list,
+      itemKey: 'id',
+      dataTest,
+      iconPosition: 'right'
+    });
     expect(wrapper.attributes('data-test')).toBe(dataTest);
-    // item 1
     expect(wrapper.find(`[data-test="${dataTest}-item-1"]`).exists()).toBe(
       true
     );
@@ -182,8 +185,16 @@ describe('SortableList tests', () => {
     expect(
       wrapper.find(`[data-test="${dataTest}-right-icon-1"]`).exists()
     ).toBe(true);
-    // item 2
-    expect(wrapper.find(`[data-test="${dataTest}-left-icon-2"]`).exists()).toBe(
+
+    // Test iconPosition left
+    factory({
+      listId: 'test',
+      list,
+      itemKey: 'id',
+      dataTest,
+      iconPosition: 'left'
+    });
+    expect(wrapper.find(`[data-test="${dataTest}-left-icon-1"]`).exists()).toBe(
       true
     );
   });
