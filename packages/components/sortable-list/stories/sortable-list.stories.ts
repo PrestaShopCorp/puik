@@ -258,11 +258,22 @@ ListItem[]
       }
     },
     tag: {
-      control: 'text',
+      control: 'select',
       description: 'The HTML Tag of the sortable list container',
       table: {
         type: {
-          summary: sortableListTagSummary
+          summary: sortableListTagSummary,
+          detail: `
+// Import
+Import type { PuikSortableListTag } from '@prestashopcorp/puik-components';
+
+// Details
+enum PuikSortableListTag {
+  Menu = 'menu',
+  Ol = 'ol',
+  Ul = 'ul',
+}
+`
         },
         defaultValue: { summary: 'ul' }
       }
