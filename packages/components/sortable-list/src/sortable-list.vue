@@ -100,6 +100,7 @@ import {
   SortableEvent,
   SortableMoveEvent,
   PuikSortableListIconPosition
+  , PuikSortableListTag
 } from './sortable-list';
 import { PuikIcon } from '@prestashopcorp/puik-components';
 import { Sortable } from 'sortablejs-vue3';
@@ -110,7 +111,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SortableListProps>(), {
-  tag: 'ul',
+  tag: PuikSortableListTag.Ul,
   iconPosition: PuikSortableListIconPosition.Right,
   displayPositionNumbers: true,
   options: { animation: 150 }

@@ -2,12 +2,16 @@ import { ref } from 'vue';
 import {
   PuikSortableList,
   PuikSortableListIconPosition,
-  PuikIcon
+  PuikIcon,
+  PuikSortableListTag
 } from '@prestashopcorp/puik-components';
 import { Meta, StoryFn, Args } from '@storybook/vue3';
 
 const sortableListIconPosition = Object.values(PuikSortableListIconPosition);
 const sortableListIconPositionSummary = sortableListIconPosition.join('|');
+
+const sortableListTag = Object.values(PuikSortableListTag);
+const sortableListTagSummary = sortableListTag.join('|');
 
 const itemKey = ref('id');
 
@@ -258,7 +262,7 @@ ListItem[]
       description: 'The HTML Tag of the sortable list container',
       table: {
         type: {
-          summary: 'string'
+          summary: sortableListTagSummary
         },
         defaultValue: { summary: 'ul' }
       }

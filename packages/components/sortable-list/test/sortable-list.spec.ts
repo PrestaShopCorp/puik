@@ -93,8 +93,8 @@ describe('SortableList tests', () => {
       { id: '1', title: 'Item 1' },
       { id: '2', title: 'Item 2' }
     ];
-    factory({ listId: 'test', list, itemKey: 'id', tag: 'section' });
-    expect(wrapper.find('section').exists()).toBe(true);
+    factory({ listId: 'test', list, itemKey: 'id', tag: 'menu' });
+    expect(wrapper.find('menu').exists()).toBe(true);
   });
 
   it('should handle custom-content slot correctly', () => {
