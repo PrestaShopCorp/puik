@@ -9,7 +9,7 @@
     "build": "vue-tsc --noEmit --project ./tsconfig.build.json && vite build"
   },
   "peerDependencies": {
-    "vue": "^3.3.0"
+    "vue": "^3.3.7"
   },
   "dependencies": {
     "@prestashopcorp/puik-components": "workspace:*",
@@ -19,7 +19,7 @@
     "@prestashopcorp/puik-theme": "workspace:*"
   },
   "devDependencies": {
-    "vue": "3.3.10"
+    "vue": "^3.3.7"
   },
   "files": [
     "dist",
