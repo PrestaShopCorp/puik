@@ -13,11 +13,11 @@
     "@prestashopcorp/puik-components": "workspace:*",
     "@prestashopcorp/puik-theme": "workspace:*",
     "unplugin-vue-components": "^0.25.0",
-    "vue": "^3.3.0"
+    "vue": "^3.3.7"
   },
   "devDependencies": {
-    "unplugin-vue-components": "^0.26.0",
-    "vue": "3.3.10"
+    "unplugin-vue-components": "<1.0.0",
+    "vue": "^3.3.7"
   },
   "sideEffects": false,
   "publishConfig": {
