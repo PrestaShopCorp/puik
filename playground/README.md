@@ -14,10 +14,13 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 
 The Playground is a test application built on Vue3 and Vue Router. To use it, follow the steps below:
 
-1. **Copy the example files**: The files `/src/views/VueComponentsViewExample.vue` and `/src/views/WebComponentsViewExample.vue` are example views that you can use as a starting point. Copy each of these files.
+1. **Copy the example files**: The files `/src/views/VueComponentsViewExample.vue`, `/src/views/WebComponentsViewExample.vue` and `/src/AppExample.vue` are example views that you can use as a starting point. Copy each of these files.
 
 2. **Rename the copied files**: Rename the copied example files by removing `Example` from their name. The files should be renamed as follows to match vue router configuration:
     - `/src/views/VueComponentsViewExample.vue` becomes `/src/views/VueComponentsView.vue`
     - `/src/views/WebComponentsViewExample.vue` becomes `/src/views/WebComponentsView.vue`
+    - `/src/AppExample.vue` becomes `/src/App.vue`
 
 3. **Modify the copied files**: Make the necessary modifications to the copied files based on your specific needs for the Playground.
+
+4. **Run**: `pnpm build` to update the css packages before run the project.
