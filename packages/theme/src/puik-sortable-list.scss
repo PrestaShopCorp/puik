@@ -1,0 +1,26 @@
+@use './common/typography.scss';
+
+.puik-sortable-list {
+    &_item {
+        @apply flex items-center cursor-move mb-2 bg-white;
+        &-index {
+            @extend .puik-body-large;
+            @apply p-4;
+        }
+        &-container {
+            @apply px-4 py-2 space-x-4 flex items-center grow border;
+        }
+        &-content{
+            @apply flex flex-col grow;
+            &_title {
+                @extend .puik-body-default-bold;
+            }
+            &_subtitle {
+                @extend .puik-body-small;
+            }
+        }
+        &-img {
+            @apply w-[75px] h-[38px] object-cover;
+        }
+    }
+}

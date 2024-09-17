@@ -32,3 +32,4 @@ export * from './tag';
 export * from './avatar';
 export * from './divider';
 export * from './notification-bar';
+export * from './sortable-list';
