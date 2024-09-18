@@ -29,12 +29,14 @@ export interface ButtonProps {
   fluid?: boolean
   wrapLabel?: boolean
   disabled?: boolean
+  disabledReason?: string
   leftIcon?: string
   rightIcon?: string
   to?: RouteLocationRaw
   href?: string
   value?: string | number | Record<string, any> | any[]
   dataTest?: string
+  ariaLabel?: string
 }
 
 export type ButtonInstance = InstanceType<typeof Button>;

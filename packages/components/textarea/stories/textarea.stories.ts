@@ -53,6 +53,17 @@ export default {
         }
       }
     },
+    ariaLabel: {
+      description: 'Set the aria-label attribute for accessibility',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     autofocus: {
       control: 'boolean',
       description: 'Set the autofocus attribute',

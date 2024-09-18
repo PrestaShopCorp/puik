@@ -3,6 +3,13 @@
     class="puik-input"
     :data-test="dataTest"
   >
+    <label
+      v-if="srLabel"
+      :for="id"
+      class="puik-sr-only"
+    >
+      {{ srLabel }}
+    </label>
     <div
       class="puik-input__wrapper"
       :class="inputClasses"
@@ -28,14 +35,24 @@
         :step="type === 'number' ? step : undefined"
         :data-test="dataTest != undefined ? `input-${dataTest}` : undefined"
         v-bind="$attrs"
+        :aria-label="ariaLabel ? ariaLabel : srLabel ? srLabel : 'undefined'"
+        :aria-live="ariaLive"
         @focus="handleFocus"
         @blur="handleBlur"
       >
       <span
         v-if="type === 'password'"
         class="puik-input__reveal-password"
+        role="button"
+        :aria-pressed="passwordIsVisible ? 'true' : 'false'"
+        tabindex="0"
         @click="togglePasswordVisibility"
-      >{{ passwordIsVisible ? 'visibility' : 'visibility_off' }}</span>
+        @keydown.enter="togglePasswordVisibility"
+        @keydown.space.prevent="togglePasswordVisibility"
+      >
+        {{ passwordIsVisible ? 'visibility' : 'visibility_off' }}
+      </span>
+
       <div
         v-else-if="$slots.append"
         class="puik-input__append"
@@ -61,6 +78,7 @@
       <div
         v-if="hasError"
         class="puik-input__hint__error"
+        role="alert"
       >
         <puik-icon
           icon="error"
@@ -77,8 +95,10 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import { computed, ref, useSlots } from 'vue';
+import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { slotIsEmpty, isNumber } from '@prestashopcorp/puik-utils';
 import PuikInputControls from './controls/controls.vue';
@@ -90,7 +110,8 @@ const props = withDefaults(defineProps<InputProps>(), {
   type: PuikInputTypes.Text,
   step: 1,
   min: Number.NEGATIVE_INFINITY,
-  max: Number.POSITIVE_INFINITY
+  max: Number.POSITIVE_INFINITY,
+  ariaLive: PuikAriaLive.Polite
 });
 const emit = defineEmits<{
   'update:modelValue': [value: string | number | undefined]

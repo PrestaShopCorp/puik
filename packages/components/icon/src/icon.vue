@@ -3,10 +3,12 @@
     :is="nodeType"
     class="puik-icon"
     :style="style"
-    :data-test="dataTest"
     :class="{
       'puik-icon--disabled': isDisabled,
     }"
+    :aria-label="computedAriaLabel"
+    role="img"
+    v-bind="dataTest ? { 'data-test': dataTest } : {}"
   >
     {{ icon }}
   </component>
@@ -37,6 +39,10 @@ const style = computed(() => {
     fontSize: fontSize.value,
     color: props.color
   };
+});
+
+const computedAriaLabel = computed(() => {
+  return props.ariaLabel || `${props.icon} icon`;
 });
 </script>
 

@@ -51,3 +51,6 @@
     @apply text-2xl/none;
   }
 }
+.puik-avatar:focus-visible {
+  @apply outline-1 outline-offset-[3px];
+}

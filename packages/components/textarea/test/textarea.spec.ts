@@ -131,4 +131,29 @@ describe('Textarea tests', () => {
     factory({ placeholder: text });
     expect(findField().attributes('placeholder')).toBe(text);
   });
+
+  it('should update modelValue', async () => {
+    const text = 'Updated text';
+    factory({ modelValue: text });
+    const textareaElement = findField().element as HTMLTextAreaElement;
+    expect(textareaElement.value).toBe(text);
+    await wrapper.setProps({ modelValue: 'New text' });
+    expect(textareaElement.value).toBe('New text');
+  });
+
+  it('should autofocus the textarea', () => {
+    factory({ autofocus: true });
+    expect(findField().attributes('autofocus')).toBeDefined();
+  });
+
+  it('should be required', () => {
+    factory({ required: true });
+    expect(findField().attributes('required')).toBeDefined();
+  });
+
+  it('should have an aria-label', () => {
+    const ariaLabel = 'Textarea label';
+    factory({ ariaLabel });
+    expect(findField().attributes('aria-label')).toBe(ariaLabel);
+  });
 });

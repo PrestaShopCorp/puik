@@ -1,5 +1,6 @@
 import '@prestashopcorp/puik-components/input/style/css';
 import type Input from './input.vue';
+import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 
 export enum PuikInputTypes {
   Text = 'text',
@@ -15,6 +16,7 @@ export interface InputProps {
   modelValue?: string | number
   type?: `${PuikInputTypes}`
   id?: string
+  srLabel?: string
   placeholder?: string
   disabled?: boolean
   name?: string
@@ -28,6 +30,8 @@ export interface InputProps {
   success?: boolean
   hideHint?: boolean
   dataTest?: string
+  ariaLabel?: string
+  ariaLive?: `${PuikAriaLive}`
 }
 
 export type InputInstance = InstanceType<typeof Input>;

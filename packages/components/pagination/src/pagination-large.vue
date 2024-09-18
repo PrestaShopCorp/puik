@@ -28,7 +28,6 @@
       <puik-select
         :key="page"
         :model-value="page"
-        :aria-label="t('puik.pagination.large.choosePage')"
         :disabled="disabled"
         class="puik-pagination__select"
         @update:model-value="emit('update:page', $event)"

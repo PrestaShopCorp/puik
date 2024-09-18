@@ -6,9 +6,50 @@ export default {
   title: 'Components/Radio',
   component: PuikRadio,
   argTypes: {
+    id: {
+      control: 'text',
+      description: '"id" attribute of the radio input (it is automatically generated if this prop is not present)'
+    },
+    name: {
+      control: 'text',
+      description: '"name" attributeof the radio input'
+    },
     label: {
       control: 'text',
-      description: 'Label of the radio button'
+      description: 'Label of the radio input'
+    },
+    ariaLabel: {
+      description: 'Set the aria-label attribute for accessibility',
+      table: {
+        defaultValue: {
+          summary: 'ariaLabel || label || "undefined"'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    ariaDescribedby: {
+      description: 'Set the aria-describedby attribute for accessibility (id of element that describes the input)',
+      table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    srDescriptionOnly: {
+      description: 'Set a description for screen readers only (the description is contained in an automatically generated hidden span element)',
+      table: {
+        defaultValue: {
+          summary: 'ariaLabel || label || "undefined"'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
     },
     disabled: {
       control: 'boolean',
@@ -43,11 +84,10 @@ export default {
     }
   },
   args: {
-    label: '',
+    label: 'label 1',
     disabled: false,
-    name: 'Slot by default',
-    value: '',
-    modelValue: ''
+    name: 'name-attribute',
+    value: 'firstValue'
   }
 } as Meta;
 
@@ -56,64 +96,71 @@ const Template: StoryFn = (args: Args) => ({
     PuikRadio
   },
   setup() {
-    const firstValue = ref('firstValue');
-    return { firstValue, args };
+    const selectedValue = ref('');
+    return { selectedValue, args };
   },
-  template:
-    '<puik-radio v-model="firstValue" value="firstValue" v-bind="args"><template v-if="args.default">{{ args.default }}</template></puik-radio>'
+  template: `
+  <div class="flex flex-col space-y-4">
+    <puik-radio
+      v-model="selectedValue"
+      v-bind="args"
+    >
+      <template v-if="args.default">
+      {{ args.default }}
+      </template>
+    </puik-radio>
+      
+    <puik-radio
+      v-model="selectedValue"
+      id="puik-radio-2"
+      :name="args.name"
+      value="secondValue"
+    >
+        label 2
+    </puik-radio>
+
+    <span>modelValue: {{ selectedValue }}</span>
+  </div>
+  `
 });
 
 export const Default = {
   render: Template,
-  args: {},
+  args: {
+    label: 'label 1',
+    disabled: false,
+    name: 'name-attribute',
+    value: 'firstValue',
+    modelValue: 'selectedValue'
+  },
 
   parameters: {
     docs: {
       source: {
         code: `
   <!--VueJS Snippet-->
-  <puik-radio
-    v-model="value"
-    :label="label"
-    :name="name"
-    :disabled="true|false"
-    :value="value"
-  ></puik-radio>
+  const selectedValue = ref('firstValue');
+  
+  <div class="flex flex-col space-y-4">
+    <puik-radio
+    v-model="selectedValue"
+    v-bind="args"
+    >
+      <template v-if="args.default">
+      {{ args.default }}
+      </template>
+    </puik-radio>
+      
+    <puik-radio
+      v-model="selectedValue"
+      id="puik-radio-2"
+      :name="args.name"
+      value="secondValue"
+    >
+        label 2
+    </puik-radio>
 
-  <!--HTML/CSS Snippet-->
-  <div class="puik-radio__group">
-      <input class="puik-radio__input" type="radio" />
-  </div>
-        `,
-        language: 'html'
-      }
-    }
-  }
-};
-
-export const WithoutLabel: StoryObj = {
-  render: () => ({
-    components: {
-      PuikRadio
-    },
-    setup() {
-      const firstValue = ref('firstValue');
-      return { firstValue };
-    },
-    template:
-      '<puik-radio v-model="firstValue" value="firstValue"></puik-radio>'
-  }),
-
-  parameters: {
-    docs: {
-      source: {
-        code: `
-  <!--VueJS Snippet-->
-  <puik-radio v-model="firstValue"></puik-radio>
-
-  <!--HTML/CSS Snippet-->
-  <div class="puik-radio__group">
-      <input class="puik-radio__input" type="radio" />
+    <span>modelValue: {{ selectedValue }}</span>
   </div>
         `,
         language: 'html'
@@ -123,34 +170,36 @@ export const WithoutLabel: StoryObj = {
 };
 
 export const LabelWithSlot: StoryObj = {
+  args: {
+    default: 'Radio Label with default slot'
+  },
   render: (args) => ({
     components: {
       PuikRadio
     },
     setup() {
-      const firstValue = ref('firstValue');
-      return { firstValue, args };
+      const selectedValue = ref('firstValue');
+      return { selectedValue, args };
     },
     template:
-      '<puik-radio v-model="firstValue" value="firstValue" >{{ args.default }}</puik-radio>'
+      '<puik-radio v-model="selectedValue" value="firstValue" >{{ args.default }}</puik-radio>'
   }),
 
   parameters: {
     docs: {
       source: {
         code: `
-  <!--VueJS Snippet-->
-  <puik-radio
-    v-model="firstValue"
-    value="firstValue"
-  >
-    Radio Label by slot
-  </puik-radio>
+<!--VueJS Snippet-->
+// const selectedValue = ref('firstValue');
 
-  <!--HTML/CSS Snippet-->
-  <div class="puik-radio__group">
-      <input class="puik-radio__input" type="radio" />
-  </div>
+<puik-radio
+  v-model="selectedValue"
+  value="firstValue"
+>
+  Radio Label with default slot
+</puik-radio>
+
+<!--HTML/CSS Snippet-->
   `,
         language: 'html'
       }
@@ -164,24 +213,28 @@ export const Selected: StoryObj = {
       PuikRadio
     },
     setup() {
-      const firstValue = ref('firstValue');
-      return { firstValue };
+      const selectedValue = ref('firstValue');
+      return { selectedValue };
     },
     template:
-      '<puik-radio v-model="firstValue" value="firstValue" label="Radio Label"></puik-radio>'
+      '<puik-radio v-model="selectedValue" value="firstValue" label="Radio selected"></puik-radio>'
   }),
 
   parameters: {
     docs: {
       source: {
         code: `
-  <!--VueJS Snippet-->
-  <puik-radio v-model="firstValue" value="firstValue" label="Radio Label"></puik-radio>
+<!--VueJS Snippet-->
+// const selectedValue = ref('firstValue');
+// selected when modelValue === value
 
-  <!--HTML/CSS Snippet-->
-  <div class="puik-radio__group">
-      <input class="puik-radio__input" type="radio" />
-  </div>
+<puik-radio
+  v-model="selectedValue"
+  value="firstValue"
+  label="Radio selected">
+/>
+
+<!--HTML/CSS Snippet-->
         `,
         language: 'html'
       }
@@ -195,25 +248,28 @@ export const Unselected: StoryObj = {
       PuikRadio
     },
     setup() {
-      const firstValue = ref('firstValue');
-      const secondValue = ref('secondValue');
-      return { firstValue, secondValue };
+      const selectedValue = ref('otherValue');
+      return { selectedValue };
     },
     template:
-      '<puik-radio v-model="firstValue" value="secondValue">Radio Label by slot</puik-radio>'
+      '<puik-radio v-model="selectedValue" value="firstValue" label="Radio unselected"></puik-radio>'
   }),
 
   parameters: {
     docs: {
       source: {
         code: `
-  <!--VueJS Snippet-->
-  <puik-radio v-model="firstValue" value="secondValue" >Radio Label by slot</puik-radio>
+<!--VueJS Snippet-->
+// const selectedValue = ref('otherValue');
+// unselected when modelValue !== value
 
-  <!--HTML/CSS Snippet-->
-  <div class="puik-radio__group">
-      <input class="puik-radio__input" type="radio" />
-  </div>
+<puik-radio
+  v-model="selectedValue"
+  value="firstValue"
+  label="Radio unselected">
+/>
+
+<!--HTML/CSS Snippet-->
         `,
         language: 'html'
       }
@@ -221,33 +277,34 @@ export const Unselected: StoryObj = {
   }
 };
 
-export const DisabledSelected: StoryObj = {
+export const Disabled: StoryObj = {
   render: () => ({
     components: {
       PuikRadio
     },
     setup() {
-      const firstValue = ref('firstValue');
-      return { firstValue };
+      const selectedValue = ref('firstValue');
+      return { selectedValue };
     },
-    template: `
-      <puik-radio v-model="firstValue" disabled label="Disabled On" value="firstValue"></puik-radio>
-      <puik-radio v-model="firstValue" label="Disabled Off" value="firstValue"></puik-radio>
-    `
+    template:
+      '<puik-radio v-model="selectedValue" value="firstValue" label="Radio disabled" disabled></puik-radio>'
   }),
 
   parameters: {
     docs: {
       source: {
         code: `
-  <!--VueJS Snippet-->
-  <puik-radio v-model="firstValue" disabled label="Disabled On" value="firstValue"></puik-radio>
-  <puik-radio v-model="firstValue" label="Disabled Off" value="firstValue"></puik-radio>
+<!--VueJS Snippet-->
+// const selectedValue = ref('firstValue');
 
-  <!--HTML/CSS Snippet-->
-  <div class="puik-radio__group puik-radio__group--disabled">
-      <input class="puik-radio__input" type="radio" disabled />
-  </div>
+<puik-radio
+  v-model="selectedValue"
+  value="firstValue"
+  label="Radio disabled"
+  disabled
+/>
+
+<!--HTML/CSS Snippet-->
         `,
         language: 'html'
       }
@@ -255,19 +312,26 @@ export const DisabledSelected: StoryObj = {
   }
 };
 
-export const DisabledUnselected: StoryObj = {
+export const ariaDescribedby: StoryObj = {
   render: () => ({
     components: {
       PuikRadio
     },
     setup() {
-      const firstValue = ref('firstValue');
-      const secondValue = ref('secondValue');
-      return { firstValue, secondValue };
+      const selectedValue = ref('firstValue');
+      const description = 'description of the radio button';
+      return { selectedValue, description };
     },
     template: `
-    <puik-radio v-model="firstValue" disabled label="Disabled On" value="secondValue"></puik-radio>
-    <puik-radio v-model="firstValue" label="Disabled Off" value="secondValue"></puik-radio>
+    <div class="flex flex-col">
+      <puik-radio
+        v-model="selectedValue"
+        value="firstValue"
+        label="Radio button with description"
+        :aria-describedby="descriptionIdElement"
+      />
+      <span :id="descriptionIdElement" class="puik-body-small pl-7">{{ description }}</span>
+    </div>
     `
   }),
 
@@ -275,14 +339,64 @@ export const DisabledUnselected: StoryObj = {
     docs: {
       source: {
         code: `
-  <!--VueJS Snippet-->
-  <puik-radio v-model="firstValue" disabled label="Disabled On" value="secondValue"></puik-radio>
-  <puik-radio v-model="firstValue" label="Disabled Off" value="secondValue"></puik-radio>
+<!--VueJS Snippet-->
+// const selectedValue = ref('firstValue');
+// const description = 'description of the radio button';
 
-  <!--HTML/CSS Snippet-->
-  <div class="puik-radio__group puik-radio__group--disabled">
-      <input class="puik-radio__input" type="radio" disabled />
-  </div>
+<div class="flex flex-col">
+  <puik-radio
+    v-model="selectedValue"
+    value="firstValue"
+    label="Radio button with description"
+    :aria-describedby="descriptionIdElement"
+  />
+  <span :id="descriptionIdElement" class="puik-body-small pl-7">{{ description }}</span>
+</div>
+
+<!--HTML/CSS Snippet-->
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const DescriptionForScreenReadersOnly: StoryObj = {
+  render: () => ({
+    components: {
+      PuikRadio
+    },
+    setup() {
+      const selectedValue = ref('firstValue');
+      const srDescription = 'description for screen readers only';
+      return { selectedValue, srDescription };
+    },
+    template: `
+    <puik-radio
+      v-model="selectedValue"
+      value="firstValue"
+      label="Radio button with hidden description for screen readers only"
+      :sr-description-only="srDescription"
+    />
+    `
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const selectedValue = ref('firstValue');
+// const srDescription = 'description for screen readers only';
+
+<puik-radio
+  v-model="selectedValue"
+  value="firstValue"
+  label="Radio button with hidden description for screen readers only"
+  :sr-description-only="srDescription"
+/>
+
+<!--HTML/CSS Snippet-->
         `,
         language: 'html'
       }

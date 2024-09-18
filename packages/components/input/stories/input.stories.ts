@@ -1,9 +1,13 @@
 import { ref } from 'vue';
+import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 import { PuikInput, PuikInputTypes } from '@prestashopcorp/puik-components';
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
 const inputTypes = Object.values(PuikInputTypes);
 const inputTypesSummary = inputTypes.join('|');
+
+const inputAriaLive = Object.values(PuikAriaLive);
+const inputAriaLiveSummary = inputAriaLive.join('|');
 
 export default {
   title: 'Components/Input',
@@ -24,6 +28,17 @@ export default {
     },
     id: {
       description: 'Set the id of the input'
+    },
+    srLabel: {
+      description: 'Set the input label for screen readers',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
     },
     placeholder: {
       description: 'Set the placeholder of the input'
@@ -103,6 +118,30 @@ export default {
       description:
         'Set the data-test attribute on the input and error text elements `input-${dataTest}` `error-${dataTest}`',
       control: 'text'
+    },
+    ariaLabel: {
+      description: 'Set the aria-label attribute for accessibility',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    ariaLive: {
+      description: 'option for "aria-live" attribute',
+      control: 'select',
+      options: inputAriaLive,
+      table: {
+        defaultValue: {
+          summary: 'polite'
+        },
+        type: {
+          summary: inputAriaLiveSummary
+        }
+      }
     }
   }
 } as Meta;

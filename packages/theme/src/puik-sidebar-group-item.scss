@@ -43,10 +43,6 @@
     }
   }
 
-  &__menu-button {
-    @apply w-full;
-  }
-
   &__collapsed-button {
     @apply flex items-center justify-start py-4 sm:py-2;
     height: unset;

@@ -7,7 +7,10 @@
     @close="sendCloseModalEvent()"
   >
     <div class="puik-modal__dialogPanelContainer">
-      <DialogPanel class="puik-modal__dialogPanelContainer__dialogPanel">
+      <DialogPanel
+        tabindex="0"
+        class="puik-modal__dialogPanelContainer__dialogPanel"
+      >
         <header
           v-if="title"
           class="puik-modal__dialogPanelContainer__dialogPanel__header"
@@ -60,6 +63,20 @@
           class="puik-modal__dialogPanelContainer__dialogPanel__footer"
         >
           <puik-button
+            v-if="PuikModalVariants.Dialog === variant && sideButtonText"
+            class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--side"
+            variant="text"
+            :data-test="
+              dataTest != undefined ? `sideButton-${dataTest}` : undefined
+            "
+            @click="$emit('button-side')"
+          >
+            {{ sideButtonText }}
+          </puik-button>
+          <span
+            class="puik-modal__dialogPanelContainer__dialogPanel__footer__spacer"
+          />
+          <puik-button
             v-if="secondButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--second"
             :variant="secondButtonVariant"
@@ -81,20 +98,6 @@
             @click="$emit('button-main')"
           >
             {{ mainButtonText }}
-          </puik-button>
-          <span
-            class="puik-modal__dialogPanelContainer__dialogPanel__footer__spacer"
-          />
-          <puik-button
-            v-if="PuikModalVariants.Dialog === variant && sideButtonText"
-            class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--side"
-            variant="text"
-            :data-test="
-              dataTest != undefined ? `sideButton-${dataTest}` : undefined
-            "
-            @click="$emit('button-side')"
-          >
-            {{ sideButtonText }}
           </puik-button>
         </footer>
       </DialogPanel>

@@ -1,6 +1,12 @@
 export default {
   name: 'fr',
   puik: {
+    common: {
+      ariaDisabledDescription: 'Raison non spécifiée'
+    },
+    avatar: {
+      altDefault: 'Image d\'avatar'
+    },
     input: {
       increase: 'Augmenter',
       decrease: 'diminuer'
@@ -18,6 +24,10 @@ export default {
       noResults: 'Aucun résultat'
     },
     table: {
+      expandableHeaderLabel: 'colonne d\'en-tête pour la fonctionnalité de lignes extensibles',
+      sortableDefaultLabel: 'click the button to sort in ascending order (currently the column is not sorted) for',
+      sortableAscLabel: 'click the button to sort in ascending order (currently column sorted in descending order) for',
+      sortableDescLabel: 'click the button to sort in descending order (currently column sorted in ascending order) for',
       selectLabel: 'Cocher',
       unselectLabel: 'Décocher',
       selectAllLabel: 'Tout cocher',

@@ -26,7 +26,12 @@
     <PuikIcon
       icon="close"
       class="puik-chip__close"
+      tabindex="0"
+      role="button"
+      :aria-disabled="disabled ? 'true' : 'false'"
       @click="disabled ? '' : handleCloseEvent()"
+      @keydown.enter.prevent="disabled ? '' : handleCloseEvent()"
+      @keydown.space.prevent="disabled ? '' : handleCloseEvent()"
     />
   </div>
 </template>
@@ -46,7 +51,8 @@ defineOptions({
 
 withDefaults(defineProps<ChipProps>(), {
   size: PuikChipSizeVariants.Default,
-  tooltipPosition: PuikTooltipPositions.Bottom
+  tooltipPosition: PuikTooltipPositions.Bottom,
+  disabled: false
 });
 const emit = defineEmits(['close']);
 
