@@ -174,8 +174,17 @@ export default {
     options: {
       control: 'object',
       description:
-        'Options of the sortable list (see https://github.com/SortableJS/Sortable#options)',
+        'Options of the sortable list',
       table: {
+        type: {
+          summary: 'type SortableOptionsProp',
+          detail: `
+// see https://github.com/SortableJS/Sortable#options (see details for default values)
+
+// Import
+import { type SortableOptions } from '@prestashopcorp/puik-components'
+`
+        },
         defaultValue: {
           summary: 'see details',
           detail: `
@@ -508,7 +517,9 @@ export const Shared = {
       source: {
         code: `
 <!--VueJS Snippet-->
-let options = {
+import { type SortableOptions } from '@prestashopcorp/puik-components';
+
+let options: SortableOptionsProp = {
   group: "shared",  // Name of the group for shared sortable lists
 };
 
