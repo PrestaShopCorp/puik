@@ -237,12 +237,14 @@
                   </puik-checkbox>
                   <PuikIcon
                     v-if="expandable"
+                    tabindex="0"
                     :class="[
                       { 'puik-icon__expand': expandedRows.includes(rowIndex) },
                     ]"
                     icon="keyboard_arrow_down"
                     font-size="24"
                     @click="expandRow(rowIndex)"
+                    @keydown.space.prevent="expandRow(rowIndex)"
                   />
                 </div>
               </td>
