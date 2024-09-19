@@ -1,5 +1,20 @@
 # @prestashopcorp/puik
 
+## 2.2.0
+
+### Minor Changes
+
+- release v2.2.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @prestashopcorp/puik-tailwind-preset@2.2.0
+  - @prestashopcorp/puik-web-components@2.2.0
+  - @prestashopcorp/puik-components@2.2.0
+  - @prestashopcorp/puik-resolver@4.0.0
+  - @prestashopcorp/puik-theme@2.2.0
+
 ## 2.1.0
 
 ### Minor Changes

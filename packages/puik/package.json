@@ -3,7 +3,7 @@
   "description": "PUIK - This includes all public packages of PrestaShop UI kit.",
   "license": "MIT",
   "author": "Prestashop",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "type": "module",
   "scripts": {
     "build": "vue-tsc --noEmit --project ./tsconfig.build.json && vite build"
