@@ -61,6 +61,7 @@ export interface TableProps {
   fullWidth?: boolean
   stickyFirstCol?: boolean
   stickyLastCol?: boolean
+  dataTest?: string
 }
 
 export type TableInstance = InstanceType<typeof Table>;
