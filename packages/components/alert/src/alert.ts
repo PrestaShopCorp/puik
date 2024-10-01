@@ -20,19 +20,27 @@ export interface AlertProps {
   title?: string
   description?: string
   variant?: `${PuikAlertVariants}`
-  disableBorders?: boolean
   isClosable?: boolean
+  disableBorders?: boolean
   buttonLabel?: string
-  buttonWrapLabel?: boolean
   linkLabel?: string
+  buttonWrapLabel?: boolean
+  leftIconBtn?: string
+  rightIconBtn?: string
+  leftIconLink?: string
+  rightIconLink?: string
+  internalLink?: string
+  externalLink?: string
   ariaLive?: `${PuikAriaLive}`
+  ariaLabelBtn?: string
+  ariaLabelLink?: string
   dataTest?: string
 }
 
 export type AlertEmits = {
   click: [event: Event]
-  close: [event: Event]
   clickLink: [event: Event]
+  close: [event: Event]
 };
 
 export type AlertInstance = InstanceType<typeof Alert>;
