@@ -42,17 +42,31 @@
           </p>
         </div>
       </div>
-      <PuikLink
+      <PuikButton
         v-if="linkLabel"
+        v-bind="{
+          ...(leftIconLink ? { 'left-icon': leftIconLink } : {}),
+          ...(rightIconLink ? { 'right-icon': rightIconLink } : {}),
+          ...(internalLink ? { 'to': internalLink } : {}),
+          ...(externalLink ? { 'href': externalLink } : {}),
+          ...(ariaLabelLink ? { 'aria-label': ariaLabelLink } : {}),
+        }"
         class="puik-alert__link"
         :data-test="dataTest != undefined ? `link-${dataTest}` : undefined"
         tabindex="0"
+        variant="text"
+        :wrap-label="buttonWrapLabel"
         @click="clickLink"
       >
         {{ linkLabel }}
-      </PuikLink>
+      </PuikButton>
       <PuikButton
         v-if="buttonLabel"
+        v-bind="{
+          ...(leftIconBtn ? { 'left-icon': leftIconBtn } : {}),
+          ...(rightIconBtn ? { 'right-icon': rightIconBtn } : {}),
+          ...(ariaLabelBtn ? { 'aria-label': ariaLabelBtn } : {}),
+        }"
         :variant="variant"
         :wrap-label="buttonWrapLabel"
         class="puik-alert__button"
@@ -79,7 +93,6 @@ import { computed } from 'vue';
 import { generateId } from '@prestashopcorp/puik-utils';
 import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
-import { PuikLink } from '@prestashopcorp/puik-components/link';
 import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 import { PuikAlertVariants, ICONS } from './alert';
 import type { AlertProps, AlertEmits } from './alert';
@@ -105,8 +118,7 @@ const clickLink = (event: Event) => emit('clickLink', event);
 
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-alert.scss';
-@use '@prestashopcorp/puik-theme/src/puik-button.scss';
 @use '@prestashopcorp/puik-theme/src/puik-icon.scss';
-@use '@prestashopcorp/puik-theme/src/puik-link.scss';
+@use '@prestashopcorp/puik-theme/src/puik-button.scss';
+@use '@prestashopcorp/puik-theme/src/puik-alert.scss';
 </style>

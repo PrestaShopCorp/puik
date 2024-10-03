@@ -7,11 +7,21 @@
     .puik-alert__icon {
       @apply text-green;
     }
+    .puik-button--text{
+      &:hover {
+        @apply bg-green-100;
+      }
+    }
   }
   &--warning {
     @apply bg-yellow-50 border-yellow;
     .puik-alert__icon {
       @apply text-yellow;
+    }
+    .puik-button--text{
+      &:hover {
+        @apply bg-yellow-100;
+      }
     }
   }
   &--danger {
@@ -19,18 +29,28 @@
     .puik-alert__icon {
       @apply text-red;
     }
+    .puik-button--text{
+      &:hover {
+        @apply bg-red-100;
+      }
+    }
   }
   &--info {
     @apply bg-blue-50 border-blue;
     .puik-alert__icon {
       @apply text-blue;
     }
+    .puik-button--text{
+      &:hover {
+        @apply bg-blue-100;
+      }
+    }
   }
   &--no-borders {
     @apply border-0;
   }
   &__container {
-    @apply flex flex-col lg:flex-row lg:items-start w-full;
+    @apply flex flex-col space-y-1 lg:flex-row lg:items-start lg:space-x-1 w-full;
   }
   &__content {
     @apply flex flex-row flex-grow;
@@ -53,8 +73,5 @@
   }
   &__close {
     @apply ml-4 cursor-pointer leading-none;
-  }
-  &__link {
-    @apply flex-none leading-6 w-fit block ml-9 pl-0 m-2 lg:mx-4 lg:pl-0 lg:truncate lg:max-w-[320px];
   }
 }
