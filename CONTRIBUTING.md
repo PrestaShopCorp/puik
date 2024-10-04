@@ -27,6 +27,7 @@ This mono repository contains multiple packages under the folder `packages`
 - `tailwind-preset` contains the [Tailwind Css](https://tailwindcss.com/) preset and is released under the name `@prestashopcorp/puik-tailwind-preset`
 - `theme` contains all the CSS classes used in our components and is released under the name `@prestashopcorp/puik-theme`
 - `utils` contains all the utility functions used across our packages, this package is bundled with the other packages when it's used and isn't released as a standalone
+- `web-components` contains all the web components and is released under the name `@prestashopcorp/puik-web-components` ([see available web-components](https://github.com/PrestaShopCorp/puik/blob/main/RELEASE-NOTES-V2.md#available-components))
 
 The `playground` folder contains a Vue 3 to help you develop your components
 
@@ -80,7 +81,7 @@ $ pnpm component
 
 This command generates multiples files and injects code in these files
 
-```
+``` plaintext
 puik/
 └── packages/
     ├── components/
@@ -100,11 +101,14 @@ puik/
     ├── puik/
     │   ├── component.ts
     │   └── global.d.ts
-    └── theme/
-        └── src/
-            ├── my-component.scss
-            └── index.scss
-
+    ├── theme/
+    │   └── src/
+    │       ├── my-component.scss
+    │       └── index.scss
+    └── web-components/
+        ├── components/
+        │   └── component.ts
+        └── index.ts
 ```
 
 ### Style

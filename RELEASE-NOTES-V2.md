@@ -44,6 +44,7 @@ Here is the list of available components in the Vue and Web-Components version o
 | Progress-stepper            | ✅  | ✅            |                  |
 | Progress-stepper-step       | ✅  | ✅            |                  |
 | Radio                       | ✅  | ✅            |                  |
+| Rating-card                 | ✅  | ✅            |                  |
 | Select                      | ✅  | ❌            |                  |
 | Sidebar                     | ✅  | ✅            |                  |
 | Sidebar-group-item          | ✅  | ❌            |                  |
@@ -52,6 +53,7 @@ Here is the list of available components in the Vue and Web-Components version o
 | Skeleton-loader             | ✅  | ✅            |                  |
 | Skeleton-loader-group       | ✅  | ✅            |                  |
 | Snackbar                    | ✅  | ❌            | Previously implemented with Headless UI, now moved to Radix Vue (see Storybook documentation for more details)|
+| Sortable-list               | ✅  | ❌            |                  |
 | Spinner-loader              | ✅  | ✅            |                  |
 | Switch                      | ✅  | ✅            |                  |
 | Tab-navigation              | ✅  | ✅            |                  |
