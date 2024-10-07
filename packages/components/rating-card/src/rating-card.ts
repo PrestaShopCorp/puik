@@ -5,15 +5,10 @@ export enum PuikRatingCardVariants {
   Extended = 'extended',
   Compact = 'compact',
 }
-export enum PuikRatingSize {
-  Small = 'small',
-  large = 'large',
-}
 
 export interface RatingCardProps {
   id: string
   variant?: `${PuikRatingCardVariants}`
-  size?: `${PuikRatingSize}`
   totalRatings: number[]
   showTotalRatings?: boolean
   dataTest?: string

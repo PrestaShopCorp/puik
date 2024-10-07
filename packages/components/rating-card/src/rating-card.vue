@@ -2,7 +2,6 @@
   <div
     class="puik-rating-card"
     :variant="props.variant"
-    :size="props.size"
     :totalRatings="props.totalRatings"
     :data-test="props.dataTest"
     :ariaLabel="props.ariaLabel"
@@ -17,16 +16,16 @@
       v-if="props.variant === PuikRatingCardVariants.Extended"
       :class="[
         'puik-rating-card_stars-container',
-        sizeClass,
       ]"
     >
       <PuikIcon
         v-for="starIndex in 5"
         :key="starIndex"
         class="puik-rating-card_star"
-        :icon="getStarState(starIndex)"
-        :font-size="props.size === PuikRatingSize.large ? '24px' : '16px'"
+        :icon="getStarState(starIndex).icon"
+        font-size="20px"
         color="#FFA000"
+        :fill="getStarState(starIndex).fill"
         node-type="span"
       />
     </div>
@@ -34,7 +33,7 @@
       v-else
       class="puik-rating-card_star"
       icon="star"
-      :font-size="props.size === PuikRatingSize.large ? '24px' : '16px'"
+      font-size="16px"
       color="#FFA000"
       node-type="span"
     />
@@ -49,7 +48,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { RatingCardProps, PuikRatingCardVariants, PuikRatingSize } from './rating-card';
+import { RatingCardProps, PuikRatingCardVariants } from './rating-card';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 
 defineOptions({
@@ -58,11 +57,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<RatingCardProps>(), {
   variant: PuikRatingCardVariants.Extended,
-  size: PuikRatingSize.Small,
   showTotalRatings: true
 });
-
-const sizeClass = computed(() => (props.size === 'small' ? 'puik-rating-card--small' : 'puik-rating-card--large'));
 
 const averageRating = computed(() => {
   const total = props.totalRatings.reduce((sum, rating) => sum + rating, 0);
@@ -71,9 +67,9 @@ const averageRating = computed(() => {
 
 const getStarState = (starIndex: number) => {
   const starValue = starIndex;
-  if (averageRating.value >= starValue) return 'star';
-  if (averageRating.value >= starValue - 0.5) return 'star_half';
-  return 'star';
+  if (averageRating.value >= starValue) return { icon: 'star', fill: 1 };
+  if (averageRating.value >= starValue - 0.5) return { icon: 'star_half', fill: 1 };
+  return { icon: 'star', fill: 0 };
 };
 </script>
 
