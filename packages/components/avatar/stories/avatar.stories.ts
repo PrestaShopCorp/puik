@@ -92,7 +92,7 @@ export default {
       }
     },
     ariaLabel: {
-      description: 'Set the aria-label attribute for accessibility',
+      description: 'Sets the aria-label attribute for accessibility',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -152,7 +152,7 @@ export default {
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute for the avatar `image-${dataTest}` `icon-${dataTest}` `initials-${dataTest}`'
+        'Sets the data-test attribute for the avatar `image-${dataTest}` `icon-${dataTest}` `initials-${dataTest}`'
     }
   },
   args: {

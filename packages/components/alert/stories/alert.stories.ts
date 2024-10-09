@@ -14,14 +14,14 @@ export default {
   component: PuikAlert,
   argTypes: {
     title: {
-      description: 'Set the alert title'
+      description: 'Sets the alert title'
     },
     description: {
-      description: 'Set the alert description (also exists as a default slot)'
+      description: 'Sets the alert description (also exists as a default slot)'
     },
     variant: {
       control: 'select',
-      description: 'Set the alert variant',
+      description: 'Sets the alert variant',
       options: alertVariants,
       table: {
         defaultValue: {
@@ -45,7 +45,7 @@ export default {
       description: 'Label of the button'
     },
     buttonWrapLabel: {
-      description: 'Set the carriage return of the button label',
+      description: 'Sets the carriage return of the button label',
       table: {
         defaultValue: {
           summary: false
@@ -57,12 +57,12 @@ export default {
     },
     default: {
       control: 'none',
-      description: 'Set the alert description'
+      description: 'Sets the alert description'
     },
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}` `link-${dataTest}`'
+        'Sets the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}` `link-${dataTest}`'
     },
     linkLabel: {
       description: 'Label of the link'

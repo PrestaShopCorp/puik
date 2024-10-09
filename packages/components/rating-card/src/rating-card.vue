@@ -1,8 +1,7 @@
 <template>
   <div
+    :id="props.id"
     class="puik-rating-card"
-    :variant="props.variant"
-    :totalRatings="props.totalRatings"
     :data-test="props.dataTest"
     :ariaLabel="props.ariaLabel"
   >
@@ -50,12 +49,14 @@
 import { computed } from 'vue';
 import { RatingCardProps, PuikRatingCardVariants } from './rating-card';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
+import { generateId } from '@prestashopcorp/puik-utils';
 
 defineOptions({
   name: 'PuikRatingCard'
 });
 
 const props = withDefaults(defineProps<RatingCardProps>(), {
+  id: `puik-rating-card-${generateId()}`,
   variant: PuikRatingCardVariants.Extended,
   showTotalRatings: true
 });

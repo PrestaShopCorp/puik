@@ -12,7 +12,7 @@ export default {
   argTypes: {
     variant: {
       control: 'select',
-      description: 'Set the button variant',
+      description: 'Sets the button variant',
       options: buttonVariants,
       table: {
         defaultValue: {
@@ -25,7 +25,7 @@ export default {
     },
     size: {
       control: 'select',
-      description: 'Set the button size',
+      description: 'Sets the button size',
       options: buttonSizes,
       table: {
         defaultValue: {
@@ -37,7 +37,7 @@ export default {
       }
     },
     fluid: {
-      description: 'Set the button as fluid',
+      description: 'Sets the button as fluid',
       table: {
         defaultValue: {
           summary: false
@@ -45,7 +45,7 @@ export default {
       }
     },
     wrapLabel: {
-      description: 'Set the carriage return of the button label',
+      description: 'Sets the carriage return of the button label',
       table: {
         defaultValue: {
           summary: false
@@ -53,7 +53,7 @@ export default {
       }
     },
     disabled: {
-      description: 'Set the button as disabled',
+      description: 'Sets the button as disabled',
       table: {
         defaultValue: {
           summary: false
@@ -61,10 +61,10 @@ export default {
       }
     },
     leftIcon: {
-      description: 'Set the button left icon'
+      description: 'Sets the button left icon'
     },
     rightIcon: {
-      description: 'Set the button right icon'
+      description: 'Sets the button right icon'
     },
     default: {
       control: 'text',
@@ -85,7 +85,7 @@ export default {
         'Set a data-test attribute to the button `${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`'
     },
     ariaLabel: {
-      description: 'Set the aria-label attribute for accessibility',
+      description: 'Sets the aria-label attribute for accessibility',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -97,7 +97,7 @@ export default {
     },
     disabledReason: {
       control: 'text',
-      description: 'Set the aria-describedby attribute for accessibility if disabled'
+      description: 'Sets the aria-describedby attribute for accessibility if disabled'
     }
   },
   args: {
