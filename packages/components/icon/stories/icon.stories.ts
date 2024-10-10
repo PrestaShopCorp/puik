@@ -6,10 +6,10 @@ export default {
   component: PuikIcon,
   argTypes: {
     icon: {
-      description: 'Set the icon name'
+      description: 'Sets the icon name'
     },
     fontSize: {
-      description: 'Set the icon font size',
+      description: 'Sets the icon font size',
       control: {
         type: 'range',
         min: 1,
@@ -18,13 +18,13 @@ export default {
       }
     },
     color: {
-      description: 'Set the icon color',
+      description: 'Sets the icon color',
       control: {
         type: 'color'
       }
     },
     nodeType: {
-      description: 'Set the HTML node type',
+      description: 'Sets the HTML node type',
       default: 'div',
       control: {
         type: 'radio',
@@ -32,7 +32,7 @@ export default {
       }
     },
     dataTest: {
-      description: 'Set the data-test attribute'
+      description: 'Sets the data-test attribute'
     },
     isDisabled: {
       description: 'If the icon is disable',
@@ -41,7 +41,7 @@ export default {
       }
     },
     ariaLabel: {
-      description: 'Set the aria-label attribute for accessibility (if this prop is not present the default aria-label will be set to the icon name)',
+      description: 'Sets the aria-label attribute for accessibility (if this prop is not present the default aria-label will be set to the icon name)',
       table: {
         defaultValue: {
           summary: 'undefined'

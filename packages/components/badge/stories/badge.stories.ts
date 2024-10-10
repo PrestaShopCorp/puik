@@ -14,7 +14,7 @@ export default {
     },
     variant: {
       control: 'select',
-      description: 'Set the badge variant',
+      description: 'Sets the badge variant',
       options: badgeVariants,
       table: {
         type: {
@@ -26,7 +26,7 @@ export default {
       }
     },
     ariaLabel: {
-      description: 'Set the aria-label attribute for accessibility',
+      description: 'Sets the aria-label attribute for accessibility',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -38,7 +38,7 @@ export default {
     },
     dataTest: {
       control: 'text',
-      description: 'Set the data-test attribute on the badge'
+      description: 'Sets the data-test attribute on the badge'
     }
   },
   args: {

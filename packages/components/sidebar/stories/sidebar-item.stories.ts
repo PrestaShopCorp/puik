@@ -7,7 +7,7 @@ export default {
   argTypes: {
     title: {
       control: 'text',
-      description: 'Set the item title',
+      description: 'Sets the item title',
       table: {
         type: {
           summary: 'string'
@@ -16,7 +16,7 @@ export default {
     },
     href: {
       control: 'text',
-      description: 'Set the href of the item',
+      description: 'Sets the href of the item',
       table: {
         type: {
           summary: 'string'
@@ -28,7 +28,7 @@ export default {
     },
     to: {
       control: 'text',
-      description: 'Set the to destination of the item (router-link)',
+      description: 'Sets the to destination of the item (router-link)',
       table: {
         type: {
           summary: 'string'
@@ -40,7 +40,7 @@ export default {
     },
     icon: {
       control: 'text',
-      description: 'Set the icon',
+      description: 'Sets the icon',
       table: {
         type: {
           summary: 'string'
@@ -64,12 +64,12 @@ export default {
     },
     default: {
       control: 'none',
-      description: 'Set the defaut content slot'
+      description: 'Sets the defaut content slot'
     },
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute on the item `menubuttonTitle-${dataTest}` `buttonTitle-${dataTest}` `title-${dataTest}`'
+        'Sets the data-test attribute on the item `menubuttonTitle-${dataTest}` `buttonTitle-${dataTest}` `title-${dataTest}`'
     }
   },
   args: {

@@ -16,7 +16,7 @@ export default {
     type: {
       control: 'select',
       options: inputTypes,
-      description: 'Set the type of the input',
+      description: 'Sets the type of the input',
       table: {
         type: {
           summary: inputTypesSummary
@@ -27,10 +27,10 @@ export default {
       }
     },
     id: {
-      description: 'Set the id of the input'
+      description: 'Sets the id of the input'
     },
     srLabel: {
-      description: 'Set the input label for screen readers',
+      description: 'Sets the input label for screen readers',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -41,11 +41,11 @@ export default {
       }
     },
     placeholder: {
-      description: 'Set the placeholder of the input'
+      description: 'Sets the placeholder of the input'
     },
     disabled: {
       control: 'boolean',
-      description: 'Set the input as disabled',
+      description: 'Sets the input as disabled',
       table: {
         defaultValue: {
           summary: 'false'
@@ -53,13 +53,13 @@ export default {
       }
     },
     name: {
-      description: 'Set the name of the input'
+      description: 'Sets the name of the input'
     },
     autocomplete: {
-      description: 'Set the autocomplete mode of the input'
+      description: 'Sets the autocomplete mode of the input'
     },
     required: {
-      description: 'Set the input as required',
+      description: 'Sets the input as required',
       table: {
         defaultValue: {
           summary: 'false'
@@ -70,7 +70,7 @@ export default {
       description: 'Set an error for the input'
     },
     success: {
-      description: 'Set the input in a success state',
+      description: 'Sets the input in a success state',
       table: {
         defaultValue: {
           summary: 'false'
@@ -87,7 +87,7 @@ export default {
     },
     step: {
       control: 'number',
-      description: 'Set the incremental step (for number input only)',
+      description: 'Sets the incremental step (for number input only)',
       table: {
         defaultValue: {
           summary: '1'
@@ -97,15 +97,15 @@ export default {
     precision: {
       control: 'number',
       description:
-        'Set the precision of the input value (for number input only)'
+        'Sets the precision of the input value (for number input only)'
     },
     min: {
       control: 'number',
-      description: 'Set the min value of the input (for number input only)'
+      description: 'Sets the min value of the input (for number input only)'
     },
     max: {
       control: 'number',
-      description: 'Set the max value of the input (for number input only)'
+      description: 'Sets the max value of the input (for number input only)'
     },
     prepend: {
       description: 'Prepend an icon or text to the input'
@@ -116,11 +116,11 @@ export default {
     },
     dataTest: {
       description:
-        'Set the data-test attribute on the input and error text elements `input-${dataTest}` `error-${dataTest}`',
+        'Sets the data-test attribute on the input and error text elements `input-${dataTest}` `error-${dataTest}`',
       control: 'text'
     },
     ariaLabel: {
-      description: 'Set the aria-label attribute for accessibility',
+      description: 'Sets the aria-label attribute for accessibility',
       table: {
         defaultValue: {
           summary: 'undefined'

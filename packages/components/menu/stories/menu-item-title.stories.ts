@@ -10,7 +10,7 @@ export default {
       description: 'Default slot to set title text'
     },
     dataTest: {
-      description: 'Set the data-test attribute for title `title-${dataTest}`',
+      description: 'Sets the data-test attribute for title `title-${dataTest}`',
       control: 'text'
     }
   }

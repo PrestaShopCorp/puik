@@ -106,7 +106,7 @@ export default {
     },
     dataTest: {
       description:
-        'Set the data-test attribute `content-${dataTest}` `tooltip-${dataTest}`',
+        'Sets the data-test attribute `content-${dataTest}` `tooltip-${dataTest}`',
       control: 'text'
     }
   },

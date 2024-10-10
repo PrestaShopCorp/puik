@@ -9,7 +9,7 @@ export default {
   component: PuikTooltip,
   argTypes: {
     heading: {
-      description: 'Set the tooltip heading (also available as a prop)',
+      description: 'Sets the tooltip heading (also available as a prop)',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -17,7 +17,7 @@ export default {
       }
     },
     description: {
-      description: 'Set the tooltip description (also available as a prop)',
+      description: 'Sets the tooltip description (also available as a prop)',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -26,7 +26,7 @@ export default {
     },
     position: {
       control: 'select',
-      description: 'Set the tooltip position',
+      description: 'Sets the tooltip position',
       options: tooltipPositions,
       table: {
         defaultValue: {
@@ -57,7 +57,7 @@ export default {
     },
     zindex: {
       control: 'number',
-      description: 'Set the z-index level',
+      description: 'Sets the z-index level',
       table: {
         defaultValue: {
           summary: '1000'
@@ -66,7 +66,7 @@ export default {
     },
     disappearDelay: {
       control: 'number',
-      description: 'Set the timer to make the tooltip disappear (in ms)',
+      description: 'Sets the timer to make the tooltip disappear (in ms)',
       table: {
         defaultValue: {
           summary: '500'
@@ -76,7 +76,7 @@ export default {
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute on the tooltip `content-${dataTest}` `heading-${dataTest}` `description-${dataTest}`',
+        'Sets the data-test attribute on the tooltip `content-${dataTest}` `heading-${dataTest}` `description-${dataTest}`',
       table: {
         defaultValue: {
           summary: undefined

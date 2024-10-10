@@ -11,7 +11,7 @@ export default {
     tag: {
       control: 'text',
       description:
-        'Set the balise used as root element in the skeleton loader group',
+        'Sets the balise used as root element in the skeleton loader group',
       table: {
         defaultValue: {
           summary: 'div'
@@ -21,7 +21,7 @@ export default {
     default: {
       control: 'none',
       description:
-        'Set the skeleton loader group content, can be anything, but skeleton loader must be wrapper in it (for accessibility purpose)'
+        'Sets the skeleton loader group content, can be anything, but skeleton loader must be wrapper in it (for accessibility purpose)'
     }
   },
   args: {

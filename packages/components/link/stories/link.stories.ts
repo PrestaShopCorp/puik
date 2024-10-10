@@ -22,7 +22,7 @@ export default {
     target: {
       control: 'select',
       description:
-        'Set the link target. If you set it to "_blank" the icon "open in new" is displayed',
+        'Sets the link target. If you set it to "_blank" the icon "open in new" is displayed',
       options: targetVariants,
       table: {
         defaultValue: {
@@ -34,7 +34,7 @@ export default {
       }
     },
     ariaLabel: {
-      description: 'Set the aria-label attribute for accessibility',
+      description: 'Sets the aria-label attribute for accessibility',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -46,7 +46,7 @@ export default {
     },
     size: {
       control: 'select',
-      description: 'Set the link font size',
+      description: 'Sets the link font size',
       options: linkSizes,
       table: {
         defaultValue: {
@@ -84,7 +84,7 @@ export default {
       description: 'Title displayed in tooltips then your cursor stay in link'
     },
     dataTest: {
-      description: 'Set the data-test attribute'
+      description: 'Sets the data-test attribute'
     }
   },
   args: {

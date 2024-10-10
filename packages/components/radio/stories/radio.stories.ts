@@ -19,7 +19,7 @@ export default {
       description: 'Label of the radio input'
     },
     ariaLabel: {
-      description: 'Set the aria-label attribute for accessibility',
+      description: 'Sets the aria-label attribute for accessibility',
       table: {
         defaultValue: {
           summary: 'ariaLabel || label || "undefined"'
@@ -30,7 +30,7 @@ export default {
       }
     },
     ariaDescribedby: {
-      description: 'Set the aria-describedby attribute for accessibility (id of element that describes the input)',
+      description: 'Sets the aria-describedby attribute for accessibility (id of element that describes the input)',
       table: {
         defaultValue: {
           summary: 'none'
@@ -80,7 +80,7 @@ export default {
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute of the input and the label `label-${dataTest}` `input-${dataTest}`'
+        'Sets the data-test attribute of the input and the label `label-${dataTest}` `input-${dataTest}`'
     }
   },
   args: {

@@ -23,11 +23,11 @@ export default {
     },
     title: {
       control: 'text',
-      description: 'Set the snackbar title'
+      description: 'Sets the snackbar title'
     },
     description: {
       control: 'text',
-      description: 'Set the snackbar description'
+      description: 'Sets the snackbar description'
     },
     duration: {
       description: 'Time in milliseconds that snackbar should remain visible for. Overrides value given to PuikSnackbarProvider component.',
@@ -43,7 +43,7 @@ export default {
     },
     variant: {
       control: 'select',
-      description: 'Set the color variant of the snackbar',
+      description: 'Sets the color variant of the snackbar',
       options: snackbarVariants,
       table: {
         type: {
@@ -65,7 +65,7 @@ enum PuikSnackbarVariants {
     },
     swipeAnimation: {
       control: 'select',
-      description: 'Set the swipe animation (to close the snackbar dialog)',
+      description: 'Sets the swipe animation (to close the snackbar dialog)',
       options: snackbarSwipeAnimations,
       table: {
         type: {

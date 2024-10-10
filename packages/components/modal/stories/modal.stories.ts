@@ -54,7 +54,7 @@ export default {
   component: PuikModal,
   argTypes: {
     title: {
-      description: 'Set the modal title',
+      description: 'Sets the modal title',
       control: 'text',
       table: {
         type: {
@@ -66,7 +66,7 @@ export default {
       }
     },
     mainButtonText: {
-      description: 'Set the text of the main button',
+      description: 'Sets the text of the main button',
       control: 'text',
       table: {
         type: {
@@ -78,7 +78,7 @@ export default {
       }
     },
     secondButtonText: {
-      description: 'Set the text of the secondary button',
+      description: 'Sets the text of the secondary button',
       control: 'text',
       table: {
         type: {
@@ -90,7 +90,7 @@ export default {
       }
     },
     sideButtonText: {
-      description: 'Set the text of the side button',
+      description: 'Sets the text of the side button',
       control: 'text',
       table: {
         type: {
@@ -103,7 +103,7 @@ export default {
     },
     variant: {
       description:
-        'Set the style of the modal (use the PuikModalVariants enum)',
+        'Sets the style of the modal (use the PuikModalVariants enum)',
       control: 'select',
       options: modalVariants,
       table: {
@@ -127,7 +127,7 @@ export enum PuikModalVariants {
       }
     },
     size: {
-      description: 'Set the size of the modal (use the PuikModalSizes enum)',
+      description: 'Sets the size of the modal (use the PuikModalSizes enum)',
       control: 'select',
       options: modalSizes,
       table: {
@@ -176,7 +176,7 @@ export enum PuikModalSizes {
     },
     dataTest: {
       description:
-        'Set the data-test attribute for modal `title-${dataTest}` `mainButton-${dataTest}` `secondButton-${dataTest}` `sideButton-${dataTest}` `closeButton-${dataTest}`',
+        'Sets the data-test attribute for modal `title-${dataTest}` `mainButton-${dataTest}` `secondButton-${dataTest}` `sideButton-${dataTest}` `closeButton-${dataTest}`',
       control: 'text'
     },
     default: {
@@ -540,7 +540,7 @@ export const Large = {
   parameters: {
     docs: {
       description: {
-        story: 'Set the max-width to `904px`'
+        story: 'Sets the max-width to `904px`'
       },
       source: {
         code: `
@@ -600,7 +600,7 @@ export const Medium = {
   parameters: {
     docs: {
       description: {
-        story: 'Set the max-width to `680px`'
+        story: 'Sets the max-width to `680px`'
       },
       source: {
         code: `
@@ -660,7 +660,7 @@ export const Small = {
   parameters: {
     docs: {
       description: {
-        story: 'Set the max-width to `508px`'
+        story: 'Sets the max-width to `508px`'
       },
       source: {
         code: `

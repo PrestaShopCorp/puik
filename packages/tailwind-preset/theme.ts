@@ -85,7 +85,7 @@ export default {
     fontFamily: {
       primary: ['IBM Plex Sans', 'Verdana', 'Arial', 'sans-serif'],
       secondary: ['Prestafont', 'Verdana', 'Arial', 'sans-serif'],
-      materialIcons: ['Material Icons Round']
+      materialIcons: ['Material Symbols Rounded']
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1.125rem' }],

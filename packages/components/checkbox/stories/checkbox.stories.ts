@@ -7,11 +7,11 @@ export default {
   argTypes: {
     default: {
       control: 'text',
-      description: 'Set the label via default slot'
+      description: 'Sets the label via default slot'
     },
     label: {
       control: 'text',
-      description: 'Set the checkbox label'
+      description: 'Sets the checkbox label'
     },
     ariaLabel: {
       description: 'If you are planning to set the label via default slot instead of using label prop then in that case you should set the aria-label for better accessibility',
@@ -36,7 +36,7 @@ export default {
       }
     },
     indeterminate: {
-      description: 'Set the indeterminate checkbox  state',
+      description: 'Sets the indeterminate checkbox  state',
       table: {
         defaultValue: {
           summary: false
@@ -48,7 +48,7 @@ export default {
       control: 'none'
     },
     disabled: {
-      description: 'Set the checkbox as disabled',
+      description: 'Sets the checkbox as disabled',
       table: {
         defaultValue: {
           summary: false
@@ -57,7 +57,7 @@ export default {
     },
     dataTest: {
       description:
-        'Set the data-test attribute for the label and the input `label-${dataTest}` `input-${dataTest}`}`',
+        'Sets the data-test attribute for the label and the input `label-${dataTest}` `input-${dataTest}`}`',
       control: 'text'
     }
   },

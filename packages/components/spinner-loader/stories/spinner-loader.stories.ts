@@ -14,7 +14,7 @@ export default {
   argTypes: {
     size: {
       control: 'select',
-      description: 'Set the spinner size',
+      description: 'Sets the spinner size',
       options: puikSpinnerLoaderSizes,
       table: {
         type: {
@@ -27,7 +27,7 @@ export default {
     },
     color: {
       control: 'select',
-      description: 'Set the spinner color',
+      description: 'Sets the spinner color',
       options: puikSpinnerLoaderColors,
       table: {
         type: {
@@ -62,7 +62,7 @@ export default {
     },
     dataTest: {
       control: 'text',
-      description: 'Set the data-test attribute on the spinner loader'
+      description: 'Sets the data-test attribute on the spinner loader'
     }
   },
   args: {
