@@ -13,9 +13,7 @@
     </span>
     <div
       v-if="props.variant === PuikRatingCardVariants.Extended"
-      :class="[
-        'puik-rating-card_stars-container',
-      ]"
+      class="puik-rating-card_stars-container"
     >
       <PuikIcon
         v-for="starIndex in 5"
