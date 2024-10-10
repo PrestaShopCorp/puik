@@ -1,5 +1,6 @@
 import '@prestashopcorp/puik-components/rating-card/style/css';
 import type RatingCard from './rating-card.vue';
+import type { booleanish } from '../../types';
 
 export enum PuikRatingCardVariants {
   Extended = 'extended',
@@ -7,10 +8,10 @@ export enum PuikRatingCardVariants {
 }
 
 export interface RatingCardProps {
-  id: string
+  id?: string
   variant?: `${PuikRatingCardVariants}`
-  totalRatings: number[]
-  showTotalRatings?: boolean
+  totalRatings: number[] | string
+  showTotalRatings?: booleanish
   dataTest?: string
   ariaLabel?: string
 }

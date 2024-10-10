@@ -2,6 +2,28 @@ import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { PuikRatingCard, RatingCardProps, PuikRatingCardVariants } from '@prestashopcorp/puik-components';
 
+// Helper functions from rating-card.vue component
+const isValidTotalRatingsString = (value: string): boolean => {
+  try {
+    const array = JSON.parse(value);
+    return Array.isArray(array) && array.every(num => typeof num === 'number');
+  } catch {
+    return false;
+  }
+};
+
+const totalRatingsArray = (totalRatings: number[] | string): number[] => {
+  if (typeof totalRatings === 'string' && isValidTotalRatingsString(totalRatings)) {
+    return JSON.parse(totalRatings);
+  } else if (typeof totalRatings === 'string') {
+    return totalRatings.split(',').map(num => {
+      const parsed = Number(num.trim());
+      return isNaN(parsed) ? null : parsed;
+    }).filter(n => n !== null) as number[];
+  }
+  return totalRatings;
+};
+
 describe('RatingCard tests', () => {
   let wrapper: VueWrapper<any>;
   const factory = (
@@ -108,5 +130,48 @@ describe('RatingCard tests', () => {
       showTotalRatings: false
     });
     expect(wrapper.find('.puik-rating-card_total-ratings').exists()).toBe(false);
+  });
+
+  it('should validate totalRatings prop type using component logic', () => {
+    const invalidRatings = 'invalid';
+    expect(isValidTotalRatingsString(invalidRatings)).toBe(false);
+
+    const validRatings = [3, 4, 5];
+    expect(totalRatingsArray(validRatings)).toEqual(validRatings);
+
+    const validStringRatings = '[3, 4, 5]';
+    expect(totalRatingsArray(validStringRatings)).toEqual([3, 4, 5]);
+
+    const validCommaSeparatedRatings = '3,4,5';
+    expect(totalRatingsArray(validCommaSeparatedRatings)).toEqual([3, 4, 5]);
+  });
+
+  it('should handle empty totalRatings array', () => {
+    factory({
+      id: 'test-id',
+      totalRatings: []
+    });
+    expect(wrapper.vm.totalRatingsArray).toEqual([]);
+    expect(wrapper.vm.averageRating).toBe(0);
+  });
+
+  it('should handle extremely large totalRatings array', () => {
+    const largeRatings = new Array(10000).fill(5);
+    factory({
+      id: 'test-id',
+      totalRatings: largeRatings
+    });
+    expect(wrapper.vm.totalRatingsArray.length).toBe(10000);
+    expect(wrapper.vm.averageRating).toBe(5);
+  });
+
+  it('should have correct aria-label', () => {
+    const ariaLabel = 'Rating card for product';
+    factory({
+      id: 'test-id',
+      totalRatings: [4, 5, 3],
+      ariaLabel
+    });
+    expect(wrapper.attributes('aria-label')).toBe(ariaLabel);
   });
 });

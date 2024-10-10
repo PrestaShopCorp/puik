@@ -37,10 +37,10 @@
       node-type="span"
     />
     <span
-      v-if="showTotalRatings && totalRatings.length"
+      v-if="booleanishProps.showTotalRatings && totalRatings.length"
       class="puik-rating-card_total-ratings"
     >
-      ({{ totalRatings.length }})
+      ({{ totalRatingsArray.length }})
     </span>
   </div>
 </template>
@@ -61,9 +61,36 @@ const props = withDefaults(defineProps<RatingCardProps>(), {
   showTotalRatings: true
 });
 
+const booleanishProps = computed(() => {
+  return {
+    showTotalRatings: props.showTotalRatings === 'true' ? true : props.showTotalRatings === 'false' ? false : props.showTotalRatings
+  };
+});
+
+const isValidTotalRatingsString = (value: string): boolean => {
+  try {
+    const array = JSON.parse(value);
+    return Array.isArray(array) && array.every(num => typeof num === 'number');
+  } catch {
+    return false;
+  }
+};
+
+const totalRatingsArray = computed(() => {
+  if (typeof props.totalRatings === 'string' && isValidTotalRatingsString(props.totalRatings)) {
+    return JSON.parse(props.totalRatings);
+  } else if (typeof props.totalRatings === 'string') {
+    return props.totalRatings.split(',').map(num => {
+      const parsed = Number(num.trim());
+      return isNaN(parsed) ? null : parsed;
+    }).filter(n => n !== null) as number[];
+  }
+  return props.totalRatings;
+});
+
 const averageRating = computed(() => {
-  const total = props.totalRatings.reduce((sum, rating) => sum + rating, 0);
-  return props.totalRatings.length ? total / props.totalRatings.length : 0;
+  const total = totalRatingsArray.value.reduce((sum: number, rating: number) => sum + rating, 0);
+  return totalRatingsArray.value.length ? total / totalRatingsArray.value.length : 0;
 });
 
 const getStarState = (starIndex: number) => {
