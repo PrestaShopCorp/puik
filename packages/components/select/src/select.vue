@@ -1,212 +1,134 @@
 <template>
-  <Listbox
-    :id="id"
-    v-slot="{ open }"
-    v-model="selectedValue"
-    :name="name"
+  <div
+    v-on-click-outside="closeOptions"
     class="puik-select"
   >
-    <div class="puik-select__wrapper">
-      <ListboxButton
-        :disabled="disabled"
-        class="puik-select__button"
-        :class="{ 'puik-select__button--error': hasError }"
-      >
-        <input
-          ref="labelInput"
-          :value="customLabel || currentLabel"
-          class="puik-select__selected"
-          :autocomplete="autocomplete"
-          :placeholder="placeholder"
-          :disabled="disabled"
-          tabindex="-1"
-          :readonly="open"
-          type="text"
-          :data-test="dataTest != undefined ? `select-${dataTest}` : undefined"
-          @input="
-            handleAutoComplete(($event.target as HTMLInputElement)?.value)
-          "
-        >
-        <puik-icon
-          font-size="1.25rem"
-          icon="unfold_more"
-          class="puik-select__icon"
-        />
-      </ListboxButton>
-      <transition
-        enter-active-class="puik-select__transition__enter--active"
-        enter-from-class="puik-select__transition__enter--from"
-        enter-to-class="puik-select__transition__enter--to"
-        leave-active-class="puik-select__transition__leave--active"
-        leave-from-class="puik-select__transition__leave--from"
-        leave-to-class="puik-select__transition__leave--to"
-      >
-        <ListboxOptions
-          v-show="isOpen(open)"
-          static
-          class="puik-select__options"
-          :class="{ 'puik-select__options--full-width': fullWidth }"
-          as="div"
-          :style="{ 'z-index': zindex }"
-        >
-          <puik-input
-            v-if="Array.isArray(options) || isObject(options)"
-            v-model="query"
-            class="puik-select__search"
-            :placeholder="t('puik.select.searchPlaceholder')"
-            :data-test="
-              dataTest != undefined ? `searchInput-${dataTest}` : undefined
-            "
-          >
-            <template #prepend>
-              <puik-icon
-                font-size="1.25rem"
-                icon="search"
-                class="puik-select__search__icon"
-              />
-            </template>
-          </puik-input>
-          <p
-            v-if="
-              options &&
-                (isObject(filteredItems)
-                  ? !Object.keys(filteredItems).length
-                  : !filteredItems?.length)
-            "
-            class="puik-select__no-results"
-            :data-test="
-              dataTest != undefined ? `noResults-${dataTest}` : undefined
-            "
-          >
-            {{ noMatchText || `${t('puik.select.noResults')} ${query}` }}
-          </p>
-          <ul class="puik-select__options-list">
-            <slot :options="filteredItems">
-              <template v-if="options">
-                <puik-option
-                  v-for="(option, index) in filteredItems"
-                  :key="option"
-                  :label="option[labelKey]"
-                  :value="isObject(option) ? option[valueKey] : option"
-                  :data-test="
-                    dataTest != undefined
-                      ? `option-${dataTest}-${index + 1}`
-                      : undefined
-                  "
-                />
-              </template>
-            </slot>
-          </ul>
-        </ListboxOptions>
-      </transition>
+    <template v-if="props.multiSelect">
       <div
-        v-if="hasError"
-        class="puik-select__error"
+        v-if="selectedOptions.length > 0 "
+        class="puik-select__chip-container"
+        @click.stop="toggleOptions"
       >
-        <puik-icon
-          icon="error"
-          font-size="1.25rem"
-          class="puik-select__error__icon"
+        <puik-chip
+          v-for="option in selectedOptions"
+          :id="`chip-${option.label}`"
+          :key="option.value"
+          :content="option.label"
+          @close="deselectOption(option)"
         />
-        <span class="puik-select__error__text">
-          <slot name="error">{{ error }}</slot>
-        </span>
       </div>
+      <PuikInput
+        v-else
+        class="puik-select__multiple-input"
+        type="text"
+        placeholder="Select an option"
+        readonly
+        @click.stop="toggleOptions"
+      />
+    </template>
+    <PuikInput
+      v-else
+      v-model="selectedSingleOption"
+      type="text"
+      placeholder="Select an option"
+      readonly
+      @click.stop="toggleOptions"
+    />
+    <div
+      v-if="showOptions"
+      class="puik-select__options-container"
+    >
+      <PuikInput
+        v-if="searchable"
+        v-model="searchQuery"
+        class="puik-select__search-input"
+        type="text"
+        placeholder="Search..."
+        @input="searchOptions"
+      />
+      <PuikCheckbox
+        v-if="multiSelect"
+        v-model="isAllSelected"
+        class="puik-select__select-all"
+        :label="isAllSelected ? 'Deselect All' : 'Select All'"
+        @change="toggleSelectAll"
+      />
+      <puik-option
+        v-for="option in filteredOptions"
+        :key="option.value"
+        :selected-options="selectedOptions"
+        :option="option"
+        :multi-select="props.multiSelect"
+        @click="selectOption(option)"
+      />
     </div>
-  </Listbox>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { computed, provide, ref, useSlots } from 'vue';
-import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue';
-import { isObject, isFunction, slotIsEmpty } from '@prestashopcorp/puik-utils';
-import { useLocale } from '@prestashopcorp/puik-locale';
-import { PuikInput } from '@prestashopcorp/puik-components/input';
-import { PuikIcon } from '@prestashopcorp/puik-components/icon';
-import { type SelectProps, selectKey } from './select';
-import PuikOption from './option.vue';
-import type { DefaultOption } from './option';
+import { ref, computed } from 'vue';
+import { vOnClickOutside } from '@vueuse/components';
+import { PuikCheckbox, PuikChip, PuikInput, PuikOption } from '@prestashopcorp/puik-components';
+import type { OptionType } from './option';
+import type { SelectProps } from './select';
 
 defineOptions({
   name: 'PuikSelect'
 });
 
-const optionsList = ref<DefaultOption[]>([]);
-const labelInput = ref<HTMLInputElement>();
-
 const props = withDefaults(defineProps<SelectProps>(), {
-  labelKey: 'label',
-  valueKey: 'value',
-  zindex: 1000,
-  fullWidth: true
+  multiSelect: false
 });
 
-const slots = useSlots();
+const emit = defineEmits(['update:modelValue', 'search']);
 
-const emit = defineEmits<{ 'update:modelValue': [option: any] }>();
+const selectedOptions = ref<any[]>([]);
+const showOptions = ref(false);
+const searchQuery = ref('');
 
-const { t } = useLocale();
-
-const query = ref('');
-const currentLabel = ref();
-
-const selectedValue = computed({
-  get: () => props.modelValue,
-  set: (option: any) => {
-    currentLabel.value = option.label;
-    return emit('update:modelValue', option.value);
-  }
+const selectedSingleOption = computed(() => {
+  return selectedOptions.value.length > 0 ? selectedOptions.value[0].label : '';
+});
+const filteredOptions = computed(() => {
+  return props.options.filter(option => option.label.includes(searchQuery.value));
+});
+const isAllSelected = computed(() => {
+  return selectedOptions.value.length === props.options.length;
 });
 
-const filteredItems = computed(() => {
-  if (props.options) {
-    if (query.value) {
-      if (isFunction(props.customFilterMethod)) {
-        return props.customFilterMethod(query.value);
-      }
-      return props.options.filter((option: any) =>
-        (isObject(option) ? option[props.labelKey] : option)
-          .toString()
-          .toLowerCase()
-          .includes(query.value.toLowerCase())
-      );
-    }
-    return props.options;
-  }
-  return null;
-});
-
-const hasError = computed(() => props.error || slotIsEmpty(slots.error));
-
-const handleAutoComplete = (label: string | number) => {
-  if (label === props.customLabel || currentLabel.value) return;
-  if (labelInput.value) {
-    labelInput.value.value = '';
-  }
-  optionsList.value.filter((option) => {
-    if (
-      String(option.label).toLowerCase() === label.toString().toLowerCase() ||
-      String(option.value).toLowerCase() === label.toString().toLowerCase()
-    ) {
-      selectedValue.value = option;
-    }
-    return null;
-  });
+const toggleOptions = () => {
+  showOptions.value = !showOptions.value;
+  console.log(showOptions.value);
 };
-
-const isOpen = (open: boolean) => {
-  if (open && props.options) {
-    query.value = '';
-  }
-  return open;
+const closeOptions = () => {
+  showOptions.value = false;
 };
-
-provide(selectKey, {
-  selectedValue,
-  optionsList,
-  handleAutoComplete,
-  labelKey: props.labelKey
-});
+const selectOption = (option: any) => {
+  if (props.multiSelect) {
+    if (selectedOptions.value.includes(option)) {
+      selectedOptions.value = selectedOptions.value.filter(opt => opt !== option);
+    } else {
+      selectedOptions.value.push(option);
+    }
+  } else {
+    selectedOptions.value = [option];
+    showOptions.value = false;
+  }
+  emit('update:modelValue', selectedOptions.value);
+};
+const toggleSelectAll = () => {
+  if (isAllSelected.value) {
+    selectedOptions.value = [];
+  } else {
+    selectedOptions.value = [...props.options];
+  }
+};
+const searchOptions = () => {
+  emit('search', searchQuery.value);
+};
+const deselectOption = (option: OptionType) => {
+  selectedOptions.value = selectedOptions.value.filter(opt => opt !== option);
+};
 </script>
 
 <style lang="scss">

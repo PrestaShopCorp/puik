@@ -1,16 +1,18 @@
 import '@prestashopcorp/puik-components/option/style/css';
 import type Option from './option.vue';
 
-export interface DefaultOption {
-  label: string | number
-  value: string | number | Record<string, any>
+export interface OptionType {
+  label: string
+  value: any
+}
+export interface OptionProps {
+  option: OptionType
+  selectedOptions: OptionType[]
+  multiSelect?: boolean
 }
 
-export interface OptionProps {
-  value: string | number | Record<string, any>
-  label?: string | number
-  disabled?: boolean
-  dataTest?: string
-}
+export type OptionEmits = {
+  'select': [payload: OptionType]
+};
 
 export type OptionInstance = InstanceType<typeof Option>;

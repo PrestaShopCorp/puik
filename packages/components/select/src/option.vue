@@ -1,76 +1,40 @@
 <template>
-  <ListboxOption
-    v-slot="{ active }"
-    :disabled="disabled"
-    :value="option"
-    as="template"
-  >
-    <li
-      class="puik-option"
-      :class="{
-        'puik-option--active': active,
-        'puik-option--selected': selectedValue === value,
-        'puik-option--disabled': disabled,
-      }"
-      :data-test="dataTest"
-    >
-      <slot class="puik-option__label">
-        {{ label }}
-      </slot>
-      <puik-icon
-        v-if="selectedValue === value"
-        icon="checked"
-        font-size="1.25rem"
-        class="puik-option__selected-icon"
-      />
-    </li>
-  </ListboxOption>
+  <div class="puik-option">
+    <PuikCheckbox
+      v-if="props.multiSelect"
+      v-model="isSelected"
+      :label="option.label"
+      @change="selectOption"
+    />
+    <div v-else>
+      {{ option.label }}
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { computed, inject, toRaw, watch } from 'vue';
-import { ListboxOption } from '@headlessui/vue';
-import { PuikIcon } from '@prestashopcorp/puik-components/icon';
-import { isObject } from '@prestashopcorp/puik-utils';
-import { type OptionProps } from './option';
-import { selectKey } from './select';
+import { computed } from 'vue';
+import { PuikCheckbox } from '../../checkbox';
+import type { OptionProps, OptionEmits } from './option';
+
 defineOptions({
   name: 'PuikOption'
 });
 
-const props = defineProps<OptionProps>();
+const props = withDefaults(defineProps<OptionProps>(), {
+  multiSelect: false,
+  selectedOptions: () => { return []; }
+});
 
-const { optionsList, selectedValue, handleAutoComplete, labelKey } =
-  inject(selectKey)!;
+const emit = defineEmits<OptionEmits>();
 
-const label = computed(
-  () =>
-    props.label ??
-    (isObject(props.value) ? props.value[labelKey] : props.value)
-);
+const isSelected = computed(() => {
+  return props.selectedOptions.includes(props.option);
+});
 
-const option = {
-  value: props.value,
-  label: label.value
+const selectOption = () => {
+  emit('select', props.option);
 };
-
-const sendLabel = () => {
-  if (props.disabled) return;
-
-  return handleAutoComplete(label.value);
-};
-
-optionsList.value.push(option);
-
-watch(
-  selectedValue,
-  (newValue) => {
-    if (toRaw(props.value) === toRaw(newValue)) {
-      sendLabel();
-    }
-  },
-  { immediate: true }
-);
 </script>
 
 <style lang="scss">

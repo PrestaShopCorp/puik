@@ -13,6 +13,7 @@
     "@headlessui/vue": "^1.7.22",
     "@popperjs/core": "^2.11.8",
     "@prestashopcorp/puik-theme": "workspace:*",
+    "@vueuse/components": "^11.1.0",
     "@vueuse/core": "^10.9.0",
     "radix-vue": "^1.7.4",
     "sortablejs": "^1.15.2",
