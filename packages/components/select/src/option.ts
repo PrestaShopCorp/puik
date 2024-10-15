@@ -2,11 +2,12 @@ import '@prestashopcorp/puik-components/option/style/css';
 import type Option from './option.vue';
 
 export interface OptionType {
-  label: string
-  value: any
+  [key: string]: any
 }
 export interface OptionProps {
   option: OptionType
+  labelKey: string
+  valueKey: string
   selectedOptions: OptionType[]
   multiSelect?: boolean
 }

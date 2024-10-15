@@ -1,20 +1,33 @@
 <template>
-  <div class="puik-option">
-    <PuikCheckbox
-      v-if="props.multiSelect"
-      v-model="isSelected"
-      :label="option.label"
-      @change="selectOption"
+  <div
+    :class="[
+      'puik-option',
+      { 'puik-option-single--selected' : isSelected && !props.multiSelect}
+    ]"
+  >
+    <template v-if="props.multiSelect">
+      <PuikCheckbox
+        v-model="isSelected"
+        :sr-label="option[props.labelKey]"
+        @change="selectOption"
+      />
+      <label>{{ option[props.labelKey] }}</label>
+    </template>
+    <label v-else>
+      {{ option[props.labelKey] }}
+    </label>
+    <PuikIcon
+      v-if="isSelected && !props.multiSelect"
+      class="puik-option__selected-icon"
+      icon="check"
     />
-    <div v-else>
-      {{ option.label }}
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 import { PuikCheckbox } from '../../checkbox';
+import { PuikIcon } from '../../icon';
 import type { OptionProps, OptionEmits } from './option';
 
 defineOptions({

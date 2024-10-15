@@ -1,6 +1,6 @@
 .puik-option {
-  @apply flex place-content-between relative cursor-default select-none p-2 text-primary-800 transition-colors;
-  &--selected {
+  @apply px-3 py-2 flex justify-between space-x-2 relative cursor-default select-none  text-primary-800 transition-colors;
+  &-single--selected {
     @apply bg-primary-300;
   }
   &:hover:not(&--disabled, &--selected) {
@@ -19,6 +19,10 @@
     @apply font-primary font-normal block truncate;
   }
   &__selected-icon {
-    @apply font-materialIcons inset-y-0 right-0 flex items-center w-5 ml-2;
+    @apply ml-auto;
   }
+}
+
+.puik-option.puik-option-single--selected  {
+  justify-content: space-between;
 }
