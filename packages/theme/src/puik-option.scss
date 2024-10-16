@@ -1,5 +1,5 @@
 .puik-option {
-  @apply px-3 py-2 flex justify-between space-x-2 relative cursor-default select-none  text-primary-800 transition-colors;
+  @apply px-3 py-2 flex justify-start space-x-2 relative cursor-default select-none  text-primary-800 transition-colors;
   &-single--selected {
     @apply bg-primary-300;
   }
@@ -13,7 +13,7 @@
     @apply bg-white;
   }
   &--disabled {
-    @apply bg-white text-primary-300 pointer-events-none;
+    @apply bg-white text-primary-500 cursor-not-allowed;
   }
   &__label {
     @apply font-primary font-normal block truncate;

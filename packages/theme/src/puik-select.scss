@@ -26,9 +26,9 @@
     focus-visible:outline-none sm:text-sm overflow-x-hidden;
   }
   &__select-all {
-    @apply px-3 py-2 flex relative select-none text-primary-800 transition-colors;
+    @apply px-3 flex relative select-none text-primary-800 transition-colors;
     label {
-      @apply grow cursor-default;
+      @apply min-h-9 flex items-center grow cursor-default;
     }
     &--selected {
       @apply bg-primary-300;
@@ -51,8 +51,5 @@
   }
   &__search-input {
     @apply px-3 py-2;
-  }
-  label {
-    @apply font-primary font-normal block truncate;
   }
 }

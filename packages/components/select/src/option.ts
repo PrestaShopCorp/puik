@@ -6,8 +6,10 @@ export interface OptionType {
 }
 export interface OptionProps {
   option: OptionType
-  labelKey: string
-  valueKey: string
+  labelKey?: string
+  valueKey?: string
+  disabledKey?: string
+  disabled?: boolean
   selectedOptions: OptionType[]
   multiSelect?: boolean
 }

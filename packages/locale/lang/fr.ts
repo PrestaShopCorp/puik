@@ -20,8 +20,11 @@ export default {
       readonly: 'Lecture uniquement'
     },
     select: {
-      searchPlaceholder: 'Chercher',
-      noResults: 'Aucun résultat'
+      placeholder: 'Select on option',
+      searchPlaceholder: 'Chercher...',
+      noResults: 'Aucun résultat',
+      selectAll: 'Tout sélectionnner',
+      deselectAll: 'Tout déselectionner'
     },
     table: {
       expandableHeaderLabel: 'colonne d\'en-tête pour la fonctionnalité de lignes extensibles',

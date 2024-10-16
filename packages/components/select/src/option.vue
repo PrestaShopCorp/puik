@@ -2,12 +2,14 @@
   <div
     :class="[
       'puik-option',
-      { 'puik-option-single--selected' : isSelected && !props.multiSelect}
+      { 'puik-option-single--selected' : isSelected && !props.multiSelect},
+      { 'puik-option--disabled' : props.disabled },
     ]"
   >
     <template v-if="props.multiSelect">
       <PuikCheckbox
         v-model="isSelected"
+        :disabled="disabled"
         :sr-label="option[props.labelKey]"
         @change="selectOption"
       />
@@ -35,6 +37,10 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<OptionProps>(), {
+  labelKey: 'label',
+  valueKey: 'value',
+  disabledKey: 'disabled',
+  disabled: false,
   multiSelect: false,
   selectedOptions: () => { return []; }
 });
@@ -46,11 +52,15 @@ const isSelected = computed(() => {
 });
 
 const selectOption = () => {
-  emit('select', props.option);
+  if (props.disabled) {
+    emit('select', props.option);
+  }
 };
 </script>
 
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-option.scss';
+@use '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
 </style>

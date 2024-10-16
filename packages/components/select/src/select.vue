@@ -16,9 +16,9 @@
         />
         <puik-chip
           v-for="option in selectedOptions"
-          :id="`chip-${option[props.labelKey]}`"
-          :key="option[props.valueKey]"
-          :content="option[props.labelKey]"
+          :id="`chip-${option[props.optionLabelKey]}`"
+          :key="option[props.optionValueKey]"
+          :content="option[props.optionLabelKey]"
           size="small"
           @close="deselectOption(option)"
           @click.stop="openOptions"
@@ -28,7 +28,7 @@
         v-else
         class="puik-select__multiple-input"
         type="text"
-        placeholder="Select an option"
+        :placeholder="props.placeholder ?? defaultPlaceholder"
         readonly
         @click.stop="toggleOptions"
       >
@@ -41,7 +41,7 @@
       v-else
       v-model="selectedSingleOption"
       type="text"
-      placeholder="Select an option"
+      :placeholder="props.placeholder ?? defaultPlaceholder"
       readonly
       @click.stop="toggleOptions"
     />
@@ -54,7 +54,7 @@
         v-model="searchQuery"
         class="puik-select__search-input"
         type="text"
-        placeholder="Search..."
+        :placeholder="props.searchPlaceholder ?? defaultSearchPlaceholder"
         @input="searchOptions"
       >
         <template #prepend>
@@ -63,19 +63,20 @@
       </puik-input>
       <PuikCheckbox
         v-if="multiSelect"
-        v-model="isAllSelected"
+        v-model="internalIsAllSelected"
         class="puik-select__select-all"
-        :label="isAllSelected ? 'Deselect All' : 'Select All'"
+        :label="isAllSelected ? `${t('puik.select.deselectAll')}` : `${t('puik.select.selectAll')}`"
         :indeterminate="selectAllIndeterminate"
         @change="toggleSelectAll"
       />
       <puik-option
         v-for="option in filteredOptions"
-        :key="option[props.valueKey]"
-        :label-key="labelKey"
-        :value-key="valueKey"
+        :key="option[props.optionValueKey]"
+        :label-key="props.optionLabelKey"
+        :value-key="props.optionValueKey"
         :selected-options="selectedOptions"
         :option="option"
+        :disabled="option[props.optionDisabledKey]"
         :multi-select="props.multiSelect"
         @click="selectOption(option)"
       />
@@ -84,8 +85,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
+import { useLocale } from '@prestashopcorp/puik-locale';
 import { PuikCheckbox, PuikChip, PuikIcon, PuikInput, PuikOption } from '@prestashopcorp/puik-components';
 import type { OptionType } from './option';
 import type { SelectProps } from './select';
@@ -94,7 +96,14 @@ defineOptions({
   name: 'PuikSelect'
 });
 
+const { t } = useLocale();
+const defaultPlaceholder = t('puik.select.placeholder');
+const defaultSearchPlaceholder = t('puik.select.searchPlaceholder');
+
 const props = withDefaults(defineProps<SelectProps>(), {
+  optionLabelKey: 'label',
+  optionValueKey: 'value',
+  optionDisabledKey: 'disabled',
   multiSelect: false
 });
 
@@ -109,11 +118,17 @@ const selectedSingleOption = computed(() => {
   return selectedOptions.value.length > 0 ? selectedOptions.value[0].label : '';
 });
 const filteredOptions = computed(() => {
-  return props.options.filter(option => option.label.includes(searchQuery.value));
+  if (props.options) {
+    return props.options.filter(option => option.label.includes(searchQuery.value));
+  } else {
+    return null;
+  }
 });
 const isAllSelected = computed(() => {
   return selectedOptions.value.length === props.options.length;
 });
+const internalIsAllSelected = ref(isAllSelected.value);
+
 const updateSelectAllIndeterminate = () => {
   selectAllIndeterminate.value = selectedOptions.value.length > 0 && selectedOptions.value.length < props.options.length;
 };
@@ -127,19 +142,22 @@ const closeOptions = () => {
   showOptions.value = false;
 };
 const selectOption = (option: any) => {
-  if (props.multiSelect) {
-    if (selectedOptions.value.includes(option)) {
-      selectedOptions.value = selectedOptions.value.filter(opt => opt !== option);
+  if (!option[props.optionDisabledKey]) {
+    if (props.multiSelect) {
+      if (selectedOptions.value.includes(option)) {
+        selectedOptions.value = selectedOptions.value.filter(opt => opt !== option);
+      } else {
+        selectedOptions.value.push(option);
+      }
+      updateSelectAllIndeterminate();
     } else {
-      selectedOptions.value.push(option);
+      selectedOptions.value = [option];
+      showOptions.value = false;
     }
-    updateSelectAllIndeterminate();
-  } else {
-    selectedOptions.value = [option];
-    showOptions.value = false;
+    emit('update:modelValue', selectedOptions.value);
   }
-  emit('update:modelValue', selectedOptions.value);
 };
+
 const deselectOption = (option: OptionType) => {
   selectedOptions.value = selectedOptions.value.filter(opt => opt !== option);
   updateSelectAllIndeterminate();
@@ -157,10 +175,18 @@ const toggleSelectAll = () => {
 const searchOptions = () => {
   emit('search', searchQuery.value);
 };
+
+watch(isAllSelected, (newValue) => {
+  internalIsAllSelected.value = newValue;
+});
 </script>
 
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-select.scss';
 @use '@prestashopcorp/puik-theme/src/puik-option.scss';
+@use '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
+@use '@prestashopcorp/puik-theme/src/puik-chip.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+@use '@prestashopcorp/puik-theme/src/puik-input.scss';
 </style>
