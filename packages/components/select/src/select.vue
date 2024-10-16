@@ -108,8 +108,7 @@ const props = withDefaults(defineProps<SelectProps>(), {
 });
 
 const emit = defineEmits(['update:modelValue', 'search']);
-
-const selectedOptions = ref<any[]>([]);
+const selectedOptions = ref(props.modelValue ? [...props.modelValue] : []);
 const showOptions = ref(false);
 const searchQuery = ref('');
 const selectAllIndeterminate = ref(false);
@@ -117,30 +116,37 @@ const selectAllIndeterminate = ref(false);
 const selectedSingleOption = computed(() => {
   return selectedOptions.value.length > 0 ? selectedOptions.value[0].label : '';
 });
+
 const filteredOptions = computed(() => {
   if (props.options) {
     return props.options.filter(option => option.label.includes(searchQuery.value));
   } else {
-    return null;
+    return [];
   }
 });
+
 const isAllSelected = computed(() => {
   return selectedOptions.value.length === props.options.length;
 });
+
 const internalIsAllSelected = ref(isAllSelected.value);
 
 const updateSelectAllIndeterminate = () => {
   selectAllIndeterminate.value = selectedOptions.value.length > 0 && selectedOptions.value.length < props.options.length;
 };
+
 const toggleOptions = () => {
   showOptions.value = !showOptions.value;
 };
+
 const openOptions = () => {
   showOptions.value = true;
 };
+
 const closeOptions = () => {
   showOptions.value = false;
 };
+
 const selectOption = (option: any) => {
   if (!option[props.optionDisabledKey]) {
     if (props.multiSelect) {
@@ -163,6 +169,7 @@ const deselectOption = (option: OptionType) => {
   updateSelectAllIndeterminate();
   emit('update:modelValue', selectedOptions.value);
 };
+
 const toggleSelectAll = () => {
   if (isAllSelected.value) {
     selectedOptions.value = [];
@@ -172,12 +179,17 @@ const toggleSelectAll = () => {
   updateSelectAllIndeterminate();
   emit('update:modelValue', selectedOptions.value);
 };
+
 const searchOptions = () => {
   emit('search', searchQuery.value);
 };
 
 watch(isAllSelected, (newValue) => {
   internalIsAllSelected.value = newValue;
+});
+
+watch(() => props.modelValue, (newValue) => {
+  selectedOptions.value = [...newValue];
 });
 </script>
 
