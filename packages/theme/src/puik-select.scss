@@ -5,53 +5,48 @@
   &__container {
     @apply relative;
   }
-  &__drop-icon {
-    @apply absolute cursor-pointer right-3 top-[50%] -translate-y-1/2;
-  }
-  &__multiple-input {
-    @apply cursor-default;
-  }
-  &__chip-container {
-    @apply px-3 py-2 pr-10 flex border border-primary-400 font-primary transition-colors text-primary space-x-1 overflow-x-hidden;
-    &:hover {
-      @apply border-primary;
+
+  .puik-multi-select {
+    &__options-tags {
+      @apply px-3 py-2 pr-10 flex border border-primary-400 font-primary transition-colors text-primary space-x-1 overflow-x-hidden;
+      &:hover {
+        @apply border-primary;
+      }
+      &:focus {
+        @apply border-primary ring ring-inset ring-blue;
+      }
+      &--error {
+        @apply border-red bg-red-50;
+      }
+      &--disabled {
+        @apply bg-white hover:border-primary-400 cursor-not-allowed;
+      }
     }
-    &--focus {
-      @apply border-primary ring ring-inset ring-blue;
+    &__dropdown-icon {
+      @apply absolute cursor-pointer right-3 top-[50%] -translate-y-1/2;
     }
-    &--disabled {
-      @apply bg-white hover:border-primary-400 cursor-not-allowed;
+    &__input {
+      @apply cursor-default;
     }
   }
-  &__options-container {
+
+  .puik-single-select {
+    &__input {
+      @apply cursor-default;
+    }
+  }
+
+  .puik-select-dropdown {
     @apply absolute top-[100%] w-full bg-white text-base z-10 shadow-lg ring-1 ring-black ring-opacity-5
     focus-visible:outline-none sm:text-sm overflow-x-hidden;
-  }
-  &__select-all {
-    @apply px-3 flex relative select-none text-primary-800 transition-colors;
-    label {
-      @apply min-h-9 flex items-center grow cursor-default;
+    &__search-input {
+      @apply px-3 py-2;
     }
-    &--selected {
-      @apply bg-primary-300;
+    &__select-all {
+      @apply px-3 flex relative select-none text-primary-800 transition-colors;
+      label {
+        @apply min-h-9 flex items-center grow cursor-default;
+      }
     }
-    &:hover:not(&--disabled, &--selected) {
-      @apply bg-primary-200 text-primary-800;
-    }
-    &--active:not(&--disabled, &:hover) {
-      @apply ring ring-blue ring-inset rounded-lg;
-    }
-    &:active:not(&--disabled) {
-      @apply bg-white;
-    }
-    &--disabled {
-      @apply bg-white text-primary-300 pointer-events-none;
-    }
-    &__selected-icon {
-      @apply font-materialIcons inset-y-0 right-0 flex items-center w-5 ml-2;
-    }
-  }
-  &__search-input {
-    @apply px-3 py-2;
   }
 }
