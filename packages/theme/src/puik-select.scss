@@ -1,8 +1,10 @@
 @use './common/typography.scss';
 
 .puik-select {
-  @apply relative;
   @extend .puik-body-default;
+  &__container {
+    @apply relative;
+  }
   &__drop-icon {
     @apply absolute cursor-pointer right-3 top-[50%] -translate-y-1/2;
   }

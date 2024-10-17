@@ -5,13 +5,13 @@
       { 'puik-option-single--selected' : isSelected && !props.multiSelect},
       { 'puik-option--disabled' : props.disabled },
     ]"
+    @click="selectOption"
   >
     <template v-if="props.multiSelect">
       <PuikCheckbox
-        v-model="isSelected"
-        :disabled="disabled"
+        v-model="isSelectedRef"
+        :disabled="props.disabled"
         :sr-label="option[props.labelKey]"
-        @change="selectOption"
       />
       <label>{{ option[props.labelKey] }}</label>
     </template>
@@ -19,7 +19,7 @@
       {{ option[props.labelKey] }}
     </label>
     <PuikIcon
-      v-if="isSelected && !props.multiSelect"
+      v-if="isSelectedRef && !props.multiSelect"
       class="puik-option__selected-icon"
       icon="check"
     />
@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref, watch } from 'vue';
 import { PuikCheckbox } from '../../checkbox';
 import { PuikIcon } from '../../icon';
 import type { OptionProps, OptionEmits } from './option';
@@ -42,20 +42,24 @@ const props = withDefaults(defineProps<OptionProps>(), {
   disabledKey: 'disabled',
   disabled: false,
   multiSelect: false,
-  selectedOptions: () => { return []; }
+  isSelected: false
 });
 
 const emit = defineEmits<OptionEmits>();
 
-const isSelected = computed(() => {
-  return props.selectedOptions.includes(props.option);
-});
+const isSelectedRef = ref(props.isSelected);
 
 const selectOption = () => {
-  if (props.disabled) {
+  if (!props.disabled) {
+    isSelectedRef.value = !isSelectedRef.value;
     emit('select', props.option);
   }
 };
+
+watch(() => props.isSelected, (newValue) => {
+  isSelectedRef.value = newValue;
+});
+
 </script>
 
 <style lang="scss">

@@ -10,7 +10,7 @@ export interface OptionProps {
   valueKey?: string
   disabledKey?: string
   disabled?: boolean
-  selectedOptions: OptionType[]
+  isSelected: boolean
   multiSelect?: boolean
 }
 
