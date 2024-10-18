@@ -11,12 +11,14 @@
       <PuikCheckbox
         v-model="isSelectedRef"
         :disabled="props.disabled"
-        :sr-label="option[props.labelKey]"
+        :sr-label="label ?? option?.[props.labelKey]"
       />
-      <label>{{ option[props.labelKey] }}</label>
+      <slot>
+        <label>{{ label ?? option?.[props.labelKey] }}</label>
+      </slot>
     </template>
     <label v-else>
-      {{ option[props.labelKey] }}
+      {{ label ?? option?.[props.labelKey] }}
     </label>
     <PuikIcon
       v-if="isSelectedRef && !props.multiSelect"
@@ -51,8 +53,13 @@ const isSelectedRef = ref(props.isSelected);
 
 const selectOption = () => {
   if (!props.disabled) {
-    isSelectedRef.value = !isSelectedRef.value;
-    emit('select', props.option);
+    if (props.option) {
+      isSelectedRef.value = !isSelectedRef.value;
+      emit('select', props.option);
+    } else {
+      isSelectedRef.value = !isSelectedRef.value;
+      emit('select', { label: props.label, value: props.value });
+    }
   }
 };
 

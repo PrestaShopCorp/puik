@@ -67,24 +67,26 @@
           </template>
         </puik-input>
         <PuikCheckbox
-          v-if="multiSelect"
+          v-if="multiSelect && typeof IsAllSelectedRef === 'boolean' "
           v-model="IsAllSelectedRef"
           class="puik-select-dropdown__select-all"
           :label="IsAllSelectedRef ? `${t('puik.select.deselectAll')}` : `${t('puik.select.selectAll')}`"
           :indeterminate="selectAllIndeterminate"
           @change="toggleSelectAll"
         />
-        <puik-option
-          v-for="option in filteredOptions"
-          :key="option[props.optionValueKey]"
-          :label-key="props.optionLabelKey"
-          :value-key="props.optionValueKey"
-          :is-selected="props.multiSelect ? selectedMultipleOptions.includes(option) : selectedSingleOption === option ? true : false"
-          :option="option"
-          :disabled="option[props.optionDisabledKey]"
-          :multi-select="props.multiSelect"
-          @select="selectOption(option)"
-        />
+        <slot>
+          <puik-option
+            v-for="option in filteredOptions"
+            :key="option[props.optionValueKey]"
+            :label-key="props.optionLabelKey"
+            :value-key="props.optionValueKey"
+            :is-selected="props.multiSelect ? selectedMultipleOptions.includes(option) : selectedSingleOption === option ? true : false"
+            :option="option"
+            :disabled="option[props.optionDisabledKey]"
+            :multi-select="props.multiSelect"
+            @select="selectOption(option)"
+          />
+        </slot>
       </div>
     </div>
   </div>
@@ -116,7 +118,7 @@ const props = withDefaults(defineProps<SelectProps>(), {
 const emit = defineEmits(['update:modelValue', 'search']);
 
 const selectedMultipleOptions = ref(Array.isArray(props.modelValue) ? [...props.modelValue] : []);
-const selectedSingleOption = ref(props.modelValue ? props.modelValue : {});
+const selectedSingleOption = ref(props.modelValue ?? {});
 const showOptions = ref(false);
 const searchQuery = ref('');
 const selectAllIndeterminate = ref(false);
@@ -130,27 +132,34 @@ const filteredOptions = computed(() => {
 });
 
 const isAllSelected = computed(() => {
-  return props.options.length === props.options.filter((option: OptionType) => !option[props.optionDisabledKey]).length;
+  if (props.options) {
+    return props.options.length === props.options.filter((option: OptionType) => !option[props.optionDisabledKey]).length;
+  } else {
+    return null;
+  }
 });
 const IsAllSelectedRef = ref(isAllSelected.value);
 
 const updateSelectAllIndeterminate = () => {
-  const enabledOptionsCount = props.options.filter((option: OptionType) => !option[props.optionDisabledKey]).length;
-  const selectedEnabledOptionsCount = selectedMultipleOptions.value.filter(option => !option[props.optionDisabledKey]).length;
-
-  selectAllIndeterminate.value = selectedEnabledOptionsCount > 0 && selectedEnabledOptionsCount < enabledOptionsCount;
-  IsAllSelectedRef.value = selectedEnabledOptionsCount === enabledOptionsCount;
+  if (props.options) {
+    const enabledOptionsCount = props.options.filter((option: OptionType) => !option[props.optionDisabledKey]).length;
+    const selectedEnabledOptionsCount = selectedMultipleOptions.value.filter(option => !option[props.optionDisabledKey]).length;
+    selectAllIndeterminate.value = selectedEnabledOptionsCount > 0 && selectedEnabledOptionsCount < enabledOptionsCount;
+    IsAllSelectedRef.value = selectedEnabledOptionsCount === enabledOptionsCount;
+  }
 };
 const toggleSelectAll = () => {
-  if (!IsAllSelectedRef.value) {
-    selectedMultipleOptions.value = selectedMultipleOptions.value.filter(option => option[props.optionDisabledKey]);
-  } else {
-    const disabledSelected = selectedMultipleOptions.value.filter(option => option[props.optionDisabledKey]);
-    const enabledOptions = props.options.filter((option: OptionType) => !option[props.optionDisabledKey]);
-    selectedMultipleOptions.value = [...disabledSelected, ...enabledOptions];
+  if (props.options) {
+    if (!IsAllSelectedRef.value) {
+      selectedMultipleOptions.value = selectedMultipleOptions.value.filter(option => option[props.optionDisabledKey]);
+    } else {
+      const disabledSelected = selectedMultipleOptions.value.filter(option => option[props.optionDisabledKey]);
+      const enabledOptions = props.options.filter((option: OptionType) => !option[props.optionDisabledKey]);
+      selectedMultipleOptions.value = [...disabledSelected, ...enabledOptions];
+    }
+    updateSelectAllIndeterminate();
+    emit('update:modelValue', selectedMultipleOptions.value);
   }
-  updateSelectAllIndeterminate();
-  emit('update:modelValue', selectedMultipleOptions.value);
 };
 
 const toggleOptions = () => {

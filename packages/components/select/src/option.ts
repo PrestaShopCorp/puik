@@ -5,12 +5,14 @@ export interface OptionType {
   [key: string]: any
 }
 export interface OptionProps {
-  option: OptionType
+  option?: OptionType
+  label?: string
+  value?: string
   labelKey?: string
   valueKey?: string
   disabledKey?: string
   disabled?: boolean
-  isSelected: boolean
+  isSelected?: boolean
   multiSelect?: boolean
 }
 
