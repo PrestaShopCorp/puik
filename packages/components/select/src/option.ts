@@ -6,8 +6,8 @@ export interface OptionType {
 }
 export interface OptionProps {
   option?: OptionType
-  label?: string
-  value?: string
+  label?: string | number
+  value?: string | number | Record<string, any>
   labelKey?: string
   valueKey?: string
   disabledKey?: string

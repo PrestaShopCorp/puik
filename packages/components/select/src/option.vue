@@ -17,9 +17,12 @@
         <label>{{ label ?? option?.[props.labelKey] }}</label>
       </slot>
     </template>
-    <label v-else>
-      {{ label ?? option?.[props.labelKey] }}
-    </label>
+
+    <template v-else>
+      <slot>
+        <label>{{ label ?? option?.[props.labelKey] }}</label>
+      </slot>
+    </template>
     <PuikIcon
       v-if="isSelectedRef && !props.multiSelect"
       class="puik-option__selected-icon"
@@ -50,6 +53,8 @@ const props = withDefaults(defineProps<OptionProps>(), {
 const emit = defineEmits<OptionEmits>();
 
 const isSelectedRef = ref(props.isSelected);
+const labelRef = ref(props.label);
+const valueRef = ref(props.value);
 
 const selectOption = () => {
   if (!props.disabled) {
@@ -58,13 +63,19 @@ const selectOption = () => {
       emit('select', props.option);
     } else {
       isSelectedRef.value = !isSelectedRef.value;
-      emit('select', { label: props.label, value: props.value });
+      emit('select', { label: labelRef, value: valueRef });
     }
   }
 };
 
 watch(() => props.isSelected, (newValue) => {
   isSelectedRef.value = newValue;
+});
+watch(() => props.label, (newValue) => {
+  labelRef.value = newValue;
+});
+watch(() => props.value, (newValue) => {
+  valueRef.value = newValue;
 });
 
 </script>

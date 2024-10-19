@@ -203,6 +203,10 @@ watch(isAllSelected, (newValue) => {
   IsAllSelectedRef.value = newValue;
 });
 
+watch(() => props.modelValue, (newValue) => {
+  selectedSingleOption.value = newValue;
+});
+
 updateSelectAllIndeterminate();
 </script>
 
