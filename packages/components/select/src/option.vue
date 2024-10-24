@@ -2,7 +2,7 @@
   <div
     :class="[
       'puik-option',
-      { 'puik-option-single--selected' : isSelected && !props.multiSelect},
+      { 'puik-option-single--selected' : isSelectedRef && !props.multiSelect},
       { 'puik-option--disabled' : props.disabled },
     ]"
     @click="selectOption"

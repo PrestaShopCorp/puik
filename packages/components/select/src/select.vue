@@ -51,7 +51,7 @@
       />
 
       <div
-        v-if="showOptions"
+        v-show="showOptions"
         class="puik-select-dropdown"
       >
         <puik-input
