@@ -14,6 +14,13 @@ export interface SelectProps {
   noMatchText?: string
   disabled?: boolean
   error?: string
+  open?: boolean
 }
+
+export type SelectEmits = {
+  'open': [state: boolean]
+  'update:modelValue': [selectedOptions: any]
+  'search': [searQuery: string]
+};
 
 export type SelectInstance = InstanceType<typeof Select>;

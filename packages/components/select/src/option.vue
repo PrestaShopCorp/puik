@@ -67,6 +67,9 @@ const selectOption = () => {
       isSelectedRef.value = !isSelectedRef.value;
       emit('select', { label: labelRef, value: valueRef });
     }
+    if (!props.multiSelect) {
+      emit('close', true);
+    }
   }
 };
 

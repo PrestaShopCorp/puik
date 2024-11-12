@@ -48,10 +48,14 @@
         :placeholder="props.placeholder ?? defaultPlaceholder"
         readonly
         @click.stop="toggleOptions"
-      />
+      >
+        <template #append>
+          <PuikIcon icon="unfold_more" />
+        </template>
+      </puikInput>
 
       <div
-        v-show="showOptions"
+        v-show="open"
         class="puik-select-dropdown"
       >
         <puik-input
@@ -85,6 +89,7 @@
             :disabled="option[props.optionDisabledKey]"
             :multi-select="props.multiSelect"
             @select="selectOption(option)"
+            @close="closeOptions"
           />
         </slot>
       </div>
@@ -98,7 +103,7 @@ import { vOnClickOutside } from '@vueuse/components';
 import { useLocale } from '@prestashopcorp/puik-locale';
 import { PuikCheckbox, PuikChip, PuikIcon, PuikInput, PuikOption } from '@prestashopcorp/puik-components';
 import type { OptionType } from './option';
-import type { SelectProps } from './select';
+import type { SelectProps, SelectEmits } from './select';
 
 defineOptions({
   name: 'PuikSelect'
@@ -112,14 +117,15 @@ const props = withDefaults(defineProps<SelectProps>(), {
   optionLabelKey: 'label',
   optionValueKey: 'value',
   optionDisabledKey: 'disabled',
-  multiSelect: false
+  multiSelect: false,
+  open: false
 });
 
-const emit = defineEmits(['update:modelValue', 'search']);
+const emit = defineEmits<SelectEmits>();
 
 const selectedMultipleOptions = ref(Array.isArray(props.modelValue) ? [...props.modelValue] : []);
 const selectedSingleOption = ref(props.modelValue ?? {});
-const showOptions = ref(false);
+const openRef = ref(props.open);
 const searchQuery = ref('');
 const selectAllIndeterminate = ref(false);
 
@@ -163,13 +169,16 @@ const toggleSelectAll = () => {
 };
 
 const toggleOptions = () => {
-  showOptions.value = !showOptions.value;
+  emit('open', !props.open);
+  openRef.value = !openRef.value;
 };
 const openOptions = () => {
-  showOptions.value = true;
+  emit('open', true);
+  openRef.value = true;
 };
 const closeOptions = () => {
-  showOptions.value = false;
+  emit('open', false);
+  openRef.value = false;
 };
 
 const selectOption = (option: OptionType) => {
@@ -184,7 +193,6 @@ const selectOption = (option: OptionType) => {
       emit('update:modelValue', selectedMultipleOptions.value);
     } else {
       selectedSingleOption.value = option;
-      showOptions.value = false;
       emit('update:modelValue', selectedSingleOption.value);
     }
   }
@@ -205,6 +213,10 @@ watch(isAllSelected, (newValue) => {
 
 watch(() => props.modelValue, (newValue) => {
   selectedSingleOption.value = newValue;
+});
+
+watch(() => props.open, (newValue) => {
+  openRef.value = newValue;
 });
 
 updateSelectAllIndeterminate();

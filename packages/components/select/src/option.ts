@@ -18,6 +18,7 @@ export interface OptionProps {
 
 export type OptionEmits = {
   'select': [payload: OptionType]
+  'close': [state: boolean]
 };
 
 export type OptionInstance = InstanceType<typeof Option>;
