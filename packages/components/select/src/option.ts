@@ -17,7 +17,7 @@ export interface OptionProps {
 }
 
 export type OptionEmits = {
-  'select': [payload: OptionType]
+  'select': [payload: OptionType | {}]
   'close': [state: boolean]
 };
 

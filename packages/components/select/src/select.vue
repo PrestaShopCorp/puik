@@ -30,7 +30,7 @@
           v-else
           class="puik-multi-select__input"
           type="text"
-          :placeholder="props.placeholder ?? defaultPlaceholder"
+          :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
           readonly
           @click.stop="toggleOptions"
         >
@@ -45,7 +45,7 @@
         v-model="selectedSingleOption[props.optionLabelKey]"
         class="puik-single-select__input"
         type="text"
-        :placeholder="props.placeholder ?? defaultPlaceholder"
+        :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
         readonly
         @click.stop="toggleOptions"
       >
@@ -55,7 +55,7 @@
       </puikInput>
 
       <div
-        v-show="open"
+        v-show="openRef"
         class="puik-select-dropdown"
       >
         <puik-input
@@ -63,7 +63,7 @@
           v-model="searchQuery"
           class="puik-select-dropdown__search-input"
           type="text"
-          :placeholder="props.searchPlaceholder ?? defaultSearchPlaceholder"
+          :placeholder="props.searchPlaceholder ?? `${t('puik.select.searchPlaceholder')}`"
           @input="searchOptions"
         >
           <template #prepend>
@@ -79,18 +79,20 @@
           @change="toggleSelectAll"
         />
         <slot>
-          <puik-option
-            v-for="option in filteredOptions"
-            :key="option[props.optionValueKey]"
-            :label-key="props.optionLabelKey"
-            :value-key="props.optionValueKey"
-            :is-selected="props.multiSelect ? selectedMultipleOptions.includes(option) : selectedSingleOption === option ? true : false"
-            :option="option"
-            :disabled="option[props.optionDisabledKey]"
-            :multi-select="props.multiSelect"
-            @select="selectOption(option)"
-            @close="closeOptions"
-          />
+          <puik-group-options>
+            <puik-option
+              v-for="option in filteredOptions"
+              :key="option[props.optionValueKey]"
+              :label-key="props.optionLabelKey"
+              :value-key="props.optionValueKey"
+              :is-selected="props.multiSelect ? selectedMultipleOptions.includes(option) : selectedSingleOption === option ? true : false"
+              :option="option"
+              :disabled="option[props.optionDisabledKey]"
+              :multi-select="props.multiSelect"
+              @select="selectOption(option)"
+              @close="closeOptions"
+            />
+          </puik-group-options>
         </slot>
       </div>
     </div>
@@ -101,7 +103,7 @@
 import { ref, computed, watch } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
 import { useLocale } from '@prestashopcorp/puik-locale';
-import { PuikCheckbox, PuikChip, PuikIcon, PuikInput, PuikOption } from '@prestashopcorp/puik-components';
+import { PuikCheckbox, PuikChip, PuikIcon, PuikInput, PuikGroupOptions, PuikOption } from '@prestashopcorp/puik-components';
 import type { OptionType } from './option';
 import type { SelectProps, SelectEmits } from './select';
 
@@ -110,8 +112,6 @@ defineOptions({
 });
 
 const { t } = useLocale();
-const defaultPlaceholder = t('puik.select.placeholder');
-const defaultSearchPlaceholder = t('puik.select.searchPlaceholder');
 
 const props = withDefaults(defineProps<SelectProps>(), {
   optionLabelKey: 'label',
@@ -225,6 +225,7 @@ updateSelectAllIndeterminate();
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-select.scss';
+@use '@prestashopcorp/puik-theme/src/puik-group-options.scss';
 @use '@prestashopcorp/puik-theme/src/puik-option.scss';
 @use '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
 @use '@prestashopcorp/puik-theme/src/puik-chip.scss';

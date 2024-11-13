@@ -21,7 +21,7 @@ export default {
       readonly: 'Read\xa0only'
     },
     select: {
-      placeholder: 'Select on option',
+      placeholder: 'Select an option',
       searchPlaceholder: 'Search...',
       noResults: 'No results matched',
       selectAll: 'Select all',

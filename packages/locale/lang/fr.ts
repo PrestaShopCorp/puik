@@ -20,7 +20,7 @@ export default {
       readonly: 'Lecture uniquement'
     },
     select: {
-      placeholder: 'Select on option',
+      placeholder: 'Selectionner une option',
       searchPlaceholder: 'Chercher...',
       noResults: 'Aucun résultat',
       selectAll: 'Tout sélectionnner',

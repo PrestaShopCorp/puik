@@ -62,7 +62,7 @@ const selectOption = () => {
       isSelectedRef.value = !isSelectedRef.value;
       isSelectedRef.value
         ? emit('select', props.option)
-        : emit('select', { label: '', value: '' });
+        : emit('select', {});
     } else {
       isSelectedRef.value = !isSelectedRef.value;
       emit('select', { label: labelRef, value: valueRef });
