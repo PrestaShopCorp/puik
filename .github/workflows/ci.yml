@@ -9,11 +9,11 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [18]
+        node: [20]
 
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -21,12 +21,12 @@ jobs:
           version: 9.1.2
 
       - name: Setup node env 🏗
-        uses: actions/setup-node@v3.6.0
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
       - name: Cache ~/.pnpm-store 📦
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: cache-pnpm-store
         with:
