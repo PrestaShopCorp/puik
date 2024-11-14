@@ -24,6 +24,7 @@
         color="#FFA000"
         :fill="getStarState(starIndex).fill"
         node-type="span"
+        :data-test="dataTest != undefined ? `${dataTest}-star-icon-${starIndex}` : undefined"
       />
     </div>
     <PuikIcon
@@ -33,6 +34,7 @@
       font-size="16px"
       color="#FFA000"
       node-type="span"
+      :data-test="dataTest != undefined ? `${dataTest}-star-icon` : undefined"
     />
     <span
       v-if="booleanishProps.showTotalRatings && totalRatings.length"

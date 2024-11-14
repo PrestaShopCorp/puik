@@ -66,7 +66,7 @@ export type booleanish = boolean | 'true' | 'false';
     },
     dataTest: {
       control: 'text',
-      description: 'Sets the data-test attribute',
+      description: 'Sets the data-test attribute `dataTest` (puik-rating-card top level div element), `${dataTest}-star-icon` (star icon of compact variant), `${dataTest}-star-icon-${starIndex}` (star icons of extended variant)',
       table: {
         defaultValue: {
           summary: 'undefined'
