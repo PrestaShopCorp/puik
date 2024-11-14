@@ -341,6 +341,19 @@ describe('Table tests', () => {
     expect(wrapper.emitted('searchSubmit')).toBeTruthy();
   });
 
+  it('should emit searchResultsLocally event', async () => {
+    const headers: PuikTableHeader[] = [
+      { value: 'firstname', searchable: true },
+      { value: 'lastname', searchable: true },
+      { value: 'action', searchSubmit: true, preventExpand: true }
+    ];
+    factory({ headers, searchBar: true, sortFromServer: false });
+    const searchSubmitButton = getTable().find(searchSubmitButtonClass);
+    expect(searchSubmitButton).toBeTruthy();
+    await searchSubmitButton.trigger('click');
+    expect(wrapper.emitted('searchResultsLocally')).toBeTruthy();
+  });
+
   it('should update the table when items prop changes', async () => {
     const headers: PuikTableHeader[] = [{ value: 'firstname' }];
     factory({ headers, items: [] });

@@ -383,6 +383,7 @@ import { PuikSkeletonLoader } from '@prestashopcorp/puik-components/skeleton-loa
 import { PuikTableSearchInput } from '@prestashopcorp/puik-components/table';
 import {
   TableProps,
+  TableEmits,
   PuikTableSortOrder,
   PuikTableSortIcon,
   sortOption
@@ -401,13 +402,7 @@ const props = withDefaults(defineProps<TableProps>(), {
   selection: () => []
 });
 
-const emit = defineEmits<{
-  select: [index: number];
-  'select:all': [];
-  'update:selection': [value: number[]];
-  sortColumn: [column: sortOption];
-  searchSubmit: [column: searchOption[]];
-}>();
+const emit = defineEmits<TableEmits>();
 
 const { t } = useLocale();
 const checked = ref<number[]>(props.selection);
@@ -447,6 +442,10 @@ const handleSearchReset = () => {
   searchReset.value = false;
   forceRenderInputSearch();
   searchLoading.value = false;
+  emit('searchSubmit', toRaw(globalSearchOptions.value));
+  if (!props.sortFromServer) {
+    emit('searchResultsLocally', props.items);
+  }
 };
 
 const handleSearchDataLocally = () => {
@@ -479,6 +478,7 @@ const handleSearchDataLocally = () => {
   });
   searchLoading.value = false;
   data.value = searchedRows;
+  emit('searchResultsLocally', searchedRows);
 };
 
 const handleSearchSubmit = () => {
