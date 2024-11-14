@@ -252,6 +252,15 @@ type inputRange = {
           `
         }
       }
+    },
+    searchResultsLocally: {
+      description: 'Event emitted when clicking the search button and prop searchFromServer is false. Return search results (items)',
+      control: 'none',
+      table: {
+        type: {
+          summary: 'event => any[]'
+        }
+      }
     }
   },
   args: {
