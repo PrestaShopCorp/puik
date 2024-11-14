@@ -1,6 +1,6 @@
 import '@prestashopcorp/puik-components/table/style/css';
 import type Table from './table.vue';
-import type { PuikTableSearchInputTypes } from '../src/table-search-input';
+import type { PuikTableSearchInputTypes, searchOption } from '../src/table-search-input';
 
 export enum PuikTableHeaderSize {
   Small = 'sm',
@@ -63,5 +63,14 @@ export interface TableProps {
   stickyLastCol?: boolean
   dataTest?: string
 }
+
+export type TableEmits = {
+  select: [index: number]
+  'select:all': []
+  'update:selection': [value: number[]]
+  sortColumn: [column: sortOption]
+  searchSubmit: [column: searchOption[]]
+  searchResultsLocally: any[]
+};
 
 export type TableInstance = InstanceType<typeof Table>;
