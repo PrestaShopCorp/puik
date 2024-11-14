@@ -2,14 +2,33 @@
   <div
     v-on-click-outside="closeOptions"
     class="puik-select"
+    role="listbox"
+    :aria-multiselectable="props.multiSelect"
   >
-    <div class="puik-select__container">
+    <div
+      :class="[
+        'puik-select__container',
+        { 'puik-select__container--error': hasError }
+      ]"
+    >
+      <puik-label
+        v-if="props.id && props.label"
+        class="puik-select__label"
+        :for="props.id"
+        :required="props.required"
+        :optional="props.optional"
+        :readonly="props.disabled"
+      >
+        {{ props.label }}
+      </puik-label>
       <template v-if="props.multiSelect">
         <div
-          v-if="selectedMultipleOptions.length > 0 "
-          class="puik-multi-select__options-tags"
+          v-if="selectedMultipleOptions.length > 0"
+          :class="['puik-multi-select__options-tags']"
           tabindex="0"
           @click.stop="toggleOptions"
+          @keydown.space.prevent.stop="toggleOptions"
+          @keydown.enter.prevent.stop="toggleOptions"
         >
           <PuikIcon
             class="puik-multi-select__dropdown-icon"
@@ -22,17 +41,30 @@
             :content="option[props.optionLabelKey]"
             :disabled="option[props.optionDisabledKey]"
             size="small"
+            role="option"
+            :aria-selected="true"
             @close="deselectOption(option)"
             @click.stop="openOptions"
           />
         </div>
         <puik-input
           v-else
-          class="puik-multi-select__input"
+          :id="props.id"
+          :class="[
+            'puik-multi-select__input',
+            { 'puik-multi-select__input--error': hasError }
+          ]"
           type="text"
           :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
           readonly
+          :autocomplete="props.autocomplete"
+          :disabled="props.disabled"
+          role="combobox"
+          :aria-expanded="openRef"
+          :aria-controls="`dropdown-${props.id}`"
           @click.stop="toggleOptions"
+          @keydown.space.prevent.stop="toggleOptions"
+          @keydown.enter.prevent.stop="toggleOptions"
         >
           <template #append>
             <PuikIcon icon="unfold_more" />
@@ -40,23 +72,35 @@
         </puik-input>
       </template>
 
-      <puikInput
+      <puik-input
         v-else
+        :id="props.id"
         v-model="selectedSingleOption[props.optionLabelKey]"
-        class="puik-single-select__input"
+        :class="[
+          'puik-single-select__input',
+          { 'puik-single-select__input--error': hasError }
+        ]"
         type="text"
         :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
         readonly
+        :disabled="props.disabled"
+        role="combobox"
+        :aria-expanded="openRef"
+        :aria-controls="`dropdown-${props.id}`"
         @click.stop="toggleOptions"
+        @keydown.space.prevent.stop="toggleOptions"
+        @keydown.enter.prevent.stop="toggleOptions"
       >
         <template #append>
           <PuikIcon icon="unfold_more" />
         </template>
-      </puikInput>
+      </puik-input>
 
       <div
         v-show="openRef"
+        :id="`dropdown-${props.id}`"
         class="puik-select-dropdown"
+        role="listbox"
       >
         <puik-input
           v-if="searchable"
@@ -64,6 +108,7 @@
           class="puik-select-dropdown__search-input"
           type="text"
           :placeholder="props.searchPlaceholder ?? `${t('puik.select.searchPlaceholder')}`"
+          role="searchbox"
           @input="searchOptions"
         >
           <template #prepend>
@@ -71,11 +116,13 @@
           </template>
         </puik-input>
         <PuikCheckbox
-          v-if="multiSelect && typeof IsAllSelectedRef === 'boolean' "
+          v-if="props.multiSelect && typeof IsAllSelectedRef === 'boolean'"
           v-model="IsAllSelectedRef"
           class="puik-select-dropdown__select-all"
           :label="IsAllSelectedRef ? `${t('puik.select.deselectAll')}` : `${t('puik.select.selectAll')}`"
           :indeterminate="selectAllIndeterminate"
+          role="checkbox"
+          :aria-checked="IsAllSelectedRef"
           @change="toggleSelectAll"
         />
         <slot>
@@ -85,10 +132,12 @@
               :key="option[props.optionValueKey]"
               :label-key="props.optionLabelKey"
               :value-key="props.optionValueKey"
-              :is-selected="props.multiSelect ? selectedMultipleOptions.includes(option) : selectedSingleOption === option ? true : false"
+              :is-selected="props.multiSelect ? selectedMultipleOptions.includes(option) : selectedSingleOption === option"
               :option="option"
               :disabled="option[props.optionDisabledKey]"
               :multi-select="props.multiSelect"
+              role="option"
+              :aria-selected="props.multiSelect ? selectedMultipleOptions.includes(option) : selectedSingleOption === option"
               @select="selectOption(option)"
               @close="closeOptions"
             />
@@ -96,30 +145,49 @@
         </slot>
       </div>
     </div>
+    <div
+      v-if="hasError"
+      class="puik-select__error"
+    >
+      <puik-icon
+        icon="error"
+        font-size="1.25rem"
+        class="puik-select__error__icon"
+      />
+      <span class="puik-select__error__text">
+        <slot name="error">{{ error }}</slot>
+      </span>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, useSlots } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
 import { useLocale } from '@prestashopcorp/puik-locale';
-import { PuikCheckbox, PuikChip, PuikIcon, PuikInput, PuikGroupOptions, PuikOption } from '@prestashopcorp/puik-components';
+import { PuikCheckbox, PuikChip, PuikIcon, PuikInput, PuikGroupOptions, PuikOption, PuikLabel } from '@prestashopcorp/puik-components';
 import type { OptionType } from './option';
 import type { SelectProps, SelectEmits } from './select';
+import { slotIsEmpty } from '@prestashopcorp/puik-utils/types';
 
 defineOptions({
   name: 'PuikSelect'
 });
 
+const slots = useSlots();
 const { t } = useLocale();
 
 const props = withDefaults(defineProps<SelectProps>(), {
+  required: false,
+  optional: false,
+  readonly: false,
   optionLabelKey: 'label',
   optionValueKey: 'value',
   optionDisabledKey: 'disabled',
   multiSelect: false,
   open: false
 });
+const hasError = computed(() => props.error || slotIsEmpty(slots.error));
 
 const emit = defineEmits<SelectEmits>();
 
@@ -192,7 +260,7 @@ const selectOption = (option: OptionType) => {
       updateSelectAllIndeterminate();
       emit('update:modelValue', selectedMultipleOptions.value);
     } else {
-      selectedSingleOption.value = option;
+      selectedSingleOption.value !== option ? selectedSingleOption.value = option : selectedSingleOption.value = {};
       emit('update:modelValue', selectedSingleOption.value);
     }
   }
@@ -229,6 +297,7 @@ updateSelectAllIndeterminate();
 @use '@prestashopcorp/puik-theme/src/puik-option.scss';
 @use '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
 @use '@prestashopcorp/puik-theme/src/puik-chip.scss';
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
 @use '@prestashopcorp/puik-theme/src/puik-input.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+@use '@prestashopcorp/puik-theme/src/puik-label.scss';
 </style>

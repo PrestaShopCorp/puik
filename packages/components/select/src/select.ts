@@ -2,7 +2,11 @@ import '@prestashopcorp/puik-components/select/style/css';
 import type Select from './select.vue';
 import type { OptionType } from './option';
 export interface SelectProps {
-  options?: OptionType[]
+  id?: string
+  label?: string
+  required?: boolean
+  optional?: boolean
+  options: OptionType[]
   optionLabelKey?: string
   optionValueKey?: string
   optionDisabledKey?: string
@@ -14,13 +18,14 @@ export interface SelectProps {
   noMatchText?: string
   disabled?: boolean
   error?: string
+  autocomplete?: string
   open?: boolean
 }
 
 export type SelectEmits = {
   'open': [state: boolean]
   'update:modelValue': [selectedOptions: any]
-  'search': [searQuery: string]
+  'search': [searchQuery: string]
 };
 
 export type SelectInstance = InstanceType<typeof Select>;

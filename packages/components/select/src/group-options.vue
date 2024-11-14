@@ -15,10 +15,6 @@ const props = withDefaults(defineProps<GroupOptionsProps>(), {
 });
 
 console.log(props);
-
-// watch(() => props.open, (newValue) => {
-//   openRef.value = newValue;
-// });
 </script>
 
 <style lang="scss">
