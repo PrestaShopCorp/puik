@@ -46,30 +46,42 @@
             @close="deselectOption(option)"
             @click.stop="openOptions"
           />
+          <input
+            :id="props.id"
+            type="hidden"
+            :name="props.id"
+            :value="JSON.stringify(selectedMultipleOptions)"
+          >
         </div>
-        <puik-input
-          v-else
-          :id="props.id"
-          :class="[
-            'puik-multi-select__input',
-            { 'puik-multi-select__input--error': hasError }
-          ]"
-          type="text"
-          :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
-          readonly
-          :autocomplete="props.autocomplete"
-          :disabled="props.disabled"
-          role="combobox"
-          :aria-expanded="openRef"
-          :aria-controls="`dropdown-${props.id}`"
-          @click.stop="toggleOptions"
-          @keydown.space.prevent.stop="toggleOptions"
-          @keydown.enter.prevent.stop="toggleOptions"
-        >
-          <template #append>
-            <PuikIcon icon="unfold_more" />
-          </template>
-        </puik-input>
+        <template v-else>
+          <puik-input
+            :class="[
+              'puik-multi-select__input',
+              { 'puik-multi-select__input--error': hasError }
+            ]"
+            type="text"
+            :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
+            readonly
+            :autocomplete="props.autocomplete"
+            :disabled="props.disabled"
+            role="combobox"
+            :aria-expanded="openRef"
+            :aria-controls="`dropdown-${props.id}`"
+            @click.stop="toggleOptions"
+            @keydown.space.prevent.stop="toggleOptions"
+            @keydown.enter.prevent.stop="toggleOptions"
+          >
+            <template #append>
+              <PuikIcon icon="unfold_more" />
+            </template>
+          </puik-input>
+          <input
+            :id="props.id"
+            type="hidden"
+            :name="props.id"
+            :value="JSON.stringify(selectedMultipleOptions)"
+          >
+        </template>
       </template>
 
       <puik-input
