@@ -18,6 +18,7 @@
         :required="props.required"
         :optional="props.optional"
         :readonly="props.disabled"
+        @click="resetSearchQuery"
       >
         {{ props.label }}
       </puik-label>
@@ -60,7 +61,9 @@
               { 'puik-multi-select__input--error': hasError }
             ]"
             type="text"
-            :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
+            :placeholder="
+              props.placeholder ?? `${t('puik.select.placeholder')}`
+            "
             readonly
             :autocomplete="props.autocomplete"
             :disabled="props.disabled"
@@ -119,7 +122,9 @@
           v-model="searchQuery"
           class="puik-select-dropdown__search-input"
           type="text"
-          :placeholder="props.searchPlaceholder ?? `${t('puik.select.searchPlaceholder')}`"
+          :placeholder="
+            props.searchPlaceholder ?? `${t('puik.select.searchPlaceholder')}`
+          "
           role="searchbox"
           @input="searchOptions"
         >
@@ -131,7 +136,11 @@
           v-if="props.multiSelect && typeof IsAllSelectedRef === 'boolean'"
           v-model="IsAllSelectedRef"
           class="puik-select-dropdown__select-all"
-          :label="IsAllSelectedRef ? `${t('puik.select.deselectAll')}` : `${t('puik.select.selectAll')}`"
+          :label="
+            IsAllSelectedRef
+              ? `${t('puik.select.deselectAll')}`
+              : `${t('puik.select.selectAll')}`
+          "
           :indeterminate="selectAllIndeterminate"
           role="checkbox"
           :aria-checked="IsAllSelectedRef"
@@ -144,12 +153,20 @@
               :key="option[props.optionValueKey]"
               :label-key="props.optionLabelKey"
               :value-key="props.optionValueKey"
-              :is-selected="props.multiSelect ? selectedMultipleOptions.includes(option) : selectedSingleOption === option"
+              :is-selected="
+                props.multiSelect
+                  ? selectedMultipleOptions.includes(option)
+                  : selectedSingleOption === option
+              "
               :option="option"
               :disabled="option[props.optionDisabledKey]"
               :multi-select="props.multiSelect"
               role="option"
-              :aria-selected="props.multiSelect ? selectedMultipleOptions.includes(option) : selectedSingleOption === option"
+              :aria-selected="
+                props.multiSelect
+                  ? selectedMultipleOptions.includes(option)
+                  : selectedSingleOption === option
+              "
               @select="selectOption(option)"
               @close="closeOptions"
             />
@@ -177,7 +194,15 @@
 import { ref, computed, watch, useSlots } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
 import { useLocale } from '@prestashopcorp/puik-locale';
-import { PuikCheckbox, PuikChip, PuikIcon, PuikInput, PuikGroupOptions, PuikOption, PuikLabel } from '@prestashopcorp/puik-components';
+import {
+  PuikCheckbox,
+  PuikChip,
+  PuikIcon,
+  PuikInput,
+  PuikGroupOptions,
+  PuikOption,
+  PuikLabel
+} from '@prestashopcorp/puik-components';
 import type { OptionType } from './option';
 import type { SelectProps, SelectEmits } from './select';
 import { slotIsEmpty } from '@prestashopcorp/puik-utils/types';
@@ -203,23 +228,41 @@ const hasError = computed(() => props.error || slotIsEmpty(slots.error));
 
 const emit = defineEmits<SelectEmits>();
 
-const selectedMultipleOptions = ref(Array.isArray(props.modelValue) ? [...props.modelValue] : []);
+const selectedMultipleOptions = ref(
+  Array.isArray(props.modelValue) ? [...props.modelValue] : []
+);
 const selectedSingleOption = ref(props.modelValue ?? {});
 const openRef = ref(props.open);
 const searchQuery = ref('');
 const selectAllIndeterminate = ref(false);
 
 const filteredOptions = computed(() => {
-  if (props.options) {
-    return props.options.filter((option) => option.label.includes(searchQuery.value));
+  if (props.customFilterMethod) {
+    return props.customFilterMethod(searchQuery.value);
+  } else if (props.options) {
+    return props.options.filter((option) =>
+      option?.[props.optionLabelKey].trim().includes(searchQuery.value)
+    );
   } else {
     return null;
   }
 });
 
+const searchOptions = () => {
+  emit('search', searchQuery.value, filteredOptions.value);
+};
+const resetSearchQuery = () => {
+  searchQuery.value = '';
+};
+
 const isAllSelected = computed(() => {
   if (props.options) {
-    return props.options.length === props.options.filter((option: OptionType) => !option[props.optionDisabledKey]).length;
+    return (
+      props.options.length ===
+      props.options.filter(
+        (option: OptionType) => !option[props.optionDisabledKey]
+      ).length
+    );
   } else {
     return null;
   }
@@ -228,19 +271,32 @@ const IsAllSelectedRef = ref(isAllSelected.value);
 
 const updateSelectAllIndeterminate = () => {
   if (props.options) {
-    const enabledOptionsCount = props.options.filter((option: OptionType) => !option[props.optionDisabledKey]).length;
-    const selectedEnabledOptionsCount = selectedMultipleOptions.value.filter(option => !option[props.optionDisabledKey]).length;
-    selectAllIndeterminate.value = selectedEnabledOptionsCount > 0 && selectedEnabledOptionsCount < enabledOptionsCount;
-    IsAllSelectedRef.value = selectedEnabledOptionsCount === enabledOptionsCount;
+    const enabledOptionsCount = props.options.filter(
+      (option: OptionType) => !option[props.optionDisabledKey]
+    ).length;
+    const selectedEnabledOptionsCount = selectedMultipleOptions.value.filter(
+      (option) => !option[props.optionDisabledKey]
+    ).length;
+    selectAllIndeterminate.value =
+      selectedEnabledOptionsCount > 0 &&
+      selectedEnabledOptionsCount < enabledOptionsCount;
+    IsAllSelectedRef.value =
+      selectedEnabledOptionsCount === enabledOptionsCount;
   }
 };
 const toggleSelectAll = () => {
   if (props.options) {
     if (!IsAllSelectedRef.value) {
-      selectedMultipleOptions.value = selectedMultipleOptions.value.filter(option => option[props.optionDisabledKey]);
+      selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
+        (option) => option[props.optionDisabledKey]
+      );
     } else {
-      const disabledSelected = selectedMultipleOptions.value.filter(option => option[props.optionDisabledKey]);
-      const enabledOptions = props.options.filter((option: OptionType) => !option[props.optionDisabledKey]);
+      const disabledSelected = selectedMultipleOptions.value.filter(
+        (option) => option[props.optionDisabledKey]
+      );
+      const enabledOptions = props.options.filter(
+        (option: OptionType) => !option[props.optionDisabledKey]
+      );
       selectedMultipleOptions.value = [...disabledSelected, ...enabledOptions];
     }
     updateSelectAllIndeterminate();
@@ -259,45 +315,54 @@ const openOptions = () => {
 const closeOptions = () => {
   emit('open', false);
   openRef.value = false;
+  resetSearchQuery();
 };
 
 const selectOption = (option: OptionType) => {
   if (!option[props.optionDisabledKey]) {
     if (props.multiSelect) {
       if (selectedMultipleOptions.value.includes(option)) {
-        selectedMultipleOptions.value = selectedMultipleOptions.value.filter(opt => opt !== option);
+        selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
+          (opt) => opt !== option
+        );
       } else {
         selectedMultipleOptions.value.push(option);
       }
       updateSelectAllIndeterminate();
       emit('update:modelValue', selectedMultipleOptions.value);
     } else {
-      selectedSingleOption.value !== option ? selectedSingleOption.value = option : selectedSingleOption.value = {};
+      selectedSingleOption.value !== option
+        ? (selectedSingleOption.value = option)
+        : (selectedSingleOption.value = {});
       emit('update:modelValue', selectedSingleOption.value);
     }
   }
 };
 const deselectOption = (option: OptionType) => {
-  selectedMultipleOptions.value = selectedMultipleOptions.value.filter(opt => opt !== option);
+  selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
+    (opt) => opt !== option
+  );
   updateSelectAllIndeterminate();
   emit('update:modelValue', selectedMultipleOptions.value);
-};
-
-const searchOptions = () => {
-  emit('search', searchQuery.value);
 };
 
 watch(isAllSelected, (newValue) => {
   IsAllSelectedRef.value = newValue;
 });
 
-watch(() => props.modelValue, (newValue) => {
-  selectedSingleOption.value = newValue;
-});
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    selectedSingleOption.value = newValue;
+  }
+);
 
-watch(() => props.open, (newValue) => {
-  openRef.value = newValue;
-});
+watch(
+  () => props.open,
+  (newValue) => {
+    openRef.value = newValue;
+  }
+);
 
 updateSelectAllIndeterminate();
 </script>

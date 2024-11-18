@@ -13,6 +13,7 @@ export interface SelectProps {
   modelValue: any
   multiSelect?: boolean
   searchable?: boolean
+  customFilterMethod?: (query: string) => any[] | Record<string, any>
   placeholder?: string
   searchPlaceholder?: string
   noMatchText?: string
@@ -25,7 +26,7 @@ export interface SelectProps {
 export type SelectEmits = {
   'open': [state: boolean]
   'update:modelValue': [selectedOptions: any]
-  'search': [searchQuery: string]
+  'search': [searchQuery: string, filteredOptions: any ]
 };
 
 export type SelectInstance = InstanceType<typeof Select>;
