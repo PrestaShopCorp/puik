@@ -10,7 +10,7 @@ export default {
   argTypes: {
     variant: {
       control: 'select',
-      description: 'Set the skeleton loader variant',
+      description: 'Sets the skeleton loader variant',
       options: skeletonLoaderVariants,
       table: {
         type: {
@@ -41,7 +41,7 @@ export default {
     },
     tag: {
       control: 'text',
-      description: 'Set the balise used as root element in the skeleton loader',
+      description: 'Sets the balise used as root element in the skeleton loader',
       table: {
         defaultValue: {
           summary: 'div'

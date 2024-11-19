@@ -15,7 +15,7 @@ export default {
   component: PuikAlert,
   argTypes: {
     title: {
-      description: 'Set the alert title',
+      description: 'Sets the alert title',
       control: 'text',
       table: {
         type: {
@@ -27,7 +27,7 @@ export default {
       }
     },
     description: {
-      description: 'Set the alert description (also exists as a default slot)',
+      description: 'Sets the alert description (also exists as a default slot)',
       control: 'text',
       table: {
         type: {
@@ -64,7 +64,7 @@ export default {
     },
     variant: {
       control: 'select',
-      description: 'Set the alert variant',
+      description: 'Sets the alert variant',
       options: alertVariants,
       table: {
         type: {
@@ -112,7 +112,7 @@ export default {
       }
     },
     default: {
-      description: 'Set the alert description via the `default slot`. Useful if you want to create a description a little more complex than a simple text and integrate other puik elements like for example a classic `puik-link` (which can be an alternative to the Link button - see example below)'
+      description: 'Sets the alert description via the `default slot`. Useful if you want to create a description a little more complex than a simple text and integrate other puik elements like for example a classic `puik-link` (which can be an alternative to the Link button - see example below)'
     },
     leftIconBtn: {
       description: 'Set icon on the left side of the Action button with a Material Icon name - cf https://fonts.google.com/icons',

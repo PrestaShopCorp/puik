@@ -18,7 +18,7 @@ export default {
       }
     },
     id: {
-      description: 'Set the textarea id',
+      description: 'Sets the textarea id',
       control: 'none',
       table: {
         type: {
@@ -31,7 +31,7 @@ export default {
     },
     name: {
       control: 'text',
-      description: 'Set the textarea name',
+      description: 'Sets the textarea name',
       table: {
         type: {
           summary: 'string'
@@ -43,7 +43,7 @@ export default {
     },
     placeholder: {
       control: 'text',
-      description: 'Set the placeholder',
+      description: 'Sets the placeholder',
       table: {
         type: {
           summary: 'string'
@@ -54,7 +54,7 @@ export default {
       }
     },
     ariaLabel: {
-      description: 'Set the aria-label attribute for accessibility',
+      description: 'Sets the aria-label attribute for accessibility',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -66,7 +66,7 @@ export default {
     },
     autofocus: {
       control: 'boolean',
-      description: 'Set the autofocus attribute',
+      description: 'Sets the autofocus attribute',
       table: {
         type: {
           summary: 'boolean'
@@ -78,7 +78,7 @@ export default {
     },
     disabled: {
       control: 'boolean',
-      description: 'Set the textarea as disabled',
+      description: 'Sets the textarea as disabled',
       table: {
         type: {
           summary: 'boolean'
@@ -90,7 +90,7 @@ export default {
     },
     readonly: {
       control: 'boolean',
-      description: 'Set the textarea as readonly',
+      description: 'Sets the textarea as readonly',
       table: {
         type: {
           summary: 'boolean'
@@ -102,7 +102,7 @@ export default {
     },
     required: {
       control: 'boolean',
-      description: 'Set the textarea as required',
+      description: 'Sets the textarea as required',
       table: {
         type: {
           summary: 'boolean'
@@ -126,7 +126,7 @@ export default {
     },
     autoGrow: {
       control: 'boolean',
-      description: 'Set the textarea height as the text increase to maxRows',
+      description: 'Sets the textarea height as the text increase to maxRows',
       table: {
         type: {
           summary: 'boolean'
@@ -138,7 +138,7 @@ export default {
     },
     maxLength: {
       control: 'number',
-      description: 'Set the max number of character',
+      description: 'Sets the max number of character',
       table: {
         type: {
           summary: 'number'
@@ -150,7 +150,7 @@ export default {
     },
     rows: {
       control: 'number',
-      description: 'Set the default height',
+      description: 'Sets the default height',
       table: {
         type: {
           summary: 'number'
@@ -162,7 +162,7 @@ export default {
     },
     maxRows: {
       control: 'number',
-      description: 'Set the maximum height',
+      description: 'Sets the maximum height',
       table: {
         type: {
           summary: 'number'

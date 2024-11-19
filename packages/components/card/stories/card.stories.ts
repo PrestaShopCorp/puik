@@ -10,7 +10,7 @@ export default {
   component: PuikCard,
   argTypes: {
     variant: {
-      description: 'Set the card variant',
+      description: 'Sets the card variant',
       table: {
         defaultValue: {
           summary: 'default'
@@ -21,7 +21,7 @@ export default {
       }
     },
     ariaLabel: {
-      description: 'Set the aria-label attribute for accessibility',
+      description: 'Sets the aria-label attribute for accessibility',
       table: {
         defaultValue: {
           summary: 'undefined'

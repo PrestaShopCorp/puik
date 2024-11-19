@@ -41,7 +41,7 @@ export default {
     },
     swipeDirection: {
       control: 'select',
-      description: 'Set the swipe direction on mobile (to close the snackbar dialog)',
+      description: 'Sets the swipe direction on mobile (to close the snackbar dialog)',
       options: snackbarSwipeDirectionsVariants,
       table: {
         type: {

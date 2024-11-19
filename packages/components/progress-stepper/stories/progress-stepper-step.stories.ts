@@ -24,7 +24,7 @@ export default {
     },
     dataTest: {
       description:
-        'Set the data-test of the progress stepper step `stepButton-${dataTest}` `text-${dataTest}` `additionalText-${dataTest}`',
+        'Sets the data-test of the progress stepper step `stepButton-${dataTest}` `text-${dataTest}` `additionalText-${dataTest}`',
       control: 'text'
     },
     click: {
