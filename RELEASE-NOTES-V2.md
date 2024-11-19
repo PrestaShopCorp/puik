@@ -22,7 +22,7 @@ Here is the list of available components in the Vue and Web-Components version o
 | --------------------------- | -------------- | -------------- | ---------------- |
 | Accordion                   | ✅  | ✅            |                  |
 | Accordion-group             | ✅  | ✅            |                  |
-| Alert                       | ✅  | ✅            |                  |
+| Alert                       | ✅  | ✅            |   Design:  The `puik-link` has replaced by a Link Button (text variant button) - [see updated stories for use](https://uikit.prestashop.com/?path=/docs/components-alert--docs)      |
 | Avatar                      | ✅  | ✅            |                  |
 | Badge                       | ✅  | ✅            |                  |
 | Breadcrumb                  | ✅  | ✅            |                  |
