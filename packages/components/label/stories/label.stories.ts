@@ -41,7 +41,7 @@ export default {
       description: 'Default slot to set label text'
     },
     dataTest: {
-      description: 'Set the data-test attribute'
+      description: 'Sets the data-test attribute'
     }
   }
 } as Meta;

@@ -112,7 +112,7 @@ enum PuikTableSearchInputTypes {
     },
     fullWidth: {
       control: 'boolean',
-      description: 'Set the table width at 100%',
+      description: 'Sets the table width at 100%',
       table: {
         defaultValue: {
           summary: false
@@ -250,6 +250,15 @@ type inputRange = {
   max?: number | undefined;
 }
           `
+        }
+      }
+    },
+    searchResultsLocally: {
+      description: 'Event emitted when clicking the search button and prop searchFromServer is false. Return search results (items)',
+      control: 'none',
+      table: {
+        type: {
+          summary: 'event => any[]'
         }
       }
     }

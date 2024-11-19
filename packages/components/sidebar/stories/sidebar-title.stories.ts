@@ -7,7 +7,7 @@ export default {
   argTypes: {
     tag: {
       control: 'text',
-      description: 'Set the node type',
+      description: 'Sets the node type',
       table: {
         type: {
           summary: 'string'
@@ -19,7 +19,7 @@ export default {
     },
     default: {
       control: 'text',
-      description: 'Set the defaut content slot',
+      description: 'Sets the defaut content slot',
       table: {
         type: {
           summary: 'string'
@@ -32,7 +32,7 @@ export default {
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute on the sidebar title `sidebarTitle-${dataTest}`'
+        'Sets the data-test attribute on the sidebar title `sidebarTitle-${dataTest}`'
     }
   },
   args: {

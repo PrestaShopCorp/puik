@@ -7,7 +7,7 @@ export default {
   argTypes: {
     title: {
       control: 'text',
-      description: 'Set the item title',
+      description: 'Sets the item title',
       table: {
         type: {
           summary: 'string'
@@ -16,7 +16,7 @@ export default {
     },
     name: {
       control: 'text',
-      description: 'Set the name',
+      description: 'Sets the name',
       table: {
         type: {
           summary: 'string'
@@ -28,7 +28,7 @@ export default {
     },
     icon: {
       control: 'text',
-      description: 'Set the icon',
+      description: 'Sets the icon',
       table: {
         type: {
           summary: 'string'
@@ -49,12 +49,12 @@ export default {
     },
     default: {
       control: 'none',
-      description: 'Set the defaut content slot'
+      description: 'Sets the defaut content slot'
     },
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute on the sidebar group item `sidebarAccordion-${dataTest}` `sidebarMenuButton-${dataTest}` '
+        'Sets the data-test attribute on the sidebar group item `sidebarAccordion-${dataTest}` `sidebarMenuButton-${dataTest}` '
     }
   },
   args: {

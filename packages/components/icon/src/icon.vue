@@ -24,7 +24,8 @@ defineOptions({
 const props = withDefaults(defineProps<IconProps>(), {
   nodeType: 'div',
   fontSize: '1rem',
-  color: '#00000'
+  color: '#00000',
+  fill: 1
 });
 
 const fontSize = computed(() => {
@@ -37,7 +38,8 @@ const fontSize = computed(() => {
 const style = computed(() => {
   return {
     fontSize: fontSize.value,
-    color: props.color
+    color: props.color,
+    'font-variation-settings': `'FILL' ${props.fill}`
   };
 });
 

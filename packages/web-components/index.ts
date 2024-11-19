@@ -3,6 +3,7 @@ import initWeb from './utils/initWeb';
 import initAllWeb from './utils/initAllWeb';
 
 import PuikGroupOptionsCe from './components/group-options';
+import PuikRatingCardCe from './components/rating-card';
 // import PuikSortableListCe from './components/sortable-list';
 import PuikAccordionCe from './components/accordion';
 import PuikAccordionGroupCe from './components/accordion-group';
@@ -54,6 +55,7 @@ import PuikTooltipCe from './components/tooltip';
 
 export const components: CustomElementWithName[] = [
   PuikGroupOptionsCe,
+  PuikRatingCardCe,
   // PuikSortableListCe,
   PuikAccordionCe,
   PuikAccordionGroupCe,
@@ -106,6 +108,7 @@ export const components: CustomElementWithName[] = [
 
 export {
   PuikGroupOptionsCe,
+  PuikRatingCardCe,
   // PuikSortableListCe,
   PuikAccordionCe,
   PuikAccordionGroupCe,

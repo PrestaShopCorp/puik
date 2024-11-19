@@ -12,7 +12,7 @@ export default {
     variant: {
       control: 'select',
       options: paginationVariants,
-      description: 'Set the pagination variant',
+      description: 'Sets the pagination variant',
       table: {
         defaultValue: {
           summary: PuikPaginationVariants.Medium
@@ -24,7 +24,7 @@ export default {
     },
     totalItem: {
       control: 'number',
-      description: 'Set the total item count',
+      description: 'Sets the total item count',
       table: {
         type: {
           summary: 'number'
@@ -43,7 +43,7 @@ export default {
     },
     itemsPerPageOptions: {
       control: 'none',
-      description: 'Set the items per page options',
+      description: 'Sets the items per page options',
       table: {
         type: {
           summary: 'number[]'
@@ -82,7 +82,7 @@ export default {
     },
     label: {
       control: 'text',
-      description: 'Set the label',
+      description: 'Sets the label',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -94,7 +94,7 @@ export default {
     },
     loaderButtonLabel: {
       control: 'text',
-      description: 'Set the text used in button on loader variant',
+      description: 'Sets the text used in button on loader variant',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -107,7 +107,7 @@ export default {
     dataTest: {
       control: 'text',
       description:
-        'Set the data-test attribute `nextButton-${dataTest}` `previousButton-${dataTest}` `label-${dataTest}` `loadMoreButton-${dataTest}` (only for loader variant)'
+        'Sets the data-test attribute `nextButton-${dataTest}` `previousButton-${dataTest}` `label-${dataTest}` `loadMoreButton-${dataTest}` (only for loader variant)'
     }
   },
   args: {
