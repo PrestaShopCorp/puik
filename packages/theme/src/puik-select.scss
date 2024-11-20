@@ -4,9 +4,6 @@
   @extend .puik-body-default;
   &__container {
     @apply flex flex-col relative;
-    &--error {
-      @apply border border-red;
-    }
   }
 
   &__label {
@@ -65,21 +62,22 @@
       @apply mr-1;
     }
   }
-
-  .puik-select__container {
-    &--error {
-      @apply border border-red;
-      .puik-multi-select__input--error,
-      .puik-single-select__input--error {
-        > .puik-input__wrapper:hover {
-          @apply border border-red;
-        }
+  
+  .puik-multi-select__input--error,
+  .puik-single-select__input--error {
+    > .puik-input__wrapper {
+      @apply border border-transparent ring-2 ring-red ring-inset;
+      &:hover{
+        @apply border border-red;
       }
     }
   }
   .puik-select__container--error {
-    .puik-multi-select__options-tags:hover {
-      @apply border border-red;
+    .puik-multi-select__options-tags {
+      @apply border border-transparent ring-2 ring-red ring-inset;
+      &:hover{
+        @apply border border-red;
+      }
     }
   }
 }

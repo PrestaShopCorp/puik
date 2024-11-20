@@ -4,6 +4,7 @@
     class="puik-select"
     role="listbox"
     :aria-multiselectable="props.multiSelect"
+    @keydown.esc="closeOptions"
   >
     <div
       :class="[
@@ -23,10 +24,15 @@
         {{ props.label }}
       </puik-label>
       <template v-if="props.multiSelect">
-        <div
+        <button
           v-if="selectedMultipleOptions.length > 0"
+          :id="props.id"
           :class="['puik-multi-select__options-tags']"
           tabindex="0"
+          role="combobox"
+          :aria-expanded="openRef"
+          :aria-controls="`dropdown-${props.id}`"
+          :value="JSON.stringify(selectedMultipleOptions)"
           @click.stop="toggleOptions"
           @keydown.space.prevent.stop="toggleOptions"
           @keydown.enter.prevent.stop="toggleOptions"
@@ -47,15 +53,10 @@
             @close="deselectOption(option)"
             @click.stop="openOptions"
           />
-          <input
-            :id="props.id"
-            type="hidden"
-            :name="props.id"
-            :value="JSON.stringify(selectedMultipleOptions)"
-          >
-        </div>
+        </button>
         <template v-else>
           <puik-input
+            :id="props.id"
             :class="[
               'puik-multi-select__input',
               { 'puik-multi-select__input--error': hasError }
@@ -253,6 +254,7 @@ const searchOptions = () => {
 };
 const resetSearchQuery = () => {
   searchQuery.value = '';
+  emit('search', '', props.options);
 };
 
 const isAllSelected = computed(() => {
@@ -307,10 +309,12 @@ const toggleSelectAll = () => {
 const toggleOptions = () => {
   emit('open', !props.open);
   openRef.value = !openRef.value;
+  resetSearchQuery();
 };
 const openOptions = () => {
   emit('open', true);
   openRef.value = true;
+  resetSearchQuery();
 };
 const closeOptions = () => {
   emit('open', false);
