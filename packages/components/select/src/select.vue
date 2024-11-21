@@ -54,6 +54,8 @@
             :aria-selected="true"
             @close="deselectOption(option)"
             @click.stop="openOptions"
+            @keydown.space.stop="openRef = true"
+            @keydown.enter.stop="openRef = true;"
           />
         </button>
         <template v-else>
@@ -150,10 +152,10 @@
           :indeterminate="selectAllIndeterminate"
           role="checkbox"
           :aria-checked="IsAllSelectedRef"
-          tabindex="-1"
-          @change="toggleSelectAll"
-          @keydown.prevent.enter="toggleSelectAll"
-          @keydown.prevent.space="toggleSelectAll"
+          tabindex="0"
+          @change="handleSelectAllClick"
+          @keydown.enter.prevent="toggleSelectAll"
+          @keydown.space.prevent="toggleSelectAll"
         />
         <slot>
           <puik-group-options
@@ -229,9 +231,10 @@ const props = withDefaults(defineProps<SelectProps>(), {
   multiSelect: false,
   open: false
 });
-const hasError = computed(() => props.error || slotIsEmpty(slots.error));
 
 const emit = defineEmits<SelectEmits>();
+
+const hasError = computed(() => props.error || slotIsEmpty(slots.error));
 
 const selectedMultipleOptions = ref(
   Array.isArray(props.modelValue) ? [...props.modelValue] : []
@@ -273,6 +276,7 @@ const isAllSelected = computed(() => {
     return null;
   }
 });
+
 const IsAllSelectedRef = ref(isAllSelected.value);
 
 const updateSelectAllIndeterminate = () => {
@@ -290,24 +294,44 @@ const updateSelectAllIndeterminate = () => {
       selectedEnabledOptionsCount === enabledOptionsCount;
   }
 };
+
+// const toggleSelectAll = () => {
+//   if (props.options) {
+//     if (!IsAllSelectedRef.value) {
+//       selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
+//         (option) => option[props.optionDisabledKey]
+//       );
+//     } else {
+//       const disabledSelected = selectedMultipleOptions.value.filter(
+//         (option) => option[props.optionDisabledKey]
+//       );
+//       const enabledOptions = props.options.filter(
+//         (option: OptionType) => !option[props.optionDisabledKey]
+//       );
+//       selectedMultipleOptions.value = [...disabledSelected, ...enabledOptions];
+//     }
+//     updateSelectAllIndeterminate();
+//     emit('update:modelValue', selectedMultipleOptions.value);
+//   }
+// };
+
 const toggleSelectAll = () => {
-  if (props.options) {
-    if (!IsAllSelectedRef.value) {
-      selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
-        (option) => option[props.optionDisabledKey]
-      );
-    } else {
-      const disabledSelected = selectedMultipleOptions.value.filter(
-        (option) => option[props.optionDisabledKey]
-      );
-      const enabledOptions = props.options.filter(
-        (option: OptionType) => !option[props.optionDisabledKey]
-      );
-      selectedMultipleOptions.value = [...disabledSelected, ...enabledOptions];
-    }
-    updateSelectAllIndeterminate();
-    emit('update:modelValue', selectedMultipleOptions.value);
+  if (!IsAllSelectedRef.value) {
+    selectedMultipleOptions.value = props.options.filter(
+      (option: OptionType) => !option[props.optionDisabledKey]
+    );
+  } else {
+    selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
+      (option) => option[props.optionDisabledKey]
+    );
   }
+  updateSelectAllIndeterminate();
+  emit('update:modelValue', selectedMultipleOptions.value);
+};
+
+const handleSelectAllClick = () => {
+  IsAllSelectedRef.value = !IsAllSelectedRef.value;
+  toggleSelectAll();
 };
 
 const toggleOptions = () => {
@@ -346,6 +370,7 @@ const selectOption = (option: OptionType) => {
     }
   }
 };
+
 const deselectOption = (option: OptionType) => {
   selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
     (opt) => opt !== option
@@ -376,14 +401,12 @@ const handleKeyDown = (event: KeyboardEvent) => {
 watch(isAllSelected, (newValue) => {
   IsAllSelectedRef.value = newValue;
 });
-
 watch(
   () => props.modelValue,
   (newValue) => {
     selectedSingleOption.value = newValue;
   }
 );
-
 watch(
   () => props.open,
   (newValue) => {
