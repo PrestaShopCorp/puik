@@ -5,6 +5,9 @@
       { 'puik-option-single--selected' : isSelectedRef && !props.multiSelect},
       { 'puik-option--disabled' : props.disabled },
     ]"
+    role="option"
+    :aria-selected="isSelectedRef"
+    :aria-disabled="props.disabled"
     @click="selectOption"
   >
     <template v-if="props.multiSelect">

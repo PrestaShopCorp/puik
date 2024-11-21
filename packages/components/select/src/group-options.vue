@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :style="{ 'z-index': props.zIndex }">
     <slot />
   </div>
 </template>
@@ -11,10 +11,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<GroupOptionsProps>(), {
-  open: true
+  zIndex: 100
 });
-
-console.log(props);
 </script>
 
 <style lang="scss">

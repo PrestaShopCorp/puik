@@ -2,8 +2,6 @@
   <div
     v-on-click-outside="closeOptions"
     class="puik-select"
-    role="listbox"
-    :aria-multiselectable="props.multiSelect"
     @keydown.esc="closeOptions"
   >
     <div
@@ -29,9 +27,11 @@
           :id="props.id"
           :class="['puik-multi-select__options-tags']"
           tabindex="0"
+          :autocomplete="props.autocomplete"
           role="combobox"
           :aria-expanded="openRef"
           :aria-controls="`dropdown-${props.id}`"
+          aria-haspopup="listbox"
           :value="JSON.stringify(selectedMultipleOptions)"
           @click.stop="toggleOptions"
           @keydown.space.prevent.stop="toggleOptions"
@@ -71,6 +71,7 @@
             role="combobox"
             :aria-expanded="openRef"
             :aria-controls="`dropdown-${props.id}`"
+            aria-haspopup="listbox"
             @click.stop="toggleOptions"
             @keydown.space.prevent.stop="toggleOptions"
             @keydown.enter.prevent.stop="toggleOptions"
@@ -103,6 +104,7 @@
         role="combobox"
         :aria-expanded="openRef"
         :aria-controls="`dropdown-${props.id}`"
+        aria-haspopup="listbox"
         @click.stop="toggleOptions"
         @keydown.space.prevent.stop="toggleOptions"
         @keydown.enter.prevent.stop="toggleOptions"
@@ -117,6 +119,7 @@
         :id="`dropdown-${props.id}`"
         class="puik-select-dropdown"
         role="listbox"
+        :aria-multiselectable="props.multiSelect"
       >
         <puik-input
           v-if="searchable"
@@ -162,12 +165,6 @@
               :option="option"
               :disabled="option[props.optionDisabledKey]"
               :multi-select="props.multiSelect"
-              role="option"
-              :aria-selected="
-                props.multiSelect
-                  ? selectedMultipleOptions.includes(option)
-                  : selectedSingleOption === option
-              "
               @select="selectOption(option)"
               @close="closeOptions"
             />
