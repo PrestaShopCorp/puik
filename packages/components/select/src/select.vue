@@ -3,6 +3,8 @@
     v-on-click-outside="closeOptions"
     class="puik-select"
     @keydown.esc="closeOptions"
+    @keydown.up.prevent.stop="handleKeyDown"
+    @keydown.down.prevent.stop="handleKeyDown"
   >
     <div
       :class="[
@@ -139,7 +141,7 @@
         <PuikCheckbox
           v-if="props.multiSelect && typeof IsAllSelectedRef === 'boolean'"
           v-model="IsAllSelectedRef"
-          class="puik-select-dropdown__select-all"
+          class="puik-option puik-select-dropdown__select-all"
           :label="
             IsAllSelectedRef
               ? `${t('puik.select.deselectAll')}`
@@ -148,10 +150,15 @@
           :indeterminate="selectAllIndeterminate"
           role="checkbox"
           :aria-checked="IsAllSelectedRef"
+          tabindex="-1"
           @change="toggleSelectAll"
+          @keydown.prevent.enter="toggleSelectAll"
+          @keydown.prevent.space="toggleSelectAll"
         />
         <slot>
-          <puik-group-options>
+          <puik-group-options
+            :open="openRef"
+          >
             <puik-option
               v-for="option in filteredOptions"
               :key="option[props.optionValueKey]"
@@ -345,6 +352,25 @@ const deselectOption = (option: OptionType) => {
   );
   updateSelectAllIndeterminate();
   emit('update:modelValue', selectedMultipleOptions.value);
+};
+
+const activeIndex = ref(-1);
+
+const handleKeyDown = (event: KeyboardEvent) => {
+  const options = document.querySelectorAll(`#dropdown-${props.id} .puik-option:not(.puik-option--disabled)`);
+  const activeElement = document.activeElement as HTMLElement;
+  activeIndex.value = Array.from(options).indexOf(activeElement);
+
+  if (event.key === 'ArrowDown') {
+    event.preventDefault();
+    activeIndex.value = (activeIndex.value + 1) % options.length;
+    (options[activeIndex.value] as HTMLElement).focus();
+  }
+  if (event.key === 'ArrowUp') {
+    event.preventDefault();
+    activeIndex.value = (activeIndex.value - 1 + options.length) % options.length;
+    (options[activeIndex.value] as HTMLElement).focus();
+  }
 };
 
 watch(isAllSelected, (newValue) => {

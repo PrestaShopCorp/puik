@@ -1,5 +1,8 @@
 <template>
-  <div :style="{ 'z-index': props.zIndex }">
+  <div
+    :style="{ 'z-index': props.zIndex }"
+    tabindex="-1"
+  >
     <slot />
   </div>
 </template>
@@ -13,6 +16,7 @@ defineOptions({
 const props = withDefaults(defineProps<GroupOptionsProps>(), {
   zIndex: 100
 });
+
 </script>
 
 <style lang="scss">

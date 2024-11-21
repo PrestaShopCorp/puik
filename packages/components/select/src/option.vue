@@ -8,7 +8,10 @@
     role="option"
     :aria-selected="isSelectedRef"
     :aria-disabled="props.disabled"
+    tabindex="-1"
     @click="selectOption"
+    @keydown.space.prevent.stop="selectOption"
+    @keydown.enter.prevent.stop="selectOption"
   >
     <template v-if="props.multiSelect">
       <PuikCheckbox
