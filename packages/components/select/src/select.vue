@@ -295,35 +295,19 @@ const updateSelectAllIndeterminate = () => {
   }
 };
 
-// const toggleSelectAll = () => {
-//   if (props.options) {
-//     if (!IsAllSelectedRef.value) {
-//       selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
-//         (option) => option[props.optionDisabledKey]
-//       );
-//     } else {
-//       const disabledSelected = selectedMultipleOptions.value.filter(
-//         (option) => option[props.optionDisabledKey]
-//       );
-//       const enabledOptions = props.options.filter(
-//         (option: OptionType) => !option[props.optionDisabledKey]
-//       );
-//       selectedMultipleOptions.value = [...disabledSelected, ...enabledOptions];
-//     }
-//     updateSelectAllIndeterminate();
-//     emit('update:modelValue', selectedMultipleOptions.value);
-//   }
-// };
-
 const toggleSelectAll = () => {
+  const disabledOptions = selectedMultipleOptions.value?.filter(
+    (option: OptionType) => {
+      return option[props.optionDisabledKey];
+    }
+  );
+  const enabledOptions = props.options.filter(
+    (option: OptionType) => !option[props.optionDisabledKey]
+  );
   if (!IsAllSelectedRef.value) {
-    selectedMultipleOptions.value = props.options.filter(
-      (option: OptionType) => !option[props.optionDisabledKey]
-    );
+    selectedMultipleOptions.value = [...enabledOptions, ...disabledOptions];
   } else {
-    selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
-      (option) => option[props.optionDisabledKey]
-    );
+    selectedMultipleOptions.value = [...disabledOptions];
   }
   updateSelectAllIndeterminate();
   emit('update:modelValue', selectedMultipleOptions.value);
