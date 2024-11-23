@@ -124,6 +124,7 @@
         class="puik-select-dropdown"
         role="listbox"
         :aria-multiselectable="props.multiSelect"
+        @keydown.tab="closeOptions"
       >
         <puik-input
           v-if="searchable"
