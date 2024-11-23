@@ -9,6 +9,7 @@
 
 <script setup lang="ts">
 import { GroupOptionsProps } from './group-options';
+
 defineOptions({
   name: 'PuikGroupOptions'
 });

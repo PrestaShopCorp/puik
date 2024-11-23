@@ -1,4 +1,5 @@
 import {
+  PuikSelectInput,
   PuikGroupOptions,
   PuikRatingCard,
   PuikSortableList,
@@ -57,6 +58,7 @@ import type { Component } from 'vue';
 
 // prettier-ignore
 export default [
+  PuikSelectInput,
   PuikGroupOptions,
   PuikRatingCard,
   PuikSortableList,

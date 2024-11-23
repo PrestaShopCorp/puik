@@ -23,7 +23,7 @@
       >
         {{ props.label }}
       </puik-label>
-      <template v-if="props.multiSelect">
+      <!--  <template v-if="props.multiSelect">
         <button
           v-if="selectedMultipleOptions.length > 0"
           :id="props.id"
@@ -116,7 +116,7 @@
         <template #append>
           <PuikIcon icon="unfold_more" />
         </template>
-      </puik-input>
+      </puik-input>  -->
 
       <div
         v-show="openRef"
@@ -202,18 +202,17 @@
 import { ref, computed, watch, useSlots } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
 import { useLocale } from '@prestashopcorp/puik-locale';
+import type { OptionType } from './option';
+import type { SelectProps, SelectEmits } from './select';
+import { slotIsEmpty } from '@prestashopcorp/puik-utils/types';
 import {
   PuikCheckbox,
-  PuikChip,
   PuikIcon,
   PuikInput,
   PuikGroupOptions,
   PuikOption,
   PuikLabel
 } from '@prestashopcorp/puik-components';
-import type { OptionType } from './option';
-import type { SelectProps, SelectEmits } from './select';
-import { slotIsEmpty } from '@prestashopcorp/puik-utils/types';
 
 defineOptions({
   name: 'PuikSelect'
@@ -319,16 +318,16 @@ const handleSelectAllClick = () => {
   toggleSelectAll();
 };
 
-const toggleOptions = () => {
-  emit('open', !props.open);
-  openRef.value = !openRef.value;
-  resetSearchQuery();
-};
-const openOptions = () => {
-  emit('open', true);
-  openRef.value = true;
-  resetSearchQuery();
-};
+// const toggleOptions = () => {
+//   emit('open', !props.open);
+//   openRef.value = !openRef.value;
+//   resetSearchQuery();
+// };
+// const openOptions = () => {
+//   emit('open', true);
+//   openRef.value = true;
+//   resetSearchQuery();
+// };
 const closeOptions = () => {
   emit('open', false);
   openRef.value = false;
@@ -356,13 +355,13 @@ const selectOption = (option: OptionType) => {
   }
 };
 
-const deselectOption = (option: OptionType) => {
-  selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
-    (opt) => opt !== option
-  );
-  updateSelectAllIndeterminate();
-  emit('update:modelValue', selectedMultipleOptions.value);
-};
+// const deselectOption = (option: OptionType) => {
+//   selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
+//     (opt) => opt !== option
+//   );
+//   updateSelectAllIndeterminate();
+//   emit('update:modelValue', selectedMultipleOptions.value);
+// };
 
 const activeIndex = ref(-1);
 
