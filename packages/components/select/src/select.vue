@@ -28,7 +28,6 @@
           v-if="selectedMultipleOptions.length > 0"
           :id="props.id"
           :class="['puik-multi-select__options-tags']"
-          tabindex="0"
           :autocomplete="props.autocomplete"
           role="combobox"
           :aria-expanded="openRef"
@@ -39,6 +38,10 @@
           @keydown.space.prevent.stop="toggleOptions"
           @keydown.enter.prevent.stop="toggleOptions"
         >
+          <PuikIcon
+            v-if="props.prependInputIcon"
+            :icon="props.prependInputIcon"
+          />
           <PuikIcon
             class="puik-multi-select__dropdown-icon"
             icon="unfold_more"
@@ -80,6 +83,12 @@
             @keydown.space.prevent.stop="toggleOptions"
             @keydown.enter.prevent.stop="toggleOptions"
           >
+            <template
+              v-if="props.prependInputIcon"
+              #prepend
+            >
+              <PuikIcon :icon="props.prependInputIcon" />
+            </template>
             <template #append>
               <PuikIcon icon="unfold_more" />
             </template>
@@ -113,6 +122,12 @@
         @keydown.space.prevent.stop="toggleOptions"
         @keydown.enter.prevent.stop="toggleOptions"
       >
+        <template
+          v-if="props.prependInputIcon"
+          #prepend
+        >
+          <PuikIcon :icon="props.prependInputIcon" />
+        </template>
         <template #append>
           <PuikIcon icon="unfold_more" />
         </template>
@@ -249,9 +264,11 @@ const filteredOptions = computed(() => {
   if (props.customFilterMethod) {
     return props.customFilterMethod(searchQuery.value);
   } else if (props.options) {
-    return props.options.filter((option) =>
-      option?.[props.optionLabelKey].trim().includes(searchQuery.value)
-    );
+    const query = searchQuery.value.toLowerCase();
+    return props.options.filter((option) => {
+      const label = option?.[props.optionLabelKey]?.toLowerCase();
+      return label && query.split('').every(char => label.includes(char));
+    });
   } else {
     return null;
   }

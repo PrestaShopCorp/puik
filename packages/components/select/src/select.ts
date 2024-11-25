@@ -20,6 +20,7 @@ export interface SelectProps {
   disabled?: boolean
   error?: string
   autocomplete?: string
+  prependInputIcon?: string
   open?: boolean
 }
 

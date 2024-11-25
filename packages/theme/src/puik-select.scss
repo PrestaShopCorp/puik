@@ -66,7 +66,7 @@
   .puik-multi-select__input--error,
   .puik-single-select__input--error {
     > .puik-input__wrapper {
-      @apply border border-transparent ring-2 ring-red ring-inset;
+      @apply border border-transparent ring-2 ring-red ring-inset bg-red-50;
       &:hover{
         @apply border border-red;
       }
