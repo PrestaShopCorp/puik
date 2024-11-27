@@ -17,16 +17,16 @@
       <PuikCheckbox
         v-model="isSelectedRef"
         :disabled="props.disabled"
-        :sr-label="label ?? option?.[props.labelKey]"
+        :sr-label="`${label}`"
       />
       <slot>
-        <label>{{ label ?? option?.[props.labelKey] }}</label>
+        <label>{{ label }}</label>
       </slot>
     </template>
 
     <template v-else>
       <slot>
-        <label>{{ label ?? option?.[props.labelKey] }}</label>
+        <label>{{ label }}</label>
       </slot>
     </template>
     <PuikIcon
@@ -48,9 +48,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<OptionProps>(), {
-  labelKey: 'label',
-  valueKey: 'value',
-  disabledKey: 'disabled',
   disabled: false,
   multiSelect: false,
   isSelected: false
@@ -64,17 +61,9 @@ const valueRef = ref(props.value);
 
 const selectOption = () => {
   if (!props.disabled) {
-    if (props.option) {
-      isSelectedRef.value = !isSelectedRef.value;
-      isSelectedRef.value
-        ? emit('select', props.option)
-        : emit('select', {});
-    } else {
-      isSelectedRef.value = !isSelectedRef.value;
-      emit('select', { label: labelRef, value: valueRef });
-    }
+    emit('select', { label: labelRef.value, value: valueRef.value });
     if (!props.multiSelect) {
-      emit('close', true);
+      emit('open', false);
     }
   }
 };

@@ -25,14 +25,15 @@
     </puik-button>
 
     <div class="puik-pagination__jumper">
-      <!--
-        <puik-select
-          :key="page"
-          :model-value="page"
-          :disabled="disabled"
-          class="puik-pagination__select"
-          @update:model-value="emit('update:page', $event)"
-        >
+      <puik-select
+        id="puik-pagination-jumper"
+        :key="page"
+        :model-value="page"
+        :disabled="disabled"
+        class="puik-pagination__select"
+        @update:model-value="emit('update:page', $event)"
+      >
+        <puik-group-options>
           <puik-option
             v-for="index in maxPage"
             :key="`puik-pagination__page-selector__option-${index}`"
@@ -40,9 +41,8 @@
           >
             {{ index }}
           </puik-option>
-        </puik-select>
-      -->
-
+        </puik-group-options>
+      </puik-select>
       <span class="puik-pagination__jumper-description">
         {{ t('puik.pagination.large.jumperDescription', { maxPage }) }}
       </span>
@@ -68,12 +68,13 @@
   >
     {{ t('puik.pagination.itemPerPageLabel', { maxPage }) }}
   </span>
-  <!--
-    <puik-select
-      v-if="displayItemsPerPage"
-      v-model="currentItemsPerPage"
-      class="puik-pagination__items-per-page-select"
-    >
+  <puik-select
+    v-if="displayItemsPerPage"
+    id="puik-pagination-jumper"
+    v-model="currentItemsPerPage"
+    class="puik-pagination__items-per-page-select"
+  >
+    <puik-group-options>
       <puik-option
         v-for="item in itemsPerPageOptions"
         :key="`puik-pagination__items-per-page-select__option-${item}`"
@@ -82,13 +83,13 @@
       >
         {{ item }}
       </puik-option>
-    </puik-select>
-  -->
+    </puik-group-options>
+  </puik-select>
 </template>
 
 <script setup lang="ts">
-// import { useVModel } from '@vueuse/core';
-// import { PuikSelect, PuikOption } from '@prestashopcorp/puik-components/select';
+import { useVModel } from '@vueuse/core';
+import { PuikSelect, PuikGroupOptions, PuikOption } from '@prestashopcorp/puik-components/select';
 import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { useLocale } from '@prestashopcorp/puik-locale';
 import { type PaginationLargeProps } from './pagination-large';
@@ -104,7 +105,7 @@ const emit = defineEmits<{
   'update:itemsPerPage': [value: number];
 }>();
 
-// const currentItemsPerPage = useVModel(props, 'itemsPerPage', emit);
+const currentItemsPerPage = useVModel(props, 'itemsPerPage', emit);
 
 const { t } = useLocale();
 </script>

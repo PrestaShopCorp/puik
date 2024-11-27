@@ -23,7 +23,7 @@
       >
         {{ props.label }}
       </puik-label>
-      <template v-if="props.multiSelect">
+      <template v-if="props.multiSelect && props.options">
         <button
           v-if="selectedMultipleOptions.length > 0"
           :id="props.id"
@@ -103,9 +103,40 @@
       </template>
 
       <puik-input
+        v-else-if="props.options && typeof selectedSingleOption === 'object'"
+        :id="props.id"
+        v-model="selectedSingleOption[optionLabelKey]"
+        :class="[
+          'puik-single-select__input',
+          { 'puik-single-select__input--error': hasError }
+        ]"
+        type="text"
+        :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
+        readonly
+        :disabled="props.disabled"
+        role="combobox"
+        :aria-expanded="openRef"
+        :aria-controls="`dropdown-${props.id}`"
+        aria-haspopup="listbox"
+        @click.stop="toggleOptions"
+        @keydown.space.prevent.stop="toggleOptions"
+        @keydown.enter.prevent.stop="toggleOptions"
+      >
+        <template
+          v-if="props.prependInputIcon"
+          #prepend
+        >
+          <PuikIcon :icon="props.prependInputIcon" />
+        </template>
+        <template #append>
+          <PuikIcon icon="unfold_more" />
+        </template>
+      </puik-input>
+
+      <puik-input
         v-else
         :id="props.id"
-        v-model="selectedSingleOption[props.optionLabelKey]"
+        v-model="selectedSingleOption"
         :class="[
           'puik-single-select__input',
           { 'puik-single-select__input--error': hasError }
@@ -156,6 +187,7 @@
             <PuikIcon icon="search" />
           </template>
         </puik-input>
+
         <PuikCheckbox
           v-if="props.multiSelect && typeof IsAllSelectedRef === 'boolean'"
           v-model="IsAllSelectedRef"
@@ -173,15 +205,17 @@
           @keydown.enter.prevent="toggleSelectAll"
           @keydown.space.prevent="toggleSelectAll"
         />
+
         <slot>
           <puik-group-options
+            v-if="props.options"
             :open="openRef"
           >
             <puik-option
               v-for="option in filteredOptions"
               :key="option[props.optionValueKey]"
-              :label-key="props.optionLabelKey"
-              :value-key="props.optionValueKey"
+              :label="option[props.optionLabelKey]"
+              :value="option[props.optionValueKey]"
               :is-selected="
                 props.multiSelect
                   ? selectedMultipleOptions.includes(option)
@@ -255,7 +289,7 @@ const hasError = computed(() => props.error || slotIsEmpty(slots.error));
 const selectedMultipleOptions = ref(
   Array.isArray(props.modelValue) ? [...props.modelValue] : []
 );
-const selectedSingleOption = ref(props.modelValue ?? {});
+const selectedSingleOption = ref(props.modelValue);
 const openRef = ref(props.open);
 const searchQuery = ref('');
 const selectAllIndeterminate = ref(false);
@@ -314,21 +348,23 @@ const updateSelectAllIndeterminate = () => {
 };
 
 const toggleSelectAll = () => {
-  const disabledOptions = selectedMultipleOptions.value?.filter(
-    (option: OptionType) => {
-      return option[props.optionDisabledKey];
+  if (props.options) {
+    const disabledOptions = selectedMultipleOptions.value?.filter(
+      (option: OptionType) => {
+        return option[props.optionDisabledKey];
+      }
+    );
+    const enabledOptions = props.options.filter(
+      (option: OptionType) => !option[props.optionDisabledKey]
+    );
+    if (!IsAllSelectedRef.value) {
+      selectedMultipleOptions.value = [...enabledOptions, ...disabledOptions];
+    } else {
+      selectedMultipleOptions.value = [...disabledOptions];
     }
-  );
-  const enabledOptions = props.options.filter(
-    (option: OptionType) => !option[props.optionDisabledKey]
-  );
-  if (!IsAllSelectedRef.value) {
-    selectedMultipleOptions.value = [...enabledOptions, ...disabledOptions];
-  } else {
-    selectedMultipleOptions.value = [...disabledOptions];
+    updateSelectAllIndeterminate();
+    emit('update:modelValue', selectedMultipleOptions.value);
   }
-  updateSelectAllIndeterminate();
-  emit('update:modelValue', selectedMultipleOptions.value);
 };
 
 const handleSelectAllClick = () => {

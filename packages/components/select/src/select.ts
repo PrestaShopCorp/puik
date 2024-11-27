@@ -6,7 +6,7 @@ export interface SelectProps {
   label?: string
   required?: boolean
   optional?: boolean
-  options: OptionType[]
+  options?: OptionType[]
   optionLabelKey?: string
   optionValueKey?: string
   optionDisabledKey?: string

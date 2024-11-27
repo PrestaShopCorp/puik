@@ -5,20 +5,16 @@ export interface OptionType {
   [key: string]: any
 }
 export interface OptionProps {
-  option?: OptionType
   label?: string | number
   value?: string | number | Record<string, any>
-  labelKey?: string
-  valueKey?: string
-  disabledKey?: string
   disabled?: boolean
   isSelected?: boolean
   multiSelect?: boolean
 }
 
 export type OptionEmits = {
-  'select': [payload: OptionType | {}]
-  'close': [state: boolean]
+  'open': [state: boolean]
+  'select': [payload: any]
 };
 
 export type OptionInstance = InstanceType<typeof Option>;
