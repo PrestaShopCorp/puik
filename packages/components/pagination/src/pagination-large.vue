@@ -31,15 +31,20 @@
         :model-value="page"
         :disabled="disabled"
         class="puik-pagination__select"
+        :open="openJumper"
         @update:model-value="emit('update:page', $event)"
       >
         <puik-group-options>
           <puik-option
-            v-for="index in maxPage"
-            :key="`puik-pagination__page-selector__option-${index}`"
-            :value="index"
+            v-for="pageNb in maxPage"
+            :key="`puik-pagination__page-selector__option-${pageNb}`"
+            :label="pageNb"
+            :value="pageNb"
+            :is-selected="page === pageNb"
+            @select="(payload) => emit('update:page', payload.value)"
+            @open="(state) => openJumper = state"
           >
-            {{ index }}
+            {{ pageNb }}
           </puik-option>
         </puik-group-options>
       </puik-select>
@@ -71,15 +76,22 @@
   <puik-select
     v-if="displayItemsPerPage"
     id="puik-pagination-jumper"
+    :key="currentItemsPerPage"
     v-model="currentItemsPerPage"
     class="puik-pagination__items-per-page-select"
+    :open="openItemPerPages"
+    @update:model-value="emit('update:itemsPerPage', currentItemsPerPage)"
   >
     <puik-group-options>
       <puik-option
         v-for="item in itemsPerPageOptions"
         :key="`puik-pagination__items-per-page-select__option-${item}`"
+        :label="item"
         :value="item"
+        :is-selected="currentItemsPerPage === item"
         class="puik-pagination__items-per-page-select__option"
+        @select="(payload) => currentItemsPerPage = payload.value"
+        @open="(state) => openItemPerPages = state"
       >
         {{ item }}
       </puik-option>
@@ -93,12 +105,12 @@ import { PuikSelect, PuikGroupOptions, PuikOption } from '@prestashopcorp/puik-c
 import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { useLocale } from '@prestashopcorp/puik-locale';
 import { type PaginationLargeProps } from './pagination-large';
+import { ref } from 'vue';
 defineOptions({
   name: 'PuikPaginationLarge'
 });
 
 const props = defineProps<PaginationLargeProps>();
-console.log(props);
 
 const emit = defineEmits<{
   'update:page': [value: number];
@@ -108,4 +120,7 @@ const emit = defineEmits<{
 const currentItemsPerPage = useVModel(props, 'itemsPerPage', emit);
 
 const { t } = useLocale();
+
+const openJumper = ref(false);
+const openItemPerPages = ref(false);
 </script>
