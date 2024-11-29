@@ -82,7 +82,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<PaginationProps>(), {
-  id: `pagination-${generateId()}`,
+  id: `puik-pagination-${generateId()}`,
   variant: PuikPaginationVariants.Medium,
   itemsPerPage: 5,
   itemsPerPageOptions: () => [5, 10, 15],

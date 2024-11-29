@@ -9,6 +9,19 @@ export default {
   title: 'Components/Pagination',
   component: PuikPagination,
   argTypes: {
+    id: {
+      control: 'text',
+      description:
+        'Sets the id HTML attribute of puik-pagination. If this prop is not configured, an id will be automatically generated using this pattern: puik-pagination-{randomNumber}',
+      table: {
+        defaultValue: {
+          summary: 'puik-pagination-{randomNumber}'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     variant: {
       control: 'select',
       options: paginationVariants,

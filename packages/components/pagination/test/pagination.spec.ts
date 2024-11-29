@@ -54,6 +54,14 @@ describe('Pagination tests', () => {
     expect(wrapper).toBeTruthy();
   });
 
+  it('as id prop value is "puik-pagination-id", id html attribute of puik-pagination should be "puik-pagination-id"', () => {
+    factory({
+      ...propsData,
+      id: 'puik-pagination-id'
+    });
+    expect(findPagination().attributes().id).toBe('puik-pagination-id');
+  });
+
   it('should display a medium pagination by default', () => {
     factory(propsData);
     expect(findPagination().classes()).toContain('puik-pagination--medium');
