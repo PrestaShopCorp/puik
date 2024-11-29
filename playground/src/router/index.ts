@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import VueComponentsView from '../views/VueComponentsView.vue';
-import WebComponentsView from '../views/WebComponentsView.vue';
+import VueComponentsView from '../views/VueComponentsViewExample.vue';
+import WebComponentsView from '../views/WebComponentsViewExample.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
