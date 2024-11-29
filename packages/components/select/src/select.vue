@@ -167,7 +167,10 @@
       <div
         v-show="openRef"
         :id="`dropdown-${props.id}`"
-        class="puik-select-dropdown"
+        :class="[
+          'puik-select-dropdown',
+          { 'puik-select-dropdown--up': positionDropdownUp }
+        ]"
         role="listbox"
         :aria-multiselectable="props.multiSelect"
         @keydown.tab="closeOptions"
@@ -248,7 +251,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, useSlots } from 'vue';
+import { ref, computed, watch, useSlots, nextTick } from 'vue';
 import { vOnClickOutside } from '@vueuse/components';
 import { useLocale } from '@prestashopcorp/puik-locale';
 import {
@@ -263,6 +266,7 @@ import {
 import type { OptionType } from './option';
 import type { SelectProps, SelectEmits } from './select';
 import { slotIsEmpty } from '@prestashopcorp/puik-utils/types';
+import { isDropdownBelowViewport } from '@prestashopcorp/puik-utils';
 
 defineOptions({
   name: 'PuikSelect'
@@ -293,6 +297,17 @@ const selectedSingleOption = ref(props.modelValue);
 const openRef = ref(props.open);
 const searchQuery = ref('');
 const selectAllIndeterminate = ref(false);
+const positionDropdownUp = ref(false);
+
+const handleDropdownPosition = () => {
+  nextTick(() => {
+    const selectElement = document.querySelector(`#${props.id}`);
+    const dropdownElement = document.querySelector(`#dropdown-${props.id}`);
+    if (dropdownElement && selectElement && openRef.value) {
+      isDropdownBelowViewport(selectElement, dropdownElement) ? positionDropdownUp.value = true : positionDropdownUp.value = false;
+    }
+  });
+};
 
 const filteredOptions = computed(() => {
   if (props.customFilterMethod) {
@@ -376,16 +391,19 @@ const toggleOptions = () => {
   emit('open', !props.open);
   openRef.value = !openRef.value;
   resetSearchQuery();
+  handleDropdownPosition();
 };
 const openOptions = () => {
   emit('open', true);
   openRef.value = true;
   resetSearchQuery();
+  handleDropdownPosition();
 };
 const closeOptions = () => {
   emit('open', false);
   openRef.value = false;
   resetSearchQuery();
+  handleDropdownPosition();
 };
 
 const selectOption = (option: OptionType) => {

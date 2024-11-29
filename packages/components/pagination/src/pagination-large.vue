@@ -26,7 +26,7 @@
 
     <div class="puik-pagination__jumper">
       <puik-select
-        id="puik-pagination-jumper"
+        :id="`${props.id}__select-jumper`"
         :key="page"
         :model-value="page"
         :disabled="disabled"
@@ -75,7 +75,7 @@
   </span>
   <puik-select
     v-if="displayItemsPerPage"
-    id="puik-pagination-jumper"
+    :id="`${props.id}__select-items-per-page`"
     :key="currentItemsPerPage"
     v-model="currentItemsPerPage"
     class="puik-pagination__items-per-page-select"

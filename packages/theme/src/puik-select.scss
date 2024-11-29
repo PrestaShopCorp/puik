@@ -50,6 +50,9 @@
         @apply min-h-9 flex items-center grow cursor-default;
       }
     }
+    &--up {
+      transform: translateY(calc(-100% - 40px))
+    }
   }
 
   &__error {

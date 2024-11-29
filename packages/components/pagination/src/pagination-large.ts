@@ -1,6 +1,7 @@
 import type PaginationLarge from './pagination-large.vue';
 
 export interface PaginationLargeProps {
+  id: string
   page: number
   itemsPerPage: number
   itemsPerPageOptions: number[]
