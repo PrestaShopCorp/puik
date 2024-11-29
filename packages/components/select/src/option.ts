@@ -10,6 +10,7 @@ export interface OptionProps {
   disabled?: boolean
   isSelected?: boolean
   multiSelect?: boolean
+  dataTest?: string
 }
 
 export type OptionEmits = {

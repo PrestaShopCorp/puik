@@ -2,7 +2,9 @@ import '@prestashopcorp/puik-components/select/style/css';
 import type Select from './select.vue';
 import type { OptionType } from './option';
 export interface SelectProps {
+  modelValue: any
   id: string
+  name?: string
   label?: string
   required?: boolean
   optional?: boolean
@@ -10,7 +12,6 @@ export interface SelectProps {
   optionLabelKey?: string
   optionValueKey?: string
   optionDisabledKey?: string
-  modelValue: any
   multiSelect?: boolean
   searchable?: boolean
   customFilterMethod?: (query: string) => any[] | Record<string, any>
@@ -22,6 +23,7 @@ export interface SelectProps {
   autocomplete?: string
   prependInputIcon?: string
   open?: boolean
+  dataTest?: string
 }
 
 export type SelectEmits = {

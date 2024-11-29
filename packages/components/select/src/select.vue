@@ -2,6 +2,7 @@
   <div
     v-on-click-outside="closeOptions"
     class="puik-select"
+    :data-test="dataTest != undefined ? `select-${dataTest}` : undefined"
     @keydown.esc="closeOptions"
     @keydown.up.prevent.stop="handleKeyDown"
     @keydown.down.prevent.stop="handleKeyDown"
@@ -19,6 +20,7 @@
         :required="props.required"
         :optional="props.optional"
         :readonly="props.disabled"
+        :data-test="dataTest != undefined ? `select-label-${dataTest}` : undefined"
         @click="resetSearchQuery"
       >
         {{ props.label }}
@@ -34,6 +36,7 @@
           :aria-controls="`dropdown-${props.id}`"
           aria-haspopup="listbox"
           :value="JSON.stringify(selectedMultipleOptions)"
+          :data-test="dataTest != undefined ? `select-multiple-options-tags-${dataTest}` : undefined"
           @click.stop="toggleOptions"
           @keydown.space.prevent.stop="toggleOptions"
           @keydown.enter.prevent.stop="toggleOptions"
@@ -47,7 +50,7 @@
             icon="unfold_more"
           />
           <puik-chip
-            v-for="option in selectedMultipleOptions"
+            v-for="(option, index) in selectedMultipleOptions"
             :id="`chip-${option[props.optionLabelKey]}`"
             :key="option[props.optionValueKey]"
             :content="option[props.optionLabelKey]"
@@ -55,6 +58,7 @@
             size="small"
             role="option"
             :aria-selected="true"
+            :data-test="dataTest != undefined ? `select-tag-${index + 1}-${dataTest}` : undefined"
             @close="deselectOption(option)"
             @click.stop="openOptions"
             @keydown.space.stop="openRef = true"
@@ -64,6 +68,7 @@
         <template v-else>
           <puik-input
             :id="props.id"
+            :name="props.name ?? props.id"
             :class="[
               'puik-multi-select__input',
               { 'puik-multi-select__input--error': hasError }
@@ -79,6 +84,7 @@
             :aria-expanded="openRef"
             :aria-controls="`dropdown-${props.id}`"
             aria-haspopup="listbox"
+            :data-test="dataTest != undefined ? `select-multiple-input-${dataTest}` : undefined"
             @click.stop="toggleOptions"
             @keydown.space.prevent.stop="toggleOptions"
             @keydown.enter.prevent.stop="toggleOptions"
@@ -96,7 +102,7 @@
           <input
             :id="props.id"
             type="hidden"
-            :name="props.id"
+            :name="props.name ?? props.id"
             :value="JSON.stringify(selectedMultipleOptions)"
           >
         </template>
@@ -106,6 +112,7 @@
         v-else-if="props.options && typeof selectedSingleOption === 'object'"
         :id="props.id"
         v-model="selectedSingleOption[optionLabelKey]"
+        :name="props.name ?? props.id"
         :class="[
           'puik-single-select__input',
           { 'puik-single-select__input--error': hasError }
@@ -118,6 +125,7 @@
         :aria-expanded="openRef"
         :aria-controls="`dropdown-${props.id}`"
         aria-haspopup="listbox"
+        :data-test="dataTest != undefined ? `select-single-${dataTest}` : undefined"
         @click.stop="toggleOptions"
         @keydown.space.prevent.stop="toggleOptions"
         @keydown.enter.prevent.stop="toggleOptions"
@@ -137,6 +145,7 @@
         v-else
         :id="props.id"
         v-model="selectedSingleOption"
+        :name="props.name ?? props.id"
         :class="[
           'puik-single-select__input',
           { 'puik-single-select__input--error': hasError }
@@ -148,6 +157,7 @@
         role="combobox"
         :aria-expanded="openRef"
         :aria-controls="`dropdown-${props.id}`"
+        :data-test="dataTest != undefined ? `select-single-${dataTest}` : undefined"
         aria-haspopup="listbox"
         @click.stop="toggleOptions"
         @keydown.space.prevent.stop="toggleOptions"
@@ -173,6 +183,7 @@
         ]"
         role="listbox"
         :aria-multiselectable="props.multiSelect"
+        :data-test="dataTest != undefined ? `select-dropdown-${dataTest}` : undefined"
         @keydown.tab="closeOptions"
       >
         <puik-input
@@ -184,6 +195,7 @@
             props.searchPlaceholder ?? `${t('puik.select.searchPlaceholder')}`
           "
           role="searchbox"
+          :data-test="dataTest != undefined ? `select-search-input-${dataTest}` : undefined"
           @input="searchOptions"
         >
           <template #prepend>
@@ -213,9 +225,10 @@
           <puik-group-options
             v-if="props.options"
             :open="openRef"
+            :data-test="dataTest != undefined ? `select-group-options-${dataTest}` : undefined"
           >
             <puik-option
-              v-for="option in filteredOptions"
+              v-for="(option, index) in filteredOptions"
               :key="option[props.optionValueKey]"
               :label="option[props.optionLabelKey]"
               :value="option[props.optionValueKey]"
@@ -227,6 +240,7 @@
               :option="option"
               :disabled="option[props.optionDisabledKey]"
               :multi-select="props.multiSelect"
+              :data-test="dataTest != undefined ? `select-option-${index + 1}-${dataTest}` : undefined"
               @select="selectOption(option)"
               @close="closeOptions"
             />
@@ -237,6 +251,7 @@
     <div
       v-if="hasError"
       class="puik-select__error"
+      :data-test="dataTest != undefined ? `select-error-${dataTest}` : undefined"
     >
       <puik-icon
         icon="error"

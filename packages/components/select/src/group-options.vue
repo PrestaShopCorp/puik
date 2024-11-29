@@ -2,6 +2,7 @@
   <div
     :style="{ 'z-index': props.zIndex }"
     tabindex="-1"
+    :data-test="props.dataTest"
   >
     <slot />
   </div>

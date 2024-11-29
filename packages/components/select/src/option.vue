@@ -9,6 +9,7 @@
     :aria-selected="isSelectedRef"
     :aria-disabled="props.disabled"
     tabindex="-1"
+    :data-test="props.dataTest"
     @click="selectOption"
     @keydown.space.prevent.stop="selectOption"
     @keydown.enter.prevent.stop="selectOption"
