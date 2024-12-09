@@ -293,7 +293,6 @@ const { t } = useLocale();
 const props = withDefaults(defineProps<SelectProps>(), {
   required: false,
   optional: false,
-  readonly: false,
   optionLabelKey: 'label',
   optionValueKey: 'value',
   optionDisabledKey: 'disabled',
