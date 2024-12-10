@@ -86,4 +86,7 @@
       }
     }
   }
+  .puik-select__no-results {
+    @apply px-3 py-2 relative cursor-default select-none text-primary-800;
+  }
 }

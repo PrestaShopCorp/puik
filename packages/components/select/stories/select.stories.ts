@@ -346,7 +346,6 @@ export const Multiple = {
 <PuikSelect
   v-model="selectedOptions"
   v-bind="args"
-  id="select-single-id"
   label="Select one option"
   placeholder="Choose an option"
   :options="[

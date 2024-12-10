@@ -33,7 +33,7 @@
           :autocomplete="props.autocomplete"
           role="combobox"
           :aria-expanded="openRef"
-          :aria-controls="`dropdown-${props.id}`"
+          v-bind="openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}"
           aria-haspopup="listbox"
           :value="JSON.stringify(selectedMultipleOptions)"
           :data-test="dataTest != undefined ? `select-multiple-options-tags-${dataTest}` : undefined"
@@ -82,7 +82,7 @@
             :disabled="props.disabled"
             role="combobox"
             :aria-expanded="openRef"
-            :aria-controls="`dropdown-${props.id}`"
+            v-bind="openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}"
             aria-haspopup="listbox"
             :data-test="dataTest != undefined ? `select-multiple-input-${dataTest}` : undefined"
             @click.stop="toggleOptions"
@@ -100,7 +100,7 @@
             </template>
           </puik-input>
           <input
-            :id="props.id"
+            :id="`hidden-${props.id}`"
             type="hidden"
             :name="props.name ?? props.id"
             :value="JSON.stringify(selectedMultipleOptions)"
@@ -123,7 +123,7 @@
         :disabled="props.disabled"
         role="combobox"
         :aria-expanded="openRef"
-        :aria-controls="`dropdown-${props.id}`"
+        v-bind="openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}"
         aria-haspopup="listbox"
         :data-test="dataTest != undefined ? `select-single-${dataTest}` : undefined"
         @click.stop="toggleOptions"
@@ -156,7 +156,7 @@
         :disabled="props.disabled"
         role="combobox"
         :aria-expanded="openRef"
-        :aria-controls="`dropdown-${props.id}`"
+        v-bind="openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}"
         :data-test="dataTest != undefined ? `select-single-${dataTest}` : undefined"
         aria-haspopup="listbox"
         @click.stop="toggleOptions"
@@ -245,6 +245,12 @@
               @close="closeOptions"
             />
           </puik-group-options>
+          <div
+            v-if="!filteredOptions?.length"
+            class="puik-select__no-results"
+          >
+            {{ props.noMatchText ?? `${t('puik.select.deselectAll')}` }}
+          </div>
         </slot>
       </div>
     </div>
@@ -433,6 +439,7 @@ const selectOption = (option: OptionType) => {
       updateSelectAllIndeterminate();
       emit('update:modelValue', selectedMultipleOptions.value);
     } else {
+      toggleOptions();
       selectedSingleOption.value !== option
         ? (selectedSingleOption.value = option)
         : (selectedSingleOption.value = {});
