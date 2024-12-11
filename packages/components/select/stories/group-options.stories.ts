@@ -2,7 +2,7 @@ import { PuikGroupOptions } from '@prestashopcorp/puik-components';
 import { Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
-  title: 'Components/GroupOptions',
+  title: 'Components/Select/GroupOptions',
   component: PuikGroupOptions
 } as Meta;
 

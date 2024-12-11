@@ -249,7 +249,7 @@
             v-if="!filteredOptions?.length"
             class="puik-select__no-results"
           >
-            {{ props.noMatchText ?? `${t('puik.select.deselectAll')}` }}
+            {{ props.noMatchText ?? `${t('puik.select.noResults')}` }}
           </div>
         </slot>
       </div>

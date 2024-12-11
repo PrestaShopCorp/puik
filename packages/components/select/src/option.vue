@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, toRaw, watch } from 'vue';
 import { PuikCheckbox } from '../../checkbox';
 import { PuikIcon } from '../../icon';
 import type { OptionProps, OptionEmits } from './option';
@@ -62,7 +62,7 @@ const valueRef = ref(props.value);
 
 const selectOption = () => {
   if (!props.disabled) {
-    emit('select', { label: labelRef.value, value: valueRef.value });
+    emit('select', { label: toRaw(labelRef.value), value: toRaw(valueRef.value) });
     if (!props.multiSelect) {
       emit('open', false);
     }

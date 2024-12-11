@@ -1,15 +1,21 @@
-import { PuikSelect, PuikOption, PuikGroupOptions } from '@prestashopcorp/puik-components';
+import { PuikSelect, PuikGroupOptions, PuikOption } from '@prestashopcorp/puik-components';
 import type { Meta, StoryFn, Args } from '@storybook/vue3';
 import { ref } from 'vue';
 
 export default {
   title: 'Components/Select',
-  components: PuikSelect,
+  components: { PuikSelect, PuikGroupOptions, PuikOption },
   argTypes: {
     modelValue: {
       control: 'text',
       description: 'Corresponds to the selected option (or selected options in the case of multi-select)',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'any'
+        },
         category: 'Common'
       }
     },
@@ -17,6 +23,12 @@ export default {
       control: 'text',
       description: 'Sets the id attribute of the select input',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
@@ -24,6 +36,12 @@ export default {
       control: 'text',
       description: 'Sets the name attribute of the select input',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
@@ -31,6 +49,12 @@ export default {
       control: 'text',
       description: 'Sets the label of the select input',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
@@ -38,6 +62,12 @@ export default {
       control: 'boolean',
       description: 'Indicates whether select is required or not',
       table: {
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
         category: 'Common'
       }
     },
@@ -45,6 +75,12 @@ export default {
       control: 'boolean',
       description: 'Indicates whether select is optional or not',
       table: {
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
         category: 'Common'
       }
     },
@@ -52,14 +88,25 @@ export default {
       control: 'none',
       description: 'Array of options passed to the component',
       table: {
-        category: 'Searchable'
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'Record<string, any>[]'
+        },
+        category: 'Common'
       }
     },
     optionLabelKey: {
       control: 'text',
       description: 'In the case of using objects as a options prop you can set which property of the object is the label',
       table: {
-        defaultValue: { summary: 'label' },
+        defaultValue: {
+          summary: 'label'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Searchable'
       }
     },
@@ -67,7 +114,12 @@ export default {
       control: 'text',
       description: 'In the case of using objects as a options prop you can set which property of the object is the value',
       table: {
-        defaultValue: { summary: 'value' },
+        defaultValue: {
+          summary: 'value'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Searchable'
       }
     },
@@ -75,7 +127,12 @@ export default {
       control: 'text',
       description: 'In case of using objects as option props, you can define which property of the object makes the option disabled',
       table: {
-        defaultValue: { summary: 'value' },
+        defaultValue: {
+          summary: 'disabled'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Searchable'
       }
     },
@@ -83,6 +140,12 @@ export default {
       control: 'boolean',
       description: 'Indicates whether the select allows multiple choice',
       table: {
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
         category: 'Common'
       }
     },
@@ -90,6 +153,12 @@ export default {
       control: 'boolean',
       description: 'Enables the search feature',
       table: {
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
         category: 'Searchable'
       }
     },
@@ -97,6 +166,12 @@ export default {
       control: 'none',
       description: 'Use your own method to filter the options when using the search',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'function'
+        },
         category: 'Searchable'
       }
     },
@@ -104,6 +179,12 @@ export default {
       control: 'text',
       description: 'Sets a placeholder for the select',
       table: {
+        defaultValue: {
+          summary: 'Select an option'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
@@ -111,6 +192,12 @@ export default {
       control: 'text',
       description: 'Sets a placeholder for the search input',
       table: {
+        defaultValue: {
+          summary: 'Search...'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Searchable'
       }
     },
@@ -118,6 +205,12 @@ export default {
       control: 'text',
       description: 'Message to display when there are no results found',
       table: {
+        defaultValue: {
+          summary: 'No results matched'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Searchable'
       }
     },
@@ -125,14 +218,25 @@ export default {
       control: 'boolean',
       description: 'Disables the select',
       table: {
-        defaultValue: { summary: false },
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
         category: 'Common'
       }
     },
     error: {
       control: 'text',
-      description: 'Display an error message under the field and sets the select in an error state (also available as a slot named error)',
+      description: 'Displays an error message under the field and sets the select in an error state (also available as a slot named error)',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
@@ -140,13 +244,25 @@ export default {
       control: 'text',
       description: 'Enables browser autocompletion for the select',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
     prependInputIcon: {
       control: 'text',
-      description: 'Prepends an icon or text to the input',
+      description: 'Prepends a Material Symbols to the input (cf https://fonts.google.com/icons)',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
@@ -154,7 +270,12 @@ export default {
       control: 'boolean',
       description: 'Controls the opening of the select dropdown',
       table: {
-        defaultValue: { summary: false },
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
         category: 'Common'
       }
     },
@@ -162,6 +283,12 @@ export default {
       control: 'text',
       description: 'Sets the data-test attribute',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     }
@@ -169,22 +296,19 @@ export default {
   args: {
     id: 'select-id',
     name: 'select-name',
-    label: 'Select Option',
-    required: false,
-    optional: false,
+    label: 'Select an option',
     options: [
       { label: 'Option 1', value: '1' },
       { label: 'Option 2', value: '2' },
       { label: 'Option 3', value: '3' }
     ],
+    required: false,
+    optional: false,
+    searchable: false,
     optionLabelKey: 'label',
     optionValueKey: 'value',
     optionDisabledKey: 'disabled',
     multiSelect: false,
-    searchable: false,
-    placeholder: 'Choose an option',
-    searchPlaceholder: 'Search options',
-    noMatchText: 'No match found',
     disabled: false,
     error: '',
     autocomplete: 'off',
@@ -205,8 +329,12 @@ const Template: StoryFn = (args: Args) => ({
     return { selectedOptions, args };
   },
   template: `
-  <div class="min-h-60">
-    <PuikSelect
+  <div class="min-h-[200px]">
+    <puik-select
+    tabindex="1"
+      :key="args.open"
+      @keydown.space.prevent="args.open = !args.open"
+      @keydown.enter.prevent="args.open = !args.open"
       v-model="selectedOptions"
       v-bind="args"
     />
@@ -216,24 +344,39 @@ const Template: StoryFn = (args: Args) => ({
 
 export const Default = {
   render: Template,
-  args: {
-    id: 'default-select'
-  },
+  args: {},
   parameters: {
     docs: {
       source: {
         code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
 <PuikSelect
   v-model="selectedOptions"
-  v-bind="args"
   id="select-id"
-  label="Select Option"
-  placeholder="Choose an option"
-  :options="[
-    { label: 'Option 1', value: '1' },
-    { label: 'Option 2', value: '2' },
-    { label: 'Option 3', value: '3' },
-  ]"
+  name="select-name"
+  label="Select an option"
+  :options="options"
+  :required="false"
+  :optional="false"
+  :searchable="false"
+  :optionLabelKey="label",
+  :optionValueKey="value",
+  :optionDisabledKey="disabled",
+  optionLabelKey="label",
+  multiSelect="false",
+  disabled="false",
+  error="",
+  autocomplete="off",
+  prependInputIcon="",
+  open="false",
+  dataTest="data-test"
 />
         `,
         language: 'html'
@@ -245,25 +388,29 @@ export const Default = {
 export const Required = {
   render: Template,
   args: {
-    id: 'required-select',
-    label: 'Select one option',
+    id: 'required-select-id',
+    name: 'required-select-name',
     required: true
   },
   parameters: {
     docs: {
       source: {
         code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
 <PuikSelect
   v-model="selectedOptions"
-  v-bind="args"
-  id="select-single-id"
-  label="Select one option"
-  placeholder="Choose an option"
-  :options="[
-    { label: 'Option 1', value: '1' },
-    { label: 'Option 2', value: '2' },
-    { label: 'Option 3', value: '3' },
-  ]"
+  id="required-select-id"
+  name="required-select-name"
+  label="Select an option"
+  :options="options"
+  required
 />
         `,
         language: 'html'
@@ -275,25 +422,29 @@ export const Required = {
 export const Optional = {
   render: Template,
   args: {
-    id: 'optional-select',
-    label: 'Select one option',
+    id: 'optional-select-id',
+    name: 'optional-select-name',
     optional: true
   },
   parameters: {
     docs: {
       source: {
         code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
 <PuikSelect
   v-model="selectedOptions"
-  v-bind="args"
-  id="select-single-id"
-  label="Select one option"
-  placeholder="Choose an option"
-  :options="[
-    { label: 'Option 1', value: '1' },
-    { label: 'Option 2', value: '2' },
-    { label: 'Option 3', value: '3' },
-  ]"
+  id="optional-select-id"
+  name="optional-select-name"
+  label="Select an option"
+  :options="options"
+  optional
 />
         `,
         language: 'html'
@@ -301,28 +452,33 @@ export const Optional = {
     }
   }
 };
+
 export const prependInputIcon = {
   render: Template,
   args: {
-    id: 'prepend-input-select',
-    label: 'Select one option',
+    id: 'prepend-select-id',
+    name: 'prepend-select-name',
     prependInputIcon: 'label'
   },
   parameters: {
     docs: {
       source: {
         code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
 <PuikSelect
   v-model="selectedOptions"
-  v-bind="args"
-  id="select-single-id"
-  label="Select one option"
-  placeholder="Choose an option"
-  :options="[
-    { label: 'Option 1', value: '1' },
-    { label: 'Option 2', value: '2' },
-    { label: 'Option 3', value: '3' },
-  ]"
+  id="prepend-select-id"
+  name="prepend-select-name"
+  label="Select an option"
+  :options="options"
+  prepend-input-icon="label"
 />
         `,
         language: 'html'
@@ -334,25 +490,32 @@ export const prependInputIcon = {
 export const Multiple = {
   render: Template,
   args: {
-    id: 'multi-select',
-    label: 'Select options',
-    placeholder: 'multiple options',
+    id: 'multi-select-id',
+    name: 'multi-select-name',
+    label: 'Select option(s)',
+    placeholder: 'Select option(s)',
     multiSelect: true
   },
   parameters: {
     docs: {
       source: {
         code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
 <PuikSelect
   v-model="selectedOptions"
-  v-bind="args"
-  label="Select one option"
-  placeholder="Choose an option"
-  :options="[
-    { label: 'Option 1', value: '1' },
-    { label: 'Option 2', value: '2' },
-    { label: 'Option 3', value: '3' },
-  ]"
+  id="multi-select-id"
+  name="multi-select-name"
+  label="Select option(s)"
+  placeholder="Select option(s)"
+  :options="options"
+  multi-select
 />
         `,
         language: 'html'
@@ -364,24 +527,30 @@ export const Multiple = {
 export const DisabledSelect = {
   render: Template,
   args: {
-    id: 'disabled-select',
+    id: 'disabled-select-id',
+    name: 'disabled-select-name',
+    label: 'Select disabled',
     disabled: true
   },
   parameters: {
     docs: {
       source: {
         code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
 <PuikSelect
   v-model="selectedOptions"
-  v-bind="args"
-  id="select-single-id"
-  label="Select one option"
-  placeholder="Choose an option"
-  :options="[
-    { label: 'Option 1', value: '1' },
-    { label: 'Option 2', value: '2' },
-    { label: 'Option 3', value: '3' },
-  ]"
+  id="disabled-select-id"
+  name="disabled-select-name"
+  label="Select disabled"
+  :options="options"
+  disabled
 />
         `,
         language: 'html'
@@ -390,10 +559,11 @@ export const DisabledSelect = {
   }
 };
 
-export const DisabledOptions = {
+export const DisabledOption = {
   render: Template,
   args: {
-    id: 'disabled-options-select',
+    id: 'select-with-option-diasabled-id',
+    name: 'select-with-option-diasabled-name',
     options: [
       { label: 'Option 1', value: '1' },
       { label: 'Option 2', value: '2', disabled: true },
@@ -404,17 +574,20 @@ export const DisabledOptions = {
     docs: {
       source: {
         code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2', disabled: true },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
 <PuikSelect
   v-model="selectedOptions"
-  v-bind="args"
-  id="select-single-id"
-  label="Select one option"
-  placeholder="Choose an option"
-  :options="[
-    { label: 'Option 1', value: '1' },
-    { label: 'Option 2', value: '2', disabled: true },
-    { label: 'Option 3', value: '3' },
-  ]"
+  id="select-with-option-diasabled-id"
+  name="select-with-option-diasabled-name"
+  label="Select an option"
+  :options="options"
 />
         `,
         language: 'html'
@@ -426,24 +599,29 @@ export const DisabledOptions = {
 export const Error = {
   render: Template,
   args: {
-    id: 'error-select',
+    id: 'error-select-id',
+    name: 'error-select-name',
     error: 'something is wrong'
   },
   parameters: {
     docs: {
       source: {
         code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
 <PuikSelect
   v-model="selectedOptions"
-  v-bind="args"
-  id="select-single-id"
-  label="Select one option"
-  placeholder="Choose an option"
-  :options="[
-    { label: 'Option 1', value: '1' },
-    { label: 'Option 2', value: '2', disabled: true },
-    { label: 'Option 3', value: '3' },
-  ]"
+  id="error-select-id"
+  name="error-select-name"
+  label="Select an option"
+  :options="options"
+  error="something is wrong"
 />
         `,
         language: 'html'
@@ -455,24 +633,29 @@ export const Error = {
 export const Searchable = {
   render: Template,
   args: {
-    id: 'searchable-select',
+    id: 'searchable-select-id',
+    name: 'searchable-select-name',
     searchable: true
   },
   parameters: {
     docs: {
       source: {
         code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
 <PuikSelect
   v-model="selectedOptions"
-  v-bind="args"
-  id="select-single-id"
-  label="Select one option"
-  placeholder="Choose an option"
-  :options="[
-    { label: 'Option 1', value: '1' },
-    { label: 'Option 2', value: '2', disabled: true },
-    { label: 'Option 3', value: '3' },
-  ]"
+  id="earchable-select-id"
+  name="searchable-select-name"
+  label="Select an option"
+  :options="options"
+  searchable
 />
         `,
         language: 'html'
