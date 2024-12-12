@@ -224,7 +224,6 @@
         <slot>
           <puik-group-options
             v-if="props.options"
-            :open="openRef"
             :data-test="dataTest != undefined ? `select-group-options-${dataTest}` : undefined"
           >
             <puik-option
