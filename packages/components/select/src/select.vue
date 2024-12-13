@@ -61,8 +61,8 @@
             :data-test="dataTest != undefined ? `select-tag-${index + 1}-${dataTest}` : undefined"
             @close="deselectOption(option)"
             @click.stop="openOptions"
-            @keydown.space.stop="openRef = true"
-            @keydown.enter.stop="openRef = true;"
+            @keydown.space.stop="openOptions"
+            @keydown.enter.stop="openOptions"
           />
         </button>
         <template v-else>
@@ -365,13 +365,13 @@ const isAllSelected = computed(() => {
 
 const IsAllSelectedRef = ref(isAllSelected.value);
 
-const updateSelectAllIndeterminate = () => {
-  if (props.options) {
+const updateSelectAllIndeterminate = (optionsState: any) => {
+  if (props.options && Array.isArray(optionsState)) {
     const enabledOptionsCount = props.options.filter(
-      (option: OptionType) => !option[props.optionDisabledKey]
+      (option: any) => !option[props.optionDisabledKey]
     ).length;
-    const selectedEnabledOptionsCount = selectedMultipleOptions.value.filter(
-      (option) => !option[props.optionDisabledKey]
+    const selectedEnabledOptionsCount = optionsState.filter(
+      (option: any) => !option[props.optionDisabledKey]
     ).length;
     selectAllIndeterminate.value =
       selectedEnabledOptionsCount > 0 &&
@@ -396,7 +396,7 @@ const toggleSelectAll = () => {
     } else {
       selectedMultipleOptions.value = [...disabledOptions];
     }
-    updateSelectAllIndeterminate();
+    updateSelectAllIndeterminate(selectedMultipleOptions.value);
     emit('update:modelValue', selectedMultipleOptions.value);
   }
 };
@@ -407,20 +407,20 @@ const handleSelectAllClick = () => {
 };
 
 const toggleOptions = () => {
-  emit('open', !props.open);
   openRef.value = !openRef.value;
+  emit('open', openRef.value);
   resetSearchQuery();
   handleDropdownPosition();
 };
 const openOptions = () => {
-  emit('open', true);
   openRef.value = true;
+  emit('open', true);
   resetSearchQuery();
   handleDropdownPosition();
 };
 const closeOptions = () => {
-  emit('open', false);
   openRef.value = false;
+  emit('open', false);
   resetSearchQuery();
   handleDropdownPosition();
 };
@@ -435,7 +435,7 @@ const selectOption = (option: OptionType) => {
       } else {
         selectedMultipleOptions.value.push(option);
       }
-      updateSelectAllIndeterminate();
+      updateSelectAllIndeterminate(selectedMultipleOptions.value);
       emit('update:modelValue', selectedMultipleOptions.value);
     } else {
       toggleOptions();
@@ -451,7 +451,7 @@ const deselectOption = (option: OptionType) => {
   selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
     (opt) => opt !== option
   );
-  updateSelectAllIndeterminate();
+  updateSelectAllIndeterminate(selectedMultipleOptions.value);
   emit('update:modelValue', selectedMultipleOptions.value);
 };
 
@@ -481,16 +481,18 @@ watch(
   () => props.modelValue,
   (newValue) => {
     selectedSingleOption.value = newValue;
+    updateSelectAllIndeterminate(newValue);
   }
 );
 watch(
   () => props.open,
   (newValue) => {
+    console.log('watch open prop');
     openRef.value = newValue;
   }
 );
 
-updateSelectAllIndeterminate();
+updateSelectAllIndeterminate(selectedMultipleOptions.value);
 </script>
 
 <style lang="scss">

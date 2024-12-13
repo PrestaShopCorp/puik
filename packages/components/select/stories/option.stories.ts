@@ -939,14 +939,20 @@ export const MultiSelectExample: StoryObj = {
         { label: 'label 4', value: '4', category: 'catégorie B' },
         { label: 'label 5', value: '5', category: 'catégorie B' }
       ]);
-      const selectedOptions = ref<OptionType[] | null>([]);
+      const selectedOptions = ref<OptionType[] | null>();
       const handleSelect = (option: OptionType) => {
         if (selectedOptions.value) {
-          const index = selectedOptions.value.findIndex(
-            (selectedOption: OptionType) => selectedOption.value === option.value
-          );
-          console.log(index);
-          index !== -1 ? selectedOptions.value.splice(index, 1) : selectedOptions.value.push(option);
+          if (selectedOptions.value.length > 0) {
+            const index = selectedOptions.value.findIndex(
+              selectedOption => selectedOption.value === option.value
+            );
+            index !== -1 ? selectedOptions.value.splice(index, 1) : selectedOptions.value.push(option);
+          } else {
+            selectedOptions.value.push(option);
+          }
+        } else {
+          selectedOptions.value = [];
+          selectedOptions.value.push(option);
         }
       };
       return { options, openRef, selectedOptions, handleSelect };
@@ -988,7 +994,55 @@ export const MultiSelectExample: StoryObj = {
       source: {
         code: `
     <!--VueJS Snippet-->
+    // const openRef = ref(false);
+    // const options = ref([
+    //   { label: 'label 1', value: '1', category: 'catégorie A' },
+    //   { label: 'label 2', value: '2', category: 'catégorie A' },
+    //   { label: 'label 3', value: '3', category: 'catégorie A', disabled: true },
+    //   { label: 'label 4', value: '4', category: 'catégorie B' },
+    //   { label: 'label 5', value: '5', category: 'catégorie B' }
+    // ]);
+    // const selectedOptions = ref<OptionType[] | null>();
+    // const handleSelect = (option: OptionType) => {
+    //   if (selectedOptions.value) {
+    //     if (selectedOptions.value.length > 0) {
+    //       const index = selectedOptions.value.findIndex(
+    //         selectedOption => selectedOption.value === option.value
+    //       );
+    //       index !== -1 ? selectedOptions.value.splice(index, 1) : selectedOptions.value.push(option);
+    //     } else {
+    //       selectedOptions.value.push(option);
+    //     }
+    //   } else {
+    //     selectedOptions.value = [];
+    //     selectedOptions.value.push(option);
+    //   }
+    // };
 
+    <puik-select
+      v-model="selectedOptions"
+      id="select-multi-id"
+      name="select-multi-name"
+      label="Select option(s)"
+      multi-select
+      :options="options"
+      :open="openRef"
+      @open="(state) => openRef = state"
+    >
+      <puik-group-options>
+        <puik-option
+          v-for="option in options"
+          :key="option.value"
+          :label="option.label"
+          :value="option.value"
+          :disabled="option.disabled"
+          :is-selected="selectedOptions?.includes(option)"
+          multi-select
+          @select="handleSelect(option)"
+          @open="(state) => openRef = state"
+        />
+      </puik-group-options>
+    </puik-select>
         `,
         language: 'html'
       }

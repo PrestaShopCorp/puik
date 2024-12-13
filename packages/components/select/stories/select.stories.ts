@@ -1,5 +1,5 @@
-import { PuikSelect, PuikGroupOptions, PuikOption } from '@prestashopcorp/puik-components';
-import type { Meta, StoryFn, Args } from '@storybook/vue3';
+import { PuikSelect, PuikGroupOptions, PuikOption, PuikBadge } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3';
 import { ref } from 'vue';
 
 export default {
@@ -291,6 +291,51 @@ export default {
         },
         category: 'Common'
       }
+    },
+    '@open': {
+      description: 'Event triggered when the select is opened or closed',
+      table: {
+        defaultValue: {
+          summary: '@open'
+        },
+        type: {
+          summary: 'Event',
+          detail: `
+          'open': [state: boolean]
+          `
+        },
+        category: 'Events'
+      }
+    },
+    '@update:modelValue': {
+      description: 'Event triggered when the selected option(s) is/are updated',
+      table: {
+        defaultValue: {
+          summary: '@update:model-value'
+        },
+        type: {
+          summary: 'Event',
+          detail: `
+            'update:modelValue': [selectedOptions: any]
+          `
+        },
+        category: 'Events'
+      }
+    },
+    '@search': {
+      description: 'Event triggered when typing in the searchbar. Returns the text query as well as the list of filtered options',
+      table: {
+        defaultValue: {
+          summary: '@search'
+        },
+        type: {
+          summary: 'Event',
+          detail: `
+            'search': [searchQuery: string, filteredOptions: any ]
+          `
+        },
+        category: 'Events'
+      }
     }
   },
   args: {
@@ -331,7 +376,6 @@ const Template: StoryFn = (args: Args) => ({
   template: `
   <div class="min-h-[200px]">
     <puik-select
-    tabindex="1"
       :key="args.open"
       @keydown.space.prevent="args.open = !args.open"
       @keydown.enter.prevent="args.open = !args.open"
@@ -651,12 +695,152 @@ export const Searchable = {
 
 <PuikSelect
   v-model="selectedOptions"
-  id="earchable-select-id"
+  id="searchable-select-id"
   name="searchable-select-name"
   label="Select an option"
   :options="options"
   searchable
 />
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const openEvent: StoryObj = {
+  render: () => ({
+    components: {
+      PuikSelect,
+      PuikBadge
+    },
+    setup() {
+      const options = [
+        { label: 'Option 1', value: '1' },
+        { label: 'Option 2', value: '2' },
+        { label: 'Option 3', value: '3' }
+      ];
+      const selectedOption = ref();
+      const openState = ref(false);
+      return { options, selectedOption, openState };
+    },
+    template: `
+  <div class="min-h-[250px] flex flex-col space-y-2">
+    <div>
+      <puik-badge :variant="openState ? 'success' : 'warning'">
+        open state : {{ openState }}
+      </puik-badge>
+    </div>
+    <puik-select
+      v-model="selectedOption"
+      :key="selectedOption"
+      id="select-open-event-id"
+      name="select-open-event-name"
+      label="Select an option"
+      :options="options"
+      :open="openRef"
+      @open="(state) => openState = state"
+    />
+  </div>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+    <!--VueJS Snippet-->
+    // const options = [
+    //   { label: 'Option 1', value: '1' },
+    //   { label: 'Option 2', value: '2' },
+    //   { label: 'Option 3', value: '3' }
+    // ];
+    // const selectedOption = ref();
+    // const openState = ref(false);
+    
+    <puik-badge :variant="openState ? 'success' : 'warning'">
+      open state : {{ openState }}
+    </puik-badge>
+
+    <puik-select
+      v-model="selectedOption"
+      :key="selectedOption"
+      id="select-open-event-id"
+      name="select-open-event-name"
+      label="Select an option"
+      :options="options"
+      :open="openRef"
+      @open="(state) => openState = state"
+    />
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const updateModelValueEvent: StoryObj = {
+  render: () => ({
+    components: {
+      PuikSelect,
+      PuikBadge
+    },
+    setup() {
+      const options = [
+        { label: 'Option 1', value: '1' },
+        { label: 'Option 2', value: '2' },
+        { label: 'Option 3', value: '3' }
+      ];
+      const selectedOption = ref();
+      const newValue = ref();
+      return { options, selectedOption, newValue };
+    },
+    template: `
+  <div class="min-h-[250px] flex flex-col space-y-2">
+    <div>
+      <puik-badge :variant="info">
+        value : {{ newValue }}
+      </puik-badge>
+    </div>
+    <puik-select
+      v-model="selectedOption"
+      :key="selectedOption"
+      id="select-update-model-value-id"
+      name="select-update-model-value--name"
+      label="Select an option"
+      :options="options"
+      :open="openRef"
+      @update:model-value="(payload) => newValue = payload"
+    />
+  </div>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+    <!--VueJS Snippet-->
+    // const options = [
+    //   { label: 'Option 1', value: '1' },
+    //   { label: 'Option 2', value: '2' },
+    //   { label: 'Option 3', value: '3' }
+    // ];
+    // const selectedOption = ref();
+    // const newValue = ref();
+
+    <puik-badge :variant="info">
+      value : {{ newValue }}
+    </puik-badge>
+
+    <puik-select
+      v-model="selectedOption"
+      :key="selectedOption"
+      id="select-update-model-value-id"
+      name="select-update-model-value--name"
+      label="Select an option"
+      :options="options"
+      :open="openRef"
+      @update:model-value="(payload) => newValue = payload"
+    />
         `,
         language: 'html'
       }
