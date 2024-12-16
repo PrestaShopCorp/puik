@@ -120,6 +120,7 @@
         type="text"
         :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
         readonly
+        :autocomplete="props.autocomplete"
         :disabled="props.disabled"
         role="combobox"
         :aria-expanded="openRef"
@@ -153,6 +154,7 @@
         type="text"
         :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
         readonly
+        :autocomplete="props.autocomplete"
         :disabled="props.disabled"
         role="combobox"
         :aria-expanded="openRef"
@@ -302,7 +304,8 @@ const props = withDefaults(defineProps<SelectProps>(), {
   optionValueKey: 'value',
   optionDisabledKey: 'disabled',
   multiSelect: false,
-  open: false
+  open: false,
+  autocomplete: 'off'
 });
 
 const emit = defineEmits<SelectEmits>();
