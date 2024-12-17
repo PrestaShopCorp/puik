@@ -63,9 +63,7 @@ const valueRef = ref(props.value);
 const selectOption = () => {
   if (!props.disabled) {
     emit('select', { label: toRaw(labelRef.value), value: toRaw(valueRef.value) });
-    if (!props.multiSelect) {
-      emit('open', false);
-    }
+    props.multiSelect ? emit('open', true) : emit('open', false);
   }
 };
 

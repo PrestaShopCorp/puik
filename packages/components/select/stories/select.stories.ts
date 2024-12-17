@@ -391,6 +391,13 @@ export const Default = {
   args: {},
   parameters: {
     docs: {
+      description: {
+        story: `
+If the options are not objects of type Record<string, any> but numbers or simple strings, we cannot use PuikSelect without going through the default slot.
+
+We will then have to customize the select via the PuikGroupOptions and PuikOptions sub-components (see subsection GroupOptions and Option)
+          `
+      },
       source: {
         code: `
 <!--VueJS Snippet-->
