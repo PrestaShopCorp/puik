@@ -287,7 +287,18 @@ export default {
           summary: 'none'
         },
         type: {
-          summary: 'string'
+          summary: 'string (see details)',
+          detail: `
+select-label-{dataTest}
+select-multiple-options-tags-{dataTest}
+select-tag-{index + 1}-{dataTest} (for each tag)
+select-multiple-input-{dataTest}
+select-single-{dataTest}
+select-dropdown-{dataTest}
+select-search-input-{dataTest}
+select-group-options-{dataTest} select-option-{index + 1}-{dataTest}
+select-error-{dataTest}
+          `
         },
         category: 'Common'
       }
@@ -299,7 +310,7 @@ export default {
           summary: '@open'
         },
         type: {
-          summary: 'Event',
+          summary: 'Event (see details)',
           detail: `
           'open': [state: boolean]
           `
@@ -314,7 +325,7 @@ export default {
           summary: '@update:model-value'
         },
         type: {
-          summary: 'Event',
+          summary: 'Event (see details)',
           detail: `
             'update:modelValue': [selectedOptions: any]
           `
@@ -329,7 +340,7 @@ export default {
           summary: '@search'
         },
         type: {
-          summary: 'Event',
+          summary: 'Event (see details)',
           detail: `
             'search': [searchQuery: string, filteredOptions: any ]
           `
@@ -745,7 +756,7 @@ export const openEvent: StoryObj = {
       name="select-open-event-name"
       label="Select an option"
       :options="options"
-      :open="openRef"
+      :open="openState"
       @open="(state) => openState = state"
     />
   </div>
@@ -775,7 +786,7 @@ export const openEvent: StoryObj = {
       name="select-open-event-name"
       label="Select an option"
       :options="options"
-      :open="openRef"
+      :open="openState"
       @open="(state) => openState = state"
     />
         `,
@@ -804,7 +815,7 @@ export const updateModelValueEvent: StoryObj = {
     template: `
   <div class="min-h-[250px] flex flex-col space-y-2">
     <div>
-      <puik-badge :variant="info">
+      <puik-badge variant="info">
         value : {{ newValue }}
       </puik-badge>
     </div>
@@ -815,7 +826,6 @@ export const updateModelValueEvent: StoryObj = {
       name="select-update-model-value--name"
       label="Select an option"
       :options="options"
-      :open="openRef"
       @update:model-value="(payload) => newValue = payload"
     />
   </div>
@@ -834,7 +844,7 @@ export const updateModelValueEvent: StoryObj = {
     // const selectedOption = ref();
     // const newValue = ref();
 
-    <puik-badge :variant="info">
+    <puik-badge variant="info">
       value : {{ newValue }}
     </puik-badge>
 
@@ -845,7 +855,6 @@ export const updateModelValueEvent: StoryObj = {
       name="select-update-model-value--name"
       label="Select an option"
       :options="options"
-      :open="openRef"
       @update:model-value="(payload) => newValue = payload"
     />
         `,

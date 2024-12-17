@@ -76,7 +76,7 @@ export default {
           summary: '@open'
         },
         type: {
-          summary: 'Event',
+          summary: 'Event (see details)',
           detail: `
           'open': [state: boolean]
           `
@@ -90,7 +90,7 @@ export default {
           summary: '@select'
         },
         type: {
-          summary: 'Event',
+          summary: 'Event (see details)',
           detail: `
           'select': [payload: { label: string, value: string | number }]
           `
