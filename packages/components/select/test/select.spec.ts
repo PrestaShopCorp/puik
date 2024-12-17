@@ -299,7 +299,6 @@ describe('Select tests', () => {
       modelValue: selectedOptions,
       options
     });
-    console.log(selectedOptions);
     await wrapper.find('.puik-option--disabled').trigger('click');
     expect(selectedOptions.value).toBeUndefined();
   });

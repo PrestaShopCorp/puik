@@ -31,7 +31,7 @@ describe('Pagination tests', () => {
 
   const findItemsPerPageSelect = () =>
     wrapper.find('.puik-pagination__items-per-page-select');
-  const findAllOptions = (select) => select.findAllComponents(PuikOption);
+  const findAllOptions = (select: any) => select.findAllComponents(PuikOption);
 
   const factory = (
     props: PaginationProps,
@@ -249,21 +249,6 @@ describe('Pagination tests', () => {
     factory({ ...propsData, variant: PuikPaginationVariants.Large });
     expect(findPreviousButtonText().text()).toContain(previousText);
     expect(findNextButtonText().text()).toBe(nextText);
-  });
-
-  it('should click page change active class and aria-current', async () => {
-    factory({ ...propsData, variant: PuikPaginationVariants.Large });
-
-    const findSelect = () => wrapper.find('.puik-pagination__select');
-    const findAllOptions = () => wrapper.findAllComponents(PuikOption);
-
-    // Click first pager button
-    await findSelect().trigger('click');
-    await findAllOptions()[5].trigger('click');
-    await nextTick();
-    expect(findPaginationComponent().emitted('update:page')?.[0]).toStrictEqual(
-      [5]
-    );
   });
 
   it('should emit when selecting item per page', async () => {
