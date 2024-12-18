@@ -179,6 +179,7 @@
       <div
         v-show="openRef"
         :id="`dropdown-${props.id}`"
+        :style="{ 'z-index': props.zIndex }"
         :class="[
           'puik-select-dropdown',
           { 'puik-select-dropdown--up': positionDropdownUp }
@@ -299,7 +300,8 @@ const props = withDefaults(defineProps<SelectProps>(), {
   optionDisabledKey: 'disabled',
   multiSelect: false,
   open: false,
-  autocomplete: 'off'
+  autocomplete: 'off',
+  zIndex: 10
 });
 
 const emit = defineEmits<SelectEmits>();

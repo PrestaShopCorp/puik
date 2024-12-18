@@ -422,4 +422,28 @@ describe('Select tests', () => {
     expect(wrapper.emitted('update:modelValue')).toBeTruthy();
     expect(wrapper.emitted('update:modelValue')?.[0][0]).toEqual([]);
   });
+
+  it('should apply zIndex style to dropdown', async () => {
+    const wrapper = mount(PuikSelect, {
+      props: {
+        id: 'test-select-id',
+        modelValue: null,
+        zIndex: 200
+      },
+      slots: {
+        default: `
+          <puik-option label="Option 1" value="1"></puik-option>
+        `
+      },
+      global: {
+        components: {
+          PuikOption
+        }
+      }
+    });
+    await wrapper.setProps({ open: true });
+    await wrapper.vm.$nextTick();
+    const dropdown = wrapper.find('.puik-select-dropdown');
+    expect(dropdown.attributes('style')).toContain('z-index: 200');
+  });
 });

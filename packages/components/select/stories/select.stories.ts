@@ -279,6 +279,19 @@ export default {
         category: 'Common'
       }
     },
+    zIndex: {
+      control: 'number',
+      description: 'Sets z-index attribute of dropdown',
+      table: {
+        defaultValue: {
+          summary: 10
+        },
+        type: {
+          summary: 'number'
+        },
+        category: 'Common'
+      }
+    },
     dataTest: {
       control: 'text',
       description: 'Sets the data-test attribute',
@@ -370,6 +383,7 @@ select-error-{dataTest}
     autocomplete: 'off',
     prependInputIcon: '',
     open: false,
+    zIndex: 10,
     dataTest: 'data-test'
   }
 } as Meta;
@@ -387,8 +401,6 @@ const Template: StoryFn = (args: Args) => ({
   <div class="min-h-[200px]">
     <puik-select
       :key="args.open"
-      @keydown.space.prevent="args.open = !args.open"
-      @keydown.enter.prevent="args.open = !args.open"
       v-model="selectedOptions"
       v-bind="args"
     />
@@ -427,16 +439,17 @@ We will then have to customize the select via PuikOption sub-components (see Opt
   :required="false"
   :optional="false"
   :searchable="false"
-  :optionLabelKey="label",
-  :optionValueKey="value",
-  :optionDisabledKey="disabled",
-  optionLabelKey="label",
-  multiSelect="false",
-  disabled="false",
-  error="",
-  autocomplete="off",
-  prependInputIcon="",
-  open="false",
+  :optionLabelKey="label"
+  :optionValueKey="value"
+  :optionDisabledKey="disabled"
+  optionLabelKey="label"
+  multiSelect="false"
+  disabled="false"
+  error=""
+  autocomplete="off"
+  prependInputIcon=""
+  open="false"
+  :zIndex="10"
   dataTest="data-test"
 />
         `,

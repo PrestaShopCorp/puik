@@ -3,6 +3,7 @@ import type Select from './select.vue';
 import type { OptionType } from './option';
 export interface SelectProps {
   modelValue: any
+  open?: boolean
   id: string
   name?: string
   label?: string
@@ -22,7 +23,7 @@ export interface SelectProps {
   error?: string
   autocomplete?: string
   prependInputIcon?: string
-  open?: boolean
+  zIndex?: number
   dataTest?: string
 }
 
