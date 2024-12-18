@@ -6,10 +6,20 @@
     <table
       class="puik-table"
       :class="{ 'puik-table--full-width': fullWidth }"
+      :data-test="dataTest != undefined ? `table-${dataTest}` : undefined"
     >
-      <thead class="puik-table__head">
+      <thead
+        class="puik-table__head"
+        :data-test="
+          dataTest != undefined ? `table-header-${dataTest}` : undefined
+        "
+      >
         <tr>
-          <td :colspan="selectable || expandable ? headers.length +1 : headers.length">
+          <td
+            :colspan="
+              selectable || expandable ? headers.length + 1 : headers.length
+            "
+          >
             <div class="puik-table__head-separator" />
           </td>
         </tr>
@@ -28,11 +38,21 @@
               { 'puik-table__head__row__item--selection': selectable },
               { 'puik-table__head__row__item--expandable': expandable },
             ]"
+            :data-test="
+              dataTest != undefined
+                ? `table-header-th-${dataTest}-selection`
+                : undefined
+            "
           >
             <puik-checkbox
               v-if="selectable && !searchBar"
               :model-value="selectAll"
               :indeterminate="indeterminate"
+              :data-test="
+                dataTest != undefined
+                  ? `table-header-checkbox-${dataTest}`
+                  : undefined
+              "
               class="puik-table__head__row__item--selection__checkbox"
               @click="handleClickAll"
             >
@@ -75,10 +95,21 @@
               },
             ]"
             :style="{ minWidth: header.width, width: header.width }"
+            :data-test="
+              dataTest != undefined
+                ? `table-header-th-${dataTest}-${header.value}`
+                : undefined
+            "
           >
             <div class="puik-table__head__row__item__container">
               <div class="puik-table__head__row__item__content">
-                <span>
+                <span
+                  :data-test="
+                    dataTest != undefined
+                      ? `table-header-content-${dataTest}-${header.value}`
+                      : undefined
+                  "
+                >
                   <slot
                     :name="`header-${header.value}`"
                     :header="header"
@@ -94,7 +125,20 @@
                   "
                   variant="primary-reverse"
                   size="sm"
-                  :aria-label="sortIcon[header.value] === PuikTableSortIcon.Asc ? `${t('puik.table.sortableAscLabel')} ${header.value}` : sortIcon[header.value] === PuikTableSortIcon.Desc ? `${t('puik.table.sortableDescLabel')} ${header.value}` : `${t('puik.table.sortableDefaultLabel')} ${header.value}`"
+                  :aria-label="
+                    sortIcon[header.value] === PuikTableSortIcon.Asc
+                      ? `${t('puik.table.sortableAscLabel')} ${header.value}`
+                      : sortIcon[header.value] === PuikTableSortIcon.Desc
+                        ? `${t('puik.table.sortableDescLabel')} ${header.value}`
+                        : `${t('puik.table.sortableDefaultLabel')} ${
+                          header.value
+                        }`
+                  "
+                  :data-test="
+                    dataTest != undefined
+                      ? `table-header-sort-${dataTest}-${header.value}`
+                      : undefined
+                  "
                   @click="sortTable(header.value)"
                 />
               </div>
@@ -102,7 +146,11 @@
           </th>
         </tr>
         <tr>
-          <td :colspan="selectable || expandable ? headers.length +1 : headers.length">
+          <td
+            :colspan="
+              selectable || expandable ? headers.length + 1 : headers.length
+            "
+          >
             <div class="puik-table__head-separator" />
           </td>
         </tr>
@@ -124,11 +172,21 @@
               { 'puik-table__head__row__item--selection': selectable },
               { 'puik-table__head__row__item--expandable': expandable },
             ]"
+            :data-test="
+              dataTest != undefined
+                ? `table-header-th-${dataTest}-searchBar-selection`
+                : undefined
+            "
           >
             <puik-checkbox
               v-if="selectable"
               :model-value="selectAll"
               :indeterminate="indeterminate"
+              :data-test="
+                dataTest != undefined
+                  ? `table-header-checkbox-${dataTest}-searchBar`
+                  : undefined
+              "
               class="puik-table__head__row__item--selection__checkbox"
               @click="handleClickAll"
             >
@@ -171,6 +229,11 @@
               },
             ]"
             :style="{ minWidth: header.width, width: header.width }"
+            :data-test="
+              dataTest != undefined
+                ? `table-header-th-${dataTest}-${header.value}-searchBar`
+                : undefined
+            "
           >
             <template v-if="header.searchable || header.searchSubmit">
               <div class="puik-table__head__row__item__container">
@@ -181,6 +244,11 @@
                   :search-submit="header.searchSubmit"
                   :search-reset="searchReset"
                   :search-type="(header.searchType as PuikTableSearchInputTypes)"
+                  :data-test="
+                    dataTest != undefined
+                      ? `${dataTest}-${header.value}`
+                      : undefined
+                  "
                   @search-text-value="handleSearch"
                   @search-range-value="handleSearch"
                   @search-submit-event="handleSearchSubmit"
@@ -192,12 +260,17 @@
           </th>
         </tr>
         <tr v-if="searchBar">
-          <td :colspan="selectable ? headers.length +1 : headers.length">
+          <td :colspan="selectable ? headers.length + 1 : headers.length">
             <div class="puik-table__head-separator" />
           </td>
         </tr>
       </thead>
-      <tbody class="puik-table__body">
+      <tbody
+        class="puik-table__body"
+        :data-test="
+          dataTest != undefined ? `table-body-${dataTest}` : undefined
+        "
+      >
         <template v-if="searchLoading">
           <tr
             v-for="(_item, rowIndex) in props.items"
@@ -244,6 +317,11 @@
                     v-if="selectable"
                     :model-value="getSelected(rowIndex)"
                     class="puik-table__body__row__item--selection__checkbox"
+                    :data-test="
+                      dataTest != undefined
+                        ? `table-body-checkbox-${rowIndex}-${dataTest}`
+                        : undefined
+                    "
                     @click="handleClick(rowIndex)"
                   >
                     {{ getSelectLabel(rowIndex) }}
@@ -256,6 +334,11 @@
                     ]"
                     icon="keyboard_arrow_down"
                     font-size="24"
+                    :data-test="
+                      dataTest != undefined
+                        ? `table-body-icon-${rowIndex}-${dataTest}`
+                        : undefined
+                    "
                     @click="expandRow(rowIndex)"
                     @keydown.space.prevent="expandRow(rowIndex)"
                   />
@@ -294,7 +377,14 @@
                 "
               >
                 <div class="puik-table__body__row__item__container">
-                  <div class="puik-table__body__row__item__content">
+                  <div
+                    class="puik-table__body__row__item__content"
+                    :data-test="
+                      dataTest != undefined
+                        ? `table-body-item-${rowIndex}-${header.value}-${dataTest}`
+                        : undefined
+                    "
+                  >
                     <slot
                       :name="`item-${header.value}`"
                       :item="item"
@@ -337,6 +427,11 @@
                     : headers.length
                 "
                 class="puik-table__body__row__item puik-table__body__row__item--expanded"
+                :dataTest="
+                  dataTest != undefined
+                    ? `table-body-expanded-${rowIndex}-${dataTest}`
+                    : undefined
+                "
               >
                 <slot
                   name="expanded-row"
