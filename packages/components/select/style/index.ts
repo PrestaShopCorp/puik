@@ -1,6 +1,5 @@
 import '@prestashopcorp/puik-components/base/style';
 import '@prestashopcorp/puik-theme/src/puik-select.scss';
-import '@prestashopcorp/puik-theme/src/puik-group-options.scss';
 import '@prestashopcorp/puik-theme/src/puik-option.scss';
 import '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
 import '@prestashopcorp/puik-theme/src/puik-chip.scss';

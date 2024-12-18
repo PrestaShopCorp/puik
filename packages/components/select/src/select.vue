@@ -224,28 +224,23 @@
         />
 
         <slot>
-          <puik-group-options
-            v-if="props.options"
-            :data-test="dataTest != undefined ? `select-group-options-${dataTest}` : undefined"
-          >
-            <puik-option
-              v-for="(option, index) in filteredOptions"
-              :key="option[props.optionValueKey]"
-              :label="option[props.optionLabelKey]"
-              :value="option[props.optionValueKey]"
-              :is-selected="
-                props.multiSelect
-                  ? selectedMultipleOptions.includes(option)
-                  : selectedSingleOption === option
-              "
-              :option="option"
-              :disabled="option[props.optionDisabledKey]"
-              :multi-select="props.multiSelect"
-              :data-test="dataTest != undefined ? `select-option-${index + 1}-${dataTest}` : undefined"
-              @select="selectOption(option)"
-              @close="closeOptions"
-            />
-          </puik-group-options>
+          <puik-option
+            v-for="(option, index) in filteredOptions"
+            :key="option[props.optionValueKey]"
+            :label="option[props.optionLabelKey]"
+            :value="option[props.optionValueKey]"
+            :is-selected="
+              props.multiSelect
+                ? selectedMultipleOptions.includes(option)
+                : selectedSingleOption === option
+            "
+            :option="option"
+            :disabled="option[props.optionDisabledKey]"
+            :multi-select="props.multiSelect"
+            :data-test="dataTest != undefined ? `select-option-${index + 1}-${dataTest}` : undefined"
+            @select="selectOption(option)"
+            @close="closeOptions"
+          />
           <div
             v-if="!filteredOptions?.length"
             class="puik-select__no-results"
@@ -281,7 +276,6 @@ import {
   PuikChip,
   PuikIcon,
   PuikInput,
-  PuikGroupOptions,
   PuikOption,
   PuikLabel
 } from '@prestashopcorp/puik-components';
@@ -501,7 +495,6 @@ updateSelectAllIndeterminate(selectedMultipleOptions.value);
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-select.scss';
-@use '@prestashopcorp/puik-theme/src/puik-group-options.scss';
 @use '@prestashopcorp/puik-theme/src/puik-option.scss';
 @use '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
 @use '@prestashopcorp/puik-theme/src/puik-chip.scss';

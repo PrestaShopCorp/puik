@@ -34,19 +34,17 @@
         :open="openJumper"
         @update:model-value="emit('update:page', $event)"
       >
-        <puik-group-options>
-          <puik-option
-            v-for="pageNb in maxPage"
-            :key="`puik-pagination__page-selector__option-${pageNb}`"
-            :label="pageNb"
-            :value="pageNb"
-            :is-selected="page === pageNb"
-            @select="(payload) => emit('update:page', payload.value)"
-            @open="(state) => openJumper = state"
-          >
-            {{ pageNb }}
-          </puik-option>
-        </puik-group-options>
+        <puik-option
+          v-for="pageNb in maxPage"
+          :key="`puik-pagination__page-selector__option-${pageNb}`"
+          :label="pageNb"
+          :value="pageNb"
+          :is-selected="page === pageNb"
+          @select="(payload) => emit('update:page', payload.value)"
+          @open="(state) => openJumper = state"
+        >
+          {{ pageNb }}
+        </puik-option>
       </puik-select>
       <span class="puik-pagination__jumper-description">
         {{ t('puik.pagination.large.jumperDescription', { maxPage }) }}
@@ -82,26 +80,24 @@
     :open="openItemPerPages"
     @update:model-value="emit('update:itemsPerPage', currentItemsPerPage)"
   >
-    <puik-group-options>
-      <puik-option
-        v-for="item in itemsPerPageOptions"
-        :key="`puik-pagination__items-per-page-select__option-${item}`"
-        :label="item"
-        :value="item"
-        :is-selected="currentItemsPerPage === item"
-        class="puik-pagination__items-per-page-select__option"
-        @select="(payload) => currentItemsPerPage = payload.value"
-        @open="(state) => openItemPerPages = state"
-      >
-        {{ item }}
-      </puik-option>
-    </puik-group-options>
+    <puik-option
+      v-for="item in itemsPerPageOptions"
+      :key="`puik-pagination__items-per-page-select__option-${item}`"
+      :label="item"
+      :value="item"
+      :is-selected="currentItemsPerPage === item"
+      class="puik-pagination__items-per-page-select__option"
+      @select="(payload) => currentItemsPerPage = payload.value"
+      @open="(state) => openItemPerPages = state"
+    >
+      {{ item }}
+    </puik-option>
   </puik-select>
 </template>
 
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core';
-import { PuikSelect, PuikGroupOptions, PuikOption } from '@prestashopcorp/puik-components/select';
+import { PuikSelect, PuikOption } from '@prestashopcorp/puik-components/select';
 import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { useLocale } from '@prestashopcorp/puik-locale';
 import { type PaginationLargeProps } from './pagination-large';

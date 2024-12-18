@@ -1,10 +1,10 @@
-import { PuikSelect, PuikGroupOptions, PuikOption, PuikBadge } from '@prestashopcorp/puik-components';
+import { PuikSelect, PuikOption, PuikBadge } from '@prestashopcorp/puik-components';
 import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3';
 import { ref } from 'vue';
 
 export default {
   title: 'Components/Select',
-  components: { PuikSelect, PuikGroupOptions, PuikOption },
+  components: { PuikSelect, PuikOption },
   argTypes: {
     modelValue: {
       control: 'text',
@@ -296,7 +296,7 @@ select-multiple-input-{dataTest}
 select-single-{dataTest}
 select-dropdown-{dataTest}
 select-search-input-{dataTest}
-select-group-options-{dataTest} select-option-{index + 1}-{dataTest}
+select-option-{index + 1}-{dataTest} (for each option)
 select-error-{dataTest}
           `
         },
@@ -377,7 +377,6 @@ select-error-{dataTest}
 const Template: StoryFn = (args: Args) => ({
   components: {
     PuikSelect,
-    PuikGroupOptions,
     PuikOption
   },
   setup() {
@@ -406,7 +405,7 @@ export const Default = {
         story: `
 If the options are not objects of type Record<string, any> but numbers or simple strings, we cannot use PuikSelect without going through the default slot.
 
-We will then have to customize the select via the PuikGroupOptions and PuikOptions sub-components (see subsection GroupOptions and Option)
+We will then have to customize the select via PuikOption sub-components (see Option subsection).
           `
       },
       source: {

@@ -1,4 +1,4 @@
-import { PuikSelect, PuikGroupOptions, PuikOption, OptionType, PuikIcon, PuikDivider } from '@prestashopcorp/puik-components';
+import { PuikSelect, PuikOption, OptionType, PuikIcon, PuikDivider } from '@prestashopcorp/puik-components';
 import { Meta, StoryObj } from '@storybook/vue3';
 import { ref } from 'vue';
 
@@ -109,7 +109,6 @@ export const DefaultExample: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikGroupOptions,
       PuikOption
     },
     setup() {
@@ -139,20 +138,18 @@ export const DefaultExample: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in options"
-          :key="option.value"
-          :label="option.label"
-          :value="option.value"
-          :disabled="option.disabled"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(option, payload)"
-          @open="(state) => openRef = state"
-        >
-          {{ option.label }}
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in options"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+        :disabled="option.disabled"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(option, payload)"
+        @open="(state) => openRef = state"
+      >
+        {{ option.label }}
+      </puik-option>
     </puik-select>
     <div class="puik-body-default">
       Selected option: <pre><code>{{ selectedOption }}</code></pre>
@@ -170,7 +167,7 @@ PuikSelect can therefore be used directly (recommended in most cases - see selec
 - If the options are not objects but numbers or simple strings, you cannot use the options prop of PuikSelect .
 - If you want to customize the display of the options (see the groupby or prepend icon examples).
 
-In these cases, you must go through the default slot of PuikSelect in which you find the PuikGroupOptions and PuikOption subcomponents.
+In these cases, you must go through the default slot of PuikSelect in which you find PuikOption sub-components.
 
 It will be up to the user to manage the related events (e.g. open, select)
           `
@@ -204,20 +201,18 @@ It will be up to the user to manage the related events (e.g. open, select)
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in options"
-          :key="option.value"
-          :label="option.label"
-          :value="option.value"
-          :disabled="option.disabled"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(option, payload)"
-          @open="(state) => openRef = state"
-        >
-          {{ option.label }}
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in options"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+        :disabled="option.disabled"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(option, payload)"
+        @open="(state) => openRef = state"
+      >
+        {{ option.label }}
+      </puik-option>
     </puik-select>
         `,
         language: 'html'
@@ -230,7 +225,6 @@ export const NumbersExample: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikGroupOptions,
       PuikOption
     },
     setup() {
@@ -255,19 +249,17 @@ export const NumbersExample: StoryObj = {
         :open="openRef"
         @open="(state) => openRef = state"
       >
-        <puik-group-options>
-          <puik-option
-            v-for="option in options"
-            :key="option"
-            :label="option"
-            :value="option"
-            :is-selected="selectedOption === option"
-            @select="(payload) => handleSelect(payload)"
-            @open="(state) => openRef = state"
-          >
-            {{ option }}
-          </puik-option>
-        </puik-group-options>
+        <puik-option
+          v-for="option in options"
+          :key="option"
+          :label="option"
+          :value="option"
+          :is-selected="selectedOption === option"
+          @select="(payload) => handleSelect(payload)"
+          @open="(state) => openRef = state"
+        >
+          {{ option }}
+        </puik-option>
       </puik-select>
       <div class="puik-body-default">
         Selected option: {{ selectedOption }}
@@ -298,19 +290,17 @@ export const NumbersExample: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in options"
-          :key="option"
-          :label="option"
-          :value="option"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(payload)"
-          @open="(state) => openRef = state"
-        >
-          {{ option }}
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in options"
+        :key="option"
+        :label="option"
+        :value="option"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(payload)"
+        @open="(state) => openRef = state"
+      >
+        {{ option }}
+      </puik-option>
     </puik-select>
         `,
         language: 'html'
@@ -323,7 +313,6 @@ export const StringsExample: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikGroupOptions,
       PuikOption
     },
     setup() {
@@ -354,19 +343,17 @@ export const StringsExample: StoryObj = {
         :open="openRef"
         @open="(state) => openRef = state"
       >
-        <puik-group-options>
-          <puik-option
-            v-for="option in options"
-            :key="option"
-            :label="option"
-            :value="option"
-            :is-selected="selectedOption === option"
-            @select="(payload) => handleSelect(payload)"
-            @open="(state) => openRef = state"
-          >
-            {{ option }}
-          </puik-option>
-        </puik-group-options>
+        <puik-option
+          v-for="option in options"
+          :key="option"
+          :label="option"
+          :value="option"
+          :is-selected="selectedOption === option"
+          @select="(payload) => handleSelect(payload)"
+          @open="(state) => openRef = state"
+        >
+          {{ option }}
+        </puik-option>
       </puik-select>
       <div class="puik-body-default">
         Selected option: {{ selectedOption }}
@@ -403,19 +390,17 @@ export const StringsExample: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in options"
-          :key="option"
-          :label="option"
-          :value="option"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(payload)"
-          @open="(state) => openRef = state"
-        >
-          {{ option }}
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in options"
+        :key="option"
+        :label="option"
+        :value="option"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(payload)"
+        @open="(state) => openRef = state"
+      >
+        {{ option }}
+      </puik-option>
     </puik-select>
         `,
         language: 'html'
@@ -428,7 +413,6 @@ export const PrependExample: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikGroupOptions,
       PuikOption,
       PuikIcon
     },
@@ -460,24 +444,22 @@ export const PrependExample: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in options"
-          :key="option.value"
-          :label="option.label"
-          :value="option.value"
-          :disabled="option.disabled"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(option, payload)"
-          @open="(state) => openRef = state"
-          class="flex items-center space-x-1"
-        >
-          <PuikIcon icon="label" />
-          <span>
-            {{ option.label }}
-          </span>
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in options"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+        :disabled="option.disabled"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(option, payload)"
+        @open="(state) => openRef = state"
+        class="flex items-center space-x-1"
+      >
+        <PuikIcon icon="label" />
+        <span>
+          {{ option.label }}
+        </span>
+      </puik-option>
     </puik-select>
     <div class="puik-body-default">
       Selected option: <pre><code>{{ selectedOption }}</code></pre>
@@ -514,24 +496,22 @@ export const PrependExample: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in options"
-          :key="option.value"
-          :label="option.label"
-          :value="option.value"
-          :disabled="option.disabled"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(option, payload)"
-          @open="(state) => openRef = state"
-          class="flex items-center space-x-1"
-        >
-          <PuikIcon icon="label" />
-          <span>
-            {{ option.label }}
-          </span>
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in options"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+        :disabled="option.disabled"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(option, payload)"
+        @open="(state) => openRef = state"
+        class="flex items-center space-x-1"
+      >
+        <PuikIcon icon="label" />
+        <span>
+          {{ option.label }}
+        </span>
+      </puik-option>
     </puik-select>
         `,
         language: 'html'
@@ -544,7 +524,6 @@ export const GroupByExample: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikGroupOptions,
       PuikOption,
       PuikIcon,
       PuikDivider
@@ -576,42 +555,40 @@ export const GroupByExample: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <PuikDivider />
-        <div class="px-2 py-1 puik-body-default-bold">Category A</div>
-        <PuikDivider />        
-        <template v-for="option in options">
-          <puik-option
-            v-if="option.category === 'catégorie A'"
-            :key="option.value"
-            :label="option.label"
-            :value="option.value"
-            :disabled="option.disabled"
-            :is-selected="selectedOption === option"
-            @select="(payload) => handleSelect(option, payload)"
-            @open="(state) => openRef = state"
-          >
-           {{ option.label }}
-          </puik-option>
-        </template>
-        <PuikDivider />
-        <div class="px-2 py-1 puik-body-default-bold">Category B</div>
-        <PuikDivider />
-        <template v-for="option in options">
-          <puik-option
-            v-if="option.category === 'catégorie B'"
-            :key="option.value"
-            :label="option.label"
-            :value="option.value"
-            :disabled="option.disabled"
-            :is-selected="selectedOption === option"
-            @select="(payload) => handleSelect(option, payload)"
-            @open="(state) => openRef = state"
-          >
-            {{ option.label }}
-          </puik-option>
-        </template>
-      </puik-group-options>
+      <PuikDivider />
+      <div class="px-2 py-1 puik-body-default-bold">Category A</div>
+      <PuikDivider />        
+      <template v-for="option in options">
+        <puik-option
+          v-if="option.category === 'catégorie A'"
+          :key="option.value"
+          :label="option.label"
+          :value="option.value"
+          :disabled="option.disabled"
+          :is-selected="selectedOption === option"
+          @select="(payload) => handleSelect(option, payload)"
+          @open="(state) => openRef = state"
+        >
+          {{ option.label }}
+        </puik-option>
+      </template>
+      <PuikDivider />
+      <div class="px-2 py-1 puik-body-default-bold">Category B</div>
+      <PuikDivider />
+      <template v-for="option in options">
+        <puik-option
+          v-if="option.category === 'catégorie B'"
+          :key="option.value"
+          :label="option.label"
+          :value="option.value"
+          :disabled="option.disabled"
+          :is-selected="selectedOption === option"
+          @select="(payload) => handleSelect(option, payload)"
+          @open="(state) => openRef = state"
+        >
+          {{ option.label }}
+        </puik-option>
+      </template>
     </puik-select>
     <div class="puik-body-default">
       Selected option: <pre><code>{{ selectedOption }}</code></pre>
@@ -647,42 +624,40 @@ export const GroupByExample: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <PuikDivider />
-        <div class="px-2 py-1 puik-body-default-bold">Category A</div>
-        <PuikDivider />        
-        <template v-for="option in options">
-          <puik-option
-            v-if="option.category === 'catégorie A'"
-            :key="option.value"
-            :label="option.label"
-            :value="option.value"
-            :disabled="option.disabled"
-            :is-selected="selectedOption === option"
-            @select="(payload) => handleSelect(option, payload)"
-            @open="(state) => openRef = state"
-          >
-           {{ option.label }}
-          </puik-option>
-        </template>
-        <PuikDivider />
-        <div class="px-2 py-1 puik-body-default-bold">Category B</div>
-        <PuikDivider />
-        <template v-for="option in options">
-          <puik-option
-            v-if="option.category === 'catégorie B'"
-            :key="option.value"
-            :label="option.label"
-            :value="option.value"
-            :disabled="option.disabled"
-            :is-selected="selectedOption === option"
-            @select="(payload) => handleSelect(option, payload)"
-            @open="(state) => openRef = state"
-          >
-            {{ option.label }}
-          </puik-option>
-        </template>
-      </puik-group-options>
+      <PuikDivider />
+      <div class="px-2 py-1 puik-body-default-bold">Category A</div>
+      <PuikDivider />        
+      <template v-for="option in options">
+        <puik-option
+          v-if="option.category === 'catégorie A'"
+          :key="option.value"
+          :label="option.label"
+          :value="option.value"
+          :disabled="option.disabled"
+          :is-selected="selectedOption === option"
+          @select="(payload) => handleSelect(option, payload)"
+          @open="(state) => openRef = state"
+        >
+          {{ option.label }}
+        </puik-option>
+      </template>
+      <PuikDivider />
+      <div class="px-2 py-1 puik-body-default-bold">Category B</div>
+      <PuikDivider />
+      <template v-for="option in options">
+        <puik-option
+          v-if="option.category === 'catégorie B'"
+          :key="option.value"
+          :label="option.label"
+          :value="option.value"
+          :disabled="option.disabled"
+          :is-selected="selectedOption === option"
+          @select="(payload) => handleSelect(option, payload)"
+          @open="(state) => openRef = state"
+        >
+          {{ option.label }}
+        </puik-option>
+      </template>
     </puik-select>
         `,
         language: 'html'
@@ -695,7 +670,6 @@ export const DefaultWithSearchExampleWithSearch: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikGroupOptions,
       PuikOption
     },
     setup() {
@@ -728,20 +702,18 @@ export const DefaultWithSearchExampleWithSearch: StoryObj = {
       @open="(state) => openRef = state"
       @search="(_, payload) => filteredOptions = payload"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in filteredOptions"
-          :key="option.value"
-          :label="option.label"
-          :value="option.value"
-          :disabled="option.disabled"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(option, payload)"
-          @open="(state) => openRef = state"
-        >
-          {{ option.label }}
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in filteredOptions"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+        :disabled="option.disabled"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(option, payload)"
+        @open="(state) => openRef = state"
+      >
+        {{ option.label }}
+      </puik-option>
     </puik-select>
     <div class="puik-body-default">
       Selected option: <pre><code>{{ selectedOption }}</code></pre>
@@ -778,20 +750,18 @@ export const DefaultWithSearchExampleWithSearch: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in options"
-          :key="option.value"
-          :label="option.label"
-          :value="option.value"
-          :disabled="option.disabled"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(option, payload)"
-          @open="(state) => openRef = state"
-        >
-          {{ option.label }}
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in options"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+        :disabled="option.disabled"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(option, payload)"
+        @open="(state) => openRef = state"
+      >
+        {{ option.label }}
+      </puik-option>
     </puik-select>
         `,
         language: 'html'
@@ -804,7 +774,6 @@ export const CustomKeysExample: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikGroupOptions,
       PuikOption
     },
     setup() {
@@ -837,20 +806,18 @@ export const CustomKeysExample: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in options"
-          :key="option.customValueKey"
-          :label="option.customLabelKey"
-          :value="option.customValueKey"
-          :disabled="option.customDisabledKey"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(option, payload)"
-          @open="(state) => openRef = state"
-        >
-          {{ option.customLabelKey }}
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in options"
+        :key="option.customValueKey"
+        :label="option.customLabelKey"
+        :value="option.customValueKey"
+        :disabled="option.customDisabledKey"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(option, payload)"
+        @open="(state) => openRef = state"
+      >
+        {{ option.customLabelKey }}
+      </puik-option>
     </puik-select>
     <div class="puik-body-default">
       Selected option: <pre><code>{{ selectedOption }}</code></pre>
@@ -893,20 +860,18 @@ export const CustomKeysExample: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in options"
-          :key="option.value"
-          :label="option.customLabelKey"
-          :value="option.customValueKey"
-          :disabled="option.customDisabledKey"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(option, payload)"
-          @open="(state) => openRef = state"
-        >
-          {{ option.customLabelKey }}
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in options"
+        :key="option.value"
+        :label="option.customLabelKey"
+        :value="option.customValueKey"
+        :disabled="option.customDisabledKey"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(option, payload)"
+        @open="(state) => openRef = state"
+      >
+        {{ option.customLabelKey }}
+      </puik-option>
     </puik-select>
         `,
         language: 'html'
@@ -919,7 +884,6 @@ export const CustomKeysWithSearchExample: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikGroupOptions,
       PuikOption
     },
     setup() {
@@ -955,20 +919,18 @@ export const CustomKeysWithSearchExample: StoryObj = {
       @open="(state) => openRef = state"
       @search="(_, payload) => filteredOptions = payload"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in filteredOptions"
-          :key="option.customValueKey"
-          :label="option.customLabelKey"
-          :value="option.customValueKey"
-          :disabled="option.customDisabledKey"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(option, payload)"
-          @open="(state) => openRef = state"
-        >
-          {{ option.customLabelKey }}
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in filteredOptions"
+        :key="option.customValueKey"
+        :label="option.customLabelKey"
+        :value="option.customValueKey"
+        :disabled="option.customDisabledKey"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(option, payload)"
+        @open="(state) => openRef = state"
+      >
+        {{ option.customLabelKey }}
+      </puik-option>
     </puik-select>
     <div class="puik-body-default">
       Selected option: <pre><code>{{ selectedOption }}</code></pre>
@@ -1010,20 +972,18 @@ export const CustomKeysWithSearchExample: StoryObj = {
       @open="(state) => openRef = state"
       @search="(_, payload) => filteredOptions = payload"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in filteredOptions"
-          :key="option.customValueKey"
-          :label="option.customLabelKey"
-          :value="option.customValueKey"
-          :disabled="option.customDisabledKey"
-          :is-selected="selectedOption === option"
-          @select="(payload) => handleSelect(option, payload)"
-          @open="(state) => openRef = state"
-        >
-          {{ option.customLabelKey }}
-        </puik-option>
-      </puik-group-options>
+      <puik-option
+        v-for="option in filteredOptions"
+        :key="option.customValueKey"
+        :label="option.customLabelKey"
+        :value="option.customValueKey"
+        :disabled="option.customDisabledKey"
+        :is-selected="selectedOption === option"
+        @select="(payload) => handleSelect(option, payload)"
+        @open="(state) => openRef = state"
+      >
+        {{ option.customLabelKey }}
+      </puik-option>
     </puik-select>
         `,
         language: 'html'
@@ -1036,7 +996,6 @@ export const MultiSelectExample: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikGroupOptions,
       PuikOption
     },
     setup() {
@@ -1078,19 +1037,17 @@ export const MultiSelectExample: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in options"
-          :key="option.value"
-          :label="option.label"
-          :value="option.value"
-          :disabled="option.disabled"
-          :is-selected="selectedOptions?.includes(option)"
-          multi-select
-          @select="handleSelect(option)"
-          @open="(state) => openRef = state"
-        />
-      </puik-group-options>
+      <puik-option
+        v-for="option in options"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+        :disabled="option.disabled"
+        :is-selected="selectedOptions?.includes(option)"
+        multi-select
+        @select="handleSelect(option)"
+        @open="(state) => openRef = state"
+      />
     </puik-select>
     <div class="puik-body-default">
       Selected option(s): <pre><code>{{ selectedOptions }}</code></pre>
@@ -1138,19 +1095,17 @@ export const MultiSelectExample: StoryObj = {
       :open="openRef"
       @open="(state) => openRef = state"
     >
-      <puik-group-options>
-        <puik-option
-          v-for="option in options"
-          :key="option.value"
-          :label="option.label"
-          :value="option.value"
-          :disabled="option.disabled"
-          :is-selected="selectedOptions?.includes(option)"
-          multi-select
-          @select="handleSelect(option)"
-          @open="(state) => openRef = state"
-        />
-      </puik-group-options>
+      <puik-option
+        v-for="option in options"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+        :disabled="option.disabled"
+        :is-selected="selectedOptions?.includes(option)"
+        multi-select
+        @select="handleSelect(option)"
+        @open="(state) => openRef = state"
+      />
     </puik-select>
         `,
         language: 'html'
