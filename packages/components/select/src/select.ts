@@ -1,34 +1,36 @@
 import '@prestashopcorp/puik-components/select/style/css';
-import type { InjectionKey, Ref } from 'vue';
 import type Select from './select.vue';
-import type { DefaultOption } from './option';
-
+import type { OptionType } from './option';
 export interface SelectProps {
-  modelValue: string | number | Record<string, any>
-  customLabel?: string
-  labelKey?: string
-  valueKey?: string
-  id?: string
-  disabled?: boolean
+  modelValue: any
+  open?: boolean
+  id: string
   name?: string
-  autocomplete?: string
-  placeholder?: string
-  error?: string
-  options?: any[] | Record<string, any>
+  label?: string
+  required?: boolean
+  optional?: boolean
+  options?: OptionType[]
+  optionLabelKey?: string
+  optionValueKey?: string
+  optionDisabledKey?: string
+  multiSelect?: boolean
+  searchable?: boolean
   customFilterMethod?: (query: string) => any[] | Record<string, any>
+  placeholder?: string
+  searchPlaceholder?: string
   noMatchText?: string
-  zindex?: number
-  fullWidth?: boolean
+  disabled?: boolean
+  error?: string
+  autocomplete?: string
+  prependInputIcon?: string
+  zIndex?: number
   dataTest?: string
 }
 
-export type SelectInstance = InstanceType<typeof Select>;
-
-export type SelectContext = {
-  handleAutoComplete: (label: string | number) => void
-  selectedValue: Ref<string | number | Record<string, any>>
-  optionsList: Ref<DefaultOption[]>
-  labelKey: string
+export type SelectEmits = {
+  'open': [state: boolean]
+  'update:modelValue': [selectedOptions: any]
+  'search': [searchQuery: string, filteredOptions: any ]
 };
 
-export const selectKey: InjectionKey<SelectContext> = Symbol('select');
+export type SelectInstance = InstanceType<typeof Select>;

@@ -8,7 +8,7 @@
       @apply border-primary;
     }
     &--focus {
-      @apply border-primary ring ring-blue;
+      @apply border-primary ring ring-inset ring-blue;
     }
     &--success {
       @apply border-green bg-green-50;

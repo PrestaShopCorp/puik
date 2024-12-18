@@ -1,215 +1,506 @@
 <template>
-  <Listbox
-    :id="id"
-    v-slot="{ open }"
-    v-model="selectedValue"
-    :name="name"
+  <div
+    v-on-click-outside="closeOptions"
     class="puik-select"
+    :data-test="dataTest != undefined ? `select-${dataTest}` : undefined"
+    @keydown.esc="closeOptions"
+    @keydown.up.prevent.stop="handleKeyDown"
+    @keydown.down.prevent.stop="handleKeyDown"
   >
-    <div class="puik-select__wrapper">
-      <ListboxButton
-        :disabled="disabled"
-        class="puik-select__button"
-        :class="{ 'puik-select__button--error': hasError }"
+    <div
+      :class="[
+        'puik-select__container',
+        { 'puik-select__container--error': hasError }
+      ]"
+    >
+      <puik-label
+        v-if="props.id && props.label"
+        class="puik-select__label"
+        :for="props.id"
+        :required="props.required"
+        :optional="props.optional"
+        :readonly="props.disabled"
+        :data-test="dataTest != undefined ? `select-label-${dataTest}` : undefined"
+        @click="resetSearchQuery"
       >
-        <input
-          ref="labelInput"
-          :value="customLabel || currentLabel"
-          class="puik-select__selected"
-          :autocomplete="autocomplete"
-          :placeholder="placeholder"
-          :disabled="disabled"
-          tabindex="-1"
-          :readonly="open"
-          type="text"
-          :data-test="dataTest != undefined ? `select-${dataTest}` : undefined"
-          @input="
-            handleAutoComplete(($event.target as HTMLInputElement)?.value)
-          "
+        {{ props.label }}
+      </puik-label>
+      <template v-if="props.multiSelect && props.options">
+        <button
+          v-if="selectedMultipleOptions.length > 0"
+          :id="props.id"
+          :class="['puik-multi-select__options-tags']"
+          :autocomplete="props.autocomplete"
+          role="combobox"
+          :aria-expanded="openRef"
+          v-bind="openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}"
+          aria-haspopup="listbox"
+          :value="JSON.stringify(selectedMultipleOptions)"
+          :data-test="dataTest != undefined ? `select-multiple-options-tags-${dataTest}` : undefined"
+          @click.stop="toggleOptions"
+          @keydown.space.prevent.stop="toggleOptions"
+          @keydown.enter.prevent.stop="toggleOptions"
         >
-        <puik-icon
-          font-size="1.25rem"
-          icon="unfold_more"
-          class="puik-select__icon"
-        />
-      </ListboxButton>
-      <transition
-        enter-active-class="puik-select__transition__enter--active"
-        enter-from-class="puik-select__transition__enter--from"
-        enter-to-class="puik-select__transition__enter--to"
-        leave-active-class="puik-select__transition__leave--active"
-        leave-from-class="puik-select__transition__leave--from"
-        leave-to-class="puik-select__transition__leave--to"
-      >
-        <ListboxOptions
-          v-show="isOpen(open)"
-          static
-          class="puik-select__options"
-          :class="{ 'puik-select__options--full-width': fullWidth }"
-          as="div"
-          :style="{ 'z-index': zindex }"
-        >
+          <PuikIcon
+            v-if="props.prependInputIcon"
+            :icon="props.prependInputIcon"
+          />
+          <PuikIcon
+            class="puik-multi-select__dropdown-icon"
+            icon="unfold_more"
+          />
+          <puik-chip
+            v-for="(option, index) in selectedMultipleOptions"
+            :id="`chip-${option[props.optionLabelKey]}`"
+            :key="option[props.optionValueKey]"
+            :content="option[props.optionLabelKey]"
+            :disabled="option[props.optionDisabledKey]"
+            size="small"
+            role="option"
+            :aria-selected="true"
+            :data-test="dataTest != undefined ? `select-tag-${index + 1}-${dataTest}` : undefined"
+            @close="deselectOption(option)"
+            @click.stop="openOptions"
+            @keydown.space.stop="openOptions"
+            @keydown.enter.stop="openOptions"
+          />
+        </button>
+        <template v-else>
           <puik-input
-            v-if="Array.isArray(options) || isObject(options)"
-            v-model="query"
-            class="puik-select__search"
-            :placeholder="t('puik.select.searchPlaceholder')"
-            :data-test="
-              dataTest != undefined ? `searchInput-${dataTest}` : undefined
+            :id="props.id"
+            :name="props.name ?? props.id"
+            :class="[
+              'puik-multi-select__input',
+              { 'puik-multi-select__input--error': hasError }
+            ]"
+            type="text"
+            :placeholder="
+              props.placeholder ?? `${t('puik.select.placeholder')}`
             "
+            readonly
+            :autocomplete="props.autocomplete"
+            :disabled="props.disabled"
+            role="combobox"
+            :aria-expanded="openRef"
+            v-bind="openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}"
+            aria-haspopup="listbox"
+            :data-test="dataTest != undefined ? `select-multiple-input-${dataTest}` : undefined"
+            @click.stop="toggleOptions"
+            @keydown.space.prevent.stop="toggleOptions"
+            @keydown.enter.prevent.stop="toggleOptions"
           >
-            <template #prepend>
-              <puik-icon
-                font-size="1.25rem"
-                icon="search"
-                class="puik-select__search__icon"
-              />
+            <template
+              v-if="props.prependInputIcon"
+              #prepend
+            >
+              <PuikIcon :icon="props.prependInputIcon" />
+            </template>
+            <template #append>
+              <PuikIcon icon="unfold_more" />
             </template>
           </puik-input>
-          <p
-            v-if="
-              options &&
-                (isObject(filteredItems)
-                  ? !Object.keys(filteredItems).length
-                  : !filteredItems?.length)
-            "
-            class="puik-select__no-results"
-            :data-test="
-              dataTest != undefined ? `noResults-${dataTest}` : undefined
-            "
+          <input
+            :id="`hidden-${props.id}`"
+            type="hidden"
+            :name="props.name ?? props.id"
+            :value="JSON.stringify(selectedMultipleOptions)"
           >
-            {{ noMatchText || `${t('puik.select.noResults')} ${query}` }}
-          </p>
-          <ul class="puik-select__options-list">
-            <slot :options="filteredItems">
-              <template v-if="options">
-                <puik-option
-                  v-for="(option, index) in filteredItems"
-                  :key="option"
-                  :label="option[labelKey]"
-                  :value="isObject(option) ? option[valueKey] : option"
-                  :data-test="
-                    dataTest != undefined
-                      ? `option-${dataTest}-${index + 1}`
-                      : undefined
-                  "
-                />
-              </template>
-            </slot>
-          </ul>
-        </ListboxOptions>
-      </transition>
-      <div
-        v-if="hasError"
-        class="puik-select__error"
+        </template>
+      </template>
+
+      <puik-input
+        v-else-if="props.options && typeof selectedSingleOption === 'object'"
+        :id="props.id"
+        v-model="selectedSingleOption[optionLabelKey]"
+        :name="props.name ?? props.id"
+        :class="[
+          'puik-single-select__input',
+          { 'puik-single-select__input--error': hasError }
+        ]"
+        type="text"
+        :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
+        readonly
+        :autocomplete="props.autocomplete"
+        :disabled="props.disabled"
+        role="combobox"
+        :aria-expanded="openRef"
+        v-bind="openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}"
+        aria-haspopup="listbox"
+        :data-test="dataTest != undefined ? `select-single-${dataTest}` : undefined"
+        @click.stop="toggleOptions"
+        @keydown.space.prevent.stop="toggleOptions"
+        @keydown.enter.prevent.stop="toggleOptions"
       >
-        <puik-icon
-          icon="error"
-          font-size="1.25rem"
-          class="puik-select__error__icon"
+        <template
+          v-if="props.prependInputIcon"
+          #prepend
+        >
+          <PuikIcon :icon="props.prependInputIcon" />
+        </template>
+        <template #append>
+          <PuikIcon icon="unfold_more" />
+        </template>
+      </puik-input>
+
+      <puik-input
+        v-else
+        :id="props.id"
+        v-model="selectedSingleOption"
+        :name="props.name ?? props.id"
+        :class="[
+          'puik-single-select__input',
+          { 'puik-single-select__input--error': hasError }
+        ]"
+        type="text"
+        :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
+        readonly
+        :autocomplete="props.autocomplete"
+        :disabled="props.disabled"
+        role="combobox"
+        :aria-expanded="openRef"
+        v-bind="openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}"
+        :data-test="dataTest != undefined ? `select-single-${dataTest}` : undefined"
+        aria-haspopup="listbox"
+        @click.stop="toggleOptions"
+        @keydown.space.prevent.stop="toggleOptions"
+        @keydown.enter.prevent.stop="toggleOptions"
+      >
+        <template
+          v-if="props.prependInputIcon"
+          #prepend
+        >
+          <PuikIcon :icon="props.prependInputIcon" />
+        </template>
+        <template #append>
+          <PuikIcon icon="unfold_more" />
+        </template>
+      </puik-input>
+
+      <div
+        v-show="openRef"
+        :id="`dropdown-${props.id}`"
+        :style="{ 'z-index': props.zIndex }"
+        :class="[
+          'puik-select-dropdown',
+          { 'puik-select-dropdown--up': positionDropdownUp }
+        ]"
+        role="listbox"
+        :aria-multiselectable="props.multiSelect"
+        :data-test="dataTest != undefined ? `select-dropdown-${dataTest}` : undefined"
+        @keydown.tab="closeOptions"
+      >
+        <puik-input
+          v-if="searchable"
+          v-model="searchQuery"
+          class="puik-select-dropdown__search-input"
+          type="text"
+          :placeholder="
+            props.searchPlaceholder ?? `${t('puik.select.searchPlaceholder')}`
+          "
+          role="searchbox"
+          :data-test="dataTest != undefined ? `select-search-input-${dataTest}` : undefined"
+          @input="searchOptions"
+        >
+          <template #prepend>
+            <PuikIcon icon="search" />
+          </template>
+        </puik-input>
+
+        <PuikCheckbox
+          v-if="props.multiSelect && typeof IsAllSelectedRef === 'boolean'"
+          v-model="IsAllSelectedRef"
+          class="puik-option puik-select-dropdown__select-all"
+          :label="
+            IsAllSelectedRef
+              ? `${t('puik.select.deselectAll')}`
+              : `${t('puik.select.selectAll')}`
+          "
+          :indeterminate="selectAllIndeterminate"
+          role="checkbox"
+          :aria-checked="IsAllSelectedRef"
+          tabindex="0"
+          @change="handleSelectAllClick"
+          @keydown.enter.prevent="toggleSelectAll"
+          @keydown.space.prevent="toggleSelectAll"
         />
-        <span class="puik-select__error__text">
-          <slot name="error">{{ error }}</slot>
-        </span>
+
+        <slot>
+          <puik-option
+            v-for="(option, index) in filteredOptions"
+            :key="option[props.optionValueKey]"
+            :label="option[props.optionLabelKey]"
+            :value="option[props.optionValueKey]"
+            :is-selected="
+              props.multiSelect
+                ? selectedMultipleOptions.includes(option)
+                : selectedSingleOption === option
+            "
+            :option="option"
+            :disabled="option[props.optionDisabledKey]"
+            :multi-select="props.multiSelect"
+            :data-test="dataTest != undefined ? `select-option-${index + 1}-${dataTest}` : undefined"
+            @select="selectOption(option)"
+            @close="closeOptions"
+          />
+          <div
+            v-if="!filteredOptions?.length"
+            class="puik-select__no-results"
+          >
+            {{ props.noMatchText ?? `${t('puik.select.noResults')}` }}
+          </div>
+        </slot>
       </div>
     </div>
-  </Listbox>
+    <div
+      v-if="hasError"
+      class="puik-select__error"
+      :data-test="dataTest != undefined ? `select-error-${dataTest}` : undefined"
+    >
+      <puik-icon
+        icon="error"
+        font-size="1.25rem"
+        class="puik-select__error__icon"
+      />
+      <span class="puik-select__error__text">
+        <slot name="error">{{ error }}</slot>
+      </span>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { computed, provide, ref, useSlots } from 'vue';
-import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/vue';
-import { isObject, isFunction, slotIsEmpty } from '@prestashopcorp/puik-utils';
+import { ref, computed, watch, useSlots, nextTick } from 'vue';
+import { vOnClickOutside } from '@vueuse/components';
 import { useLocale } from '@prestashopcorp/puik-locale';
-import { PuikInput } from '@prestashopcorp/puik-components/input';
-import { PuikIcon } from '@prestashopcorp/puik-components/icon';
-import { type SelectProps, selectKey } from './select';
-import PuikOption from './option.vue';
-import type { DefaultOption } from './option';
+import {
+  PuikCheckbox,
+  PuikChip,
+  PuikIcon,
+  PuikInput,
+  PuikOption,
+  PuikLabel
+} from '@prestashopcorp/puik-components';
+import type { OptionType } from './option';
+import type { SelectProps, SelectEmits } from './select';
+import { slotIsEmpty } from '@prestashopcorp/puik-utils/types';
+import { isDropdownBelowViewport } from '@prestashopcorp/puik-utils';
 
 defineOptions({
   name: 'PuikSelect'
 });
 
-const optionsList = ref<DefaultOption[]>([]);
-const labelInput = ref<HTMLInputElement>();
-
-const props = withDefaults(defineProps<SelectProps>(), {
-  labelKey: 'label',
-  valueKey: 'value',
-  zindex: 1000,
-  fullWidth: true
-});
-
 const slots = useSlots();
-
-const emit = defineEmits<{ 'update:modelValue': [option: any] }>();
-
 const { t } = useLocale();
 
-const query = ref('');
-const currentLabel = ref();
-
-const selectedValue = computed({
-  get: () => props.modelValue,
-  set: (option: any) => {
-    currentLabel.value = option.label;
-    return emit('update:modelValue', option.value);
-  }
+const props = withDefaults(defineProps<SelectProps>(), {
+  required: false,
+  optional: false,
+  optionLabelKey: 'label',
+  optionValueKey: 'value',
+  optionDisabledKey: 'disabled',
+  multiSelect: false,
+  open: false,
+  autocomplete: 'off',
+  zIndex: 10
 });
 
-const filteredItems = computed(() => {
-  if (props.options) {
-    if (query.value) {
-      if (isFunction(props.customFilterMethod)) {
-        return props.customFilterMethod(query.value);
-      }
-      return props.options.filter((option: any) =>
-        (isObject(option) ? option[props.labelKey] : option)
-          .toString()
-          .toLowerCase()
-          .includes(query.value.toLowerCase())
-      );
-    }
-    return props.options;
-  }
-  return null;
-});
+const emit = defineEmits<SelectEmits>();
 
 const hasError = computed(() => props.error || slotIsEmpty(slots.error));
 
-const handleAutoComplete = (label: string | number) => {
-  if (label === props.customLabel || currentLabel.value) return;
-  if (labelInput.value) {
-    labelInput.value.value = '';
-  }
-  optionsList.value.filter((option) => {
-    if (
-      String(option.label).toLowerCase() === label.toString().toLowerCase() ||
-      String(option.value).toLowerCase() === label.toString().toLowerCase()
-    ) {
-      selectedValue.value = option;
+const selectedMultipleOptions = ref(
+  Array.isArray(props.modelValue) ? [...props.modelValue] : []
+);
+const selectedSingleOption = ref(props.modelValue);
+const openRef = ref(props.open);
+const searchQuery = ref('');
+const selectAllIndeterminate = ref(false);
+const positionDropdownUp = ref(false);
+
+const handleDropdownPosition = () => {
+  nextTick(() => {
+    const selectElement = document.querySelector(`#${props.id}`);
+    const dropdownElement = document.querySelector(`#dropdown-${props.id}`);
+    if (dropdownElement && selectElement && openRef.value) {
+      isDropdownBelowViewport(selectElement, dropdownElement) ? positionDropdownUp.value = true : positionDropdownUp.value = false;
     }
-    return null;
   });
 };
 
-const isOpen = (open: boolean) => {
-  if (open && props.options) {
-    query.value = '';
+const filteredOptions = computed(() => {
+  if (props.customFilterMethod) {
+    return props.customFilterMethod(searchQuery.value);
+  } else if (props.options) {
+    const query = searchQuery.value.toLowerCase();
+    return props.options.filter((option) => {
+      const label = option?.[props.optionLabelKey]?.toLowerCase();
+      return label && query.split('').every(char => label.includes(char));
+    });
+  } else {
+    return null;
   }
-  return open;
+});
+
+const searchOptions = () => {
+  emit('search', searchQuery.value, filteredOptions.value);
+};
+const resetSearchQuery = () => {
+  searchQuery.value = '';
+  emit('search', '', props.options);
 };
 
-provide(selectKey, {
-  selectedValue,
-  optionsList,
-  handleAutoComplete,
-  labelKey: props.labelKey
+const isAllSelected = computed(() => {
+  if (props.options) {
+    return (
+      props.options.length ===
+      props.options.filter(
+        (option: OptionType) => !option[props.optionDisabledKey]
+      ).length
+    );
+  } else {
+    return null;
+  }
 });
+
+const IsAllSelectedRef = ref(isAllSelected.value);
+
+const updateSelectAllIndeterminate = (optionsState: any) => {
+  if (props.options && Array.isArray(optionsState)) {
+    const enabledOptionsCount = props.options.filter(
+      (option: any) => !option[props.optionDisabledKey]
+    ).length;
+    const selectedEnabledOptionsCount = optionsState.filter(
+      (option: any) => !option[props.optionDisabledKey]
+    ).length;
+    selectAllIndeterminate.value =
+      selectedEnabledOptionsCount > 0 &&
+      selectedEnabledOptionsCount < enabledOptionsCount;
+    IsAllSelectedRef.value =
+      selectedEnabledOptionsCount === enabledOptionsCount;
+  }
+};
+
+const toggleSelectAll = () => {
+  if (props.options) {
+    const disabledOptions = selectedMultipleOptions.value?.filter(
+      (option: OptionType) => {
+        return option[props.optionDisabledKey];
+      }
+    );
+    const enabledOptions = props.options.filter(
+      (option: OptionType) => !option[props.optionDisabledKey]
+    );
+    if (!IsAllSelectedRef.value) {
+      selectedMultipleOptions.value = [...enabledOptions, ...disabledOptions];
+    } else {
+      selectedMultipleOptions.value = [...disabledOptions];
+    }
+    updateSelectAllIndeterminate(selectedMultipleOptions.value);
+    emit('update:modelValue', selectedMultipleOptions.value);
+  }
+};
+
+const handleSelectAllClick = () => {
+  IsAllSelectedRef.value = !IsAllSelectedRef.value;
+  toggleSelectAll();
+};
+
+const toggleOptions = () => {
+  openRef.value = !openRef.value;
+  emit('open', openRef.value);
+  resetSearchQuery();
+  handleDropdownPosition();
+};
+const openOptions = () => {
+  openRef.value = true;
+  emit('open', true);
+  resetSearchQuery();
+  handleDropdownPosition();
+};
+const closeOptions = () => {
+  openRef.value = false;
+  emit('open', false);
+  resetSearchQuery();
+  handleDropdownPosition();
+};
+
+const selectOption = (option: OptionType) => {
+  if (!option[props.optionDisabledKey]) {
+    if (props.multiSelect) {
+      if (selectedMultipleOptions.value.includes(option)) {
+        selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
+          (opt) => opt !== option
+        );
+      } else {
+        selectedMultipleOptions.value.push(option);
+      }
+      updateSelectAllIndeterminate(selectedMultipleOptions.value);
+      emit('update:modelValue', selectedMultipleOptions.value);
+    } else {
+      toggleOptions();
+      selectedSingleOption.value !== option
+        ? (selectedSingleOption.value = option)
+        : (selectedSingleOption.value = {});
+      emit('update:modelValue', selectedSingleOption.value);
+    }
+  }
+};
+
+const deselectOption = (option: OptionType) => {
+  selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
+    (opt) => opt !== option
+  );
+  updateSelectAllIndeterminate(selectedMultipleOptions.value);
+  emit('update:modelValue', selectedMultipleOptions.value);
+};
+
+const activeIndex = ref(-1);
+
+const handleKeyDown = (event: KeyboardEvent) => {
+  const options = document.querySelectorAll(`#dropdown-${props.id} .puik-option:not(.puik-option--disabled)`);
+  const activeElement = document.activeElement as HTMLElement;
+  activeIndex.value = Array.from(options).indexOf(activeElement);
+
+  if (event.key === 'ArrowDown') {
+    event.preventDefault();
+    activeIndex.value = (activeIndex.value + 1) % options.length;
+    (options[activeIndex.value] as HTMLElement).focus();
+  }
+  if (event.key === 'ArrowUp') {
+    event.preventDefault();
+    activeIndex.value = (activeIndex.value - 1 + options.length) % options.length;
+    (options[activeIndex.value] as HTMLElement).focus();
+  }
+};
+
+watch(isAllSelected, (newValue) => {
+  IsAllSelectedRef.value = newValue;
+});
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    selectedSingleOption.value = newValue;
+    updateSelectAllIndeterminate(newValue);
+  }
+);
+watch(
+  () => props.open,
+  (newValue) => {
+    console.log('watch open prop');
+    openRef.value = newValue;
+  }
+);
+
+updateSelectAllIndeterminate(selectedMultipleOptions.value);
 </script>
 
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-select.scss';
+@use '@prestashopcorp/puik-theme/src/puik-option.scss';
+@use '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
+@use '@prestashopcorp/puik-theme/src/puik-chip.scss';
+@use '@prestashopcorp/puik-theme/src/puik-input.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+@use '@prestashopcorp/puik-theme/src/puik-label.scss';
 </style>
