@@ -1,5 +1,15 @@
 # @prestashopcorp/puik-tailwind-preset
 
+## 2.3.0
+
+### Minor Changes
+
+- - [Table] - add payload (filtered options) for searchSubmit event, create searchResetSubmit event
+  - [Rating-card] - new component
+  - [alert] - refacto to follow design specs (bouton link, icons for btn)
+  - [ci] - update some actions versions
+  - [Icons library] - change deprecated Material Icons set to Material Symbols
+
 ## 2.2.0
 
 ### Minor Changes

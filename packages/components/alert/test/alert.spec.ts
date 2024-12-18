@@ -1,7 +1,7 @@
 import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
-import { PuikAlert, AlertProps } from '@prestashopcorp/puik-components';
+import { PuikAlert, AlertProps, PuikAlertVariants } from '@prestashopcorp/puik-components';
 
 describe('Alert tests', () => {
   let wrapper: VueWrapper<any>;
@@ -12,6 +12,11 @@ describe('Alert tests', () => {
   const findDesc = () => wrapper.find('.puik-alert__description');
   const findCloseButton = () => wrapper.find('.puik-alert__close');
   const findLink = () => wrapper.find('.puik-alert__link');
+  const findLeftButtonIcon = () => wrapper.find('.puik-alert__button .puik-button__left-icon');
+  const findRightButtonIcon = () => wrapper.find('.puik-alert__button .puik-button__right-icon');
+  const findLeftLinkIcon = () => wrapper.find('.puik-alert__link .puik-button__left-icon');
+  const findRightLinkIcon = () => wrapper.find('.puik-alert__link .puik-button__right-icon');
+  const findIcon = () => wrapper.find('.puik-alert__icon');
 
   const factory = (
     props?: AlertProps,
@@ -28,14 +33,24 @@ describe('Alert tests', () => {
     expect(wrapper).toBeTruthy();
   });
 
-  it('should display an success alert by default', () => {
+  it('should display a success alert by default', () => {
     factory();
     expect(findAlert().classes()).toContain('puik-alert--success');
   });
 
   it('should display a warning alert', () => {
-    factory({ variant: 'warning' });
+    factory({ variant: PuikAlertVariants.Warning });
     expect(findAlert().classes()).toContain('puik-alert--warning');
+  });
+
+  it('should display a danger alert', () => {
+    factory({ variant: PuikAlertVariants.Danger });
+    expect(findAlert().classes()).toContain('puik-alert--danger');
+  });
+
+  it('should display an info alert', () => {
+    factory({ variant: PuikAlertVariants.Info });
+    expect(findAlert().classes()).toContain('puik-alert--info');
   });
 
   it('should set the button label wrap to false', () => {
@@ -51,7 +66,7 @@ describe('Alert tests', () => {
   });
 
   it('should display a link which emits the clickLink event on click', async () => {
-    factory({ linkLabel: 'See more' });
+    factory({ linkLabel: 'Learn more' });
     expect(findLink().exists()).toBeTruthy();
     await findLink().trigger('click');
     expect(wrapper.emitted('clickLink')).toBeTruthy();
@@ -91,7 +106,7 @@ describe('Alert tests', () => {
       title: faker.lorem.word(2),
       description: faker.lorem.sentence(60),
       buttonLabel: 'Button',
-      linkLabel: 'See more',
+      linkLabel: 'Learn more',
       isClosable: true,
       dataTest: 'alert'
     });
@@ -124,5 +139,60 @@ describe('Alert tests', () => {
       ariaLive: 'assertive'
     });
     expect(findAlert().attributes('aria-live')).toBe('assertive');
+  });
+
+  it('should display the correct icon for each variant', () => {
+    const variants = [PuikAlertVariants.Success, PuikAlertVariants.Warning, PuikAlertVariants.Danger, PuikAlertVariants.Info];
+    variants.forEach(variant => {
+      factory({ variant });
+      expect(findIcon().exists()).toBeTruthy();
+    });
+  });
+
+  it('should not render optional elements when props are not provided', () => {
+    factory();
+    expect(findButton().exists()).toBeFalsy();
+    expect(findLink().exists()).toBeFalsy();
+    expect(findCloseButton().exists()).toBeFalsy();
+  });
+
+  it('should set the internal link correctly', () => {
+    factory({ linkLabel: 'Learn more', internalLink: '/internal' });
+    expect(findLink().attributes('to')).toBe('/internal');
+  });
+
+  it('should set the external link correctly', () => {
+    factory({ linkLabel: 'Learn more', externalLink: 'https://example.com' });
+    expect(findLink().attributes('href')).toBe('https://example.com');
+  });
+
+  it('should set the aria-label for the button correctly', () => {
+    factory({ buttonLabel: 'Button', ariaLabelBtn: 'Button aria label' });
+    expect(findButton().attributes('aria-label')).toBe('Button aria label');
+  });
+
+  it('should set the aria-label for the link correctly', () => {
+    factory({ linkLabel: 'Learn more', ariaLabelLink: 'Link aria label' });
+    expect(findLink().attributes('aria-label')).toBe('Link aria label');
+  });
+
+  it('should display the left icon for the button', () => {
+    factory({ buttonLabel: 'Button', leftIconBtn: 'favorite' });
+    expect(findLeftButtonIcon().classes()).toContain('puik-button__left-icon');
+  });
+
+  it('should display the right icon for the button', () => {
+    factory({ buttonLabel: 'Button', rightIconBtn: 'favorite' });
+    expect(findRightButtonIcon().classes()).toContain('puik-button__right-icon');
+  });
+
+  it('should display the left icon for the link', () => {
+    factory({ linkLabel: 'Learn more', leftIconLink: 'favorite' });
+    expect(findLeftLinkIcon().classes()).toContain('puik-button__left-icon');
+  });
+
+  it('should display the right icon for the link', () => {
+    factory({ linkLabel: 'Learn more', rightIconLink: 'favorite' });
+    expect(findRightLinkIcon().classes()).toContain('puik-button__right-icon');
   });
 });

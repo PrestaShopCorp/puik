@@ -6,6 +6,7 @@ export interface IconProps {
   nodeType?: string
   fontSize?: string | number
   color?: string
+  fill?: number
   isDisabled?: boolean
   dataTest?: string
   ariaLabel?: string

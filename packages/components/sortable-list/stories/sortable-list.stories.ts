@@ -311,7 +311,7 @@ enum PuikSortableListIconPosition {
     },
     dataTest: {
       control: 'text',
-      description: 'Set the data-test attribute on the sortable list'
+      description: 'Sets the data-test attribute on the sortable list'
     }
   },
   args: {

@@ -1,7 +1,7 @@
 {
   "name": "@prestashopcorp/puik-docs",
   "description": "PUIK docs - Storybook documentation.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "private": true,
   "main": "index.js",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "storybook": "^7.6.19",
-    "vite": "^5.2.11"
+    "vite": "^5.2.14"
   },
   "dependencies": {
     "@prestashopcorp/puik-components": "workspace:*",

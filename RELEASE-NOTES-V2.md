@@ -22,7 +22,7 @@ Here is the list of available components in the Vue and Web-Components version o
 | --------------------------- | -------------- | -------------- | ---------------- |
 | Accordion                   | ✅  | ✅            |                  |
 | Accordion-group             | ✅  | ✅            |                  |
-| Alert                       | ✅  | ✅            |                  |
+| Alert                       | ✅  | ✅            |   Design:  The `puik-link` has replaced by a Link Button (text variant button) - [see updated stories for use](https://uikit.prestashop.com/?path=/docs/components-alert--docs)      |
 | Avatar                      | ✅  | ✅            |                  |
 | Badge                       | ✅  | ✅            |                  |
 | Breadcrumb                  | ✅  | ✅            |                  |
@@ -44,6 +44,7 @@ Here is the list of available components in the Vue and Web-Components version o
 | Progress-stepper            | ✅  | ✅            |                  |
 | Progress-stepper-step       | ✅  | ✅            |                  |
 | Radio                       | ✅  | ✅            |                  |
+| Rating-card                 | ✅  | ✅            |                  |
 | Select                      | ✅  | ❌            |                  |
 | Sidebar                     | ✅  | ✅            |                  |
 | Sidebar-group-item          | ✅  | ❌            |                  |
@@ -52,6 +53,7 @@ Here is the list of available components in the Vue and Web-Components version o
 | Skeleton-loader             | ✅  | ✅            |                  |
 | Skeleton-loader-group       | ✅  | ✅            |                  |
 | Snackbar                    | ✅  | ❌            | Previously implemented with Headless UI, now moved to Radix Vue (see Storybook documentation for more details)|
+| Sortable-list               | ✅  | ❌            |                  |
 | Spinner-loader              | ✅  | ✅            |                  |
 | Switch                      | ✅  | ✅            |                  |
 | Tab-navigation              | ✅  | ✅            |                  |
