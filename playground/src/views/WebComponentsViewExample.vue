@@ -1,3 +1,8 @@
+<!--
+This file is for example purposes and should not be used for testing as it is tracked by git on the repo.
+You must copy this file and rename the copy to WebComponentsView.vue (to match the Vue Router config of the playground).
+This is the copied file that can be used locally for testing
+-->
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { PuikAlertCe, initWeb } from '@prestashopcorp/puik-web-components';
