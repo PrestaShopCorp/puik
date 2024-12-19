@@ -22,7 +22,7 @@ Here is the list of available components in the Vue and Web-Components version o
 | --------------------------- | -------------- | -------------- | ---------------- |
 | Accordion                   | ✅  | ✅            |                  |
 | Accordion-group             | ✅  | ✅            |                  |
-| Alert                       | ✅  | ✅            |   Design:  The `puik-link` has replaced by a Link Button (text variant button) - [see updated stories for use](https://uikit.prestashop.com/?path=/docs/components-alert--docs)      |
+| Alert                       | ✅  | ✅            | since v2.3.0 - Design: The `puik-link` has replaced by a Link Button (text variant button) - [see updated stories for use](https://uikit.prestashop.com/?path=/docs/components-alert--docs)      |
 | Avatar                      | ✅  | ✅            |                  |
 | Badge                       | ✅  | ✅            |                  |
 | Breadcrumb                  | ✅  | ✅            |                  |
@@ -45,14 +45,14 @@ Here is the list of available components in the Vue and Web-Components version o
 | Progress-stepper-step       | ✅  | ✅            |                  |
 | Radio                       | ✅  | ✅            |                  |
 | Rating-card                 | ✅  | ✅            |                  |
-| Select                      | ✅  | ❌            |                  |
+| Select                      | ✅  | ✅            | since v2.4.0 - global refactoring (remove HeadlessUI components, web-component compliant) - [see updated stories for use](https://uikit.prestashop.com/?path=/docs/components-select--docs)             |
 | Sidebar                     | ✅  | ✅            |                  |
 | Sidebar-group-item          | ✅  | ❌            |                  |
 | Sidebar-item                | ✅  | ✅            |                  |
 | Sidebar-title               | ✅  | ✅            |                  |
 | Skeleton-loader             | ✅  | ✅            |                  |
 | Skeleton-loader-group       | ✅  | ✅            |                  |
-| Snackbar                    | ✅  | ❌            | Previously implemented with Headless UI, now moved to Radix Vue (see Storybook documentation for more details)|
+| Snackbar                    | ✅  | ❌            | since v2.0.0 - Previously implemented with Headless UI, now moved to Radix Vue (see Storybook documentation for more details)|
 | Sortable-list               | ✅  | ❌            |                  |
 | Spinner-loader              | ✅  | ✅            |                  |
 | Switch                      | ✅  | ✅            |                  |

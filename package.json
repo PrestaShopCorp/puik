@@ -6,7 +6,7 @@
   "workspaces": [
     "packages/*",
     "docs",
-    "play"
+    "playground/*"
   ],
   "engines": {
     "node": ">= v18.16.0"
@@ -24,7 +24,8 @@
     "docs:dev": "pnpm --filter @prestashopcorp/puik-docs dev",
     "build-storybook": "pnpm --filter @prestashopcorp/puik-docs build",
     "chromatic": "chromatic",
-    "dev": "pnpm --filter @prestashopcorp/puik-playground dev",
+    "dev": "pnpm --filter @prestashopcorp/puik-vue-app dev",
+    "dev:vanilla": "pnpm --filter @prestashopcorp/puik-vanilla-app dev",
     "component": "hygen component new",
     "pack:all": "pnpm -r --parallel --filter './packages/**' exec pnpm pack --pack-destination ../../packages-tars/tmp && scripts/increment_versions.sh",
     "prepare": "husky install",

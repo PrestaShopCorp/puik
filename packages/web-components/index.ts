@@ -31,7 +31,7 @@ import PuikProgressBarCe from './components/progress-bar';
 import PuikProgressStepperCe from './components/progress-stepper';
 import PuikProgressStepperStepCe from './components/progress-stepper-step';
 import PuikRadioCe from './components/radio';
-// import PuikSelectCe from './components/select';
+import PuikSelectCe from './components/select';
 import PuikSidebarCe from './components/sidebar';
 // import PuikSidebarGroupItemCe from './components/sidebar-group-item';
 import PuikSidebarItemCe from './components/sidebar-item';
@@ -82,7 +82,7 @@ export const components: CustomElementWithName[] = [
   PuikProgressStepperCe,
   PuikProgressStepperStepCe,
   PuikRadioCe,
-  // PuikSelectCe,
+  PuikSelectCe,
   PuikSidebarCe,
   // PuikSidebarGroupItemCe,
   PuikSidebarItemCe,
@@ -134,7 +134,7 @@ export {
   PuikProgressStepperCe,
   PuikProgressStepperStepCe,
   PuikRadioCe,
-  // PuikSelectCe,
+  PuikSelectCe,
   PuikSidebarCe,
   // PuikSidebarGroupItemCe,
   PuikSidebarItemCe,

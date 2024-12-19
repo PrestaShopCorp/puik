@@ -1,0 +1,7 @@
+@import '@prestashopcorp/puik-theme/dist/base.css';
+
+#app {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

@@ -17,7 +17,6 @@ packages/puik/version.ts
 *.local
 
 # playground test file
-playground/src/App.vue
 storybook-static
 
 # Ignore the packages-tars directory
