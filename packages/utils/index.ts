@@ -6,3 +6,4 @@ export * from './isEllipsisActive';
 export * from './clamp';
 export * from './build';
 export * from './getInitialLetter.ts';
+export * from './isDropdownBelowViewport.ts';

@@ -1,16 +1,22 @@
+/* eslint-disable @typescript-eslint/member-delimiter-style */
 import '@prestashopcorp/puik-components/option/style/css';
 import type Option from './option.vue';
 
-export interface DefaultOption {
-  label: string | number
-  value: string | number | Record<string, any>
+export interface OptionType {
+  [key: string]: any
 }
-
 export interface OptionProps {
-  value: string | number | Record<string, any>
   label?: string | number
+  value?: string | number
   disabled?: boolean
+  isSelected?: boolean
+  multiSelect?: boolean
   dataTest?: string
 }
+
+export type OptionEmits = {
+  'open': [state: boolean],
+  'select': [payload: any]
+};
 
 export type OptionInstance = InstanceType<typeof Option>;

@@ -6,5 +6,5 @@ export default PuikSelect;
 
 export const PuikOption = Option;
 
-export * from './src/select';
 export * from './src/option';
+export * from './src/select';

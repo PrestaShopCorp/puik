@@ -1,79 +1,87 @@
 <template>
-  <ListboxOption
-    v-slot="{ active }"
-    :disabled="disabled"
-    :value="option"
-    as="template"
+  <div
+    :class="[
+      'puik-option',
+      { 'puik-option-single--selected' : isSelectedRef && !props.multiSelect},
+      { 'puik-option--disabled' : props.disabled },
+    ]"
+    role="option"
+    :aria-selected="isSelectedRef"
+    :aria-disabled="props.disabled"
+    tabindex="-1"
+    :data-test="props.dataTest"
+    @click="selectOption"
+    @keydown.space.prevent.stop="selectOption"
+    @keydown.enter.prevent.stop="selectOption"
   >
-    <li
-      class="puik-option"
-      :class="{
-        'puik-option--active': active,
-        'puik-option--selected': selectedValue === value,
-        'puik-option--disabled': disabled,
-      }"
-      :data-test="dataTest"
-    >
-      <slot class="puik-option__label">
-        {{ label }}
-      </slot>
-      <puik-icon
-        v-if="selectedValue === value"
-        icon="checked"
-        font-size="1.25rem"
-        class="puik-option__selected-icon"
+    <template v-if="props.multiSelect">
+      <PuikCheckbox
+        v-model="isSelectedRef"
+        :disabled="props.disabled"
+        :sr-label="`${label}`"
       />
-    </li>
-  </ListboxOption>
+      <slot>
+        <label>{{ label }}</label>
+      </slot>
+    </template>
+
+    <template v-else>
+      <slot>
+        <label>{{ label }}</label>
+      </slot>
+    </template>
+    <PuikIcon
+      v-if="isSelectedRef && !props.multiSelect"
+      class="puik-option__selected-icon"
+      icon="check"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { computed, inject, toRaw, watch } from 'vue';
-import { ListboxOption } from '@headlessui/vue';
-import { PuikIcon } from '@prestashopcorp/puik-components/icon';
-import { isObject } from '@prestashopcorp/puik-utils';
-import { type OptionProps } from './option';
-import { selectKey } from './select';
+import { ref, toRaw, watch } from 'vue';
+import { PuikCheckbox } from '../../checkbox';
+import { PuikIcon } from '../../icon';
+import type { OptionProps, OptionEmits } from './option';
+
 defineOptions({
   name: 'PuikOption'
 });
 
-const props = defineProps<OptionProps>();
+const props = withDefaults(defineProps<OptionProps>(), {
+  disabled: false,
+  multiSelect: false,
+  isSelected: false
+});
 
-const { optionsList, selectedValue, handleAutoComplete, labelKey } =
-  inject(selectKey)!;
+const emit = defineEmits<OptionEmits>();
 
-const label = computed(
-  () =>
-    props.label ??
-    (isObject(props.value) ? props.value[labelKey] : props.value)
-);
+const isSelectedRef = ref(props.isSelected);
+const labelRef = ref(props.label);
+const valueRef = ref(props.value);
 
-const option = {
-  value: props.value,
-  label: label.value
+const selectOption = () => {
+  if (!props.disabled) {
+    emit('select', { label: toRaw(labelRef.value), value: toRaw(valueRef.value) });
+    props.multiSelect ? emit('open', true) : emit('open', false);
+  }
 };
 
-const sendLabel = () => {
-  if (props.disabled) return;
+watch(() => props.isSelected, (newValue) => {
+  isSelectedRef.value = newValue;
+});
+watch(() => props.label, (newValue) => {
+  labelRef.value = newValue;
+});
+watch(() => props.value, (newValue) => {
+  valueRef.value = newValue;
+});
 
-  return handleAutoComplete(label.value);
-};
-
-optionsList.value.push(option);
-
-watch(
-  selectedValue,
-  (newValue) => {
-    if (toRaw(props.value) === toRaw(newValue)) {
-      sendLabel();
-    }
-  },
-  { immediate: true }
-);
 </script>
 
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-option.scss';
+@use '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
+@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
 </style>
