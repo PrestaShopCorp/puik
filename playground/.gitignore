@@ -27,3 +27,5 @@ dist-ssr
 /src/views/*
 !/src/views/VueComponentsViewExample.vue
 !/src/views/WebComponentsViewExample.vue
+/vue-app
+/vanilla-app
