@@ -22,6 +22,10 @@ export enum PuikButtonSizes {
   Medium = 'md',
   Large = 'lg',
 }
+export enum PuikButtonLoaderPositions {
+  Left = 'left',
+  Right = 'right'
+}
 
 export interface ButtonProps {
   variant?: PuikButtonVariants | `${PuikButtonVariants}`
@@ -32,6 +36,8 @@ export interface ButtonProps {
   disabledReason?: string
   leftIcon?: string
   rightIcon?: string
+  loader?: boolean
+  loaderPosition?: `${PuikButtonLoaderPositions}`
   to?: RouteLocationRaw
   href?: string
   value?: string | number | Record<string, any> | any[]

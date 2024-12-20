@@ -20,6 +20,11 @@
     :data-test="dataTest"
     @click="setSelected"
   >
+    <puik-spinner-loader
+      v-if="props.loader && props.loaderPosition === PuikButtonLoaderPositions.Left"
+      :size="props.size"
+      :color="loaderColor"
+    />
     <puik-icon
       v-if="leftIcon"
       :icon="leftIcon"
@@ -37,6 +42,11 @@
       :aria-hidden="true"
       :data-test="dataTest != undefined ? `rightIcon-${dataTest}` : undefined"
     />
+    <puik-spinner-loader
+      v-if="props.loader && props.loaderPosition === PuikButtonLoaderPositions.Right"
+      :size="props.size"
+      :color="loaderColor"
+    />
     <span
       v-if="disabled"
       :id="disabledId"
@@ -51,16 +61,18 @@
 import { computed, inject } from 'vue';
 import { useLocale } from '@prestashopcorp/puik-locale';
 import { generateId } from '@prestashopcorp/puik-utils';
-import { PuikIcon } from '@prestashopcorp/puik-components/icon';
+import { PuikIcon, PuikSpinnerLoader } from '@prestashopcorp/puik-components';
 import { ButtonGroupKey } from '../../button-group';
-import { PuikButtonVariants, type ButtonProps, PuikButtonSizes } from './button';
+import { PuikButtonVariants, PuikButtonLoaderPositions, type ButtonProps, PuikButtonSizes } from './button';
 defineOptions({
   name: 'PuikButton'
 });
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   variant: PuikButtonVariants.Primary,
-  size: PuikButtonSizes.Medium
+  size: PuikButtonSizes.Medium,
+  loader: false,
+  loaderPosition: PuikButtonLoaderPositions.Right
 });
 
 const { t } = useLocale();
@@ -86,10 +98,18 @@ const setSelected = () => {
     buttonGroup.selected.value = props.value;
   }
 };
+
+const loaderColor = computed(() => {
+  if (props.variant === 'primary' || props.variant === 'secondary-reverse' || props.variant === 'text-reverse' || props.variant === 'destructive' || props.disabled) {
+    return 'reverse';
+  }
+  return 'primary';
+});
 </script>
 
 <style lang="scss">
 @use '@prestashopcorp/puik-theme/src/base.scss';
 @use '@prestashopcorp/puik-theme/src/puik-button.scss';
 @use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+@use '@prestashopcorp/puik-theme/src/puik-spinner-loader.scss';
 </style>
