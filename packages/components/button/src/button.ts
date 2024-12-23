@@ -36,7 +36,7 @@ export interface ButtonProps {
   disabledReason?: string
   leftIcon?: string
   rightIcon?: string
-  loader?: boolean
+  loading?: boolean
   loaderPosition?: `${PuikButtonLoaderPositions}`
   to?: RouteLocationRaw
   href?: string

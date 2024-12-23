@@ -21,9 +21,11 @@
     @click="setSelected"
   >
     <puik-spinner-loader
-      v-if="props.loader && props.loaderPosition === PuikButtonLoaderPositions.Left"
+      v-if="props.loading && props.loaderPosition === PuikButtonLoaderPositions.Left"
       :size="props.size"
       :color="loaderColor"
+      class="puik-button__loader puik-button__loader--left"
+      :data-test="dataTest != undefined ? `leftLoader-${dataTest}` : undefined"
     />
     <puik-icon
       v-if="leftIcon"
@@ -43,9 +45,11 @@
       :data-test="dataTest != undefined ? `rightIcon-${dataTest}` : undefined"
     />
     <puik-spinner-loader
-      v-if="props.loader && props.loaderPosition === PuikButtonLoaderPositions.Right"
+      v-if="props.loading && props.loaderPosition === PuikButtonLoaderPositions.Right"
       :size="props.size"
       :color="loaderColor"
+      class="puik-button__loader puik-button__loader--right"
+      :data-test="dataTest != undefined ? `rightLoader-${dataTest}` : undefined"
     />
     <span
       v-if="disabled"
@@ -71,7 +75,7 @@ defineOptions({
 const props = withDefaults(defineProps<ButtonProps>(), {
   variant: PuikButtonVariants.Primary,
   size: PuikButtonSizes.Medium,
-  loader: false,
+  loading: false,
   loaderPosition: PuikButtonLoaderPositions.Right
 });
 
