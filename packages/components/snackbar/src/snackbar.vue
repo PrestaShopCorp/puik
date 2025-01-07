@@ -2,6 +2,7 @@
   <ToastRoot
     v-bind="forwarded"
     :class="['puik-snackbar-root', `puik-snackbar-root--${variant}`, `puik-snackbar-root--swipe-${swipeAnimation}`]"
+    @update:open="onOpenChange"
   >
     <div class="puik-snackbar-message">
       <ToastTitle
@@ -39,12 +40,14 @@ import { useForwardPropsEmits, ToastAction, ToastClose, ToastTitle, ToastRoot, T
 import { PuikIcon } from '@prestashopcorp/puik-components';
 import { PuikSnackbarVariants, PuikSnackbarSwipeAnimations } from './snackbar';
 import { type SnackbarProps, SnackbarEmits } from './snackbar';
+import { generateId } from '@prestashopcorp/puik-utils';
 
 defineOptions({
   name: 'PuikSnackbar'
 });
 
 const props = withDefaults(defineProps<SnackbarProps>(), {
+  id: `puik-snackbar-${generateId()}`,
   variant: PuikSnackbarVariants.Default,
   swipeAnimation: PuikSnackbarSwipeAnimations.Right
 });
