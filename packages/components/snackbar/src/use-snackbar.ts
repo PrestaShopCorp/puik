@@ -1,9 +1,14 @@
 import { type SnackbarProps, PuikSnackbarActions, PuikSnackbarDispatchActions, SnackbarsState } from './snackbar';
 
-const SNACKBAR_LIMIT = 1;
-const SNACKBAR_REMOVE_DELAY = 5000;
+const DEFAULT_SNACKBARS_LIMIT = 1;
+const DEFAULT_SNACKBAR_REMOVE_DELAY = 5000;
 
-function addToRemoveQueue(snackbarId: string, snackbarTimeouts: Map<string, ReturnType<typeof setTimeout>>, state: SnackbarsState) {
+function addToRemoveQueue(
+  snackbarId: string,
+  snackbarTimeouts: Map<string, ReturnType<typeof setTimeout>>,
+  state: SnackbarsState,
+  removeDelay: number = DEFAULT_SNACKBAR_REMOVE_DELAY
+) {
   if (snackbarTimeouts.has(snackbarId)) { return; }
 
   const timeout = setTimeout(() => {
@@ -12,20 +17,26 @@ function addToRemoveQueue(snackbarId: string, snackbarTimeouts: Map<string, Retu
       type: PuikSnackbarActions.Remove,
       snackbarId
     }, snackbarTimeouts, state);
-  }, SNACKBAR_REMOVE_DELAY);
+  }, removeDelay);
 
   snackbarTimeouts.set(snackbarId, timeout);
 }
 
-function dispatch(action: PuikSnackbarDispatchActions, snackbarTimeouts: Map<string, ReturnType<typeof setTimeout>>, state: SnackbarsState) {
+function dispatch(
+  action: PuikSnackbarDispatchActions,
+  snackbarTimeouts: Map<string, ReturnType<typeof setTimeout>>,
+  state: SnackbarsState,
+  snackbarsLimit: number = DEFAULT_SNACKBARS_LIMIT,
+  removeDelay: number = DEFAULT_SNACKBAR_REMOVE_DELAY
+) {
   switch (action.type) {
     case PuikSnackbarActions.Add:
-      state.snackbars = [action.snackbar, ...state.snackbars].slice(0, SNACKBAR_LIMIT);
+      state.snackbars = [...state.snackbars, action.snackbar].slice(-snackbarsLimit);
       break;
 
     case PuikSnackbarActions.Update:
       state.snackbars = state.snackbars.map(s =>
-        s.id === action.snackbar.id ? { ...s, ...action.snackbar } : s
+        s.id === action.snackbar.id ? { ...action.snackbar, ...s } : s
       );
       break;
 
@@ -33,10 +44,10 @@ function dispatch(action: PuikSnackbarDispatchActions, snackbarTimeouts: Map<str
       const { snackbarId } = action;
 
       if (snackbarId) {
-        addToRemoveQueue(snackbarId, snackbarTimeouts, state);
+        addToRemoveQueue(snackbarId, snackbarTimeouts, state, removeDelay);
       } else {
         state.snackbars.forEach((snackbar) => {
-          addToRemoveQueue(snackbar.id, snackbarTimeouts, state);
+          addToRemoveQueue(snackbar.id, snackbarTimeouts, state, removeDelay);
         });
       }
 
@@ -54,27 +65,51 @@ function dispatch(action: PuikSnackbarDispatchActions, snackbarTimeouts: Map<str
   }
 }
 
-export const useSnackbar = (props: SnackbarProps, snackbarTimeouts: Map<string, ReturnType<typeof setTimeout>>, state: SnackbarsState) => {
+export const useSnackbar = (
+  props: SnackbarProps,
+  snackbarTimeouts: Map<string, ReturnType<typeof setTimeout>>,
+  state: SnackbarsState,
+  snackbarsLimit: number = DEFAULT_SNACKBARS_LIMIT,
+  removeDelay: number = DEFAULT_SNACKBAR_REMOVE_DELAY
+) => {
   const id = props.id;
 
   const update = (props: SnackbarProps) =>
     dispatch({
       type: PuikSnackbarActions.Update,
       snackbar: { ...props }
-    }, snackbarTimeouts, state);
+    },
+    snackbarTimeouts,
+    state,
+    snackbarsLimit,
+    removeDelay
+    );
 
-  const dismiss = () => dispatch({ type: PuikSnackbarActions.Dismiss, snackbarId: props.id }, snackbarTimeouts, state);
+  const dismiss = () =>
+    dispatch(
+      { type: PuikSnackbarActions.Dismiss, snackbarId: props.id },
+      snackbarTimeouts,
+      state,
+      snackbarsLimit,
+      removeDelay
+    );
 
-  dispatch({
-    type: PuikSnackbarActions.Add,
-    snackbar: {
-      ...props,
-      open: true,
-      onOpenChange: (open: boolean) => {
-        if (!open) { dismiss(); }
+  dispatch(
+    {
+      type: PuikSnackbarActions.Add,
+      snackbar: {
+        ...props,
+        open: true,
+        onOpenChange: (open: boolean) => {
+          if (!open) { dismiss(); }
+        }
       }
-    }
-  }, snackbarTimeouts, state);
+    },
+    snackbarTimeouts,
+    state,
+    snackbarsLimit,
+    removeDelay
+  );
 
   return {
     id,
