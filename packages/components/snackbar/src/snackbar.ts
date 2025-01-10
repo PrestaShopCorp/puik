@@ -32,9 +32,7 @@ export type PuikSnackbarDispatchActions =
     snackbarId?: SnackbarProps['id']
   };
 
-export interface SnackbarsState {
-  snackbars: SnackbarProps[]
-}
+export type SnackbarsState = SnackbarProps[];
 
 export enum PuikSnackbarSwipeAnimations {
   Right = 'slide-right',
@@ -43,7 +41,7 @@ export enum PuikSnackbarSwipeAnimations {
   Down = 'slide-down',
 }
 export interface SnackbarProps {
-  id: string
+  id?: string
   open?: boolean
   title?: string
   description: string
