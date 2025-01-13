@@ -1,11 +1,11 @@
-import { type SnackbarProps, type SnackbarsState } from './snackbar';
+import { type UseSnackbarProps, type SnackbarsState, type SnackbarProps } from './snackbar';
 import { generateId } from '@prestashopcorp/puik-utils';
 
 const DEFAULT_SNACKBARS_LIMIT = 0;
 const DEFAULT_SNACKBAR_REMOVE_DELAY = 5000;
 
 export const useSnackbar = (
-  props: SnackbarProps,
+  props: UseSnackbarProps,
   sackbarsState: SnackbarsState,
   snackbarsLimit: number = DEFAULT_SNACKBARS_LIMIT,
   removeDelay: number = DEFAULT_SNACKBAR_REMOVE_DELAY

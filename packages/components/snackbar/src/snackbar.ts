@@ -7,30 +7,6 @@ export enum PuikSnackbarVariants {
   Danger = 'danger',
   Success = 'success',
 }
-export enum PuikSnackbarActions {
-  Add = 'add-snackbar',
-  Update = 'update-snackbar',
-  Dismiss = 'dismiss-snackbar',
-  Remove = 'remove-snackbar',
-}
-
-export type PuikSnackbarDispatchActions =
-  | {
-    type: PuikSnackbarActions.Add
-    snackbar: SnackbarProps
-  }
-  | {
-    type: PuikSnackbarActions.Update
-    snackbar: Partial<SnackbarProps>
-  }
-  | {
-    type: PuikSnackbarActions.Dismiss
-    snackbarId?: SnackbarProps['id']
-  }
-  | {
-    type: PuikSnackbarActions.Remove
-    snackbarId?: SnackbarProps['id']
-  };
 
 export type SnackbarsState = SnackbarProps[];
 
@@ -52,6 +28,8 @@ export interface SnackbarProps {
   action?: Component
   onOpenChange?: ((value: boolean) => void) | undefined
 }
+
+export type UseSnackbarProps = Omit<SnackbarProps, 'id' | 'duration'>;
 
 export type SnackbarEmits = {
   'update:open': [value: boolean]
