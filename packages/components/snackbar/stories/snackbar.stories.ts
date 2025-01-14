@@ -22,6 +22,18 @@ export default {
   title: 'Components/Snackbar',
   components: PuikSnackbar,
   argTypes: {
+    id: {
+      control: 'text',
+      description: 'Sets the snackbar id. If this prop is not configured, an id will be automatically generated using this pattern: puik-snackbar-{randomNumber}',
+      table: {
+        defaultValue: {
+          summary: 'puik-snackbar-{randomNumber}'
+        },
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     open: {
       control: 'boolean',
       description: 'The controlled open state of the snackbar. Can be bind as v-model:open.',
@@ -102,6 +114,25 @@ enum PuikSnackbarSwipeAnimations {
       table: {
         defaultValue: {
           summary: false
+        }
+      }
+    },
+    action: {
+      control: 'none',
+      description: 'Sets the action button of the snackbar (usefull in case of programmatic snackbar - see useSnackbar function)',
+      table: {
+        type: {
+          summary: 'Component'
+        }
+      }
+    },
+    onOpenChange: {
+      control: 'none',
+      description: 'Emits when the open state of the snackbar changes. The open state is passed as an argument. (usefull in case of programmatic snackbar - see useSnackbar function)',
+      table: {
+        type: {
+          summary: 'function',
+          detail: '(openState: boolean) => void'
         }
       }
     }

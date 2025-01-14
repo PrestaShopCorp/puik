@@ -2,7 +2,11 @@
   <ToastRoot
     v-bind="forwarded"
     :class="['puik-snackbar-root', `puik-snackbar-root--${variant}`, `puik-snackbar-root--swipe-${swipeAnimation}`]"
-    @update:open="onOpenChange"
+    @update:open="(openstate: boolean) => {
+      if(props.onOpenChange){
+        props.onOpenChange(openstate);
+      }
+    }"
   >
     <div class="puik-snackbar-message">
       <ToastTitle

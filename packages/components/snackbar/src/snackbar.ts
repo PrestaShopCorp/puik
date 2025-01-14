@@ -26,7 +26,7 @@ export interface SnackbarProps {
   swipeAnimation?: `${PuikSnackbarSwipeAnimations}`
   hasCloseButton?: boolean
   action?: Component
-  onOpenChange?: ((value: boolean) => void) | undefined
+  onOpenChange?: ((openState: boolean) => void) | undefined
 }
 
 export type UseSnackbarProps = Omit<SnackbarProps, 'id' | 'duration'>;
