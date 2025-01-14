@@ -10,7 +10,7 @@ export const useSnackbar = (
   snackbarsLimit: number = DEFAULT_SNACKBARS_LIMIT,
   removeDelay: number = DEFAULT_SNACKBAR_REMOVE_DELAY
 ) => {
-  const id = `snackbar-${generateId()}`;
+  const id = `puik-snackbar-${generateId()}`;
   const duration = removeDelay;
   sackbarsState.push({ ...props, id, duration } as SnackbarProps);
   if (sackbarsState.length > snackbarsLimit) {
