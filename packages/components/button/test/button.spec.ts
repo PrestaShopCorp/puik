@@ -11,6 +11,9 @@ describe('Button tests', () => {
   const findButton = () => wrapper.find('.puik-button');
   const findButtonLeftIcon = () => wrapper.find('.puik-button__left-icon');
   const findButtonRightIcon = () => wrapper.find('.puik-button__right-icon');
+  const findLoader = () => wrapper.find('.puik-button__loader');
+  const findLeftLoader = () => wrapper.find('.puik-button__loader--left');
+  const findRightLoader = () => wrapper.find('.puik-button__loader--right');
 
   const disabledId = 'puik-button-disabled-mocked-id';
 
@@ -141,5 +144,38 @@ describe('Button tests', () => {
   it('should have role attribute set to button', () => {
     factory();
     expect(findButton().attributes('role')).toBe('button');
+  });
+
+  it('should display loader when loading is true', () => {
+    factory({ loading: true });
+    expect(findLoader().exists()).toBeTruthy();
+  });
+
+  it('should display loader on the left when loaderPosition is left', () => {
+    factory({ loading: true, loaderPosition: 'left' });
+    expect(findLoader().exists()).toBeTruthy();
+    expect(findLoader().classes()).toContain('puik-button__loader--left');
+  });
+
+  it('should display loader on the right when loaderPosition is right', () => {
+    factory({ loading: true, loaderPosition: 'right' });
+    expect(findLoader().exists()).toBeTruthy();
+    expect(findLoader().classes()).toContain('puik-button__loader--right');
+  });
+
+  it('should have a data-test attribute on left-loader and right-loader', () => {
+    factory({
+      loading: true,
+      loaderPosition: 'left',
+      dataTest: 'button'
+    });
+    expect(findLeftLoader().attributes('data-test')).toBe('leftLoader-button');
+
+    factory({
+      loading: true,
+      loaderPosition: 'right',
+      dataTest: 'button'
+    });
+    expect(findRightLoader().attributes('data-test')).toBe('rightLoader-button');
   });
 });
