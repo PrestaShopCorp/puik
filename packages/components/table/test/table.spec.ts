@@ -1,8 +1,19 @@
-import { mount, ComponentMountingOptions, VueWrapper, DOMWrapper } from '@vue/test-utils';
+import {
+  mount,
+  ComponentMountingOptions,
+  VueWrapper,
+  DOMWrapper
+} from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
 import { locales } from '@prestashopcorp/puik-locale';
-import { PuikTable, PuikTableHeader, PuikTableSortOrder, sortOption, TableProps } from '@prestashopcorp/puik-components';
+import {
+  PuikTable,
+  PuikTableHeader,
+  PuikTableSortOrder,
+  sortOption,
+  TableProps
+} from '@prestashopcorp/puik-components';
 
 const defaultItems = Array(5)
   .fill(null)
@@ -24,7 +35,8 @@ describe('Table tests', () => {
   const getTable = () => wrapper.find('.puik-table');
   const getHeaders = () => wrapper.findAll(`.${headerColClass}`);
   const getRows = () => wrapper.findAll('.puik-table__body__row');
-  const getCols = (rowIndex: number) => getRows()[rowIndex].findAll(`.${colClass}`);
+  const getCols = (rowIndex: number) =>
+    getRows()[rowIndex].findAll(`.${colClass}`);
   const getAllItemsOfCol = (colIndex: number) => {
     const allItems: Array<DOMWrapper<Element>> = [];
     getRows().forEach((_, rowIndex) => {
@@ -40,8 +52,10 @@ describe('Table tests', () => {
   const getHeaderCheckbox = () =>
     wrapper.find(`.${headerColClass}--selection__checkbox`);
 
-  const isCheckboxChecked = (checkbox: DOMWrapper<Element>) => checkbox.find('.puik-checkbox__input:checked').exists();
-  const isCheckboxInderminate = (checkbox: DOMWrapper<Element>) => checkbox.find('.puik-checkbox__input:indeterminate').exists();
+  const isCheckboxChecked = (checkbox: DOMWrapper<Element>) =>
+    checkbox.find('.puik-checkbox__input:checked').exists();
+  const isCheckboxInderminate = (checkbox: DOMWrapper<Element>) =>
+    checkbox.find('.puik-checkbox__input:indeterminate').exists();
 
   const getCheckboxLabel = (checkbox: { find: (arg0: string) => any }) =>
     checkbox.find('.puik-checkbox__label');
@@ -265,7 +279,9 @@ describe('Table tests', () => {
     factory({ headers, selectable: true, stickyFirstCol: true });
     const header = getHeaders()[0];
     const allFirstItems = getAllItemsOfCol(0);
-    expect(header.classes()).toContain('puik-table__head__row__item--selection');
+    expect(header.classes()).toContain(
+      'puik-table__head__row__item--selection'
+    );
     expect(header.classes()).toContain('puik-table__head__row__item--sticky');
     allFirstItems.forEach((firstItemRow) => {
       expect(firstItemRow.classes()).toContain(
@@ -364,6 +380,117 @@ describe('Table tests', () => {
     newItems.forEach((item, index) => {
       const row = getRows()[index];
       expect(row.text()).toContain(item.firstname);
+    });
+  });
+
+  describe('dataTest attribute', () => {
+    const headers: PuikTableHeader[] = [
+      {
+        text: 'Nom',
+        value: 'lastname',
+        size: 'md',
+        searchable: true,
+        sortable: true
+      },
+      {
+        text: 'Prénom',
+        value: 'firstname',
+        size: 'md',
+        searchable: true,
+        sortable: true
+      },
+      {
+        text: 'Age',
+        value: 'age',
+        size: 'sm',
+        align: 'right',
+        searchable: true,
+        sortable: true
+      },
+      {
+        text: 'Email',
+        value: 'email',
+        align: 'left',
+        searchable: true,
+        sortable: false
+      },
+      {
+        value: 'actions',
+        size: 'sm',
+        align: 'center',
+        preventExpand: true,
+        searchSubmit: true
+      }
+    ];
+    const dataTest = 'data-test';
+    it('should have data-test attribute on table', () => {
+      factory({ headers, dataTest, selectable: true, expandable: true });
+      const table = wrapper.findAll(`[data-test="table-${dataTest}"]`);
+      expect(table.length).toBe(1);
+    });
+    it('should have data-test attribute on thead', () => {
+      const thead = wrapper.findAll(`[data-test="table-header-${dataTest}"]`);
+      expect(thead.length).toBe(1);
+    });
+    it('should have data-test attribute on th selectable', () => {
+      const colSelection = wrapper.findAll(
+        `[data-test="table-header-th-${dataTest}-selection"]`
+      );
+      expect(colSelection.length).toBe(1);
+    });
+    it('should have data-test attribute on header checkBox', () => {
+      const headerCheckbox = wrapper.findAll(
+        `[data-test="table-header-checkbox-${dataTest}"]`
+      );
+      expect(headerCheckbox.length).toBe(1);
+    });
+    it('should have data-test attribute on each th', () => {
+      headers.forEach((header, index) => {
+        const col = wrapper.findAll(
+          `[data-test="table-header-content-${dataTest}-${headers[index].value}"]`
+        );
+        expect(col.length).toBe(1);
+      });
+    });
+    it('should have data-test attribute on sortable button', () => {
+      headers.forEach((header, index) => {
+        if (header.sortable) {
+          const col = wrapper.findAll(
+            `[data-test="table-header-sort-${dataTest}-${headers[index].value}"]`
+          );
+          expect(col.length).toBe(1);
+        }
+      });
+    });
+    it('should have data-test attribute on tbody', () => {
+      const tbody = wrapper.findAll(`[data-test="table-body-${dataTest}"]`);
+      expect(tbody.length).toBe(1);
+    });
+    it('should have data-test attribute on each checkbox', () => {
+      defaultItems.forEach((item, index) => {
+        const col = wrapper.findAll(
+          `[data-test="table-body-checkbox-${index}-${dataTest}"]`
+        );
+        expect(col.length).toBe(1);
+      });
+    });
+    it('should have data-test attribute for each icon', () => {
+      defaultItems.forEach((item, index) => {
+        const col = wrapper.findAll(
+          `[data-test="table-body-icon-${index}-${dataTest}"]`
+        );
+        expect(col.length).toBe(1);
+      });
+    });
+    it('should have data-test attribute for each item', () => {
+      headers.forEach((header, index) => {
+        defaultItems.forEach((item, index) => {
+          const col = wrapper.findAll(
+            `[data-test="table-body-item-${index}-${header.value}-${dataTest}"]`
+          );
+          expect(col.length).toBe(1);
+        });
+      });
     });
   });
 });

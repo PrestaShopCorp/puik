@@ -29,6 +29,9 @@
         :key="page"
         :model-value="page"
         :disabled="disabled"
+        :data-test="
+          dataTest != undefined ? `pageSelector-${dataTest}` : undefined
+        "
         class="puik-pagination__select"
         @update:model-value="emit('update:page', $event)"
       >
@@ -36,6 +39,11 @@
           v-for="index in maxPage"
           :key="`puik-pagination__page-selector__option-${index}`"
           :value="index"
+          :data-test="
+            dataTest != undefined
+              ? `pageSelectorOption-${dataTest}-${index}`
+              : undefined
+          "
         >
           {{ index }}
         </puik-option>
