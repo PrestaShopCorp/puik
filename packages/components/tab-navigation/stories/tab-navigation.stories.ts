@@ -199,7 +199,7 @@ export const ChangeActiveTabEvent: StoryObj = {
   <puik-tab-navigation
     :name="args.name"
     :default-position="args.defaultPosition"
-    @change-active-tab="(currentTabPosition) => activeTab = currentTabPosition"
+    @change-active-tab="(position) => activeTab = position"
   >
     <puik-tab-navigation-group-titles :aria-label="args.ariaLabel">
       <template v-for="(tab, index) in tabs" :key="index">
@@ -233,7 +233,7 @@ export const ChangeActiveTabEvent: StoryObj = {
 <puik-tab-navigation
   :name="args.name"
   :default-position="args.defaultPosition"
-  @change-active-tab="(currentTabPosition) => activeTab = currentTabPosition"
+  @change-active-tab="(position) => activeTab = position"
 >
   <puik-tab-navigation-group-titles :aria-label="args.ariaLabel">
     <template v-for="(tab, index) in tabs" :key="index">
