@@ -56,18 +56,35 @@ const template = `
   </puik-tab-navigation-group-panels>
 </puik-tab-navigation>
 `;
+
 describe('TabNavigation tests', () => {
   it('should be a vue instance', () => {
     factory(template);
-    expect(getTabNavigationComponent).toBeTruthy();
+    expect(getTabNavigationComponent()).toBeTruthy();
   });
+
   it('As defaultPosition prop value is 2, tab-2 should be selected', () => {
     factory(template);
     const tab2 = getTabNavigationTitleHtml()[1];
     expect(tab2.classes()).toContain('puik-tab-navigation__title--selected');
   });
+
   it('As name prop value is "name-example", id attribute of puik-tab-navigation should be "name-example"', () => {
     factory(template);
     expect(getTabNavigationHtml().attributes().id).toBe('name-example');
+  });
+
+  it('should not select disabled tab', async () => {
+    factory(template);
+    const tab3 = getTabNavigationTitleHtml()[2];
+    await tab3.trigger('click');
+    expect(tab3.classes()).not.toContain('puik-tab-navigation__title--selected');
+  });
+
+  it('should change active tab when a tab is clicked', async () => {
+    factory(template);
+    const tab1 = getTabNavigationTitleHtml()[0];
+    await tab1.trigger('click');
+    expect(tab1.classes()).toContain('puik-tab-navigation__title--selected');
   });
 });
