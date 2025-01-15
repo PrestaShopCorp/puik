@@ -21,8 +21,11 @@ export default {
       readonly: 'Read\xa0only'
     },
     select: {
-      searchPlaceholder: 'Search',
-      noResults: 'No results matched'
+      placeholder: 'Select an option',
+      searchPlaceholder: 'Search...',
+      noResults: 'No results matched',
+      selectAll: 'Select all',
+      deselectAll: 'Deselect all'
     },
     table: {
       expandableHeaderLabel: 'header column for the expandable rows feature',

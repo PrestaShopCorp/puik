@@ -10,6 +10,7 @@ export enum PuikPaginationVariants {
 }
 
 export interface PaginationProps {
+  id?: string
   variant?: `${PuikPaginationVariants}`
   totalItem: number
   itemsPerPage?: number

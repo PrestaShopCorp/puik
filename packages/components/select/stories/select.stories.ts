@@ -1,63 +1,242 @@
+import { PuikSelect, PuikOption, PuikBadge } from '@prestashopcorp/puik-components';
+import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3';
 import { ref } from 'vue';
-import { PuikSelect, PuikOption } from '@prestashopcorp/puik-components';
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
 export default {
   title: 'Components/Select',
-  components: PuikSelect,
+  components: { PuikSelect, PuikOption },
   argTypes: {
-    customLabel: {
+    modelValue: {
       control: 'text',
-      description:
-        'Use custom label when the label is different from the option selected',
+      description: 'Corresponds to the selected option (or selected options in the case of multi-select)',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'any'
+        },
         category: 'Common'
-      }
-    },
-    labelKey: {
-      control: 'text',
-      description:
-        'In the case of using objects as a options prop you can set which property of the object is the label',
-      table: {
-        defaultValue: { summary: 'label' },
-        category: 'Searchable'
-      }
-    },
-    valueKey: {
-      control: 'text',
-      description:
-        'In the case of using objects as a options prop you can set which property of the object is the value',
-      table: {
-        defaultValue: { summary: 'value' },
-        category: 'Searchable'
       }
     },
     id: {
       control: 'text',
-      description: 'Sets the id attribute of the select',
+      description: 'Sets the id attribute of the select input',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
-    disabled: {
-      control: 'boolean',
-      description: 'Disables the select',
+    name: {
+      control: 'text',
+      description: 'Sets the name attribute of the select input',
       table: {
-        defaultValue: { summary: false },
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
+      }
+    },
+    label: {
+      control: 'text',
+      description: 'Sets the label of the select input',
+      table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Common'
+      }
+    },
+    required: {
+      control: 'boolean',
+      description: 'Indicates whether select is required or not',
+      table: {
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
+        category: 'Common'
+      }
+    },
+    optional: {
+      control: 'boolean',
+      description: 'Indicates whether select is optional or not',
+      table: {
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
+        category: 'Common'
+      }
+    },
+    options: {
+      control: 'none',
+      description: 'Array of options passed to the component',
+      table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'Record<string, any>[]'
+        },
+        category: 'Common'
+      }
+    },
+    optionLabelKey: {
+      control: 'text',
+      description: 'In the case of using objects as a options prop you can set which property of the object is the label',
+      table: {
+        defaultValue: {
+          summary: 'label'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Searchable'
+      }
+    },
+    optionValueKey: {
+      control: 'text',
+      description: 'In the case of using objects as a options prop you can set which property of the object is the value',
+      table: {
+        defaultValue: {
+          summary: 'value'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Searchable'
+      }
+    },
+    optionDisabledKey: {
+      control: 'text',
+      description: 'In case of using objects as option props, you can define which property of the object makes the option disabled',
+      table: {
+        defaultValue: {
+          summary: 'disabled'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Searchable'
+      }
+    },
+    multiSelect: {
+      control: 'boolean',
+      description: 'Indicates whether the select allows multiple choice',
+      table: {
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
+        category: 'Common'
+      }
+    },
+    searchable: {
+      control: 'boolean',
+      description: 'Enables the search feature',
+      table: {
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
+        category: 'Searchable'
+      }
+    },
+    customFilterMethod: {
+      control: 'none',
+      description: 'Use your own method to filter the options when using the search',
+      table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'function'
+        },
+        category: 'Searchable'
       }
     },
     placeholder: {
       control: 'text',
       description: 'Sets a placeholder for the select',
       table: {
+        defaultValue: {
+          summary: 'Select an option'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
-    name: {
+    searchPlaceholder: {
       control: 'text',
-      description: 'Defines a name for the select',
+      description: 'Sets a placeholder for the search input',
       table: {
+        defaultValue: {
+          summary: 'Search...'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Searchable'
+      }
+    },
+    noMatchText: {
+      control: 'text',
+      description: 'Message to display when there are no results found',
+      table: {
+        defaultValue: {
+          summary: 'No results matched'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Searchable'
+      }
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the select',
+      table: {
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
+        category: 'Common'
+      }
+    },
+    error: {
+      control: 'text',
+      description: 'Displays an error message under the field and sets the select in an error state (also available as a slot named error)',
+      table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
@@ -65,68 +244,147 @@ export default {
       control: 'text',
       description: 'Enables browser autocompletion for the select',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
-    error: {
+    prependInputIcon: {
       control: 'text',
-      description:
-        'Display an error message under the field and sets the select in a error state (also available as a slot named error)',
+      description: 'Prepends a Material Symbols to the input (cf https://fonts.google.com/icons)',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string'
+        },
         category: 'Common'
       }
     },
-    options: {
-      control: 'none',
-      description:
-        'Pass options to the component to enable the option filtering (⚠️ Default filtering only works for arrays of string, number, object. Use `customFilterMethod` for specific needs) (Returns also an `options` value through the v-slot directive',
-      table: {
-        category: 'Searchable'
-      }
-    },
-    customFilterMethod: {
-      control: 'none',
-      description:
-        'Use your own method to filter the options when using the search',
-      table: {
-        category: 'Searchable'
-      }
-    },
-    noMatchText: {
-      control: 'text',
-      description: 'Message to display when there is no results found',
-      table: {
-        category: 'Searchable'
-      }
-    },
-    fullWidth: {
+    open: {
       control: 'boolean',
-      description:
-        'Keep same width for the dropdown and select input. True by default',
+      description: 'Controls the opening of the select dropdown',
       table: {
-        defaultValue: true,
+        defaultValue: {
+          summary: 'false'
+        },
+        type: {
+          summary: 'boolean'
+        },
+        category: 'Common'
+      }
+    },
+    zIndex: {
+      control: 'number',
+      description: 'Sets z-index attribute of dropdown',
+      table: {
+        defaultValue: {
+          summary: 10
+        },
+        type: {
+          summary: 'number'
+        },
         category: 'Common'
       }
     },
     dataTest: {
       control: 'text',
-      description:
-        'Sets the data-test attribute `searchInput-${dataTest}` `noResults-${dataTest}` `select-${dataTest}` `option-${dataTest}-${index + 1}`',
+      description: 'Sets the data-test attribute',
       table: {
+        defaultValue: {
+          summary: 'none'
+        },
+        type: {
+          summary: 'string (see details)',
+          detail: `
+select-label-{dataTest}
+select-multiple-options-tags-{dataTest}
+select-tag-{index + 1}-{dataTest} (for each tag)
+select-multiple-input-{dataTest}
+select-single-{dataTest}
+select-dropdown-{dataTest}
+select-search-input-{dataTest}
+select-option-{index + 1}-{dataTest} (for each option)
+select-error-{dataTest}
+          `
+        },
         category: 'Common'
+      }
+    },
+    '@open': {
+      description: 'Event triggered when the select is opened or closed',
+      table: {
+        defaultValue: {
+          summary: '@open'
+        },
+        type: {
+          summary: 'Event (see details)',
+          detail: `
+          'open': [state: boolean]
+          `
+        },
+        category: 'Events'
+      }
+    },
+    '@update:modelValue': {
+      description: 'Event triggered when the selected option(s) is/are updated',
+      table: {
+        defaultValue: {
+          summary: '@update:model-value'
+        },
+        type: {
+          summary: 'Event (see details)',
+          detail: `
+            'update:modelValue': [selectedOptions: any]
+          `
+        },
+        category: 'Events'
+      }
+    },
+    '@search': {
+      description: 'Event triggered when typing in the searchbar. Returns the text query as well as the list of filtered options',
+      table: {
+        defaultValue: {
+          summary: '@search'
+        },
+        type: {
+          summary: 'Event (see details)',
+          detail: `
+            'search': [searchQuery: string, filteredOptions: any ]
+          `
+        },
+        category: 'Events'
       }
     }
   },
   args: {
-    labelKey: '',
-    valueKey: '',
-    id: '',
+    id: 'select-id',
+    name: 'select-name',
+    label: 'Select an option',
+    options: [
+      { label: 'Option 1', value: '1' },
+      { label: 'Option 2', value: '2' },
+      { label: 'Option 3', value: '3' }
+    ],
+    required: false,
+    optional: false,
+    searchable: false,
+    optionLabelKey: 'label',
+    optionValueKey: 'value',
+    optionDisabledKey: 'disabled',
+    multiSelect: false,
     disabled: false,
-    placeholder: 'Select a value',
     error: '',
-    options: undefined,
-    customFilterMethod: undefined,
-    noMatchText: ''
+    autocomplete: 'off',
+    prependInputIcon: '',
+    open: false,
+    zIndex: 10,
+    dataTest: 'data-test'
   }
 } as Meta;
 
@@ -136,84 +394,64 @@ const Template: StoryFn = (args: Args) => ({
     PuikOption
   },
   setup() {
-    const myValue = ref('');
-    return { args, myValue };
+    const selectedOptions = ref();
+    return { selectedOptions, args };
   },
   template: `
-  <puik-select v-model="myValue" v-bind="args">
-    <puik-option value="test">Test</puik-option>
-    <puik-option value="test2">Test2</puik-option>
-    <puik-option value="test3">Test3</puik-option>
-  </puik-select>`
+  <div class="min-h-[200px]">
+    <puik-select
+      :key="args.open"
+      v-model="selectedOptions"
+      v-bind="args"
+    />
+  </div>
+  `
 });
 
 export const Default = {
   render: Template,
   args: {},
-
   parameters: {
     docs: {
+      description: {
+        story: `
+If the options are not objects of type Record<string, any> but numbers or simple strings, we cannot use PuikSelect without going through the default slot.
+
+We will then have to customize the select via PuikOption sub-components (see Option subsection).
+          `
+      },
       source: {
         code: `
-    <!--VueJS Snippet-->
-    <puik-select v-model="myValue" v-bind="args">
-      <puik-option value="test">Test</puik-option>
-      <puik-option value="test2">Test2</puik-option>
-      <puik-option value="test3">Test3</puik-option>
-    </puik-select>
-    <!--HTML/CSS Snippet-->
-    <div class="puik-select">
-    <div class="puik-select__wrapper">
-      <!--
-        State classes
-        Error: "puik-select__button--error"
-        -->
-      <button
-        class="puik-select__button"
-        aria-haspopup="listbox"
-        aria-expanded="false"
-      >
-        <span class="puik-select__selected">
-          <!-- Placeholder or selected value -->
-          Select a value
-        </span>
-        <span class="puik-icon puik-select__icon"> unfold_more </span>
-      </button>
-      <!--
-        Select list, show/hide base on select state
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
 
-        Leaving: "puik-select__transition__leave--active"
-        From: "puik-select__transition__leave--from"
-        To: "puik-select__transition__leave--to"
-      -->
-      <div
-        class="puik-select__options"
-        tabindex="-1"
-        role="listbox"
-      >
-        <!--
-            State classes
-            Active: "puik-option--active"
-            Selected: "puik-option--selected"
-            Disabled: "puik-option--disabled"
-          -->
-        <ul class="puik-select__options-list">
-          <li class="puik-option" role="option">
-            <span class="puik-option__label">Test 1</span>
-            <!-- Checkmark, only display for selected option. -->
-            <span class="puik-icon puik-option__selected-icon"> checked </span>
-          </li>
-          <!-- More items... -->
-        </ul>
-      </div>
-      <!-- Error message, only displayed when there is an error. -->
-      <div class="puik-select__error"
-        >
-        <span class="puik-icon puik-select__error__icon">error</span>
-        <span class="puik-select__error__text">My error</span>
-      </div>
-    </div>
-  </div>
+<PuikSelect
+  v-model="selectedOptions"
+  id="select-id"
+  name="select-name"
+  label="Select an option"
+  :options="options"
+  :required="false"
+  :optional="false"
+  :searchable="false"
+  :optionLabelKey="label"
+  :optionValueKey="value"
+  :optionDisabledKey="disabled"
+  optionLabelKey="label"
+  multiSelect="false"
+  disabled="false"
+  error=""
+  autocomplete="off"
+  prependInputIcon=""
+  open="false"
+  :zIndex="10"
+  dataTest="data-test"
+/>
         `,
         language: 'html'
       }
@@ -221,396 +459,33 @@ export const Default = {
   }
 };
 
-export const Disabled: StoryObj = {
-  render: () => ({
-    components: {
-      PuikSelect,
-      PuikOption
-    },
-    template: '<puik-select disabled placeholder="Disabled select"></puik-select>'
-  }),
-
-  parameters: {
-    docs: {
-      source: {
-        code: `
-    <!--VueJS Snippet-->
-    <puik-select v-model="myValue" v-bind="args" disabled>
-      <puik-option value="test">Test</puik-option>
-      <puik-option value="test2">Test2</puik-option>
-      <puik-option value="test3">Test3</puik-option>
-    </puik-select>
-    <!--HTML/CSS Snippet-->
-    <div class="puik-select">
-    <div class="puik-select__wrapper">
-      <button
-        class="puik-select__button"
-        aria-haspopup="listbox"
-        aria-expanded="false"
-        disabled
-      >
-        <span class="puik-select__selected">
-          <!-- Placeholder or selected value -->
-          Select a value
-        </span>
-        <span class="puik-icon puik-select__icon"> unfold_more </span>
-      </button>
-      <!--
-        Select list, show/hide base on select state
-
-        Leaving: "puik-select__transition__leave--active"
-        From: "puik-select__transition__leave--from"
-        To: "puik-select__transition__leave--to"
-      -->
-      <div
-        class="puik-select__options"
-        tabindex="-1"
-        role="listbox"
-      >
-        <ul class="puik-select__options-list">
-          <li class="puik-option" role="option">
-            <span class="puik-option__label">Test 1</span>
-            <!-- Checkmark, only display for selected option. -->
-            <span class="puik-icon puik-option__selected-icon"> checked </span>
-          </li>
-          <!-- More items... -->
-        </ul>
-      </div>
-    </div>
-  </div>
-        `,
-        language: 'html'
-      }
-    }
-  }
-};
-
-export const DisabledOption: StoryObj = {
-  render: () => ({
-    components: {
-      PuikSelect,
-      PuikOption
-    },
-    setup() {
-      const myValue = ref('');
-      return { myValue };
-    },
-    template: `<puik-select v-model="myValue" placeholder="Select a value">
-        <puik-option value="test" label="Test" disabled/>
-        <puik-option value="test2" label="Test2"/>
-        <puik-option value="test3" label="Test3"/>
-      </puik-select>`
-  }),
-
-  parameters: {
-    docs: {
-      source: {
-        code: `
-    <!--VueJS Snippet-->
-    <puik-select v-model="myValue" v-bind="args">
-      <puik-option value="test">Test</puik-option>
-      <puik-option value="test2">Test2</puik-option>
-      <puik-option value="test3">Test3</puik-option>
-    </puik-select>
-    <!--HTML/CSS Snippet-->
-    <div class="puik-select">
-    <div class="puik-select__wrapper">
-      <button
-        class="puik-select__button"
-        aria-haspopup="listbox"
-        aria-expanded="false"
-      >
-        <span class="puik-select__selected">
-          <!-- Placeholder or selected value -->
-          Select a value
-        </span>
-        <span class="puik-icon puik-select__icon"> unfold_more </span>
-      </button>
-      <!--
-        Select list, show/hide base on select state
-
-        Leaving: "puik-select__transition__leave--active"
-        From: "puik-select__transition__leave--from"
-        To: "puik-select__transition__leave--to"
-      -->
-      <div
-        class="puik-select__options"
-        tabindex="-1"
-        role="listbox"
-      >
-        <ul class="puik-select__options-list">
-          <li class="puik-option puik-option--disabled" role="option">
-            <span class="puik-option__label">Test 1</span>
-            <!-- Checkmark, only display for selected option. -->
-            <span class="puik-icon puik-option__selected-icon"> checked </span>
-          </li>
-          <!-- More items... -->
-        </ul>
-      </div>
-    </div>
-  </div>
-        `,
-        language: 'html'
-      }
-    }
-  }
-};
-
-export const Error: StoryObj = {
-  render: () => ({
-    components: {
-      PuikSelect,
-      PuikOption
-    },
-    setup() {
-      const myValue = ref('');
-      return { myValue };
-    },
-    template: `<puik-select error="This is an error message" v-model="myValue" placeholder="Select a value">
-        <puik-option value="test" label="Test"/>
-        <puik-option value="test2" label="Test2"/>
-        <puik-option value="test3" label="Test3"/>
-      </puik-select>`
-  }),
-
-  parameters: {
-    docs: {
-      source: {
-        code: `
-    <!--VueJS Snippet-->
-    <puik-select v-model="myValue">
-      <puik-option value="test">Test</puik-option>
-      <puik-option value="test2">Test2</puik-option>
-      <puik-option value="test3">Test3</puik-option>
-      <template #error>
-      <!-- Also available through the error prop -->
-        This is an error message
-      </template>
-    </puik-select>
-    <!--HTML/CSS Snippet-->
-    <div class="puik-select">
-    <div class="puik-select__wrapper">
-      <button
-        class="puik-select__button puik-select__button--error"
-        aria-haspopup="listbox"
-        aria-expanded="false"
-      >
-        <span class="puik-select__selected">
-          <!-- Placeholder or selected value -->
-          Select a value
-        </span>
-        <span class="puik-icon puik-select__icon"> unfold_more </span>
-      </button>
-      <!--
-        Select list, show/hide base on select state
-
-        Leaving: "puik-select__transition__leave--active"
-        From: "puik-select__transition__leave--from"
-        To: "puik-select__transition__leave--to"
-      -->
-      <div
-        class="puik-select__options"
-        tabindex="-1"
-        role="listbox"
-      >
-        <ul class="puik-select__options-list">
-          <li class="puik-option" role="option">
-            <span class="puik-option__label">Test 1</span>
-            <!-- Checkmark, only display for selected option. -->
-            <span class="puik-icon puik-option__selected-icon"> checked </span>
-          </li>
-          <!-- More items... -->
-        </ul>
-      </div>
-      <span class="puik-select__error"
-        ><span class="puik-icon puik-select__error__icon">error</span>My error</span
-      >
-    </div>
-  </div>
-        `,
-        language: 'html'
-      }
-    }
-  }
-};
-
-export const Searchable: StoryObj = {
-  render: () => ({
-    components: {
-      PuikSelect,
-      PuikOption
-    },
-    setup() {
-      const myValue = ref('');
-      const myOptions = ref([
-        { value: 'test', label: 'Test' },
-        { value: 'test2', label: 'Test2' },
-        { value: 'test3', label: 'Test3' }
-      ]);
-      return { myValue, myOptions };
-    },
-    template: `
-      <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value">
-        <puik-option v-for="option in options" :value="option.value" :label="option.label"/>
-      </puik-select>`
-  }),
-
-  parameters: {
-    docs: {
-      source: {
-        code: `
-    <!--VueJS Snippet-->
-    <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value">
-      <puik-option v-for="option in options" option="option.value">{{ option.label }}</puik-option>
-    </puik-select>
-    <!--HTML/CSS Snippet-->
-    <div class="puik-select">
-    <div class="puik-select__wrapper">
-      <button
-        class="puik-select__button"
-        aria-haspopup="listbox"
-        aria-expanded="false"
-      >
-        <span class="puik-select__selected">
-          <!-- Placeholder or selected value -->
-          Select a value
-        </span>
-        <span class="puik-icon puik-select__icon"> unfold_more </span>
-      </button>
-      <!--
-        Select list, show/hide base on select state
-
-        Leaving: "puik-select__transition__leave--active"
-        From: "puik-select__transition__leave--from"
-        To: "puik-select__transition__leave--to"
-      -->
-      <div
-        class="puik-select__options"
-        tabindex="-1"
-        role="listbox"
-      >
-        <div class="puik-input">
-          <div class="puik-input__wrapper>
-            <div class="puik-input__prepend">
-              <span class="puik-icon puik-select__search__icon">search</span>
-            </div>
-            <input class="puik-input__field" type="text" />
-          </div>
-        </div>
-        <!--
-          To display only if there are no results
-          query: search query value
-        -->
-        <p
-          class="puik-select__no-results"
-        >
-          No results found for {query}
-        </p>
-        <ul class="puik-select__options-list">
-          <li class="puik-option" role="option">
-            <span class="puik-option__label">Test 1</span>
-            <!-- Checkmark, only display for selected option. -->
-            <span class="puik-icon puik-option__selected-icon"> checked </span>
-          </li>
-          <!-- More items... -->
-        </ul>
-      </div>
-    </div>
-  </div>
-        `,
-        language: 'html'
-      }
-    }
-  }
-};
-
-export const NoMatchCustomText: StoryObj = {
-  render: (args: Args) => ({
-    components: {
-      PuikSelect,
-      PuikOption
-    },
-    setup() {
-      const myValue = ref('');
-      const myOptions = ref([
-        { value: 'test', label: 'Test' },
-        { value: 'test2', label: 'Test2' },
-        { value: 'test3', label: 'Test3' }
-      ]);
-      return { myValue, myOptions, args };
-    },
-    template: `
-      <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value" :no-match-text="args.noMatchText">
-        <puik-option v-for="option in options" :value="option.value" :label="option.label"/>
-      </puik-select>`
-  }),
-
+export const Required = {
+  render: Template,
   args: {
-    noMatchText: 'No results found custom text'
+    id: 'required-select-id',
+    name: 'required-select-name',
+    required: true
   },
-
   parameters: {
     docs: {
       source: {
         code: `
-    <!--VueJS Snippet-->
-    <puik-select v-slot="{ options }" :options="myOptions" v-model="myValue" placeholder="Select a value" no-match-text="No results found custom text">
-      <puik-option v-for="option in options" option="option.value">{{ option.label }}</puik-option>
-    </puik-select>
-    <!--HTML/CSS Snippet-->
-    <div class="puik-select">
-    <div class="puik-select__wrapper">
-      <button
-        class="puik-select__button"
-        aria-haspopup="listbox"
-        aria-expanded="false"
-      >
-        <span class="puik-select__selected">
-          <!-- Placeholder or selected value -->
-          Select a value
-        </span>
-        <span class="puik-icon puik-select__icon"> unfold_more </span>
-      </button>
-      <!--
-        Select list, show/hide base on select state
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
 
-        Leaving: "puik-select__transition__leave--active"
-        From: "puik-select__transition__leave--from"
-        To: "puik-select__transition__leave--to"
-      -->
-      <div
-        class="puik-select__options"
-        tabindex="-1"
-        role="listbox"
-      >
-        <div class="puik-input">
-          <div class="puik-input__wrapper>
-            <div class="puik-input__prepend">
-              <span class="puik-icon puik-select__search__icon">search</span>
-            </div>
-            <input class="puik-input__field" type="text" />
-          </div>
-        </div>
-        <!--
-          To display only if there are no results
-          query: search query value
-        -->
-        <p
-          class="puik-select__no-results"
-        >
-          No results found custom text
-        </p>
-        <ul class="puik-select__options-list">
-          <li class="puik-option" role="option">
-            <span class="puik-option__label">Test 1</span>
-            <!-- Checkmark, only display for selected option. -->
-            <span class="puik-icon puik-option__selected-icon"> checked </span>
-          </li>
-          <!-- More items... -->
-        </ul>
-      </div>
-    </div>
-  </div>
+<PuikSelect
+  v-model="selectedOptions"
+  id="required-select-id"
+  name="required-select-name"
+  label="Select an option"
+  :options="options"
+  required
+/>
         `,
         language: 'html'
       }
@@ -618,68 +493,33 @@ export const NoMatchCustomText: StoryObj = {
   }
 };
 
-export const customLabel = {
-  render: () => ({
-    components: {
-      PuikSelect,
-      PuikOption
-    },
-    setup() {
-      const myValue = ref('');
-      return { myValue };
-    },
-    template: `<puik-select v-model="myValue" placeholder="Select a value" customLabel="Custom label">
-        <puik-option value="test" label="Test 1"/>
-        <puik-option value="test2" label="Test 2"/>
-        <puik-option value="test3" label="Test 3"/>
-      </puik-select>`
-  }),
+export const Optional = {
+  render: Template,
+  args: {
+    id: 'optional-select-id',
+    name: 'optional-select-name',
+    optional: true
+  },
   parameters: {
     docs: {
       source: {
         code: `
-    <!--VueJS Snippet-->
-    <puik-select v-model="myValue" placeholder="Select a value" custom-label="customLabel">
-      <puik-option value="test" label="Test 1"/>
-      <puik-option value="test2" label="Test 2"/>
-      <puik-option value="test3" label="Test 3"/>
-    </puik-select>
-    <!--HTML/CSS Snippet-->
-    <div class="puik-select">
-    <div class="puik-select__wrapper">
-      <button
-        class="puik-select__button"
-        aria-haspopup="listbox"
-        aria-expanded="false"
-        disabled
-      >
-        <span class="puik-select__selected">
-          <!-- Placeholder or selected value -->
-          Select a value
-        </span>
-        <span class="puik-icon puik-select__icon"> unfold_more </span>
-      </button>
-      <!--
-        Select list, show/hide base on select state
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
 
-        Leaving: "puik-select__transition__leave--active"
-        From: "puik-select__transition__leave--from"
-        To: "puik-select__transition__leave--to"
-      -->
-      <div
-        class="puik-select__options"
-        tabindex="-1"
-        role="listbox"
-      >
-        <ul class="puik-select__options-list">
-          <li class="puik-option" role="option">
-            <span class="puik-option__label">Test 1</span>
-          </li>
-          <!-- More items... -->
-        </ul>
-      </div>
-    </div>
-  </div>
+<PuikSelect
+  v-model="selectedOptions"
+  id="optional-select-id"
+  name="optional-select-name"
+  label="Select an option"
+  :options="options"
+  optional
+/>
         `,
         language: 'html'
       }
@@ -687,68 +527,348 @@ export const customLabel = {
   }
 };
 
-export const maxContentOption = {
+export const prependInputIcon = {
+  render: Template,
+  args: {
+    id: 'prepend-select-id',
+    name: 'prepend-select-name',
+    prependInputIcon: 'label'
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
+<PuikSelect
+  v-model="selectedOptions"
+  id="prepend-select-id"
+  name="prepend-select-name"
+  label="Select an option"
+  :options="options"
+  prepend-input-icon="label"
+/>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const Multiple = {
+  render: Template,
+  args: {
+    id: 'multi-select-id',
+    name: 'multi-select-name',
+    label: 'Select option(s)',
+    placeholder: 'Select option(s)',
+    multiSelect: true
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
+<PuikSelect
+  v-model="selectedOptions"
+  id="multi-select-id"
+  name="multi-select-name"
+  label="Select option(s)"
+  placeholder="Select option(s)"
+  :options="options"
+  multi-select
+/>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const DisabledSelect = {
+  render: Template,
+  args: {
+    id: 'disabled-select-id',
+    name: 'disabled-select-name',
+    label: 'Select disabled',
+    disabled: true
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
+<PuikSelect
+  v-model="selectedOptions"
+  id="disabled-select-id"
+  name="disabled-select-name"
+  label="Select disabled"
+  :options="options"
+  disabled
+/>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const DisabledOption = {
+  render: Template,
+  args: {
+    id: 'select-with-option-diasabled-id',
+    name: 'select-with-option-diasabled-name',
+    options: [
+      { label: 'Option 1', value: '1' },
+      { label: 'Option 2', value: '2', disabled: true },
+      { label: 'Option 3', value: '3' }
+    ]
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2', disabled: true },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
+<PuikSelect
+  v-model="selectedOptions"
+  id="select-with-option-diasabled-id"
+  name="select-with-option-diasabled-name"
+  label="Select an option"
+  :options="options"
+/>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const Error = {
+  render: Template,
+  args: {
+    id: 'error-select-id',
+    name: 'error-select-name',
+    error: 'something is wrong'
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
+<PuikSelect
+  v-model="selectedOptions"
+  id="error-select-id"
+  name="error-select-name"
+  label="Select an option"
+  :options="options"
+  error="something is wrong"
+/>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const Searchable = {
+  render: Template,
+  args: {
+    id: 'searchable-select-id',
+    name: 'searchable-select-name',
+    searchable: true
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { label: 'Option 1', value: '1' },
+//   { label: 'Option 2', value: '2' },
+//   { label: 'Option 3', value: '3' }
+// ];
+// const selectedOptions = ref();
+
+<PuikSelect
+  v-model="selectedOptions"
+  id="searchable-select-id"
+  name="searchable-select-name"
+  label="Select an option"
+  :options="options"
+  searchable
+/>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const openEvent: StoryObj = {
   render: () => ({
     components: {
       PuikSelect,
-      PuikOption
+      PuikBadge
     },
     setup() {
-      const myValue = ref('');
-      return { myValue };
+      const options = [
+        { label: 'Option 1', value: '1' },
+        { label: 'Option 2', value: '2' },
+        { label: 'Option 3', value: '3' }
+      ];
+      const selectedOption = ref();
+      const openState = ref(false);
+      return { options, selectedOption, openState };
     },
-    template: `<puik-select v-model="myValue" placeholder="Select a value" :full-width="false">
-        <puik-option value="test" label="Test 1"/>
-        <puik-option value="test2" label="Test 2"/>
-        <puik-option value="test3" label="Test 3"/>
-      </puik-select>`
+    template: `
+  <div class="min-h-[250px] flex flex-col space-y-2">
+    <div>
+      <puik-badge :variant="openState ? 'success' : 'warning'">
+        open state : {{ openState }}
+      </puik-badge>
+    </div>
+    <puik-select
+      v-model="selectedOption"
+      :key="selectedOption"
+      id="select-open-event-id"
+      name="select-open-event-name"
+      label="Select an option"
+      :options="options"
+      :open="openState"
+      @open="(state) => openState = state"
+    />
+  </div>
+    `
   }),
   parameters: {
     docs: {
       source: {
         code: `
     <!--VueJS Snippet-->
-    <puik-select v-model="myValue" placeholder="Select a value" custom-label="customLabel">
-      <puik-option value="test" label="Test 1"/>
-      <puik-option value="test2" label="Test 2"/>
-      <puik-option value="test3" label="Test 3"/>
-    </puik-select>
-    <!--HTML/CSS Snippet-->
-    <div class="puik-select">
-    <div class="puik-select__wrapper">
-      <button
-        class="puik-select__button"
-        aria-haspopup="listbox"
-        aria-expanded="false"
-        disabled
-      >
-        <span class="puik-select__selected">
-          <!-- Placeholder or selected value -->
-          Select a value
-        </span>
-        <span class="puik-icon puik-select__icon"> unfold_more </span>
-      </button>
-      <!--
-        Select list, show/hide base on select state
+    // const options = [
+    //   { label: 'Option 1', value: '1' },
+    //   { label: 'Option 2', value: '2' },
+    //   { label: 'Option 3', value: '3' }
+    // ];
+    // const selectedOption = ref();
+    // const openState = ref(false);
+    
+    <puik-badge :variant="openState ? 'success' : 'warning'">
+      open state : {{ openState }}
+    </puik-badge>
 
-        Leaving: "puik-select__transition__leave--active"
-        From: "puik-select__transition__leave--from"
-        To: "puik-select__transition__leave--to"
-      -->
-      <div
-        class="puik-select__options"
-        tabindex="-1"
-        role="listbox"
-      >
-        <ul class="puik-select__options-list">
-          <li class="puik-option" role="option">
-            <span class="puik-option__label">Test 1</span>
-          </li>
-          <!-- More items... -->
-        </ul>
-      </div>
+    <puik-select
+      v-model="selectedOption"
+      :key="selectedOption"
+      id="select-open-event-id"
+      name="select-open-event-name"
+      label="Select an option"
+      :options="options"
+      :open="openState"
+      @open="(state) => openState = state"
+    />
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const updateModelValueEvent: StoryObj = {
+  render: () => ({
+    components: {
+      PuikSelect,
+      PuikBadge
+    },
+    setup() {
+      const options = [
+        { label: 'Option 1', value: '1' },
+        { label: 'Option 2', value: '2' },
+        { label: 'Option 3', value: '3' }
+      ];
+      const selectedOption = ref();
+      const newValue = ref();
+      return { options, selectedOption, newValue };
+    },
+    template: `
+  <div class="min-h-[250px] flex flex-col space-y-2">
+    <div>
+      <puik-badge variant="info">
+        value : {{ newValue }}
+      </puik-badge>
     </div>
+    <puik-select
+      v-model="selectedOption"
+      :key="selectedOption"
+      id="select-update-model-value-id"
+      name="select-update-model-value--name"
+      label="Select an option"
+      :options="options"
+      @update:model-value="(payload) => newValue = payload"
+    />
   </div>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+    <!--VueJS Snippet-->
+    // const options = [
+    //   { label: 'Option 1', value: '1' },
+    //   { label: 'Option 2', value: '2' },
+    //   { label: 'Option 3', value: '3' }
+    // ];
+    // const selectedOption = ref();
+    // const newValue = ref();
+
+    <puik-badge variant="info">
+      value : {{ newValue }}
+    </puik-badge>
+
+    <puik-select
+      v-model="selectedOption"
+      :key="selectedOption"
+      id="select-update-model-value-id"
+      name="select-update-model-value--name"
+      label="Select an option"
+      :options="options"
+      @update:model-value="(payload) => newValue = payload"
+    />
         `,
         language: 'html'
       }

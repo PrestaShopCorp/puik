@@ -5,7 +5,7 @@
   >
     <puik-button
       :aria-current="isCurrentStep ? 'step' : undefined"
-      :aria-label="step"
+      :aria-label="`${step}`"
       :disabled="disabled"
       :left-icon="isCompleted ? 'check' : undefined"
       :variant="buttonVariant"

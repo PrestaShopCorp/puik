@@ -6,9 +6,7 @@ import TabNavigationPanel from './src/tab-navigation-panel.vue';
 
 export const PuikTabNavigation = TabNavigation;
 export const PuikTabNavigationGroupTitles = TabNavigationGroupTitles;
-
 export const PuikTabNavigationGroupPanels = TabNavigationGroupPanels;
-
 export const PuikTabNavigationTitle = TabNavigationTitle;
 export const PuikTabNavigationPanel = TabNavigationPanel;
 
