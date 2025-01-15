@@ -45,7 +45,7 @@
           :is-selected="page === pageNb"
           :data-test="
             dataTest != undefined
-              ? `pageSelectorOption-${dataTest}-${index}`
+              ? `pageSelectorOption-${dataTest}-${pageNb}`
               : undefined
           "
           @select="(payload) => emit('update:page', payload.value)"
