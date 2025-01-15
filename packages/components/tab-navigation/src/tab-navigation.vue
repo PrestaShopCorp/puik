@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { nextTick, provide, ref } from 'vue';
-import { currentTabKey, type TabNavigationProps } from './tab-navigation';
+import { currentTabKey, type TabNavigationProps, TabNavigationEmits } from './tab-navigation';
 
 defineOptions({
   name: 'PuikTabNavigation'
@@ -19,6 +19,7 @@ defineOptions({
 const props = withDefaults(defineProps<TabNavigationProps>(), {
   defaultPosition: 1
 });
+const emit = defineEmits<TabNavigationEmits>();
 
 const name = ref<string>(props.name);
 const numberOfTabs = ref<number>(1);
@@ -26,6 +27,7 @@ const currentPosition = ref<number>(props.defaultPosition);
 const keyEventDirection = ref<string | null>();
 const handleTabClick = (index: number) => {
   currentPosition.value = index;
+  emit('change-active-tab', currentPosition.value);
 };
 
 provide(currentTabKey, {
@@ -50,6 +52,7 @@ const selectNextTab = () => {
       '.puik-tab-navigation__title--selected'
     ) as HTMLElement;
     tabSelected.focus();
+    emit('change-active-tab', currentPosition.value);
   });
 };
 
@@ -67,6 +70,7 @@ const selectPreviousTab = () => {
       '.puik-tab-navigation__title--selected'
     ) as HTMLElement;
     tabSelected.focus();
+    emit('change-active-tab', currentPosition.value);
   });
 };
 
