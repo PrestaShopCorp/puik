@@ -7,6 +7,9 @@ export interface TabNavigationProps {
   defaultPosition?: number
 }
 
+export type TabNavigationEmits = {
+  'change-active-tab': [position: number]
+};
 export type TabNavigationInstance = InstanceType<typeof TabNavigation>;
 
 export type currentTabKeyContext = {
