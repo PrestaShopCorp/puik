@@ -7,3 +7,4 @@ export default PuikSnackbar;
 
 export * from './src/snackbar';
 export * from './src/snackbar-provider';
+export * from './src/use-snackbar';

@@ -1,10 +1,12 @@
-import { PuikButton, PuikButtonVariants, PuikButtonSizes } from '@prestashopcorp/puik-components';
+import { PuikButton, PuikButtonVariants, PuikButtonSizes, PuikButtonLoaderPositions } from '@prestashopcorp/puik-components';
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
 const buttonVariants = Object.values(PuikButtonVariants);
 const buttonVariantsSummary = buttonVariants.join('|');
 const buttonSizes = Object.values(PuikButtonSizes);
 const buttonSizesSummary = buttonSizes.join('|');
+const buttonLoaderPositions = Object.values(PuikButtonLoaderPositions);
+const buttonLoaderPositionsSummary = buttonLoaderPositions.join('|');
 
 export default {
   title: 'Components/Button',
@@ -66,6 +68,31 @@ export default {
     rightIcon: {
       description: 'Sets the button right icon'
     },
+    loading: {
+      control: 'boolean',
+      description: 'Sets the loading state of the button',
+      table: {
+        defaultValue: {
+          summary: false
+        },
+        type: {
+          summary: 'boolean'
+        }
+      }
+    },
+    loaderPosition: {
+      control: 'select',
+      description: 'Sets the loading position of the button',
+      options: buttonLoaderPositions,
+      table: {
+        defaultValue: {
+          summary: 'right'
+        },
+        type: {
+          summary: buttonLoaderPositionsSummary
+        }
+      }
+    },
     default: {
       control: 'text',
       description: 'Label/Content of the button'
@@ -109,6 +136,8 @@ export default {
     disabledReason: 'Reason not specified',
     leftIcon: '',
     rightIcon: '',
+    loading: false,
+    loaderPosition: PuikButtonLoaderPositions.Right,
     to: undefined,
     href: undefined,
     default: 'Add to cart'
@@ -237,6 +266,53 @@ const AllReversedVariantsTemplate: StoryFn = (args: Args, storyContext) => ({
     </div>
   `
 });
+
+const LoadingTemplate: StoryFn = (args: Args, storyContext) => ({
+  components: { PuikButton },
+  args: {
+    loading: true
+  },
+  setup() {
+    const loaderPositions = storyContext.argTypes.loaderPosition.options;
+    console.log(storyContext.argTypes.loaderPosition.options);
+    return {
+      args,
+      loaderPositions
+    };
+  },
+  template: `
+    <div class="flex flex-row flex-wrap items-center gap-4">
+      <template v-for="(position, i) in loaderPositions" :key="i">
+        <puik-button  loading :loaderPosition="position">
+          Loading ...
+        </puik-button>
+      </template>
+    </div>
+  `
+});
+
+export const LoadingState: StoryObj = {
+  render: LoadingTemplate,
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button  loading loaderPosition="left">
+    Loading ...
+  </puik-button>
+  
+  <puik-button  loading loaderPosition="right">
+    Loading ...
+  </puik-button>
+
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
 
 export const Primary: StoryObj = {
   render: ButtonTemplate,

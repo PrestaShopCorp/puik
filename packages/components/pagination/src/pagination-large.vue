@@ -30,6 +30,9 @@
         :key="page"
         :model-value="page"
         :disabled="disabled"
+        :data-test="
+          dataTest != undefined ? `pageSelector-${dataTest}` : undefined
+        "
         class="puik-pagination__select"
         :open="openJumper"
         @update:model-value="emit('update:page', $event)"
@@ -40,6 +43,11 @@
           :label="pageNb"
           :value="pageNb"
           :is-selected="page === pageNb"
+          :data-test="
+            dataTest != undefined
+              ? `pageSelectorOption-${dataTest}-${index}`
+              : undefined
+          "
           @select="(payload) => emit('update:page', payload.value)"
           @open="(state) => openJumper = state"
         >
