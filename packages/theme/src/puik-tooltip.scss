@@ -8,7 +8,8 @@
   }
 
   &__tip {
-    @apply absolute bg-primary text-white px-3 py-2 font-primary;
+    @apply absolute w-max bg-primary text-white px-3 py-2 font-primary;
+    margin: 4px !important;
 
     &__content {
       @extend .puik-body-default;
