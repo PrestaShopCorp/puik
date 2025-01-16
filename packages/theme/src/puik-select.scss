@@ -2,6 +2,13 @@
 
 .puik-select {
   @extend .puik-body-default;
+  
+  &--disabled {
+    #select-combobox {
+      @apply cursor-not-allowed;
+    }
+  }
+
   &__container {
     @apply flex flex-col relative;
   }
