@@ -1,7 +1,10 @@
 <template>
   <div
     v-on-click-outside="closeOptions"
-    class="puik-select"
+    :class="[
+      'puik-select',
+      { 'puik-select--disabled': props.disabled }
+    ]"
     :data-test="dataTest != undefined ? `select-${dataTest}` : undefined"
     @keydown.esc="closeOptions"
     @keydown.up.prevent.stop="handleKeyDown"
@@ -43,10 +46,12 @@
         >
           <PuikIcon
             v-if="props.prependInputIcon"
+            :is-disabled="props.disabled"
             :icon="props.prependInputIcon"
           />
           <PuikIcon
             class="puik-multi-select__dropdown-icon"
+            :is-disabled="props.disabled"
             icon="unfold_more"
           />
           <puik-chip
@@ -54,7 +59,7 @@
             :id="`chip-${option[props.optionLabelKey]}`"
             :key="option[props.optionValueKey]"
             :content="option[props.optionLabelKey]"
-            :disabled="option[props.optionDisabledKey]"
+            :disabled="option[props.optionDisabledKey] || props.disabled"
             size="small"
             role="option"
             :aria-selected="true"
@@ -93,10 +98,16 @@
               v-if="props.prependInputIcon"
               #prepend
             >
-              <PuikIcon :icon="props.prependInputIcon" />
+              <PuikIcon
+                :is-disabled="props.disabled"
+                :icon="props.prependInputIcon"
+              />
             </template>
             <template #append>
-              <PuikIcon icon="unfold_more" />
+              <PuikIcon
+                :is-disabled="props.disabled"
+                icon="unfold_more"
+              />
             </template>
           </puik-input>
           <input
@@ -135,10 +146,16 @@
           v-if="props.prependInputIcon"
           #prepend
         >
-          <PuikIcon :icon="props.prependInputIcon" />
+          <PuikIcon
+            :is-disabled="props.disabled"
+            :icon="props.prependInputIcon"
+          />
         </template>
         <template #append>
-          <PuikIcon icon="unfold_more" />
+          <PuikIcon
+            :is-disabled="props.disabled"
+            icon="unfold_more"
+          />
         </template>
       </puik-input>
 
@@ -169,10 +186,16 @@
           v-if="props.prependInputIcon"
           #prepend
         >
-          <PuikIcon :icon="props.prependInputIcon" />
+          <PuikIcon
+            :is-disabled="props.disabled"
+            :icon="props.prependInputIcon"
+          />
         </template>
         <template #append>
-          <PuikIcon icon="unfold_more" />
+          <PuikIcon
+            :is-disabled="props.disabled"
+            icon="unfold_more"
+          />
         </template>
       </puik-input>
 
@@ -198,11 +221,15 @@
             props.searchPlaceholder ?? `${t('puik.select.searchPlaceholder')}`
           "
           role="searchbox"
+          :disabled="props.disabled"
           :data-test="dataTest != undefined ? `select-search-input-${dataTest}` : undefined"
           @input="searchOptions"
         >
           <template #prepend>
-            <PuikIcon icon="search" />
+            <PuikIcon
+              :is-disabled="props.disabled"
+              icon="search"
+            />
           </template>
         </puik-input>
 
@@ -216,6 +243,7 @@
               : `${t('puik.select.selectAll')}`
           "
           :indeterminate="selectAllIndeterminate"
+          :disabled="props.disabled"
           role="checkbox"
           :aria-checked="IsAllSelectedRef"
           tabindex="0"
@@ -236,7 +264,7 @@
                 : selectedSingleOption === option
             "
             :option="option"
-            :disabled="option[props.optionDisabledKey]"
+            :disabled="option[props.optionDisabledKey] || props.disabled"
             :multi-select="props.multiSelect"
             :data-test="dataTest != undefined ? `select-option-${index + 1}-${dataTest}` : undefined"
             @select="selectOption(option)"
@@ -406,18 +434,21 @@ const handleSelectAllClick = () => {
 };
 
 const toggleOptions = () => {
+  if (props.disabled) return;
   openRef.value = !openRef.value;
   emit('open', openRef.value);
   resetSearchQuery();
   handleDropdownPosition();
 };
 const openOptions = () => {
+  if (props.disabled) return;
   openRef.value = true;
   emit('open', true);
   resetSearchQuery();
   handleDropdownPosition();
 };
 const closeOptions = () => {
+  if (props.disabled) return;
   openRef.value = false;
   emit('open', false);
   resetSearchQuery();
@@ -425,7 +456,7 @@ const closeOptions = () => {
 };
 
 const selectOption = (option: OptionType) => {
-  if (!option[props.optionDisabledKey]) {
+  if (!option[props.optionDisabledKey] || !props.disabled) {
     if (props.multiSelect) {
       if (selectedMultipleOptions.value.includes(option)) {
         selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
@@ -447,6 +478,7 @@ const selectOption = (option: OptionType) => {
 };
 
 const deselectOption = (option: OptionType) => {
+  if (props.disabled) return;
   selectedMultipleOptions.value = selectedMultipleOptions.value.filter(
     (opt) => opt !== option
   );
