@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-tailwind-preset
 
+## 2.3.1
+
+### Patch Changes
+
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.4.0
+
 ## 2.3.0
 
 ### Minor Changes
