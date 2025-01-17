@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-theme
 
+## 2.4.0
+
+### Minor Changes
+
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.4.0
+
 ## 2.3.0
 
 ### Minor Changes

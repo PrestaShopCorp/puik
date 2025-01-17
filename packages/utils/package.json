@@ -1,7 +1,7 @@
 {
   "name": "@prestashopcorp/puik-utils",
   "description": "PUIK utils - Set of useful functions used by PrestaShop UI Kit.",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "private": true,
   "license": "MIT"
 }
