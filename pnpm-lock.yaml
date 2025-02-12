@@ -112,23 +112,23 @@ importers:
         specifier: 3.3.10
         version: 3.3.10(typescript@5.4.5)
 
-  docs:
+  docs/storybook:
     dependencies:
       '@prestashopcorp/puik-components':
         specifier: workspace:*
-        version: link:../packages/components
+        version: link:../../packages/components
       '@prestashopcorp/puik-resolver':
         specifier: workspace:*
-        version: link:../packages/resolver
+        version: link:../../packages/resolver
       '@prestashopcorp/puik-tailwind-preset':
         specifier: workspace:*
-        version: link:../packages/tailwind-preset
+        version: link:../../packages/tailwind-preset
       '@prestashopcorp/puik-theme':
         specifier: workspace:*
-        version: link:../packages/theme
+        version: link:../../packages/theme
       '@prestashopcorp/puik-web-components':
         specifier: workspace:*
-        version: link:../packages/web-components
+        version: link:../../packages/web-components
       '@storybook/client-api':
         specifier: ^7.6.17
         version: 7.6.17
