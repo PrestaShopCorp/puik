@@ -1,0 +1,12 @@
+{
+  "name": "@prestashopcorp/puik-user-docs",
+  "description": "PUIK users docs - Vitepress documentation.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  }
+}

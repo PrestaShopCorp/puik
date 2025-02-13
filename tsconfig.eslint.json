@@ -1,4 +1,8 @@
 {
     "extends": "./tsconfig.json",
-    "include": ["./**/*", "./.eslintrc.cjs", "./docs/storybook/.storybook/*"]
+    "include": [
+        "./**/*", "./.eslintrc.cjs",
+        "./docs/storybook/.storybook/*",
+        "./docs/vitepress/.vitepress/*"
+    ]
 }
