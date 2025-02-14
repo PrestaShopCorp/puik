@@ -1,4 +1,8 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["**/*"],
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*", "src/*", ".vitepress/components/*"],
+  "exclude": ["node_modules"]
 }

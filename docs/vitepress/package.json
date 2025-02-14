@@ -1,12 +1,25 @@
 {
   "name": "@prestashopcorp/puik-user-docs",
-  "description": "PUIK users docs - Vitepress documentation.",
+  "description": "PUIK user documentation - with Vitepress.",
   "version": "1.0.0",
+  "private": true,
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vitepress": "^1.6.3",
+    "vue-tsc": "^2.2.0"
+  },
+  "dependencies": {
+    "@prestashopcorp/puik-components": "workspace:*",
+    "@prestashopcorp/puik-resolver": "workspace:*",
+    "@prestashopcorp/puik-tailwind-preset": "workspace:*",
+    "@prestashopcorp/puik-theme": "workspace:*",
+    "@prestashopcorp/puik-web-components": "workspace:*"
   }
 }

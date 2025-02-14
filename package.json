@@ -5,8 +5,8 @@
   "packageManager": "pnpm@9.1.2",
   "workspaces": [
     "packages/*",
-    "docs",
-    "play"
+    "docs/*",
+    "playground"
   ],
   "engines": {
     "node": ">= v18.16.0"
@@ -24,8 +24,8 @@
     "docs:dev": "pnpm --filter @prestashopcorp/puik-docs dev",
     "build-storybook": "pnpm --filter @prestashopcorp/puik-docs build",
     "vitepress:dev": "pnpm --filter @prestashopcorp/puik-user-docs dev",
-    "build-vitepress": "pnpm --filter @prestashopcorp/puik-user-docs build",
-    "preview-vitepress": "pnpm --filter @prestashopcorp/puik-user-docs preview",
+    "vitepress:build": "pnpm --filter @prestashopcorp/puik-user-docs build",
+    "vitepress:preview": "pnpm --filter @prestashopcorp/puik-user-docs preview",
     "chromatic": "chromatic",
     "dev": "pnpm --filter @prestashopcorp/puik-playground dev",
     "component": "hygen component new",
