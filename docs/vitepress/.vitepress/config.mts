@@ -10,7 +10,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Docs', link: '/vue-components/accordeon' }
+      { text: 'Docs', link: '/vue-components/accordion' }
     ],
 
     sidebar: [
@@ -23,7 +23,7 @@ export default defineConfig({
       {
         text: 'Vue Components',
         items: [
-          { text: 'Accordeon', link: '/vue-components/accordeon' },
+          { text: 'Accordion', link: '/vue-components/accordion' },
           { text: 'Alert', link: '/vue-components/alert' },
           { text: 'Avatar', link: '/vue-components/avatar' }
         ]

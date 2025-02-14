@@ -12,7 +12,7 @@ hero:
       link: /getting-started/introduction
     - theme: alt
       text: Explore the Vue components
-      link: /vue-components/accordeon
+      link: /vue-components/accordion
 
 features:
   - title: Vue 3 components

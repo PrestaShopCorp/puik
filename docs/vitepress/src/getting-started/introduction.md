@@ -17,27 +17,9 @@ This library provides three ways of using the design system in your project by u
 ℹ️ [see list of available Vue and Web components](https://github.com/PrestaShopCorp/puik/blob/main/RELEASE-NOTES-V2.md#available-components)
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import useContributors from '@vitepress/components/useContributors.vue';
-
-const contributors = ref([]);
-
-onMounted(async () => {
-  try {
-    const response = await fetch('https://api.github.com/repos/PrestaShopCorp/puik/contributors');
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
-    }
-    contributors.value = await response.json();
-  } catch (error) {
-    console.error('Erreur lors de la récupération des contributeurs :', error);
-  }
-});
-
+import contributors from '@vitepress/components/PuikContributors.vue';
 </script>
 
 ## Contributors
 
-<useContributors />
-
-{{ contributors }}
+<contributors />
