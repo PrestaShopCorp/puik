@@ -1,12 +1,13 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vitepress';
-// import tailwindcss from 'tailwindcss';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'PUIK - PrestaShop UI Kit',
   description: 'The new PrestaShop UI Kit user documentation',
   srcDir: './src',
+  head: [['link', { rel: 'icon', href: '/prestashop-favicon-black.png' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -16,12 +17,14 @@ export default defineConfig({
     sidebar: [
       {
         text: 'Overview',
+        collapsed: false,
         items: [
           { text: 'Introduction', link: '/getting-started/introduction' }
         ]
       },
       {
         text: 'Vue Components',
+        collapsed: false,
         items: [
           { text: 'Accordion', link: '/vue-components/accordion' },
           { text: 'Alert', link: '/vue-components/alert' },
@@ -30,6 +33,7 @@ export default defineConfig({
       },
       {
         text: 'Demo',
+        collapsed: false,
         items: [
           { text: 'Markdown examples', link: '/demo/markdown-examples' },
           { text: 'Runtime API Examples', link: '/demo/api-examples' }
@@ -42,6 +46,9 @@ export default defineConfig({
     ]
   },
   vite: {
+    plugins: [
+      tailwindcss()
+    ],
     server: {
       port: 5174
     },

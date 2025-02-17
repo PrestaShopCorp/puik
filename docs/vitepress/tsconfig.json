@@ -3,6 +3,9 @@
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*", "src/*", ".vitepress/components/*"],
+  "include": ["src/**/*", "src/*",
+  ".vitepress/components/*",
+  ".vitepress/theme/*"
+],
   "exclude": ["node_modules"]
 }
