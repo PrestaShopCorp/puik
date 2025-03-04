@@ -115,7 +115,7 @@ export default {
       description: 'Sets the alert description via the `default slot`. Useful if you want to create a description a little more complex than a simple text and integrate other puik elements like for example a classic `puik-link` (which can be an alternative to the Link button - see example below)'
     },
     leftIconBtn: {
-      description: 'Set icon on the left side of the Action button with a Material Icon name - cf https://fonts.google.com/icons',
+      description: 'Set icon on the left side of the Action button (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -127,7 +127,7 @@ export default {
       }
     },
     rightIconBtn: {
-      description: 'Set icon on the right side of the Action button with a Material Icon name - cf https://fonts.google.com/icons',
+      description: 'Set icon on the right side of the Action button with a Material Symbols name (https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -139,7 +139,7 @@ export default {
       }
     },
     leftIconLink: {
-      description: 'Set icon on the left side of the Link button with a Material Icon name - cf https://fonts.google.com/icons',
+      description: 'Set icon on the left side of the Link button with a Material Symbols name (https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -151,7 +151,7 @@ export default {
       }
     },
     rightIconLink: {
-      description: 'Set icon on the right side of the Link button with a Material Icon name - cf https://fonts.google.com/icons',
+      description: 'Set icon on the right side of the Link button with a Material Symbols name (https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -345,7 +345,7 @@ export const Variants: StoryObj = {
           variant="info"
           button-label="Action"
           link-label="Learn more"
-        />        
+        />
         <puik-alert
           title="Warning"
           description="this is a description"
@@ -385,7 +385,7 @@ export const Variants: StoryObj = {
     variant="info"
     button-label="Action"
     link-label="Learn more"
-  />        
+  />
   <puik-alert
     title="Warning"
     description="this is a description"
@@ -420,7 +420,7 @@ export const Variants: StoryObj = {
         Action
       </button>
     </div>
-    
+
   </div>
 
   <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-1065" aria-describedby="description-1065" aria-live="polite" tabindex="0">
@@ -439,7 +439,7 @@ export const Variants: StoryObj = {
         Action
       </button>
     </div>
-    
+
   </div>
 
   <div class="puik-alert puik-alert--warning" role="alert" aria-labelledby="title-6761" aria-describedby="description-6761" aria-live="polite" tabindex="0">
@@ -506,7 +506,7 @@ export const VariantsWithoutBorder: StoryObj = {
           button-label="Action"
           link-label="Learn more"
           disable-borders
-        />        
+        />
         <puik-alert
           title="Warning"
           description="this is a description"
@@ -550,7 +550,7 @@ export const VariantsWithoutBorder: StoryObj = {
     button-label="Action"
     link-label="Learn more"
     disable-borders
-  />        
+  />
   <puik-alert
     title="Warning"
     description="this is a description"
@@ -874,7 +874,7 @@ export const ActionAndLinkButtonsWithIcon: StoryObj = {
       >
         This is the description
       </puik-alert>
-      
+
       <puik-alert
         title="Left icon btn"
         variant="info"
@@ -883,7 +883,7 @@ export const ActionAndLinkButtonsWithIcon: StoryObj = {
       >
         This is the description
       </puik-alert>
-      
+
       <puik-alert
         title="Right icon link"
         variant="info"
@@ -892,7 +892,7 @@ export const ActionAndLinkButtonsWithIcon: StoryObj = {
       >
         This is the description
       </puik-alert>
-      
+
       <puik-alert
         title="Left icon link"
         variant="info"
@@ -1254,7 +1254,7 @@ export const Events = {
       source: {
         code: `
   <!--VueJS Snippet-->
-  <!-- 
+  <!--
       const eventEmitted = ref('Click on Action, Link or Close button');
       const variant = ref('info');
       const title = ref('Handle Events');

@@ -40,7 +40,7 @@ export default {
     },
     icon: {
       control: 'text',
-      description: 'Sets the icon',
+      description: 'Set the icon (from Material Symbols: https://fonts.google.com/icons)',
       table: {
         type: {
           summary: 'string'

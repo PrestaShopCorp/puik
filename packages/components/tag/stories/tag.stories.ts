@@ -67,7 +67,7 @@ export default {
       }
     },
     icon: {
-      description: 'Material icon name',
+      description: 'Set the icon name (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
