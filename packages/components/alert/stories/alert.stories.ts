@@ -127,7 +127,7 @@ export default {
       }
     },
     rightIconBtn: {
-      description: 'Set icon on the right side of the Action button with a Material Symbols name (https://fonts.google.com/icons)',
+      description: 'Set icon on the right side of the Action button (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -139,7 +139,7 @@ export default {
       }
     },
     leftIconLink: {
-      description: 'Set icon on the left side of the Link button with a Material Symbols name (https://fonts.google.com/icons)',
+      description: 'Set icon on the left side of the Link button (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -151,7 +151,7 @@ export default {
       }
     },
     rightIconLink: {
-      description: 'Set icon on the right side of the Link button with a Material Symbols name (https://fonts.google.com/icons)',
+      description: 'Set icon on the right side of the Link button (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
