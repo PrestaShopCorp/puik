@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/member-delimiter-style */
-import '@prestashopcorp/puik-components/option/style/css';
 import type Option from './option.vue';
 
 export interface OptionType {

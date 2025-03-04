@@ -20,6 +20,10 @@
     "sortablejs-vue3": "^1.2.11"
   },
   "devDependencies": {
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.5.3",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^6.1.2",
     "@types/sortablejs": "^1.15.8",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",

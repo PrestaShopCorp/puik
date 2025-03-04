@@ -30,7 +30,8 @@
     "@prestashopcorp/puik-theme": "workspace:*",
     "@prestashopcorp/puik-web-components": "workspace:*",
     "@storybook/client-api": "^7.6.17",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.4.5",
-    "vue": "3.3.10"
+    "vue": "^3.5.13"
   }
 }

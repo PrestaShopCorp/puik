@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/sidebar-item/style/css';
 import type { RouteLocationRaw } from 'vue-router';
 import type SidebarItem from './sidebar-item.vue';
 

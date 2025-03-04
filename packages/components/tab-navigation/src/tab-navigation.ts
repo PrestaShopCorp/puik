@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/tab-navigation/style/css';
 import type { InjectionKey, Ref } from 'vue';
 import type TabNavigation from './tab-navigation.vue';
 

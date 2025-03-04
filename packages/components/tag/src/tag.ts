@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/tag/style/css';
 import type { PuikTooltipPositions } from '@prestashopcorp/puik-components';
 import type Tag from './tag.vue';
 

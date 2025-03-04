@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/skeleton-loader/style/css';
 import type SkeletonLoader from './skeleton-loader.vue';
 
 export enum PuikSkeletonLoaderVariants {

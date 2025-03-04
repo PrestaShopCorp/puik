@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/link/style/css';
 import type { RouteLocationRaw } from 'vue-router';
 import type Link from './link.vue';
 

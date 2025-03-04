@@ -17,9 +17,6 @@ export default defineConfig({
       mainFields: ['module', 'js', 'json']
     })
   ],
-  css: {
-    postcss: resolve(__dirname, '../theme/postcss.config.js')
-  },
   build: {
     lib: {
       entry: resolve(__dirname, './index.ts')
@@ -36,7 +33,7 @@ export default defineConfig({
           absolute: true,
           onlyFiles: true
         }),
-        ['stories', 'test']
+        ['stories', 'test', 'style']
       ),
       output: [
         {

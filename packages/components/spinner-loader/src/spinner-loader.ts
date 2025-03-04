@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/spinner-loader/style/css';
 import type SpinnerLoader from './spinner-loader.vue';
 
 export enum PuikSpinnerLoaderSizes {
