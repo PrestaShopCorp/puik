@@ -163,7 +163,7 @@ export enum PuikModalSizes {
       }
     },
     titleIcon: {
-      description: 'The icon name of the modal (top left corner)',
+      description: 'Set the icon name of the modal on the top left corner (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {

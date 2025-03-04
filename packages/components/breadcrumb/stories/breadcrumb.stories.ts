@@ -53,7 +53,7 @@ interface BreadBreadcrumbItem {
     },
     icon: {
       control: 'text',
-      description: 'Set icon used before first link ',
+      description: 'Set icon used before first link (from Material Symbols: https://fonts.google.com/icons)',
       type: 'string',
       table: {
         defaultValue: {

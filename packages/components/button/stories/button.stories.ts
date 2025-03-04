@@ -63,10 +63,10 @@ export default {
       }
     },
     leftIcon: {
-      description: 'Sets the button left icon'
+      description: 'Set the button left icon (from Material Symbols: https://fonts.google.com/icons)'
     },
     rightIcon: {
-      description: 'Sets the button right icon'
+      description: 'Set the button right icon (from Material Symbols: https://fonts.google.com/icons)'
     },
     loading: {
       control: 'boolean',
@@ -178,7 +178,7 @@ export const Default = {
     >
     My button
   </puik-button>
-  
+
   <!--HTML/CSS Snippet-->
   <!--
   $sizes: ${buttonSizesSummary} (defaults to md)
@@ -302,7 +302,7 @@ export const LoadingState: StoryObj = {
   <puik-button  loading loaderPosition="left">
     Loading ...
   </puik-button>
-  
+
   <puik-button  loading loaderPosition="right">
     Loading ...
   </puik-button>
