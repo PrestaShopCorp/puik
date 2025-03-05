@@ -1,4 +1,4 @@
-import PrestaShopSloganBg from '../../../../docs/assets/img/prestashop-slogan-bg.jpg';
+import PrestaShopSloganBg from '../../../../docs/storybook/assets/img/prestashop-slogan-bg.jpg';
 import { PuikButton, PuikCard, PuikCardVariants } from '@prestashopcorp/puik-components';
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 

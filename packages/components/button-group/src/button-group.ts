@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/button-group/style/css';
 import type { InjectionKey, Ref, WritableComputedRef } from 'vue';
 import type ButtonGroup from './button-group.vue';
 import type { ButtonProps } from '@prestashopcorp/puik-components';

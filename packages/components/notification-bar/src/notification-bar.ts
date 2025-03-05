@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/notification-bar/style/css';
 import type NotificationBar from './notification-bar.vue';
 
 export enum PuikNotificationBarVariants {

@@ -13,7 +13,7 @@ export const isNumber = (val: unknown): val is number => typeof val === 'number'
 
 export const isString = (val: unknown): val is string => typeof val === 'string';
 
-export function slotIsEmpty(slot: Slot | undefined, slotProps = {}): boolean {
+export function slotIsEmpty(slot: Slot<any> | undefined, slotProps = {}): boolean {
   if (!slot) return false;
 
   return slot(slotProps).some((vnode: VNode) => {

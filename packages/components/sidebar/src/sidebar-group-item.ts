@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/sidebar-group-item/style/css';
 import type SidebarGroupItem from './sidebar-group-item.vue';
 
 export interface SidebarGroupItemsProps {

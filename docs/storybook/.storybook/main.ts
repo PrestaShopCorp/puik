@@ -5,7 +5,7 @@ import type { StorybookConfig } from '@storybook/vue3-vite';
 const config: StorybookConfig = {
   stories: [
     '../stories/*/**.@(js|jsx|ts|tsx|mdx)',
-    '../../packages/components/**/*.stories.@(js|jsx|ts|tsx|mdx)'
+    '../../../packages/components/**/*.stories.@(js|jsx|ts|tsx|mdx)'
   ],
   core: {
     disableTelemetry: true
@@ -34,7 +34,7 @@ const config: StorybookConfig = {
         ...config.optimizeDeps,
         entries: [
           '../stories/**/*.stories.mdx',
-          '../../packages/components/**/*.stories.@(js|jsx|ts|tsx)'
+          '../../../packages/components/**/*.stories.@(js|jsx|ts|tsx)'
         ]
       }
     };

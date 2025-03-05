@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/label/style/css';
 import type Label from './label.vue';
 
 export interface LabelProps {

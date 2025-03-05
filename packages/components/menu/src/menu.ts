@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/menu/style/css';
 import type Menu from './menu.vue';
 
 export enum PuikMenuAligns {

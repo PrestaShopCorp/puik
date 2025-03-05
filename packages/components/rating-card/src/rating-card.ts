@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/rating-card/style/css';
 import type RatingCard from './rating-card.vue';
 import type { booleanish } from '../../types';
 

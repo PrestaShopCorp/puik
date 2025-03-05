@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/sidebar/style/css';
 import type { Ref, InjectionKey } from 'vue';
 import type Sidebar from './sidebar.vue';
 

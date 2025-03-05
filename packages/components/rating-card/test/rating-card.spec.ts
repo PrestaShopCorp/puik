@@ -19,7 +19,7 @@ const totalRatingsArray = (totalRatings: number[] | string): number[] => {
     return totalRatings.split(',').map(num => {
       const parsed = Number(num.trim());
       return isNaN(parsed) ? null : parsed;
-    }).filter(n => n !== null) as number[];
+    }).filter(n => n !== null);
   }
   return totalRatings;
 };

@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-components/input/style/css';
 import type Input from './input.vue';
 import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 
