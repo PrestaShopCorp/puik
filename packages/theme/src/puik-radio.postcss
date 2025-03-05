@@ -1,0 +1,37 @@
+/* @import './common/typography.postcss'; */
+
+.puik-radio {
+  @extend .puik-body-default;
+  @apply appearance-none flex items-center;
+  &__input {
+    @apply appearance-none
+     bg-transparent bg-clip-content
+     w-5 h-5
+     mr-2
+     border-2 border-solid rounded-full border-primary cursor-pointer;
+
+    &:checked {
+      @apply bg-blue
+      p-[3px]
+      border-2 border-solid border-blue;
+      &:disabled {
+        @apply border-2 border-solid rounded-full border-primary-500 bg-primary-500;
+      }
+    }
+
+    &:focus {
+      @apply outline-none ring-2 ring-blue ring-offset-1;
+    }
+
+    &:disabled {
+      @apply border-2 border-solid rounded-full border-primary-500 bg-transparent;
+    }
+    &:disabled + &__label {
+      @apply text-primary-500 cursor-default;
+    }
+  }
+  &__label {
+    @extend .puik-body-default;
+    @apply font-primary cursor-pointer;
+  }
+}

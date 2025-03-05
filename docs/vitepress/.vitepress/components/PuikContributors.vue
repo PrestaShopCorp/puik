@@ -42,7 +42,7 @@ onMounted(async () => {
   }
 });
 </script>
-<style lang="scss">
+<style lang="postcss">
 .contributors-container {
   display: flex;
   gap: 1rem;

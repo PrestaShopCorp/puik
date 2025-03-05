@@ -1,0 +1,30 @@
+/* @import './common/typography.postcss'; */
+
+.puik-breadcrumb {
+  @apply flex flex-row items-center;
+
+  &__home-icon {
+    @apply text-primary mr-1;
+  }
+
+  &__item {
+    @apply flex flex-row items-center;
+    &-button {
+      @apply p-0;
+    }
+
+    &-icon {
+      @apply text-primary-500;
+    }
+
+    &-link {
+      @extend .puik-body-small;
+      @apply text-primary font-normal;
+    }
+
+    &--last {
+      @extend .puik-body-small;
+      @apply text-primary-600;
+    }
+  }
+}

@@ -1,3 +1,3 @@
 ---
-to: packages/theme/src/puik-<%= h.changeCase.param(name) %>.scss
+to: packages/theme/src/puik-<%= h.changeCase.param(name) %>.postcss
 ---

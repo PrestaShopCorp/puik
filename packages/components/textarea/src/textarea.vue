@@ -129,8 +129,8 @@ watch(() => props.maxRows, computeHeight);
 watch(() => props.rows, computeHeight);
 </script>
 
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-textarea.scss';
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+<style lang="postcss">
+@import '@prestashopcorp/puik-theme/src/base.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-textarea.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-icon.postcss';
 </style>

@@ -1,0 +1,45 @@
+/* @import './common/typography.postcss'; */
+
+.puik-checkbox {
+  @apply flex items-center;
+  &__input {
+    @apply appearance-none
+      grid place-content-center
+      h-5 w-5
+      cursor-pointer
+      rounded-sm border-2 border-primary;
+
+    &:focus-visible {
+      @apply outline outline-2 outline-offset-1 outline-blue;
+    }
+
+    &:disabled {
+      @apply border-primary-500 checked:bg-primary-500 indeterminate:bg-primary-500 cursor-default;
+      & + &__label {
+        @apply text-primary-500 cursor-default;
+      }
+    }
+
+    &:checked {
+      @apply bg-blue border-none;
+      &:before {
+        @apply font-materialIcons text-white text-xl;
+        content: '\e876';
+      }
+    }
+
+    &:indeterminate {
+      @apply bg-blue border-none;
+      &:before {
+        @apply font-materialIcons text-white text-xl;
+        content: '\f108';
+      }
+    }
+  }
+  &__label {
+    @extend .puik-body-default;
+    @apply -tracking-[0.015625em] font-primary text-primary
+      cursor-pointer
+      ml-2;
+  }
+}

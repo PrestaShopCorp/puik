@@ -83,8 +83,8 @@ const onClick = () => {
 };
 </script>
 
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-progress-stepper-step.scss';
-@use '@prestashopcorp/puik-theme/src/puik-button.scss';
+<style lang="postcss">
+@import '@prestashopcorp/puik-theme/src/base.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-progress-stepper-step.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-button.postcss';
 </style>

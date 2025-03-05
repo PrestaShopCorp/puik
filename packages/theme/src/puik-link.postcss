@@ -1,0 +1,87 @@
+/* @import './common/typography.postcss'; */
+
+.puik-link {
+  @apply cursor-pointer 
+    relative 
+    text-primary
+    underline 
+    decoration-auto
+    underline-offset-[2px]
+    decoration-primary-500
+    transition-all
+    duration-150;
+
+  &:hover,
+  &:active,
+  &:visited {
+    @apply underline-offset-[5px];
+  }
+  
+  &:hover,
+  &:visited:hover {
+    @apply decoration-primary;
+  }
+
+  &:focus-visible {
+    @apply outline-none ring-2 ring-blue rounded-[4px] shadow-none decoration-primary-800;
+  }
+
+  &__target__icon {
+    @apply font-materialIcons align-bottom;
+
+    &:before {
+      @apply content-['_'] text-[0.35rem] leading-[0.25rem];
+    }
+  }
+
+  &--sm {
+    @extend .puik-body-small;
+  }
+
+  &--md {
+    @extend .puik-body-default;
+  }
+
+  &--lg {
+    @extend .puik-body-large;
+  }
+
+  &--high-contrast {
+    &:visited {
+      @apply text-primary;
+    }
+    @apply decoration-primary;
+  }
+  
+  &--articles {
+    @apply decoration-primary-500;
+    
+    &:visited {
+      @apply text-purple-700 decoration-primary-500;
+    }
+    
+    &:hover, &:visited:hover {
+      @apply decoration-primary;
+    }
+    
+    &:focus-visible {
+      @apply decoration-primary-800;
+    }
+  }
+
+  &--high-contrast.puik-link--articles {
+    @apply text-primary decoration-primary;
+    
+    &:visited {
+      @apply text-primary decoration-primary;
+    }
+    
+    &:visited:hover {
+      @apply decoration-primary;
+    }
+
+    &:focus-visible {
+      @apply decoration-primary-800;
+    }
+  }
+}

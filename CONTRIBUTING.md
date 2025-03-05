@@ -103,8 +103,8 @@ puik/
     │   └── global.d.ts
     ├── theme/
     │   └── src/
-    │       ├── my-component.scss
-    │       └── index.scss
+    │       ├── my-component.postcss
+    │       └── index.postcss
     └── web-components/
         ├── components/
         │   └── component.ts

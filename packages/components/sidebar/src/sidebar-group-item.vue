@@ -66,10 +66,10 @@ provide(groupItemKey, true);
 const isExpanded = computed(() => sidebarValues?.extended.value);
 </script>
 
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-sidebar-group-item.scss';
-@use '@prestashopcorp/puik-theme/src/puik-accordion.scss';
-@use '@prestashopcorp/puik-theme/src/puik-button.scss';
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
+<style lang="postcss">
+@import '@prestashopcorp/puik-theme/src/base.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-sidebar-group-item.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-accordion.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-button.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-icon.postcss';
 </style>

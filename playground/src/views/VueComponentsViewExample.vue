@@ -29,7 +29,7 @@ const Alertclick = (event: Event) => {
   </section>
 </template>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
 .vue-components-view {
   @apply flex flex-col space-y-3;
 }

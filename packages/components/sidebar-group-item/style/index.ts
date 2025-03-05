@@ -1,5 +1,5 @@
 import '@prestashopcorp/puik-components/base/style';
-import '@prestashopcorp/puik-theme/src/puik-sidebar-group-item.scss';
-import '@prestashopcorp/puik-theme/src/puik-accordion.scss';
-import '@prestashopcorp/puik-theme/src/puik-button.scss';
-import '@prestashopcorp/puik-theme/src/puik-icon.scss';
+import '@prestashopcorp/puik-theme/src/puik-sidebar-group-item.postcss';
+import '@prestashopcorp/puik-theme/src/puik-accordion.postcss';
+import '@prestashopcorp/puik-theme/src/puik-button.postcss';
+import '@prestashopcorp/puik-theme/src/puik-icon.postcss';

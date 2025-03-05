@@ -10,7 +10,7 @@ defineOptions({
 });
 </script>
 
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-tab-navigation-group-panels.scss';
+<style lang="postcss">
+@import '@prestashopcorp/puik-theme/src/base.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-tab-navigation-group-panels.postcss';
 </style>

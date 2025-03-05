@@ -17,7 +17,7 @@ defineOptions({
 defineProps<MenuItemTitleProps>();
 </script>
 
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-menu-item-title.scss';
+<style lang="postcss">
+@import '@prestashopcorp/puik-theme/src/base.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-menu-item-title.postcss';
 </style>

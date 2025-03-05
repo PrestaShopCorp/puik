@@ -150,10 +150,10 @@ watch(() => props.itemsPerPage, () => {
 });
 </script>
 
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-pagination.scss';
-@use '@prestashopcorp/puik-theme/src/puik-button.scss';
-@use '@prestashopcorp/puik-theme/src/puik-select.scss';
-@use '@prestashopcorp/puik-theme/src/puik-option.scss';
+<style lang="postcss">
+@import '@prestashopcorp/puik-theme/src/base.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-pagination.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-button.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-select.postcss';
+@import '@prestashopcorp/puik-theme/src/puik-option.postcss';
 </style>
