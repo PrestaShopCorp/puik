@@ -68,7 +68,7 @@ export default {
       }
     },
     icon: {
-      description: 'Material icon name (cf https://fonts.google.com/icons)',
+      description: 'Set the icon name (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -454,7 +454,7 @@ export const Sizes = {
   </div>
 </div>
 <!-- icon type -->
-<!-- 
+<!--
 NB: values of {$iconFontSize} to apply depending on the prop size:
   small = 1rem
   medium = 1.5rem

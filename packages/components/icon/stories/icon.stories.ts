@@ -6,7 +6,7 @@ export default {
   component: PuikIcon,
   argTypes: {
     icon: {
-      description: 'Sets the icon name'
+      description: 'Set the icon name (from Material Symbols: https://fonts.google.com/icons)'
     },
     fontSize: {
       description: 'Sets the icon font size',
