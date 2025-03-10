@@ -1,26 +1,22 @@
 const plugins = {
   plugins: {
     'postcss-import': {},
-    'postcss-extend-rule': {
-      name: 'extend',
-      onUnusedExtend: 'ignore'
-    },
-    'postcss-mixins': {},
-    'postcss-simple-vars': {},
+    'tailwindcss/nesting': {},
     tailwindcss: {
       config: './tailwind.config.mjs'
     },
-    'postcss-nested': {},
+    'postcss-mixins': {},
+    'postcss-simple-vars': {},
     'postcss-preset-env': {
       stage: 1,
       features: {
-        'nesting-rules': true
+        'nesting-rules': false
       }
     },
-    autoprefixer: {},
-    cssnano: {
-      preset: ['default', { discardComments: { removeAll: true } }]
-    }
+    autoprefixer: {}
+    // cssnano: {
+    //   preset: ['default', { discardComments: { removeAll: true } }]
+    // }
   }
 };
 

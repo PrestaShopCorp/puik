@@ -1,28 +1,31 @@
-/* @import './common/typography.postcss'; */
+@import './common/variables.postcss';
 
 .puik-menu-item {
-  @extend .puik-body-default;
+  @apply puik-body-default;
   @apply flex text-left;
+}
 
-  .puik-button {
-    @extend .puik-body-default;
-    @apply font-normal p-2 w-full flex items-center justify-start z-10;
+.puik-button {
+  @apply puik-body-default;
+  @apply font-normal p-2 w-full flex items-center justify-start z-10;
+}
 
-    &__right-icon {
-      @apply ml-auto;
-    }
+.puik-button__right-icon {
+  @apply ml-auto;
+}
 
-    &--destructive {
-      &:disabled {
-        @apply text-red-100;
-      }
-      &:hover {
-        @apply bg-red-50;
-      }
-      &:active {
-        @apply bg-red-100;
-      }
-      @apply bg-white text-red-500 hover:bg-primary-200;
-    }
-  }
+.puik-button--destructive:disabled {
+  @apply text-red-100;
+}
+
+.puik-button--destructive:hover {
+  @apply bg-red-50;
+}
+
+.puik-button--destructive:active {
+  @apply bg-red-100;
+}
+
+.puik-button--destructive {
+  @apply bg-white text-red-500 hover:bg-primary-200;
 }

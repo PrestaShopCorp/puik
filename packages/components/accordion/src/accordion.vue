@@ -114,8 +114,8 @@ function onKeydown(event: KeyboardEvent) {
 }
 </script>
 
-<style lang="postcss">
-@import '@prestashopcorp/puik-theme/src/base.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-accordion.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-icon.postcss';
+<style>
+@import '@prestashopcorp/puik-theme/base.css';
+@import '@prestashopcorp/puik-theme/puik-accordion.css';
+@import '@prestashopcorp/puik-theme/puik-icon.css';
 </style>

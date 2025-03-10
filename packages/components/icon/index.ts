@@ -1,3 +1,4 @@
+import './style/css.ts';
 import Icon from './src/icon.vue';
 
 export const PuikIcon = Icon;

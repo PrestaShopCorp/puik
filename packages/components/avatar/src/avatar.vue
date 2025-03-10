@@ -98,8 +98,8 @@ const iconAltText = computed(() => props.icon || avatarAltDefault);
 const initialsAltText = computed(() => initials.value);
 </script>
 
-<style lang="postcss">
-@import '@prestashopcorp/puik-theme/src/base.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-avatar.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-icon.postcss';
+<style>
+@import '@prestashopcorp/puik-theme/base.css';
+@import '@prestashopcorp/puik-theme/puik-avatar.css';
+@import '@prestashopcorp/puik-theme/puik-icon.css';
 </style>

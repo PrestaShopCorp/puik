@@ -169,10 +169,10 @@ const hasFooter = !!(
 );
 </script>
 
-<style lang="postcss">
-@import '@prestashopcorp/puik-theme/src/base.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-modal.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-button.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-icon.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-tooltip.postcss';
+<style>
+@import '@prestashopcorp/puik-theme/base.css';
+@import '@prestashopcorp/puik-theme/puik-modal.css';
+@import '@prestashopcorp/puik-theme/puik-button.css';
+@import '@prestashopcorp/puik-theme/puik-icon.css';
+@import '@prestashopcorp/puik-theme/puik-tooltip.css';
 </style>

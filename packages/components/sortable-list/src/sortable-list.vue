@@ -237,7 +237,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
 </script>
 
 <style lang="postcss">
-@import '@prestashopcorp/puik-theme/src/base.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-sortable-list.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-icon.postcss';
+@import '@prestashopcorp/puik-theme/base.css';
+@import '@prestashopcorp/puik-theme/puik-sortable-list.css';
+@import '@prestashopcorp/puik-theme/puik-icon.css';
 </style>

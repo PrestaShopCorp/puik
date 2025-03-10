@@ -1,30 +1,31 @@
-/* @import './common/typography.postcss'; */
+@import './common/variables.postcss';
 
 .puik-breadcrumb {
   @apply flex flex-row items-center;
+}
 
-  &__home-icon {
-    @apply text-primary mr-1;
-  }
+.puik-breadcrumb__home-icon {
+  @apply text-primary mr-1;
+}
 
-  &__item {
-    @apply flex flex-row items-center;
-    &-button {
-      @apply p-0;
-    }
+.puik-breadcrumb__item {
+  @apply flex flex-row items-center;
+}
 
-    &-icon {
-      @apply text-primary-500;
-    }
+.puik-breadcrumb__item-button {
+  @apply p-0;
+}
 
-    &-link {
-      @extend .puik-body-small;
-      @apply text-primary font-normal;
-    }
+.puik-breadcrumb__item-icon {
+  @apply text-primary-500;
+}
 
-    &--last {
-      @extend .puik-body-small;
-      @apply text-primary-600;
-    }
-  }
+.puik-breadcrumb__item-link {
+  @apply puik-body-small;
+  @apply text-primary font-normal;
+}
+
+.puik-breadcrumb__item--last {
+  @apply puik-body-small;
+  @apply text-primary-600;
 }

@@ -1,212 +1,251 @@
-/* @import './common/typography.postcss'; */
+@import './common/variables.postcss';
 
 .puik-button {
-  @extend .puik-text-button-default;
+  @apply puik-text-button-default;
   @apply transition cursor-pointer py-2 px-4 gap-2 inline-flex items-center justify-center align-middle;
+}
 
-  &--sm {
-    @extend .puik-text-button-small;
-    @apply py-1 px-2 min-h-sm;
-  }
+.puik-button--sm {
+  @apply puik-text-button-small;
+  @apply py-1 px-2 min-h-sm;
+}
 
-  &--md {
-    @apply min-h-md;
-  }
+.puik-button--md {
+  @apply min-h-md;
+}
 
-  &--lg {
-    @extend .puik-text-button-large;
-    @apply py-3.5 px-4 gap-3 min-h-lg;
-  }
+.puik-button--lg {
+  @apply puik-text-button-large;
+  @apply py-3.5 px-4 gap-3 min-h-lg;
+}
 
-  &--fluid {
-    @apply w-full;
-  }
+.puik-button--fluid {
+  @apply w-full;
+}
 
-  &--no-wrap {
-    @apply whitespace-nowrap;
-  }
+.puik-button--no-wrap {
+  @apply whitespace-nowrap;
+}
 
-  &:focus-visible {
-    @apply outline-none ring ring-offset-2 ring-blue;
-  }
+.puik-button:focus-visible {
+  @apply outline-none ring ring-offset-2 ring-blue;
+}
 
-  &:disabled,
-  &--disabled {
-    @apply pointer-events-none cursor-default;
-  }
+.puik-button:disabled,
+.puik-button--disabled {
+  @apply pointer-events-none cursor-default;
+}
 
-  &--primary {
-    @apply bg-primary-800 text-white;
-    @apply dark:bg-white dark:text-primary;
-    &:hover {
-      @apply bg-primary-700;
-      @apply dark:bg-primary-200;
-    }
-    &:active {
-      @apply bg-primary-600;
-      @apply dark:bg-primary-300;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply bg-primary-500;
-      @apply dark:bg-primary-400;
-    }
-  }
-  &--primary-reverse {
-    @apply bg-white text-black;
-    &:hover {
-      @apply bg-primary-200;
-    }
-    &:active {
-      @apply bg-primary-400;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply bg-primary-500 text-white;
-    }
-  }
+.puik-button--primary {
+  @apply bg-primary-800 text-white;
+  @apply dark:bg-white dark:text-primary;
+}
 
-  &--secondary {
-    @apply bg-white text-primary border border-primary;
-    &:hover {
-      @apply bg-primary-300;
-    }
-    &:active {
-      @apply bg-primary-400;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply bg-primary-200 text-primary-500 border-primary-400;
-    }
-  }
-  &--secondary-reverse {
-    @apply bg-transparent text-white border border-white;
-    &:hover {
-      @apply bg-primary-600;
-    }
-    &:active {
-      @apply bg-primary-700;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply bg-primary-200 text-primary-500 border-primary-400;
-    }
-  }
+.puik-button--primary:hover {
+  @apply bg-primary-700;
+  @apply dark:bg-primary-200;
+}
 
-  &--tertiary {
-    @apply bg-primary-400 text-primary;
-    &:hover {
-      @apply bg-primary-300;
-    }
-    &:active {
-      @apply bg-primary-200;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply bg-primary-200 text-primary-500;
-    }
-  }
+.puik-button--primary:active {
+  @apply bg-primary-600;
+  @apply dark:bg-primary-300;
+}
 
-  &--destructive {
-    @apply bg-red text-white;
-    &:hover {
-      @apply bg-red-300;
-    }
-    &:active {
-      @apply bg-red-700;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply bg-red-100;
-    }
-  }
+.puik-button--primary:disabled,
+.puik-button--primary.puik-button--disabled {
+  @apply bg-primary-500;
+  @apply dark:bg-primary-400;
+}
 
-  &--text {
-    @apply text-primary;
-    &:hover {
-      @apply bg-primary-200;
-    }
-    &:active {
-      @apply bg-primary-300;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply text-primary-500;
-    }
-  }
-  &--text-reverse {
-    @apply text-white;
-    &:hover {
-      @apply text-primary;
-      @apply bg-primary-300;
-    }
-    &:active {
-      @apply bg-primary-400;
-    }
-    &:disabled,
-    &.puik-button--disabled {
-      @apply text-primary-500;
-    }
-  }
+.puik-button--primary-reverse {
+  @apply bg-white text-black;
+}
 
-  &--info {
-    @apply text-primary bg-blue-50 border border-blue;
-    &:hover {
-      @apply bg-blue-100;
-    }
-    &:disabled,
-    &--disabled {
-      @apply border-blue-300 text-white;
-    }
-    &:active {
-      @apply bg-blue-300;
-    }
-  }
+.puik-button--primary-reverse:hover {
+  @apply bg-primary-200;
+}
 
-  &--danger {
-    @apply text-primary bg-red-50 border border-red;
-    &:hover {
-      @apply bg-red-100;
-    }
-    &:disabled,
-    &--disabled {
-      @apply border-red-300 text-white;
-    }
-    &:active {
-      @apply bg-red-300;
-    }
-  }
+.puik-button--primary-reverse:active {
+  @apply bg-primary-400;
+}
 
-  &--success {
-    @apply text-primary bg-green-50 border border-green;
-    &:hover {
-      @apply bg-green-100;
-    }
-    &:disabled,
-    &--disabled {
-      @apply border-green-100 text-white;
-    }
-    &:active {
-      @apply bg-green-300;
-    }
-  }
+.puik-button--primary-reverse:disabled,
+.puik-button--primary-reverse.puik-button--disabled {
+  @apply bg-primary-500 text-white;
+}
 
-  &--warning {
-    @apply text-primary bg-yellow-50 border border-yellow;
-    &:hover {
-      @apply bg-yellow-100;
-    }
-    &:disabled,
-    &--disabled {
-      @apply border-yellow-100 text-white;
-    }
-    &:active {
-      @apply bg-yellow-300;
-    }
-  }
+.puik-button--secondary {
+  @apply bg-white text-primary border border-primary;
+}
 
-  &__left-icon,
-  &__right-icon {
-    @apply font-materialIcons align-middle;
-  }
+.puik-button--secondary:hover {
+  @apply bg-primary-300;
+}
+
+.puik-button--secondary:active {
+  @apply bg-primary-400;
+}
+
+.puik-button--secondary:disabled,
+.puik-button--secondary.puik-button--disabled {
+  @apply bg-primary-200 text-primary-500 border-primary-400;
+}
+
+.puik-button--secondary-reverse {
+  @apply bg-transparent text-white border border-white;
+}
+
+.puik-button--secondary-reverse:hover {
+  @apply bg-primary-600;
+}
+
+.puik-button--secondary-reverse:active {
+  @apply bg-primary-700;
+}
+
+.puik-button--secondary-reverse:disabled,
+.puik-button--secondary-reverse.puik-button--disabled {
+  @apply bg-primary-200 text-primary-500 border-primary-400;
+}
+
+.puik-button--tertiary {
+  @apply bg-primary-400 text-primary;
+}
+
+.puik-button--tertiary:hover {
+  @apply bg-primary-300;
+}
+
+.puik-button--tertiary:active {
+  @apply bg-primary-200;
+}
+
+.puik-button--tertiary:disabled,
+.puik-button--tertiary.puik-button--disabled {
+  @apply bg-primary-200 text-primary-500;
+}
+
+.puik-button--destructive {
+  @apply bg-red text-white;
+}
+
+.puik-button--destructive:hover {
+  @apply bg-red-300;
+}
+
+.puik-button--destructive:active {
+  @apply bg-red-700;
+}
+
+.puik-button--destructive:disabled,
+.puik-button--destructive.puik-button--disabled {
+  @apply bg-red-100;
+}
+
+.puik-button--text {
+  @apply text-primary;
+}
+
+.puik-button--text:hover {
+  @apply bg-primary-200;
+}
+
+.puik-button--text:active {
+  @apply bg-primary-300;
+}
+
+.puik-button--text:disabled,
+.puik-button--text.puik-button--disabled {
+  @apply text-primary-500;
+}
+
+.puik-button--text-reverse {
+  @apply text-white;
+}
+
+.puik-button--text-reverse:hover {
+  @apply text-primary;
+  @apply bg-primary-300;
+}
+
+.puik-button--text-reverse:active {
+  @apply bg-primary-400;
+}
+
+.puik-button--text-reverse:disabled,
+.puik-button--text-reverse.puik-button--disabled {
+  @apply text-primary-500;
+}
+
+.puik-button--info {
+  @apply text-primary bg-blue-50 border border-blue;
+}
+
+.puik-button--info:hover {
+  @apply bg-blue-100;
+}
+
+.puik-button--info:disabled,
+.puik-button--info.puik-button--disabled {
+  @apply border-blue-300 text-white;
+}
+
+.puik-button--info:active {
+  @apply bg-blue-300;
+}
+
+.puik-button--danger {
+  @apply text-primary bg-red-50 border border-red;
+}
+
+.puik-button--danger:hover {
+  @apply bg-red-100;
+}
+
+.puik-button--danger:disabled,
+.puik-button--danger.puik-button--disabled {
+  @apply border-red-300 text-white;
+}
+
+.puik-button--danger:active {
+  @apply bg-red-300;
+}
+
+.puik-button--success {
+  @apply text-primary bg-green-50 border border-green;
+}
+
+.puik-button--success:hover {
+  @apply bg-green-100;
+}
+
+.puik-button--success:disabled,
+.puik-button--success.puik-button--disabled {
+  @apply border-green-100 text-white;
+}
+
+.puik-button--success:active {
+  @apply bg-green-300;
+}
+
+.puik-button--warning {
+  @apply text-primary bg-yellow-50 border border-yellow;
+}
+
+.puik-button--warning:hover {
+  @apply bg-yellow-100;
+}
+
+.puik-button--warning:disabled,
+.puik-button--warning.puik-button--disabled {
+  @apply border-yellow-100 text-white;
+}
+
+.puik-button--warning:active {
+  @apply bg-yellow-300;
+}
+
+.puik-button__left-icon,
+.puik-button__right-icon {
+  @apply font-materialIcons align-middle;
 }

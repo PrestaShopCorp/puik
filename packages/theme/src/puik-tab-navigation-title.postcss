@@ -1,23 +1,22 @@
-/* @import './common/typography.postcss'; */
+@import './common/variables.postcss';
 
 .puik-tab-navigation__title {
-  @extend .puik-body-default-bold;
+  @apply puik-body-default-bold;
   @apply relative p-2 flex gap-2 whitespace-nowrap border-b border-b-primary-400 items-center cursor-pointer;
+}
 
-  &:focus:not(:hover) {
-    @apply bg-primary-400 outline-none;
-  }
+.puik-tab-navigation__title:focus:not(:hover) {
+  @apply bg-primary-400 outline-none;
+}
 
-  &:hover {
-    @apply bg-primary-300;
-  }
+.puik-tab-navigation__title:hover {
+  @apply bg-primary-300;
+}
 
-  &--selected {
-    &::before {
-      @apply bg-primary content-[''] block absolute bottom-0 left-0 w-full h-[3px] rounded-t-[4px];
-    }
-  }
-  &--disabled {
-    @apply text-primary-600 bg-primary-200 cursor-not-allowed;
-  }
+.puik-tab-navigation__title--selected::before {
+  @apply bg-primary content-[''] block absolute bottom-0 left-0 w-full h-[3px] rounded-t-[4px];
+}
+
+.puik-tab-navigation__title--disabled {
+  @apply text-primary-600 bg-primary-200 cursor-not-allowed;
 }

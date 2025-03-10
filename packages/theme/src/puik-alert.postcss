@@ -1,77 +1,89 @@
-/* @import './common/typography.postcss'; */
+@import './common/variables.postcss';
 
 .puik-alert {
   @apply relative min-w-fit flex flex-row items-start p-4 border text-primary-800;
-  &--success {
-    @apply bg-green-50 border border-green;
-    .puik-alert__icon {
-      @apply text-green;
-    }
-    .puik-button--text{
-      &:hover {
-        @apply bg-green-100;
-      }
-    }
-  }
-  &--warning {
-    @apply bg-yellow-50 border-yellow;
-    .puik-alert__icon {
-      @apply text-yellow;
-    }
-    .puik-button--text{
-      &:hover {
-        @apply bg-yellow-100;
-      }
-    }
-  }
-  &--danger {
-    @apply bg-red-50 border-red;
-    .puik-alert__icon {
-      @apply text-red;
-    }
-    .puik-button--text{
-      &:hover {
-        @apply bg-red-100;
-      }
-    }
-  }
-  &--info {
-    @apply bg-blue-50 border-blue;
-    .puik-alert__icon {
-      @apply text-blue;
-    }
-    .puik-button--text{
-      &:hover {
-        @apply bg-blue-100;
-      }
-    }
-  }
-  &--no-borders {
-    @apply border-0;
-  }
-  &__container {
-    @apply flex flex-col space-y-1 lg:flex-row lg:items-start lg:space-x-1 w-full;
-  }
-  &__content {
-    @apply flex flex-row flex-grow;
-  }
-  &__text {
-    @apply mx-4;
-  }
-  &__title {
-    @extend .puik-h3;
-    @apply font-semibold mb-1;
-  }
-  &__description {
-    @extend .puik-body-default;
-  }
-  &__button {
-    @apply mt-2 ml-9 lg:m-0;
-  }
-  &__icon {
-    @apply mt-0.5 flex-shrink-0;
-  }
-  &__close {
-    @apply ml-4 cursor-pointer leading-none;
-  }
+}
+
+.puik-alert--success {
+  @apply bg-green-50 border border-green;
+}
+
+.puik-alert--success .puik-alert__icon {
+  @apply text-green;
+}
+
+.puik-alert--success .puik-button--text:hover {
+  @apply bg-green-100;
+}
+
+.puik-alert--warning {
+  @apply bg-yellow-50 border-yellow;
+}
+
+.puik-alert--warning .puik-alert__icon {
+  @apply text-yellow;
+}
+
+.puik-alert--warning .puik-button--text:hover {
+  @apply bg-yellow-100;
+}
+
+.puik-alert--danger {
+  @apply bg-red-50 border-red;
+}
+
+.puik-alert--danger .puik-alert__icon {
+  @apply text-red;
+}
+
+.puik-alert--danger .puik-button--text:hover {
+  @apply bg-red-100;
+}
+
+.puik-alert--info {
+  @apply bg-blue-50 border-blue;
+}
+
+.puik-alert--info .puik-alert__icon {
+  @apply text-blue;
+}
+
+.puik-alert--info .puik-button--text:hover {
+  @apply bg-blue-100;
+}
+
+.puik-alert--no-borders {
+  @apply border-0;
+}
+
+.puik-alert__container {
+  @apply flex flex-col space-y-1 lg:flex-row lg:items-start lg:space-x-1 w-full;
+}
+
+.puik-alert__content {
+  @apply flex flex-row flex-grow;
+}
+
+.puik-alert__text {
+  @apply mx-4;
+}
+
+.puik-alert__title {
+  @apply puik-h3 font-semibold mb-1;
+}
+
+.puik-alert__description {
+  @apply puik-body-default;
+}
+
+.puik-alert__button {
+  @apply mt-2 ml-9 lg:m-0;
+}
+
+.puik-alert__icon {
+  @apply mt-0.5 flex-shrink-0;
+}
+
+.puik-alert__close {
+  @apply ml-4 cursor-pointer leading-none;
 }

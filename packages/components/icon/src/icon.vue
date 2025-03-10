@@ -48,6 +48,6 @@ const computedAriaLabel = computed(() => {
 });
 </script>
 
-<style lang="postcss">
+<!-- <style lang="postcss">
 @import '@prestashopcorp/puik-theme/src/puik-icon.postcss';
-</style>
+</style> -->

@@ -1,45 +1,45 @@
-/* @import './common/typography.postcss'; */
+
+@import './common/variables.postcss';
 
 .puik-checkbox {
   @apply flex items-center;
-  &__input {
-    @apply appearance-none
-      grid place-content-center
-      h-5 w-5
-      cursor-pointer
-      rounded-sm border-2 border-primary;
+}
 
-    &:focus-visible {
-      @apply outline outline-2 outline-offset-1 outline-blue;
-    }
+.puik-checkbox__input {
+  @apply appearance-none grid place-content-center h-5 w-5 cursor-pointer rounded-sm border-2 border-primary;
+}
 
-    &:disabled {
-      @apply border-primary-500 checked:bg-primary-500 indeterminate:bg-primary-500 cursor-default;
-      & + &__label {
-        @apply text-primary-500 cursor-default;
-      }
-    }
+.puik-checkbox__input:focus-visible {
+  @apply outline outline-2 outline-offset-1 outline-blue;
+}
 
-    &:checked {
-      @apply bg-blue border-none;
-      &:before {
-        @apply font-materialIcons text-white text-xl;
-        content: '\e876';
-      }
-    }
+.puik-checkbox__input:disabled {
+  @apply border-primary-500 checked:bg-primary-500 indeterminate:bg-primary-500 cursor-default;
+}
 
-    &:indeterminate {
-      @apply bg-blue border-none;
-      &:before {
-        @apply font-materialIcons text-white text-xl;
-        content: '\f108';
-      }
-    }
-  }
-  &__label {
-    @extend .puik-body-default;
-    @apply -tracking-[0.015625em] font-primary text-primary
-      cursor-pointer
-      ml-2;
-  }
+.puik-checkbox__input:disabled + .puik-checkbox__label {
+  @apply text-primary-500 cursor-default;
+}
+
+.puik-checkbox__input:checked {
+  @apply bg-blue border-none;
+}
+
+.puik-checkbox__input:checked:before {
+  @apply font-materialIcons text-white text-xl;
+  content: '\e876';
+}
+
+.puik-checkbox__input:indeterminate {
+  @apply bg-blue border-none;
+}
+
+.puik-checkbox__input:indeterminate:before {
+  @apply font-materialIcons text-white text-xl;
+  content: '\f108';
+}
+
+.puik-checkbox__label {
+  @apply puik-body-default;
+  @apply -tracking-[0.015625em] font-primary text-primary cursor-pointer ml-2;
 }

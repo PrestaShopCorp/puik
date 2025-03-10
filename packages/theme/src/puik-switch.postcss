@@ -1,36 +1,46 @@
-/* @import './common/typography.postcss'; */
+@import './common/variables.postcss';
 
 .puik-switch__group {
   @apply flex items-center;
-  .puik-switch {
-    @apply relative inline-flex items-center h-5 rounded-full w-9 bg-primary cursor-pointer;
-    &:focus-visible {
-      @apply outline-none ring ring-blue ring-offset-1;
-    }
-    &:disabled {
-      @apply bg-primary-400 pointer-events-none;
-    }
-    &--enabled {
-      @apply bg-green;
-      &:disabled {
-        @apply bg-green-100;
-      }
-    }
-    &__toggle {
-      @apply inline-block w-4 h-4 transform bg-white rounded-full translate-x-0.5 transition duration-200 ease-in-out;
-      &--enabled {
-        @apply translate-x-[18px];
-      }
-    }
-  }
-  .puik-switch__label {
-    @extend .puik-body-default;
-    @apply cursor-pointer;
-    &--right {
-      @apply ml-2;
-    }
-    &--left {
-      @apply mr-2;
-    }
-  }
+}
+
+.puik-switch {
+  @apply relative inline-flex items-center h-5 rounded-full w-9 bg-primary cursor-pointer;
+}
+
+.puik-switch:focus-visible {
+  @apply outline-none ring ring-blue ring-offset-1;
+}
+
+.puik-switch:disabled {
+  @apply bg-primary-400 pointer-events-none;
+}
+
+.puik-switch--enabled {
+  @apply bg-green;
+}
+
+.puik-switch--enabled:disabled {
+  @apply bg-green-100;
+}
+
+.puik-switch__toggle {
+  @apply inline-block w-4 h-4 transform bg-white rounded-full translate-x-0.5 transition duration-200 ease-in-out;
+}
+
+.puik-switch__toggle--enabled {
+  @apply translate-x-[18px];
+}
+
+.puik-switch__label {
+  @apply puik-body-default;
+  @apply cursor-pointer;
+}
+
+.puik-switch__label--right {
+  @apply ml-2;
+}
+
+.puik-switch__label--left {
+  @apply mr-2;
 }

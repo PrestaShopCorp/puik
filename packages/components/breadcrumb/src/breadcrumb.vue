@@ -72,9 +72,9 @@ watch(itemsToWatch, (newValue) => {
 }, { immediate: true });
 </script>
 
-<style lang="postcss">
-@import '@prestashopcorp/puik-theme/src/base.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-breadcrumb.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-icon.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-link.postcss';
+<style>
+@import '@prestashopcorp/puik-theme/base.css';
+@import '@prestashopcorp/puik-theme/puik-breadcrumb.css';
+@import '@prestashopcorp/puik-theme/puik-icon.css';
+@import '@prestashopcorp/puik-theme/puik-link.css';
 </style>

@@ -1,17 +1,20 @@
-/* @import './common/typography.postcss'; */
+@import './common/variables.postcss';
 
 .puik-label {
-  @extend .puik-body-default-bold;
+  @apply puik-body-default-bold;
   @apply text-primary-800;
-  &--required {
-    @apply text-red ml-1;
-  }
-  &--optional {
-    @extend .puik-body-small;
-    @apply text-primary-700 font-normal ml-1;
-  }
-  &--readonly {
-    @extend .puik-body-small;
-    @apply text-primary-700 font-normal ml-1;
-  }
+}
+
+.puik-label--required {
+  @apply text-red ml-1;
+}
+
+.puik-label--optional {
+  @apply puik-body-small;
+  @apply text-primary-700 font-normal ml-1;
+}
+
+.puik-label--readonly {
+  @apply puik-body-small;
+  @apply text-primary-700 font-normal ml-1;
 }

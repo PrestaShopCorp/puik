@@ -1,14 +1,18 @@
-/* @import './common/typography.postcss'; */
+@import './common/variables.postcss';
 
 .puik-rating-card {
     @apply flex items-center space-x-1;
-    &_stars-container {
-        @apply flex space-x-1;
-    }
-    &_average-value {
-        @extend .puik-body-default-bold;
-    }
-    &_total-ratings {
-        @extend .puik-body-small-medium;
-    }
-}
+  }
+  
+  .puik-rating-card_stars-container {
+    @apply flex space-x-1;
+  }
+  
+  .puik-rating-card_average-value {
+    @apply puik-body-default-bold;
+  }
+  
+  .puik-rating-card_total-ratings {
+    @apply puik-body-small-medium;
+  }
+  

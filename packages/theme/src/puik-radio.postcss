@@ -1,37 +1,35 @@
-/* @import './common/typography.postcss'; */
+@import './common/variables.postcss';
 
 .puik-radio {
-  @extend .puik-body-default;
+  @apply puik-body-default;
   @apply appearance-none flex items-center;
-  &__input {
-    @apply appearance-none
-     bg-transparent bg-clip-content
-     w-5 h-5
-     mr-2
-     border-2 border-solid rounded-full border-primary cursor-pointer;
+}
 
-    &:checked {
-      @apply bg-blue
-      p-[3px]
-      border-2 border-solid border-blue;
-      &:disabled {
-        @apply border-2 border-solid rounded-full border-primary-500 bg-primary-500;
-      }
-    }
+.puik-radio__input {
+  @apply appearance-none bg-transparent bg-clip-content w-5 h-5 mr-2 border-2 border-solid rounded-full border-primary cursor-pointer;
+}
 
-    &:focus {
-      @apply outline-none ring-2 ring-blue ring-offset-1;
-    }
+.puik-radio__input:checked {
+  @apply bg-blue p-[3px] border-2 border-solid border-blue;
+}
 
-    &:disabled {
-      @apply border-2 border-solid rounded-full border-primary-500 bg-transparent;
-    }
-    &:disabled + &__label {
-      @apply text-primary-500 cursor-default;
-    }
-  }
-  &__label {
-    @extend .puik-body-default;
-    @apply font-primary cursor-pointer;
-  }
+.puik-radio__input:checked:disabled {
+  @apply border-2 border-solid rounded-full border-primary-500 bg-primary-500;
+}
+
+.puik-radio__input:focus {
+  @apply outline-none ring-2 ring-blue ring-offset-1;
+}
+
+.puik-radio__input:disabled {
+  @apply border-2 border-solid rounded-full border-primary-500 bg-transparent;
+}
+
+.puik-radio__input:disabled + .puik-radio__label {
+  @apply text-primary-500 cursor-default;
+}
+
+.puik-radio__label {
+  @apply puik-body-default;
+  @apply font-primary cursor-pointer;
 }

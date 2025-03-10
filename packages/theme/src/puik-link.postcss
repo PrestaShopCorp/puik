@@ -1,4 +1,4 @@
-/* @import './common/typography.postcss'; */
+@import './common/variables.postcss';
 
 .puik-link {
   @apply cursor-pointer 
@@ -10,78 +10,79 @@
     decoration-primary-500
     transition-all
     duration-150;
+}
 
-  &:hover,
-  &:active,
-  &:visited {
-    @apply underline-offset-[5px];
-  }
-  
-  &:hover,
-  &:visited:hover {
-    @apply decoration-primary;
-  }
+.puik-link:hover,
+.puik-link:active,
+.puik-link:visited {
+  @apply underline-offset-[5px];
+}
 
-  &:focus-visible {
-    @apply outline-none ring-2 ring-blue rounded-[4px] shadow-none decoration-primary-800;
-  }
+.puik-link:hover,
+.puik-link:visited:hover {
+  @apply decoration-primary;
+}
 
-  &__target__icon {
-    @apply font-materialIcons align-bottom;
+.puik-link:focus-visible {
+  @apply outline-none ring-2 ring-blue rounded-[4px] shadow-none decoration-primary-800;
+}
 
-    &:before {
-      @apply content-['_'] text-[0.35rem] leading-[0.25rem];
-    }
-  }
+.puik-link__target__icon {
+  @apply font-materialIcons align-bottom;
+}
 
-  &--sm {
-    @extend .puik-body-small;
-  }
+.puik-link__target__icon:before {
+  @apply content-['_'] text-[0.35rem] leading-[0.25rem];
+}
 
-  &--md {
-    @extend .puik-body-default;
-  }
+.puik-link--sm {
+  @apply puik-body-small;
+}
 
-  &--lg {
-    @extend .puik-body-large;
-  }
+.puik-link--md {
+  @apply puik-body-default;
+}
 
-  &--high-contrast {
-    &:visited {
-      @apply text-primary;
-    }
-    @apply decoration-primary;
-  }
-  
-  &--articles {
-    @apply decoration-primary-500;
-    
-    &:visited {
-      @apply text-purple-700 decoration-primary-500;
-    }
-    
-    &:hover, &:visited:hover {
-      @apply decoration-primary;
-    }
-    
-    &:focus-visible {
-      @apply decoration-primary-800;
-    }
-  }
+.puik-link--lg {
+  @apply puik-body-large;
+}
 
-  &--high-contrast.puik-link--articles {
-    @apply text-primary decoration-primary;
-    
-    &:visited {
-      @apply text-primary decoration-primary;
-    }
-    
-    &:visited:hover {
-      @apply decoration-primary;
-    }
+.puik-link--high-contrast:visited {
+  @apply text-primary;
+}
+.puik-link--high-contrast {
+  @apply decoration-primary;
+}
 
-    &:focus-visible {
-      @apply decoration-primary-800;
-    }
-  }
+.puik-link--articles {
+  @apply decoration-primary-500;
+}
+
+.puik-link--articles:visited {
+  @apply text-purple-700 decoration-primary-500;
+}
+
+.puik-link--articles:hover,
+.puik-link--articles:visited:hover {
+  @apply decoration-primary;
+}
+
+.puik-link--articles:focus-visible {
+  @apply decoration-primary-800;
+}
+
+.puik-link--high-contrast.puik-link--articles {
+  @apply text-primary decoration-primary;
+}
+
+.puik-link--high-contrast.puik-link--articles:visited {
+  @apply text-primary decoration-primary;
+}
+
+.puik-link--high-contrast.puik-link--articles:visited:hover {
+  @apply decoration-primary;
+}
+
+.puik-link--high-contrast.puik-link--articles:focus-visible {
+  @apply decoration-primary-800;
 }

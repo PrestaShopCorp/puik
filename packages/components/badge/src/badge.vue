@@ -26,7 +26,7 @@ withDefaults(defineProps<BadgeProps>(), {
 });
 </script>
 
-<style lang="postcss">
-@import '@prestashopcorp/puik-theme/src/base.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-badge.postcss';
+<style>
+@import '@prestashopcorp/puik-theme/base.css';
+@import '@prestashopcorp/puik-theme/puik-badge.css';
 </style>

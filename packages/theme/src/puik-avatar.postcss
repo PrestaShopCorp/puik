@@ -1,56 +1,71 @@
-/* @import './common/typography.postcss'; */
-
 .puik-avatar {
   @apply flex justify-center items-center bg-primary-800 rounded-full overflow-hidden;
 }
+
 .puik-avatar--small {
   @apply w-6 h-6;
 }
+
 .puik-avatar--medium {
   @apply w-8 h-8;
 }
+
 .puik-avatar--large {
   @apply w-12 h-12;
 }
+
 .puik-avatar--jumbo {
   @apply w-14 h-14;
 }
+
 .puik-avatar--primary {
   @apply border border-transparent;
-  .puik-avatar_initials {
-    @apply text-white;
-  }
 }
+
+.puik-avatar--primary .puik-avatar_initials {
+  @apply text-white;
+}
+
 .puik-avatar--reverse {
   @apply border border-primary-300;
-  .puik-avatar_initials {
-    @apply text-primary-800;
-  }
 }
+
+.puik-avatar--reverse .puik-avatar_initials {
+  @apply text-primary-800;
+}
+
 .puik-avatar--photo {
   @apply border-none;
-  img {
-    @apply object-cover;
-  }
 }
+
+.puik-avatar--photo img {
+  @apply object-cover;
+}
+
 .puik-avatar--reverse.puik-avatar {
   @apply bg-white;
 }
+
 .puik-avatar_initials {
   @apply font-bold;
-  &--small {
-    @apply text-xs/none;
-  }
-  &--medium {
-    @apply text-sm/none;
-  }
-  &--large {
-    @apply text-base/none;
-  }
-  &--jumbo {
-    @apply text-2xl/none;
-  }
 }
+
+.puik-avatar_initials--small {
+  @apply text-xs/none;
+}
+
+.puik-avatar_initials--medium {
+  @apply text-sm/none;
+}
+
+.puik-avatar_initials--large {
+  @apply text-base/none;
+}
+
+.puik-avatar_initials--jumbo {
+  @apply text-2xl/none;
+}
+
 .puik-avatar:focus-visible {
   @apply outline-1 outline-offset-[3px];
 }

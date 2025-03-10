@@ -116,9 +116,9 @@ const close = (event: Event) => emit('close', event);
 const clickLink = (event: Event) => emit('clickLink', event);
 </script>
 
-<style lang="postcss">
-@import '@prestashopcorp/puik-theme/src/base.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-icon.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-button.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-alert.postcss';
+<style>
+@import '@prestashopcorp/puik-theme/base.css';
+@import '@prestashopcorp/puik-theme/puik-icon.css';
+@import '@prestashopcorp/puik-theme/puik-button.css';
+@import '@prestashopcorp/puik-theme/puik-alert.css';
 </style>

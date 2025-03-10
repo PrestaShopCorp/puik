@@ -19,6 +19,7 @@
     "build:components": "pnpm --filter @prestashopcorp/puik-components build",
     "build:web": "pnpm --filter @prestashopcorp/puik-web-components build",
     "build:theme": "pnpm --filter @prestashopcorp/puik-theme build",
+    "dev:theme": "pnpm --filter @prestashopcorp/puik-theme dev",
     "lint": "eslint . --ext .vue,.js,.ts,",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts",
     "docs:dev": "pnpm --filter @prestashopcorp/puik-docs dev",

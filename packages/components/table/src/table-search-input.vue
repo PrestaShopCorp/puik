@@ -119,8 +119,8 @@ const sendRangeValue = (
 };
 </script>
 
-<style lang="postcss">
-@import '@prestashopcorp/puik-theme/src/puik-button.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-input.postcss';
-@import '@prestashopcorp/puik-theme/src/puik-icon.postcss';
+<style>
+@import '@prestashopcorp/puik-theme/puik-button.css';
+@import '@prestashopcorp/puik-theme/puik-input.css';
+@import '@prestashopcorp/puik-theme/puik-icon.css';
 </style>
