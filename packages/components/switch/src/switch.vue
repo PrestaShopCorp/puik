@@ -78,8 +78,3 @@ const computedAriaLabel = computed(() => {
   }
 });
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-switch.scss';
-</style>

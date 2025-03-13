@@ -235,9 +235,3 @@ const handleKeyDown = (event: KeyboardEvent) => {
   isProcessing = false;
 };
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-sortable-list.scss';
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
-</style>

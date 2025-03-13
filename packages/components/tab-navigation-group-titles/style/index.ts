@@ -1,2 +1,2 @@
-import '@prestashopcorp/puik-components/base/style';
-import '@prestashopcorp/puik-theme/src/puik-tab-navigation-group-titles.scss';
+import '@prestashopcorp/puik-components/base/style/css';
+import '@prestashopcorp/puik-theme/puik-tab-navigation-group-titles.css';

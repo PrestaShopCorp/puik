@@ -21,8 +21,3 @@ withDefaults(defineProps<SkeletonLoaderProps>(), {
   tag: 'div'
 });
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-skeleton-loader.scss';
-</style>

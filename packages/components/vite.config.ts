@@ -33,7 +33,7 @@ export default defineConfig({
           absolute: true,
           onlyFiles: true
         }),
-        ['stories', 'test', 'style']
+        ['stories', 'test']
       ),
       output: [
         {

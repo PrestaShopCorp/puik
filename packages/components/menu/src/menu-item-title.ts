@@ -1,3 +1,4 @@
+import '../../menu-item-title/style';
 import type MenuItemTitle from './menu-item-title.vue';
 
 export interface MenuItemTitleProps {

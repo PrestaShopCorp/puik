@@ -4,7 +4,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --force && pnpm --filter @prestashopcorp/puik-theme dev",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },

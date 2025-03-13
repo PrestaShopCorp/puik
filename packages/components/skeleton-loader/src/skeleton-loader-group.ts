@@ -1,3 +1,4 @@
+import '../../skeleton-loader-group/style';
 import type SkeletonLoaderGroup from './skeleton-loader-group.vue';
 
 export interface SkeletonLoaderGroupProps {

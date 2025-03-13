@@ -1,3 +1,4 @@
+import '../style';
 import type Divider from './divider.vue';
 
 export enum PuikDividerOrientation {

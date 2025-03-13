@@ -25,8 +25,3 @@ withDefaults(defineProps<BadgeProps>(), {
   ariaLive: PuikAriaLive.Polite
 });
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-badge.scss';
-</style>

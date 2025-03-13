@@ -525,14 +525,3 @@ watch(
 
 updateSelectAllIndeterminate(selectedMultipleOptions.value);
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-select.scss';
-@use '@prestashopcorp/puik-theme/src/puik-option.scss';
-@use '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
-@use '@prestashopcorp/puik-theme/src/puik-chip.scss';
-@use '@prestashopcorp/puik-theme/src/puik-input.scss';
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
-@use '@prestashopcorp/puik-theme/src/puik-label.scss';
-</style>

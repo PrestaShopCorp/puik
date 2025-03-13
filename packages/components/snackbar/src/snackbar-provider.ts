@@ -1,3 +1,4 @@
+import '../../snackbar-provider/style';
 import type SnackbarProvider from './snackbar-provider.vue';
 
 export enum PuikSnackbarSwipeDirections {

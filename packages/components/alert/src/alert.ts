@@ -1,3 +1,4 @@
+import '../style';
 import type Alert from './alert.vue';
 import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 

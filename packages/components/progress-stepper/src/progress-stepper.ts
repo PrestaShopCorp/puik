@@ -1,4 +1,4 @@
-import '@prestashopcorp/puik-components/progress-stepper/style/css';
+import '../style';
 import type { ComputedRef, InjectionKey, Ref, WritableComputedRef } from 'vue';
 import type ProgressStepper from './progress-stepper.vue';
 

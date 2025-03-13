@@ -97,9 +97,3 @@ const altText = computed(() => {
 const iconAltText = computed(() => props.icon || avatarAltDefault);
 const initialsAltText = computed(() => initials.value);
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-avatar.scss';
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
-</style>

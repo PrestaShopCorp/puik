@@ -1,4 +1,5 @@
-import '@prestashopcorp/puik-components/base/style';
-import '@prestashopcorp/puik-theme/src/puik-alert.scss';
-import '@prestashopcorp/puik-theme/src/puik-button.scss';
-import '@prestashopcorp/puik-theme/src/puik-icon.scss';
+import '@prestashopcorp/puik-components/base/style/css';
+import '@prestashopcorp/puik-theme/puik-alert.css';
+import '@prestashopcorp/puik-theme/puik-button.css';
+import '@prestashopcorp/puik-theme/puik-icon.css';
+import '@prestashopcorp/puik-theme/puik-link.css';

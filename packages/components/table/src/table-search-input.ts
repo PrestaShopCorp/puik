@@ -1,3 +1,4 @@
+import '../../table-search-input/style';
 import type TableSearchInput from './table-search-input.vue';
 
 export enum PuikTableSearchInputTypes {

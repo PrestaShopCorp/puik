@@ -1,4 +1,4 @@
-import '@prestashopcorp/puik-components/base/style';
-import '@prestashopcorp/puik-theme/src/puik-sidebar.scss';
-import '@prestashopcorp/puik-theme/src/puik-accordion-group.scss';
-import '@prestashopcorp/puik-theme/src/puik-button.scss';
+import '@prestashopcorp/puik-components/base/style/css';
+import '@prestashopcorp/puik-theme/puik-sidebar.css';
+import '@prestashopcorp/puik-theme/puik-accordion-group.css';
+import '@prestashopcorp/puik-theme/puik-button.css';

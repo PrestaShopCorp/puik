@@ -1,3 +1,4 @@
+import '../../accordion-group/style';
 import type { InjectionKey, Ref } from 'vue';
 import type AccordionGroup from './accordion-group.vue';
 

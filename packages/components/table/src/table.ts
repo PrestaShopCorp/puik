@@ -1,3 +1,4 @@
+import '../style';
 import type Table from './table.vue';
 import type { PuikTableSearchInputTypes, searchOption } from '../src/table-search-input';
 

@@ -1,3 +1,4 @@
+import '../style';
 import type Tooltip from './tooltip.vue';
 
 export enum PuikTooltipPositions {

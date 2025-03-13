@@ -1,3 +1,4 @@
+import '../style';
 import type NotificationBar from './notification-bar.vue';
 
 export enum PuikNotificationBarVariants {

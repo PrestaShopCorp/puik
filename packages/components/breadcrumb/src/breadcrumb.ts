@@ -1,3 +1,4 @@
+import '../style';
 import type { RouteLocationRaw } from 'vue-router';
 import type Breadcrumb from './breadcrumb.vue';
 import type { PuikLinkTargetVariants } from '../../link';

@@ -1,3 +1,4 @@
+import '../../sidebar-title/style';
 import type SidebarTitle from './sidebar-title.vue';
 
 export interface SidebarTitleProps {

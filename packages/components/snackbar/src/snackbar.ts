@@ -1,3 +1,4 @@
+import '../style';
 import type Snackbar from './snackbar.vue';
 import type { Component } from 'vue';
 

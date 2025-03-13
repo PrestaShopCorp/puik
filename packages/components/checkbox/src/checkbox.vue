@@ -70,8 +70,3 @@ const getAriaLabelledBy = () => {
   return props.srLabel ? `label-sr-${id}` : `label-${id}`;
 };
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
-</style>

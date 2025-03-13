@@ -1,3 +1,4 @@
+import '../style';
 import { defineComponent, renderSlot, provide, ref } from 'vue';
 import { configProviderProps } from './config-provider-props';
 import { configProviderContextKey } from './config-provider-keys';

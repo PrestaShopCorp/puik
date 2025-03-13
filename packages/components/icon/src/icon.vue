@@ -47,7 +47,3 @@ const computedAriaLabel = computed(() => {
   return props.ariaLabel || `${props.icon} icon`;
 });
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
-</style>

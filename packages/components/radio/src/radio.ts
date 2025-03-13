@@ -1,3 +1,4 @@
+import '../style';
 import type Radio from './radio.vue';
 
 export interface RadioProps {

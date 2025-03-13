@@ -61,8 +61,3 @@ const isFocus = ref(false);
 const handleFocus = () => (isFocus.value = true);
 const valueModel = useVModel(props, 'modelValue', emit);
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-radio.scss';
-</style>

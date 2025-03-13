@@ -13,6 +13,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "pnpm clean && pnpm sass && pnpm postcss",
+    "dev": "pnpm clean && pnpm sass --watch && pnpm postcss --watch",
     "sass": "sass --style expanded --no-source-map src/:dist/",
     "postcss": "postcss ./dist/*.css --dir ./dist"
   },

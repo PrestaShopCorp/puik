@@ -1,3 +1,4 @@
+import '../style';
 import type Badge from './badge.vue';
 import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 

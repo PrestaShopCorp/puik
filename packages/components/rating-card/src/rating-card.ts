@@ -1,3 +1,4 @@
+import '../style';
 import type RatingCard from './rating-card.vue';
 import type { booleanish } from '../../types';
 

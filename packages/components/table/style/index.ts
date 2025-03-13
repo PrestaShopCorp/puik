@@ -1,4 +1,4 @@
-import '@prestashopcorp/puik-components/base/style';
-import '@prestashopcorp/puik-theme/src/puik-table.scss';
-import '@prestashopcorp/puik-theme/src/puik-table-search-input.scss';
-import '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
+import '@prestashopcorp/puik-components/base/style/css';
+import '@prestashopcorp/puik-theme/puik-table.css';
+import '@prestashopcorp/puik-theme/puik-table-search-input.css';
+import '@prestashopcorp/puik-theme/puik-checkbox.css';

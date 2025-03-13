@@ -78,10 +78,3 @@ watch(() => props.value, (newValue) => {
 });
 
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-option.scss';
-@use '@prestashopcorp/puik-theme/src/puik-checkbox.scss';
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
-</style>

@@ -30,8 +30,3 @@ const props = withDefaults(defineProps<SnackbarProviderProps>(), {
   positionY: PuikSnackbarPositionsY.Down
 });
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-snackbar-provider.scss';
-</style>

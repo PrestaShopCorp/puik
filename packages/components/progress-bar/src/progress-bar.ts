@@ -1,3 +1,4 @@
+import '../style';
 import type ProgressBar from './progress-bar.vue';
 
 export interface ProgressBarProps {

@@ -1,3 +1,4 @@
+import '../style';
 import type { InjectionKey, Ref } from 'vue';
 import type TabNavigation from './tab-navigation.vue';
 

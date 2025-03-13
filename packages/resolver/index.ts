@@ -25,7 +25,7 @@ function getSideEffects(
 
   return ssr
     ? [`${themeFolder}/base.css`, `${themeFolder}/puik-${dirName}.css`]
-    : `${ComponentsFolder}/${dirName}/style/css`;
+    : `${ComponentsFolder}/${dirName}/style/index`;
 }
 
 function resolveComponent(
