@@ -24,3 +24,7 @@ withDefaults(defineProps<SidebarTitleProps>(), {
 const sidebarValues = inject(sidebarKey, null);
 const isExpanded = computed(() => sidebarValues?.extended.value);
 </script>
+
+<style lang="css">
+@import '../../sidebar-title/style/index.css';
+</style>

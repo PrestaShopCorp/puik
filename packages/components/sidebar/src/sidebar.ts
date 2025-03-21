@@ -1,4 +1,3 @@
-import '../style';
 import type { Ref, InjectionKey } from 'vue';
 import type Sidebar from './sidebar.vue';
 

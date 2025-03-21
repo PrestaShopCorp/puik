@@ -21,3 +21,7 @@ withDefaults(defineProps<SkeletonLoaderProps>(), {
   tag: 'div'
 });
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

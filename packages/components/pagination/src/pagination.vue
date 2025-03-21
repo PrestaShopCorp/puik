@@ -149,3 +149,7 @@ watch(() => props.itemsPerPage, () => {
   }
 });
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

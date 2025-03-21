@@ -1,4 +1,3 @@
-import '../style';
 import type Checkbox from './checkbox.vue';
 
 export interface CheckboxProps {

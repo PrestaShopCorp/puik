@@ -4,7 +4,7 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*", "src/*",
-  ".vitepress/components/*",
+  ".vitepress/components/*.vue",
   ".vitepress/theme/*"
 ],
   "exclude": ["node_modules"],

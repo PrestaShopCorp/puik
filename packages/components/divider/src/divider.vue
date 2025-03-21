@@ -22,3 +22,7 @@ const props = withDefaults(defineProps<DividerProps>(), {
   orientation: PuikDividerOrientation.Horizontal
 });
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

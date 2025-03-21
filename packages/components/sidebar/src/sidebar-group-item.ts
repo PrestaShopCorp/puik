@@ -1,4 +1,3 @@
-import '../../sidebar-group-item/style';
 import type SidebarGroupItem from './sidebar-group-item.vue';
 
 export interface SidebarGroupItemsProps {

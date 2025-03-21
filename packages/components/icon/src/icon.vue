@@ -47,3 +47,7 @@ const computedAriaLabel = computed(() => {
   return props.ariaLabel || `${props.icon} icon`;
 });
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

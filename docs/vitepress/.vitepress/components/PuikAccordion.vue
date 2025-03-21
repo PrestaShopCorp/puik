@@ -17,6 +17,3 @@
 import { PuikAccordion, PuikAccordionGroup } from '@prestashopcorp/puik-components';
 
 </script>
-
-<style lang="scss">
-</style>

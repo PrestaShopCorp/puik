@@ -9,3 +9,7 @@ defineOptions({
   name: 'PuikMenuItem'
 });
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

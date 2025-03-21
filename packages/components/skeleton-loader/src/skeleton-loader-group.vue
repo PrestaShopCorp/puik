@@ -22,3 +22,7 @@ withDefaults(defineProps<SkeletonLoaderGroupProps>(), {
 });
 const { t } = useLocale();
 </script>
+
+<style lang="css">
+@import '../../skeleton-loader-group/style/index.css';
+</style>

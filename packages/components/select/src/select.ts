@@ -1,4 +1,3 @@
-import '../style';
 import type Select from './select.vue';
 import type { OptionType } from './option';
 export interface SelectProps {

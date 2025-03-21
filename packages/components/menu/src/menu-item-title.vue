@@ -16,3 +16,7 @@ defineOptions({
 
 defineProps<MenuItemTitleProps>();
 </script>
+
+<style lang="css">
+@import '../../menu-item-title/style/index.css';
+</style>

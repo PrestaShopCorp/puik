@@ -1,4 +1,4 @@
-import '../style';
+
 import type Pagination from './pagination.vue';
 
 export enum PuikPaginationVariants {

@@ -1,4 +1,3 @@
-import '../../sidebar-item/style';
 import type { RouteLocationRaw } from 'vue-router';
 import type SidebarItem from './sidebar-item.vue';
 

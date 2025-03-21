@@ -18,3 +18,7 @@ withDefaults(defineProps<CardProps>(), {
   variant: PuikCardVariants.Default
 });
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

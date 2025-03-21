@@ -1,4 +1,3 @@
-import '../style';
 import type Card from './card.vue';
 
 export enum PuikCardVariants {

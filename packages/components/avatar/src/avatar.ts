@@ -1,4 +1,3 @@
-import '../style';
 import type Avatar from './avatar.vue';
 
 export enum PuikAvatarMode {

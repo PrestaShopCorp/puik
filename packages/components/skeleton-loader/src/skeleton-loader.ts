@@ -1,4 +1,3 @@
-import '../style';
 import type SkeletonLoader from './skeleton-loader.vue';
 
 export enum PuikSkeletonLoaderVariants {

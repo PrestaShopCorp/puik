@@ -97,3 +97,7 @@ const altText = computed(() => {
 const iconAltText = computed(() => props.icon || avatarAltDefault);
 const initialsAltText = computed(() => initials.value);
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

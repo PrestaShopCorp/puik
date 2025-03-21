@@ -128,3 +128,7 @@ watch(() => props.modelValue, computeHeight);
 watch(() => props.maxRows, computeHeight);
 watch(() => props.rows, computeHeight);
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

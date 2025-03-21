@@ -1,4 +1,3 @@
-import '../style';
 import type Modal from './modal.vue';
 
 export const DESTRUCTIVE_ICON_NAME = 'warning';

@@ -1,4 +1,3 @@
-import '../style';
 import type Label from './label.vue';
 
 export interface LabelProps {

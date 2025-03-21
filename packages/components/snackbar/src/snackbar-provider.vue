@@ -30,3 +30,7 @@ const props = withDefaults(defineProps<SnackbarProviderProps>(), {
   positionY: PuikSnackbarPositionsY.Down
 });
 </script>
+
+<style lang="css">
+@import '../../snackbar-provider/style/index.css';
+</style>

@@ -45,6 +45,3 @@ const expandedAccordion = ref([]);
 const multiple = ref(true);
 const contained = ref(false);
 </script>
-
-<style lang="scss">
-</style>

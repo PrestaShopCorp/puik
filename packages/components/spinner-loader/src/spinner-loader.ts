@@ -1,4 +1,3 @@
-import '../style';
 import type SpinnerLoader from './spinner-loader.vue';
 
 export enum PuikSpinnerLoaderSizes {

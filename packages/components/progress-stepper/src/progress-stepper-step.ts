@@ -1,4 +1,3 @@
-import '../../progress-stepper-step/style';
 import type ProgressStepperStep from './progress-stepper-step.vue';
 
 export interface ProgressStepperStepProps {

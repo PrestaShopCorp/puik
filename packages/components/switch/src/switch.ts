@@ -1,4 +1,3 @@
-import '../style';
 import type Switch from './switch.vue';
 
 export interface SwitchProps {

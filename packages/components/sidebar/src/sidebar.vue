@@ -119,3 +119,7 @@ provide(sidebarKey, {
   extended: localExpanded
 });
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

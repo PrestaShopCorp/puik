@@ -28,3 +28,7 @@ const isCurrentTab = computed(() => {
   return props.position === currentTab?.currentPosition.value;
 });
 </script>
+
+<style lang="css">
+@import '../../tab-navigation-panel/style/index.css';
+</style>

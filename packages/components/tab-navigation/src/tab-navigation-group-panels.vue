@@ -9,3 +9,7 @@ defineOptions({
   name: 'PuikTabNavigationGroupPanels'
 });
 </script>
+
+<style lang="css">
+@import '../../tab-navigation-group-panels/style/index.css';
+</style>

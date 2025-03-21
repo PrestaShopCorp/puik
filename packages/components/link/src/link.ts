@@ -1,4 +1,3 @@
-import '../style';
 import type { RouteLocationRaw } from 'vue-router';
 import type Link from './link.vue';
 

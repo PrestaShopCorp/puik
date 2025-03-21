@@ -1,4 +1,3 @@
-import '../style';
 import type Textarea from './textarea.vue';
 
 export interface TextareaProps {

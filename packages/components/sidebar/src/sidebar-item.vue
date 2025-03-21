@@ -60,3 +60,7 @@ const isMenuItem = computed(
   () => !sidebarValues?.extended.value && groupItemValues
 );
 </script>
+
+<style lang="css">
+@import '../../sidebar-item/style/index.css';
+</style>

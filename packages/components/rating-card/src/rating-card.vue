@@ -100,3 +100,7 @@ const getStarState = (starIndex: number) => {
   return { icon: 'star', fill: 0 };
 };
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

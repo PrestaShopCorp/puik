@@ -55,3 +55,7 @@ watch(
   }
 );
 </script>
+
+<style lang="css">
+@import '../../tab-navigation-title/style/index.css';
+</style>

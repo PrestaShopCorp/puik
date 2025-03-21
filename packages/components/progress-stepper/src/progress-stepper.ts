@@ -1,4 +1,3 @@
-import '../style';
 import type { ComputedRef, InjectionKey, Ref, WritableComputedRef } from 'vue';
 import type ProgressStepper from './progress-stepper.vue';
 

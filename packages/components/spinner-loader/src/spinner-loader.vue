@@ -43,3 +43,7 @@ withDefaults(defineProps<SpinnerLoaderProps>(), {
   dataTest: 'spinner-loader'
 });
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

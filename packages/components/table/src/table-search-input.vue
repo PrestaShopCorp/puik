@@ -118,3 +118,7 @@ const sendRangeValue = (
   emit('searchRangeValue', searchOption);
 };
 </script>
+
+<style lang="css">
+@import '../../table-search-input/style/index.css';
+</style>

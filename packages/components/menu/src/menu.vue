@@ -52,3 +52,7 @@ withDefaults(defineProps<MenuProps>(), {
   position: PuikMenuPositions.Bottom
 });
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

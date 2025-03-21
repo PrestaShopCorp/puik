@@ -10,9 +10,9 @@
     "vue": "^3.3.7"
   },
   "dependencies": {
+    "@prestashopcorp/puik-theme": "workspace:*",
     "@headlessui/vue": "^1.7.23",
     "@popperjs/core": "^2.11.8",
-    "@prestashopcorp/puik-theme": "workspace:*",
     "@vueuse/components": "^11.3.0",
     "@vueuse/core": "^10.11.1",
     "radix-vue": "^1.9.16",
@@ -20,11 +20,9 @@
     "sortablejs-vue3": "^1.2.11"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.17",
-    "postcss": "^8.5.3",
+    "@types/sortablejs": "^1.15.8",
     "autoprefixer": "^10.4.20",
     "cssnano": "^6.1.2",
-    "@types/sortablejs": "^1.15.8",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
     "vue-tsc": "^2.2.4"

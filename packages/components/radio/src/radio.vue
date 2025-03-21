@@ -61,3 +61,7 @@ const isFocus = ref(false);
 const handleFocus = () => (isFocus.value = true);
 const valueModel = useVModel(props, 'modelValue', emit);
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

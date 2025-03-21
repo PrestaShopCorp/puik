@@ -1,4 +1,3 @@
-import '../style';
 import type Menu from './menu.vue';
 
 export enum PuikMenuAligns {

@@ -1,4 +1,3 @@
-import '../style';
 import type SortableList from './sortable-list.vue';
 import Sortable, { SortableOptions } from 'sortablejs';
 import type { AutoScrollOptions } from 'sortablejs/plugins';

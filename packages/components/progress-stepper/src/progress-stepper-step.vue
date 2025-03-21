@@ -82,3 +82,7 @@ const onClick = () => {
   emit('click', props.step);
 };
 </script>
+
+<style lang="css">
+@import '../../progress-stepper-step/style/index.css';
+</style>

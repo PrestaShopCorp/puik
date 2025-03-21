@@ -71,3 +71,7 @@ watch(itemsToWatch, (newValue) => {
   internalItems.value = newValue;
 }, { immediate: true });
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>

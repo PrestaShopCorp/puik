@@ -18,6 +18,7 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "unplugin-vue-components": "^28.4.1",
     "@vitejs/plugin-vue": "^4.6.2",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",

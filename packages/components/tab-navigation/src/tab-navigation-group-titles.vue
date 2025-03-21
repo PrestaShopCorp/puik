@@ -17,3 +17,7 @@ defineOptions({
 
 const props = defineProps<TabNavigationGroupTitlesProps>();
 </script>
+
+<style lang="css">
+@import '../../tab-navigation-group-titles/style/index.css';
+</style>

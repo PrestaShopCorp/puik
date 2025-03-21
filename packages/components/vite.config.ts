@@ -9,29 +9,31 @@ import pkg from './package.json' assert { type: 'json' };
 
 export default defineConfig({
   plugins: [
-    vue({ customElement: true }),
+    vue({
+      customElement: true,
+    }),
     dts({
-      tsconfigPath: 'tsconfig.build.json'
+      tsconfigPath: 'tsconfig.build.json',
     }),
     nodeResolve({
-      mainFields: ['module', 'js', 'json']
-    })
+      mainFields: ['module', 'js', 'json'],
+    }),
   ],
   build: {
+    cssCodeSplit: true,  // Cette option permet de diviser le CSS en fichiers séparés
     lib: {
-      entry: resolve(__dirname, './index.ts')
+      entry: resolve(__dirname, './index.ts'),
     },
     rollupOptions: {
       external: [
         ...Object.keys(pkg.dependencies),
         ...Object.keys(pkg.peerDependencies),
-        /^@prestashopcorp\/puik-theme\/.*/
       ],
       input: excludeFiles(
         await glob('./**/*.{vue,ts}', {
           cwd: './',
           absolute: true,
-          onlyFiles: true
+          onlyFiles: true,
         }),
         ['stories', 'test']
       ),
@@ -50,7 +52,8 @@ export default defineConfig({
             }
             return '[name].mjs';
           },
-          exports: 'named'
+          exports: 'named',
+          assetFileNames: 'style/[name].[ext]',  // Extraction des fichiers CSS dans un dossier `style/`
         },
         {
           dir: './dist',
@@ -66,9 +69,17 @@ export default defineConfig({
             }
             return '[name].cjs';
           },
-          exports: 'named'
-        }
-      ]
-    }
-  }
+          exports: 'named',
+          assetFileNames: 'style/[name].[ext]',  // Extraction des fichiers CSS dans un dossier `style/`
+        },
+      ],
+    },
+  },
+  resolve: {
+    alias: {
+      '@prestashopcorp/puik-theme/assets': resolve(__dirname, './node_modules/@prestashopcorp/puik-theme/assets'),
+      '@prestashopcorp/puik-theme/src': resolve(__dirname, './node_modules/@prestashopcorp/puik-theme/src'),
+      '@prestashopcorp/puik-theme': resolve(__dirname, './node_modules/@prestashopcorp/puik-theme/dist'),
+    },
+  },
 });

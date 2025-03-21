@@ -67,3 +67,7 @@ watch(tagContentElem, async () => {
   }
 });
 </script>
+
+<style lang="css">
+@import '../style/index.css';
+</style>
