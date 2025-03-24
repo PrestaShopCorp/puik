@@ -31,7 +31,3 @@ defineOptions({
 const props = defineProps<LabelProps>();
 const { t } = useLocale();
 </script>
-
-<style lang="css">
-@import '../style/index.css';
-</style>

@@ -25,7 +25,3 @@ withDefaults(defineProps<BadgeProps>(), {
   ariaLive: PuikAriaLive.Polite
 });
 </script>
-
-<style lang="css">
-@import '../style/index.css';
-</style>

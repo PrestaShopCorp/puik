@@ -115,7 +115,3 @@ const click = (event: Event) => emit('click', event);
 const close = (event: Event) => emit('close', event);
 const clickLink = (event: Event) => emit('clickLink', event);
 </script>
-
-<style lang="css">
-@import '../style/index.css';
-</style>

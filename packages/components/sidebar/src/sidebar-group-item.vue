@@ -65,7 +65,3 @@ provide(groupItemKey, true);
 
 const isExpanded = computed(() => sidebarValues?.extended.value);
 </script>
-
-<style lang="css">
-@import '../../sidebar-group-item/style/index.css';
-</style>

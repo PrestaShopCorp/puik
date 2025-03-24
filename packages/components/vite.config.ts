@@ -20,7 +20,7 @@ export default defineConfig({
     }),
   ],
   build: {
-    cssCodeSplit: true,  // Cette option permet de diviser le CSS en fichiers séparés
+    cssCodeSplit: true,
     lib: {
       entry: resolve(__dirname, './index.ts'),
     },
@@ -53,7 +53,7 @@ export default defineConfig({
             return '[name].mjs';
           },
           exports: 'named',
-          assetFileNames: 'style/[name].[ext]',  // Extraction des fichiers CSS dans un dossier `style/`
+          assetFileNames: 'style/[name].[ext]'
         },
         {
           dir: './dist',
@@ -70,7 +70,7 @@ export default defineConfig({
             return '[name].cjs';
           },
           exports: 'named',
-          assetFileNames: 'style/[name].[ext]',  // Extraction des fichiers CSS dans un dossier `style/`
+          assetFileNames: 'style/[name].[ext]'
         },
       ],
     },

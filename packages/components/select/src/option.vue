@@ -78,7 +78,3 @@ watch(() => props.value, (newValue) => {
 });
 
 </script>
-
-<style lang="css">
-@import '../../option/style/index.css';
-</style>

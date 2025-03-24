@@ -42,6 +42,7 @@ onMounted(async () => {
   }
 });
 </script>
+
 <style lang="scss">
 .contributors-container {
   display: flex;

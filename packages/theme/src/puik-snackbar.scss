@@ -1,4 +1,4 @@
-@use './common/typography.scss';
+@use 'typography.scss';
 
 .puik-snackbar-root {
  @apply text-white p-4 flex items-center justify-between space-x-2;

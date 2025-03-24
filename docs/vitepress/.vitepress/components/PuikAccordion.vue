@@ -15,5 +15,4 @@
 
 <script setup lang="ts">
 import { PuikAccordion, PuikAccordionGroup } from '@prestashopcorp/puik-components';
-
 </script>

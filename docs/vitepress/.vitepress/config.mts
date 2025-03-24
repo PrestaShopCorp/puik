@@ -1,8 +1,8 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vitepress';
-import tailwindcss from '@tailwindcss/vite';
-import Components from 'unplugin-vue-components/vite';
-import { PuikResolver } from '@prestashopcorp/puik-resolver';
+// import tailwindcss from '@tailwindcss/vite'
+// import Components from 'unplugin-vue-components/vite';
+// import { PuikResolver } from '@prestashopcorp/puik-resolver';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -49,10 +49,10 @@ export default defineConfig({
   },
   vite: {
     plugins: [
-      tailwindcss(),
-      Components({
-        resolvers: [PuikResolver()],
-      }),
+      // tailwindcss(),
+      // Components({
+      //   resolvers: [PuikResolver()],
+      // }),
     ],
     server: {
       port: 5174

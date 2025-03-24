@@ -84,7 +84,3 @@ const handleKeysEvent = (event: KeyboardEvent) => {
   }
 };
 </script>
-
-<style lang="css">
-@import '../style/index.css';
-</style>

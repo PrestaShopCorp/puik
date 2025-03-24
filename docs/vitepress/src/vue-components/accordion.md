@@ -18,8 +18,6 @@ An Accordion is a UI component that organizes content into collapsible sections,
 
 ## Accordion Group
 
-### Accordion Group
-
 An Accordion Group manages multiple accordion items, ensuring only one section is expanded at a time (optional) or allowing multiple sections to be open simultaneously.
 
 <AccordionGroup />

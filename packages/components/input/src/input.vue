@@ -157,7 +157,3 @@ const inputClasses = computed(() => ({
   'puik-input__wrapper--error': hasError.value
 }));
 </script>
-
-<style lang="css">
-@import '../style/index.css';
-</style>

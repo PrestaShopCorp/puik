@@ -110,7 +110,3 @@ const loaderColor = computed(() => {
   return 'primary';
 });
 </script>
-
-<style lang="css">
-@import '../style/index.css';
-</style>

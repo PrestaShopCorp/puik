@@ -70,7 +70,3 @@ const getAriaLabelledBy = () => {
   return props.srLabel ? `label-sr-${id}` : `label-${id}`;
 };
 </script>
-
-<style lang="css">
-@import '../style/index.css';
-</style>

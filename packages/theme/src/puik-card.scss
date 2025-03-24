@@ -1,4 +1,5 @@
-@use './common/typography.scss';
+@use 'typography.scss';
+
 .puik-card {
   @extend .puik-body-default;
   @apply flex flex-col gap-6 p-4 bg-white border border-primary-400

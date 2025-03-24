@@ -64,7 +64,3 @@ provide(accordionGroupKey, {
   expandedAccordions
 });
 </script>
-
-<style lang="css">
-@import '../../accordion-group/style/index.css';
-</style>

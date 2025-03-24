@@ -51,7 +51,3 @@ const pathProp = computed(() =>
   props.to ? { to: props.to } : { href: props.href }
 );
 </script>
-
-<style lang="css">
-@import '../style/index.css';
-</style>

@@ -7,7 +7,3 @@ defineOptions({
   name: 'PuikMenuItemSeparator'
 });
 </script>
-
-<style lang="css">
-@import '../../menu-item-separator/style/index.css';
-</style>

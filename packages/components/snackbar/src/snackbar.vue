@@ -59,7 +59,3 @@ const emits = defineEmits<SnackbarEmits>();
 const forwarded = useForwardPropsEmits(props, emits);
 
 </script>
-
-<style lang="css">
-@import '../style/index.css';
-</style>
