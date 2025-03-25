@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col space-y-4">
-    <p class="text-red-400">test</p>
     <div class="flex flex-col space-y-2">
       <puik-switch
         v-model="multiple"
@@ -40,7 +39,6 @@
 </template>
 
 <script setup lang="ts">
-import { PuikAccordion, PuikAccordionGroup, PuikSwitch } from '@prestashopcorp/puik-components';
 import { ref } from 'vue';
 const expandedAccordion = ref([]);
 const multiple = ref(true);

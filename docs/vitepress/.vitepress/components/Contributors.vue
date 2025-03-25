@@ -18,7 +18,6 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { PuikAvatar, PuikTooltip } from '@prestashopcorp/puik-components';
 
 interface Contributor {
   id: number;

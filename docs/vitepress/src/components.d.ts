@@ -8,9 +8,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    PuikAccordion: typeof import('@prestashopcorp/puik-components')['PuikAccordion']
     PuikAccordionGroup: typeof import('@prestashopcorp/puik-components')['PuikAccordionGroup']
+    PuikAlert: typeof import('@prestashopcorp/puik-components')['PuikAlert']
+    PuikAvatar: typeof import('@prestashopcorp/puik-components')['PuikAvatar']
     PuikButton: typeof import('@prestashopcorp/puik-components')['PuikButton']
     PuikLink: typeof import('@prestashopcorp/puik-components')['PuikLink']
+    PuikSwitch: typeof import('@prestashopcorp/puik-components')['PuikSwitch']
+    PuikTooltip: typeof import('@prestashopcorp/puik-components')['PuikTooltip']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

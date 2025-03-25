@@ -6,8 +6,8 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
 ---
 
 <script setup>
-    import Accordion from '@vitepress/components/PuikAccordion.vue';
-    import AccordionGroup from '@vitepress/components/PuikAccordionGroup.vue';
+    import Accordion from '@vitepress/components/Accordion.vue';
+    import AccordionGroup from '@vitepress/components/AccordionGroup.vue';
 </script>
 
 ## Accordion

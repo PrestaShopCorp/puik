@@ -37,7 +37,6 @@
 </template>
 
 <script setup lang="ts">
-import { PuikAlert } from '@prestashopcorp/puik-components';
 import { ref } from 'vue';
 
 const showAlert = ref(true);
