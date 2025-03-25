@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 module.exports = {
   presets: [require('@prestashopcorp/puik-theme/tailwind.config')],
   content: [

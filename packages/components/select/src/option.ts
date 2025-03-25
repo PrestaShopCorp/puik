@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/member-delimiter-style */
 import type Option from './option.vue';
 
 export interface OptionType {
