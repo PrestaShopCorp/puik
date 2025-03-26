@@ -26,20 +26,24 @@ Puik Components is a Vue Components library that aims to provide a complete set 
 
 ```sh
 # NPM
-$ npm install @prestashopcorp/puik-components --save
+$ npm install @prestashopcorp/puik-components @prestashopcorp/puik-theme --save
 
 # Yarn
-$ yarn add @prestashopcorp/puik-components
+$ yarn add @prestashopcorp/puik-components @prestashopcorp/puik-theme
 
 # pnpm
-$ pnpm install @prestashopcorp/puik-components
+$ pnpm install @prestashopcorp/puik-components @prestashopcorp/puik-theme
 ```
 
-## Usage
+### Style
+
+import css in your application:
+
+`@import "@prestashopcorp/puik-theme";`
 
 ### Auto import using Puik Resolver (recommended)
 
-First you need to install `unplugin-vue-components`, `unplugin-auto-import` and the Puik resolver `@prestashopcorp/puik-resolver` 
+First you need to install `unplugin-vue-components`, `unplugin-auto-import` and the Puik resolver `@prestashopcorp/puik-resolver`
 
 ```sh
 $ npm install -D unplugin-vue-components unplugin-auto-import @prestashopcorp/puik-resolver
@@ -76,11 +80,10 @@ export default defineConfig({
 
 ### On demand import
 
-Import the vue component and the component css directly into your vue file
+Import the vue component directly into your vue file
 
 ```vue
 <script setup>
-import '@prestashopcorp/puik-components/button/style/css'
 import { PuikButton } from '@prestashopcorp/puik-components'
 </script>
 
