@@ -27,6 +27,7 @@
     "dev:storybook": "pnpm dev:theme & pnpm --filter @prestashopcorp/puik-docs dev",
     "dev:vitepress": "pnpm --filter @prestashopcorp/puik-user-docs dev",
     "preview:vitepress": "pnpm --filter @prestashopcorp/puik-user-docs preview",
+    "preview:storybook": "pnpm --filter @prestashopcorp/puik-docs preview",
     "preview:playground": "pnpm --filter @prestashopcorp/puik-playground preview",
     "lint": "eslint . --ext .vue,.js,.ts",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts",
