@@ -40,23 +40,29 @@ This monorepo contains the following libraries:
 - Node.js LTS is required.
 - Vue 3
 
-#### Vue components only
+#### Vue components
 
 ```sh
 # @prestashopcorp/puik-resolver is optional but strongly recommended
 # NPM
-$ npm install @prestashopcorp/puik-components @prestashopcorp/puik-resolver --save
+$ npm install @prestashopcorp/puik-theme @prestashopcorp/puik-components @prestashopcorp/puik-resolver --save
 
 # Yarn
-$ yarn add @prestashopcorp/puik-components @prestashopcorp/puik-resolver
+$ yarn add @prestashopcorp/puik-theme @prestashopcorp/puik-components @prestashopcorp/puik-resolver
 
 # pnpm
-$ pnpm install @prestashopcorp/puik-components @prestashopcorp/puik-resolver
+$ pnpm install @prestashopcorp/puik-theme @prestashopcorp/puik-components @prestashopcorp/puik-resolver
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Usage
+
+### Style
+
+import css in your application:
+
+`@import "@prestashopcorp/puik-theme";`
 
 #### Auto import (recommended)
 
@@ -99,11 +105,10 @@ export default defineConfig({
 
 #### On demand import
 
-Import the vue component and the component css directly into your vue file
+Import the vue component directly into your vue file
 
 ```vue
 <script setup>
-import '@prestashopcorp/puik-components/button/style/css';
 import { PuikButton } from '@prestashopcorp/puik-components';
 </script>
 
