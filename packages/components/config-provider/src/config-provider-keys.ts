@@ -1,4 +1,4 @@
-/* eslint-disable symbol-description */
+ 
 import type { InjectionKey, ExtractPropTypes, Ref } from 'vue';
 import type { configProviderProps } from './config-provider-props';
 

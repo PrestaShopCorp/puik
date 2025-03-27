@@ -100,9 +100,3 @@ const getStarState = (starIndex: number) => {
   return { icon: 'star', fill: 0 };
 };
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-icon.scss';
-@use '@prestashopcorp/puik-theme/src/puik-rating-card.scss';
-</style>

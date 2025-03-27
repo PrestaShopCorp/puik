@@ -1,4 +1,3 @@
-import '@prestashopcorp/puik-theme/src/index.scss';
 import './assets/css/style.css';
 
 import { createApp } from 'vue';

@@ -4,9 +4,10 @@ description: An Accordion is a UI component that organizes content into collapsi
 name: accordion
 aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
 ---
+
 <script setup>
-    import Accordion from '@vitepress/components/PuikAccordion.vue';
-    import AccordionGroup from '@vitepress/components/PuikAccordionGroup.vue';
+    import Accordion from '@vitepress/components/Accordion.vue';
+    import AccordionGroup from '@vitepress/components/AccordionGroup.vue';
 </script>
 
 ## Accordion
@@ -16,8 +17,6 @@ An Accordion is a UI component that organizes content into collapsible sections,
 <Accordion />
 
 ## Accordion Group
-
-### Accordion Group
 
 An Accordion Group manages multiple accordion items, ensuring only one section is expanded at a time (optional) or allowing multiple sections to be open simultaneously.
 

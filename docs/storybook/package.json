@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "storybook build"
+    "build": "storybook build",
+    "preview": "npx http-server storybook-static"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^7.6.19",
@@ -21,6 +22,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "storybook": "^7.6.19",
+    "unplugin-vue-components": "^28.4.1",
     "vite": "^5.2.14"
   },
   "dependencies": {

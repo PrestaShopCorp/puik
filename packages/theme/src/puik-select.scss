@@ -1,8 +1,8 @@
-@use './common/typography.scss';
+@use 'typography.scss';
 
 .puik-select {
   @extend .puik-body-default;
-  
+
   &--disabled {
     #select-combobox {
       @apply cursor-not-allowed;
@@ -72,7 +72,7 @@
       @apply mr-1;
     }
   }
-  
+
   .puik-multi-select__input--error,
   .puik-single-select__input--error {
     > .puik-input__wrapper {

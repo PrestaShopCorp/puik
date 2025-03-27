@@ -1,10 +1,10 @@
-@use './common/typography.scss';
+@use 'typography.scss';
 
 .puik-link {
-  @apply cursor-pointer 
-    relative 
+  @apply cursor-pointer
+    relative
     text-primary
-    underline 
+    underline
     decoration-auto
     underline-offset-[2px]
     decoration-primary-500
@@ -16,7 +16,7 @@
   &:visited {
     @apply underline-offset-[5px];
   }
-  
+
   &:hover,
   &:visited:hover {
     @apply decoration-primary;
@@ -52,18 +52,18 @@
     }
     @apply decoration-primary;
   }
-  
+
   &--articles {
     @apply decoration-primary-500;
-    
+
     &:visited {
       @apply text-purple-700 decoration-primary-500;
     }
-    
+
     &:hover, &:visited:hover {
       @apply decoration-primary;
     }
-    
+
     &:focus-visible {
       @apply decoration-primary-800;
     }
@@ -71,11 +71,11 @@
 
   &--high-contrast.puik-link--articles {
     @apply text-primary decoration-primary;
-    
+
     &:visited {
       @apply text-primary decoration-primary;
     }
-    
+
     &:visited:hover {
       @apply decoration-primary;
     }

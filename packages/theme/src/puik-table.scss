@@ -1,5 +1,5 @@
-@use './common/typography.scss';
-@use './common/scrollbar.scss';
+@use 'typography.scss';
+@use 'scrollbar.scss';
 
 .puik-table {
   @extend .puik-body-default;

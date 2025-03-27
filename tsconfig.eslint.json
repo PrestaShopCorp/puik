@@ -6,5 +6,7 @@
         "./docs/vitepress/.vitepress/*",
         "./docs/vitepress/.vitepress/components/*",
         "./docs/vitepress/.vitepress/theme/*",
-    ]
+        "./docs/vitepress/.vitepress/components/**/*.vue"
+    ],
+    "exclude": ["node_modules", "dist/**/*.d.ts"]
 }

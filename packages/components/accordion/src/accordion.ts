@@ -1,5 +1,4 @@
 import type accordion from './accordion.vue';
-
 export interface AccordionProps {
   name: string
   title?: string

@@ -28,8 +28,3 @@ const isCurrentTab = computed(() => {
   return props.position === currentTab?.currentPosition.value;
 });
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-tab-navigation-panel.scss';
-</style>

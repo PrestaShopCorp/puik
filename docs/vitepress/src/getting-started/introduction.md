@@ -17,7 +17,7 @@ This library provides three ways of using the design system in your project by u
 ℹ️ [see list of available Vue and Web components](https://github.com/PrestaShopCorp/puik/blob/main/RELEASE-NOTES-V2.md#available-components)
 
 <script setup>
-import contributors from '@vitepress/components/PuikContributors.vue';
+import contributors from '@vitepress/components/Contributors.vue';
 </script>
 
 ## Contributors

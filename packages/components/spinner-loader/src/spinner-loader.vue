@@ -43,8 +43,3 @@ withDefaults(defineProps<SpinnerLoaderProps>(), {
   dataTest: 'spinner-loader'
 });
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-spinner-loader.scss';
-</style>

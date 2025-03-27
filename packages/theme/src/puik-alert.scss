@@ -1,4 +1,4 @@
-@use './common/typography.scss';
+@use 'typography.scss';
 
 .puik-alert {
   @apply relative min-w-fit flex flex-row items-start p-4 border text-primary-800;
