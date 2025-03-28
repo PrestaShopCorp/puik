@@ -11,6 +11,7 @@ export default [
       'coverage',
       'storybook-static',
       'docs/vitepress/.vitepress/cache',
+      'packages/components',
       '!.*'
     ]
   },

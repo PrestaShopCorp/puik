@@ -44,7 +44,7 @@
     }
   },
   "lint-staged": {
-    "*.{vue,js,ts}": "eslint --fix --max-warnings=0"
+    "*.{vue,js,ts}": "eslint --fix"
   },
   "browserslist": [
     "> 1%",

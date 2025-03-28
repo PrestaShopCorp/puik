@@ -78,7 +78,8 @@ const props = withDefaults(defineProps<TextareaProps>(), {
   autoGrow: true
 });
 const emit = defineEmits<{
-  'update:modelValue': [value: string]
+  'update:modelValue': [value: string],
+  'blur': [event: FocusEvent]
 }>();
 const internalValue = useVModel(props, 'modelValue', emit);
 const textarea = ref<HTMLTextAreaElement>();
@@ -86,7 +87,10 @@ const textarea = ref<HTMLTextAreaElement>();
 const isFocus = ref(false);
 
 const handleFocus = () => (isFocus.value = true);
-const handleBlur = () => (isFocus.value = false);
+const handleBlur = (event: FocusEvent) => {
+  isFocus.value = false;
+  emit('blur', event);
+};
 
 const hasError = computed(() => props.error || slotIsEmpty(slots.error));
 const characterLength = computed(() => internalValue.value?.length || 0);
