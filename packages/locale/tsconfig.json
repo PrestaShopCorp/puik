@@ -4,6 +4,7 @@
       "forceConsistentCasingInFileNames": true
     },
     "include": [
-        "**/*.{ts,vue}"
+        "**/*.ts",
+        "**/*.vue",
     ]
 }

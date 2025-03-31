@@ -4,7 +4,9 @@
         "forceConsistentCasingInFileNames": true
     },
     "include": [
-      "**/*.{ts,vue}"
+      "**/*.ts",
+      "**/*.d.ts",
+      "**/*.vue"
     ],
     "exclude": [
       "node_modules",
