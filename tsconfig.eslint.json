@@ -1,15 +1,13 @@
 {
-    "extends": "./tsconfig.json",
-    "include": [
-        "./**/*", "./.eslintrc.cjs",
-        "./docs/storybook/.storybook/*",
-        "./docs/vitepress/.vitepress/*",
-        "./docs/vitepress/.vitepress/components/*",
-        "./docs/vitepress/.vitepress/theme/*",
-        "./docs/vitepress/.vitepress/components/**/*.vue",
-        "./packages/components/**/src/*.ts",
-        "./packages/components/**/src/*.tsx",
-        "./packages/components/**/src/*.vue"
-    ],
-    "exclude": ["node_modules", "dist/**/*.d.ts"]
+  "extends": "./tsconfig.json",
+  "include": [
+    "**/*",
+    "**/.vitepress/**/*",
+    "**/.storybook/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/.vitepress/cache/**/*",
+  ]
 }

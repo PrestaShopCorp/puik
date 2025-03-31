@@ -5,14 +5,13 @@ import vueParser from 'vue-eslint-parser';
 export default [
   {
     ignores: [
+      '!.*',
       'pnpm-lock.yaml',
       'node_modules',
       'dist',
       'coverage',
       'storybook-static',
-      'docs/vitepress/.vitepress/cache',
-      'packages/components',
-      '!.*'
+      '**/.vitepress/cache'
     ]
   },
   {
@@ -40,6 +39,8 @@ export default [
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
         ecmaVersion: 'latest',
         sourceType: 'module',
         project: ['./tsconfig.eslint.json']

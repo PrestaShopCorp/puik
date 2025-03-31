@@ -4,7 +4,10 @@
         "forceConsistentCasingInFileNames": true
     },
     "include": [
-      "./**/**/*.ts",
-      "./**/**/*.vue"
-    ]
+      "**/*.{ts,vue}"
+    ],
+    "exclude": [
+      "node_modules",
+      "dist"
+    ],
 }

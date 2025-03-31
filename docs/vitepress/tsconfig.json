@@ -3,11 +3,16 @@
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*", "src/*",
-  ".vitepress/components/*.vue",
-  ".vitepress/theme/*"
-],
-  "exclude": ["node_modules"],
+  "include": [
+    "src/**/*",
+    ".vitepress/components/*.vue",
+    ".vitepress/theme/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".vitepress/dist",
+    ".vitepress/cache"
+  ],
   "vueCompilerOptions": {
     "vitePressExtensions": [".md"],
   },
