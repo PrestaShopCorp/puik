@@ -1,7 +1,14 @@
 {
-    "extends": "../../tsconfig.json",
-    "include": [
-      "./**/*.ts",
-      "./**/*.d.ts",
-    ],
-  }
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

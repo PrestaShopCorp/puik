@@ -65,28 +65,32 @@ import { computed, useSlots, ref, watch, nextTick, onMounted } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { slotIsEmpty, clamp } from '@prestashopcorp/puik-utils';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
-import { type TextareaProps } from './textarea';
+import { type TextareaProps, TextareaEmits } from './textarea';
 
 defineOptions({
   name: 'PuikTextarea'
 });
 
 const slots = useSlots();
+
 const props = withDefaults(defineProps<TextareaProps>(), {
   maxRows: 2,
   rows: 2,
   autoGrow: true
 });
-const emit = defineEmits<{
-  'update:modelValue': [value: string]
-}>();
+
+const emit = defineEmits<TextareaEmits>();
+
 const internalValue = useVModel(props, 'modelValue', emit);
 const textarea = ref<HTMLTextAreaElement>();
 
 const isFocus = ref(false);
 
 const handleFocus = () => (isFocus.value = true);
-const handleBlur = () => (isFocus.value = false);
+const handleBlur = (event: FocusEvent) => {
+  isFocus.value = false;
+  emit('blur', event);
+};
 
 const hasError = computed(() => props.error || slotIsEmpty(slots.error));
 const characterLength = computed(() => internalValue.value?.length || 0);

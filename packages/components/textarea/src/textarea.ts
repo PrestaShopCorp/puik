@@ -18,4 +18,9 @@ export interface TextareaProps {
   ariaLabel?: string
 }
 
+export type TextareaEmits = {
+  'update:modelValue': [value: string],
+  'blur': [event: FocusEvent]
+};
+
 export type TextareaInstance = InstanceType<typeof Textarea>;
