@@ -23,7 +23,7 @@
     "react-dom": "^18.3.1",
     "storybook": "^7.6.19",
     "unplugin-vue-components": "^28.4.1",
-    "vite": "^5.4.15"
+    "vite": "^5.4.16"
   },
   "dependencies": {
     "@prestashopcorp/puik-components": "workspace:*",
