@@ -93,6 +93,17 @@
         </span>
       </div>
     </div>
+    <div
+      v-if="props.maxCharacters"
+      :class="[
+        'puik-input__character-count',
+        {
+          'puik-input__character-count--error': characterLength > (props.maxCharacters ?? 0)
+        }
+      ]"
+    >
+      <span>{{ characterLength }}/{{ maxCharacters }}</span>
+    </div>
   </div>
 </template>
 
@@ -149,6 +160,7 @@ const decrease = () => {
   }
 };
 const hasError = computed(() => props.error || slotIsEmpty(slots.error));
+const characterLength = computed(() => value.value?.toString().length || 0);
 
 const inputClasses = computed(() => ({
   'puik-input__wrapper--focus': isFocus.value,

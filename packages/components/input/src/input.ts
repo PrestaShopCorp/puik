@@ -24,6 +24,7 @@ export interface InputProps {
   precision?: number
   min?: number
   max?: number
+  maxCharacters?: number
   required?: boolean
   error?: string
   success?: boolean
