@@ -35,7 +35,7 @@
         :name="name"
         :min="type === 'number' ? min : undefined"
         :max="type === 'number' ? max : undefined"
-        :min-length="minLength"
+        :minlength="minLength"
         :maxlength="maxLength"
         :step="type === 'number' ? step : undefined"
         :data-test="dataTest != undefined ? `input-${dataTest}` : undefined"

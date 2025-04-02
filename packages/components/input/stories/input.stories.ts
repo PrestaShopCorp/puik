@@ -498,7 +498,7 @@ export const MinMaxCharacters: StoryObj = {
           <input
             class="puik-input__field"
             type="text"
-            min-length="0"
+            minlength="0"
             maxlength="12"
             aria-label="undefined"
             aria-live="polite"
