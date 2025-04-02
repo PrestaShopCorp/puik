@@ -107,6 +107,30 @@ export default {
       control: 'number',
       description: 'Sets the max value of the input (for number input only)'
     },
+    minLength: {
+      control: 'number',
+      description: 'Sets the min number of characters',
+      table: {
+        type: {
+          summary: 'number'
+        },
+        defaultValue: {
+          summary: 'undefined'
+        }
+      }
+    },
+    maxLength: {
+      control: 'number',
+      description: 'Sets the max number of characters',
+      table: {
+        type: {
+          summary: 'number'
+        },
+        defaultValue: {
+          summary: 'undefined'
+        }
+      }
+    },
     prepend: {
       description: 'Prepend an icon or text to the input'
     },
@@ -185,9 +209,15 @@ export const Default = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-input">
-    <div class="puik-input__wrapper">
-      <input class="puik-input__field" type="text" />
-    </div>
+      <div class="puik-input__wrapper">
+          <input
+            class="puik-input__field" placeholder=""
+            type="text" autocomplete=""
+            name=""
+            aria-label="undefined"
+            aria-live="polite"
+          >
+      </div>
   </div>
         `,
         language: 'html'
@@ -217,9 +247,14 @@ export const Disabled: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-input">
-    <div class="puik-input__wrapper puik-input__wrapper--disabled">
-      <input class="puik-input__field" type="text" disabled />
-    </div>
+      <div class="puik-input__wrapper puik-input__wrapper--disabled">
+          <input
+          class="puik-input__field"
+          disabled="" type="text"
+          aria-label="undefined"
+          aria-live="polite"
+        >
+      </div>
   </div>
         `,
         language: 'html'
@@ -249,9 +284,14 @@ export const Placeholder: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-input">
-    <div class="puik-input__wrapper">
-      <input class="puik-input__field" type="text" placeholder='Input placeholder' />
-    </div>
+      <div class="puik-input__wrapper">
+          <input
+            class="puik-input__field"
+            placeholder="Input placeholder"
+            type="text" aria-label="undefined"
+            aria-live="polite"
+          >
+      </div>
   </div>
         `,
         language: 'html'
@@ -281,9 +321,21 @@ export const Password: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-input">
-    <div class="puik-input__wrapper">
-      <input class="puik-input__field" type="text" placeholder='Input placeholder' />
-    </div>
+      <div class="puik-input__wrapper">
+          <input
+            class="puik-input__field"
+            type="password"
+            aria-label="undefined"
+            aria-live="polite"
+          >
+          <span
+            class="puik-input__reveal-password"
+            role="button" aria-pressed="false"
+            tabindex="0"
+          >
+            visibility_off
+          </span>
+      </div>
   </div>
         `,
         language: 'html'
@@ -313,25 +365,36 @@ export const Number: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-input">
-    <div class="puik-input__wrapper">
-      <input class="puik-input__field" type="number" />
-      <div class="puik-input__controls">
-        <button
-          type="button"
-          class="puik-input__controls__increment"
-          aria-label="Increase"
-        >
-          <span class="puik-input__controls__increment__icon">arrow_drop_up</span>
-        </button>
-        <button
-          type="button"
-          class="puik-input__controls__decrement"
-          aria-label="Decrease"
-        >
-          <span class="puik-input__controls__decrement__icon">arrow_drop_down</span>
-        </button>
+      <div class="puik-input__wrapper">
+          <input
+            class="puik-input__field"
+            type="number" min="-Infinity"
+            max="Infinity"
+            step="1"
+            aria-label="undefined"
+            aria-live="polite"
+          >
+          <div class="puik-input__controls">
+              <button
+                type="button"
+                class="puik-input__controls__increment"
+                aria-label="Increase"
+              >
+                <span class="puik-input__controls__increment__icon">
+                  arrow_drop_up
+                </span>
+              </button>
+              <button
+                type="button"
+                class="puik-input__controls__decrement"
+                aria-label="Decrease"
+              >
+                <span class="puik-input__controls__decrement__icon">
+                  arrow_drop_down
+                </span>
+              </button>
+          </div>
       </div>
-    </div>
   </div>
         `,
         language: 'html'
@@ -361,25 +424,89 @@ export const MinMax: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-input">
-    <div class="puik-input__wrapper">
-      <input class="puik-input__field" type="number" min="0" max="5" />
-      <div class="puik-input__controls">
-        <button
-          type="button"
-          class="puik-input__controls__increment"
-          aria-label="Increase"
-        >
-          <span class="puik-input__controls__increment__icon">arrow_drop_up</span>
-        </button>
-        <button
-          type="button"
-          class="puik-input__controls__decrement"
-          aria-label="Decrease"
-        >
-          <span class="puik-input__controls__decrement__icon">arrow_drop_down</span>
-        </button>
+      <div class="puik-input__wrapper">
+          <input
+            class="puik-input__field"
+            type="number"
+            min="0"
+            max="5"
+            step="1"
+            aria-label="undefined"
+            aria-live="polite"
+          >
+          <div class="puik-input__controls">
+              <button
+                type="button"
+                class="puik-input__controls__increment"
+                aria-label="Increase"
+              >
+                <span class="puik-input__controls__increment__icon">
+                  arrow_drop_up
+                </span>
+              </button>
+              <button
+                type="button"
+                class="puik-input__controls__decrement"
+                aria-label="Decrease"
+              >
+                <span class="puik-input__controls__decrement__icon">
+                  arrow_drop_down
+                </span>
+              </button>
+          </div>
       </div>
-    </div>
+  </div>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const MinMaxCharacters: StoryObj = {
+  render: () => ({
+    components: {
+      PuikInput
+    },
+    setup() {
+      const myValue = ref('');
+      return { myValue };
+    },
+    template: `
+      <puik-input
+        v-model="myValue"
+        :min-length="0"
+        :max-length="12"
+      />
+    `
+  }),
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-input
+    v-model="myValue"
+    :min-length="0"
+    :max-length="12"
+  />
+
+  <!--HTML/CSS Snippet-->
+  <div class="puik-input">
+      <div class="puik-input__wrapper">
+          <input
+            class="puik-input__field"
+            type="text"
+            min-length="0"
+            maxlength="12"
+            aria-label="undefined"
+            aria-live="polite"
+          >
+      </div>
+      <div class="puik-input__character-count">
+        <span>0/12</span>
+      </div>
   </div>
         `,
         language: 'html'
@@ -409,25 +536,35 @@ export const Step: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-input">
-    <div class="puik-input__wrapper">
-      <input class="puik-input__field" type="number" step="5" />
-      <div class="puik-input__controls">
-        <button
-          type="button"
-          class="puik-input__controls__increment"
-          aria-label="Increase"
-        >
-          <span class="puik-input__controls__increment__icon">arrow_drop_up</span>
-        </button>
-        <button
-          type="button"
-          class="puik-input__controls__decrement"
-          aria-label="Decrease"
-        >
-          <span class="puik-input__controls__decrement__icon">arrow_drop_down</span>
-        </button>
+      <div class="puik-input__wrapper">
+          <input
+            class="puik-input__field"
+            type="number" min="-Infinity"
+            max="Infinity"
+            step="5"
+            aria-label="undefined"
+            aria-live="polite"
+          >
+          <div class="puik-input__controls">
+              <button
+                type="button"
+                class="puik-input__controls__increment" aria-label="Increase"
+              >
+                <span class="puik-input__controls__increment__icon">
+                  arrow_drop_up
+                </span>
+              </button>
+              <button
+                type="button"
+                class="puik-input__controls__decrement"
+                aria-label="Decrease"
+              >
+                <span class="puik-input__controls__decrement__icon">
+                  arrow_drop_down
+                </span>
+              </button>
+          </div>
       </div>
-    </div>
   </div>
         `,
         language: 'html'
@@ -457,9 +594,14 @@ export const Success: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-input">
-    <div class="puik-input__wrapper puik-input__wrapper--">
-      <input class="puik-input__field" type="text" />
-    </div>
+      <div class="puik-input__wrapper puik-input__wrapper--success">
+          <input
+            class="puik-input__field"
+            type="text"
+            aria-label="undefined"
+            aria-live="polite"
+          >
+      </div>
   </div>
         `,
         language: 'html'
@@ -494,21 +636,29 @@ export const Error: StoryObj = {
   </puik-input>
 
   <!--VueJS Snippet using prop -->
-  <puik-input v-model="myValue" error="This is an error" />
-
-  <!--HTML/CSS Snippet-->
   <div class="puik-input">
-    <div class="puik-input__wrapper puik-input__wrapper--error">
-      <input class="puik-input__field" type="text" />
-    </div>
-    <div class="puik-input__hint">
-      <div class="puik-input__hint__error">
-        <span class="puik-icon puik-input__hint__error__icon">error</span>
-        <span class="puik-input__hint__error__text">
-          This is an error
-        </span>
+      <div class="puik-input__wrapper puik-input__wrapper--error">
+          <input
+            class="puik-input__field"
+            type="text"
+            aria-label="undefined"
+            aria-live="polite"
+          >
       </div>
-    </div>
+      <div class="puik-input__hint">
+          <div class="puik-input__hint__error" role="alert">
+              <div
+                class="puik-icon puik-input__hint__error__icon" aria-label="error icon"
+                role="img"
+                style="font-size: 1.25rem; font-variation-settings: &quot;FILL&quot; 1;"
+              >
+                error
+              </div>
+              <span class="puik-input__hint__error__text">
+                This is an error
+              </span>
+            </div>
+      </div>
   </div>
         `,
         language: 'html'
@@ -547,14 +697,18 @@ export const Hint: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-input">
-    <div class="puik-input__wrapper">
-      <input class="puik-input__field" type="text" />
-    </div>
-    <div class="puik-input__hint">
-      <span class="puik-input__hint__text">
-        This is an hint
-      </span>
-    </div>
+      <div class="puik-input__wrapper">
+          <input
+            class="puik-input__field" type="text"
+            aria-label="undefined"
+            aria-live="polite"
+          >
+      </div>
+      <div class="puik-input__hint">
+        <span class="puik-input__hint__text">
+          This is an hint
+        </span>
+      </div>
   </div>
         `,
         language: 'html'
@@ -595,15 +749,18 @@ export const PrependAppend: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-input">
-    <div class="puik-input__wrapper>
-      <div class="puik-input__prepend">
-        $
+      <div class="puik-input__wrapper">
+          <div class="puik-input__prepend">$</div>
+          <input
+            class="puik-input__field"
+            type="text"
+            aria-label="undefined"
+            aria-live="polite"
+          >
+          <div class="puik-input__append">
+            kg
+          </div>
       </div>
-      <input class="puik-input__field" type="text" />
-      <div class="puik-input__append">
-        kg
-      </div>
-    </div>
   </div>
         `,
         language: 'html'
