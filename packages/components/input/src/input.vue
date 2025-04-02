@@ -4,7 +4,7 @@
     :data-test="dataTest"
   >
     <label
-      v-if="srLabel"
+      v-if="srLabel && id"
       :for="id"
       class="puik-sr-only"
     >
@@ -21,7 +21,10 @@
         <slot name="prepend" />
       </div>
       <input
-        :id="id"
+        v-bind="{
+          ...(id ? { 'id': id } : {}),
+          ... $attrs
+        }"
         v-model="value"
         class="puik-input__field"
         :placeholder="placeholder"
@@ -32,9 +35,10 @@
         :name="name"
         :min="type === 'number' ? min : undefined"
         :max="type === 'number' ? max : undefined"
+        :minlength="minLength"
+        :maxlength="maxLength"
         :step="type === 'number' ? step : undefined"
         :data-test="dataTest != undefined ? `input-${dataTest}` : undefined"
-        v-bind="$attrs"
         :aria-label="ariaLabel ? ariaLabel : srLabel ? srLabel : 'undefined'"
         :aria-live="ariaLive"
         @focus="handleFocus"
@@ -93,6 +97,17 @@
         </span>
       </div>
     </div>
+    <div
+      v-if="props.maxLength"
+      :class="[
+        'puik-input__character-count',
+        {
+          'puik-input__character-count--error': characterLength > (props.maxLength ?? 0)
+        }
+      ]"
+    >
+      <span>{{ characterLength }}/{{ maxLength }}</span>
+    </div>
   </div>
 </template>
 
@@ -149,6 +164,7 @@ const decrease = () => {
   }
 };
 const hasError = computed(() => props.error || slotIsEmpty(slots.error));
+const characterLength = computed(() => value.value?.toString().length || 0);
 
 const inputClasses = computed(() => ({
   'puik-input__wrapper--focus': isFocus.value,

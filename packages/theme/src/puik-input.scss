@@ -1,7 +1,7 @@
 @use 'typography.scss';
 
 .puik-input {
-  @apply flex flex-col;
+  @apply relative flex flex-col;
   &__wrapper {
     @apply flex flex-row border border-primary-400 font-primary transition-colors text-primary overflow-hidden;
     &:hover {
@@ -75,6 +75,13 @@
       &__icon {
         @apply text-xs font-materialIcons text-primary disabled:text-primary-300;
       }
+    }
+  }
+  &__character-count {
+    @extend .puik-body-small;
+    @apply absolute right-0 top-[100%] text-primary-700;
+    &--error {
+        @apply text-red;
     }
   }
 }

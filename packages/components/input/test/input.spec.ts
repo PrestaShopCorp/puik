@@ -171,6 +171,7 @@ describe('Input tests', () => {
     expect(findPrepend().exists).toBeTruthy();
     expect(findPrepend().text()).toBe('$');
   });
+
   it('should append content', () => {
     factory(
       {},
@@ -184,7 +185,7 @@ describe('Input tests', () => {
     expect(findAppend().text()).toBe('$');
   });
 
-  it('should have a data-tes attribut for the container div, the input and the error message', () => {
+  it('should have a data-test attribut for the container div, the input and the error message', () => {
     const error = 'This is an error message';
     factory(
       { modelValue: 'value', type: 'text', dataTest: 'test' },
@@ -231,10 +232,27 @@ describe('Input tests', () => {
     expect(findField().attributes('aria-live')).toBe(ariaLive);
   });
 
+  it('should render a custom id attribute', () => {
+    const id = 'custom-id';
+    factory({ id });
+    expect(findField().attributes('id')).toBe(id);
+  });
+
   it('should render a custom name attribute', () => {
     const name = 'custom-name';
     factory({ name });
     expect(findField().attributes('name')).toBe(name);
+  });
+
+  it('should render a custom placeholder attribute', () => {
+    const placeholder = 'custom-placeholder';
+    factory({ placeholder });
+    expect(findField().attributes('placeholder')).toBe(placeholder);
+  });
+
+  it('should render a custom required attribute', () => {
+    factory({ required: true });
+    expect(findField().attributes('required')).toBeDefined();
   });
 
   it('should render a custom autocomplete attribute', () => {
@@ -248,5 +266,17 @@ describe('Input tests', () => {
     factory({ srLabel, id: 'input-id' });
     expect(findSrLabel().text()).toBe(srLabel);
     expect(findSrLabel().attributes('for')).toBe('input-id');
+  });
+
+  it('should render a custom maxLength attribute', () => {
+    const maxLength = 10;
+    factory({ maxLength });
+    expect(findField().attributes('maxlength')).toBe(maxLength.toString());
+  });
+
+  it('should render a custom minlength attribute', () => {
+    const minLength = 10;
+    factory({ minLength });
+    expect(findField().attributes('minlength')).toBe(minLength.toString());
   });
 });

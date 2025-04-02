@@ -138,7 +138,7 @@ export default {
     },
     maxLength: {
       control: 'number',
-      description: 'Sets the max number of character',
+      description: 'Sets the max number of characters',
       table: {
         type: {
           summary: 'number'
