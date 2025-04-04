@@ -1,0 +1,14 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes loading {
+  100% {
+    background-position-x: -20%;
+  }
+}

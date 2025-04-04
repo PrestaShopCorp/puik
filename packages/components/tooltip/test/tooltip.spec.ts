@@ -9,7 +9,7 @@ describe('Tooltip tests', () => {
   const findDescription = () =>
     wrapper.find('.puik-tooltip__tip__content__description');
   const findToolTip = () => wrapper.find<HTMLElement>('.puik-tooltip__tip');
-  const findWrapper = () => wrapper.find('.puik-tooltip__wrapper');
+  const findWrapper = () => wrapper.find('.puik-tooltip_slot--wrapper');
 
   const factory = (
     props?: TooltipProps,
@@ -26,7 +26,7 @@ describe('Tooltip tests', () => {
     expect(wrapper).toBeTruthy();
   });
 
-  it('should have a heading and a description', () => {
+  it('should have a heading and a description', async () => {
     const heading = 'Title';
     const description = 'This is a tooltip';
     factory(
@@ -34,22 +34,32 @@ describe('Tooltip tests', () => {
       {
         slots: {
           heading,
-          description
+          description,
+          default: '<button>Hover me</button>'
         }
       }
     );
 
+    await wrapper.find('button').trigger('mouseover');
     expect(findTitle().text()).toBe(heading);
     expect(findDescription().text()).toBe(description);
   });
 
   it('should be displayed on the right', async () => {
-    await factory({ position: 'right' });
+    factory(
+      { position: 'right' },
+      {
+        slots: {
+          default: '<button>Hover me</button>'
+        }
+      }
+    );
+    await wrapper.find('button').trigger('mouseover');
     expect(findToolTip().attributes('data-popper-placement')).toBe('right');
   });
 
   it('should be disabled', async () => {
-    await factory(
+    factory(
       { isDisabled: true },
       {
         slots: {
@@ -57,50 +67,66 @@ describe('Tooltip tests', () => {
         }
       }
     );
-    await expect(wrapper.find('button').trigger('mouseover'));
+    await wrapper.find('button').trigger('mouseover');
     expect(findToolTip().isVisible()).toBe(false);
   });
 
   it('should have a custom z-index', async () => {
-    await factory({ zindex: 5000 });
-    expect(findToolTip().element.style.getPropertyValue('z-index')).toBe('5000');
-  });
-
-  it('should have a custom max-width', async () => {
-    await factory({ maxWidth: '200px' });
-    expect(findToolTip().element.style.getPropertyValue('max-width')).toBe(
-      '200px'
-    );
-  });
-
-  it('should have a data-test attribute for the container div, the content, the heading and the description', () => {
-    factory({
-      heading: 'long heading for displaying the tooltip',
-      description: 'long description for displaying the tooltip',
-      dataTest: 'test'
-    });
-    expect(findToolTipContainer().attributes('data-test')).toBe('test');
-    expect(findTitle().attributes('data-test')).toBe('heading-test');
-    expect(findDescription().attributes('data-test')).toBe('description-test');
-    expect(findWrapper().attributes('data-test')).toBe('content-test');
-  });
-
-  it('should not show tooltip if isDisabled is true', async () => {
-    await factory(
-      { isDisabled: true },
+    factory(
+      { zindex: 5000 },
       {
         slots: {
           default: '<button>Hover me</button>'
         }
       }
     );
-    const button = wrapper.find('button');
-    await button.trigger('mouseover');
-    expect(findToolTip().isVisible()).toBe(false);
+    await wrapper.find('button').trigger('mouseover');
+    expect(findToolTip().element.style.zIndex).toBe('5000');
+  });
+
+  it('should have a custom max-width', async () => {
+    factory(
+      { maxWidth: '200px' },
+      {
+        slots: {
+          default: '<button>Hover me</button>'
+        }
+      }
+    );
+    await wrapper.find('button').trigger('mouseover');
+    expect(findToolTip().element.style.maxWidth).toBe('200px');
+  });
+
+  it('should have data-test attributes', async () => {
+    factory(
+      {
+        heading: 'long heading for displaying the tooltip',
+        description: 'long description for displaying the tooltip',
+        dataTest: 'test'
+      },
+      {
+        slots: {
+          default: '<button>Hover me</button>'
+        }
+      }
+    );
+    await wrapper.find('button').trigger('mouseover');
+    expect(findToolTipContainer().attributes('data-test')).toBe('test');
+    expect(findTitle().attributes('data-test')).toBe('heading-test');
+    expect(findDescription().attributes('data-test')).toBe('description-test');
+    expect(findWrapper().attributes('data-test')).toBe('slot-content-test');
   });
 
   it('should apply custom styles to tooltip', async () => {
-    await factory({ maxWidth: '300px', zindex: 2000 });
+    factory(
+      { maxWidth: '300px', zindex: 2000 },
+      {
+        slots: {
+          default: '<button>Hover me</button>'
+        }
+      }
+    );
+    await wrapper.find('button').trigger('mouseover');
     const tooltipElement = findToolTip().element;
     expect(tooltipElement.style.maxWidth).toBe('300px');
     expect(tooltipElement.style.zIndex).toBe('2000');

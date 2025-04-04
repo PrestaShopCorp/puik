@@ -1,3 +1,5 @@
+@use 'animations.scss';
+
 .puik-skeleton-loader {
   @apply font-materialIcons rounded w-full text-primary-500 text-2xl;
 
@@ -10,12 +12,6 @@
   background-size: 200% 100%;
   background-position-x: 180%;
   animation: 2000ms loading ease-in-out infinite;
-
-  @keyframes loading {
-    100% {
-      background-position-x: -20%;
-    }
-  }
 
   &--h1 {
     @apply h-[42px];
