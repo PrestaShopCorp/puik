@@ -1,71 +1,73 @@
 <template>
   <div
     class="puik-tooltip"
-    tabindex="0"
-    :aria-describedby="id"
     :data-test="dataTest"
-    @mouseover="updateTooltip"
-    @mouseleave="start"
-    @focus="updateTooltip"
-    @blur="start"
   >
     <div
-      ref="tooltipWrapper"
-      class="puik-tooltip__wrapper"
-      :data-test="dataTest != undefined ? `content-${dataTest}` : undefined"
+      ref="slotWrapper"
+      class="puik-tooltip_slot--wrapper"
+      tabindex="0"
+      :aria-describedby="id"
+      :aria-expanded="isVisible"
+      :data-test="dataTest ? `slot-content-${dataTest}` : undefined"
+      @mouseover="updateTooltip"
+      @mouseleave="startHideTooltip"
+      @focus="updateTooltip"
+      @blur="startHideTooltip"
+      @keydown.esc="startHideTooltip"
+      @click="updateTooltip"
     >
       <slot />
     </div>
-    <Transition
-      enter-from-class="puik-tooltip__transition__enter-from"
-      leave-to-class="puik-tooltip__transition__leave-to"
+    <div
+      v-show="!isDisabled && isVisible"
+      :id="id"
+      ref="tooltip"
+      role="tooltip"
+      :class="[
+        'puik-tooltip__tip',
+      { 'puik-tooltip--visible': isVisible }
+      ]"
+      :style="{ 'z-index': isVisible ? zindex : -1, 'max-width': maxWidth }"
+      aria-live="polite"
+      :aria-hidden="!isVisible"
+      @mouseover="stayVisible"
+      @mouseleave="startHideTooltip"
+      :data-test="dataTest ? `tip-content-${dataTest}` : undefined"
     >
-      <div
-        v-show="!isDisabled && isVisible"
-        :id="id"
-        ref="tooltip"
-        class="puik-tooltip__tip"
-        role="tooltip"
-        :style="{ 'z-index': zindex, 'max-width': maxWidth }"
-        aria-live="polite"
-      >
-        <div class="puik-tooltip__tip__content">
-          <span
-            v-if="$slots.heading || heading"
-            class="puik-tooltip__tip__content__heading"
-            :data-test="dataTest != undefined ? `heading-${dataTest}` : undefined"
-          >
-            <slot name="heading">{{ heading }}</slot></span>
-          <span
-            v-if="$slots.description || description"
-            class="puik-tooltip__tip__content__description"
-            :data-test="
-              dataTest != undefined ? `description-${dataTest}` : undefined
-            "
-          ><slot name="description">{{ description }}</slot></span>
-        </div>
-
-        <div
-          class="puik-tooltip__tip__arrow"
-          data-popper-arrow
-        />
+      <div class="puik-tooltip__tip__content">
+        <span
+          v-if="$slots.heading || heading"
+          class="puik-tooltip__tip__content__heading"
+          :data-test="dataTest ? `heading-${dataTest}` : undefined"
+        >
+          <slot name="heading">{{ heading }}</slot>
+        </span>
+        <span
+          v-if="$slots.description || description"
+          class="puik-tooltip__tip__content__description"
+          :data-test="dataTest ? `description-${dataTest}` : undefined"
+        >
+          <slot name="description">{{ description }}</slot>
+        </span>
       </div>
-    </Transition>
+      <div class="puik-tooltip__tip__arrow" data-popper-arrow></div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import { createPopper } from '@popperjs/core';
-import { useTimeoutFn } from '@vueuse/core';
 import { generateId } from '@prestashopcorp/puik-utils';
 import { PuikTooltipPositions, type TooltipProps } from './tooltip';
 import type { Instance as PopperInstance } from '@popperjs/core';
+
 defineOptions({
   name: 'PuikTooltip'
 });
 
-const tooltipWrapper = ref<HTMLElement | null>(null);
+const slotWrapper = ref<HTMLElement | null>(null);
 const tooltip = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let popperInstance: PopperInstance | null = null;
@@ -74,35 +76,42 @@ const id = `puik-tooltip-${generateId()}`;
 const props = withDefaults(defineProps<TooltipProps>(), {
   position: PuikTooltipPositions.Bottom,
   zindex: 1000,
-  disappearDelay: 500,
+  disappearDelay: 50,
   dataTest: 'tooltip'
 });
 
-const { start, stop, isPending } = useTimeoutFn(() => {
-  isVisible.value = false;
-}, props.disappearDelay);
-
 const updateTooltip = () => {
-  if (isPending) {
-    stop();
-  }
   isVisible.value = true;
   popperInstance?.update();
 };
 
+const hideTooltip = () => {
+  isVisible.value = false;
+};
+
+const stayVisible = () => {
+  isVisible.value = true;
+};
+
+const startHideTooltip = () => {
+  setTimeout(() => {
+    if (!slotWrapper.value?.matches(':hover') && !tooltip.value?.matches(':hover')) {
+      hideTooltip();
+    }
+  }, props.disappearDelay);
+};
+
 onMounted(() => {
-  if (tooltipWrapper.value && tooltip.value) {
-    popperInstance = createPopper(tooltipWrapper.value, tooltip.value, {
+  if (slotWrapper.value && tooltip.value) {
+    popperInstance = createPopper(slotWrapper.value, tooltip.value, {
       placement: props.position,
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 12]
-          }
-        }
-      ]
+      modifiers: [{ name: 'offset', options: { offset: [0, 12] } }]
     });
   }
+});
+
+onUnmounted(() => {
+  popperInstance?.destroy();
+  popperInstance = null;
 });
 </script>
