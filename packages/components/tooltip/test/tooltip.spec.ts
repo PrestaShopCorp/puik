@@ -5,11 +5,11 @@ import { PuikTooltip, TooltipProps } from '@prestashopcorp/puik-components';
 describe('Tooltip tests', () => {
   let wrapper: VueWrapper<any>;
   const findToolTipContainer = () => wrapper.find('.puik-tooltip');
+  const findSlotWrapper = () => wrapper.find('.puik-tooltip_slot--wrapper');
   const findTitle = () => wrapper.find('.puik-tooltip__tip__content__heading');
   const findDescription = () =>
     wrapper.find('.puik-tooltip__tip__content__description');
   const findToolTip = () => wrapper.find<HTMLElement>('.puik-tooltip__tip');
-  const findWrapper = () => wrapper.find('.puik-tooltip_slot--wrapper');
 
   const factory = (
     props?: TooltipProps,
@@ -112,9 +112,9 @@ describe('Tooltip tests', () => {
     );
     await wrapper.find('button').trigger('mouseover');
     expect(findToolTipContainer().attributes('data-test')).toBe('test');
+    expect(findSlotWrapper().attributes('data-test')).toBe('slot-content-test');
     expect(findTitle().attributes('data-test')).toBe('heading-test');
     expect(findDescription().attributes('data-test')).toBe('description-test');
-    expect(findWrapper().attributes('data-test')).toBe('slot-content-test');
   });
 
   it('should apply custom styles to tooltip', async () => {
