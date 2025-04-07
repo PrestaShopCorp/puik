@@ -18,7 +18,7 @@
   }
 
   .puik-multi-select {
-    &__options-tags {
+    &__options-tags--button {
       @apply relative px-3 py-2 pr-10 flex border border-primary-400 font-primary transition-colors text-primary space-x-1 overflow-x-hidden;
       &:hover {
         @apply border-primary;
@@ -36,16 +36,20 @@
     &__input {
       @apply cursor-default;
     }
+    &__options-tags--container {
+      @apply flex gap-1 overflow-x-hidden;
+    }
   }
+
 
   .puik-single-select {
     &__input {
-      @apply cursor-default;
+      @apply cursor-default text-ellipsis;
     }
   }
 
   .puik-select-dropdown {
-    @apply absolute w-full bg-white text-base z-10 shadow-lg ring-1 ring-black ring-opacity-5
+    @apply absolute w-max min-w-full max-h-[50vh] bg-white text-base z-10 shadow-lg ring-1 ring-black ring-opacity-5
     focus-visible:outline-none sm:text-sm overflow-x-hidden;
     top: calc(100% + 2px);
     &__search-input {
