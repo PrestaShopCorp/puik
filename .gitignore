@@ -24,4 +24,4 @@ storybook-static
 /packages-tars/
 
 # Ignore auto-generated 'components.d.ts' file by unplugin-vue-components
-/playground/components.d.ts
+components.d.ts
