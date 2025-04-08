@@ -1,2 +1,5 @@
 .vitepress/cache
 .vitepress/dist
+
+# Ignore auto-generated 'components.d.ts' file by unplugin-vue-components
+components.d.ts

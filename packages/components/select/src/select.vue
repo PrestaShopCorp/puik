@@ -32,7 +32,7 @@
         <button
           v-if="selectedMultipleOptions.length > 0"
           :id="props.id"
-          :class="['puik-multi-select__options-tags']"
+          :class="['puik-multi-select__options-tags--button']"
           :autocomplete="props.autocomplete"
           role="combobox"
           :aria-expanded="openRef"
@@ -54,21 +54,23 @@
             :is-disabled="props.disabled"
             icon="unfold_more"
           />
-          <puik-chip
-            v-for="(option, index) in selectedMultipleOptions"
-            :id="`chip-${option[props.optionLabelKey]}`"
-            :key="option[props.optionValueKey]"
-            :content="option[props.optionLabelKey]"
-            :disabled="option[props.optionDisabledKey] || props.disabled"
-            size="small"
-            role="option"
-            :aria-selected="true"
-            :data-test="dataTest != undefined ? `select-tag-${index + 1}-${dataTest}` : undefined"
-            @close="deselectOption(option)"
-            @click.stop="openOptions"
-            @keydown.space.stop="openOptions"
-            @keydown.enter.stop="openOptions"
-          />
+          <div class="puik-multi-select__options-tags--container">
+            <puik-chip
+              v-for="(option, index) in selectedMultipleOptions"
+              :id="`chip-${option[props.optionLabelKey]}`"
+              :key="option[props.optionValueKey]"
+              :content="option[props.optionLabelKey]"
+              :disabled="option[props.optionDisabledKey] || props.disabled"
+              size="small"
+              role="option"
+              :aria-selected="true"
+              :data-test="dataTest != undefined ? `select-tag-${index + 1}-${dataTest}` : undefined"
+              @close="deselectOption(option)"
+              @click.stop="openOptions"
+              @keydown.space.stop="openOptions"
+              @keydown.enter.stop="openOptions"
+            />
+          </div>
         </button>
         <template v-else>
           <puik-input

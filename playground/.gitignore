@@ -29,3 +29,6 @@ dist-ssr
 !/src/views/WebComponentsViewExample.vue
 /vue-app
 /vanilla-app
+
+# Ignore auto-generated 'components.d.ts' file by unplugin-vue-components
+components.d.ts
