@@ -1,6 +1,6 @@
 # How to release
 
-To release new versions of our package we use a Github action that triggers on the creation of a new Github release.
+To release new versions of our packages we use a Github action that triggers on the creation of a new Github release.
 As we use [pnpm](https://pnpm.io/) to manage our monorepo the `pnpm publish` command is used in this Github action and will release all the packages not flagged with the `private` property in the `package.json`
 The released packages are :
 

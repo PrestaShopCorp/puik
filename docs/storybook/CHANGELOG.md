@@ -1,5 +1,20 @@
 # @prestashopcorp/puik-docs
 
+## 1.6.0
+
+### Minor Changes
+
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.5.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @prestashopcorp/puik-tailwind-preset@2.4.0
+  - @prestashopcorp/puik-web-components@2.5.0
+  - @prestashopcorp/puik-components@2.5.0
+  - @prestashopcorp/puik-resolver@6.0.0
+  - @prestashopcorp/puik-theme@2.5.0
+
 ## 1.5.0
 
 ### Minor Changes
@@ -19,11 +34,7 @@
 
 ### Minor Changes
 
-- - [Table] - add payload (filtered options) for searchSubmit event, create searchResetSubmit event
-  - [Rating-card] - new component
-  - [alert] - refacto to follow design specs (bouton link, icons for btn)
-  - [ci] - update some actions versions
-  - [Icons library] - change deprecated Material Icons set to Material Symbols
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.3.0
 
 ### Patch Changes
 
@@ -38,8 +49,7 @@
 
 ### Minor Changes
 
-- release v2.2.0
-
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.2.0
 ### Patch Changes
 
 - Updated dependencies
@@ -53,8 +63,7 @@
 
 ### Minor Changes
 
-- update documentations
-
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.1.0
 ### Patch Changes
 
 - Updated dependencies
@@ -106,4 +115,4 @@
 ### Patch Changes
 
 - 13cc8a6: - Changing package descriptions.
-  - upgrade unplugin-vue-components
+- upgrade unplugin-vue-components

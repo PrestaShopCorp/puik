@@ -1,5 +1,17 @@
 # @prestashopcorp/puik-web-components
 
+## 2.5.0
+
+### Minor Changes
+
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.5.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @prestashopcorp/puik-components@2.5.0
+  - @prestashopcorp/puik-theme@2.5.0
+
 ## 2.4.0
 
 ### Minor Changes
@@ -15,11 +27,7 @@
 
 ### Minor Changes
 
-- - [Table] - add payload (filtered options) for searchSubmit event, create searchResetSubmit event
-  - [Rating-card] - new component
-  - [alert] - refacto to follow design specs (bouton link, icons for btn)
-  - [ci] - update some actions versions
-  - [Icons library] - change deprecated Material Icons set to Material Symbols
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.3.0
 
 ### Patch Changes
 
@@ -30,7 +38,7 @@
 
 ### Minor Changes
 
-- release v2.2.0
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.2.0
 
 ### Patch Changes
 
@@ -41,7 +49,7 @@
 
 ### Minor Changes
 
-- version 2.1.0
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.1.0
 
 ### Patch Changes
 

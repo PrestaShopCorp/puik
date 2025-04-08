@@ -1,10 +1,23 @@
 # @prestashopcorp/puik-resolver
 
-## 5.0.0
+## 6.0.0
+
+### Minor Changes
+
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.5.0
 
 ### Patch Changes
 
+- Updated dependencies
+  - @prestashopcorp/puik-components@2.5.0
+  - @prestashopcorp/puik-theme@2.5.0
+
+## 5.0.0
+
 - see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.4.0
+-
+### Patch Changes
+
 - Updated dependencies
   - @prestashopcorp/puik-components@2.4.0
   - @prestashopcorp/puik-theme@2.4.0
@@ -13,7 +26,7 @@
 
 ### Minor Changes
 
-- release v2.2.0
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.2.0
 
 ### Patch Changes
 
@@ -25,6 +38,8 @@
 
 ### Minor Changes
 
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.1.0
+-
 ### Patch Changes
 
 - Updated dependencies
@@ -32,6 +47,8 @@
   - @prestashopcorp/puik-theme@2.1.0
 
 ## 2.0.1
+
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.0.1
 
 ### Patch Changes
 
