@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-tailwind-preset
 
+## 2.4.0
+
+### Minor Changes
+
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.5.0
+
 ## 2.3.1
 
 ### Patch Changes
@@ -10,23 +16,19 @@
 
 ### Minor Changes
 
-- - [Table] - add payload (filtered options) for searchSubmit event, create searchResetSubmit event
-  - [Rating-card] - new component
-  - [alert] - refacto to follow design specs (bouton link, icons for btn)
-  - [ci] - update some actions versions
-  - [Icons library] - change deprecated Material Icons set to Material Symbols
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.3.0
 
 ## 2.2.0
 
 ### Minor Changes
 
-- release v2.2.0
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.2.0
 
 ## 2.1.0
 
 ### Minor Changes
 
-- version 2.1.0
+- see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.1.0
 
 ## 2.0.1
 
