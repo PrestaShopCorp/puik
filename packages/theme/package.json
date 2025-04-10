@@ -2,6 +2,8 @@
   "name": "@prestashopcorp/puik-theme",
   "description": "PUIK theme - CSS classes of Prestashop UI Kit.",
   "version": "2.5.0",
+  "author": "Prestashop",
+  "license": "MIT",
   "main": "./dist/index.css",
   "style": "./dist/index.css",
   "unpkg": "./dist/index.css",
@@ -25,6 +27,7 @@
     }
   },
   "devDependencies": {
+    "@prestashopcorp/puik-tailwind-preset": "workspace:*",
     "autoprefixer": "^10.4.20",
     "cssnano": "^6.1.2",
     "postcss": "^8.5.3",

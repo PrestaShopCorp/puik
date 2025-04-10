@@ -328,6 +328,9 @@ importers:
 
   packages/theme:
     devDependencies:
+      '@prestashopcorp/puik-tailwind-preset':
+        specifier: workspace:*
+        version: link:../tailwind-preset
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.5.3)
