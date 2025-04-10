@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
   plugins: {
-    'postcss-url': {
-      url: 'copy',
-      basePath: path.join(__dirname, 'src'),
-      assetsPath: path.join(__dirname, 'dist/assets')
+    'postcss-copy': {
+      src: path.join(__dirname, 'assets'),
+      dest: path.join(__dirname, 'dist'),
+      template: '[name].[ext]',
     },
     tailwindcss: {
       config: path.join(__dirname, 'tailwind.config.js')
