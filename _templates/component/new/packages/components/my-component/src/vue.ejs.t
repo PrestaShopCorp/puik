@@ -13,8 +13,3 @@ defineOptions({
 
 defineProps<<%= h.changeCase.pascal(name) %>Props>();
 </script>
-
-<style lang="scss">
-@use '@prestashopcorp/puik-theme/src/base.scss';
-@use '@prestashopcorp/puik-theme/src/puik-<%= h.changeCase.param(name) %>.scss';
-</style>
