@@ -7,10 +7,7 @@ module.exports = {
       dest: path.join(__dirname, 'dist'),
       template: '[name].[ext]',
     },
-    tailwindcss: {
-      config: path.join(__dirname, 'tailwind.config.js')
-    },
-    autoprefixer: {},
+    "@tailwindcss/postcss": {},
     cssnano: {
       preset: 'default'
     }
