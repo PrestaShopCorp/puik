@@ -69,7 +69,7 @@
     @apply mt-2 ml-9 lg:m-0;
   }
   &__icon {
-    @apply mt-0.5 flex-shrink-0;
+    @apply mt-0.5 shrink-0;
   }
   &__close {
     @apply ml-4 cursor-pointer leading-none;
