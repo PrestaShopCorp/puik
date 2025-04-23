@@ -55,7 +55,13 @@
             />
           </puik-button>
         </header>
-        <div class="puik-modal__dialogPanelContainer__dialogPanel__content">
+        <div
+          :class="[
+            'puik-modal__dialogPanelContainer__dialogPanel__content',
+            {
+              'puik-modal__dialogPanelContainer__dialogPanel__content--with-footer': hasFooter
+            }
+          ]">
           <slot />
         </div>
         <footer
@@ -150,11 +156,13 @@ watch(width, async () => {
   }
 });
 
-const mainButtonVariant =
-  PuikModalVariants.Destructive === props.variant ? 'destructive' : 'primary';
+const mainButtonVariant = computed(() => {
+  return PuikModalVariants.Destructive === props.variant ? 'destructive' : 'primary';
+});
 
-const secondButtonVariant =
-  PuikModalVariants.Destructive === props.variant ? 'tertiary' : 'secondary';
+const secondButtonVariant = computed(() => {
+  return PuikModalVariants.Destructive === props.variant ? 'tertiary' : 'secondary';
+});
 
 const sendCloseModalEvent = () => {
   if (PuikModalVariants.Dialog !== props.variant) {
@@ -162,9 +170,10 @@ const sendCloseModalEvent = () => {
   }
 };
 
-const hasFooter = !!(
-  props.mainButtonText ||
+const hasFooter = computed(() => {
+ return  props.mainButtonText ||
   props.secondButtonText ||
-  props.sideButtonText
-);
+  props.sideButtonText;
+});
+
 </script>
