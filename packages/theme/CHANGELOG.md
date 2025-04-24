@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-theme
 
+## 2.5.1
+
+### Patch Changes
+
+- patch v2.5.1
+
 ## 2.5.0
 
 ### Minor Changes

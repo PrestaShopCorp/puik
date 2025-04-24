@@ -1,7 +1,7 @@
 {
   "name": "@prestashopcorp/puik",
   "description": "PUIK - This includes all public packages of PrestaShop UI kit.",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "author": "Prestashop",
   "license": "MIT",
   "type": "module",

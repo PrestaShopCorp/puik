@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-utils
 
+## 2.2.1
+
+### Patch Changes
+
+- patch v2.5.1
+
 ## 2.2.0
 
 ### Minor Changes
