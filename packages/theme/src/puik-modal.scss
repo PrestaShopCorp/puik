@@ -78,7 +78,10 @@
 
       &__content {
         @extend .puik-scrollbar;
-        @apply mb-[56px] overflow-hidden overflow-y-auto flex flex-1 text-primary-800;
+        @apply overflow-hidden overflow-y-auto flex flex-1 text-primary-800;
+        &--with-footer {
+          @apply mb-[56px];
+        }
       }
 
       &__footer {
