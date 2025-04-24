@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-tailwind-preset
 
+## 2.4.1
+
+### Patch Changes
+
+- patch v2.5.1
+
 ## 2.4.0
 
 ### Minor Changes

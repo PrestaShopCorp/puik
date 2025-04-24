@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-locale
 
+## 2.3.1
+
+### Patch Changes
+
+- patch v2.5.1
+
 ## 2.3.0
 
 ### Minor Changes
