@@ -1,0 +1,86 @@
+.puik-link {
+  @apply cursor-pointer
+    relative
+    text-primary
+    underline
+    decoration-auto
+    underline-offset-[2px]
+    decoration-primary-500
+    transition-all
+    duration-150;
+}
+
+.puik-link:hover,
+.puik-link:active,
+.puik-link:visited {
+  @apply underline-offset-[5px];
+}
+
+.puik-link:hover,
+.puik-link:visited:hover {
+  @apply decoration-primary;
+}
+
+.puik-link:focus-visible {
+  @apply outline-none ring-2 ring-blue rounded-[4px] shadow-none decoration-primary-800;
+}
+
+.puik-link__target__icon {
+  @apply font-materialIcons align-bottom;
+}
+
+.puik-link__target__icon:before {
+  @apply content-['_'] text-[0.35rem] leading-[0.25rem];
+}
+
+.puik-link--sm {
+  /* @extend .puik-body-small */
+}
+
+.puik-link--md {
+  /* @extend .puik-body-default */
+}
+
+.puik-link--lg {
+  /* @extend .puik-body-large */
+}
+
+.puik-link--high-contrast {
+  .puik-link:visited {
+    @apply text-primary;
+  }
+  @apply decoration-primary;
+}
+
+.puik-link--articles {
+  @apply decoration-primary-500;
+}
+
+.puik-link--articles:visited {
+  @apply text-purple-700 decoration-primary-500;
+}
+
+.puik-link--articles:hover,
+.puik-link--articles:visited:hover {
+  @apply decoration-primary;
+}
+
+.puik-link--articles:focus-visible {
+  @apply decoration-primary-800;
+}
+
+.puik-link--high-contrast.puik-link--articles {
+  @apply text-primary decoration-primary;
+}
+
+.puik-link--high-contrast.puik-link--articles:visited {
+  @apply text-primary decoration-primary;
+}
+
+.puik-link--high-contrast.puik-link--articles:visited:hover {
+  @apply decoration-primary;
+}
+
+.puik-link--high-contrast.puik-link--articles:focus-visible {
+  @apply decoration-primary-800;
+}

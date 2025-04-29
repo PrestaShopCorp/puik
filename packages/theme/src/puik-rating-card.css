@@ -1,0 +1,17 @@
+/* @use 'typography.scss'; */
+
+.puik-rating-card {
+  @apply flex items-center space-x-1;
+}
+
+.puik-rating-card__stars-container {
+  @apply flex space-x-1;
+}
+
+.puik-rating-card__average-value {
+  /* @extend .puik-body-default-bold; */
+}
+
+.puik-rating-card__total-ratings {
+  /* @extend .puik-body-small-medium; */
+}

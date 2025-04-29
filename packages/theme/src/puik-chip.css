@@ -1,0 +1,44 @@
+.puik-chip {
+  /* @extend .puik-body-small */
+  @apply bg-primary-300 text-primary max-w-fit font-bold flex items-center;
+}
+
+.puik-chip--default {
+  @apply px-2 py-[3px];
+}
+
+.puik-chip--small {
+  @apply px-1 py-0;
+}
+
+.puik-chip--small .puik-chip__close {
+  @apply p-[0.125rem];
+}
+
+.puik-chip--disabled {
+  @apply bg-primary-200 text-primary-500;
+}
+
+.puik-chip--disabled .puik-chip__close {
+  @apply cursor-not-allowed hover:bg-primary-200;
+}
+
+.puik-chip__close {
+  @apply p-[0.125rem] ml-auto cursor-pointer rounded-[50%] hover:bg-primary-400;
+}
+
+.puik-chip__icon {
+  @apply mr-1;
+}
+
+.puik-chip__content {
+  @apply relative max-w-[150px];
+}
+
+.puik-chip__content p {
+  @apply pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
+}
+
+.puik-chip__content .puik-tooltip__wrapper {
+  @apply max-w-[150px] mr-1 pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
+}

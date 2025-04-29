@@ -1,0 +1,18 @@
+.puik-label {
+  /* @extend .puik-body-default-bold */
+  @apply text-primary-800;
+}
+
+.puik-label--required {
+  @apply text-red ml-1;
+}
+
+.puik-label--optional {
+  /* @extend .puik-body-small */
+  @apply text-primary-700 font-normal ml-1;
+}
+
+.puik-label--readonly {
+  /* @extend .puik-body-small */
+  @apply text-primary-700 font-normal ml-1;
+}

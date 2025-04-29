@@ -1,0 +1,23 @@
+.puik-button-group .puik-button:first-child {
+  @apply border-l;
+}
+
+.puik-button-group .puik-button {
+  @apply relative z-0 focus:z-[1] border-l-0;
+}
+
+.puik-button-group .puik-button--primary {
+  @apply border border-primary-800;
+}
+
+.puik-button-group .puik-button--primary:hover {
+  @apply border-primary-700 border-r-primary-800;
+}
+
+.puik-button-group .puik-button--tertiary {
+  @apply border border-primary-400;
+}
+
+.puik-button-group .puik-button__left-icon {
+  @apply mr-0;
+}

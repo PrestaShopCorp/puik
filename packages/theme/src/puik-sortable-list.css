@@ -1,0 +1,30 @@
+/* @use 'typography.scss';  /* Importation des styles de typographie */
+
+.puik-sortable-list__item {
+  @apply flex items-center cursor-move mb-2 bg-white;
+}
+
+.puik-sortable-list__item-index {
+  /* @extend .puik-body-large; */
+  @apply p-4;
+}
+
+.puik-sortable-list__item-container {
+  @apply px-4 py-2 space-x-4 flex items-center grow border;
+}
+
+.puik-sortable-list__item-content {
+  @apply flex flex-col grow;
+}
+
+.puik-sortable-list__item-content__title {
+  /* @extend .puik-body-default-bold; */
+}
+
+.puik-sortable-list__item-content__subtitle {
+  /* @extend .puik-body-small; */
+}
+
+.puik-sortable-list__item-img {
+  @apply w-[75px] h-[38px] object-cover;
+}
