@@ -1,0 +1,24 @@
+.puik-card {
+  /* @extend .puik-body-default */
+  @apply flex flex-col gap-6 p-4 bg-white border border-primary-400 font-normal;
+}
+
+.puik-card--highlight {
+  @apply bg-primary-200 border-none;
+}
+
+.puik-card--blue {
+  @apply bg-ocean-blue-50 border-none;
+}
+
+.puik-card--purple {
+  @apply bg-purple-50 border-none;
+}
+
+.puik-card--amber {
+  @apply bg-amber-50 border-none;
+}
+
+.puik-card--green {
+  @apply bg-green-50 border-none;
+}

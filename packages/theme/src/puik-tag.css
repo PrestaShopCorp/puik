@@ -1,0 +1,66 @@
+/* @use 'typography.scss'; */
+
+.puik-tag {
+  /* @extend .puik-body-small; */
+  @apply max-w-fit font-bold flex items-center;
+}
+
+.puik-tag--default {
+  @apply px-2 py-[3px];
+}
+
+.puik-tag--small {
+  @apply px-1 py-0;
+}
+
+.puik-tag--small .puik-tag__close {
+  @apply p-[1px];
+}
+
+.puik-tag--neutral {
+  @apply bg-primary-300 text-primary;
+}
+
+.puik-tag--blue {
+  @apply bg-ocean-blue-50 text-primary;
+}
+
+.puik-tag--yellow {
+  @apply bg-amber-100 text-primary;
+}
+
+.puik-tag--green {
+  @apply bg-green-50 text-primary;
+}
+
+.puik-tag--purple {
+  @apply bg-purple-50 text-primary;
+}
+
+.puik-tag--disabled {
+  @apply bg-primary-200 text-primary-500;
+}
+
+.puik-tag--disabled .puik-tag__close {
+  @apply cursor-not-allowed hover:bg-primary-200;
+}
+
+.puik-tag__close {
+  @apply p-[3px] ml-auto cursor-pointer rounded-[50%] hover:bg-primary-400;
+}
+
+.puik-tag__icon {
+  @apply mr-1;
+}
+
+.puik-tag__content {
+  @apply relative max-w-[150px];
+}
+
+.puik-tag__content p {
+  @apply pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
+}
+
+.puik-tag__content .puik-tooltip__wrapper {
+  @apply max-w-[150px] mr-1 pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
+}

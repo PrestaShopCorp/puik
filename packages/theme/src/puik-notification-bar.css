@@ -1,0 +1,84 @@
+/* $component-name: notification-bar;
+   à traiter séparément si besoin */
+
+   .notification-bar__container {
+  @apply grid text-primary py-4 sm:py-2 relative overflow-hidden;
+}
+
+.notification-bar__container--blue {
+  @apply bg-ocean-blue;
+}
+
+.notification-bar__container--purple {
+  @apply bg-purple;
+}
+
+.notification-bar__container--yellow {
+  @apply bg-amber;
+}
+
+.notification-bar__container--green {
+  @apply bg-green-marketing;
+}
+
+.notification-bar__item {
+  @apply flex justify-center items-center gap-2 px-4 sm:px-6;
+  grid-area: 1 / 1;
+  transition: transform 0.8s cubic-bezier(0.4, 0.14, 1, 1);
+}
+
+.notification-bar__item--invisible {
+  @apply invisible pointer-events-none;
+}
+
+.notification-bar__item--enter {
+  transform: translateX(100%);
+}
+
+.notification-bar__item--leave {
+  transform: translateX(-100%);
+}
+
+.notification-bar-item__icon {
+  @apply text-2xl leading-7;
+}
+
+.notification-bar-item__content {
+  @apply flex gap-x-4 gap-y-3 sm:items-center flex-wrap;
+}
+
+.notification-bar-item__text {
+  @apply font-medium text-xs leading-[1.125rem] sm:text-sm w-full sm:w-auto;
+}
+
+.notification-bar-item__link {
+  @apply max-h-7 sm:py-1 sm:px-2 sm:text-xs;
+}
+
+.notification-bar__container--closable .notification-bar__item {
+  @apply pr-12 sm:pr-16;
+}
+
+.notification-bar-close__container {
+  @apply absolute top-0 bottom-0 right-0 py-4 sm:py-2 pr-4 sm:pr-6 pl-2 w-fit flex items-start;
+}
+
+.notification-bar-close__container--blue {
+  @apply bg-ocean-blue;
+}
+
+.notification-bar-close__container--purple {
+  @apply bg-purple;
+}
+
+.notification-bar-close__container--yellow {
+  @apply bg-amber;
+}
+
+.notification-bar-close__container--green {
+  @apply bg-green-marketing;
+}
+
+.notification-bar__close-button {
+  @apply p-0 min-h-0 focus-visible:outline-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-blue;
+}

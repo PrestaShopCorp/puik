@@ -1,0 +1,27 @@
+/* @use 'typography.scss'; */
+
+.puik-sidebar-item {
+  /* @extend .puik-body-default; */
+  @apply w-full border-none;
+}
+
+.puik-sidebar-item--active .puik-button--text {
+  @apply text-blue-700 font-bold;
+}
+
+.puik-sidebar-item--active.puik-button--text {
+  @apply text-blue-700 font-bold bg-primary-200;
+}
+
+.puik-sidebar-item__button {
+  @apply px-2 py-4 sm:py-2 justify-start font-normal text-left;
+  height: unset;
+}
+
+.puik-sidebar-item__button:hover {
+  @apply bg-primary-300;
+}
+
+.puik-sidebar-item--focus {
+  @apply bg-primary-300;
+}

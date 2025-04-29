@@ -1,0 +1,173 @@
+/* Importation des polices */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Rounded');
+
+@font-face {
+  font-family: 'Prestafont';
+  src: url('../assets/Prestafont-Regular.woff2') format('woff2');
+}
+
+/* Définition des variables CSS */
+:root {
+  --font-primary: 'IBM Plex Sans', Verdana, Arial, sans-serif;
+  --font-secondary: 'Prestafont', Verdana, Arial, sans-serif;
+  --font-material-icons: 'Material Symbols Rounded';
+
+  /* Couleurs principales */
+  --color-primary-100: #FFFFFF;
+  --color-primary-200: #F7F7F7;
+  --color-primary-300: #EEEEEE;
+  --color-primary-400: #DDDDDD;
+  --color-primary-500: #BBBBBB;
+  --color-primary-600: #5E5E5E;
+  --color-primary-700: #3F3F3D;
+  --color-primary-800: #1D1D1B;
+
+  --color-red-50: #FFE4E6;
+  --color-red-100: #FDBFBF;
+  --color-red-300: #D63F3C;
+  --color-red-500: #BA151A;
+  --color-red-700: #A41913;
+
+  --color-purple-50: #F8F0F7;
+  --color-purple-500: #DECDE7;
+  --color-purple-700: #7B4FAC;
+
+  --color-blue-50: #E8EDFD;
+  --color-blue-100: #D1DCFC;
+  --color-blue-300: #A2B8F9;
+  --color-blue-500: #174EEF;
+  --color-blue-700: #2942CC;
+
+  --color-ocean-blue-50: #E4F4F8;
+  --color-ocean-blue-500: #A4DBE8;
+  --color-ocean-blue-700: #5C92AA;
+
+  --color-yellow-50: #FFF5E5;
+  --color-yellow-100: #FFECCC;
+  --color-yellow-300: #FFD999;
+  --color-yellow-500: #FFB000;
+
+  --color-amber-100: #FDF6DD;
+  --color-amber-500: #F8E08E;
+
+  --color-green-50: #EAF8EF;
+  --color-green-100: #BDE9C9;
+  --color-green-300: #59AF70;
+  --color-green-500: #207F4B;
+
+  /* Taille des polices */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2rem;
+  --font-size-5xl: 3rem;
+
+  /* Espacement des lignes */
+  --line-height-xs: 1.125rem;
+  --line-height-sm: 1.25rem;
+  --line-height-base: 1.375rem;
+  --line-height-lg: 1.375rem;
+  --line-height-xl: 1.75rem;
+  --line-height-2xl: 2rem;
+  --line-height-3xl: 2.25rem;
+  --line-height-4xl: 2.625rem;
+  --line-height-5xl: 3.625rem;
+
+  /* Ombres */
+  --box-shadow-default: 0px 1px 3px 0px rgba(29, 29, 27, 0.2);
+  --box-shadow-sm: 0px 1px 2px 0px rgba(29, 29, 27, 0.05);
+  --box-shadow-md: 0px 4px 6px -1px rgba(29, 29, 27, 0.2);
+  --box-shadow-lg: 0px 10px 15px -3px rgba(29, 29, 27, 0.2);
+  --box-shadow-xl: 0px 20px 25px -5px rgba(29, 29, 27, 0.2);
+  --box-shadow-2xl: 0px 25px 60px -12px rgba(29, 29, 27, 0.25);
+  --box-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --box-shadow-none: none;
+  --box-shadow-overlay: 0px 12px 60px 0px rgba(0, 0, 0, 0.1);
+  --box-shadow-sticky: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  --box-shadow-pop-modal: 0px 12px 24px rgba(0, 0, 0, 0.1);
+
+  /* Opacité */
+  --opacity-overlay: 0.8;
+
+  /* Breakpoints */
+  --screen-xs: 320px;
+}
+
+/* Styles globaux */
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+h1 {
+  font-size: var(--font-size-5xl);
+  line-height: var(--line-height-5xl);
+}
+
+h2 {
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-4xl);
+}
+
+h3 {
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-3xl);
+}
+
+h4 {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+}
+
+h5 {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+}
+
+h6 {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
+}
+
+p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+button {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  background-color: var(--color-blue-500);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  box-shadow: var(--box-shadow-sm);
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: var(--color-blue-700);
+}
+
+/* Ombres supplémentaires */
+.shadow-lg {
+  box-shadow: var(--box-shadow-lg);
+}
+
+.shadow-none {
+  box-shadow: var(--box-shadow-none);
+}
+
+/* Breakpoints */
+@media (max-width: var(--screen-xs)) {
+  body {
+    font-size: var(--font-size-sm);
+  }
+}

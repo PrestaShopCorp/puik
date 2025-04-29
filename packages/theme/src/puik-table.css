@@ -1,0 +1,144 @@
+/* @use 'typography.scss'; */
+/* @use 'scrollbar.scss'; */
+
+.puik-table {
+  /* @extend .puik-body-default; */
+  @apply inline-table bg-white font-normal;
+}
+
+.puik-table__container {
+  @apply max-w-full overflow-x-auto;
+}
+
+.puik-table--full-width {
+  @apply w-full;
+}
+
+.puik-table__item {
+  @apply p-4;
+}
+
+.puik-table__item--sm {
+  @apply w-[112px] min-w-[112px];
+}
+
+.puik-table__item--md {
+  @apply w-[240px] min-w-[240px];
+}
+
+.puik-table__item--lg {
+  @apply w-[480px] min-w-[480px];
+}
+
+.puik-table__selection__checkbox .puik-checkbox__label {
+  @apply sr-only;
+}
+
+.puik-table__align-left > .puik-table__head__row__item__container,
+.puik-table__align-left > .puik-table__body__row__item__container {
+  @apply flex justify-start;
+}
+
+.puik-table__align-left > .puik-table__head__row__item__content,
+.puik-table__align-left > .puik-table__body__row__item__content {
+  @apply text-left;
+}
+
+.puik-table__align-center > .puik-table__head__row__item__container,
+.puik-table__align-center > .puik-table__body__row__item__container {
+  @apply flex justify-center;
+}
+
+.puik-table__align-center > .puik-table__head__row__item__content,
+.puik-table__align-center > .puik-table__body__row__item__content {
+  @apply text-center;
+}
+
+.puik-table__align-right > .puik-table__head__row__item__container,
+.puik-table__align-right > .puik-table__body__row__item__container {
+  @apply flex justify-end;
+}
+
+.puik-table__align-right > .puik-table__head__row__item__content,
+.puik-table__align-right > .puik-table__body__row__item__content {
+  @apply text-right;
+}
+
+.puik-table__head,
+.puik-table > thead {
+  @apply sticky bg-white z-20 -top-px;
+}
+
+.puik-table__head__row,
+.puik-table > thead > tr {
+  @apply font-normal uppercase text-primary-600;
+}
+
+.puik-table__head__row__item {
+  @apply text-primary-800;
+}
+
+.puik-table__head__row__item--sticky,
+.puik-table__body__row__item--sticky {
+  @apply sticky bg-white z-10;
+}
+
+.puik-table__head__row__item--sticky-first,
+.puik-table__body__row__item--sticky-first {
+  @apply -left-px;
+}
+
+.puik-table__head__row__item--sticky-last,
+.puik-table__body__row__item--sticky-last {
+  @apply -right-px;
+}
+
+.puik-table__head__row__item--sticky-scroll-first,
+.puik-table__body__row__item--sticky-scroll-first {
+  @apply right-0 shadow-[4px_0_7px_-1px_rgba(29,29,27,0.1)];
+}
+
+.puik-table__head__row__item--sticky-scroll-last,
+.puik-table__body__row__item--sticky-scroll-last {
+  @apply left-0 shadow-[-4px_0_7px_-1px_rgba(29,29,27,0.1)];
+}
+
+.puik-table__head__row__item__content {
+  @apply flex items-center space-x-1;
+}
+
+.puik-table__head__row__item--right.puik-table__head__row__item--sortable {
+  @apply pr-2;
+}
+
+.puik-table__body__row__item--expand-row {
+  @apply cursor-pointer;
+}
+
+.puik-table__search__bar th,
+.puik-table__search__bar th.puik-table__head__row__item--sticky {
+  @apply bg-primary-200;
+}
+
+.puik-table__search__bar tr.puik-table__search__bar {
+  .puik-table__head__row__item--sticky-scroll,
+  .puik-table__head__row__item--sticky-right:first-child,
+  .puik-table__head__row__item--sticky-left:last-child {
+    &::before {
+      @apply bg-primary-200;
+    }
+  }
+}
+
+.puik-table__search__bar {
+  @apply h-[90px];
+}
+
+.puik-table__container {
+  /* @extend .puik-scrollbar; */
+  @apply pb-2 max-h-[80vh] overflow-y-auto;
+}
+
+.puik-table__body__row__item--loading {
+  @apply p-1;
+}

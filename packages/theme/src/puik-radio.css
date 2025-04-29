@@ -1,0 +1,31 @@
+.puik-radio {
+  @apply appearance-none flex items-center;
+}
+
+.puik-radio__input {
+  @apply appearance-none bg-transparent bg-clip-content w-5 h-5 mr-2 border-2 border-solid rounded-full border-primary cursor-pointer;
+}
+
+.puik-radio__input:checked {
+  @apply bg-blue p-[3px] border-2 border-solid border-blue;
+}
+
+.puik-radio__input:checked:disabled {
+  @apply border-2 border-solid rounded-full border-primary-500 bg-primary-500;
+}
+
+.puik-radio__input:focus {
+  @apply outline-none ring-2 ring-blue ring-offset-1;
+}
+
+.puik-radio__input:disabled {
+  @apply border-2 border-solid rounded-full border-primary-500 bg-transparent;
+}
+
+.puik-radio__input:disabled + .puik-radio__label {
+  @apply text-primary-500 cursor-default;
+}
+
+.puik-radio__label {
+  @apply font-primary cursor-pointer;
+}

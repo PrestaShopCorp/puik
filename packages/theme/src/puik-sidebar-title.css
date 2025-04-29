@@ -1,0 +1,6 @@
+/* @use 'typography.scss'; */
+
+.puik-sidebar-title {
+  /* @extend .puik-body-default; */
+  @apply text-primary-600 font-bold px-2 py-2;
+}

@@ -1,0 +1,108 @@
+.puik-input {
+  @apply relative flex flex-col;
+}
+
+.puik-input__wrapper {
+  @apply flex flex-row border border-primary-400 font-primary transition-colors text-primary overflow-hidden;
+}
+
+.puik-input__wrapper:hover {
+  @apply border-primary;
+}
+
+.puik-input__wrapper--focus {
+  @apply border-primary ring ring-inset ring-blue;
+}
+
+.puik-input__wrapper--success {
+  @apply border-green bg-green-50;
+}
+
+.puik-input__wrapper--error {
+  @apply border-red bg-red-50;
+}
+
+.puik-input__wrapper--disabled {
+  @apply bg-white hover:border-primary-400 cursor-not-allowed;
+}
+
+.puik-input__field {
+  /* @extend .puik-body-default */
+  @apply bg-transparent w-full py-2 outline-none px-3 text-primary
+    disabled:text-primary-500 disabled:cursor-not-allowed
+    placeholder:text-primary-700 placeholder:disabled:text-primary-500;
+}
+
+.puik-input__field:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 50px theme('colors.ocean-blue.50') inset;
+}
+
+.puik-input__field[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.puik-input__field[type='number']::-webkit-inner-spin-button,
+.puik-input__field[type='number']::-webkit-outer-spin-button {
+  @apply appearance-none;
+}
+
+.puik-input__prepend ~ .puik-input__field {
+  @apply pl-0;
+}
+
+.puik-input__hint {
+  /* @extend .puik-body-small */
+  @apply flex text-primary font-normal mt-1 leading-4;
+}
+
+.puik-input__hint__error {
+  @apply flex text-red font-primary font-normal;
+}
+
+.puik-input__hint__error__text {
+  @apply mt-0.5;
+}
+
+.puik-input__hint__error__icon {
+  @apply mr-1;
+}
+
+.puik-input__reveal-password {
+  @apply flex items-center font-materialIcons text-primary cursor-pointer select-none pl-3 pr-2;
+}
+
+.puik-input__prepend {
+  @apply flex items-center text-primary-700 font-primary pl-3 pr-2;
+}
+
+.puik-input__append {
+  @apply flex items-center text-primary-700 font-primary pr-3 pl-2;
+}
+
+.puik-input__controls {
+  @apply cursor-pointer flex flex-col items-center space-y-0.5 py-0.5 select-none;
+}
+
+.puik-input__controls__increment,
+.puik-input__controls__decrement {
+  @apply w-6 flex flex-1 items-center justify-center rounded-sm outline-none
+    focus-visible:ring focus-visible:ring-blue
+    disabled:bg-white disabled:cursor-not-allowed
+    hover:bg-primary-200
+    active:bg-primary-300;
+}
+
+.puik-input__controls__increment__icon,
+.puik-input__controls__decrement__icon {
+  @apply text-xs font-materialIcons text-primary disabled:text-primary-300;
+}
+
+.puik-input__character-count {
+  /* @extend .puik-body-small */
+  @apply absolute right-0 top-[100%] text-primary-700;
+}
+
+.puik-input__character-count--error {
+  @apply text-red;
+}

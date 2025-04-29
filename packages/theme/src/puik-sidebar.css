@@ -1,0 +1,62 @@
+/* @use 'typography.scss'; */
+
+.puik-sidebar {
+  @apply text-sm font-normal relative z-10 w-[20.5rem] sm:w-[13.125rem] h-full bg-white border-r border-primary-300 overflow-hidden;
+  transition: width 0.2s ease-out;
+}
+
+.puik-sidebar__header {
+  @apply bg-primary-200 w-full flex justify-end;
+}
+
+.puik-sidebar__header__button {
+  &:hover {
+    @apply bg-primary-300;
+  }
+}
+
+.puik-sidebar__header__button .puik-icon {
+  @apply text-blue-700 leading-[0.875rem];
+}
+
+.puik-sidebar--mobile {
+  @apply justify-start;
+}
+
+.puik-sidebar__content {
+  @apply px-2 pt-4 w-[20.5rem] sm:w-[13.125rem];
+}
+
+.puik-sidebar--collapsed {
+  @apply w-[3.312rem] overflow-visible;
+}
+
+.puik-sidebar__header__button.puik-sidebar--collapsed {
+  @apply w-full;
+}
+
+.puik-sidebar__content.puik-sidebar--collapsed {
+  @apply px-0 w-[3.312rem];
+}
+
+.puik-sidebar-item__button.puik-sidebar--collapsed {
+  @apply w-full flex items-center justify-start px-4;
+}
+
+.puik-sidebar--mobile {
+  @apply w-0;
+}
+
+.puik-sidebar__backdrop {
+  @apply w-screen h-screen bg-primary-800/50 absolute top-0 left-0 z-0;
+}
+
+.puik-sidebar__transition__enter,
+.puik-sidebar__transition__leave {
+  @apply transition duration-200 ease-out;
+}
+
+.puik-sidebar__transition__enter--from,
+.puik-sidebar__transition__leave--to {
+  @apply -translate-x-[20.5rem] sm:-translate-x-[13.125rem] opacity-0;
+}

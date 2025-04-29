@@ -1,0 +1,15 @@
+.puik-accordion-group {
+  @apply flex flex-col gap-4 w-full;
+}
+
+.puik-accordion-group--contained {
+  @apply gap-0;
+}
+
+.puik-accordion-group--contained .puik-accordion {
+  @apply border-t-0;
+}
+
+.puik-accordion-group--contained > .puik-accordion:first-of-type {
+  @apply border-t;
+}

@@ -1,0 +1,103 @@
+/* @use 'typography.scss'; */
+
+.puik-select {
+  /* @extend .puik-body-default; */
+  @apply flex flex-col relative;
+}
+
+.puik-select--disabled #select-combobox {
+  @apply cursor-not-allowed;
+}
+
+.puik-select__container {
+  @apply flex flex-col relative;
+}
+
+.puik-select__label {
+  @apply mb-2;
+}
+
+.puik-multi-select__options-tags--button {
+  @apply relative px-3 py-2 pr-10 flex border border-primary-400 font-primary transition-colors text-primary space-x-1 overflow-x-hidden;
+}
+
+.puik-multi-select__options-tags--button:hover {
+  @apply border-primary;
+}
+
+.puik-multi-select__options-tags--button:focus {
+  @apply border-primary ring ring-inset ring-blue;
+}
+
+.puik-multi-select__options-tags--button--disabled {
+  @apply bg-white hover:border-primary-400 cursor-not-allowed;
+}
+
+.puik-multi-select__dropdown-icon {
+  @apply absolute cursor-pointer right-3 top-[50%] -translate-y-1/2;
+}
+
+.puik-multi-select__input {
+  @apply cursor-default;
+}
+
+.puik-select-dropdown {
+  @apply absolute w-max min-w-full max-h-[50vh] bg-white text-base z-10 shadow-lg ring-1 ring-black ring-black/50;
+  top: calc(100% + 2px);
+}
+
+.puik-select-dropdown__search-input {
+  @apply px-3 py-2;
+}
+
+.puik-select-dropdown__select-all {
+  @apply px-3 flex relative select-none text-primary-800 transition-colors;
+}
+
+.puik-select-dropdown__select-all label {
+  @apply min-h-9 flex items-center grow cursor-default;
+}
+
+.puik-select-dropdown--up {
+  @apply transform translate-y-[calc(-100%-40px)];
+}
+
+.puik-select__error {
+  @apply flex text-xs text-red font-primary font-normal mt-1;
+}
+
+.puik-select__error__text {
+  /* @extend .puik-body-small; */
+  @apply mt-0.5;
+}
+
+.puik-select__error__icon {
+  @apply mr-1;
+}
+
+.puik-multi-select__input--error > .puik-input__wrapper,
+.puik-single-select__input--error > .puik-input__wrapper {
+  @apply border border-transparent ring-2 ring-red ring-inset bg-red-50;
+}
+
+.puik-multi-select__input--error > .puik-input__wrapper:hover,
+.puik-single-select__input--error > .puik-input__wrapper:hover {
+  @apply border border-red;
+}
+
+.puik-multi-select__input--error > .puik-input__wrapper--focus,
+.puik-single-select__input--error > .puik-input__wrapper--focus {
+  @apply ring-4;
+}
+
+.puik-select__container--error .puik-multi-select__options-tags {
+  @apply border border-transparent ring-2 ring-red ring-inset;
+}
+
+.puik-select__container--error .puik-multi-select__options-tags:hover {
+  @apply border border-red;
+}
+
+.puik-select__no-results {
+  @apply px-3 py-2 relative cursor-default select-none text-primary-800;
+}

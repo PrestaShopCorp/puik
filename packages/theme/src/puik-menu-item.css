@@ -1,0 +1,33 @@
+/* @use 'typography.scss'; // à traiter séparément si besoin */
+
+.puik-menu-item {
+  /* @extend .puik-body-default */
+  /* Remplacer par les propriétés de .puik-body-default ici si besoin */
+  @apply flex text-left;
+}
+
+.puik-menu-item .puik-button {
+  /* @extend .puik-body-default */
+  /* Remplacer par les propriétés de .puik-body-default ici si besoin */
+  @apply font-normal p-2 w-full flex items-center justify-start z-10;
+}
+
+.puik-menu-item .puik-button__right-icon {
+  @apply ml-auto;
+}
+
+.puik-menu-item .puik-button--destructive {
+  @apply bg-white text-red-500 hover:bg-primary-200;
+}
+
+.puik-menu-item .puik-button--destructive:disabled {
+  @apply text-red-100;
+}
+
+.puik-menu-item .puik-button--destructive:hover {
+  @apply bg-red-50;
+}
+
+.puik-menu-item .puik-button--destructive:active {
+  @apply bg-red-100;
+}
