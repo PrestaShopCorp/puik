@@ -1,3 +1,5 @@
+@import './theme.css';
+
 .puik-jumbotron {
   @apply text-5xl -tracking-[0.066875rem] font-extrabold font-primary;
 }

@@ -1,3 +1,4 @@
+@import './theme.css';
 /* @use 'typography.scss'; // à traiter séparément si besoin */
 
 .puik-menu {

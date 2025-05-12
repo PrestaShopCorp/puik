@@ -1,3 +1,5 @@
+@import './theme.css';
+
 .puik-layer-base {
   @apply border rounded-sm border-primary-400 bg-white;
 }

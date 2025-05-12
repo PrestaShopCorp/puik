@@ -1,5 +1,7 @@
+@import './theme.css';
+
 .puik-icon {
-  @apply font-materialIcons leading-none;
+  @apply font-material-icons leading-none;
 }
 .puik-icon--disabled {
   color: theme('colors.primary.500') !important;

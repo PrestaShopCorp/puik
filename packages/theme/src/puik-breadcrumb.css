@@ -1,3 +1,4 @@
+@import './theme.css';
 /* @use 'typography.scss'; // Ignoré ici, à traiter séparément si besoin */
 
 .puik-breadcrumb {

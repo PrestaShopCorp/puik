@@ -1,3 +1,5 @@
+@import './theme.css';
+
 .progress-bar__container {
   @apply bg-primary-400 h-2 rounded-3xl;
 }

@@ -1,3 +1,5 @@
+@import './theme.css';
+
 .puik-option {
   @apply px-3 py-2 flex space-x-2 relative cursor-default select-none text-primary-800 transition-colors;
 }

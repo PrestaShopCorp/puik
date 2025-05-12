@@ -1,3 +1,5 @@
+@import './theme.css';
+
 .puik-input {
   @apply relative flex flex-col;
 }
@@ -69,7 +71,7 @@
 }
 
 .puik-input__reveal-password {
-  @apply flex items-center font-materialIcons text-primary cursor-pointer select-none pl-3 pr-2;
+  @apply flex items-center font-material-icons text-primary cursor-pointer select-none pl-3 pr-2;
 }
 
 .puik-input__prepend {
@@ -95,7 +97,7 @@
 
 .puik-input__controls__increment__icon,
 .puik-input__controls__decrement__icon {
-  @apply text-xs font-materialIcons text-primary disabled:text-primary-300;
+  @apply text-xs font-material-icons text-primary disabled:text-primary-300;
 }
 
 .puik-input__character-count {

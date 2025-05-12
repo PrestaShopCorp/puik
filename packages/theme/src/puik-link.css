@@ -1,3 +1,5 @@
+@import './theme.css';
+
 .puik-link {
   @apply cursor-pointer
     relative
@@ -26,7 +28,7 @@
 }
 
 .puik-link__target__icon {
-  @apply font-materialIcons align-bottom;
+  @apply font-material-icons align-bottom;
 }
 
 .puik-link__target__icon:before {

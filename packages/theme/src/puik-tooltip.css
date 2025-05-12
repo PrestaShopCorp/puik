@@ -1,3 +1,4 @@
+@import './theme.css';
 /* $margin-tip: 4px !important; */
 
 .puik-tooltip {
@@ -63,7 +64,7 @@
 }
 
 .puik-tooltip__icon {
-  @apply font-materialIcons text-primary hover:text-primary-800 text-base transition-colors cursor-pointer;
+  @apply font-material-icons text-primary hover:text-primary-800 text-base transition-colors cursor-pointer;
 }
 
 .puik-tooltip__tip {

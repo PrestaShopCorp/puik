@@ -14,10 +14,10 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build": "pnpm clean && pnpm sass && pnpm postcss",
-    "dev": "pnpm clean && pnpm sass --watch && pnpm postcss --watch",
+    "build": "pnpm clean && pnpm postcss",
+    "dev": "pnpm clean && pnpm postcss --watch",
     "sass": "sass --style expanded --no-source-map src/:dist/",
-    "postcss": "postcss ./dist/*.css --dir ./dist"
+    "postcss": "postcss ./src/*.css --dir ./dist"
   },
   "publishConfig": {
     "main": "./dist/index.css",
@@ -33,9 +33,7 @@
     "postcss-cli": "^11.0.1",
     "postcss-copy": "^7.1.0",
     "sass": "^1.85.1",
-    "tailwindcss": "^4.1.4"
-  },
-  "dependencies": {
-    "@tailwindcss/postcss": "^4.1.4"
+    "tailwindcss": "^4.1.4",
+    "@tailwindcss/postcss": "^4.1.6"
   }
 }

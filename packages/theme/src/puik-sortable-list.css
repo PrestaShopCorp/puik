@@ -1,3 +1,4 @@
+@import './theme.css';
 /* @use 'typography.scss';  /* Importation des styles de typographie */
 
 .puik-sortable-list__item {

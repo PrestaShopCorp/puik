@@ -1,3 +1,4 @@
+@import 'tailwindcss';
 /* Importation des polices */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Rounded');
@@ -7,54 +8,62 @@
   src: url('../assets/Prestafont-Regular.woff2') format('woff2');
 }
 
-/* Définition des variables CSS */
-:root {
+@theme {
+  /* Définition des variables CSS */
   --font-primary: 'IBM Plex Sans', Verdana, Arial, sans-serif;
   --font-secondary: 'Prestafont', Verdana, Arial, sans-serif;
   --font-material-icons: 'Material Symbols Rounded';
 
   /* Couleurs principales */
-  --color-primary-100: #FFFFFF;
-  --color-primary-200: #F7F7F7;
-  --color-primary-300: #EEEEEE;
-  --color-primary-400: #DDDDDD;
-  --color-primary-500: #BBBBBB;
-  --color-primary-600: #5E5E5E;
-  --color-primary-700: #3F3F3D;
-  --color-primary-800: #1D1D1B;
+  --color-primary-100: #ffffff;
+  --color-primary-200: #f7f7f7;
+  --color-primary-300: #eeeeee;
+  --color-primary-400: #dddddd;
+  --color-primary-500: #bbbbbb;
+  --color-primary-600: #5e5e5e;
+  --color-primary-700: #3f3f3d;
+  --color-primary-800: #1d1d1b;
+  --color-primary: #1d1d1b;
 
-  --color-red-50: #FFE4E6;
-  --color-red-100: #FDBFBF;
-  --color-red-300: #D63F3C;
-  --color-red-500: #BA151A;
-  --color-red-700: #A41913;
+  --color-red-50: #ffe4e6;
+  --color-red-100: #fdbfbf;
+  --color-red-300: #d63f3c;
+  --color-red-500: #ba151a;
+  --color-red-700: #a41913;
+  --color-red: #ba151a;
 
-  --color-purple-50: #F8F0F7;
-  --color-purple-500: #DECDE7;
-  --color-purple-700: #7B4FAC;
+  --color-purple-50: #f8f0f7;
+  --color-purple-500: #decde7;
+  --color-purple-700: #7b4fac;
+  --color-purple: #decde7;
 
-  --color-blue-50: #E8EDFD;
-  --color-blue-100: #D1DCFC;
-  --color-blue-300: #A2B8F9;
-  --color-blue-500: #174EEF;
-  --color-blue-700: #2942CC;
+  --color-blue-50: #e8edfd;
+  --color-blue-100: #d1dcfc;
+  --color-blue-300: #a2b8f9;
+  --color-blue-500: #174eef;
+  --color-blue-700: #2942cc;
+  --color-blue: #174eef;
 
-  --color-ocean-blue-50: #E4F4F8;
-  --color-ocean-blue-500: #A4DBE8;
-  --color-ocean-blue-700: #5C92AA;
+  --color-ocean-blue-50: #e4f4f8;
+  --color-ocean-blue-500: #a4dbe8;
+  --color-ocean-blue-700: #5c92aa;
+  --color-ocean-blue: #a4dbe8;
 
-  --color-yellow-50: #FFF5E5;
-  --color-yellow-100: #FFECCC;
-  --color-yellow-300: #FFD999;
-  --color-yellow-500: #FFB000;
+  --color-yellow-50: #fff5e5;
+  --color-yellow-100: #ffeccc;
+  --color-yellow-300: #ffd999;
+  --color-yellow-500: #ffb000;
+  --color-yellow: #ffb000;
 
-  --color-amber-100: #FDF6DD;
-  --color-amber-500: #F8E08E;
+  --color-amber-100: #fdf6dd;
+  --color-amber-500: #f8e08e;
+  --color-amber: #f8e08e;
 
-  --color-green-50: #EAF8EF;
-  --color-green-100: #BDE9C9;
-  --color-green-300: #59AF70;
-  --color-green-500: #207F4B;
+  --color-green-50: #eaf8ef;
+  --color-green-100: #bde9c9;
+  --color-green-300: #59af70;
+  --color-green-500: #207f4b;
+  --color-green: #207f4b;
 
   /* Taille des polices */
   --font-size-xs: 0.75rem;

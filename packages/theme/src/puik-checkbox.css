@@ -1,3 +1,5 @@
+@import './theme.css';
+
 .puik-checkbox {
   @apply flex items-center;
 }
@@ -23,7 +25,7 @@
 }
 
 .puik-checkbox__input:checked:before {
-  @apply font-materialIcons text-white text-xl;
+  @apply font-material-icons text-white text-xl;
   content: '\e876';
 }
 
@@ -32,7 +34,7 @@
 }
 
 .puik-checkbox__input:indeterminate:before {
-  @apply font-materialIcons text-white text-xl;
+  @apply font-material-icons text-white text-xl;
   content: '\f108';
 }
 

@@ -1,18 +1,23 @@
-@use 'typography.scss';
+@import './theme.css';
+/* @use 'typography.scss'; */
 
 .puik-progress-stepper-step {
-  @extend .puik-body-small;
+  /* @extend .puik-body-small; */
   @apply flex flex-col items-center;
-  &__button {
-    @apply rounded-full p-0 w-7;
-    &.puik-button--success {
-      @apply text-green-500;
-    }
-  }
-  &__text {
-    @apply px-4 pt-1 text-primary-800;
-  }
-  &__additional-text {
-    @apply px-4 text-primary-600;
-  }
+}
+
+.puik-progress-stepper-step__button {
+  @apply rounded-full p-0 w-7;
+}
+
+.puik-progress-stepper-step__button.puik-button--success {
+  @apply text-green-500;
+}
+
+.puik-progress-stepper-step__text {
+  @apply px-4 pt-1 text-primary-800;
+}
+
+.puik-progress-stepper-step__additional-text {
+  @apply px-4 text-primary-600;
 }
