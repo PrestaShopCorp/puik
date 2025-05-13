@@ -37,7 +37,7 @@
 }
 
 .puik-input__field:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 50px theme('colors.ocean-blue.50') inset;
+  -webkit-box-shadow: 0 0 0 50px var(--color-ocean-blue-50) inset;
 }
 
 .puik-input__field[type='number'] {
