@@ -1,5 +1,5 @@
-@import './theme.css';
-/* @use 'typography.scss'; */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-rating-card {
   @apply flex items-center space-x-1;
@@ -10,9 +10,9 @@
 }
 
 .puik-rating-card__average-value {
-  /* @extend .puik-body-default-bold; */
+  @apply puik-body-default-bold;
 }
 
 .puik-rating-card__total-ratings {
-  /* @extend .puik-body-small-medium; */
+  @apply puik-body-small-medium;
 }

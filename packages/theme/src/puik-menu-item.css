@@ -1,16 +1,12 @@
-@import './theme.css';
-/* @use 'typography.scss'; // à traiter séparément si besoin */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-menu-item {
-  /* @extend .puik-body-default */
-  /* Remplacer par les propriétés de .puik-body-default ici si besoin */
-  @apply flex text-left;
+  @apply flex text-left puik-body-default;
 }
 
 .puik-menu-item .puik-button {
-  /* @extend .puik-body-default */
-  /* Remplacer par les propriétés de .puik-body-default ici si besoin */
-  @apply font-normal p-2 w-full flex items-center justify-start z-10;
+  @apply font-normal p-2 w-full flex items-center justify-start z-10 puik-body-default;
 }
 
 .puik-menu-item .puik-button__right-icon {

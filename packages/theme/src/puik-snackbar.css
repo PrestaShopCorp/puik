@@ -1,4 +1,6 @@
-@import './theme.css';
+@reference './theme.css';
+@reference './typography.css';
+
 .puik-snackbar-root {
   @apply text-white p-4 flex items-center justify-between space-x-2;
   animation: slideIn 250ms ease-in;
@@ -21,11 +23,11 @@
 }
 
 .puik-snackbar-title {
-  @apply pb-2;
+  @apply pb-2 puik-body-large-medium;
 }
 
 .puik-snackbar-description {
-  /* Pas de classe SCSS à appliquer ici */
+  @apply puik-body-default;
 }
 
 .puik-snackbar-action {

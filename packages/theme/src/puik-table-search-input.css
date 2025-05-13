@@ -1,5 +1,5 @@
-@import './theme.css';
-/* @use './puik-input.scss'; */
+@reference './theme.css';
+@reference './puik-input.css';
 
 .puik-table-search-input--submit {
   @apply relative cursor-pointer;

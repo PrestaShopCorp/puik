@@ -1,7 +1,6 @@
-@import './theme.css';
-/* @use 'typography.scss'; */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-sidebar-title {
-  /* @extend .puik-body-default; */
-  @apply text-primary-600 font-bold px-2 py-2;
+  @apply text-primary-600 font-bold px-2 py-2 puik-body-default;
 }

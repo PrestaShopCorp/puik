@@ -1,5 +1,5 @@
-@import './theme.css';
-/* @use 'typography.scss'; */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-tab-navigation__title {
   @apply relative p-2 flex gap-2 whitespace-nowrap border-b border-b-primary-400 items-center cursor-pointer puik-body-default-bold;

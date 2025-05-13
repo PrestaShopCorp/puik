@@ -1,22 +1,20 @@
-@import './theme.css';
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-button {
-  /* @extend .puik-text-button-default */
-  @apply transition cursor-pointer py-2 px-4 gap-2 inline-flex items-center justify-center align-middle;
+  @apply transition cursor-pointer py-2 px-4 gap-2 inline-flex items-center justify-center align-middle puik-text-button-default;
 }
 
 .puik-button--sm {
-  /* @extend .puik-text-button-small */
-  @apply py-1 px-2 min-h-sm;
+  @apply py-1 px-2 min-h-(--height-sm) puik-text-button-small ;
 }
 
 .puik-button--md {
-  @apply min-h-md;
+  @apply min-h-(--height-md);
 }
 
 .puik-button--lg {
-  /* @extend .puik-text-button-large */
-  @apply py-3.5 px-4 gap-3 min-h-lg;
+  @apply py-3.5 px-4 gap-3 min-h-(--height-lg) puik-text-button-large;
 }
 
 .puik-button--fluid {

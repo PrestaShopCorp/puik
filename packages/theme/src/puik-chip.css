@@ -1,8 +1,8 @@
-@import './theme.css';
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-chip {
-  /* @extend .puik-body-small */
-  @apply bg-primary-300 text-primary max-w-fit font-bold flex items-center;
+  @apply bg-primary-300 text-primary max-w-fit font-bold flex items-center puik-body-small;
 }
 
 .puik-chip--default {

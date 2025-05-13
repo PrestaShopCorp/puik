@@ -1,25 +1,22 @@
-@import './theme.css';
+@reference './theme.css';
 
 .puik-scrollbar::-webkit-scrollbar-track {
-  border-radius: 10px;
+  @apply rounded-[10px];
 }
 
 .puik-scrollbar::-webkit-scrollbar {
-  width: 1.5rem;
-  height: 1.5rem;
+  @apply w-[1.5rem] h-[1.5rem];
 }
 
 .puik-scrollbar::-webkit-scrollbar-track {
-  border-radius: 10px;
+  @apply rounded-[10px];
 }
 
 .puik-scrollbar::-webkit-scrollbar-thumb {
-  background-color: theme('colors.primary.400');
+  @apply bg-primary-400 rounded-[12px] bg-clip-padding;
   border: 8px solid rgba(0, 0, 0, 0);
-  background-clip: padding-box;
-  border-radius: 12px;
 }
 
 .puik-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: theme('colors.primary.500');
+  @apply bg-primary-500;
 }

@@ -1,8 +1,6 @@
-@import './theme.css';
-/* $component-name: notification-bar;
-   à traiter séparément si besoin */
+@reference './theme.css';
 
-   .notification-bar__container {
+.notification-bar__container {
   @apply grid text-primary py-4 sm:py-2 relative overflow-hidden;
 }
 

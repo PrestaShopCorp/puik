@@ -1,14 +1,13 @@
-@import './theme.css';
-/* @use 'animations.scss'; */
+@reference './theme.css';
 
 .puik-skeleton-loader {
   @apply font-material-icons rounded-sm w-full text-primary-500 text-2xl;
 
   background: linear-gradient(
     90deg,
-    theme('colors.primary.400') 40%,
-    theme('colors.primary.300') 50%,
-    theme('colors.primary.400') 60%
+    #dddddd 40%,
+    #eeeeee 50%,
+    #dddddd 60%
   );
   background-size: 200% 100%;
   background-position-x: 180%;
@@ -52,7 +51,7 @@
 }
 
 .puik-skeleton-loader--badge {
-  @apply h-[24px] w-[64px] rounded-full;
+  @apply h-[24px] w-[64px] rounded-[9999px];
 }
 
 .puik-skeleton-loader--tag {

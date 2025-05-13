@@ -1,4 +1,5 @@
-@import './theme.css';
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-input {
   @apply relative flex flex-col;
@@ -29,10 +30,10 @@
 }
 
 .puik-input__field {
-  /* @extend .puik-body-default */
   @apply bg-transparent w-full py-2 outline-none px-3 text-primary
     disabled:text-primary-500 disabled:cursor-not-allowed
-    placeholder:text-primary-700 placeholder:disabled:text-primary-500;
+    placeholder:text-primary-700 placeholder:disabled:text-primary-500
+    puik-body-default;
 }
 
 .puik-input__field:-webkit-autofill {
@@ -54,8 +55,7 @@
 }
 
 .puik-input__hint {
-  /* @extend .puik-body-small */
-  @apply flex text-primary font-normal mt-1 leading-4;
+  @apply flex text-primary font-normal mt-1 leading-4 puik-body-small;
 }
 
 .puik-input__hint__error {
@@ -101,8 +101,7 @@
 }
 
 .puik-input__character-count {
-  /* @extend .puik-body-small */
-  @apply absolute right-0 top-[100%] text-primary-700;
+  @apply absolute right-0 top-[100%] text-primary-700 puik-body-small;
 }
 
 .puik-input__character-count--error {

@@ -1,4 +1,5 @@
-@import './theme.css';
+@reference './theme.css';
+
 .puik-snackbar-viewport {
     @apply [--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[500px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none;
 }
@@ -17,4 +18,3 @@
 .puik-snackbar-viewport.puik-snackbar-viewport--right {
     @apply right-0;
 }
-

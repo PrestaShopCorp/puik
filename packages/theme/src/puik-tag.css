@@ -1,9 +1,8 @@
-@import './theme.css';
-/* @use 'typography.scss'; */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-tag {
-  /* @extend .puik-body-small; */
-  @apply max-w-fit font-bold flex items-center;
+  @apply max-w-fit font-bold flex items-center puik-body-small;
 }
 
 .puik-tag--default {

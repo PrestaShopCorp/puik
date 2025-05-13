@@ -1,13 +1,12 @@
-@import './theme.css';
-/* @use 'typography.scss'; */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-textarea {
   @apply flex flex-col relative;
 }
 
 .puik-textarea__character-count {
-  /* @extend .puik-body-small; */
-  @apply absolute right-0 -bottom-5 text-primary-700;
+  @apply absolute right-0 -bottom-5 text-primary-700 puik-body-small;
 }
 
 .puik-textarea--count-error .puik-textarea__character-count {
@@ -39,10 +38,10 @@
 }
 
 .puik-textarea__field {
-  /* @extend .puik-body-default; */
-  @apply bg-transparent w-full py-2 outline-none px-3 resize-none text-primary;
-  @apply disabled:text-primary-500 disabled:cursor-not-allowed;
-  @apply placeholder:text-primary-600 placeholder:disabled:text-primary-500;
+  @apply bg-transparent w-full py-2 outline-none px-3 resize-none text-primary
+  disabled:text-primary-500 disabled:cursor-not-allowed
+  placeholder:text-primary-600 placeholder:disabled:text-primary-500
+  puik-body-default;
 }
 
 .puik-textarea__field:-webkit-autofill {
@@ -50,8 +49,7 @@
 }
 
 .puik-textarea__hint {
-  /* @extend .puik-body-small; */
-  @apply flex text-primary font-normal mt-1 leading-4;
+  @apply flex text-primary font-normal mt-1 leading-4 puik-body-small;
 }
 
 .puik-textarea__hint__error {

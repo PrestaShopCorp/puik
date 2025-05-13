@@ -1,8 +1,8 @@
-@import './theme.css';
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-label {
-  /* @extend .puik-body-default-bold */
-  @apply text-primary-800;
+  @apply text-primary-800 puik-body-default-bold ;
 }
 
 .puik-label--required {
@@ -10,11 +10,9 @@
 }
 
 .puik-label--optional {
-  /* @extend .puik-body-small */
-  @apply text-primary-700 font-normal ml-1;
+  @apply text-primary-700 font-normal ml-1 puik-body-small;
 }
 
 .puik-label--readonly {
-  /* @extend .puik-body-small */
-  @apply text-primary-700 font-normal ml-1;
+  @apply text-primary-700 font-normal ml-1 puik-body-small;
 }

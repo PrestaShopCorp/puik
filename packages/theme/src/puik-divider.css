@@ -1,4 +1,4 @@
-@import './theme.css';
+@reference './theme.css';
 
 .puik-divider--horizontal {
   @apply text-primary-400;

@@ -1,7 +1,6 @@
-@import './theme.css';
-/* @use 'typography.scss'; // à traiter séparément si besoin */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-menu-item-title {
-  /* @extend .puik-body-default-bold */
-  @apply uppercase h-9 p-2;
+  @apply uppercase h-9 p-2 puik-body-default-bold;
 }

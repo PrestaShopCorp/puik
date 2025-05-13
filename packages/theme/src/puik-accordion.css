@@ -1,6 +1,5 @@
-@import './theme.css';
-/* Import SCSS ignoré ici, à traiter séparément ou supprimé si contenu déjà compilé */
-/* @use 'typography.scss'; */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-accordion {
   @apply border border-primary-400;
@@ -23,13 +22,11 @@
 }
 
 .puik-accordion__header__content__title {
-  /* Remplacement de `@extend .puik-h5` */
-  @apply text-left text-primary;
+  @apply text-left text-primary puik-h5;
 }
 
 .puik-accordion__header__content__sub-title {
-  /* Remplacement de `@extend .puik-body-small` */
-  @apply text-left text-primary-600 mt-1;
+  @apply text-left text-primary-600 mt-1 puik-body-small;
 }
 
 .puik-accordion__header__expand__icon {
@@ -37,8 +34,7 @@
 }
 
 .puik-accordion__content {
-  /* Remplacement de `@extend .puik-body-default` */
-  @apply p-4 ml-4 text-primary-600 invisible;
+  @apply p-4 ml-4 text-primary-600 invisible puik-body-default;
 }
 
 .puik-accordion--expanded .puik-accordion__title {

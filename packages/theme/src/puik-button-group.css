@@ -1,4 +1,4 @@
-@import './theme.css';
+@reference './theme.css';
 
 .puik-button-group .puik-button:first-child {
   @apply border-l;

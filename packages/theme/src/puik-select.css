@@ -1,9 +1,8 @@
-@import './theme.css';
-/* @use 'typography.scss'; */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-select {
-  /* @extend .puik-body-default; */
-  @apply flex flex-col relative;
+  @apply flex flex-col relative puik-body-default;
 }
 
 .puik-select--disabled #select-combobox {
@@ -68,8 +67,7 @@
 }
 
 .puik-select__error__text {
-  /* @extend .puik-body-small; */
-  @apply mt-0.5;
+  @apply mt-0.5 puik-body-small;
 }
 
 .puik-select__error__icon {

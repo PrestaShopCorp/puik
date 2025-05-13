@@ -1,4 +1,5 @@
-@import './theme.css';
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-link {
   @apply cursor-pointer
@@ -36,15 +37,15 @@
 }
 
 .puik-link--sm {
-  /* @extend .puik-body-small */
+  @apply puik-body-small;
 }
 
 .puik-link--md {
-  /* @extend .puik-body-default */
+    @apply puik-body-default;
 }
 
 .puik-link--lg {
-  /* @extend .puik-body-large */
+    @apply puik-body-large;
 }
 
 .puik-link--high-contrast {

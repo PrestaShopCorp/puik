@@ -1,5 +1,5 @@
-@import './theme.css';
-/* @use 'typography.scss'; // à traiter séparément si besoin */
+@reference './theme.css';
+@reference './typography.css';
 /* @use 'scrollbar.scss'; // à traiter séparément si besoin */
 
 .puik-modal {
@@ -51,12 +51,11 @@
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-  @apply rounded-full p-2;
+  @apply rounded-[9999px] p-2;
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header__title {
-  /* @extend .puik-h2 */
-  @apply min-w-0 flex-1;
+  @apply min-w-0 flex-1 puik-h2;
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header__title .title {

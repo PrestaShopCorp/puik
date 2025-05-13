@@ -1,4 +1,4 @@
-@import './theme.css';
+@reference './theme.css';
 
 .puik-layer-base {
   @apply border rounded-sm border-primary-400 bg-white;
@@ -10,10 +10,8 @@
 
 .puik-layer-sticky-element {
   @apply w-full fixed bg-white shadow-sticky top-0 left-0;
-  /* Remarque : `fixed` au lieu de `sticky`, à valider selon l’usage prévu */
 }
 
 .puik-pop-modal {
   @apply w-full h-full bg-white fixed shadow-pop-modal overflow-hidden;
-  /* Remarque : position, taille et overflow sont bien définis ici via Tailwind */
 }

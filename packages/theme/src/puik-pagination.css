@@ -1,12 +1,12 @@
-@import './theme.css';
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-pagination {
   @apply px-2 flex flex-row items-center w-max;
 }
 
 .puik-pagination__label {
-  /* @extend .puik-body-default; */
-  @apply text-primary-700 mx-6 text-sm;
+  @apply text-primary-700 mx-6 text-sm puik-body-default;
 }
 
 .puik-pagination__content {
@@ -31,7 +31,7 @@
 .puik-pagination--mobile .puik-pagination__next-button,
 .puik-pagination--small .puik-pagination__next-button,
 .puik-pagination--medium .puik-pagination__next-button {
-  @apply rounded-full p-2;
+  @apply rounded-[9999px] p-2;
 }
 
 .puik-pagination--medium .puik-pagination__pager-separator {
@@ -43,7 +43,7 @@
 }
 
 .puik-pagination--medium .puik-pagination__pager-item .puik-button {
-  @apply rounded-full px-3.5 font-bold;
+  @apply rounded-[9999px] px-3.5 font-bold;
 }
 
 .puik-pagination--large .puik-pagination__jumper {
@@ -51,8 +51,7 @@
 }
 
 .puik-pagination--large .puik-pagination__jumper-description {
-  /* @extend .puik-body-default; */
-  @apply text-primary-700 mx-2 text-sm;
+  @apply text-primary-700 mx-2 text-sm puik-body-default;
 }
 
 .puik-pagination--large .puik-pagination__jumper .puik-pagination__select {
@@ -68,8 +67,7 @@
 }
 
 .puik-pagination--large .puik-pagination__items-per-page-label {
-  /* @extend .puik-body-default; */
-  @apply text-primary-700 mx-2 text-sm;
+  @apply text-primary-700 mx-2 text-sm puik-body-default;
 }
 
 .puik-pagination--large .puik-pagination__items-per-page-select {
@@ -81,6 +79,5 @@
 }
 
 .puik-pagination--loader .puik-pagination__label {
-  /* @extend .puik-body-default; */
-  @apply mx-0 mb-2 text-sm;
+  @apply mx-0 mb-2 text-sm puik-body-default;
 }

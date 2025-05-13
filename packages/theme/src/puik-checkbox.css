@@ -1,4 +1,5 @@
-@import './theme.css';
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-checkbox {
   @apply flex items-center;
@@ -39,6 +40,5 @@
 }
 
 .puik-checkbox__label {
-  /* @extend .puik-body-default */
-  @apply -tracking-[0.015625em] font-primary text-primary cursor-pointer ml-2;
+  @apply -tracking-[0.015625em] font-primary text-primary cursor-pointer ml-2 puik-body-default;
 }

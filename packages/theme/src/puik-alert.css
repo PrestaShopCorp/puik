@@ -1,5 +1,5 @@
-@import './theme.css';
-/* @use 'typography.scss'; // à traiter séparément si besoin */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-alert {
   @apply relative min-w-fit flex flex-row items-start p-4 border text-primary-800;
@@ -70,12 +70,11 @@
 }
 
 .puik-alert__title {
-  /* Remplace @extend .puik-h3 */
-  @apply font-semibold mb-1;
+  @apply font-semibold mb-1 puik-h3;
 }
 
 .puik-alert__description {
-  /* Remplace @extend .puik-body-default */
+  @apply puik-body-default;
 }
 
 .puik-alert__button {

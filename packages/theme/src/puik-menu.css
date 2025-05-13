@@ -1,10 +1,8 @@
-@import './theme.css';
-/* @use 'typography.scss'; // à traiter séparément si besoin */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-menu {
-  /* @extend .puik-body-default */
-  /* Remplacer par les propriétés de .puik-body-default ici si besoin */
-  @apply relative left-0 w-max;
+  @apply relative left-0 w-max puik-body-default;
 }
 
 .puik-menu__content {

@@ -1,9 +1,8 @@
-@import './theme.css';
-/* @use 'typography.scss'; */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-sidebar-item {
-  /* @extend .puik-body-default; */
-  @apply w-full border-none;
+  @apply w-full border-none puik-body-default;
 }
 
 .puik-sidebar-item--active .puik-button--text {

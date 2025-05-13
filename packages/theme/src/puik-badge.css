@@ -1,9 +1,8 @@
-@import './theme.css';
-/* @use 'typography.scss'; // Ignoré ici, à traiter séparément si besoin */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-badge {
-  /* Remplace @extend .puik-body-default-medium */
-  @apply rounded-2xl inline-block py-1 px-3 leading-5;
+  @apply rounded-2xl inline-block py-1 px-3 leading-5 puik-body-default-medium ;
 }
 
 .puik-badge--success {

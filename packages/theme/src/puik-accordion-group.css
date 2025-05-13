@@ -1,4 +1,4 @@
-@import './theme.css';
+@reference './theme.css';
 
 .puik-accordion-group {
   @apply flex flex-col gap-4 w-full;

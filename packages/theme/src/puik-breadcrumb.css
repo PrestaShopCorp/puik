@@ -1,5 +1,5 @@
-@import './theme.css';
-/* @use 'typography.scss'; // Ignoré ici, à traiter séparément si besoin */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-breadcrumb {
   @apply flex flex-row items-center;
@@ -22,11 +22,9 @@
 }
 
 .puik-breadcrumb__item-link {
-  /* Remplace @extend .puik-body-small */
-  @apply text-primary font-normal;
+  @apply text-primary font-normal puik-body-small;
 }
 
 .puik-breadcrumb__item--last {
-  /* Remplace @extend .puik-body-small */
-  @apply text-primary-600;
+  @apply text-primary-600 puik-body-small;
 }

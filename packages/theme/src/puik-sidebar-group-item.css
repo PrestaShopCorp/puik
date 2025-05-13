@@ -1,9 +1,8 @@
-@import './theme.css';
-/* @use 'typography.scss'; */
+@reference './theme.css';
+@reference './typography.css';
 
 .puik-sidebar-group-item {
-  /* @extend .puik-body-default; */
-  @apply border-none relative;
+  @apply border-none relative puik-body-default;
 }
 
 .puik-accordion {
@@ -19,8 +18,7 @@
 }
 
 .puik-accordion__content__title {
-  /* @extend .puik-body-default; */
-  @apply font-normal;
+  @apply font-normal puik-body-default;
 }
 
 .puik-accordion__icon {

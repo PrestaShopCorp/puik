@@ -1,10 +1,9 @@
-@import './theme.css';
-/* @use 'typography.scss'; */
+@reference './theme.css';
+@reference './typography.css';
 /* @use 'scrollbar.scss'; */
 
 .puik-table {
-  /* @extend .puik-body-default; */
-  @apply inline-table bg-white font-normal;
+  @apply inline-table bg-white font-normal puik-body-default;
 }
 
 .puik-table__container {
