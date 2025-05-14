@@ -327,14 +327,10 @@ importers:
         version: 3.4.17
 
   packages/theme:
-    dependencies:
+    devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4.1.6
         version: 4.1.6
-    devDependencies:
-      autoprefixer:
-        specifier: ^10.4.20
-        version: 10.4.20(postcss@8.5.3)
       cssnano:
         specifier: ^6.1.2
         version: 6.1.2(postcss@8.5.3)
@@ -347,9 +343,6 @@ importers:
       postcss-copy:
         specifier: ^7.1.0
         version: 7.1.0
-      sass:
-        specifier: ^1.85.1
-        version: 1.85.1
       tailwindcss:
         specifier: ^4.1.4
         version: 4.1.4
