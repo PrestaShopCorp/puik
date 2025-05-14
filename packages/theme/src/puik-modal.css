@@ -1,6 +1,5 @@
 @reference './theme.css';
 @reference './typography.css';
-/* @use 'scrollbar.scss'; // à traiter séparément si besoin */
 
 .puik-modal {
   @apply relative z-50;
@@ -67,7 +66,6 @@
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__content {
-  /* @extend .puik-scrollbar */
   @apply overflow-hidden overflow-y-auto flex flex-1 text-primary-800;
 }
 
@@ -76,7 +74,6 @@
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__footer {
-  /* @extend .puik-scrollbar */
   @apply fixed bottom-0 right-5 left-5 p-2 max-w-[calc(100%-40px)] overflow-x-scroll bg-white flex flex-col gap-4 sm:flex-row;
 }
 

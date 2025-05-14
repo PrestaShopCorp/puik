@@ -1,6 +1,6 @@
 <template>
   <div
-    class="puik-table__container"
+    class="puik-table__container puik-scrollbar"
     @scroll="getScrollBarPosition"
   >
     <table

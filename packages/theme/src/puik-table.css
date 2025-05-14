@@ -1,6 +1,5 @@
 @reference './theme.css';
 @reference './typography.css';
-/* @use 'scrollbar.scss'; */
 
 .puik-table {
   @apply inline-table bg-white font-normal puik-body-default;
@@ -8,59 +7,73 @@
 
 .puik-table__container {
   @apply max-w-full overflow-x-auto;
+  @apply pb-2 max-h-[80vh] overflow-y-auto;
 }
 
 .puik-table--full-width {
   @apply w-full;
 }
 
-.puik-table__item {
+/* Table Item Sizes */
+.puik-table__head__row__item,
+.puik-table__body__row__item {
+  @apply text-primary-800 puik-body-default;
   @apply p-4;
 }
 
-.puik-table__item--sm {
+.puik-table__head__row__item--sm,
+.puik-table__body__row__item--sm {
   @apply w-[112px] min-w-[112px];
 }
 
-.puik-table__item--md {
+.puik-table__head__row__item--md,
+.puik-table__body__row__item--md {
   @apply w-[240px] min-w-[240px];
 }
 
-.puik-table__item--lg {
+.puik-table__head__row__item--lg,
+.puik-table__body__row__item--lg {
   @apply w-[480px] min-w-[480px];
 }
 
-.puik-table__selection__checkbox .puik-checkbox__label {
+/* Selection Checkbox */
+.puik-table__head__row__item--selection__checkbox .puik-checkbox__label,
+.puik-table__head__row__item--selection > .puik-checkbox .puik-checkbox__label,
+.puik-table__body__row__item--selection__checkbox .puik-checkbox__label,
+.puik-table__body__row__item--selection > .puik-checkbox .puik-checkbox__label {
   @apply sr-only;
 }
 
-.puik-table__align-left > .puik-table__head__row__item__container,
-.puik-table__align-left > .puik-table__body__row__item__container {
-  @apply flex justify-start;
+/* Alignment */
+.puik-table__head__row__item__container,
+.puik-table__body__row__item__container {
+  @apply flex;
 }
 
-.puik-table__align-left > .puik-table__head__row__item__content,
-.puik-table__align-left > .puik-table__body__row__item__content {
+.puik-table__head__row__item--left > .puik-table__head__row__item__container,
+.puik-table__body__row__item--left .puik-table__body__row__item__container {
+  @apply justify-start;
+}
+.puik-table__head__row__item--left > .puik-table__head__row__item__content,
+.puik-table__body__row__item--left .puik-table__body__row__item__content {
   @apply text-left;
 }
 
-.puik-table__align-center > .puik-table__head__row__item__container,
-.puik-table__align-center > .puik-table__body__row__item__container {
-  @apply flex justify-center;
+.puik-table__head__row__item--center > .puik-table__head__row__item__container,
+.puik-table__body__row__item--center .puik-table__body__row__item__container {
+  @apply justify-center;
 }
-
-.puik-table__align-center > .puik-table__head__row__item__content,
-.puik-table__align-center > .puik-table__body__row__item__content {
+.puik-table__head__row__item--center > .puik-table__head__row__item__content,
+.puik-table__body__row__item--center .puik-table__body__row__item__content {
   @apply text-center;
 }
 
-.puik-table__align-right > .puik-table__head__row__item__container,
-.puik-table__align-right > .puik-table__body__row__item__container {
-  @apply flex justify-end;
+.puik-table__head__row__item--right > .puik-table__head__row__item__container,
+.puik-table__body__row__item--right .puik-table__body__row__item__container {
+  @apply justify-end;
 }
-
-.puik-table__align-right > .puik-table__head__row__item__content,
-.puik-table__align-right > .puik-table__body__row__item__content {
+.puik-table__head__row__item--right > .puik-table__head__row__item__content,
+.puik-table__body__row__item--right .puik-table__body__row__item__content {
   @apply text-right;
 }
 
@@ -71,36 +84,88 @@
 
 .puik-table__head__row,
 .puik-table > thead > tr {
-  @apply font-normal uppercase text-primary-600;
+  /* item */
+}
+.puik-table__head__row__item,
+.puik-table > thead > tr > th {
+  @apply font-normal uppercase text-primary-600 puik-body-small;
+  @apply p-4;
 }
 
-.puik-table__head__row__item {
-  @apply text-primary-800;
+.puik-table__head-separator {
+  @apply h-px bg-primary-400;
 }
 
-.puik-table__head__row__item--sticky,
-.puik-table__body__row__item--sticky {
+.puik-table__body,
+.puik-table > tbody {
+  /* row */
+}
+.puik-table__body__row,
+.puik-table > tbody > .puik-table__head__row,
+.puik-table .puik-table__body__row {
+  @apply border-b-[1px];
+}
+.puik-table__body__row:hover .puik-table__body__row__item,
+.puik-table__body__row:hover .puik-table__body__row__item::before {
+  @apply bg-primary-200;
+}
+
+tr .puik-table__head__row__item--sticky,
+tr .puik-table__body__row__item--sticky {
   @apply sticky bg-white z-10;
 }
 
-.puik-table__head__row__item--sticky-first,
-.puik-table__body__row__item--sticky-first {
+tr .puik-table__head__row__item--sticky-scroll::before,
+tr .puik-table__body__row__item--sticky-scroll::before,
+tr .puik-table__head__row__item--sticky-right:first-child::before,
+tr .puik-table__body__row__item--sticky-right:first-child::before,
+tr .puik-table__head__row__item--sticky-left:last-child::before,
+tr .puik-table__body__row__item--sticky-left:last-child::before {
+  @apply content-[''] block absolute top-0 bottom-0 w-1.5 bg-white;
+}
+
+tr .puik-table__head__row__item--sticky:first-child,
+tr .puik-table__body__row__item--sticky:first-child,
+tr .puik-table__head__row__item--sticky-right:first-child,
+tr .puik-table__body__row__item--sticky-right:first-child {
   @apply -left-px;
 }
 
-.puik-table__head__row__item--sticky-last,
-.puik-table__body__row__item--sticky-last {
+tr .puik-table__head__row__item--sticky:last-child,
+tr .puik-table__body__row__item--sticky:last-child,
+tr .puik-table__head__row__item--sticky-left:last-child,
+tr .puik-table__body__row__item--sticky-left:last-child {
   @apply -right-px;
 }
 
-.puik-table__head__row__item--sticky-scroll-first,
-.puik-table__body__row__item--sticky-scroll-first {
+tr .puik-table__head__row__item--sticky-scroll:first-child::before,
+tr .puik-table__body__row__item--sticky-scroll:first-child::before,
+tr .puik-table__head__row__item--sticky-right:first-child::before,
+tr .puik-table__body__row__item--sticky-right:first-child::before {
   @apply right-0 shadow-[4px_0_7px_-1px_rgba(29,29,27,0.1)];
 }
 
-.puik-table__head__row__item--sticky-scroll-last,
-.puik-table__body__row__item--sticky-scroll-last {
+tr .puik-table__head__row__item--sticky-scroll:last-child::before,
+tr .puik-table__body__row__item--sticky-scroll:last-child::before,
+tr .puik-table__head__row__item--sticky-left:last-child::before,
+tr .puik-table__body__row__item--sticky-left:last-child::before {
   @apply left-0 shadow-[-4px_0_7px_-1px_rgba(29,29,27,0.1)];
+}
+
+.puik-table__body__row__item--expanded {
+  @apply p-0;
+}
+
+.puik-table__body__row__item__container {
+  @apply flex items-center space-x-3;
+}
+
+.puik-table__body__row__item__container .puik-icon {
+  @apply select-none cursor-pointer -rotate-0 transform transition-transform duration-150 ease-in-out;
+}
+
+.puik-table__body__row__item__container .puik-icon__expand {
+  @apply -rotate-180 transform transition-transform duration-100 ease-in-out;
 }
 
 .puik-table__head__row__item__content {
@@ -115,28 +180,19 @@
   @apply cursor-pointer;
 }
 
+.puik-table__search__bar {
+  @apply h-[90px];
+}
+
 .puik-table__search__bar th,
 .puik-table__search__bar th.puik-table__head__row__item--sticky {
   @apply bg-primary-200;
 }
 
-.puik-table__search__bar tr.puik-table__search__bar {
-  .puik-table__head__row__item--sticky-scroll,
-  .puik-table__head__row__item--sticky-right:first-child,
-  .puik-table__head__row__item--sticky-left:last-child {
-    &::before {
-      @apply bg-primary-200;
-    }
-  }
-}
-
-.puik-table__search__bar {
-  @apply h-[90px];
-}
-
-.puik-table__container {
-  /* @extend .puik-scrollbar; */
-  @apply pb-2 max-h-[80vh] overflow-y-auto;
+tr.puik-table__search__bar .puik-table__head__row__item--sticky-scroll::before,
+tr.puik-table__search__bar .puik-table__head__row__item--sticky-right:first-child::before,
+tr.puik-table__search__bar .puik-table__head__row__item--sticky-left:last-child::before {
+  @apply bg-primary-200;
 }
 
 .puik-table__body__row__item--loading {
