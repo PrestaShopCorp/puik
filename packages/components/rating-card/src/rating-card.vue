@@ -7,18 +7,18 @@
   >
     <span
       v-if="props.variant === PuikRatingCardVariants.Compact"
-      class="puik-rating-card_average-value"
+      class="puik-rating-card__average-value"
     >
       {{ averageRating.toFixed(1) }}
     </span>
     <div
       v-if="props.variant === PuikRatingCardVariants.Extended"
-      class="puik-rating-card_stars-container"
+      class="puik-rating-card__stars-container"
     >
       <PuikIcon
         v-for="starIndex in 5"
         :key="starIndex"
-        class="puik-rating-card_star"
+        class="puik-rating-card__star"
         :icon="getStarState(starIndex).icon"
         font-size="20px"
         color="#FFA000"
@@ -29,7 +29,7 @@
     </div>
     <PuikIcon
       v-else
-      class="puik-rating-card_star"
+      class="puik-rating-card__star"
       icon="star"
       font-size="16px"
       color="#FFA000"
@@ -38,7 +38,7 @@
     />
     <span
       v-if="booleanishProps.showTotalRatings && totalRatings.length"
-      class="puik-rating-card_total-ratings"
+      class="puik-rating-card__total-ratings"
     >
       ({{ totalRatingsArray.length }})
     </span>
