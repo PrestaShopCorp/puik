@@ -1,4 +1,4 @@
-import { defineCustomElement, DefineComponent } from 'vue';
+import { defineCustomElement, type DefineComponent } from 'vue';
 import { PuikInput } from '@prestashopcorp/puik-components';
 import type { CustomElementWithName } from '../types';
 

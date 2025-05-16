@@ -1,0 +1,5 @@
+@reference './theme.css';
+
+.puik-tab-navigation__group-titles {
+  @apply flex overflow-x-auto min-h-[48px] relative;
+}

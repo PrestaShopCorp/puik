@@ -1,0 +1,66 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-textarea {
+  @apply flex flex-col relative;
+}
+
+.puik-textarea__character-count {
+  @apply absolute right-0 -bottom-5 text-primary-700 puik-body-small;
+}
+
+.puik-textarea--count-error .puik-textarea__character-count {
+  @apply text-red;
+}
+
+.puik-textarea__wrapper {
+  @apply flex flex-row border border-primary-400 font-primary transition-colors text-primary overflow-hidden;
+}
+
+.puik-textarea__wrapper:hover {
+  @apply border-primary;
+}
+
+.puik-textarea__wrapper--focus {
+  @apply border-primary ring ring-blue;
+}
+
+.puik-textarea__wrapper--error {
+  @apply border-red bg-red-50;
+}
+
+.puik-textarea__wrapper--disabled {
+  @apply bg-white hover:border-primary-400 cursor-not-allowed;
+}
+
+.puik-textarea__wrapper--readonly {
+  @apply bg-primary-200 cursor-default border-none;
+}
+
+.puik-textarea__field {
+  @apply bg-transparent w-full py-2 outline-none px-3 resize-none text-primary
+  disabled:text-primary-500 disabled:cursor-not-allowed
+  placeholder:text-primary-600 placeholder:disabled:text-primary-500
+  puik-body-default;
+}
+
+.puik-textarea__field:-webkit-autofill {
+  box-shadow: 0 0 0 50px var(--color-ocean-blue-50) inset;
+  -webkit-box-shadow: 0 0 0 50px var(--color-ocean-blue-50) inset;
+}
+
+.puik-textarea__hint {
+  @apply flex text-primary font-normal mt-1 leading-4 puik-body-small;
+}
+
+.puik-textarea__hint__error {
+  @apply flex text-red font-primary font-normal;
+}
+
+.puik-textarea__hint__error__text {
+  @apply mt-0.5;
+}
+
+.puik-textarea__hint__error__icon {
+  @apply mr-1;
+}

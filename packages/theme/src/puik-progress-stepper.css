@@ -1,0 +1,34 @@
+@reference './theme.css';
+
+.puik-progress-stepper {
+  @apply flex flex-row;
+}
+
+.puik-progress-stepper-step {
+  @apply relative;
+}
+
+.puik-progress-stepper-step::before {
+  @apply bg-primary-400;
+  content: '';
+  position: absolute;
+  display: block;
+  top: 14px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.puik-progress-stepper-step__button {
+  @apply z-10;
+}
+
+.puik-progress-stepper-step:first-child::before {
+  left: 50%;
+  width: 50%;
+}
+
+.puik-progress-stepper-step:last-child::before {
+  left: 0;
+  width: 50%;
+}

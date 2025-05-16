@@ -1,0 +1,12 @@
+@import './font.css';
+
+@import 'tailwindcss';
+
+@import './theme.css';
+@import './typography.css';
+@import './animations.css';
+@import './elevation.css';
+@import './grid.css';
+@import './screen-reader.css';
+@import './scrollbar.css';
+

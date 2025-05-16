@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { MenuItemTitleProps } from './menu-item-title';
+import { type MenuItemTitleProps } from './menu-item-title';
 
 defineOptions({
   name: 'PuikMenuItemTitle'

@@ -1,0 +1,30 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-breadcrumb {
+  @apply flex flex-row items-center;
+}
+
+.puik-breadcrumb__home-icon {
+  @apply text-primary mr-1;
+}
+
+.puik-breadcrumb__item {
+  @apply flex flex-row items-center;
+}
+
+.puik-breadcrumb__item-button {
+  @apply p-0;
+}
+
+.puik-breadcrumb__item-icon {
+  @apply text-primary-500;
+}
+
+.puik-breadcrumb__item-link {
+  @apply text-primary font-normal puik-body-small;
+}
+
+.puik-breadcrumb__item--last {
+  @apply text-primary-600 puik-body-small;
+}

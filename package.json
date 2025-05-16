@@ -6,7 +6,8 @@
   "workspaces": [
     "packages/*",
     "docs/*",
-    "playground"
+    "playground",
+    "new-playground"
   ],
   "engines": {
     "node": ">= v20.18.3"
@@ -17,18 +18,21 @@
     "coverage": "vitest run --coverage",
     "build": "pnpm --parallel --filter './packages/**' build",
     "build:playground": "pnpm --filter @prestashopcorp/puik-playground build",
+    "build:new-playground": "pnpm --filter @prestashopcorp/puik-new-playground build",
     "build:components": "pnpm --filter @prestashopcorp/puik-components build",
     "build:web": "pnpm --filter @prestashopcorp/puik-web-components build",
     "build:theme": "pnpm --filter @prestashopcorp/puik-theme build",
     "build:storybook": "pnpm --filter @prestashopcorp/puik-docs build",
     "build:vitepress": "pnpm --filter @prestashopcorp/puik-user-docs build",
     "dev:playground": "pnpm dev:theme & pnpm --filter @prestashopcorp/puik-playground dev",
+    "dev:new-playground": "pnpm dev:theme & pnpm --filter @prestashopcorp/puik-new-playground dev",
     "dev:theme": "pnpm --filter @prestashopcorp/puik-theme dev",
     "dev:storybook": "pnpm dev:theme & pnpm --filter @prestashopcorp/puik-docs dev",
     "dev:vitepress": "pnpm --filter @prestashopcorp/puik-user-docs dev",
     "preview:vitepress": "pnpm --filter @prestashopcorp/puik-user-docs preview",
     "preview:storybook": "pnpm --filter @prestashopcorp/puik-docs preview",
     "preview:playground": "pnpm --filter @prestashopcorp/puik-playground preview",
+    "preview:new-playground": "pnpm --filter @prestashopcorp/puik-new-playground preview",
     "lint": "eslint . --ext .vue,.js,.ts",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts",
     "lint:staged": "lint-staged",

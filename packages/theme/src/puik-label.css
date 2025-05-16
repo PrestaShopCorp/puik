@@ -1,0 +1,18 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-label {
+  @apply text-primary-800 puik-body-default-bold ;
+}
+
+.puik-label--required {
+  @apply text-red ml-1;
+}
+
+.puik-label--optional {
+  @apply text-primary-700 font-normal ml-1 puik-body-small;
+}
+
+.puik-label--readonly {
+  @apply text-primary-700 font-normal ml-1 puik-body-small;
+}

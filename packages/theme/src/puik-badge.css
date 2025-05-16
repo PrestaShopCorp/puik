@@ -1,0 +1,26 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-badge {
+  @apply rounded-2xl inline-block py-1 px-3 leading-5 puik-body-default-medium ;
+}
+
+.puik-badge--success {
+  @apply bg-green-100;
+}
+
+.puik-badge--warning {
+  @apply bg-yellow-100;
+}
+
+.puik-badge--danger {
+  @apply bg-red-100;
+}
+
+.puik-badge--info {
+  @apply bg-blue-100;
+}
+
+.puik-badge--neutral {
+  @apply bg-primary-300;
+}
