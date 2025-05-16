@@ -68,7 +68,7 @@ import { useLocale } from '@prestashopcorp/puik-locale';
 import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { PuikInput, PuikInputTypes } from '@prestashopcorp/puik-components/input';
 import {
-  TableSearchInputProps,
+  type TableSearchInputProps,
   PuikTableSearchInputTypes
 } from './table-search-input';
 import type { searchOption, inputRange } from './table-search-input';

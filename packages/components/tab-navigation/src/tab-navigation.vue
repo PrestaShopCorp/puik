@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { nextTick, provide, ref } from 'vue';
-import { currentTabKey, type TabNavigationProps, TabNavigationEmits } from './tab-navigation';
+import { currentTabKey, type TabNavigationProps, type TabNavigationEmits } from './tab-navigation';
 
 defineOptions({
   name: 'PuikTabNavigation'

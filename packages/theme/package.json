@@ -30,7 +30,7 @@
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",
     "postcss-copy": "^7.1.0",
-    "tailwindcss": "^4.1.4",
-    "@tailwindcss/postcss": "^4.1.6"
+    "tailwindcss": "^4.1.7",
+    "@tailwindcss/postcss": "^4.1.7"
   }
 }

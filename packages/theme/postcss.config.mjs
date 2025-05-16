@@ -2,7 +2,7 @@ export default {
   plugins: {
     "@tailwindcss/postcss": {
       content : {
-        files: "./src/**/*.css",
+        files: "./src/*.css",
       }
     },
     cssnano: {

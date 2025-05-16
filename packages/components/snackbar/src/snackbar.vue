@@ -43,7 +43,7 @@
 import { useForwardPropsEmits, ToastAction, ToastClose, ToastTitle, ToastRoot, ToastDescription } from 'radix-vue';
 import { PuikIcon } from '@prestashopcorp/puik-components';
 import { PuikSnackbarVariants, PuikSnackbarSwipeAnimations } from './snackbar';
-import { type SnackbarProps, SnackbarEmits } from './snackbar';
+import type {  SnackbarProps, SnackbarEmits } from './snackbar';
 import { generateId } from '@prestashopcorp/puik-utils';
 
 defineOptions({

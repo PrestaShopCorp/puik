@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { SnackbarProviderProps, PuikSnackbarSwipeDirections, PuikSnackbarPositionsX, PuikSnackbarPositionsY } from './snackbar-provider';
+import { type SnackbarProviderProps, PuikSnackbarSwipeDirections, PuikSnackbarPositionsX, PuikSnackbarPositionsY } from './snackbar-provider';
 import { ToastProvider, ToastViewport } from 'radix-vue';
 defineOptions({
   name: 'PuikSnackbarProvider'

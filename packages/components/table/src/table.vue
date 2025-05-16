@@ -477,11 +477,11 @@ import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { PuikSkeletonLoader } from '@prestashopcorp/puik-components/skeleton-loader';
 import { PuikTableSearchInput } from '@prestashopcorp/puik-components/table';
 import {
-  TableProps,
-  TableEmits,
+  type TableProps,
+  type TableEmits,
   PuikTableSortOrder,
   PuikTableSortIcon,
-  sortOption
+  type sortOption
 } from './table';
 import type {
   PuikTableSearchInputTypes,

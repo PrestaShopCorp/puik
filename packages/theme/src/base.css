@@ -1,9 +1,9 @@
-@import url('./font.css');
-@import url('./theme.css');
-@import url('./typography.css');
-@import url('./animations.css');
-@import url('./elevation.css');
-@import url('./grid.css');
-@import url('./screen-reader.css');
-@import url('./scrollbar.css');
+@import './font.css';
+@import './theme.css';
+@import './typography.css';
+@import './animations.css';
+@import './elevation.css';
+@import './grid.css';
+@import './screen-reader.css';
+@import './scrollbar.css';
 

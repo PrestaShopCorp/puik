@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { RatingCardProps, PuikRatingCardVariants } from './rating-card';
+import { type RatingCardProps, PuikRatingCardVariants } from './rating-card';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { generateId } from '@prestashopcorp/puik-utils';
 
