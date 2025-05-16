@@ -45,7 +45,8 @@
 }
 
 .puik-textarea__field:-webkit-autofill {
-  @apply -webkit-box-shadow: 0 0 0 50px var(--color-ocean-blue-50) inset;
+  box-shadow: 0 0 0 50px var(--color-ocean-blue-50) inset;
+  -webkit-box-shadow: 0 0 0 50px var(--color-ocean-blue-50) inset;
 }
 
 .puik-textarea__hint {
