@@ -83,7 +83,7 @@
 }
 
 .puik-input__controls {
-  @apply cursor-pointer flex flex-col items-center space-y-0.5 py-0.5 select-none;
+  @apply cursor-pointer flex flex-col items-center gap-y-0.5 py-0.5 select-none;
 }
 
 .puik-input__controls__increment,

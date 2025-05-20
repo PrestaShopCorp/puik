@@ -331,7 +331,7 @@ export const Variants: StoryObj = {
       PuikAlert
     },
     template: `
-    <div class="flex flex-col space-y-4">
+    <div class="flex flex-col gap-y-4">
         <puik-alert
           title="Success"
           description="this is a description"
@@ -490,7 +490,7 @@ export const VariantsWithoutBorder: StoryObj = {
       PuikAlert
     },
     template: `
-    <div class="flex flex-col space-y-4">
+    <div class="flex flex-col gap-y-4">
         <puik-alert
           title="Success"
           description="this is a description"
@@ -730,7 +730,7 @@ export const ButtonWrapLabel: StoryObj = {
       PuikAlert
     },
     template: `
-      <div class="flex flex-col space-y-4">
+      <div class="flex flex-col gap-y-4">
        <puik-alert variant="info" title="buttonWrapLabel to true" button-label="Action Button with a very long label" link-label="Link button with a very long label" :button-wrap-Label="true">
         This an alert with a very long description.
         This an alert with a very long description.
@@ -865,7 +865,7 @@ export const ActionAndLinkButtonsWithIcon: StoryObj = {
     },
 
     template: `
-    <div class="flex flex-col space-y-4">
+    <div class="flex flex-col gap-y-4">
       <puik-alert
         title="Right icon btn"
         variant="info"
@@ -1029,7 +1029,7 @@ export const InternalAndExternalLink = {
     },
 
     template: `
-    <div class="flex flex-col space-y-4">
+    <div class="flex flex-col gap-y-4">
       <puik-alert
         title="Internal link"
         variant="info"
@@ -1135,7 +1135,7 @@ export const UseDefaultSlotForDescription = {
         variant="info"
         button-label="Action"
       >
-        <div class="flex flex-col space-y-1">
+        <div class="flex flex-col gap-y-1">
           <p>
             This is a description writes in the default slot
           </p>
@@ -1160,7 +1160,7 @@ export const UseDefaultSlotForDescription = {
     variant="info"
     button-label="Action"
   >
-    <div class="flex flex-col space-y-1">
+    <div class="flex flex-col gap-y-1">
       <p>
         This is a description writes in the default slot
       </p>
@@ -1181,7 +1181,7 @@ export const UseDefaultSlotForDescription = {
           <div class="puik-alert__text">
               <h4 id="title-7176" class="puik-alert__title">Description in default slot</h4>
               <p id="description-7176" class="puik-alert__description">
-              <div class="flex flex-col space-y-1">
+              <div class="flex flex-col gap-y-1">
                 <p> This is a description writes in the default slot </p>
                 <a href="https://example.com" target="_blank" class="puik-link puik-link--md" role="link"> use a puik-link in description for example <span class="puik-link__target__icon" aria-hidden="true">open_in_new</span></a>
               </div>

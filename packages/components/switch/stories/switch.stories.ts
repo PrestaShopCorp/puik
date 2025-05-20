@@ -252,7 +252,7 @@ export const Disabled: StoryObj = {
       return { firstSwitch, secondSwitch };
     },
     template: `
-    <div class="flex flex-col space-y-1">
+    <div class="flex flex-col gap-y-1">
       <puik-switch v-model="firstSwitch" disabled>Disabled On</puik-switch>
       <puik-switch v-model="secondSwitch" disabled>Disabled Off</puik-switch>
     </div>
@@ -332,7 +332,7 @@ export const AllStates: StoryObj = {
       return { firstSwitch, secondSwitch, thirdSwitch, lastSwitch };
     },
     template: `
-    <div class="flex flex-col space-y-1">
+    <div class="flex flex-col gap-y-1">
       <puik-switch v-model="firstSwitch" label="On"></puik-switch>
       <puik-switch v-model="secondSwitch">Off</puik-switch>
       <puik-switch v-model="thirdSwitch" disabled>Disabled On</puik-switch>

@@ -31,6 +31,6 @@ const Alertclick = (event: Event) => {
 
 <style scoped>
 .vue-components-view {
-  @apply flex flex-col space-y-3;
+  @apply flex flex-col gap-y-3;
 }
 </style>

@@ -58,7 +58,7 @@
 }
 
 .puik-alert__container {
-  @apply flex flex-col space-y-1 lg:flex-row lg:items-start lg:space-x-1 w-full;
+  @apply flex flex-col gap-y-1 lg:flex-row lg:items-start lg:gap-x-1 w-full;
 }
 
 .puik-alert__content {

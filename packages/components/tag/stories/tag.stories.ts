@@ -164,7 +164,7 @@ const ColorVariantsTemplate: StoryFn = (args: Args) => ({
     return { tags, args };
   },
   template: `
-  <div class="flex space-x-2 mb-4">
+  <div class="flex gap-x-2 mb-4">
     <puik-tag
       v-for="(tag, index) in tags"
       :id="'puik-tag-'+index"

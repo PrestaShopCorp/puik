@@ -157,7 +157,7 @@ tr .puik-table__body__row__item--sticky-left:last-child::before {
 }
 
 .puik-table__body__row__item__container {
-  @apply flex items-center space-x-3;
+  @apply flex items-center gap-x-3;
 }
 
 .puik-table__body__row__item__container .puik-icon {
@@ -169,7 +169,7 @@ tr .puik-table__body__row__item--sticky-left:last-child::before {
 }
 
 .puik-table__head__row__item__content {
-  @apply flex items-center space-x-1;
+  @apply flex items-center gap-x-1;
 }
 
 .puik-table__head__row__item--right.puik-table__head__row__item--sortable {

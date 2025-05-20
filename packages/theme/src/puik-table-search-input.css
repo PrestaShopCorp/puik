@@ -14,7 +14,7 @@
 }
 
 .puik-table-search-input--range {
-  @apply flex flex-col space-y-1;
+  @apply flex flex-col gap-y-1;
 }
 
 .puik-input {

@@ -755,7 +755,7 @@ export const openEvent: StoryObj = {
       return { options, selectedOption, openState };
     },
     template: `
-  <div class="min-h-[250px] flex flex-col space-y-2">
+  <div class="min-h-[250px] flex flex-col gap-y-2">
     <div>
       <puik-badge :variant="openState ? 'success' : 'warning'">
         open state : {{ openState }}
@@ -786,7 +786,7 @@ export const openEvent: StoryObj = {
     // ];
     // const selectedOption = ref();
     // const openState = ref(false);
-    
+
     <puik-badge :variant="openState ? 'success' : 'warning'">
       open state : {{ openState }}
     </puik-badge>
@@ -825,7 +825,7 @@ export const updateModelValueEvent: StoryObj = {
       return { options, selectedOption, newValue };
     },
     template: `
-  <div class="min-h-[250px] flex flex-col space-y-2">
+  <div class="min-h-[250px] flex flex-col gap-y-2">
     <div>
       <puik-badge variant="info">
         value : {{ newValue }}

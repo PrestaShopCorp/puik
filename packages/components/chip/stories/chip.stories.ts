@@ -169,7 +169,7 @@ const HandleCloseEventTemplate: StoryFn = (args: Args) => ({
     return { chips, args, handleCloseChip, refreshChips };
   },
   template: `
-  <div class="flex space-x-2 mb-4">
+  <div class="flex gap-x-2 mb-4">
     <puik-chip
       v-for="(chip, index) in chips"
       :id="'puik-chip-'+index"
@@ -302,7 +302,7 @@ export const HandleCloseEvent = {
       source: {
         code: `
 <!--VueJS Snippet-->
-<div class="flex space-x-2 mb-4">
+<div class="flex gap-x-2 mb-4">
   <puik-chip
     v-for="(chip, index) in chips"
     :id="'puik-chip-'+index"

@@ -100,7 +100,7 @@ const Template: StoryFn = (args: Args) => ({
     return { selectedValue, args };
   },
   template: `
-  <div class="flex flex-col space-y-4">
+  <div class="flex flex-col gap-y-4">
     <puik-radio
       v-model="selectedValue"
       v-bind="args"
@@ -109,7 +109,7 @@ const Template: StoryFn = (args: Args) => ({
       {{ args.default }}
       </template>
     </puik-radio>
-      
+
     <puik-radio
       v-model="selectedValue"
       id="puik-radio-2"
@@ -140,8 +140,8 @@ export const Default = {
         code: `
   <!--VueJS Snippet-->
   const selectedValue = ref('firstValue');
-  
-  <div class="flex flex-col space-y-4">
+
+  <div class="flex flex-col gap-y-4">
     <puik-radio
     v-model="selectedValue"
     v-bind="args"
@@ -150,7 +150,7 @@ export const Default = {
       {{ args.default }}
       </template>
     </puik-radio>
-      
+
     <puik-radio
       v-model="selectedValue"
       id="puik-radio-2"
