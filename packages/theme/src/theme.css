@@ -60,9 +60,9 @@
 
 
   /* Heights */
-  --height-sm: '1.75rem',
-  --height-md: '2.25rem',
-  --height-lg: '3rem'
+  --height-sm: 1.75rem;
+  --height-md: 2.25rem;
+  --height-lg: 3rem;
 
 
   /* Font-size */

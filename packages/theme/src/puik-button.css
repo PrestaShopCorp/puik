@@ -35,7 +35,7 @@
 }
 
 .puik-button--primary {
-  @apply bg-primary-800 text-white;
+  @apply bg-primary-800 text-white border border-primary;
   @apply dark:bg-white dark:text-primary;
 }
 
