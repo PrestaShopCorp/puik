@@ -1,7 +1,7 @@
 @reference './theme.css';
 
 .puik-skeleton-loader {
-  @apply font-material-icons rounded-sm w-full text-primary-500 text-2xl;
+  @apply font-material-icons rounded-xs w-full text-primary-500 text-2xl;
 
   background: linear-gradient(
     90deg,

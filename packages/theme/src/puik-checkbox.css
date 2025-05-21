@@ -6,7 +6,7 @@
 }
 
 .puik-checkbox__input {
-  @apply appearance-none grid place-content-center h-5 w-5 cursor-pointer rounded-sm border-2 border-primary;
+  @apply appearance-none grid place-content-center h-5 w-5 cursor-pointer rounded-xs border-2 border-primary;
 }
 
 .puik-checkbox__input:focus-visible {

@@ -88,7 +88,7 @@
 
 .puik-input__controls__increment,
 .puik-input__controls__decrement {
-  @apply w-6 flex flex-1 items-center justify-center rounded-sm outline-none
+  @apply w-6 flex flex-1 items-center justify-center rounded-xs outline-none
     focus-visible:ring focus-visible:ring-blue
     disabled:bg-white disabled:cursor-not-allowed
     hover:bg-primary-200
