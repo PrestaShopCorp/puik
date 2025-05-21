@@ -2,7 +2,7 @@
 @reference './typography.css';
 
 .puik-select {
-  @apply flex flex-col relative puik-body-default;
+  @apply puik-body-default;
 }
 
 .puik-select--disabled #select-combobox {
@@ -41,8 +41,17 @@
   @apply cursor-default;
 }
 
+.puik-multi-select__options-tags--container {
+  @apply flex gap-1 overflow-x-hidden;
+}
+
+.puik-single-select__input {
+  @apply cursor-default text-ellipsis;
+}
+
 .puik-select-dropdown {
-  @apply absolute w-max min-w-full max-h-[50vh] bg-white text-base z-10 shadow-lg ring-1 ring-black ring-black/50;
+  @apply absolute w-max min-w-full max-h-[50vh] bg-white text-base z-10 shadow-lg ring-1 ring-black/50
+  focus-visible:outline-none sm:text-sm overflow-x-hidden;
   top: calc(100% + 2px);
 }
 
