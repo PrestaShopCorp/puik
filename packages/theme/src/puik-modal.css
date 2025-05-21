@@ -46,7 +46,7 @@
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header {
-  @apply flex items-center gap-4;
+  @apply flex items-center gap-4 border-gray-200;
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
