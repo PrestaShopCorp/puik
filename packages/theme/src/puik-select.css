@@ -50,7 +50,7 @@
 }
 
 .puik-select-dropdown {
-  @apply absolute w-max min-w-full max-h-[50vh] bg-white text-base z-10 shadow-lg ring-1 ring-black/50
+  @apply absolute w-max min-w-full max-h-[50vh] bg-white text-base z-10 shadow-lg ring ring-gray-200
   focus-visible:outline-none sm:text-sm overflow-x-hidden;
   top: calc(100% + 2px);
 }
