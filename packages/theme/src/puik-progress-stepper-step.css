@@ -6,7 +6,7 @@
 }
 
 .puik-progress-stepper-step__button {
-  @apply rounded-[9999px] p-0 w-7;
+  @apply rounded-[9999px] w-7;
 }
 
 .puik-progress-stepper-step__button.puik-button--success {

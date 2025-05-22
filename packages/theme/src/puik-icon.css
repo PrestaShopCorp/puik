@@ -4,5 +4,5 @@
   @apply font-material-icons leading-none;
 }
 .puik-icon--disabled {
-  @apply text-red-500;
+  @apply text-primary-400!;
 }

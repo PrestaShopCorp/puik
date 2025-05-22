@@ -33,12 +33,12 @@
   @apply mr-1;
 }
 
-.puik-chip__content {
+.puik-chip__content__text--container {
   @apply relative max-w-[150px];
 }
 
-.puik-chip__content p {
-  @apply pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
+.puik-chip__content__text--container p {
+  @apply relative pr-[2px] overflow-hidden whitespace-nowrap text-ellipsis;
 }
 
 .puik-chip__content .puik-tooltip__wrapper {

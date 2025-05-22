@@ -6,7 +6,7 @@
 }
 
 .puik-button--sm {
-  @apply py-1 px-2 min-h-(--height-sm) puik-text-button-small ;
+  @apply py-1 px-2 min-h-(--height-sm) puik-text-button-small;
 }
 
 .puik-button--md {
@@ -50,8 +50,8 @@
 }
 
 .puik-button--primary:disabled,
-.puik-button--disabled {
-  @apply bg-primary-500;
+.puik-button--primary.puik-button--disabled {
+  @apply bg-primary-500 border-primary-500;
   @apply dark:bg-primary-400;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .puik-button--primary-reverse:disabled,
-.puik-button--disabled {
+.puik-button--primary-reverse.puik-button--disabled {
   @apply bg-primary-500 text-white;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .puik-button--secondary:disabled,
-.puik-button--disabled {
+.puik-button--secondary.puik-button--disabled {
   @apply bg-primary-200 text-primary-500 border-primary-400;
 }
 
@@ -102,7 +102,7 @@
 }
 
 .puik-button--secondary-reverse:disabled,
-.puik-button--disabled {
+.puik-button--secondary-reverse.puik-button--disabled {
   @apply bg-primary-200 text-primary-500 border-primary-400;
 }
 
@@ -119,7 +119,7 @@
 }
 
 .puik-button--tertiary:disabled,
-.puik-button--disabled {
+.puik-button--tertiary.puik-button--disabled {
   @apply bg-primary-200 text-primary-500;
 }
 
@@ -136,7 +136,7 @@
 }
 
 .puik-button--destructive:disabled,
-.puik-button--disabled {
+.puik-button--destructive.puik-button--disabled {
   @apply bg-red-100;
 }
 
@@ -153,7 +153,7 @@
 }
 
 .puik-button--text:disabled,
-.puik-button--disabled {
+.puik-button--text.puik-button--disabled {
   @apply text-primary-500;
 }
 
@@ -171,7 +171,7 @@
 }
 
 .puik-button--text-reverse:disabled,
-.puik-button--disabled {
+.puik-button--text-reverse.puik-button--disabled {
   @apply text-primary-500;
 }
 
@@ -183,13 +183,13 @@
   @apply bg-blue-100;
 }
 
-.puik-button--info:disabled,
-.puik-button--disabled {
-  @apply border-blue-300 text-white;
-}
-
 .puik-button--info:active {
   @apply bg-blue-300;
+}
+
+.puik-button--info:disabled,
+.puik-button--info--disabled {
+  @apply border-blue-300 text-white;
 }
 
 .puik-button--danger {
@@ -200,13 +200,13 @@
   @apply bg-red-100;
 }
 
-.puik-button--danger:disabled,
-.puik-button--disabled {
-  @apply border-red-300 text-white;
-}
-
 .puik-button--danger:active {
   @apply bg-red-300;
+}
+
+.puik-button--danger:disabled,
+.puik-button--danger--disabled {
+  @apply border-red-300 text-white;
 }
 
 .puik-button--success {
@@ -217,13 +217,13 @@
   @apply bg-green-100;
 }
 
-.puik-button--success:disabled,
-.puik-button--disabled {
-  @apply border-green-100 text-white;
-}
-
 .puik-button--success:active {
   @apply bg-green-300;
+}
+
+.puik-button--success:disabled,
+.puik-button--success--disabled {
+  @apply border-green-100 text-white;
 }
 
 .puik-button--warning {
@@ -234,13 +234,13 @@
   @apply bg-yellow-100;
 }
 
-.puik-button--warning:disabled,
-.puik-button--disabled {
-  @apply border-yellow-100 text-white;
-}
-
 .puik-button--warning:active {
   @apply bg-yellow-300;
+}
+
+.puik-button--warning:disabled,
+.puik-button--warning--disabled {
+  @apply border-yellow-100 text-white;
 }
 
 .puik-button__left-icon,

@@ -35,7 +35,7 @@
 }
 
 .puik-snackbar-action.puik-button {
-  @apply bg-transparent hover:bg-transparent text-white hover:text-white py-0 min-h-0 h-5;
+  @apply bg-transparent hover:bg-transparent text-white hover:text-white py-0 min-h-0 h-5 border-none;
 }
 
 .puik-snackbar-close {

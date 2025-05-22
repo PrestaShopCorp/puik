@@ -20,7 +20,6 @@
       <slot />
     </div>
     <div
-      v-show="!isDisabled && isVisible"
       :id="id"
       ref="tooltip"
       role="tooltip"
@@ -28,7 +27,6 @@
         'puik-tooltip__tip',
       { 'puik-tooltip--visible': isVisible }
       ]"
-      :style="{ 'z-index': isVisible ? zindex : -1, 'max-width': maxWidth }"
       aria-live="polite"
       :aria-hidden="!isVisible"
       @mouseover="stayVisible"

@@ -17,12 +17,12 @@
   @apply flex flex-col gap-y-1;
 }
 
-.puik-input {
-  @apply bg-white;
-}
-
 .puik-table-search-input__content {
   @apply min-w-full;
+}
+
+.puik-table-search-input__content .puik-input {
+  @apply bg-white;
 }
 
 .puik-table-search-input__content .puik-input {
