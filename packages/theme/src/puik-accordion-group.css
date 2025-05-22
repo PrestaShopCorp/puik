@@ -13,5 +13,5 @@
 }
 
 .puik-accordion-group--contained > .puik-accordion:first-of-type {
-  @apply border-t border-gray-200;
+  @apply border-t border-primary-400;
 }

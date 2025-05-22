@@ -5,41 +5,41 @@
   @apply border-none relative puik-body-default;
 }
 
-.puik-accordion {
+.puik-sidebar-group-item .puik-accordion {
   @apply text-primary border-none;
 }
 
-.puik-accordion__header {
+.puik-sidebar-group-item .puik-accordion__header {
   @apply py-4 px-2 sm:py-2;
 }
 
-.puik-accordion__header:hover {
+.puik-sidebar-group-item .puik-accordion__header:hover {
   @apply bg-primary-300;
 }
 
-.puik-accordion__content__title {
+.puik-sidebar-group-item .puik-accordion__content__title {
   @apply font-normal puik-body-default;
 }
 
-.puik-accordion__icon {
+.puik-sidebar-group-item .puik-accordion__icon {
   @apply mr-2 leading-5 text-primary;
   font-size: 1.25rem !important;
 }
 
-.puik-accordion__expand__icon {
+.puik-sidebar-group-item .puik-accordion__expand__icon {
   @apply text-primary;
   font-size: 1.25rem !important;
 }
 
-.puik-accordion__content {
+.puik-sidebar-group-item .puik-accordion__content {
   @apply py-0 px-0 ml-0;
 }
 
-.puik-button {
+.puik-sidebar-group-item .puik-button {
   @apply px-4;
 }
 
-.puik-accordion--expanded {
+.puik-sidebar-group-item .puik-accordion--expanded {
   @apply bg-primary-200;
 }
 

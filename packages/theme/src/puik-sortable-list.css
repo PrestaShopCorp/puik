@@ -10,7 +10,7 @@
 }
 
 .puik-sortable-list_item-container {
-  @apply px-4 py-2 gap-x-4 flex items-center grow border border-gray-200;
+  @apply px-4 py-2 gap-x-4 flex items-center grow border border-primary-400;
 }
 
 .puik-sortable-list_item-content {

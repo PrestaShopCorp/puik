@@ -103,7 +103,7 @@
 .puik-table__body__row,
 .puik-table > tbody > .puik-table__head__row,
 .puik-table .puik-table__body__row {
-  @apply border-b-[1px] border-gray-200;
+  @apply border-b-[1px] border-primary-400;
 }
 .puik-table__body__row:hover .puik-table__body__row__item,
 .puik-table__body__row:hover .puik-table__body__row__item::before {

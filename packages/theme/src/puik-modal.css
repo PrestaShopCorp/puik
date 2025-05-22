@@ -46,11 +46,15 @@
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header {
-  @apply flex items-center gap-4 border-gray-200;
+  @apply flex items-center gap-4 border-primary-400;
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
   @apply rounded-[9999px] p-2;
+}
+
+.puik-button.puik-modal__dialogPanelContainer__dialogPanel__header__close-button {
+  @apply p-1.5;
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header__title {
