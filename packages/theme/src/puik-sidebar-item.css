@@ -18,6 +18,10 @@
   height: unset;
 }
 
+.puik-sidebar-item__button span {
+  @apply overflow-hidden text-ellipsis whitespace-nowrap;
+}
+
 .puik-sidebar-item__button:hover {
   @apply bg-primary-300;
 }

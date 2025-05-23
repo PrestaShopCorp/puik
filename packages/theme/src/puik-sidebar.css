@@ -9,17 +9,15 @@
   @apply bg-primary-200 w-full flex justify-end;
 }
 
-.puik-sidebar__header__button {
-  &:hover {
-    @apply bg-primary-300;
-  }
+.puik-sidebar__header__button:hover {
+  @apply bg-primary-300;
 }
 
-.puik-sidebar__header__button .puik-icon {
+.puik-sidebar__header__button:hover .puik-icon {
   @apply text-blue-700 leading-[0.875rem];
 }
 
-.puik-sidebar--mobile {
+.puik-sidebar__header--mobile {
   @apply justify-start;
 }
 
@@ -31,15 +29,15 @@
   @apply w-[3.312rem] overflow-visible;
 }
 
-.puik-sidebar__header__button.puik-sidebar--collapsed {
+.puik-sidebar--collapsed .puik-sidebar__header__button {
   @apply w-full;
 }
 
-.puik-sidebar__content.puik-sidebar--collapsed {
+.puik-sidebar--collapsed .puik-sidebar__content {
   @apply px-0 w-[3.312rem];
 }
 
-.puik-sidebar-item__button.puik-sidebar--collapsed {
+.puik-sidebar--collapsed .puik-sidebar-item__button {
   @apply w-full flex items-center justify-start px-4;
 }
 
@@ -51,8 +49,8 @@
   @apply w-screen h-screen bg-primary-800/50 absolute top-0 left-0 z-0;
 }
 
-.puik-sidebar__transition__enter,
-.puik-sidebar__transition__leave {
+.puik-sidebar__transition__enter--active,
+.puik-sidebar__transition__leave--active {
   @apply transition duration-200 ease-out;
 }
 
