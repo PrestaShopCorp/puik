@@ -1,5 +1,5 @@
 import type SortableList from './sortable-list.vue';
-import Sortable, { SortableOptions } from 'sortablejs';
+import Sortable, { type SortableOptions } from 'sortablejs';
 import type { AutoScrollOptions } from 'sortablejs/plugins';
 
 export enum PuikSortableListIconPosition {

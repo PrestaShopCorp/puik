@@ -37,8 +37,8 @@ initWeb('puik-alert-ce', PuikAlertCe);
   </section>
 </template>
 
-<style  scoped lang="scss">
+<style  scoped>
 .web-components-view{
-  @apply flex flex-col space-y-3;
+  @apply flex flex-col gap-y-3;
 }
 </style>

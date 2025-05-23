@@ -95,10 +95,10 @@
 
 <script setup lang="ts">
 import {
-  SortableListProps,
-  SortableListEmits,
-  SortableEvent,
-  SortableMoveEvent,
+  type SortableListProps,
+  type SortableListEmits,
+  type SortableEvent,
+  type SortableMoveEvent,
   PuikSortableListIconPosition
   , PuikSortableListTag
 } from './sortable-list';

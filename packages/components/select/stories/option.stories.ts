@@ -127,7 +127,7 @@ export const DefaultExample: StoryObj = {
       return { options, openRef, selectedOption, handleSelect };
     },
     template: `
-  <div class="min-h-[250px] flex flex-col space-y-2">
+  <div class="min-h-[250px] flex flex-col gap-y-2">
     <puik-select
       v-model="selectedOption"
       :key="selectedOption"
@@ -175,7 +175,7 @@ It will be up to the user to manage the related events (e.g. open, select)
       source: {
         code: `
     <!--VueJS Snippet-->
-    
+
     // const options = ref([
     //   { label: 'label 1', value: '1', category: 'catégorie A' },
     //   { label: 'label 2', value: '2', category: 'catégorie A' },
@@ -183,10 +183,10 @@ It will be up to the user to manage the related events (e.g. open, select)
     //   { label: 'label 4', value: '4', category: 'catégorie B' },
     //   { label: 'label 5', value: '5', category: 'catégorie B' }
     // ]);
-    // 
+    //
     // const openRef = ref(false);
     // const selectedOption = ref();
-    // 
+    //
     // const handleSelect = (payload: OptionType) => {
     //   selectedOption.value === payload ? selectedOption.value = undefined : selectedOption.value = payload;
     // };
@@ -239,7 +239,7 @@ export const NumbersExample: StoryObj = {
       return { options, openRef, selectedOption, handleSelect };
     },
     template: `
-    <div class="min-h-[250px] flex flex-col space-y-2">
+    <div class="min-h-[250px] flex flex-col gap-y-2">
       <puik-select
         v-model="selectedOption"
         :key="selectedOption"
@@ -333,7 +333,7 @@ export const StringsExample: StoryObj = {
       return { options, openRef, selectedOption, handleSelect };
     },
     template: `
-    <div class="min-h-[250px] flex flex-col space-y-2">
+    <div class="min-h-[250px] flex flex-col gap-y-2">
       <puik-select
         v-model="selectedOption"
         :key="selectedOption"
@@ -432,7 +432,7 @@ export const PrependExample: StoryObj = {
       return { options, openRef, selectedOption, handleSelect };
     },
     template: `
-  <div class="min-h-[250px] flex flex-col space-y-2">
+  <div class="min-h-[250px] flex flex-col gap-y-2">
     <puik-select
       v-model="selectedOption"
       :key="selectedOption"
@@ -453,7 +453,7 @@ export const PrependExample: StoryObj = {
         :is-selected="selectedOption === option"
         @select="(payload) => handleSelect(option, payload)"
         @open="(state) => openRef = state"
-        class="flex items-center space-x-1"
+        class="flex items-center gap-x-1"
       >
         <PuikIcon icon="label" />
         <span>
@@ -505,7 +505,7 @@ export const PrependExample: StoryObj = {
         :is-selected="selectedOption === option"
         @select="(payload) => handleSelect(option, payload)"
         @open="(state) => openRef = state"
-        class="flex items-center space-x-1"
+        class="flex items-center gap-x-1"
       >
         <PuikIcon icon="label" />
         <span>
@@ -544,7 +544,7 @@ export const GroupByExample: StoryObj = {
       return { options, openRef, selectedOption, handleSelect };
     },
     template: `
-  <div class="min-h-[250px] flex flex-col space-y-2">
+  <div class="min-h-[250px] flex flex-col gap-y-2">
     <puik-select
       v-model="selectedOption"
       :key="selectedOption"
@@ -557,7 +557,7 @@ export const GroupByExample: StoryObj = {
     >
       <PuikDivider />
       <div class="px-2 py-1 puik-body-default-bold">Category A</div>
-      <PuikDivider />        
+      <PuikDivider />
       <template v-for="option in options">
         <puik-option
           v-if="option.category === 'catégorie A'"
@@ -626,7 +626,7 @@ export const GroupByExample: StoryObj = {
     >
       <PuikDivider />
       <div class="px-2 py-1 puik-body-default-bold">Category A</div>
-      <PuikDivider />        
+      <PuikDivider />
       <template v-for="option in options">
         <puik-option
           v-if="option.category === 'catégorie A'"
@@ -689,7 +689,7 @@ export const DefaultWithSearchExampleWithSearch: StoryObj = {
       return { options, filteredOptions, openRef, selectedOption, handleSelect };
     },
     template: `
-  <div class="min-h-[250px] flex flex-col space-y-2">
+  <div class="min-h-[250px] flex flex-col gap-y-2">
     <puik-select
       v-model="selectedOption"
       :key="selectedOption"
@@ -792,7 +792,7 @@ export const CustomKeysExample: StoryObj = {
       return { options, openRef, selectedOption, handleSelect };
     },
     template: `
-  <div class="min-h-[250px] flex flex-col space-y-2">
+  <div class="min-h-[250px] flex flex-col gap-y-2">
     <puik-select
       v-model="selectedOption"
       :key="selectedOption"
@@ -830,7 +830,7 @@ export const CustomKeysExample: StoryObj = {
       source: {
         code: `
     <!--VueJS Snippet-->
-    
+
     // const options = ref([
     // const options = ref([
     //   { label: 'label 1', customLabelKey: 'custom-option-label-key 1', value: '1', customValueKey: 'custom-option-value-key 1', category: 'catégorie A' },
@@ -839,10 +839,10 @@ export const CustomKeysExample: StoryObj = {
     //   { label: 'label 4', customLabelKey: 'custom-option-label-key 4', value: '4', customValueKey: 'custom-option-value-key 4', category: 'catégorie B' },
     //   { label: 'label 5', customLabelKey: 'custom-option-label-key 5', value: '5', customValueKey: 'custom-option-value-key 5', category: 'catégorie B' }
     // ]);
-    // 
+    //
     // const openRef = ref(false);
     // const selectedOption = ref();
-    // 
+    //
     // const handleSelect = (payload: OptionType) => {
     //   selectedOption.value === payload ? selectedOption.value = undefined : selectedOption.value = payload;
     // };
@@ -903,7 +903,7 @@ export const CustomKeysWithSearchExample: StoryObj = {
       return { options, filteredOptions, openRef, selectedOption, handleSelect };
     },
     template: `
-  <div class="min-h-[250px] flex flex-col space-y-2">
+  <div class="min-h-[250px] flex flex-col gap-y-2">
     <puik-select
       v-model="selectedOption"
       :key="selectedOption"
@@ -1026,7 +1026,7 @@ export const MultiSelectExample: StoryObj = {
       return { options, openRef, selectedOptions, handleSelect };
     },
     template: `
-  <div class="min-h-[300px] flex flex-col space-y-2">
+  <div class="min-h-[300px] flex flex-col gap-y-2">
     <puik-select
       v-model="selectedOptions"
       id="select-multi-id"

@@ -132,8 +132,8 @@ export const Default: StoryObj = {
       description: {
         story: `
   NB: The id attribute of the component corresponds to the prop name (allows you to identify each instance of the navigation component in the event that there are several on the same page).
-  
-  Tips: 
+
+  Tips:
   - If you want to set a width: set a width on the 'puik-tab-navigation'
   - If you want to set a width on tab nav: set a MIN-WIDTH on the 'puik-tab-navigation-title'
           `
@@ -190,7 +190,7 @@ export const ChangeActiveTabEvent: StoryObj = {
       return { tabs, args, activeTab };
     },
     template: `
-<div class="flex flex-col space-y-4">
+<div class="flex flex-col gap-y-4">
   <div>
     <puik-badge variant="info">
       Current tab position at {{ activeTab }}

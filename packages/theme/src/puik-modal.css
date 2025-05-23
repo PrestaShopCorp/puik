@@ -1,0 +1,98 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-modal {
+  @apply relative z-50;
+}
+
+.puik-modal--invisible {
+  @apply invisible;
+}
+
+.puik-modal .puik-modal__dialogPanelContainer__dialogPanel {
+  @apply w-full focus-visible:outline-none;
+}
+
+.puik-modal--destructive .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
+  @apply text-red-500 bg-red-50;
+}
+
+.puik-modal--dialog .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
+  @apply text-primary-500 bg-primary-300;
+}
+
+.puik-modal--feedback .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
+  @apply text-primary-800 bg-ocean-blue-50;
+}
+
+.puik-modal--large .puik-modal__dialogPanelContainer__dialogPanel {
+  @apply sm:max-w-[904px];
+}
+
+.puik-modal--medium .puik-modal__dialogPanelContainer__dialogPanel {
+  @apply sm:max-w-[680px];
+}
+
+.puik-modal--small .puik-modal__dialogPanelContainer__dialogPanel {
+  @apply sm:max-w-[508px];
+}
+
+.puik-modal__dialogPanelContainer {
+  @apply fixed p-5 max-h-full bg-primary-700/50 inset-0 flex justify-center items-end sm:items-center;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel {
+  @apply max-h-full flex flex-col bg-white border drop-shadow-xl border-primary-400 p-6 gap-6;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__header {
+  @apply flex items-center gap-4 border-primary-400;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__header__icon {
+  @apply rounded-[9999px] p-2;
+}
+
+.puik-button.puik-modal__dialogPanelContainer__dialogPanel__header__close-button {
+  @apply p-1.5;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__header__title {
+  @apply min-w-0 flex-1 puik-h2;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__header__title .title {
+  @apply font-bold flex-1 overflow-hidden text-ellipsis whitespace-nowrap;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__header__close-button {
+  @apply p-0;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__content {
+  @apply overflow-hidden overflow-y-auto flex flex-1 text-primary-800;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__content--with-footer {
+  @apply mb-[56px];
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__footer {
+  @apply fixed bottom-0 right-5 left-5 p-2 max-w-[calc(100%-40px)] overflow-x-scroll bg-white flex flex-col gap-4 sm:flex-row;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__footer__button--main {
+  @apply sm:order-4;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__footer__button--second {
+  @apply sm:order-3;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__footer__button--side {
+  @apply sm:order-1;
+}
+
+.puik-modal__dialogPanelContainer__dialogPanel__footer__spacer {
+  @apply hidden sm:visible sm:flex sm:flex-1 sm:order-2;
+}

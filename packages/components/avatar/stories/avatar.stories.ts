@@ -192,7 +192,7 @@ const TypesTemplate: StoryFn = (args: Args) => ({
     return { args };
   },
   template: `
-<div class="flex space-x-2">
+<div class="flex gap-x-2">
   <PuikAvatar
     type="initials"
     :firstName="args.firstName"
@@ -278,7 +278,7 @@ const SizesTemplate: StoryFn = (args: Args) => ({
     return { avatars, args };
   },
   template: `
-<div class="flex space-x-2">
+<div class="flex gap-x-2">
   <puik-avatar
     v-for="(avatar, index) in avatars"
     :key="index"
@@ -324,7 +324,7 @@ const ModesTemplate: StoryFn = (args: Args) => ({
     return { avatarsPrimary, avatarsReverse, args };
   },
   template: `
-<div class="flex space-x-2" style="margin-bottom: 1rem; padding: 1rem;">
+<div class="flex gap-x-2" style="margin-bottom: 1rem; padding: 1rem;">
   <puik-avatar
     v-for="(avatar, index) in avatarsPrimary"
     :key="index"
@@ -333,7 +333,7 @@ const ModesTemplate: StoryFn = (args: Args) => ({
     :icon="avatar.icon"
   />
 </div>
-<div class="flex space-x-2" style="padding: 1rem; background-color: black;">
+<div class="flex gap-x-2" style="padding: 1rem; background-color: black;">
   <puik-avatar
     v-for="(avatar, index) in avatarsReverse"
     :key="index"

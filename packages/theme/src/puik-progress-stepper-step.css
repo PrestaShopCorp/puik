@@ -1,0 +1,22 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-progress-stepper-step {
+  @apply flex flex-col items-center puik-body-small;
+}
+
+.puik-progress-stepper-step__button {
+  @apply rounded-[9999px] w-7;
+}
+
+.puik-progress-stepper-step__button.puik-button--success {
+  @apply text-green-500;
+}
+
+.puik-progress-stepper-step__text {
+  @apply px-4 pt-1 text-primary-800;
+}
+
+.puik-progress-stepper-step__additional-text {
+  @apply px-4 text-primary-600;
+}

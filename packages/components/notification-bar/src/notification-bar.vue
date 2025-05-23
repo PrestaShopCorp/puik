@@ -77,7 +77,7 @@ import { ref, watchEffect, onMounted, onBeforeUnmount } from 'vue';
 import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 
-import { NotificationBarProps, PuikNotificationBarVariants } from './notification-bar';
+import { type NotificationBarProps, PuikNotificationBarVariants } from './notification-bar';
 
 defineOptions({
   name: 'PuikNotificationBar'

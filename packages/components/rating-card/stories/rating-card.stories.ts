@@ -27,7 +27,7 @@ export default {
       table: {
         type: {
           summary: 'number[] | string',
-          detail: `Valid patterns: 
+          detail: `Valid patterns:
           - Array of numbers, ex: [4, 5, 3, 4, 5, 2.5]
           // use in particular to match the string type of attributes (props equivalent) for web components use case :
           - JSON string (stingify Array of numbers), ex: "[4, 5, 3, 4, 5, 2.5]"
@@ -199,7 +199,7 @@ export const HideTotalRatingsNumber: StoryObj = {
     setup() {
     },
     template: `
-    <div class="flex flex-col space-y-2">
+    <div class="flex flex-col gap-y-2">
       <p class="puik-body-large-medium">Extended variant example:</p>
       <PuikRatingCard
         id="puik-rating-card-extended"

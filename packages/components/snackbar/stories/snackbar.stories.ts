@@ -295,15 +295,15 @@ const UseSnackbarTemplate: StoryFn = (args: Args) => ({
     return { snackbarProviderArgs, args, state, addSuccessSnackbar, addDefaultSnackbar, isVNode, snackbarsLimit, snackbarRemoveDelay };
   },
   template: `
-  <div class="flex flex-col space-y-4 max-w-fit">
-    <div class="flex space-x-4">
+  <div class="flex flex-col gap-y-4 max-w-fit">
+    <div class="flex gap-x-4">
       <puik-button
       variant="success"
         @click="addSuccessSnackbar"
       >
         Display success snackbar programatically
       </puik-button>
-    
+
       <puik-button
         @click="addDefaultSnackbar"
       >
@@ -326,7 +326,7 @@ const UseSnackbarTemplate: StoryFn = (args: Args) => ({
       v-model="snackbarsLimit"
       type="number"
     />
-    
+
     <puik-snackbar-provider
       v-bind="snackbarProviderArgs"
     >
@@ -393,7 +393,7 @@ nb: see show code snippet below for more details of implementation
   //  useSnackbar
   // } from '@prestashopcorp/puik-components';
   // import { ref, isVNode, h } from 'vue';
-  // 
+  //
   // const snackbarsLimit = ref(0);
   // const snackbarRemoveDelay = ref(5000);
   // const state = ref<SnackbarsState>([]);

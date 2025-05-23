@@ -1,0 +1,18 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-rating-card {
+  @apply flex items-center gap-x-1;
+}
+
+.puik-rating-card__stars-container {
+  @apply flex gap-x-1;
+}
+
+.puik-rating-card__average-value {
+  @apply puik-body-default-bold;
+}
+
+.puik-rating-card__total-ratings {
+  @apply puik-body-small-medium;
+}

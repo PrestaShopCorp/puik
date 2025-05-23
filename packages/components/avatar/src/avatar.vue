@@ -41,7 +41,7 @@ import { useLocale } from '@prestashopcorp/puik-locale';
 import { getInitialLetter } from '@prestashopcorp/puik-utils';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import {
-  AvatarProps,
+  type AvatarProps,
   PuikAvatarType,
   ICONS_FONTSIZE,
   AVATAR_MODE,

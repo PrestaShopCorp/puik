@@ -1,0 +1,22 @@
+@reference './theme.css';
+
+.puik-scrollbar::-webkit-scrollbar-track {
+  @apply rounded-[10px];
+}
+
+.puik-scrollbar::-webkit-scrollbar {
+  @apply w-[1.5rem] h-[1.5rem];
+}
+
+.puik-scrollbar::-webkit-scrollbar-track {
+  @apply rounded-[10px];
+}
+
+.puik-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-primary-400 rounded-[12px] bg-clip-padding;
+  border: 8px solid rgba(0, 0, 0, 0);
+}
+
+.puik-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-500;
+}

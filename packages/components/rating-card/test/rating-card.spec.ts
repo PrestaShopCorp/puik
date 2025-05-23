@@ -52,7 +52,7 @@ describe('RatingCard tests', () => {
       variant: PuikRatingCardVariants.Compact
     });
     const averageRating = totalRatings.reduce((a, b) => a + b, 0) / totalRatings.length;
-    expect(wrapper.find('.puik-rating-card_average-value').text()).toBe(averageRating.toFixed(1));
+    expect(wrapper.find('.puik-rating-card__average-value').text()).toBe(averageRating.toFixed(1));
   });
 
   it('should display average rating correctly (Extended)', () => {
@@ -74,7 +74,7 @@ describe('RatingCard tests', () => {
       variant: PuikRatingCardVariants.Extended
     });
 
-    const stars = wrapper.findAll('.puik-rating-card_star');
+    const stars = wrapper.findAll('.puik-rating-card__star');
     expect(stars.length).toBe(5);
 
     const expectedIcons = ['star', 'star', 'star', 'star_half', 'star'];
@@ -99,7 +99,7 @@ describe('RatingCard tests', () => {
       variant: PuikRatingCardVariants.Compact,
       showTotalRatings: true
     });
-    expect(wrapper.find('.puik-rating-card_total-ratings').text()).toBe('(6)');
+    expect(wrapper.find('.puik-rating-card__total-ratings').text()).toBe('(6)');
   });
 
   it('should display total ratings if showTotalRatings is true (Extended)', () => {
@@ -109,7 +109,7 @@ describe('RatingCard tests', () => {
       variant: PuikRatingCardVariants.Extended,
       showTotalRatings: true
     });
-    expect(wrapper.find('.puik-rating-card_total-ratings').text()).toBe('(6)');
+    expect(wrapper.find('.puik-rating-card__total-ratings').text()).toBe('(6)');
   });
 
   it('should not display total ratings if showTotalRatings is false (Compact)', () => {
@@ -119,7 +119,7 @@ describe('RatingCard tests', () => {
       variant: PuikRatingCardVariants.Compact,
       showTotalRatings: false
     });
-    expect(wrapper.find('.puik-rating-card_total-ratings').exists()).toBe(false);
+    expect(wrapper.find('.puik-rating-card__total-ratings').exists()).toBe(false);
   });
 
   it('should not display total ratings if showTotalRatings is false (Extended)', () => {
@@ -129,7 +129,7 @@ describe('RatingCard tests', () => {
       variant: PuikRatingCardVariants.Extended,
       showTotalRatings: false
     });
-    expect(wrapper.find('.puik-rating-card_total-ratings').exists()).toBe(false);
+    expect(wrapper.find('.puik-rating-card__total-ratings').exists()).toBe(false);
   });
 
   it('should validate totalRatings prop type using component logic', () => {

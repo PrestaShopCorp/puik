@@ -18,9 +18,9 @@
         :position="tooltipPosition"
         :description="content"
       >
-        <p ref="chipContentElem">
-          {{ content }}
-        </p>
+        <div ref="chipContentElem" class="puik-chip__content__text--container">
+          <p>{{ content }}</p>
+        </div>
       </puik-tooltip>
     </div>
     <PuikIcon
