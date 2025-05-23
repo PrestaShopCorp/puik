@@ -120,6 +120,7 @@
                 </span>
                 <PuikButton
                   v-if="header.sortable"
+                  class="puik-table__head__row__item__content__sort-btn"
                   :right-icon="
                     sortIcon[header.value] ?? PuikTableSortIcon.Default
                   "
