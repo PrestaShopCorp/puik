@@ -32,7 +32,7 @@
           class="puik-pagination__button puik-pagination__pager-button"
           @click="page = 1"
         >
-          1
+          <span class="puik-pagination__pager-button__content">1</span>
         </puik-button>
       </li>
 
@@ -56,7 +56,7 @@
           class="puik-pagination__button puik-pagination__pager-button"
           @click="page = item"
         >
-          {{ item }}
+          <span class="puik-pagination__pager-button__content">{{ item }}</span>
         </puik-button>
       </li>
 
@@ -79,7 +79,7 @@
           class="puik-pagination__button puik-pagination__pager-button"
           @click="page = maxPage"
         >
-          {{ maxPage }}
+          <span class="puik-pagination__pager-button__content">{{ maxPage }}</span>
         </puik-button>
       </li>
     </ul>
