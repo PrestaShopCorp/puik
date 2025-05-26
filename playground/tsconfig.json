@@ -1,14 +1,15 @@
 {
-  "extends": "../tsconfig.json",
+  "files": [],
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true
-},
-  "include": [
-    "**/*.{ts,d.ts,vue}"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "forceConsistentCasingInFileNames": true,
+    "strict": true
+  },
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
 }

@@ -26,5 +26,5 @@ storybook-static
 # Ignore auto-generated 'components.d.ts' file by unplugin-vue-components
 components.d.ts
 
-# Ignore new-playground directory
-new-playground/
+# Ignore old-playground directory (temporary)
+old-playground/

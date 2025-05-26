@@ -26,12 +26,3 @@ import { PuikLink } from '@prestashopcorp/puik-components';
   </main>
 </template>
 
-<style scoped>
-header,
-main {
-  @apply flex flex-col gap-y-5 p-5;
-}
-nav {
-  @apply flex gap-x-5;
-}
-</style>

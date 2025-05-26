@@ -8,27 +8,31 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+.DS_Store
 dist
 dist-ssr
+coverage
 *.local
+
+/cypress/videos/
+/cypress/screenshots/
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
+*.tsbuildinfo
+
 # playground views files
 /src/views/*
 !/src/views/VueComponentsViewExample.vue
 !/src/views/WebComponentsViewExample.vue
-/vue-app
-/vanilla-app
 
 # Ignore auto-generated 'components.d.ts' file by unplugin-vue-components
 components.d.ts
