@@ -5,7 +5,7 @@
   >
     <div
       ref="slotWrapper"
-      class="puik-tooltip_slot--wrapper"
+      class="puik-tooltip__slot--wrapper "
       tabindex="0"
       :aria-describedby="id"
       :aria-expanded="isVisible"

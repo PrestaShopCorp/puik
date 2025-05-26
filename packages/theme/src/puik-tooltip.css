@@ -10,9 +10,8 @@
 }
 
 .puik-tooltip__tip {
-  @apply absolute w-max bg-primary text-white px-3 py-2 font-primary shadow-lg;
+  @apply absolute mx-1! w-max bg-primary text-white px-3 py-2 font-primary shadow-lg;
   will-change: transform, opacity;
-  margin: 0 4px;
 }
 
 .puik-tooltip__tip__content {
@@ -61,9 +60,9 @@
   @apply absolute w-4 h-4 bg-inherit;
 }
 
-.puik-tooltip__icon {
+/* .puik-tooltip__icon {
   @apply font-material-icons text-primary hover:text-primary-800 text-base transition-colors cursor-pointer;
-}
+} */
 
 .puik-tooltip__tip {
   opacity: 0;
