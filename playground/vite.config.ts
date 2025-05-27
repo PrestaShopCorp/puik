@@ -21,7 +21,8 @@ export default defineConfig({
     vueDevTools(),
     tailwindcss(),
     Components({
-      resolvers: [PuikResolver()]
+      resolvers: [PuikResolver()],
+      dts: true
     })
   ],
   resolve: {

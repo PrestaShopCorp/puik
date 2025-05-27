@@ -1,4 +1,4 @@
-import { DefineComponent, defineCustomElement } from 'vue';
+import { type DefineComponent, defineCustomElement } from 'vue';
 import { PuikTabNavigation } from '@prestashopcorp/puik-components';
 import type { CustomElementWithName } from '../types';
 
