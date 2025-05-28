@@ -1,11 +1,17 @@
 import { fileURLToPath, URL } from 'node:url'
 
+import { Plugin } from 'vite'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwindcss from "@tailwindcss/vite";
 import Components from 'unplugin-vue-components/vite';
 import { PuikResolver } from '@prestashopcorp/puik-resolver';
+
+const componentsPlugin = Components({
+  resolvers: [PuikResolver()],
+  dts: true
+}) as unknown as Plugin;
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -20,10 +26,7 @@ export default defineConfig({
     }),
     vueDevTools(),
     tailwindcss(),
-    Components({
-      resolvers: [PuikResolver()],
-      dts: true
-    })
+    componentsPlugin
   ],
   resolve: {
     alias: {

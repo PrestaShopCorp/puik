@@ -18,12 +18,12 @@
     "@prestashopcorp/puik-tailwind-preset": "workspace:*",
     "@prestashopcorp/puik-theme": "workspace:*",
     "@prestashopcorp/puik-web-components": "workspace:*",
+    "@tailwindcss/vite": "^4.1.7",
     "tailwindcss": "^4.1.7",
     "vue": "^3.5.15",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.7",
     "@tsconfig/node22": "^22.0.1",
     "@types/node": "^22.15.21",
     "@vitejs/plugin-vue": "^5.2.4",
