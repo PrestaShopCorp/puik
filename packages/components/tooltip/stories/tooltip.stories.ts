@@ -102,7 +102,7 @@ const Template: StoryFn = (args: Args) => ({
   },
   template: `
     <div class="flex items-center justify-center h-[120px]">
-      <puik-tooltip v-bind="args">
+      <puik-tooltip :key="args.position" v-bind="args">
         <puik-icon font-size="1.25rem" icon="help_outline" />
         <template #heading>{{ args.heading }}</template>
         <template #description>{{ args.description }}</template>

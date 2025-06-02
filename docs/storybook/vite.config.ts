@@ -4,12 +4,15 @@ import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 import { PuikResolver } from '@prestashopcorp/puik-resolver';
 
+const componentsPlugin = Components({
+  resolvers: [PuikResolver()],
+  dts: true
+}) as unknown as Plugin;
+
 export default defineConfig({
   plugins: [
     vue(),
-    Components({
-      resolvers: [PuikResolver()]
-    })
+    componentsPlugin
   ],
   resolve: {
     alias: {
