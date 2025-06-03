@@ -86,7 +86,7 @@ describe('Tooltip tests', () => {
 
   it('should have a custom max-width', async () => {
     factory(
-      { maxWidth: '200px' },
+      { maxWidth: '200' },
       {
         slots: {
           default: '<button>Hover me</button>'
@@ -119,7 +119,7 @@ describe('Tooltip tests', () => {
 
   it('should apply custom styles to tooltip', async () => {
     factory(
-      { maxWidth: '300px', zindex: 2000 },
+      { maxWidth: '300', zindex: 2000 },
       {
         slots: {
           default: '<button>Hover me</button>'
