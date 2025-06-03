@@ -6,7 +6,7 @@
 }
 
 .puik-rating-card__stars-container {
-  @apply flex gap-x-1;
+  @apply flex;
 }
 
 .puik-rating-card__average-value {
