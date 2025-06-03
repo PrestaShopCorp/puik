@@ -15,7 +15,6 @@
   "dependencies": {
     "@prestashopcorp/puik-components": "workspace:*",
     "@prestashopcorp/puik-resolver": "workspace:*",
-    "@prestashopcorp/puik-tailwind-preset": "workspace:*",
     "@prestashopcorp/puik-theme": "workspace:*",
     "@prestashopcorp/puik-web-components": "workspace:*",
     "@tailwindcss/vite": "^4.1.7",

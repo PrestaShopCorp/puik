@@ -58,7 +58,6 @@
     "@prestashopcorp/puik-components": "workspace:*",
     "@prestashopcorp/puik-locale": "workspace:*",
     "@prestashopcorp/puik-resolver": "workspace:*",
-    "@prestashopcorp/puik-tailwind-preset": "workspace:*",
     "@prestashopcorp/puik-theme": "workspace:*",
     "@prestashopcorp/puik-utils": "workspace:*",
     "@prestashopcorp/puik-web-components": "workspace:*"

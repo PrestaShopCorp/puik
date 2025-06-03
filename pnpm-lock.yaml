@@ -20,9 +20,6 @@ importers:
       '@prestashopcorp/puik-resolver':
         specifier: workspace:*
         version: link:packages/resolver
-      '@prestashopcorp/puik-tailwind-preset':
-        specifier: workspace:*
-        version: link:packages/tailwind-preset
       '@prestashopcorp/puik-theme':
         specifier: workspace:*
         version: link:packages/theme
@@ -132,9 +129,6 @@ importers:
       '@prestashopcorp/puik-resolver':
         specifier: workspace:*
         version: link:../../packages/resolver
-      '@prestashopcorp/puik-tailwind-preset':
-        specifier: workspace:*
-        version: link:../../packages/tailwind-preset
       '@prestashopcorp/puik-theme':
         specifier: workspace:*
         version: link:../../packages/theme
@@ -202,9 +196,6 @@ importers:
       '@prestashopcorp/puik-resolver':
         specifier: workspace:*
         version: link:../../packages/resolver
-      '@prestashopcorp/puik-tailwind-preset':
-        specifier: workspace:*
-        version: link:../../packages/tailwind-preset
       '@prestashopcorp/puik-theme':
         specifier: workspace:*
         version: link:../../packages/theme
@@ -290,9 +281,6 @@ importers:
       '@prestashopcorp/puik-resolver':
         specifier: workspace:*
         version: link:../resolver
-      '@prestashopcorp/puik-tailwind-preset':
-        specifier: workspace:*
-        version: link:../tailwind-preset
       '@prestashopcorp/puik-theme':
         specifier: workspace:*
         version: link:../theme
@@ -319,12 +307,6 @@ importers:
       vue:
         specifier: ^3.5.15
         version: 3.5.15(typescript@5.8.3)
-
-  packages/tailwind-preset:
-    devDependencies:
-      tailwindcss:
-        specifier: ^3.4.17
-        version: 3.4.17
 
   packages/theme:
     devDependencies:
@@ -373,9 +355,6 @@ importers:
       '@prestashopcorp/puik-resolver':
         specifier: workspace:*
         version: link:../packages/resolver
-      '@prestashopcorp/puik-tailwind-preset':
-        specifier: workspace:*
-        version: link:../packages/tailwind-preset
       '@prestashopcorp/puik-theme':
         specifier: workspace:*
         version: link:../packages/theme
