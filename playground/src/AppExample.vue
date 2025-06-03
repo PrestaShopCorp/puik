@@ -26,12 +26,3 @@ import { PuikLink } from '@prestashopcorp/puik-components';
   </main>
 </template>
 
-<style scoped lang="scss">
-header,
-main {
-  @apply flex flex-col space-y-5 p-5;
-}
-nav {
-  @apply flex space-x-5;
-}
-</style>

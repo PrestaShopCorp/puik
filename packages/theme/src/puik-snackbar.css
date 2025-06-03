@@ -1,0 +1,127 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-snackbar-root {
+  @apply text-white p-4 flex items-center justify-between gap-x-2;
+  animation: slideIn 250ms ease-in;
+}
+
+.puik-snackbar-root--default {
+  @apply bg-primary;
+}
+
+.puik-snackbar-root--success {
+  @apply bg-green;
+}
+
+.puik-snackbar-root--danger {
+  @apply bg-red;
+}
+
+.puik-snackbar-message {
+  @apply grow;
+}
+
+.puik-snackbar-title {
+  @apply pb-2 puik-body-large-medium;
+}
+
+.puik-snackbar-description {
+  @apply puik-body-default;
+}
+
+.puik-snackbar-action {
+  @apply self-start;
+}
+
+.puik-snackbar-action.puik-button {
+  @apply bg-transparent hover:bg-transparent text-white hover:text-white py-0 min-h-0 h-5 border-none;
+}
+
+.puik-snackbar-close {
+  @apply self-start py-[2px];
+}
+
+.puik-snackbar-root--swipe-slide-right[data-swipe='move'] {
+  transform: translateX(var(--radix-toast-swipe-move-x));
+}
+
+.puik-snackbar-root--swipe-slide-left[data-swipe='move'] {
+  transform: translateX(var(--radix-toast-swipe-move-x));
+}
+
+.puik-snackbar-root--swipe-slide-up[data-swipe='move'] {
+  transform: translateY(var(--radix-toast-swipe-move-y));
+}
+
+.puik-snackbar-root--swipe-slide-down[data-swipe='move'] {
+  transform: translateY(var(--radix-toast-swipe-move-y));
+}
+
+.puik-snackbar-root--swipe-slide-right[data-swipe='end'] {
+  animation: slideRight 100ms ease-out;
+}
+
+.puik-snackbar-root--swipe-slide-left[data-swipe='end'] {
+  animation: slideLeft 100ms ease-out;
+}
+
+.puik-snackbar-root--swipe-slide-up[data-swipe='end'] {
+  animation: slideUp 100ms ease-out;
+}
+
+.puik-snackbar-root--swipe-down[data-swipe='end'] {
+  animation: slideDown 100ms ease-out;
+}
+
+.puik-snackbar-root[data-swipe='cancel'] {
+  transform: translate(0);
+  transition: transform 200ms ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(var(--radix-toast-swipe-end-y));
+  }
+  to {
+    transform: translateY(-200px);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(var(--radix-toast-swipe-end-y));
+  }
+  to {
+    transform: translateY(200px);
+  }
+}

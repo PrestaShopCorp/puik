@@ -5,7 +5,7 @@ import { PuikTooltip, TooltipProps } from '@prestashopcorp/puik-components';
 describe('Tooltip tests', () => {
   let wrapper: VueWrapper<any>;
   const findToolTipContainer = () => wrapper.find('.puik-tooltip');
-  const findSlotWrapper = () => wrapper.find('.puik-tooltip_slot--wrapper');
+  const findSlotWrapper = () => wrapper.find('.puik-tooltip__slot--wrapper');
   const findTitle = () => wrapper.find('.puik-tooltip__tip__content__heading');
   const findDescription = () =>
     wrapper.find('.puik-tooltip__tip__content__description');

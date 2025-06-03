@@ -1,0 +1,30 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-sortable-list_item {
+  @apply flex items-center cursor-move mb-2 bg-white;
+}
+
+.puik-sortable-list_item-index {
+  @apply p-4 puik-body-large;
+}
+
+.puik-sortable-list_item-container {
+  @apply px-4 py-2 gap-x-4 flex items-center grow border border-primary-400;
+}
+
+.puik-sortable-list_item-content {
+  @apply flex flex-col grow;
+}
+
+.puik-sortable-list_item-content_title {
+  @apply puik-body-default-bold;
+}
+
+.puik-sortable-list_item-content_subtitle {
+  @apply puik-body-small;
+}
+
+.puik-sortable-list_item-img {
+  @apply w-[75px] h-[38px] object-cover;
+}

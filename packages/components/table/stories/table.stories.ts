@@ -329,7 +329,70 @@ const Template: StoryFn = (args: Args) => ({
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
-    </template> 
+    </template>
+  </puik-table>`
+});
+
+const ExpandableTemplate: StoryFn = (args: Args) => ({
+  components: {
+    PuikTable,
+    PuikButton
+  },
+  setup() {
+    const selection = ref([]);
+    const items = generateData();
+    const headers: PuikTableHeader[] = [
+      {
+        text: 'Nom',
+        value: 'lastname',
+        size: 'md',
+        searchable: true
+      },
+      {
+        text: 'Prénom',
+        value: 'firstname',
+        size: 'md',
+        searchable: true
+      },
+      {
+        text: 'Age',
+        value: 'age',
+        size: 'sm',
+        align: 'right',
+        searchable: true
+      },
+      {
+        text: 'Email',
+        value: 'email',
+        size: 'md',
+        align: 'left',
+        searchable: true
+      },
+      {
+        value: 'actions',
+        size: 'sm',
+        align: 'center',
+        preventExpand: true,
+        searchSubmit: true
+      }
+    ];
+    return { args, headers, items, selection };
+  },
+  template: `<puik-table v-model:selection="selection" :headers="headers" :items="items" v-bind="args">
+    <template #item-value1="{ item }">
+    </template>
+    <template #item-actions="{ item }">
+      <puik-button
+        variant="text"
+        right-icon="delete"
+        aria-label="Delete item"
+      ></puik-button>
+    </template>
+    <template #expanded-row="{ item }">
+      <div class="p-4">
+        {{ item }}
+      </div>
+    </template>
   </puik-table>`
 });
 
@@ -534,7 +597,6 @@ export const Default: StoryObj = {
   <table class="puik-table">
     <thead class="puik-table__head">
       <tr class="puik-table__head__row">
-        
         <th class="puik-table__head__row__item puik-table__head__row__item--left puik-table__head__row__item--md">
           <div class="puik-table__head__row__item__container">
             <div class="puik-table__head__row__item__content">
@@ -598,7 +660,6 @@ export const Default: StoryObj = {
           <div class="puik-table__body__row__item__container">
             <div class="puik-table__body__row__item__content">
               <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap" aria-label="Delete item">
-                
                 <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
               </button>
             </div>
@@ -811,7 +872,7 @@ export const Selectable: StoryObj = {
 };
 
 export const Expandable: StoryObj = {
-  render: Template,
+  render: ExpandableTemplate,
   args: {
     expandable: true
   },
@@ -863,6 +924,11 @@ export const Expandable: StoryObj = {
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
+    </template>
+    <template #expanded-row="{ item }">
+      <div class="p-4">
+      {{ item }}
+      </div>
     </template>
   </puik-table>
 
@@ -1093,7 +1159,7 @@ export const Searchable: StoryObj = {
   <div class="puik-table__container">
     <table class="puik-table">
       <thead class="puik-table__head">
-        <tr class="puik-table__head__row"> 
+        <tr class="puik-table__head__row">
           <th class="puik-table__head__row__item puik-table__head__row__item--left puik-table__head__row__item--md">
             <div class="puik-table__head__row__item__container">
               <div class="puik-table__head__row__item__content">
@@ -1137,8 +1203,8 @@ export const Searchable: StoryObj = {
                 <div class="puik-input">
                   <div class="puik-input__wrapper">
                     <input class="puik-input__field" placeholder="Search" type="text">
-                  </div>             
-                </div>             
+                  </div>
+                </div>
               </div>
             </div>
           </th>
@@ -1148,26 +1214,26 @@ export const Searchable: StoryObj = {
                 <div class="puik-input">
                   <div class="puik-input__wrapper">
                     <input class="puik-input__field" placeholder="Search" type="text">
-                  </div>              
-                </div>       
+                  </div>
+                </div>
               </div>
             </div>
           </th>
           <th class="puik-table__head__row__item puik-table__head__row__item--right puik-table__head__row__item--sm">
             <div class="puik-table__head__row__item__container">
-              <div class="puik-table__head__row__item__content puik-table-search-input__content">          
+              <div class="puik-table__head__row__item__content puik-table-search-input__content">
                 <div class="puik-table-search-input--range">
                   <div class="puik-input">
                     <div class="puik-input__wrapper">
                       <input class="puik-input__field" placeholder="Min" type="number" min="-Infinity" max="Infinity" step="1">
                       <div class="puik-input__controls"><button type="button" class="puik-input__controls__increment" aria-label="Increase"><span class="puik-input__controls__increment__icon">arrow_drop_up</span></button><button type="button" class="puik-input__controls__decrement" aria-label="Decrease"><span class="puik-input__controls__decrement__icon">arrow_drop_down</span></button></div>
-                    </div>                
+                    </div>
                   </div>
                   <div class="puik-input">
                     <div class="puik-input__wrapper">
                       <input class="puik-input__field" placeholder="Max" type="number" min="-Infinity" max="Infinity" step="1">
                       <div class="puik-input__controls"><button type="button" class="puik-input__controls__increment" aria-label="Increase"><span class="puik-input__controls__increment__icon">arrow_drop_up</span></button><button type="button" class="puik-input__controls__decrement" aria-label="Decrease"><span class="puik-input__controls__decrement__icon">arrow_drop_down</span></button></div>
-                    </div>          
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1180,18 +1246,18 @@ export const Searchable: StoryObj = {
                   <div class="puik-input__wrapper">
                     <input class="puik-input__field" placeholder="Search" type="text">
                   </div>
-                </div>    
+                </div>
               </div>
             </div>
           </th>
           <th class="puik-table__head__row__item puik-table__head__row__item--center puik-table__head__row__item--sm">
             <div class="puik-table__head__row__item__container">
-              <div class="puik-table__head__row__item__content puik-table-search-input__content">    
+              <div class="puik-table__head__row__item__content puik-table-search-input__content">
                 <div class="puik-table-search-input--submit">
                   <button class="puik-button puik-button--primary puik-button--md puik-button--no-wrap">
                     <div class="puik-icon puik-button__left-icon" style="font-size: 1.25rem;">search</div>
                     Search
-                  </button>  
+                  </button>
                 </div>
               </div>
             </div>
@@ -1223,7 +1289,7 @@ export const Searchable: StoryObj = {
           <td class="puik-table__body__row__item puik-table__body__row__item--center">
             <div class="puik-table__body__row__item__container">
               <div class="puik-table__body__row__item__content">
-                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap" aria-label="Delete item">          
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap" aria-label="Delete item">
                   <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
                 </button>
               </div>
@@ -1285,7 +1351,7 @@ export const Searchable: StoryObj = {
           <td class="puik-table__body__row__item puik-table__body__row__item--center">
             <div class="puik-table__body__row__item__container">
               <div class="puik-table__body__row__item__content">
-                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap" aria-label="Delete item">  
+                <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap" aria-label="Delete item">
                   <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;">delete</div>
                 </button>
               </div>

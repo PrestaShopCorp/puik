@@ -1,0 +1,6 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-sidebar-title {
+  @apply text-primary-600 font-bold px-2 py-2 puik-body-default;
+}

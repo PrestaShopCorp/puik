@@ -19,12 +19,12 @@
   "peerDependencies": {
     "@prestashopcorp/puik-components": "workspace:*",
     "@prestashopcorp/puik-theme": "workspace:*",
-    "unplugin-vue-components": "^28.4.1",
+    "unplugin-vue-components": "^28.7.0",
     "vue": "^3.3.7"
   },
   "devDependencies": {
-    "unplugin-vue-components": "^28.4.1",
-    "vue": "^3.5.13"
+    "unplugin-vue-components": "^28.7.0",
+    "vue": "^3.5.15"
   },
   "sideEffects": false,
   "publishConfig": {

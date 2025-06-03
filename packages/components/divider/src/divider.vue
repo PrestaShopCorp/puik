@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { DividerProps, PuikDividerOrientation } from './divider';
+import { type DividerProps, PuikDividerOrientation } from './divider';
 
 defineOptions({
   name: 'PuikDivider'

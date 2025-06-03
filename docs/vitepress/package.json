@@ -19,7 +19,6 @@
   "dependencies": {
     "@prestashopcorp/puik-components": "workspace:*",
     "@prestashopcorp/puik-resolver": "workspace:*",
-    "@prestashopcorp/puik-tailwind-preset": "workspace:*",
     "@prestashopcorp/puik-theme": "workspace:*",
     "@prestashopcorp/puik-web-components": "workspace:*",
     "autoprefixer": "^10.4.20",

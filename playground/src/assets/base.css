@@ -1,0 +1,24 @@
+
+.app-container {
+  @apply flex flex-col m-auto max-w-[1920px];
+}
+
+header {
+  @apply sticky top-0 flex justify-between bg-white z-50 border-b  p-5;
+}
+
+main {
+  @apply flex flex-col p-5;
+}
+
+.app-nav {
+  @apply flex gap-x-6;
+}
+
+.vue-components-view {
+  @apply flex flex-col gap-y-6;
+}
+
+.web-components-view{
+  @apply flex flex-col gap-y-3;
+}

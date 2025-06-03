@@ -1,0 +1,5 @@
+@reference './theme.css';
+
+.puik-sr-only {
+    @apply sr-only;
+}

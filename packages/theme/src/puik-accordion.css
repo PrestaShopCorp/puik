@@ -1,0 +1,73 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-accordion {
+  @apply border border-primary-400;
+}
+
+.puik-accordion__header {
+  @apply px-6 py-4 flex w-full items-center;
+}
+
+.puik-accordion__header:hover {
+  @apply bg-primary-200;
+}
+
+.puik-accordion__header:focus-visible {
+  @apply outline-none ring ring-blue;
+}
+
+.puik-accordion__header__icon {
+  @apply mr-4 text-primary-600;
+}
+
+.puik-accordion__header__content__title {
+  @apply text-left text-primary puik-h5;
+}
+
+.puik-accordion__header__content__sub-title {
+  @apply text-left text-primary-600 mt-1 puik-body-small;
+}
+
+.puik-accordion__header__expand__icon {
+  @apply ml-auto text-primary-600 transform transition-transform duration-100 ease-in-out;
+}
+
+.puik-accordion__content {
+  @apply p-4 ml-4 text-primary-600 invisible puik-body-default;
+}
+
+.puik-accordion--expanded .puik-accordion__title {
+  @apply rounded-b-none;
+}
+
+.puik-accordion--expanded .puik-accordion__content {
+  @apply visible;
+}
+
+.puik-accordion--expanded .puik-accordion__header__expand__icon {
+  @apply rotate-180;
+}
+
+.puik-accordion--disabled {
+  @apply bg-white text-primary-500 cursor-not-allowed;
+}
+
+.puik-accordion--disabled .puik-accordion__header:hover {
+  @apply bg-white text-primary-500;
+}
+
+.puik-accordion--disabled
+.puik-accordion__header__content__title,
+.puik-accordion--disabled
+.puik-accordion__header__content__sub-title,
+.puik-accordion--disabled
+.puik-accordion__header__icon,
+.puik-accordion--disabled
+.puik-accordion__header__expand__icon {
+  @apply text-primary-500;
+}
+
+.puik-accordion.puik-accordion--border-none {
+  @apply border-transparent;
+}

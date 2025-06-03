@@ -58,6 +58,7 @@
         <div
           :class="[
             'puik-modal__dialogPanelContainer__dialogPanel__content',
+            'puik-scrollbar',
             {
               'puik-modal__dialogPanelContainer__dialogPanel__content--with-footer': hasFooter
             }
@@ -66,7 +67,7 @@
         </div>
         <footer
           v-if="hasFooter"
-          class="puik-modal__dialogPanelContainer__dialogPanel__footer"
+          class="puik-modal__dialogPanelContainer__dialogPanel__footer puik-scrollbar"
         >
           <puik-button
             v-if="PuikModalVariants.Dialog === variant && sideButtonText"

@@ -1,0 +1,46 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-menu {
+  @apply relative left-0 w-max puik-body-default;
+}
+
+.puik-menu__content {
+  @apply absolute mt-2 bg-white shadow-md p-2 flex flex-col gap-0.5 overflow-y-auto z-[1];
+}
+
+.puik-menu--invisible .puik-menu__content {
+  @apply invisible;
+}
+
+.puik-menu--align-right .puik-menu__content {
+  @apply right-0;
+}
+
+.puik-menu--position-top .puik-menu__content {
+  @apply bottom-full mb-2;
+}
+
+.puik-menu__transition__enter--active {
+  @apply transition duration-200 ease-out;
+}
+
+.puik-menu__transition__enter--from {
+  @apply translate-y-1 opacity-0;
+}
+
+.puik-menu__transition__enter--to {
+  @apply translate-y-0 opacity-100;
+}
+
+.puik-menu__transition__leave--active {
+  @apply transition duration-150 ease-in;
+}
+
+.puik-menu__transition__leave--from {
+  @apply translate-y-0 opacity-100;
+}
+
+.puik-menu__transition__leave--to {
+  @apply translate-y-1 opacity-0;
+}

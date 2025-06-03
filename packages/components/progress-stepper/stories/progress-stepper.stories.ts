@@ -74,7 +74,7 @@ const Template: StoryFn = () => {
       <template #additional-text>Additional-text step 1</template>
     </puik-progress-stepper-step>
   </puik-progress-stepper>
-  <div class="mt-16 flex space-x-4">
+  <div class="mt-16 flex gap-x-4">
     <puik-button :disabled="args.modelValue === 1" @click="prevStep">Previous step</puik-button>
     <puik-button :disabled="args.modelValue === 3" @click="nextStep">Next step</puik-button>
   </div>`

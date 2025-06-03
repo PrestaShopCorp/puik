@@ -1,0 +1,73 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-tooltip {
+  @apply inline-flex relative;
+}
+
+.puik-tooltip__slot--wrapper {
+  @apply relative w-fit min-w-0;
+}
+
+.puik-tooltip__tip {
+  @apply absolute mx-1! w-max bg-primary text-white px-3 py-2 font-primary shadow-lg;
+  will-change: transform, opacity;
+}
+
+.puik-tooltip__tip__content {
+  @apply flex flex-col relative z-10 puik-body-default;
+}
+
+.puik-tooltip__tip__content__heading {
+  @apply font-bold mb-1 puik-body-default-bold;
+}
+
+.puik-tooltip__tip[data-popper-placement^='top'] > .puik-tooltip__tip__arrow {
+  @apply -bottom-1.5;
+}
+
+.puik-tooltip__tip[data-popper-placement^='bottom'] > .puik-tooltip__tip__arrow {
+  @apply -top-1.5;
+}
+
+.puik-tooltip__tip[data-popper-placement^='left'] > .puik-tooltip__tip__arrow {
+  @apply -right-1.5;
+}
+
+.puik-tooltip__tip[data-popper-placement^='right'] > .puik-tooltip__tip__arrow {
+  @apply -left-1.5;
+}
+
+.puik-tooltip__tip[data-popper-placement^='top'] > .puik-tooltip__tip__arrow::before {
+  @apply -left-[4px];
+}
+
+.puik-tooltip__tip[data-popper-placement^='bottom'] > .puik-tooltip__tip__arrow::before {
+  @apply -left-[4px];
+}
+
+.puik-tooltip__tip__arrow {
+  visibility: hidden;
+}
+
+.puik-tooltip__tip__arrow::before {
+  @apply visible rotate-45;
+  content: '';
+}
+
+.puik-tooltip__tip__arrow,
+.puik-tooltip__tip__arrow::before {
+  @apply absolute w-4 h-4 bg-inherit;
+}
+
+/* .puik-tooltip__icon {
+  @apply font-material-icons text-primary hover:text-primary-800 text-base transition-colors cursor-pointer;
+} */
+
+.puik-tooltip__tip {
+  opacity: 0;
+}
+
+.puik-tooltip__tip.puik-tooltip--visible {
+  animation: fadeIn 0.3s ease-out forwards;
+}

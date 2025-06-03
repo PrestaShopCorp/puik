@@ -1,0 +1,91 @@
+@reference './theme.css';
+
+.puik-skeleton-loader {
+  @apply font-material-icons rounded-xs w-full text-primary-500 text-2xl;
+
+  background: linear-gradient(
+    90deg,
+    #dddddd 40%,
+    #eeeeee 50%,
+    #dddddd 60%
+  );
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 2000ms loading ease-in-out infinite;
+}
+
+.puik-skeleton-loader--h1 {
+  @apply h-[42px];
+}
+
+.puik-skeleton-loader--h2 {
+  @apply h-[32px];
+}
+
+.puik-skeleton-loader--h3 {
+  @apply h-[30px];
+}
+
+.puik-skeleton-loader--h4 {
+  @apply h-[26px];
+}
+
+.puik-skeleton-loader--h5 {
+  @apply h-[22px];
+}
+
+.puik-skeleton-loader--h6 {
+  @apply h-[20px];
+}
+
+.puik-skeleton-loader--text-small {
+  @apply h-[18px];
+}
+
+.puik-skeleton-loader--text-medium {
+  @apply h-[20px];
+}
+
+.puik-skeleton-loader--text-large {
+  @apply h-[22px];
+}
+
+.puik-skeleton-loader--badge {
+  @apply h-[24px] w-[64px] rounded-[9999px];
+}
+
+.puik-skeleton-loader--tag {
+  @apply h-[22px] w-[64px];
+}
+
+.puik-skeleton-loader--mega-jumbotron {
+  @apply h-[116px];
+}
+
+.puik-skeleton-loader--jumbotron {
+  @apply h-[58px];
+}
+
+.puik-skeleton-loader--image {
+  @apply h-[168px] w-[248px] flex justify-center items-center;
+}
+
+.puik-skeleton-loader--image::before {
+  content: '\e410';
+}
+
+.puik-skeleton-loader--video {
+  @apply h-[168px] w-[248px] flex justify-center items-center;
+}
+
+.puik-skeleton-loader--video::before {
+  content: '\e04b';
+}
+
+.puik-skeleton-loader--graph {
+  @apply h-[168px] w-[248px] flex justify-center items-center;
+}
+
+.puik-skeleton-loader--graph::before {
+  content: '\e01d';
+}

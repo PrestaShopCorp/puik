@@ -1,0 +1,42 @@
+@reference './theme.css';
+
+.puik-option {
+  @apply px-3 py-2 flex gap-x-2 relative cursor-default select-none text-primary-800 transition-colors;
+}
+
+.puik-option-single--selected {
+  @apply bg-primary-300;
+}
+
+.puik-option:hover:not(.puik-option--disabled, .puik-option--selected) {
+  @apply bg-primary-200 text-primary-800;
+}
+
+.puik-option--active:not(.puik-option--disabled, :hover) {
+  @apply ring ring-blue ring-inset rounded-lg;
+}
+
+.puik-option:active:not(.puik-option--disabled) {
+  @apply bg-white;
+}
+
+.puik-option--disabled {
+  @apply bg-white text-primary-500 cursor-not-allowed;
+}
+
+.puik-option__label {
+  @apply font-primary font-normal block truncate;
+}
+
+.puik-option__selected-icon {
+  @apply ml-auto;
+}
+
+.puik-icon.puik-option__selected-icon {
+  @apply ml-auto;
+  margin-left: auto !important;
+}
+
+.puik-option.puik-option-single--selected {
+  justify-content: space-between;
+}

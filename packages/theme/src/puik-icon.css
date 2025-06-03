@@ -1,0 +1,8 @@
+@reference './theme.css';
+
+.puik-icon {
+  @apply font-material-icons leading-none;
+}
+.puik-icon--disabled {
+  @apply text-primary-400!;
+}

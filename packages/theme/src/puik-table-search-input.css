@@ -1,0 +1,30 @@
+@reference './theme.css';
+@reference './puik-input.css';
+
+.puik-table-search-input--submit {
+  @apply relative cursor-pointer;
+}
+
+.puik-table-search-input--submit .puik-table-search-input--reset {
+  @apply capitalize absolute top-[100%] left-0 pt-[2px];
+}
+
+.puik-table-search-input--submit .puik-table-search-input--reset .puik-button {
+  @apply p-[2px];
+}
+
+.puik-table-search-input--range {
+  @apply flex flex-col gap-y-1;
+}
+
+.puik-table-search-input__content {
+  @apply min-w-full;
+}
+
+.puik-table-search-input__content .puik-input {
+  @apply bg-white;
+}
+
+.puik-table-search-input__content .puik-input {
+  @apply min-w-full;
+}

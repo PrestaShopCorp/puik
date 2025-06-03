@@ -1,0 +1,46 @@
+@reference './theme.css';
+@reference './typography.css';
+
+.puik-switch__group {
+  @apply flex items-center;
+}
+
+.puik-switch {
+  @apply relative inline-flex items-center h-5 rounded-[9999px] w-9 bg-primary cursor-pointer;
+}
+
+.puik-switch:focus-visible {
+  @apply outline-none ring ring-blue ring-offset-1;
+}
+
+.puik-switch:disabled {
+  @apply bg-primary-400 pointer-events-none;
+}
+
+.puik-switch--enabled {
+  @apply bg-green;
+}
+
+.puik-switch--enabled:disabled {
+  @apply bg-green-100;
+}
+
+.puik-switch__toggle {
+  @apply inline-block w-4 h-4 transform bg-white rounded-[9999px] translate-x-0.5 transition duration-200 ease-in-out;
+}
+
+.puik-switch__toggle--enabled {
+  @apply translate-x-[18px];
+}
+
+.puik-switch__label {
+  @apply cursor-pointer puik-body-default;
+}
+
+.puik-switch__label--right {
+  @apply ml-2;
+}
+
+.puik-switch__label--left {
+  @apply mr-2;
+}

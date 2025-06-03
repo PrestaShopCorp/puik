@@ -1,6 +1,6 @@
 <template>
   <div
-    class="puik-table__container"
+    class="puik-table__container puik-scrollbar"
     @scroll="getScrollBarPosition"
   >
     <table
@@ -120,6 +120,7 @@
                 </span>
                 <PuikButton
                   v-if="header.sortable"
+                  class="puik-table__head__row__item__content__sort-btn"
                   :right-icon="
                     sortIcon[header.value] ?? PuikTableSortIcon.Default
                   "
@@ -477,11 +478,11 @@ import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { PuikSkeletonLoader } from '@prestashopcorp/puik-components/skeleton-loader';
 import { PuikTableSearchInput } from '@prestashopcorp/puik-components/table';
 import {
-  TableProps,
-  TableEmits,
+  type TableProps,
+  type TableEmits,
   PuikTableSortOrder,
   PuikTableSortIcon,
-  sortOption
+  type sortOption
 } from './table';
 import type {
   PuikTableSearchInputTypes,

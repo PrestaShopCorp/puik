@@ -10,7 +10,7 @@ Puik is a library that aims to provide a complete set of reusable components bas
 - [@prestashopcorp/puik-web-components](https://www.npmjs.com/package/@prestashopcorp/puik-web-components) a Web components library
 - [@prestashopcorp/puik-resolver](https://www.npmjs.com/package/@prestashopcorp/puik-resolver) a component resolver for our Vue 3 components library
 - [@prestashopcorp/puik-theme](https://www.npmjs.com/package/@prestashopcorp/puik-theme) a CSS library containing all the classes used in our components
-- [@prestashopcorp/puik-tailwind-preset](https://www.npmjs.com/package/@prestashopcorp/puik-tailwind-preset) a Tailwind Css preset that contains all the design tokens used to create the components
+- [@prestashopcorp/puik-tailwind-preset](https://www.npmjs.com/package/@prestashopcorp/puik-tailwind-preset) a Tailwind Css preset that contains all the design tokens used to create the components ( ⚠️ This package is obsolete since Puik version `2.6.0`, the migration of tailwind to version `V4`, whose css-only philosophy makes the old theme.js preset file unnecessary).
 
 This library provides three ways of using the design system in your project by using the VueJs components, the css classes from the theme or by using Web components.
 
