@@ -28,7 +28,7 @@
         'puik-tooltip__tip',
       { 'puik-tooltip--visible': isVisible }
       ]"
-      :style="{ 'z-index': isVisible ? zindex : -1, 'max-width': maxWidth }"
+      :style="{ 'z-index': isVisible ? zindex : -1, 'max-width': maxWidth ? `${maxWidth}px` : 'max-content' }"
       aria-live="polite"
       :aria-hidden="!isVisible"
       @mouseover="stayVisible"
