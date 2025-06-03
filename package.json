@@ -2,12 +2,11 @@
   "description": "PUIK - PrestaShop UI kit.",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.9.0",
+  "packageManager": "pnpm@10.11.1",
   "workspaces": [
     "packages/*",
     "docs/*",
-    "playground",
-    "new-playground"
+    "playground"
   ],
   "engines": {
     "node": ">= v20.18.3"
