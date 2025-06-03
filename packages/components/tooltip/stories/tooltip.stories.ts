@@ -48,10 +48,10 @@ export default {
     },
     maxWidth: {
       control: 'text',
-      description: 'Set a max-width for the tooltip',
+      description: 'Sets a maximum width for the tooltip (in px)',
       table: {
         defaultValue: {
-          summary: 'undefined'
+          summary: 'max-content'
         }
       }
     },
