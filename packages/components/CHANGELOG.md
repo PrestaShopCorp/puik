@@ -1,5 +1,16 @@
 # @prestashopcorp/puik-components
 
+## 2.6.0
+
+### Minor Changes
+
+see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.6.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @prestashopcorp/puik-theme@2.6.0
+
 ## 2.5.1
 
 ### Patch Changes

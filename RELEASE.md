@@ -8,7 +8,7 @@ The released packages are :
 - `@prestashopcorp/puik-web-components`
 - `@prestashopcorp/puik-resolver`
 - `@prestashopcorp/puik-theme`
-- `@prestashopcorp/puik-tailwind-preset`
+- `@prestashopcorp/puik-tailwind-preset` (no longer published since puik `v2.6.0` and theme migration to tailwind v4)
 - `@prestashopcorp/puik`
 
 ℹ️ Only packages whose version has been bumped will be published in the npm registry (see below):

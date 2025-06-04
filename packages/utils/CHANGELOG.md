@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-utils
 
+## 2.3.0
+
+### Minor Changes
+
+see changelog - https://github.com/PrestaShopCorp/puik/releases/tag/v2.6.0
+
 ## 2.2.1
 
 ### Patch Changes
