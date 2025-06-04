@@ -1,7 +1,7 @@
 {
   "name": "@prestashopcorp/puik-components",
   "description": "PUIK Vue 3 components library.",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "author": "Prestashop",
   "license": "MIT",
   "type": "module",

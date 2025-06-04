@@ -200,7 +200,7 @@ const ButtonTemplate = (args: Args) => ({
     };
   },
   template: `
-  <div class="gap-x-4">
+  <div class="flex items-center gap-x-4">
     <puik-button v-bind="args" :variant="args.variant" size="lg">{{ args.variant }} Button lg</puik-button>
     <puik-button v-bind="args" :variant="args.variant">{{ args.variant }} Button md</puik-button>
     <puik-button v-bind="args" :variant="args.variant" size="sm">{{ args.variant }} Button sm</puik-button>
@@ -658,7 +658,7 @@ export const WithIcon: StoryObj = {
       PuikButton
     },
     template: `
-      <div class="gap-x-4">
+      <div class="flex gap-x-4">
         <puik-button left-icon="shopping_cart">Left Icon</puik-button>
         <puik-button right-icon="shopping_cart">Right Icon</puik-button>
       </div>
