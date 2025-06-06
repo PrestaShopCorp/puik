@@ -4,7 +4,7 @@
 }
 
 header {
-  @apply sticky top-0 flex justify-between bg-white z-50 border-b  p-5;
+  @apply sticky top-0 flex justify-between bg-white z-50 border-b p-5;
 }
 
 main {

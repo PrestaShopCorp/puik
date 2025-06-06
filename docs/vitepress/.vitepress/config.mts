@@ -1,8 +1,15 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vitepress';
+import { Plugin } from 'vite'
 import Components from 'unplugin-vue-components/vite';
 import { PuikResolver } from '@prestashopcorp/puik-resolver';
-import tailwindcss from 'tailwindcss';
+import tailwindcss from '@tailwindcss/vite';
+
+const componentsPlugin = Components({
+  resolvers: [PuikResolver()],
+  dts: true
+}) as unknown as Plugin;
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -48,15 +55,9 @@ export default defineConfig({
     ]
   },
   vite: {
-    css: {
-      postcss: {
-        plugins: [tailwindcss()]
-      }
-    },
     plugins: [
-      Components({
-        resolvers: [PuikResolver()],
-      }),
+      componentsPlugin,
+      tailwindcss()
     ],
     server: {
       port: 5174
@@ -66,7 +67,6 @@ export default defineConfig({
         '@prestashopcorp/puik-components': resolve(__dirname, '../node_modules/@prestashopcorp/puik-components'),
         '@prestashopcorp/puik-theme/assets': resolve(__dirname, '../node_modules/@prestashopcorp/puik-theme/assets'),
         '@prestashopcorp/puik-theme/src': resolve(__dirname, '../node_modules/@prestashopcorp/puik-theme/src'),
-        '@prestashopcorp/puik-theme': resolve(__dirname, '../node_modules/@prestashopcorp/puik-theme/dist'),
         '@vitepress/components': resolve(__dirname, '../.vitepress/components')
       }
     }

@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-y-4">
-    <div class="flex flex-col gap-y-2">
+    <div class="flex gap-x-4">
       <puik-switch
         v-model="multiple"
         label="Multiple"

@@ -21,8 +21,9 @@
   "publishConfig": {
     "main": "./dist/index.css",
     "exports": {
-      "./*.css": "./dist/*.css",
-      "./assets/*": "./assets/*"
+      ".": "./dist/index.css",
+      "./assets/*": "./assets/*",
+      "./*": "./dist/*.css"
     }
   },
   "devDependencies": {
