@@ -37,7 +37,8 @@ export default defineConfig({
         items: [
           { text: 'Accordion', link: '/vue-components/accordion' },
           { text: 'Alert', link: '/vue-components/alert' },
-          { text: 'Avatar', link: '/vue-components/avatar' }
+          { text: 'Avatar', link: '/vue-components/avatar' },
+          { text: 'Table', link: '/vue-components/table' }
         ]
       },
       {

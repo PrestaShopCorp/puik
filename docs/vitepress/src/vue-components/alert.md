@@ -4,7 +4,7 @@ description: An alert is an element that displays a brief, important message in 
 aria: https://www.w3.org/WAI/ARIA/apg/patterns/alert/
 ---
 <script setup>
-    import Alert from '@vitepress/components/Alert.vue';
+  import Alert from '@vitepress/components/Alert.vue';
 </script>
 
 ## Alert
