@@ -5,17 +5,103 @@ name: table
 aria: https://www.w3.org/WAI/ARIA/apg/patterns/table
 ---
 
-<script setup>
+<script setup lang="ts">
+  import { ref } from 'vue';
   import Table from '@vitepress/components/Table.vue';
+  import DataAttributes from '@vitepress/components/DataAttributes.vue';
+
+  const attributes = [
+    {
+      prop: 'headers',
+      default: '[]',
+      type: 'PuikTableHeader[]',
+      details: `
+export interface PuikTableHeader {
+  value: string
+  text?: string
+  size?: PuikTableHeaderSize
+  align?: PuikTableHeaderAlign
+  width?: string
+  sortable?: boolean
+  preventExpand?: boolean
+  searchable?: boolean
+  searchSubmit?: boolean
+  searchType?: PuikTableSearchInputTypes
+}`,
+      description: 'Table headers'
+    },
+    {
+      prop: 'items',
+      default: '[]',
+      type: 'any[]',
+      description: 'Table items'
+    },
+    {
+      prop: 'expandable',
+      default: true,
+      type: 'boolean',
+      description: 'Makes rows expandable'
+    },
+    {
+      prop: 'selectable',
+      default: false,
+      type: 'boolean',
+      description: 'Makes rows selectable'
+    },
+    {
+      prop: 'searchBar',
+      default: false,
+      type: 'boolean',
+      description: 'Display the search bar'
+    },
+    {
+      prop: 'searchFromServer',
+      default: false,
+      type: 'boolean',
+      description: 'No client-side search handling (however the searchSubmit event is always emitted with a gloabaSearchOptions payload with useful informations to create a query)'
+    },
+    {
+      prop: 'sortFromServer',
+      default: true,
+      type: 'boolean',
+      description: 'No client-side sort handling (however the sortColumn event is always emitted with a sortOption type payload with useful informations to create a query)'
+    },
+    {
+      prop: 'fullWidth',
+      default: true,
+      type: 'boolean',
+      description: 'Sets the table width at 100%'
+    },
+    {
+      prop: 'stickyFirstCol',
+      default: true,
+      type: 'boolean',
+      description: 'Makes the first column sticky'
+    },
+    {
+      prop: 'stickyLastCol',
+      default: false,
+      type: 'boolean',
+      description: 'Makes the last column sticky'
+    },
+    {
+      prop: 'dataTest',
+      default: 'none',
+      type: 'string',
+      description: 'Sets the data-test attribute to target elements and facilitate end-to-end testing'
+    }
+  ];
 </script>
 
 ## Table
 
 Like an HTML table element, a WAI-ARIA table is a static tabular structure containing one or more rows that each contain one or more cells; it is not an interactive widget. Thus, its cells are not focusable or selectable. The grid pattern is used to make an interactive widget that has a tabular structure.
 
+:::raw
 <Table />
+:::
 
-::: details Show Code {open}
+::: details Show Code
 
 ```vue
 <template>
@@ -100,4 +186,10 @@ const headers: PuikTableHeader[] = [
 </script>
 ```
 
+:::
+
+### API Reference
+
+::: raw
+<DataAttributes :attributes="attributes" />
 :::

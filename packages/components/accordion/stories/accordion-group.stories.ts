@@ -8,7 +8,7 @@ export default {
   argTypes: {
     multiple: {
       control: 'boolean',
-      description: 'Allow multiple accordions to be expanded',
+      description: 'Allows multiple accordions to be expanded',
       table: {
         defaultValue: {
           summary: false
@@ -17,7 +17,7 @@ export default {
     },
     contained: {
       control: 'boolean',
-      description: 'Remove space between accordion',
+      description: 'Removes space between accordion',
       table: {
         defaultValue: {
           summary: false

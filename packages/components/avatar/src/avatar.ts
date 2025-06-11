@@ -38,7 +38,7 @@ export interface AvatarProps {
   alt?: string
   firstName?: string
   lastName?: string
-  singleInitial?: Boolean
+  singleInitial?: boolean
   dataTest?: string
   ariaLabel?: string
 }

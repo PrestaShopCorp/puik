@@ -68,7 +68,7 @@ export default defineConfig({
         '@prestashopcorp/puik-components': resolve(__dirname, '../node_modules/@prestashopcorp/puik-components'),
         '@prestashopcorp/puik-theme/assets': resolve(__dirname, '../node_modules/@prestashopcorp/puik-theme/assets'),
         '@prestashopcorp/puik-theme/src': resolve(__dirname, '../node_modules/@prestashopcorp/puik-theme/src'),
-        '@vitepress/components': resolve(__dirname, '../.vitepress/components')
+        '@vitepress/components': resolve(__dirname, '../.vitepress/theme/components')
       }
     }
   }

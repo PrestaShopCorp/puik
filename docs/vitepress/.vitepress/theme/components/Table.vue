@@ -21,45 +21,11 @@
         ></puik-button>
       </template>
     </puik-table>
-    <div class="flex flex-col gap-y-4">
-      <puik-switch
-        v-model="expandable"
-        label="Expandable"
-      />
-      <puik-switch
-        v-model="selectable"
-        label="Selectable"
-      />
-      <puik-switch
-        v-model="searchBar"
-        label="Search Bar"
-      />
-      <puik-switch
-        v-model="searchFromServer"
-        label="Search from server"
-      />
-      <puik-switch
-        v-model="sortFromServer"
-        label="Sort from server"
-      />
-      <puik-switch
-        v-model="fullWidth"
-        label="Full Width"
-      />
-      <puik-switch
-        v-model="stickyFirstCol"
-        label="Sticky First Column"
-      />
-      <puik-switch
-        v-model="stickyLastCol"
-        label="Sticky Last Column"
-      />
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { PuikTableHeader } from '@prestashopcorp/puik-components'
+import type {  PuikTableHeader } from '@prestashopcorp/puik-components'
 import { ref } from 'vue';
 
 function generateData(length = 3) {
