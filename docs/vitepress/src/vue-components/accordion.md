@@ -9,6 +9,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
   import Accordion from '@vitepress/components/Accordion.vue';
   import AccordionGroup from '@vitepress/components/AccordionGroup.vue';
   import DataAttributes from '@vitepress/components/DataAttributes.vue';
+  import ComponentOverview from '@vitepress/components/ComponentOverview.vue';
 
   const accordion_attributes = [
     {
@@ -91,8 +92,9 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
 
 An Accordion is a UI component that organizes content into collapsible sections, allowing users to expand or collapse specific panels to view or hide related information.
 
-<Accordion />
-
+<ComponentOverview>
+  <Accordion />
+</ComponentOverview>
 ::: details Show Code
 
 ```vue
@@ -122,7 +124,9 @@ An Accordion is a UI component that organizes content into collapsible sections,
 
 An Accordion Group manages multiple accordion items, ensuring only one section is expanded at a time (optional) or allowing multiple sections to be open simultaneously.
 
-<AccordionGroup />
+<ComponentOverview>
+  <AccordionGroup />
+</ComponentOverview>
 
 ::: details Show Code
 

@@ -38,6 +38,9 @@ export default defineConfig({
           { text: 'Accordion', link: '/vue-components/accordion' },
           { text: 'Alert', link: '/vue-components/alert' },
           { text: 'Avatar', link: '/vue-components/avatar' },
+          { text: 'Badge', link: '/vue-components/badge' },
+          { text: 'Breadcrumb', link: '/vue-components/breadcrumb' },
+          { text: 'Button', link: '/vue-components/button' },
           { text: 'Table', link: '/vue-components/table' }
         ]
       },

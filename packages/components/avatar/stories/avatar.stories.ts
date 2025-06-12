@@ -68,7 +68,7 @@ export default {
       }
     },
     icon: {
-      description: 'Set the icon name (from Material Symbols: https://fonts.google.com/icons)',
+      description: 'Sets the icon name (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -91,17 +91,6 @@ export default {
         }
       }
     },
-    ariaLabel: {
-      description: 'Sets the aria-label attribute for accessibility',
-      table: {
-        defaultValue: {
-          summary: 'undefined'
-        },
-        type: {
-          summary: 'string'
-        }
-      }
-    },
     alt: {
       description: 'Image alt attribute if avatar type prop is set to "photo"',
       control: 'text',
@@ -111,6 +100,17 @@ export default {
         },
         defaultValue: {
           summary: 'none'
+        }
+      }
+    },
+    ariaLabel: {
+      description: 'Sets the aria-label attribute for accessibility',
+      table: {
+        defaultValue: {
+          summary: 'undefined'
+        },
+        type: {
+          summary: 'string'
         }
       }
     },
@@ -142,7 +142,7 @@ export default {
     },
     singleInitial: {
       description:
-        'Initials match a single letter (first letter of firstName. If the firstName conditions are not met this is the first letter of lastName). NB: if the conditions for the firstName and lastName props are not met then the default value is "P" (singleInitial set to true) or "PS" (singleInitial set to false).',
+        'Initials match a single letter (first letter of firstName. If the firstName conditions are not met this is the first letter of lastName). NB: if the conditions for the firstName and lastName props are not met then the default value is "P" (singleInitial set to true) or "PS" (singleInitial set to false)',
       table: {
         defaultValue: {
           summary: false

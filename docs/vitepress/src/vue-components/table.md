@@ -9,6 +9,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/table
   import { ref } from 'vue';
   import Table from '@vitepress/components/Table.vue';
   import DataAttributes from '@vitepress/components/DataAttributes.vue';
+  import ComponentOverview from '@vitepress/components/ComponentOverview.vue';
 
   const attributes = [
     {
@@ -98,7 +99,9 @@ export interface PuikTableHeader {
 Like an HTML table element, a WAI-ARIA table is a static tabular structure containing one or more rows that each contain one or more cells; it is not an interactive widget. Thus, its cells are not focusable or selectable. The grid pattern is used to make an interactive widget that has a tabular structure.
 
 :::raw
-<Table />
+<ComponentOverview>
+  <Table />
+</ComponentOverview>
 :::
 
 ::: details Show Code

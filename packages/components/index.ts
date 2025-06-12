@@ -1,4 +1,5 @@
 export * from './config-provider';
+export * from './base';
 export * from './button';
 export * from './input';
 export * from './alert';

@@ -11,9 +11,9 @@ export enum PuikBadgeVariants {
 
 export interface BadgeProps {
   variant?: PuikBadgeVariants | `${PuikBadgeVariants}`
-  dataTest?: string
-  ariaLabel?: string
   ariaLive?: `${PuikAriaLive}`
+  ariaLabel?: string
+  dataTest?: string
 }
 
 export type BadgeInstance = InstanceType<typeof Badge>;
