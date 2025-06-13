@@ -36,6 +36,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'Accordion', link: '/vue-components/accordion' },
+          { text: 'Accordion Group', link: '/vue-components/accordion-group' },
           { text: 'Alert', link: '/vue-components/alert' },
           { text: 'Avatar', link: '/vue-components/avatar' },
           { text: 'Badge', link: '/vue-components/badge' },
@@ -71,7 +72,8 @@ export default defineConfig({
         '@prestashopcorp/puik-components': resolve(__dirname, '../node_modules/@prestashopcorp/puik-components'),
         '@prestashopcorp/puik-theme/assets': resolve(__dirname, '../node_modules/@prestashopcorp/puik-theme/assets'),
         '@prestashopcorp/puik-theme/src': resolve(__dirname, '../node_modules/@prestashopcorp/puik-theme/src'),
-        '@vitepress/components': resolve(__dirname, '../.vitepress/theme/components')
+        '@vitepress/components': resolve(__dirname, '../.vitepress/theme/components'),
+        '@vitepress/utilities': resolve(__dirname, '../.vitepress/theme/utilities')
       }
     }
   }

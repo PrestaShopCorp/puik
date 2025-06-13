@@ -1,11 +1,12 @@
 ---
-title: Breadcrumb
 description : A breadcrumb trail consists of a list of links to the parent pages of the current page in hierarchical order. It helps users find their place within a website or web application. Breadcrumbs are often placed horizontally before a page's main content.
+name: breadcrumb
+outline: deep
 ---
 <script setup>
   import Breadcrumb from '@vitepress/components/Breadcrumb.vue';
-  import DataAttributes from '@vitepress/components/DataAttributes.vue';
-  import ComponentOverview from '@vitepress/components/ComponentOverview.vue';
+  import DataAttributes from '@vitepress/utilities/DataAttributes.vue';
+  import ComponentOverview from '@vitepress/utilities/ComponentOverview.vue';
 
   const attributes = [
     {
@@ -51,9 +52,11 @@ A JSON string representing an array of BreadcrumbItem
   ];
 </script>
 
-## Breadcrumb
+# Breadcrumb
 
 A `breadcrumb` trail consists of a list of links to the parent pages of the current page in hierarchical order. It helps users find their place within a website or web application. Breadcrumbs are often placed horizontally before a page's main content.
+
+## Overview
 
 ::: raw
 <ComponentOverview>
@@ -95,7 +98,9 @@ const icon = ref('home');
 
 :::
 
-### API Reference
+## API Reference
+
+### Props
 
 ::: raw
 <DataAttributes :attributes="attributes" />

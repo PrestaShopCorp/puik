@@ -1,11 +1,12 @@
 ---
-title: Button
 description : A button is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
+name: button
+outline: deep
 ---
 <script setup>
   import Button from '@vitepress/components/Button.vue';
-  import DataAttributes from '@vitepress/components/DataAttributes.vue';
-  import ComponentOverview from '@vitepress/components/ComponentOverview.vue';
+  import DataAttributes from '@vitepress/utilities/DataAttributes.vue';
+  import ComponentOverview from '@vitepress/utilities/ComponentOverview.vue';
 
   const attributes = [
     {
@@ -62,9 +63,11 @@ enum PuikButtonSizes {
   ];
 </script>
 
-## Button
+# Button
 
 A `button` is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
+
+## Overview
 
 ::: raw
 <ComponentOverview>
@@ -80,7 +83,9 @@ A `button` is a widget that enables users to trigger an action or event, such as
 
 :::
 
-### API Reference
+## API Reference
+
+### Props
 
 ::: raw
 <DataAttributes :attributes="attributes" />

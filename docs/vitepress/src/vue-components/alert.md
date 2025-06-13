@@ -1,12 +1,13 @@
 ---
-title: Alert
 description: An alert is an element that displays a brief, important message in a way that attracts the user's attention without interrupting the user's task. Dynamically rendered alerts are automatically announced by most screen readers, and in some operating systems, they may trigger an alert sound. It is important to note that, at this time, screen readers do not inform users of alerts that are present on the page before page load completes.
+name: alert
 aria: https://www.w3.org/WAI/ARIA/apg/patterns/alert/
+outline: deep
 ---
 <script setup>
   import Alert from '@vitepress/components/Alert.vue';
-  import DataAttributes from '@vitepress/components/DataAttributes.vue';
-  import ComponentOverview from '@vitepress/components/ComponentOverview.vue';
+  import DataAttributes from '@vitepress/utilities/DataAttributes.vue';
+  import ComponentOverview from '@vitepress/utilities/ComponentOverview.vue';
 
   const attributes = [
     {
@@ -146,9 +147,11 @@ export enum PuikAlertVariants {
   ];
 </script>
 
-## Alert
+# Alert
 
-An alert is an element that displays a brief, important message in a way that attracts the user's attention without interrupting the user's task. Dynamically rendered alerts are automatically announced by most screen readers, and in some operating systems, they may trigger an alert sound. It is important to note that, at this time, screen readers do not inform users of alerts that are present on the page before page load completes.
+An `alert` is an element that displays a brief, important message in a way that attracts the user's attention without interrupting the user's task. Dynamically rendered alerts are automatically announced by most screen readers, and in some operating systems, they may trigger an alert sound. It is important to note that, at this time, screen readers do not inform users of alerts that are present on the page before page load completes.
+
+## Overview
 
 ::: raw
 <ComponentOverview>
@@ -217,7 +220,9 @@ const handleClose = (event: Event) => {
 
 :::
 
-### API Reference
+## API Reference
+
+### Props
 
 ::: raw
 <DataAttributes :attributes="attributes" />

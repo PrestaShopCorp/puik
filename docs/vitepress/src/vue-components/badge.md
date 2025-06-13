@@ -1,11 +1,12 @@
 ---
-title: Badge
 description : The `Badge` component is used to display concise status or notification information. It supports different visual variants such as success, warning, danger, info, and neutral, making it suitable for highlighting statuses or counts in your application. The component is accessible and customizable through various props.
+name: badge
+outline: deep
 ---
 <script setup>
   import Badge from '@vitepress/components/Badge.vue';
-  import DataAttributes from '@vitepress/components/DataAttributes.vue';
-  import ComponentOverview from '@vitepress/components/ComponentOverview.vue';
+  import DataAttributes from '@vitepress/utilities/DataAttributes.vue';
+  import ComponentOverview from '@vitepress/utilities/ComponentOverview.vue';
 
   const attributes = [
     {
@@ -55,9 +56,11 @@ enum PuikAriaLive {
   ];
 </script>
 
-## Badge
+# Badge
 
 The `Badge` component is used to display concise status or notification information. It supports different visual variants such as success, warning, danger, info, and neutral, making it suitable for highlighting statuses or counts in your application. The component is accessible and customizable through various props.
+
+## Overview
 
 ::: raw
 <ComponentOverview>
@@ -92,7 +95,9 @@ const dataTest = ref('badge');
 
 :::
 
-### API Reference
+## API Reference
+
+### Props
 
 ::: raw
 <DataAttributes :attributes="attributes" />

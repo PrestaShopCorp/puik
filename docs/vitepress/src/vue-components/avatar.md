@@ -1,11 +1,12 @@
 ---
-title: Avatar
-description: An image element with a fallback for representing the user.
+description: An Avatar is an image element with a fallback for representing the user.
+name: avatar
+outline: deep
 ---
 <script setup>
   import Avatar from '@vitepress/components/Avatar.vue';
-  import DataAttributes from '@vitepress/components/DataAttributes.vue';
-  import ComponentOverview from '@vitepress/components/ComponentOverview.vue';
+  import DataAttributes from '@vitepress/utilities/DataAttributes.vue';
+  import ComponentOverview from '@vitepress/utilities/ComponentOverview.vue';
 
   const attributes = [
     {
@@ -116,9 +117,11 @@ enum PuikAvatarType {
   ];
 </script>
 
-## Avatar
+# Avatar
 
-An image element with a fallback for representing the user.
+An `Avatar` is an image element with a fallback for representing the user.
+
+## Overview
 
 ::: raw
 <ComponentOverview>
@@ -173,7 +176,9 @@ const lastName = ref('Shop');
 
 :::
 
-### API Reference
+## API Reference
+
+### Props
 
 ::: raw
 <DataAttributes :attributes="attributes" />

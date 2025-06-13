@@ -1,17 +1,16 @@
 ---
-title: Accordion
 description: An Accordion is a UI component that organizes content into collapsible sections, allowing users to expand or collapse specific panels to view or hide related information.
 name: accordion
 aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
+outline: deep
 ---
 
 <script setup>
   import Accordion from '@vitepress/components/Accordion.vue';
-  import AccordionGroup from '@vitepress/components/AccordionGroup.vue';
-  import DataAttributes from '@vitepress/components/DataAttributes.vue';
-  import ComponentOverview from '@vitepress/components/ComponentOverview.vue';
+  import DataAttributes from '@vitepress/utilities/DataAttributes.vue';
+  import ComponentOverview from '@vitepress/utilities/ComponentOverview.vue';
 
-  const accordion_attributes = [
+  const attributes = [
     {
       prop: 'name',
       default: 'none',
@@ -88,9 +87,11 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
   ];
 </script>
 
-## Accordion
+# Accordion
 
-An Accordion is a UI component that organizes content into collapsible sections, allowing users to expand or collapse specific panels to view or hide related information.
+An `Accordion` is a UI component that organizes content into collapsible sections, allowing users to expand or collapse specific panels to view or hide related information.
+
+## Overview
 
 ::: raw
 <ComponentOverview>
@@ -117,55 +118,10 @@ An Accordion is a UI component that organizes content into collapsible sections,
 
 :::
 
-### API Reference
+## API Reference
+
+### Props
 
 ::: raw
-<DataAttributes :attributes="accordion_attributes" />
-:::
-
-## Accordion Group
-
-An Accordion Group manages multiple accordion items, ensuring only one section is expanded at a time (optional) or allowing multiple sections to be open simultaneously.
-
-<ComponentOverview>
-  <AccordionGroup />
-</ComponentOverview>
-
-::: details Show Code
-
-```vue
-<template>
-  <puik-accordion-group
-    v-model="expandedAccordion"
-    :multiple="multiple"
-    :contained="contained"
-  >
-    <puik-accordion
-      title="Title 1"
-      name="accordion-1"
-    >
-      Content 1
-    </puik-accordion>
-    <puik-accordion
-      title="Title 2"
-      name="accordion-2"
-    >
-      Content 2
-    </puik-accordion>
-    <puik-accordion
-      title="Title 3"
-      name="accordion-3"
-    >
-      Content 3
-    </puik-accordion>
-  </puik-accordion-group>
-</template>
-```
-
-:::
-
-### API Reference
-
-::: raw
-<DataAttributes :attributes="accordion_group_attributes" />
+<DataAttributes :attributes="attributes" />
 :::
