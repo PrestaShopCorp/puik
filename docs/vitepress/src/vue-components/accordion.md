@@ -92,9 +92,12 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
 
 An Accordion is a UI component that organizes content into collapsible sections, allowing users to expand or collapse specific panels to view or hide related information.
 
+::: raw
 <ComponentOverview>
   <Accordion />
 </ComponentOverview>
+:::
+
 ::: details Show Code
 
 ```vue

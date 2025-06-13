@@ -1,12 +1,14 @@
 <template>
-  <puik-badge
-    :variant="variant"
-    :aria-live="ariaLive"
-    :aria-label="ariaLabel"
-    :data-test="dataTest"
-  >
-    badge content
-  </puik-badge>
+  <div class="flex items-center justify-center">
+    <puik-badge
+      :variant="variant"
+      :aria-live="ariaLive"
+      :aria-label="ariaLabel"
+      :data-test="dataTest"
+    >
+      badge content
+    </puik-badge>
+  </div>
 </template>
 
 <script setup lang="ts">

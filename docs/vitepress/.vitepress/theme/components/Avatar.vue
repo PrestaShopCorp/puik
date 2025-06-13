@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-x-4">
+  <div class="flex justify-center gap-x-4">
     <PuikAvatar
       id="avatar-initials"
       :size="size"
@@ -29,7 +29,7 @@
 import { ref } from 'vue';
 import {  PuikAvatarMode,  PuikAvatarSize, PuikAvatarType } from '@prestashopcorp/puik-components';
 
-const size = ref(PuikAvatarSize.Medium);
+const size = ref(PuikAvatarSize.Large);
 const type = ref(PuikAvatarType.Initials);
 const mode = ref(PuikAvatarMode.Primary);
 const src = ref('https://picsum.photos/id/823/200');

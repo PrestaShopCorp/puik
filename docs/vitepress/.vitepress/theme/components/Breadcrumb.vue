@@ -1,8 +1,10 @@
 <template>
-  <puik-breadcrumb
-    :items="items"
-    :icon="icon"
-  ></puik-breadcrumb>
+   <div class="flex items-center justify-center">
+     <puik-breadcrumb
+       :items="items"
+       :icon="icon"
+     ></puik-breadcrumb>
+   </div>
 </template>
 
 <script setup lang="ts">

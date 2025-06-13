@@ -1,15 +1,17 @@
 <template>
-  <puik-button
-    :size="size"
-    :variant="variant"
-    :fluid="fluid"
-    :wrap-label="wrapLabel"
-    :disabled="disabled"
-    :left-icon="leftIcon"
-    :right-icon="rightIcon"
-    >
-    Button label
-  </puik-button>
+  <div class="flex items-center justify-center">
+    <puik-button
+      :size="size"
+      :variant="variant"
+      :fluid="fluid"
+      :wrap-label="wrapLabel"
+      :disabled="disabled"
+      :left-icon="leftIcon"
+      :right-icon="rightIcon"
+      >
+      Button label
+    </puik-button>
+  </div>
 </template>
 
 <script setup lang="ts">

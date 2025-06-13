@@ -120,9 +120,11 @@ enum PuikAvatarType {
 
 An image element with a fallback for representing the user.
 
+::: raw
 <ComponentOverview>
   <Avatar />
 </ComponentOverview>
+:::
 
 ::: details Show Code
 
@@ -158,7 +160,7 @@ An image element with a fallback for representing the user.
 import { ref } from 'vue';
 import {  PuikAvatarMode,  PuikAvatarSize, PuikAvatarType } from '@prestashopcorp/puik-components';
 
-const size = ref(PuikAvatarSize.Medium);
+const size = ref(PuikAvatarSize.Large);
 const type = ref(PuikAvatarType.Initials);
 const mode = ref(PuikAvatarMode.Primary);
 const src = ref('https://picsum.photos/id/823/200');

@@ -1,7 +1,9 @@
 <template>
   <Puik-card>
-    <div class="flex items-center justify-center min-h-[400px]">
+    <div class= "flex items-center justify-center min-h-[400px]">
+      <div class="min-w-[80%]">
         <slot />
+      </div>
     </div>
   </Puik-card>
 </template>

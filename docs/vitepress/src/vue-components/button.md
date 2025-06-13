@@ -66,9 +66,11 @@ enum PuikButtonSizes {
 
 A `button` is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
 
+::: raw
 <ComponentOverview>
   <Button />
 </ComponentOverview>
+:::
 
 ::: details Show Code
 
