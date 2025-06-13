@@ -63,10 +63,10 @@ export default {
       }
     },
     leftIcon: {
-      description: 'Set the button left icon (from Material Symbols: https://fonts.google.com/icons)'
+      description: 'Sets the button left icon (from Material Symbols: https://fonts.google.com/icons)'
     },
     rightIcon: {
-      description: 'Set the button right icon (from Material Symbols: https://fonts.google.com/icons)'
+      description: 'Sets the button right icon (from Material Symbols: https://fonts.google.com/icons)'
     },
     loading: {
       control: 'boolean',
@@ -100,16 +100,16 @@ export default {
     to: {
       control: 'text',
       description:
-        'Set a vue router link for the button (changes button to router-link)'
+        'Sets a vue router link for the button (changes button to router-link)'
     },
     href: {
       control: 'text',
-      description: 'Set a link for the button (changes button to "a" html tag)'
+      description: 'Sets a link for the button (changes button to "a" html tag)'
     },
     dataTest: {
       control: 'text',
       description:
-        'Set a data-test attribute to the button `${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`'
+        'Sets a data-test attribute to the button `${dataTest}` `left-icon-${dataTest}` `right-icon-${dataTest}`'
     },
     ariaLabel: {
       description: 'Sets the aria-label attribute for accessibility',
