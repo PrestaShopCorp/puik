@@ -43,6 +43,8 @@ export default defineConfig({
           { text: 'Breadcrumb', link: '/vue-components/breadcrumb' },
           { text: 'Button', link: '/vue-components/button' },
           { text: 'Button Group', link: '/vue-components/button-group' },
+          { text: 'Card', link: '/vue-components/card' },
+          { text: 'Checkbox', link: '/vue-components/checkbox' },
           { text: 'Table', link: '/vue-components/table' }
         ]
       },

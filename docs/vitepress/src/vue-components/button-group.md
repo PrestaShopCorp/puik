@@ -1,6 +1,6 @@
 ---
 description: A button group is a set of buttons displayed together, allowing users to perform related actions or select from a group of options. Button groups help organize actions in a compact and visually consistent way, improving usability and interface clarity.
-name: button
+name: button group
 outline: deep
 ---
 <script setup>

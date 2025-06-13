@@ -56,6 +56,7 @@ const headers: PuikTableHeader[] = [
   {
     text: 'Description',
     value: 'description',
+    size: 'lg'
   }
 ]
 
