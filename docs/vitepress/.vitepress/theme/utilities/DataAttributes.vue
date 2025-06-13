@@ -43,15 +43,15 @@ const headers: PuikTableHeader[] = [
     value: 'prop',
     size: 'sm'
   },
+    {
+    text: 'Type',
+    value: 'type',
+    size: 'md'
+  },
   {
     text: 'Default',
     value: 'default',
     size: 'sm'
-  },
-  {
-    text: 'Type',
-    value: 'type',
-    size: 'md'
   },
   {
     text: 'Description',

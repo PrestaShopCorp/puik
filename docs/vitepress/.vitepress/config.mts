@@ -42,6 +42,7 @@ export default defineConfig({
           { text: 'Badge', link: '/vue-components/badge' },
           { text: 'Breadcrumb', link: '/vue-components/breadcrumb' },
           { text: 'Button', link: '/vue-components/button' },
+          { text: 'Button Group', link: '/vue-components/button-group' },
           { text: 'Table', link: '/vue-components/table' }
         ]
       },

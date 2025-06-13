@@ -41,14 +41,14 @@ enum PuikAriaLive {
     },
     {
       prop: 'ariaLabel',
-      default: 'none',
+      default: 'undefined',
       type: 'string',
       description: 'Size variants of avatar component (small, medium, large, jumbo)',
       required: false
     },
     {
       prop: 'dataTest',
-      default: 'none',
+      default: 'undefined',
       type: 'string',
       description: 'Sets the data-test attribute on the badge',
       required: false

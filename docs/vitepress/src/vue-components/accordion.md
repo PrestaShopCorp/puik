@@ -13,49 +13,49 @@ outline: deep
   const attributes = [
     {
       prop: 'name',
-      default: 'none',
+      default: 'undefined',
       type: 'string',
       description: 'Name used by parent AccordionGroup to expand/collapse accordion',
       required: true
     },
     {
       prop: 'title',
-      default: 'none',
+      default: 'undefined',
       type: 'string',
       description: 'Title displayed in the header',
       required: false
     },
     {
       prop: 'subTitle',
-      default: 'none',
+      default: 'undefined',
       type: 'string',
       description: 'Sub title displayed in the header',
       required: false
     },
     {
       prop: 'icon',
-      default: 'none',
+      default: 'undefined',
       type: 'string',
       description: 'Sets the name for header icon (see Material Symbols: https://fonts.google.com/icons)',
       required: false
     },
     {
       prop: 'disabled',
-      default: 'none',
+      default: 'undefined',
       type: 'boolean',
       description: 'Sets accordion disabled',
       required: false
     },
     {
       prop: 'borderNone',
-      default: 'none',
+      default: 'undefined',
       type: 'boolean',
       description: 'Removes borders',
       required: false
     },
     {
       prop: 'dataTest',
-      default: 'none',
+      default: 'undefined',
       type: 'string',
       description: 'Sets the data-test attribute to target elements and facilitate end-to-end testing',
       required: false
@@ -65,21 +65,21 @@ outline: deep
     const accordion_group_attributes = [
     {
       prop: 'modelValue',
-      default: 'none',
+      default: 'undefined',
       type: 'string | string[] | null',
       description: 'v-model to control expanded accordions',
       required: false
     },
     {
       prop: 'multiple',
-      default: 'none',
+      default: 'undefined',
       type: 'boolean',
       description: 'Allows multiple accordions to be expanded',
       required: false
     },
     {
       prop: 'contained',
-      default: 'none',
+      default: 'undefined',
       type: 'boolean',
       description: 'Removes space between accordion',
       required: false

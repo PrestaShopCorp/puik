@@ -87,7 +87,7 @@ export interface PuikTableHeader {
     },
     {
       prop: 'dataTest',
-      default: 'none',
+      default: 'undefined',
       type: 'string',
       description: 'Sets the data-test attribute to target elements and facilitate end-to-end testing'
     }
@@ -96,7 +96,7 @@ export interface PuikTableHeader {
 
 # Table
 
-Like an HTML table element, a WAI-ARIA table is a static tabular structure containing one or more rows that each contain one or more cells; it is not an interactive widget. Thus, its cells are not focusable or selectable. The grid pattern is used to make an interactive widget that has a tabular structure.
+A `table` is a static tabular structure containing one or more rows that each contain one or more cells; it is not an interactive widget. Thus, its cells are not focusable or selectable. The grid pattern is used to make an interactive widget that has a tabular structure.
 
 ## Overview
 

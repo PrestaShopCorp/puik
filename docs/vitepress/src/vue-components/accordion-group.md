@@ -13,21 +13,21 @@ outline: deep
   const attributes = [
     {
       prop: 'modelValue',
-      default: 'none',
+      default: 'undefined',
       type: 'string | string[] | null',
       description: 'v-model to control expanded accordions',
       required: false
     },
     {
       prop: 'multiple',
-      default: 'none',
+      default: 'undefined',
       type: 'boolean',
       description: 'Allows multiple accordions to be expanded',
       required: false
     },
     {
       prop: 'contained',
-      default: 'none',
+      default: 'undefined',
       type: 'boolean',
       description: 'Removes space between accordion',
       required: false
