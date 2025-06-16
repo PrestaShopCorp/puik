@@ -7,8 +7,8 @@ export interface IconProps {
   color?: string
   fill?: number
   isDisabled?: boolean
-  dataTest?: string
   ariaLabel?: string
+  dataTest?: string
 }
 
 export type IconInstance = InstanceType<typeof Icon>;

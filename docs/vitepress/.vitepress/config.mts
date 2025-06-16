@@ -45,6 +45,12 @@ export default defineConfig({
           { text: 'Button Group', link: '/vue-components/button-group' },
           { text: 'Card', link: '/vue-components/card' },
           { text: 'Checkbox', link: '/vue-components/checkbox' },
+          { text: 'Chip', link: '/vue-components/chip' },
+          { text: 'Divider', link: '/vue-components/divider' },
+          { text: 'Icon', link: '/vue-components/icon' },
+          { text: 'Input', link: '/vue-components/input' },
+          { text: 'Label', link: '/vue-components/label' },
+          { text: 'Link', link: '/vue-components/link' },
           { text: 'Table', link: '/vue-components/table' }
         ]
       },

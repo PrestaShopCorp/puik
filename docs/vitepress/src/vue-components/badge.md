@@ -1,5 +1,5 @@
 ---
-description : The `Badge` component is used to display concise status or notification information. It supports different visual variants such as success, warning, danger, info, and neutral, making it suitable for highlighting statuses or counts in your application. The component is accessible and customizable through various props.
+description : A `Badge` component is used to display concise status or notification information. It supports different visual variants such as success, warning, danger, info, and neutral, making it suitable for highlighting statuses or counts in your application. The component is accessible and customizable through various props.
 name: badge
 outline: deep
 ---
@@ -58,7 +58,7 @@ enum PuikAriaLive {
 
 # Badge
 
-The `Badge` component is used to display concise status or notification information. It supports different visual variants such as success, warning, danger, info, and neutral, making it suitable for highlighting statuses or counts in your application. The component is accessible and customizable through various props.
+A `Badge` component is used to display concise status or notification information. It supports different visual variants such as success, warning, danger, info, and neutral, making it suitable for highlighting statuses or counts in your application. The component is accessible and customizable through various props.
 
 ## Overview
 

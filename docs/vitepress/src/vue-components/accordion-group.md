@@ -37,7 +37,7 @@ outline: deep
 
 # Accordion Group
 
-The `Accordion Group` component provides a way to organize multiple accordion panels, allowing users to expand or collapse sections to reveal or hide content. It manages the expanded state of its child accordions, supporting both single and multiple expanded panels, and can be configured to display accordions in a contained layout without spacing between them.
+An `Accordion Group` component provides a way to organize multiple accordion panels, allowing users to expand or collapse sections to reveal or hide content. It manages the expanded state of its child accordions, supporting both single and multiple expanded panels, and can be configured to display accordions in a contained layout without spacing between them.
 
 ## Overview
 

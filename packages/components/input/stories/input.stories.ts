@@ -67,7 +67,7 @@ export default {
       }
     },
     error: {
-      description: 'Set an error for the input'
+      description: 'Sets an error for the input'
     },
     success: {
       description: 'Sets the input in a success state',
@@ -78,7 +78,7 @@ export default {
       }
     },
     hideHint: {
-      description: 'Hide the input hint',
+      description: 'Hides the input hint',
       table: {
         defaultValue: {
           summary: 'false'
@@ -132,11 +132,11 @@ export default {
       }
     },
     prepend: {
-      description: 'Prepend an icon or text to the input'
+      description: 'Prepend an icon or text to the input (see Material Symbols: https://fonts.google.com/icons)'
     },
     append: {
       control: 'none',
-      description: 'Append an icon or text to the input'
+      description: 'Append an icon or text to the input (see Material Symbols: https://fonts.google.com/icons)'
     },
     dataTest: {
       description:
@@ -155,7 +155,7 @@ export default {
       }
     },
     ariaLive: {
-      description: 'option for "aria-live" attribute',
+      description: 'Option for "aria-live" attribute',
       control: 'select',
       options: inputAriaLive,
       table: {

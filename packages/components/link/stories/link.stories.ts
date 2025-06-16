@@ -12,12 +12,12 @@ export default {
   argTypes: {
     href: {
       control: 'text',
-      description: 'Set a link (changes link to "a" html tag)'
+      description: 'Sets a link (changes link to "a" html tag)'
     },
     to: {
       control: 'text',
       description:
-        'Set a vue router link (changes link to "router-link" or html tag)'
+        'Sets a vue router link (changes link to "router-link" or html tag)'
     },
     target: {
       control: 'select',
