@@ -52,6 +52,7 @@ export default defineConfig({
           { text: 'Label', link: '/vue-components/label' },
           { text: 'Link', link: '/vue-components/link' },
           { text: 'Menu', link: '/vue-components/menu' },
+          { text: 'Modal', link: '/vue-components/modal' },
           { text: 'Table', link: '/vue-components/table' }
         ]
       },

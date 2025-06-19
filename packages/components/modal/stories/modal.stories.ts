@@ -50,7 +50,7 @@ export default {
       }
     },
     titleIcon: {
-      description: 'Set the icon name of the modal on the top left corner (from Material Symbols: https://fonts.google.com/icons)',
+      description: 'Sets the icon name of the modal on the top left corner (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -98,7 +98,7 @@ export default {
       }
     },
     isOpen: {
-      description: 'Tell if the modal is open or not',
+      description: 'Tells if the modal is open or not',
       control: 'boolean',
       table: {
         type: {
