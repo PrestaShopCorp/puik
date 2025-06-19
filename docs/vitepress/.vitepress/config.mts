@@ -51,6 +51,7 @@ export default defineConfig({
           { text: 'Input', link: '/vue-components/input' },
           { text: 'Label', link: '/vue-components/label' },
           { text: 'Link', link: '/vue-components/link' },
+          { text: 'Menu', link: '/vue-components/menu' },
           { text: 'Table', link: '/vue-components/table' }
         ]
       },
