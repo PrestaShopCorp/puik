@@ -53,6 +53,8 @@ export default defineConfig({
           { text: 'Link', link: '/vue-components/link' },
           { text: 'Menu', link: '/vue-components/menu' },
           { text: 'Modal', link: '/vue-components/modal' },
+          { text: 'NotificationBar', link: '/vue-components/notification-bar' },
+          { text: 'Pagination', link: '/vue-components/pagination' },
           { text: 'Table', link: '/vue-components/table' }
         ]
       },
