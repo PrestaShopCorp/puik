@@ -55,6 +55,9 @@ export default defineConfig({
           { text: 'Modal', link: '/vue-components/modal' },
           { text: 'NotificationBar', link: '/vue-components/notification-bar' },
           { text: 'Pagination', link: '/vue-components/pagination' },
+          { text: 'ProgressBar', link: '/vue-components/progress-bar' },
+          { text: 'ProgressStepper', link: '/vue-components/progress-stepper' },
+          { text: 'Radio', link: '/vue-components/radio' },
           { text: 'Table', link: '/vue-components/table' }
         ]
       },
