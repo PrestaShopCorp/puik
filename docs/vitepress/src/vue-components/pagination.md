@@ -1,5 +1,5 @@
 ---
-description :   A Pagination component
+description : A Pagination component component is used to navigate through large sets of data by dividing them into multiple pages. It provides controls for moving between pages, selecting the number of items per page, and displaying the current page or total item count. It supports several variants and customization options to fit different use cases and layouts.
 name: pagination
 outline: deep
 ---
@@ -91,7 +91,7 @@ enum PuikPaginationVariants {
 
 # Pagination
 
- A `Pagination`
+A `Pagination` component component is used to navigate through large sets of data by dividing them into multiple pages. It provides controls for moving between pages, selecting the number of items per page, and displaying the current page or total item count. It supports several variants and customization options to fit different use cases and layouts.
 
 ## Overview
 

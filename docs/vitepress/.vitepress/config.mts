@@ -58,6 +58,8 @@ export default defineConfig({
           { text: 'ProgressBar', link: '/vue-components/progress-bar' },
           { text: 'ProgressStepper', link: '/vue-components/progress-stepper' },
           { text: 'Radio', link: '/vue-components/radio' },
+          { text: 'RatingCard', link: '/vue-components/rating-card' },
+          { text: 'Select', link: '/vue-components/select' },
           { text: 'Table', link: '/vue-components/table' }
         ]
       },

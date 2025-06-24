@@ -1,5 +1,5 @@
 ---
-description : A Radio input
+description : A Radio input component allows users to select a single option from a set of choices.
 name: radio
 aria: https://www.w3.org/WAI/ARIA/apg/patterns/radio/
 outline: deep
@@ -81,7 +81,7 @@ outline: deep
 
 # Radio
 
-A `Radio input`
+A `Radio` input component allows users to select a single option from a set of choices.
 
 ## Overview
 

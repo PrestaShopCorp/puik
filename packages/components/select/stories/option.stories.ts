@@ -50,7 +50,7 @@ export default {
     },
     multiSelect: {
       control: 'boolean',
-      description: 'Enable this setting if it is an option of a multi-select',
+      description: 'Enables this setting if it is an option of a multi-select',
       table: {
         type: {
           summary: 'boolean'
