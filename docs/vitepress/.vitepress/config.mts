@@ -60,6 +60,8 @@ export default defineConfig({
           { text: 'Radio', link: '/vue-components/radio' },
           { text: 'RatingCard', link: '/vue-components/rating-card' },
           { text: 'Select', link: '/vue-components/select' },
+          { text: 'Sidebar', link: '/vue-components/sidebar' },
+          { text: 'SkeletonLoader', link: '/vue-components/skeleton-loader' },
           { text: 'Table', link: '/vue-components/table' }
         ]
       },

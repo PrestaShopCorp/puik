@@ -22,7 +22,7 @@
       dataTest="single-select"
     />
 
-    <PuikSelect
+  <PuikSelect
       v-model="selectedOptionsMulti"
       id="multi-select-id"
       name="multi-select-name"
@@ -48,6 +48,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { PuikOption, type OptionType } from '@prestashopcorp/puik-components';
 
 const options_single_select = [
   { label: 'Option 1', value: '1' },
@@ -61,7 +62,9 @@ const options_multi_select = [
   { label: 'Option 3', value: '3' }
 ];
 const selectedOptionsSingle = ref();
-const selectedOptionsMulti = ref([]);
+const selectedOptionsMulti = ref<OptionType[] | null>();
+
+selectedOptionsMulti.value = [];
 
 const label = 'label';
 const value = 'value';

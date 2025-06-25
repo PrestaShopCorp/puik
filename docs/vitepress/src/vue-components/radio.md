@@ -87,7 +87,7 @@ A `Radio` input component allows users to select a single option from a set of c
 
 ::: raw
 <ComponentOverview>
-  <radio />
+  <Radio />
 </ComponentOverview>
 :::
 

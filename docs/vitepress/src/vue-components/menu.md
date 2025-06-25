@@ -138,7 +138,7 @@ const maxHeight = ref('300px');
 
 ## API Reference
 
-### Props
+### Menu props
 
 ::: raw
 <DataAttributes :attributes="menu_attributes" />
