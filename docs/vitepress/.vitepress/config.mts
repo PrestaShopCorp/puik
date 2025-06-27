@@ -62,6 +62,9 @@ export default defineConfig({
           { text: 'Select', link: '/vue-components/select' },
           { text: 'Sidebar', link: '/vue-components/sidebar' },
           { text: 'SkeletonLoader', link: '/vue-components/skeleton-loader' },
+          { text: 'Snackbar', link: '/vue-components/snackbar' },
+          { text: 'SortableList', link: '/vue-components/sortable-list' },
+          { text: 'SpinnerLoader', link: '/vue-components/spinner-loader' },
           { text: 'Table', link: '/vue-components/table' }
         ]
       },

@@ -247,7 +247,7 @@ ListItem[]
     },
     displayPositionNumbers: {
       control: 'boolean',
-      description: 'Display position numbers of the sortable list',
+      description: 'Displays position numbers of the sortable list',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'true' }
@@ -393,13 +393,13 @@ const list = [
   }
 ];
 
-<puik-sortable-list 
-  :list-id="args.listId" 
-  :options="args.options" 
-  :list="list" 
-  :displayPositionNumbers="args.displayPositionNumbers" 
-  :item-key="args.itemKey" 
-  :tag="args.tag" 
+<puik-sortable-list
+  :list-id="args.listId"
+  :options="args.options"
+  :list="list"
+  :displayPositionNumbers="args.displayPositionNumbers"
+  :item-key="args.itemKey"
+  :tag="args.tag"
   :iconPosition="args.iconPosition">
 </puik-sortable-list>
         `,
@@ -525,19 +525,19 @@ let options: SortableOptionsProp = {
 
 // Using the options in the component
 <div style="width: 100%; display: flex; gap: 2rem">
-  <puik-sortable-list 
-    :list-id="argsList1.listId" 
-    :list="argsList1.list" 
-    :itemKey="argsList1.itemKey" 
-    :options="options" 
+  <puik-sortable-list
+    :list-id="argsList1.listId"
+    :list="argsList1.list"
+    :itemKey="argsList1.itemKey"
+    :options="options"
     style="flex-grow: 1;">
   </puik-sortable-list>
-  
-  <puik-sortable-list 
-    :list-id="argsList2.listId" 
-    :list="argsList2.list" 
-    :itemKey="argsList2.itemKey" 
-    :options="options" 
+
+  <puik-sortable-list
+    :list-id="argsList2.listId"
+    :list="argsList2.list"
+    :itemKey="argsList2.itemKey"
+    :options="options"
     style="flex-grow: 1;">
   </puik-sortable-list>
 </div>
