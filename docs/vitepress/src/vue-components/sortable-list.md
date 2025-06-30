@@ -38,12 +38,25 @@ const sortable_list_attributes = [
   {
     prop: 'iconPosition',
     type: 'PuikSortableListIconPosition',
+    details: `
+enum PuikSortableListIconPosition {
+  Left = 'left',
+  Right = 'right',
+}
+    `,
     default: 'right',
     description: 'Position of the drag icon (left or right)'
   },
   {
     prop: 'tag',
     type: 'PuikSortableListTag',
+    details: `
+enum PuikSortableListTag {
+  Menu = 'menu',
+  Ol = 'ol',
+  Ul = 'ul',
+}
+    `,
     default: 'ul',
     description: 'HTML tag for the list container'
   },

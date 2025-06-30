@@ -13,39 +13,51 @@ const spinner_loader_attributes = [
   {
     prop: 'size',
     type: 'PuikSpinnerLoaderSizes',
+    details: `
+enum PuikSpinnerLoaderSizes {
+  Small = 'sm',
+  Medium = 'md',
+  Large = 'lg',
+}
+    `,
     default: 'md',
-    control: 'select',
     options: ['sm', 'md', 'lg'],
     description: 'Sets the spinner size'
   },
   {
     prop: 'color',
     type: 'PuikSpinnerLoaderColors',
+    details: `
+enum PuikSpinnerLoaderColors {
+  Primary = 'primary',
+  Reverse = 'reverse',
+}
+    `,
     default: 'primary',
-    control: 'select',
-    options: ['primary', 'reverse'],
     description: 'Sets the spinner color'
   },
   {
     prop: 'label',
     type: 'string',
     default: '',
-    control: 'text',
     description: 'Set label below or right of the spinner'
   },
   {
     prop: 'position',
     type: 'PuikSpinnerLoaderPositions',
+    details: `
+enum PuikSpinnerLoaderPositions {
+  Bottom = 'bottom',
+  Right = 'right',
+}
+    `,
     default: 'bottom',
-    control: 'select',
-    options: ['bottom', 'right'],
     description: 'Set label position (bottom or right of the spinner)'
   },
   {
     prop: 'dataTest',
     type: 'string',
     default: 'spinner-loader',
-    control: 'text',
     description: 'Sets the data-test attribute on the spinner loader'
   }
 ];

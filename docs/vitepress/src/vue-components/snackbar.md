@@ -43,12 +43,27 @@ outline: deep
   {
     prop: 'variant',
     type: 'PuikSnackbarVariants',
+    details: `
+enum PuikSnackbarVariants {
+  Default = 'default',
+  Danger = 'danger',
+  Success = 'success',
+}
+    `,
     default: 'default',
     description: 'Sets the color variant of the snackbar'
   },
   {
     prop: 'swipeAnimation',
     type: 'PuikSnackbarSwipeAnimations',
+        details: `
+enum PuikSnackbarSwipeAnimations {
+  Right = 'slide-right',
+  Left = 'slide-left',
+  Up = 'slide-up',
+  Down = 'slide-down',
+}
+    `,
     default: 'slide-right',
     description: 'Sets the swipe animation (to close the snackbar dialog)'
   },
@@ -86,6 +101,14 @@ outline: deep
   {
     prop: 'swipeDirection',
     type: 'PuikSnackbarSwipeDirections',
+    details: `
+enum PuikSnackbarSwipeDirections {
+  Right = 'right',
+  Left = 'left',
+  Up = 'up',
+  Down = 'down',
+}
+    `,
     default: 'right',
     description: 'Sets the swipe direction on mobile (to close the snackbar dialog)'
   },
@@ -98,12 +121,25 @@ outline: deep
   {
     prop: 'positionX',
     type: 'PuikSnackbarPositionsX',
+    details: `
+enum PuikSnackbarPositionsX {
+  Left = 'left',
+  Center = 'center',
+  Right = 'right',
+}
+    `,
     default: 'center',
     description: 'Set horizontal axis position of the snackbars viewport'
   },
   {
     prop: 'positionY',
     type: 'PuikSnackbarPositionsY',
+    details: `
+enum PuikSnackbarPositionsY {
+  Up = 'up',
+  Down = 'down',
+}
+    `,
     default: 'down',
     description: 'Set vertical axis position of the snackbars viewport'
   }

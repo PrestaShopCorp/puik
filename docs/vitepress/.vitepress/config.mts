@@ -65,7 +65,12 @@ export default defineConfig({
           { text: 'Snackbar', link: '/vue-components/snackbar' },
           { text: 'SortableList', link: '/vue-components/sortable-list' },
           { text: 'SpinnerLoader', link: '/vue-components/spinner-loader' },
-          { text: 'Table', link: '/vue-components/table' }
+          { text: 'Switch', link: '/vue-components/switch' },
+          { text: 'TabNavigation', link: '/vue-components/tab-navigation' },
+          { text: 'Table', link: '/vue-components/table' },
+          { text: 'Tag', link: '/vue-components/tag' },
+          { text: 'Textarea', link: '/vue-components/textarea' },
+          { text: 'Tooltip', link: '/vue-components/tooltip' },
         ]
       },
       {
