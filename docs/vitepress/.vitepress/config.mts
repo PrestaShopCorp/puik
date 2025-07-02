@@ -46,6 +46,7 @@ export default defineConfig({
           { text: 'Card', link: '/vue-components/card' },
           { text: 'Checkbox', link: '/vue-components/checkbox' },
           { text: 'Chip', link: '/vue-components/chip' },
+          { text: 'ConfigProvider', link: '/vue-components/config-provider' },
           { text: 'Divider', link: '/vue-components/divider' },
           { text: 'Icon', link: '/vue-components/icon' },
           { text: 'Input', link: '/vue-components/input' },
