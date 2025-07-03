@@ -14,8 +14,8 @@
     />
     <div class="puik-tag__content">
       <puik-tooltip
+        v-if="showTooltip"
         :key="content"
-        :is-disabled="!showTooltip"
         :position="tooltipPosition"
         :description="content"
         :data-test="
@@ -33,12 +33,23 @@
           {{ content }}
         </p>
       </puik-tooltip>
+      <p
+        v-if="showDefaultContent"
+        ref="tagContentElem"
+        :data-test="
+          dataTest != undefined
+            ? `content-${dataTest}`
+            : undefined
+        "
+      >
+        {{ content }}
+      </p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, watch } from 'vue';
+import { onMounted, ref } from 'vue';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import {
   PuikTooltip,
@@ -46,7 +57,6 @@ import {
 } from '@prestashopcorp/puik-components/tooltip';
 import { isEllipsisActive } from '@prestashopcorp/puik-utils';
 import { type TagProps, PuikTagSizes, PuikTagVariants } from './tag';
-
 defineOptions({
   name: 'PuikTag'
 });
@@ -57,13 +67,15 @@ withDefaults(defineProps<TagProps>(), {
   tooltipPosition: PuikTooltipPositions.Bottom
 });
 
-const tagContentElem = ref(null);
+const tagContentElem = ref<HTMLElement | null>(null);
 const showTooltip = ref(false);
+const showDefaultContent = ref(true);
 
-watch(tagContentElem, async () => {
-  await nextTick();
-  if (tagContentElem?.value) {
+onMounted(async () => {
+  if (tagContentElem.value) {
     showTooltip.value = isEllipsisActive(tagContentElem.value);
+    showDefaultContent.value = !showTooltip.value;
   }
 });
+
 </script>

@@ -129,7 +129,7 @@ const DefaultTemplate: StoryFn = (args: Args) => ({
   setup() {
     return { args };
   },
-  template: '<puik-tag  v-bind="args"/>'
+  template: '<puik-tag  :key="args.content" v-bind="args"/>'
 });
 
 const ColorVariantsTemplate: StoryFn = (args: Args) => ({
