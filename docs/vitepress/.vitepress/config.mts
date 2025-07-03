@@ -36,8 +36,42 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'Accordion', link: '/vue-components/accordion' },
+          { text: 'Accordion Group', link: '/vue-components/accordion-group' },
           { text: 'Alert', link: '/vue-components/alert' },
-          { text: 'Avatar', link: '/vue-components/avatar' }
+          { text: 'Avatar', link: '/vue-components/avatar' },
+          { text: 'Badge', link: '/vue-components/badge' },
+          { text: 'Breadcrumb', link: '/vue-components/breadcrumb' },
+          { text: 'Button', link: '/vue-components/button' },
+          { text: 'Button Group', link: '/vue-components/button-group' },
+          { text: 'Card', link: '/vue-components/card' },
+          { text: 'Checkbox', link: '/vue-components/checkbox' },
+          { text: 'Chip', link: '/vue-components/chip' },
+          { text: 'ConfigProvider', link: '/vue-components/config-provider' },
+          { text: 'Divider', link: '/vue-components/divider' },
+          { text: 'Icon', link: '/vue-components/icon' },
+          { text: 'Input', link: '/vue-components/input' },
+          { text: 'Label', link: '/vue-components/label' },
+          { text: 'Link', link: '/vue-components/link' },
+          { text: 'Menu', link: '/vue-components/menu' },
+          { text: 'Modal', link: '/vue-components/modal' },
+          { text: 'NotificationBar', link: '/vue-components/notification-bar' },
+          { text: 'Pagination', link: '/vue-components/pagination' },
+          { text: 'ProgressBar', link: '/vue-components/progress-bar' },
+          { text: 'ProgressStepper', link: '/vue-components/progress-stepper' },
+          { text: 'Radio', link: '/vue-components/radio' },
+          { text: 'RatingCard', link: '/vue-components/rating-card' },
+          { text: 'Select', link: '/vue-components/select' },
+          { text: 'Sidebar', link: '/vue-components/sidebar' },
+          { text: 'SkeletonLoader', link: '/vue-components/skeleton-loader' },
+          { text: 'Snackbar', link: '/vue-components/snackbar' },
+          { text: 'SortableList', link: '/vue-components/sortable-list' },
+          { text: 'SpinnerLoader', link: '/vue-components/spinner-loader' },
+          { text: 'Switch', link: '/vue-components/switch' },
+          { text: 'TabNavigation', link: '/vue-components/tab-navigation' },
+          { text: 'Table', link: '/vue-components/table' },
+          { text: 'Tag', link: '/vue-components/tag' },
+          { text: 'Textarea', link: '/vue-components/textarea' },
+          { text: 'Tooltip', link: '/vue-components/tooltip' },
         ]
       },
       {
@@ -67,7 +101,8 @@ export default defineConfig({
         '@prestashopcorp/puik-components': resolve(__dirname, '../node_modules/@prestashopcorp/puik-components'),
         '@prestashopcorp/puik-theme/assets': resolve(__dirname, '../node_modules/@prestashopcorp/puik-theme/assets'),
         '@prestashopcorp/puik-theme/src': resolve(__dirname, '../node_modules/@prestashopcorp/puik-theme/src'),
-        '@vitepress/components': resolve(__dirname, '../.vitepress/components')
+        '@vitepress/components': resolve(__dirname, '../.vitepress/theme/components'),
+        '@vitepress/utilities': resolve(__dirname, '../.vitepress/theme/utilities')
       }
     }
   }

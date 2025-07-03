@@ -6,6 +6,7 @@ export default {
   component: PuikProgressBar,
   argTypes: {
     percentage: {
+      description: 'Sets the progress percentage (from 0 to 100)',
       control: {
         type: 'range',
         min: 0,
@@ -13,6 +14,7 @@ export default {
       }
     },
     dataTest: {
+      description: 'Sets the data-test attribute for end-to-end (E2E) testing purposes',
       control: {
         type: 'text'
       }

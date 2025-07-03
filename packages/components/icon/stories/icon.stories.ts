@@ -6,7 +6,7 @@ export default {
   component: PuikIcon,
   argTypes: {
     icon: {
-      description: 'Set the icon name (from Material Symbols: https://fonts.google.com/icons)'
+      description: 'Sets the icon name (see Material Symbols: https://fonts.google.com/icons)'
     },
     fontSize: {
       description: 'Sets the icon font size',
@@ -35,7 +35,7 @@ export default {
       description: 'Sets the data-test attribute'
     },
     isDisabled: {
-      description: 'If the icon is disable',
+      description: 'Sets disabled state of icon',
       control: {
         type: 'boolean'
       }

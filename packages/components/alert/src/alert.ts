@@ -5,7 +5,7 @@ export enum PuikAlertVariants {
   Success = 'success',
   Warning = 'warning',
   Danger = 'danger',
-  Info = 'info',
+  Info = 'info'
 }
 
 export const ICONS = {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col items-center justify-center">
     <puik-alert
       v-if="showAlert"
       title="Alert Vue component"

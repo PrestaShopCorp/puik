@@ -10,7 +10,7 @@ export default {
   argTypes: {
     orientation: {
       description:
-        'define the horizontal or vertical orientation of the divider component',
+        'defines the horizontal or vertical orientation of the divider component',
       control: 'select',
       options: dividerOrientations,
       table: {
@@ -23,7 +23,7 @@ export default {
       }
     },
     dataTest: {
-      description: 'set data-test attribute for e2e tests purpose',
+      description: 'sets data-test attribute for e2e tests purpose',
       control: 'text',
       table: {
         type: {

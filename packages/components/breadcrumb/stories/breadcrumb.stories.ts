@@ -30,7 +30,7 @@ interface BreadBreadcrumbItem {
     },
     itemsJson: {
       control: 'text',
-      description: 'The breadcrumb items as a JSON string. Use this prop when using the component as a Web Component. For regular Vue usage, prefer the `items` prop.',
+      description: 'The breadcrumb items as a JSON string. Use this prop when using the component as a Web Component. For regular Vue usage, prefer the `items` prop',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -43,7 +43,7 @@ interface BreadBreadcrumbItem {
     },
     separatorIcon: {
       control: 'text',
-      description: 'Set icon between icon',
+      description: 'Sets icon between icon (see Material Symbols: https://fonts.google.com/icons)',
       type: 'string',
       table: {
         defaultValue: {
@@ -53,7 +53,7 @@ interface BreadBreadcrumbItem {
     },
     icon: {
       control: 'text',
-      description: 'Set icon used before first link (from Material Symbols: https://fonts.google.com/icons)',
+      description: 'Sets icon used before first link (from Material Symbols: https://fonts.google.com/icons)',
       type: 'string',
       table: {
         defaultValue: {

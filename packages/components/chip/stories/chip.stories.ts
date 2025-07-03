@@ -44,7 +44,7 @@ export default {
       }
     },
     size: {
-      description: 'Size variants of chip component (default, small)',
+      description: 'Size variants of chip component',
       control: 'select',
       options: chipSizeVariants,
       table: {
@@ -57,7 +57,7 @@ export default {
       }
     },
     icon: {
-      description: 'Set icon on the left side of the chip (from Material Symbols: https://fonts.google.com/icons)',
+      description: 'Sets icon on the left side of the chip (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -83,7 +83,7 @@ export default {
       }
     },
     disabled: {
-      description: 'Disables the Chip component ',
+      description: 'Disables the Chip component',
       control: 'boolean',
       table: {
         type: {

@@ -76,7 +76,7 @@ export default {
       }
     },
     isClosable: {
-      description: 'Display a close button which emits a `close event` on click',
+      description: 'Displays a close button which emits a `close event` on click',
       control: 'boolean',
       table: {
         type: {
@@ -88,7 +88,7 @@ export default {
       }
     },
     disableBorders: {
-      description: 'Disable alert borders',
+      description: 'Disables alert borders',
       control: 'boolean',
       table: {
         type: {
@@ -100,7 +100,7 @@ export default {
       }
     },
     buttonWrapLabel: {
-      description: 'Set the carriage return for label of Action and Link buttons',
+      description: 'Sets the carriage return for label of Action and Link buttons',
       control: 'boolean',
       table: {
         type: {
@@ -115,7 +115,7 @@ export default {
       description: 'Sets the alert description via the `default slot`. Useful if you want to create a description a little more complex than a simple text and integrate other puik elements like for example a classic `puik-link` (which can be an alternative to the Link button - see example below)'
     },
     leftIconBtn: {
-      description: 'Set icon on the left side of the Action button (from Material Symbols: https://fonts.google.com/icons)',
+      description: 'Sets icon on the left side of the Action button (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -127,7 +127,7 @@ export default {
       }
     },
     rightIconBtn: {
-      description: 'Set icon on the right side of the Action button (from Material Symbols: https://fonts.google.com/icons)',
+      description: 'Sets icon on the right side of the Action button (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -139,7 +139,7 @@ export default {
       }
     },
     leftIconLink: {
-      description: 'Set icon on the left side of the Link button (from Material Symbols: https://fonts.google.com/icons)',
+      description: 'Sets icon on the left side of the Link button (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -151,7 +151,7 @@ export default {
       }
     },
     rightIconLink: {
-      description: 'Set icon on the right side of the Link button (from Material Symbols: https://fonts.google.com/icons)',
+      description: 'Sets icon on the right side of the Link button (from Material Symbols: https://fonts.google.com/icons)',
       control: 'text',
       table: {
         type: {
@@ -187,7 +187,7 @@ export default {
       }
     },
     ariaLive: {
-      description: 'option for "aria-live" attribute',
+      description: 'Option for "aria-live" attribute',
       control: 'select',
       options: alertAriaLive,
       table: {
@@ -225,7 +225,7 @@ export default {
     },
     dataTest: {
       control: 'text',
-      description: 'Set the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}` `link-${dataTest}`',
+      description: 'Sets the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}` `link-${dataTest}`',
       table: {
         type: {
           summary: 'string'

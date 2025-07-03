@@ -8,7 +8,7 @@ export default {
     name: {
       control: 'text',
       description:
-        'name used by parent AccordionGroup to expand/collapse accordion'
+        'Name used by parent AccordionGroup to expand/collapse accordion'
     },
     title: {
       control: 'text',
@@ -20,7 +20,7 @@ export default {
     },
     icon: {
       control: 'text',
-      description: 'Icon used in the header'
+      description: 'Sets the name for header icon (see Material Symbols: https://fonts.google.com/icons)'
     },
     disabled: {
       control: 'boolean',
@@ -37,7 +37,7 @@ export default {
     },
     borderNone: {
       control: 'boolean',
-      description: 'remove borders',
+      description: 'Removes borders',
       table: {
         defaultValue: {
           summary: false

@@ -1,8 +1,10 @@
-import { PuikBadge, PuikBadgeVariants } from '@prestashopcorp/puik-components';
+import { PuikBadge, PuikBadgeVariants, PuikAriaLive } from '@prestashopcorp/puik-components';
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 
 const badgeVariants = Object.values(PuikBadgeVariants);
 const badgeVariantsSummary = badgeVariants.join('|');
+const ariaLiveOptions = Object.values(PuikAriaLive);
+const ariaLiveOptionsSummary = ariaLiveOptions.join('|');
 
 export default {
   title: 'Components/Badge',
@@ -22,6 +24,19 @@ export default {
         },
         defaultValue: {
           summary: 'neutral'
+        }
+      }
+    },
+    ariaLive: {
+      control: 'select',
+      description: 'Sets the aria-live attribute for accessibility',
+      options: ariaLiveOptions,
+      table: {
+        type: {
+          summary: ariaLiveOptionsSummary
+        },
+        defaultValue: {
+          summary: 'polite'
         }
       }
     },

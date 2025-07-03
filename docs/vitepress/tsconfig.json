@@ -6,7 +6,8 @@
   "include": [
     "src/**/*",
     ".vitepress/components/*.vue",
-    ".vitepress/theme/*.ts"
+    ".vitepress/theme/*.ts",
+    ".vitepress/plugins/*.ts"
   ],
   "exclude": [
     "node_modules",

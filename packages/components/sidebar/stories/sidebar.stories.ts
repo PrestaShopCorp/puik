@@ -32,7 +32,7 @@ export default {
     mobile: {
       control: 'boolean',
       description:
-        'Add a backdrop for dismiss and hide the sidebar when collapsed (mobile usage), expansion is triggered by the v-model',
+        'Adds a backdrop for dismiss and hide the sidebar when collapsed (mobile usage), expansion is triggered by the v-model',
       table: {
         type: {
           summary: 'boolean'

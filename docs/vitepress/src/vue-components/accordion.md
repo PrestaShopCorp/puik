@@ -1,23 +1,127 @@
 ---
-title: Accordion
 description: An Accordion is a UI component that organizes content into collapsible sections, allowing users to expand or collapse specific panels to view or hide related information.
 name: accordion
 aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
+outline: deep
 ---
 
 <script setup>
-    import Accordion from '@vitepress/components/Accordion.vue';
-    import AccordionGroup from '@vitepress/components/AccordionGroup.vue';
+  import Accordion from '@vitepress/components/Accordion.vue';
+  import DataAttributes from '@vitepress/utilities/DataAttributes.vue';
+  import ComponentOverview from '@vitepress/utilities/ComponentOverview.vue';
+
+  const attributes = [
+    {
+      prop: 'name',
+      default: 'undefined',
+      type: 'string',
+      description: 'Name used by parent AccordionGroup to expand/collapse accordion',
+      required: true
+    },
+    {
+      prop: 'title',
+      default: 'undefined',
+      type: 'string',
+      description: 'Title displayed in the header',
+      required: false
+    },
+    {
+      prop: 'subTitle',
+      default: 'undefined',
+      type: 'string',
+      description: 'Sub title displayed in the header',
+      required: false
+    },
+    {
+      prop: 'icon',
+      default: 'undefined',
+      type: 'string',
+      description: 'Sets the name for header icon (see Material Symbols: https://fonts.google.com/icons)',
+      required: false
+    },
+    {
+      prop: 'disabled',
+      default: 'undefined',
+      type: 'boolean',
+      description: 'Sets accordion disabled',
+      required: false
+    },
+    {
+      prop: 'borderNone',
+      default: 'undefined',
+      type: 'boolean',
+      description: 'Removes borders',
+      required: false
+    },
+    {
+      prop: 'dataTest',
+      default: 'undefined',
+      type: 'string',
+      description: 'Sets the data-test attribute to target elements and facilitate end-to-end testing',
+      required: false
+    }
+  ];
+
+    const accordion_group_attributes = [
+    {
+      prop: 'modelValue',
+      default: 'undefined',
+      type: 'string | string[] | null',
+      description: 'v-model to control expanded accordions',
+      required: false
+    },
+    {
+      prop: 'multiple',
+      default: 'undefined',
+      type: 'boolean',
+      description: 'Allows multiple accordions to be expanded',
+      required: false
+    },
+    {
+      prop: 'contained',
+      default: 'undefined',
+      type: 'boolean',
+      description: 'Removes space between accordion',
+      required: false
+    },
+  ];
 </script>
 
-## Accordion
+# Accordion
 
-An Accordion is a UI component that organizes content into collapsible sections, allowing users to expand or collapse specific panels to view or hide related information.
+An `Accordion` is a UI component that organizes content into collapsible sections, allowing users to expand or collapse specific panels to view or hide related information.
 
-<Accordion />
+## Overview
 
-## Accordion Group
+::: raw
+<ComponentOverview>
+  <Accordion />
+</ComponentOverview>
+:::
 
-An Accordion Group manages multiple accordion items, ensuring only one section is expanded at a time (optional) or allowing multiple sections to be open simultaneously.
+::: details Show Code
 
-<AccordionGroup />
+```vue
+<template>
+  <puik-accordion-group>
+    <puik-accordion
+      name="accordion name"
+      title="accordion title"
+      sub-title="accordion sub-title"
+      icon="home"
+    >
+      Content of the accordion
+    </puik-accordion>
+  </puik-accordion-group>
+</template>
+```
+
+:::
+
+## API Reference
+
+### Props
+
+::: raw
+<DataAttributes :attributes="attributes" />
+:::

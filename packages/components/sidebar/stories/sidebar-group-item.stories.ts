@@ -28,7 +28,7 @@ export default {
     },
     icon: {
       control: 'text',
-      description: 'Set the icon (from Material Symbols: https://fonts.google.com/icons)',
+      description: 'Sets the icon (from Material Symbols: https://fonts.google.com/icons)',
       table: {
         type: {
           summary: 'string'
@@ -37,7 +37,7 @@ export default {
     },
     active: {
       control: 'boolean',
-      description: 'Set an active state',
+      description: 'Sets an active state',
       table: {
         type: {
           summary: 'boolean'

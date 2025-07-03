@@ -1,8 +1,10 @@
 ---
-title: Getting started - Introdution
+description: Getting started - Introdution
+name: introduction
+outline: deep
 ---
 
-## Introduction
+# Introduction
 
 Puik is a library that aims to provide a complete set of reusable components based on the PrestaShop Design System for all the PrestaShop ecosystem. This project includes the following packages:
 
@@ -17,9 +19,11 @@ This library provides three ways of using the design system in your project by u
 ℹ️ [see list of available Vue and Web components](https://github.com/PrestaShopCorp/puik/blob/main/RELEASE-NOTES-V2.md#available-components)
 
 <script setup>
-import contributors from '@vitepress/components/Contributors.vue';
+import contributors from '@vitepress/utilities/Contributors.vue';
 </script>
 
 ## Contributors
 
+::: raw
 <contributors />
+:::

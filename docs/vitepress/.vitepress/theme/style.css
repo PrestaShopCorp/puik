@@ -1,2 +1,23 @@
 @import "@prestashopcorp/puik-theme";
 @import "tailwindcss" source("../../../vitepress/");
+
+:root {
+    --vp-layout-max-width: 1820px;
+}
+
+.custom-block {
+    border-radius: 0px;
+}
+
+.vp-doc .custom-block div[class*='language-'] {
+    border-radius: 0px;
+}
+
+.pager-link {
+    border-radius: 0px !important;
+}
+
+.VPDoc.has-aside .content-container {
+  max-width: none !important;
+}
+
