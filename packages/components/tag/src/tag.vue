@@ -36,6 +36,11 @@
       <p
         v-if="showDefaultContent"
         ref="tagContentElem"
+        :data-test="
+          dataTest != undefined
+            ? `content-${dataTest}`
+            : undefined
+        "
       >
         {{ content }}
       </p>
