@@ -20,6 +20,7 @@ export interface TagProps {
   variant?: `${PuikTagVariants}`
   size?: `${PuikTagSizes}`
   icon?: string
+  accent?: boolean
   disabled?: boolean
   tooltipPosition?: `${PuikTooltipPositions}`
   dataTest?: string

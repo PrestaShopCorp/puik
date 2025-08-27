@@ -2,7 +2,7 @@
 @reference './typography.css';
 
 .puik-tag {
-  @apply max-w-fit font-bold flex items-center puik-body-small;
+  @apply max-w-fit font-medium flex items-center puik-body-small border rounded-sm;
 }
 
 .puik-tag--default {
@@ -18,23 +18,38 @@
 }
 
 .puik-tag--neutral {
-  @apply bg-primary-300 text-primary;
+  @apply bg-primary-300 text-primary border-primary-400;
+}
+.puik-tag--accent.puik-tag--neutral {
+  @apply bg-primary-400;
 }
 
 .puik-tag--blue {
-  @apply bg-ocean-blue-50 text-primary;
+  @apply bg-ocean-blue-50 text-primary border-ocean-blue-500;
+}
+.puik-tag--accent.puik-tag--blue {
+  @apply bg-ocean-blue-500;
 }
 
 .puik-tag--yellow {
-  @apply bg-amber-100 text-primary;
+  @apply bg-amber-100 text-primary border-amber-500;
+}
+.puik-tag--accent.puik-tag--yellow {
+  @apply bg-amber-500;
 }
 
 .puik-tag--green {
-  @apply bg-green-50 text-primary;
+  @apply bg-green-50 text-primary border-green-100;
+}
+.puik-tag--accent.puik-tag--green {
+  @apply bg-green-100;
 }
 
 .puik-tag--purple {
-  @apply bg-purple-50 text-primary;
+  @apply bg-purple-50 text-primary border-purple-500;
+}
+.puik-tag--accent.puik-tag--purple {
+  @apply bg-purple-500;
 }
 
 .puik-tag--disabled {

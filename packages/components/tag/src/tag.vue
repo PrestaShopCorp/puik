@@ -3,6 +3,7 @@
     :id="id"
     :class="[
       `puik-tag puik-tag--${variant} puik-tag--${size}`,
+      { 'puik-tag--accent': accent },
       { 'puik-tag--disabled': disabled },
     ]"
     :data-test="dataTest"
@@ -64,6 +65,7 @@ defineOptions({
 withDefaults(defineProps<TagProps>(), {
   variant: PuikTagVariants.Neutral,
   size: PuikTagSizes.Default,
+  accent: false,
   tooltipPosition: PuikTooltipPositions.Bottom
 });
 
