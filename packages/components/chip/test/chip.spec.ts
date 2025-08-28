@@ -29,8 +29,8 @@ describe('Chip tests', () => {
   });
 
   it('should display a chip small version', () => {
-    factory({ id: 'puik-chip-example', content: 'content', size: 'small' });
-    expect(findChip().classes()).toContain('puik-chip--small');
+    factory({ id: 'puik-chip-example', content: 'content', size: 'large' });
+    expect(findChip().classes()).toContain('puik-chip--large');
   });
 
   it('should display a chip version with left icon', () => {

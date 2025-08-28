@@ -2,19 +2,15 @@
 @reference './typography.css';
 
 .puik-chip {
-  @apply bg-primary-300 text-primary max-w-fit font-medium flex items-center border border-primary-400 rounded-sm puik-body-small;
+  @apply bg-primary-300 text-primary max-w-fit flex items-center border border-primary-400 rounded-sm;
 }
 
 .puik-chip--default {
-  @apply px-2 py-[3px];
+  @apply px-1 py-0 puik-body-small-medium;
 }
 
-.puik-chip--small {
-  @apply px-1 py-0;
-}
-
-.puik-chip--small .puik-chip__close {
-  @apply p-[0.125rem];
+.puik-chip--large {
+  @apply px-2 py-[3px] puik-body-default-medium;
 }
 
 .puik-chip--disabled {
