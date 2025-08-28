@@ -38,6 +38,11 @@ describe('Tag tests', () => {
     expect(findTag().classes()).toContain('puik-tag--blue');
   });
 
+  it('should display a tag with accent', () => {
+    factory({ id: 'puik-tag-example', content: 'content', accent: true });
+    expect(findTag().classes()).toContain('puik-tag--accent');
+  });
+
   it('should display a tag small version', () => {
     factory({ id: 'puik-tag-example', content: 'content', size: 'small' });
     expect(findTag().classes()).toContain('puik-tag--small');
