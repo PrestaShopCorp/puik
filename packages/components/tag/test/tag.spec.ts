@@ -43,9 +43,9 @@ describe('Tag tests', () => {
     expect(findTag().classes()).toContain('puik-tag--accent');
   });
 
-  it('should display a tag small version', () => {
-    factory({ id: 'puik-tag-example', content: 'content', size: 'small' });
-    expect(findTag().classes()).toContain('puik-tag--small');
+  it('should display a tag large version', () => {
+    factory({ id: 'puik-tag-example', content: 'content', size: 'large' });
+    expect(findTag().classes()).toContain('puik-tag--large');
   });
 
   it('should display a tag version with left icon', () => {

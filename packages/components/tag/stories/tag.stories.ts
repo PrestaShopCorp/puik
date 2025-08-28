@@ -40,7 +40,7 @@ export default {
       }
     },
     size: {
-      description: 'Size variants of tag component (default, small)',
+      description: 'Size variants of tag component (default, large)',
       control: 'select',
       options: tagSizeVariants,
       table: {
@@ -219,9 +219,9 @@ const SizeVariantsTemplate: StoryFn = (args: Args) => ({
     />
     <puik-tag
       style="display: inline-block"
-      id="puik-tag-small"
-      content="small size"
-      size="small"
+      id="puik-tag-large"
+      content="large size"
+      size="large"
     />
 `
 });

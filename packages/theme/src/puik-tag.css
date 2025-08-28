@@ -2,19 +2,15 @@
 @reference './typography.css';
 
 .puik-tag {
-  @apply max-w-fit font-medium flex items-center puik-body-small border rounded-sm;
+  @apply max-w-fit font-medium flex items-center border rounded-sm;
 }
 
 .puik-tag--default {
-  @apply px-2 py-[3px];
+  @apply px-1 py-0 puik-body-small;
 }
 
-.puik-tag--small {
-  @apply px-1 py-0;
-}
-
-.puik-tag--small .puik-tag__close {
-  @apply p-[1px];
+.puik-tag--large {
+  @apply px-2 py-1 puik-body-default;
 }
 
 .puik-tag--neutral {

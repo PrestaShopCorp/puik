@@ -11,7 +11,7 @@ export enum PuikTagVariants {
 
 export enum PuikTagSizes {
   Default = 'default',
-  Small = 'small',
+  Large = 'large',
 }
 
 export interface TagProps {
