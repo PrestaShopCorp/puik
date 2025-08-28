@@ -2,7 +2,7 @@
 @reference './typography.css';
 
 .puik-chip {
-  @apply bg-primary-300 text-primary max-w-fit font-bold flex items-center puik-body-small;
+  @apply bg-primary-300 text-primary max-w-fit font-medium flex items-center border border-primary-400 rounded-sm puik-body-small;
 }
 
 .puik-chip--default {
