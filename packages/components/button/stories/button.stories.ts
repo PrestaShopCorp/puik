@@ -450,10 +450,10 @@ export const TertiaryReverse: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="secondary">My button</puik-button>
+  <puik-button variant="tertiary-reverse">My button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--secondary-reverse">My button</button>
+  <button class="puik-button puik-button--tertiary-reverse">My button</button>
         `,
         language: 'html',
         dark: true
