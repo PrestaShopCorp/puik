@@ -435,24 +435,28 @@ export const Tertiary: StoryObj = {
   }
 };
 
-export const Destructive: StoryObj = {
+export const TertiaryReverse: StoryObj = {
   render: ButtonTemplate,
 
   args: {
-    variant: 'destructive'
+    variant: 'tertiary-reverse'
   },
 
   parameters: {
+    backgrounds: {
+      default: 'dark'
+    },
     docs: {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="destructive">My button</puik-button>
+  <puik-button variant="secondary">My button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--destructive">My button</button>
+  <button class="puik-button puik-button--secondary-reverse">My button</button>
         `,
-        language: 'html'
+        language: 'html',
+        dark: true
       }
     }
   }
@@ -503,6 +507,29 @@ export const TextReverse: StoryObj = {
         `,
         language: 'html',
         dark: true
+      }
+    }
+  }
+};
+
+export const Destructive: StoryObj = {
+  render: ButtonTemplate,
+
+  args: {
+    variant: 'destructive'
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button variant="destructive">My button</puik-button>
+
+  <!--HTML/CSS Snippet-->
+  <button class="puik-button puik-button--destructive">My button</button>
+        `,
+        language: 'html'
       }
     }
   }
@@ -600,8 +627,31 @@ export const Danger: StoryObj = {
   }
 };
 
-export const Disabled: StoryObj = {
-  render: AllVariantsTemplate,
+export const DisabledVariants: StoryObj = {
+  render: AllCommonVariantsTemplate,
+
+  args: {
+    disabled: true
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button disabled>My button</puik-button>
+
+  <!--HTML/CSS Snippet-->
+  <button class="puik-button puik-button--primary" disabled>My button</button>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const DisabledReverseVariants: StoryObj = {
+  render: AllCommonVariantsTemplate,
 
   args: {
     disabled: true
@@ -609,7 +659,7 @@ export const Disabled: StoryObj = {
 
   parameters: {
     backgrounds: {
-      default: 'light'
+      default: 'dark'
     },
     docs: {
       source: {

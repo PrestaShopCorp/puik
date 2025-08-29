@@ -46,15 +46,15 @@ import type { PuikTableHeader, PuikTableSearchInputTypes } from '@prestashopcorp
 
 // Details
 interface PuikTableHeader {
-  value: string
-  text?: string
-  size?: 'sm' | 'md' | 'lg'
-  align?: 'left' | 'center' | 'right'
-  width?: string
-  sortable?: boolean
-  preventExpand?: boolean
-  searchable?: boolean
-  searchSubmit?: boolean
+  value: string,
+  text?: string,
+  size?: 'sm' | 'md' | 'lg',
+  align?: 'left' | 'center' | 'right',
+  width?: string,
+  sortable?: boolean,
+  preventExpand?: boolean,
+  searchable?: boolean,
+  searchSubmit?: boolean,
   searchType?: {$PuikTableSearchInputTypes}
 }
 
@@ -146,7 +146,7 @@ enum PuikTableSearchInputTypes {
           summary: 'SlotProps',
           detail: `
 {
-  header: PuikTableHeader
+  header: PuikTableHeader,
   index: number
 }
           `
@@ -161,7 +161,7 @@ enum PuikTableSearchInputTypes {
           summary: 'SlotProps',
           detail: `
 {
-  item: any
+  item: any,
   index: number
 }
           `
@@ -176,7 +176,7 @@ enum PuikTableSearchInputTypes {
           summary: 'SlotProps',
           detail: `
 {
-  item: any
+  item: any,
   index: number
 }
           `
@@ -219,7 +219,7 @@ import type { sortOption } from '@prestashopcorp/puik-components';
 
 // Detail
 type sortOption = {
-  sortBy?: string
+  sortBy?: string,
   sortOrder?: PuikTableSortOrder
 }
 `
@@ -240,14 +240,14 @@ import type { searchOption, inputRange } from '@prestashopcorp/puik-components';
 
 // Details
 type searchOption = {
-  searchBy: string;
-  inputText?: string | undefined;
-  inputRange?: inputRange | undefined;
+  searchBy: string,
+  inputText?: string | undefined,
+  inputRange?: inputRange | undefined,
 }
 
 type inputRange = {
-  min?: number | undefined;
-  max?: number | undefined;
+  min?: number | undefined,
+  max?: number | undefined,
 }
           `
         }
@@ -1824,7 +1824,7 @@ export const stickyColumns: StoryObj = {
     v-model:selection="selection"
     :headers="headers"
     :items="items"
-    :selectable="true",
+    :selectable="true"
     :stickyFirstCol="true"
     :stickyLastCol="true"
   >
