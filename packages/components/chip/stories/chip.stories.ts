@@ -203,9 +203,9 @@ const SizeVariantsTemplate: StoryFn = (args: Args) => ({
       size="default"
     />
     <puik-chip
-      id="puik-chip-small"
-      content="small size"
-      size="small"
+      id="puik-chip-large"
+      content="large size"
+      size="large"
     />
   </div>
 `

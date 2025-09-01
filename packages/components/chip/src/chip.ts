@@ -3,7 +3,7 @@ import type Chip from './chip.vue';
 
 export enum PuikChipSizeVariants {
   Default = 'default',
-  Small = 'small',
+  Large = 'large',
 }
 
 export interface ChipProps {
