@@ -61,7 +61,6 @@
               :key="option[props.optionValueKey]"
               :content="option[props.optionLabelKey]"
               :disabled="option[props.optionDisabledKey] || props.disabled"
-              size="small"
               role="option"
               :aria-selected="true"
               :data-test="dataTest != undefined ? `select-tag-${index + 1}-${dataTest}` : undefined"
