@@ -32,7 +32,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.11.1
+          version: 10.15.0
 
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
