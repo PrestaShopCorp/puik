@@ -40,7 +40,7 @@ export default {
       }
     },
     size: {
-      description: 'Size variants of tag component (default, small)',
+      description: 'Size variants of tag component (default, large)',
       control: 'select',
       options: tagSizeVariants,
       table: {
@@ -63,6 +63,18 @@ export default {
         },
         defaultValue: {
           summary: 'neutral'
+        }
+      }
+    },
+    accent: {
+      description: 'Applies the accent style to the tag',
+      control: 'boolean',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
         }
       }
     },
@@ -115,6 +127,7 @@ export default {
     content: 'default tag',
     size: 'default',
     variant: 'neutral',
+    accent: false,
     icon: '',
     disabled: false,
     tooltipPosition: 'bottom'
@@ -139,28 +152,12 @@ const ColorVariantsTemplate: StoryFn = (args: Args) => ({
   },
   setup() {
     const tags = ref([
-      {
-        variant: 'neutral',
-        content: 'neutral tag'
-      },
-      {
-        variant: 'blue',
-        content: 'blue tag'
-      },
-      {
-        variant: 'yellow',
-        content: 'yellow tag'
-      },
-      {
-        variant: 'green',
-        content: 'green tag'
-      },
-      {
-        variant: 'purple',
-        content: 'purple tag'
-      }
+      { variant: 'neutral', content: 'neutral tag' },
+      { variant: 'blue', content: 'blue tag' },
+      { variant: 'yellow', content: 'yellow tag' },
+      { variant: 'green', content: 'green tag' },
+      { variant: 'purple', content: 'purple tag' }
     ]);
-
     return { tags, args };
   },
   template: `
@@ -171,6 +168,35 @@ const ColorVariantsTemplate: StoryFn = (args: Args) => ({
       :key="index"
       :content="tag.content"
       :variant="tag.variant"
+    />
+  </div>
+`
+});
+
+const AccentVariantsTemplate: StoryFn = (args: Args) => ({
+  components: {
+    PuikIcon,
+    PuikTag
+  },
+  setup() {
+    const tags = ref([
+      { variant: 'neutral', content: 'neutral accent tag' },
+      { variant: 'blue', content: 'blue accent tag' },
+      { variant: 'yellow', content: 'yellow accent tag' },
+      { variant: 'green', content: 'green accent tag' },
+      { variant: 'purple', content: 'purple accent tag' }
+    ]);
+    return { tags, args };
+  },
+  template: `
+  <div class="flex gap-x-2 mb-4">
+    <puik-tag
+      v-for="(tag, index) in tags"
+      :id="'puik-tag-accent-'+index"
+      :key="index"
+      :content="tag.content"
+      :variant="tag.variant"
+      :accent="true"
     />
   </div>
 `
@@ -193,9 +219,9 @@ const SizeVariantsTemplate: StoryFn = (args: Args) => ({
     />
     <puik-tag
       style="display: inline-block"
-      id="puik-tag-small"
-      content="small size"
-      size="small"
+      id="puik-tag-large"
+      content="large size"
+      size="large"
     />
 `
 });
@@ -264,6 +290,7 @@ export const Default = {
   :content="args.content"
   :size="args.size"
   :variant="args.variant"
+  :accent="args.accent"
   :icon="args.icon"
   :disabled="args.disabled"
   :tooltipPosition="args.tooltipPosition"
@@ -304,6 +331,37 @@ export const ColorVariants = {
 <div id="puik-tag-id" class="puik-tag puik-tag--{$variant} puik-tag--default">
   <div class="puik-tag__content">
     {$variant} tag
+  </div>
+</div>
+`,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const AccentVariants = {
+  render: AccentVariantsTemplate,
+  args: {},
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<!--VueJS Snippet-->
+<!-- $variants: ${tagColorsVariantsSummary} -->
+<puik-tag
+  :id="args.id"
+  :content="args.content"
+  :variant="{$variant}"
+  :accent="true"
+/>
+</div>
+
+<!--HTML/CSS Snippet-->
+<!-- $variants: ${tagColorsVariantsSummary} -->
+<div id="puik-tag-id" class="puik-tag puik-tag--{$variant} puik-tag--default puik-tag--accent">
+  <div class="puik-tag__content">
+    {$variant} accent tag
   </div>
 </div>
 `,
