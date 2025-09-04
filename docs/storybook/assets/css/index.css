@@ -1,5 +1,5 @@
 
-@import "@prestashopcorp/puik-theme";
+@import "@prestashopcorp/puik-theme/index.css";
 
 @tailwind base;
 @tailwind components;

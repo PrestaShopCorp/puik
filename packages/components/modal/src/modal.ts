@@ -20,8 +20,10 @@ export interface ModalProps {
   mainButtonText?: string
   secondButtonText?: string
   sideButtonText?: string
+  disabledMainButton?: boolean
+  disabledSecondButton?: boolean
+  disabledSideButton?: boolean
   isOpen?: boolean
-  isMainButtonDisabled?: boolean
   variant?: `${PuikModalVariants}`
   size?: `${PuikModalSizes}`
   dataTest?: string
