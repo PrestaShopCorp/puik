@@ -39,7 +39,7 @@ $ pnpm install @prestashopcorp/puik-components @prestashopcorp/puik-theme
 
 import css in your application:
 
-`@import "@prestashopcorp/puik-theme";`
+`@import "@prestashopcorp/puik-theme/index.css";`
 
 ### Auto import using Puik Resolver (recommended)
 

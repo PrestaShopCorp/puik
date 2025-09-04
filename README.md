@@ -62,7 +62,7 @@ $ pnpm install @prestashopcorp/puik-theme @prestashopcorp/puik-components @prest
 
 import css in your application:
 
-`@import "@prestashopcorp/puik-theme";`
+`@import "@prestashopcorp/puik-theme/index.css";`
 
 #### Auto import (recommended)
 

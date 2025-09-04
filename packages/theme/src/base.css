@@ -9,7 +9,7 @@
 @reference 'tailwindcss';
 
 @import './font.css';
-@import './theme.css';
+@import './theme.css' layer(theme);
 @import './typography.css';
 @import './animations.css';
 @import './elevation.css';

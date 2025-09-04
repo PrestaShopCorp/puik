@@ -114,7 +114,7 @@ export default {
     },
     hideHint: {
       control: 'boolean',
-      description: 'Hide the hint slot',
+      description: 'Hides the hint slot',
       table: {
         type: {
           summary: 'boolean'
@@ -174,7 +174,7 @@ export default {
     },
     error: {
       control: 'text',
-      description: 'Set an error message',
+      description: 'Sets an error message',
       table: {
         type: {
           summary: 'string'

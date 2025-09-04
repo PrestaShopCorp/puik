@@ -8,6 +8,16 @@
   "style": "./dist/index.css",
   "unpkg": "./dist/index.css",
   "jsdelivr": "./dist/index.css",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css",
+      "default": "./dist/index.css"
+    },
+    "./assets/*": "./assets/*",
+    "./*": "./dist/*.css"
+  },
   "files": [
     "dist",
     "assets"
@@ -19,19 +29,13 @@
     "postcss": "postcss ./src/*.css --dir ./dist"
   },
   "publishConfig": {
-    "main": "./dist/index.css",
-    "exports": {
-      ".": "./dist/index.css",
-      "./assets/*": "./assets/*",
-      "./*": "./dist/*.css"
-    }
+    "access": "public"
   },
   "devDependencies": {
     "cssnano": "^6.1.2",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
-    "postcss-copy": "^7.1.0",
-    "tailwindcss": "^4.1.7",
-    "@tailwindcss/postcss": "^4.1.7"
+    "tailwindcss": "^4.1.12",
+    "@tailwindcss/postcss": "^4.1.12"
   }
 }

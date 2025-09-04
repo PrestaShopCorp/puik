@@ -1,3 +1,4 @@
+@import "tailwindcss";
 
 .app-container {
   @apply flex flex-col m-auto max-w-[1920px];

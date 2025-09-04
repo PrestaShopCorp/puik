@@ -46,6 +46,7 @@ import type { PuikTableHeader, PuikTableSearchInputTypes } from '@prestashopcorp
 
 // Details
 interface PuikTableHeader {
+<<<<<<< HEAD
   value: string,
   text?: string,
   size?: 'sm' | 'md' | 'lg',
@@ -56,6 +57,18 @@ interface PuikTableHeader {
   searchable?: boolean,
   searchSubmit?: boolean,
   searchType?: {$PuikTableSearchInputTypes}
+=======
+  value: string;
+  text?: string;
+  size?: 'sm' | 'md' | 'lg';
+  align?: 'left' | 'center' | 'right';
+  width?: string;
+  sortable?: boolean;
+  preventExpand?: boolean;
+  searchable?: boolean;
+  searchSubmit?: boolean;
+  searchType?: {$PuikTableSearchInputTypes};
+>>>>>>> eeaf3453feb0a0b4d0c1909620d320c8048f4efb
 }
 
 enum PuikTableSearchInputTypes {
@@ -84,7 +97,7 @@ enum PuikTableSearchInputTypes {
     },
     searchBar: {
       control: 'boolean',
-      description: 'Display the search bar',
+      description: 'Displays the search bar',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
@@ -219,8 +232,13 @@ import type { sortOption } from '@prestashopcorp/puik-components';
 
 // Detail
 type sortOption = {
+<<<<<<< HEAD
   sortBy?: string,
   sortOrder?: PuikTableSortOrder
+=======
+  sortBy?: string;
+  sortOrder?: PuikTableSortOrder;
+>>>>>>> eeaf3453feb0a0b4d0c1909620d320c8048f4efb
 }
 `
         }
