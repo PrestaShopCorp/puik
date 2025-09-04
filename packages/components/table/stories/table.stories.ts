@@ -241,13 +241,13 @@ import type { searchOption, inputRange } from '@prestashopcorp/puik-components';
 // Details
 type searchOption = {
   searchBy: string,
-  inputText?: string | undefined,
-  inputRange?: inputRange | undefined,
+  inputText?: string | undefined;
+  inputRange?: inputRange | undefined;
 }
 
 type inputRange = {
-  min?: number | undefined,
-  max?: number | undefined,
+  min?: number | undefined;
+  max?: number | undefined;
 }
           `
         }
