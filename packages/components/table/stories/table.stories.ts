@@ -240,7 +240,7 @@ import type { searchOption, inputRange } from '@prestashopcorp/puik-components';
 
 // Details
 type searchOption = {
-  searchBy: string,
+  searchBy: string;
   inputText?: string | undefined;
   inputRange?: inputRange | undefined;
 }
