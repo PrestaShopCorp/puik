@@ -159,7 +159,7 @@
 
 .puik-button--text:disabled,
 .puik-button--text.puik-button--disabled {
-  @apply text-primary-500;
+  @apply text-primary-500 decoration-primary-500;
 }
 
 .puik-button--text-reverse {
@@ -181,7 +181,7 @@
 
 .puik-button--text-reverse:disabled,
 .puik-button--text-reverse.puik-button--disabled {
-  @apply text-primary-600;
+  @apply text-primary-600 decoration-primary-600;
 }
 
 .puik-button--destructive {
