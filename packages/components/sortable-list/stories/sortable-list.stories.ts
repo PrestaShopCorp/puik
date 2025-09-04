@@ -232,11 +232,11 @@ emptyInsertThreshold: 5, // px, distance mouse must be from empty sortable to in
           summary: 'ListItem[]',
           detail: `
 // ListItem
-{
-  title?: string
-  description?: string
-  imgSrc?: string
-  [key: string]: any
+interface ListItem {
+  title?: string;
+  description?: string;
+  imgSrc?: string;
+  [key: string]: any;
 }
 
 // list prop
