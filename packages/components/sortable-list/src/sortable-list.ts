@@ -37,7 +37,7 @@ export interface SortableListProps {
   list: any[]
   displayPositionNumbers?: boolean
   iconPosition?: `${PuikSortableListIconPosition}`
-  itemKey: string | ((item: any) => string | number | Symbol)
+  itemKey: string | ((item: any) => string | number | symbol)
   tag?: `${PuikSortableListTag}`
   options?: any
   dataTest?: string

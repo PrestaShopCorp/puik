@@ -46,16 +46,16 @@ import type { PuikTableHeader, PuikTableSearchInputTypes } from '@prestashopcorp
 
 // Details
 interface PuikTableHeader {
-  value: string
-  text?: string
-  size?: 'sm' | 'md' | 'lg'
-  align?: 'left' | 'center' | 'right'
-  width?: string
-  sortable?: boolean
-  preventExpand?: boolean
-  searchable?: boolean
-  searchSubmit?: boolean
-  searchType?: {$PuikTableSearchInputTypes}
+  value: string;
+  text?: string;
+  size?: 'sm' | 'md' | 'lg';
+  align?: 'left' | 'center' | 'right';
+  width?: string;
+  sortable?: boolean;
+  preventExpand?: boolean;
+  searchable?: boolean;
+  searchSubmit?: boolean;
+  searchType?: {$PuikTableSearchInputTypes};
 }
 
 enum PuikTableSearchInputTypes {
@@ -84,7 +84,7 @@ enum PuikTableSearchInputTypes {
     },
     searchBar: {
       control: 'boolean',
-      description: 'Display the search bar',
+      description: 'Displays the search bar',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
@@ -146,7 +146,7 @@ enum PuikTableSearchInputTypes {
           summary: 'SlotProps',
           detail: `
 {
-  header: PuikTableHeader
+  header: PuikTableHeader,
   index: number
 }
           `
@@ -161,7 +161,7 @@ enum PuikTableSearchInputTypes {
           summary: 'SlotProps',
           detail: `
 {
-  item: any
+  item: any,
   index: number
 }
           `
@@ -176,7 +176,7 @@ enum PuikTableSearchInputTypes {
           summary: 'SlotProps',
           detail: `
 {
-  item: any
+  item: any,
   index: number
 }
           `
@@ -219,8 +219,8 @@ import type { sortOption } from '@prestashopcorp/puik-components';
 
 // Detail
 type sortOption = {
-  sortBy?: string
-  sortOrder?: PuikTableSortOrder
+  sortBy?: string;
+  sortOrder?: PuikTableSortOrder;
 }
 `
         }

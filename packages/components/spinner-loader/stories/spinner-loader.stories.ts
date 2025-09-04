@@ -1,5 +1,5 @@
 import { PuikSpinnerLoader, PuikSpinnerLoaderColors, PuikSpinnerLoaderPositions, PuikSpinnerLoaderSizes } from '@prestashopcorp/puik-components';
-import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
+import type { StoryObj, Meta, StoryFn, Args, StoryContext } from '@storybook/vue3';
 
 const puikSpinnerLoaderSizes = Object.values(PuikSpinnerLoaderSizes);
 const sizesSummary = puikSpinnerLoaderSizes.join('|');
@@ -40,7 +40,7 @@ export default {
     },
     label: {
       control: 'text',
-      description: 'Set label below the spinner',
+      description: 'Sets label below the spinner',
       table: {
         defaultValue: {
           summary: 'undefined'
@@ -49,7 +49,7 @@ export default {
     },
     position: {
       control: 'select',
-      description: 'Set label beside right the spinner',
+      description: 'Sets label beside right the spinner',
       options: puikSpinnerLoaderPositions,
       table: {
         type: {
@@ -72,7 +72,7 @@ export default {
   }
 } as Meta;
 
-const Template: StoryFn = (args: Args, storyContext) => ({
+const Template: StoryFn = (args: Args, storyContext: StoryContext) => ({
   components: {
     PuikSpinnerLoader
   },
@@ -136,7 +136,7 @@ export const Default = {
   }
 };
 
-const SpinnerTemplate = (args: Args, storyContext) => ({
+const SpinnerTemplate = (args: Args, storyContext: StoryContext) => ({
   components: { PuikSpinnerLoader },
   setup() {
     const color = args.color ?? storyContext?.args?.color ?? '';
@@ -194,6 +194,9 @@ export const Reverse: StoryObj = {
   },
 
   parameters: {
+    backgrounds: {
+      default: 'dark'
+    },
     docs: {
       source: {
         code: `

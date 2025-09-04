@@ -19,11 +19,11 @@ import { BreadcrumbItem } from '@prestashopcorp/puik-components';
 
 // Detail
 interface BreadBreadcrumbItem {
-  label: string,
-  to: string | undefined,
-  href: string | undefined,
-  target: '_blank' | '_self' | '_parent' | '_top' | undefined,
-  dataTest: string | undefined,
+  label: string;
+  to: string | undefined;
+  href: string | undefined;
+  target: '_blank' | '_self' | '_parent' | '_top' | undefined;
+  dataTest: string | undefined;
 }`
         }
       }

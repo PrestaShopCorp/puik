@@ -166,25 +166,26 @@ export const Default = {
   <!--
   $sizes: ${buttonSizesSummary}
   $variants: ${buttonVariantsSummary}
+  $loaderPositions: ${buttonLoaderPositionsSummary}
   -->
   <puik-button
-    :size="$sizes"
     :variant="$variants"
+    :size="$sizes"
     :fluid="true|false"
     :wrap-label="true|false"
     :disabled="true|false"
-    :left-icon="leftIcon"
-    :right-icon="rightIcon"
-    >
-    My button
+    :disabledReason="string"
+    :left-icon="string"
+    :right-icon="string"
+    :loading="true|false"
+    :loaderPosition="$loaderPositions"
+    :to="RouteLocationRaw"
+    :href="string"
+    :data-test="string"
+    :aria-label="string"
+  >
+    Add to cart
   </puik-button>
-
-  <!--HTML/CSS Snippet-->
-  <!--
-  $sizes: ${buttonSizesSummary} (defaults to md)
-  $variants: ${buttonVariantsSummary}
-  -->
-  <button class="puik-button puik-button--{$variants} puik-button--{$sizes}">My button</button>
         `,
         language: 'html'
       }
@@ -201,9 +202,9 @@ const ButtonTemplate = (args: Args) => ({
   },
   template: `
   <div class="flex items-center gap-x-4">
-    <puik-button v-bind="args" :variant="args.variant" size="lg">{{ args.variant }} Button lg</puik-button>
-    <puik-button v-bind="args" :variant="args.variant">{{ args.variant }} Button md</puik-button>
-    <puik-button v-bind="args" :variant="args.variant" size="sm">{{ args.variant }} Button sm</puik-button>
+    <puik-button v-bind="args" :variant="args.variant" size="lg">{{ args.variant }} button lg</puik-button>
+    <puik-button v-bind="args" :variant="args.variant">{{ args.variant }} button md</puik-button>
+    <puik-button v-bind="args" :variant="args.variant" size="sm">{{ args.variant }} button sm</puik-button>
   </div>
   `
 });
@@ -221,7 +222,7 @@ const AllCommonVariantsTemplate: StoryFn = (args: Args, storyContext) => ({
     <div class="flex flex-row flex-wrap items-center gap-4">
       <template v-for="(variant, i) in variants" :key="i">
         <puik-button v-if="!variant.includes('reverse')" v-bind="args" :variant="variant">
-          {{ variant }} Button
+          {{ variant }} button
         </puik-button>
       </template>
     </div>
@@ -240,7 +241,7 @@ const AllVariantsTemplate: StoryFn = (args: Args, storyContext) => ({
     <div class="flex flex-row flex-wrap items-center gap-4">
       <template v-for="(variant, i) in variants" :key="i">
         <puik-button v-bind="args" :variant="variant">
-          {{ variant }} Button
+          {{ variant }} button
         </puik-button>
       </template>
     </div>
@@ -260,7 +261,7 @@ const AllReversedVariantsTemplate: StoryFn = (args: Args, storyContext) => ({
     <div class="flex flex-row flex-wrap items-center gap-4">
       <template v-for="(variant, i) in variants" :key="i">
         <puik-button v-if="variant.includes('reverse')" v-bind="args" :variant="variant">
-          {{ variant }} Button
+          {{ variant }} button
         </puik-button>
       </template>
     </div>
@@ -326,10 +327,10 @@ export const Primary: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="primary">My button</puik-button>
+  <puik-button variant="primary">primary button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--primary puik-button--md" role="button" aria-label="puik-button">My button</button>
+  <button class="puik-button puik-button--primary puik-button--md" role="button" aria-label="puik-button">Primary button</button>
         `,
         language: 'html'
       }
@@ -351,10 +352,10 @@ export const PrimaryReverse: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="primary-reverse">My button</puik-button>
+  <puik-button variant="primary-reverse">primary-reverse button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--primary-reverse">My button</button>
+  <button class="puik-button puik-button--primary-reverse">primary-reverse button</button>
         `,
         language: 'html'
       }
@@ -374,10 +375,10 @@ export const Secondary: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="secondary">My button</puik-button>
+  <puik-button variant="secondary">secondary button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--secondary">My button</button>
+  <button class="puik-button puik-button--secondary">secondary button</button>
         `,
         language: 'html'
       }
@@ -400,10 +401,10 @@ export const SecondaryReverse: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="secondary">My button</puik-button>
+  <puik-button variant="secondary">secondary-reverse button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--secondary-reverse">My button</button>
+  <button class="puik-button puik-button--secondary-reverse">secondary-reverse button</button>
         `,
         language: 'html',
         dark: true
@@ -424,10 +425,10 @@ export const Tertiary: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="tertiary">My button</puik-button>
+  <puik-button variant="tertiary">tertiary button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--tertiary">My button</button>
+  <button class="puik-button puik-button--tertiary">tertiary button</button>
         `,
         language: 'html'
       }
@@ -447,10 +448,10 @@ export const Destructive: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="destructive">My button</puik-button>
+  <puik-button variant="destructive">destructive button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--destructive">My button</button>
+  <button class="puik-button puik-button--destructive">destructive button</button>
         `,
         language: 'html'
       }
@@ -470,10 +471,10 @@ export const Text: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="text">My button</puik-button>
+  <puik-button variant="text">text button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--text">My button</button>
+  <button class="puik-button puik-button--text">text button</button>
         `,
         language: 'html'
       }
@@ -496,10 +497,10 @@ export const TextReverse: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="text-reverse">My button</puik-button>
+  <puik-button variant="text-reverse">text-reverse button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--text-reverse">My button</button>
+  <button class="puik-button puik-button--text-reverse">text-reverse button</button>
         `,
         language: 'html',
         dark: true
@@ -520,10 +521,10 @@ export const Info: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="info">My button</puik-button>
+  <puik-button variant="info">info button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--info">My button</button>
+  <button class="puik-button puik-button--info">info button</button>
         `,
         language: 'html'
       }
@@ -543,10 +544,10 @@ export const Success: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="success">My button</puik-button>
+  <puik-button variant="success">success button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--success">My button</button>
+  <button class="puik-button puik-button--success">success button</button>
         `,
         language: 'html'
       }
@@ -566,10 +567,10 @@ export const Warning: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="warning">My button</puik-button>
+  <puik-button variant="warning">warning button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--warning">My button</button>
+  <button class="puik-button puik-button--warning">warning button</button>
         `,
         language: 'html'
       }
@@ -589,10 +590,10 @@ export const Danger: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button variant="error">My button</puik-button>
+  <puik-button variant="error">danger button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--error">My button</button>
+  <button class="puik-button puik-button--error">danger button</button>
         `,
         language: 'html'
       }
@@ -615,10 +616,10 @@ export const Disabled: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button disabled>My button</puik-button>
+  <puik-button disabled>disabled button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--primary" disabled>My button</button>
+  <button class="puik-button puik-button--primary" disabled>disabled button</button>
         `,
         language: 'html'
       }
@@ -632,7 +633,7 @@ export const Fluid: StoryObj = {
       PuikButton
     },
     template: `
-      <puik-button fluid>Primary Button lg</puik-button>
+      <puik-button fluid >fluid button</puik-button>
     `
   }),
 
@@ -641,10 +642,10 @@ export const Fluid: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button fluid>My button</puik-button>
+  <puik-button fluid >fluid button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--primary puik-button--fluid">My button</button>
+  <button class="puik-button puik-button--primary puik-button--fluid">fluid button</button>
         `,
         language: 'html'
       }
@@ -670,18 +671,8 @@ export const WithIcon: StoryObj = {
       source: {
         code: `
   <!--VueJS Snippet -->
-  <puik-button left-icon="shopping_cart">My button</puik-button>
-  <puik-button right-icon="shopping_cart">My button</puik-button>
-
-  <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--primary">
-    <span class="puik-icon puik-button__left-icon">shopping_cart</span>
-    My button
-  </button>
-  <button class="puik-button puik-button--primary">
-    My button
-    <span class="puik-icon puik-button__right-icon">shopping_cart</span>
-  </button>
+  <puik-button left-icon="shopping_cart">Left Icon</puik-button>
+  <puik-button right-icon="shopping_cart">Right Icon</puik-button>
         `,
         language: 'html'
       }
