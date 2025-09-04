@@ -33,13 +33,13 @@ import type { PuikTableHeader } from '@prestashopcorp/puik-components';
 
 //Detail
 interface PuikTableHeader {
-  text: string | undefined
-  value: string
-  size: 'sm' | 'md' | 'lg' | undefined
-  width: string | undefined
-  align: 'left' | 'center' | 'right' | undefined
-  sortable: boolean | undefined
-  preventExpand: boolean | undefined
+  text: string | undefined;
+  value: string;
+  size: 'sm' | 'md' | 'lg' | undefined;
+  width: string | undefined;
+  align: 'left' | 'center' | 'right' | undefined;
+  sortable: boolean | undefined;
+  preventExpand: boolean | undefined;
 }
           `
         },
@@ -49,7 +49,7 @@ interface PuikTableHeader {
       }
     },
     searchSubmit: {
-      description: 'Set input as submit button',
+      description: 'Sets input as submit button',
       control: 'boolean',
       table: {
         type: {
@@ -61,7 +61,7 @@ interface PuikTableHeader {
       }
     },
     searchReset: {
-      description: 'Display reset button after submit',
+      description: 'Displays reset button after submit',
       control: 'boolean',
       table: {
         type: {
@@ -132,8 +132,8 @@ type searchOption = {
 }
 
 type inputRange = {
-  min?: number
-  max?: number
+  min?: number;
+  max?: number;
 }
           `
         }
@@ -157,8 +157,8 @@ type searchOption = {
 }
 
 type inputRange = {
-  min?: number
-  max?: number
+  min?: number;
+  max?: number;
 }
           `
         }

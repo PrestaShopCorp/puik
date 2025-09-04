@@ -39,7 +39,7 @@ export default {
     },
     isDisabled: {
       control: 'boolean',
-      description: 'Enable or disable the tooltip',
+      description: 'Enables or disables the tooltip',
       table: {
         defaultValue: {
           summary: 'false'

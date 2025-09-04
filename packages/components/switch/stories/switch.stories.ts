@@ -27,7 +27,7 @@ export default {
     },
     disabled: {
       control: 'boolean',
-      description: 'Set if the switch toggle is disabled',
+      description: 'Sets if the switch toggle is disabled',
       table: {
         defaultValue: {
           summary: 'false'

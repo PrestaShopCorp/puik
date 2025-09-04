@@ -22,8 +22,8 @@ import type { NotificationBarTeleport } from '@prestashopcorp/puik-components';
 
 // Detail
 interface NotificationBarTeleport {
-  to: string
-  prepend?: boolean
+  to: string;
+  prepend?: boolean;
 }
           `
         },
@@ -82,9 +82,9 @@ import { NotificationBarMessage, PuikMessagesType } from '@prestashopcorp/puik-c
 // Details
 type PuikMessagesType = NotificationBarMessage[]
 interface NotificationBarMessage {
-  icon?: string
-  text: string
-  link?: NotificationLink
+  icon?: string;
+  text: string;
+  link?: NotificationLink;
 }
           `
         },
