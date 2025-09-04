@@ -61,8 +61,12 @@
   @apply min-w-0 flex-1 puik-h2;
 }
 
+.puik-modal__dialogPanelContainer__dialogPanel__header__title .puik-tooltip__slot--wrapper {
+  @apply max-w-[100%];
+}
+
 .puik-modal__dialogPanelContainer__dialogPanel__header__title .title {
-  @apply font-bold flex-1 overflow-hidden text-ellipsis whitespace-nowrap;
+  @apply font-bold flex-1 overflow-hidden text-ellipsis whitespace-nowrap grow;
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header__close-button {

@@ -49,10 +49,7 @@
             "
             @click="sendCloseModalEvent()"
           >
-            <puik-icon
-              icon="close"
-              :font-size="ICON_SIZE"
-            />
+            <puik-icon icon="close" :font-size="ICON_SIZE" />
           </puik-button>
         </header>
         <div
@@ -60,9 +57,11 @@
             'puik-modal__dialogPanelContainer__dialogPanel__content',
             'puik-scrollbar',
             {
-              'puik-modal__dialogPanelContainer__dialogPanel__content--with-footer': hasFooter
-            }
-          ]">
+              'puik-modal__dialogPanelContainer__dialogPanel__content--with-footer':
+                hasFooter,
+            },
+          ]"
+        >
           <slot />
         </div>
         <footer
@@ -73,6 +72,7 @@
             v-if="PuikModalVariants.Dialog === variant && sideButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--side"
             variant="text"
+            :disabled="disabledSideButton"
             :data-test="
               dataTest != undefined ? `sideButton-${dataTest}` : undefined
             "
@@ -87,6 +87,7 @@
             v-if="secondButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--second"
             :variant="secondButtonVariant"
+            :disabled="disabledSecondButton"
             :data-test="
               dataTest != undefined ? `secondButton-${dataTest}` : undefined
             "
@@ -98,7 +99,7 @@
             v-if="mainButtonText"
             class="puik-modal__dialogPanelContainer__dialogPanel__footer__button--main"
             :variant="mainButtonVariant"
-            :disabled="isMainButtonDisabled"
+            :disabled="disabledMainButton"
             :data-test="
               dataTest != undefined ? `mainButton-${dataTest}` : undefined
             "
@@ -113,7 +114,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch, nextTick } from 'vue';
+import { computed, ref, watch, nextTick, onUpdated } from 'vue';
 import { Dialog, DialogPanel } from '@headlessui/vue';
 import { useWindowSize } from '@vueuse/core';
 import { PuikButton } from '@prestashopcorp/puik-components/button';
@@ -125,18 +126,21 @@ import {
   PuikModalVariants,
   PuikModalSizes,
   modalEmits,
-  DESTRUCTIVE_ICON_NAME
+  DESTRUCTIVE_ICON_NAME,
 } from './modal';
 
 defineOptions({
-  name: 'PuikModal'
+  name: 'PuikModal',
 });
 
 const ICON_SIZE = 24;
 
 const props = withDefaults(defineProps<ModalProps>(), {
   variant: PuikModalVariants.Feedback,
-  size: PuikModalSizes.Small
+  size: PuikModalSizes.Small,
+  disabledMainButton: false,
+  disabledSecondButton: false,
+  disabledSideButton: false,
 });
 const emit = defineEmits(modalEmits);
 
@@ -150,6 +154,13 @@ const { width } = useWindowSize();
 const modalTitleElem = ref(null);
 const showTitleTooltip = ref(false);
 
+
+onUpdated(() => {
+  if (modalTitleElem?.value) {
+    showTitleTooltip.value = isEllipsisActive(modalTitleElem.value);
+  }
+});
+
 watch(width, async () => {
   await nextTick();
   if (modalTitleElem?.value) {
@@ -158,11 +169,15 @@ watch(width, async () => {
 });
 
 const mainButtonVariant = computed(() => {
-  return PuikModalVariants.Destructive === props.variant ? 'destructive' : 'primary';
+  return PuikModalVariants.Destructive === props.variant
+    ? 'destructive'
+    : 'primary';
 });
 
 const secondButtonVariant = computed(() => {
-  return PuikModalVariants.Destructive === props.variant ? 'tertiary' : 'secondary';
+  return PuikModalVariants.Destructive === props.variant
+    ? 'tertiary'
+    : 'secondary';
 });
 
 const sendCloseModalEvent = () => {
@@ -172,9 +187,6 @@ const sendCloseModalEvent = () => {
 };
 
 const hasFooter = computed(() => {
- return  props.mainButtonText ||
-  props.secondButtonText ||
-  props.sideButtonText;
+  return (props.mainButtonText || props.secondButtonText || props.sideButtonText) ? true : false;
 });
-
 </script>

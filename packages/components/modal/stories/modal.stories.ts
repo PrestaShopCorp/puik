@@ -86,7 +86,7 @@ export default {
       }
     },
     sideButtonText: {
-      description: 'Sets the text of the side button',
+      description: 'Sets the text of the side button (only available in the case of the dialog variant)',
       control: 'text',
       table: {
         type: {
@@ -109,16 +109,28 @@ export default {
         }
       }
     },
-    isMainButtonDisabled: {
-      description: 'sets the main button as disabled',
+    disabledMainButton: {
+      description: 'Disables the main button',
       control: 'boolean',
       table: {
-        type: {
-          summary: 'boolean'
-        },
-        defaultValue: {
-          summary: false
-        }
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      }
+    },
+    disabledSecondButton: {
+      description: 'Disables the secondary button',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      }
+    },
+    disabledSideButton: {
+      description: 'Disables the side button (in the case of the dialog variant)',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
       }
     },
     variant: {
@@ -199,7 +211,9 @@ export enum PuikModalSizes {
     secondButtonText: 'Secondary button',
     sideButtonText: 'Side button',
     isOpen: false,
-    isMainButtonDisabled: false,
+    disabledMainButton: false,
+    disabledSecondButton: false,
+    disabledSideButton: false,
     variant: PuikModalVariants.Feedback,
     size: PuikModalSizes.Small,
     dataTest: 'datatest-modal',
@@ -250,7 +264,9 @@ const Template: StoryFn = (args: Args) => {
       :second-button-text="args.secondButtonText"
       :side-button-text="args.sideButtonText"
       :is-open="args.isOpen"
-      :isMainButtonDisabled="args.isMainButtonDisabled"
+      :disabled-main-button="args.disabledMainButton"
+      :disabled-second-button="args.disabledSecondButton"
+      :disabled-side-button="args.disabledSideButton"
       :variant="args.variant"
       :size="args.size"
       :data-test="args.dataTest"
@@ -285,7 +301,6 @@ export const Default = {
     :second-button-text="secondButtonText"
     :side-button-text="sideButtonText"
     :is-open="true|false"
-    :isMainButtonDisabled="true|false"
     :variant="variants"
     :size="size"
     :data-test="dataTest"
@@ -352,7 +367,7 @@ export const Feedback = {
   parameters: {
     docs: {
       description: {
-        story: 'Force the blue title icon, display a close button and allow the modal to close when clicked outside (default variant)'
+        story: 'Forces the blue title icon, displays a close button and allows the modal to close when clicked outside (default variant)'
       },
       source: {
         code: `
@@ -369,11 +384,11 @@ export const Feedback = {
     open feedback modal
   </puik-button>
   <puik-modal
-    title='Feedback variant',
-    titleIcon='home',
-    mainButtonText='Main button',
-    secondButtonText='Secondary button',
-    variant='feedback',
+    title="Feedback variant"
+    titleIcon="home"
+    mainButtonText="Main button"
+    secondButtonText="Secondary button"
+    variant="feedback"
     :is-open="isOpen"
     @close="closeModal"
     @button-main="closeModal"
@@ -434,7 +449,7 @@ export const Destructive = {
   parameters: {
     docs: {
       description: {
-        story: 'Force the red warning icon and red main button, display a close button and allow the modal to close when clicked outside.'
+        story: 'Forces the red warning icon and red main button, displays a close button and allows the modal to close when clicked outside.'
       },
       source: {
         code: `
@@ -448,13 +463,13 @@ export const Destructive = {
   // };
 
   <puik-button variant="info" @click="openModal">
-    open feedback modal
+    open destructive modal
   </puik-button>
   <puik-modal
-    title='Destructive variant',
-    mainButtonText='Main button',
-    secondButtonText='Secondary button',
-    variant='destructive',
+    title="Destructive variant"
+    mainButtonText="Main button"
+    secondButtonText="Secondary button"
+    variant="destructive"
     :is-open="isOpen"
     @close="closeModal"
     @button-main="closeModal"
@@ -518,7 +533,7 @@ export const Dialog = {
   parameters: {
     docs: {
       description: {
-        story: 'Remove close button, remove backdrop click and add side button'
+        story: 'Removes close button, removes backdrop click and adds side button'
       },
       source: {
         code: `
@@ -532,15 +547,15 @@ export const Dialog = {
   // };
 
   <puik-button variant="info" @click="openModal">
-    open feedback modal
+    open dialog modal
   </puik-button>
   <puik-modal
-    title='Dialog variant',
-    titleIcon='home',
-    mainButtonText='Main button',
-    secondButtonText='Secondary button',
-    sideButtonText='Side button',
-    variant='dialog',
+    title="Dialog variant"
+    titleIcon="home"
+    mainButtonText="Main button"
+    secondButtonText="Secondary button"
+    sideButtonText="Side button"
+    variant="dialog"
     :is-open="isOpen"
     @close="closeModal"
     @button-main="closeModal"
@@ -621,11 +636,12 @@ export const Large = {
     open large modal
   </puik-button>
   <puik-modal
-    title='Large size',
-    titleIcon='home',
-    mainButtonText='Main button',
-    secondButtonText='Secondary button',
+    title="Large size"
+    titleIcon="home"
+    mainButtonText="Main button"
+    secondButtonText="Secondary button"
     :is-open="isOpen"
+    size="large"
     @close="closeModal"
     @button-main="closeModal"
     @button-second="closeModal"
@@ -704,11 +720,12 @@ export const Medium = {
     open medium modal
   </puik-button>
   <puik-modal
-    title='Medium size',
-    titleIcon='home',
-    mainButtonText='Main button',
-    secondButtonText='Secondary button',
+    title="Medium size"
+    titleIcon="home"
+    mainButtonText="Main button"
+    secondButtonText="Secondary button"
     :is-open="isOpen"
+    size="medium"
     @close="closeModal"
     @button-main="closeModal"
     @button-second="closeModal"
@@ -787,15 +804,200 @@ export const Small = {
     open small modal
   </puik-button>
   <puik-modal
-    title='Small size',
-    titleIcon='home',
-    mainButtonText='Main button',
-    secondButtonText='Secondary button',
+    title="Small size"
+    titleIcon="home"
+    mainButtonText="Main button"
+    secondButtonText="Secondary button"
+    :is-open="isOpen"
+    size="small"
+    @close="closeModal"
+    @button-main="closeModal"
+    @button-second="closeModal"
+  >
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const DisabledMainAndSecondaryButtons = {
+  render: () => ({
+    components: {
+      PuikButton,
+      PuikModal,
+    },
+    setup() {
+      const args = {
+        title: 'Disabled main and secondary buttons',
+        titleIcon: 'home',
+        mainButtonText: 'Main button',
+        secondButtonText: 'Secondary button',
+        variant: PuikModalVariants.Feedback,
+        size: PuikModalSizes.Large,
+        disabledMainButton: true,
+        disabledSecondButton: true,
+      };
+      const isOpen = ref(false);
+
+      const openModal = () => {
+        isOpen.value = true;
+      };
+      const closeModal = () => {
+        isOpen.value = false;
+      };
+
+      return {
+        args,
+        isOpen,
+        openModal,
+        closeModal
+      };
+    },
+    template: `
+    <puik-button @click="openModal">
+      open modal with disabled main and secondary buttons
+    </puik-button>
+    <puik-modal
+      v-bind="args"
+      :is-open="isOpen"
+      @close="closeModal"
+      @button-main="closeModal"
+      @button-second="closeModal"
+    >
+      ${content}
+    </puik-modal>
+    `
+  }),
+
+  parameters: {
+    docs: {
+      description: {
+        story: 'Disables main and secondary buttons'
+      },
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  // const isOpen = ref(false);
+  // const openModal = () => {
+  //  isOpen.value = true;
+  // };
+  // const closeModal = () => {
+  //  isOpen.value = false;
+  // };
+
+  <puik-button variant="info" @click="openModal">
+    open modal with disabled main and secondary buttons
+  </puik-button>
+  <puik-modal
+    title="Disabled main and secondary buttons"
+    titleIcon="home"
+    size="large"
+    mainButtonText="Main button"
+    secondButtonText="Secondary button"
+    sideButtonText="Side button"
+    disabledMainButton
+    disabledSecondButton
     :is-open="isOpen"
     @close="closeModal"
     @button-main="closeModal"
     @button-second="closeModal"
   >
+    Your content
+  </puik-modal>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+
+export const DisabledSideButton = {
+  render: () => ({
+    components: {
+      PuikButton,
+      PuikModal,
+    },
+    setup() {
+      const args = {
+        title: 'Disabled side button (dialog variant only)',
+        titleIcon: 'home',
+        mainButtonText: 'Main button',
+        secondButtonText: 'Secondary button',
+        sideButtonText: 'Side button',
+        variant: PuikModalVariants.Dialog,
+        size: PuikModalSizes.Large,
+        disabledSideButton: true,
+      };
+      const isOpen = ref(false);
+
+      const openModal = () => {
+        isOpen.value = true;
+      };
+      const closeModal = () => {
+        isOpen.value = false;
+      };
+
+      return {
+        args,
+        isOpen,
+        openModal,
+        closeModal
+      };
+    },
+    template: `
+    <puik-button @click="openModal">
+      open modal with disabled side button (dialog variant only)
+    </puik-button>
+    <puik-modal
+      v-bind="args"
+      :is-open="isOpen"
+      @close="closeModal"
+      @button-main="closeModal"
+      @button-second="closeModal"
+      @button-side="closeModal"
+    >
+      ${content}
+    </puik-modal>
+    `
+  }),
+
+  parameters: {
+    docs: {
+      description: {
+        story: 'Disables side button'
+      },
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  // const isOpen = ref(false);
+  // const openModal = () => {
+  //  isOpen.value = true;
+  // };
+  // const closeModal = () => {
+  //  isOpen.value = false;
+  // };
+
+  <puik-button variant="info" @click="openModal"></puik-button>
+    open modal with disabled side button (only dialog variant)
+  </puik-button>
+  <puik-modal
+    title="Disabled side button (dialog variant only)"
+    titleIcon="home"
+    mainButtonText="Main button"
+    secondButtonText="Secondary button"
+    sideButtonText="Side button"
+    disabledSideButton
+    :is-open="isOpen"
+    size="large"
+    @close="closeModal"
+    @button-main="closeModal"
+    @button-second="closeModal"
+    @button-side="closeModal"
+  >
+    Your content
+  </puik-modal>
         `,
         language: 'html'
       }
