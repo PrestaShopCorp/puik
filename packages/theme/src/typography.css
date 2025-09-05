@@ -1,11 +1,11 @@
 @reference './theme.css';
 
 @utility puik-jumbotron {
-  @apply text-5xl -tracking-[0.066875rem] font-extrabold font-primary;
+  @apply text-[50px]/[58px] -tracking-[0.066875rem] font-extrabold font-primary;
 }
 
 @utility puik-h1 {
-  @apply text-4xl -tracking-[0.043125rem] font-bold font-primary;
+  @apply text-[32px]/[42px]  -tracking-[0.043125rem] font-bold font-primary;
 }
 
 @utility puik-h2 {
@@ -13,7 +13,7 @@
 }
 
 @utility puik-h3 {
-  @apply text-lg -tracking-[0.01125rem] font-semibold font-primary;
+  @apply text-lg/[22px] -tracking-[0.01125rem] font-medium font-primary;
 }
 
 @utility puik-h4 {
@@ -41,15 +41,15 @@
 }
 
 @utility puik-body-small {
-  @apply text-xs font-primary;
+  @apply text-xs/[18px] font-primary;
 }
 
 @utility puik-body-small-medium {
-  @apply text-xs font-primary font-medium;
+  @apply text-xs/[18px] font-primary font-medium;
 }
 
 @utility puik-body-small-bold {
-  @apply text-xs font-primary font-bold;
+  @apply text-xs/[18px] font-primary font-bold;
 }
 
 @utility puik-body-default {
@@ -65,15 +65,15 @@
 }
 
 @utility puik-body-large {
-  @apply text-base font-primary;
+  @apply text-base/[22px] font-primary;
 }
 
 @utility puik-body-large-medium {
-  @apply text-base font-primary font-medium;
+  @apply text-base/[22px] font-primary font-medium;
 }
 
 @utility puik-body-large-bold {
-  @apply text-base font-primary font-bold;
+  @apply text-base/[22px] font-primary font-bold;
 }
 
 @utility puik-body-default-link {
@@ -107,11 +107,11 @@
 
 
 .puik-jumbotron {
-  @apply text-5xl -tracking-[0.066875rem] font-extrabold font-primary;
+  @apply text-[50px]/[58px] -tracking-[0.066875rem] font-extrabold font-primary;
 }
 
 .puik-h1 {
-  @apply text-4xl -tracking-[0.043125rem] font-bold font-primary;
+  @apply text-[32px]/[42px]  -tracking-[0.043125rem] font-bold font-primary;
 }
 
 .puik-h2 {
@@ -119,7 +119,7 @@
 }
 
 .puik-h3 {
-  @apply text-lg -tracking-[0.01125rem] font-semibold font-primary;
+  @apply text-lg/[22px] -tracking-[0.01125rem] font-medium font-primary;
 }
 
 .puik-h4 {
@@ -147,15 +147,15 @@
 }
 
 .puik-body-small {
-  @apply text-xs font-primary;
+  @apply text-xs/[18px] font-primary;
 }
 
 .puik-body-small-medium {
-  @apply text-xs font-primary font-medium;
+  @apply text-xs/[18px] font-primary font-medium;
 }
 
 .puik-body-small-bold {
-  @apply text-xs font-primary font-bold;
+  @apply text-xs/[18px] font-primary font-bold;
 }
 
 .puik-body-default {
@@ -171,15 +171,15 @@
 }
 
 .puik-body-large {
-  @apply text-base font-primary;
+  @apply text-base/[22px] font-primary;
 }
 
 .puik-body-large-medium {
-  @apply text-base font-primary font-medium;
+  @apply text-base/[22px] font-primary font-medium;
 }
 
 .puik-body-large-bold {
-  @apply text-base font-primary font-bold;
+  @apply text-base/[22px] font-primary font-bold;
 }
 
 .puik-body-default-link {
