@@ -205,6 +205,7 @@ const ButtonTemplate = (args: Args) => ({
     <puik-button v-bind="args" :variant="args.variant" size="lg">{{ args.variant }} button lg</puik-button>
     <puik-button v-bind="args" :variant="args.variant">{{ args.variant }} button md</puik-button>
     <puik-button v-bind="args" :variant="args.variant" size="sm">{{ args.variant }} button sm</puik-button>
+    <puik-button v-bind="args" :variant="args.variant" loading>loading... </puik-button>
   </div>
   `
 });

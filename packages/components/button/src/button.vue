@@ -104,7 +104,12 @@ const setSelected = () => {
 };
 
 const loaderColor = computed(() => {
-  if (props.variant === 'primary' || props.variant === 'secondary-reverse' || props.variant === 'text-reverse' || props.variant === 'destructive' || props.disabled) {
+  if (props.variant === 'primary'
+    || props.variant === 'secondary-reverse'
+    || props.variant === 'tertiary-reverse'
+    || props.variant === 'text-reverse'
+    || props.variant === 'destructive'
+    || props.disabled) {
     return 'reverse';
   }
   return 'primary';
