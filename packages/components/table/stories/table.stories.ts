@@ -1824,7 +1824,7 @@ export const stickyColumns: StoryObj = {
     v-model:selection="selection"
     :headers="headers"
     :items="items"
-    :selectable="true",
+    :selectable="true"
     :stickyFirstCol="true"
     :stickyLastCol="true"
   >
