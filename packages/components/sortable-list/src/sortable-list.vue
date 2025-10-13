@@ -94,6 +94,7 @@
 </template>
 
 <script setup lang="ts">
+import { nextTick, ref } from 'vue';
 import {
   type SortableListProps,
   type SortableListEmits,
@@ -103,8 +104,8 @@ import {
   , PuikSortableListTag
 } from './sortable-list';
 import { PuikIcon } from '@prestashopcorp/puik-components';
-import { Sortable } from 'sortablejs-vue3';
-import { nextTick, ref } from 'vue';
+import * as SortableJSVue3 from 'sortablejs-vue3';
+const Sortable = SortableJSVue3.Sortable;
 
 defineOptions({
   name: 'PuikSortableList'
