@@ -326,6 +326,7 @@ const Template: StoryFn = (args: Args) => ({
     <template #item-actions="{ item }">
       <puik-button
         variant="text"
+        force-legacy-text-variant
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
@@ -384,6 +385,7 @@ const ExpandableTemplate: StoryFn = (args: Args) => ({
     <template #item-actions="{ item }">
       <puik-button
         variant="text"
+        force-legacy-text-variant
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
@@ -453,6 +455,7 @@ const SearchableTemplate: StoryFn = (args: Args) => ({
     <template #item-actions="{ item }">
       <puik-button
         variant="text"
+        force-legacy-text-variant
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
@@ -508,6 +511,7 @@ const SortableTemplate: StoryFn = (args: Args) => ({
     <template #item-actions="{ item }">
       <puik-button
         variant="text"
+        force-legacy-text-variant
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
@@ -574,6 +578,7 @@ export const Default: StoryObj = {
     <template #item-actions="{ item }">
       <puik-button
         variant="text"
+        force-legacy-text-variant
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
@@ -785,6 +790,7 @@ export const Selectable: StoryObj = {
     <template #item-actions="{ item }">
       <puik-button
         variant="text"
+        force-legacy-text-variant
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
@@ -921,6 +927,7 @@ export const Expandable: StoryObj = {
     <template #item-actions="{ item }">
       <puik-button
         variant="text"
+        force-legacy-text-variant
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
@@ -1149,6 +1156,7 @@ export const Searchable: StoryObj = {
     <template #item-actions="{ item }">
       <puik-button
         variant="text"
+        force-legacy-text-variant
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
@@ -1412,6 +1420,7 @@ export const Sortable: StoryObj = {
     <template #item-actions="{ item }">
       <puik-button
         variant="text"
+        force-legacy-text-variant
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>
@@ -1831,6 +1840,7 @@ export const stickyColumns: StoryObj = {
     <template #item-actions="{ item }">
       <puik-button
         variant="text"
+        force-legacy-text-variant
         right-icon="delete"
         aria-label="Delete item"
       ></puik-button>

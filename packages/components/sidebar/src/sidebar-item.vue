@@ -13,6 +13,7 @@
       :href="href"
       fluid
       variant="text"
+      force-legacy-text-variant
       class="puik-sidebar-item__button"
       :data-test="
         dataTest != undefined ? `menubuttonTitle-${dataTest}` : undefined
@@ -31,6 +32,7 @@
     :href="href"
     fluid
     variant="text"
+    force-legacy-text-variant
     :data-test="dataTest != undefined ? `buttonTitle-${dataTest}` : undefined"
   >
     <span

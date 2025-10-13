@@ -121,17 +121,17 @@ const Template: StoryFn = (args: Args) => ({
         First section title
       </puik-menu-item-title>
       <puik-menu-item>
-        <puik-button variant="text">
+        <puik-button variant="text" force-legacy-text-variant>
           Item
         </puik-button>
       </puik-menu-item>
       <puik-menu-item>
-        <puik-button variant="text" left-icon="home">
+        <puik-button variant="text" left-icon="home" force-legacy-text-variant>
           Item with icon
         </puik-button>
       </puik-menu-item>
       <puik-menu-item>
-        <puik-button variant="text" right-icon="home">
+        <puik-button variant="text" right-icon="home" force-legacy-text-variant>
           Item with icon
         </puik-button>
       </puik-menu-item>
@@ -156,7 +156,7 @@ const Template: StoryFn = (args: Args) => ({
         Third section title
       </puik-menu-item-title>
       <puik-menu-item>
-        <puik-button variant="text" disabled>
+        <puik-button variant="text" force-legacy-text-variant disabled>
           Disabled item
         </puik-button>
       </puik-menu-item>
@@ -203,12 +203,12 @@ export const Default = {
         First section title
       </puik-menu-item-title>
       <puik-menu-item>
-        <puik-button variant="text">
+        <puik-button variant="text" force-legacy-text-variant>
           Item
         </puik-button>
       </puik-menu-item>
       <puik-menu-item>
-        <puik-button variant="text" left-icon="home">
+        <puik-button variant="text" force-legacy-text-variant left-icon="home">
           Item with icon
         </puik-button>
       </puik-menu-item>

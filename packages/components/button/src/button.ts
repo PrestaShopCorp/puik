@@ -43,6 +43,7 @@ export interface ButtonProps {
   value?: string | number | Record<string, any> | any[]
   dataTest?: string
   ariaLabel?: string
+  forceLegacyTextVariant?: boolean
 }
 
 export type ButtonInstance = InstanceType<typeof Button>;
