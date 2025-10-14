@@ -125,7 +125,22 @@ export default {
     disabledReason: {
       control: 'text',
       description: 'Sets the aria-describedby attribute for accessibility if disabled'
-    }
+    },
+    forceLegacyTextVariant: {
+      control: 'boolean',
+      description: `
+Forces legacy visual style for text variants ("text" and "text-reverse").
+Used to avoid side effects in components still using the previous theme version (restores initial padding and removes underline. (i.e for close button).
+      `,
+      table: {
+        defaultValue: {
+          summary: false
+        },
+        type: {
+          summary: 'boolean'
+        }
+      }
+    },
   },
   args: {
     variant: 'primary',
@@ -140,7 +155,8 @@ export default {
     loaderPosition: PuikButtonLoaderPositions.Right,
     to: undefined,
     href: undefined,
-    default: 'Add to cart'
+    default: 'Add to cart',
+    forceLegacyTextVariant: false
   }
 } as Meta;
 
@@ -746,6 +762,34 @@ export const DisabledReverseVariants: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <button class="puik-button puik-button--primary" disabled>disabled reverse button</button>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const forceLegacyTextVariant: StoryObj = {
+  render: () => ({
+    components: { PuikButton },
+    template: `
+    <div class="flex flex-col">
+      <div class="p-4">
+        <puik-button variant="text" :force-legacy-text-variant="true">Legacy Text Variant</puik-button>
+      </div>
+      <div class="p-4" style="background-color: #333333">
+        <puik-button variant="text-reverse" :force-legacy-text-variant="true">Legacy Text Reverse Variant</puik-button>
+      </div>
+    </div>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button variant="text" :force-legacy-text-variant="true">Legacy Text</puik-button>
+  <puik-button variant="text-reverse" :force-legacy-text-variant="true">Legacy Text Reverse</puik-button>
         `,
         language: 'html'
       }
