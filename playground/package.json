@@ -17,16 +17,16 @@
     "@prestashopcorp/puik-resolver": "workspace:*",
     "@prestashopcorp/puik-theme": "workspace:*",
     "@prestashopcorp/puik-web-components": "workspace:*",
-    "@tailwindcss/vite": "^4.1.7",
-    "tailwindcss": "^4.1.7",
-    "vue": "^3.5.15",
+    "@tailwindcss/vite": "^4.1.14",
+    "tailwindcss": "^4.1.14",
+    "vue": "^3.5.22",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@tsconfig/node22": "^22.0.1",
-    "@types/node": "^22.15.21",
+    "@tsconfig/node22": "^22.0.2",
+    "@types/node": "^22.15.35",
     "@vitejs/plugin-vue": "^5.2.4",
-    "@vue/eslint-config-typescript": "^14.5.0",
+    "@vue/eslint-config-typescript": "^14.5.1",
     "@vue/tsconfig": "^0.7.0",
     "eslint": "^9.27.0",
     "eslint-plugin-vue": "~10.1.0",
@@ -34,8 +34,8 @@
     "npm-run-all2": "^7.0.2",
     "typescript": "~5.8.3",
     "unplugin-vue-components": "^28.7.0",
-    "vite": "^6.3.5",
-    "vite-plugin-vue-devtools": "^7.7.6",
-    "vue-tsc": "^2.2.10"
+    "vite": "^6.3.7",
+    "vite-plugin-vue-devtools": "^7.7.7",
+    "vue-tsc": "^2.2.12"
   }
 }
