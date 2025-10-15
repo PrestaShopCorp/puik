@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "unplugin-vue-components": "^28.8.0",
-    "vue": "^3.5.20"
+    "vue": "^3.5.22"
   },
   "sideEffects": false,
   "publishConfig": {
