@@ -158,11 +158,11 @@ describe('Snackbar tests', () => {
       swipeAnimation: PuikSnackbarSwipeAnimations.Right
     };
 
-    const { sackbarsState } = useSnackbar(snackbarProps, state.value, snackbarsLimit, 5000);
+    const { snackbarsState } = useSnackbar(snackbarProps, state.value, snackbarsLimit, 5000);
 
-    expect(sackbarsState.length).toBe(1);
-    expect(sackbarsState[0].title).toBe('Test Snackbar');
-    expect(sackbarsState[0].description).toBe('This is a test snackbar');
+    expect(snackbarsState.length).toBe(1);
+    expect(snackbarsState[0].title).toBe('Test Snackbar');
+    expect(snackbarsState[0].description).toBe('This is a test snackbar');
   });
 
   it('should respect snackbars limit', () => {
@@ -184,10 +184,10 @@ describe('Snackbar tests', () => {
     };
 
     useSnackbar(snackbarProps1, state.value, snackbarsLimit, 5000);
-    const { sackbarsState } = useSnackbar(snackbarProps2, state.value, snackbarsLimit, 5000);
+    const { snackbarsState } = useSnackbar(snackbarProps2, state.value, snackbarsLimit, 5000);
 
-    expect(sackbarsState.length).toBe(1);
-    expect(sackbarsState[0].title).toBe('Snackbar 2');
+    expect(snackbarsState.length).toBe(1);
+    expect(snackbarsState[0].title).toBe('Snackbar 2');
   });
 
   it('should dismiss snackbar after delay', async () => {
@@ -200,8 +200,8 @@ describe('Snackbar tests', () => {
       swipeAnimation: PuikSnackbarSwipeAnimations.Right
     };
 
-    const { id, dissmissSnackbar, sackbarsState } = useSnackbar(snackbarProps, state.value, 5, 100);
-    state.value = sackbarsState;
+    const { id, dissmissSnackbar, snackbarsState } = useSnackbar(snackbarProps, state.value, 5, 100);
+    state.value = snackbarsState;
 
     dissmissSnackbar(id);
 
@@ -226,8 +226,8 @@ describe('Snackbar tests', () => {
       }
     };
 
-    const { id, dissmissSnackbar, removeSnackbar, sackbarsState } = useSnackbar(snackbarProps, state.value, 5, 100);
-    state.value = sackbarsState;
+    const { id, dissmissSnackbar, removeSnackbar, snackbarsState } = useSnackbar(snackbarProps, state.value, 5, 100);
+    state.value = snackbarsState;
 
     dissmissSnackbar(id);
 

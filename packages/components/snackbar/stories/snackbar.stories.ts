@@ -248,7 +248,7 @@ const UseSnackbarTemplate: StoryFn = (args: Args) => ({
     const snackbarRemoveDelay = ref(5000);
     const state = ref<SnackbarsState>([]);
     const addSuccessSnackbar = () => {
-      const { sackbarsState, removeSnackbar } = useSnackbar(
+      const { snackbarsState, removeSnackbar } = useSnackbar(
         {
           title: 'Success snackbar',
           description: 'create success snackbar programmatically',
@@ -266,11 +266,11 @@ const UseSnackbarTemplate: StoryFn = (args: Args) => ({
         snackbarsLimit.value,
         snackbarRemoveDelay.value
       );
-      state.value = sackbarsState;
+      state.value = snackbarsState;
       console.log('state before remove', state.value);
     };
     const addDefaultSnackbar = () => {
-      const { sackbarsState, removeSnackbar } = useSnackbar(
+      const { snackbarsState, removeSnackbar } = useSnackbar(
         {
           title: 'Default snackbar',
           description: 'create default snackbar programmatically',
@@ -288,7 +288,7 @@ const UseSnackbarTemplate: StoryFn = (args: Args) => ({
         snackbarsLimit.value,
         snackbarRemoveDelay.value
       );
-      state.value = sackbarsState;
+      state.value = snackbarsState;
       console.log('state before remove', state.value);
     };
 
@@ -370,14 +370,14 @@ removeDelay (type number) - The delay in milliseconds before a snackbar is autom
 
 return:
 
-{ sackbarsState, id, dissmissSnackbar, removeSnackbar } -  An object containing the updated snackbars state, the ID of the newly added snackbar,
+{ snackbarsState, id, dissmissSnackbar, removeSnackbar } -  An object containing the updated snackbars state, the ID of the newly added snackbar,
 a function to dismiss a snackbar, and a function to remove closed snackbars.
 
 details of returned functions:
 
 - dissmissSnackbar(id: string): Dismisses the snackbar with the given id.
 
-- removeSnackbar(sackbarsState: SnackbarsState): Removes closed snackbars from the state.
+- removeSnackbar(snackbarsState: SnackbarsState): Removes closed snackbars from the state.
 
 nb: see show code snippet below for more details of implementation
         `
@@ -399,7 +399,7 @@ nb: see show code snippet below for more details of implementation
   // const state = ref<SnackbarsState>([]);
   //
   // const addSuccessSnackbar = () => {
-  //   const { sackbarsState, removeSnackbar } = useSnackbar(
+  //   const { snackbarsState, removeSnackbar } = useSnackbar(
   //     {
   //       title: 'Success snackbar',
   //       description: 'create success snackbar programmatically',
@@ -417,12 +417,12 @@ nb: see show code snippet below for more details of implementation
   //     snackbarsLimit.value,
   //     snackbarRemoveDelay.value
   //   );
-  //   state.value = sackbarsState;
+  //   state.value = snackbarsState;
   //   console.log('state before remove', state.value);
   // };
   //
   // const addDefaultSnackbar = () => {
-  //   const { sackbarsState, removeSnackbar } = useSnackbar(
+  //   const { snackbarsState, removeSnackbar } = useSnackbar(
   //     {
   //       title: 'Default snackbar',
   //       description: 'create default snackbar programmatically',
@@ -440,7 +440,7 @@ nb: see show code snippet below for more details of implementation
   //     snackbarsLimit.value,
   //     snackbarRemoveDelay.value
   //   );
-  //   state.value = sackbarsState;
+  //   state.value = snackbarsState;
   //   console.log('state before remove', state.value);
   // };
 
