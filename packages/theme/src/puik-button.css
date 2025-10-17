@@ -69,7 +69,7 @@
 
 .puik-button--primary-reverse:disabled,
 .puik-button--primary-reverse.puik-button--disabled {
-  @apply bg-primary-500 text-white;
+  @apply bg-primary-600 text-primary-700;
 }
 
 .puik-button--secondary {
@@ -103,7 +103,7 @@
 
 .puik-button--secondary-reverse:disabled,
 .puik-button--secondary-reverse.puik-button--disabled {
-  @apply bg-primary-200 text-primary-500 border-primary-400;
+  @apply bg-primary-800 text-primary-600 border-primary-600;
 }
 
 .puik-button--tertiary {
@@ -120,7 +120,7 @@
 
 .puik-button--tertiary:disabled,
 .puik-button--tertiary.puik-button--disabled {
-  @apply bg-primary-200 text-primary-500;
+  @apply bg-primary-200 text-primary-500 border border-primary-400;
 }
 
 .puik-button--tertiary-reverse {
@@ -253,7 +253,7 @@
 
 .puik-button--info:disabled,
 .puik-button--info--disabled {
-  @apply border-blue-300 text-white;
+  @apply border-blue-300 text-primary-500;
 }
 
 .puik-button--danger {
@@ -270,7 +270,7 @@
 
 .puik-button--danger:disabled,
 .puik-button--danger--disabled {
-  @apply border-red-300 text-white;
+  @apply border-red-200 text-primary-500;
 }
 
 .puik-button--success {
@@ -287,7 +287,7 @@
 
 .puik-button--success:disabled,
 .puik-button--success--disabled {
-  @apply border-green-100 text-white;
+  @apply border-green-100 text-primary-500;
 }
 
 .puik-button--warning {
@@ -304,7 +304,7 @@
 
 .puik-button--warning:disabled,
 .puik-button--warning--disabled {
-  @apply border-yellow-100 text-white;
+  @apply border-yellow-100 text-primary-500;
 }
 
 .puik-button__left-icon,

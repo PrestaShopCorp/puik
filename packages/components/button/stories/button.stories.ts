@@ -744,7 +744,7 @@ export const DisabledVariants: StoryObj = {
 };
 
 export const DisabledReverseVariants: StoryObj = {
-  render: AllCommonVariantsTemplate,
+  render: AllReversedVariantsTemplate,
 
   args: {
     disabled: true
