@@ -370,12 +370,12 @@ removeDelay (type number) - The delay in milliseconds before a snackbar is autom
 
 return:
 
-{ snackbarsState, id, dissmissSnackbar, removeSnackbar } -  An object containing the updated snackbars state, the ID of the newly added snackbar,
+{ snackbarsState, id, dismissSnackbar, removeSnackbar } -  An object containing the updated snackbars state, the ID of the newly added snackbar,
 a function to dismiss a snackbar, and a function to remove closed snackbars.
 
 details of returned functions:
 
-- dissmissSnackbar(id: string): Dismisses the snackbar with the given id.
+- dismissSnackbar(id: string): Dismisses the snackbar with the given id.
 
 - removeSnackbar(snackbarsState: SnackbarsState): Removes closed snackbars from the state.
 
@@ -495,7 +495,6 @@ nb: see show code snippet below for more details of implementation
       >
         <component :is="snackbar.action" />
       </template>
-    </puik-snackbar>
     </puik-snackbar>
   </puik-snackbar-provider>
         `,

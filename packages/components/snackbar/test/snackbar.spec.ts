@@ -200,10 +200,10 @@ describe('Snackbar tests', () => {
       swipeAnimation: PuikSnackbarSwipeAnimations.Right
     };
 
-    const { id, dissmissSnackbar, snackbarsState } = useSnackbar(snackbarProps, state.value, 5, 100);
+    const { id, dismissSnackbar, snackbarsState } = useSnackbar(snackbarProps, state.value, 5, 100);
     state.value = snackbarsState;
 
-    dissmissSnackbar(id);
+    dismissSnackbar(id);
 
     await new Promise(resolve => setTimeout(resolve, 150));
 
@@ -226,10 +226,10 @@ describe('Snackbar tests', () => {
       }
     };
 
-    const { id, dissmissSnackbar, removeSnackbar, snackbarsState } = useSnackbar(snackbarProps, state.value, 5, 100);
+    const { id, dismissSnackbar, removeSnackbar, snackbarsState } = useSnackbar(snackbarProps, state.value, 5, 100);
     state.value = snackbarsState;
 
-    dissmissSnackbar(id);
+    dismissSnackbar(id);
 
     await new Promise(resolve => setTimeout(resolve, 150));
 

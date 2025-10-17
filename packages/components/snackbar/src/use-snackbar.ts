@@ -20,7 +20,7 @@ export const useSnackbar = (
     snackbarsState = snackbarsState.filter(snackbar => snackbar.open !== false);
     return snackbarsState;
   };
-  const dissmissSnackbar = (id: string) => {
+  const dismissSnackbar = (id: string) => {
     setTimeout(() => {
       snackbarsState = snackbarsState.map(snackbar => {
         if (snackbar.id === id) {
@@ -31,6 +31,6 @@ export const useSnackbar = (
       return snackbarsState;
     }, removeDelay);
   };
-  dissmissSnackbar(id);
-  return { snackbarsState, id, dissmissSnackbar, removeSnackbar };
+  dismissSnackbar(id);
+  return { snackbarsState, id, dismissSnackbar, removeSnackbar };
 };
