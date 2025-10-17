@@ -178,4 +178,24 @@ describe('Button tests', () => {
     });
     expect(findRightLoader().attributes('data-test')).toBe('rightLoader-button');
   });
+
+  it('should apply legacy text variant styles when forceLegacyTextVariant is true', () => {
+    factory({ variant: 'text', forceLegacyTextVariant: true });
+    expect(findButton().classes()).toContain('puik-button--legacy-text');
+  });
+
+  it('should not apply legacy text variant styles when forceLegacyTextVariant is false', () => {
+    factory({ variant: 'text', forceLegacyTextVariant: false });
+    expect(findButton().classes()).not.toContain('puik-button--legacy-text');
+  });
+
+  it('should apply legacy text-reverse variant styles when forceLegacyTextVariant is true', () => {
+    factory({ variant: 'text-reverse', forceLegacyTextVariant: true });
+    expect(findButton().classes()).toContain('puik-button--legacy-text-reverse');
+  });
+
+  it('should not apply legacy text-reverse variant styles when forceLegacyTextVariant is false', () => {
+    factory({ variant: 'text-reverse', forceLegacyTextVariant: false });
+    expect(findButton().classes()).not.toContain('puik-button--legacy-text-reverse');
+  });
 });

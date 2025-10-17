@@ -57,6 +57,7 @@
             v-if="closable"
             class="notification-bar__close-button"
             variant="text"
+            force-legacy-text-variant
             @click="close"
           >
             <puik-icon

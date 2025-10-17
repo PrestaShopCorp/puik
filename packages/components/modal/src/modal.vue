@@ -44,6 +44,7 @@
             v-if="PuikModalVariants.Dialog !== variant"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__close-button"
             variant="text"
+            force-legacy-text-variant
             :data-test="
               dataTest != undefined ? `closeButton-${dataTest}` : undefined
             "

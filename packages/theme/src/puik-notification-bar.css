@@ -78,6 +78,6 @@
   @apply bg-green-marketing;
 }
 
-.notification-bar__close-button {
+.notification-bar-close__container .notification-bar__close-button {
   @apply p-0 min-h-0 focus-visible:outline-none focus-visible:ring focus-visible:ring-offset-2 focus-visible:ring-blue;
 }

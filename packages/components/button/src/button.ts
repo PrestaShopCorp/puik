@@ -4,12 +4,13 @@ import type Button from './button.vue';
 export enum PuikButtonVariants {
   Primary = 'primary',
   PrimaryReverse = 'primary-reverse',
-  Destructive = 'destructive',
   Secondary = 'secondary',
   SecondaryReverse = 'secondary-reverse',
   Tertiary = 'tertiary',
+  TertiaryReverse = 'tertiary-reverse',
   Text = 'text',
   TextReverse = 'text-reverse',
+  Destructive = 'destructive',
   Info = 'info',
   Success = 'success',
   Warning = 'warning',
@@ -42,6 +43,7 @@ export interface ButtonProps {
   value?: string | number | Record<string, any> | any[]
   dataTest?: string
   ariaLabel?: string
+  forceLegacyTextVariant?: boolean
 }
 
 export type ButtonInstance = InstanceType<typeof Button>;

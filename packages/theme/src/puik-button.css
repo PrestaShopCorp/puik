@@ -69,7 +69,7 @@
 
 .puik-button--primary-reverse:disabled,
 .puik-button--primary-reverse.puik-button--disabled {
-  @apply bg-primary-500 text-white;
+  @apply bg-primary-600 text-primary-700;
 }
 
 .puik-button--secondary {
@@ -103,24 +103,123 @@
 
 .puik-button--secondary-reverse:disabled,
 .puik-button--secondary-reverse.puik-button--disabled {
-  @apply bg-primary-200 text-primary-500 border-primary-400;
+  @apply bg-primary-800 text-primary-600 border-primary-600;
 }
 
 .puik-button--tertiary {
-  @apply bg-primary-400 text-primary;
+  @apply bg-white text-primary border border-primary-400;
 }
 
 .puik-button--tertiary:hover {
-  @apply bg-primary-300;
+  @apply bg-primary-200;
 }
 
 .puik-button--tertiary:active {
-  @apply bg-primary-200;
+  @apply bg-primary-300;
 }
 
 .puik-button--tertiary:disabled,
 .puik-button--tertiary.puik-button--disabled {
-  @apply bg-primary-200 text-primary-500;
+  @apply bg-primary-200 text-primary-500 border border-primary-400;
+}
+
+.puik-button--tertiary-reverse {
+  @apply bg-primary-700 text-white border border-primary-500;
+}
+
+.puik-button--tertiary-reverse:hover {
+  @apply bg-primary-600;
+}
+
+.puik-button--tertiary-reverse:active {
+  @apply bg-primary-700;
+}
+
+.puik-button--tertiary-reverse:disabled,
+.puik-button--tertiary-reverse.puik-button--disabled {
+  @apply bg-primary-700 text-primary-600 border-primary-600;
+}
+
+.puik-button--text {
+  @apply px-0
+  text-primary
+    underline
+    decoration-auto
+    underline-offset-[3px]
+  decoration-primary
+    transition-all
+    duration-150;
+}
+
+.puik-button--text:hover,
+.puik-button--text:active,
+.puik-button--text:visited {
+  @apply underline-offset-[6px];
+}
+
+.puik-button--text:disabled,
+.puik-button--text.puik-button--disabled {
+  @apply text-primary-500 decoration-primary-500;
+}
+
+.puik-button--text-reverse {
+  @apply px-0
+  text-white
+    underline
+    decoration-auto
+    underline-offset-[3px]
+  decoration-white
+    transition-all
+    duration-150;
+}
+
+.puik-button--text-reverse:hover,
+.puik-button--text-reverse:active,
+.puik-button--text-reverse:visited {
+  @apply underline-offset-[6px];
+}
+
+.puik-button--text-reverse:disabled,
+.puik-button--text-reverse.puik-button--disabled {
+  @apply text-primary-600 decoration-primary-600;
+}
+
+.puik-button--text.puik-button--legacy-text,
+.puik-button--text-reverse.puik-button--legacy-text-reverse {
+  @apply no-underline;
+}
+
+.puik-button--text.puik-button--legacy-text:hover {
+  @apply bg-primary-200;
+}
+.puik-button--text.puik-button--legacy-text:active {
+  @apply bg-primary-300;
+}
+
+.puik-button--text-reverse.puik-button--legacy-text-reverse:hover {
+  @apply text-primary bg-primary-300;
+}
+
+.puik-button--text-reverse.puik-button--legacy-text-reverse:active {
+  @apply text-primary bg-primary-400;
+}
+
+.puik-button--text-reverse.puik-button--legacy-text-reverse:disabled {
+  @apply text-primary-500;
+}
+
+.puik-button--text-reverse.puik-button--legacy-text-reverse:hover .puik-spinner-loader--reverse .puik-spinner-loader__spinner{
+  filter: brightness(0) invert(0);
+}
+
+.puik-button--text.puik-button--legacy-text,
+.puik-button--text-reverse.puik-button--legacy-text-reverse {
+  @apply px-4;
+}
+
+.puik-button--text.puik-button--legacy-text.puik-button--sm,
+.puik-button--text-reverse.puik-button--legacy-text-reverse.puik-button--sm {
+  @apply px-2;
 }
 
 .puik-button--destructive {
@@ -140,41 +239,6 @@
   @apply bg-red-100;
 }
 
-.puik-button--text {
-  @apply text-primary;
-}
-
-.puik-button--text:hover {
-  @apply bg-primary-200;
-}
-
-.puik-button--text:active {
-  @apply bg-primary-300;
-}
-
-.puik-button--text:disabled,
-.puik-button--text.puik-button--disabled {
-  @apply text-primary-500;
-}
-
-.puik-button--text-reverse {
-  @apply text-white;
-}
-
-.puik-button--text-reverse:hover {
-  @apply text-primary;
-  @apply bg-primary-300;
-}
-
-.puik-button--text-reverse:active {
-  @apply bg-primary-400;
-}
-
-.puik-button--text-reverse:disabled,
-.puik-button--text-reverse.puik-button--disabled {
-  @apply text-primary-500;
-}
-
 .puik-button--info {
   @apply text-primary bg-blue-50 border border-blue;
 }
@@ -189,7 +253,7 @@
 
 .puik-button--info:disabled,
 .puik-button--info--disabled {
-  @apply border-blue-300 text-white;
+  @apply border-blue-300 text-primary-500;
 }
 
 .puik-button--danger {
@@ -206,7 +270,7 @@
 
 .puik-button--danger:disabled,
 .puik-button--danger--disabled {
-  @apply border-red-300 text-white;
+  @apply border-red-200 text-primary-500;
 }
 
 .puik-button--success {
@@ -223,7 +287,7 @@
 
 .puik-button--success:disabled,
 .puik-button--success--disabled {
-  @apply border-green-100 text-white;
+  @apply border-green-100 text-primary-500;
 }
 
 .puik-button--warning {
@@ -240,7 +304,7 @@
 
 .puik-button--warning:disabled,
 .puik-button--warning--disabled {
-  @apply border-yellow-100 text-white;
+  @apply border-yellow-100 text-primary-500;
 }
 
 .puik-button__left-icon,

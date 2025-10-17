@@ -52,6 +52,7 @@
           <puik-button
             left-icon="close"
             variant="text"
+            force-legacy-text-variant
             size="sm"
           >
             {{ t('puik.table.reset') }}

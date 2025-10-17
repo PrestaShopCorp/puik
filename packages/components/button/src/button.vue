@@ -12,6 +12,8 @@
       { 'puik-button--disabled': disabled },
       { 'puik-button--fluid': fluid },
       { 'puik-button--no-wrap': !wrapLabel },
+      { 'puik-button--legacy-text': forceLegacyTextVariant && variant == 'text'},
+      { 'puik-button--legacy-text-reverse': forceLegacyTextVariant && variant == 'text-reverse'}
     ]"
     role="button"
     :disabled="disabled"
@@ -76,7 +78,8 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   variant: PuikButtonVariants.Primary,
   size: PuikButtonSizes.Medium,
   loading: false,
-  loaderPosition: PuikButtonLoaderPositions.Right
+  loaderPosition: PuikButtonLoaderPositions.Right,
+  forceLegacyTextVariant: false
 });
 
 const { t } = useLocale();
@@ -104,7 +107,12 @@ const setSelected = () => {
 };
 
 const loaderColor = computed(() => {
-  if (props.variant === 'primary' || props.variant === 'secondary-reverse' || props.variant === 'text-reverse' || props.variant === 'destructive' || props.disabled) {
+  if (props.variant === 'primary'
+    || props.variant === 'secondary-reverse'
+    || props.variant === 'tertiary-reverse'
+    || props.variant === 'text-reverse'
+    || props.variant === 'destructive'
+    || props.disabled) {
     return 'reverse';
   }
   return 'primary';
