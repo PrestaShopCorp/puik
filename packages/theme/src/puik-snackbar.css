@@ -23,11 +23,11 @@
 }
 
 .puik-snackbar-title {
-  @apply pb-2 puik-body-large-medium;
+  @apply pb-2 puik-body-large-medium text-white;
 }
 
 .puik-snackbar-description {
-  @apply puik-body-default;
+  @apply puik-body-default text-white;
 }
 
 .puik-snackbar-action {
