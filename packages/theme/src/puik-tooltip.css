@@ -15,11 +15,11 @@
 }
 
 .puik-tooltip__tip__content {
-  @apply flex flex-col relative z-10 puik-body-default;
+  @apply flex flex-col relative z-10 puik-body-default text-white;
 }
 
 .puik-tooltip__tip__content__heading {
-  @apply font-bold mb-1 puik-body-default-bold;
+  @apply font-bold mb-1 puik-body-default-bold text-white;
 }
 
 .puik-tooltip__tip[data-popper-placement^='top'] > .puik-tooltip__tip__arrow {
