@@ -55,6 +55,7 @@
         :data-test="dataTest != undefined ? `link-${dataTest}` : undefined"
         tabindex="0"
         variant="text"
+        force-legacy-text-variant
         :wrap-label="buttonWrapLabel"
         @click="clickLink"
       >

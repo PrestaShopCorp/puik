@@ -23,6 +23,7 @@
           <puik-button
             class="puik-sidebar__header__button"
             variant="text"
+            force-legacy-text-variant
             :left-icon="expansionIcon"
             :aria-label="expandButtonAriaLabel"
             @click="setExpanded(!localExpanded)"
@@ -34,6 +35,7 @@
         >
           <puik-button
             variant="text"
+            force-legacy-text-variant
             left-icon="close"
             :aria-label="t('puik.sidebar.expandButtonLabel.close')"
             @click="setExpanded(false)"

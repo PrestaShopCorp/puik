@@ -25,6 +25,7 @@
       >
         <puik-button
           variant="text"
+          force-legacy-text-variant
           fluid
           class="puik-sidebar-group-item__collapsed-button"
           :data-test="
