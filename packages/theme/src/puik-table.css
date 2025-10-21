@@ -50,31 +50,31 @@
   @apply flex;
 }
 
-.puik-table__head__row__item--left > .puik-table__head__row__item__container,
+.puik-table__head__row__item--left .puik-table__head__row__item__container,
 .puik-table__body__row__item--left .puik-table__body__row__item__container {
   @apply justify-start;
 }
-.puik-table__head__row__item--left > .puik-table__head__row__item__content,
+.puik-table__head__row__item--left .puik-table__head__row__item__content,
 .puik-table__body__row__item--left .puik-table__body__row__item__content {
-  @apply text-left;
+  @apply flex justify-start;
 }
 
-.puik-table__head__row__item--center > .puik-table__head__row__item__container,
+.puik-table__head__row__item--center .puik-table__head__row__item__container,
 .puik-table__body__row__item--center .puik-table__body__row__item__container {
   @apply justify-center;
 }
-.puik-table__head__row__item--center > .puik-table__head__row__item__content,
+.puik-table__head__row__item--center .puik-table__head__row__item__content,
 .puik-table__body__row__item--center .puik-table__body__row__item__content {
-  @apply text-center;
+  @apply flex justify-center;
 }
 
-.puik-table__head__row__item--right > .puik-table__head__row__item__container,
+.puik-table__head__row__item--right .puik-table__head__row__item__container,
 .puik-table__body__row__item--right .puik-table__body__row__item__container {
   @apply justify-end;
 }
-.puik-table__head__row__item--right > .puik-table__head__row__item__content,
+.puik-table__head__row__item--right .puik-table__head__row__item__content,
 .puik-table__body__row__item--right .puik-table__body__row__item__content {
-  @apply text-right;
+  @apply flex justify-end;
 }
 
 .puik-table__head,
