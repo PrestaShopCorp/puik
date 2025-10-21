@@ -519,7 +519,6 @@ watch(
 watch(
   () => props.open,
   (newValue) => {
-    console.log('watch open prop');
     openRef.value = newValue;
   }
 );
