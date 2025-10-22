@@ -22,7 +22,7 @@ export default {
     defaultPosition: {
       description:
         'Default position of the selected tab. NB: the minimum value cannot be less than 1 ',
-      control: { type: 'number', min: 1 },
+      control: { type: 'number', min: 1, max: 3 },
       table: {
         type: {
           summary: 'number'
@@ -106,7 +106,7 @@ const Template: StoryFn = (args: Args) => ({
     return { tabs, args };
   },
   template: `
-<puik-tab-navigation :name="args.name" :default-position="args.defaultPosition">
+<puik-tab-navigation :key="args.defaultPosition" :name="args.name" :default-position="args.defaultPosition">
   <puik-tab-navigation-group-titles :aria-label="args.ariaLabel">
     <template v-for="(tab, index) in tabs" :key="index">
       <puik-tab-navigation-title :position="index + 1" :disabled="tab?.disabled">
@@ -141,7 +141,7 @@ export const Default: StoryObj = {
       source: {
         code: `
 <!--VueJS Snippet-->
-<puik-tab-navigation :name="args.name" :default-position="args.defaultPosition">
+<puik-tab-navigation :key="args.defaultPosition" :name="args.name" :default-position="args.defaultPosition">
   <puik-tab-navigation-group-titles :aria-label="args.ariaLabel">
     <template v-for="(tab, index) in tabs" :key="index">
       <puik-tab-navigation-title :position="index + 1" :disabled="tab?.disabled">
