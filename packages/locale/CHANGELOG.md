@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-locale
 
+## 2.5.0
+
+### Minor Changes
+
+- release Puik v2.7.0
+
 ## 2.4.0
 
 ### Minor Changes

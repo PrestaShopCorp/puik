@@ -1,5 +1,16 @@
 # @prestashopcorp/puik-components
 
+## 2.7.0
+
+### Minor Changes
+
+- release Puik v2.7.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @prestashopcorp/puik-theme@2.7.0
+
 ## 2.6.0
 
 ### Minor Changes

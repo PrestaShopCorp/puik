@@ -1,5 +1,17 @@
 # @prestashopcorp/puik-resolver
 
+## 8.0.0
+
+### Minor Changes
+
+- release Puik v2.7.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @prestashopcorp/puik-components@2.7.0
+  - @prestashopcorp/puik-theme@2.7.0
+
 ## 7.0.0
 
 ### Minor Changes

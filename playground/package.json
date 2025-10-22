@@ -2,7 +2,7 @@
   "name": "@prestashopcorp/puik-playground",
   "description": "PUIK playground - For testing components.",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite --force && pnpm --filter @prestashopcorp/puik-theme dev",
