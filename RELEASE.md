@@ -22,7 +22,7 @@ For the moment this step is not yet automated and the following steps will need 
 
 **Here are the steps to follow:**
 
-1. To generate a new changeset, create a branch from `main` to bumped versions (use versioning template issue on github and create branch from it).
+1. To generate a new changeset, create a branch from `main` to bumped versions (use [versioning template issue](https://github.com/PrestaShopCorp/puik/issues) on github and create branch from it).
 2. Run `pnpm changeset` in the root of the repository. The generated markdown files in the `.changeset` directory should be committed to the repository.
 
 3. Run `pnpm changeset version`. This consumes all changesets, and updates automatically to the most appropriate semver version based on those changesets. It also writes changelog entries for each consumed changeset.

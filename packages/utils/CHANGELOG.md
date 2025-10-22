@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-utils
 
+## 2.4.0
+
+### Minor Changes
+
+- release Puik v2.7.0
+
 ## 2.3.0
 
 ### Minor Changes
