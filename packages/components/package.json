@@ -12,11 +12,13 @@
     "vue": "^3.3.7"
   },
   "dependencies": {
-    "@prestashopcorp/puik-theme": "workspace:*",
     "@headlessui/vue": "^1.7.23",
     "@popperjs/core": "^2.11.8",
+    "@prestashopcorp/puik-theme": "workspace:*",
     "@vueuse/components": "^11.3.0",
     "@vueuse/core": "^10.11.1",
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-vue": "^8.6.0",
     "radix-vue": "^1.9.17",
     "sortablejs": "^1.15.6",
     "sortablejs-vue3": "1.2.11"

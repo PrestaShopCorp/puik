@@ -1,0 +1,26 @@
+@reference './theme.css';
+
+.puik-carousel {
+  @apply relative;
+}
+
+.puik-carousel__viewport {
+  @apply overflow-hidden w-full h-full;
+}
+
+.puik-carousel__container {
+  @apply flex touch-pan-y;
+  backface-visibility: hidden;
+}
+
+.puik-carousel__container--vertical {
+  @apply flex-col h-auto touch-pan-x;
+}
+
+.puik-carousel__item {
+  @apply flex-none min-w-0 relative;
+}
+
+.puik-carousel__container--horizontal .puik-carousel__item {
+  @apply w-full;
+}
