@@ -10,6 +10,8 @@ export interface CarouselProps {
   opts?: EmblaOptionsType;
   plugins?: EmblaPluginType[];
   orientation?: 'horizontal' | 'vertical';
+  verticalHeight?: string | number;
+  itemWidth?: number;
 }
 
 export type CarouselContext = {
@@ -20,6 +22,9 @@ export type CarouselContext = {
   canScrollPrev: Ref<boolean>;
   canScrollNext: Ref<boolean>;
   orientation: 'horizontal' | 'vertical';
+  selectedIndex: Ref<number>;
+  scrollSnaps: Ref<number[]>;
+  scrollTo: (index: number) => void;
 };
 
 export const CAROUSEL_INJECTION_KEY: InjectionKey<CarouselContext> =

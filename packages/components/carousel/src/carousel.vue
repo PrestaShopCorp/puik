@@ -8,6 +8,7 @@
     role="region"
     aria-roledescription="carousel"
     tabindex="0"
+    :style="styles"
     @keydown="onKeyDown"
   >
     <slot />
@@ -15,10 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide, watchEffect } from 'vue';
+import { ref, provide, watchEffect, computed } from 'vue';
 import emblaCarouselVue from 'embla-carousel-vue';
 import { CarouselProps, CAROUSEL_INJECTION_KEY } from './carousel';
-import type { EmblaCarouselType } from 'embla-carousel';
+import type { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
 
 defineOptions({
   name: 'PuikCarousel',
@@ -28,20 +29,40 @@ const props = withDefaults(defineProps<CarouselProps>(), {
   orientation: 'horizontal',
 });
 
-const [carouselRef, api] = emblaCarouselVue(
-  {
+const options = ref<EmblaOptionsType>({
+  ...props.opts,
+  axis: props.orientation === 'horizontal' ? 'x' : 'y',
+});
+
+watchEffect(() => {
+  options.value = {
     ...props.opts,
     axis: props.orientation === 'horizontal' ? 'x' : 'y',
-  },
-  props.plugins
-);
+  };
+});
+
+const styles = computed(() => ({
+  '--puik-carousel-vertical-height':
+    typeof props.verticalHeight === 'number'
+      ? `${props.verticalHeight}px`
+      : props.verticalHeight,
+  '--puik-carousel-item-width': props.itemWidth
+    ? `${props.itemWidth}%`
+    : undefined,
+}));
+
+const [carouselRef, api] = emblaCarouselVue(options, props.plugins);
 
 const canScrollPrev = ref(false);
 const canScrollNext = ref(false);
+const selectedIndex = ref(0);
+const scrollSnaps = ref<number[]>([]);
 
 const onSelect = (api: EmblaCarouselType) => {
   canScrollPrev.value = api.canScrollPrev();
   canScrollNext.value = api.canScrollNext();
+  selectedIndex.value = api.selectedScrollSnap();
+  scrollSnaps.value = api.scrollSnapList();
 };
 
 const scrollPrev = () => {
@@ -50,6 +71,10 @@ const scrollPrev = () => {
 
 const scrollNext = () => {
   api.value?.scrollNext();
+};
+
+const scrollTo = (index: number) => {
+  api.value?.scrollTo(index);
 };
 
 const onKeyDown = (event: KeyboardEvent) => {
@@ -88,5 +113,8 @@ provide(CAROUSEL_INJECTION_KEY, {
   canScrollPrev,
   canScrollNext,
   orientation: props.orientation,
+  selectedIndex,
+  scrollSnaps,
+  scrollTo,
 });
 </script>

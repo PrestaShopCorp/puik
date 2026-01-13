@@ -5,7 +5,7 @@
 }
 
 .puik-carousel__viewport {
-  @apply overflow-hidden w-full h-full;
+  @apply overflow-hidden w-full;
 }
 
 .puik-carousel__container {
@@ -14,13 +14,28 @@
 }
 
 .puik-carousel__container--vertical {
-  @apply flex-col h-auto touch-pan-x;
+  @apply flex flex-col touch-pan-x;
+  height: var(--puik-carousel-vertical-height, 200px);
 }
 
-.puik-carousel__item {
-  @apply flex-none min-w-0 relative;
+.puik-carousel__container--vertical .puik-carousel__item {
+  flex: 0 0;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .puik-carousel__container--horizontal .puik-carousel__item {
-  @apply w-full;
+  flex: 0 0 var(--puik-carousel-item-width, 100%);
+}
+
+.puik-carousel__indicators {
+  @apply flex justify-center gap-2 mt-4;
+}
+
+.puik-carousel__indicator {
+  @apply w-3 h-3 rounded-full bg-gray-300 transition-colors cursor-pointer border-none p-0;
+}
+
+.puik-carousel__indicator--active {
+  @apply bg-primary-600;
 }

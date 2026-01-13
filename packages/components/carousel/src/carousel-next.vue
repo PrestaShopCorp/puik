@@ -6,7 +6,11 @@
     :disabled="!canScrollNext"
     @click="scrollNext"
   >
-    <puik-icon icon="chevron_right" />
+    <puik-icon
+      :icon="
+        orientation === 'vertical' ? 'keyboard_arrow_down' : 'chevron_right'
+      "
+    />
     <span class="sr-only">Next slide</span>
   </puik-button>
 </template>
@@ -26,5 +30,5 @@ if (!context) {
   throw new Error('PuikCarouselNext must be used within a PuikCarousel');
 }
 
-const { scrollNext, canScrollNext } = context;
+const { scrollNext, canScrollNext, orientation } = context;
 </script>

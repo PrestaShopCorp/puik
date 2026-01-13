@@ -6,7 +6,9 @@
     :disabled="!canScrollPrev"
     @click="scrollPrev"
   >
-    <puik-icon icon="chevron_left" />
+    <puik-icon
+      :icon="orientation === 'vertical' ? 'keyboard_arrow_up' : 'chevron_left'"
+    />
     <span class="sr-only">Previous slide</span>
   </puik-button>
 </template>
@@ -26,5 +28,5 @@ if (!context) {
   throw new Error('PuikCarouselPrevious must be used within a PuikCarousel');
 }
 
-const { scrollPrev, canScrollPrev } = context;
+const { scrollPrev, canScrollPrev, orientation } = context;
 </script>

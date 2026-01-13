@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="carouselRef"
-    class="puik-carousel__viewport"
-  >
+  <div ref="carouselRef" class="puik-carousel__viewport">
     <div
       class="puik-carousel__container"
       :class="{
