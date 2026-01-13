@@ -18,7 +18,11 @@
 <script setup lang="ts">
 import { ref, provide, watchEffect, computed } from 'vue';
 import emblaCarouselVue from 'embla-carousel-vue';
-import { CarouselProps, CAROUSEL_INJECTION_KEY } from './carousel';
+import {
+  CarouselProps,
+  CarouselEmits,
+  CAROUSEL_INJECTION_KEY,
+} from './carousel';
 import type { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
 
 defineOptions({
@@ -28,6 +32,8 @@ defineOptions({
 const props = withDefaults(defineProps<CarouselProps>(), {
   orientation: 'horizontal',
 });
+
+const emits = defineEmits<CarouselEmits>();
 
 const options = ref<EmblaOptionsType>({
   ...props.opts,
@@ -100,8 +106,24 @@ const onKeyDown = (event: KeyboardEvent) => {
 watchEffect(() => {
   if (!api.value) return;
 
-  api.value.on('select', onSelect);
-  api.value.on('reInit', onSelect);
+  api.value.on('init', (api) => emits('init', api));
+  api.value.on('destroy', (api) => emits('destroy', api));
+  api.value.on('scroll', (api) => emits('scroll', api));
+  api.value.on('settle', (api) => emits('settle', api));
+  api.value.on('resize', (api) => emits('resize', api));
+  api.value.on('slidesChanged', (api) => emits('slidesChanged', api));
+  api.value.on('pointerDown', (api) => emits('pointerDown', api));
+  api.value.on('pointerUp', (api) => emits('pointerUp', api));
+
+  api.value.on('select', (api) => {
+    onSelect(api);
+    emits('select', api);
+  });
+  api.value.on('reInit', (api) => {
+    onSelect(api);
+    emits('reInit', api);
+  });
+
   onSelect(api.value);
 });
 
@@ -116,5 +138,16 @@ provide(CAROUSEL_INJECTION_KEY, {
   selectedIndex,
   scrollSnaps,
   scrollTo,
+});
+
+defineExpose({
+  api,
+  scrollPrev,
+  scrollNext,
+  scrollTo,
+  canScrollPrev,
+  canScrollNext,
+  selectedIndex,
+  scrollSnaps,
 });
 </script>

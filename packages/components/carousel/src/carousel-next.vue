@@ -11,7 +11,7 @@
         orientation === 'vertical' ? 'keyboard_arrow_down' : 'chevron_right'
       "
     />
-    <span class="sr-only">Next slide</span>
+    <span class="puik-sr-only">Next slide</span>
   </puik-button>
 </template>
 

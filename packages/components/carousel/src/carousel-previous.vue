@@ -9,7 +9,7 @@
     <puik-icon
       :icon="orientation === 'vertical' ? 'keyboard_arrow_up' : 'chevron_left'"
     />
-    <span class="sr-only">Previous slide</span>
+    <span class="puik-sr-only">Previous slide</span>
   </puik-button>
 </template>
 

@@ -14,6 +14,19 @@ export interface CarouselProps {
   itemWidth?: number;
 }
 
+export interface CarouselEmits {
+  (e: 'init', api: EmblaCarouselType): void;
+  (e: 'reInit', api: EmblaCarouselType): void;
+  (e: 'destroy', api: EmblaCarouselType): void;
+  (e: 'select', api: EmblaCarouselType): void;
+  (e: 'scroll', api: EmblaCarouselType): void;
+  (e: 'settle', api: EmblaCarouselType): void;
+  (e: 'resize', api: EmblaCarouselType): void;
+  (e: 'slidesChanged', api: EmblaCarouselType): void;
+  (e: 'pointerDown', api: EmblaCarouselType): void;
+  (e: 'pointerUp', api: EmblaCarouselType): void;
+}
+
 export type CarouselContext = {
   carouselRef: Ref<HTMLElement | undefined>;
   api: Ref<EmblaCarouselType | undefined>;
