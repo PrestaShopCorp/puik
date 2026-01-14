@@ -394,3 +394,50 @@ import Autoplay from 'embla-carousel-autoplay'
     },
   },
 };
+export const Indicators = {
+  render: () => ({
+    components: {
+      PuikCarousel,
+      PuikCarouselContent,
+      PuikCarouselItem,
+      PuikCard,
+      PuikCarouselIndicators,
+    },
+    template: `
+      <div class="flex flex-col gap-8">
+        <div>
+          <h3 class="mb-4 font-bold">Standard Indicators</h3>
+          <p class="mb-4 text-sm text-gray-600">The active indicator automatically cycles through different colors (blue, purple, amber, green) based on the slide index.</p>
+          <puik-carousel>
+            <puik-carousel-content>
+              <puik-carousel-item v-for="i in 8" :key="i">
+                <puik-card class="h-[100px] flex items-center justify-center">Slide {{ i }}</puik-card>
+              </puik-carousel-item>
+            </puik-carousel-content>
+            <div class="flex justify-center mt-4">
+              <puik-carousel-indicators />
+            </div>
+          </puik-carousel>
+        </div>
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Indicators automatically cycle through a set of colors for the active state to provide visual variety. They are designed to be used within the `PuikCarousel` component.',
+      },
+      source: {
+        code: `
+<puik-carousel>
+  <puik-carousel-content>
+    <!-- ... items ... -->
+  </puik-carousel-content>
+  <puik-carousel-indicators />
+</puik-carousel>
+        `,
+      },
+    },
+  },
+};

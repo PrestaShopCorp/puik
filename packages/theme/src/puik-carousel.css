@@ -27,15 +27,3 @@
 .puik-carousel__container--horizontal .puik-carousel__item {
   flex: 0 0 var(--puik-carousel-item-width, 100%);
 }
-
-.puik-carousel__indicators {
-  @apply flex justify-center gap-2 mt-4;
-}
-
-.puik-carousel__indicator {
-  @apply w-3 h-3 rounded-full bg-gray-300 transition-colors cursor-pointer border-none p-0;
-}
-
-.puik-carousel__indicator--active {
-  @apply bg-primary-600;
-}

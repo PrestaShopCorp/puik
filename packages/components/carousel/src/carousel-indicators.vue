@@ -4,12 +4,19 @@
       v-for="(_, index) in scrollSnaps"
       :key="index"
       class="puik-carousel__indicator"
-      :class="{
-        'puik-carousel__indicator--active': index === selectedIndex,
-      }"
       :aria-label="`Go to slide ${index + 1}`"
       @click="scrollTo(index)"
-    />
+    >
+      <span
+        class="puik-carousel__indicator-dot"
+        :class="{
+          'puik-carousel__indicator-dot--active': index === selectedIndex,
+          [`puik-carousel__indicator-dot--active--${
+            ['blue', 'purple', 'amber', 'green'][index % 4]
+          }`]: index === selectedIndex,
+        }"
+      />
+    </button>
   </div>
 </template>
 
