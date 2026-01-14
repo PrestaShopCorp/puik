@@ -49,49 +49,73 @@ export default {
     opts: {
       control: 'object',
       description:
-        'Embla Carousel options (e.g. { loop: true, align: "start" })',
+        'Embla Carousel options (e.g. { loop: true, align: "start" }). See <a href="https://www.embla-carousel.com/api/options/" target="_blank">Embla Options</a>',
+      table: {
+        type: {
+          summary: 'EmblaOptionsType',
+        },
+      },
     },
     plugins: {
       control: 'object',
-      description: 'Embla Carousel plugins',
+      description:
+        'Embla Carousel plugins. See <a href="https://www.embla-carousel.com/plugins/" target="_blank">Embla Plugins</a>',
+      table: {
+        type: {
+          summary: 'EmblaPluginType[]',
+        },
+      },
     },
     init: {
       action: 'init',
-      description: 'Emitted when the carousel is initialized',
+      description:
+        'Emitted when the carousel is initialized. See <a href="https://www.embla-carousel.com/api/events/#init" target="_blank">init event</a>',
     },
     reInit: {
       action: 'reInit',
-      description: 'Emitted when the carousel moves',
+      description:
+        'Emitted when the carousel moves. See <a href="https://www.embla-carousel.com/api/events/#reinit" target="_blank">reInit event</a>',
     },
     destroy: {
       action: 'destroy',
-      description: 'Emitted when the carousel is destroyed',
+      description:
+        'Emitted when the carousel is destroyed. See <a href="https://www.embla-carousel.com/api/events/#destroy" target="_blank">destroy event</a>',
     },
     select: {
       action: 'select',
-      description: 'Emitted when a slide is selected',
+      description:
+        'Emitted when a slide is selected. See <a href="https://www.embla-carousel.com/api/events/#select" target="_blank">select event</a>',
     },
     scroll: {
       action: 'scroll',
-      description: 'Emitted when the carousel is scrolled',
+      description:
+        'Emitted when the carousel is scrolled. See <a href="https://www.embla-carousel.com/api/events/#scroll" target="_blank">scroll event</a>',
     },
     settle: {
       action: 'settle',
-      description: 'Emitted when the carousel settles',
+      description:
+        'Emitted when the carousel settles. See <a href="https://www.embla-carousel.com/api/events/#settle" target="_blank">settle event</a>',
     },
     resize: {
       action: 'resize',
-      description: 'Emitted when the carousel is resized',
+      description:
+        'Emitted when the carousel is resized. See <a href="https://www.embla-carousel.com/api/events/#resize" target="_blank">resize event</a>',
     },
     slidesChanged: {
       action: 'slidesChanged',
-      description: 'Emitted when slides changed',
+      description:
+        'Emitted when slides changed. See <a href="https://www.embla-carousel.com/api/events/#slideschanged" target="_blank">slidesChanged event</a>',
     },
     pointerDown: {
       action: 'pointerDown',
-      description: 'Emitted on pointer down',
+      description:
+        'Emitted on pointer down. See <a href="https://www.embla-carousel.com/api/events/#pointerdown" target="_blank">pointerDown event</a>',
     },
-    pointerUp: { action: 'pointerUp', description: 'Emitted on pointer up' },
+    pointerUp: {
+      action: 'pointerUp',
+      description:
+        'Emitted on pointer up. See <a href="https://www.embla-carousel.com/api/events/#pointerup" target="_blank">pointerUp event</a>',
+    },
   },
 } as Meta;
 
@@ -152,6 +176,125 @@ export const Default = {
     <puik-carousel-next />
   </div>
     <puik-carousel-indicators />
+  </div>
+</puik-carousel>
+        `,
+        language: 'html',
+      },
+    },
+  },
+};
+
+export const WithoutNavigation = {
+  render: (args: Args) => ({
+    components: {
+      PuikCard,
+      PuikCarousel,
+      PuikCarouselContent,
+      PuikCarouselItem,
+      PuikCarouselIndicators,
+    },
+    setup() {
+      return { args };
+    },
+    template: `
+      <puik-carousel :key="args.orientation" v-bind="args">
+        <puik-carousel-content>
+            <puik-carousel-item v-for="i in 5" :key="i">
+              <puik-card class="h-[200px] m-1 flex items-center justify-center">
+                <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
+              </puik-card>
+            </puik-carousel-item>
+        </puik-carousel-content>
+        
+        <div class="flex justify-center mt-4">
+          <puik-carousel-indicators />
+        </div>
+      </puik-carousel>
+    `,
+  }),
+  args: {},
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Example of a carousel without navigation buttons, showing only indicators.',
+      },
+      source: {
+        code: `
+<!--VueJS Snippet-->
+<puik-carousel>
+  <puik-carousel-content>
+      <puik-carousel-item v-for="i in 5" :key="i">
+        <puik-card class="h-[200px] m-1 flex items-center justify-center">
+          <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
+        </puik-card>
+      </puik-carousel-item>
+  </puik-carousel-content>
+  
+  <div class="flex justify-center mt-4">
+    <puik-carousel-indicators />
+  </div>
+</puik-carousel>
+        `,
+        language: 'html',
+      },
+    },
+  },
+};
+
+export const WithoutIndicators = {
+  render: (args: Args) => ({
+    components: {
+      PuikCard,
+      PuikCarousel,
+      PuikCarouselContent,
+      PuikCarouselItem,
+      PuikCarouselNext,
+      PuikCarouselPrevious,
+    },
+    setup() {
+      return { args };
+    },
+    template: `
+      <puik-carousel :key="args.orientation" v-bind="args">
+        <puik-carousel-content>
+            <puik-carousel-item v-for="i in 5" :key="i">
+              <puik-card class="h-[200px] m-1 flex items-center justify-center">
+                <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
+              </puik-card>
+            </puik-carousel-item>
+        </puik-carousel-content>
+        
+        <div class="flex justify-center mt-4 gap-2">
+          <puik-carousel-previous />
+          <puik-carousel-next />
+        </div>
+      </puik-carousel>
+    `,
+  }),
+  args: {},
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Example of a carousel without indicators, showing only navigation buttons.',
+      },
+      source: {
+        code: `
+<!--VueJS Snippet-->
+<puik-carousel>
+  <puik-carousel-content>
+      <puik-carousel-item v-for="i in 5" :key="i">
+        <puik-card class="h-[200px] m-1 flex items-center justify-center">
+          <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
+        </puik-card>
+      </puik-carousel-item>
+  </puik-carousel-content>
+  
+  <div class="flex justify-center mt-4 gap-2">
+    <puik-carousel-previous />
+    <puik-carousel-next />
   </div>
 </puik-carousel>
         `,
@@ -277,6 +420,7 @@ export const ManualControl = {
       PuikCarousel,
       PuikCarouselContent,
       PuikCarouselItem,
+      PuikCard,
       PuikButton,
     },
     setup() {
@@ -298,7 +442,7 @@ export const ManualControl = {
   </puik-carousel-content>
 </puik-carousel>
 
-<div class="flex gap-2 justify-center">
+<div class="flex gap-2 justify-center mt-4">
   <puik-button @click="prev">Prev</puik-button>
   <puik-button @click="goTo(0)">Go to 1</puik-button>
   <puik-button @click="goTo(2)">Go to 3</puik-button>
@@ -310,8 +454,19 @@ export const ManualControl = {
   parameters: {
     docs: {
       description: {
-        story:
-          'You can control the carousel programmatically using the exposed methods via `ref`.',
+        story: `
+You can control the carousel programmatically using the exposed methods via \`ref\`. 
+
+### Available Methods
+The \`PuikCarousel\` component exposes the following methods from the [Embla API](https://www.embla-carousel.com/api/methods/):
+
+- **Navigation**: \`scrollNext()\`, \`scrollPrev()\`, \`scrollTo(index)\`
+- **State**: \`canScrollNext()\`, \`canScrollPrev()\`, \`selectedScrollSnap()\`, \`previousScrollSnap()\`, \`scrollSnapList()\`
+- **Nodes**: \`rootNode()\`, \`containerNode()\`, \`slideNodes()\`
+- **Lifecycle**: \`reInit(options, plugins)\`, \`destroy()\`
+- **Events**: \`on(event, callback)\`, \`off(event, callback)\`, \`emit(event)\`
+- **Others**: \`plugins()\`, \`internalEngine()\`
+`,
       },
       source: {
         code: `
@@ -322,7 +477,6 @@ const carouselRef = ref<InstanceType<typeof PuikCarousel> | null>(null);
 const next = () => carouselRef.value?.scrollNext();
 const prev = () => carouselRef.value?.scrollPrev();
 const goTo = (index: number) => carouselRef.value?.scrollTo(index);
-return { args, carouselRef, next, prev, goTo };
 </script>
 
 <template>
@@ -336,7 +490,7 @@ return { args, carouselRef, next, prev, goTo };
     </puik-carousel-content>
   </puik-carousel>
 
-  <div class="flex gap-2 justify-center">
+  <div class="flex gap-2 justify-center mt-4">
     <puik-button @click="prev">Prev</puik-button>
     <puik-button @click="goTo(0)">Go to 1</puik-button>
     <puik-button @click="goTo(2)">Go to 3</puik-button>
@@ -351,7 +505,7 @@ return { args, carouselRef, next, prev, goTo };
   },
 };
 
-export const WithAutoplay = {
+export const WithPlugins = {
   render: Template,
   args: {
     plugins: [Autoplay({ delay: 2000 })],
@@ -390,53 +544,6 @@ import Autoplay from 'embla-carousel-autoplay'
 </template>
         `,
         language: 'html',
-      },
-    },
-  },
-};
-export const Indicators = {
-  render: () => ({
-    components: {
-      PuikCarousel,
-      PuikCarouselContent,
-      PuikCarouselItem,
-      PuikCard,
-      PuikCarouselIndicators,
-    },
-    template: `
-      <div class="flex flex-col gap-8">
-        <div>
-          <h3 class="mb-4 font-bold">Standard Indicators</h3>
-          <p class="mb-4 text-sm text-gray-600">The active indicator automatically cycles through different colors (blue, purple, amber, green) based on the slide index.</p>
-          <puik-carousel>
-            <puik-carousel-content>
-              <puik-carousel-item v-for="i in 8" :key="i">
-                <puik-card class="h-[100px] flex items-center justify-center">Slide {{ i }}</puik-card>
-              </puik-carousel-item>
-            </puik-carousel-content>
-            <div class="flex justify-center mt-4">
-              <puik-carousel-indicators />
-            </div>
-          </puik-carousel>
-        </div>
-      </div>
-    `,
-  }),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Indicators automatically cycle through a set of colors for the active state to provide visual variety. They are designed to be used within the `PuikCarousel` component.',
-      },
-      source: {
-        code: `
-<puik-carousel>
-  <puik-carousel-content>
-    <!-- ... items ... -->
-  </puik-carousel-content>
-  <puik-carousel-indicators />
-</puik-carousel>
-        `,
       },
     },
   },

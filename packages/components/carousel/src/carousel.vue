@@ -149,5 +149,19 @@ defineExpose({
   canScrollNext,
   selectedIndex,
   scrollSnaps,
+  selectedScrollSnap: () => api.value?.selectedScrollSnap(),
+  previousScrollSnap: () => api.value?.previousScrollSnap(),
+  scrollSnapList: () => api.value?.scrollSnapList(),
+  internalEngine: () => api.value?.internalEngine(),
+  rootNode: () => api.value?.rootNode(),
+  containerNode: () => api.value?.containerNode(),
+  slideNodes: () => api.value?.slideNodes(),
+  on: (event: any, callback: any) => api.value?.on(event, callback),
+  off: (event: any, callback: any) => api.value?.off(event, callback),
+  emit: (event: any) => api.value?.emit(event),
+  plugins: () => api.value?.plugins(),
+  reInit: (options?: EmblaOptionsType, plugins?: any[]) =>
+    api.value?.reInit(options, plugins),
+  destroy: () => api.value?.destroy(),
 });
 </script>
