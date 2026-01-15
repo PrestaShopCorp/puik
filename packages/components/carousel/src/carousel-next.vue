@@ -42,7 +42,7 @@ defineOptions({
   name: 'PuikCarouselNext',
 });
 
-const props = withDefaults(defineProps<CarouselNextProps>(), {
+withDefaults(defineProps<CarouselNextProps>(), {
   variant: PuikButtonVariants.Secondary,
   size: PuikButtonSizes.Small,
   disabled: false,
