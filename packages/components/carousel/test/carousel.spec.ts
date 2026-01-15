@@ -19,10 +19,15 @@ const mockEmblaApi = {
   on: vi.fn(),
   off: vi.fn(),
   reInit: vi.fn(),
+  destroy: vi.fn(),
 };
 
+let capturedOptions: any = null;
 vi.mock('embla-carousel-vue', () => ({
-  default: vi.fn(() => [ref(document.createElement('div')), ref(mockEmblaApi)]),
+  default: vi.fn((options) => {
+    capturedOptions = options;
+    return [ref(document.createElement('div')), ref(mockEmblaApi)];
+  }),
 }));
 
 describe('PuikCarousel', () => {
@@ -87,6 +92,19 @@ describe('PuikCarousel', () => {
     );
   });
 
+  it('should update embla options when props change', async () => {
+    factory({ orientation: 'horizontal', opts: { loop: true } });
+    await nextTick();
+    expect(capturedOptions.value.axis).toBe('x');
+    expect(capturedOptions.value.loop).toBe(true);
+
+    await wrapper.setProps({ orientation: 'vertical' });
+    expect(capturedOptions.value.axis).toBe('y');
+
+    await wrapper.setProps({ opts: { loop: false } });
+    expect(capturedOptions.value.loop).toBe(false);
+  });
+
   it('should render indicators based on scrollSnaps', async () => {
     factory();
     // Wait for internal logic to sync with mock
@@ -130,6 +148,12 @@ describe('PuikCarousel', () => {
 
     vm.scrollNext();
     expect(mockEmblaApi.scrollNext).toHaveBeenCalled();
+
+    vm.reInit({ loop: false }, []);
+    expect(mockEmblaApi.reInit).toHaveBeenCalledWith({ loop: false }, []);
+
+    vm.destroy();
+    expect(mockEmblaApi.destroy).toHaveBeenCalled();
   });
 
   it('should have a data-test attribute on the carousel container', () => {
@@ -206,14 +230,194 @@ describe('PuikCarousel', () => {
     ).toBe('carousel-previous');
   });
 
+  it('should handle keyboard navigation in horizontal orientation', async () => {
+    factory({ orientation: 'horizontal' });
+    const carousel = wrapper.find('.puik-carousel');
+
+    await carousel.trigger('keydown', { key: 'ArrowRight' });
+    expect(mockEmblaApi.scrollNext).toHaveBeenCalled();
+
+    await carousel.trigger('keydown', { key: 'ArrowLeft' });
+    expect(mockEmblaApi.scrollPrev).toHaveBeenCalled();
+  });
+
+  it('should handle keyboard navigation in vertical orientation', async () => {
+    factory({ orientation: 'vertical' });
+    const carousel = wrapper.find('.puik-carousel');
+
+    await carousel.trigger('keydown', { key: 'ArrowDown' });
+    expect(mockEmblaApi.scrollNext).toHaveBeenCalled();
+
+    await carousel.trigger('keydown', { key: 'ArrowUp' });
+    expect(mockEmblaApi.scrollPrev).toHaveBeenCalled();
+  });
+
   it('should emit events forwarded from embla', async () => {
     factory();
-    // Simulate event registration and firing manually if needed,
-    // but we can verify that .on was called to register events
-    expect(mockEmblaApi.on).toHaveBeenCalledWith('init', expect.any(Function));
-    expect(mockEmblaApi.on).toHaveBeenCalledWith(
+    const emblaEvents = [
+      'init',
+      'destroy',
+      'scroll',
+      'settle',
+      'resize',
+      'slidesChanged',
+      'pointerDown',
+      'pointerUp',
       'select',
-      expect.any(Function)
+      'reInit',
+    ];
+
+    emblaEvents.forEach((eventName) => {
+      // Find the callback passed to api.on for this event
+      const callback = mockEmblaApi.on.mock.calls.find(
+        (call) => call[0] === eventName
+      )?.[1];
+      expect(callback).toBeDefined();
+
+      // Trigger the callback
+      callback(mockEmblaApi);
+
+      // Check if PuikCarousel emitted the event
+      expect(wrapper.emitted(eventName)).toBeTruthy();
+      expect(wrapper.emitted(eventName)?.[0]).toEqual([mockEmblaApi]);
+    });
+  });
+
+  it('should update indicators when embla api emits select or reInit', async () => {
+    factory();
+    await nextTick();
+
+    const selectCallback = mockEmblaApi.on.mock.calls.find(
+      (call) => call[0] === 'select'
+    )?.[1];
+
+    mockEmblaApi.selectedScrollSnap.mockReturnValue(1);
+    mockEmblaApi.canScrollPrev.mockReturnValue(true);
+    mockEmblaApi.canScrollNext.mockReturnValue(false);
+
+    selectCallback(mockEmblaApi);
+    await nextTick();
+
+    const dots = wrapper.findAll('.puik-carousel__indicator-dot');
+    expect(dots[1].classes()).toContain('puik-carousel__indicator-dot--active');
+    expect(dots[1].classes()).toContain(
+      'puik-carousel__indicator-dot--active--purple'
     );
+
+    expect(wrapper.vm.canScrollPrev).toBe(true);
+    expect(wrapper.vm.canScrollNext).toBe(false);
+  });
+
+  it('should use correct icons for horizontal orientation', () => {
+    factory({ orientation: 'horizontal' });
+    const nextIcon = wrapper.findComponent(PuikCarouselNext).findComponent({ name: 'PuikIcon' });
+    const prevIcon = wrapper.findComponent(PuikCarouselPrevious).findComponent({ name: 'PuikIcon' });
+    expect(nextIcon.props('icon')).toBe('chevron_right');
+    expect(prevIcon.props('icon')).toBe('chevron_left');
+  });
+
+  it('should use correct icons for vertical orientation', () => {
+    factory({ orientation: 'vertical' });
+    const nextIcon = wrapper.findComponent(PuikCarouselNext).findComponent({ name: 'PuikIcon' });
+    const prevIcon = wrapper.findComponent(PuikCarouselPrevious).findComponent({ name: 'PuikIcon' });
+    expect(nextIcon.props('icon')).toBe('keyboard_arrow_down');
+    expect(prevIcon.props('icon')).toBe('keyboard_arrow_up');
+  });
+
+  it('should disable next/previous buttons when embla says so', async () => {
+    mockEmblaApi.canScrollNext.mockReturnValue(false);
+    mockEmblaApi.canScrollPrev.mockReturnValue(false);
+    factory();
+    await nextTick();
+
+    const nextBtn = wrapper.findComponent(PuikCarouselNext).find('button');
+    const prevBtn = wrapper.findComponent(PuikCarouselPrevious).find('button');
+    expect(nextBtn.element.disabled).toBe(true);
+    expect(prevBtn.element.disabled).toBe(true);
+  });
+
+  it('should disable next/previous buttons when disabled prop is true', async () => {
+    mockEmblaApi.canScrollNext.mockReturnValue(true);
+    mockEmblaApi.canScrollPrev.mockReturnValue(true);
+    wrapper = mount(PuikCarousel, {
+      slots: {
+        default: `
+          <PuikCarouselNext disabled />
+          <PuikCarouselPrevious disabled />
+        `,
+      },
+      global: {
+        components: { PuikCarouselNext, PuikCarouselPrevious },
+      },
+    });
+    await nextTick();
+
+    const nextBtn = wrapper.findComponent(PuikCarouselNext).find('button');
+    const prevBtn = wrapper.findComponent(PuikCarouselPrevious).find('button');
+    expect(nextBtn.element.disabled).toBe(true);
+    expect(prevBtn.element.disabled).toBe(true);
+  });
+
+  it('should pass props to PuikCarouselNext and PuikCarouselPrevious buttons', async () => {
+    wrapper = mount(PuikCarousel, {
+      slots: {
+        default: `
+          <PuikCarouselNext
+            variant="primary"
+            size="large"
+            disabled-reason="Not allowed"
+            wrap-label
+            fluid
+            aria-label="Next slide custom"
+          />
+          <PuikCarouselPrevious
+            variant="tertiary"
+            size="medium"
+            disabled-reason="Wait"
+            wrap-label
+            fluid
+            aria-label="Previous slide custom"
+          />
+        `,
+      },
+      global: {
+        components: { PuikCarouselNext, PuikCarouselPrevious },
+      },
+    });
+    await nextTick();
+
+    const nextBtn = wrapper.findComponent(PuikCarouselNext).findComponent({ name: 'PuikButton' });
+    expect(nextBtn.props('variant')).toBe('primary');
+    expect(nextBtn.props('size')).toBe('large');
+    expect(nextBtn.props('disabledReason')).toBe('Not allowed');
+    expect(nextBtn.props('wrapLabel')).toBe(true);
+    expect(nextBtn.props('fluid')).toBe(true);
+    expect(nextBtn.attributes('aria-label')).toBe('Next slide custom');
+
+    const prevBtn = wrapper.findComponent(PuikCarouselPrevious).findComponent({ name: 'PuikButton' });
+    expect(prevBtn.props('variant')).toBe('tertiary');
+    expect(prevBtn.props('size')).toBe('medium');
+    expect(prevBtn.props('disabledReason')).toBe('Wait');
+    expect(prevBtn.props('wrapLabel')).toBe(true);
+    expect(prevBtn.props('fluid')).toBe(true);
+    expect(prevBtn.attributes('aria-label')).toBe('Previous slide custom');
+  });
+
+  it('should throw error when sub-components are used outside PuikCarousel', () => {
+    const components = [
+      PuikCarouselContent,
+      PuikCarouselIndicators,
+      PuikCarouselNext,
+      PuikCarouselPrevious,
+    ];
+
+    components.forEach((component) => {
+      // Suppress console.error as we expect it to throw
+      const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+      expect(() => mount(component)).toThrow(
+        `${component.name} must be used within a PuikCarousel`
+      );
+      spy.mockRestore();
+    });
   });
 });
