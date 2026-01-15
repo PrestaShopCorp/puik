@@ -1,4 +1,10 @@
 import {
+  PuikCarousel,
+  PuikCarouselContent,
+  PuikCarouselIndicators,
+  PuikCarouselItem,
+  PuikCarouselNext,
+  PuikCarouselPrevious,
   PuikRatingCard,
   PuikSortableList,
   PuikNotificationBar,
@@ -50,12 +56,18 @@ import {
   PuikSwitch,
   PuikButton,
   PuikInput,
-  PuikConfigProvider
+  PuikConfigProvider,
 } from '@prestashopcorp/puik-components';
 import type { Component } from 'vue';
 
 // prettier-ignore
 export default [
+  PuikCarousel,
+  PuikCarouselContent,
+  PuikCarouselIndicators,
+  PuikCarouselItem,
+  PuikCarouselNext,
+  PuikCarouselPrevious,
   PuikRatingCard,
   PuikSortableList,
   PuikNotificationBar,

@@ -1,0 +1,29 @@
+@reference './theme.css';
+
+.puik-carousel {
+  @apply relative;
+}
+
+.puik-carousel__viewport {
+  @apply overflow-hidden w-full;
+}
+
+.puik-carousel__container {
+  @apply flex touch-pan-y;
+  backface-visibility: hidden;
+}
+
+.puik-carousel__container--vertical {
+  @apply flex flex-col touch-pan-x;
+  height: var(--puik-carousel-vertical-height, 200px);
+}
+
+.puik-carousel__container--vertical .puik-carousel__item {
+  flex: 0 0;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.puik-carousel__container--horizontal .puik-carousel__item {
+  flex: 0 0 var(--puik-carousel-item-width, 100%);
+}
