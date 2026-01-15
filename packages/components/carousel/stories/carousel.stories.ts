@@ -66,6 +66,16 @@ export default {
         },
       },
     },
+    dataTest: {
+      control: 'text',
+      description:
+        'The data-test attribute for E2E testing (e.g. <b>"carousel"</b>)',
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
     init: {
       action: 'init',
       description:

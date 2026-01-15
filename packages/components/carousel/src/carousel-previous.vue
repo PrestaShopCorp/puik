@@ -4,6 +4,7 @@
     size="sm"
     class="puik-carousel__previous"
     :disabled="!canScrollPrev"
+    :data-test="dataTest"
     @click="scrollPrev"
   >
     <puik-icon
@@ -19,9 +20,15 @@ import { CAROUSEL_INJECTION_KEY } from './carousel';
 import { PuikButton } from '../../button';
 import { PuikIcon } from '../../icon';
 
+export interface CarouselPreviousProps {
+  dataTest?: string;
+}
+
 defineOptions({
   name: 'PuikCarouselPrevious',
 });
+
+defineProps<CarouselPreviousProps>();
 
 const context = inject(CAROUSEL_INJECTION_KEY);
 if (!context) {

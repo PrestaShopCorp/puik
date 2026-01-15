@@ -4,6 +4,7 @@
     size="sm"
     class="puik-carousel__next"
     :disabled="!canScrollNext"
+    :data-test="dataTest"
     @click="scrollNext"
   >
     <puik-icon
@@ -21,9 +22,15 @@ import { CAROUSEL_INJECTION_KEY } from './carousel';
 import { PuikButton } from '../../button';
 import { PuikIcon } from '../../icon';
 
+export interface CarouselNextProps {
+  dataTest?: string;
+}
+
 defineOptions({
   name: 'PuikCarouselNext',
 });
+
+defineProps<CarouselNextProps>();
 
 const context = inject(CAROUSEL_INJECTION_KEY);
 if (!context) {

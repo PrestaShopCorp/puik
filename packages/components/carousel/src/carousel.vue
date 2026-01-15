@@ -7,6 +7,7 @@
     }"
     role="region"
     aria-roledescription="carousel"
+    :data-test="dataTest"
     tabindex="0"
     :style="styles"
     @keydown="onKeyDown"

@@ -132,6 +132,80 @@ describe('PuikCarousel', () => {
     expect(mockEmblaApi.scrollNext).toHaveBeenCalled();
   });
 
+  it('should have a data-test attribute on the carousel container', () => {
+    factory({ dataTest: 'test-carousel' });
+    const carousel = wrapper.find('.puik-carousel');
+    expect(carousel.attributes('data-test')).toBe('test-carousel');
+  });
+
+  it('should have data-test attributes on all sub-components', async () => {
+    wrapper = mount(PuikCarousel, {
+      props: { dataTest: 'carousel' },
+      slots: {
+        default: `
+          <PuikCarouselContent data-test="carousel-content">
+            <PuikCarouselItem data-test="carousel-item-1">Slide 1</PuikCarouselItem>
+            <PuikCarouselItem data-test="carousel-item-2">Slide 2</PuikCarouselItem>
+            <PuikCarouselItem data-test="carousel-item-3">Slide 3</PuikCarouselItem>
+          </PuikCarouselContent>
+          <PuikCarouselIndicators data-test="carousel-indicators" />
+          <PuikCarouselNext data-test="carousel-next" />
+          <PuikCarouselPrevious data-test="carousel-previous" />
+        `,
+      },
+      global: {
+        components: {
+          PuikCarouselContent,
+          PuikCarouselItem,
+          PuikCarouselIndicators,
+          PuikCarouselNext,
+          PuikCarouselPrevious,
+        },
+      },
+    });
+
+    await nextTick();
+
+    // Test main carousel
+    expect(wrapper.find('.puik-carousel').attributes('data-test')).toBe(
+      'carousel'
+    );
+
+    // Test carousel content
+    expect(
+      wrapper.find('.puik-carousel__viewport').attributes('data-test')
+    ).toBe('carousel-content');
+
+    // Test carousel items
+    const items = wrapper.findAll('.puik-carousel__item');
+    expect(items[0].attributes('data-test')).toBe('carousel-item-1');
+    expect(items[1].attributes('data-test')).toBe('carousel-item-2');
+    expect(items[2].attributes('data-test')).toBe('carousel-item-3');
+
+    // Test indicators container
+    expect(
+      wrapper.find('.puik-carousel__indicators').attributes('data-test')
+    ).toBe('carousel-indicators');
+
+    // Test individual indicators
+    const indicators = wrapper.findAll('.puik-carousel__indicator');
+    expect(indicators[0].attributes('data-test')).toBe('carousel-indicators-0');
+    expect(indicators[1].attributes('data-test')).toBe('carousel-indicators-1');
+    expect(indicators[2].attributes('data-test')).toBe('carousel-indicators-2');
+
+    // Test next button
+    const nextButton = wrapper.findComponent(PuikCarouselNext);
+    expect(
+      nextButton.find('.puik-carousel__next').attributes('data-test')
+    ).toBe('carousel-next');
+
+    // Test previous button
+    const prevButton = wrapper.findComponent(PuikCarouselPrevious);
+    expect(
+      prevButton.find('.puik-carousel__previous').attributes('data-test')
+    ).toBe('carousel-previous');
+  });
+
   it('should emit events forwarded from embla', async () => {
     factory();
     // Simulate event registration and firing manually if needed,

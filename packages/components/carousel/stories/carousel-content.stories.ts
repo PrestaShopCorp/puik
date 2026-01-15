@@ -13,6 +13,16 @@ export default {
   title: 'Components/Carousel/CarouselContent',
   component: PuikCarouselContent,
   argTypes: {
+    dataTest: {
+      control: 'text',
+      description:
+        'The data-test attribute for E2E testing (e.g. <b>"carousel-content"</b>)',
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
     default: {
       control: 'none',
       description: 'Slot for carousel items',

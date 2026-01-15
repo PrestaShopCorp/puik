@@ -12,6 +12,7 @@ export interface CarouselProps {
   orientation?: 'horizontal' | 'vertical';
   verticalHeight?: string | number;
   itemWidth?: number;
+  dataTest?: string;
 }
 
 export interface CarouselEmits {

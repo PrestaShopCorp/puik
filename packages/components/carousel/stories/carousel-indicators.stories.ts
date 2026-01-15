@@ -12,7 +12,18 @@ import { Meta, StoryFn, Args } from '@storybook/vue3';
 export default {
   title: 'Components/Carousel/CarouselIndicators',
   component: PuikCarouselIndicators,
-  argTypes: {},
+  argTypes: {
+    dataTest: {
+      control: 'text',
+      description:
+        'The data-test attribute for E2E testing (e.g. <b>"carousel-indicators"</b>). Individual indicators will have the format <b>"carousel-indicators-0"</b>, <b>"carousel-indicators-1"</b>, etc.',
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+  },
 } as Meta;
 
 const Template: StoryFn = (args: Args) => ({

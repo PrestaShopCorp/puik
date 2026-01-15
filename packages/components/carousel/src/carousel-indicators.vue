@@ -1,10 +1,11 @@
 <template>
-  <div class="puik-carousel__indicators">
+  <div class="puik-carousel__indicators" :data-test="dataTest">
     <button
       v-for="(_, index) in scrollSnaps"
       :key="index"
       class="puik-carousel__indicator"
       :aria-label="`Go to slide ${index + 1}`"
+      :data-test="dataTest != undefined ? `${dataTest}-${index}` : undefined"
       @click="scrollTo(index)"
     >
       <span
@@ -24,9 +25,15 @@
 import { inject } from 'vue';
 import { CAROUSEL_INJECTION_KEY } from './carousel';
 
+export interface CarouselIndicatorsProps {
+  dataTest?: string;
+}
+
 defineOptions({
   name: 'PuikCarouselIndicators',
 });
+
+defineProps<CarouselIndicatorsProps>();
 
 const context = inject(CAROUSEL_INJECTION_KEY);
 if (!context) {

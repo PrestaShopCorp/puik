@@ -1,5 +1,5 @@
 <template>
-  <div ref="carouselRef" class="puik-carousel__viewport">
+  <div ref="carouselRef" class="puik-carousel__viewport" :data-test="dataTest">
     <div
       class="puik-carousel__container"
       :class="{
@@ -16,9 +16,15 @@
 import { inject } from 'vue';
 import { CAROUSEL_INJECTION_KEY } from './carousel';
 
+export interface CarouselContentProps {
+  dataTest?: string;
+}
+
 defineOptions({
   name: 'PuikCarouselContent',
 });
+
+defineProps<CarouselContentProps>();
 
 const context = inject(CAROUSEL_INJECTION_KEY);
 if (!context) {

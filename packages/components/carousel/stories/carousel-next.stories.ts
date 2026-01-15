@@ -12,7 +12,18 @@ import { Meta, StoryFn, Args } from '@storybook/vue3';
 export default {
   title: 'Components/Carousel/CarouselNext',
   component: PuikCarouselNext,
-  argTypes: {},
+  argTypes: {
+    dataTest: {
+      control: 'text',
+      description:
+        'The data-test attribute for E2E testing (e.g. <b>"carousel-next"</b>)',
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+  },
 } as Meta;
 
 const Template: StoryFn = (args: Args) => ({
