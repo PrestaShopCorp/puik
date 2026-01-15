@@ -32,6 +32,11 @@ defineOptions({
 
 const props = withDefaults(defineProps<CarouselProps>(), {
   orientation: 'horizontal',
+  opts: () => ({ loop: true }),
+  plugins: () => [],
+  verticalHeight: undefined,
+  itemWidth: undefined,
+  dataTest: undefined,
 });
 
 const emits = defineEmits<CarouselEmits>();

@@ -24,7 +24,9 @@ defineOptions({
   name: 'PuikCarouselContent',
 });
 
-defineProps<CarouselContentProps>();
+withDefaults(defineProps<CarouselContentProps>(), {
+  dataTest: undefined,
+});
 
 const context = inject(CAROUSEL_INJECTION_KEY);
 if (!context) {

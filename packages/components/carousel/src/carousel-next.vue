@@ -1,9 +1,13 @@
 <template>
   <puik-button
-    variant="secondary"
-    size="sm"
+    :variant="variant"
+    :size="size"
     class="puik-carousel__next"
-    :disabled="!canScrollNext"
+    :disabled="disabled || !canScrollNext"
+    :disabled-reason="disabledReason"
+    :wrap-label="wrapLabel"
+    :fluid="fluid"
+    :aria-label="ariaLabel"
     :data-test="dataTest"
     @click="scrollNext"
   >
@@ -20,9 +24,17 @@
 import { inject } from 'vue';
 import { CAROUSEL_INJECTION_KEY } from './carousel';
 import { PuikButton } from '../../button';
+import { PuikButtonVariants, PuikButtonSizes } from '../../button/src/button';
 import { PuikIcon } from '../../icon';
 
 export interface CarouselNextProps {
+  variant?: `${PuikButtonVariants}`;
+  size?: `${PuikButtonSizes}`;
+  disabled?: boolean;
+  disabledReason?: string;
+  wrapLabel?: boolean;
+  fluid?: boolean;
+  ariaLabel?: string;
   dataTest?: string;
 }
 
@@ -30,7 +42,16 @@ defineOptions({
   name: 'PuikCarouselNext',
 });
 
-defineProps<CarouselNextProps>();
+const props = withDefaults(defineProps<CarouselNextProps>(), {
+  variant: PuikButtonVariants.Secondary,
+  size: PuikButtonSizes.Small,
+  disabled: false,
+  disabledReason: undefined,
+  wrapLabel: false,
+  fluid: false,
+  ariaLabel: undefined,
+  dataTest: undefined,
+});
 
 const context = inject(CAROUSEL_INJECTION_KEY);
 if (!context) {

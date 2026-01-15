@@ -13,6 +13,92 @@ export default {
   title: 'Components/Carousel/CarouselPrevious',
   component: PuikCarouselPrevious,
   argTypes: {
+    variant: {
+      control: 'select',
+      options: [
+        'primary',
+        'primary-reverse',
+        'secondary',
+        'secondary-reverse',
+        'tertiary',
+        'tertiary-reverse',
+        'text',
+        'text-reverse',
+        'destructive',
+        'info',
+        'success',
+        'warning',
+        'danger',
+      ],
+      description: 'The variant of the button',
+      table: {
+        defaultValue: {
+          summary: 'secondary',
+        },
+        type: {
+          summary: 'PuikButtonVariants',
+        },
+      },
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      description: 'The size of the button',
+      table: {
+        defaultValue: {
+          summary: 'sm',
+        },
+        type: {
+          summary: 'PuikButtonSizes',
+        },
+      },
+    },
+    disabled: {
+      control: 'boolean',
+      description:
+        'Whether the button is disabled (in addition to automatic disable when cannot scroll)',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+      },
+    },
+    disabledReason: {
+      control: 'text',
+      description: 'Tooltip text shown when button is disabled',
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+    wrapLabel: {
+      control: 'boolean',
+      description: 'Whether to wrap the button label',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+      },
+    },
+    fluid: {
+      control: 'boolean',
+      description: 'Whether the button should take full width',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+      },
+    },
+    ariaLabel: {
+      control: 'text',
+      description: 'ARIA label for accessibility',
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
     dataTest: {
       control: 'text',
       description:

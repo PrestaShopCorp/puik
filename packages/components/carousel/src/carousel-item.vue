@@ -18,5 +18,7 @@ defineOptions({
   name: 'PuikCarouselItem',
 });
 
-defineProps<CarouselItemProps>();
+withDefaults(defineProps<CarouselItemProps>(), {
+  dataTest: undefined,
+});
 </script>

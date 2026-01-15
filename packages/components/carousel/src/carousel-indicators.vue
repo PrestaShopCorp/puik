@@ -33,7 +33,9 @@ defineOptions({
   name: 'PuikCarouselIndicators',
 });
 
-defineProps<CarouselIndicatorsProps>();
+withDefaults(defineProps<CarouselIndicatorsProps>(), {
+  dataTest: undefined,
+});
 
 const context = inject(CAROUSEL_INJECTION_KEY);
 if (!context) {
