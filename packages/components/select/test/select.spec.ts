@@ -527,6 +527,39 @@ describe('Select tests', () => {
     expect(wrapper.findAll('.puik-option__description').length).toBe(2);
   });
 
+  it('should display the tag in the selected input field when a rich option with tag is selected', async () => {
+    const options = [
+      { label: 'Option 1', value: '1', tag: 'Recommended', description: 'Desc 1' },
+      { label: 'Option 2', value: '2', description: 'Desc 2' }
+    ];
+    const selectedOption = ref(options[0]);
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOption,
+      options
+    });
+    await nextTick();
+    const inputAppend = wrapper.find('.puik-single-select__input .puik-input__append');
+    expect(inputAppend.find('.puik-option__tag').exists()).toBe(true);
+    expect(inputAppend.find('.puik-option__tag').text()).toBe('Recommended');
+  });
+
+  it('should not display the tag in the selected input field when the option has no tag', async () => {
+    const options = [
+      { label: 'Option 1', value: '1', description: 'Desc 1' },
+      { label: 'Option 2', value: '2', description: 'Desc 2' }
+    ];
+    const selectedOption = ref(options[0]);
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOption,
+      options
+    });
+    await nextTick();
+    const inputAppend = wrapper.find('.puik-single-select__input .puik-input__append');
+    expect(inputAppend.find('.puik-option__tag').exists()).toBe(false);
+  });
+
   it('should apply zIndex style to dropdown', async () => {
     const wrapper = mount(PuikSelect, {
       props: {

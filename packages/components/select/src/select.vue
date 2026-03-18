@@ -136,7 +136,10 @@
         :disabled="props.disabled"
         role="combobox"
         :aria-expanded="openRef"
-        v-bind="openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}"
+        v-bind="{
+          ...(openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}),
+          ...(selectedSingleOption[props.optionTagKey] ? { size: (selectedSingleOption[optionLabelKey]?.length || 1) + 2 } : {})
+        }"
         aria-haspopup="listbox"
         :data-test="dataTest != undefined ? `select-single-${dataTest}` : undefined"
         @click.stop="toggleOptions"
@@ -153,6 +156,12 @@
           />
         </template>
         <template #append>
+          <PuikTag
+            v-if="selectedSingleOption[props.optionTagKey]"
+            class="puik-option__tag"
+            :content="selectedSingleOption[props.optionTagKey]"
+            :variant="selectedSingleOption[props.optionTagVariantKey] || 'neutral'"
+          />
           <PuikIcon
             :is-disabled="props.disabled"
             icon="unfold_more"
@@ -310,7 +319,8 @@ import {
   PuikIcon,
   PuikInput,
   PuikOption,
-  PuikLabel
+  PuikLabel,
+  PuikTag
 } from '@prestashopcorp/puik-components';
 import type { OptionType } from './option';
 import type { SelectProps, SelectEmits } from './select';

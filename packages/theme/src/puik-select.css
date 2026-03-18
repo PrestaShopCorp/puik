@@ -49,6 +49,19 @@
   @apply cursor-default text-ellipsis;
 }
 
+.puik-single-select__input .puik-input__field[size] {
+  width: auto;
+  @apply flex-none;
+}
+
+.puik-single-select__input .puik-input__field[size] ~ .puik-input__append {
+  @apply flex-1 gap-1;
+}
+
+.puik-single-select__input .puik-input__field[size] ~ .puik-input__append > :last-child {
+  @apply ml-auto;
+}
+
 .puik-select-dropdown {
   @apply absolute w-max min-w-full max-h-[50vh] bg-white text-base z-10 shadow-lg ring ring-gray-200
   focus-visible:outline-none sm:text-sm overflow-x-hidden;
