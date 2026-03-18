@@ -925,25 +925,25 @@ export const RichItem: StoryObj = {
     setup() {
       const options = [
         {
-          label: 'OAuth 2.0',
-          value: 'oauth',
-          tag: 'Recommended & secured',
+          label: 'Option 1',
+          value: '1',
+          tag: 'Recommended',
           tagVariant: 'green',
-          description: 'Ideal for administrators seeking maximum security. One-click connection, no password sharing, with access revocation at any time.'
+          description: 'This is the description for the first option with additional context to help users make a choice.'
         },
         {
-          label: 'Tokens',
-          value: 'tokens',
-          tag: 'Technical profiles',
+          label: 'Option 2',
+          value: '2',
+          tag: 'Popular',
           tagVariant: 'neutral',
-          description: 'Designed for developers and integrators who automate tasks via scripts or CI/CD pipelines. Full control over access.'
+          description: 'This is the description for the second option with additional context to help users make a choice.'
         },
         {
-          label: 'No authentication',
-          value: 'none',
-          tag: 'Local development only',
+          label: 'Option 3',
+          value: '3',
+          tag: 'Deprecated',
           tagVariant: 'red',
-          description: 'Only for quick local testing. No protection: anyone with the URL can access your server.'
+          description: 'This is the description for the third option with additional context to help users make a choice.'
         }
       ];
       const selectedOption = ref();
@@ -955,7 +955,7 @@ export const RichItem: StoryObj = {
       v-model="selectedOption"
       id="rich-item-select-id"
       name="rich-item-select-name"
-      label="Select authentication method"
+      label="Select an option"
       :options="options"
     />
   </div>
@@ -974,25 +974,25 @@ This is useful when users need additional context to distinguish between options
 <!--VueJS Snippet-->
 // const options = [
 //   {
-//     label: 'OAuth 2.0',
-//     value: 'oauth',
-//     tag: 'Recommended & secured',
+//     label: 'Option 1',
+//     value: '1',
+//     tag: 'Recommended',
 //     tagVariant: 'green',
-//     description: 'Ideal for administrators seeking maximum security.'
+//     description: 'This is the description for the first option.'
 //   },
 //   {
-//     label: 'Tokens',
-//     value: 'tokens',
-//     tag: 'Technical profiles',
+//     label: 'Option 2',
+//     value: '2',
+//     tag: 'Popular',
 //     tagVariant: 'neutral',
-//     description: 'Designed for developers and integrators.'
+//     description: 'This is the description for the second option.'
 //   },
 //   {
-//     label: 'No authentication',
-//     value: 'none',
-//     tag: 'Local development only',
+//     label: 'Option 3',
+//     value: '3',
+//     tag: 'Deprecated',
 //     tagVariant: 'red',
-//     description: 'Only for quick local testing.'
+//     description: 'This is the description for the third option.'
 //   }
 // ];
 // const selectedOption = ref();
@@ -1001,7 +1001,7 @@ This is useful when users need additional context to distinguish between options
   v-model="selectedOption"
   id="rich-item-select-id"
   name="rich-item-select-name"
-  label="Select authentication method"
+  label="Select an option"
   :options="options"
 />
         `,
@@ -1019,18 +1019,18 @@ export const RichItemWithCustomKeys: StoryObj = {
     setup() {
       const options = [
         {
-          name: 'First option',
-          id: 'first',
-          badge: 'blue tag',
+          name: 'Option 1',
+          id: '1',
+          badge: 'New',
           badgeColor: 'blue',
-          info: 'Custom description for the first option'
+          info: 'Description for the first option using custom keys'
         },
         {
-          name: 'Second option',
-          id: 'second',
-          badge: 'second tag',
+          name: 'Option 2',
+          id: '2',
+          badge: 'Updated',
           badgeColor: 'purple',
-          info: 'Custom description for the second option'
+          info: 'Description for the second option using custom keys'
         }
       ];
       const selectedOption = ref();
@@ -1042,7 +1042,7 @@ export const RichItemWithCustomKeys: StoryObj = {
       v-model="selectedOption"
       id="rich-item-custom-keys-id"
       name="rich-item-custom-keys-name"
-      label="Select a plan"
+      label="Select an option"
       :options="options"
       option-label-key="name"
       option-value-key="id"
@@ -1062,8 +1062,8 @@ export const RichItemWithCustomKeys: StoryObj = {
         code: `
 <!--VueJS Snippet-->
 // const options = [
-//   { name: 'Standard Plan', id: 'standard', badge: 'Most popular', badgeColor: 'blue', info: 'Perfect for small businesses.' },
-//   { name: 'Enterprise Plan', id: 'enterprise', badge: 'Best value', badgeColor: 'purple', info: 'For large organizations.' }
+//   { name: 'Option 1', id: '1', badge: 'New', badgeColor: 'blue', info: 'Description for the first option.' },
+//   { name: 'Option 2', id: '2', badge: 'Updated', badgeColor: 'purple', info: 'Description for the second option.' }
 // ];
 // const selectedOption = ref();
 
@@ -1071,7 +1071,7 @@ export const RichItemWithCustomKeys: StoryObj = {
   v-model="selectedOption"
   id="rich-item-custom-keys-id"
   name="rich-item-custom-keys-name"
-  label="Select a plan"
+  label="Select an option"
   :options="options"
   option-label-key="name"
   option-value-key="id"
