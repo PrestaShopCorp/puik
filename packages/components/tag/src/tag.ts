@@ -7,7 +7,6 @@ export enum PuikTagVariants {
   Yellow = 'yellow',
   Green = 'green',
   Purple = 'purple',
-  Red = 'red',
 }
 
 export enum PuikTagSizes {

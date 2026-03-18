@@ -48,13 +48,6 @@
   @apply bg-purple-500;
 }
 
-.puik-tag--red {
-  @apply bg-red-50 text-primary border-red-300;
-}
-.puik-tag--accent.puik-tag--red {
-  @apply bg-red-300;
-}
-
 .puik-tag--disabled {
   @apply bg-primary-200 text-primary-500;
 }

@@ -164,7 +164,7 @@ export default {
     },
     optionTagVariantKey: {
       control: 'text',
-      description: 'In case of using objects as option props, you can define which property of the object contains the tag variant (neutral, blue, yellow, green, purple, red)',
+      description: 'In case of using objects as option props, you can define which property of the object contains the tag variant (neutral, blue, yellow, green, purple)',
       table: {
         defaultValue: {
           summary: 'tagVariant'
@@ -942,7 +942,7 @@ export const RichItem: StoryObj = {
           label: 'Option 3',
           value: '3',
           tag: 'Deprecated',
-          tagVariant: 'red',
+          tagVariant: 'yellow',
           description: 'This is the description for the third option with additional context to help users make a choice.'
         }
       ];
@@ -966,7 +966,7 @@ export const RichItem: StoryObj = {
       description: {
         story: `
 Rich Item format allows each option to have a label (bold primary text), an optional tag (with color variant), and a description (smaller secondary text).
-This is useful when users need additional context to distinguish between options. Tag variants include: neutral, green, red, blue, yellow, purple.
+This is useful when users need additional context to distinguish between options. Tag variants include: neutral, green, blue, yellow, purple.
         `
       },
       source: {
@@ -991,7 +991,7 @@ This is useful when users need additional context to distinguish between options
 //     label: 'Option 3',
 //     value: '3',
 //     tag: 'Deprecated',
-//     tagVariant: 'red',
+//     tagVariant: 'yellow',
 //     description: 'This is the description for the third option.'
 //   }
 // ];
