@@ -4,10 +4,12 @@
       'puik-option',
       { 'puik-option-single--selected' : isSelectedRef && !props.multiSelect},
       { 'puik-option--disabled' : props.disabled },
+      { 'puik-option--rich' : props.description },
     ]"
     role="option"
     :aria-selected="isSelectedRef"
     :aria-disabled="props.disabled"
+    :aria-label="ariaLabel"
     tabindex="-1"
     :data-test="props.dataTest"
     @click="selectOption"
@@ -21,13 +23,45 @@
         :sr-label="`${label}`"
       />
       <slot>
-        <label>{{ label }}</label>
+        <div class="puik-option__content">
+          <div class="puik-option__header">
+            <label class="puik-option__label">{{ label }}</label>
+            <PuikTag
+              v-if="props.tag"
+              class="puik-option__tag"
+              :content="`${props.tag}`"
+              :variant="props.tagVariant || 'neutral'"
+            />
+          </div>
+          <span
+            v-if="props.description"
+            class="puik-option__description"
+          >
+            {{ props.description }}
+          </span>
+        </div>
       </slot>
     </template>
 
     <template v-else>
       <slot>
-        <label>{{ label }}</label>
+        <div class="puik-option__content">
+          <div class="puik-option__header">
+            <label class="puik-option__label">{{ label }}</label>
+            <PuikTag
+              v-if="props.tag"
+              class="puik-option__tag"
+              :content="`${props.tag}`"
+              :variant="props.tagVariant || 'neutral'"
+            />
+          </div>
+          <span
+            v-if="props.description"
+            class="puik-option__description"
+          >
+            {{ props.description }}
+          </span>
+        </div>
       </slot>
     </template>
     <PuikIcon
@@ -39,9 +73,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRaw, watch } from 'vue';
+import { ref, computed, toRaw, watch } from 'vue';
 import { PuikCheckbox } from '../../checkbox';
 import { PuikIcon } from '../../icon';
+import { PuikTag } from '../../tag';
 import type { OptionProps, OptionEmits } from './option';
 
 defineOptions({
@@ -59,6 +94,13 @@ const emit = defineEmits<OptionEmits>();
 const isSelectedRef = ref(props.isSelected);
 const labelRef = ref(props.label);
 const valueRef = ref(props.value);
+
+const ariaLabel = computed(() => {
+  const parts = [props.label];
+  if (props.tag) parts.push(props.tag);
+  if (props.description) parts.push(props.description);
+  return parts.join(', ');
+});
 
 const selectOption = () => {
   if (!props.disabled) {

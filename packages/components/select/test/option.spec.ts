@@ -3,7 +3,8 @@ import { describe, it, expect } from 'vitest';
 import {
   PuikOption,
   PuikCheckbox,
-  PuikIcon
+  PuikIcon,
+  PuikTag
 } from '@prestashopcorp/puik-components';
 
 describe('PuikOption', () => {
@@ -129,5 +130,77 @@ describe('PuikOption', () => {
     });
     expect(wrapper.findComponent(PuikIcon).exists()).toBe(true);
     expect(wrapper.findComponent(PuikIcon).props('icon')).toBe('check');
+  });
+
+  it('should render description when provided', () => {
+    const wrapper = mount(PuikOption, {
+      props: { label: 'Option 1', value: '1', description: 'A helpful description' }
+    });
+    expect(wrapper.find('.puik-option__description').exists()).toBe(true);
+    expect(wrapper.find('.puik-option__description').text()).toBe('A helpful description');
+  });
+
+  it('should not render description when not provided', () => {
+    const wrapper = mount(PuikOption, {
+      props: { label: 'Option 1', value: '1' }
+    });
+    expect(wrapper.find('.puik-option__description').exists()).toBe(false);
+  });
+
+  it('should render tag/badge when provided', () => {
+    const wrapper = mount(PuikOption, {
+      props: { label: 'Option 1', value: '1', tag: 'Recommended' },
+      global: {
+        components: { PuikTag }
+      }
+    });
+    expect(wrapper.find('.puik-option__tag').exists()).toBe(true);
+    expect(wrapper.find('.puik-option__tag').text()).toBe('Recommended');
+  });
+
+  it('should not render tag when not provided', () => {
+    const wrapper = mount(PuikOption, {
+      props: { label: 'Option 1', value: '1' }
+    });
+    expect(wrapper.find('.puik-option__tag').exists()).toBe(false);
+  });
+
+  it('should apply rich option class when description is provided', () => {
+    const wrapper = mount(PuikOption, {
+      props: { label: 'Option 1', value: '1', description: 'Some description' }
+    });
+    expect(wrapper.classes()).toContain('puik-option--rich');
+  });
+
+  it('should not apply rich option class when no description', () => {
+    const wrapper = mount(PuikOption, {
+      props: { label: 'Option 1', value: '1' }
+    });
+    expect(wrapper.classes()).not.toContain('puik-option--rich');
+  });
+
+  it('should include description and tag in aria-label', () => {
+    const wrapper = mount(PuikOption, {
+      props: { label: 'OAuth 2.0', value: 'oauth', tag: 'Recommended', description: 'Secure auth' }
+    });
+    expect(wrapper.attributes('aria-label')).toBe('OAuth 2.0, Recommended, Secure auth');
+  });
+
+  it('should render description in multiSelect mode', () => {
+    const wrapper = mount(PuikOption, {
+      props: { label: 'Option 1', value: '1', description: 'Multi desc', multiSelect: true },
+      global: { components: { PuikCheckbox } }
+    });
+    expect(wrapper.find('.puik-option__description').text()).toBe('Multi desc');
+  });
+
+  it('should render tag and description together', () => {
+    const wrapper = mount(PuikOption, {
+      props: { label: 'Option 1', value: '1', tag: 'New', description: 'Full description' },
+      global: { components: { PuikTag } }
+    });
+    expect(wrapper.find('.puik-option__tag').text()).toBe('New');
+    expect(wrapper.find('.puik-option__description').text()).toBe('Full description');
+    expect(wrapper.find('.puik-option__header').exists()).toBe(true);
   });
 });

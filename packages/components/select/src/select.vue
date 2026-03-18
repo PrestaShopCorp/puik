@@ -259,6 +259,9 @@
             :key="option[props.optionValueKey]"
             :label="option[props.optionLabelKey]"
             :value="option[props.optionValueKey]"
+            :description="option[props.optionDescriptionKey]"
+            :tag="option[props.optionTagKey]"
+            :tag-variant="option[props.optionTagVariantKey]"
             :is-selected="
               props.multiSelect
                 ? selectedMultipleOptions.includes(option)
@@ -327,6 +330,9 @@ const props = withDefaults(defineProps<SelectProps>(), {
   optionLabelKey: 'label',
   optionValueKey: 'value',
   optionDisabledKey: 'disabled',
+  optionDescriptionKey: 'description',
+  optionTagKey: 'tag',
+  optionTagVariantKey: 'tagVariant',
   multiSelect: false,
   open: false,
   autocomplete: 'off',

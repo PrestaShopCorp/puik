@@ -136,6 +136,45 @@ export default {
         category: 'Searchable'
       }
     },
+    optionDescriptionKey: {
+      control: 'text',
+      description: 'In case of using objects as option props, you can define which property of the object contains the description text (for rich items)',
+      table: {
+        defaultValue: {
+          summary: 'description'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Rich Item'
+      }
+    },
+    optionTagKey: {
+      control: 'text',
+      description: 'In case of using objects as option props, you can define which property of the object contains the tag/badge text (for rich items)',
+      table: {
+        defaultValue: {
+          summary: 'tag'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Rich Item'
+      }
+    },
+    optionTagVariantKey: {
+      control: 'text',
+      description: 'In case of using objects as option props, you can define which property of the object contains the tag variant (neutral, blue, yellow, green, purple, red)',
+      table: {
+        defaultValue: {
+          summary: 'tagVariant'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Rich Item'
+      }
+    },
     multiSelect: {
       control: 'boolean',
       description: 'Indicates whether the select allows multiple choice',
@@ -377,6 +416,9 @@ select-error-{dataTest}
     optionLabelKey: 'label',
     optionValueKey: 'value',
     optionDisabledKey: 'disabled',
+    optionDescriptionKey: 'description',
+    optionTagKey: 'tag',
+    optionTagVariantKey: 'tagVariant',
     multiSelect: false,
     disabled: false,
     error: '',
@@ -868,6 +910,175 @@ export const updateModelValueEvent: StoryObj = {
       :options="options"
       @update:model-value="(payload) => newValue = payload"
     />
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const RichItem: StoryObj = {
+  render: () => ({
+    components: {
+      PuikSelect
+    },
+    setup() {
+      const options = [
+        {
+          label: 'OAuth 2.0',
+          value: 'oauth',
+          tag: 'Recommended & secured',
+          tagVariant: 'green',
+          description: 'Ideal for administrators seeking maximum security. One-click connection, no password sharing, with access revocation at any time.'
+        },
+        {
+          label: 'Tokens',
+          value: 'tokens',
+          tag: 'Technical profiles',
+          tagVariant: 'neutral',
+          description: 'Designed for developers and integrators who automate tasks via scripts or CI/CD pipelines. Full control over access.'
+        },
+        {
+          label: 'No authentication',
+          value: 'none',
+          tag: 'Local development only',
+          tagVariant: 'red',
+          description: 'Only for quick local testing. No protection: anyone with the URL can access your server.'
+        }
+      ];
+      const selectedOption = ref();
+      return { options, selectedOption };
+    },
+    template: `
+  <div class="min-h-[350px]">
+    <puik-select
+      v-model="selectedOption"
+      id="rich-item-select-id"
+      name="rich-item-select-name"
+      label="Select authentication method"
+      :options="options"
+    />
+  </div>
+    `
+  }),
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Rich Item format allows each option to have a label (bold primary text), an optional tag (with color variant), and a description (smaller secondary text).
+This is useful when users need additional context to distinguish between options. Tag variants include: neutral, green, red, blue, yellow, purple.
+        `
+      },
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const options = [
+//   {
+//     label: 'OAuth 2.0',
+//     value: 'oauth',
+//     tag: 'Recommended & secured',
+//     tagVariant: 'green',
+//     description: 'Ideal for administrators seeking maximum security.'
+//   },
+//   {
+//     label: 'Tokens',
+//     value: 'tokens',
+//     tag: 'Technical profiles',
+//     tagVariant: 'neutral',
+//     description: 'Designed for developers and integrators.'
+//   },
+//   {
+//     label: 'No authentication',
+//     value: 'none',
+//     tag: 'Local development only',
+//     tagVariant: 'red',
+//     description: 'Only for quick local testing.'
+//   }
+// ];
+// const selectedOption = ref();
+
+<PuikSelect
+  v-model="selectedOption"
+  id="rich-item-select-id"
+  name="rich-item-select-name"
+  label="Select authentication method"
+  :options="options"
+/>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const RichItemWithCustomKeys: StoryObj = {
+  render: () => ({
+    components: {
+      PuikSelect
+    },
+    setup() {
+      const options = [
+        {
+          name: 'First option',
+          id: 'first',
+          badge: 'blue tag',
+          badgeColor: 'blue',
+          info: 'Custom description for the first option'
+        },
+        {
+          name: 'Second option',
+          id: 'second',
+          badge: 'second tag',
+          badgeColor: 'purple',
+          info: 'Custom description for the second option'
+        }
+      ];
+      const selectedOption = ref();
+      return { options, selectedOption };
+    },
+    template: `
+  <div class="min-h-[300px]">
+    <puik-select
+      v-model="selectedOption"
+      id="rich-item-custom-keys-id"
+      name="rich-item-custom-keys-name"
+      label="Select a plan"
+      :options="options"
+      option-label-key="name"
+      option-value-key="id"
+      option-description-key="info"
+      option-tag-key="badge"
+      option-tag-variant-key="badgeColor"
+    />
+  </div>
+    `
+  }),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Rich items with custom property keys for label, value, description, tag and tag variant.'
+      },
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const options = [
+//   { name: 'Standard Plan', id: 'standard', badge: 'Most popular', badgeColor: 'blue', info: 'Perfect for small businesses.' },
+//   { name: 'Enterprise Plan', id: 'enterprise', badge: 'Best value', badgeColor: 'purple', info: 'For large organizations.' }
+// ];
+// const selectedOption = ref();
+
+<PuikSelect
+  v-model="selectedOption"
+  id="rich-item-custom-keys-id"
+  name="rich-item-custom-keys-name"
+  label="Select a plan"
+  :options="options"
+  option-label-key="name"
+  option-value-key="id"
+  option-description-key="info"
+  option-tag-key="badge"
+  option-tag-variant-key="badgeColor"
+/>
         `,
         language: 'html'
       }

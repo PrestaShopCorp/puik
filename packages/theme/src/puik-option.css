@@ -1,4 +1,5 @@
 @reference './theme.css';
+@reference './typography.css';
 
 .puik-option {
   @apply px-3 py-2 flex gap-x-2 relative cursor-default select-none text-primary-800 transition-colors;
@@ -39,4 +40,38 @@
 
 .puik-option.puik-option-single--selected {
   justify-content: space-between;
+}
+
+/* Rich option styles (text with details) */
+.puik-option--rich {
+  @apply items-start;
+}
+
+.puik-option__content {
+  @apply flex flex-col min-w-0 flex-1;
+}
+
+.puik-option__header {
+  @apply flex items-center gap-x-1;
+}
+
+.puik-option--rich .puik-option__label {
+  @apply font-medium text-sm;
+}
+
+.puik-option__tag.puik-tag {
+  @apply flex-shrink-0 mx-1;
+  border-radius: 4px;
+}
+
+.puik-option__description {
+  @apply puik-body-small text-primary-500 mt-0.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.puik-option--disabled .puik-option__description {
+  @apply text-primary-400;
 }
