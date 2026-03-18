@@ -929,6 +929,7 @@ export const RichItem: StoryObj = {
           value: '1',
           tag: 'Recommended',
           tagVariant: 'green',
+          tagIcon: 'verified',
           description: 'This is the description for the first option with additional context to help users make a choice.'
         },
         {
@@ -936,6 +937,7 @@ export const RichItem: StoryObj = {
           value: '2',
           tag: 'Popular',
           tagVariant: 'neutral',
+          tagIcon: 'language',
           description: 'This is the description for the second option with additional context to help users make a choice.'
         },
         {
@@ -965,8 +967,9 @@ export const RichItem: StoryObj = {
     docs: {
       description: {
         story: `
-Rich Item format allows each option to have a label (bold primary text), an optional tag (with color variant), and a description (smaller secondary text).
+Rich Item format allows each option to have a label (bold primary text), an optional tag (with color variant and icon), and a description (smaller secondary text).
 This is useful when users need additional context to distinguish between options. Tag variants include: neutral, green, blue, yellow, purple.
+Tags can include an icon via the \`tagIcon\` property. You can also use the \`selected-tag\` slot for full tag customization in the selected input.
         `
       },
       source: {
@@ -978,6 +981,7 @@ This is useful when users need additional context to distinguish between options
 //     value: '1',
 //     tag: 'Recommended',
 //     tagVariant: 'green',
+//     tagIcon: 'verified',
 //     description: 'This is the description for the first option.'
 //   },
 //   {
@@ -985,6 +989,7 @@ This is useful when users need additional context to distinguish between options
 //     value: '2',
 //     tag: 'Popular',
 //     tagVariant: 'neutral',
+//     tagIcon: 'language',
 //     description: 'This is the description for the second option.'
 //   },
 //   {
@@ -1003,81 +1008,6 @@ This is useful when users need additional context to distinguish between options
   name="rich-item-select-name"
   label="Select an option"
   :options="options"
-/>
-        `,
-        language: 'html'
-      }
-    }
-  }
-};
-
-export const RichItemWithCustomKeys: StoryObj = {
-  render: () => ({
-    components: {
-      PuikSelect
-    },
-    setup() {
-      const options = [
-        {
-          name: 'Option 1',
-          id: '1',
-          badge: 'New',
-          badgeColor: 'blue',
-          info: 'Description for the first option using custom keys'
-        },
-        {
-          name: 'Option 2',
-          id: '2',
-          badge: 'Updated',
-          badgeColor: 'purple',
-          info: 'Description for the second option using custom keys'
-        }
-      ];
-      const selectedOption = ref();
-      return { options, selectedOption };
-    },
-    template: `
-  <div class="min-h-[300px]">
-    <puik-select
-      v-model="selectedOption"
-      id="rich-item-custom-keys-id"
-      name="rich-item-custom-keys-name"
-      label="Select an option"
-      :options="options"
-      option-label-key="name"
-      option-value-key="id"
-      option-description-key="info"
-      option-tag-key="badge"
-      option-tag-variant-key="badgeColor"
-    />
-  </div>
-    `
-  }),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Rich items with custom property keys for label, value, description, tag and tag variant.'
-      },
-      source: {
-        code: `
-<!--VueJS Snippet-->
-// const options = [
-//   { name: 'Option 1', id: '1', badge: 'New', badgeColor: 'blue', info: 'Description for the first option.' },
-//   { name: 'Option 2', id: '2', badge: 'Updated', badgeColor: 'purple', info: 'Description for the second option.' }
-// ];
-// const selectedOption = ref();
-
-<PuikSelect
-  v-model="selectedOption"
-  id="rich-item-custom-keys-id"
-  name="rich-item-custom-keys-name"
-  label="Select an option"
-  :options="options"
-  option-label-key="name"
-  option-value-key="id"
-  option-description-key="info"
-  option-tag-key="badge"
-  option-tag-variant-key="badgeColor"
 />
         `,
         language: 'html'

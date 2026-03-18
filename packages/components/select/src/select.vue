@@ -138,7 +138,7 @@
         :aria-expanded="openRef"
         v-bind="{
           ...(openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}),
-          ...(selectedSingleOption[props.optionTagKey] ? { size: (selectedSingleOption[optionLabelKey]?.length || 1) + 2 } : {})
+          ...(selectedSingleOption[props.optionTagKey] ? { size: (selectedSingleOption[optionLabelKey]?.length || 1) } : {})
         }"
         aria-haspopup="listbox"
         :data-test="dataTest != undefined ? `select-single-${dataTest}` : undefined"
@@ -156,12 +156,18 @@
           />
         </template>
         <template #append>
-          <PuikTag
-            v-if="selectedSingleOption[props.optionTagKey]"
-            class="puik-option__tag"
-            :content="selectedSingleOption[props.optionTagKey]"
-            :variant="selectedSingleOption[props.optionTagVariantKey] || 'neutral'"
-          />
+          <slot
+            name="selected-tag"
+            :option="selectedSingleOption"
+          >
+            <PuikTag
+              v-if="selectedSingleOption[props.optionTagKey]"
+              class="puik-option__tag"
+              :content="selectedSingleOption[props.optionTagKey]"
+              :variant="selectedSingleOption[props.optionTagVariantKey] || 'neutral'"
+              :icon="selectedSingleOption[props.optionTagIconKey]"
+            />
+          </slot>
           <PuikIcon
             :is-disabled="props.disabled"
             icon="unfold_more"
@@ -271,6 +277,7 @@
             :description="option[props.optionDescriptionKey]"
             :tag="option[props.optionTagKey]"
             :tag-variant="option[props.optionTagVariantKey]"
+            :tag-icon="option[props.optionTagIconKey]"
             :is-selected="
               props.multiSelect
                 ? selectedMultipleOptions.includes(option)
@@ -343,6 +350,7 @@ const props = withDefaults(defineProps<SelectProps>(), {
   optionDescriptionKey: 'description',
   optionTagKey: 'tag',
   optionTagVariantKey: 'tagVariant',
+  optionTagIconKey: 'tagIcon',
   multiSelect: false,
   open: false,
   autocomplete: 'off',

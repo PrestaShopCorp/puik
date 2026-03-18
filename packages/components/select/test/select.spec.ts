@@ -544,6 +544,22 @@ describe('Select tests', () => {
     expect(inputAppend.find('.puik-option__tag').text()).toBe('Recommended');
   });
 
+  it('should display the tag icon in the selected input field when a rich option with tag icon is selected', async () => {
+    const options = [
+      { label: 'Option 1', value: '1', tag: 'Recommended', tagIcon: 'language', description: 'Desc 1' }
+    ];
+    const selectedOption = ref(options[0]);
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOption,
+      options
+    });
+    await nextTick();
+    const inputAppend = wrapper.find('.puik-single-select__input .puik-input__append');
+    expect(inputAppend.find('.puik-option__tag').exists()).toBe(true);
+    expect(inputAppend.find('.puik-tag__icon').exists()).toBe(true);
+  });
+
   it('should not display the tag in the selected input field when the option has no tag', async () => {
     const options = [
       { label: 'Option 1', value: '1', description: 'Desc 1' },

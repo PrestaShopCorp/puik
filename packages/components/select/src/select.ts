@@ -15,6 +15,7 @@ export interface SelectProps {
   optionDescriptionKey?: string
   optionTagKey?: string
   optionTagVariantKey?: string
+  optionTagIconKey?: string
   multiSelect?: boolean
   searchable?: boolean
   customFilterMethod?: (query: string) => any[] | Record<string, any>

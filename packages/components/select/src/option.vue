@@ -31,6 +31,7 @@
               class="puik-option__tag"
               :content="`${props.tag}`"
               :variant="props.tagVariant || 'neutral'"
+              :icon="props.tagIcon"
             />
           </div>
           <span
@@ -53,6 +54,7 @@
               class="puik-option__tag"
               :content="`${props.tag}`"
               :variant="props.tagVariant || 'neutral'"
+              :icon="props.tagIcon"
             />
           </div>
           <span

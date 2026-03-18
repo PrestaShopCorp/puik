@@ -55,7 +55,7 @@
 }
 
 .puik-single-select__input .puik-input__field[size] ~ .puik-input__append {
-  @apply flex-1 gap-1;
+  @apply flex-1 gap-x-1 pl-0;
 }
 
 .puik-single-select__input .puik-input__field[size] ~ .puik-input__append > :last-child {

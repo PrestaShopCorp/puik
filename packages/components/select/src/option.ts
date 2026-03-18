@@ -10,6 +10,7 @@ export interface OptionProps {
   description?: string
   tag?: string
   tagVariant?: `${PuikTagVariants}`
+  tagIcon?: string
   disabled?: boolean
   isSelected?: boolean
   multiSelect?: boolean
