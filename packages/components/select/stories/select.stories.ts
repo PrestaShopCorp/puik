@@ -1,6 +1,6 @@
 import { PuikSelect, PuikOption, PuikBadge } from '@prestashopcorp/puik-components';
 import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3';
-import { ref } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 export default {
   title: 'Components/Select',
@@ -918,14 +918,14 @@ export const updateModelValueEvent: StoryObj = {
 };
 
 export const RichItem: StoryObj = {
-  render: () => ({
+  render: (args: Args) => ({
     components: {
       PuikSelect
     },
     setup() {
-      const options = [
+      const baseOptions = [
         {
-          label: 'Option 1',
+          label: 'This is the description for the first option with additional context to help users make a choice.',
           value: '1',
           tag: 'Recommended',
           tagVariant: 'green',
@@ -933,7 +933,7 @@ export const RichItem: StoryObj = {
           description: 'This is the description for the first option with additional context to help users make a choice.'
         },
         {
-          label: 'Option 2',
+          label: 'Lorem Ipsum is simply dummy text',
           value: '2',
           tag: 'Popular',
           tagVariant: 'neutral',
@@ -941,19 +941,32 @@ export const RichItem: StoryObj = {
           description: 'This is the description for the second option with additional context to help users make a choice.'
         },
         {
-          label: 'Option 3',
+          label: 'Option',
           value: '3',
           tag: 'Deprecated',
           tagVariant: 'yellow',
           description: 'This is the description for the third option with additional context to help users make a choice.'
         }
       ];
+      const options = computed(() =>
+        args.showTags
+          ? baseOptions
+          : baseOptions.map(({ tag, tagVariant, tagIcon, ...rest }) => rest)
+      );
       const selectedOption = ref();
-      return { options, selectedOption };
+      watch(options, (newOptions) => {
+        if (selectedOption.value) {
+          selectedOption.value = newOptions.find(
+            (o: Record<string, any>) => o.value === selectedOption.value.value
+          );
+        }
+      });
+      return { options, selectedOption, args };
     },
     template: `
   <div class="min-h-[350px]">
     <puik-select
+      :key="String(args.showTags)"
       v-model="selectedOption"
       id="rich-item-select-id"
       name="rich-item-select-name"
@@ -963,6 +976,18 @@ export const RichItem: StoryObj = {
   </div>
     `
   }),
+  args: {
+    showTags: true
+  },
+  argTypes: {
+    showTags: {
+      control: 'boolean',
+      description: 'Toggle tags on/off for rich item options',
+      table: {
+        category: 'Rich Item'
+      }
+    }
+  },
   parameters: {
     docs: {
       description: {

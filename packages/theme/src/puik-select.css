@@ -49,16 +49,20 @@
   @apply cursor-default text-ellipsis;
 }
 
-.puik-single-select__input .puik-input__field[size] {
-  width: auto;
+.puik-single-select__input--has-tag .puik-input__field {
+  width: var(--puik-input-width, auto);
   @apply flex-none;
 }
 
-.puik-single-select__input .puik-input__field[size] ~ .puik-input__append {
+.puik-single-select__measure {
+  @apply absolute invisible whitespace-pre pointer-events-none puik-body-default px-3;
+}
+
+.puik-single-select__input--has-tag .puik-input__field ~ .puik-input__append {
   @apply flex-1 gap-x-1 pl-0;
 }
 
-.puik-single-select__input .puik-input__field[size] ~ .puik-input__append > :last-child {
+.puik-single-select__input--has-tag .puik-input__field ~ .puik-input__append > :last-child {
   @apply ml-auto;
 }
 

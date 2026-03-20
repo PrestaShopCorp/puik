@@ -120,15 +120,23 @@
         </template>
       </template>
 
+      <span
+        v-if="props.options && typeof selectedSingleOption === 'object' && selectedSingleOption[props.optionTagKey]"
+        ref="inputMeasureRef"
+        class="puik-single-select__measure"
+        aria-hidden="true"
+      >{{ selectedSingleOption[optionLabelKey] }}</span>
       <puik-input
-        v-else-if="props.options && typeof selectedSingleOption === 'object'"
+        v-if="props.options && typeof selectedSingleOption === 'object'"
         :id="props.id"
         v-model="selectedSingleOption[optionLabelKey]"
         :name="props.name ?? props.id"
         :class="[
           'puik-single-select__input',
-          { 'puik-single-select__input--error': hasError }
+          { 'puik-single-select__input--error': hasError },
+          { 'puik-single-select__input--has-tag': selectedSingleOption[props.optionTagKey] }
         ]"
+        :style="selectedSingleOption[props.optionTagKey] ? { '--puik-input-width': inputTextWidth + 'px' } : undefined"
         type="text"
         :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
         readonly
@@ -136,10 +144,7 @@
         :disabled="props.disabled"
         role="combobox"
         :aria-expanded="openRef"
-        v-bind="{
-          ...(openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}),
-          ...(selectedSingleOption[props.optionTagKey] ? { size: (selectedSingleOption[optionLabelKey]?.length || 1) } : {})
-        }"
+        v-bind="openRef ? { 'aria-controls': `dropdown-${props.id}` } : {}"
         aria-haspopup="listbox"
         :data-test="dataTest != undefined ? `select-single-${dataTest}` : undefined"
         @click.stop="toggleOptions"
@@ -369,6 +374,18 @@ const openRef = ref(props.open);
 const searchQuery = ref('');
 const selectAllIndeterminate = ref(false);
 const positionDropdownUp = ref(false);
+
+const inputMeasureRef = ref<HTMLSpanElement>();
+const inputTextWidth = ref(0);
+
+const measureInputText = async () => {
+  await nextTick();
+  if (inputMeasureRef.value) {
+    inputTextWidth.value = inputMeasureRef.value.offsetWidth;
+  }
+};
+
+watch(selectedSingleOption, measureInputText, { immediate: true });
 
 const handleDropdownPosition = () => {
   nextTick(() => {

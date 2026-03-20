@@ -65,7 +65,7 @@
 }
 
 .puik-option__description {
-  @apply puik-body-small text-primary-500 mt-0.5;
+  @apply puik-body-small text-primary-600 mt-0.5;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
