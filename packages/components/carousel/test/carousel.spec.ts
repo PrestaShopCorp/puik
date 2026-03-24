@@ -156,6 +156,18 @@ describe('PuikCarousel', () => {
     expect(mockEmblaApi.destroy).toHaveBeenCalled();
   });
 
+  it('should have default aria-label on the carousel container', () => {
+    factory();
+    const carousel = wrapper.find('.puik-carousel');
+    expect(carousel.attributes('aria-label')).toBe('carousel');
+  });
+
+  it('should set custom aria-label on the carousel container', () => {
+    factory({ ariaLabel: 'Product images' });
+    const carousel = wrapper.find('.puik-carousel');
+    expect(carousel.attributes('aria-label')).toBe('Product images');
+  });
+
   it('should have a data-test attribute on the carousel container', () => {
     factory({ dataTest: 'test-carousel' });
     const carousel = wrapper.find('.puik-carousel');
@@ -320,8 +332,8 @@ describe('PuikCarousel', () => {
     factory({ orientation: 'vertical' });
     const nextIcon = wrapper.findComponent(PuikCarouselNext).findComponent({ name: 'PuikIcon' });
     const prevIcon = wrapper.findComponent(PuikCarouselPrevious).findComponent({ name: 'PuikIcon' });
-    expect(nextIcon.props('icon')).toBe('keyboard_arrow_down');
-    expect(prevIcon.props('icon')).toBe('keyboard_arrow_up');
+    expect(nextIcon.props('icon')).toBe('expand_more');
+    expect(prevIcon.props('icon')).toBe('expand_less');
   });
 
   it('should disable next/previous buttons when embla says so', async () => {
@@ -358,26 +370,12 @@ describe('PuikCarousel', () => {
     expect(prevBtn.element.disabled).toBe(true);
   });
 
-  it('should pass props to PuikCarouselNext and PuikCarouselPrevious buttons', async () => {
+  it('should set aria-label on next/previous buttons', async () => {
     wrapper = mount(PuikCarousel, {
       slots: {
         default: `
-          <PuikCarouselNext
-            variant="primary"
-            size="large"
-            disabled-reason="Not allowed"
-            wrap-label
-            fluid
-            aria-label="Next slide custom"
-          />
-          <PuikCarouselPrevious
-            variant="tertiary"
-            size="medium"
-            disabled-reason="Wait"
-            wrap-label
-            fluid
-            aria-label="Previous slide custom"
-          />
+          <PuikCarouselNext aria-label="Next slide custom" />
+          <PuikCarouselPrevious aria-label="Previous slide custom" />
         `,
       },
       global: {
@@ -386,20 +384,10 @@ describe('PuikCarousel', () => {
     });
     await nextTick();
 
-    const nextBtn = wrapper.findComponent(PuikCarouselNext).findComponent({ name: 'PuikButton' });
-    expect(nextBtn.props('variant')).toBe('primary');
-    expect(nextBtn.props('size')).toBe('large');
-    expect(nextBtn.props('disabledReason')).toBe('Not allowed');
-    expect(nextBtn.props('wrapLabel')).toBe(true);
-    expect(nextBtn.props('fluid')).toBe(true);
+    const nextBtn = wrapper.findComponent(PuikCarouselNext).find('button');
     expect(nextBtn.attributes('aria-label')).toBe('Next slide custom');
 
-    const prevBtn = wrapper.findComponent(PuikCarouselPrevious).findComponent({ name: 'PuikButton' });
-    expect(prevBtn.props('variant')).toBe('tertiary');
-    expect(prevBtn.props('size')).toBe('medium');
-    expect(prevBtn.props('disabledReason')).toBe('Wait');
-    expect(prevBtn.props('wrapLabel')).toBe(true);
-    expect(prevBtn.props('fluid')).toBe(true);
+    const prevBtn = wrapper.findComponent(PuikCarouselPrevious).find('button');
     expect(prevBtn.attributes('aria-label')).toBe('Previous slide custom');
   });
 

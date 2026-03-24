@@ -7,6 +7,7 @@
     }"
     role="region"
     aria-roledescription="carousel"
+    :aria-label="ariaLabel"
     :data-test="dataTest"
     tabindex="0"
     :style="styles"
@@ -36,6 +37,7 @@ const props = withDefaults(defineProps<CarouselProps>(), {
   plugins: () => [],
   verticalHeight: undefined,
   itemWidth: undefined,
+  ariaLabel: 'carousel',
   dataTest: undefined,
 });
 

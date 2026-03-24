@@ -13,77 +13,10 @@ export default {
   title: 'Components/Carousel/CarouselNext',
   component: PuikCarouselNext,
   argTypes: {
-    variant: {
-      control: 'select',
-      options: [
-        'primary',
-        'primary-reverse',
-        'secondary',
-        'secondary-reverse',
-        'tertiary',
-        'tertiary-reverse',
-        'text',
-        'text-reverse',
-        'destructive',
-        'info',
-        'success',
-        'warning',
-        'danger',
-      ],
-      description: 'The variant of the button',
-      table: {
-        defaultValue: {
-          summary: 'secondary',
-        },
-        type: {
-          summary: 'PuikButtonVariants',
-        },
-      },
-    },
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-      description: 'The size of the button',
-      table: {
-        defaultValue: {
-          summary: 'sm',
-        },
-        type: {
-          summary: 'PuikButtonSizes',
-        },
-      },
-    },
     disabled: {
       control: 'boolean',
       description:
         'Whether the button is disabled (in addition to automatic disable when cannot scroll)',
-      table: {
-        type: {
-          summary: 'boolean',
-        },
-      },
-    },
-    disabledReason: {
-      control: 'text',
-      description: 'Tooltip text shown when button is disabled',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-    wrapLabel: {
-      control: 'boolean',
-      description: 'Whether to wrap the button label',
-      table: {
-        type: {
-          summary: 'boolean',
-        },
-      },
-    },
-    fluid: {
-      control: 'boolean',
-      description: 'Whether the button should take full width',
       table: {
         type: {
           summary: 'boolean',
@@ -134,7 +67,7 @@ const Template: StoryFn = (args: Args) => ({
             </puik-card>
           </puik-carousel-item>
       </puik-carousel-content>
-      
+
       <div class="flex justify-center mt-4 gap-2">
         <puik-carousel-next v-bind="args" />
       </div>
@@ -149,7 +82,7 @@ export const Default = {
     docs: {
       description: {
         story:
-          'The `PuikCarouselNext` component is a button to navigate to the next slide. It must be used within a `PuikCarousel` component.',
+          'The `PuikCarouselNext` component is an icon button to navigate to the next slide. It must be used within a `PuikCarousel` component.',
       },
       source: {
         code: `

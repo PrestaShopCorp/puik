@@ -27,3 +27,8 @@
 .puik-carousel__container--horizontal .puik-carousel__item {
   flex: 0 0 var(--puik-carousel-item-width, 100%);
 }
+
+.puik-carousel__next,
+.puik-carousel__previous {
+  @apply inline-flex items-center justify-center bg-transparent border-none cursor-pointer p-1 rounded text-gray-700 transition-colors hover:text-primary-800 disabled:opacity-40 disabled:cursor-not-allowed;
+}

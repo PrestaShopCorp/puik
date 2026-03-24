@@ -66,6 +66,19 @@ export default {
         },
       },
     },
+    ariaLabel: {
+      control: 'text',
+      description:
+        'The accessible label for the carousel region landmark. Required for accessibility (<b>aria-label</b>)',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        defaultValue: {
+          summary: 'carousel',
+        },
+      },
+    },
     dataTest: {
       control: 'text',
       description:

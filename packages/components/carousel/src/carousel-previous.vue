@@ -1,37 +1,26 @@
 <template>
-  <puik-button
-    :variant="variant"
-    :size="size"
+  <button
     class="puik-carousel__previous"
     :disabled="disabled || !canScrollPrev"
-    :disabled-reason="disabledReason"
-    :wrap-label="wrapLabel"
-    :fluid="fluid"
     :aria-label="ariaLabel"
     :data-test="dataTest"
     @click="scrollPrev"
   >
     <puik-icon
-      :icon="orientation === 'vertical' ? 'keyboard_arrow_up' : 'chevron_left'"
+      :icon="orientation === 'vertical' ? 'expand_less' : 'chevron_left'"
+      font-size="1.5rem"
     />
     <span class="puik-sr-only">Previous slide</span>
-  </puik-button>
+  </button>
 </template>
 
 <script setup lang="ts">
 import { inject } from 'vue';
 import { CAROUSEL_INJECTION_KEY } from './carousel';
-import { PuikButton } from '../../button';
-import { PuikButtonVariants, PuikButtonSizes } from '../../button/src/button';
 import { PuikIcon } from '../../icon';
 
 export interface CarouselPreviousProps {
-  variant?: `${PuikButtonVariants}`;
-  size?: `${PuikButtonSizes}`;
   disabled?: boolean;
-  disabledReason?: string;
-  wrapLabel?: boolean;
-  fluid?: boolean;
   ariaLabel?: string;
   dataTest?: string;
 }
@@ -41,12 +30,7 @@ defineOptions({
 });
 
 withDefaults(defineProps<CarouselPreviousProps>(), {
-  variant: PuikButtonVariants.Secondary,
-  size: PuikButtonSizes.Small,
   disabled: false,
-  disabledReason: undefined,
-  wrapLabel: false,
-  fluid: false,
   ariaLabel: undefined,
   dataTest: undefined,
 });

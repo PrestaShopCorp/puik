@@ -12,6 +12,7 @@ export interface CarouselProps {
   orientation?: 'horizontal' | 'vertical';
   verticalHeight?: string | number;
   itemWidth?: number;
+  ariaLabel?: string;
   dataTest?: string;
 }
 

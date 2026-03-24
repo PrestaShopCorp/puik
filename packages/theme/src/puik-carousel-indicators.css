@@ -9,11 +9,11 @@
 }
 
 .puik-carousel__indicator-dot {
-  @apply w-3 h-3 rounded-full bg-primary-500 transition-colors block;
+  @apply w-3 h-3 rounded-full bg-primary-500 transition-all duration-300 ease-in-out block;
 }
 
 .puik-carousel__indicator-dot.puik-carousel__indicator-dot--active {
-  @apply outline-2 outline-primary-800;
+  @apply w-3.25 h-3.25 outline-2 outline-primary-800;
 }
 
 .puik-carousel__indicator-dot.puik-carousel__indicator-dot--active--blue {
