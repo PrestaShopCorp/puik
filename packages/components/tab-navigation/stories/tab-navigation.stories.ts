@@ -1,5 +1,6 @@
-import { ref, defineComponent } from 'vue';
-import { createRouter, createMemoryHistory, RouterView, useRoute } from 'vue-router';
+import { ref, defineComponent, provide, shallowReactive } from 'vue';
+import { createRouter, createMemoryHistory, RouterView, routerKey, routeLocationKey, routerViewLocationKey } from 'vue-router';
+import type { RouteLocationNormalizedLoaded } from 'vue-router';
 import { PuikTabNavigation, PuikTabNavigationGroupTitles, PuikTabNavigationGroupPanels, PuikTabNavigationTitle, PuikTabNavigationPanel, PuikIcon, PuikBadge } from '@prestashopcorp/puik-components';
 import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3';
 
@@ -165,19 +166,60 @@ export const Default: StoryObj = {
   }
 };
 
+const ToolsPage = defineComponent({
+  components: { PuikTabNavigation, PuikTabNavigationGroupTitles, PuikTabNavigationTitle, RouterView },
+  template: `
+<div>
+  <p style="margin-bottom:12px;font-size:12px;color:#666;">
+    You are in <strong>Tools</strong> — the parent tab above should stay highlighted.
+  </p>
+  <puik-tab-navigation name="tools-subnav" :default-position="1">
+    <puik-tab-navigation-group-titles aria-label="Tools sub-navigation">
+      <puik-tab-navigation-title :position="1" to="/tools/list">List</puik-tab-navigation-title>
+      <puik-tab-navigation-title :position="2" to="/tools/config">Configuration</puik-tab-navigation-title>
+    </puik-tab-navigation-group-titles>
+  </puik-tab-navigation>
+  <div style="padding:12px;border:1px solid #dce1e3;margin-top:8px;"><router-view /></div>
+</div>`
+});
+
 export const NestedRoutes: StoryObj = {
-  render: () => ({
-    components: {
-      PuikTabNavigation,
-      PuikTabNavigationGroupTitles,
-      PuikTabNavigationTitle,
-      RouterView
-    },
-    setup() {
-      const route = useRoute();
-      return { route };
-    },
-    template: `
+  render: () => {
+    const router = createRouter({
+      history: createMemoryHistory(),
+      routes: [
+        { path: '/', redirect: '/dashboard' },
+        { path: '/dashboard', component: defineComponent({ template: '<p>Dashboard content</p>' }) },
+        {
+          path: '/tools',
+          redirect: '/tools/list',
+          component: ToolsPage,
+          children: [
+            { path: 'list', component: defineComponent({ template: '<p>Tools › List content</p>' }) },
+            { path: 'config', component: defineComponent({ template: '<p>Tools › Configuration content</p>' }) }
+          ]
+        }
+      ]
+    });
+
+    const reactiveRoute = {} as RouteLocationNormalizedLoaded;
+    for (const key in router.currentRoute.value) {
+      Object.defineProperty(reactiveRoute, key, {
+        get: () => router.currentRoute.value[key as keyof RouteLocationNormalizedLoaded],
+        enumerable: true
+      });
+    }
+
+    return {
+      components: { PuikTabNavigation, PuikTabNavigationGroupTitles, PuikTabNavigationTitle, RouterView },
+      setup() {
+        provide(routerKey, router);
+        provide(routeLocationKey, shallowReactive(reactiveRoute));
+        provide(routerViewLocationKey, router.currentRoute);
+        router.push('/dashboard');
+        return { route: shallowReactive(reactiveRoute) };
+      },
+      template: `
 <div style="font-family:sans-serif;">
   <p style="margin-bottom:12px;font-size:12px;color:#666;">
     Current route: <code>{{ route.path }}</code>
@@ -192,58 +234,8 @@ export const NestedRoutes: StoryObj = {
     <router-view />
   </div>
 </div>`
-  }),
-  decorators: [
-    (story, { app }) => {
-      const router = createRouter({
-        history: createMemoryHistory(),
-        routes: [
-          { path: '/', redirect: '/dashboard' },
-          {
-            path: '/dashboard',
-            component: defineComponent({ template: '<p>Dashboard content</p>' })
-          },
-          {
-            path: '/tools',
-            redirect: '/tools/list',
-            component: defineComponent({
-              components: {
-                PuikTabNavigation,
-                PuikTabNavigationGroupTitles,
-                PuikTabNavigationTitle,
-                RouterView
-              },
-              template: `
-<div>
-  <p style="margin-bottom:12px;font-size:12px;color:#666;">
-    You are in <strong>Tools</strong> — the parent tab above should stay highlighted.
-  </p>
-  <puik-tab-navigation name="tools-subnav" :default-position="1">
-    <puik-tab-navigation-group-titles aria-label="Tools sub-navigation">
-      <puik-tab-navigation-title :position="1" to="/tools/list">List</puik-tab-navigation-title>
-      <puik-tab-navigation-title :position="2" to="/tools/config">Configuration</puik-tab-navigation-title>
-    </puik-tab-navigation-group-titles>
-  </puik-tab-navigation>
-  <div style="padding:12px;border:1px solid #dce1e3;margin-top:8px;"><router-view /></div>
-</div>`
-            }),
-            children: [
-              {
-                path: 'list',
-                component: defineComponent({ template: '<p>Tools › List content</p>' })
-              },
-              {
-                path: 'config',
-                component: defineComponent({ template: '<p>Tools › Configuration content</p>' })
-              }
-            ]
-          }
-        ]
-      });
-      app.use(router);
-      return story();
-    }
-  ],
+    };
+  },
   parameters: {
     docs: {
       description: {
