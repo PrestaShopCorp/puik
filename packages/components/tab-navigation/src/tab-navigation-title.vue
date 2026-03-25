@@ -20,6 +20,7 @@
 
 <script setup lang="ts">
 import { computed, inject, watch } from 'vue';
+import { routerKey, routeLocationKey } from 'vue-router';
 import { currentTabKey } from './tab-navigation';
 import { type TabNavigationTitleProps } from './tab-navigation-title';
 defineOptions({
@@ -29,11 +30,20 @@ defineOptions({
 const props = defineProps<TabNavigationTitleProps>();
 
 const currentTab = inject(currentTabKey, null);
+const router = inject(routerKey, null);
+const route = inject(routeLocationKey, null);
+
 const handleclick = () => {
-  if (!props.disabled) currentTab?.handleTabClick(props.position);
+  if (props.disabled) return;
+  currentTab?.handleTabClick(props.position);
+  if (props.to && router) router.push(props.to);
 };
 
 const isCurrentTab = computed(() => {
+  if (props.to && route && router) {
+    const resolved = router.resolve(props.to);
+    return route.path.startsWith(resolved.path);
+  }
   return props.position === currentTab?.currentPosition.value;
 });
 
