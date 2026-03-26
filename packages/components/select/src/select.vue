@@ -127,7 +127,7 @@
         aria-hidden="true"
       >{{ selectedSingleOption[optionLabelKey] }}</span>
       <puik-input
-        v-if="props.options && typeof selectedSingleOption === 'object'"
+        v-if="!props.multiSelect && props.options && typeof selectedSingleOption === 'object'"
         :id="props.id"
         v-model="selectedSingleOption[optionLabelKey]"
         :name="props.name ?? props.id"
@@ -181,7 +181,7 @@
       </puik-input>
 
       <puik-input
-        v-else
+        v-else-if="!props.multiSelect"
         :id="props.id"
         v-model="selectedSingleOption"
         :name="props.name ?? props.id"
