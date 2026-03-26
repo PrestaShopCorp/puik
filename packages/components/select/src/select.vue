@@ -120,15 +120,23 @@
         </template>
       </template>
 
+      <span
+        v-if="props.options && typeof selectedSingleOption === 'object' && selectedSingleOption[props.optionTagKey]"
+        ref="inputMeasureRef"
+        class="puik-single-select__measure"
+        aria-hidden="true"
+      >{{ selectedSingleOption[optionLabelKey] }}</span>
       <puik-input
-        v-else-if="props.options && typeof selectedSingleOption === 'object'"
+        v-if="props.options && typeof selectedSingleOption === 'object'"
         :id="props.id"
         v-model="selectedSingleOption[optionLabelKey]"
         :name="props.name ?? props.id"
         :class="[
           'puik-single-select__input',
-          { 'puik-single-select__input--error': hasError }
+          { 'puik-single-select__input--error': hasError },
+          { 'puik-single-select__input--has-tag': selectedSingleOption[props.optionTagKey] }
         ]"
+        :style="selectedSingleOption[props.optionTagKey] ? { '--puik-input-width': inputTextWidth + 'px' } : undefined"
         type="text"
         :placeholder="props.placeholder ?? `${t('puik.select.placeholder')}`"
         readonly
@@ -153,6 +161,18 @@
           />
         </template>
         <template #append>
+          <slot
+            name="selected-tag"
+            :option="selectedSingleOption"
+          >
+            <PuikTag
+              v-if="selectedSingleOption[props.optionTagKey]"
+              class="puik-option__tag"
+              :content="selectedSingleOption[props.optionTagKey]"
+              :variant="selectedSingleOption[props.optionTagVariantKey] || 'neutral'"
+              :icon="selectedSingleOption[props.optionTagIconKey]"
+            />
+          </slot>
           <PuikIcon
             :is-disabled="props.disabled"
             icon="unfold_more"
@@ -259,6 +279,10 @@
             :key="option[props.optionValueKey]"
             :label="option[props.optionLabelKey]"
             :value="option[props.optionValueKey]"
+            :description="option[props.optionDescriptionKey]"
+            :tag="option[props.optionTagKey]"
+            :tag-variant="option[props.optionTagVariantKey]"
+            :tag-icon="option[props.optionTagIconKey]"
             :is-selected="
               props.multiSelect
                 ? selectedMultipleOptions.includes(option)
@@ -307,7 +331,8 @@ import {
   PuikIcon,
   PuikInput,
   PuikOption,
-  PuikLabel
+  PuikLabel,
+  PuikTag
 } from '@prestashopcorp/puik-components';
 import type { OptionType } from './option';
 import type { SelectProps, SelectEmits } from './select';
@@ -327,6 +352,10 @@ const props = withDefaults(defineProps<SelectProps>(), {
   optionLabelKey: 'label',
   optionValueKey: 'value',
   optionDisabledKey: 'disabled',
+  optionDescriptionKey: 'description',
+  optionTagKey: 'tag',
+  optionTagVariantKey: 'tagVariant',
+  optionTagIconKey: 'tagIcon',
   multiSelect: false,
   open: false,
   autocomplete: 'off',
@@ -345,6 +374,18 @@ const openRef = ref(props.open);
 const searchQuery = ref('');
 const selectAllIndeterminate = ref(false);
 const positionDropdownUp = ref(false);
+
+const inputMeasureRef = ref<HTMLSpanElement>();
+const inputTextWidth = ref(0);
+
+const measureInputText = async () => {
+  await nextTick();
+  if (inputMeasureRef.value) {
+    inputTextWidth.value = inputMeasureRef.value.offsetWidth;
+  }
+};
+
+watch(selectedSingleOption, measureInputText, { immediate: true });
 
 const handleDropdownPosition = () => {
   nextTick(() => {
