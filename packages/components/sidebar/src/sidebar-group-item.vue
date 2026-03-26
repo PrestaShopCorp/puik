@@ -46,9 +46,8 @@
 </template>
 
 <script setup lang="ts">
-import { provide, inject, computed } from 'vue';
+import { provide, inject, computed, useId } from 'vue';
 import { Menu, MenuButton, MenuItems } from '@headlessui/vue';
-import { generateId } from '@prestashopcorp/puik-utils';
 import PuikAccordion from '../../accordion';
 import PuikButton from '../../button';
 import PuikIcon from '../../icon';
@@ -60,7 +59,7 @@ defineOptions({
 });
 const props = defineProps<SidebarGroupItemsProps>();
 
-const accordionName = props.name ?? `sidebar-item-${generateId()}`;
+const accordionName = props.name ?? `sidebar-item-${useId()}`;
 const sidebarValues = inject(sidebarKey, null);
 provide(groupItemKey, true);
 

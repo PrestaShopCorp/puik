@@ -67,8 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject, nextTick, ref } from 'vue';
-import { generateId } from '@prestashopcorp/puik-utils';
+import { computed, inject, nextTick, ref, useId } from 'vue';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { accordionGroupKey } from './accordion-group';
 import type { AccordionProps } from './accordion';
@@ -77,7 +76,7 @@ defineOptions({
 });
 const emit = defineEmits<{ click: [name: string] }>();
 
-const id = `puik-accordion-${generateId()}`;
+const id = `puik-accordion-${useId()}`;
 
 const props = defineProps<AccordionProps>();
 const { accordionsList, handleChange, expandedAccordions } =

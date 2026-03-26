@@ -1,6 +1,6 @@
 <template>
   <div
-    :id="props.id"
+    :id="resolvedId"
     class="puik-rating-card"
     :data-test="props.dataTest"
     :ariaLabel="props.ariaLabel"
@@ -46,20 +46,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useId } from 'vue';
 import { type RatingCardProps, PuikRatingCardVariants } from './rating-card';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
-import { generateId } from '@prestashopcorp/puik-utils';
 
 defineOptions({
   name: 'PuikRatingCard'
 });
 
 const props = withDefaults(defineProps<RatingCardProps>(), {
-  id: `puik-rating-card-${generateId()}`,
   variant: PuikRatingCardVariants.Extended,
   showTotalRatings: true
 });
+const resolvedId = props.id ?? `puik-rating-card-${useId()}`;
 
 const booleanishProps = computed(() => {
   return {

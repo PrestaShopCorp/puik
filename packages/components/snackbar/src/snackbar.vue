@@ -1,6 +1,7 @@
 <template>
   <ToastRoot
     v-bind="forwarded"
+    :id="resolvedId"
     :class="['puik-snackbar-root', `puik-snackbar-root--${variant}`, `puik-snackbar-root--swipe-${swipeAnimation}`]"
     @update:open="(openstate: boolean) => {
       if(props.onOpenChange){
@@ -44,17 +45,17 @@ import { useForwardPropsEmits, ToastAction, ToastClose, ToastTitle, ToastRoot, T
 import { PuikIcon } from '@prestashopcorp/puik-components';
 import { PuikSnackbarVariants, PuikSnackbarSwipeAnimations } from './snackbar';
 import type {  SnackbarProps, SnackbarEmits } from './snackbar';
-import { generateId } from '@prestashopcorp/puik-utils';
+import { useId } from 'vue';
 
 defineOptions({
   name: 'PuikSnackbar'
 });
 
 const props = withDefaults(defineProps<SnackbarProps>(), {
-  id: `puik-snackbar-${generateId()}`,
   variant: PuikSnackbarVariants.Default,
   swipeAnimation: PuikSnackbarSwipeAnimations.Right
 });
+const resolvedId = props.id ?? `puik-snackbar-${useId()}`;
 const emits = defineEmits<SnackbarEmits>();
 const forwarded = useForwardPropsEmits(props, emits);
 

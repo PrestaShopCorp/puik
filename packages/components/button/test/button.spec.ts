@@ -1,10 +1,6 @@
 import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { PuikButton, ButtonProps } from '@prestashopcorp/puik-components';
-
-vi.mock('@prestashopcorp/puik-utils', () => ({
-  generateId: () => 'mocked-id'
-}));
 
 describe('Button tests', () => {
   let wrapper: VueWrapper<any>;
@@ -14,8 +10,6 @@ describe('Button tests', () => {
   const findLoader = () => wrapper.find('.puik-button__loader');
   const findLeftLoader = () => wrapper.find('.puik-button__loader--left');
   const findRightLoader = () => wrapper.find('.puik-button__loader--right');
-
-  const disabledId = 'puik-button-disabled-mocked-id';
 
   const factory = (
     props?: ButtonProps,
@@ -132,13 +126,14 @@ describe('Button tests', () => {
 
   it('should display the correct disabled reason', () => {
     factory({ disabled: true, disabledReason: 'Button is disabled' });
+    const disabledId = findButton().attributes('aria-describedby')!;
     const disabledReasonElement = wrapper.find(`#${disabledId}`);
     expect(disabledReasonElement.text()).toBe('Button is disabled.');
   });
 
   it('should have aria-describedby attribute when disabled', () => {
     factory({ disabled: true });
-    expect(findButton().attributes('aria-describedby')).toBe(disabledId);
+    expect(findButton().attributes('aria-describedby')).toBeDefined();
   });
 
   it('should have role attribute set to button', () => {
