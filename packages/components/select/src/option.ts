@@ -1,4 +1,5 @@
 import type Option from './option.vue';
+import type { PuikTagVariants } from '../../tag/src/tag';
 
 export interface OptionType {
   [key: string]: any
@@ -6,6 +7,10 @@ export interface OptionType {
 export interface OptionProps {
   label?: string | number
   value?: string | number
+  description?: string
+  tag?: string
+  tagVariant?: `${PuikTagVariants}`
+  tagIcon?: string
   disabled?: boolean
   isSelected?: boolean
   multiSelect?: boolean
