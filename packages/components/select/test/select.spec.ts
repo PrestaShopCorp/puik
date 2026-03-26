@@ -291,6 +291,19 @@ describe('Select tests', () => {
     expect(wrapper.find('.puik-option').text()).toBe('Option 1');
   });
 
+  it('should not match options when search query characters are present but not consecutive', async () => {
+    const options = [{ label: 'Option 3', value: '3' }, { label: 'Option 4', value: '4' }];
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOptions,
+      options,
+      searchable: true
+    });
+    await wrapper.find('input[role="searchbox"]').setValue('ooooonnnnppp3');
+    await nextTick();
+    expect(wrapper.findAll('.puik-option').length).toBe(0);
+  });
+
   it('should not select disabled options', async () => {
     const selectedOptions = ref();
     const options = [{ label: 'Optiorgrgrn 1', value: '1', disabled: true }, { label: 'Option 2', value: '2' }];
