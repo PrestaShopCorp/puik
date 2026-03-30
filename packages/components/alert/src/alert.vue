@@ -90,8 +90,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { generateId } from '@prestashopcorp/puik-utils';
+import { computed, useId } from 'vue';
 import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
@@ -108,7 +107,7 @@ const props = withDefaults(defineProps<AlertProps>(), {
 
 const emit = defineEmits<AlertEmits>();
 
-const ariaId = `${generateId()}`;
+const ariaId = useId();
 
 const icon = computed(() => ICONS[props.variant]);
 

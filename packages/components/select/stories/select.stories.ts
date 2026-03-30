@@ -1,6 +1,6 @@
 import { PuikSelect, PuikOption, PuikBadge } from '@prestashopcorp/puik-components';
 import type { Meta, StoryFn, Args, StoryObj } from '@storybook/vue3';
-import { ref } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 export default {
   title: 'Components/Select',
@@ -134,6 +134,45 @@ export default {
           summary: 'string'
         },
         category: 'Searchable'
+      }
+    },
+    optionDescriptionKey: {
+      control: 'text',
+      description: 'In case of using objects as option props, you can define which property of the object contains the description text (for rich items)',
+      table: {
+        defaultValue: {
+          summary: 'description'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Rich Item'
+      }
+    },
+    optionTagKey: {
+      control: 'text',
+      description: 'In case of using objects as option props, you can define which property of the object contains the tag/badge text (for rich items)',
+      table: {
+        defaultValue: {
+          summary: 'tag'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Rich Item'
+      }
+    },
+    optionTagVariantKey: {
+      control: 'text',
+      description: 'In case of using objects as option props, you can define which property of the object contains the tag variant (neutral, blue, yellow, green, purple)',
+      table: {
+        defaultValue: {
+          summary: 'tagVariant'
+        },
+        type: {
+          summary: 'string'
+        },
+        category: 'Rich Item'
       }
     },
     multiSelect: {
@@ -377,6 +416,9 @@ select-error-{dataTest}
     optionLabelKey: 'label',
     optionValueKey: 'value',
     optionDisabledKey: 'disabled',
+    optionDescriptionKey: 'description',
+    optionTagKey: 'tag',
+    optionTagVariantKey: 'tagVariant',
     multiSelect: false,
     disabled: false,
     error: '',
@@ -868,6 +910,130 @@ export const updateModelValueEvent: StoryObj = {
       :options="options"
       @update:model-value="(payload) => newValue = payload"
     />
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const RichItem: StoryObj = {
+  render: (args: Args) => ({
+    components: {
+      PuikSelect
+    },
+    setup() {
+      const baseOptions = [
+        {
+          label: 'This is the description for the first option with additional context to help users make a choice.',
+          value: '1',
+          tag: 'Recommended',
+          tagVariant: 'green',
+          tagIcon: 'verified',
+          description: 'This is the description for the first option with additional context to help users make a choice.'
+        },
+        {
+          label: 'Lorem Ipsum is simply dummy text',
+          value: '2',
+          tag: 'Popular',
+          tagVariant: 'neutral',
+          tagIcon: 'language',
+          description: 'This is the description for the second option with additional context to help users make a choice.'
+        },
+        {
+          label: 'Option',
+          value: '3',
+          tag: 'Deprecated',
+          tagVariant: 'yellow',
+          description: 'This is the description for the third option with additional context to help users make a choice.'
+        }
+      ];
+      const options = computed(() =>
+        args.showTags
+          ? baseOptions
+          : baseOptions.map(({ tag, tagVariant, tagIcon, ...rest }) => rest)
+      );
+      const selectedOption = ref();
+      watch(options, (newOptions) => {
+        if (selectedOption.value) {
+          selectedOption.value = newOptions.find(
+            (o: Record<string, any>) => o.value === selectedOption.value.value
+          );
+        }
+      });
+      return { options, selectedOption, args };
+    },
+    template: `
+  <div class="min-h-[350px]">
+    <puik-select
+      :key="String(args.showTags)"
+      v-model="selectedOption"
+      id="rich-item-select-id"
+      name="rich-item-select-name"
+      label="Select an option"
+      :options="options"
+    />
+  </div>
+    `
+  }),
+  args: {
+    showTags: true
+  },
+  argTypes: {
+    showTags: {
+      control: 'boolean',
+      description: 'Toggle tags on/off for rich item options',
+      table: {
+        category: 'Rich Item'
+      }
+    }
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Rich Item format allows each option to have a label (bold primary text), an optional tag (with color variant and icon), and a description (smaller secondary text).
+This is useful when users need additional context to distinguish between options. Tag variants include: neutral, green, blue, yellow, purple.
+Tags can include an icon via the \`tagIcon\` property. You can also use the \`selected-tag\` slot for full tag customization in the selected input.
+        `
+      },
+      source: {
+        code: `
+<!--VueJS Snippet-->
+// const options = [
+//   {
+//     label: 'Option 1',
+//     value: '1',
+//     tag: 'Recommended',
+//     tagVariant: 'green',
+//     tagIcon: 'verified',
+//     description: 'This is the description for the first option.'
+//   },
+//   {
+//     label: 'Option 2',
+//     value: '2',
+//     tag: 'Popular',
+//     tagVariant: 'neutral',
+//     tagIcon: 'language',
+//     description: 'This is the description for the second option.'
+//   },
+//   {
+//     label: 'Option 3',
+//     value: '3',
+//     tag: 'Deprecated',
+//     tagVariant: 'yellow',
+//     description: 'This is the description for the third option.'
+//   }
+// ];
+// const selectedOption = ref();
+
+<PuikSelect
+  v-model="selectedOption"
+  id="rich-item-select-id"
+  name="rich-item-select-name"
+  label="Select an option"
+  :options="options"
+/>
         `,
         language: 'html'
       }

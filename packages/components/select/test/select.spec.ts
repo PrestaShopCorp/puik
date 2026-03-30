@@ -291,6 +291,19 @@ describe('Select tests', () => {
     expect(wrapper.find('.puik-option').text()).toBe('Option 1');
   });
 
+  it('should not match options when search query characters are present but not consecutive', async () => {
+    const options = [{ label: 'Option 3', value: '3' }, { label: 'Option 4', value: '4' }];
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOptions,
+      options,
+      searchable: true
+    });
+    await wrapper.find('input[role="searchbox"]').setValue('ooooonnnnppp3');
+    await nextTick();
+    expect(wrapper.findAll('.puik-option').length).toBe(0);
+  });
+
   it('should not select disabled options', async () => {
     const selectedOptions = ref();
     const options = [{ label: 'Optiorgrgrn 1', value: '1', disabled: true }, { label: 'Option 2', value: '2' }];
@@ -423,6 +436,159 @@ describe('Select tests', () => {
     expect(wrapper.emitted('update:modelValue')?.[0][0]).toEqual([]);
   });
 
+  it('should render option description when provided', () => {
+    const options = [
+      { label: 'Option 1', value: '1', description: 'Description for option 1' },
+      { label: 'Option 2', value: '2', description: 'Description for option 2' }
+    ];
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOptions,
+      options
+    });
+    expect(wrapper.find('.puik-option__description').text()).toBe('Description for option 1');
+  });
+
+  it('should render option tag when provided', () => {
+    const options = [
+      { label: 'Option 1', value: '1', tag: 'Recommended' },
+      { label: 'Option 2', value: '2' }
+    ];
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOptions,
+      options
+    });
+    expect(wrapper.find('.puik-option__tag').text()).toBe('Recommended');
+  });
+
+  it('should apply rich option class when description is provided', () => {
+    const options = [
+      { label: 'Option 1', value: '1', description: 'A description' }
+    ];
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOptions,
+      options
+    });
+    expect(wrapper.find('.puik-option--rich').exists()).toBe(true);
+  });
+
+  it('should not apply rich option class when no description', () => {
+    const options = [
+      { label: 'Option 1', value: '1' }
+    ];
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOptions,
+      options
+    });
+    expect(wrapper.find('.puik-option--rich').exists()).toBe(false);
+  });
+
+  it('should use custom optionDescriptionKey', () => {
+    const options = [
+      { label: 'Option 1', value: '1', info: 'Custom description' }
+    ];
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOptions,
+      options,
+      optionDescriptionKey: 'info'
+    });
+    expect(wrapper.find('.puik-option__description').text()).toBe('Custom description');
+  });
+
+  it('should use custom optionTagKey', () => {
+    const options = [
+      { label: 'Option 1', value: '1', badge: 'Custom tag' }
+    ];
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOptions,
+      options,
+      optionTagKey: 'badge'
+    });
+    expect(wrapper.find('.puik-option__tag').text()).toBe('Custom tag');
+  });
+
+  it('should include description and tag in aria-label for accessibility', () => {
+    const options = [
+      { label: 'OAuth 2.0', value: 'oauth', tag: 'Recommended', description: 'Secure authentication' }
+    ];
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOptions,
+      options
+    });
+    const option = wrapper.find('.puik-option');
+    expect(option.attributes('aria-label')).toBe('OAuth 2.0, Recommended, Secure authentication');
+  });
+
+  it('should render rich items with description and tag together', () => {
+    const options = [
+      { label: 'Option 1', value: '1', tag: 'Tag 1', description: 'Desc 1' },
+      { label: 'Option 2', value: '2', tag: 'Tag 2', description: 'Desc 2' }
+    ];
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOptions,
+      options
+    });
+    expect(wrapper.findAll('.puik-option--rich').length).toBe(2);
+    expect(wrapper.findAll('.puik-option__tag').length).toBe(2);
+    expect(wrapper.findAll('.puik-option__description').length).toBe(2);
+  });
+
+  it('should display the tag in the selected input field when a rich option with tag is selected', async () => {
+    const options = [
+      { label: 'Option 1', value: '1', tag: 'Recommended', description: 'Desc 1' },
+      { label: 'Option 2', value: '2', description: 'Desc 2' }
+    ];
+    const selectedOption = ref(options[0]);
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOption,
+      options
+    });
+    await nextTick();
+    const inputAppend = wrapper.find('.puik-single-select__input .puik-input__append');
+    expect(inputAppend.find('.puik-option__tag').exists()).toBe(true);
+    expect(inputAppend.find('.puik-option__tag').text()).toBe('Recommended');
+  });
+
+  it('should display the tag icon in the selected input field when a rich option with tag icon is selected', async () => {
+    const options = [
+      { label: 'Option 1', value: '1', tag: 'Recommended', tagIcon: 'language', description: 'Desc 1' }
+    ];
+    const selectedOption = ref(options[0]);
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOption,
+      options
+    });
+    await nextTick();
+    const inputAppend = wrapper.find('.puik-single-select__input .puik-input__append');
+    expect(inputAppend.find('.puik-option__tag').exists()).toBe(true);
+    expect(inputAppend.find('.puik-tag__icon').exists()).toBe(true);
+  });
+
+  it('should not display the tag in the selected input field when the option has no tag', async () => {
+    const options = [
+      { label: 'Option 1', value: '1', description: 'Desc 1' },
+      { label: 'Option 2', value: '2', description: 'Desc 2' }
+    ];
+    const selectedOption = ref(options[0]);
+    factory({
+      id: 'test-select-id',
+      modelValue: selectedOption,
+      options
+    });
+    await nextTick();
+    const inputAppend = wrapper.find('.puik-single-select__input .puik-input__append');
+    expect(inputAppend.find('.puik-option__tag').exists()).toBe(false);
+  });
+
   it('should apply zIndex style to dropdown', async () => {
     const wrapper = mount(PuikSelect, {
       props: {
@@ -445,5 +611,16 @@ describe('Select tests', () => {
     await wrapper.vm.$nextTick();
     const dropdown = wrapper.find('.puik-select-dropdown');
     expect(dropdown.attributes('style')).toContain('z-index: 200');
+  });
+
+  it('should render only one input when multiSelect is true', () => {
+    const options = [{ label: 'Option 1', value: '1' }, { label: 'Option 2', value: '2' }];
+    factory({
+      id: 'test-select-id',
+      modelValue: ref([]),
+      options,
+      multiSelect: true
+    });
+    expect(wrapper.findAll('input[role="combobox"]').length).toBe(1);
   });
 });
