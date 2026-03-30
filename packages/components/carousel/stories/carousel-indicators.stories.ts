@@ -43,7 +43,7 @@ const Template: StoryFn = (args: Args) => ({
     <puik-carousel>
       <puik-carousel-content>
           <puik-carousel-item v-for="i in 8" :key="i">
-            <puik-card class="h-[200px] m-1 flex items-center justify-center">
+            <puik-card :aria-label="\`Slide \${i}\`" class="h-[200px] m-1 flex items-center justify-center">
               <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
             </puik-card>
           </puik-carousel-item>
