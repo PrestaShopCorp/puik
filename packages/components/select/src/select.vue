@@ -404,7 +404,7 @@ const filteredOptions = computed(() => {
     const query = searchQuery.value.toLowerCase();
     return props.options.filter((option) => {
       const label = option?.[props.optionLabelKey]?.toLowerCase();
-      return label && query.split('').every(char => label.includes(char));
+      return label && label.includes(query);
     });
   } else {
     return null;
