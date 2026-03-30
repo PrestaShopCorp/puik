@@ -57,9 +57,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref, useId } from 'vue';
 import { createPopper } from '@popperjs/core';
-import { generateId } from '@prestashopcorp/puik-utils';
 import { PuikTooltipPositions, type TooltipProps } from './tooltip';
 import type { Instance as PopperInstance } from '@popperjs/core';
 
@@ -71,7 +70,7 @@ const slotWrapper = ref<HTMLElement | null>(null);
 const tooltip = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 let popperInstance: PopperInstance | null = null;
-const id = `puik-tooltip-${generateId()}`;
+const id = `puik-tooltip-${useId()}`;
 
 const props = withDefaults(defineProps<TooltipProps>(), {
   position: PuikTooltipPositions.Bottom,

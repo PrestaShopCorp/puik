@@ -40,9 +40,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, useSlots } from 'vue';
+import { ref, watch, useSlots, useId } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { generateId } from '@prestashopcorp/puik-utils';
 import { type CheckboxProps } from './checkbox';
 
 defineOptions({
@@ -52,7 +51,7 @@ defineOptions({
 const props = defineProps<CheckboxProps>();
 const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>();
 
-const id = `puik-checkbox-${generateId()}`;
+const id = `puik-checkbox-${useId()}`;
 const checkboxInputRef = ref<HTMLInputElement>();
 const checked = useVModel(props, 'modelValue', emit);
 const slots = useSlots();

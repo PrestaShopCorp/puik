@@ -1,5 +1,4 @@
 import { type UseSnackbarProps, type SnackbarsState, type SnackbarProps } from './snackbar';
-import { generateId } from '@prestashopcorp/puik-utils';
 
 const DEFAULT_SNACKBARS_LIMIT = 0;
 const DEFAULT_SNACKBAR_REMOVE_DELAY = 5000;
@@ -10,7 +9,7 @@ export const useSnackbar = (
   snackbarsLimit: number = DEFAULT_SNACKBARS_LIMIT,
   removeDelay: number = DEFAULT_SNACKBAR_REMOVE_DELAY
 ) => {
-  const id = `puik-snackbar-${generateId()}`;
+  const id = `puik-snackbar-${crypto.randomUUID()}`;
   const duration = removeDelay;
   snackbarsState.push({ ...props, id, duration } as SnackbarProps);
   if (snackbarsState.length > snackbarsLimit) {
