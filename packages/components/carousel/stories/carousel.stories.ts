@@ -49,7 +49,7 @@ export default {
     opts: {
       control: 'object',
       description:
-        'Embla Carousel options (e.g. { loop: true, align: "start" }). See <a href="https://www.embla-carousel.com/api/options/" target="_blank">Embla Options</a>',
+        'Embla Carousel options (e.g. { loop: true, align: "start" }). See <a href="https://www.embla-carousel.com/docs/v8/api/options" target="_blank">Embla Options</a>',
       table: {
         type: {
           summary: 'EmblaOptionsType',
@@ -59,7 +59,7 @@ export default {
     plugins: {
       control: 'object',
       description:
-        'Embla Carousel plugins. See <a href="https://www.embla-carousel.com/plugins/" target="_blank">Embla Plugins</a>',
+        'Embla Carousel plugins. See <a href="https://www.embla-carousel.com/docs/v8/api/plugins" target="_blank">Embla Plugins</a>',
       table: {
         type: {
           summary: 'EmblaPluginType[]',
@@ -97,47 +97,47 @@ export default {
     reInit: {
       action: 'reInit',
       description:
-        'Emitted when the carousel moves. See <a href="https://www.embla-carousel.com/api/events/#reinit" target="_blank">reInit event</a>',
+        'Emitted when the carousel moves. See <a href="https://www.embla-carousel.com/docs/v8/api/events/#reinit" target="_blank">reInit event</a>',
     },
     destroy: {
       action: 'destroy',
       description:
-        'Emitted when the carousel is destroyed. See <a href="https://www.embla-carousel.com/api/events/#destroy" target="_blank">destroy event</a>',
+        'Emitted when the carousel is destroyed. See <a href="https://www.embla-carousel.com/docs/v8/api/events#destroy" target="_blank">destroy event</a>',
     },
     select: {
       action: 'select',
       description:
-        'Emitted when a slide is selected. See <a href="https://www.embla-carousel.com/api/events/#select" target="_blank">select event</a>',
+        'Emitted when a slide is selected. See <a href="https://www.embla-carousel.com/docs/v8/api/events#select" target="_blank">select event</a>',
     },
     scroll: {
       action: 'scroll',
       description:
-        'Emitted when the carousel is scrolled. See <a href="https://www.embla-carousel.com/api/events/#scroll" target="_blank">scroll event</a>',
+        'Emitted when the carousel is scrolled. See <a href="https://www.embla-carousel.com/docs/v8/api/events#scroll" target="_blank">scroll event</a>',
     },
     settle: {
       action: 'settle',
       description:
-        'Emitted when the carousel settles. See <a href="https://www.embla-carousel.com/api/events/#settle" target="_blank">settle event</a>',
+        'Emitted when the carousel settles. See <a href="https://www.embla-carousel.com/docs/v8/api/events#settle" target="_blank">settle event</a>',
     },
     resize: {
       action: 'resize',
       description:
-        'Emitted when the carousel is resized. See <a href="https://www.embla-carousel.com/api/events/#resize" target="_blank">resize event</a>',
+        'Emitted when the carousel is resized. See <a href="https://www.embla-carousel.com/docs/v8/api/events#resize" target="_blank">resize event</a>',
     },
     slidesChanged: {
       action: 'slidesChanged',
       description:
-        'Emitted when slides changed. See <a href="https://www.embla-carousel.com/api/events/#slideschanged" target="_blank">slidesChanged event</a>',
+        'Emitted when slides changed. See <a href="https://www.embla-carousel.com/docs/v8/api/events#slideschanged" target="_blank">slidesChanged event</a>',
     },
     pointerDown: {
       action: 'pointerDown',
       description:
-        'Emitted on pointer down. See <a href="https://www.embla-carousel.com/api/events/#pointerdown" target="_blank">pointerDown event</a>',
+        'Emitted on pointer down. See <a href="https://www.embla-carousel.com/docs/v8/api/events#pointerdown" target="_blank">pointerDown event</a>',
     },
     pointerUp: {
       action: 'pointerUp',
       description:
-        'Emitted on pointer up. See <a href="https://www.embla-carousel.com/api/events/#pointerup" target="_blank">pointerUp event</a>',
+        'Emitted on pointer up. See <a href="https://www.embla-carousel.com/docs/v8/api/events#pointerup" target="_blank">pointerUp event</a>',
     },
   },
 } as Meta;
@@ -159,12 +159,12 @@ const Template: StoryFn = (args: Args) => ({
     <puik-carousel :key="args.orientation" v-bind="args">
       <puik-carousel-content>
           <puik-carousel-item v-for="i in 5" :key="i">
-            <puik-card class="h-[200px] m-1 flex items-center justify-center">
+            <puik-card :aria-label="\`Slide \${i}\`" class="h-[200px] m-1 flex items-center justify-center">
               <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
             </puik-card>
           </puik-carousel-item>
       </puik-carousel-content>
-      
+
       <div class="flex justify-between gap-2 mt-4">
       <div class="flex gap-2">
         <puik-carousel-previous />
@@ -187,12 +187,12 @@ export const Default = {
 <puik-carousel>
   <puik-carousel-content>
       <puik-carousel-item v-for="i in 5" :key="i">
-        <puik-card class="h-[200px] m-1 flex items-center justify-center">
+        <puik-card aria-label="Slide {{ i }}" class="h-[200px] m-1 flex items-center justify-center">
           <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
         </puik-card>
       </puik-carousel-item>
   </puik-carousel-content>
-  
+
   <div class="flex justify-between gap-2 mt-4">
   <div class="flex gap-2">
     <puik-carousel-previous />
@@ -224,12 +224,12 @@ export const WithoutNavigation = {
       <puik-carousel :key="args.orientation" v-bind="args">
         <puik-carousel-content>
             <puik-carousel-item v-for="i in 5" :key="i">
-              <puik-card class="h-[200px] m-1 flex items-center justify-center">
+              <puik-card :aria-label="\`Slide \${i}\`" class="h-[200px] m-1 flex items-center justify-center">
                 <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
               </puik-card>
             </puik-carousel-item>
         </puik-carousel-content>
-        
+
         <div class="flex justify-center mt-4">
           <puik-carousel-indicators />
         </div>
@@ -249,12 +249,12 @@ export const WithoutNavigation = {
 <puik-carousel>
   <puik-carousel-content>
       <puik-carousel-item v-for="i in 5" :key="i">
-        <puik-card class="h-[200px] m-1 flex items-center justify-center">
+        <puik-card aria-label="Slide {{ i }}" class="h-[200px] m-1 flex items-center justify-center">
           <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
         </puik-card>
       </puik-carousel-item>
   </puik-carousel-content>
-  
+
   <div class="flex justify-center mt-4">
     <puik-carousel-indicators />
   </div>
@@ -283,12 +283,12 @@ export const WithoutIndicators = {
       <puik-carousel :key="args.orientation" v-bind="args">
         <puik-carousel-content>
             <puik-carousel-item v-for="i in 5" :key="i">
-              <puik-card class="h-[200px] m-1 flex items-center justify-center">
+              <puik-card :aria-label="\`Slide \${i}\`" class="h-[200px] m-1 flex items-center justify-center">
                 <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
               </puik-card>
             </puik-carousel-item>
         </puik-carousel-content>
-        
+
         <div class="flex justify-center mt-4 gap-2">
           <puik-carousel-previous />
           <puik-carousel-next />
@@ -309,12 +309,12 @@ export const WithoutIndicators = {
 <puik-carousel>
   <puik-carousel-content>
       <puik-carousel-item v-for="i in 5" :key="i">
-        <puik-card class="h-[200px] m-1 flex items-center justify-center">
+        <puik-card aria-label="Slide {{ i }}" class="h-[200px] m-1 flex items-center justify-center">
           <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
         </puik-card>
       </puik-carousel-item>
   </puik-carousel-content>
-  
+
   <div class="flex justify-center mt-4 gap-2">
     <puik-carousel-previous />
     <puik-carousel-next />
@@ -341,12 +341,12 @@ export const Vertical = {
 <puik-carousel orientation="vertical" :vertical-height="200">
   <puik-carousel-content>
       <puik-carousel-item v-for="i in 5" :key="i">
-        <puik-card class="h-[200px] m-1 flex items-center justify-center">
+        <puik-card aria-label="Slide {{ i }}" class="h-[200px] m-1 flex items-center justify-center">
           <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
         </puik-card>
       </puik-carousel-item>
   </puik-carousel-content>
-  
+
   <div class="flex justify-between gap-2 mt-4">
   <div class="flex gap-2">
     <puik-carousel-previous />
@@ -375,12 +375,12 @@ export const CustomItemWidth = {
 <puik-carousel :item-width="66">
   <puik-carousel-content>
       <puik-carousel-item v-for="i in 5" :key="i">
-        <puik-card class="h-[200px] m-1 flex items-center justify-center">
+        <puik-card aria-label="Slide {{ i }}" class="h-[200px] m-1 flex items-center justify-center">
           <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
         </puik-card>
       </puik-carousel-item>
   </puik-carousel-content>
-  
+
   <div class="flex justify-between gap-2 mt-4">
   <div class="flex gap-2">
     <puik-carousel-previous />
@@ -416,12 +416,12 @@ export const WithOptions = {
 <puik-carousel :opts="{ loop: true, align: 'start' }">
   <puik-carousel-content>
       <puik-carousel-item v-for="i in 5" :key="i">
-        <puik-card class="h-[200px] m-1 flex items-center justify-center">
+        <puik-card aria-label="Slide {{ i }}" class="h-[200px] m-1 flex items-center justify-center">
           <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
         </puik-card>
       </puik-carousel-item>
   </puik-carousel-content>
-  
+
   <div class="flex justify-between gap-2 mt-4">
   <div class="flex gap-2">
     <puik-carousel-previous />
@@ -458,7 +458,7 @@ export const ManualControl = {
 <puik-carousel ref="carouselRef" v-bind="args">
   <puik-carousel-content>
       <puik-carousel-item v-for="i in 5" :key="i">
-        <puik-card class="h-[200px] m-1 flex items-center justify-center">
+        <puik-card :aria-label="\`Slide \${i}\`" class="h-[200px] m-1 flex items-center justify-center">
           <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
         </puik-card>
       </puik-carousel-item>
@@ -478,10 +478,10 @@ export const ManualControl = {
     docs: {
       description: {
         story: `
-You can control the carousel programmatically using the exposed methods via \`ref\`. 
+You can control the carousel programmatically using the exposed methods via \`ref\`.
 
 ### Available Methods
-The \`PuikCarousel\` component exposes the following methods from the [Embla API](https://www.embla-carousel.com/api/methods/):
+The \`PuikCarousel\` component exposes the following methods from the [Embla API](https://www.embla-carousel.com/docs/v8/api/methods):
 
 - **Navigation**: \`scrollNext()\`, \`scrollPrev()\`, \`scrollTo(index)\`
 - **State**: \`canScrollNext()\`, \`canScrollPrev()\`, \`selectedScrollSnap()\`, \`previousScrollSnap()\`, \`scrollSnapList()\`
@@ -506,7 +506,7 @@ const goTo = (index: number) => carouselRef.value?.scrollTo(index);
   <puik-carousel ref="carouselRef" v-bind="args">
     <puik-carousel-content>
         <puik-carousel-item v-for="i in 5" :key="i">
-          <puik-card class="h-[200px] m-1 flex items-center justify-center">
+          <puik-card aria-label="Slide {{ i }}" class="h-[200px] m-1 flex items-center justify-center">
             <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
           </puik-card>
         </puik-carousel-item>
@@ -550,12 +550,12 @@ import Autoplay from 'embla-carousel-autoplay'
   <puik-carousel :plugins="[Autoplay({ delay: 2000 })]">
     <puik-carousel-content>
         <puik-carousel-item v-for="i in 5" :key="i">
-          <puik-card class="h-[200px] m-1 flex items-center justify-center">
+          <puik-card aria-label="Slide {{ i }}" class="h-[200px] m-1 flex items-center justify-center">
             <span class="text-4xl font-semibold text-primary-800">Slide {{ i }}</span>
           </puik-card>
         </puik-carousel-item>
     </puik-carousel-content>
-    
+
     <div class="flex justify-between gap-2 mt-4">
     <div class="flex gap-2">
       <puik-carousel-previous />
