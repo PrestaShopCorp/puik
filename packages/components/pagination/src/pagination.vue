@@ -1,6 +1,6 @@
 <template>
   <nav
-    :id="props.id"
+    :id="resolvedId"
     class="puik-pagination"
     :class="[`puik-pagination--${variant}`]"
     role="navigation"
@@ -9,7 +9,7 @@
   >
     <pagination-loader
       v-if="variant === PuikPaginationVariants.Loader"
-      :id="`${props.id}--loader`"
+      :id="`${resolvedId}--loader`"
       v-model="currentPage"
       :data-test="dataTest"
       :disabled="loaderButtonDisabled"
@@ -23,7 +23,7 @@
     >
       <pagination-mobile
         v-if="variant === PuikPaginationVariants.Mobile"
-        :id="`${props.id}--mobile`"
+        :id="`${resolvedId}--mobile`"
         v-model="currentPage"
         v-bind="commonPaginationProps"
         :data-test="dataTest"
@@ -31,7 +31,7 @@
 
       <pagination-small
         v-if="variant === PuikPaginationVariants.Small"
-        :id="`${props.id}--small`"
+        :id="`${resolvedId}--small`"
         v-model="currentPage"
         v-bind="commonPaginationProps"
         :data-test="dataTest"
@@ -40,7 +40,7 @@
 
       <pagination-medium
         v-if="variant === PuikPaginationVariants.Medium && !disabled"
-        :id="`${props.id}--medium`"
+        :id="`${resolvedId}--medium`"
         v-model="currentPage"
         v-bind="commonPaginationProps"
         :data-test="dataTest"
@@ -50,7 +50,7 @@
 
       <pagination-large
         v-if="variant === PuikPaginationVariants.Large"
-        :id="`${props.id}--large`"
+        :id="`${resolvedId}--large`"
         v-model:page="currentPage"
         :data-test="dataTest"
         :display-items-per-page="displayItemsPerPage"
@@ -66,8 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from 'vue';
-import { generateId } from '@prestashopcorp/puik-utils';
+import { computed, watch, useId } from 'vue';
 import { useLocale } from '@prestashopcorp/puik-locale';
 import { type PaginationProps, PuikPaginationVariants } from './pagination';
 
@@ -82,13 +81,13 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<PaginationProps>(), {
-  id: `puik-pagination-${generateId()}`,
   variant: PuikPaginationVariants.Medium,
   itemsPerPage: 5,
   itemsPerPageOptions: () => [5, 10, 15],
   displayItemsPerPage: true,
   displayResults: true
 });
+const resolvedId = props.id ?? `puik-pagination-${useId()}`;
 const emit = defineEmits<{
   'update:page': [value: number]
   'update:itemsPerPage': [value: number]

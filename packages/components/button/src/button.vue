@@ -64,9 +64,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject } from 'vue';
+import { computed, inject, useId } from 'vue';
 import { useLocale } from '@prestashopcorp/puik-locale';
-import { generateId } from '@prestashopcorp/puik-utils';
 import { PuikIcon, PuikSpinnerLoader } from '@prestashopcorp/puik-components';
 import { ButtonGroupKey } from '../../button-group';
 import { PuikButtonVariants, PuikButtonLoaderPositions, type ButtonProps, PuikButtonSizes } from './button';
@@ -84,7 +83,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 
 const { t } = useLocale();
 const disabledReasonDefault = t('puik.common.ariaDisabledDescription');
-const disabledId = `puik-button-disabled-${generateId()}`;
+const disabledId = `puik-button-disabled-${useId()}`;
 const buttonGroup = inject(ButtonGroupKey, undefined);
 
 const componentType = computed(() => {

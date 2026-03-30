@@ -124,11 +124,11 @@ describe('Radio tests', () => {
   });
 
   it('should generate a unique ID for each instance', () => {
-    factory({ modelValue: false, value: fakeValue });
-    const firstId = findInput().attributes('id');
-    wrapper.unmount();
-    factory({ modelValue: false, value: fakeValue });
-    const secondId = findInput().attributes('id');
+    const parent = mount({
+      components: { PuikRadio },
+      template: `<div><puik-radio :model-value="false" value="a" /><puik-radio :model-value="false" value="b" /></div>`
+    });
+    const [firstId, secondId] = parent.findAll('.puik-radio__input').map(i => i.attributes('id'));
     expect(firstId).not.toBe(secondId);
   });
 });
