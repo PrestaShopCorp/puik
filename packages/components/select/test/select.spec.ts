@@ -612,4 +612,15 @@ describe('Select tests', () => {
     const dropdown = wrapper.find('.puik-select-dropdown');
     expect(dropdown.attributes('style')).toContain('z-index: 200');
   });
+
+  it('should render only one input when multiSelect is true', () => {
+    const options = [{ label: 'Option 1', value: '1' }, { label: 'Option 2', value: '2' }];
+    factory({
+      id: 'test-select-id',
+      modelValue: ref([]),
+      options,
+      multiSelect: true
+    });
+    expect(wrapper.findAll('input[role="combobox"]').length).toBe(1);
+  });
 });
