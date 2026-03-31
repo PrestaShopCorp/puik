@@ -1,5 +1,6 @@
-import { mount } from '@vue/test-utils';
+import { mount, flushPromises } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
+import { createRouter, createMemoryHistory } from 'vue-router';
 import {
   PuikTabNavigation,
   PuikTabNavigationGroupTitles,
@@ -56,16 +57,98 @@ const template = `
   </puik-tab-navigation-group-panels>
 </puik-tab-navigation>
 `;
+const createTestRouter = () =>
+  createRouter({
+    history: createMemoryHistory(),
+    routes: [
+      { path: '/', redirect: '/dashboard' },
+      { path: '/dashboard', component: { template: '<div />' } },
+      { path: '/tools', component: { template: '<div />' } },
+      { path: '/tools/list', component: { template: '<div />' } },
+      { path: '/tools/config', component: { template: '<div />' } }
+    ]
+  });
+
 describe('TabNavigation tests', () => {
   it('should be a vue instance', () => {
     factory(template);
     expect(getTabNavigationTitleComponent).toBeTruthy();
   });
+
   it('As disabled prop value is true for tab-3, tab-3 should be disabled', () => {
     factory(template);
     const disabledTab = getTabNavigationTitleHtml()[2];
     expect(disabledTab.classes()).toContain(
       'puik-tab-navigation__title--disabled'
     );
+  });
+});
+
+describe('TabNavigationTitle with `to` prop (Vue Router integration)', () => {
+  const routerTemplate = `
+<puik-tab-navigation name="router-example" :default-position="1">
+  <puik-tab-navigation-group-titles aria-label="aria-label-example">
+    <puik-tab-navigation-title :position="1" to="/dashboard">
+      Dashboard
+    </puik-tab-navigation-title>
+    <puik-tab-navigation-title :position="2" to="/tools">
+      Tools
+    </puik-tab-navigation-title>
+  </puik-tab-navigation-group-titles>
+</puik-tab-navigation>
+`;
+
+  const mountWithRouter = (initialPath: string) => {
+    const router = createTestRouter();
+    const w = mount({
+      components: {
+        PuikTabNavigation,
+        PuikTabNavigationGroupTitles,
+        PuikTabNavigationTitle
+      },
+      template: routerTemplate
+    }, { global: { plugins: [router] } });
+    return { router, w };
+  };
+
+  it('should have --selected on the tab whose `to` matches the current route exactly', async () => {
+    const { router, w } = mountWithRouter('/dashboard');
+    router.push('/dashboard');
+    await flushPromises();
+
+    const tabs = w.findAll('.puik-tab-navigation__title');
+    expect(tabs[0].classes()).toContain('puik-tab-navigation__title--selected');
+    expect(tabs[1].classes()).not.toContain('puik-tab-navigation__title--selected');
+  });
+
+  it('should keep parent tab --selected when a child route is active', async () => {
+    const { router, w } = mountWithRouter('/');
+    router.push('/tools/list');
+    await flushPromises();
+
+    const tabs = w.findAll('.puik-tab-navigation__title');
+    expect(tabs[1].classes()).toContain('puik-tab-navigation__title--selected');
+    expect(tabs[0].classes()).not.toContain('puik-tab-navigation__title--selected');
+  });
+
+  it('should not have --selected when the current route does not match', async () => {
+    const { router, w } = mountWithRouter('/');
+    router.push('/dashboard');
+    await flushPromises();
+
+    const tabs = w.findAll('.puik-tab-navigation__title');
+    expect(tabs[1].classes()).not.toContain('puik-tab-navigation__title--selected');
+  });
+
+  it('should navigate to the `to` route when the tab is clicked', async () => {
+    const { router, w } = mountWithRouter('/');
+    router.push('/dashboard');
+    await flushPromises();
+
+    const tabs = w.findAll('.puik-tab-navigation__title');
+    await tabs[1].trigger('click');
+    await flushPromises();
+
+    expect(router.currentRoute.value.path).toBe('/tools');
   });
 });
