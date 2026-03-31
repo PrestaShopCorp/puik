@@ -35,3 +35,4 @@ export * from './divider';
 export * from './notification-bar';
 export * from './sortable-list';
 export * from './rating-card';
+export * from './carousel';
