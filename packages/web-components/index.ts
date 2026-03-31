@@ -2,6 +2,7 @@ import type { CustomElementWithName } from './types';
 import initWeb from './utils/initWeb';
 import initAllWeb from './utils/initAllWeb';
 
+import PuikCarouselCe from './components/carousel';
 import PuikRatingCardCe from './components/rating-card';
 // import PuikSortableListCe from './components/sortable-list';
 import PuikAccordionCe from './components/accordion';
@@ -53,6 +54,7 @@ import PuikTextareaCe from './components/textarea';
 import PuikTooltipCe from './components/tooltip';
 
 export const components: CustomElementWithName[] = [
+  PuikCarouselCe,
   PuikRatingCardCe,
   // PuikSortableListCe,
   PuikAccordionCe,
@@ -105,6 +107,7 @@ export const components: CustomElementWithName[] = [
 ];
 
 export {
+  PuikCarouselCe,
   PuikRatingCardCe,
   // PuikSortableListCe,
   PuikAccordionCe,
