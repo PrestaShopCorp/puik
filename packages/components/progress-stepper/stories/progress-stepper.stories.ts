@@ -1,4 +1,4 @@
-import { useArgs } from '@storybook/client-api';
+import { useArgs } from 'storybook/preview-api';
 import { PuikButton, PuikProgressStepper, PuikProgressStepperStep, PuikStep } from '@prestashopcorp/puik-components';
 import type { Meta, StoryFn } from '@storybook/vue3';
 
