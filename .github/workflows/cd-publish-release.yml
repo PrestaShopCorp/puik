@@ -12,12 +12,12 @@ jobs:
 
     permissions:
       contents: read
-      packages: write
+      id-token: write
 
     steps:
       - name: Get tag
         id: get_tag
-        run: echo ::set-output name=TAG::${GITHUB_REF#refs/tags/}
+        run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -27,21 +27,18 @@ jobs:
         with:
           version: 10.18.3
 
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v3
-        with:
-          node-version: lts/hydrogen
-          registry-url: https://registry.npmjs.org/
-          cache: "pnpm"
-
       - name: Install dependencies 👨🏻‍💻
         run: pnpm i --frozen-lockfile
 
       - name: Build
         run: pnpm build
 
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: https://registry.npmjs.org/
+          cache: "pnpm"
+
       - name: Publish
-        run: pnpm -r --filter './packages/**' publish --no-git-checks --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          VERSION: ${{ steps.get_tag.outputs.TAG }}
+        run: pnpm -r --filter './packages/**' publish --no-git-checks --access public --provenance
