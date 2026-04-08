@@ -10,8 +10,9 @@ export default [
       'node_modules',
       'dist',
       'coverage',
-      'storybook-static',
-      '**/.vitepress/cache'
+      '**/storybook-static/**',
+      '**/.vitepress/cache',
+      '**/*.d.ts'
     ]
   },
   {
