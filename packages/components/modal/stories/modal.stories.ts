@@ -1,5 +1,4 @@
-import { action } from '@storybook/addon-actions';
-import { useArgs } from '@storybook/client-api';
+import { useArgs } from 'storybook/preview-api';
 import { PuikButton, PuikModal, PuikModalVariants, PuikModalSizes } from '@prestashopcorp/puik-components';
 import type { Meta, StoryFn, Args } from '@storybook/vue3';
 import { ref } from 'vue';
@@ -249,9 +248,6 @@ const Template: StoryFn = (args: Args) => {
         closeModal,
         logAction
       };
-    },
-    methods: {
-      closeModal: action('Close event triggered'),
     },
     template: `
     <puik-button @click="openModal">

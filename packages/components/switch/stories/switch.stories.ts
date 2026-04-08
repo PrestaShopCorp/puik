@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import { useArgs } from '@storybook/client-api';
+import { useArgs } from 'storybook/preview-api';
 import { PuikSwitch } from '@prestashopcorp/puik-components';
 import type { StoryObj, StoryFn, Meta } from '@storybook/vue3';
 

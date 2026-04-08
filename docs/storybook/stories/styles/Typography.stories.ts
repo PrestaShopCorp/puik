@@ -12,7 +12,6 @@ function generateStory(htmlTemplate: string): StoryObj {
   return {
     render: Template,
     parameters: {
-      controls: { hideNoControlsWarning: true },
       docs: {
         source: {
           code: htmlTemplate,

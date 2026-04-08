@@ -33,7 +33,6 @@ function generateStory(defaultViewport?: string): StoryObj {
   const Story: StoryObj = {
     render: Template,
     parameters: {
-      controls: { hideNoControlsWarning: true },
       docs: {
         source: {
           code: htmlTemplate,

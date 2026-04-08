@@ -1,6 +1,8 @@
+import { fileURLToPath } from 'url';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import type { StorybookConfig } from '@storybook/vue3-vite';
+import type { Plugin } from 'vite';
 
 const config: StorybookConfig = {
   stories: [
@@ -12,7 +14,7 @@ const config: StorybookConfig = {
   },
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
+    '@storybook/addon-docs',
     '@storybook/addon-a11y'
   ],
   framework: {
@@ -20,9 +22,17 @@ const config: StorybookConfig = {
     options: {}
   },
   async viteFinal(config) {
-    if (config.resolve) {
-      config.resolve.dedupe = ['@storybook/client-api'];
-    }
+    const fileUrlResolverPlugin: Plugin = {
+      name: 'storybook-mdx-file-url-resolver',
+      enforce: 'pre',
+      resolveId(id) {
+        if (id.startsWith('file:///')) {
+          return { id: fileURLToPath(id), external: false };
+        }
+      }
+    };
+
+    config.plugins = [...(config.plugins ?? []), fileUrlResolverPlugin];
     config.css = {
       postcss: {
         plugins: [tailwindcss, autoprefixer]
@@ -33,14 +43,10 @@ const config: StorybookConfig = {
       optimizeDeps: {
         ...config.optimizeDeps,
         entries: [
-          '../stories/**/*.stories.mdx',
           '../../../packages/components/**/*.stories.@(js|jsx|ts|tsx)'
         ]
       }
     };
-  },
-  docs: {
-    autodocs: true
   }
 };
 

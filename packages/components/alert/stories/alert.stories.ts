@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
 import { PuikAlert, PuikAlertVariants, PuikButton, PuikLink } from '@prestashopcorp/puik-components';
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
