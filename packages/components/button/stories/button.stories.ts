@@ -342,10 +342,11 @@ export const PrimaryReverse: StoryObj = {
     variant: 'primary-reverse'
   },
 
+  globals: {
+    backgrounds: { value: 'dark' }
+  },
+
   parameters: {
-    backgrounds: {
-      default: 'dark'
-    },
     docs: {
       source: {
         code: `
@@ -391,10 +392,11 @@ export const SecondaryReverse: StoryObj = {
     variant: 'secondary-reverse'
   },
 
+  globals: {
+    backgrounds: { value: 'dark' }
+  },
+
   parameters: {
-    backgrounds: {
-      default: 'dark'
-    },
     docs: {
       source: {
         code: `
@@ -441,10 +443,11 @@ export const TertiaryReverse: StoryObj = {
     variant: 'tertiary-reverse'
   },
 
+  globals: {
+    backgrounds: { value: 'dark' }
+  },
+
   parameters: {
-    backgrounds: {
-      default: 'dark'
-    },
     docs: {
       source: {
         code: `
@@ -491,10 +494,11 @@ export const TextReverse: StoryObj = {
     variant: 'text-reverse'
   },
 
+  globals: {
+    backgrounds: { value: 'dark' }
+  },
+
   parameters: {
-    backgrounds: {
-      default: 'dark'
-    },
     docs: {
       source: {
         code: `
@@ -701,10 +705,11 @@ export const Variants: StoryObj = {
 export const ReversedVariants: StoryObj = {
   render: AllReversedVariantsTemplate,
 
+  globals: {
+    backgrounds: { value: 'dark' }
+  },
+
   parameters: {
-    backgrounds: {
-      default: 'dark'
-    },
     docs: {
       source: {
         code: `
@@ -750,10 +755,11 @@ export const DisabledReverseVariants: StoryObj = {
     disabled: true
   },
 
+  globals: {
+    backgrounds: { value: 'dark' }
+  },
+
   parameters: {
-    backgrounds: {
-      default: 'dark'
-    },
     docs: {
       source: {
         code: `

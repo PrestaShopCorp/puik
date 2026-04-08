@@ -4,6 +4,12 @@ import type { Preview } from '@storybook/vue3';
 const preview: Preview = {
   tags: ['autodocs'],
   parameters: {
+    backgrounds: {
+      options: {
+        light: { name: 'Light', value: '#ffffff' },
+        dark: { name: 'Dark', value: '#333333' }
+      }
+    },
     chromatic: { pauseAnimationAtEnd: true },
     controls: {
       expanded: true,

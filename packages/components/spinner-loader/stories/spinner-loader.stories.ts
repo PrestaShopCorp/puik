@@ -193,10 +193,11 @@ export const Reverse: StoryObj = {
     color: 'reverse'
   },
 
+  globals: {
+    backgrounds: { value: 'dark' }
+  },
+
   parameters: {
-    backgrounds: {
-      default: 'dark'
-    },
     docs: {
       source: {
         code: `
