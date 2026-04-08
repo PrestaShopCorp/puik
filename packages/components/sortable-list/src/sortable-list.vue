@@ -94,7 +94,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref } from 'vue';
+import { nextTick, ref, type ComponentPublicInstance } from 'vue';
 import {
   type SortableListProps,
   type SortableListEmits,
@@ -120,7 +120,7 @@ const props = withDefaults(defineProps<SortableListProps>(), {
 
 const emit = defineEmits<SortableListEmits>();
 
-const sortable = ref<InstanceType<typeof Sortable> | null>(null);
+const sortable = ref<ComponentPublicInstance | null>(null);
 
 defineExpose({
   sortable

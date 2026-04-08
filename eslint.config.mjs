@@ -43,8 +43,7 @@ export default [
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
         ecmaVersion: 'latest',
-        sourceType: 'module',
-        project: ['./tsconfig.eslint.json']
+        sourceType: 'module'
       }
     },
     rules: {
