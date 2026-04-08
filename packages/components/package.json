@@ -20,16 +20,16 @@
     "embla-carousel": "^8.6.0",
     "embla-carousel-vue": "^8.6.0",
     "radix-vue": "^1.9.17",
-    "sortablejs": "^1.15.6",
+    "sortablejs": "^1.15.7",
     "sortablejs-vue3": "1.2.11"
   },
   "devDependencies": {
-    "@types/sortablejs": "^1.15.8",
-    "autoprefixer": "^10.4.21",
+    "@types/sortablejs": "^1.15.9",
+    "autoprefixer": "^10.4.27",
     "cssnano": "^6.1.2",
     "embla-carousel-autoplay": "^8.6.0",
-    "vue": "^3.5.22",
-    "vue-router": "^4.6.0",
+    "vue": "^3.5.32",
+    "vue-router": "^4.6.4",
     "vue-tsc": "^2.2.12"
   },
   "files": [
