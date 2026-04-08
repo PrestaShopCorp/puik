@@ -1,5 +1,17 @@
 # @prestashopcorp/puik-docs
 
+## 1.8.1
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @prestashopcorp/puik-components@2.8.0
+  - @prestashopcorp/puik-theme@2.8.0
+  - @prestashopcorp/puik-web-components@2.8.0
+  - @prestashopcorp/puik-resolver@9.0.0
+
 ## 1.8.0
 
 ### Minor Changes

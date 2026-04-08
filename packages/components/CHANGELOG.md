@@ -1,5 +1,37 @@
 # @prestashopcorp/puik-components
 
+## 2.8.0
+
+### Minor Changes
+
+- feat(carousel): add new Carousel component
+
+  New component with full embla-carousel integration:
+
+  - `PuikCarousel`, `PuikCarouselContent`, `PuikCarouselItem`
+  - `PuikCarouselNext`, `PuikCarouselPrevious`, `PuikCarouselIndicators`
+  - Horizontal and vertical orientation
+  - Configurable navigation buttons, indicators and accessibility props
+  - Keyboard navigation support
+  - Full embla-carousel event and method exposure
+  - Web component (`PuikCarouselCe`) and theme CSS included
+
+- feat(select): enhance dropdown with description, tag and rich option support
+
+  - Add description and tag display in dropdown options
+  - Add icon support and `selected-tag` slot for rich option tags
+  - Display selected tag in input field for rich options
+  - Fix fuzzy search: use substring match instead of per-character search
+  - Fix multiSelect: prevent single-select inputs from rendering in multiSelect mode
+
+- feat(tab-navigation): add `to` prop for Vue Router nested route support
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - @prestashopcorp/puik-theme@2.8.0
+
 ## 2.7.0
 
 ### Minor Changes

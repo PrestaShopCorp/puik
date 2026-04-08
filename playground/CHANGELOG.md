@@ -1,5 +1,17 @@
 # @prestashopcorp/puik-playground
 
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @prestashopcorp/puik-components@2.8.0
+  - @prestashopcorp/puik-theme@2.8.0
+  - @prestashopcorp/puik-web-components@2.8.0
+  - @prestashopcorp/puik-resolver@9.0.0
+
 ## 0.3.0
 
 ### Minor Changes
