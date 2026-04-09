@@ -124,3 +124,4 @@ import { PuikButton } from '@prestashopcorp/puik-components';
 Please make sure to read the [Contributing Guide](CONTRIBUTING.md) before making a pull request
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
