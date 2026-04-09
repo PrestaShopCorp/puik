@@ -3,6 +3,7 @@ name: Publish Release
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   publish-github-packages:
@@ -40,4 +41,4 @@ jobs:
           cache: "pnpm"
 
       - name: Publish
-        run: pnpm -r --filter './packages/**' publish --no-git-checks --access public
+        run: pnpm -r --filter './packages/**' exec -- npm publish --access public
