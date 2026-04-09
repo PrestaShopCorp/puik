@@ -20,6 +20,11 @@
     "dist"
   ],
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrestaShopCorp/puik.git",
+    "directory": "packages/web-components"
+  },
   "publishConfig": {
     "main": "./dist/index.cjs",
     "module": "./dist/index.mjs",

@@ -28,6 +28,11 @@
     "dev": "pnpm clean && pnpm postcss --watch",
     "postcss": "postcss ./src/*.css --dir ./dist"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrestaShopCorp/puik.git",
+    "directory": "packages/theme"
+  },
   "publishConfig": {
     "access": "public"
   },
