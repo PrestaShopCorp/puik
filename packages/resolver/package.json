@@ -27,6 +27,11 @@
     "vue": "^3.5.32"
   },
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrestaShopCorp/puik.git",
+    "directory": "packages/resolver"
+  },
   "publishConfig": {
     "main": "dist/index.cjs",
     "module": "dist/index.mjs",
