@@ -25,6 +25,12 @@ Here is the list of available components in the Vue and Web-Components version o
 | Badge                       | ✅  | ✅            |                  |
 | Breadcrumb                  | ✅  | ✅            |                  |
 | Button                      | ✅  | ✅            |                  |
+| Carousel                    | ✅  | ✅            |                  |
+| Carousel-content            | ✅  | ✅            |                  |
+| Carousel-indicators         | ✅  | ✅            |                  |
+| Carousel-item               | ✅  | ✅            |                  |
+| Carousel-next               | ✅  | ✅            |                  |
+| Carousel-previous           | ✅  | ✅            |                  |
 | Button-group                | ✅  | ✅            |                  |
 | Card                        | ✅  | ✅            |                  |
 | Checkbox                    | ✅  | ✅            |                  |

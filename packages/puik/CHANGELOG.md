@@ -1,5 +1,31 @@
 # @prestashopcorp/puik
 
+## 2.8.0
+
+### Minor Changes
+
+- feat(carousel): add new Carousel component
+
+  New component with full embla-carousel integration:
+
+  - `PuikCarousel`, `PuikCarouselContent`, `PuikCarouselItem`
+  - `PuikCarouselNext`, `PuikCarouselPrevious`, `PuikCarouselIndicators`
+  - Horizontal and vertical orientation
+  - Configurable navigation buttons, indicators and accessibility props
+  - Keyboard navigation support
+  - Full embla-carousel event and method exposure
+  - Web component (`PuikCarouselCe`) and theme CSS included
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @prestashopcorp/puik-components@2.8.0
+  - @prestashopcorp/puik-theme@2.8.0
+  - @prestashopcorp/puik-web-components@2.8.0
+  - @prestashopcorp/puik-resolver@9.0.0
+
 ## 2.7.0
 
 ### Minor Changes

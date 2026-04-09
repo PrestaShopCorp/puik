@@ -164,9 +164,9 @@ defineExpose({
   rootNode: () => api.value?.rootNode(),
   containerNode: () => api.value?.containerNode(),
   slideNodes: () => api.value?.slideNodes(),
-  on: (event: any, callback: any) => api.value?.on(event, callback),
-  off: (event: any, callback: any) => api.value?.off(event, callback),
-  emit: (event: any) => api.value?.emit(event),
+  on: (event: any, callback: any): void => { api.value?.on(event, callback); },
+  off: (event: any, callback: any): void => { api.value?.off(event, callback); },
+  emit: (event: any): void => { api.value?.emit(event); },
   plugins: () => api.value?.plugins(),
   reInit: (options?: EmblaOptionsType, plugins?: any[]) =>
     api.value?.reInit(options, plugins),

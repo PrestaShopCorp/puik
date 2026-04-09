@@ -10,8 +10,9 @@ export default [
       'node_modules',
       'dist',
       'coverage',
-      'storybook-static',
-      '**/.vitepress/cache'
+      '**/storybook-static/**',
+      '**/.vitepress/cache',
+      '**/*.d.ts'
     ]
   },
   {
@@ -42,8 +43,7 @@ export default [
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
         ecmaVersion: 'latest',
-        sourceType: 'module',
-        project: ['./tsconfig.eslint.json']
+        sourceType: 'module'
       }
     },
     rules: {
