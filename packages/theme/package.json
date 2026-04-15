@@ -1,7 +1,7 @@
 {
   "name": "@prestashopcorp/puik-theme",
   "description": "PUIK theme - CSS classes of Prestashop UI Kit.",
-  "version": "2.8.0",
+  "version": "2.8.1",
   "author": "Prestashop",
   "license": "MIT",
   "main": "./dist/index.css",

@@ -1,5 +1,11 @@
 # @prestashopcorp/puik-locale
 
+## 2.5.1
+
+### Patch Changes
+
+- fix npm publish version tag
+
 ## 2.5.0
 
 ### Minor Changes
