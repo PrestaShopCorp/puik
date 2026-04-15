@@ -1,5 +1,16 @@
 # @prestashopcorp/puik-user-docs
 
+## 1.3.2
+
+### Patch Changes
+
+- fix npm publish version tag
+- Updated dependencies
+  - @prestashopcorp/puik-web-components@2.8.1
+  - @prestashopcorp/puik-components@2.8.1
+  - @prestashopcorp/puik-resolver@9.0.1
+  - @prestashopcorp/puik-theme@2.8.1
+
 ## 1.3.1
 
 ### Patch Changes

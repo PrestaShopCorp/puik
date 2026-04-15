@@ -1,5 +1,13 @@
 # @prestashopcorp/puik-components
 
+## 2.8.1
+
+### Patch Changes
+
+- fix npm publish version tag
+- Updated dependencies
+  - @prestashopcorp/puik-theme@2.8.1
+
 ## 2.8.0
 
 ### Minor Changes
