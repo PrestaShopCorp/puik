@@ -58,7 +58,9 @@ jobs:
                 fi
                 echo "Publishing $NAME@$VERSION"
                 cd "$pkg"
-                npm publish --access public --provenance
+                TARBALL=$(pnpm pack 2>/dev/null | tail -1)
+                npm publish "$TARBALL" --access public --provenance
+                rm -f "$TARBALL"
                 cd "$GITHUB_WORKSPACE"
               fi
             fi
