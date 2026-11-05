@@ -2,7 +2,7 @@
 @reference './typography.css';
 
 .puik-alert {
-  @apply relative min-w-fit flex flex-row items-start p-4 border text-primary-800;
+  @apply relative flex flex-row items-start gap-4 p-4 border text-primary-800;
 }
 
 .puik-alert--success {
@@ -11,6 +11,14 @@
 
 .puik-alert--success .puik-alert__icon {
   @apply text-green;
+}
+
+.puik-alert--success .puik-alert__icon-wrapper {
+  @apply bg-green-100;
+}
+
+.puik-alert--success.puik-alert--no-background .puik-alert__icon-wrapper {
+  @apply bg-green-50;
 }
 
 .puik-alert--success .puik-button--text:hover {
@@ -25,6 +33,14 @@
   @apply text-yellow;
 }
 
+.puik-alert--warning .puik-alert__icon-wrapper {
+  @apply bg-yellow-100;
+}
+
+.puik-alert--warning.puik-alert--no-background .puik-alert__icon-wrapper {
+  @apply bg-yellow-50;
+}
+
 .puik-alert--warning .puik-button--text:hover {
   @apply bg-yellow-100;
 }
@@ -35,6 +51,14 @@
 
 .puik-alert--danger .puik-alert__icon {
   @apply text-red;
+}
+
+.puik-alert--danger .puik-alert__icon-wrapper {
+  @apply bg-red-100;
+}
+
+.puik-alert--danger.puik-alert--no-background .puik-alert__icon-wrapper {
+  @apply bg-red-50;
 }
 
 .puik-alert--danger .puik-button--text:hover {
@@ -49,6 +73,14 @@
   @apply text-blue;
 }
 
+.puik-alert--info .puik-alert__icon-wrapper {
+  @apply bg-blue-100;
+}
+
+.puik-alert--info.puik-alert--no-background .puik-alert__icon-wrapper {
+  @apply bg-blue-50;
+}
+
 .puik-alert--info .puik-button--text:hover {
   @apply bg-blue-100;
 }
@@ -57,34 +89,68 @@
   @apply border-0;
 }
 
-.puik-alert__container {
-  @apply flex flex-col gap-y-1 lg:flex-row lg:items-start lg:gap-x-1 w-full;
+.puik-alert--no-background {
+  @apply bg-primary-100;
 }
 
-.puik-alert__content {
-  @apply flex flex-row flex-grow;
-}
-
-.puik-alert__text {
-  @apply mx-4;
-}
-
-.puik-alert__title {
-  @apply font-semibold mb-1 puik-h3;
-}
-
-.puik-alert__description {
-  @apply puik-body-default;
-}
-
-.puik-alert__button {
-  @apply mt-2 ml-9 lg:m-0;
+.puik-alert__icon-wrapper {
+  @apply flex shrink-0 items-start rounded-full p-1 lg:p-2;
 }
 
 .puik-alert__icon {
-  @apply mt-0.5 shrink-0;
+  @apply block shrink-0 leading-none;
+}
+
+.puik-alert__container {
+  @apply flex min-w-0 flex-1 flex-wrap items-start gap-4 lg:flex-nowrap;
+}
+
+.puik-alert__text {
+  @apply flex min-w-0 flex-1 flex-col items-start gap-1 lg:min-h-9 lg:justify-center;
+}
+
+.puik-alert__title {
+  @apply w-full puik-body-default-bold;
+}
+
+.puik-alert__description {
+  @apply w-full puik-body-default;
+}
+
+.puik-alert__inline-link {
+  @apply flex w-full items-end;
+}
+
+.puik-alert__inline-link-label {
+  @apply min-w-0 flex-1 puik-body-default;
+}
+
+.puik-alert__inline-link-label .puik-link__target__icon {
+  @apply float-right ml-1 text-base leading-5;
+}
+
+.puik-alert__actions {
+  @apply order-2 grid w-full grid-flow-col gap-2 lg:order-1 lg:flex lg:w-auto lg:shrink-0 lg:gap-4;
+  /* equal width columns on small screens, whatever the number of actions */
+  grid-auto-columns: 1fr;
+}
+
+.puik-alert__actions > .puik-button {
+  @apply h-10 w-full lg:h-9 lg:w-auto;
 }
 
 .puik-alert__close {
-  @apply ml-4 cursor-pointer leading-none;
+  @apply order-1 flex shrink-0 cursor-pointer items-center justify-center rounded-full p-1 leading-none lg:order-2;
+}
+
+.puik-alert__close:hover {
+  @apply bg-primary-800/5;
+}
+
+.puik-alert__close:focus-visible {
+  @apply outline-none ring-2 ring-blue;
+}
+
+.puik-alert__close-icon {
+  @apply block leading-none;
 }
