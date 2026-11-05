@@ -121,12 +121,20 @@
   @apply flex w-full items-end;
 }
 
+/* The link fills the text block: the label flows on the left and the trailing
+   external icon is pushed to the right edge, aligned with the bottom of the
+   last line (see the Alert banner "With link" examples in Figma). */
 .puik-alert__inline-link-label {
-  @apply min-w-0 flex-1 puik-body-default;
+  @apply flex min-w-0 flex-1 items-end gap-1 puik-body-default;
 }
 
 .puik-alert__inline-link-label .puik-link__target__icon {
-  @apply float-right ml-1 text-base leading-5;
+  @apply ml-auto shrink-0 text-base leading-5 no-underline;
+}
+
+/* The spacer of the standalone link is replaced by the flex gap above. */
+.puik-alert__inline-link-label .puik-link__target__icon:before {
+  content: none;
 }
 
 .puik-alert__actions {
