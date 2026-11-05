@@ -55,7 +55,7 @@
 }
 
 .puik-input__hint {
-  @apply flex text-primary font-normal mt-1 leading-4 puik-body-small;
+  @apply flex font-normal mt-1 leading-4 puik-body-small;
 }
 
 .puik-input__hint__error {
@@ -101,7 +101,7 @@
 }
 
 .puik-input__character-count {
-  @apply absolute right-0 top-[100%] text-primary-700 puik-body-small;
+  @apply absolute right-0 top-[100%] puik-body-small text-primary-700;
 }
 
 .puik-input__character-count--error {

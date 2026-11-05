@@ -7,6 +7,7 @@
 @import "tailwindcss/preflight" layer(base);
 
 @reference 'tailwindcss';
+@reference './theme.css';
 
 @import './font.css';
 @import './theme.css' layer(theme);
@@ -16,3 +17,20 @@
 @import './grid.css';
 @import './screen-reader.css';
 @import './scrollbar.css';
+
+/*
+ * Default text color, set once in the base layer so that:
+ * - typography utilities only carry typographic properties;
+ * - any color can be inherited from a parent;
+ * - a single utility (e.g. `text-danger-500`) overrides it without `!important`,
+ *   since the base layer always loses against the utilities layer.
+ *
+ * `@apply` rather than a hand-written `var(--color-primary)`: the theme tokens
+ * are resolved at build time and no custom property is emitted, so the bare
+ * `var()` would be invalid at computed value time and fall back to black.
+ */
+@layer base {
+  body {
+    @apply text-primary;
+  }
+}

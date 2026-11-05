@@ -6,7 +6,7 @@
 }
 
 .puik-pagination__label {
-  @apply text-primary-700 mx-6 text-sm puik-body-default;
+  @apply mx-6 text-sm puik-body-default text-primary-700;
 }
 
 .puik-pagination__content {
@@ -55,7 +55,7 @@
 }
 
 .puik-pagination--large .puik-pagination__jumper-description {
-  @apply text-primary-700 mx-2 text-sm puik-body-default;
+  @apply mx-2 text-sm puik-body-default text-primary-700;
 }
 
 .puik-pagination--large .puik-pagination__jumper .puik-pagination__select {
@@ -71,7 +71,7 @@
 }
 
 .puik-pagination--large .puik-pagination__items-per-page-label {
-  @apply text-primary-700 mx-2 text-sm puik-body-default;
+  @apply mx-2 text-sm puik-body-default text-primary-700;
 }
 
 .puik-pagination--large .puik-pagination__items-per-page-select {
