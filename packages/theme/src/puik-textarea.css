@@ -50,7 +50,7 @@
 }
 
 .puik-textarea__hint {
-  @apply flex text-primary font-normal mt-1 leading-4 puik-body-small;
+  @apply flex font-normal mt-1 leading-4 puik-body-small;
 }
 
 .puik-textarea__hint__error {

@@ -22,7 +22,7 @@
 }
 
 .puik-breadcrumb__item-link {
-  @apply text-primary font-normal puik-body-small;
+  @apply font-normal puik-body-small;
 }
 
 .puik-breadcrumb__item--last {

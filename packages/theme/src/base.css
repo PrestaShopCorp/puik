@@ -28,13 +28,4 @@
   body {
     color: var(--color-primary);
   }
-
-  /*
-   * `base.css` is also injected inside the shadow root of the web components,
-   * where no `body` element exists: `:host` carries the same default there.
-   * In a regular document this selector simply matches nothing.
-   */
-  :host {
-    color: var(--color-primary);
-  }
 }

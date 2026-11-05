@@ -22,7 +22,7 @@
 }
 
 .puik-accordion__header__content__title {
-  @apply text-left text-primary puik-h5;
+  @apply text-left puik-h5;
 }
 
 .puik-accordion__header__content__sub-title {
