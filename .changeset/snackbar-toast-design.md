@@ -18,6 +18,10 @@ whole component with the Figma Toast / Snackbar component:
 - the action and close buttons are now `PuikButton` with the `text` variant (`text-reverse`
   on the `default` variant).
 
+The close button also stops hardcoding its English `aria-label` and now reads the existing
+`puik.snackbar.closeBtnLabel` locale key, so it is announced in the language configured on
+`PuikConfigProvider`.
+
 The `default` variant keeps its dark background and white content, and no prop was removed
 or renamed, so this is not a breaking API change.
 

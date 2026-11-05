@@ -1,6 +1,7 @@
 import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikSnackbar, PuikSnackbarProvider, useSnackbar, PuikSnackbarVariants, PuikSnackbarSwipeAnimations, UseSnackbarProps, SnackbarsState } from '@prestashopcorp/puik-components';
+import { PuikConfigProvider, PuikSnackbar, PuikSnackbarProvider, useSnackbar, PuikSnackbarVariants, PuikSnackbarSwipeAnimations, UseSnackbarProps, SnackbarsState } from '@prestashopcorp/puik-components';
+import { useLocale } from '@prestashopcorp/puik-locale';
 import { nextTick, ref } from 'vue';
 
 let wrapper: VueWrapper<any>;
@@ -169,7 +170,60 @@ describe('Snackbar tests', () => {
     const closeButton = document.body.querySelector('.puik-snackbar-close');
     expect(closeButton).not.toBeNull();
     expect(closeButton?.classList.contains('puik-button--text')).toBe(true);
-    expect(closeButton?.getAttribute('aria-label')).toBe('Close');
+
+    wrapper.unmount();
+    document.body.innerHTML = '';
+  });
+
+  it('should label the close button with the localized closeBtnLabel key', async () => {
+    const { t } = useLocale();
+    const template = `
+    <puik-snackbar-provider>
+      <puik-snackbar
+        :open="true"
+        title="text"
+        description="description"
+        has-close-button
+      >
+      </puik-snackbar>
+    </puik-snackbar-provider>
+    `;
+    factory(template);
+    await nextTick();
+
+    const closeButton = document.body.querySelector('.puik-snackbar-close');
+    expect(closeButton?.getAttribute('aria-label')).toBe(t('puik.snackbar.closeBtnLabel'));
+
+    wrapper.unmount();
+    document.body.innerHTML = '';
+  });
+
+  it('should translate the close button label according to the configured locale', async () => {
+    const template = `
+    <puik-config-provider locale="fr">
+      <puik-snackbar-provider>
+        <puik-snackbar
+          :open="true"
+          title="text"
+          description="description"
+          has-close-button
+        >
+        </puik-snackbar>
+      </puik-snackbar-provider>
+    </puik-config-provider>
+    `;
+    wrapper = mount({
+      components: {
+        PuikConfigProvider,
+        PuikSnackbarProvider,
+        PuikSnackbar
+      },
+      template
+    });
+    await nextTick();
+
+    const closeButton = document.body.querySelector('.puik-snackbar-close');
+    expect(closeButton?.getAttribute('aria-label')).toBe('Fermer');
 
     wrapper.unmount();
     document.body.innerHTML = '';
