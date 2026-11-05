@@ -2,6 +2,7 @@ import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
 import { PuikAlert, AlertProps, PuikAlertVariants } from '@prestashopcorp/puik-components';
+import en from '@prestashopcorp/puik-locale/lang/en';
 
 describe('Alert tests', () => {
   let wrapper: VueWrapper<any>;
@@ -295,11 +296,11 @@ describe('Alert tests', () => {
     expect(findInlineLink().attributes('data-test')).toBe('inline-link-alert');
   });
 
-  it('should render the close button as a focusable button with an aria-label', () => {
+  it('should render the close button as a focusable button with a localized aria-label', () => {
     factory({ isClosable: true });
     expect(findCloseButton().element.tagName).toBe('BUTTON');
     expect(findCloseButton().attributes('type')).toBe('button');
-    expect(findCloseButton().attributes('aria-label')).toBe('Close');
+    expect(findCloseButton().attributes('aria-label')).toBe(en.puik.alert.closeBtnLabel);
   });
 
   it('should allow customizing the close button aria-label', () => {

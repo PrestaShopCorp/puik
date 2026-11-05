@@ -111,7 +111,7 @@
         v-if="isClosable"
         type="button"
         class="puik-alert__close"
-        :aria-label="ariaLabelClose"
+        :aria-label="closeAriaLabel"
         :data-test="dataTest != undefined ? `close-${dataTest}` : undefined"
         @click="close"
       >
@@ -132,7 +132,8 @@ import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
 import { PuikLink, PuikLinkTargetVariants } from '@prestashopcorp/puik-components/link';
 import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
-import { PuikAlertVariants, ICONS, DEFAULT_CLOSE_ARIA_LABEL } from './alert';
+import { useLocale } from '@prestashopcorp/puik-locale';
+import { PuikAlertVariants, ICONS } from './alert';
 import type { AlertProps, AlertEmits } from './alert';
 defineOptions({
   name: 'PuikAlert'
@@ -141,15 +142,20 @@ defineOptions({
 const props = withDefaults(defineProps<AlertProps>(), {
   variant: PuikAlertVariants.Success,
   ariaLive: PuikAriaLive.Polite,
-  inlineLinkTarget: PuikLinkTargetVariants.Self,
-  ariaLabelClose: DEFAULT_CLOSE_ARIA_LABEL
+  inlineLinkTarget: PuikLinkTargetVariants.Self
 });
 
 const emit = defineEmits<AlertEmits>();
 
+const { t } = useLocale();
+
 const ariaId = useId();
 
 const icon = computed(() => ICONS[props.variant]);
+
+const closeAriaLabel = computed(
+  () => props.ariaLabelClose ?? t('puik.alert.closeBtnLabel')
+);
 
 const click = (event: Event) => emit('click', event);
 const close = (event: Event) => emit('close', event);

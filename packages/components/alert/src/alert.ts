@@ -17,8 +17,6 @@ export const ICONS = {
   info: 'info'
 };
 
-export const DEFAULT_CLOSE_ARIA_LABEL = 'Close';
-
 export interface AlertProps {
   title?: string
   description?: string

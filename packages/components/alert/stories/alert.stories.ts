@@ -300,14 +300,14 @@ export default {
       }
     },
     ariaLabelClose: {
-      description: 'ARIA label for the close button',
+      description: 'ARIA label for the close button. Defaults to the `puik.alert.closeBtnLabel` translation',
       control: 'text',
       table: {
         type: {
           summary: 'string'
         },
         defaultValue: {
-          summary: 'Close'
+          summary: 'undefined'
         }
       }
     },
@@ -347,7 +347,7 @@ export default {
     ariaLabelBtn: undefined,
     ariaLabelLink: undefined,
     ariaLabelInlineLink: undefined,
-    ariaLabelClose: 'Close',
+    ariaLabelClose: undefined,
     ariaLive: 'polite',
     dataTest: undefined
   }
@@ -980,7 +980,7 @@ export const IsClosable = {
           Action
         </button>
       </div>
-      <button type="button" class="puik-alert__close" aria-label="Close">
+      <button type="button" class="puik-alert__close" aria-label="Close alert">
         <div class="puik-icon puik-alert__close-icon" style="font-size: 1.5rem;" aria-hidden="true" role="img">close</div>
       </button>
     </div>
