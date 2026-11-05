@@ -2,6 +2,7 @@ import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
 import { PuikAlert, AlertProps, PuikAlertVariants } from '@prestashopcorp/puik-components';
+import en from '@prestashopcorp/puik-locale/lang/en';
 
 describe('Alert tests', () => {
   let wrapper: VueWrapper<any>;
@@ -17,6 +18,10 @@ describe('Alert tests', () => {
   const findLeftLinkIcon = () => wrapper.find('.puik-alert__link .puik-button__left-icon');
   const findRightLinkIcon = () => wrapper.find('.puik-alert__link .puik-button__right-icon');
   const findIcon = () => wrapper.find('.puik-alert__icon');
+  const findIconWrapper = () => wrapper.find('.puik-alert__icon-wrapper');
+  const findInlineLink = () => wrapper.find('.puik-alert__inline-link-label');
+  const findInlineLinkExternalIcon = () => wrapper.find('.puik-alert__inline-link-label .puik-link__target__icon');
+  const findActions = () => wrapper.find('.puik-alert__actions');
 
   const factory = (
     props?: AlertProps,
@@ -194,5 +199,124 @@ describe('Alert tests', () => {
   it('should display the right icon for the link', () => {
     factory({ linkLabel: 'Learn more', rightIconLink: 'favorite' });
     expect(findRightLinkIcon().classes()).toContain('puik-button__right-icon');
+  });
+
+  it('should display an alert without background (outlined variant)', () => {
+    factory({
+      title: faker.lorem.word(2),
+      description: faker.lorem.sentence(60),
+      disableBackground: true
+    });
+    expect(findAlert().classes()).toContain('puik-alert--no-background');
+    expect(findAlert().classes()).not.toContain('puik-alert--no-borders');
+  });
+
+  it('should support the outlined variant on every alert variant', () => {
+    const variants = [PuikAlertVariants.Success, PuikAlertVariants.Warning, PuikAlertVariants.Danger, PuikAlertVariants.Info];
+    variants.forEach((variant) => {
+      factory({ variant, disableBackground: true });
+      expect(findAlert().classes()).toContain(`puik-alert--${variant}`);
+      expect(findAlert().classes()).toContain('puik-alert--no-background');
+    });
+  });
+
+  it('should combine disableBackground and disableBorders', () => {
+    factory({ disableBackground: true, disableBorders: true });
+    expect(findAlert().classes()).toContain('puik-alert--no-background');
+    expect(findAlert().classes()).toContain('puik-alert--no-borders');
+  });
+
+  it('should not set the no-background modifier by default', () => {
+    factory();
+    expect(findAlert().classes()).not.toContain('puik-alert--no-background');
+  });
+
+  it('should wrap the icon in a dedicated round container', () => {
+    factory();
+    expect(findIconWrapper().exists()).toBeTruthy();
+    expect(findIconWrapper().find('.puik-alert__icon').exists()).toBeTruthy();
+  });
+
+  it('should not display the inline link by default', () => {
+    factory({ description: 'Description' });
+    expect(findInlineLink().exists()).toBeFalsy();
+  });
+
+  it('should display the inline link and emit the clickInlineLink event on click', async () => {
+    factory({ inlineLinkLabel: 'Read the documentation' });
+    expect(findInlineLink().exists()).toBeTruthy();
+    expect(findInlineLink().text()).toContain('Read the documentation');
+    await findInlineLink().trigger('click');
+    expect(wrapper.emitted('clickInlineLink')).toBeTruthy();
+  });
+
+  it('should set the external inline link correctly', () => {
+    factory({
+      inlineLinkLabel: 'Read the documentation',
+      externalInlineLink: 'https://example.com'
+    });
+    expect(findInlineLink().attributes('href')).toBe('https://example.com');
+  });
+
+  it('should set the internal inline link correctly', () => {
+    factory({
+      inlineLinkLabel: 'Read the documentation',
+      internalInlineLink: '/internal'
+    });
+    expect(findInlineLink().attributes('to')).toBe('/internal');
+  });
+
+  it('should not display the external icon on the inline link by default', () => {
+    factory({ inlineLinkLabel: 'Read the documentation' });
+    expect(findInlineLink().attributes('target')).toBe('_self');
+    expect(findInlineLinkExternalIcon().exists()).toBeFalsy();
+  });
+
+  it('should display the external icon on the inline link when the target is _blank', () => {
+    factory({
+      inlineLinkLabel: 'Read the documentation',
+      externalInlineLink: 'https://example.com',
+      inlineLinkTarget: '_blank'
+    });
+    expect(findInlineLink().attributes('target')).toBe('_blank');
+    expect(findInlineLinkExternalIcon().exists()).toBeTruthy();
+    expect(findInlineLinkExternalIcon().text()).toBe('open_in_new');
+  });
+
+  it('should set the aria-label for the inline link correctly', () => {
+    factory({
+      inlineLinkLabel: 'Read the documentation',
+      ariaLabelInlineLink: 'Inline link aria label'
+    });
+    expect(findInlineLink().attributes('aria-label')).toBe('Inline link aria label');
+  });
+
+  it('should set the data-test attribute on the inline link', () => {
+    factory({ inlineLinkLabel: 'Read the documentation', dataTest: 'alert' });
+    expect(findInlineLink().attributes('data-test')).toBe('inline-link-alert');
+  });
+
+  it('should render the close button as a focusable button with a localized aria-label', () => {
+    factory({ isClosable: true });
+    expect(findCloseButton().element.tagName).toBe('BUTTON');
+    expect(findCloseButton().attributes('type')).toBe('button');
+    expect(findCloseButton().attributes('aria-label')).toBe(en.puik.alert.closeBtnLabel);
+  });
+
+  it('should allow customizing the close button aria-label', () => {
+    factory({ isClosable: true, ariaLabelClose: 'Dismiss this alert' });
+    expect(findCloseButton().attributes('aria-label')).toBe('Dismiss this alert');
+  });
+
+  it('should group the actions in a dedicated wrapper', () => {
+    factory({ buttonLabel: 'Action', linkLabel: 'Learn more' });
+    expect(findActions().exists()).toBeTruthy();
+    expect(findActions().find('.puik-alert__link').exists()).toBeTruthy();
+    expect(findActions().find('.puik-alert__button').exists()).toBeTruthy();
+  });
+
+  it('should not render the actions wrapper when there is no action', () => {
+    factory();
+    expect(findActions().exists()).toBeFalsy();
   });
 });

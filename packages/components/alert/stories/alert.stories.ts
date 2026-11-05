@@ -1,6 +1,6 @@
 import { action } from 'storybook/actions';
 import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
-import { PuikAlert, PuikAlertVariants, PuikButton, PuikLink } from '@prestashopcorp/puik-components';
+import { PuikAlert, PuikAlertVariants, PuikButton, PuikLink, PuikLinkTargetVariants } from '@prestashopcorp/puik-components';
 import type { StoryObj, Meta, StoryFn, Args } from '@storybook/vue3';
 import { ref } from 'vue';
 
@@ -9,6 +9,9 @@ const alertVariantsSummary = alertVariants.join('|');
 
 const alertAriaLive = Object.values(PuikAriaLive);
 const alertAriaLiveSummary = alertAriaLive.join('|');
+
+const alertInlineLinkTargets = Object.values(PuikLinkTargetVariants);
+const alertInlineLinkTargetsSummary = alertInlineLinkTargets.join('|');
 
 export default {
   title: 'Components/Alert',
@@ -89,6 +92,18 @@ export default {
     },
     disableBorders: {
       description: 'Disables alert borders',
+      control: 'boolean',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: false
+        }
+      }
+    },
+    disableBackground: {
+      description: 'Removes the colored background of the alert (white background). Combined with the borders, it renders the `outlined` style of the design kit',
       control: 'boolean',
       table: {
         type: {
@@ -186,6 +201,55 @@ export default {
         }
       }
     },
+    inlineLinkLabel: {
+      description: 'Label of the inline link displayed inside the text block, below the description. Different from `linkLabel` which is the text button displayed in the actions area',
+      control: 'text',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: {
+          summary: 'undefined'
+        }
+      }
+    },
+    internalInlineLink: {
+      description: 'Internal link for the inline link (use vue `router-link` under the hood)',
+      control: 'text',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: {
+          summary: 'undefined'
+        }
+      }
+    },
+    externalInlineLink: {
+      description: 'External link for the inline link (use a native `a` tag link under the hood)',
+      control: 'text',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: {
+          summary: 'undefined'
+        }
+      }
+    },
+    inlineLinkTarget: {
+      description: 'Target of the inline link. `_blank` also displays the trailing `open_in_new` icon used for external links',
+      control: 'select',
+      options: alertInlineLinkTargets,
+      table: {
+        type: {
+          summary: alertInlineLinkTargetsSummary
+        },
+        defaultValue: {
+          summary: '_self'
+        }
+      }
+    },
     ariaLive: {
       description: 'Option for "aria-live" attribute',
       control: 'select',
@@ -223,9 +287,33 @@ export default {
         }
       }
     },
+    ariaLabelInlineLink: {
+      description: 'ARIA label for the inline link',
+      control: 'text',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: {
+          summary: 'undefined'
+        }
+      }
+    },
+    ariaLabelClose: {
+      description: 'ARIA label for the close button. Defaults to the `puik.alert.closeBtnLabel` translation',
+      control: 'text',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: {
+          summary: 'undefined'
+        }
+      }
+    },
     dataTest: {
       control: 'text',
-      description: 'Sets the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}` `link-${dataTest}`',
+      description: 'Sets the data-test attribute for the alert components `title-${dataTest}` `description-${dataTest}` `button-${dataTest}` `close-${dataTest}` `link-${dataTest}` `inline-link-${dataTest}`',
       table: {
         type: {
           summary: 'string'
@@ -244,6 +332,7 @@ export default {
     variant: 'success',
     isClosable: false,
     disableBorders: false,
+    disableBackground: false,
     buttonWrapLabel: false,
     leftIconBtn: undefined,
     rightIconBtn: undefined,
@@ -251,8 +340,14 @@ export default {
     rightIconLink: undefined,
     internalLink: undefined,
     externalLink: undefined,
+    inlineLinkLabel: undefined,
+    internalInlineLink: undefined,
+    externalInlineLink: undefined,
+    inlineLinkTarget: '_self',
     ariaLabelBtn: undefined,
     ariaLabelLink: undefined,
+    ariaLabelInlineLink: undefined,
+    ariaLabelClose: undefined,
     ariaLive: 'polite',
     dataTest: undefined
   }
@@ -302,20 +397,22 @@ export const Default = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-alert puik-alert--success" role="alert" aria-labelledby="title-5929" aria-describedby="description-5929" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" aria-label="check_circle icon" role="img" style="font-size: 1.5rem;">check_circle</div>
+    </div>
     <div class="puik-alert__container">
-      <div class="puik-alert__content">
-        <div class="puik-icon puik-alert__icon" aria-label="check_circle icon" role="img" style="font-size: 1.25rem;">check_circle</div>
-        <div class="puik-alert__text">
-          <h4 id="title-5929" class="puik-alert__title">Title</h4>
-          <p id="description-5929" class="puik-alert__description">This is the description of the success alert.</p>
-        </div>
+      <div class="puik-alert__text">
+        <h4 id="title-5929" class="puik-alert__title">Title</h4>
+        <p id="description-5929" class="puik-alert__description">This is the description of the success alert.</p>
       </div>
-      <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
-        Learn more
-      </button>
-      <button class="puik-button puik-button--success puik-button--md puik-button--no-wrap puik-alert__button" role="button">
-        Action
-      </button>
+      <div class="puik-alert__actions">
+        <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
+          Learn more
+        </button>
+        <button class="puik-button puik-button--success puik-button--md puik-button--no-wrap puik-alert__button" role="button">
+          Action
+        </button>
+      </div>
     </div>
   </div>
         `,
@@ -405,76 +502,84 @@ export const Variants: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-alert puik-alert--success" role="alert" aria-labelledby="title-1437" aria-describedby="description-1437" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" aria-label="check_circle icon" role="img" style="font-size: 1.5rem;">check_circle</div>
+    </div>
     <div class="puik-alert__container">
-      <div class="puik-alert__content">
-        <div class="puik-icon puik-alert__icon" aria-label="check_circle icon" role="img" style="font-size: 1.25rem;">check_circle</div>
-        <div class="puik-alert__text">
-          <h4 id="title-1437" class="puik-alert__title">Success</h4>
-          <p id="description-1437" class="puik-alert__description">this is a description</p>
-        </div>
+      <div class="puik-alert__text">
+        <h4 id="title-1437" class="puik-alert__title">Success</h4>
+        <p id="description-1437" class="puik-alert__description">this is a description</p>
       </div>
-      <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
-        Learn more
-      </button>
-      <button class="puik-button puik-button--success puik-button--md puik-button--no-wrap puik-alert__button" role="button">
-        Action
-      </button>
+      <div class="puik-alert__actions">
+        <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
+          Learn more
+        </button>
+        <button class="puik-button puik-button--success puik-button--md puik-button--no-wrap puik-alert__button" role="button">
+          Action
+        </button>
+      </div>
     </div>
 
   </div>
 
   <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-1065" aria-describedby="description-1065" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" aria-label="info icon" role="img" style="font-size: 1.5rem;">info</div>
+    </div>
     <div class="puik-alert__container">
-      <div class="puik-alert__content">
-        <div class="puik-icon puik-alert__icon" aria-label="info icon" role="img" style="font-size: 1.25rem;">info</div>
-        <div class="puik-alert__text">
-          <h4 id="title-1065" class="puik-alert__title">Info</h4>
-          <p id="description-1065" class="puik-alert__description">this is a description</p>
-        </div>
+      <div class="puik-alert__text">
+        <h4 id="title-1065" class="puik-alert__title">Info</h4>
+        <p id="description-1065" class="puik-alert__description">this is a description</p>
       </div>
-      <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
-        Learn more
-      </button>
-      <button class="puik-button puik-button--info puik-button--md puik-button--no-wrap puik-alert__button" role="button">
-        Action
-      </button>
+      <div class="puik-alert__actions">
+        <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
+          Learn more
+        </button>
+        <button class="puik-button puik-button--info puik-button--md puik-button--no-wrap puik-alert__button" role="button">
+          Action
+        </button>
+      </div>
     </div>
 
   </div>
 
   <div class="puik-alert puik-alert--warning" role="alert" aria-labelledby="title-6761" aria-describedby="description-6761" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" aria-label="warning icon" role="img" style="font-size: 1.5rem;">warning</div>
+    </div>
     <div class="puik-alert__container">
-      <div class="puik-alert__content">
-        <div class="puik-icon puik-alert__icon" aria-label="warning icon" role="img" style="font-size: 1.25rem;">warning</div>
-        <div class="puik-alert__text">
-          <h4 id="title-6761" class="puik-alert__title">Warning</h4>
-          <p id="description-6761" class="puik-alert__description">this is a description</p>
-        </div>
+      <div class="puik-alert__text">
+        <h4 id="title-6761" class="puik-alert__title">Warning</h4>
+        <p id="description-6761" class="puik-alert__description">this is a description</p>
       </div>
-      <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
-        Learn more
-      </button>
-      <button class="puik-button puik-button--warning puik-button--md puik-button--no-wrap puik-alert__button" role="button">
-        Action
-      </button>
+      <div class="puik-alert__actions">
+        <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
+          Learn more
+        </button>
+        <button class="puik-button puik-button--warning puik-button--md puik-button--no-wrap puik-alert__button" role="button">
+          Action
+        </button>
+      </div>
     </div>
   </div>
 
   <div class="puik-alert puik-alert--danger" role="alert" aria-labelledby="title-1684" aria-describedby="description-1684" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" aria-label="error icon" role="img" style="font-size: 1.5rem;">error</div>
+    </div>
     <div class="puik-alert__container">
-      <div class="puik-alert__content">
-        <div class="puik-icon puik-alert__icon" aria-label="error icon" role="img" style="font-size: 1.25rem;">error</div>
-        <div class="puik-alert__text">
-          <h4 id="title-1684" class="puik-alert__title">Danger</h4>
-          <p id="description-1684" class="puik-alert__description">this is a description</p>
-        </div>
+      <div class="puik-alert__text">
+        <h4 id="title-1684" class="puik-alert__title">Danger</h4>
+        <p id="description-1684" class="puik-alert__description">this is a description</p>
       </div>
-      <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
-        Learn more
-      </button>
-      <button class="puik-button puik-button--danger puik-button--md puik-button--no-wrap puik-alert__button" role="button">
-        Action
-      </button>
+      <div class="puik-alert__actions">
+        <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
+          Learn more
+        </button>
+        <button class="puik-button puik-button--danger puik-button--md puik-button--no-wrap puik-alert__button" role="button">
+          Action
+        </button>
+      </div>
     </div>
   </div>
         `,
@@ -572,76 +677,246 @@ export const VariantsWithoutBorder: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-alert puik-alert--success puik-alert--no-borders" role="alert" aria-labelledby="title-5065" aria-describedby="description-5065" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="check_circle icon" role="img">check_circle</div>
+    </div>
     <div class="puik-alert__container">
-        <div class="puik-alert__content">
-          <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="check_circle icon" role="img">check_circle</div>
-          <div class="puik-alert__text">
-              <h4 id="title-5065" class="puik-alert__title">Success</h4>
-              <p id="description-5065" class="puik-alert__description">this is a description</p>
-          </div>
-        </div>
+      <div class="puik-alert__text">
+          <h4 id="title-5065" class="puik-alert__title">Success</h4>
+          <p id="description-5065" class="puik-alert__description">this is a description</p>
+      </div>
+      <div class="puik-alert__actions">
         <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
           Learn more
         </button>
         <button class="puik-button puik-button--success puik-button--md puik-button--no-wrap puik-alert__button" role="button">
           Action
         </button>
+      </div>
     </div>
   </div>
 
   <div class="puik-alert puik-alert--info puik-alert--no-borders" role="alert" aria-labelledby="title-574" aria-describedby="description-574" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="info icon" role="img">info</div>
+    </div>
     <div class="puik-alert__container">
-        <div class="puik-alert__content">
-          <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="info icon" role="img">info</div>
-          <div class="puik-alert__text">
-              <h4 id="title-574" class="puik-alert__title">Info</h4>
-              <p id="description-574" class="puik-alert__description">this is a description</p>
-          </div>
-        </div>
+      <div class="puik-alert__text">
+          <h4 id="title-574" class="puik-alert__title">Info</h4>
+          <p id="description-574" class="puik-alert__description">this is a description</p>
+      </div>
+      <div class="puik-alert__actions">
         <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
           Learn more
         </button>
         <button class="puik-button puik-button--info puik-button--md puik-button--no-wrap puik-alert__button" role="button">
           Action
         </button>
+      </div>
     </div>
   </div>
 
   <div class="puik-alert puik-alert--warning puik-alert--no-borders" role="alert" aria-labelledby="title-5783" aria-describedby="description-5783" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="warning icon" role="img">warning</div>
+    </div>
     <div class="puik-alert__container">
-        <div class="puik-alert__content">
-          <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="warning icon" role="img">warning</div>
-          <div class="puik-alert__text">
-              <h4 id="title-5783" class="puik-alert__title">Warning</h4>
-              <p id="description-5783" class="puik-alert__description">this is a description</p>
-          </div>
-        </div>
+      <div class="puik-alert__text">
+          <h4 id="title-5783" class="puik-alert__title">Warning</h4>
+          <p id="description-5783" class="puik-alert__description">this is a description</p>
+      </div>
+      <div class="puik-alert__actions">
         <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
           Learn more
         </button>
         <button class="puik-button puik-button--warning puik-button--md puik-button--no-wrap puik-alert__button" role="button">
           Action
         </button>
+      </div>
     </div>
   </div>
 
   <div class="puik-alert puik-alert--danger puik-alert--no-borders" role="alert" aria-labelledby="title-8888" aria-describedby="description-8888" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="error icon" role="img">error</div>
+    </div>
     <div class="puik-alert__container">
-        <div class="puik-alert__content">
-          <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="error icon" role="img">error</div>
-          <div class="puik-alert__text">
-              <h4 id="title-8888" class="puik-alert__title">Danger</h4>
-              <p id="description-8888" class="puik-alert__description">this is a description</p>
-          </div>
-        </div>
+      <div class="puik-alert__text">
+          <h4 id="title-8888" class="puik-alert__title">Danger</h4>
+          <p id="description-8888" class="puik-alert__description">this is a description</p>
+      </div>
+      <div class="puik-alert__actions">
         <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
           Learn more
         </button>
         <button class="puik-button puik-button--danger puik-button--md puik-button--no-wrap puik-alert__button" role="button">
           Action
         </button>
+      </div>
     </div>
   </div>
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const VariantsOutlined: StoryObj = {
+  render: () => ({
+    components: {
+      PuikAlert
+    },
+    template: `
+    <div class="flex flex-col gap-y-4">
+        <puik-alert
+          title="Success"
+          description="this is a description"
+          variant="success"
+          button-label="Action"
+          link-label="Learn more"
+          disable-background
+        />
+        <puik-alert
+          title="Info"
+          description="this is a description"
+          variant="info"
+          button-label="Action"
+          link-label="Learn more"
+          disable-background
+        />
+        <puik-alert
+          title="Warning"
+          description="this is a description"
+          variant="warning"
+          button-label="Action"
+          link-label="Learn more"
+          disable-background
+        />
+        <puik-alert
+          title="Danger"
+          description="this is a description"
+          variant="danger"
+          button-label="Action"
+          link-label="Learn more"
+          disable-background
+        />
+    </div>
+    `
+  }),
+
+  parameters: {
+    docs: {
+      description: {
+        story: 'The `outlined` style of the design kit: a white background (`disable-background`) combined with the colored border. The round icon container switches from `color-100` to `color-50`.'
+      },
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <!--
+  $variants: ${alertVariantsSummary}
+  -->
+  <puik-alert
+    title="Success"
+    description="this is a description"
+    variant="success"
+    button-label="Action"
+    link-label="Learn more"
+    disable-background
+  />
+  <puik-alert
+    title="Info"
+    description="this is a description"
+    variant="info"
+    button-label="Action"
+    link-label="Learn more"
+    disable-background
+  />
+  <puik-alert
+    title="Warning"
+    description="this is a description"
+    variant="warning"
+    button-label="Action"
+    link-label="Learn more"
+    disable-background
+  />
+  <puik-alert
+    title="Danger"
+    description="this is a description"
+    variant="danger"
+    button-label="Action"
+    link-label="Learn more"
+    disable-background
+  />
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const WithInlineLink: StoryObj = {
+  render: () => ({
+    components: {
+      PuikAlert
+    },
+    template: `
+    <div class="flex flex-col gap-y-4">
+        <puik-alert
+          title="Internal inline link"
+          description="This is the description."
+          variant="info"
+          inline-link-label="The struggle itself towards the heights is enough to fill a man's heart."
+          internal-inline-link="/documentation"
+          button-label="Action"
+          link-label="Learn more"
+          is-closable
+        />
+        <puik-alert
+          title="External inline link"
+          description="This is the description."
+          variant="info"
+          inline-link-label="The struggle itself towards the heights is enough to fill a man's heart."
+          external-inline-link="https://www.prestashop-project.org"
+          inline-link-target="_blank"
+          button-label="Action"
+          link-label="Learn more"
+          is-closable
+        />
+        <puik-alert
+          title="Short external inline link"
+          description="This is the description."
+          variant="info"
+          inline-link-label="Read the documentation"
+          external-inline-link="https://www.prestashop-project.org"
+          inline-link-target="_blank"
+          button-label="Action"
+          link-label="Learn more"
+          is-closable
+        />
+    </div>
+    `
+  }),
+
+  parameters: {
+    docs: {
+      description: {
+        story: 'The inline link is displayed inside the text block, below the description, and takes the full width of that block. It is different from `linkLabel`, which is the "Learn more" text button displayed in the actions area. Setting `inline-link-target="_blank"` also displays the trailing `open_in_new` icon used for external links, right after the label and aligned to the bottom of the last line, exactly like any other `PuikLink`.'
+      },
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-alert
+    title="External inline link"
+    description="This is the description."
+    variant="info"
+    inline-link-label="The struggle itself towards the heights is enough to fill a man's heart."
+    external-inline-link="https://www.prestashop-project.org"
+    inline-link-target="_blank"
+    button-label="Action"
+    link-label="Learn more"
+    is-closable
+  />
         `,
         language: 'html'
       }
@@ -700,22 +975,26 @@ export const IsClosable = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-9572" aria-describedby="description-9572" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="info icon" role="img">info</div>
+    </div>
     <div class="puik-alert__container">
-        <div class="puik-alert__content">
-          <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="info icon" role="img">info</div>
-          <div class="puik-alert__text">
-              <h4 id="title-9572" class="puik-alert__title">Closable alert</h4>
-              <p id="description-9572" class="puik-alert__description">this is a description</p>
-          </div>
-        </div>
+      <div class="puik-alert__text">
+          <h4 id="title-9572" class="puik-alert__title">Closable alert</h4>
+          <p id="description-9572" class="puik-alert__description">this is a description</p>
+      </div>
+      <div class="puik-alert__actions">
         <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
           Learn more
         </button>
         <button class="puik-button puik-button--info puik-button--md puik-button--no-wrap puik-alert__button" role="button">
           Action
         </button>
+      </div>
+      <button type="button" class="puik-alert__close" aria-label="Close alert">
+        <div class="puik-icon puik-alert__close-icon" style="font-size: 1.5rem;" aria-hidden="true" role="img">close</div>
+      </button>
     </div>
-    <div class="puik-icon puik-alert__close" style="font-size: 1.5rem;" aria-label="close icon" role="img">close</div>
   </div>
         `,
         language: 'html'
@@ -797,58 +1076,62 @@ export const ButtonWrapLabel: StoryObj = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-3605" aria-describedby="description-3605" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="info icon" role="img">info</div>
+    </div>
     <div class="puik-alert__container">
-        <div class="puik-alert__content">
-          <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="info icon" role="img">info</div>
-          <div class="puik-alert__text">
-              <h4 id="title-3605" class="puik-alert__title">buttonWrapLabel to true</h4>
-              <p id="description-3605" class="puik-alert__description">
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-              </p>
-          </div>
-        </div>
+      <div class="puik-alert__text">
+          <h4 id="title-3605" class="puik-alert__title">buttonWrapLabel to true</h4>
+          <p id="description-3605" class="puik-alert__description">
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+          </p>
+      </div>
+      <div class="puik-alert__actions">
         <button class="puik-button puik-button--text puik-button--md puik-alert__link" role="button" tabindex="0">
           Link button with a very long label
         </button>
         <button class="puik-button puik-button--info puik-button--md puik-alert__button" role="button">
           Action Button with a very long label
         </button>
+      </div>
     </div>
   </div>
 
   <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-2321" aria-describedby="description-2321" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="info icon" role="img">info</div>
+    </div>
     <div class="puik-alert__container">
-        <div class="puik-alert__content">
-          <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="info icon" role="img">info</div>
-          <div class="puik-alert__text">
-              <h4 id="title-2321" class="puik-alert__title">buttonWrapLabel to false (by default)</h4>
-              <p id="description-2321" class="puik-alert__description">
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-                This an alert with a very long description.
-              </p>
-          </div>
-        </div>
+      <div class="puik-alert__text">
+          <h4 id="title-2321" class="puik-alert__title">buttonWrapLabel to false (by default)</h4>
+          <p id="description-2321" class="puik-alert__description">
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+            This an alert with a very long description.
+          </p>
+      </div>
+      <div class="puik-alert__actions">
         <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
           Link button with a very long label
         </button>
         <button class="puik-button puik-button--info puik-button--md puik-button--no-wrap puik-alert__button" role="button">
           Action button with a very long label
         </button>
+      </div>
     </div>
   </div>
         `,
@@ -948,66 +1231,74 @@ export const ActionAndLinkButtonsWithIcon: StoryObj = {
 
 <!--HTML/CSS Snippet-->
 <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-7222" aria-describedby="description-7222" aria-live="polite" tabindex="0">
+   <div class="puik-alert__icon-wrapper">
+     <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="info icon" role="img">info</div>
+   </div>
    <div class="puik-alert__container">
-      <div class="puik-alert__content">
-         <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="info icon" role="img">info</div>
-         <div class="puik-alert__text">
-            <h4 id="title-7222" class="puik-alert__title">Right icon btn</h4>
-            <p id="description-7222" class="puik-alert__description"> This is the description </p>
-         </div>
-      </div>
-      <button class="puik-button puik-button--info puik-button--md puik-button--no-wrap puik-alert__button" role="button">
-         Action
-         <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;" aria-label="open_in_new icon" role="img" aria-hidden="true">open_in_new</div>
-      </button>
+     <div class="puik-alert__text">
+        <h4 id="title-7222" class="puik-alert__title">Right icon btn</h4>
+        <p id="description-7222" class="puik-alert__description"> This is the description </p>
+     </div>
+     <div class="puik-alert__actions">
+       <button class="puik-button puik-button--info puik-button--md puik-button--no-wrap puik-alert__button" role="button">
+          Action
+          <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;" aria-label="open_in_new icon" role="img" aria-hidden="true">open_in_new</div>
+       </button>
+     </div>
    </div>
 </div>
 
 <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-3413" aria-describedby="description-3413" aria-live="polite" tabindex="0">
+   <div class="puik-alert__icon-wrapper">
+     <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="info icon" role="img">info</div>
+   </div>
    <div class="puik-alert__container">
-      <div class="puik-alert__content">
-         <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="info icon" role="img">info</div>
-         <div class="puik-alert__text">
-            <h4 id="title-3413" class="puik-alert__title">Left icon btn</h4>
-            <p id="description-3413" class="puik-alert__description"> This is the description </p>
-         </div>
-      </div>
-      <button class="puik-button puik-button--info puik-button--md puik-button--no-wrap puik-alert__button" role="button">
-         <div class="puik-icon puik-button__left-icon" style="font-size: 1.25rem;" aria-label="open_in_new icon" role="img" aria-hidden="true">open_in_new</div>
-         Action
-      </button>
+     <div class="puik-alert__text">
+        <h4 id="title-3413" class="puik-alert__title">Left icon btn</h4>
+        <p id="description-3413" class="puik-alert__description"> This is the description </p>
+     </div>
+     <div class="puik-alert__actions">
+       <button class="puik-button puik-button--info puik-button--md puik-button--no-wrap puik-alert__button" role="button">
+          <div class="puik-icon puik-button__left-icon" style="font-size: 1.25rem;" aria-label="open_in_new icon" role="img" aria-hidden="true">open_in_new</div>
+          Action
+       </button>
+     </div>
    </div>
 </div>
 
 <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-34" aria-describedby="description-34" aria-live="polite" tabindex="0">
+   <div class="puik-alert__icon-wrapper">
+     <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="info icon" role="img">info</div>
+   </div>
    <div class="puik-alert__container">
-      <div class="puik-alert__content">
-         <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="info icon" role="img">info</div>
-         <div class="puik-alert__text">
-            <h4 id="title-34" class="puik-alert__title">Right icon link</h4>
-            <p id="description-34" class="puik-alert__description"> This is the description </p>
-         </div>
-      </div>
-      <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
-         Learn more
-         <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;" aria-label="open_in_new icon" role="img" aria-hidden="true">open_in_new</div>
-      </button>
+     <div class="puik-alert__text">
+        <h4 id="title-34" class="puik-alert__title">Right icon link</h4>
+        <p id="description-34" class="puik-alert__description"> This is the description </p>
+     </div>
+     <div class="puik-alert__actions">
+       <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
+          Learn more
+          <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;" aria-label="open_in_new icon" role="img" aria-hidden="true">open_in_new</div>
+       </button>
+     </div>
    </div>
 </div>
 
 <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-4747" aria-describedby="description-4747" aria-live="polite" tabindex="0">
+   <div class="puik-alert__icon-wrapper">
+     <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="info icon" role="img">info</div>
+   </div>
    <div class="puik-alert__container">
-      <div class="puik-alert__content">
-         <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="info icon" role="img">info</div>
-         <div class="puik-alert__text">
-            <h4 id="title-4747" class="puik-alert__title">Left icon link</h4>
-            <p id="description-4747" class="puik-alert__description"> This is the description </p>
-         </div>
-      </div>
-      <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
-         <div class="puik-icon puik-button__left-icon" style="font-size: 1.25rem;" aria-label="open_in_new icon" role="img" aria-hidden="true">open_in_new</div>
-         Learn more
-      </button>
+     <div class="puik-alert__text">
+        <h4 id="title-4747" class="puik-alert__title">Left icon link</h4>
+        <p id="description-4747" class="puik-alert__description"> This is the description </p>
+     </div>
+     <div class="puik-alert__actions">
+       <button class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" tabindex="0">
+          <div class="puik-icon puik-button__left-icon" style="font-size: 1.25rem;" aria-label="open_in_new icon" role="img" aria-hidden="true">open_in_new</div>
+          Learn more
+       </button>
+     </div>
    </div>
 </div>
       `,
@@ -1080,33 +1371,37 @@ export const InternalAndExternalLink = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-4259" aria-describedby="description-4259" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="info icon" role="img">info</div>
+    </div>
     <div class="puik-alert__container">
-        <div class="puik-alert__content">
-          <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="info icon" role="img">info</div>
-          <div class="puik-alert__text">
-              <h4 id="title-4259" class="puik-alert__title">Internal link</h4>
-              <p id="description-4259" class="puik-alert__description"> Use vue <code>router-link</code> under the hood </p>
-          </div>
-        </div>
+      <div class="puik-alert__text">
+          <h4 id="title-4259" class="puik-alert__title">Internal link</h4>
+          <p id="description-4259" class="puik-alert__description"> Use vue <code>router-link</code> under the hood </p>
+      </div>
+      <div class="puik-alert__actions">
         <router-link to="#" class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" disabled="false" tabindex="0">
           Learn more
         </router-link>
+      </div>
     </div>
   </div>
 
   <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-2136" aria-describedby="description-2136" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="info icon" role="img">info</div>
+    </div>
     <div class="puik-alert__container">
-        <div class="puik-alert__content">
-          <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="info icon" role="img">info</div>
-          <div class="puik-alert__text">
-              <h4 id="title-2136" class="puik-alert__title">External link</h4>
-              <p id="description-2136" class="puik-alert__description"> Use native <code>a</code> tag under the hood </p>
-          </div>
-        </div>
+      <div class="puik-alert__text">
+          <h4 id="title-2136" class="puik-alert__title">External link</h4>
+          <p id="description-2136" class="puik-alert__description"> Use native <code>a</code> tag under the hood </p>
+      </div>
+      <div class="puik-alert__actions">
         <a href="https://example.com" class="puik-button puik-button--text puik-button--md puik-button--no-wrap puik-alert__link" role="button" disabled="false" tabindex="0">
           Learn more
           <div class="puik-icon puik-button__right-icon" style="font-size: 1.25rem;" aria-label="open_in_new icon" role="img" aria-hidden="true">open_in_new</div>
         </a>
+      </div>
     </div>
 </div>
 
@@ -1175,22 +1470,24 @@ export const UseDefaultSlotForDescription = {
 
   <!--HTML/CSS Snippet-->
   <div class="puik-alert puik-alert--info" role="alert" aria-labelledby="title-7176" aria-describedby="description-7176" aria-live="polite" tabindex="0">
+    <div class="puik-alert__icon-wrapper">
+      <div class="puik-icon puik-alert__icon" style="font-size: 1.5rem;" aria-label="info icon" role="img">info</div>
+    </div>
     <div class="puik-alert__container">
-        <div class="puik-alert__content">
-          <div class="puik-icon puik-alert__icon" style="font-size: 1.25rem;" aria-label="info icon" role="img">info</div>
-          <div class="puik-alert__text">
-              <h4 id="title-7176" class="puik-alert__title">Description in default slot</h4>
-              <p id="description-7176" class="puik-alert__description">
-              <div class="flex flex-col gap-y-1">
-                <p> This is a description writes in the default slot </p>
-                <a href="https://example.com" target="_blank" class="puik-link puik-link--md" role="link"> use a puik-link in description for example <span class="puik-link__target__icon" aria-hidden="true">open_in_new</span></a>
-              </div>
-              </p>
+      <div class="puik-alert__text">
+          <h4 id="title-7176" class="puik-alert__title">Description in default slot</h4>
+          <p id="description-7176" class="puik-alert__description">
+          <div class="flex flex-col gap-y-1">
+            <p> This is a description writes in the default slot </p>
+            <a href="https://example.com" target="_blank" class="puik-link puik-link--md" role="link"> use a puik-link in description for example <span class="puik-link__target__icon" aria-hidden="true">open_in_new</span></a>
           </div>
-        </div>
+          </p>
+      </div>
+      <div class="puik-alert__actions">
         <button class="puik-button puik-button--info puik-button--md puik-button--no-wrap puik-alert__button" role="button">
           Action<!--v-if--><!--v-if-->
         </button>
+      </div>
     </div>
   </div>
         `,

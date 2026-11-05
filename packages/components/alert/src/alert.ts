@@ -1,5 +1,7 @@
+import type { RouteLocationRaw } from 'vue-router';
 import type Alert from './alert.vue';
 import { PuikAriaLive } from '@prestashopcorp/puik-components/base/src/common';
+import type { PuikLinkTargetVariants } from '@prestashopcorp/puik-components/link';
 
 export enum PuikAlertVariants {
   Success = 'success',
@@ -21,6 +23,7 @@ export interface AlertProps {
   variant?: `${PuikAlertVariants}`
   isClosable?: boolean
   disableBorders?: boolean
+  disableBackground?: boolean
   buttonLabel?: string
   linkLabel?: string
   buttonWrapLabel?: boolean
@@ -30,15 +33,22 @@ export interface AlertProps {
   rightIconLink?: string
   internalLink?: string
   externalLink?: string
+  inlineLinkLabel?: string
+  internalInlineLink?: RouteLocationRaw
+  externalInlineLink?: string
+  inlineLinkTarget?: `${PuikLinkTargetVariants}`
   ariaLive?: `${PuikAriaLive}`
   ariaLabelBtn?: string
   ariaLabelLink?: string
+  ariaLabelInlineLink?: string
+  ariaLabelClose?: string
   dataTest?: string
 }
 
 export type AlertEmits = {
   click: [event: Event]
   clickLink: [event: Event]
+  clickInlineLink: [event: Event]
   close: [event: Event]
 };
 
