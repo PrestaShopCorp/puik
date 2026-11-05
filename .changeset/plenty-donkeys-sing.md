@@ -1,6 +1,6 @@
 ---
-"@prestashopcorp/puik-components": patch
-"@prestashopcorp/puik-theme": patch
+"@prestashopcorp/puik-components": minor
+"@prestashopcorp/puik-theme": minor
 ---
 
 **Modal**: align the component with the Figma design kit (issue #531)
