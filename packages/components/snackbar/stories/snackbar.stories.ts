@@ -65,7 +65,7 @@ export default {
     },
     variant: {
       control: 'select',
-      description: 'Sets the color variant of the snackbar',
+      description: 'Sets the color variant of the snackbar. The `warning`, `danger` and `success` variants display a leading icon.',
       options: snackbarVariants,
       table: {
         type: {
@@ -75,6 +75,8 @@ import { PuikSnackbarVariants } from '@prestashopcorp/puik-components';
 
 enum PuikSnackbarVariants {
   Default = 'default',
+  Reverse = 'reverse',
+  Warning = 'warning',
   Danger = 'danger',
   Success = 'success',
 }
@@ -179,9 +181,10 @@ const Template: StoryFn = (args: Args) => ({
   <puik-snackbar v-bind="args" @update:open="args.open = false">
     <template #action>
       <puik-button
+        variant="text"
         @click="console.log('action btn triggered')"
       >
-        action
+        Undo
       </puik-button>
     </template>
   </puik-snackbar>
@@ -210,15 +213,123 @@ export const Default = {
     <puik-snackbar v-bind="args" @update:open="args.open = false">
       <template #action>
         <puik-button
+          variant="text"
           @click="console.log('action btn triggered')"
         >
-          action
+          Undo
         </puik-button>
       </template>
     </puik-snackbar>
   </puik-snackbar-provider>
 
   <!--HTML/CSS Snippet-->
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+const VariantsTemplate: StoryFn = (args: Args) => ({
+  components: {
+    PuikSnackbarProvider,
+    PuikSnackbar,
+    PuikButton
+  },
+  setup() {
+    const snackbarProviderArgs = ref({
+      label: 'Notification',
+      duration: 1000000,
+      swipeDirection: 'right',
+      swipeThreshold: 50,
+      positionX: 'right',
+      positionY: 'up'
+    });
+    const openVariants = ref<Record<string, boolean>>(
+      Object.fromEntries(snackbarVariants.map(variant => [variant, true]))
+    );
+    return { snackbarProviderArgs, snackbarVariants, openVariants, args };
+  },
+  template: `
+<puik-snackbar-provider
+  v-bind="snackbarProviderArgs"
+>
+  <div class="flex flex-wrap gap-4">
+    <puik-button
+      v-for="variant in snackbarVariants"
+      :key="variant"
+      @click="openVariants[variant] = true"
+    >
+      Display {{ variant }} snackbar
+    </puik-button>
+  </div>
+
+  <puik-snackbar
+    v-for="variant in snackbarVariants"
+    :key="variant"
+    :open="openVariants[variant]"
+    :variant="variant"
+    :title="'Title'"
+    description="Details about the notification"
+    has-close-button
+    @update:open="openVariants[variant] = false"
+  >
+    <template #action>
+      <puik-button
+        variant="text"
+        @click="console.log(variant + ' action triggered')"
+      >
+        Undo
+      </puik-button>
+    </template>
+  </puik-snackbar>
+</puik-snackbar-provider>
+  `
+});
+
+export const Variants = {
+  render: VariantsTemplate,
+  args: {},
+
+  parameters: {
+    docs: {
+      description: {
+        story: `
+The snackbar supports five variants:
+
+- \`default\`: dark background with white content, no leading icon.
+- \`reverse\`: white background, no leading icon.
+- \`warning\`: light yellow background with a \`warning\` leading icon.
+- \`danger\`: light red background with an \`error\` leading icon.
+- \`success\`: light green background with a \`check_circle\` leading icon.
+
+Every variant but \`default\` uses the \`primary\` color for its text, icon and close button.
+        `
+      },
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+  <puik-snackbar-provider
+    v-bind="snackbarProviderArgs"
+  >
+    <puik-snackbar
+      :open="open"
+      variant="warning"
+      title="Title"
+      description="Details about the notification"
+      has-close-button
+      @update:open="open = false"
+    >
+      <template #action>
+        <puik-button
+          variant="text"
+          @click="console.log('action btn triggered')"
+        >
+          Undo
+        </puik-button>
+      </template>
+    </puik-snackbar>
+  </puik-snackbar-provider>
         `,
         language: 'html'
       }
