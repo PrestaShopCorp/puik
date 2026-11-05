@@ -46,7 +46,7 @@
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header {
-  @apply flex items-center gap-4 border-primary-400;
+  @apply flex items-start gap-4 border-primary-400;
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
@@ -54,23 +54,11 @@
 }
 
 .puik-button.puik-modal__dialogPanelContainer__dialogPanel__header__close-button {
-  @apply p-1.5;
+  @apply p-3;
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__header__title {
-  @apply min-w-0 flex-1 puik-h2;
-}
-
-.puik-modal__dialogPanelContainer__dialogPanel__header__title .puik-tooltip__slot--wrapper {
-  @apply max-w-[100%];
-}
-
-.puik-modal__dialogPanelContainer__dialogPanel__header__title .title {
-  @apply font-bold flex-1 overflow-hidden text-ellipsis whitespace-nowrap grow;
-}
-
-.puik-modal__dialogPanelContainer__dialogPanel__header__close-button {
-  @apply p-0;
+  @apply min-w-0 flex-1 grow puik-h2 font-bold break-words;
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__content {

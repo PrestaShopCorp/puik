@@ -1,255 +1,154 @@
-// import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
-import { describe, it } from 'vitest';
-// import { PuikModal, PuikModalVariants, PuikModalSizes, DESTRUCTIVE_ICON_NAME, ModalProps } from '@prestashopcorp/puik-components';
+import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
+import { describe, it, expect, afterEach } from 'vitest';
+import { nextTick } from 'vue';
+import {
+  PuikModal,
+  PuikModalVariants,
+  type ModalProps
+} from '@prestashopcorp/puik-components';
 
-// @ts-expect-error Find on the Tailwindlabs/headlessui repo
-// https://github.com/tailwindlabs/headlessui/blob/main/packages/%40headlessui-vue/src/components/dialog/dialog.test.ts#L46
 global.ResizeObserver = class FakeResizeObserver {
   observe() {}
+  unobserve() {}
   disconnect() {}
 };
 
 describe('Modal tests', () => {
-  // let wrapper: VueWrapper<any>;
+  let wrapper: VueWrapper<any>;
 
-  // const findModal = () => wrapper.find('.puik-modal');
-  // const findIcon = () =>
-  //   wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header__icon');
-  // const findCloseButton = () =>
-  //   wrapper.find(
-  //     '.puik-modal__dialogPanelContainer__dialogPanel__header__close-button'
-  //   );
-  // const findMainButton = () =>
-  //   wrapper.find(
-  //     '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--main'
-  //   );
-  // const findSecondaryButton = () =>
-  //   wrapper.find(
-  //     '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--second'
-  //   );
-  // const findSideButton = () =>
-  //   wrapper.find(
-  //     '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--side'
-  //   );
-  // const findHeader = () =>
-  //   wrapper.find('.puik-modal__dialogPanelContainer__dialogPanel__header');
+  const query = <T extends Element = HTMLElement>(selector: string) =>
+    document.body.querySelector<T>(selector);
 
-  // const homeTitleIcon = 'home';
-  // const findTitle = () => wrapper.find('.title');
+  const findHeaderIcon = () =>
+    query('.puik-modal__dialogPanelContainer__dialogPanel__header__icon');
+  const findTitle = () =>
+    query('.puik-modal__dialogPanelContainer__dialogPanel__header__title');
+  const findCloseButton = () =>
+    query(
+      '.puik-modal__dialogPanelContainer__dialogPanel__header__close-button'
+    );
+  const findSecondButton = () =>
+    query(
+      '.puik-modal__dialogPanelContainer__dialogPanel__footer__button--second'
+    );
 
-  // const factory = (
-  //   props?: ModalProps,
-  //   options?: ComponentMountingOptions<typeof PuikModal>
-  // ) => {
-  //   wrapper = mount(PuikModal, {
-  //     global: {
-  //       stubs: {
-  //         teleport: true
-  //       }
-  //     },
-  //     props,
-  //     ...options
-  //   });
-  // };
+  const factory = async (
+    props: ModalProps = {},
+    options?: ComponentMountingOptions<typeof PuikModal>
+  ) => {
+    wrapper = mount(PuikModal, {
+      props: {
+        isOpen: true,
+        title: 'Modal title',
+        ...props
+      },
+      attachTo: document.body,
+      ...options
+    });
 
-  it('should be a vue instance, the default one', async () => {
-    // await factory({
-    //   title: 'Awesome title',
-    //   mainButtonText: 'Awesome main',
-    //   secondButtonText: 'Awesome second',
-    //   isOpen: true
-    // });
+    // the dialog is teleported to a portal root on the next tick
+    await nextTick();
+  };
 
-    // expect(wrapper).toBeTruthy();
-    // expect(findIcon().exists()).toBeFalsy();
-    // expect(findCloseButton().exists()).toBeTruthy();
-    // expect(findModal().classes()).toContain('puik-modal--small');
-    // expect(findMainButton().classes()).toContain('puik-button--primary');
-    // expect(findSecondaryButton().classes()).toContain('puik-button--secondary');
+  afterEach(() => {
+    wrapper?.unmount();
+    document.body.innerHTML = '';
   });
 
-  // it('should display destructive style', async () => {
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true,
-  //     titleIcon: homeTitleIcon,
-  //     variant: PuikModalVariants.Destructive
-  //   });
+  it('should be a vue instance, the default one', async () => {
+    await factory();
+    expect(wrapper).toBeTruthy();
+  });
 
-  //   expect(findIcon().text()).toBe(DESTRUCTIVE_ICON_NAME);
-  //   expect(findModal().classes()).toContain('puik-modal--destructive');
-  //   expect(findMainButton().classes()).toContain('puik-button--destructive');
-  //   expect(findSecondaryButton().classes()).toContain('puik-button--tertiary');
-  // });
+  describe('header icon', () => {
+    it('should display no icon by default', async () => {
+      await factory();
+      expect(findHeaderIcon()).toBeNull();
+    });
 
-  // it('should display feedback style', async () => {
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true,
-  //     titleIcon: homeTitleIcon,
-  //     variant: PuikModalVariants.Feedback
-  //   });
+    it('should display the titleIcon when provided', async () => {
+      await factory({ titleIcon: 'home' });
+      expect(findHeaderIcon()?.textContent?.trim()).toBe('home');
+    });
 
-  //   expect(findIcon().text()).toBe(homeTitleIcon);
-  //   expect(findModal().classes()).toContain('puik-modal--feedback');
-  //   expect(findMainButton().classes()).toContain('puik-button--primary');
-  //   expect(findSecondaryButton().classes()).toContain('puik-button--secondary');
-  // });
+    it('should fall back to the warning icon on the destructive variant', async () => {
+      await factory({ variant: PuikModalVariants.Destructive });
+      expect(findHeaderIcon()?.textContent?.trim()).toBe('warning');
+    });
 
-  // it('should display dialog style', async () => {
-  //   const sideButtonText = 'Awesome side button';
+    it('should let titleIcon override the destructive icon', async () => {
+      await factory({
+        variant: PuikModalVariants.Destructive,
+        titleIcon: 'delete'
+      });
+      expect(findHeaderIcon()?.textContent?.trim()).toBe('delete');
+    });
+  });
 
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true,
-  //     titleIcon: homeTitleIcon,
-  //     variant: PuikModalVariants.Dialog,
-  //     sideButtonText
-  //   });
+  describe('title', () => {
+    const longTitle =
+      'A very long modal title that is expected to wrap on several lines instead of being truncated';
 
-  //   expect(findIcon().text()).toBe(homeTitleIcon);
-  //   expect(findModal().classes()).toContain('puik-modal--dialog');
-  //   expect(findMainButton().classes()).toContain('puik-button--primary');
-  //   expect(findSecondaryButton().classes()).toContain('puik-button--secondary');
-  //   expect(findSideButton().exists()).toBeTruthy();
-  //   expect(findSideButton().text()).toBe(sideButtonText);
-  // });
+    it('should render the title in a heading, without a tooltip', async () => {
+      await factory({ title: longTitle });
 
-  // it('should display with the large size', async () => {
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true,
-  //     size: PuikModalSizes.Large
-  //   });
+      const title = findTitle();
+      expect(title?.tagName).toBe('H2');
+      expect(title?.textContent?.trim()).toBe(longTitle);
+      expect(query('.puik-tooltip')).toBeNull();
+    });
 
-  //   expect(findModal().classes()).toContain('puik-modal--large');
-  // });
+    it('should not truncate the title', async () => {
+      await factory({ title: longTitle });
 
-  // it('should display with the medium size', async () => {
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true,
-  //     size: PuikModalSizes.Medium
-  //   });
+      const classes = findTitle()?.className ?? '';
+      expect(classes).not.toContain('text-ellipsis');
+      expect(classes).not.toContain('whitespace-nowrap');
+      expect(classes).not.toContain('truncate');
+    });
+  });
 
-  //   expect(findModal().classes()).toContain('puik-modal--medium');
-  // });
+  describe('close button', () => {
+    it('should emit close on click', async () => {
+      await factory();
 
-  // it('should display with the small size', async () => {
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true,
-  //     size: PuikModalSizes.Small
-  //   });
+      const closeButton = findCloseButton();
+      expect(closeButton).not.toBeNull();
+      closeButton?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await wrapper.vm.$nextTick();
 
-  //   expect(findModal().classes()).toContain('puik-modal--small');
-  // });
+      expect(wrapper.emitted('close')).toBeTruthy();
+    });
 
-  // it('should display the close button and send close event when clicked', async () => {
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true
-  //   });
+    it('should not be displayed on the dialog variant', async () => {
+      await factory({ variant: PuikModalVariants.Dialog });
+      expect(findCloseButton()).toBeNull();
+    });
+  });
 
-  //   expect(findCloseButton().exists()).toBeTruthy();
+  describe('second button variant', () => {
+    it('should be a text button on the feedback variant', async () => {
+      await factory({
+        variant: PuikModalVariants.Feedback,
+        secondButtonText: 'Cancel'
+      });
+      expect(findSecondButton()?.className).toContain('puik-button--text');
+    });
 
-  //   await findCloseButton().trigger('click');
-  //   expect(wrapper.emitted('close')).toBeTruthy();
-  // });
+    it('should be a text button on the destructive variant', async () => {
+      await factory({
+        variant: PuikModalVariants.Destructive,
+        secondButtonText: 'Cancel'
+      });
+      expect(findSecondButton()?.className).toContain('puik-button--text');
+    });
 
-  // it('should display the close button', async () => {
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true
-  //   });
-
-  //   expect(findCloseButton().exists()).toBeTruthy();
-
-  //   await findCloseButton().trigger('click');
-  //   expect(wrapper.emitted('close')).toBeTruthy();
-  // });
-
-  // it('check main button event', async () => {
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true
-  //   });
-
-  //   await findMainButton().trigger('click');
-  //   expect(wrapper.emitted('button-main')).toBeTruthy();
-  // });
-
-  // it('check secondary button event', async () => {
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true
-  //   });
-
-  //   await findSecondaryButton().trigger('click');
-  //   expect(wrapper.emitted('button-second')).toBeTruthy();
-  // });
-
-  // it('expect to not have header', async () => {
-  //   await factory({
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true
-  //   });
-
-  //   expect(findHeader().exists()).toBeFalsy();
-  // });
-
-  // it('should have a data-test attribute on container div, title, mainButton, secondButton and closeButton', async () => {
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true,
-  //     dataTest: 'test'
-  //   });
-  //   expect(findModal().attributes('data-test')).toBe('test');
-  //   expect(findTitle().attributes('data-test')).toBe('title-test');
-  //   expect(findMainButton().attributes('data-test')).toBe('mainButton-test');
-  //   expect(findSecondaryButton().attributes('data-test')).toBe(
-  //     'secondButton-test'
-  //   );
-  //   expect(findCloseButton().attributes('data-test')).toBe('closeButton-test');
-  // });
-  // it('should have a data-test attribute on side button', async () => {
-  //   const sideButtonText = 'Awesome side button';
-
-  //   await factory({
-  //     title: 'Awesome title',
-  //     mainButtonText: 'Awesome main',
-  //     secondButtonText: 'Awesome second',
-  //     isOpen: true,
-  //     titleIcon: homeTitleIcon,
-  //     variant: PuikModalVariants.Dialog,
-  //     sideButtonText,
-  //     dataTest: 'test'
-  //   });
-  //   expect(findSideButton().exists()).toBeTruthy();
-  //   expect(findSideButton().text()).toBe(sideButtonText);
-  //   expect(findSideButton().attributes('data-test')).toBe('sideButton-test');
-  // });
+    it('should stay a secondary button on the dialog variant', async () => {
+      await factory({
+        variant: PuikModalVariants.Dialog,
+        secondButtonText: 'Cancel'
+      });
+      expect(findSecondButton()?.className).toContain('puik-button--secondary');
+    });
+  });
 });

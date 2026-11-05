@@ -445,7 +445,7 @@ export const Destructive = {
   parameters: {
     docs: {
       description: {
-        story: 'Forces the red warning icon and red main button, displays a close button and allows the modal to close when clicked outside.'
+        story: 'Displays the red `warning` icon by default (overridable with `titleIcon`) and a red main button, displays a close button and allows the modal to close when clicked outside.'
       },
       source: {
         code: `
@@ -466,6 +466,82 @@ export const Destructive = {
     mainButtonText="Main button"
     secondButtonText="Secondary button"
     variant="destructive"
+    :is-open="isOpen"
+    @close="closeModal"
+    @button-main="closeModal"
+    @button-second="closeModal"
+  >
+        `,
+        language: 'html'
+      }
+    }
+  }
+};
+
+export const LongTitle = {
+  render: () => ({
+    components: {
+      PuikButton,
+      PuikModal,
+    },
+    setup() {
+      const args = {
+        title: 'A very long modal title that wraps on several lines instead of being truncated',
+        titleIcon: 'home',
+        mainButtonText: 'Main button',
+        secondButtonText: 'Secondary button',
+        variant: PuikModalVariants.Feedback,
+        size: PuikModalSizes.Small
+      };
+      const isOpen = ref(false);
+
+      const openModal = () => {
+        isOpen.value = true;
+      };
+      const closeModal = () => {
+        isOpen.value = false;
+      };
+
+      return {
+        args,
+        isOpen,
+        openModal,
+        closeModal
+      };
+    },
+    template: `
+    <puik-button @click="openModal">
+      open modal with a long title
+    </puik-button>
+    <puik-modal
+      v-bind="args"
+      :is-open="isOpen"
+      @close="closeModal"
+      @button-main="closeModal"
+      @button-second="closeModal"
+    >
+      ${content}
+    </puik-modal>
+    `
+  }),
+
+  parameters: {
+    docs: {
+      description: {
+        story: 'A long title wraps on several lines. The title icon and the close button stay aligned with its first line.'
+      },
+      source: {
+        code: `
+  <!--VueJS Snippet-->
+
+  <puik-button @click="openModal">
+    open modal with a long title
+  </puik-button>
+  <puik-modal
+    title="A very long modal title that wraps on several lines instead of being truncated"
+    titleIcon="home"
+    mainButtonText="Main button"
+    secondButtonText="Secondary button"
     :is-open="isOpen"
     @close="closeModal"
     @button-main="closeModal"

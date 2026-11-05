@@ -16,29 +16,18 @@
           class="puik-modal__dialogPanelContainer__dialogPanel__header"
         >
           <puik-icon
-            v-if="titleIcon || PuikModalVariants.Destructive === variant"
+            v-if="getTitleIconName"
             class="puik-modal__dialogPanelContainer__dialogPanel__header__icon"
             :icon="getTitleIconName ?? ''"
             :font-size="ICON_SIZE"
           />
 
-          <puik-tooltip
-            :is-disabled="!showTitleTooltip"
+          <h2
             class="puik-modal__dialogPanelContainer__dialogPanel__header__title"
+            :data-test="dataTest != undefined ? `title-${dataTest}` : undefined"
           >
-            <h2
-              ref="modalTitleElem"
-              class="title"
-              :data-test="
-                dataTest != undefined ? `title-${dataTest}` : undefined
-              "
-            >
-              {{ title }}
-            </h2>
-            <template #description>
-              {{ title }}
-            </template>
-          </puik-tooltip>
+            {{ title }}
+          </h2>
 
           <puik-button
             v-if="PuikModalVariants.Dialog !== variant"
@@ -115,13 +104,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch, nextTick, onUpdated } from 'vue';
+import { computed } from 'vue';
 import { Dialog, DialogPanel } from '@headlessui/vue';
-import { useWindowSize } from '@vueuse/core';
 import { PuikButton } from '@prestashopcorp/puik-components/button';
 import { PuikIcon } from '@prestashopcorp/puik-components/icon';
-import { PuikTooltip } from '@prestashopcorp/puik-components/tooltip';
-import { isEllipsisActive } from '@prestashopcorp/puik-utils';
 import {
   type ModalProps,
   PuikModalVariants,
@@ -146,27 +132,13 @@ const props = withDefaults(defineProps<ModalProps>(), {
 const emit = defineEmits(modalEmits);
 
 const getTitleIconName = computed(() => {
+  if (props.titleIcon) {
+    return props.titleIcon;
+  }
+
   return PuikModalVariants.Destructive === props.variant
     ? DESTRUCTIVE_ICON_NAME
-    : props.titleIcon;
-});
-
-const { width } = useWindowSize();
-const modalTitleElem = ref(null);
-const showTitleTooltip = ref(false);
-
-
-onUpdated(() => {
-  if (modalTitleElem?.value) {
-    showTitleTooltip.value = isEllipsisActive(modalTitleElem.value);
-  }
-});
-
-watch(width, async () => {
-  await nextTick();
-  if (modalTitleElem?.value) {
-    showTitleTooltip.value = isEllipsisActive(modalTitleElem.value);
-  }
+    : undefined;
 });
 
 const mainButtonVariant = computed(() => {
@@ -176,9 +148,7 @@ const mainButtonVariant = computed(() => {
 });
 
 const secondButtonVariant = computed(() => {
-  return PuikModalVariants.Destructive === props.variant
-    ? 'tertiary'
-    : 'secondary';
+  return PuikModalVariants.Dialog === props.variant ? 'secondary' : 'text';
 });
 
 const sendCloseModalEvent = () => {
