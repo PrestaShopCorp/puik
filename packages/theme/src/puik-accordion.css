@@ -26,7 +26,7 @@
 }
 
 .puik-accordion__header__content__sub-title {
-  @apply text-left text-primary-600 mt-1 puik-body-small;
+  @apply text-left mt-1 puik-body-small text-primary-600;
 }
 
 .puik-accordion__header__expand__icon {
@@ -34,7 +34,7 @@
 }
 
 .puik-accordion__content {
-  @apply p-4 ml-4 text-primary-600 invisible puik-body-default;
+  @apply p-4 ml-4 invisible puik-body-default text-primary-600;
 }
 
 .puik-accordion--expanded .puik-accordion__title {

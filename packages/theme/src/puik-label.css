@@ -2,7 +2,7 @@
 @reference './typography.css';
 
 .puik-label {
-  @apply text-primary-800 puik-body-default-bold ;
+  @apply puik-body-default-bold text-primary-800;
 }
 
 .puik-label--required {
@@ -10,9 +10,9 @@
 }
 
 .puik-label--optional {
-  @apply text-primary-700 font-normal ml-1 puik-body-small;
+  @apply font-normal ml-1 puik-body-small text-primary-700;
 }
 
 .puik-label--readonly {
-  @apply text-primary-700 font-normal ml-1 puik-body-small;
+  @apply font-normal ml-1 puik-body-small text-primary-700;
 }

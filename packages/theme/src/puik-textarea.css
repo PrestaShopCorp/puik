@@ -6,7 +6,7 @@
 }
 
 .puik-textarea__character-count {
-  @apply absolute right-0 -bottom-5 text-primary-700 puik-body-small;
+  @apply absolute right-0 -bottom-5 puik-body-small text-primary-700;
 }
 
 .puik-textarea--count-error .puik-textarea__character-count {

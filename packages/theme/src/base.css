@@ -16,3 +16,25 @@
 @import './grid.css';
 @import './screen-reader.css';
 @import './scrollbar.css';
+
+/*
+ * Default text color, set once in the base layer so that:
+ * - typography utilities only carry typographic properties;
+ * - any color can be inherited from a parent;
+ * - a single utility (e.g. `text-danger-500`) overrides it without `!important`,
+ *   since the base layer always loses against the utilities layer.
+ */
+@layer base {
+  body {
+    color: var(--color-primary);
+  }
+
+  /*
+   * `base.css` is also injected inside the shadow root of the web components,
+   * where no `body` element exists: `:host` carries the same default there.
+   * In a regular document this selector simply matches nothing.
+   */
+  :host {
+    color: var(--color-primary);
+  }
+}
