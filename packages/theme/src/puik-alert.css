@@ -121,20 +121,16 @@
   @apply flex w-full items-end;
 }
 
-/* The link fills the text block: the label flows on the left and the trailing
-   external icon is pushed to the right edge, aligned with the bottom of the
-   last line (see the Alert banner "With link" examples in Figma). */
+/* The link fills the text block. */
 .puik-alert__inline-link-label {
-  @apply flex min-w-0 flex-1 items-end gap-1 puik-body-default;
+  @apply min-w-0 flex-1 puik-body-default;
 }
 
+/* Only the icon size is specific to the alert (16px); its placement right
+   after the text, its spacer and its underline are PuikLink's standard ones.
+   `leading-5` keeps the line box at 20px despite the bigger font size. */
 .puik-alert__inline-link-label .puik-link__target__icon {
-  @apply ml-auto shrink-0 text-base leading-5 no-underline;
-}
-
-/* The spacer of the standalone link is replaced by the flex gap above. */
-.puik-alert__inline-link-label .puik-link__target__icon:before {
-  content: none;
+  @apply text-base leading-5;
 }
 
 .puik-alert__actions {

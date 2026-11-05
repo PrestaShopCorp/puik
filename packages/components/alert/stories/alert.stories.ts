@@ -901,7 +901,7 @@ export const WithInlineLink: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'The inline link is displayed inside the text block, below the description, and takes the full width of that block. It is different from `linkLabel`, which is the "Learn more" text button displayed in the actions area. Setting `inline-link-target="_blank"` also displays the trailing `open_in_new` icon used for external links; as in the design kit, that icon sits at the right edge of the text block, aligned with the bottom of the last line, whether the label fits on one line or wraps.'
+        story: 'The inline link is displayed inside the text block, below the description, and takes the full width of that block. It is different from `linkLabel`, which is the "Learn more" text button displayed in the actions area. Setting `inline-link-target="_blank"` also displays the trailing `open_in_new` icon used for external links, right after the label and aligned to the bottom of the last line, exactly like any other `PuikLink`.'
       },
       source: {
         code: `
