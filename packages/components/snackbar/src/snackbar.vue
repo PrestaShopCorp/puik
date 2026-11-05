@@ -9,6 +9,13 @@
       }
     }"
   >
+    <PuikIcon
+      v-if="leadingIcon"
+      :icon="leadingIcon"
+      font-size="1.5rem"
+      class="puik-snackbar-icon"
+      aria-hidden
+    />
     <div class="puik-snackbar-message">
       <ToastTitle
         v-if="title"
@@ -29,23 +36,29 @@
     </ToastAction>
     <ToastClose
       v-if="hasCloseButton"
-      class="puik-snackbar-close"
-      aria-label="Close"
+      as-child
     >
-      <PuikIcon
-        icon="close"
-        aria-hidden
-      />
+      <PuikButton
+        class="puik-snackbar-close"
+        :variant="closeButtonVariant"
+        aria-label="Close"
+      >
+        <PuikIcon
+          icon="close"
+          font-size="1rem"
+          aria-hidden
+        />
+      </PuikButton>
     </ToastClose>
   </ToastRoot>
 </template>
 
 <script setup lang="ts">
 import { useForwardPropsEmits, ToastAction, ToastClose, ToastTitle, ToastRoot, ToastDescription } from 'radix-vue';
-import { PuikIcon } from '@prestashopcorp/puik-components';
-import { PuikSnackbarVariants, PuikSnackbarSwipeAnimations } from './snackbar';
+import { PuikIcon, PuikButton, PuikButtonVariants } from '@prestashopcorp/puik-components';
+import { PuikSnackbarVariants, PuikSnackbarSwipeAnimations, SNACKBAR_ICONS } from './snackbar';
 import type {  SnackbarProps, SnackbarEmits } from './snackbar';
-import { useId } from 'vue';
+import { computed, useId } from 'vue';
 
 defineOptions({
   name: 'PuikSnackbar'
@@ -58,5 +71,14 @@ const props = withDefaults(defineProps<SnackbarProps>(), {
 const resolvedId = props.id ?? `puik-snackbar-${useId()}`;
 const emits = defineEmits<SnackbarEmits>();
 const forwarded = useForwardPropsEmits(props, emits);
+
+const leadingIcon = computed(() => SNACKBAR_ICONS[props.variant as PuikSnackbarVariants]);
+
+// The `default` variant keeps its dark background, so its close button needs the reverse (white) text variant.
+const closeButtonVariant = computed(() =>
+  props.variant === PuikSnackbarVariants.Default
+    ? PuikButtonVariants.TextReverse
+    : PuikButtonVariants.Text
+);
 
 </script>
