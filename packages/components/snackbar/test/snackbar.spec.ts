@@ -1,7 +1,7 @@
 import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { PuikSnackbar, PuikSnackbarProvider, useSnackbar, PuikSnackbarVariants, PuikSnackbarSwipeAnimations, UseSnackbarProps, SnackbarsState } from '@prestashopcorp/puik-components';
-import { ref } from 'vue';
+import { nextTick, ref } from 'vue';
 
 let wrapper: VueWrapper<any>;
 const factory = (template: string, options: ComponentMountingOptions<any> = {}) => {
@@ -97,11 +97,64 @@ describe('Snackbar tests', () => {
     expect(wrapper.findComponent({ name: 'PuikSnackbar' }).props().duration).toBe(10000);
   });
 
-  it('should have correct variant prop', () => {
+  it.each(Object.values(PuikSnackbarVariants))('should have correct variant prop for %s', (variant) => {
     const template = `
     <puik-snackbar-provider>
       <puik-snackbar
         :open="false"
+        title="text"
+        description="description"
+        variant="${variant}"
+        has-close-button
+      >
+      </puik-snackbar>
+    </puik-snackbar-provider>
+    `;
+    factory(template);
+    expect(wrapper.findComponent({ name: 'PuikSnackbar' }).props().variant).toBe(variant);
+  });
+
+  it.each([
+    [PuikSnackbarVariants.Default, undefined],
+    [PuikSnackbarVariants.Reverse, undefined],
+    [PuikSnackbarVariants.Warning, 'warning'],
+    [PuikSnackbarVariants.Danger, 'error'],
+    [PuikSnackbarVariants.Success, 'check_circle']
+  ])('should display the expected leading icon for the %s variant', async (variant, expectedIcon) => {
+    const template = `
+    <puik-snackbar-provider>
+      <puik-snackbar
+        :open="true"
+        title="text"
+        description="description"
+        variant="${variant}"
+        has-close-button
+      >
+      </puik-snackbar>
+    </puik-snackbar-provider>
+    `;
+    factory(template);
+    await nextTick();
+
+    const root = document.body.querySelector(`.puik-snackbar-root--${variant}`);
+    expect(root).not.toBeNull();
+
+    const leadingIcon = root?.querySelector('.puik-snackbar-icon');
+    if (expectedIcon === undefined) {
+      expect(leadingIcon).toBeNull();
+    } else {
+      expect(leadingIcon?.textContent?.trim()).toBe(expectedIcon);
+    }
+
+    wrapper.unmount();
+    document.body.innerHTML = '';
+  });
+
+  it('should render the close button as a text PuikButton', async () => {
+    const template = `
+    <puik-snackbar-provider>
+      <puik-snackbar
+        :open="true"
         title="text"
         description="description"
         variant="success"
@@ -111,7 +164,38 @@ describe('Snackbar tests', () => {
     </puik-snackbar-provider>
     `;
     factory(template);
-    expect(wrapper.findComponent({ name: 'PuikSnackbar' }).props().variant).toBe('success');
+    await nextTick();
+
+    const closeButton = document.body.querySelector('.puik-snackbar-close');
+    expect(closeButton).not.toBeNull();
+    expect(closeButton?.classList.contains('puik-button--text')).toBe(true);
+    expect(closeButton?.getAttribute('aria-label')).toBe('Close');
+
+    wrapper.unmount();
+    document.body.innerHTML = '';
+  });
+
+  it('should render the close button with the reverse text variant on the default variant', async () => {
+    const template = `
+    <puik-snackbar-provider>
+      <puik-snackbar
+        :open="true"
+        title="text"
+        description="description"
+        variant="default"
+        has-close-button
+      >
+      </puik-snackbar>
+    </puik-snackbar-provider>
+    `;
+    factory(template);
+    await nextTick();
+
+    const closeButton = document.body.querySelector('.puik-snackbar-close');
+    expect(closeButton?.classList.contains('puik-button--text-reverse')).toBe(true);
+
+    wrapper.unmount();
+    document.body.innerHTML = '';
   });
 
   it('should have correct swipeAnimation prop', () => {

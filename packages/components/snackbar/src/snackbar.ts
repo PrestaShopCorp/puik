@@ -3,9 +3,21 @@ import type { Component } from 'vue';
 
 export enum PuikSnackbarVariants {
   Default = 'default',
+  Reverse = 'reverse',
+  Warning = 'warning',
   Danger = 'danger',
   Success = 'success',
 }
+
+/**
+ * Leading icon displayed before the message, per variant.
+ * `default` and `reverse` have no leading icon.
+ */
+export const SNACKBAR_ICONS: Partial<Record<PuikSnackbarVariants, string>> = {
+  [PuikSnackbarVariants.Warning]: 'warning',
+  [PuikSnackbarVariants.Danger]: 'error',
+  [PuikSnackbarVariants.Success]: 'check_circle'
+};
 
 export type SnackbarsState = SnackbarProps[];
 
