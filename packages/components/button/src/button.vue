@@ -37,7 +37,12 @@
       :aria-hidden="true"
       :data-test="dataTest != undefined ? `leftIcon-${dataTest}` : undefined"
     />
-    <slot />
+    <span
+      v-if="$slots.default"
+      class="puik-button__label"
+    >
+      <slot />
+    </span>
     <puik-icon
       v-if="rightIcon"
       :icon="rightIcon"

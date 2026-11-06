@@ -479,7 +479,9 @@ export const Text: StoryObj = {
   <puik-button variant="text">text button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--text">text button</button>
+  <button class="puik-button puik-button--text">
+    <span class="puik-button__label">text button</span>
+  </button>
         `,
         language: 'html'
       }
@@ -506,10 +508,62 @@ export const TextReverse: StoryObj = {
   <puik-button variant="text-reverse">text-reverse button</puik-button>
 
   <!--HTML/CSS Snippet-->
-  <button class="puik-button puik-button--text-reverse">text-reverse button</button>
+  <button class="puik-button puik-button--text-reverse">
+    <span class="puik-button__label">text-reverse button</span>
+  </button>
         `,
         language: 'html',
         dark: true
+      }
+    }
+  }
+};
+
+export const TextWithIcon: StoryObj = {
+  render: () => ({
+    components: { PuikButton },
+    template: `
+    <div class="flex flex-col gap-y-4">
+      <div class="flex items-center gap-x-4 p-4">
+        <puik-button variant="text" left-icon="shopping_cart">left icon</puik-button>
+        <puik-button variant="text" right-icon="shopping_cart">right icon</puik-button>
+        <puik-button variant="text" left-icon="edit" aria-label="Edit" />
+        <puik-button variant="text" left-icon="delete" aria-label="Delete" size="sm" />
+        <puik-button variant="text" left-icon="delete" aria-label="Delete" disabled />
+      </div>
+      <div class="flex items-center gap-x-4 p-4" style="background-color: #333333">
+        <puik-button variant="text-reverse" left-icon="shopping_cart">left icon</puik-button>
+        <puik-button variant="text-reverse" right-icon="shopping_cart">right icon</puik-button>
+        <puik-button variant="text-reverse" left-icon="edit" aria-label="Edit" />
+        <puik-button variant="text-reverse" left-icon="delete" aria-label="Delete" size="sm" />
+        <puik-button variant="text-reverse" left-icon="delete" aria-label="Delete" disabled />
+      </div>
+    </div>
+    `
+  }),
+
+  parameters: {
+    docs: {
+      description: {
+        story: 'In the `text` and `text-reverse` variants, only the label is underlined. An icon is never underlined, which makes an icon only button (an icon without any label) match the Figma design.'
+      },
+      source: {
+        code: `
+  <!--VueJS Snippet -->
+  <puik-button variant="text" left-icon="shopping_cart">left icon</puik-button>
+  <!-- icon only: no label, so nothing is underlined -->
+  <puik-button variant="text" left-icon="edit" aria-label="Edit" />
+
+  <!--HTML/CSS Snippet-->
+  <button class="puik-button puik-button--text">
+    <div class="puik-icon puik-button__left-icon">shopping_cart</div>
+    <span class="puik-button__label">left icon</span>
+  </button>
+  <button class="puik-button puik-button--text" aria-label="Edit">
+    <div class="puik-icon puik-button__left-icon">edit</div>
+  </button>
+        `,
+        language: 'html'
       }
     }
   }

@@ -16,7 +16,8 @@ const factory = (template: string, options: ComponentMountingOptions<any> = {}) 
 };
 
 const getSideBarItem = () => wrapper.find('.puik-sidebar-item');
-const getSideBarItemLabel = () => wrapper.find('.puik-sidebar-item span');
+const getSideBarItemLabel = () =>
+  wrapper.find('.puik-sidebar-item .puik-button__label span');
 const getItemButton = () => wrapper.find('.puik-sidebar-item__button');
 
 describe('Sidebar tests', () => {
