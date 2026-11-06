@@ -7,6 +7,7 @@ describe('Button tests', () => {
   const findButton = () => wrapper.find('.puik-button');
   const findButtonLeftIcon = () => wrapper.find('.puik-button__left-icon');
   const findButtonRightIcon = () => wrapper.find('.puik-button__right-icon');
+  const findButtonLabel = () => wrapper.find('.puik-button__label');
   const findLoader = () => wrapper.find('.puik-button__loader');
   const findLeftLoader = () => wrapper.find('.puik-button__loader--left');
   const findRightLoader = () => wrapper.find('.puik-button__loader--right');
@@ -172,6 +173,27 @@ describe('Button tests', () => {
       dataTest: 'button'
     });
     expect(findRightLoader().attributes('data-test')).toBe('rightLoader-button');
+  });
+
+  it('should wrap the default slot content in a label element', () => {
+    factory({ variant: 'text' }, { slots: { default: 'My label' } });
+    expect(findButtonLabel().exists()).toBeTruthy();
+    expect(findButtonLabel().text()).toBe('My label');
+  });
+
+  it('should not render a label element when there is no default slot', () => {
+    factory({ variant: 'text', leftIcon: 'edit', ariaLabel: 'Edit' });
+    expect(findButtonLabel().exists()).toBeFalsy();
+    expect(findButtonLeftIcon().exists()).toBeTruthy();
+  });
+
+  it('should keep the icons outside of the label element', () => {
+    factory(
+      { variant: 'text', leftIcon: 'close', rightIcon: 'close' },
+      { slots: { default: 'My label' } }
+    );
+    expect(findButtonLabel().find('.puik-button__left-icon').exists()).toBeFalsy();
+    expect(findButtonLabel().find('.puik-button__right-icon').exists()).toBeFalsy();
   });
 
   it('should apply legacy text variant styles when forceLegacyTextVariant is true', () => {
