@@ -49,16 +49,21 @@
   @apply flex items-start gap-4 border-primary-400;
 }
 
+/* The header row is as tall as the 48px close button (24px icon + 12px padding).
+   `items-start` keeps the icon and the close button on the first line of a long
+   title, so each shorter child is offset to share that first line's 24px center:
+   the 40px icon by (48 - 40) / 2 = 4px. */
 .puik-modal__dialogPanelContainer__dialogPanel__header__icon {
-  @apply rounded-[9999px] p-2;
+  @apply mt-1 rounded-[9999px] p-2;
 }
 
 .puik-button.puik-modal__dialogPanelContainer__dialogPanel__header__close-button {
   @apply p-3;
 }
 
+/* ... and the 32px title line by (48 - 32) / 2 = 8px. */
 .puik-modal__dialogPanelContainer__dialogPanel__header__title {
-  @apply min-w-0 flex-1 grow puik-h2 font-bold break-words;
+  @apply mt-2 min-w-0 flex-1 grow puik-h2 font-bold break-words;
 }
 
 .puik-modal__dialogPanelContainer__dialogPanel__content {
