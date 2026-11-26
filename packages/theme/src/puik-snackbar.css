@@ -81,7 +81,7 @@
   animation: slideUp 100ms ease-out;
 }
 
-.puik-snackbar-root--swipe-down[data-swipe='end'] {
+.puik-snackbar-root--swipe-slide-down[data-swipe='end'] {
   animation: slideDown 100ms ease-out;
 }
 

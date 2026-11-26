@@ -19,3 +19,11 @@ snackbar stayed in the DOM, fully visible, with `data-state="closed"`.
 `.puik-snackbar-root[data-state='closed']` now has its own `slideOut` animation, which
 mirrors `slideIn`. The snackbar fades out and is removed from the DOM whatever its
 initial `open` value. Swipe-out animations are unaffected.
+
+The swipe-out rule for the `slide-down` direction also targeted
+`.puik-snackbar-root--swipe-down`, a class the component never renders — it builds the
+class as `puik-snackbar-root--swipe-${swipeAnimation}`, so the element actually carries
+`puik-snackbar-root--swipe-slide-down`. Swiping a `slide-down` snackbar away therefore ran
+no animation. The selector is corrected, and a test now asserts that every
+`PuikSnackbarSwipeAnimations` value has matching `move` and `end` rules in the stylesheet,
+so the other three directions cannot drift the same way.
