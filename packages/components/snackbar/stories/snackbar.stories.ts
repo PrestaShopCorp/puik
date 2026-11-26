@@ -230,7 +230,7 @@ export const Default = {
   }
 };
 
-const VariantsTemplate: StoryFn = (args: Args) => ({
+const VariantsTemplate: StoryFn = (args: Args, { viewMode }) => ({
   components: {
     PuikSnackbarProvider,
     PuikSnackbar,
@@ -245,8 +245,9 @@ const VariantsTemplate: StoryFn = (args: Args) => ({
       positionX: 'right',
       positionY: 'up'
     });
+    // Open on the story page for the Chromatic snapshot, closed on the docs page where they would cover it
     const openVariants = ref<Record<string, boolean>>(
-      Object.fromEntries(snackbarVariants.map(variant => [variant, true]))
+      Object.fromEntries(snackbarVariants.map(variant => [variant, viewMode !== 'docs']))
     );
     return { snackbarProviderArgs, snackbarVariants, openVariants, args };
   },
