@@ -6,6 +6,17 @@
   animation: slideIn 250ms ease-in;
 }
 
+/*
+ * radix-vue's Presence waits for an `animationend` before unmounting a closing
+ * element. Without an animation on the closed state, a snackbar that is already
+ * open on its first render stays in the DOM forever (see issue #542), so the
+ * closed state needs its own, real exit animation.
+ * Declared before the swipe rules below so that a swipe-out animation still wins.
+ */
+.puik-snackbar-root[data-state='closed'] {
+  animation: slideOut 200ms ease-out;
+}
+
 .puik-snackbar-root--default {
   @apply bg-primary;
 }
@@ -70,7 +81,7 @@
   animation: slideUp 100ms ease-out;
 }
 
-.puik-snackbar-root--swipe-down[data-swipe='end'] {
+.puik-snackbar-root--swipe-slide-down[data-swipe='end'] {
   animation: slideDown 100ms ease-out;
 }
 
@@ -87,6 +98,17 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
   }
 }
 

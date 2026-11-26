@@ -2,6 +2,8 @@ import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 import { PuikSnackbar, PuikSnackbarProvider, useSnackbar, PuikSnackbarVariants, PuikSnackbarSwipeAnimations, UseSnackbarProps, SnackbarsState } from '@prestashopcorp/puik-components';
 import { ref } from 'vue';
+import { existsSync, readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
 
 let wrapper: VueWrapper<any>;
 const factory = (template: string, options: ComponentMountingOptions<any> = {}) => {
@@ -235,5 +237,46 @@ describe('Snackbar tests', () => {
 
     expect(state.value.length).toBe(1);
     expect(state.value.find(snackbar => snackbar.title === 'Snackbar 1')).toBeUndefined();
+  });
+});
+
+describe('Snackbar swipe animation stylesheet', () => {
+  const stylesheetPath = (() => {
+    const relativePath = 'packages/theme/src/puik-snackbar.css';
+    let directory = process.cwd();
+
+    while (!existsSync(resolve(directory, relativePath))) {
+      const parent = dirname(directory);
+      if (parent === directory) {
+        throw new Error(`Unable to locate ${relativePath} from ${process.cwd()}`);
+      }
+      directory = parent;
+    }
+
+    return resolve(directory, relativePath);
+  })();
+  const stylesheet = readFileSync(stylesheetPath, 'utf-8');
+
+  // `snackbar.vue` builds the root class as `puik-snackbar-root--swipe-${swipeAnimation}`,
+  // so every enum value must have matching `move` and `end` rules in the theme. Without
+  // this guard a selector can drift from the enum and the swipe silently stops animating.
+  it.each(Object.values(PuikSnackbarSwipeAnimations))(
+    'should have move and end rules for the %s swipe animation',
+    (swipeAnimation) => {
+      const selector = `.puik-snackbar-root--swipe-${swipeAnimation}`;
+      expect(stylesheet).toContain(`${selector}[data-swipe='move']`);
+      expect(stylesheet).toContain(`${selector}[data-swipe='end']`);
+    }
+  );
+
+  it('should not leave a swipe rule pointing at a class the component never renders', () => {
+    const rendered = Object.values(PuikSnackbarSwipeAnimations).map(
+      (swipeAnimation) => `puik-snackbar-root--swipe-${swipeAnimation}`
+    );
+    const used = stylesheet.match(/\.puik-snackbar-root--swipe-[a-z-]+/g) ?? [];
+
+    expect([...new Set(used.map((selector) => selector.slice(1)))].sort()).toEqual(
+      [...rendered].sort()
+    );
   });
 });
