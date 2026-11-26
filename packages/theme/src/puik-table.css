@@ -17,7 +17,7 @@
 /* Table Item Sizes */
 .puik-table__head__row__item,
 .puik-table__body__row__item {
-  @apply text-primary-800 puik-body-default;
+  @apply puik-body-default text-primary-800;
   @apply p-4;
 }
 
@@ -88,7 +88,7 @@
 }
 .puik-table__head__row__item,
 .puik-table > thead > tr > th {
-  @apply font-normal uppercase text-primary-600 puik-body-small;
+  @apply font-normal uppercase puik-body-small text-primary-600;
   @apply p-4;
 }
 

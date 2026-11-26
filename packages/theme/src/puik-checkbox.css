@@ -40,5 +40,5 @@
 }
 
 .puik-checkbox__label {
-  @apply -tracking-[0.015625em] font-primary text-primary cursor-pointer ml-2 puik-body-default;
+  @apply -tracking-[0.015625em] font-primary cursor-pointer ml-2 puik-body-default;
 }
