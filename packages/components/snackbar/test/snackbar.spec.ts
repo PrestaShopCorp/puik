@@ -153,30 +153,6 @@ describe('Snackbar tests', () => {
     document.body.innerHTML = '';
   });
 
-  it('should render the close button as a text PuikButton', async () => {
-    const template = `
-    <puik-snackbar-provider>
-      <puik-snackbar
-        :open="true"
-        title="text"
-        description="description"
-        variant="success"
-        has-close-button
-      >
-      </puik-snackbar>
-    </puik-snackbar-provider>
-    `;
-    factory(template);
-    await nextTick();
-
-    const closeButton = document.body.querySelector('.puik-snackbar-close');
-    expect(closeButton).not.toBeNull();
-    expect(closeButton?.classList.contains('puik-button--text')).toBe(true);
-
-    wrapper.unmount();
-    document.body.innerHTML = '';
-  });
-
   it('should label the close button with the localized closeBtnLabel key', async () => {
     const { t } = useLocale();
     const template = `
@@ -231,14 +207,14 @@ describe('Snackbar tests', () => {
     document.body.innerHTML = '';
   });
 
-  it('should render the close button with the reverse text variant on the default variant', async () => {
+  it.each(Object.values(PuikSnackbarVariants))('should render the close button with the text variant on the %s variant', async (variant) => {
     const template = `
     <puik-snackbar-provider>
       <puik-snackbar
         :open="true"
         title="text"
         description="description"
-        variant="default"
+        variant="${variant}"
         has-close-button
       >
       </puik-snackbar>
@@ -248,7 +224,9 @@ describe('Snackbar tests', () => {
     await nextTick();
 
     const closeButton = document.body.querySelector('.puik-snackbar-close');
-    expect(closeButton?.classList.contains('puik-button--text-reverse')).toBe(true);
+    expect(closeButton).not.toBeNull();
+    expect(closeButton?.classList.contains('puik-button--text')).toBe(true);
+    expect(closeButton?.classList.contains('puik-button--text-reverse')).toBe(false);
 
     wrapper.unmount();
     document.body.innerHTML = '';

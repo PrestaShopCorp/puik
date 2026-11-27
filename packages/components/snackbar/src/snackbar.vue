@@ -40,7 +40,7 @@
     >
       <PuikButton
         class="puik-snackbar-close"
-        :variant="closeButtonVariant"
+        :variant="PuikButtonVariants.Text"
         :aria-label="t('puik.snackbar.closeBtnLabel')"
       >
         <PuikIcon
@@ -75,12 +75,5 @@ const emits = defineEmits<SnackbarEmits>();
 const forwarded = useForwardPropsEmits(props, emits);
 
 const leadingIcon = computed(() => SNACKBAR_ICONS[props.variant as PuikSnackbarVariants]);
-
-// The `default` variant keeps its dark background, so its close button needs the reverse (white) text variant.
-const closeButtonVariant = computed(() =>
-  props.variant === PuikSnackbarVariants.Default
-    ? PuikButtonVariants.TextReverse
-    : PuikButtonVariants.Text
-);
 
 </script>

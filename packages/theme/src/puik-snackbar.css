@@ -18,7 +18,7 @@
 }
 
 .puik-snackbar-root--default {
-  @apply bg-primary text-white;
+  @apply bg-primary-400;
 }
 
 .puik-snackbar-root--reverse {
@@ -53,11 +53,6 @@
   @apply puik-body-default-medium;
 }
 
-.puik-snackbar-root--default .puik-snackbar-title,
-.puik-snackbar-root--default .puik-snackbar-description {
-  @apply text-white;
-}
-
 .puik-snackbar-action {
   @apply shrink-0;
 }
@@ -65,10 +60,6 @@
 .puik-snackbar-action.puik-button {
   @apply bg-transparent hover:bg-transparent border-none px-0 py-0 min-h-0 h-5
     text-primary underline decoration-primary decoration-auto underline-offset-[3px];
-}
-
-.puik-snackbar-root--default .puik-snackbar-action.puik-button {
-  @apply text-white decoration-white;
 }
 
 .puik-snackbar-close.puik-button {
