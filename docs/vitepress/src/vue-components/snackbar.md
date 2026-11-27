@@ -46,12 +46,14 @@ outline: deep
     details: `
 enum PuikSnackbarVariants {
   Default = 'default',
+  Reverse = 'reverse',
+  Warning = 'warning',
   Danger = 'danger',
   Success = 'success',
 }
     `,
     default: 'default',
-    description: 'Sets the color variant of the snackbar'
+    description: 'Sets the color variant of the snackbar. The `warning`, `danger` and `success` variants display a leading icon.'
   },
   {
     prop: 'swipeAnimation',

@@ -298,13 +298,13 @@ export const Variants = {
         story: `
 The snackbar supports five variants:
 
-- \`default\`: dark background with white content, no leading icon.
+- \`default\`: light grey background, no leading icon.
 - \`reverse\`: white background, no leading icon.
 - \`warning\`: light yellow background with a \`warning\` leading icon.
 - \`danger\`: light red background with an \`error\` leading icon.
 - \`success\`: light green background with a \`check_circle\` leading icon.
 
-Every variant but \`default\` uses the \`primary\` color for its text, icon and close button.
+Every variant uses the \`primary\` color for its text, icon and close button.
         `
       },
       source: {
