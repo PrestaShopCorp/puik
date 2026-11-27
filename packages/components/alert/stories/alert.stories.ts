@@ -894,6 +894,18 @@ export const WithInlineLink: StoryObj = {
           link-label="Learn more"
           is-closable
         />
+        <puik-alert
+          title="Outlined inline link"
+          description="This is the description."
+          variant="info"
+          inline-link-label="Read the documentation"
+          external-inline-link="https://www.prestashop-project.org"
+          inline-link-target="_blank"
+          button-label="Action"
+          link-label="Learn more"
+          disable-background
+          is-closable
+        />
     </div>
     `
   }),
@@ -901,7 +913,7 @@ export const WithInlineLink: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'The inline link is displayed inside the text block, below the description, and takes the full width of that block. It is different from `linkLabel`, which is the "Learn more" text button displayed in the actions area. Setting `inline-link-target="_blank"` also displays the trailing `open_in_new` icon used for external links, right after the label and aligned to the bottom of the last line, exactly like any other `PuikLink`.'
+        story: 'The inline link is displayed inside the text block, below the description, and takes the full width of that block. It is different from `linkLabel`, which is the "Learn more" text button displayed in the actions area. Setting `inline-link-target="_blank"` also displays the trailing `open_in_new` icon used for external links, right after the label and aligned to the bottom of the last line, exactly like any other `PuikLink`. Its contrast follows the alert style: high contrast on the colored background of the default style, and the regular `PuikLink` contrast on the white background of the outlined style.'
       },
       source: {
         code: `

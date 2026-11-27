@@ -296,6 +296,19 @@ describe('Alert tests', () => {
     expect(findInlineLink().attributes('data-test')).toBe('inline-link-alert');
   });
 
+  it('should render the inline link in high contrast only when the alert has a background', () => {
+    factory({ inlineLinkLabel: 'Read the documentation' });
+    expect(findInlineLink().classes()).toContain('puik-link--high-contrast');
+  });
+
+  it('should render the inline link in the default style when the background is disabled', () => {
+    factory({
+      inlineLinkLabel: 'Read the documentation',
+      disableBackground: true
+    });
+    expect(findInlineLink().classes()).not.toContain('puik-link--high-contrast');
+  });
+
   it('should render the close button as a focusable button with a localized aria-label', () => {
     factory({ isClosable: true });
     expect(findCloseButton().element.tagName).toBe('BUTTON');

@@ -57,6 +57,7 @@
             }"
             class="puik-alert__inline-link-label"
             :target="inlineLinkTarget"
+            :high-contrast="!disableBackground"
             :data-test="
               dataTest != undefined ? `inline-link-${dataTest}` : undefined
             "
