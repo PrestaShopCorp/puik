@@ -1,6 +1,6 @@
 import { mount, ComponentMountingOptions, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import { PuikButton, ButtonProps } from '@prestashopcorp/puik-components';
+import { PuikButton, PuikIcon, ButtonProps } from '@prestashopcorp/puik-components';
 
 describe('Button tests', () => {
   let wrapper: VueWrapper<any>;
@@ -194,6 +194,23 @@ describe('Button tests', () => {
     );
     expect(findButtonLabel().find('.puik-button__left-icon').exists()).toBeFalsy();
     expect(findButtonLabel().find('.puik-button__right-icon').exists()).toBeFalsy();
+  });
+
+  // An icon passed through the default slot, instead of through the left-icon /
+  // right-icon props, lands inside the label, which is the element carrying the
+  // underline of the text variants. Such an icon is therefore underlined: use
+  // the props for an icon in a text button.
+  it('should put an icon passed through the default slot inside the label', () => {
+    factory(
+      { variant: 'text' },
+      {
+        global: { components: { PuikIcon } },
+        slots: { default: '<puik-icon icon="close" />' }
+      }
+    );
+    const label = findButtonLabel().element;
+    expect(label.children).toHaveLength(1);
+    expect(label.children[0].classList.contains('puik-icon')).toBe(true);
   });
 
   it('should apply legacy text variant styles when forceLegacyTextVariant is true', () => {

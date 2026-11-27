@@ -545,7 +545,7 @@ export const TextWithIcon: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'In the `text` and `text-reverse` variants, only the label is underlined. An icon is never underlined, which makes an icon only button (an icon without any label) match the Figma design.'
+        story: 'In the `text` and `text-reverse` variants, only the label is underlined. An icon is never underlined, which makes an icon only button (an icon without any label) match the Figma design.\n\nAn icon in a text button must be set through the `left-icon` / `right-icon` props. A `PuikIcon` placed in the default slot lands inside the label, which is the element carrying the underline, and is underlined with it.'
       },
       source: {
         code: `
