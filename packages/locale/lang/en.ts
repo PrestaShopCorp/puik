@@ -5,6 +5,9 @@ export default {
       ariaDisabledDescription: 'reason not specified',
       ariaLabelDefault: 'aria-label not specified'
     },
+    alert: {
+      closeBtnLabel: 'Close alert'
+    },
     avatar: {
       altDefault: 'Avatar image'
     },

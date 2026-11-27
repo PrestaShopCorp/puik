@@ -4,6 +4,9 @@ export default {
     common: {
       ariaDisabledDescription: 'Raison non spécifiée'
     },
+    alert: {
+      closeBtnLabel: 'Fermer l\'alerte'
+    },
     avatar: {
       altDefault: 'Image d\'avatar'
     },
