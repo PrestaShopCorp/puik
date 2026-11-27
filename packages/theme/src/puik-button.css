@@ -151,15 +151,43 @@
     duration-150;
 }
 
+/*
+ * The underline must never be drawn across the icons. A text-decoration set on
+ * the button propagates to every child (including the icons) and cannot be
+ * removed from them, so the underline is carried by the label itself as soon as
+ * a label or an icon is rendered. The rule on the button is kept as a fallback
+ * for plain HTML/CSS usage without a `.puik-button__label` element.
+ */
+.puik-button--text:has(.puik-button__label, .puik-button__left-icon, .puik-button__right-icon) {
+  @apply no-underline;
+}
+
+.puik-button--text .puik-button__label {
+  @apply underline
+    decoration-auto
+    underline-offset-[3px]
+  decoration-primary
+    transition-all
+    duration-150;
+}
+
 .puik-button--text:hover,
 .puik-button--text:active,
-.puik-button--text:visited {
+.puik-button--text:visited,
+.puik-button--text:hover .puik-button__label,
+.puik-button--text:active .puik-button__label,
+.puik-button--text:visited .puik-button__label {
   @apply underline-offset-[6px];
 }
 
 .puik-button--text:disabled,
 .puik-button--text.puik-button--disabled {
   @apply text-primary-500 decoration-primary-500;
+}
+
+.puik-button--text:disabled .puik-button__label,
+.puik-button--text.puik-button--disabled .puik-button__label {
+  @apply decoration-primary-500;
 }
 
 .puik-button--text-reverse {
@@ -173,9 +201,25 @@
     duration-150;
 }
 
+.puik-button--text-reverse:has(.puik-button__label, .puik-button__left-icon, .puik-button__right-icon) {
+  @apply no-underline;
+}
+
+.puik-button--text-reverse .puik-button__label {
+  @apply underline
+    decoration-auto
+    underline-offset-[3px]
+  decoration-white
+    transition-all
+    duration-150;
+}
+
 .puik-button--text-reverse:hover,
 .puik-button--text-reverse:active,
-.puik-button--text-reverse:visited {
+.puik-button--text-reverse:visited,
+.puik-button--text-reverse:hover .puik-button__label,
+.puik-button--text-reverse:active .puik-button__label,
+.puik-button--text-reverse:visited .puik-button__label {
   @apply underline-offset-[6px];
 }
 
@@ -184,8 +228,15 @@
   @apply text-primary-600 decoration-primary-600;
 }
 
+.puik-button--text-reverse:disabled .puik-button__label,
+.puik-button--text-reverse.puik-button--disabled .puik-button__label {
+  @apply decoration-primary-600;
+}
+
 .puik-button--text.puik-button--legacy-text,
-.puik-button--text-reverse.puik-button--legacy-text-reverse {
+.puik-button--text-reverse.puik-button--legacy-text-reverse,
+.puik-button--text.puik-button--legacy-text .puik-button__label,
+.puik-button--text-reverse.puik-button--legacy-text-reverse .puik-button__label {
   @apply no-underline;
 }
 
@@ -310,4 +361,13 @@
 .puik-button__left-icon,
 .puik-button__right-icon {
   @apply font-material-icons align-middle;
+}
+
+/*
+ * The label element is always rendered when a default slot is provided, even
+ * when that slot renders nothing (an icon only button). Hiding it keeps the
+ * flex gap from adding a phantom space next to the icon.
+ */
+.puik-button__label:empty {
+  @apply hidden;
 }
